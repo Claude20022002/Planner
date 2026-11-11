@@ -55,7 +55,7 @@ Dans ce dépôt, sur `doc/diagramme-architecture` :
 | 4 | Piste du logo : A, B ou C ? | **A « le volet »**, choisie par le chef le 11 novembre. Kit fait : `marketing/brand/logo/kit/` (commit `cbc9b74` de l'agence), contrôle qualité validé pour un usage interne et pour la pose dans le produit | réglée |
 | 5 | L-3 et L-5 (`01-assemblage-et-pose.md`) | validées par le chef le 11 novembre | réglée |
 | 6 | Hauteur de PLANNER à côté du logo d'une école : 50 % (validé) ou 40 % (proposé après l'essai avec ORION et NOVA) | **40 %**, validé par le chef le 11 novembre (L-12) | réglée |
-| 9 | Refonte du logo : la piste A est jugée « pas belle » ; nouveau logo dans la direction artistique de HESTIM, sans son identité | palette Récré validée (bleu nuit `#1A2A6C`, jaune, bleu ciel, rose) ; piste A archivée ; trois pistes en couleur sur `concepts/v3/planche-v3.png` (commit `3bdc25a` de l'agence), C « la mosaïque » recommandée | ouverte : choix de la piste |
+| 9 | Refonte du logo : la piste A est jugée « pas belle » ; nouveau logo dans la direction artistique de HESTIM, sans son identité | palette Récré validée (bleu nuit `#1A2A6C`, jaune, bleu ciel, rose) ; piste A archivée ; trois pistes en couleur sur `concepts/v3/planche-v3.png` (commit `3bdc25a` de l'agence), **C « la mosaïque » choisie par le chef**. Kit fait : `marketing/brand/logo/kit/` de l'agence, avec les logos de la présentation Canva dans `kit/canva/` ; contrôle qualité validé | réglée |
 | 7 | Pose du logo dans le produit : critères de « terminé » d'UIX-01 et de MOB-03, ou une fonction à part ? | proposition : critères d'UIX-01 et de MOB-03 (fichiers et correspondances dans `kit/README.md`, § 10) | ouverte |
 | 8 | Recherche d'antériorité à l'OMPIC : qui, quand ? | avant toute diffusion publique du logo | ouverte |
 
@@ -67,7 +67,7 @@ Dans ce dépôt, sur `doc/diagramme-architecture` :
 ## Reste à faire, dans l'ordre
 
 1. Le chef ouvre la PR du diagramme. La branche est poussée ; le premier `gh pr create` a échoué parce qu'il a été lancé depuis `..\planner-marketing`, qui n'a pas de dépôt distant.
-2. Le chef choisit la piste du nouveau logo (question 9), puis l'agence fait le kit et les deux logos de la présentation Canva « Planner — Chefs d'établissement » (fond `#004AAD` et fond clair). Il tranche aussi les questions 7 et 8.
+2. Le chef pose les logos de `kit/canva/` dans la présentation Canva « Planner — Chefs d'établissement », et tranche les questions 7 et 8.
 3. Une session du produit pose le logo (UIX-01, MOB-03, EDT-04) avec les fichiers du **nouveau** kit. Le kit de la piste A est archivé et ne doit pas être posé.
 4. Le chef ouvre un chantier pour l'agence ; MKT-01 n'attend plus que le dépôt privé.
 
@@ -87,12 +87,12 @@ du dépôt Planner (sur origin/main, le main local est en retard), puis cette fi
 (docs/sessions/2026-11-11-doc-diagramme-architecture.md, branche doc/diagramme-architecture).
 Dans ..\planner-marketing, lis CLAUDE.md, marketing/brand/logo/00-brief.md,
 01-assemblage-et-pose.md et 02-pistes.md.
-Fait : skills logo-design et stack-diagram installés (commit 7c78d70) ; brief du logo validé ;
-trois pistes en gris, A « le volet » recommandée, arrêt avant le kit (170d2cf) ;
-diagramme d'architecture sur doc/diagramme-architecture.
-Reste : choix de la piste par le chef, puis kit du logo (marketing/brand/logo/kit/) ;
-validation de L-3 et L-5 ; chantier de l'agence et MKT-01 (premier commit complet, dépôt privé).
-Questions en attente : 1 à 5 de la fiche.
+Fait : skills logo-design et stack-diagram installés ; diagramme d'architecture sur doc/diagramme-architecture ;
+logo refait le 11 novembre : piste A « le volet » archivée (marketing/brand/logo/archives/), palette Récré,
+piste C « la mosaïque » choisie, kit complet dans marketing/brand/logo/kit/ (règles kit/README.md,
+logos de la présentation Canva dans kit/canva/, contrôle controle.md).
+Reste : pose des logos dans la présentation Canva (par le chef) ; questions 1, 2, 7 et 8 de la fiche ;
+chantier de l'agence et dépôt privé (MKT-01) ; pose du logo dans le produit (UIX-01, MOB-03, EDT-04).
 Règles : rien avant validation du chef ; questions numérotées avec proposition ;
 vente gelée, rien publié ; fiche de session et suivi.md à jour en fin de session ; jamais de git push.
 ```
