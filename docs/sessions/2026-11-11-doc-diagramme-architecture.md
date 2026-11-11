@@ -86,7 +86,7 @@ Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md et docs/plan/modu
 du dépôt Planner (sur origin/main, le main local est en retard), puis cette fiche
 (docs/sessions/2026-11-11-doc-diagramme-architecture.md, branche doc/diagramme-architecture).
 Dans ..\planner-marketing, lis CLAUDE.md, marketing/brand/logo/00-brief.md,
-01-assemblage-et-pose.md et 02-pistes.md.
+03-couleurs.md, 04-pistes-v3.md et kit/README.md.
 Fait : skills logo-design et stack-diagram installés ; diagramme d'architecture sur doc/diagramme-architecture ;
 logo refait le 11 novembre : piste A « le volet » archivée (marketing/brand/logo/archives/), palette Récré,
 piste C « la mosaïque » choisie, kit complet dans marketing/brand/logo/kit/ (règles kit/README.md,
