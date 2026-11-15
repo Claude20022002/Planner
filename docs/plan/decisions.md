@@ -84,10 +84,11 @@ Registre unique à partir du 7 novembre 2026.
 | 13 nov. | Une **seconde passe de recherche**, ciblée sur ce que l'inventaire n'a pas pu voir (avis des magasins d'applications, aSc, Hyperplanning, paiement des frais au Maroc, pays non couverts), se fera plus tard dans une session à part (décision I-3) | — |
 | 13 nov. | **La pile est confirmée** (QUA-03, [pile.md](../conception/qualite/pile.md)) : Express, Sequelize, MySQL 8.4, React et MUI, Expo, Timefold et Java 21, JWT ; la pile de `plan.txt` reste écartée. Confirmation **sous condition que D-01 tienne** (PLA-06). Sequelize est gardé sous surveillance. Montées à prévoir, non décidées : Spring Boot 4 (support libre de la 3.3 fini le 30 juin 2025), Timefold 1.31 puis MOT-04, Node 24, Express 5. Conditions de réouverture : § 5 de la page | la décision du 4 novembre (« l'étude de la pile se clôt dans QUA-03 ») |
 | 15 nov. | **Ollama retiré du serveur** partagé avec n8n (conteneurs, volume, image). n8n, Traefik, postgres et Qdrant non redémarrés. Ne pas relancer le profil Compose `cpu`. | décision du 11 nov. (PLA-06 / Q-21), appliquée |
+| 15 nov. | **Noms publics de l'installation gardés** (question ouverte « nom de domaine », Q-11) : ceux déjà écrits dans `deploy/vps/nginx-hestim.conf` et `deploy/vps/generer-env.sh`. Le pointage DNS est EXP-02b. Le branchement du nouveau serveur est Traefik (labels, réseau externe), sans port public sur Caddy. | — |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.
-- **Q-11** : essai gratuit effacé après 60 jours (gelé).
+- **Q-11** : essai gratuit effacé après 60 jours (gelé). Le même numéro désigne aussi le nom de domaine : tranché le 15 nov. (ligne ci-dessus), distinct de l'essai gratuit.
 - **Q-12 à Q-14** : 5 ans de conservation, 30 jours de grâce, préavis de 5 jours.
 - **Q-16 et Q-24** : IA avec Haiku 5.5, sous enveloppe.
 - **Q-17, Q-18 et Q-28** : contrat annuel, accompagnement, forfaits (gelés).
@@ -108,7 +109,6 @@ Registre unique à partir du 7 novembre 2026.
 | Q-08 | Le catalogue n'a pas de profil maternelle ; la colonne « École privée » de `profils.md` désigne le profil formation | ajouter un profil ou décider que la maternelle n'est pas générée (avec Q-07) | MOT-05 |
 | Q-09 | École pilote (ancienne Q-25), et où elle est hébergée (Q-23) | gelé avec la vente | VEN |
 | Q-10 | Qui est la deuxième personne en production (ancienne Q-27) ? | à nommer avant la première école extérieure | EXP |
-| Q-11 | Nom de domaine du nouveau serveur, et du site vitrine | à choisir avant EXP-02 et VIT-02 | EXP-02, VIT-02 |
 | Q-12 | Images du registre GitHub (`ghcr.io`) publiques ou privées ? | publiques (aucun secret dans les images) ; sinon un jeton en lecture seule sur le serveur | EXP-03 |
 | Q-13 | Service de sonde : Better Stack ou UptimeRobot | à l'inscription, selon les limites de l'offre gratuite | EXP-05 |
 | Q-16 | Règles du carnet de notes (modification, verrouillage, arrondis) | à faire valider par une scolarité et le juriste | VSC-04 |
