@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | en relecture : à corriger le 2026-11-15 (cible du refus) |
 | Agent | agent de Cursor |
 | Modèle recommandé | un modèle fort (Claude Opus 5.5 dans Cursor, ou l'équivalent) : 498 paramètres et leurs règles `requiert`, `borne`, `exclut` à couvrir sans en oublier |
 | Attribuée le | 2026-11-15, par le coordinateur |
@@ -35,3 +35,4 @@ Ne touche pas : `solver/` (MOT-12), `scripts/mesures/` (MOT-02, PLA-06), les mig
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-15 | mission écrite ; personne ne tient MOT-03 | — |
+| 2026-11-15 20 h 50 | plan validé par le chef lui-même (phrases du § 4.3 comprises) ; codée (`34fc14f9`), CI de #183 verte. Relecture : branchement au même endroit que MOT-13a, fichiers courts, écart documenté. **À corriger** : le refus ne garde pas sa cible (enseignant, groupe, salle, matière), le dédoublonnage l'ignore, et le message ne dit pas à qui la règle s'applique (EP-4) | à corriger |
