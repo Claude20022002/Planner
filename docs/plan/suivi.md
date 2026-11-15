@@ -35,7 +35,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Organisation de l'équipe, module MKT | #163 | **fusionnée le 10 nov.** |
 | Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | décisions I-1 à I-5 prises le 13 nov. ; fusionner |
 | Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | `doc/plan-modules-inventaire` (part de #167) | fusionner après #167 |
-| Plan d'essai d'OpenEduCat Community (étude hors chantier, demande du chef le 15 nov.) | `etude/odoo-essai` | **plan à valider par le chef** (questions Q-1 à Q-5, § 8) ; aucune installation avant. Dépend du comparatif (#174) |
+| Plan d'essai d'OpenEduCat Community (étude hors chantier, demande du chef le 15 nov.) | `etude/odoo-essai` (#176) | **PR ouverte ; plan à valider par le chef** (questions Q-1 à Q-5, § 8) ; aucune installation avant. Dépend du comparatif (#174) |
 
 ## Numéros de migration réservés
 
