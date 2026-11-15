@@ -329,6 +329,16 @@ Les noms des règles existantes ne changent pas : le serveur et l'analyse les li
 4. Vérification : `mvn verify`, suite du serveur, lint, `verifier-neutre`, essai de l'image. Puis la fiche de session.
 5. PR ouverte par le chef ; CI verte, parcours compris. Le déploiement suit, serveur et solveur dans le même paquet (§ 6).
 
+### Écarts relevés pendant le code (15 novembre)
+
+Des détails d'exécution, sans changement de comportement promis par ce plan :
+- **Séances épinglées** : jamais visées par une contrainte déclarée, ni par séance ni par salle (le solveur ne peut pas les déplacer ; la saisie manuelle contrôle les plages).
+- **Plage sans créneau** : le solveur ne crée aucune visée pour elle. Les deux plages reprises ne touchent pas la grille de démonstration, mais leurs 530 visées coûtaient environ 10 % de vitesse de calcul.
+- **Classe racine** : `avantGeneration.js` lit le parent de chaque groupe pour les paquets « par classe » de `ensemble_ou_separe` (`lecon.groupes` mêle ancêtres et descendants).
+- **`seed.js` exporte `GRILLE_HESTIM`**, pour que le test des plages reprises lise la vraie grille de démonstration plutôt qu'une copie.
+- **`ProblemeRecu` est public**, et les règles déclarées ont un aiguillage `ContraintesDeclarees.regle(famille, niveau)` : les tests de concordance et du collège fictif lisent le problème comme l'API.
+- **Écran** : les types « plage » et « booléen » de `ParametresPlanning.jsx`, devenus sans usage, sont retirés avec leurs traductions.
+
 ## 10. Risques et retour arrière
 
 | Risque | Parade |
