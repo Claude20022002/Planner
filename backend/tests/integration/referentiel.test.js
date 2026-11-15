@@ -3,8 +3,8 @@ import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
 import { Campus, Salle, Evenement } from "../../models/index.js";
 
 let clients;
-let gandhi;
-let stendhal;
+let nord;
+let sud;
 
 beforeAll(async () => {
     await resetDatabase();
@@ -16,18 +16,17 @@ beforeAll(async () => {
         enseignant: await loginAs(enseignant),
         etudiant: await loginAs(etudiant),
     };
-    gandhi = await Campus.findOne({ where: { code: "G" } });
-    stendhal = await Campus.findOne({ where: { code: "ST" } });
+    nord = await Campus.findOne({ where: { code: "N" } });
+    sud = await Campus.findOne({ where: { code: "S" } });
 });
 afterAll(closeDatabase);
 beforeEach(resetRateLimiters);
 
 describe("Campus", () => {
-    test("Gandhi et Stendhal existent dès la migration et sont visibles par tous", async () => {
+    test("les campus de l'école sont visibles par tous", async () => {
         const response = await clients.etudiant.get("/api/campus");
         expect(response.status).toBe(200);
-        expect(response.body.map((c) => c.code)).toEqual(expect.arrayContaining(["G", "ST"]));
-        expect(response.body.find((c) => c.code === "G").adresse).toMatch(/Ghandi/);
+        expect(response.body.map((c) => c.code)).toEqual(expect.arrayContaining(["N", "S"]));
     });
 
     test("seul l'admin crée un campus ; code en double refusé", async () => {
@@ -43,8 +42,8 @@ describe("Campus", () => {
     });
 
     test("un campus qui a des salles ne peut pas être supprimé", async () => {
-        await Salle.create({ nom_salle: "ST-TEST", type_salle: "Salle TD", capacite: 24, id_campus: stendhal.id_campus });
-        const response = await clients.admin.send("delete", `/api/campus/${stendhal.id_campus}`);
+        await Salle.create({ nom_salle: "S-TEST", type_salle: "Salle TD", capacite: 24, id_campus: sud.id_campus });
+        const response = await clients.admin.send("delete", `/api/campus/${sud.id_campus}`);
         expect(response.status).toBe(409);
     });
 
@@ -53,22 +52,22 @@ describe("Campus", () => {
         expect(avant.body).toMatchObject({ defaut_minutes: 30, trajets: [] });
 
         const memeCampus = await clients.admin.send("put", "/api/campus/trajets", {
-            id_campus_a: gandhi.id_campus,
-            id_campus_b: gandhi.id_campus,
+            id_campus_a: nord.id_campus,
+            id_campus_b: nord.id_campus,
             minutes: 10,
         });
         expect(memeCampus.status).toBe(400);
 
         const enregistre = await clients.admin.send("put", "/api/campus/trajets", {
-            id_campus_a: stendhal.id_campus,
-            id_campus_b: gandhi.id_campus,
+            id_campus_a: sud.id_campus,
+            id_campus_b: nord.id_campus,
             minutes: 25,
         });
         expect(enregistre.status).toBe(201);
 
         const misAJour = await clients.admin.send("put", "/api/campus/trajets", {
-            id_campus_a: gandhi.id_campus,
-            id_campus_b: stendhal.id_campus,
+            id_campus_a: nord.id_campus,
+            id_campus_b: sud.id_campus,
             minutes: 20,
         });
         expect(misAJour.status).toBe(200);
@@ -82,35 +81,35 @@ describe("Campus", () => {
 describe("Salles rattachées à un campus", () => {
     test("type hors liste refusé ; création avec campus, capacité d'examen par défaut et batiment compatible", async () => {
         const mauvaisType = await clients.admin.send("post", "/api/salles", {
-            nom_salle: "G-X01",
+            nom_salle: "N-X01",
             type_salle: "Piscine",
             capacite: 30,
-            id_campus: gandhi.id_campus,
+            id_campus: nord.id_campus,
         });
         expect(mauvaisType.status).toBe(400);
 
         const response = await clients.admin.send("post", "/api/salles", {
-            nom_salle: "G-LABOCIV",
+            nom_salle: "N-LABOCIV",
             type_salle: "Labo génie civil",
             capacite: 30,
-            id_campus: gandhi.id_campus,
+            id_campus: nord.id_campus,
             equipements: "Presse hydraulique, Vidéoprojecteur",
         });
         expect(response.status).toBe(201);
         expect(response.body.salle).toMatchObject({
             capacite_examen: 15,
-            batiment: "Gandhi",
-            campus: { code: "G" },
+            batiment: "Campus Nord",
+            campus: { code: "N" },
             equipements: ["Presse hydraulique", "Vidéoprojecteur"],
             reservable_par: "admin",
         });
     });
 
     test("filtre par code campus", async () => {
-        const response = await clients.etudiant.get("/api/salles?campus=ST&limit=100");
+        const response = await clients.etudiant.get("/api/salles?campus=S&limit=100");
         expect(response.status).toBe(200);
         expect(response.body.data.length).toBeGreaterThan(0);
-        expect(response.body.data.every((s) => s.campus.code === "ST")).toBe(true);
+        expect(response.body.data.every((s) => s.campus.code === "S")).toBe(true);
     });
 
     test("une salle incluse dans une séance porte son campus", async () => {
@@ -120,16 +119,16 @@ describe("Salles rattachées à un campus", () => {
         const response = await clients.admin.get(`/api/affectations/${affectation.id_affectation}`);
         expect(response.status).toBe(200);
         const seance = response.body.affectation ?? response.body;
-        expect(seance.salle).toMatchObject({ batiment: "Gandhi", campus: { code: "G" } });
+        expect(seance.salle).toMatchObject({ batiment: "Campus Nord", campus: { code: "N" } });
     });
 
     test("import tout ou rien : une ligne invalide annule tout et chaque erreur est listée", async () => {
         const avant = await Salle.count();
         const response = await clients.admin.send("post", "/api/salles/import", {
             salles: [
-                { nom_salle: "ST-IMP1", type_salle: "Salle TD", capacite: "24", campus: "ST" },
-                { nom_salle: "ST-IMP2", type_salle: "Hangar", capacite: "0", campus: "Lune" },
-                { nom_salle: "ST-IMP1", type_salle: "Salle TD", capacite: "24", campus: "ST" },
+                { nom_salle: "S-IMP1", type_salle: "Salle TD", capacite: "24", campus: "S" },
+                { nom_salle: "S-IMP2", type_salle: "Hangar", capacite: "0", campus: "Lune" },
+                { nom_salle: "S-IMP1", type_salle: "Salle TD", capacite: "24", campus: "S" },
             ],
         });
         expect(response.status).toBe(400);
@@ -141,17 +140,17 @@ describe("Salles rattachées à un campus", () => {
     test("import valide : crée les nouvelles salles et met à jour les existantes", async () => {
         const response = await clients.admin.send("post", "/api/salles/import", {
             salles: [
-                { nom_salle: "ST-IMP1", type_salle: "Laboratoire informatique", capacite: "28", campus: "Stendhal", equipements: "28 postes; AutoCAD" },
-                { nom_salle: "ST-TEST", type_salle: "Salle TD", capacite: "30", campus: "st", reservable_par: "enseignants" },
+                { nom_salle: "S-IMP1", type_salle: "Laboratoire informatique", capacite: "28", campus: "Campus Sud", equipements: "28 postes; AutoCAD" },
+                { nom_salle: "S-TEST", type_salle: "Salle TD", capacite: "30", campus: "s", reservable_par: "enseignants" },
             ],
         });
         expect(response.status).toBe(200);
         expect(response.body).toMatchObject({ crees: 1, mises_a_jour: 1 });
 
-        const importee = await Salle.findOne({ where: { nom_salle: "ST-IMP1" } });
+        const importee = await Salle.findOne({ where: { nom_salle: "S-IMP1" } });
         expect(importee.type_salle).toBe("Labo informatique");
         expect(importee.equipements).toEqual(["28 postes", "AutoCAD"]);
-        const majee = await Salle.findOne({ where: { nom_salle: "ST-TEST" } });
+        const majee = await Salle.findOne({ where: { nom_salle: "S-TEST" } });
         expect(majee).toMatchObject({ capacite: 30, reservable_par: "enseignants" });
     });
 
@@ -255,10 +254,10 @@ describe("Événements : portée et confirmation", () => {
             date_fin: "2027-01-23",
             type_evenement: "examen",
             portee: "campus",
-            id_cible: stendhal.id_campus,
+            id_cible: sud.id_campus,
         });
         expect(response.status).toBe(201);
-        expect(response.body.evenement).toMatchObject({ portee: "campus", id_cible: stendhal.id_campus, date_confirmee: true });
+        expect(response.body.evenement).toMatchObject({ portee: "campus", id_cible: sud.id_campus, date_confirmee: true });
     });
 
     test("confirmer une fête décalée d'un jour", async () => {
@@ -340,10 +339,10 @@ describe("Paramètres de planification", () => {
     test("le ratio de capacité d'examen modifié s'applique aux nouvelles salles", async () => {
         await clients.admin.send("put", "/api/parametres-planning/ratio_capacite_examen", { valeur: 0.25 });
         const response = await clients.admin.send("post", "/api/salles", {
-            nom_salle: "G-RATIO",
+            nom_salle: "N-RATIO",
             type_salle: "Salle de cours",
             capacite: 40,
-            id_campus: gandhi.id_campus,
+            id_campus: nord.id_campus,
         });
         expect(response.body.salle.capacite_examen).toBe(10);
         await clients.admin.send("delete", "/api/parametres-planning/ratio_capacite_examen");
