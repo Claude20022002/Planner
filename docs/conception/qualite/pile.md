@@ -97,8 +97,8 @@
 - **Exploitation** : le solveur est limité en mémoire (640 Mo sur le serveur provisoire) et n'est **jamais exposé** : seul le serveur l'appelle, sur le réseau interne, avec un jeton et en lecture seule (`docker-compose.yml`).
 - **Produit et équipe** : trois faits datés.
   - **Spring Boot 3.3** n'a plus de support libre depuis le 30 juin 2025 (dernière version : 3.3.13). La 3.5 l'a perdu à son tour le 30 juin 2026. Il faut passer à la ligne 4.
-  - **Timefold 1.x** est en maintenance : la 1.31 est sa dernière version de fonctions. Des correctifs trimestriels sont annoncés **pendant 2026** seulement.
-  - Timefold 2.0 (avril 2026) passe à Java 21, déjà en place. Il fait passer l'analyse du score (`ScoreAnalysis`, qu'utilise le solveur) dans une édition payante. Les sources de Timefold se contredisent sur le nom de cette édition, « Plus » ou « Enterprise ».
+  - **Timefold 1.x** est en maintenance. Des correctifs sont annoncés **pendant 2026** seulement. **Correction du 15 nov. ([MOT-12](../moteur-planification/mot-12-montee-solveur.md), § 2.2)** : la ligne va jusqu'à la **1.35.0** (15 oct. 2026), et non 1.31. Toute la 1.x vise Spring Boot 3.5, et son starter **ne démarre pas sous Spring Boot 4**. Le cœur 1.35, sans starter, y fonctionne (essai).
+  - Timefold 2.0 (avril 2026) passe à Java 21, déjà en place, et à Spring Boot 4. Il fait passer l'analyse du score (`ScoreAnalysis`, qu'utilise le solveur) dans une édition payante. Les sources de Timefold se contredisent sur le nom de cette édition, « Plus » ou « Enterprise ». Vérifié le 15 nov. dans le jar 2.8.0 : `SolutionManager.analyze` passe par `TimefoldSolverEnterpriseService`.
 - **Verdict : garder jusqu'à MOT-04.** Le choix entre Timefold et CP-SAT (l'OR-Tools de `plan.txt`) se tranche par la mesure dans MOT-04 (Q-05, décision du 3 novembre), et non dans QUA-03. Le fait nouveau : la fin de Timefold 1.x n'est pas « début 2027 », comme le note Q-05, mais **la fin de 2026**. Et Spring Boot 3.3 est déjà sans support. Montées au § 3.
 
 ### 2.7 Authentification : JWT maison (jsonwebtoken 9, bcryptjs, helmet)
@@ -119,8 +119,8 @@
 
 | Outil | Dans le dépôt | Ligne suivante | Fin de support de la version actuelle | Effort estimé | Remarque |
 |---|---|---|---|---|---|
-| Spring Boot | 3.3.5 | 4.x | support libre fini le 30 juin 2025 | M | **la plus pressante** ; le risque est réduit parce que le solveur n'est pas exposé ; compatibilité avec Timefold 1.x à vérifier |
-| Timefold | 1.15.0 | 1.31 (dernière 1.x), puis 2.x | correctifs annoncés pendant 2026 | S pour la 1.31 ; la 2.x relève de MOT-04 | passer à la 1.31 avant tout passage à la 2.x (procédure officielle) |
+| Spring Boot | 3.3.5 | 4.1 | support libre fini le 30 juin 2025 | M | **la plus pressante** ; le starter Timefold 1.x ne démarre pas sous Boot 4 : on s'en passe ([MOT-12](../moteur-planification/mot-12-montee-solveur.md), décision du 15 nov.) |
+| Timefold | 1.15.0 | 1.35 (dernière 1.x), puis 2.x | correctifs annoncés pendant 2026 | S pour la 1.35 ; la 2.x relève de MOT-04 | passer à la dernière 1.x avant tout passage à la 2.x (procédure officielle) : [MOT-12](../moteur-planification/mot-12-montee-solveur.md) |
 | Node | 22 | 24 LTS | 30 avril 2027 | S | images Docker et CI (`NODE_VERSION`) |
 | Express | 4.18 | 5.x | en maintenance depuis le 1er avril 2025 ; fin visée au plus tôt le 1er octobre 2026, non annoncée | M | syntaxe des chemins, erreurs des fonctions asynchrones ; 52 fichiers de routes |
 | Sequelize | 6.37.8 | 7 (alpha) | aucune annoncée | — | rester sur la 6 ; surveiller (§ 5, point 2) |
