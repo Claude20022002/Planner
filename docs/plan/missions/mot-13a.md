@@ -46,7 +46,7 @@ L'agent ne touche pas :
 | N° | Question | Proposition | À qui |
 |---|---|---|---|
 | C-1 | La branche n'a **aucune fiche de session** pour la séance où le plan a été écrit | l'agent l'écrit en premier, comme fiche de constat (ce que montrent les commits), puis code | réglé par le coordinateur |
-| C-2 | Si PLA-03b est fusionnée avant, le schéma de départ doit inclure la migration 0080 | voir la question C-1 de [pla-03b.md](pla-03b.md) : la PR qui arrive après régénère le schéma | chef |
+| C-2 | Si PLA-03b est fusionnée avant, le schéma de départ doit inclure la migration 0080 | **validé par le chef le 15 nov.** : si PLA-03b est sur `main` quand MOT-13a part en PR, MOT-13a lance `npm run schema:depart` et commite le fichier | réglé |
 
 ## Prompt à donner à l'agent
 

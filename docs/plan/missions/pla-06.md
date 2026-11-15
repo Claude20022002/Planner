@@ -42,13 +42,20 @@ Les résultats bruts restent hors du dépôt ; seuls les résumés chiffrés von
 
 ## Questions en attente
 
-Elles **bloquent l'étape 6**. Tant qu'elles n'ont pas de réponse, l'agent ne lance aucune série : il fusionne `origin/main`, relance les tests purs du banc et prépare la commande de série.
+**Réponse du chef du 15 novembre : pour le moment, seul le serveur sert de machine.** Le PC Ubuntu n'est pas employé ; P-22, P-23 et P-25 sont sans objet. Cela change le § 4 du plan (où et comment une série tourne) : l'agent **amende le plan** pour une mesure sur le serveur partagé avec n8n, et le fait **revalider par le chef** avant toute série.
+
+L'amendement doit dire, au moins :
+
+- un projet Compose à part, avec des limites de mémoire et de processeur qui laissent sa marge à n8n (recette `docs/recette/serveur-2026-11.md`) ; aucun réseau partagé avec n8n ; aucun port public ;
+- une photo de n8n avant et après chaque série (identifiants et heures de démarrage des conteneurs inchangés), comme pour EXP-01 ;
+- l'arrêt de la série si n8n ralentit, et le nettoyage complet à la fin (conteneurs, volume des 200 bases) ;
+- l'ordre avec EXP-02b : la mesure se fait avant que Planner tourne sur le serveur, ou dans une fenêtre convenue ;
+- **c'est le chef qui lance les commandes sur le serveur** : l'agent les prépare, une à une.
+
+Restent ouvertes :
 
 | N° | Question | Proposition (de la fiche du 10 novembre) | À qui |
 |---|---|---|---|
-| P-22 | Piloter une série depuis le PC Windows par SSH vers le PC Ubuntu ? | oui, si le chef donne l'accès ; sinon le chef lance la série sur le PC Ubuntu avec la commande préparée | chef |
-| P-23 | Prérequis du PC Ubuntu : cœurs, Docker, Node 22, même réseau local (4 Go de mémoire et 1 To déjà connus) | à relever par le chef | chef |
-| P-25 | Par quoi et quand la machine provisoire sera-t-elle remplacée, pour la série de confirmation ? | — | chef |
 | P-20, P-21 | Mémoire d'échange du serveur, pics de n8n | à relever pendant EXP-02 | chef |
 
 ## Prompt à donner à l'agent
@@ -62,9 +69,10 @@ docs/conception/plateforme/pla-06-mesure-d01.md et la fiche
 docs/sessions/2026-11-10-etude-pla-06-mesure-d01.md, sur la branche.
 Branche : etude/pla-06-mesure-d01 (PR #164), dans le dossier ..\travaux-planner\pla-06-mesure-d01.
 Elle est déjà poussée : fusionne origin/main dedans, jamais de rebase.
-Le plan est validé ; les étapes 1 à 5 sont faites. Ne lance aucune série (étape 6) tant que
-le chef n'a pas répondu à P-22 et P-23 : d'ici là, relance les tests purs du banc
-(scripts/mesures/pla-06/tests) et prépare la commande exacte de la première série.
+Le plan est validé ; les étapes 1 à 5 sont faites. Le chef a décidé le 15 novembre que seul le serveur
+sert de machine : amende le § 4 du plan comme le dit ta fiche de mission, relance les tests purs
+du banc (scripts/mesures/pla-06/tests), puis fais revalider le plan par le chef. Aucune série avant
+ce « validé ». Tu ne lances aucune commande sur le serveur : tu les prépares, le chef les lance.
 Tu n'écris que dans le périmètre de la fiche ; tu ne modifies ni backend/ ni decisions.md.
 S'il faut en sortir, arrête-toi et demande.
 Règles : questions avant toute supposition ; aucune adresse ni nom de machine dans le dépôt ;

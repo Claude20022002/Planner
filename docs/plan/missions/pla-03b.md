@@ -55,7 +55,7 @@ Les 11 réponses du chef du 15 novembre, dans la fiche `docs/sessions/2026-11-15
 
 | N° | Question | Proposition | À qui |
 |---|---|---|---|
-| C-1 | MOT-13a ajoute la migration 0080 en parallèle. La PR qui arrive après l'autre doit régénérer le schéma, sinon le test d'équivalence échoue. Cela s'accorde-t-il avec « régénéré à la demande du chef » (réponse 3) ? | oui : toute PR qui ajoute une migration lance `npm run schema:depart` et commite le fichier ; le test d'équivalence le rappelle. À écrire dans le plan et dans `DEPLOIEMENT.md` | chef |
+| C-1 | MOT-13a ajoute la migration 0080 en parallèle. La PR qui arrive après l'autre doit régénérer le schéma, sinon le test d'équivalence échoue. Cela s'accorde-t-il avec « régénéré à la demande du chef » (réponse 3) ? | **validé par le chef le 15 nov.** : toute PR qui ajoute une migration lance `npm run schema:depart` et commite le fichier ; le test d'équivalence le rappelle. À écrire dans le plan et dans `DEPLOIEMENT.md` | réglé |
 
 ## Prompt à donner à l'agent
 

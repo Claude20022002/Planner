@@ -9,7 +9,7 @@
 | Fonction | EXP-02a : préparer l'installation à côté de n8n (surcharge Compose, labels Traefik, procédure), **sans démarrer aucun conteneur** · partie d'EXP-02 (L) |
 | Branche | `feat/exp-02a-traefik`, partie de `feat/exp-01-reconnaissance` (#172, **fusionnée le 15 nov.**) |
 | Dossier de travail | `..\travaux-planner\exp-02a-traefik` |
-| Plan de conception | `docs/conception/exploitation/conception-exp-02a-traefik.md`, écrit par l'agent de Cursor le 15 novembre, **non commité** · validé par : **le chef** (serveur) |
+| Plan de conception | `docs/conception/exploitation/conception-exp-02a-traefik.md`, écrit par l'agent de Cursor le 15 novembre, **non commité** · **validé par le chef le 2026-11-15**, avec les trois remarques ci-dessous |
 
 ## Critère de « terminé »
 
@@ -50,7 +50,7 @@ L'agent ne touche pas :
 
 | N° | Question | Proposition | À qui |
 |---|---|---|---|
-| C-1 | Valider le plan EXP-02a (`conception-exp-02a-traefik.md`) ? | oui, avec les trois remarques ci-dessus | chef |
+| C-1 | Valider le plan EXP-02a (`conception-exp-02a-traefik.md`) ? | **validé par le chef le 15 nov.**, avec les trois remarques | réglé |
 
 ## Prompt à donner à l'agent
 
@@ -61,8 +61,8 @@ puis ta fiche de mission docs/plan/missions/exp-02a.md (sur main, ou sur la bran
 chore/coordination-agents si elle n'est pas fusionnée), et la recette docs/recette/serveur-2026-11.md.
 Branche : feat/exp-02a-traefik, dans le dossier ..\travaux-planner\exp-02a-traefik.
 Ton plan docs/conception/exploitation/conception-exp-02a-traefik.md n'est pas commité :
-applique les trois remarques du coordinateur (fiche de mission), puis attends le « validé » du chef.
-Une fois validé : fusionne origin/main dans la branche, commite le plan seul avec suivi.md
+applique les trois remarques du coordinateur (fiche de mission). Le chef a validé le plan le 15 novembre :
+écris « Validé par Claude20022002 le 2026-11-15 » en tête. Puis fusionne origin/main dans la branche, commite le plan seul avec suivi.md
 à « en cours », puis suis le § 9 du plan.
 Tu ne lances aucune commande sur le serveur et jamais docker compose up ; seulement docker compose config en local.
 Tu n'écris que dans le périmètre de la fiche. S'il faut en sortir, arrête-toi et demande.

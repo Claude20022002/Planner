@@ -44,9 +44,9 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
 |---|---|---|---|---|---|---|
 | EXP | EXP-01 reconnaissance du serveur | agent de Cursor | #172 | **fusionnée le 15 nov.** ; ligne à retirer au prochain tour | 15 nov. | — |
-| EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan écrit, **non commité** ; validation du chef attendue (serveur) | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
+| EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan **validé par le chef le 15 nov.**, à commiter par l'agent | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
 | PLA | PLA-03b schéma de départ | Claude Code (à ouvrir) | à créer : `feat/pla-03b-schema-depart` | 11 réponses du chef ; plan à réécrire (brouillon perdu), puis validation du chef | 15 nov. | [pla-03b](missions/pla-03b.md) |
-| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | étapes 1 à 5 faites ; séries bloquées par P-22 et P-23 (chef) | 15 nov. | [pla-06](missions/pla-06.md) |
+| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | étapes 1 à 5 faites ; plan à amender (mesure sur le serveur, décision du 15 nov.) puis à revalider | 15 nov. | [pla-06](missions/pla-06.md) |
 | QUA | QUA-03 étude de la pile | Claude Code | #171 | PR ouverte, CI verte, à fusionner ; sa fusion ferme le chantier QUA | 15 nov. : tour d'état seulement | — |
 | MOT | MOT-13a contraintes déclarées, serveur | Claude Code (à ouvrir) | `feat/mot-13-contraintes` (non poussée) | plan validé par le chef le 15 nov. ; code à écrire ; fiche de session manquante | 15 nov. | [mot-13a](missions/mot-13a.md) |
 
