@@ -9,7 +9,7 @@
 
 **Hors module** : l'affichage et la gestion des séances, la publication, les examens saisis (EDT).
 
-**Tables possédées** : `ParametrePlanning`, `VersionParametres`, `ValeurParametre`, `GenerationSession`, `PlanningSnapshot`.
+**Tables possédées** : `ParametrePlanning`, `VersionParametres`, `ValeurParametre`, `ContrainteDeclaree` (MOT-13, migration 0080), `GenerationSession`, `PlanningSnapshot`.
 
 ## Ce qui existe
 
@@ -41,6 +41,8 @@
 | MOT-09 | Remplaçant proposé automatiquement en cas d'absence d'un enseignant | F-11 (2e partie) | 4 | M | MOT-06 | à faire |
 | MOT-10 | Grande échelle : solveur réglable, file par école, 20 000 étudiants en moins de 30 min ; poids et plages lus depuis les valeurs | ME-14, MP-5 | 5 | L | MOT-04 | à faire |
 | MOT-11 | Règles nouvelles, famille par famille (examens dans le calcul F-8, ressources F-7, etc.), chacune avec ses données et son test | MP-7 | 5 | M par famille | MOT-10 | à faire |
+| MOT-12 | Montée du solveur : Spring Boot 3.3.5 vers 4.x, Timefold 1.15 vers 1.31, Java 21 inchangé (décision du 13 novembre), avant MOT-04 | — | 1 | M | — | à faire |
+| MOT-13 | **Contraintes déclarées par l'école** : l'école ne règle pas les 498 paramètres, elle déclare ses contraintes à partir de six modèles ; liste « Déjà pris en compte » du profil ; contrôle de place avant le calcul. Étapes : 13a serveur, 13b solveur et bilan, 13c écran ([conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md)) | — | 3 | M + L + M | 13b : MOT-12 ; 13c : ADM-02 | en cours (13a) |
 
 ## Critères de « terminé »
 
@@ -57,6 +59,7 @@
   - la décision est écrite dans [decisions.md](../decisions.md), avec son coût (licence de `ScoreAnalysis` en 2.x).
 - **MOT-06** : un collège de démonstration avec deux langues vivantes réparties sur plusieurs classes est généré **sans conflit d'élève**. C'est le jalon de l'étape 3.
 - **MOT-08** : deux écoles lancent un calcul en même temps ; la seconde voit sa place dans la file ; aucune ne bloque l'autre.
+- **MOT-13** : voir le § 1 de [sa conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md). En 13a, une contrainte invalide est refusée avec une phrase, le contrôle de place bloque la génération en nommant les contraintes en cause, et le problème de l'école d'origine ne change pas. En 13b, le collège fictif respecte ses contraintes, ou le bilan dit pourquoi.
 
 ## Exigences produit
 
@@ -73,5 +76,6 @@ EP-4 (chaque refus s'explique), EP-10 (rapide à grande échelle).
 - [README du moteur](../../conception/moteur-planification/README.md)
 - [Conception de MP-1](../../conception/moteur-planification/conception-mp1.md)
 - [Relecture du contrat de MP-1](../../conception/moteur-planification/relecture-mp1-contrat.md)
+- [Conception de MOT-13 : contraintes déclarées](../../conception/moteur-planification/mot-13-contraintes-declarees.md)
 - [Catalogue et profils](../../conception/moteur-planification/catalogue/profils.md)
 - Archives : [planification adaptative](../../archives/plans/planner-multi-etablissements/06-planification-adaptative.md)
