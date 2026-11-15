@@ -36,6 +36,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | décisions I-1 à I-5 prises le 13 nov. ; fusionner |
 | Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | `doc/plan-modules-inventaire` (part de #167) | fusionner après #167 |
 | Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | `doc/comparatif-odoo` (#174) | **PR ouverte** ; fusionner ; 8 points à vérifier au § 7 du document |
+| Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 `fix/exp-sauvegarde-predeploiement` | plan validé le 15 nov. ; correctif en cours |
 
 ## Numéros de migration réservés
 
