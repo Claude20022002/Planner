@@ -84,4 +84,8 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 | 2026-11-15 | mission écrite | — |
 | 2026-11-15 | plan réécrit par l'agent dans `..\travaux-planner\pla-03b-schema-depart` (non commité) : 22 questions avec leurs propositions ; trois réponses du chef précisées par la lecture du code (base « vide », collation, contrôle de fraîcheur) | au chef (validation du plan) |
 
+| 2026-11-15 | comparaison avec le brouillon de la session PLA-03 : **C-1 contredit R-3** (option que le chef avait écartée ; CI rouge et conflits pour toute PR qui porte une migration). Plan renvoyé à l'agent : C-1 rouverte, variante R-3 recommandée ; questions 13 et 18 tranchées par le coordinateur ; `server.js`, deux tests, mesure dans la CI, corrections de texte sur UIX-01 ajoutés | au chef (C-1, puis le plan) |
+
+Périmètre étendu par le coordinateur le 15 novembre (2) : `backend/server.js` (message de chargement), le § 11 et la réponse 7 de `docs/conception/plateforme/pla-03-base-neuve.md`, la ligne « EXP-07 ou UIX-01 » de `docs/sessions/2026-11-15-feat-pla-03-base-neuve.md`.
+
 Périmètre étendu par le coordinateur le 15 novembre : `backend/tests/schema/photographie.mjs` (et le script de génération dans `backend/tests/schema/`), la ligne `backend/migrations/sql/*.sql text eol=lf` de `.gitattributes`, une ligne de `backend/tests/integration/contexteEtablissement.test.js`. Refusé : `.github/pull_request_template.md` (le test suffit).
