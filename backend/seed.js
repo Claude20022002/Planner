@@ -9,6 +9,7 @@ import {
 } from './models/index.js';
 import { hashPassword } from './utils/passwordHelper.js';
 import { runMigrations } from './migrations/migrator.js';
+import { installerEcolePilote } from './demo/ecolePilote.js';
 import { recalculerRangs } from './services/planning/referentiel.js';
 import { genererEnseignements, fusionnerEnseignements } from './services/planning/enseignements.js';
 import { evenementsCalendrierMaroc } from './utils/feriesMaroc.js';
@@ -542,6 +543,8 @@ async function seed() {
 
         // Le schéma vient des migrations versionnées (jamais de sync() implicite)
         await runMigrations();
+        // Une base neuve n'a ni campus ni identité d'école (PLA-03) : la démonstration apporte les siens
+        await installerEcolePilote();
 
         const pwd = await hashPassword('password123');
 
