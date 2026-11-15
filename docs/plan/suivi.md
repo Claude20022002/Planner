@@ -81,7 +81,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PLA-11](modules/PLA-plateforme.md) | Comptes communs | 5 | L | reporté |  |
 | [PLA-12](modules/PLA-plateforme.md) | Export complet d'une école | 5 | M | à faire |  |
 | [PLA-13](modules/PLA-plateforme.md) | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) | 5 | M (+ L, conditionnel) | reporté |  |
-| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | en cours |  |
+| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | en cours | `feat/exp-01-reconnaissance` |
 | [EXP-02](modules/EXP-exploitation.md) | Première installation conteneurisée à côté de n8n. Comprend | 1 | L | à faire |  |
 | [EXP-03](modules/EXP-exploitation.md) | ME-0b adapté au nouveau serveur | 1 | M | code fait (#145), adaptation à faire | #145 |
 | [EXP-04](modules/EXP-exploitation.md) | Sauvegardes sur le nouveau serveur | 1 | M | à faire |  |
