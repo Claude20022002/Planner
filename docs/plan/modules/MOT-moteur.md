@@ -34,6 +34,7 @@
   - F-8 : les examens sont hors du calcul.
 
 - **MOT-02** (branche `etude/mot-02-mesure-solveur`, 15 novembre) : [banc local](../../../scripts/mesures/mot-02/README.md), jeu supérieur simplifié versionné de 20 000 étudiants (4 800 leçons), témoin faisable séparé, contrôles de complétude et compteurs cgroup. Plan validé par le coordinateur, 18 tests verts. Six passages avant/après MOT-12 de 600 s : tous incomplets ; collège après fusion de MOT-13b. [Mesures et limites](../../conception/moteur-planification/mesures.md).
+
 ## Fonctions
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
