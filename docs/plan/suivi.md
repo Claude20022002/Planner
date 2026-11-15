@@ -14,7 +14,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 
 | Module | Ouvert le | Fonctions du chantier, dans l'ordre | Reste | État |
 |---|---|---|---|---|
-| [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; liste confirmée le 10 nov. |
+| [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
 
@@ -33,10 +33,26 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | MOT-01, partie serveur (MP-1) | #156 | **fusionnée le 10 nov.** |
 | Plan par modules | #161 | **fusionnée le 10 nov.** |
 | Organisation de l'équipe, module MKT | #163 | **fusionnée le 10 nov.** |
-| Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | décisions I-1 à I-5 prises le 13 nov. ; fusionner |
-| Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | `doc/plan-modules-inventaire` (part de #167) | fusionner après #167 |
-| Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | `doc/comparatif-odoo` (#174) | **PR ouverte** ; fusionner ; 8 points à vérifier au § 7 du document |
-| Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 `fix/exp-sauvegarde-predeploiement` | plan validé le 15 nov. ; correctif commité en local, tests deployer verts |
+| Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | **fusionnée** |
+| Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | #170 | **fusionnée** |
+| Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | #174 | **fusionnée le 15 nov.** |
+| Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
+| Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | plan confirmé par le chef le 15 nov. ; correctif commité, tests du déploiement verts ; relu par le coordinateur : prêt |
+
+## Missions en cours
+
+Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organisation.md](organisation.md), § 10) : une ligne par branche ouverte, retirée à la fusion. Le détail d'une mission est dans sa fiche, `docs/plan/missions/<identifiant>.md`. Les lignes sans fiche sont des travaux commencés avant le 15 novembre.
+
+| Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
+|---|---|---|---|---|---|---|
+| EXP | EXP-02a branchement Traefik | agent de Cursor | #179 | codée (`5803eff`) ; relue : **prête** ; conflit avec `main` résolu par le coordinateur (`c5ed26ee`), à repousser | 15 nov. 14 h 15 : prête, `compose config` refait | [exp-02a](missions/exp-02a.md) |
+| PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan validé (délégation), non commité ; **l'agent attend le « validé » du chef dans sa session** (VS Code, Fable 5.2) | 15 nov. | [pla-03b](missions/pla-03b.md) |
+| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | banc adapté au serveur unique (`24b261a`, 13 fichiers) ; fusion de `main` en cours (conflit de liens) ; A-2 et sa sonde à inscrire et coder | 15 nov. 14 h 15 | [pla-06](missions/pla-06.md) |
+| MOT | MOT-12 montée du solveur | Claude Code (VS Code, second abonnement) | à créer : `feat/mot-12-montee-solveur` (#178 fusionnée, plus rien ne la bloque) | après PLA-03b, même agent ; plan à écrire, validé par le chef | 15 nov. | [mot-12](missions/mot-12.md) |
+
+| EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | agent de Cursor, après EXP-02a | #177 | plan court **validé le 15 nov.** (coordinateur, par délégation) ; code à faire | 15 nov. : lu | [fix-exp-sauvegarde](missions/fix-exp-sauvegarde.md) |
+
+Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
 ## Numéros de migration réservés
 
@@ -57,7 +73,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 |---|---|---|---|---|---|
 | [PLA-01](modules/PLA-plateforme.md) | Contexte d'école en production | 2 | L | à faire (essai fusionné le 10 nov.) | #142 (essai) |
 | [PLA-02](modules/PLA-plateforme.md) | Fermer les canaux de l'étape 2 | 2 | L | à faire |  |
-| [PLA-03](modules/PLA-plateforme.md) | Base neuve sans données d'école | 2 | M | PR ouverte : PLA-03a (données), CI verte le 15 nov. ; PLA-03b (schéma de départ) conçue, plan à valider | #173 |
+| [PLA-03](modules/PLA-plateforme.md) | Base neuve sans données d'école | 2 | M | en cours : PLA-03a (données) **fusionnée le 15 nov.** (#173) ; PLA-03b (schéma de départ) conçue, plan à valider | #173 |
 | [PLA-04](modules/PLA-plateforme.md) | Tests d'isolation de chaque route dans la CI, côté serveur et parcours | 2 | M + S | à faire |  |
 | [PLA-05](modules/PLA-plateforme.md) | Registre des écoles et création d'une école par une commande (base, migrations,… | 2 | L | à faire |  |
 | [PLA-06](modules/PLA-plateforme.md) | Mesure de D-01 | 1 | M | à faire |  |
@@ -68,8 +84,8 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PLA-11](modules/PLA-plateforme.md) | Comptes communs | 5 | L | reporté |  |
 | [PLA-12](modules/PLA-plateforme.md) | Export complet d'une école | 5 | M | à faire |  |
 | [PLA-13](modules/PLA-plateforme.md) | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) | 5 | M (+ L, conditionnel) | reporté |  |
-| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | en cours | `feat/exp-01-reconnaissance` |
-| [EXP-02](modules/EXP-exploitation.md) | Première installation conteneurisée à côté de n8n. Comprend | 1 | L | à faire |  |
+| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | fait (#172, 15 nov.) | #172 |
+| [EXP-02](modules/EXP-exploitation.md) | Première installation conteneurisée à côté de n8n. Comprend | 1 | L | en cours : EXP-02a écrite (config locale, sans lancer) ; EXP-02b à faire | `feat/exp-02a-traefik` |
 | [EXP-03](modules/EXP-exploitation.md) | ME-0b adapté au nouveau serveur | 1 | M | code fait (#145), adaptation à faire | #145 |
 | [EXP-04](modules/EXP-exploitation.md) | Sauvegardes sur le nouveau serveur | 1 | M | à faire |  |
 | [EXP-05](modules/EXP-exploitation.md) | Supervision en service | 1 | M | code fait, mise en service à faire | ME-21 |
@@ -200,7 +216,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MKT-10](modules/MKT-marketing.md) | Campagne de lancement auprès des écoles | quand la vente reprend | L | gelé |  |
 | [QUA-01](modules/QUA-qualite-docs.md) | `README.md` et `PRODUCT.md` à jour | libre | M | à faire |  |
 | [QUA-02](modules/QUA-qualite-docs.md) | Découper les contrôleurs trop longs, sans changer leur comportement, chacun couvert… | libre | M par contrôleur | à faire |  |
-| [QUA-03](modules/QUA-qualite-docs.md) | Clore l'étude de la pile | 1 | S | en cours : étude faite, à fusionner | `etude/qua-03-pile` |
+| [QUA-03](modules/QUA-qualite-docs.md) | Clore l'étude de la pile | 1 | S | fait (#171, 15 nov.) | #171 |
 | [QUA-04](modules/QUA-qualite-docs.md) | Reste des dates | libre | S | à faire |  |
 | [QUA-05](modules/QUA-qualite-docs.md) | Supprimer les branches et les dossiers de travail morts, après vérification de leur… | libre | S | à faire |  |
 | [QUA-06](modules/QUA-qualite-docs.md) | `docs/users.xlsx` | 0 | S | fait (personnes fictives, rien à réécrire) |  |
