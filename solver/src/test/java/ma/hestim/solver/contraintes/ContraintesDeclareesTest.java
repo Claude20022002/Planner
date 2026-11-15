@@ -82,6 +82,16 @@ class ContraintesDeclareesTest extends GrilleDeTest {
     }
 
     @Test
+    void unePlageSansCreneauNeDonneAucuneVisee() {
+        ContrainteDeclaree vide = plage(Niveau.DUR, 0, List.of());
+        vide.setLecons(List.of("L1", "L2"));
+        EmploiDuTemps p = new EmploiDuTemps();
+        p.setContraintesDeclarees(List.of(vide));
+        p.construireVisees();
+        assertThat(p.getVisees()).isEmpty();
+    }
+
+    @Test
     void plageDUneSalle() {
         Lecon dansG1 = lecon(lun1, g1, Set.of(10L), Set.of(100L));
         Lecon dansG2 = lecon(lun1, g2, Set.of(11L), Set.of(101L));

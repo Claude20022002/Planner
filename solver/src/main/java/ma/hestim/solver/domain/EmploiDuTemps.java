@@ -76,11 +76,18 @@ public class EmploiDuTemps {
         lecons.forEach(l -> l.calculerValeursPossibles(creneaux, salles));
     }
 
-    /** Après lecture : une visée par séance de chaque paquet (côtés A et B), ou par salle d'une plage. */
+    /**
+     * Après lecture : une visée par séance de chaque paquet (côtés A et B), ou par salle d'une plage.
+     * Une plage qui ne touche aucun créneau ne donne aucune visée : sans objet, elle ne coûte rien,
+     * pas même le temps de la joindre à chaque coup.
+     */
     public void construireVisees() {
         List<Visee> faits = new ArrayList<>();
         for (ContrainteDeclaree c : contraintesDeclarees) {
             if (c.getFamille() == ContrainteDeclaree.Famille.PLAGE) {
+                if (c.getCreneaux().isEmpty()) {
+                    continue;
+                }
                 if (!c.getSalles().isEmpty()) {
                     c.getSalles().forEach(s -> faits.add(Visee.deSalle(s, c)));
                 } else {
