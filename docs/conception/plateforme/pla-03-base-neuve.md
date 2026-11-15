@@ -81,6 +81,7 @@ flowchart TD
 | `backend/tests/integration/baseNeuve.test.js` | créé | base neuve vide ; base avec comptes qui garde tout | environ 120 lignes |
 | 11 fichiers de `backend/tests/integration/` | modifiés | codes `N` et `S`, noms « Campus Nord » et « Campus Sud », noms de salles | — |
 | `identiteEcole.test.js`, `preparation.test.js` | modifiés | identité neutre au départ ; école fictive de la réponse 9 | — |
+| `frontend/tests/parcours/donneesGeneration.mjs`, `donneesIiia.mjs` | modifiés | trouvés pendant le code : les parcours préparent leur base avec l'aide des tests du serveur, et lisaient les campus G et ST ; ils passent aux codes N et S | — |
 | `scripts/verifier-neutre.mjs` | modifié | exception ajoutée pour `backend/demo/ecolePilote.js` | 1 ligne |
 | `DEPLOIEMENT.md`, `docs/plan/modules/PLA-plateforme.md`, `docs/plan/suivi.md`, `docs/conception/README.md` | modifiés | ce qu'une installation neuve contient ; état | — |
 

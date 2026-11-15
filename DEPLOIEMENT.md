@@ -46,6 +46,12 @@ Pour un correctif du moteur (le code Python de `../ClassQuiz`) qui ne doit pas a
 
 Si les dépendances Python du quiz (`Pipfile`) ont changé, ce paquet ne suffit pas : il faut une nouvelle image de l'API.
 
+### Ce que contient une base neuve (PLA-03)
+
+Une base sans comptes, une fois migrée, n'a de lignes que dans `SequelizeMeta` et dans `ConfigurationEtablissement` : une seule ligne d'identité neutre (nom « Planner », sans logo, modèle d'emploi du temps `planner`, ClassQuiz éteint). Elle n'a aucun campus : l'école crée les siens avant sa première salle, et règle son identité dans le panneau de configuration.
+
+Les campus et l'identité de l'école d'origine ne sont donnés qu'à une base qui a déjà des comptes au moment où les migrations 0003 et 0055 s'appliquent. Une base déjà migrée ne change pas. Le jeu de démonstration (`npm run seed`) apporte lui-même ses deux campus et son identité (`backend/demo/ecolePilote.js`).
+
 ### Allumer ou éteindre ClassQuiz pour l'école (lot ME-0c)
 
 ClassQuiz est une fonctionnalité de l'établissement (`ConfigurationEtablissement.classquiz_actif`, migration 0057). Une installation neuve part éteinte ; la base de HESTIM, qui avait déjà des comptes, est restée allumée. Éteint, Planner ne lance plus de partie, refuse le webhook et la connexion par OpenID Connect, et `/api/quiz/config` répond `actif: false` (l'espace « Quiz » disparaît du sélecteur). Les conteneurs du quiz, eux, tournent toujours : les arrêter est une autre décision.
