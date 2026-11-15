@@ -21,7 +21,7 @@
 
 Ce qui rend la gestion « intelligente » :
 
-1. **Une règle sans données ne coûte rien.** Une règle dont les données manquent ne compte pas, et l'école voit pourquoi (« sans effet : aucune matière n'a de niveau de difficulté »).
+1. **Une règle sans objet ne coûte rien.** Une règle dont la condition sur les données n'est pas remplie ne compte pas, et l'école voit pourquoi (« sans effet : un seul campus »).
 2. **Ce qui est montré est tenu.** La liste du profil ne montre que les règles que le calcul applique vraiment.
 3. **Les contradictions sont refusées avant le calcul.** Un contrôle de place compare les créneaux qui restent libres au besoin, et il nomme les contraintes en cause.
 4. **Chaque contrainte a sa phrase.** Cette phrase sert à l'écran, dans le contrôle et dans le bilan de la génération (« respectée » ou « non respectée 3 fois »).
@@ -52,7 +52,7 @@ Ce qui rend la gestion « intelligente » :
 |---|---|---|
 | Catalogue : 498 paramètres, 134 règles (48 strictes, 86 souples), 5 profils | `backend/services/moteur/catalogue/` | **réutilisé** : les modèles citent ses règles, et le profil donne la liste « Déjà pris en compte » |
 | Valeurs datées à portée (MP-1) : versions brouillon, appliquée, annulée ; portées école, cycle, niveau, filière, individuelle | `services/moteur/valeurs/*`, migration 0061, routes `/api/moteur` | **réutilisé** : une contrainte déclarée vit dans une version de paramètres, avec le même cycle de vie |
-| `regleActive` : une règle compte si sa valeur l'active et si ses conditions `active_si` sont remplies | `valeurs/resolution.js` | **étendu** : elle ne regarde pas encore si les données requises (`requiert`) existent |
+| `regleActive` : une règle compte si sa valeur l'active et si ses conditions `active_si` sont remplies | `valeurs/resolution.js` | **réutilisé tel quel** (réponse 16) : `profil.js` en tire la raison d'une règle sans effet |
 | Contrôles avant la génération : 2 contrôles et 3 exclusions | `generation/timefold/avertissements.js` (69 lignes) | **étendu** : on y ajoute le contrôle de place |
 | Solveur : 22 règles, poids en dur, `HardSoftScore` | `solver/.../ContraintesEmploiDuTemps.java` (332 lignes) | **non touché en 13a**. En 13b, les règles nouvelles vont dans un fichier à part, puisque celui-ci dépasse déjà 300 lignes |
 | Ce que le solveur sait d'une séance : `coursId` (matière), `groupes`, `feuilles`, `enseignants`, `salle`, `creneau` | `solver/.../domain/Lecon.java` | **suffisant** : les six modèles ne demandent aucune variable nouvelle (F-1 à F-8 ne bougent pas) |
@@ -80,6 +80,7 @@ Ce qui rend la gestion « intelligente » :
 | 13 | La pause du vendredi et le samedi après-midi de l'école d'origine | en 13b, ils deviennent deux contraintes déclarées (une plage interdite et une plage à éviter de poids 50), créées par la migration, dans une base qui a des comptes seulement | **oui** (15 nov.) | 13b |
 | 14 | Une règle du profil que le solveur n'applique pas encore (par exemple `PED.COGN.DIFFICILES_REPARTIES`) | elle n'est **pas montrée** à l'école tant que le calcul ne la tient pas (« ce qui est montré est tenu ») | **oui** (15 nov.) | 13a |
 | 15 | Niveau et cycle comme cibles | pas avant VSC-01 (les tables n'existent pas) ; d'ici là : école, rythme, filière, groupe, matière, enseignant, salle | **oui** (15 nov.) | — |
+| 16 | Ajoutée pendant le code. Une règle est-elle « sans effet » quand ses données requises (`requiert`) manquent ? Le catalogue marque absentes des données que lisent des règles déjà appliquées (capacité réglementaire, compatibilité des salles…) : elles seraient affichées sans effet à tort | « sans effet » seulement quand une condition `active_si` n'est pas remplie (un seul campus…). Le contrôle par `requiert` viendra avec les règles nouvelles (MOT-11) | **oui** (15 nov.) | 13a |
 
 ## 4. Solution
 
@@ -140,10 +141,10 @@ Ces six modèles couvrent **22 des 134 règles** du catalogue : la plupart de ce
 flowchart TB
     R["Règle du profil, ou contrainte déclarée"] --> T{"Le calcul la tient-il ?<br/>(etat = solveur, ou modèle pris en charge)"}
     T -->|non| H["Non montrée à l'école (question 14)"]
-    T -->|oui| A{"Active ?<br/>valeur, active_si"}
-    A -->|coupée| C["Montrée « coupée »"]
-    A -->|oui| D{"Ses données existent ?<br/>(requiert : au moins une valeur, ou une ligne en base)"}
-    D -->|non| E["Montrée « sans effet », avec la donnée qui manque"]
+    T -->|oui| A{"Sa valeur l'active ?"}
+    A -->|non| C["Montrée « coupée »"]
+    A -->|oui| D{"Ses conditions active_si sont remplies ?<br/>(données comptées : nombre de campus…)"}
+    D -->|non| E["Montrée « sans effet », avec la condition qui manque"]
     D -->|oui| F["Active dans le calcul"]
 ```
 
@@ -156,9 +157,9 @@ flowchart TB
 | La plage touche au moins un créneau de la grille | vérification, enregistrement | avertissement | « Aucun cours n'est prévu le dimanche : cette contrainte est sans effet. » |
 | Les bornes légales (`borne` du catalogue) | vérification, enregistrement | refus `borne_depassee` | « Le plafond dépasse le maximum légal de 8 h par jour. » |
 | Contradictions directes : même cible, « le matin » et « l'après-midi » ; plage à éviter qui couvre tout le moment préféré ; `en_meme_temps` et `jamais_le_meme_jour` sur les mêmes matières | vérification, enregistrement | avertissement, avec les deux phrases | « "Mathématiques le matin" et "Éviter les matinées des 6e A" se contredisent pour les 6e A. » |
-| **Contrôle de place** : pour chaque groupe et chaque salle, les créneaux de la grille, moins les impossibilités et les disponibilités, comparés aux créneaux qu'il faut (séances × longueur) | vérification et enregistrement : avertissement ; **génération : refus** | refus nommé, avec les contraintes en cause | « Les 6e A ont besoin de 26 créneaux par semaine ; il en reste 22 à cause de "Pas de cours le mercredi après-midi" et de "Pas de cours le vendredi après 16 h". Retirez ou réduisez l'une d'elles. » |
+| **Contrôle de place** : pour chaque groupe et chaque type de salle, les créneaux de la grille, moins les impossibilités et les disponibilités, comparés aux créneaux qu'il faut (séances × longueur) | vérification, si une période est donnée : avertissement ; **génération : refus** | refus nommé, avec les contraintes en cause | « Les 6e A ont besoin de 26 créneaux par semaine ; il en reste 22 à cause de "Pas de cours le mercredi après-midi" et de "Pas de cours le vendredi après 16 h". Retirez ou réduisez l'une d'elles. » |
 
-À l'enregistrement, le contrôle de place ne fait qu'avertir : les enseignements ne sont pas toujours saisis quand l'école règle ses contraintes. À la génération, il bloque, parce que le calcul ne peut pas tenir des impossibilités qui ne laissent pas assez de place.
+Avant la génération, le contrôle de place ne fait qu'avertir, et seulement si l'on donne une période à `POST /contraintes/verifier` : sans période, il n'y a pas d'enseignements à compter, et les enseignements ne sont pas toujours saisis quand l'école règle ses contraintes. À la génération, il bloque, parce que le calcul ne peut pas tenir des impossibilités qui ne laissent pas assez de place. Un manque dû aux seules disponibilités des enseignants ne bloque pas : il reste l'avertissement d'aujourd'hui, pour que la génération de l'école d'origine ne change pas.
 
 ### 4.5 Les routes (MOT-13a)
 
@@ -169,7 +170,7 @@ Réservées à l'administration, comme celles de MP-1. Les refus suivent le form
 | `GET /api/moteur/gabarits` | les six modèles : champs, cibles admises, natures, insistances, avec des **codes stables** pour la traduction (R-7) |
 | `GET /api/moteur/contraintes?date=` | les contraintes en vigueur à cette date : phrase, état (active, ou sans effet et pourquoi), version d'origine |
 | `GET /api/moteur/contraintes/profil?date=&filiere=&groupe=` | la liste « Déjà pris en compte » : pour chaque règle du profil tenue par le calcul, sa phrase, son insistance, et son état (active, coupée, sans effet, verrouillée) |
-| `POST /api/moteur/contraintes/verifier` | contrôle à blanc d'une ou plusieurs contraintes : phrases, refus, avertissements, place. Rien n'est enregistré |
+| `POST /api/moteur/contraintes/verifier` | contrôle à blanc d'une ou plusieurs contraintes : phrases, refus, avertissements ; le contrôle de place si `id_periode` est donné. Rien n'est enregistré |
 | `POST /api/moteur/versions` | **étendue** : `contraintes: [...]` (ajouts) et `retirer: [id_contrainte]` à côté de `lignes`. Le reste du cycle (appliquer, abandonner, annuler) ne change pas de forme |
 
 Pour couper ou adoucir une règle du profil, l'école passe par une ligne de MP-1 : `valeur: false`, ou un `poids`. Rien de nouveau à stocker pour cela.
@@ -194,10 +195,12 @@ Il sera détaillé dans un complément de plan, à valider avant son code.
 | `backend/services/moteur/contraintes/place.js` | créé | contrôle de place par groupe et par salle (fonction pure) | 160 |
 | `backend/services/moteur/contraintes/cibles.js` | créé | existence des cibles, puis leur expansion en groupes et en séances (lecture en base) | 140 |
 | `backend/services/moteur/contraintes/enVigueur.js` | créé | contraintes en vigueur à une date (appliquées, non retirées), comme `lignesEnVigueur` | 80 |
+| `backend/services/moteur/contraintes/versionsContraintes.js` | créé | les contraintes dans le cycle d'une version : contrôle, enregistrement, version inverse. `versions.js` reste court | 110 |
+| `backend/services/moteur/contraintes/avantGeneration.js` | créé | lit les contraintes en vigueur, et fait le contrôle de place sur le problème construit | 60 |
 | `backend/services/moteur/contraintes/profil.js` | créé | liste « Déjà pris en compte » : règles du profil tenues par le calcul, et leur état | 120 |
-| `backend/services/moteur/valeurs/resolution.js` | modifié | `regleActive` regarde aussi les données requises ; rend la raison d'une règle sans effet | 132 → 160 |
-| `backend/services/moteur/valeurs/versions.js` | modifié | une version porte aussi des contraintes (création, contrôle à l'application, annulation par retrait) | 154 → 200 au plus. Au-delà, l'annulation part dans `versionsAnnulation.js` |
-| `backend/services/generation/timefold/avertissements.js` | modifié | appelle le contrôle de place avant la génération | 69 → 95 |
+| `backend/services/moteur/valeurs/versions.js` | modifié | une version porte aussi des contraintes ; le détail est dans `versionsContraintes.js` | 154 → 165 |
+| `backend/services/generation/timefold/generation.js` | modifié | appelle `avantGeneration.js` après la construction du problème : un refus arrête la génération avec son message. Écart avec la première version du plan, qui visait `avertissements.js` : ses fonctions sont pures et `probleme.js` a déjà 260 lignes | 135 → 145 |
+| `backend/tests/integration/valeursMoteur.test.js` | modifié | rejoue la migration 0080 autour de la 0061, dont la table renvoie aux versions | +10 |
 | `backend/models/ContrainteDeclaree.js`, `models/index.js` | créé, modifié | le modèle et son lien avec `VersionParametres` | 60 |
 | `backend/migrations/0080-contraintes-declarees.js` | créé | la table (§ 6) | 60 |
 | `backend/controllers/moteurContraintesController.js`, `routes/moteurContraintesRoutes.js` | créés | les quatre routes nouvelles | 120, 20 |
@@ -255,7 +258,7 @@ erDiagram
   - chaque phrase ;
   - chaque contradiction ;
   - le contrôle de place : assez de place, place juste suffisante, place insuffisante avec les contraintes nommées, sous-groupes comptés avec leur groupe ;
-  - `regleActive` avec une donnée requise absente.
+  - la liste du profil : règle coupée, règle sans effet (un seul campus), règle non tenue par le calcul absente.
 - **Catalogue** : chaque règle citée par un modèle existe. Une règle du profil non tenue par le calcul n'apparaît pas dans la liste.
 - **Intégration** (MySQL) :
   - création, application, abandon et annulation d'une version avec des contraintes ;
