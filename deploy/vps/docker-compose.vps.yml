@@ -1,17 +1,21 @@
 # ────────────────────────────────────────────────────────────────────────────
-#  Surcharge pour un VPS partagé (ici celui de finadmintech.fr, 2 vCPU / 3,7 Go)
+#  Surcharge pour le serveur Debian partagé avec n8n (EXP-02a).
 #
-#  Une autre application y tient déjà les ports 80/443 (nginx de FinAdminTech, qui fait
-#  aussi le HTTPS). Ici :
+#  Traefik de n8n tient déjà les ports 80 et 443. Ici :
 #   - aucune construction : les images arrivent toutes faites (docker save | docker load) ;
-#   - Caddy n'aiguille que par nom d'hôte, en HTTP, sur 172.17.0.1:8090 (interface docker0,
-#     joignable depuis le conteneur nginx de FinAdminTech, pas depuis Internet) ;
+#   - Caddy n'a aucun port publié sur l'hôte ; Traefik l'atteint sur le réseau n8n_default ;
+#   - les noms publics viennent de .env.docker (SITE_ADDRESS, FICHIERS_ADDRESS, QUIZ_ADDRESS) ;
 #   - chaque conteneur a une limite de mémoire : en cas de manque, ce sont eux qui sont
 #     arrêtés, jamais l'application voisine ;
 #   - aucun port de base de données ou d'API publié sur l'hôte.
 #
-#  Lancement (dans /opt/hestim) :
-#    docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml up -d
+#  Ne jamais lancer docker-compose.yml seul : il publie 80 et 443.
+#  Ne jamais lancer, dans le dossier de n8n, docker compose --profile cpu up
+#  (ce profil ramènerait Ollama). Ne pas modifier le compose de n8n.
+#
+#  EXP-02a s'arrête au contrôle, qui ne démarre rien :
+#    docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml config
+#  Le up, toujours avec cette surcharge, est EXP-02b.
 # ────────────────────────────────────────────────────────────────────────────
 
 services:
@@ -25,7 +29,7 @@ services:
     build: !reset null
     ports: !reset []
     environment:
-      # nginx de FinAdminTech, Caddy puis nginx du frontend : trois proxys devant l'API
+      # Traefik de n8n, Caddy, puis nginx du frontend : trois proxys devant l'API
       TRUST_PROXY_HOPS: 3
     mem_limit: 384m
 
@@ -45,11 +49,29 @@ services:
     mem_limit: 64m
 
   caddy:
-    ports: !override
-      - "172.17.0.1:8090:80"
+    # Aucun port sur l'hôte : 80 et 443 restent à Traefik. Seul Caddy rejoint n8n_default.
+    ports: !reset []
     volumes:
       - ./deploy/vps/Caddyfile.vps:/etc/caddy/Caddyfile:ro
     mem_limit: 128m
+    networks:
+      - n8n_default
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=n8n_default
+      - "traefik.http.routers.planner.rule=Host(`${SITE_ADDRESS:?SITE_ADDRESS requis dans .env.docker}`)"
+      - traefik.http.routers.planner.entrypoints=websecure
+      - traefik.http.routers.planner.tls.certresolver=mytlschallenge
+      - traefik.http.routers.planner.service=caddy
+      - "traefik.http.routers.fichiers.rule=Host(`${FICHIERS_ADDRESS:?FICHIERS_ADDRESS requis dans .env.docker}`)"
+      - traefik.http.routers.fichiers.entrypoints=websecure
+      - traefik.http.routers.fichiers.tls.certresolver=mytlschallenge
+      - traefik.http.routers.fichiers.service=caddy
+      - "traefik.http.routers.quiz.rule=Host(`${QUIZ_ADDRESS:?QUIZ_ADDRESS requis dans .env.docker}`)"
+      - traefik.http.routers.quiz.entrypoints=websecure
+      - traefik.http.routers.quiz.tls.certresolver=mytlschallenge
+      - traefik.http.routers.quiz.service=caddy
+      - traefik.http.services.caddy.loadbalancer.server.port=80
 
   studylib:
     build: !reset null
@@ -108,3 +130,9 @@ services:
 
   quiz-meilisearch:
     mem_limit: 192m
+
+# Réseau déjà créé par n8n. On ne le crée pas et on ne le modifie pas.
+networks:
+  n8n_default:
+    external: true
+    name: n8n_default
