@@ -8,6 +8,7 @@ Statut : **décisions du chef de projet au § 7 ; l'ordre de travail suit `docs/
 | [catalogue/dependances.md](catalogue/dependances.md) | les 588 liens, l'ordre de calcul, les bornes, les tensions |
 | [catalogue/profils.md](catalogue/profils.md) | les cinq profils pédagogiques et leurs réglages |
 | [ecarts-du-solveur.md](ecarts-du-solveur.md) | ce que le solveur actuel ne sait pas faire, et le choix du moteur |
+| [mot-02-mesure-solveur.md](mot-02-mesure-solveur.md) et [mesures.md](mesures.md) | MOT-02 : protocole validé, banc local et jeu supérieur ; collège après MOT-13b |
 | [mot-12-montee-solveur.md](mot-12-montee-solveur.md) | MOT-12 : le solveur passe à Spring Boot 4.1 et au cœur de Timefold 1.35, sans le starter |
 | [mot-13-contraintes-declarees.md](mot-13-contraintes-declarees.md) | MOT-13 : l'école déclare ses contraintes à partir de six modèles, au lieu de régler les 498 paramètres |
 

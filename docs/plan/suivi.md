@@ -93,7 +93,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [EXP-08](modules/EXP-exploitation.md) | Test d'intrusion et de charge, avant que toute école extérieure utilise l'installation… | 4 | M | à faire |  |
 | [EXP-09](modules/EXP-exploitation.md) | Mises à jour de StudyLib et ClassQuiz par la CI comme le reste (aujourd'hui par paquets) | libre | M | à faire |  |
 | [MOT-01](modules/MOT-moteur.md) | Valeurs du moteur datées et résolues (profil, école, niveau) | 1 | M | fait (serveur, #156, 10 nov.) ; écrans avec ADM-02 | #156 |
-| [MOT-02](modules/MOT-moteur.md) | Mesurer le solveur sur un jeu scolaire (collège de 600 élèves), puis sur 20 000… | 1 | M | en cours : conception soumise, validation attendue | `etude/mot-02-mesure-solveur` |
+| [MOT-02](modules/MOT-moteur.md) | Mesurer le solveur sur un jeu scolaire (collège de 600 élèves), puis sur 20 000… | 1 | M | en cours : plan validé, banc testé (17 tests), série en cours ; collège après MOT-13b | `etude/mot-02-mesure-solveur` |
 | [MOT-03](modules/MOT-moteur.md) | Validation avant le calcul | 3 | M | à faire |  |
 | [MOT-04](modules/MOT-moteur.md) | Modèle neutre et évaluateur indépendant | 3 | L + M | à faire |  |
 | [MOT-05](modules/MOT-moteur.md) | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe), à la… | 2 puis 3 | M + L | à faire |  |
