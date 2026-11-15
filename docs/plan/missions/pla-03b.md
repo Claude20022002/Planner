@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | État | ouverte |
-| Agent | Claude Code dans VS Code, second abonnement du chef (le plan a été écrit par un agent du coordinateur) |
+| Agent | Claude Code, session `plan-b-projet-pacte-9d` (celle de PLA-03a), mission envoyée par message direct le 2026-11-15 ; le plan a été écrit par un agent du coordinateur |
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Chargement de toute base neuve, test d'équivalence strict : une erreur passe en production |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [PLA](../modules/PLA-plateforme.md) · chantier ouvert le 2026-11-09 |
