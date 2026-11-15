@@ -8,7 +8,7 @@ Le banc utilise Node 22 ou plus récent, Git, tar et Docker Desktop Linux local.
 
 `configurations/superieur.json` décrit le **jeu supérieur simplifié** : 400 groupes de 50 étudiants, 4 800 séances de deux heures, 800 enseignants et 400 salles. Chaque groupe a deux enseignants propres ; disponibilités complètes, un site, aucun groupe transversal. Ces hypothèses limitent la portée du résultat.
 
-Les problèmes sont non affectés et non épinglés. `superieur-temoin.json` est une construction faisable séparée, contrôlée par les tests, jamais envoyée comme placement initial. `superieur-manifeste.json` contient les tailles et les empreintes du problème et de la configuration, sans donnée sur le poste.
+Les problèmes sont non affectés et non épinglés. `superieur-temoin.json` est une construction faisable séparée, contrôlée par les tests, jamais envoyée comme placement initial. `superieur-manifeste.json` contient les tailles et les empreintes du problème et de la configuration, sans donnée sur le poste. Le fichier `.gitattributes` du banc impose LF aux jeux : leurs octets et empreintes restent identiques sous Windows et Linux.
 
 Le collège de 600 élèves utilisera le générateur de MOT-13b **après sa fusion sur main**. Il n'est pas recréé ici. Cette partie de MOT-02 reste à livrer.
 
