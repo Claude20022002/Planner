@@ -39,6 +39,8 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | plan confirmé par le chef le 15 nov. ; correctif commité, tests du déploiement verts ; relu par le coordinateur : prêt |
 
+Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, en cours. Aucun quatrième chantier ouvert.
+
 ## Missions en cours
 
 Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organisation.md](organisation.md), § 10) : une ligne par branche ouverte, retirée à la fusion. Le détail d'une mission est dans sa fiche, `docs/plan/missions/<identifiant>.md`. Les lignes sans fiche sont des travaux commencés avant le 15 novembre.
