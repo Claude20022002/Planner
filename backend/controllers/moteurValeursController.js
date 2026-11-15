@@ -6,7 +6,8 @@ import { corpsErreur } from "../utils/erreurs.js";
 /**
  * Réglages du moteur de planification (lot MP-1). Ces routes sont réservées à l'administration, qui
  * écrit au niveau « établissement ». Le niveau « plateforme » (force d'une règle, règles d'un pays)
- * n'a pas de route : il attend la Plateforme (ME-4).
+ * n'a pas de route : il attend la Plateforme (ME-4). Une version porte aussi les contraintes déclarées
+ * par l'école (MOT-13) : `contraintes` (ajouts) et `retirer` (numéros des contraintes en vigueur).
  */
 
 const AUTEUR = "etablissement";
@@ -47,8 +48,8 @@ export const getVersionsMoteur = asyncHandler(async (req, res) => {
 
 // ➕ Préparer un brouillon : aucun effet tant qu'il n'est pas appliqué
 export const postVersionMoteur = avecRefus(async (req, res) => {
-    const { libelle, date_effet, lignes } = req.body;
-    const version = await creerVersion({ libelle, date_effet, lignes, id_auteur: req.user.id_user, auteur: AUTEUR });
+    const { libelle, date_effet, lignes, contraintes, retirer } = req.body;
+    const version = await creerVersion({ libelle, date_effet, lignes, contraintes, retirer, id_auteur: req.user.id_user, auteur: AUTEUR });
     res.status(201).json(version);
 });
 
