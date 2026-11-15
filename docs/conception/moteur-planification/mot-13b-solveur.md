@@ -56,6 +56,8 @@ Les réponses 1 à 16 sont celles du plan d'origine. Celles-ci sont propres à 1
 | 19 | Où montrer le bilan | dans le rapport de la génération, rendu par l'API. L'écran viendra en 13c | **oui** (15 nov.) | 13b |
 | 20 | Un poids à une portée plus fine que l'école, pour une règle appliquée par le solveur | seul le poids de l'école est appliqué. Plus fin : refusé à l'enregistrement (`portee_non_tenue`). Les poids plus fins viendront avec MOT-10 | **oui** (15 nov.) | 13b |
 | 21 | Taille du collège fictif | 4 classes, une par niveau, 4e et 3e dédoublées en espagnol et allemand ; un générateur qui prend la taille en paramètre, repris par MOT-02 | **oui** (15 nov.) | 13b |
+| 22 | Posée après le code. Jeu de démonstration, 60 s : règles dures identiques à `main`, score souple 10 % moins bon en moyenne (-570 contre -520) ; le score d'une affectation fixée est identique, et l'écart ne vient ni des contraintes ni des poids. Le critère « pas moins bon » est-il tenu ? | accepter pour 13b ; MOT-02 mesure la qualité sur plusieurs passages et plusieurs tailles, et cherche la cause (score à trois niveaux) | **oui** (15 nov.) | fusion de 13b |
+| 23 | Posée après le code. Couper une règle souple du solveur (`valeur: false`) à une portée plus fine que l'école est permis, mais sans effet sur le calcul | refuser aussi la coupure fine (`portee_non_tenue`), dans une petite étape à part, avant 13c ; hors de cette branche | **oui** (15 nov.) | 13c |
 
 ## 4. Solution
 

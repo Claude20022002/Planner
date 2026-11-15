@@ -49,14 +49,15 @@
 | MOT-10 | Grande échelle : solveur réglable, file par école, 20 000 étudiants en moins de 30 min ; poids et plages lus depuis les valeurs | ME-14, MP-5 | 5 | L | MOT-04 | à faire |
 | MOT-11 | Règles nouvelles, famille par famille (examens dans le calcul F-8, ressources F-7, etc.), chacune avec ses données et son test | MP-7 | 5 | M par famille | MOT-10 | à faire |
 | MOT-12 | Montée du solveur : Spring Boot 3.3.5 vers 4.1, Timefold 1.15 vers 1.35 (cœur, sans le starter), Java 21 inchangé (décisions des 13 et 15 novembre), avant MOT-04 ([conception](../../conception/moteur-planification/mot-12-montee-solveur.md)) | — | 1 | M | — | fait (#181, fusionnée le 15 nov.) |
-| MOT-13 | **Contraintes déclarées par l'école** : l'école ne règle pas les 498 paramètres, elle déclare ses contraintes à partir de six modèles ; liste « Déjà pris en compte » du profil ; contrôle de place avant le calcul. Étapes : 13a serveur, 13b solveur et bilan, 13c écran ([conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md)) | — | 3 | M + L + M | 13b : MOT-12 ; 13c : ADM-02 | 13a fusionnée (#178, 15 nov.) ; 13b : codée le 15 nov. ([complément](../../conception/moteur-planification/mot-13b-solveur.md)), PR à ouvrir |
+| MOT-13 | **Contraintes déclarées par l'école** : l'école ne règle pas les 498 paramètres, elle déclare ses contraintes à partir de six modèles ; liste « Déjà pris en compte » du profil ; contrôle de place avant le calcul. Étapes : 13a serveur, 13b solveur et bilan, 13c écran ([conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md)) | — | 3 | M + L + M | 13b : MOT-12 ; 13c : ADM-02 | 13a fusionnée (#178, 15 nov.) ; 13b : PR ouverte (#182, [complément](../../conception/moteur-planification/mot-13b-solveur.md)), CI verte ; ensuite le refus de la coupure fine d'une règle du solveur (réponse 23), puis 13c |
 
 ## Critères de « terminé »
 
 - **MOT-02** :
   - le jeu de démonstration est versionné ;
   - le temps, la mémoire et la qualité (règles dures violées) sont notés dans `docs/conception/moteur-planification/mesures.md` ;
-  - le rapport dit si EP-10 tient.
+  - le rapport dit si EP-10 tient ;
+  - la qualité des règles souples est comparée à celle d'avant MOT-13b, sur plusieurs passages et plusieurs tailles, et la cause d'un écart est cherchée (score à trois niveaux) : réponse 22 du [complément 13b](../../conception/moteur-planification/mot-13b-solveur.md), 15 nov.
 - **MOT-03** :
   - toute combinaison de valeurs invalide est refusée **avant** le calcul ;
   - le message nomme la règle et propose une correction ;
