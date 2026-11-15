@@ -2,15 +2,15 @@
 
 | | |
 |---|---|
-| État | ouverte, **après PLA-03b** pour le même agent |
-| Agent | Claude Code dans VS Code, second abonnement du chef |
+| État | **close le 2026-11-15** : PR #181 fusionnée, CI verte parcours compris |
+| Agent | une session Claude Code (Opus 5.5) que le coordinateur n'a pas lancée ; retirée de la file de la session de VS Code le 2026-11-15 |
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Montée de dépendance majeure, documentation récente à lire, résultat du solveur à garder identique |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [MOT](../modules/MOT-moteur.md) · chantier ouvert le 2026-11-15 |
 | Fonction | MOT-12 : Spring Boot 3.3.5 vers 4.x, Timefold 1.15 vers 1.31, Java 21 inchangé (décision du 13 novembre), avant MOT-04 ; elle débloque MOT-13b · taille M |
-| Branche | `feat/mot-12-montee-solveur`, depuis `origin/main` **après la fusion de #178** (MOT-12 n'est inscrite dans le module et dans `suivi.md` que par #178) |
+| Branche | `chore/mot-12-montee-solveur`, depuis `main` après #178 |
 | Dossier de travail | `..\travaux-planner\mot-12-montee-solveur` |
-| Plan de conception | `docs/conception/moteur-planification/mot-12-montee-solveur.md`, à écrire · validé par : **le chef** (dépendance majeure) |
+| Plan de conception | `docs/conception/moteur-planification/mot-12-montee-solveur.md`, commité (`f0678084`) · **validé par le chef le 2026-11-15** (confirmé au coordinateur) |
 
 ## Critère de « terminé »
 
@@ -81,3 +81,6 @@ Quand tu as fini une étape, dis-le : le coordinateur relit ta branche.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-15 | mission écrite ; personne ne tient MOT-12 (ni branche, ni dossier) | — |
+| 2026-11-15 14 h 10 | tour d'état : une autre session a écrit et commité le plan à 13 h 58, code en cours (`pom.xml`, contrôleur, filtre de jeton, `application.properties`, `ConfigurationSolveur.java`), sans fiche de session. Le plan change la décision du 13 novembre : **Timefold 1.35 au lieu de 1.31, cœur sans le starter**, Spring Boot 4.1. Preuves de l'essai au § 2.2 : la 1.x va jusqu'à 1.35, toute la 1.x vise Spring Boot 3.5, le starter 1.35 ne démarre pas sous Boot 4.1, le cœur seul donne un calcul identique (0hard/-20soft). Le critère « le résultat ne change pas » est repris | **au chef** : confirmer qu'il a validé ce plan |
+| 2026-11-15 | **le chef confirme** avoir validé le plan (Spring Boot 4.1, cœur Timefold 1.35 sans starter) ; la décision qui remplace « Timefold 1.31 » du 13 novembre est dans `decisions.md` sur la branche | relecture à faire quand la session aura fini |
+| 2026-11-15 14 h 25 | codée (`ecb94eee`), fiche de session (`46067add`). Relecture : Spring Boot 4.1.2, cœur Timefold 1.35.0 sans starter ; `ConfigurationSolveur` construit fabrique, gestionnaire (2 calculs, comme le 429 du contrôleur) et analyse, avec la seule entité `Lecon`, la solution et le jeu de règles du code ; deux appels dépréciés remplacés ; Jackson 3 réglé pour les `null`. Tests de la fiche : 39 verts (6 nouveaux), image appelée sur le même problème : calcul identique (0hard/-20soft). À surveiller : la vitesse en 1.35 (12 000 à 18 822 coups/s contre 15 985 à 21 866) est **à mesurer dans MOT-02**. Conflit de `suivi.md` avec `main` résolu par le coordinateur (`9a5c76ee`) | **prête** ; CI et parcours trancheront |
