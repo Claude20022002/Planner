@@ -16,6 +16,13 @@
 - **Solveur** : `solver/`, en Java 21 avec **Timefold 1.15.0** (`solver/pom.xml`), limité à 1 Go et à 2 calculs simultanés. Côté serveur : `backend/services/generation/timefold/*`, `generationAutomatiqueRoutes`, et la page `gestion/GenerationAutomatique`. Il compte 7 classes de test.
 - **Catalogue** : 498 paramètres et 5 profils, dans `backend/services/moteur/catalogue/` (JSON, qui font foi). Les pages lisibles sont générées par `node scripts/catalogue-moteur-doc.mjs` dans [conception/moteur-planification/catalogue](../../conception/moteur-planification/catalogue/README.md).
 - **MP-1** (fusionnée le 7 novembre) : valeurs versionnées et datées (migration 0061), routes `/api/moteur`. **La génération ne lit pas encore ces valeurs.**
+- **Contraintes déclarées, MOT-13a** (branche `feat/mot-13-contraintes`, 15 novembre) :
+  - six modèles dans `backend/services/moteur/contraintes/` ;
+  - table `ContrainteDeclaree` (migration 0080), portée par les versions de MP-1 ;
+  - routes `/api/moteur/gabarits`, `/contraintes`, `/contraintes/profil`, `/contraintes/verifier` ;
+  - le contrôle de place arrête la génération quand des plages interdites ne laissent pas assez de créneaux.
+
+  **Le solveur ne tient pas encore ces contraintes** (`tenu: false`) : c'est MOT-13b.
 - **Limites du modèle actuel** ([ecarts-du-solveur.md](../../conception/moteur-planification/ecarts-du-solveur.md)) :
   - F-1 : une seule semaine type ;
   - F-2 : enseignant imposé avant le calcul ;
@@ -42,7 +49,7 @@
 | MOT-10 | Grande échelle : solveur réglable, file par école, 20 000 étudiants en moins de 30 min ; poids et plages lus depuis les valeurs | ME-14, MP-5 | 5 | L | MOT-04 | à faire |
 | MOT-11 | Règles nouvelles, famille par famille (examens dans le calcul F-8, ressources F-7, etc.), chacune avec ses données et son test | MP-7 | 5 | M par famille | MOT-10 | à faire |
 | MOT-12 | Montée du solveur : Spring Boot 3.3.5 vers 4.x, Timefold 1.15 vers 1.31, Java 21 inchangé (décision du 13 novembre), avant MOT-04 | — | 1 | M | — | à faire |
-| MOT-13 | **Contraintes déclarées par l'école** : l'école ne règle pas les 498 paramètres, elle déclare ses contraintes à partir de six modèles ; liste « Déjà pris en compte » du profil ; contrôle de place avant le calcul. Étapes : 13a serveur, 13b solveur et bilan, 13c écran ([conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md)) | — | 3 | M + L + M | 13b : MOT-12 ; 13c : ADM-02 | en cours (13a) |
+| MOT-13 | **Contraintes déclarées par l'école** : l'école ne règle pas les 498 paramètres, elle déclare ses contraintes à partir de six modèles ; liste « Déjà pris en compte » du profil ; contrôle de place avant le calcul. Étapes : 13a serveur, 13b solveur et bilan, 13c écran ([conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md)) | — | 3 | M + L + M | 13b : MOT-12 ; 13c : ADM-02 | 13a codée, PR à ouvrir |
 
 ## Critères de « terminé »
 

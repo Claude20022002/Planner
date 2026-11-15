@@ -207,7 +207,7 @@ Il sera détaillé dans un complément de plan, à valider avant son code.
 | `backend/controllers/moteurValeursController.js` | modifié | `contraintes` et `retirer` dans `POST /versions` | 68 → 85 |
 | `backend/tests/utils/contraintesDeclarees.test.js` | créé | modèles, phrases, contrôles, contradictions, place (fonctions pures) | 250 |
 | `backend/tests/integration/contraintesDeclarees.test.js` | créé | routes, cycle d'une version, cibles inexistantes, refus à la génération, problème de l'école d'origine inchangé | 250 |
-| `backend/tests/utils/catalogueMoteur.test.js` | modifié | chaque règle citée par un modèle existe dans le catalogue | +15 |
+| (pas de changement de `catalogueMoteur.test.js`) | — | le contrôle « chaque règle citée par un modèle existe » est dans `contraintesDeclarees.test.js`, avec les autres tests des modèles | — |
 | `docs/conception/moteur-planification/README.md`, `docs/conception/README.md` | modifiés | lien vers ce document | +2 |
 | `docs/plan/modules/MOT-moteur.md`, `docs/plan/suivi.md`, `docs/plan/decisions.md` | modifiés | MOT-12, MOT-13, chantier, migration 0080, décisions des 13 et 15 novembre | — |
 
