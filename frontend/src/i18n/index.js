@@ -6,6 +6,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import fr from './fr.js';
+import applicationsFr from './applications.fr.js';
+import applicationsEn from './applications.en.js';
 import en from './en.js';
 import studioFr from './studio.fr.js';
 import studioEn from './studio.en.js';
@@ -36,8 +38,8 @@ const readStoredLanguage = () => {
 i18n.use(initReactI18next).init({
   // Studio quiz, sessions de jeu, identité de l'école : textes dans leurs propres fichiers, sous leur clé
   resources: {
-    fr: { translation: { ...fr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr } },
-    en: { translation: { ...en, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn } },
+    fr: { translation: { ...fr, applications: applicationsFr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr } },
+    en: { translation: { ...en, applications: applicationsEn, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn } },
   },
   lng: readStoredLanguage(),
   fallbackLng: 'fr',

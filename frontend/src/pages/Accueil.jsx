@@ -72,7 +72,7 @@ export default function Accueil() {
   const ecole = identiteEcole();
   const photos = photosEcole(ecole.nom_court);
 
-  const enter = () => navigate(isAuthenticated && user?.role ? `/dashboard/${user.role}` : '/connexion');
+  const enter = () => navigate(isAuthenticated && user?.role ? '/applications' : '/connexion');
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: ds.board.ground, color: ds.board.letter, display: 'flex', flexDirection: 'column' }}>
