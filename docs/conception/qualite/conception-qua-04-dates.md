@@ -5,7 +5,7 @@
 | Module | [QUA](../../plan/modules/QUA-qualite-docs.md) · fonction libre, hors chantier (les trois chantiers sont pleins ; le chef a demandé une fonction libre le 15 novembre 2026) |
 | Branche | `refactor/qua-04-dates` |
 | Rédigé par | Cursor Grok 4.7, le 2026-11-15 |
-| **Validé** | en attente |
+| **Validé** | Validé par Claude20022002 le 2026-11-15 |
 
 ## 1. Objet et critère de « terminé »
 
@@ -29,8 +29,8 @@ Le même motif reste dans d'autres fichiers (services, tests, migrations, démos
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | Le « plus aucun » vise-t-il seulement `exportEmploiDuTemps.js` ? | oui : c'est le fichier nommé, et la taille est S. Les autres copies restent pour une fonction suivante | | le périmètre |
-| 2 | L'année universitaire (`getFullYear`) et « Généré le » (`toLocaleDateString` sans fuseau) entrent-ils dans QUA-04 ? | non : le module ne nomme que le motif `slice(0, 10)` | | non |
+| 1 | Le « plus aucun » vise-t-il seulement `exportEmploiDuTemps.js` ? | oui : c'est le fichier nommé, et la taille est S. Les autres copies restent pour une fonction suivante | oui (15 nov.) | non |
+| 2 | L'année universitaire (`getFullYear`) et « Généré le » (`toLocaleDateString` sans fuseau) entrent-ils dans QUA-04 ? | non : le module ne nomme que le motif `slice(0, 10)` | non (15 nov.) | non |
 
 ## 4. Solution
 
