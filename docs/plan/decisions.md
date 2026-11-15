@@ -83,6 +83,7 @@ Registre unique à partir du 7 novembre 2026.
 | 13 nov. | **FIN, COM et PAI attendent les entretiens de VEN-02**, qui confirment le module d'achat de chaque marché (décision I-5 de l'inventaire) | — |
 | 13 nov. | Une **seconde passe de recherche**, ciblée sur ce que l'inventaire n'a pas pu voir (avis des magasins d'applications, aSc, Hyperplanning, paiement des frais au Maroc, pays non couverts), se fera plus tard dans une session à part (décision I-3) | — |
 | 13 nov. | **La pile est confirmée** (QUA-03, [pile.md](../conception/qualite/pile.md)) : Express, Sequelize, MySQL 8.4, React et MUI, Expo, Timefold et Java 21, JWT ; la pile de `plan.txt` reste écartée. Confirmation **sous condition que D-01 tienne** (PLA-06). Sequelize est gardé sous surveillance. Montées à prévoir, non décidées : Spring Boot 4 (support libre de la 3.3 fini le 30 juin 2025), Timefold 1.31 puis MOT-04, Node 24, Express 5. Conditions de réouverture : § 5 de la page | la décision du 4 novembre (« l'étude de la pile se clôt dans QUA-03 ») |
+| 15 nov. | **Ollama retiré du serveur** partagé avec n8n (conteneurs, volume, image). n8n, Traefik, postgres et Qdrant non redémarrés. Ne pas relancer le profil Compose `cpu`. | décision du 11 nov. (PLA-06 / Q-21), appliquée |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.
