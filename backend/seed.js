@@ -488,7 +488,7 @@ const APRES_MIDI_VENDREDI = [
     { heure_debut:'14:30', heure_fin:'16:15', duree_minutes:105 },
     { heure_debut:'16:30', heure_fin:'18:00', duree_minutes:90  },
 ];
-const GRILLE_HESTIM = {
+export const GRILLE_HESTIM = {
     lundi:    [...MATIN, ...APRES_MIDI],
     mardi:    [...MATIN, ...APRES_MIDI],
     mercredi: [...MATIN, ...APRES_MIDI],

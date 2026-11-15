@@ -4,7 +4,8 @@
  * (qui, quand, combien, avec quelle insistance), et ce remplissage est une « contrainte déclarée ».
  * Ce fichier est une donnée : les codes sont stables (le site traduit par code), et chaque modèle cite
  * les règles du catalogue dont il est l'instance (un test vérifie qu'elles existent).
- * « tenu » dit si le calcul tient déjà le modèle : faux pour tous jusqu'à MOT-13b (ce qui est montré est tenu).
+ * « tenu » dit si le calcul tient le modèle (ce qui est montré est tenu) : vrai pour les six depuis MOT-13b,
+ * qui les compile pour le solveur (compilation.js).
  */
 
 /** Jours dans l'ordre de la grille ; le rang (1 à 7) est celui que le solveur reçoit. */
@@ -36,7 +37,7 @@ export const GABARITS = {
         cibles: ["ecole", "rythme", "filiere", "groupe", "salle", "matiere"],
         champs: PLAGE,
         poids: null,
-        tenu: false,
+        tenu: true,
         regles: ["HOR.REGLE.PLAGES_RESTREINTES", "SAL.REGLE.INDISPONIBLE", "HOR.REGLE.HEURES_AUTORISEES"],
     },
     plage_a_eviter: {
@@ -46,7 +47,7 @@ export const GABARITS = {
         cibles: ["ecole", "rythme", "filiere", "groupe", "salle", "matiere"],
         champs: PLAGE,
         poids: 10,
-        tenu: false,
+        tenu: true,
         regles: ["HOR.REGLE.PLAGES_RESTREINTES", "HOR.REGLE.COURS_TARDIFS", "HOR.REGLE.COURS_TOT"],
     },
     moment_de_la_journee: {
@@ -56,7 +57,7 @@ export const GABARITS = {
         cibles: ["matiere", "groupe"],
         champs: { moment: { type: "choix", valeurs: ["matin", "apres_midi", "pas_en_fin_de_journee"], obligatoire: true } },
         poids: 10,
-        tenu: false,
+        tenu: true,
         regles: ["MAT.REGLE.MATIN", "MAT.REGLE.PAS_FIN_JOURNEE", "PED.COGN.FONDAMENTAUX_MATIN"],
     },
     plafond_par_jour: {
@@ -70,7 +71,7 @@ export const GABARITS = {
             seuil: { type: "entier", min: 1, max: 16, obligatoire: true },
         },
         poids: 10,
-        tenu: false,
+        tenu: true,
         regles: ["MAT.REGLE.MAX_PAR_JOUR", "MAT.REGLE.CONSECUTIVES_MAX", "ENS.CHARGE.MAX_CONSECUTIVES", "HOR.REGLE.MAX_CONSECUTIVES", "PED.ORG.MATIERES_PAR_JOUR", "ENS.CHARGE.MAX_CLASSES_JOUR"],
     },
     repartition: {
@@ -80,7 +81,7 @@ export const GABARITS = {
         cibles: ["matiere", "groupe"],
         champs: { ecart_jours: { type: "entier", min: 1, max: 3, obligatoire: true } },
         poids: 10,
-        tenu: false,
+        tenu: true,
         regles: ["MAT.REGLE.JOURS_DIFFERENTS", "MAT.REGLE.ESPACEMENT", "MAT.REGLE.ECART_MIN", "HOR.REGLE.EQUILIBRE_SEMAINE"],
     },
     ensemble_ou_separe: {
@@ -95,7 +96,7 @@ export const GABARITS = {
             relation: { type: "choix", valeurs: ["en_meme_temps", "jamais_le_meme_jour", "jamais_a_la_suite"], obligatoire: true },
         },
         poids: 10,
-        tenu: false,
+        tenu: true,
         regles: ["MAT.REGLE.ALIGNEMENT", "MAT.REGLE.INCOMPATIBLES", "MAT.REGLE.REGROUPEMENT", "PED.COGN.DIFFICILES_SUIVIES"],
     },
 };
@@ -113,7 +114,7 @@ export const natureAdmise = (code, nature, parametres = {}) => {
 /** Nature par défaut : la première admise par le modèle. */
 export const natureParDefaut = (code) => GABARITS[code]?.natures[0] ?? null;
 
-/** Poids d'un souhait dans le calcul (13b) : poids de départ × insistance ; null si indispensable ou impossible. */
+/** Poids d'un souhait dans le calcul : poids de départ × insistance ; null si indispensable ou impossible. */
 export const poidsDe = ({ gabarit, nature, insistance }) => {
     if (nature === "impossible") return null;
     const facteur = INSISTANCES[insistance ?? INSISTANCE_PAR_DEFAUT];

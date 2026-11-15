@@ -9,7 +9,7 @@
 | `HUM.BESOIN.ACCESSIBILITE` | Besoins d'accessibilité | Un élève ou un enseignant à mobilité réduite impose des salles accessibles. | donnee | booleen | `false` | individuel (groupe) | non | — | 2 | — | etablissement | periode | absent | 3.38 12.10 |
 | `HUM.BESOIN.PAUSE_NECESSAIRE` | Temps de pause nécessaire | Pause propre à un groupe. | donnee | duree_min | — | individuel (groupe) | non | — | 2 | — | etablissement | periode | absent | 3.37 |
 | `HUM.BESOIN.MINEURS` | Public mineur | Active les règles d'accueil et d'encadrement des mineurs. | donnee | booleen | `false` | pédagogique | non | — | 1 | — | etablissement | periode | absent | 9.19 16A.13 |
-| `HUM.BESOIN.PRIERE` | Temps de prière | Plages à laisser libres si l'école l'a décidé ; ce choix reste le sien. | donnee | structure | — | global, pédagogique | non | — | 3 | — | etablissement | periode | parametre (pause_vendredi) | 7.46 |
+| `HUM.BESOIN.PRIERE` | Temps de prière | Plages à laisser libres si l'école l'a décidé ; ce choix reste le sien. | donnee | structure | — | global, pédagogique | non | — | 3 | — | etablissement | periode | parametre (gabarit plage_interdite (ex-pause_vendredi, migration 0081)) | 7.46 |
 
 ## Règles humaines
 

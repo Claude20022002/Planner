@@ -75,7 +75,7 @@ La demande cite OR-Tools et CP-SAT. Voici ce qui les distingue pour ce problème
 | Replanifier un peu | naturel : épingler et reprendre | possible (figer, indice de départ) |
 | Dans notre dépôt | 22 règles et leurs tests, déjà en service | à écrire ; le paquet Maven requiert glibc, et notre image `eclipse-temurin:21-jre-alpine` ne l'a pas : image à changer, chargement non essayé |
 | Licence, langage | Community sous Apache 2.0, Java ; multifil et nearby selection payants depuis le début | Apache 2.0, paquet Maven officiel pour Java |
-| Échéance | en 2.x, `ScoreAnalysis` est réservé à l'édition payante et il faut Spring Boot 4. `EmploiDuTempsController.java` l'utilise, sur 1.15.0 et Spring Boot 3.3.5. La ligne 1.x finirait début 2027 (extrait, à confirmer) ; aucun prix publié | aucune |
+| Échéance | en 2.x, `ScoreAnalysis` est réservé à l'édition payante et il faut Spring Boot 4. `EmploiDuTempsController.java` l'utilise, sur 1.15.0 et Spring Boot 3.3.5. La ligne 1.x n'est corrigée que pendant 2026 ; sa dernière version est la 1.35 (15 oct. 2026), que MOT-12 installe ; aucun prix publié | aucune |
 
 Relecture du 4 novembre 2026 : **aucune comparaison publiée de CP-SAT et de Timefold n'a été trouvée sur l'emploi du temps**. ITC 2019 a été gagné par une méthode MIP sans limite de temps, ce qui ne dit rien d'un budget de quelques minutes.
 

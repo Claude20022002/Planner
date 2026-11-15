@@ -8,7 +8,9 @@ Statut : **décisions du chef de projet au § 7 ; l'ordre de travail suit `docs/
 | [catalogue/dependances.md](catalogue/dependances.md) | les 588 liens, l'ordre de calcul, les bornes, les tensions |
 | [catalogue/profils.md](catalogue/profils.md) | les cinq profils pédagogiques et leurs réglages |
 | [ecarts-du-solveur.md](ecarts-du-solveur.md) | ce que le solveur actuel ne sait pas faire, et le choix du moteur |
+| [mot-12-montee-solveur.md](mot-12-montee-solveur.md) | MOT-12 : le solveur passe à Spring Boot 4.1 et au cœur de Timefold 1.35, sans le starter |
 | [mot-13-contraintes-declarees.md](mot-13-contraintes-declarees.md) | MOT-13 : l'école déclare ses contraintes à partir de six modèles, au lieu de régler les 498 paramètres |
+| [mot-13b-solveur.md](mot-13b-solveur.md) | MOT-13b : le solveur tient les contraintes déclarées (`HardMediumSoftScore`, poids du profil, bilan hors du solveur, collège fictif) |
 
 Les fichiers JSON de `backend/services/moteur/catalogue/` font foi. Les pages de `catalogue/` en sont générées (`node scripts/catalogue-moteur-doc.mjs`), et un test échoue si elles ne sont plus à jour.
 

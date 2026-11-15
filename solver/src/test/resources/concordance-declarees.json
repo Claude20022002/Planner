@@ -1,0 +1,46 @@
+{
+  "_role": "Concordance du solveur (ConcordanceTest) et du bilan de Planner (bilanContraintes.test.js) : une affectation fixée, des contraintes déjà compilées, et le nombre d'occurrences attendu pour chacune (MOT-13b, § 4.4). Changer un calcul d'un seul côté fait échouer l'un des deux tests.",
+  "creneaux": [
+    { "id": 1, "jour": 1, "debut": 540, "fin": 645, "rang": 1, "regime": "initiale", "suivantId": 2, "finAvecSuivant": 750 },
+    { "id": 2, "jour": 1, "debut": 660, "fin": 750, "rang": 2, "regime": "initiale" },
+    { "id": 3, "jour": 1, "debut": 810, "fin": 915, "rang": 3, "regime": "initiale", "suivantId": 4, "finAvecSuivant": 1020 },
+    { "id": 4, "jour": 1, "debut": 930, "fin": 1020, "rang": 4, "regime": "initiale" },
+    { "id": 5, "jour": 2, "debut": 540, "fin": 645, "rang": 1, "regime": "initiale", "suivantId": 6, "finAvecSuivant": 750 },
+    { "id": 6, "jour": 2, "debut": 660, "fin": 750, "rang": 2, "regime": "initiale" },
+    { "id": 7, "jour": 2, "debut": 810, "fin": 915, "rang": 3, "regime": "initiale", "suivantId": 8, "finAvecSuivant": 1020 },
+    { "id": 8, "jour": 2, "debut": 930, "fin": 1020, "rang": 4, "regime": "initiale" },
+    { "id": 9, "jour": 3, "debut": 540, "fin": 645, "rang": 1, "regime": "initiale", "suivantId": 10, "finAvecSuivant": 750 },
+    { "id": 10, "jour": 3, "debut": 660, "fin": 750, "rang": 2, "regime": "initiale" }
+  ],
+  "salles": [
+    { "id": 10, "nom": "S-10", "capacite": 40, "type": "Salle de cours", "campusId": 1 },
+    { "id": 11, "nom": "S-11", "capacite": 40, "type": "Salle de cours", "campusId": 1 },
+    { "id": 12, "nom": "S-12", "capacite": 40, "type": "Salle de cours", "campusId": 1 }
+  ],
+  "lecons": [
+    { "id": "a1", "coursId": 1, "regime": "initiale", "longueur": 1, "creneau": { "id": 1 }, "salle": { "id": 10 } },
+    { "id": "a2", "coursId": 1, "regime": "initiale", "longueur": 1, "creneau": { "id": 2 }, "salle": { "id": 10 } },
+    { "id": "a3", "coursId": 1, "regime": "initiale", "longueur": 2, "creneau": { "id": 3 }, "salle": { "id": 11 } },
+    { "id": "a4", "coursId": 1, "regime": "initiale", "longueur": 1, "creneau": { "id": 5 }, "salle": { "id": 10 } },
+    { "id": "b1", "coursId": 2, "regime": "initiale", "longueur": 1, "creneau": { "id": 1 }, "salle": { "id": 11 } },
+    { "id": "b2", "coursId": 2, "regime": "initiale", "longueur": 1, "creneau": { "id": 6 }, "salle": { "id": 11 } },
+    { "id": "b3", "coursId": 2, "regime": "initiale", "longueur": 1, "creneau": { "id": 9 }, "salle": { "id": 10 } },
+    { "id": "c1", "coursId": 3, "regime": "initiale", "longueur": 1, "creneau": { "id": 4 }, "salle": { "id": 12 } },
+    { "id": "n1", "coursId": 1, "regime": "initiale", "longueur": 1 }
+  ],
+  "contraintesDeclarees": [
+    { "id": 1, "famille": "PLAGE", "niveau": "DUR", "lecons": ["a1", "a3", "b2"], "creneaux": [1, 4, 6], "salles": [] },
+    { "id": 2, "famille": "PLAGE", "niveau": "SOUPLE", "poids": 30, "lecons": [], "creneaux": [1, 2, 9], "salles": [10] },
+    { "id": 3, "famille": "PLAGE", "niveau": "MOYEN", "lecons": ["a4"], "creneaux": [7], "salles": [] },
+    { "id": 4, "famille": "PLAFOND", "niveau": "SOUPLE", "poids": 10, "quoi": "SEANCES", "seuil": 2, "paquets": [{ "a": ["a1", "a2", "a3", "a4", "n1"] }] },
+    { "id": 5, "famille": "PLAFOND", "niveau": "DUR", "quoi": "HEURES", "seuil": 3, "paquets": [{ "a": ["a1", "a2", "a3", "c1"] }] },
+    { "id": 6, "famille": "PLAFOND", "niveau": "MOYEN", "quoi": "SEANCES_A_LA_SUITE", "seuil": 1, "paquets": [{ "a": ["a1", "a2", "a3"] }, { "a": ["b1", "b2"] }] },
+    { "id": 7, "famille": "REPARTITION", "niveau": "SOUPLE", "poids": 10, "ecart": 2, "paquets": [{ "a": ["a1", "a4", "b3"] }] },
+    { "id": 8, "famille": "REPARTITION", "niveau": "MOYEN", "ecart": 1, "paquets": [{ "a": ["a1", "b3"] }] },
+    { "id": 9, "famille": "ENSEMBLE", "niveau": "DUR", "relation": "EN_MEME_TEMPS", "paquets": [{ "a": ["a1", "a4"], "b": ["b1", "b2"] }] },
+    { "id": 10, "famille": "ENSEMBLE", "niveau": "SOUPLE", "poids": 3, "relation": "JAMAIS_LE_MEME_JOUR", "paquets": [{ "a": ["a1", "a2"], "b": ["b1", "c1"] }] },
+    { "id": 11, "famille": "ENSEMBLE", "niveau": "MOYEN", "relation": "JAMAIS_A_LA_SUITE", "paquets": [{ "a": ["a1"], "b": ["a2", "c1", "b1"] }] },
+    { "id": 12, "famille": "PLAGE", "niveau": "SOUPLE", "poids": 10, "lecons": [], "creneaux": [1], "salles": [] }
+  ],
+  "attendus": { "1": 3, "2": 3, "3": 0, "4": 1, "5": 6, "6": 1, "7": 2, "8": 0, "9": 2, "10": 4, "11": 1, "12": 0 }
+}

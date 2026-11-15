@@ -177,7 +177,7 @@ Pour couper ou adoucir une règle du profil, l'école passe par une ligne de MP-
 
 ### 4.6 Le solveur (MOT-13b, en bref)
 
-Il sera détaillé dans un complément de plan, à valider avant son code.
+Détaillé dans le complément de plan [mot-13b-solveur.md](mot-13b-solveur.md), validé le 15 novembre (réponses 17 à 21).
 
 - Le serveur **compile** chaque contrainte en une liste explicite de séances concernées, plus ses paramètres. Le solveur ne connaît ni les filières ni les rythmes.
 - Un fichier Java à part, `ContraintesDeclarees.java`, contient une règle par modèle. Chaque pénalité porte l'identifiant de sa contrainte, pour le bilan.

@@ -2,14 +2,9 @@ package ma.hestim.solver.rest;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,25 +17,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ai.timefold.solver.core.api.score.analysis.ConstraintAnalysis;
-import ai.timefold.solver.core.api.score.analysis.ScoreAnalysis;
-import ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore;
-import ai.timefold.solver.core.api.score.stream.DefaultConstraintJustification;
+import ai.timefold.solver.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 import ai.timefold.solver.core.api.solver.SolutionManager;
 import ai.timefold.solver.core.api.solver.SolverConfigOverride;
 import ai.timefold.solver.core.api.solver.SolverManager;
 import ai.timefold.solver.core.api.solver.SolverStatus;
 import ai.timefold.solver.core.config.solver.termination.TerminationConfig;
-import ma.hestim.solver.domain.Creneau;
 import ma.hestim.solver.domain.EmploiDuTemps;
-import ma.hestim.solver.domain.Lecon;
-import ma.hestim.solver.domain.Salle;
 
 /**
  * API du solveur, appelée uniquement par Planner (réseau interne) :
  * POST /timetables lance un calcul en tâche de fond et renvoie son identifiant,
  * GET /timetables/{id} renvoie l'état et la meilleure solution connue,
  * DELETE /timetables/{id} arrête le calcul (la meilleure solution reste lisible).
+ * Le contrôle et la préparation du problème sont dans ProblemeRecu, l'analyse dans AnalyseDesRegles.
  */
 @RestController
 public class EmploiDuTempsController {
@@ -48,17 +38,12 @@ public class EmploiDuTempsController {
     private static final int DUREE_DEFAUT_SECONDES = 60;
     private static final int DUREE_MAX_SECONDES = 600;
     private static final Duration CONSERVATION = Duration.ofHours(1);
-    // Bornes d'un problème : HESTIM entier tient très en dessous (≈ 250 leçons par semestre)
-    private static final int LECONS_MAX = 5000;
-    private static final int CRENEAUX_MAX = 500;
-    private static final int SALLES_MAX = 2000;
-    private static final int VOEUX_MAX = 200_000;
 
     @Value("${solver.calculs-simultanes-max:2}")
     private int calculsSimultanesMax;
 
     private final SolverManager<EmploiDuTemps, String> solverManager;
-    private final SolutionManager<EmploiDuTemps, HardSoftScore> solutionManager;
+    private final SolutionManager<EmploiDuTemps, HardMediumSoftScore> solutionManager;
     private final Map<String, Travail> travaux = new ConcurrentHashMap<>();
 
     /** Un calcul en cours ou terminé. */
@@ -69,7 +54,7 @@ public class EmploiDuTempsController {
     }
 
     public EmploiDuTempsController(SolverManager<EmploiDuTemps, String> solverManager,
-            SolutionManager<EmploiDuTemps, HardSoftScore> solutionManager) {
+            SolutionManager<EmploiDuTemps, HardMediumSoftScore> solutionManager) {
         this.solverManager = solverManager;
         this.solutionManager = solutionManager;
     }
@@ -82,7 +67,7 @@ public class EmploiDuTempsController {
     @PostMapping("/timetables")
     public ResponseEntity<Map<String, Object>> lancer(@RequestBody EmploiDuTemps probleme) {
         purger();
-        String refus = verifierTaille(probleme);
+        String refus = ProblemeRecu.verifier(probleme);
         if (refus != null) {
             return ResponseEntity.badRequest().body(Map.of("erreur", refus));
         }
@@ -90,7 +75,7 @@ public class EmploiDuTempsController {
         if (actifs >= calculsSimultanesMax) {
             return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(Map.of("erreur", "Trop de calculs en cours : réessayez dans quelques minutes"));
         }
-        relier(probleme);
+        ProblemeRecu.relier(probleme);
         String id = UUID.randomUUID().toString();
         Travail travail = new Travail();
         travail.meilleure = probleme;
@@ -105,7 +90,7 @@ public class EmploiDuTempsController {
         solverManager.solveBuilder()
                 .withProblemId(id)
                 .withProblemFinder(cle -> probleme)
-                .withBestSolutionConsumer(solution -> travail.meilleure = solution)
+                .withBestSolutionEventConsumer(evenement -> travail.meilleure = evenement.solution())
                 .withExceptionHandler((cle, exception) -> travail.erreur = exception.getMessage())
                 .withConfigOverride(new SolverConfigOverride<EmploiDuTemps>().withTerminationConfig(arret))
                 .run();
@@ -128,10 +113,11 @@ public class EmploiDuTempsController {
         if (travail.erreur != null) {
             reponse.put("erreur", travail.erreur);
         }
-        HardSoftScore score = solution.getScore();
+        HardMediumSoftScore score = solution.getScore();
         if (score != null) {
             reponse.put("score", score.toString());
             reponse.put("dur", score.hardScore());
+            reponse.put("moyen", score.mediumScore());
             reponse.put("souple", score.softScore());
         }
         reponse.put("lecons", solution.getLecons().stream()
@@ -145,7 +131,7 @@ public class EmploiDuTempsController {
                 .collect(Collectors.toList()));
         // Analyse des règles enfreintes, une fois le calcul terminé (coûteuse)
         if (statut == SolverStatus.NOT_SOLVING && score != null) {
-            analyser(solution, reponse);
+            AnalyseDesRegles.analyser(solutionManager, solution, reponse);
         }
         return ResponseEntity.ok(reponse);
     }
@@ -157,70 +143,6 @@ public class EmploiDuTempsController {
         }
         solverManager.terminateEarly(id);
         return ResponseEntity.ok(Map.of("id", id, "statut", "ARRET_DEMANDE"));
-    }
-
-    /** Règles dures et souples enfreintes, et leçons concernées par une règle dure. */
-    private void analyser(EmploiDuTemps solution, Map<String, Object> reponse) {
-        ScoreAnalysis<HardSoftScore> analyse = solutionManager.analyze(solution);
-        List<Map<String, Object>> violations = new ArrayList<>();
-        Set<String> leconsEnConflit = new LinkedHashSet<>();
-        for (ConstraintAnalysis<HardSoftScore> contrainte : analyse.constraintMap().values()) {
-            HardSoftScore s = contrainte.score();
-            if (s.hardScore() == 0 && s.softScore() >= 0) {
-                continue;
-            }
-            int nombre = contrainte.matches() == null ? 0 : contrainte.matches().size();
-            violations.add(Map.of("contrainte", contrainte.constraintRef().constraintName(), "dur", s.hardScore(), "souple", s.softScore(), "nombre", nombre));
-            if (s.hardScore() < 0 && contrainte.matches() != null) {
-                contrainte.matches().forEach(m -> {
-                    if (m.justification() instanceof DefaultConstraintJustification justification) {
-                        // Faits de la correspondance : des leçons, ou une liste de leçons (conflits regroupés)
-                        justification.getFacts().stream()
-                                .flatMap(f -> f instanceof java.util.Collection<?> liste ? liste.stream() : java.util.stream.Stream.of(f))
-                                .filter(Lecon.class::isInstance).map(f -> ((Lecon) f).getId()).forEach(leconsEnConflit::add);
-                    }
-                });
-            }
-        }
-        violations.sort((a, b) -> Integer.compare((int) a.get("dur"), (int) b.get("dur")));
-        reponse.put("violations", violations);
-        reponse.put("leconsEnConflit", leconsEnConflit);
-    }
-
-    /**
-     * Les leçons arrivent en JSON avec des copies de créneaux et de salles (leçons épinglées) :
-     * on les remplace par les instances des listes, que le solveur reconnaît.
-     */
-    static void relier(EmploiDuTemps probleme) {
-        Map<Long, Creneau> creneaux = probleme.getCreneaux().stream().collect(Collectors.toMap(Creneau::getId, Function.identity()));
-        Map<Long, Salle> salles = probleme.getSalles().stream().collect(Collectors.toMap(Salle::getId, Function.identity()));
-        for (Lecon lecon : probleme.getLecons()) {
-            if (lecon.getCreneau() != null) {
-                lecon.setCreneau(creneaux.get(lecon.getCreneau().getId()));
-            }
-            if (lecon.getSalle() != null) {
-                lecon.setSalle(salles.get(lecon.getSalle().getId()));
-            }
-            // Une leçon épinglée sans créneau connu ne peut pas l'être
-            if (lecon.isEpinglee() && lecon.getCreneau() == null) {
-                lecon.setEpinglee(false);
-            }
-        }
-        probleme.preparerValeursPossibles();
-    }
-
-    static String verifierTaille(EmploiDuTemps p) {
-        if (p.getLecons() == null || p.getCreneaux() == null || p.getSalles() == null) {
-            return "Problème incomplet : leçons, créneaux et salles sont requis";
-        }
-        if (p.getLecons().size() > LECONS_MAX || p.getCreneaux().size() > CRENEAUX_MAX || p.getSalles().size() > SALLES_MAX
-                || (p.getVoeux() != null && p.getVoeux().size() > VOEUX_MAX)) {
-            return "Problème trop grand";
-        }
-        if (p.getLecons().stream().anyMatch(l -> l.getId() == null || l.getLongueur() < 1 || l.getLongueur() > 2)) {
-            return "Leçon invalide (identifiant manquant ou longueur hors de 1-2)";
-        }
-        return null;
     }
 
     private void purger() {

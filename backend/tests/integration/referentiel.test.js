@@ -316,7 +316,7 @@ describe("Paramètres de planification", () => {
         expect((await clients.enseignant.get("/api/parametres-planning")).status).toBe(403);
         const response = await clients.admin.get("/api/parametres-planning");
         expect(response.status).toBe(200);
-        expect(response.body.pause_vendredi).toMatchObject({ modifie: false, valeur: { active: true } });
+        expect([response.body.max_heures_jour_groupe?.valeur, "pause_vendredi" in response.body, "samedi_apres_midi_initiale" in response.body]).toEqual([8, false, false]);
     });
 
     test("valeur invalide refusée, valeur valide enregistrée puis réinitialisée", async () => {
