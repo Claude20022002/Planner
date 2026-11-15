@@ -18,6 +18,8 @@ import {
     Periode,
     PlanningSnapshot,
     Salle,
+    ValeurParametre,
+    VersionParametres,
 } from "../../models/index.js";
 import { construireProbleme } from "../../services/generation/timefold/probleme.js";
 import { attendreGeneration } from "../../services/generation/timefold/generation.js";
@@ -259,6 +261,24 @@ describe("Génération complète", () => {
         expect((await clients.admin.send("post", `/api/generation-automatique/snapshots/${ancienneVersion}/rollback`)).status).toBe(200);
         expect(await Affectation.count({ where: { id_snapshot: ancienneVersion, id_enseignement: ref.ensCm.id_enseignement, statut: "planifie" } })).toBe(avant.length);
         expect(await Affectation.count({ where: { id_enseignement: ref.ensCm.id_enseignement, statut: "planifie" } })).toBe(13);
+    });
+
+    test("valeurs invalides : la génération s'arrête avant le calcul (MOT-03)", async () => {
+        const avant = problemes.length;
+        const version = await VersionParametres.create({ libelle: "MOT-03", date_effet: "2026-01-01", statut: "appliquee", id_auteur: admin.id_user, appliquee_le: new Date() });
+        await ValeurParametre.bulkCreate([
+            { id_version: version.id_version, cle: "PRF.ENS.MATIN", portee: "enseignant", id_portee: String(prof.id_user), valeur: true },
+            { id_version: version.id_version, cle: "PRF.ENS.APRES_MIDI", portee: "enseignant", id_portee: String(prof.id_user), valeur: true },
+        ]);
+        const reponse = await clients.admin.send("post", "/api/generation-automatique/generer", { id_periode: ref.periode.id_periode, id_filieres: [ref.filiere.id_filiere], duree_secondes: 10 });
+        await attendreGeneration(reponse.body.session.id_generation_session);
+        const session = (await clients.admin.get(`/api/generation-automatique/sessions/${reponse.body.session.id_generation_session}`)).body;
+        expect(session.status).toBe("failed");
+        expect(session.last_message).toMatch(/Préférence pour le matin/);
+        expect(session.config.refus_valeurs[0].code).toBe("exclusion_mutuelle");
+        expect(problemes).toHaveLength(avant);
+        await ValeurParametre.destroy({ where: { id_version: version.id_version } });
+        await version.destroy();
     });
 
     test("solveur injoignable : la génération échoue proprement avec un message clair", async () => {

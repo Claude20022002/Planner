@@ -1,6 +1,7 @@
 import { Filiere, GenerationSession, Periode } from "../../../models/index.js";
 import { ErreurMetier } from "../../planning/enseignements.js";
 import { exigerAssezDePlace } from "../../moteur/contraintes/avantGeneration.js";
+import { exigerValeursCoherentes } from "../../moteur/valeurs/validation.js";
 import { construireProbleme } from "./probleme.js";
 import { arreterCalcul, attendreSolution, lancerCalcul } from "./solveurClient.js";
 import { deployerSemaineType } from "./deploiement.js";
@@ -31,7 +32,8 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         if (!aPlacer) {
             throw new ErreurMetier(exclus.length ? "Aucun enseignement à placer : tous sont déjà planifiés ou sans enseignant" : "Aucun enseignement sur cette période", 400);
         }
-        // Des plages interdites (MOT-13) qui ne laissent pas assez de créneaux : aucun calcul ne les tiendrait
+        // Combinaison de valeurs invalide (MOT-03), puis plages interdites (MOT-13) : aucun calcul ne les tiendrait
+        await exigerValeursCoherentes({ probleme, periode });
         await exigerAssezDePlace({ probleme, periode });
 
         if (!dureeSecondes) probleme.dureeSecondes = dureeAutomatique(aPlacer);
@@ -95,7 +97,8 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         });
     } catch (error) {
         // Un refus du contrôle de place garde tous ses manques dans le rapport, pour l'écran
-        const config = error.refus ? { ...(session.config || {}), refus_place: error.refus } : session.config;
+        const rapportRefus = error.code === "VALEURS_INVALIDES" ? { refus_valeurs: error.refus } : error.refus ? { refus_place: error.refus } : {};
+        const config = error.refus ? { ...(session.config || {}), ...rapportRefus } : session.config;
         await session.update({ status: "failed", progress: 100, last_message: error.message.slice(0, 250), duration_ms: Date.now() - debut, config }).catch(() => {});
     } finally {
         enCours.delete(session.id_generation_session);
