@@ -41,6 +41,8 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 
 Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, PR #184 ; CI du 15 nov. : 5 contrôles verts, 3 parcours en échec (correctifs de tests locaux, à pousser). Aucun quatrième chantier ouvert.
 
+Exception QUA-04 autorisée par le chef le 15 novembre (fonction libre, les trois chantiers restent pleins) : `refactor/qua-04-dates`, plan écrit, en attente du « validé ». Aucun code.
+
 ## Missions en cours
 
 Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organisation.md](organisation.md), § 10) : une ligne par branche ouverte, retirée à la fusion. Le détail d'une mission est dans sa fiche, `docs/plan/missions/<identifiant>.md`. Les lignes sans fiche sont des travaux commencés avant le 15 novembre.
@@ -221,7 +223,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QUA-01](modules/QUA-qualite-docs.md) | `README.md` et `PRODUCT.md` à jour | libre | M | à faire |  |
 | [QUA-02](modules/QUA-qualite-docs.md) | Découper les contrôleurs trop longs, sans changer leur comportement, chacun couvert… | libre | M par contrôleur | à faire |  |
 | [QUA-03](modules/QUA-qualite-docs.md) | Clore l'étude de la pile | 1 | S | fait (#171, 15 nov.) | #171 |
-| [QUA-04](modules/QUA-qualite-docs.md) | Reste des dates | libre | S | à faire |  |
+| [QUA-04](modules/QUA-qualite-docs.md) | Reste des dates | libre | S | en cours : plan écrit, en attente du « validé » | `refactor/qua-04-dates` |
 | [QUA-05](modules/QUA-qualite-docs.md) | Supprimer les branches et les dossiers de travail morts, après vérification de leur… | libre | S | à faire |  |
 | [QUA-06](modules/QUA-qualite-docs.md) | `docs/users.xlsx` | 0 | S | fait (personnes fictives, rien à réécrire) |  |
 | [QUA-07](modules/QUA-qualite-docs.md) | Protéger `main` | 0 | S | fait : les 6 contrôles de la CI sont exigés (contournable seulement par `gh pr merge --admin`) |  |
