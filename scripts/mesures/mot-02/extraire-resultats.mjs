@@ -26,12 +26,17 @@ export async function extraire(dossier) {
         const brut = JSON.parse(await readFile(path.join(dossier, fichier), 'utf8'));
         if (brut.chauffe || brut.fumee) continue;
         const journal = await readFile(path.join(dossier, `${brut.indice}-moteur.log`), 'utf8').catch(() => '');
-        const derniere = brut.observations?.at(-1)?.reponse;
+        const observationFinale = brut.observations?.at(-1);
+        const derniere = observationFinale?.reponse;
+        // Reprend aussi les passages acquis avant la distinction des durees.
+        const dureePrincipale = derniere?.statut === 'NOT_SOLVING' && Number.isFinite(observationFinale.recuMs)
+            ? observationFinale.recuMs : brut.dureeMs;
         const cpu = (brut.observations ?? []).map((o) => o.cpuMicrosecondes).filter(Number.isFinite);
         passages.push({ revision: brut.revision, image: brut.image, profil: brut.profil, indice: brut.indice,
             problemeSha256: brut.problemeSha256, requeteSha256: brut.requeteSha256,
             dureeDemandeeSecondes: brut.dureeDemandeeSecondes,
-            demarrageMs: brut.demarrageMs, dureeMs: brut.dureeMs,
+            demarrageMs: brut.demarrageMs, dureeMs: dureePrincipale,
+            dureeTotaleAvecArretMs: brut.dureeTotaleAvecArretMs ?? brut.dureeMs,
             premiereFaisableObserveeMs: brut.premiereFaisableObserveeMs,
             controle: brut.controle, erreur: brut.erreur ?? null, erreurNettoyage: brut.erreurNettoyage ?? null,
             score: derniere?.score ?? null, dur: derniere?.dur ?? null, moyen: derniere?.moyen ?? null,

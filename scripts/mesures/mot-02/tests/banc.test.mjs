@@ -187,3 +187,16 @@ test('journaux : vitesse, phase, score et mode sont extraits ou laissés indispo
         constructionInterrompue: false, scoreFinal: '-4450init/0hard/0soft' });
     assert.equal(analyserJournal('').evaluationsParSeconde, null);
 });
+
+test('le temps au GET final exclut la demande administrative après un échec', async () => {
+    let temps = 0;
+    const api = async (chemin, options) => {
+        if (options?.methode === 'DELETE') { temps += 300; return {}; }
+        if (chemin === '/timetables') { temps += 10; return { id: 'essai' }; }
+        temps += 20; return { ...finale(), lecons: [] };
+    };
+    const r = await observer(probleme, api, sonde, { maintenant: () => temps, pause: async () => {} });
+    assert.equal(r.dureeMs, 30);
+    assert.equal(r.dureeTotaleAvecArretMs, 330);
+    assert.ok(r.erreur);
+});

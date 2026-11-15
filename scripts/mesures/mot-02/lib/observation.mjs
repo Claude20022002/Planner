@@ -44,6 +44,7 @@ export async function observer(probleme, api, sonde, { intervalleMs = 1000, gard
             if (controle.faisable && resultat.premiereFaisableObserveeMs === null) resultat.premiereFaisableObserveeMs = recu;
             if (reponse.statut === 'ECHEC' || reponse.erreur) throw new Error('Échec moteur');
             if (finale) {
+                resultat.dureeMs = recu;
                 resultat.controle = controle;
                 resultat.tempsServeurSecondes = reponse.secondes ?? null;
                 if (!controle.valide) throw new Error(controle.erreurs.join(', '));
@@ -54,9 +55,11 @@ export async function observer(probleme, api, sonde, { intervalleMs = 1000, gard
         }
     } catch (erreur) {
         resultat.erreur = erreur.message;
+        resultat.dureeMs ??= maintenant() - debut;
         if (id) await api(`/timetables/${encodeURIComponent(id)}`, { methode: 'DELETE' }).catch(() => {});
     }
-    resultat.dureeMs = maintenant() - debut;
+    resultat.dureeMs ??= maintenant() - debut;
+    resultat.dureeTotaleAvecArretMs = maintenant() - debut;
     const memoires = resultat.observations.map((p) => p.memoireOctets).filter(Number.isFinite);
     const pics = resultat.observations.map((p) => p.picCgroupOctets).filter(Number.isFinite);
     resultat.memoireMaxEchantillonneeOctets = memoires.length ? Math.max(...memoires) : null;
