@@ -14,7 +14,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 
 | Module | Ouvert le | Fonctions du chantier, dans l'ordre | Reste | État |
 |---|---|---|---|---|
-| [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; liste confirmée le 10 nov. |
+| [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a en cours le 15 nov. |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [QUA](modules/QUA-qualite-docs.md) | 10 nov. 2026 | QUA-03 | 1 | ouvert, limité à QUA-03 ; étude faite le 13 nov. : **le chantier se ferme à la fusion** de `etude/qua-03-pile` |
 
@@ -67,7 +67,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PLA-12](modules/PLA-plateforme.md) | Export complet d'une école | 5 | M | à faire |  |
 | [PLA-13](modules/PLA-plateforme.md) | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) | 5 | M (+ L, conditionnel) | reporté |  |
 | [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | en cours | `feat/exp-01-reconnaissance` |
-| [EXP-02](modules/EXP-exploitation.md) | Première installation conteneurisée à côté de n8n. Comprend | 1 | L | à faire |  |
+| [EXP-02](modules/EXP-exploitation.md) | Première installation conteneurisée à côté de n8n. Comprend | 1 | L | en cours (EXP-02a ; EXP-02b à faire) | `feat/exp-02a-traefik` |
 | [EXP-03](modules/EXP-exploitation.md) | ME-0b adapté au nouveau serveur | 1 | M | code fait (#145), adaptation à faire | #145 |
 | [EXP-04](modules/EXP-exploitation.md) | Sauvegardes sur le nouveau serveur | 1 | M | à faire |  |
 | [EXP-05](modules/EXP-exploitation.md) | Supervision en service | 1 | M | code fait, mise en service à faire | ME-21 |
