@@ -61,12 +61,31 @@ La fonction se livre en deux étapes : **PLA-03a** (cette branche : les données
 3. PLA-03b : écrire le complément de plan (forme du schéma de départ, moment où il est régénéré, test d'équivalence avec les migrations), le faire valider, puis coder sur une nouvelle branche.
 4. À la fusion des deux étapes : PLA-03 à « fait » ; PLA-05 devient possible.
 
+## Reprise du même jour : PR #173 et conception de PLA-03b
+
+- La PR **#173** existe ; sa CI est **verte** le 15 novembre, parcours compris (Test Backend 7 min 51 s, parcours 11 min 19 s).
+- `suivi.md` : PLA-03 → « PR ouverte », #173.
+- PLA-03b : 11 questions posées, toutes répondues le 15 novembre. Le complément de plan est rédigé et **attend la validation du chef**. Il n'est pas encore commité : sa branche `feat/pla-03b-schema-depart` part de `origin/main` après la fusion de #173 (réponse 6).
+- Réponses du chef :
+  1. un fichier SQL généré par un script Node (`backend/migrations/sql/schema-depart.sql`) ;
+  2. chargé automatiquement quand la base n'a aucune table ;
+  3. figé, régénéré à la demande du chef ;
+  4. les tests l'emploient, sauf le test d'équivalence et `baseNeuve.test.js` ;
+  5. test d'équivalence strict (structure, lignes, historique) ;
+  6. branche créée après la fusion de #173 ;
+  7. plan dans un fichier à part, `docs/conception/plateforme/pla-03b-schema-depart.md` ;
+  8. `Filiere.annees_a_hestim` et la valeur `hestim` du modèle d'emploi du temps : **UIX-01** (à écrire dans `decisions.md` et dans le fichier du module UIX, avec PLA-03b) ;
+  9. le test ignore les deux dates de la ligne d'identité, en plus d'`AUTO_INCREMENT` ;
+  10. bases jetables `planner_migrations_test` et `planner_depart_test` ;
+  11. commande `npm run schema:depart`.
+- Aucun code écrit dans cette reprise.
+
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "..\travaux-planner\pla-03-base-neuve" push -u origin feat/pla-03-base-neuve
-gh pr create --base main --head feat/pla-03-base-neuve --title "PLA-03a : base neuve sans données d'école" --fill
-gh pr checks feat/pla-03-base-neuve --watch
+git -C "..\travaux-planner\pla-03-base-neuve" push
+gh pr checks 173 --watch
+gh pr merge 173 --merge
 ```
 
 Conflits possibles avec #164 et #171 sur `docs/conception/README.md` et `docs/plan/suivi.md` : ce sont des lignes des mêmes tableaux, il suffit de garder toutes les lignes.
@@ -83,13 +102,16 @@ et la fiche docs/sessions/2026-11-15-feat-pla-03-base-neuve.md.
 Fait : les migrations 0003 et 0055 ne donnent les campus et l'identité de l'école d'origine
 qu'à une base qui a des comptes ; le jeu de démonstration apporte les siens ; les tests et les
 parcours emploient « Campus Nord » (N) et « Campus Sud » (S) ; 589 tests d'intégration verts.
-Vérifie avec gh pr list si la PR de PLA-03a existe et si sa CI (parcours compris) est verte ;
-sinon, dis-le au chef et corrige ce qui échoue.
-Reste : PLA-03b, le schéma de départ. Pose tes questions (forme du schéma, moment où il est
-régénéré, usage par les tests, test d'équivalence), écris le complément de plan, fais-le valider,
-puis code sur une branche feat/pla-03b-…
-Questions en attente : à qui donner Filiere.annees_a_hestim et la valeur « hestim » du modèle
-d'emploi du temps (EXP-07 ou UIX-01).
+La PR #173 (PLA-03a) est ouverte, CI verte le 15 novembre. Vérifie avec gh pr list qu'elle est
+fusionnée ; sinon, dis-le au chef : PLA-03b ne se code qu'après.
+Reste : PLA-03b, le schéma de départ. Les 11 réponses du chef sont dans la fiche (section
+« Reprise du même jour »). Si le chef a validé le complément de plan, crée la branche
+feat/pla-03b-schema-depart depuis origin/main (dossier ..\travaux-planner\pla-03b-schema-depart),
+commite le plan seul dans docs/conception/plateforme/pla-03b-schema-depart.md avec suivi.md,
+puis code en suivant ses étapes. Si le plan n'est pas validé ou n'est plus disponible, réécris-le
+à partir des 11 réponses et fais-le valider.
+Décidé : Filiere.annees_a_hestim et la valeur « hestim » du modèle d'emploi du temps vont à UIX-01 ;
+à écrire dans decisions.md et dans le fichier du module UIX, dans la PR de PLA-03b.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ;
 fiche de session et suivi.md à jour en fin de session ; jamais de git push.
 ```
