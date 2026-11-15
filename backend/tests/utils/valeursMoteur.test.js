@@ -174,8 +174,9 @@ describe("MP-1 : l'école pilote ne change pas", () => {
         expect(valeurs.get(id)).toBe(convertir(PARAMETRES_PLANNING[cle].defaut));
     });
 
-    test("chaque ancien réglage a sa destination", () => {
-        expect([...Object.keys(ANCIENS_PARAMETRES), ...ANCIENS_VERS_PLAGES].sort()).toEqual(Object.keys(PARAMETRES_PLANNING).sort());
+    test("chaque ancien réglage a sa destination ; les deux plages ne sont plus des réglages (0081)", () => {
+        expect(Object.keys(ANCIENS_PARAMETRES).sort()).toEqual(Object.keys(PARAMETRES_PLANNING).sort());
+        expect(ANCIENS_VERS_PLAGES.filter((cle) => cle in PARAMETRES_PLANNING)).toEqual([]);
     });
 
     test("les 9 règles souples du solveur gardent leur poids", () => {
