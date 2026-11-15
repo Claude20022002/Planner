@@ -9,6 +9,7 @@ Statut : **décisions du chef de projet au § 7 ; l'ordre de travail suit `docs/
 | [catalogue/profils.md](catalogue/profils.md) | les cinq profils pédagogiques et leurs réglages |
 | [ecarts-du-solveur.md](ecarts-du-solveur.md) | ce que le solveur actuel ne sait pas faire, et le choix du moteur |
 | [mot-13-contraintes-declarees.md](mot-13-contraintes-declarees.md) | MOT-13 : l'école déclare ses contraintes à partir de six modèles, au lieu de régler les 498 paramètres |
+| [mot-03-validation.md](mot-03-validation.md) | MOT-03 : `requiert`, `borne` et `exclut` refusés avant le calcul, avec une phrase |
 
 Les fichiers JSON de `backend/services/moteur/catalogue/` font foi. Les pages de `catalogue/` en sont générées (`node scripts/catalogue-moteur-doc.mjs`), et un test échoue si elles ne sont plus à jour.
 
@@ -150,7 +151,7 @@ Les sept étapes demandées existent déjà en partie.
 | Étape | Aujourd'hui | Ce qui manque |
 |---|---|---|
 | 1. Collecte | `timefold/probleme.js` | lire les valeurs résolues ; collecter ce qui manque (303 paramètres absents du code, règles comprises) |
-| 2. Validation | `avertissements.js` : 2 contrôles, et les exclusions | tous les `requiert`, `borne`, `exclut` : déjà en données, `coherenceDesValeurs` en donne le début |
+| 2. Validation | `valeurs/validation.js` (MOT-03) : `requiert`, `borne`, `exclut` avant le calcul ; `avertissements.js` : 2 contrôles non bloquants | nourrir le solveur avec les valeurs (collecte, MOT-05) |
 | 3. Contraintes | `ContraintesEmploiDuTemps.java` : 22 règles, poids écrits en dur | 112 règles ; poids et force lus depuis les valeurs |
 | 4. Optimisation | Timefold, 30 à 240 s | voir [le choix du moteur](ecarts-du-solveur.md#4-le-choix-du-moteur) ; plusieurs scénarios |
 | 5. Génération | `deploiement.js` : semaine type recopiée sur les dates | autres formes du temps ; vues par département |
