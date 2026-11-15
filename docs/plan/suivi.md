@@ -33,9 +33,24 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | MOT-01, partie serveur (MP-1) | #156 | **fusionnée le 10 nov.** |
 | Plan par modules | #161 | **fusionnée le 10 nov.** |
 | Organisation de l'équipe, module MKT | #163 | **fusionnée le 10 nov.** |
-| Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | décisions I-1 à I-5 prises le 13 nov. ; fusionner |
-| Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | `doc/plan-modules-inventaire` (part de #167) | fusionner après #167 |
-| Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | `chore/coordination-agents` | en cours : plan validé le 15 nov. |
+| Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | **fusionnée** |
+| Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | #170 | **fusionnée** |
+| Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | `chore/coordination-agents` | écrit le 15 nov., à pousser ; un écart avec le plan à confirmer (tableau « Missions en cours » au lieu d'une colonne) |
+
+## Missions en cours
+
+Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organisation.md](organisation.md), § 10) : une ligne par branche ouverte, retirée à la fusion. Le détail d'une mission est dans sa fiche, `docs/plan/missions/<identifiant>.md`. Les lignes sans fiche sont des travaux commencés avant le 15 novembre.
+
+| Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
+|---|---|---|---|---|---|---|
+| EXP | EXP-01 reconnaissance du serveur | agent de Cursor | #172 | PR ouverte, CI verte | 15 nov. : tour d'état seulement | — |
+| EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` (part de #172) | plan écrit, **non commité**, à valider par le chef (serveur) | 15 nov. : tour d'état seulement | — |
+| PLA | PLA-03b schéma de départ | Claude Code | à créer : `feat/pla-03b-schema-depart` | 11 réponses du chef ; complément de plan à valider par le chef | 15 nov. : tour d'état seulement | — |
+| PLA | PLA-06 mesure de D-01 | Claude Code | #164 (brouillon) | banc codé, essayé sur 3 écoles ; séries sur 200 bases à lancer | 15 nov. : tour d'état seulement | — |
+| QUA | QUA-03 étude de la pile | Claude Code | #171 | PR ouverte, CI verte ; sa fusion ferme le chantier QUA | 15 nov. : tour d'état seulement | — |
+| MOT | MOT-13a contraintes déclarées, serveur | Claude Code | `feat/mot-13-contraintes` (non poussée) | plan validé par le chef le 15 nov. ; code à écrire ; **pas de fiche de session** | 15 nov. : tour d'état seulement | — |
+
+Hors chantier, PR ouvertes : #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
 ## Numéros de migration réservés
 
@@ -55,7 +70,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 |---|---|---|---|---|---|
 | [PLA-01](modules/PLA-plateforme.md) | Contexte d'école en production | 2 | L | à faire (essai fusionné le 10 nov.) | #142 (essai) |
 | [PLA-02](modules/PLA-plateforme.md) | Fermer les canaux de l'étape 2 | 2 | L | à faire |  |
-| [PLA-03](modules/PLA-plateforme.md) | Base neuve sans données d'école | 2 | M | PR ouverte : PLA-03a (données), CI verte le 15 nov. ; PLA-03b (schéma de départ) conçue, plan à valider | #173 |
+| [PLA-03](modules/PLA-plateforme.md) | Base neuve sans données d'école | 2 | M | en cours : PLA-03a (données) **fusionnée le 15 nov.** (#173) ; PLA-03b (schéma de départ) conçue, plan à valider | #173 |
 | [PLA-04](modules/PLA-plateforme.md) | Tests d'isolation de chaque route dans la CI, côté serveur et parcours | 2 | M + S | à faire |  |
 | [PLA-05](modules/PLA-plateforme.md) | Registre des écoles et création d'une école par une commande (base, migrations,… | 2 | L | à faire |  |
 | [PLA-06](modules/PLA-plateforme.md) | Mesure de D-01 | 1 | M | à faire |  |
