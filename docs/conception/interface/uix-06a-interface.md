@@ -184,3 +184,12 @@ Le 15 novembre 2026, après présentation des quatre propositions précisées et
 - Les champs reçoivent des libellés accessibles ; les formulaires conservés sont adaptés au thème commun. La soumission est désactivée pendant l’enregistrement des fiches.
 - Les nouveaux parcours Personnes utilisent le vrai serveur et le vrai compte de test. Le test réseau négatif interrompt une lecture puis laisse le vrai serveur répondre lors de la nouvelle tentative. Aucune réponse métier de réussite fictive.
 - Vérifications locales : unitaires, lint, build, neutralité, comparaison des thèmes et inspection Chromium/axe-core sans serveur. Les montages de composants utilisent uniquement des personnes et écoles fictives ; les contrôles de connexion compilée interrompent les API et ne valident aucune authentification. La recette avec le jeu fictif préparé par les parcours reste à lancer par le chef ou la CI.
+
+## 15. Correction de la régression de reprise réseau
+
+Application des vérifications du plan validé (§ 8), demandée par le coordinateur dans son message du 15 novembre à 23:54 ; aucun changement de produit ou de périmètre.
+
+- Preuve : CI 43775905844 sur df002a8d, 47 parcours réussis, un échoué et un non exécuté. Les snapshots des deux tentatives montrent le tableau rechargé, page 1, dix comptes sur 31.
+- Cause : le parcours de reprise réseau attendait le compte administrateur de connexion sur cette première page. L’API trie par id_user décroissant ; la présence de ce compte parmi les dix derniers n’est pas garantie.
+- Correction prévue : fixer explicitement la largeur ordinateur du scénario ; armer une attente de réponse GET /api/users?page=1&limit=10 avant le clic Réessayer ; vérifier la réussite de la vraie lecture puis la disparition de l’erreur et l’affichage de tous les comptes de cette réponse. Ni interception de réussite, ni modification de l’API, ni augmentation artificielle du délai.
+- Régression : le même parcours couvre l’échec réseau initial puis la récupération, indépendamment de l’identité des comptes sur la page. Vérifier syntaxe et collecte ; relance intégrée par le chef ou la CI, sans démarrer de serveur par l’agent.
