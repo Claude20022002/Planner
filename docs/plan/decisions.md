@@ -84,6 +84,7 @@ Registre unique à partir du 7 novembre 2026.
 | 13 nov. | Chantier **MOT** ouvert à la place de QUA (fermé à la fusion de #171), dans l'ordre MOT-12, MOT-02, MOT-03, MOT-04 ; **MOT-12** nouvelle : montée du solveur (Spring Boot 4.x, Timefold 1.31, Java 21), avant MOT-04 | — |
 | 15 nov. | **Contraintes déclarées par l'école (MOT-13)**, en tête du chantier MOT : l'école ne règle jamais les 498 paramètres ; le calcul tient le socle (données), le profil (liste courte « Déjà pris en compte », désactivable sauf les règles verrouillées) et les contraintes qu'elle déclare à partir de modèles guidés (l'IA plus tard, relue par l'école). Une impossibilité déclarée est stricte et contrôlée avant le calcul ; un souhait est souple (peu, normal, beaucoup, indispensable sur un niveau de score à part) : **D-09 tient**. Seule l'administration déclare ; les enseignants gardent disponibilités et vœux. Une règle que le calcul ne tient pas n'est pas montrée | — |
 | 13 nov. | Une **seconde passe de recherche**, ciblée sur ce que l'inventaire n'a pas pu voir (avis des magasins d'applications, aSc, Hyperplanning, paiement des frais au Maroc, pays non couverts), se fera plus tard dans une session à part (décision I-3) | — |
+| 15 nov. | **Ollama retiré du serveur** partagé avec n8n (conteneurs, volume, image). n8n, Traefik, postgres et Qdrant non redémarrés. Ne pas relancer le profil Compose `cpu`. | décision du 11 nov. (PLA-06 / Q-21), appliquée |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.

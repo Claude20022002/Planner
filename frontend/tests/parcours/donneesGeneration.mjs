@@ -26,12 +26,12 @@ export const preparerGeneration = async (racine, admin, grille) => {
   const autreProf = await createUser("enseignant", { prenom: "Leila", nom: "Fassi", email: "prof.autre.parcours@exemple.hestim.test" });
   await m.Enseignant.update({ statut: "vacataire" }, { where: { id_user: vacataire.id_user } });
 
-  const gandhi = await m.Campus.findOne({ where: { code: "G" } });
+  const nord = await m.Campus.findOne({ where: { code: "N" } });
   const filiere = await m.Filiere.create({ code_filiere: "GEN", nom_filiere: "Génération" });
   const promo = await m.Groupe.create({ nom_groupe: "4A GEN", niveau: "4ème année", annee: 4, effectif: 40, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
   const td = await m.Groupe.create({ nom_groupe: "GEN-4A-TD1", niveau: "4ème année", annee: 4, effectif: 20, annee_scolaire: "2026-2027", type_groupe: "td", id_groupe_parent: promo.id_groupe, id_filiere: filiere.id_filiere });
-  const salle = await m.Salle.create({ nom_salle: "G-GEN1", type_salle: "Salle de cours", capacite: 50, id_campus: gandhi.id_campus });
-  const labo = await m.Salle.create({ nom_salle: "G-GENLAB", type_salle: "Labo informatique", capacite: 25, id_campus: gandhi.id_campus });
+  const salle = await m.Salle.create({ nom_salle: "N-GEN1", type_salle: "Salle de cours", capacite: 50, id_campus: nord.id_campus });
+  const labo = await m.Salle.create({ nom_salle: "N-GENLAB", type_salle: "Labo informatique", capacite: 25, id_campus: nord.id_campus });
 
   const lundi = grille.lundi;
   // Le vacataire ne déclare que le mardi matin

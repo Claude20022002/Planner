@@ -50,14 +50,14 @@ beforeAll(async () => {
     intrus = await createUser("etudiant");
     clients = { admin: await loginAs(admin), vacataire: await loginAs(vacataire), permanent: await loginAs(permanent) };
 
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const filiere = await Filiere.create({ code_filiere: "SUI", nom_filiere: "Suivi" });
     const autreFiliere = await Filiere.create({ code_filiere: "AUT", nom_filiere: "Autre" });
     const td = await Groupe.create({ nom_groupe: "SUI-4A", niveau: "4ème année", annee: 4, effectif: 25, annee_scolaire: "2026-2027", type_groupe: "td", id_filiere: filiere.id_filiere });
     const autreGroupe = await Groupe.create({ nom_groupe: "AUT-4A", niveau: "4ème année", annee: 4, effectif: 25, annee_scolaire: "2026-2027", type_groupe: "td", id_filiere: autreFiliere.id_filiere });
     for (const e of etudiants) await Appartenir.create({ id_user_etudiant: e.id_user, id_groupe: td.id_groupe });
     await Appartenir.create({ id_user_etudiant: intrus.id_user, id_groupe: autreGroupe.id_groupe });
-    const salle = await Salle.create({ nom_salle: "G-SUI", type_salle: "Salle de cours", capacite: 30, id_campus: gandhi.id_campus });
+    const salle = await Salle.create({ nom_salle: "N-SUI", type_salle: "Salle de cours", capacite: 30, id_campus: nord.id_campus });
     const creneau = await Creneau.create({ jour_semaine: "lundi", heure_debut: "09:00", heure_fin: "10:45", duree_minutes: 105, rang: 1 });
     const cours = await Cours.create({ code_cours: "SUI-NOSQL", nom_cours: "NoSQL", niveau: "4ème année", volume_horaire: 60, type_cours: "CM", semestre: "S7", id_filiere: filiere.id_filiere });
     const composante = await CoursComposante.create({ id_cours: cours.id_cours, type: "CM", volume_heures: 60, niveau_groupe: "td" });
@@ -123,7 +123,7 @@ describe("Avancement et heures", () => {
         expect(csv.status).toBe(200);
         expect(csv.headers["content-type"]).toMatch(/text\/csv/);
         expect(csv.text).toMatch(/ESN casablancaise/);
-        expect(csv.text).toMatch(/;1,8;SUI-NOSQL NoSQL;SUI-4A;G-SUI/);
+        expect(csv.text).toMatch(/;1,8;SUI-NOSQL NoSQL;SUI-4A;N-SUI/);
         expect((await clients.admin.get("/api/suivi/vacataires.csv?mois=octobre")).status).toBe(400);
         expect(MOIS).toMatch(/^\d{4}-\d{2}$/);
         await appel.destroy();

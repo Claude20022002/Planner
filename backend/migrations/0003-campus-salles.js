@@ -8,6 +8,10 @@ import { normaliserTypeSalle } from "../config/referentiel.js";
  *   rattachée à Gandhi, à Stendhal, ou à un campus créé pour elle (aucune salle perdue).
  * - Salles.equipements passe de texte libre à une liste JSON ; ajout de capacite_examen
  *   et reservable_par ; types de salle ramenés à la liste fermée.
+ *
+ * Gandhi et Stendhal ne sont créés que dans une base qui a déjà des comptes : celle de l'école
+ * d'origine. Une base neuve part sans campus, et l'école crée les siens (PLA-03, même règle que la
+ * migration 0057). Le rattachement des salles existantes ne dépend pas des comptes.
  */
 
 const parseEquipements = (valeur) => {
@@ -64,8 +68,11 @@ export const up = async ({ sequelize, queryInterface }) => {
         campusParCode.set(code, row.id_campus);
         return row.id_campus;
     };
-    for (const campus of CAMPUS_HESTIM) {
-        await creerCampus(campus);
+    const [[{ comptes }]] = await sequelize.query("SELECT COUNT(*) AS comptes FROM Users");
+    if (Number(comptes)) {
+        for (const campus of CAMPUS_HESTIM) {
+            await creerCampus(campus);
+        }
     }
 
     // ── Salles.batiment → Salles.id_campus ────────────────────────────────

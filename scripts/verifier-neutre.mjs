@@ -27,9 +27,10 @@ const MOTIF = /HESTIM|hestim\.ma/;
 
 // Exceptions permises : chemin (préfixe) et raison
 const EXCEPTIONS = [
-  { chemin: 'backend/migrations/', raison: "migrations figées : elles créent les données de l'école pilote (campus, identité)" },
+  { chemin: 'backend/migrations/', raison: "migrations figées : elles donnent ses données (campus, identité) à la base de l'école pilote, jamais à une base neuve" },
   { chemin: 'backend/seed.js', raison: "données de démonstration de l'école pilote" },
-  { chemin: 'backend/utils/campus.js', raison: "campus de l'école pilote, lus par la migration 0003" },
+  { chemin: 'backend/demo/ecolePilote.js', raison: "campus et identité de la démonstration, écrits par seed.js" },
+  { chemin: 'backend/utils/campus.js', raison: "campus de l'école pilote, lus par la migration 0003 et par la démonstration" },
   { chemin: 'backend/services/oidc/provider.js', raison: 'nom du client enregistré chez ClassQuiz (connexion unique)' },
   { chemin: 'frontend/src/design-system/photosEcole.js', raison: "photos rangées par école : seule l'école pilote en a" },
   { chemin: 'mobile/src/intro/IntroLogo.jsx', raison: "animation du logo de l'école pilote, jouée pour elle seule" },

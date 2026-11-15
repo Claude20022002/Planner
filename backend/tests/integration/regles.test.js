@@ -49,7 +49,7 @@ beforeAll(async () => {
     await Enseignant.update({ statut: "vacataire" }, { where: { id_user: vacataire.id_user } });
     clients = { admin: await loginAs(admin), profA: await loginAs(profA), profB: await loginAs(profB) };
 
-    const [gandhi, stendhal] = await Promise.all([Campus.findOne({ where: { code: "G" } }), Campus.findOne({ where: { code: "ST" } })]);
+    const [nord, sud] = await Promise.all([Campus.findOne({ where: { code: "N" } }), Campus.findOne({ where: { code: "S" } })]);
     const filiere = await Filiere.create({ code_filiere: "RGL", nom_filiere: "Règles" });
     const promo = await Groupe.create({ nom_groupe: "4A RGL", niveau: "4ème année", annee: 4, effectif: 30, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     const td1 = await Groupe.create({ nom_groupe: "RGL-4A", niveau: "4ème année", annee: 4, effectif: 15, annee_scolaire: "2026-2027", type_groupe: "td", id_groupe_parent: promo.id_groupe, id_filiere: filiere.id_filiere });
@@ -57,13 +57,13 @@ beforeAll(async () => {
     const tp = await Groupe.create({ nom_groupe: "RGL-4A1", niveau: "4ème année", annee: 4, effectif: 8, annee_scolaire: "2026-2027", type_groupe: "tp", id_groupe_parent: td1.id_groupe, id_filiere: filiere.id_filiere });
     await Appartenir.create({ id_user_etudiant: etudiant.id_user, id_groupe: td1.id_groupe });
 
-    const salle = (nom, extra) => Salle.create({ nom_salle: nom, type_salle: "Salle de cours", capacite: 40, id_campus: gandhi.id_campus, ...extra });
+    const salle = (nom, extra) => Salle.create({ nom_salle: nom, type_salle: "Salle de cours", capacite: 40, id_campus: nord.id_campus, ...extra });
     const salles = {
-        g1: await salle("G-R1"),
-        g2: await salle("G-R2"),
-        st: await salle("ST-R1", { id_campus: stendhal.id_campus }),
-        petite: await salle("G-PETITE", { capacite: 10 }),
-        labo: await salle("G-LAB", { type_salle: "Labo informatique", capacite: 30 }),
+        g1: await salle("N-R1"),
+        g2: await salle("N-R2"),
+        st: await salle("S-R1", { id_campus: sud.id_campus }),
+        petite: await salle("N-PETITE", { capacite: 10 }),
+        labo: await salle("N-LAB", { type_salle: "Labo informatique", capacite: 30 }),
     };
     const creneau = (jour_semaine, heure_debut, heure_fin, rang) => Creneau.create({ jour_semaine, heure_debut, heure_fin, duree_minutes: 90, rang });
     const creneaux = {
@@ -145,7 +145,7 @@ describe("Règles bloquantes : 409 et liste des violations", () => {
     });
 
     test("deux séances qui se suivent sur deux campus sans le temps de trajet : refusé", async () => {
-        // TD2 a cours à Gandhi de 9 h à 10 h 45 ; 15 min ne suffisent pas pour Stendhal (30 min par défaut)
+        // TD2 a cours au Campus Nord de 9 h à 10 h 45 ; 15 min ne suffisent pas pour le Campus Sud (30 min par défaut)
         const response = await creer({ id_user_enseignant: profB.id_user, id_salle: ref.salles.st.id_salle, id_creneau: ref.creneaux.lun2.id_creneau });
         expect(codes(response)).toEqual(["trajet_campus"]);
     });
