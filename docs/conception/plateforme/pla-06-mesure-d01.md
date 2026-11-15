@@ -5,7 +5,9 @@
 | Module | [PLA](../../plan/modules/PLA-plateforme.md) · chantier ouvert le 9 novembre 2026, ordre validé le 10 |
 | Branche | `etude/pla-06-mesure-d01` (une étude : rien de ce code ne part en production) |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-10 ; revu le même jour (§ 12) |
-| **Validé** | **par Claude20022002 le 2026-11-10** (propositions du 9, revue du § 12, P-15 à P-18, machine de mesure). Restent à fournir avant la première série : P-22 et P-23 (prérequis du PC Ubuntu) |
+| **Validation** | Plan initial validé par Claude20022002 le 2026-11-10. **Amendement du 2026-11-15 (§ 4) à revalider ; aucune série autorisée avant le nouveau « validé ».** |
+
+**Lecture au 15 novembre :** le § 4 amendé remplace les dispositions de répartition entre machines des § 1, 3, 7 à 10 et de la revue historique (§ 12). P-22, P-23 et P-25 sont sans objet ; P-24 est remplacée. Les étapes 1 à 5 sont réalisées dans leur version initiale, sans valoir adaptation au serveur unique. Les consignes du README actuel sur les deux postes ne sont pas applicables au nouveau protocole. Les seuils S1 à S5 restent inchangés.
 
 ## 1. Objet et critère de « terminé »
 
@@ -84,34 +86,108 @@ Si D-01 tombe, le chantier PLA s'arrête jusqu'à la décision du chef (P-10).
 
 ## 4. Solution
 
-### 4.1 Principe
+### 4.1 Principe amendé le 15 novembre — à revalider
 
-Un **banc de mesure** à part, dans `scripts/mesures/pla-06/`, **sur deux machines** (P-3) :
-- **PC Ubuntu** : MySQL, le serveur de banc et `releves.mjs`, dans Docker natif, comme sur le serveur Debian ;
-- **PC Windows** : `charge.mjs` et `serie.mjs`, qui pilote le PC Ubuntu par SSH (P-22). La charge passe donc par le réseau, comme celle de vrais utilisateurs.
-- **Paliers** (P-24) : MySQL à 1 Go puis 2 Go sur le PC Ubuntu (4 Go de mémoire), bureau graphique arrêté pendant les séries (`systemctl isolate multi-user.target`). Le palier de 4 Go ne se mesure que si celui de 2 Go échoue, et alors sur le PC Windows (Docker Desktop), avec l'écart dit dans le rapport.
-- **Machines interchangeables** : la répartition est **provisoire** (P-24). Les adresses, les rôles et les limites de chaque machine se règlent dans `.local/machines.json` (ignoré par Git), jamais dans le code. Changer de machine ne demande aucune modification des scripts. **Rien ne change dans `backend/`** : le banc importe `app.js` et les modules de l'essai, crée lui-même la connexion de chaque école, et règle tout par des variables d'environnement qui existent déjà.
+**Décision du chef du 15 novembre : seul le serveur sert de machine.** MySQL, le serveur de banc, le générateur de charge, le pilote et les relevés tournent sur cet hôte partagé avec n8n. Aucun PC Ubuntu ou Windows ne participe. Le chef lance chaque commande sur le serveur ; l'agent les prépare et lit les retours expurgés.
 
-- **MySQL 8.4.13** dans un conteneur limité en mémoire (paliers de C-1) et en processeurs. Les fichiers ouverts (`ulimits`) sont réglés comme sur le serveur (P-4).
-- **Le serveur de banc** tourne dans un conteneur Node 22, avec un nombre de processeurs fixé, pour ne pas mesurer la machine hôte.
-- **L'école 001 est l'école par défaut** (`DB_NAME`) : il y a 200 bases en tout, pas 201.
-- **Les mots de passe des 200 utilisateurs MySQL** sont générés par `preparer.mjs` dans `.local/secrets.json`, ignoré par Git et effacé au nettoyage.
+La fiche de mission a été lue sur `origin/chore/coordination-agents` (PR #175), car elle est encore absente d'`origin/main` lors de cette session. Référence : `docs/plan/missions/pla-06.md` dans cette branche.
 
-```mermaid
-flowchart LR
-    subgraph Preparation["Préparation (une fois)"]
-        A[Base modèle<br/>62 migrations + seed<br/>+ séances synthétiques<br/>+ mois publiés] -->|mysqldump| B[(modele.sql.gz<br/>local, hors Git)]
-        B -->|"200 × base + utilisateur + import"| C[(ecole_001 … ecole_200)]
-    end
-    subgraph Banc["Banc (conteneurs limités)"]
-        D[serveur-banc.mjs<br/>app.js + contexte d'école<br/>+ tâches périodiques] -->|un pool par école| C
-        E[charge.mjs<br/>node:http, Host et<br/>X-Forwarded-For par utilisateur] --> D
-        F[releves.mjs<br/>docker stats, SHOW STATUS,<br/>process.memoryUsage] --> G[resultats/*.json<br/>hors Git]
-    end
-    G --> H[19-mesure-d01.md]
+#### Isolation et enveloppe proposée
+
+- Projet Compose distinct : `planner-mesure-pla06`. Un dossier de travail distinct de l'installation Planner, un réseau Docker propre au banc et un volume propre aux 200 bases ; aucun réseau, volume ou label de routage partagé avec n8n. Labels `traefik.enable=false` sur les services du banc pour empêcher leur publication par le proxy existant.
+- **Aucun port public.** MySQL reste interne au réseau du banc ; le port HTTP du banc est publié sur la boucle locale seulement. Aucun changement du pare-feu, du proxy, du Compose n8n ou de Docker Engine. Les adresses et chemins réels restent dans `.local/`, jamais dans Git.
+- L'école 001 est l'école par défaut : 200 bases au total. Les données, secrets et résultats bruts restent hors Git. Les principes de préparation, d'isolation par utilisateur MySQL et de contrôle des réglages MySQL ne changent pas.
+- La recette [serveur-2026-11.md](../../recette/serveur-2026-11.md) relève 7,6 Gio de RAM, 4 processeurs, aucune mémoire d'échange et environ 6,5 Gio disponibles après retrait d'Ollama. Ces chiffres datés ne remplacent pas un relevé avant chaque série. Ollama reste retiré ; aucun profil `cpu` n'est relancé.
+
+Le chef a accepté le 15 novembre **d'inscrire les propositions suivantes à revalider**, sans autoriser de lancement :
+
+| Poste | Limite mémoire proposée | Limite processeur proposée |
+|---|---|---|
+| MySQL | paliers de 1 puis 2 Gio ; tampon InnoDB de 512 Mio puis 1 Gio | part de l'enveloppe commune à préciser avant lancement |
+| Serveur de banc Node | 1 Gio | part de l'enveloppe commune à préciser avant lancement |
+| Pilote, générateur de charge et relevés ensemble | 512 Mio | part de l'enveloppe commune à préciser avant lancement |
+| Ensemble de la mesure | **3,5 Gio au maximum**, préparation et installation comprises | **2,5 processeurs au maximum, cumulés** |
+
+Les conteneurs ne disposent pas de mémoire d'échange. Le pilote, la charge et les relevés sur l'hôte doivent également être bornés par un groupe de contrôle ; les plafonds Compose seuls ne suffisent pas. Le découpage exact des 2,5 processeurs et le mécanisme du groupe de contrôle seront proposés avant leur mise en œuvre. Aucun processus de préparation ou d'installation ne doit échapper à l'enveloppe. Ni limitation ni modification des services existants.
+
+**Le palier MySQL de 4 Gio est suspendu** : il ne tient pas dans cette enveloppe avec les autres postes. Si 2 Gio échouent, le rapport le dit ; toute nouvelle enveloppe exige une nouvelle validation. S1 garde la place des autres services de Planner même s'ils ne tournent pas encore : leur absence du banc ne constitue pas un gain de capacité pour conclure D-01.
+
+#### Ordre avec EXP-02b et protection de n8n
+
+1. Proposition acceptée pour inscription : mesurer **avant EXP-02b**, donc avant que Planner tourne sur le serveur. Le chef confirme le créneau et l'absence de Planner. Si EXP-02b a déjà avancé, arrêt : convenir d'une fenêtre avec le chef avant toute série.
+2. Avant la préparation, puis avant et après **chaque** série : photo locale des identifiants, heures de démarrage, état, redémarrages et indicateurs OOM de tous les conteneurs existants (n8n, sa base, proxy et Qdrant), selon EXP-01. Les identifiants et heures de démarrage doivent rester inchangés. Les photos brutes restent dans `.local/` ou `resultats/` ; seul le verdict sans identifiants est reporté au dépôt.
+3. Le chef fournit un traitement témoin n8n et un créneau où ses traitements lourds sont connus (P-21). Il vérifie manuellement la réactivité et ce témoin avant, pendant et après chaque série. Si aucun contrôle représentatif n'est disponible, ne pas démarrer. La photo des conteneurs seule ne prouve pas l'absence de ralentissement.
+4. **Arrêt immédiat de la charge et du banc si n8n ralentit**, si le témoin échoue, si un service existant redémarre ou change d'état, si un OOM apparaît, ou si `MemAvailable` passe sous **1 Gio**. Le chef arrête uniquement le projet de mesure, jamais les services existants. Le garde mémoire et son arrêt doivent être éprouvés avant toute série ; les relevés actuels ne les automatisent pas.
+5. Après un arrêt : série invalidée, photo après arrêt et contrôle de n8n. Pas de relance automatique. Le chef décide de la suite ; aucune hausse de limite pour forcer un résultat.
+6. À la fin de la fenêtre, nettoyage limité au projet de mesure : arrêt des processus du banc, suppression de ses conteneurs, de son réseau et du volume des 200 bases, puis suppression ciblée des secrets et données temporaires. Conserver les résultats bruts hors Git jusqu'à exploitation. Vérifier la disparition des ressources du projet et refaire la photo des services existants. Aucun `prune` global ni nettoyage de ressources n8n.
+
+#### Validité et adaptation du banc après validation
+
+La charge partage désormais les ressources de MySQL et Node. Le rapport doit donner ses limites et sa consommation à part, les pics des services existants et l'effet de cette cohabitation. La latence à vide est celle de la boucle locale, pas celle d'un utilisateur distant. Les chiffres de Docker Desktop du 10 novembre restent des essais de fonctionnement ; ils ne confirment pas la capacité du serveur.
+
+Les règles de chauffe, de répétition, d'isolation, d'erreurs 401/429, d'échange mémoire et de saturation du générateur restent applicables (§ 8, C-29). La saturation du serveur pendant la rampe reste un résultat de capacité ; elle déclenche cependant l'arrêt si n8n ralentit. Une série interrompue pour protéger n8n ne permet pas de confirmer D-01.
+
+**Après le « validé », avant toute série, adapter et vérifier uniquement le banc :**
+
+- Compose : réseau et volume distincts vérifiés, pas de port MySQL publié, HTTP sur boucle locale, exclusion Traefik, plafonds de chaque processus, préparation et installation incluses.
+- `serie.mjs` : mode sur l'hôte local, sans SSH ni copie SCP sur lui-même ; garde mémoire, arrêt sur incident et journal d'invalidation. Aujourd'hui, l'absence de `banc.ssh` signifie commande manuelle sur une autre machine : ce n'est pas encore ce mode local.
+- Relevés : mémoire du groupe complet, consommation du générateur et des services existants, contrôle des photos et invalidation en cas de garde déclenchée. Aucun résultat déclaré valide si les relevés nécessaires manquent.
+- README : remplacer le protocole à deux machines par des commandes serveur, une à une, à exécuter par le chef ; préparation, surveillance, arrêt d'urgence et nettoyage ciblé compris.
+- Vérifications : tests de régression des adaptations ; essai des gardes sans charge réelle ; petite série d'essai seulement après validation et retour des prérequis, puis séries M1 à M8.
+
+Ces adaptations ne sont pas encore écrites. Les tests purs existants vérifient les fonctions de calcul du banc, pas les protections n8n ni l'exécution sur un hôte unique. Ne pas utiliser les commandes de séries de l'ancien README en attendant.
+
+#### Questions avant lancement
+
+| N° | Question | Proposition / réponse du 15 novembre | État |
+|---|---|---|---|
+| A-1 | Enveloppe et garde mémoire | MySQL 2 Gio, Node 1 Gio, charge et relevés 512 Mio ; total CPU 2,5 ; arrêt sous 1 Gio disponible ; palier 4 Gio suspendu | inscription acceptée, amendement à revalider |
+| A-2 | Ordre et témoin n8n | avant EXP-02b ; contrôle manuel avant, pendant, après | inscription acceptée ; créneau et témoin à fournir par le chef |
+| A-3 | Répartition des 2,5 processeurs et groupe de contrôle des processus hôte | présenter les commandes et limites détaillées après validation du principe, avant lancement | à préciser et faire approuver ; aucun réglage supposé |
+| P-20 | Mémoire d'échange du serveur | absente dans la recette du 15 novembre ; relever à nouveau, sans en ajouter dans PLA-06 | constat à confirmer par le chef |
+| P-21 | Pics et traitements lourds n8n | obtenir leur créneau et le contrôle représentatif avant de mesurer | attendu du chef |
+
+#### Premières commandes à préparer pour le chef — lecture seule
+
+À exécuter une par une, sur le serveur, par le chef. Elles ne lancent aucune série. L'agent ne les exécute pas. Aucun retour brut contenant des identifiants ou informations d'accès n'entre dans Git.
+
+```bash
+free -h
 ```
 
-### 4.2 Une série
+```bash
+swapon --show
+```
+
+```bash
+nproc
+```
+
+```bash
+df -h / /var/lib/docker
+```
+
+```bash
+node --version
+```
+
+```bash
+docker compose version
+```
+
+Photo des services existants, avant toute création du projet (conserver localement, hors Git) :
+
+```bash
+docker inspect --format '{{.Id}} {{.State.StartedAt}} {{.State.Status}} {{.RestartCount}} {{.State.OOMKilled}}' $(docker ps -aq)
+```
+
+```bash
+docker stats --no-stream --format '{{.ID}} {{.CPUPerc}} {{.MemUsage}}'
+```
+
+Pour comparer avant/après, le chef conserve hors Git la liste initiale des identifiants et inspecte exactement cette liste après chaque série. Les commandes de lancement et d'arrêt seront préparées une à une après validation du plan et adaptation des gardes ; ne pas réutiliser le pilote SSH actuel.
+
+### 4.2 Une série (sur le serveur, après revalidation et adaptation)
 
 ```mermaid
 sequenceDiagram
@@ -120,14 +196,16 @@ sequenceDiagram
     participant M as MySQL (limité)
     participant S as serveur-banc (limité)
     participant C as charge.mjs
-    Chef->>O: node scripts/mesures/pla-06/serie.mjs --reglage ajuste --memoire 2g
-    O->>M: redémarrage avec le réglage et la mémoire
+    Chef->>O: lancement manuel du pilote local adapté, limites validées
+    Note over Chef,O: photo avant, contrôle n8n et gardes actifs
+    O->>M: redémarrage du banc isolé avec les limites validées
     O->>S: démarrage, 200 écoles, mode a puis b (M4)
     O->>C: connexions étalées sur 2 min, puis 2 min de chauffe (non comptées)
     C->>S: 20 écoles actives, 10 min (M6) ; tâches périodiques en route (M8)
     Note over O,M: relevés toutes les 5 s (M1, M2, M3, M7)
     O->>C: rampe jusqu'à p95 > 1 s (capacité)
     O->>O: 15 min sans activité : les pools se ferment-ils ? (M3, M8)
+    Note over Chef,O: photo après ; arrêt immédiat si n8n ralentit
 ```
 
 ### 4.3 Les mesures
