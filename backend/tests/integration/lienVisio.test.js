@@ -28,14 +28,14 @@ beforeAll(async () => {
         admin: await loginAs(admin),
     };
 
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const filiere = await Filiere.create({ code_filiere: "VIS", nom_filiere: "Visio" });
     const td = await Groupe.create({ nom_groupe: "VIS-4A", niveau: "4ème année", annee: 4, effectif: 20, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     const autre = await Groupe.create({ nom_groupe: "VIS-4B", niveau: "4ème année", annee: 4, effectif: 20, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     await Appartenir.create({ id_user_etudiant: etudiant.id_user, id_groupe: td.id_groupe });
     await Appartenir.create({ id_user_etudiant: autreEtudiant.id_user, id_groupe: autre.id_groupe });
 
-    const salle = await Salle.create({ nom_salle: "G-VIS1", type_salle: "Salle de cours", capacite: 40, id_campus: gandhi.id_campus });
+    const salle = await Salle.create({ nom_salle: "N-VIS1", type_salle: "Salle de cours", capacite: 40, id_campus: nord.id_campus });
     const creneau = await Creneau.create({ jour_semaine: "mardi", heure_debut: "09:00", heure_fin: "10:45", duree_minutes: 105, rang: 1 });
     const cours = await Cours.create({ code_cours: "VIS-RES", nom_cours: "Réseaux", niveau: "4ème année", volume_horaire: 20, type_cours: "CM", semestre: "S8", id_filiere: filiere.id_filiere });
     const annee = await AnneeUniversitaire.create({ libelle: "2026-2027", date_debut: "2026-09-01", date_fin: "2027-07-31", active: true });

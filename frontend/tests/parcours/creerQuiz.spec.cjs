@@ -12,7 +12,8 @@ test.setTimeout(120_000);
 test("créer un quiz : un sujet suffit, sans classe ni module", async ({ page }) => {
   const { enseignante, motDePasse } = lireDonnees();
   await seConnecter(page, { email: enseignante.email, motDePasse, role: "enseignant" });
-  await page.getByRole("navigation", { name: "Menu" }).getByRole("button", { name: "Mes quiz" }).click();
+  await page.getByRole("link", { name: "Toutes les applications", exact: true }).last().click();
+  await page.getByRole("navigation", { name: "Applications disponibles" }).getByRole("heading", { name: "Quiz et jeux", exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(/\/studio-quiz$/);
 
   await page.getByRole("button", { name: "Créer un quiz" }).first().click();

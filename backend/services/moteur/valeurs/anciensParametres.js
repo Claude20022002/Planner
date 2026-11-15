@@ -13,5 +13,8 @@ export const ANCIENS_PARAMETRES = {
     trajet_inter_campus_defaut_minutes: { id: "LOG.TRAJET.CAMPUS_DEFAUT", convertir: (v) => v },
 };
 
-/** Ces deux-là deviennent des plages restreintes, avec ME-2a (fichier 04) : pas de conversion directe. */
+/**
+ * Ces deux-là ne sont plus des réglages : la migration 0081 les a repris en contraintes déclarées
+ * (plage interdite le vendredi midi, plage à éviter le samedi après-midi), MOT-13b.
+ */
 export const ANCIENS_VERS_PLAGES = ["pause_vendredi", "samedi_apres_midi_initiale"];

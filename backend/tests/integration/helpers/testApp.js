@@ -25,8 +25,16 @@ export const PASSWORD = "Hestim@2026";
  * Vide la base puis la reconstruit par les migrations versionnées : les tests
  * valident ainsi le même schéma que la production. Refuse de s'exécuter hors
  * d'une base de test, pour qu'une mauvaise configuration ne puisse jamais vider une vraie base.
+ * Les migrations ne créent plus aucun campus dans une base sans comptes (PLA-03) : les deux campus
+ * fictifs des tests sont créés ici. Avec { neuve: true }, la base reste telle que les migrations
+ * la laissent.
  */
-export const resetDatabase = async () => {
+export const CAMPUS_DE_TEST = [
+    { code: "N", nom: "Campus Nord" },
+    { code: "S", nom: "Campus Sud" },
+];
+
+export const resetDatabase = async ({ neuve = false } = {}) => {
     const dbName = sequelize.getDatabaseName();
     if (!dbName?.endsWith("_test")) {
         throw new Error(`Refus de réinitialiser "${dbName}" : seule une base *_test est autorisée`);
@@ -40,6 +48,10 @@ export const resetDatabase = async () => {
     }
     await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
     await runMigrations();
+    oublierIdentite();
+    resetRateLimiters();
+    if (neuve) return;
+    await Campus.bulkCreate(CAMPUS_DE_TEST);
     // Base vide : la migration 0057 éteint ClassQuiz (installation neuve, lot ME-0c). Les tests
     // l'allument pour que son code reste vérifié ; classQuizEteint.test.js vérifie l'inverse
     await sequelize.query("UPDATE ConfigurationEtablissement SET classquiz_actif = 1 WHERE id = 1");
@@ -131,13 +143,13 @@ export const createPlanningFixture = async ({ admin, enseignant, etudiant } = {}
         annee_scolaire: "2026-2027",
         id_filiere: filiere.id_filiere,
     });
-    // Campus Gandhi : donnée de référence insérée par la migration 0003
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    // Campus Nord : créé par resetDatabase
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const salle = await scoped(Salle, {
-        nom_salle: `G-10${userCounter}`,
+        nom_salle: `N-10${userCounter}`,
         type_salle: "Salle de cours",
         capacite: 40,
-        id_campus: gandhi.id_campus,
+        id_campus: nord.id_campus,
     });
     const creneau = await scoped(Creneau, {
         jour_semaine: "lundi",

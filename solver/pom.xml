@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
+        <version>4.1.2</version>
         <relativePath/>
     </parent>
 
@@ -19,7 +19,8 @@
 
     <properties>
         <java.version>21</java.version>
-        <timefold.version>1.15.0</timefold.version>
+        <!-- Dernière 1.x ; la 2.x (Spring Boot 4, analyse du score payante) se décide dans MOT-04 -->
+        <timefold.version>1.35.0</timefold.version>
     </properties>
 
     <dependencyManagement>
@@ -37,11 +38,13 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
+        <!-- Le cœur seul : le starter Timefold 1.x ne démarre pas sous Spring Boot 4 (MOT-12).
+             Le solveur est construit dans ConfigurationSolveur. -->
         <dependency>
             <groupId>ai.timefold.solver</groupId>
-            <artifactId>timefold-solver-spring-boot-starter</artifactId>
+            <artifactId>timefold-solver-core</artifactId>
         </dependency>
 
         <dependency>

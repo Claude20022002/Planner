@@ -21,12 +21,12 @@ beforeAll(async () => {
     profB = await createUser("enseignant");
     clients = { admin: await loginAs(admin), profA: await loginAs(profA), profB: await loginAs(profB) };
 
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const filiere = await Filiere.create({ code_filiere: "CNF", nom_filiere: "Confirmation" });
     const promo = await Groupe.create({ nom_groupe: "4A CNF", niveau: "4ème année", annee: 4, effectif: 30, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     const td1 = await Groupe.create({ nom_groupe: "CNF-4A", niveau: "4ème année", annee: 4, effectif: 15, annee_scolaire: "2026-2027", type_groupe: "td", id_groupe_parent: promo.id_groupe, id_filiere: filiere.id_filiere });
     const td2 = await Groupe.create({ nom_groupe: "CNF-4B", niveau: "4ème année", annee: 4, effectif: 15, annee_scolaire: "2026-2027", type_groupe: "td", id_groupe_parent: promo.id_groupe, id_filiere: filiere.id_filiere });
-    const salle = (nom) => Salle.create({ nom_salle: nom, type_salle: "Salle de cours", capacite: 40, id_campus: gandhi.id_campus });
+    const salle = (nom) => Salle.create({ nom_salle: nom, type_salle: "Salle de cours", capacite: 40, id_campus: nord.id_campus });
     const creneau = (jour_semaine, heure_debut, heure_fin, rang) => Creneau.create({ jour_semaine, heure_debut, heure_fin, duree_minutes: 90, rang });
     ref = {
         td1,
