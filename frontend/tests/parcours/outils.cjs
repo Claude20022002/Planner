@@ -18,7 +18,8 @@ const seConnecter = async (page, { email, motDePasse, role }) => {
   await page.getByRole("textbox", { name: "Adresse email" }).fill(email);
   await page.getByRole("textbox", { name: "Mot de passe", exact: true }).fill(motDePasse);
   await page.getByRole("button", { name: "Connexion", exact: true }).click();
-  await expect(page).toHaveURL(new RegExp(`/dashboard/${role}$`), { timeout: 20_000 });
+  await expect(page).toHaveURL(/\/applications$/, { timeout: 20_000 });
+  await page.goto(`/dashboard/${role}`);
 };
 
 /**

@@ -50,7 +50,7 @@ export default function Connexion() {
     // Le rôle vient du compte : aucune saisie de « fonction » n'est demandée
     const role = data?.user?.role;
     if (suivant) window.location.assign(suivant);
-    else navigate(role ? `/dashboard/${role}` : '/');
+    else navigate(role ? '/applications' : '/');
   };
 
   const envoyerCode = async (event) => {
