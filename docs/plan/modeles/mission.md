@@ -7,6 +7,7 @@
 |---|---|
 | État | <ouverte · en relecture · close le AAAA-MM-JJ> |
 | Agent | <Claude (Cursor) · Claude (VS Code) · Codex (VS Code) · agent de Cursor> |
+| Modèle recommandé | <le plus capable pour une tâche risquée ou large ; un modèle moyen pour une tâche courte et bornée ; dire pourquoi en une ligne> |
 | Attribuée le | AAAA-MM-JJ, par le coordinateur ; accord du chef : <oui, le AAAA-MM-JJ> |
 | Module et chantier | [<CODE>](../modules/<fichier>.md) · chantier ouvert le AAAA-MM-JJ |
 | Fonction | <IDENTIFIANT> : <ce qu'elle fait, en une phrase> · taille <S, M, L, XL> |

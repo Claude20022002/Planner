@@ -82,6 +82,16 @@ Aucune règle n'est fixée par le chef. Tant qu'il n'en fixe pas, proposez et la
 
 Notez dans la fiche de mission ce qui s'est bien ou mal passé : c'est ce qui permettra au chef de fixer une règle.
 
+### Le modèle
+
+Chaque fiche recommande un modèle (décision du 15 novembre). Repères :
+
+- **le plus capable disponible** (Claude Fable 5.2, sinon Opus 5.5 ; dans Codex ou Cursor, leur modèle le plus fort, effort de raisonnement élevé) pour : migrations, données partagées, sécurité, serveur, montée de dépendance majeure, tâche large ou mal bornée ;
+- **un modèle moyen** (Claude Sonnet 5.5 ou l'équivalent) pour : correctif court au plan validé, documentation, test d'une règle simple ;
+- **un modèle rapide** (Claude Haiku 5.5 ou l'équivalent) pour : relevés, recherches dans le code, mises en forme.
+
+L'agent choisit dans ces repères. Seul l'utilisateur change le modèle d'un éditeur : un agent qui ne tourne pas sur le bon modèle le dit au chef avant de commencer, et note son modèle dans sa fiche de session.
+
 ## 5. Suivre une mission
 
 - **Plan écrit** : le relire contre le code et `decisions.md`. S ou M sans migration ni sécurité : vous validez ou vous renvoyez. Sinon : vous donnez votre avis au chef, il valide.

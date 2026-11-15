@@ -4,6 +4,7 @@
 |---|---|
 | État | ouverte |
 | Agent | agent de Cursor |
+| Modèle recommandé | un modèle fort (Claude Opus 5.5 dans Cursor, ou l'équivalent) : configuration du proxy d'un serveur partagé, où une erreur expose ou coupe n8n |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [EXP](../modules/EXP-exploitation.md) · chantier ouvert avant le 9 novembre |
 | Fonction | EXP-02a : préparer l'installation à côté de n8n (surcharge Compose, labels Traefik, procédure), **sans démarrer aucun conteneur** · partie d'EXP-02 (L) |
@@ -55,7 +56,10 @@ L'agent ne touche pas :
 ## Prompt à donner à l'agent
 
 ```text
-Tu travailles sur Planner. Ta mission : EXP-02a (branchement Traefik, sans lancer Planner), chantier EXP.
+Tu travailles sur Planner. Ta mission : EXP-02a (branchement Traefik, sans lancer Planner), chantier EXP,
+puis le correctif de la PR #177 (docs/plan/missions/fix-exp-sauvegarde.md).
+Choisis d'abord le modèle : ta fiche recommande un modèle fort (Claude Opus 5.5 ou l'équivalent) ;
+s'il ne tourne pas, dis au chef lequel choisir, et note ton modèle dans ta fiche de session.
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 puis ta fiche de mission docs/plan/missions/exp-02a.md (sur main, ou sur la branche
 chore/coordination-agents si elle n'est pas fusionnée), et la recette docs/recette/serveur-2026-11.md.

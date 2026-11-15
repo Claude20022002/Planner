@@ -4,6 +4,7 @@
 |---|---|
 | État | ouverte |
 | Agent | Codex (VS Code) |
+| Modèle recommandé | le modèle de code le plus fort de Codex, effort de raisonnement élevé : une erreur du banc peut faire tomber n8n sur le serveur partagé |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [PLA](../modules/PLA-plateforme.md) · chantier ouvert le 2026-11-09 |
 | Fonction | PLA-06 : rapport chiffré qui confirme ou rouvre D-01 (une base par école) · taille M |
@@ -62,6 +63,10 @@ Restent ouvertes :
 
 ```text
 Tu travailles sur Planner. Ta mission : PLA-06 (mesure de D-01, 200 bases sur un serveur), chantier PLA.
+Choisis d'abord le modèle : ta fiche recommande le modèle de code le plus fort, effort élevé ;
+s'il ne tourne pas, dis au chef lequel choisir, et note ton modèle dans ta fiche de session.
+Le chef a validé l'amendement du § 4 et A-3 ; le coordinateur a réglé A-2 (fiche de mission, Suivi) :
+inscris A-2 dans le plan et intègre la sonde témoin à la garde du banc.
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 puis ta fiche de mission docs/plan/missions/pla-06.md (sur main, ou sur la branche
 chore/coordination-agents si elle n'est pas fusionnée), le plan
@@ -87,3 +92,4 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche.
 | 2026-11-15 | mission écrite ; CI de #164 verte (dernier passage) | — |
 | 2026-11-15 | tour d'état de 13 h 15 : Codex a fusionné `origin/main` (`5f4153a`), proposé le protocole sur le serveur (`311c0ba`, `a754a4b`), puis inscrit « amendement du § 4 validé par Claude20022002 le 2026-11-15, répartition A-3 validée » (`7794d34`). Enveloppe : MySQL 2 Gio, Node 1 Gio, hôte 512 Mio, 2,5 processeurs, arrêt sous 1 Gio libre, palier 4 Gio suspendu. Code du banc en cours, non commité (`lancer.sh`, `arreter.sh`, `lib/protection.mjs`…) | **au chef** : confirmer que la validation inscrite est la sienne ; A-2 (créneau, témoin n8n) à fournir |
 | 2026-11-15 | **le chef confirme** : c'est lui qui a validé l'amendement du § 4 et la répartition A-3 auprès de Codex | validation acquise ; A-2 attend toujours le chef |
+| 2026-11-15 | **A-2 réglé par le coordinateur, par délégation du chef** : témoin = sonde en lecture seule de l'adresse de santé de n8n toutes les 15 s, référence prise sur 10 min avant la série ; arrêt sur une réponse en échec ou une durée médiane sur une minute au double de la référence ; aucun traitement n8n créé ni lancé. Créneau : au lancement par le chef, avant EXP-02b, hors des heures où il sait que n8n travaille | — |

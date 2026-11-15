@@ -3,13 +3,14 @@
 | | |
 |---|---|
 | État | ouverte |
-| Agent | Claude Code (session à ouvrir, Cursor ou VS Code) |
+| Agent | Claude Code dans VS Code, second abonnement du chef (le plan a été écrit par un agent du coordinateur) |
+| Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Chargement de toute base neuve, test d'équivalence strict : une erreur passe en production |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [PLA](../modules/PLA-plateforme.md) · chantier ouvert le 2026-11-09 |
 | Fonction | PLA-03b : une base neuve se crée d'un schéma de départ au lieu de rejouer les 60 migrations · taille : partie de PLA-03 (M) |
 | Branche | `feat/pla-03b-schema-depart`, depuis `origin/main` (PLA-03a, #173, y est fusionnée) |
 | Dossier de travail | `..\travaux-planner\pla-03b-schema-depart` |
-| Plan de conception | `docs/conception/plateforme/pla-03b-schema-depart.md`, **à réécrire** : le brouillon du 15 novembre n'a pas été commité et n'existe plus sur le disque · validé par : **le chef** (il touche au chargement des migrations de toute base) |
+| Plan de conception | `docs/conception/plateforme/pla-03b-schema-depart.md`, réécrit le 15 novembre, **non commité**, dans le dossier de travail · **validé par le coordinateur le 2026-11-15, par délégation du chef** (variante R-3 : fichier figé) |
 
 ## Critère de « terminé »
 
@@ -60,20 +61,24 @@ Les 11 réponses du chef du 15 novembre, dans la fiche `docs/sessions/2026-11-15
 ## Prompt à donner à l'agent
 
 ```text
-Tu travailles sur Planner. Ta mission : PLA-03b (schéma de départ), chantier PLA.
-Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
-puis ta fiche de mission docs/plan/missions/pla-03b.md (sur main, ou sur la branche
-chore/coordination-agents si elle n'est pas fusionnée), la conception
-docs/conception/plateforme/pla-03-base-neuve.md et la fiche
-docs/sessions/2026-11-15-feat-pla-03-base-neuve.md (section « Reprise du même jour »).
-Crée la branche feat/pla-03b-schema-depart depuis origin/main, dans le dossier
-..\travaux-planner\pla-03b-schema-depart, avec la jonction vers backend\node_modules.
-Le complément de plan n'existe plus : réécris-le dans
-docs/conception/plateforme/pla-03b-schema-depart.md à partir des 11 réponses du chef,
-avec la question C-1 de la fiche de mission, puis fais-le valider par le chef.
-Tu n'écris que dans le périmètre de la fiche. S'il faut en sortir, arrête-toi et demande.
-Règles : pas de code avant le plan validé ; questions avant toute supposition ;
-fiche de session et suivi.md à jour en fin de session ; tout est commité ; jamais de git push.
+Tu travailles sur Planner. Ta mission : coder PLA-03b (schéma de départ), chantier PLA.
+Tu es piloté par la session coordinatrice : tes rapports vont à elle.
+Choisis d'abord le modèle : ta fiche recommande le plus capable (Claude Fable 5.2, sinon Opus 5.5).
+Si tu tournes sur un autre modèle, dis au chef lequel choisir (/model) avant de commencer,
+et note ton modèle dans ta fiche de session.
+Lis AGENTS.md, CLAUDE.md, docs/plan/README.md, docs/plan/suivi.md et ta fiche de mission
+docs/plan/missions/pla-03b.md.
+Tu travailles dans le dossier ..\travaux-planner\pla-03b-schema-depart (branche feat/pla-03b-schema-depart,
+déjà créée). Le plan docs/conception/plateforme/pla-03b-schema-depart.md y est écrit, non commité,
+et VALIDÉ (par le coordinateur, par délégation du chef, variante R-3 : fichier figé).
+1. Fusionne origin/main dans la branche (jamais de rebase).
+2. Commite le plan seul, avec ta ligne de docs/plan/suivi.md à « en cours ».
+3. Crée la jonction backend\node_modules vers le dépôt principal, puis code en suivant le § 9 du plan,
+   un commit par étape avec ses tests. Base MySQL jetable : voir DEPLOIEMENT.md ; retire-la à la fin.
+Tu n'écris que dans le périmètre de la fiche (et ses extensions). S'il faut en sortir, arrête-toi et demande.
+Règles : pas de code hors du plan validé ; questions avant toute supposition ; fiche de session
+et suivi.md à jour en fin de session ; tout est commité ; jamais de git push.
+Ensuite seulement, passe à ta seconde mission : docs/plan/missions/mot-12.md.
 Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 ```
 

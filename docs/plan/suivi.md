@@ -45,12 +45,12 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
 |---|---|---|---|---|---|---|
 | EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan validé par le chef le 15 nov. ; **agent pas encore démarré** (plan toujours non commité à 13 h 15) | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
-| PLA | PLA-03b schéma de départ | agent Claude du coordinateur | `feat/pla-03b-schema-depart` (créée) | plan réécrit (22 questions), non commité ; **validation du chef attendue** | 15 nov. | [pla-03b](missions/pla-03b.md) |
-| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | plan amendé (mesure sur le serveur) ; amendement (§ 4, A-1, A-3) **validé par le chef le 15 nov.** (confirmé au coordinateur) ; code du banc en cours, non commité ; A-2 (créneau, témoin n8n) attend le chef | 15 nov. | [pla-06](missions/pla-06.md) |
+| PLA | PLA-03b schéma de départ | Claude Code (VS Code, second abonnement) | `feat/pla-03b-schema-depart` (créée) | plan **validé le 15 nov.** (coordinateur, par délégation ; fichier figé), non commité ; code à faire | 15 nov. | [pla-03b](missions/pla-03b.md) |
+| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | plan amendé (mesure sur le serveur) ; amendement (§ 4, A-1, A-3) **validé par le chef le 15 nov.** (confirmé au coordinateur) ; code du banc en cours, non commité ; A-2 réglé le 15 nov. (sonde de santé de n8n en lecture seule) ; banc à adapter | 15 nov. | [pla-06](missions/pla-06.md) |
 | MOT | MOT-13a contraintes déclarées, serveur | Claude Code | #178 | PR ouverte ; conflit avec `main` résolu en local le 15 nov. (QUA fermé), à repousser | 15 nov. : **prête pour la PR** | [mot-13a](missions/mot-13a.md) |
-| MOT | MOT-12 montée du solveur | Claude Code (VS Code, second abonnement) | à créer après #178 : `feat/mot-12-montee-solveur` | mission écrite ; plan à écrire, validé par le chef | 15 nov. | [mot-12](missions/mot-12.md) |
+| MOT | MOT-12 montée du solveur | Claude Code (VS Code, second abonnement) | à créer après #178 : `feat/mot-12-montee-solveur` | après PLA-03b, même agent ; plan à écrire, validé par le chef | 15 nov. | [mot-12](missions/mot-12.md) |
 
-| EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | Claude Code (session inconnue) | #177 | plan court seul, **à valider par le chef** (3 questions) | 15 nov. : lu | — |
+| EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | agent de Cursor, après EXP-02a | #177 | plan court **validé le 15 nov.** (coordinateur, par délégation) ; code à faire | 15 nov. : lu | [fix-exp-sauvegarde](missions/fix-exp-sauvegarde.md) |
 
 Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 

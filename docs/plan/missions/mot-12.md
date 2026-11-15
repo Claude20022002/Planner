@@ -2,9 +2,10 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | ouverte, **après PLA-03b** pour le même agent |
 | Agent | Claude Code dans VS Code, second abonnement du chef |
-| Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : à confirmer avec le choix de la fonction |
+| Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Montée de dépendance majeure, documentation récente à lire, résultat du solveur à garder identique |
+| Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [MOT](../modules/MOT-moteur.md) · chantier ouvert le 2026-11-15 |
 | Fonction | MOT-12 : Spring Boot 3.3.5 vers 4.x, Timefold 1.15 vers 1.31, Java 21 inchangé (décision du 13 novembre), avant MOT-04 ; elle débloque MOT-13b · taille M |
 | Branche | `feat/mot-12-montee-solveur`, depuis `origin/main` **après la fusion de #178** (MOT-12 n'est inscrite dans le module et dans `suivi.md` que par #178) |
@@ -58,6 +59,8 @@ L'agent ne touche pas :
 ```text
 Tu travailles sur Planner. Ta mission : MOT-12 (montée du solveur : Spring Boot 4.x, Timefold 1.31, Java 21), chantier MOT.
 Tu es piloté par la session coordinatrice (rôle décidé par le chef le 15 novembre) : tes rapports vont à elle.
+Choisis d'abord le modèle : ta fiche recommande le plus capable (Claude Fable 5.2, sinon Opus 5.5) ;
+s'il ne tourne pas, dis au chef lequel choisir, et note ton modèle dans ta fiche de session.
 Lis d'abord AGENTS.md, CLAUDE.md, docs/plan/README.md, docs/plan/suivi.md,
 puis ta fiche de mission docs/plan/missions/mot-12.md, et docs/conception/qualite/pile.md (§ 2.6).
 Vérifie avec gh pr list que la PR #178 (MOT-13a) est fusionnée. Si oui, crée la branche
