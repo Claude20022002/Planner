@@ -89,6 +89,9 @@ Registre unique à partir du 7 novembre 2026.
 | 15 nov. | **Pousser et fusionner restent au chef seul**, coordinateur compris | — |
 | 15 nov. | Skills de coordination **écrits pour Planner** : les skills publics lus n'ont pas été installés (l'un lance Codex sans bac à sable ni approbation, un autre ajoute un hook aux réglages) ; sources dans `.claude/skills/SOURCES.md` | — |
 | 15 nov. | *(coordinateur)* La vue « qui travaille sur quoi » est un tableau **« Missions en cours »** de `suivi.md`, et non une colonne ajoutée aux 150 lignes du tableau des fonctions : la colonne aurait mis en conflit toutes les branches ouvertes. Écart avec le plan validé, **confirmé par le chef le 15 nov.** | — |
+| 15 nov. | **Schéma de départ (PLA-03b)** : toute PR qui ajoute une migration lance `npm run schema:depart` et commite le fichier régénéré ; le test d'équivalence le rappelle | précise la réponse 3 du chef pour PLA-03b (« régénéré à la demande du chef ») |
+| 15 nov. | **Plan EXP-02a validé** (branchement Traefik, sans lancer Planner), avec les trois remarques du coordinateur (`docs/plan/missions/exp-02a.md`) | — |
+| 15 nov. | **PLA-06 : pour le moment, seul le serveur sert de machine** ; le PC Ubuntu n'est pas employé (P-22, P-23 et P-25 sans objet). Le plan de PLA-06 s'amende pour mesurer sur le serveur partagé avec n8n, puis se refait valider par le chef ; seul le chef lance les commandes sur le serveur | la mesure en local du 10 novembre |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.
