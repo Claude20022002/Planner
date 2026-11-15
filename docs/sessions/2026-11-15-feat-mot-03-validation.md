@@ -39,22 +39,21 @@ Aucune en attente.
 
 ## État laissé
 
-- `docs/plan/suivi.md` : MOT-03 → en cours : `feat/mot-03-validation`
-- Chantier MOT : reste MOT-12 (PR à ouvrir), MOT-02, MOT-03 (cette branche, relecture coordinateur), MOT-04
+- `docs/plan/suivi.md` : MOT-03 → PR ouverte #183
+- Chantier MOT : reste MOT-12, MOT-02, MOT-03 (PR #183, relecture coordinateur), MOT-04
 
 ## Reste à faire, dans l’ordre
 
-1. Relecture du coordinateur, puis le chef pousse et ouvre la PR.
+1. Relecture du coordinateur sur #183, puis fusion par le chef.
 2. MOT-12 / MOT-02 selon l’ordre du chantier, hors de cette branche.
 
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "..\travaux-planner\mot-03-validation" push -u origin feat/mot-03-validation
-gh pr create --base main --head feat/mot-03-validation --title "MOT-03 : validation avant le calcul" --fill
+git -C "..\travaux-planner\mot-03-validation" push
 ```
 
-La branche attend la relecture du coordinateur avant la PR.
+PR : https://github.com/Claude20022002/Planner/pull/183
 
 ## Prompt de reprise
 
