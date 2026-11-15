@@ -133,3 +133,15 @@ Registre unique à partir du 7 novembre 2026.
 | Q-18 | Nom de l'application dans les magasins | « Planner » sauf conflit de marque | MOB |
 | Q-19 | Les 28 questions juridiques, fiscales et Massar de l'étude du modèle économique | gelées, sauf Massar (ETA-02, ancienne VSC-05) et loi 09-08 (condition légale) | ETA-02 |
 | Q-20 | Un élève a un compte (décision du 8 novembre), mais un enfant de 6 ans n'a pas d'adresse électronique, et `Users.email` est obligatoire et unique. Avec quoi se connecte-t-il ? | un **identifiant donné par l'école**, adresse facultative, mot de passe initial remis par l'école (ou par le parent) ; pas d'adresse factice. Étude d'impact sur chaque fichier qui lit `Users.email` (connexion, réinitialisation, notifications, import) | VSC-01 |
+
+## Décision du chef du 15 novembre : UIX-01a
+
+Source : conversation avec Codex, « Application web de gestion », « J’aimerai un truc comme celui de Odoo », puis « Oui je valide tes proposition ».
+
+- Inspiration Odoo pour l'organisation et l'apparence générale de l'application, avec une identité propre à Planner.
+- Premier lot limité à l'accueil des applications et à la navigation entre les écrans existants, avant la reprise des écrans métier.
+- Exception hors chantier autorisée pour UIX-01a ; les chantiers EXP, PLA et MOT restent ouverts, aucun quatrième chantier n'est ouvert.
+- Sans destination explicite, la connexion ouvre les applications accessibles au rôle ; les tableaux existants restent disponibles. Les contrôles de sécurité restent appliqués par les routes et le serveur.
+- Le registre commercial et l'activation des modules restent dans VEN-01 ; cette interface ne les remplace pas.
+
+Conception : [UIX-01a](../conception/interface/uix-01a-navigation.md). Aucun changement de pile ni migration dans ce lot.

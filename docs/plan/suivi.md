@@ -39,7 +39,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | plan confirmé par le chef le 15 nov. ; correctif commité, tests du déploiement verts ; relu par le coordinateur : prêt |
 
-Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, en cours. Aucun quatrième chantier ouvert.
+Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, code local à relire ; parcours navigateur à exécuter. Aucun quatrième chantier ouvert.
 
 ## Missions en cours
 
@@ -156,6 +156,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOB-06](modules/MOB-application.md) | Emploi du temps lisible hors ligne (EP-3) | 4 | M | à faire |  |
 | [MOB-07](modules/MOB-application.md) | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes… | libre | M | à faire |  |
 | [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder |  |
+| [UIX-01a](modules/UIX-interface.md) | Accueil des applications et navigation web, exception autorisée par le chef le 15 nov. | libre | M | en cours : code local, à relire | `feat/uix-01a-navigation` |
 | [UIX-02](modules/UIX-interface.md) | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et… | 3 | M | à faire |  |
 | [UIX-03](modules/UIX-interface.md) | Accessibilité AA | libre | M | en partie |  |
 | [UIX-04](modules/UIX-interface.md) | Arabe complet | 4 | XL | à faire |  |
