@@ -105,7 +105,7 @@ public class EmploiDuTempsController {
         solverManager.solveBuilder()
                 .withProblemId(id)
                 .withProblemFinder(cle -> probleme)
-                .withBestSolutionConsumer(solution -> travail.meilleure = solution)
+                .withBestSolutionEventConsumer(evenement -> travail.meilleure = evenement.solution())
                 .withExceptionHandler((cle, exception) -> travail.erreur = exception.getMessage())
                 .withConfigOverride(new SolverConfigOverride<EmploiDuTemps>().withTerminationConfig(arret))
                 .run();

@@ -19,6 +19,12 @@ cat > "$BAC/bin/docker" <<'EOF'
 echo "$*" >> "$BAC/docker.log"
 case "$1 $2" in
     "pull -q") [[ " ${FAUX_ABSENTES:-} " == *" $3 "* ]] && exit 1; exit 0 ;;
+    "exec hestim_mysql")
+        case "${FAUX_DUMP:-ok}" in
+            fail) echo "mysqldump: error" >&2; exit 1 ;;
+            vide) exit 0 ;;
+            *) printf '%s\n' '-- dump de test'; exit 0 ;;
+        esac ;;
     "image inspect")
         [ "$3" = "-f" ] || exit 0
         image="$5"
@@ -32,7 +38,8 @@ EOF
 chmod +x "$BAC/bin/docker"
 export PATH="$BAC/bin:$PATH" BAC
 
-export REGISTRE=registre.test HESTIM="$BAC/hestim"
+export REGISTRE=registre.test HESTIM="$BAC/hestim" SAUVEGARDES_DIR="$BAC/sauvegardes"
+mkdir -p "$SAUVEGARDES_DIR"
 # shellcheck source-path=SCRIPTDIR/.. source=deployer.sh
 . "$ICI/../deployer.sh"
 # deployer.sh pose « set -Eeuo pipefail » : les tests gardent la main sur les échecs attendus,
@@ -95,6 +102,22 @@ verifier "retour : la version d'avant" egal "$(version_precedente)" aaaaaaaaaaaa
 # Version annoncée en marche
 verifier "même commit : accepté" verifier_version serveur "$COMPLET" "$COMPLET"
 refuser "autre commit annoncé : refusé" verifier_version serveur inconnue "$COMPLET"
+
+# Sauvegarde avant mise en ligne (REL-01) : un dump raté n'écrit pas d'images
+aucun_dump() { shopt -s nullglob; set -- "$SAUVEGARDES_DIR"/*; [ $# -eq 0 ]; }
+: > "$BAC/docker.log"
+rm -f "$SAUVEGARDES_DIR"/*
+FAUX_DUMP=fail refuser "mysqldump échoué : déploiement arrêté" en_vrai "$COURT"
+verifier "mysqldump échoué : aucun dump laissé" aucun_dump
+refuser "mysqldump échoué : images pas mises en place" grep -qE "^tag " "$BAC/docker.log"
+: > "$BAC/docker.log"
+rm -f "$SAUVEGARDES_DIR"/*
+FAUX_DUMP=vide refuser "dump vide : déploiement arrêté" en_vrai "$COURT"
+verifier "dump vide : aucun dump laissé" aucun_dump
+unset FAUX_DUMP
+chemin="$(sauvegarder_base 20261115-120000)"
+verifier "dump réussi : chemin renvoyé" egal "$chemin" "$SAUVEGARDES_DIR/hestim-20261115-120000.sql.gz"
+verifier "dump réussi : fichier gzip lisible" gzip -t "$chemin"
 
 echo
 if [ "$echecs" -eq 0 ]; then echo "deployer.sh : tous les tests passent"; else echo "deployer.sh : $echecs échec(s)"; exit 1; fi
