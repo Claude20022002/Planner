@@ -74,10 +74,10 @@ docs/conception/plateforme/pla-06-mesure-d01.md et la fiche
 docs/sessions/2026-11-10-etude-pla-06-mesure-d01.md, sur la branche.
 Branche : etude/pla-06-mesure-d01 (PR #164), dans le dossier ..\travaux-planner\pla-06-mesure-d01.
 Elle est déjà poussée : fusionne origin/main dedans, jamais de rebase.
-Le plan est validé ; les étapes 1 à 5 sont faites. Le chef a décidé le 15 novembre que seul le serveur
-sert de machine : amende le § 4 du plan comme le dit ta fiche de mission, relance les tests purs
-du banc (scripts/mesures/pla-06/tests), puis fais revalider le plan par le chef. Aucune série avant
-ce « validé ». Tu ne lances aucune commande sur le serveur : tu les prépares, le chef les lance.
+Les étapes 1 à 5 sont faites ; ton amendement du § 4 est validé. Fais maintenant « l'adaptation du banc »
+de ton § 4.1 (Compose, serie.mjs en mode local, garde mémoire et sonde témoin, relevés, README),
+relance les tests purs du banc (scripts/mesures/pla-06/tests), commite, puis prépare les commandes
+serveur de la première série, une à une. Tu ne lances aucune commande sur le serveur : le chef les lance.
 Tu n'écris que dans le périmètre de la fiche ; tu ne modifies ni backend/ ni decisions.md.
 S'il faut en sortir, arrête-toi et demande.
 Règles : questions avant toute supposition ; aucune adresse ni nom de machine dans le dépôt ;
