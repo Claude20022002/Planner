@@ -5,7 +5,7 @@
 | Module | [PLA](../../plan/modules/PLA-plateforme.md) · chantier ouvert le 9 novembre 2026, ordre validé le 10 |
 | Branche | `etude/pla-06-mesure-d01` (une étude : rien de ce code ne part en production) |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-10 ; revu le même jour (§ 12) |
-| **Validation** | Plan initial validé par Claude20022002 le 2026-11-10. **Amendement du 2026-11-15 (§ 4) à revalider ; aucune série autorisée avant le nouveau « validé ».** |
+| **Validation** | Plan initial validé par Claude20022002 le 2026-11-10. **Amendement du § 4 validé par Claude20022002 le 2026-11-15 (« validé »), puis répartition A-3 validée le même jour. Aucune série avant adaptation et vérification des gardes et retour des prérequis.** |
 
 **Lecture au 15 novembre :** le § 4 amendé remplace les dispositions de répartition entre machines des § 1, 3, 7 à 10 et de la revue historique (§ 12). P-22, P-23 et P-25 sont sans objet ; P-24 est remplacée. Les étapes 1 à 5 sont réalisées dans leur version initiale, sans valoir adaptation au serveur unique. Les consignes du README actuel sur les deux postes ne sont pas applicables au nouveau protocole. Les seuils S1 à S5 restent inchangés.
 
@@ -86,7 +86,7 @@ Si D-01 tombe, le chantier PLA s'arrête jusqu'à la décision du chef (P-10).
 
 ## 4. Solution
 
-### 4.1 Principe amendé le 15 novembre — à revalider
+### 4.1 Principe amendé et validé le 15 novembre
 
 **Décision du chef du 15 novembre : seul le serveur sert de machine.** MySQL, le serveur de banc, le générateur de charge, le pilote et les relevés tournent sur cet hôte partagé avec n8n. Aucun PC Ubuntu ou Windows ne participe. Le chef lance chaque commande sur le serveur ; l'agent les prépare et lit les retours expurgés.
 
@@ -99,16 +99,16 @@ La fiche de mission a été lue sur `origin/chore/coordination-agents` (PR #175)
 - L'école 001 est l'école par défaut : 200 bases au total. Les données, secrets et résultats bruts restent hors Git. Les principes de préparation, d'isolation par utilisateur MySQL et de contrôle des réglages MySQL ne changent pas.
 - La recette [serveur-2026-11.md](../../recette/serveur-2026-11.md) relève 7,6 Gio de RAM, 4 processeurs, aucune mémoire d'échange et environ 6,5 Gio disponibles après retrait d'Ollama. Ces chiffres datés ne remplacent pas un relevé avant chaque série. Ollama reste retiré ; aucun profil `cpu` n'est relancé.
 
-Le chef a accepté le 15 novembre **d'inscrire les propositions suivantes à revalider**, sans autoriser de lancement :
+Le chef a validé le § 4 amendé le 15 novembre, puis la répartition A-3. Cela autorise l'adaptation du banc ; les prérequis et vérifications restent exigés avant lancement :
 
 | Poste | Limite mémoire proposée | Limite processeur proposée |
 |---|---|---|
-| MySQL | paliers de 1 puis 2 Gio ; tampon InnoDB de 512 Mio puis 1 Gio | part de l'enveloppe commune à préciser avant lancement |
-| Serveur de banc Node | 1 Gio | part de l'enveloppe commune à préciser avant lancement |
-| Pilote, générateur de charge et relevés ensemble | 512 Mio | part de l'enveloppe commune à préciser avant lancement |
+| MySQL | paliers de 1 puis 2 Gio ; tampon InnoDB de 512 Mio puis 1 Gio | 1 processeur |
+| Serveur de banc Node | 1 Gio | 1 processeur |
+| Pilote, générateur de charge et relevés ensemble | 512 Mio | 0,5 processeur |
 | Ensemble de la mesure | **3,5 Gio au maximum**, préparation et installation comprises | **2,5 processeurs au maximum, cumulés** |
 
-Les conteneurs ne disposent pas de mémoire d'échange. Le pilote, la charge et les relevés sur l'hôte doivent également être bornés par un groupe de contrôle ; les plafonds Compose seuls ne suffisent pas. Le découpage exact des 2,5 processeurs et le mécanisme du groupe de contrôle seront proposés avant leur mise en œuvre. Aucun processus de préparation ou d'installation ne doit échapper à l'enveloppe. Ni limitation ni modification des services existants.
+Les conteneurs ne disposent pas de mémoire d'échange. Le pilote, la charge et les relevés sur l'hôte doivent également être bornés par un groupe de contrôle ; les plafonds Compose seuls ne suffisent pas. A-3 validée : MySQL et Node ont chacun 1 processeur ; pilote, charge et relevés partagent un groupe systemd dédié avec CPUQuota=50%, MemoryMax=512M et MemorySwapMax=0. Aucun processus de préparation ou d'installation ne doit échapper à l'enveloppe. Ni limitation ni modification des services existants.
 
 **Le palier MySQL de 4 Gio est suspendu** : il ne tient pas dans cette enveloppe avec les autres postes. Si 2 Gio échouent, le rapport le dit ; toute nouvelle enveloppe exige une nouvelle validation. S1 garde la place des autres services de Planner même s'ils ne tournent pas encore : leur absence du banc ne constitue pas un gain de capacité pour conclure D-01.
 
@@ -141,9 +141,9 @@ Ces adaptations ne sont pas encore écrites. Les tests purs existants vérifient
 
 | N° | Question | Proposition / réponse du 15 novembre | État |
 |---|---|---|---|
-| A-1 | Enveloppe et garde mémoire | MySQL 2 Gio, Node 1 Gio, charge et relevés 512 Mio ; total CPU 2,5 ; arrêt sous 1 Gio disponible ; palier 4 Gio suspendu | inscription acceptée, amendement à revalider |
-| A-2 | Ordre et témoin n8n | avant EXP-02b ; contrôle manuel avant, pendant, après | inscription acceptée ; créneau et témoin à fournir par le chef |
-| A-3 | Répartition des 2,5 processeurs et groupe de contrôle des processus hôte | présenter les commandes et limites détaillées après validation du principe, avant lancement | à préciser et faire approuver ; aucun réglage supposé |
+| A-1 | Enveloppe et garde mémoire | MySQL 2 Gio, Node 1 Gio, charge et relevés 512 Mio ; total CPU 2,5 ; arrêt sous 1 Gio disponible ; palier 4 Gio suspendu | validé par le chef le 15 novembre |
+| A-2 | Ordre et témoin n8n | avant EXP-02b ; contrôle manuel avant, pendant, après | principe validé ; créneau et témoin à fournir par le chef |
+| A-3 | Répartition des 2,5 processeurs et groupe de contrôle des processus hôte | MySQL 1, Node 1, hôte 0,5 ; groupe systemd CPUQuota=50%, MemoryMax=512M, MemorySwapMax=0 | validé par le chef le 15 novembre |
 | P-20 | Mémoire d'échange du serveur | absente dans la recette du 15 novembre ; relever à nouveau, sans en ajouter dans PLA-06 | constat à confirmer par le chef |
 | P-21 | Pics et traitements lourds n8n | obtenir leur créneau et le contrôle représentatif avant de mesurer | attendu du chef |
 
