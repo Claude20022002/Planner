@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | plan validé le 2026-11-15, banc à coder ; collège après la fusion de MOT-13b |
 | Agent | Codex (VS Code) |
 | Modèle recommandé | le modèle de code le plus fort de Codex, effort élevé : le jeu d'essai et le protocole décident de MOT-04 (Timefold contre CP-SAT) |
 | Attribuée le | 2026-11-15, par le coordinateur |
@@ -38,3 +38,4 @@ Ne touche pas : `solver/` (mission MOT-12), `backend/` (sauf lecture), le serveu
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-15 | mission écrite ; personne ne tient MOT-02 | — |
+| 2026-11-15 14:45 | plan reçu (`5b3009da`, 8 questions) ; **validé par le coordinateur** : un seul générateur de collège (celui de MOT-13b, lu sur `main` après sa fusion), banc, grand jeu de 20 000 et comparaison avant et après #181 tout de suite ; profil du VPS en mesure principale ; verdict borné au solveur ; pas de filtrage dans MOT-02 (s'il est nécessaire : fonction à part, rattachée à MOT-10) | validé |
