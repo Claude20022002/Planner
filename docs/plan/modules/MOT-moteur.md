@@ -13,7 +13,7 @@
 
 ## Ce qui existe
 
-- **Solveur** : `solver/`, en Java 21 avec **Timefold 1.15.0** (`solver/pom.xml`), limité à 1 Go et à 2 calculs simultanés. Côté serveur : `backend/services/generation/timefold/*`, `generationAutomatiqueRoutes`, et la page `gestion/GenerationAutomatique`. Il compte 7 classes de test.
+- **Solveur** : `solver/`, en Java 21 avec **Timefold 1.15.0** (`solver/pom.xml`), limité à 1 Go et à 2 calculs simultanés. MOT-12 le passe à Spring Boot 4.1.2 et au cœur de Timefold 1.35.0, sans le starter (`ConfigurationSolveur.java`) ; 9 classes de test après MOT-12. Côté serveur : `backend/services/generation/timefold/*`, `generationAutomatiqueRoutes`, et la page `gestion/GenerationAutomatique`. Il compte 7 classes de test.
 - **Catalogue** : 498 paramètres et 5 profils, dans `backend/services/moteur/catalogue/` (JSON, qui font foi). Les pages lisibles sont générées par `node scripts/catalogue-moteur-doc.mjs` dans [conception/moteur-planification/catalogue](../../conception/moteur-planification/catalogue/README.md).
 - **MP-1** (fusionnée le 7 novembre) : valeurs versionnées et datées (migration 0061), routes `/api/moteur`. **La génération ne lit pas encore ces valeurs.**
 - **Contraintes déclarées, MOT-13a** (branche `feat/mot-13-contraintes`, 15 novembre) :
@@ -48,8 +48,8 @@
 | MOT-09 | Remplaçant proposé automatiquement en cas d'absence d'un enseignant | F-11 (2e partie) | 4 | M | MOT-06 | à faire |
 | MOT-10 | Grande échelle : solveur réglable, file par école, 20 000 étudiants en moins de 30 min ; poids et plages lus depuis les valeurs | ME-14, MP-5 | 5 | L | MOT-04 | à faire |
 | MOT-11 | Règles nouvelles, famille par famille (examens dans le calcul F-8, ressources F-7, etc.), chacune avec ses données et son test | MP-7 | 5 | M par famille | MOT-10 | à faire |
-| MOT-12 | Montée du solveur : Spring Boot 3.3.5 vers 4.x, Timefold 1.15 vers 1.31, Java 21 inchangé (décision du 13 novembre), avant MOT-04 | — | 1 | M | — | à faire |
-| MOT-13 | **Contraintes déclarées par l'école** : l'école ne règle pas les 498 paramètres, elle déclare ses contraintes à partir de six modèles ; liste « Déjà pris en compte » du profil ; contrôle de place avant le calcul. Étapes : 13a serveur, 13b solveur et bilan, 13c écran ([conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md)) | — | 3 | M + L + M | 13b : MOT-12 ; 13c : ADM-02 | 13a codée, PR à ouvrir |
+| MOT-12 | Montée du solveur : Spring Boot 3.3.5 vers 4.1, Timefold 1.15 vers 1.35 (cœur, sans le starter), Java 21 inchangé (décisions des 13 et 15 novembre), avant MOT-04 ([conception](../../conception/moteur-planification/mot-12-montee-solveur.md)) | — | 1 | M | — | codée, PR à ouvrir |
+| MOT-13 | **Contraintes déclarées par l'école** : l'école ne règle pas les 498 paramètres, elle déclare ses contraintes à partir de six modèles ; liste « Déjà pris en compte » du profil ; contrôle de place avant le calcul. Étapes : 13a serveur, 13b solveur et bilan, 13c écran ([conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md)) | — | 3 | M + L + M | 13b : MOT-12 ; 13c : ADM-02 | 13a fusionnée (#178, 15 nov.) ; 13b après MOT-12 |
 
 ## Critères de « terminé »
 
