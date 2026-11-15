@@ -29,7 +29,7 @@ beforeAll(async () => {
     const admin = await createUser("admin");
     clients = { etudiant: await loginAs(etudiant), enseignant: await loginAs(enseignant) };
 
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const filiere = await Filiere.create({ code_filiere: "MOB", nom_filiere: "Mobile" });
     const autreFiliere = await Filiere.create({ code_filiere: "AUT", nom_filiere: "Autre" });
     const promo = await Groupe.create({ nom_groupe: "4A MOB", niveau: "4ème année", annee: 4, effectif: 30, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
@@ -39,7 +39,7 @@ beforeAll(async () => {
     // L'étudiant n'est inscrit qu'à son TD
     await Appartenir.create({ id_user_etudiant: etudiant.id_user, id_groupe: td1.id_groupe });
 
-    const salle = await Salle.create({ nom_salle: "G-MOB1", type_salle: "Salle de cours", capacite: 60, id_campus: gandhi.id_campus });
+    const salle = await Salle.create({ nom_salle: "N-MOB1", type_salle: "Salle de cours", capacite: 60, id_campus: nord.id_campus });
     const creneau = await Creneau.create({ jour_semaine: "mardi", heure_debut: "09:00", heure_fin: "10:45", duree_minutes: 105, rang: 1 });
     const cours = await Cours.create({ code_cours: "MOB-ANG", nom_cours: "Anglais", niveau: "4ème année", volume_horaire: 20, type_cours: "CM", semestre: "S8", id_filiere: filiere.id_filiere });
     const annee = await AnneeUniversitaire.create({ libelle: "2026-2027", date_debut: "2026-09-01", date_fin: "2027-07-31", active: true });
@@ -77,14 +77,14 @@ describe("GET /api/emplois-du-temps/moi", () => {
     });
 
     test("un changement en masse ne se voit qu'à la publication suivante (21 octobre 2026)", async () => {
-        const salleNeuve = await Salle.create({ nom_salle: "G-MOB2", type_salle: "Salle de cours", capacite: 60, id_campus: ref.salle.id_campus });
+        const salleNeuve = await Salle.create({ nom_salle: "N-MOB2", type_salle: "Salle de cours", capacite: 60, id_campus: ref.salle.id_campus });
         const cible = await Affectation.findOne({ where: { id_groupe: ref.td1.id_groupe, date_seance: "2027-04-12" } });
         // Comme une régénération : la séance bouge en base, sans notification
         await cible.update({ id_salle: salleNeuve.id_salle, date_seance: "2027-04-13" });
         const lire = async () => (await clients.etudiant.get("/api/emplois-du-temps/moi?du=2027-04-01&au=2027-04-30")).body.seances.find((s) => s.id_affectation === cible.id_affectation);
-        expect(await lire()).toMatchObject({ date_seance: "2027-04-12", salle: { nom_salle: "G-MOB1" } });
+        expect(await lire()).toMatchObject({ date_seance: "2027-04-12", salle: { nom_salle: "N-MOB1" } });
         await publier(ref.td1, "2027-04");
-        expect(await lire()).toMatchObject({ date_seance: "2027-04-13", salle: { nom_salle: "G-MOB2" } });
+        expect(await lire()).toMatchObject({ date_seance: "2027-04-13", salle: { nom_salle: "N-MOB2" } });
     });
 
     test("un changement ponctuel, dont l'étudiant est prévenu, se voit aussitôt", async () => {
@@ -106,7 +106,7 @@ describe("GET /api/emplois-du-temps/moi", () => {
         expect(reponse.body.groupes).toEqual([{ id_groupe: ref.td1.id_groupe, nom_groupe: "MOB-4A" }]);
 
         const [premiere] = reponse.body.seances;
-        expect(premiere.salle).toMatchObject({ nom_salle: "G-MOB1", campus: { code: "G" } });
+        expect(premiere.salle).toMatchObject({ nom_salle: "N-MOB1", campus: { code: "N" } });
         expect(premiere.cours).toMatchObject({ code_cours: "MOB-ANG", nom_cours: "Anglais" });
         // Le nom de l'enseignant, rien d'autre
         expect(Object.keys(premiere.enseignant).sort()).toEqual(["id_user", "nom", "prenom"]);
@@ -125,7 +125,7 @@ describe("GET /api/emplois-du-temps/moi", () => {
     test("agenda : les événements qui le concernent et ses examens publiés", async () => {
         const { admin, promo, td1, td2, autre, cours, salle } = ref;
         const ev = (extra) => ({ date_debut: "2027-03-01", date_fin: "2027-03-01", id_user_createur: admin.id_user, bloque_affectations: false, ...extra });
-        const stendhal = await Campus.findOne({ where: { code: "ST" } });
+        const sud = await Campus.findOne({ where: { code: "S" } });
         await Evenement.bulkCreate([
             ev({ titre: "Fête du Trône", type_evenement: "ferie", portee: "etablissement" }),
             ev({ titre: "Vacances de printemps", type_evenement: "vacances", portee: "filiere", id_cible: promo.id_filiere, date_debut: "2027-03-04", date_fin: "2027-03-12" }),
@@ -136,7 +136,7 @@ describe("GET /api/emplois-du-temps/moi", () => {
             ev({ titre: "Hors période", type_evenement: "ferie", portee: "etablissement", date_debut: "2027-05-01", date_fin: "2027-05-01" }),
             // Une filière n'a pas de campus : l'étudiant voit ceux des campus où il a cours sur la période
             ev({ titre: "Fermeture du campus où il a cours", type_evenement: "autre", portee: "campus", id_cible: salle.id_campus }),
-            ev({ titre: "Fermeture de l'autre campus", type_evenement: "autre", portee: "campus", id_cible: stendhal.id_campus }),
+            ev({ titre: "Fermeture de l'autre campus", type_evenement: "autre", portee: "campus", id_cible: sud.id_campus }),
         ]);
         const base = { id_cours: cours.id_cours, heure_debut: "09:00", heure_fin: "11:00", id_createur: admin.id_user };
         const [publie, brouillon, voisin] = await SessionExamen.bulkCreate([
@@ -154,7 +154,7 @@ describe("GET /api/emplois-du-temps/moi", () => {
         const { body } = await clients.etudiant.get("/api/emplois-du-temps/moi?du=2027-03-01&au=2027-03-07");
         expect(body.evenements.map((e) => e.titre).sort()).toEqual(["Fermeture du campus où il a cours", "Fête du Trône", "Journée 4e année", "Vacances de printemps"]);
         expect(body.evenements.find((e) => e.type === "vacances")).toEqual(expect.objectContaining({ date_debut: "2027-03-04", date_fin: "2027-03-12" }));
-        expect(body.examens).toEqual([expect.objectContaining({ titre: "Examen d'anglais", date: "2027-03-02", cours: { code: "MOB-ANG", nom: "Anglais" }, salles: ["G-MOB1"] })]);
+        expect(body.examens).toEqual([expect.objectContaining({ titre: "Examen d'anglais", date: "2027-03-02", cours: { code: "MOB-ANG", nom: "Anglais" }, salles: ["N-MOB1"] })]);
     });
 
     test("réservé aux étudiants ; période validée", async () => {

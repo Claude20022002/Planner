@@ -38,13 +38,13 @@ beforeAll(async () => {
     etudiant = await createUser("etudiant");
     clients = { admin: await loginAs(admin), profA: await loginAs(profA), profB: await loginAs(profB) };
 
-    const [gandhi, stendhal] = await Promise.all([Campus.findOne({ where: { code: "G" } }), Campus.findOne({ where: { code: "ST" } })]);
+    const [nord, sud] = await Promise.all([Campus.findOne({ where: { code: "N" } }), Campus.findOne({ where: { code: "S" } })]);
     const filiere = await Filiere.create({ code_filiere: "IMP", nom_filiere: "Imprévus" });
     const td1 = await Groupe.create({ nom_groupe: "IMP-3A", niveau: "3ème année", annee: 3, effectif: 20, annee_scolaire: "2026-2027", type_groupe: "td", id_filiere: filiere.id_filiere });
     const td2 = await Groupe.create({ nom_groupe: "IMP-3B", niveau: "3ème année", annee: 3, effectif: 20, annee_scolaire: "2026-2027", type_groupe: "td", id_filiere: filiere.id_filiere });
     await Appartenir.create({ id_user_etudiant: etudiant.id_user, id_groupe: td1.id_groupe });
     const salle = (nom, campus) => Salle.create({ nom_salle: nom, type_salle: "Salle de cours", capacite: 30, id_campus: campus.id_campus });
-    const salles = { g1: await salle("G-IMP1", gandhi), g2: await salle("G-IMP2", gandhi), st: await salle("ST-IMP1", stendhal) };
+    const salles = { g1: await salle("N-IMP1", nord), g2: await salle("N-IMP2", nord), st: await salle("S-IMP1", sud) };
     const c = (jour_semaine, heure_debut, heure_fin, rang) => Creneau.create({ jour_semaine, heure_debut, heure_fin, duree_minutes: 90, rang });
     const creneaux = {
         lun1: await c("lundi", "09:00", "10:45", 1),
