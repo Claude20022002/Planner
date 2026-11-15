@@ -71,7 +71,7 @@ principal() {
 
     date="$(date +%Y%m%d-%H%M%S)"
     echo "== Sauvegarde de la base (le serveur applique ses migrations au démarrage)"
-    sauvegarde="$(sauvegarder_base "$date")"
+    sauvegarde="$(sauvegarder_base "$date")" || exit 1
     ls -lh "$sauvegarde"
     # À partir d'ici, toute erreur affiche le retour arrière
     trap 'afficher_retour "$date" "$sauvegarde"' ERR
