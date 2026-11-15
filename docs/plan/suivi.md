@@ -162,7 +162,8 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-03](modules/UIX-interface.md) | Accessibilité AA | libre | M | en partie |  |
 | [UIX-04](modules/UIX-interface.md) | Arabe complet | 4 | XL | à faire |  |
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
-| [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | à faire |  |
+| [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
+| [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte en brouillon : implémentation locale, à publier par le chef | #185 · feat/uix-06a-interface |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
@@ -234,3 +235,9 @@ Reprise du 15 novembre : publication vérifiée, PR **#185 ouverte en brouillon*
 
 Validation du chef le 15 novembre : plan et quatre propositions UIX-06a approuvés (« Valider »). Pilote en cours sur feat/uix-06a-interface ; exception limitée sans quatrième chantier. Validation commitée avant code.
 
+
+## Livraison locale UIX-06a du 15 novembre
+
+Plan et quatre propositions validés explicitement par le chef (« Valider »), validation commitée avant code dans f4b730fb. Pilote implémenté sur feat/uix-06a-interface : marque, thème local compatible, connexion/accueil/navigation et trois pages Personnes. Aucun backend, migration, serveur ou push. Les autres domaines restent hors périmètre.
+
+Vérifications : 65 tests unitaires réussis, build réussi, neutralité conforme, lint sans erreur (avertissements historiques hors pilote). Contrôle Chromium/axe-core de composants isolés et de la vraie connexion compilée effectué sans serveur ; les parcours réels et la CI restent à exécuter. Six nouveaux parcours découverts, 49 au total, non exécutés par l’agent. Le tableau « Missions en cours » reste tenu par le coordinateur.

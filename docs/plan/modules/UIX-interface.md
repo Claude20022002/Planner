@@ -12,6 +12,8 @@
 
 ## Ce qui existe
 
+- **UIX-06a (pilote codé localement, PR #185 en brouillon)** : dernier logo mosaïque et assemblage école ; connexion/récupération et accueil/navigation harmonisés ; Comptes, Enseignants et Étudiants avec recherche nommée, filtres existants, listes téléphone, formulaires et états communs. Plan validé par le chef le 15 novembre. Relecture et parcours réels/CI encore attendus.
+
 - **UIX-01a (PR #184 fusionnée, CI verte)** : accueil des applications après connexion, recherche FR/EN et navigation contextuelle par rôle ; conception validée par le chef le 15 novembre. Ce lot ne réalise pas la migration du socle neutre.
 
 - **Site** : React 19, Vite 7, MUI. Le système visuel « panneau à volets » est décrit dans [DESIGN.md](../../../DESIGN.md).
@@ -30,7 +32,8 @@
 | UIX-03 | Accessibilité AA : axe-core sans violation dans les parcours | M-13 | libre | M | — | en partie |
 | UIX-04 | Arabe complet : site, application et documents PDF, de droite à gauche ; **prouver d'abord le rendu arabe des PDF** (jsPDF) | F-16 | 4 | XL | UIX-01 | à faire |
 | UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | libre | M | — | à faire |
-| UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 | à faire |
+| UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en cours : pilote UIX-06a codé, à relire et vérifier en CI |
+| UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | codé localement, PR #185 en brouillon |
 
 ## Critères de « terminé »
 
@@ -54,8 +57,6 @@ EP-2, EP-11.
 
 [Accueil des applications et navigation](../../conception/interface/uix-01a-navigation.md), validé par Claude20022002 le 15 novembre. Exception de chantier limitée à ce lot.
 
-### Proposition UIX-06a : marque et premières pages de gestion
+### Pilote UIX-06a : marque et premières pages de gestion
 
-[Conception du pilote Personnes](../../conception/interface/uix-06a-interface.md), demandée par le chef le 15 novembre après l'analyse d'OpenEduCat. **À valider**, sans code produit : copie des SVG du dernier kit mosaïque, cohérence de l'accueil/connexion/navigation, puis comptes/enseignants/étudiants. La dépendance au socle UIX-01 et l'exception hors chantier sont explicitement soumises au chef.
-
-Reprise du 15 novembre : PR #185 de conception ouverte en brouillon ; plan et quatre questions toujours à valider. Thème neutre proposé en ardoise (N-4), bleu nuit réservé à la marque. Aucun code produit.
+[Conception du pilote Personnes](../../conception/interface/uix-06a-interface.md), validée par le chef le 15 novembre (« Valider », quatre propositions). L’exception et le découplage sans migration sont autorisés pour ce lot seulement. Implémentation locale terminée ; relecture et CI attendues. Le thème historique reste applicable aux autres pages et les documents imprimés conservent LogoEcole.

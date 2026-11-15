@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Module | UIX, première étape proposée de UIX-06 |
+| Module | UIX, première étape de UIX-06 |
 | Branche | `feat/uix-06a-interface`, depuis `origin/main` à `6d89f79c` |
 | Rédigé par | Codex, le 2026-11-15 |
 | **Validé** | **Validé par Claude20022002 le 15 novembre 2026** : réponse « Valider » aux quatre propositions et au plan dans la conversation Codex |
@@ -173,3 +173,14 @@ Vitrine commerciale, migration 0060 et assistant d'ouverture, application native
 ## 13. Validation du chef
 
 Le 15 novembre 2026, après présentation des quatre propositions précisées et du plan, le chef répond « Valider ». Les quatre propositions sont retenues, y compris l’exception limitée, le pilote Personnes, le découplage sans migration et la direction Inter/ardoise avec marque d’école conservée. Les mentions d’attente du § 12 sont le constat historique avant cet accord. Validation consignée et commitée avant toute implémentation.
+
+
+## 14. Implémentation du pilote
+
+- MarquePlanner et choixMarque assemblent les SVG intacts de frontend/public/marque. LogoEcole n’est pas modifié : les documents imprimés et les surfaces hors pilote gardent leur composant existant.
+- ThemeGestion adapte localement la palette MUI, la typographie Inter et les états de focus. Le thème historique est extrait en trois modules de design-system ; ses huit combinaisons famille/mode/langue ont été comparées avant/après et sont identiques. Aucun réglage d’école ou de famille n’est migré.
+- Les trois pages assemblent les composants de personnes/ et leurs dossiers comptes/, enseignants/, etudiants/. Les hooks conservent les requêtes et mutations existantes. Le tri et la sélection des comptes restent disponibles sur téléphone ; charges et compétences enseignants, année des groupes, import/export, invitation et MFA sont conservés.
+- Les recherches Comptes et Étudiants restent limitées à la page chargée ; cette limite est maintenant annoncée, sans ajouter une API de recherche.
+- Les champs reçoivent des libellés accessibles ; les formulaires conservés sont adaptés au thème commun. La soumission est désactivée pendant l’enregistrement des fiches.
+- Les nouveaux parcours Personnes utilisent le vrai serveur et le vrai compte de test. Le test réseau négatif interrompt une lecture puis laisse le vrai serveur répondre lors de la nouvelle tentative. Aucune réponse métier de réussite fictive.
+- Vérifications locales : unitaires, lint, build, neutralité, comparaison des thèmes et inspection Chromium/axe-core sans serveur. Les montages de composants utilisent uniquement des personnes et écoles fictives ; les contrôles de connexion compilée interrompent les API et ne valident aucune authentification. La recette avec les données réelles des parcours reste à lancer par le chef ou la CI.
