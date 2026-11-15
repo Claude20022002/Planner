@@ -36,7 +36,8 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | **fusionnée** |
 | Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | #170 | **fusionnée** |
 | Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | #174 | **fusionnée le 15 nov.** |
-| Étude : failles de cinq ERP scolaires (OpenEduCat, Frappe Education, Fedena, PERIS SCHOOL, Studirium ; Madata en encadré), hors chantier, demande du chef le 15 nov. | `etude/failles-erp-scolaires` | écrite, commitée en local ; PR à ouvrir ; propositions du § 5 à trancher par le chef |
+| Étude : failles de cinq ERP scolaires (OpenEduCat, Frappe Education, Fedena, PERIS SCHOOL, Studirium ; Madata en encadré), hors chantier, demande du chef le 15 nov. | #186 | PR ouverte ; questions 5 à 8 tranchées le 15 nov. : EP-13, PLA-04, QUA-08, QUA-09, MOB, ETA-02 inscrites |
+| Étude : essai en local d'une branche de Frappe Education (contrôle d'accès aux fiches d'élèves), avant un éventuel signalement privé (décision du chef du 15 nov.) | à créer (`etude/…`) | à faire ; rien de public avant la réponse de Frappe |
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | **fusionnée le 15 nov.** |
 
@@ -226,3 +227,5 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QUA-05](modules/QUA-qualite-docs.md) | Supprimer les branches et les dossiers de travail morts, après vérification de leur… | libre | S | à faire |  |
 | [QUA-06](modules/QUA-qualite-docs.md) | `docs/users.xlsx` | 0 | S | fait (personnes fictives, rien à réécrire) |  |
 | [QUA-07](modules/QUA-qualite-docs.md) | Protéger `main` | 0 | S | fait : les 6 contrôles de la CI sont exigés (contournable seulement par `gh pr merge --admin`) |  |
+| [QUA-08](modules/QUA-qualite-docs.md) | `SECURITY.md` et signalement privé des failles | libre | S | à faire |  |
+| [QUA-09](modules/QUA-qualite-docs.md) | Liste publique des envois sortants (EP-13) | libre | S | à faire |  |

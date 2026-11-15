@@ -33,10 +33,11 @@
 - **MOB-03** : la mesure de départ et la mesure après sont notées pour le téléphone de référence.
 - **MOB-06** : en mode avion, la semaine en cours reste lisible, avec la date de la dernière mise à jour.
 - **MOB-07** : la même construction se connecte à deux installations différentes.
+- **Toute publication dans un magasin** (App Store, Google Play) : les fiches « confidentialité » décrivent ce que l'application collecte vraiment, et sont relues avant l'envoi (décision du 15 nov.).
 
 ## Exigences produit
 
-EP-3, EP-7, EP-11.
+EP-3, EP-7, EP-11, EP-13.
 
 ## Références
 

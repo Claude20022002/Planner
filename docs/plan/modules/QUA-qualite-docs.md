@@ -26,6 +26,8 @@
 - **Pile** : confirmée le 13 novembre, sous condition que D-01 tienne ([pile.md](../../conception/qualite/pile.md)) ; montées de version listées, non décidées.
 - **Contrôleurs trop longs** : `authController` (759 lignes), `statistiques` et `emploiDuTemps` (512 chacun), `etudiant` (443).
 - **Données personnelles** : `docs/users.xlsx` (noms, adresses, mots de passe) a été retiré de l'arbre le 7 novembre, mais **il reste dans l'historique d'un dépôt public**.
+- **Envois sortants** (code lu le 15 nov.) : IA (`backend/services/ia/client.js`), notifications par Expo (`backend/services/push.js`), courriel (`backend/utils/sendEmail.js`), sauvegardes vers B2 (`deploy/vps/sauvegarder.sh`). Aucune télémétrie ; Sentry n'est qu'un commentaire. **Aucune liste publique** de ces envois (EP-13).
+- **Signalement des failles** : pas de `SECURITY.md`.
 
 ## Fonctions
 
@@ -38,6 +40,8 @@
 | QUA-05 | Supprimer les branches et les dossiers de travail morts, après vérification de leur contenu ; fermer #40 | C-1, P-57 | libre | S | — | à faire |
 | QUA-06 | `docs/users.xlsx` : si les personnes sont réelles, prévenir l'école, changer les mots de passe des comptes concernés s'ils existent encore, puis décider de la réécriture de l'historique (Q-14) | 0-1, A-1 | 0 | S | — | fait : personnes fictives, décision du 8 nov. |
 | QUA-07 | Protéger `main` : CI verte exigée avant de fusionner (Q-15) | — | 0 | S | — | fait : 6 contrôles exigés, constaté le 8 nov. |
+| QUA-08 | `SECURITY.md` (comment signaler une faille, délai de réponse) et signalement privé de GitHub ouvert sur le dépôt (décision du 15 nov.) | — | libre | S | — | à faire |
+| QUA-09 | Liste publique des envois sortants de Planner : destinataire, données envoyées, raison (EP-13, décision du 15 nov.) | — | libre | S | — | à faire |
 
 ## Critères de « terminé »
 
@@ -46,6 +50,8 @@
 - **QUA-02** : aucun contrôleur ne dépasse 200 lignes ; la suite complète passe sans changer un seul test.
 - **QUA-05** : `git branch -a --no-merged main` ne liste que des branches en cours, chacune avec sa ligne dans [suivi.md](../suivi.md).
 - **QUA-07** : une PR rouge ne peut plus être fusionnée.
+- **QUA-08** : `SECURITY.md` est sur `main` ; le chef a ouvert le signalement privé dans les réglages du dépôt.
+- **QUA-09** : chaque envoi sortant trouvé dans le code (clients HTTP, SMTP, SDK de services) figure dans la liste ; le modèle de PR demande si la PR en ajoute un.
 
 ## Références
 

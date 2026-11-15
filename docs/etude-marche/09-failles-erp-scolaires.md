@@ -1,6 +1,6 @@
 # Failles des ERP scolaires : OpenEduCat, Frappe Education, Fedena, PERIS SCHOOL, Studirium
 
-15 novembre 2026. Demande du chef de projet : analyser cinq ERP spécialisés pour les établissements, trouver leurs failles, ce que disent leurs utilisateurs, ce qu'ils ne couvrent pas et les problèmes qu'on y trouve. Le document complète [01-concurrents.md](01-concurrents.md) (fiches et prix du 4 novembre) et [07-comparatif-odoo.md](07-comparatif-odoo.md) (Odoo et OpenEduCat, fonction par fonction). Il ne reprend pas ce qu'ils disent déjà, sauf pour le corriger.
+15 novembre 2026. Demande du chef de projet : analyser cinq ERP spécialisés pour les établissements, trouver leurs failles, ce que disent leurs utilisateurs, ce qu'ils ne couvrent pas et les problèmes qu'on y trouve. Le document complète [01-concurrents.md](01-concurrents.md) (fiches et prix du 4 novembre) et [07-comparatif-odoo.md](07-comparatif-odoo.md) (Odoo et OpenEduCat, fonction par fonction). Il ne reprend pas ce qu'ils disent déjà, sauf pour le corriger. Le rapport du chef de projet, [Failles des ERP scolaires](<reports/Failles des ERP scolaires.md>) (15 nov.), porte sur d'autres produits (Classter, Kanda OS) : les deux se lisent ensemble, et ce document n'en reprend que les faits relus à la source (décision du 15 nov.).
 
 Choix du chef (15 nov.) : un mélange de deux ERP libres (OpenEduCat, Frappe Education), d'un ERP indien vendu dans le monde (Fedena) et de deux ERP d'Afrique francophone (PERIS SCHOOL, Studirium). Madata Africa, cité dans la demande, a un encadré court (§ 2.6) : ce n'est pas un ERP scolaire.
 
@@ -57,7 +57,8 @@ Choix du chef (15 nov.) : un mélange de deux ERP libres (OpenEduCat, Frappe Edu
    - Les « 74+ modules » annoncés mélangent donc les deux éditions.
 4. **Un suivi des tickets qui ne montre rien** [DÉPÔT]. Les 115 tickets sont tous fermés, aucun n'est ouvert. Les derniers sont des installations qui échouent (« Unable to install Openeducat 18 on Odoo 18 », août 2025) ou des questions de mise à jour entre versions.
 5. **Massar** : export de listes en CSV « au format du ministère », synchronisation directe « sur la feuille de route » [V]. **Aucun code Massar dans l'édition libre** [CODE].
-6. **Aucune CVE publiée** au 15 nov. Ce n'est pas une preuve de sécurité : personne ne semble avoir audité le code publiquement.
+6. **Arabe et français incomplets** [DÉPÔT, [discussion #1053](https://github.com/openeducat/openeducat_erp/discussions/1053), 18 mai 2026, relue le 15 nov. ; relevée d'abord par le rapport du chef]. Des messages d'erreur du code Python sont écrits en anglais, sans la fonction de traduction d'Odoo, par exemple « The admission date cannot be in the future. ». L'auteur écrit qu'on ne peut pas traduire entièrement l'interface en arabe, en français ou en espagnol sans modifier le code. L'arabe « de droite à gauche » annoncé [V] ne couvre donc pas ces messages.
+7. **Aucune CVE publiée** au 15 nov. Ce n'est pas une preuve de sécurité : personne ne semble avoir audité le code publiquement.
 
 **Ce que disent les utilisateurs** [AVIS, G2 surtout] :
 - pas prêt à l'emploi : installation et apprentissage difficiles ;
@@ -74,7 +75,7 @@ Choix du chef (15 nov.) : un mélange de deux ERP libres (OpenEduCat, Frappe Edu
    - Jusqu'au 15 octobre 2026, **tout élève ou parent connecté pouvait lire la fiche de tous les autres élèves** : nom, date de naissance, e-mail, parents, frères et sœurs. Il suffisait de passer par l'API, les listes ou l'export.
    - La même PR remplace des requêtes SQL construites par concaténation, une porte ouverte à l'injection.
    - Le correctif est dans les branches `version-15.2` et `version-16`.
-   - **Il n'est pas dans `develop`** [CODE] : le rôle Élève y lit toujours toutes les fiches (`student.json`, lecture sans condition), et `hooks.py` n'y a plus le contrôle. La prochaine version majeure risque donc de rouvrir la fuite [?, à confirmer par un essai].
+   - L'état des autres branches reste à vérifier par un essai en local (§ 6, point 2). Décision du chef du 15 nov. : rien de plus n'est écrit ici avant que Frappe ait répondu.
 2. **Inscription d'élèves par n'importe quel compte** [DÉPÔT, avis GHSA-64v4-cmpc-f27c, août 2026, gravité moyenne]. L'API `enroll_student` ne vérifiait pas les droits : tout utilisateur connecté pouvait inscrire des candidats en attente et créer des fiches d'élèves.
 3. **Pas de générateur d'emploi du temps dans une version publiée** [CODE].
    - L'outil de planification recopie une semaine de créneaux saisis à la main.
@@ -170,7 +171,7 @@ C'est **la couverture la plus large des cinq** pour une école privée africaine
 
 ### 2.6 Encadré : Madata Africa n'est pas un ERP scolaire
 
-Madata, lancé en 2024 par un entrepreneur ivoirien, est un ERP en ligne pour les indépendants et les petites entreprises d'Afrique francophone : ventes, stock, facturation, comptabilité, paie, CRM, notes de frais [PRESSE, WeAreTech ; fiche Capterra]. **Aucun module école n'a été trouvé** (ni élèves, ni classes, ni notes, ni emploi du temps). Pour servir une école, il lui manquerait tout le scolaire.
+Madata, lancé en 2024 par un entrepreneur ivoirien, est un ERP en ligne pour les indépendants et les petites entreprises d'Afrique francophone : ventes, stock, facturation, comptabilité, paie, CRM, notes de frais [PRESSE, WeAreTech ; fiche Capterra]. **Il le dit lui-même** : sa page école, mise à jour le 29 septembre 2026, écrit « Il n'y a pas de module de vie scolaire », « Madata ne gère ni les notes, ni les emplois du temps, ni les bulletins scolaires » et « Madata n'a pas de module d'inscription scolaire » [V, [page école](https://madata.africa/fr/erp-ecole), relue le 15 nov. ; relevée d'abord par le rapport du chef]. Ce qu'il propose aux écoles, c'est le recouvrement des frais : chaque famille y est un client, et la scolarité se facture en échéances.
 
 Il intéresse Planner pour une autre raison : c'est le genre d'outil comptable qu'une petite école privée peut déjà utiliser. L'export comptable de FIN-02 devrait donc pouvoir l'alimenter, comme Odoo (07-comparatif-odoo.md, § 6). Son format d'import reste à lire [?].
 
@@ -205,7 +206,7 @@ Grille des besoins du rapport du 11 novembre ([Outils scolaires et besoins par p
 | N. Échange avec l'État (Massar, matricule national) | 🟡 CSV annoncé, absent du libre | ❌ | ❌ | ❌ | ❌ (matricule maison) | 📋 ETA-01, ETA-02 |
 | O. Hors ligne | ❌ | ❌ | ❌ | 🟡 parents seulement | ❌ | 📋 MOB-06 |
 | O. Isolation des données testée sur chaque route | ? | ❌ (fuite en 2026) | ❌ (2.3) | ? | ? | 📋 PLA-04 ; règle « 404 hors de ses classes » |
-| O. Aucun envoi de données à l'éditeur, ou envoi déclaré et refusable | ❌ [CODE] | ? | ? | ? | ? | ? : à garantir (§ 5) |
+| O. Aucun envoi de données à l'éditeur, ou envoi déclaré et refusable | ❌ [CODE] | ? | ? | ? | ? | 📋 EP-13, QUA-09 |
 | O. Export complet des données de l'école | 🟡 export d'Odoo | 🟡 export de Frappe | ? | ❌ annoncé | ❌ | 📋 PLA-12 |
 | P. Plusieurs écoles sur une installation | 🟡 Enterprise | ❌ (demandé en 2025) | ? | ✅ annoncé | ✅ annoncé | 📋 PLA-01 à PLA-07 |
 | Arabe de droite à gauche | ✅ [V] | ? | ❌ non cité | ✅ annoncé | ❌ | 📋 UIX-04 |
@@ -226,7 +227,7 @@ Propositions, à trancher par le chef de projet. Les identifiants renvoient au p
 | Aucun des cinq ne génère ni n'explique l'emploi du temps ; Frappe s'y met (PR #495) avec un placement au hasard, sans règles souples | Garder l'emploi du temps **expliqué** comme premier argument. Mener à bout MOT-03 et EDT-03 avant qu'un générateur libre ne rattrape. Ajouter la PR #495 de Frappe au comparatif de MOT-02 dès sa publication | argument ; priorité dans le chantier MOT |
 | La fuite des fiches d'élèves de Frappe est exactement le défaut que PLA-04 doit empêcher | Ajouter aux tests de PLA-04 le cas « un élève, ou un parent, demande la fiche d'un autre par l'API, une liste ou un export », sur **chaque** branche avant fusion | exigence (EP-12) |
 | La faille de Fedena vient d'un secret livré avec le logiciel | Vérifier qu'aucun secret par défaut ne reste dans une installation neuve (PLA-03b, EXP-02) ; l'inscrire dans le test d'intrusion EXP-08 | exigence |
-| OpenEduCat envoie chaque jour des données de l'école à l'éditeur, en le cachant | **Écrire que Planner n'envoie rien chez l'éditeur sans le dire**, avec une liste publique des envois sortants (sauvegardes, IA, courriel), et la tenir à jour. C'est un argument fort face à la loi 09-08. **Décision du chef** : faut-il l'inscrire comme exigence produit (EP-13) ? | proposition, décision du chef |
+| OpenEduCat envoie chaque jour des données de l'école à l'éditeur, en le cachant | **Écrire que Planner n'envoie rien chez l'éditeur sans le dire**, avec une liste publique des envois sortants (sauvegardes, IA, courriel), et la tenir à jour. C'est un argument fort face à la loi 09-08. **Retenu le 15 nov.** : exigence EP-13 | exigence (EP-13) |
 | Les déclarations de confidentialité des magasins d'applications sont contradictoires chez PERIS | Remplir les fiches « confidentialité » de l'application mobile avec ce qu'elle collecte vraiment, avant toute publication (MOB) | exigence |
 | Personne n'échange avec l'État autrement que par un fichier ; Studirium crée un matricule maison | ETA-02 reprend le **matricule de l'État** (Massar au Maroc) comme identifiant, sans en créer un autre | conception (VSC-01, ETA-01) |
 | Mises à jour qui cassent chez Frappe et OpenEduCat ; les écoles restent sur des versions trouées | EP-9 déjà écrite (« les mises à jour ne cassent rien ») : la mettre en avant dans l'argumentaire, avec le retour arrière en une commande | argument |
@@ -234,10 +235,20 @@ Propositions, à trancher par le chef de projet. Les identifiants renvoient au p
 | PERIS couvre déjà largement l'école privée africaine (frais, argent mobile, paie des vacataires, arabe) | Ne pas attaquer l'Afrique de l'Ouest par la largeur. Si VEN-02 y mène, y aller par l'emploi du temps et l'intégration (export comptable, import des élèves), comme au Maroc (01, § 6) | stratégie, VEN-02 |
 | Aucun avis vérifiable sur les produits africains | Les cinq entretiens de VEN-02 doivent demander quel logiciel l'école a essayé et pourquoi elle l'a quitté : c'est la seule source fiable sur ces produits | question pour VEN-02 |
 
+**Décisions du chef du 15 novembre** ([decisions.md](../plan/decisions.md)) :
+- EP-13 « Aucun envoi caché », dès l'étape 1, et la liste publique des envois sortants (QUA-09) ;
+- PLA-04 teste aussi qu'un élève ou un parent ne lit pas la fiche d'un autre élève ;
+- `SECURITY.md` et signalement privé sur le dépôt (QUA-08) ;
+- fiches « confidentialité » de l'application relues avant toute publication (MOB) ;
+- ETA-02 identifie l'élève par le matricule de l'État ;
+- essai en local chez Frappe Education avant tout signalement, et rien de public avant leur réponse.
+
+Les autres lignes du tableau (argument, stratégie, questions pour VEN-02, secret par défaut pour EXP-08) restent des propositions.
+
 ## 6. À vérifier avant d'utiliser ce document dans un argumentaire
 
 1. **OpenEduCat** : installer l'édition libre (plan de la PR #176) et observer l'envoi quotidien (contenu réel, possibilité de le couper). Faire relire la question de la loi 09-08 par un juriste avant d'en parler à un client.
-2. **Frappe Education** : confirmer par un essai que la branche `develop` rouvre la lecture des fiches d'élèves, puis le signaler à Frappe par leur politique de sécurité, **avant** d'en parler publiquement. Décision du chef, puisqu'il s'agit de signaler une faille d'un tiers.
+2. **Frappe Education** : essayer **en local**, sans donnée réelle, le contrôle d'accès aux fiches d'élèves des branches non publiées ; si une faille se confirme, le chef la signale à Frappe par leur canal privé, **avant** toute mention publique (décision du chef du 15 nov.).
 3. **Fedena** : savoir si des écoles marocaines ou africaines utilisent encore la version 2.3 (recherche de terrain, VEN-02). Ne jamais sonder une installation qui n'est pas la nôtre.
 4. **PERIS SCHOOL** : demander un devis et une démonstration ; lire sa politique de confidentialité et son hébergement ; comprendre le lien entre « DATA 24 » et PERIS SOLUTIONS.
 5. **Studirium** : savoir s'il reprend le matricule national camerounais.
@@ -265,4 +276,4 @@ Lues le 15 novembre 2026.
 - **Studirium** : [WeAreTech, juillet 2024](https://www.wearetech.africa/fr/fils/solutions/au-cameroun-studirium-numerise-l-ecosysteme-scolaire), [Vitrine du Cameroun](https://vitrineducameroun.com/?p=12737), [VC4A](https://vc4a.com/ventures/studirium-sas/) ; matricule national : [Cameroon Tribune](https://cameroon-tribune.cm/article.html/68671/fr.html/details_2)
 - **Madata** : [WeAreTech](https://www.wearetech.africa/fr/fils/tech-stars/stephane-lavri-centralise-la-gestion-des-pme-africaines-via-madata), [Capterra](https://www.capterra.co.za/software/1109583/Madata)
 - **Autres** : [Lakoli, Fratmat (publireportage)](https://www.fratmat.info/article/2644696/publi-reportage/de-la-finance-a-la-tech-eunice-coulibaly-cree-lakoli-pour-simplifier-la-gestion-des-ecoles-ivoiriennes), [Novacole](https://novacole.com/), [KaribuSchool](https://karibu-school.com/), [GestionEcole](https://gestionecole.site/)
-- **Dans le dépôt** : [01-concurrents.md](01-concurrents.md), [07-comparatif-odoo.md](07-comparatif-odoo.md), [Outils scolaires et besoins par pays](<reports/Outils scolaires et besoins par pays.md>), [suivi.md](../plan/suivi.md)
+- **Dans le dépôt** : [rapport du chef, Failles des ERP scolaires](<reports/Failles des ERP scolaires.md>) (Classter, Kanda OS, Madata), [01-concurrents.md](01-concurrents.md), [07-comparatif-odoo.md](07-comparatif-odoo.md), [Outils scolaires et besoins par pays](<reports/Outils scolaires et besoins par pays.md>), [suivi.md](../plan/suivi.md)
