@@ -46,9 +46,8 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 |---|---|---|---|---|---|---|
 | PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan validé (délégation), non commité ; **l'agent attend le « validé » du chef dans sa session** (VS Code, Fable 5.2) | 15 nov. | [pla-03b](missions/pla-03b.md) |
 | PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | banc adapté, sonde A-2 codée (`1cbdfaa`), 24 tests verts ; relu et poussé ; ensuite recette et séries sur le serveur, par le chef | 15 nov. 14 h 05 : prêt | [pla-06](missions/pla-06.md) |
-| MOT | MOT-12 montée du solveur | Claude Code (Opus 5.5), session non lancée par le coordinateur | `chore/mot-12-montee-solveur` (non poussée) | plan validé par le chef ; codée (Spring Boot 4.1.2, cœur Timefold 1.35.0), 39 tests verts ; relue : **prête pour la PR** ; vitesse à mesurer dans MOT-02 | 15 nov. 14 h 25 : prête | [mot-12](missions/mot-12.md) |
-| MOT | MOT-02 mesure du solveur sur un jeu scolaire | Codex | à créer : `etude/mot-02-mesure-solveur` | mission envoyée par la boîte ; plan à écrire, validé par le coordinateur | 15 nov. | [mot-02](missions/mot-02.md) |
-| MOT | MOT-03 validation avant le calcul | agent de Cursor | à créer : `feat/mot-03-validation` | mission envoyée par la boîte ; plan à écrire, validé par le coordinateur | 15 nov. | [mot-03](missions/mot-03.md) |
+| MOT | MOT-02 mesure du solveur sur un jeu scolaire | Codex (nouvelle session) | `etude/mot-02-mesure-solveur` (créée depuis `main` après #181) | plan à écrire, validé par le coordinateur ; la vitesse de Timefold 1.35 est à y mesurer | 15 nov. 14 h 40 | [mot-02](missions/mot-02.md) |
+| MOT | MOT-03 validation avant le calcul | agent de Cursor | `feat/mot-03-validation` (créée) | plan en cours d'écriture (non commité), à valider par le coordinateur | 15 nov. 14 h 40 | [mot-03](missions/mot-03.md) |
 
 | EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | agent de Cursor | #177 | plan confirmé par le chef ; codé, tests verts ; CI rouge (ShellCheck SC2034), corrigée par le coordinateur (`9e615010`), à repousser | 15 nov. 14 h 10 | [fix-exp-sauvegarde](missions/fix-exp-sauvegarde.md) |
 

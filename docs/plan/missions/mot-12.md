@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | en relecture : **prête pour la PR** le 2026-11-15 |
+| État | **close le 2026-11-15** : PR #181 fusionnée, CI verte parcours compris |
 | Agent | une session Claude Code (Opus 5.5) que le coordinateur n'a pas lancée ; retirée de la file de la session de VS Code le 2026-11-15 |
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Montée de dépendance majeure, documentation récente à lire, résultat du solveur à garder identique |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
