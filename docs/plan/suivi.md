@@ -44,11 +44,10 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 
 | Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
 |---|---|---|---|---|---|---|
-| EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan validé par le chef le 15 nov. ; **agent pas encore démarré** (plan toujours non commité à 13 h 15) | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
-| PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan **validé le 15 nov.** (coordinateur, par délégation ; fichier figé), non commité ; code à faire | 15 nov. | [pla-03b](missions/pla-03b.md) |
-| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | plan amendé (mesure sur le serveur) ; amendement (§ 4, A-1, A-3) **validé par le chef le 15 nov.** (confirmé au coordinateur) ; code du banc en cours, non commité ; A-2 réglé le 15 nov. (sonde de santé de n8n en lecture seule) ; banc à adapter | 15 nov. | [pla-06](missions/pla-06.md) |
-| MOT | MOT-13a contraintes déclarées, serveur | Claude Code | #178 | PR ouverte ; conflit avec `main` résolu en local le 15 nov. (QUA fermé), à repousser | 15 nov. : **prête pour la PR** | [mot-13a](missions/mot-13a.md) |
-| MOT | MOT-12 montée du solveur | Claude Code (VS Code, second abonnement) | à créer après #178 : `feat/mot-12-montee-solveur` | après PLA-03b, même agent ; plan à écrire, validé par le chef | 15 nov. | [mot-12](missions/mot-12.md) |
+| EXP | EXP-02a branchement Traefik | agent de Cursor | #179 | codée (`5803eff`) ; relue : **prête** ; conflit avec `main` résolu par le coordinateur (`c5ed26ee`), à repousser | 15 nov. 14 h 15 : prête, `compose config` refait | [exp-02a](missions/exp-02a.md) |
+| PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan validé (délégation), non commité ; **l'agent attend le « validé » du chef dans sa session** (VS Code, Fable 5.2) | 15 nov. | [pla-03b](missions/pla-03b.md) |
+| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | banc adapté au serveur unique (`24b261a`, 13 fichiers) ; fusion de `main` en cours (conflit de liens) ; A-2 et sa sonde à inscrire et coder | 15 nov. 14 h 15 | [pla-06](missions/pla-06.md) |
+| MOT | MOT-12 montée du solveur | Claude Code (VS Code, second abonnement) | à créer : `feat/mot-12-montee-solveur` (#178 fusionnée, plus rien ne la bloque) | après PLA-03b, même agent ; plan à écrire, validé par le chef | 15 nov. | [mot-12](missions/mot-12.md) |
 
 | EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | agent de Cursor, après EXP-02a | #177 | plan court **validé le 15 nov.** (coordinateur, par délégation) ; code à faire | 15 nov. : lu | [fix-exp-sauvegarde](missions/fix-exp-sauvegarde.md) |
 

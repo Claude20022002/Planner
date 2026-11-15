@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | en relecture : prête le 2026-11-15 |
 | Agent | agent de Cursor |
 | Modèle recommandé | un modèle fort (Claude Opus 5.5 dans Cursor, ou l'équivalent) : configuration du proxy d'un serveur partagé, où une erreur expose ou coupe n8n |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
@@ -81,3 +81,4 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 |---|---|---|
 | 2026-11-15 | mission écrite ; plan lu, non commité | au chef (validation du plan) |
 | 2026-11-15 | tour d'état de 13 h 15 : plan validé par le chef, mais rien de neuf sur la branche ; l'agent de Cursor n'a pas démarré (sa fiche n'est pas encore sur `main` : #175 ouverte) | — |
+| 2026-11-15 14 h 15 | codée (`b2d47be` plan, `5803eff` code, `a79d765` fiche), PR #179. Relecture : trois remarques appliquées ; `docker compose config` refait par le coordinateur avec des valeurs factices (Caddy sans port, sur `hestim_net` et `n8n_default`, seul service sur ce réseau externe, aucun port publié, noms lus dans `.env.docker`) ; périmètre tenu. Conflit avec `main` résolu par le coordinateur (`c5ed26ee`) | **prête** ; à repousser |

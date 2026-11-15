@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | en relecture : prête pour la PR le 2026-11-15 |
+| État | **close le 2026-11-15** : PR #178 fusionnée |
 | Agent | Claude Code (session à ouvrir, Cursor ou VS Code) |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [MOT](../modules/MOT-moteur.md) · chantier ouvert le 2026-11-15 (ouvert sur la branche ; sur `main` à sa fusion) |
