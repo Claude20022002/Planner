@@ -9,7 +9,8 @@
 | [suivi.md](suivi.md) | **À ouvrir en début de session et à mettre à jour à la fin, obligatoirement** : une ligne par fonction (état, branche, PR), chantiers ouverts, numéros de migration réservés |
 | [decisions.md](decisions.md) | Décisions en vigueur et questions ouvertes, en un seul endroit |
 | [modules/](modules/) | Un fichier par module : ce qui existe, les fonctions à faire, leur critère de « terminé » |
-| [modeles/](modeles/) | Modèles du [plan de conception](modeles/conception.md) et de la [fiche de session](modeles/fiche-de-session.md) |
+| [missions/](missions/) | Une fiche par mission donnée à un agent par le coordinateur : agent, branche, fichiers qu'il peut écrire, prompt à coller |
+| [modeles/](modeles/) | Modèles du [plan de conception](modeles/conception.md), de la [fiche de session](modeles/fiche-de-session.md) et de la [fiche de mission](modeles/mission.md) |
 | [../sessions/](../sessions/) | Une fiche par session, avec son prompt de reprise ; les comptes rendus d'avant le 9 novembre |
 | [../conception/](../conception/README.md) | Conceptions et contrats encore en vigueur (architecture, moteur, isolation, déploiement…) |
 | [../ecole/plan.txt](../ecole/plan.txt) | La **vision** à long terme (ERP modulaire pour l'Afrique). Pas un plan : ses choix de pile et de prix ne s'appliquent pas |

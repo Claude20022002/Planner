@@ -6,17 +6,24 @@ Ces règles sont **obligatoires** pour tout agent d'IA (Claude Code, Codex, autr
 
 Le chef de projet est le compte GitHub **Claude20022002**, initiateur et maître du projet. **Lui seul** pousse, fusionne, lance les commandes du serveur, ouvre ou ferme un chantier, valide un plan et tranche une décision. L'agent propose, conçoit, code sur sa branche et commite **en local**. Il ne fait jamais `git push`.
 
+**Le coordinateur** est une session Claude que le chef désigne (décision du 15 novembre). Il répartit le travail entre les agents (Claude, Codex, agent de Cursor), le suit et le relit. Par délégation du chef :
+
+- il **tranche ce qui est réversible à l'intérieur d'un module** (structure du code, tests, noms, découpage en étapes, ordre dans un chantier ouvert, verdict de relecture), et l'écrit dans `docs/plan/decisions.md` ;
+- il **valide les plans des fonctions S et M** qui n'ont ni migration, ni enjeu de sécurité, ni donnée de mineur, ni choix de produit.
+
+Tout le reste remonte au chef : produit, schéma partagé entre modules, migration, sécurité et légal, pile et dépendance majeure, serveur, chantiers, tout ce qui est irréversible. Le coordinateur ne pousse pas et ne fusionne pas. Le détail : [organisation.md](docs/plan/organisation.md), § 10.
+
 ## Au début de chaque session
 
 1. Lire [docs/plan/README.md](docs/plan/README.md), puis [docs/plan/suivi.md](docs/plan/suivi.md) (fonctions, états, **chantiers ouverts**).
 2. Lire les branches et PR ouvertes (`gh pr list`, `git branch -r`), et la dernière fiche de session de la fonction dans `docs/sessions/`.
-3. Si le chef n'a pas dit quelle fonction faire, **le demander**. Ne prendre qu'une fonction d'un **chantier ouvert** (au plus 3 chantiers ouverts ; un chantier commencé se termine avant d'en ouvrir un autre à sa place).
+3. Si une **fiche de mission** vous est donnée (`docs/plan/missions/<identifiant>.md`), la lire : elle dit la fonction, la branche, le dossier et **les fichiers que vous pouvez écrire**. Ne rien écrire hors de ce périmètre sans le demander. **Codex et l'agent de Cursor** lisent aussi leur **boîte aux lettres**, `..\boites\<codex ou cursor>\entree\` depuis un dossier de travail (`..\travaux-planner\boites\…` depuis le dépôt principal) : ils traitent les messages du coordinateur, les rangent dans `entree\traites\`, et déposent leurs rapports et questions dans `sortie\` (format dans `boites\README.md`). Sinon, si le chef n'a pas dit quelle fonction faire, **le demander**. Ne prendre qu'une fonction d'un **chantier ouvert** (au plus 3 chantiers ouverts ; un chantier commencé se termine avant d'en ouvrir un autre à sa place).
 
 ## Avant d'écrire une ligne de code
 
 4. **Une tâche, une branche** : `feat/`, `fix/`, `etude/`, `refactor/`, `test/`, `doc/`, `chore/` ou `mkt/`, puis `<identifiant>-<mot>` (`feat/pla-05-creer-ecole`). Un dossier de travail à part : `..\travaux-planner\<nom>`.
 5. **Poser le maximum de questions** sur tout ce que le code, le plan et `docs/plan/decisions.md` n'établissent pas. Questions numérotées, chacune avec une proposition de réponse. **Ne jamais supposer** un chiffre, un nom, un comportement ou un choix de produit.
-6. **Écrire un plan de conception** s'il n'en existe pas ([modèle](docs/plan/modeles/conception.md), dans `docs/conception/<module>/`) ; pour un correctif, un plan court suffit. Le faire **valider par le chef**, puis le commiter seul. **Aucun code avant ce « validé ».**
+6. **Écrire un plan de conception** s'il n'en existe pas ([modèle](docs/plan/modeles/conception.md), dans `docs/conception/<module>/`) ; pour un correctif, un plan court suffit. Le faire **valider par le chef** (ou par le coordinateur, pour une fonction S ou M sans migration ni enjeu de sécurité), puis le commiter seul. **Aucun code avant ce « validé ».**
 
 ## Pendant la session
 
@@ -28,7 +35,7 @@ Le chef de projet est le compte GitHub **Claude20022002**, initiateur et maître
 9. Commiter le travail.
 10. Mettre à jour **[docs/plan/suivi.md](docs/plan/suivi.md)** (état de la fonction, chantiers) et le fichier du module si ce qui existe a changé.
 11. Écrire la **fiche de session** `docs/sessions/AAAA-MM-JJ-<branche>.md` ([modèle](docs/plan/modeles/fiche-de-session.md)) avec son **prompt de reprise**, et la commiter.
-12. Donner au chef les **commandes à lancer** (push, PR) et le **prompt de reprise**.
+12. Donner au chef les **commandes à lancer** (push, PR) et le **prompt de reprise**. Un plan non commité ou une fiche absente est un travail que le coordinateur ne voit pas.
 
 ## Session trop longue
 
