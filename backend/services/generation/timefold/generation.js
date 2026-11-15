@@ -1,5 +1,6 @@
 import { Filiere, GenerationSession, Periode } from "../../../models/index.js";
 import { ErreurMetier } from "../../planning/enseignements.js";
+import { exigerAssezDePlace } from "../../moteur/contraintes/avantGeneration.js";
 import { construireProbleme } from "./probleme.js";
 import { arreterCalcul, attendreSolution, lancerCalcul } from "./solveurClient.js";
 import { deployerSemaineType } from "./deploiement.js";
@@ -30,6 +31,8 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         if (!aPlacer) {
             throw new ErreurMetier(exclus.length ? "Aucun enseignement à placer : tous sont déjà planifiés ou sans enseignant" : "Aucun enseignement sur cette période", 400);
         }
+        // Des plages interdites (MOT-13) qui ne laissent pas assez de créneaux : aucun calcul ne les tiendrait
+        await exigerAssezDePlace({ probleme, periode });
 
         if (!dureeSecondes) probleme.dureeSecondes = dureeAutomatique(aPlacer);
         await etape(session, "calcul", { progress: 10, last_message: `Calcul de la semaine type : ${aPlacer} séance(s) à placer, ${probleme.dureeSecondes} s au plus` });
@@ -91,7 +94,9 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
             config: { ...(session.config || {}), rapport },
         });
     } catch (error) {
-        await session.update({ status: "failed", progress: 100, last_message: error.message.slice(0, 250), duration_ms: Date.now() - debut }).catch(() => {});
+        // Un refus du contrôle de place garde tous ses manques dans le rapport, pour l'écran
+        const config = error.refus ? { ...(session.config || {}), refus_place: error.refus } : session.config;
+        await session.update({ status: "failed", progress: 100, last_message: error.message.slice(0, 250), duration_ms: Date.now() - debut, config }).catch(() => {});
     } finally {
         enCours.delete(session.id_generation_session);
     }
