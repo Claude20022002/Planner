@@ -6,6 +6,7 @@ import { chargerDependances, chargerParametres, chargerProfils } from "../../ser
 import { verifierProfil } from "../../services/moteur/catalogue/verifier.js";
 import { ANCIENS_PARAMETRES, ANCIENS_VERS_PLAGES } from "../../services/moteur/valeurs/anciensParametres.js";
 import { controlerEcriture } from "../../services/moteur/valeurs/ecriture.js";
+import { poidsDesRegles } from "../../services/moteur/valeurs/poidsDuSolveur.js";
 import { lignesEnVigueur, porteeAdmise, resoudreParametre, resoudreTout } from "../../services/moteur/valeurs/resolution.js";
 
 // Lot MP-1 : qui l'emporte, à quelle date, et ce qu'une école a le droit d'écrire.
@@ -153,6 +154,13 @@ describe("MP-1 : ce qu'on a le droit d'écrire", () => {
         expect(codes({ parametre: P("ENS.CHARGE.MAX_H_JOUR"), valeur: 420, portee: "enseignant", valeurs })).toEqual([]);
     });
 
+    test("le poids d'une règle du solveur ne se règle que pour toute l'école (MOT-13b, réponse 20)", () => {
+        expect(codes({ parametre: P("HOR.REGLE.TROUS"), poids: 30, portee: "filiere" })).toEqual(["portee_non_tenue"]);
+        expect(codes({ parametre: P("HOR.REGLE.TROUS"), poids: 30, portee: "etablissement" })).toEqual([]);
+        // Une règle souple que le solveur ne lit pas garde ses portées (MOT-10 décidera)
+        expect(codes({ parametre: P("HOR.REGLE.PLAGES_RESTREINTES"), poids: 20, portee: "filiere" })).toEqual([]);
+    });
+
     test("la portée suit le catalogue", () => {
         expect(porteeAdmise(P("ENS.CHARGE.MAX_H_JOUR"), "enseignant")).toBe(true);
         expect(porteeAdmise(P("ENS.CHARGE.MAX_H_JOUR"), "salle")).toBe(false);
@@ -166,18 +174,31 @@ describe("MP-1 : l'école pilote ne change pas", () => {
         expect(valeurs.get(id)).toBe(convertir(PARAMETRES_PLANNING[cle].defaut));
     });
 
-    test("chaque ancien réglage a sa destination", () => {
-        expect([...Object.keys(ANCIENS_PARAMETRES), ...ANCIENS_VERS_PLAGES].sort()).toEqual(Object.keys(PARAMETRES_PLANNING).sort());
+    test("chaque ancien réglage a sa destination ; les deux plages ne sont plus des réglages (0081)", () => {
+        expect(Object.keys(ANCIENS_PARAMETRES).sort()).toEqual(Object.keys(PARAMETRES_PLANNING).sort());
+        expect(ANCIENS_VERS_PLAGES.filter((cle) => cle in PARAMETRES_PLANNING)).toEqual([]);
     });
 
-    test("les 10 règles souples du solveur gardent leur poids", () => {
-        const java = readFileSync(path.join(RACINE, "solver/src/main/java/ma/hestim/solver/contraintes/ContraintesEmploiDuTemps.java"), "utf8");
-        const dansLeCode = [...java.matchAll(/(?:penalize|reward)\(HardSoftScore\.(?:ONE_SOFT|ofSoft\((\d+)\))[\s\S]*?asConstraint\("([^"]+)"\)/g)].map((m) => [m[2], Number(m[1] ?? 1)]);
-        expect(dansLeCode).toHaveLength(10);
+    test("les 9 règles souples du solveur gardent leur poids", () => {
+        // Leurs poids par défaut sont ceux d'avant MOT-13b (PreferencesEmploiDuTemps.POIDS_PAR_DEFAUT) ;
+        // « Pas de samedi après-midi » est devenue une contrainte déclarée (migration 0081)
+        const java = readFileSync(path.join(RACINE, "solver/src/main/java/ma/hestim/solver/contraintes/PreferencesEmploiDuTemps.java"), "utf8");
+        const noms = new Map([...java.matchAll(/public static final String (\w+) = "([^"]+)";/g)].map((m) => [m[1], m[2]]));
+        const dansLeCode = [...java.matchAll(/poids\.put\((\w+), (\d+)\);/g)].map((m) => [noms.get(m[1]), Number(m[2])]);
+        expect(dansLeCode).toHaveLength(9);
         for (const [nom, poids] of dansLeCode) {
             const p = parametres.find((x) => x.regle_solveur === nom);
             expect([nom, resultats.get(p.id).poids]).toEqual([nom, poids]);
         }
+    });
+
+    test("les poids envoyés au solveur sont exactement ses poids par défaut ; une règle coupée part à 0", () => {
+        const java = readFileSync(path.join(RACINE, "solver/src/main/java/ma/hestim/solver/contraintes/PreferencesEmploiDuTemps.java"), "utf8");
+        const noms = new Map([...java.matchAll(/public static final String (\w+) = "([^"]+)";/g)].map((m) => [m[1], m[2]]));
+        const parDefaut = Object.fromEntries([...java.matchAll(/poids\.put\((\w+), (\d+)\);/g)].map((m) => [noms.get(m[1]), Number(m[2])]));
+        expect(poidsDesRegles({ parametres, resultats })).toEqual(parDefaut);
+        const coupee = tout([profilUniversite, ligne("HOR.REGLE.TROUS", "etablissement", false)]);
+        expect(poidsDesRegles({ parametres, resultats: coupee.resultats })).toEqual({ ...parDefaut, "Journées sans trous": 0 });
     });
 
     test("toutes les règles strictes du solveur restent actives", () => {
