@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | **prise par une autre session** le 2026-11-15 : plan commité, code en cours |
+| État | en relecture : **prête pour la PR** le 2026-11-15 |
 | Agent | une session Claude Code (Opus 5.5) que le coordinateur n'a pas lancée ; retirée de la file de la session de VS Code le 2026-11-15 |
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Montée de dépendance majeure, documentation récente à lire, résultat du solveur à garder identique |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
@@ -83,3 +83,4 @@ Quand tu as fini une étape, dis-le : le coordinateur relit ta branche.
 | 2026-11-15 | mission écrite ; personne ne tient MOT-12 (ni branche, ni dossier) | — |
 | 2026-11-15 14 h 10 | tour d'état : une autre session a écrit et commité le plan à 13 h 58, code en cours (`pom.xml`, contrôleur, filtre de jeton, `application.properties`, `ConfigurationSolveur.java`), sans fiche de session. Le plan change la décision du 13 novembre : **Timefold 1.35 au lieu de 1.31, cœur sans le starter**, Spring Boot 4.1. Preuves de l'essai au § 2.2 : la 1.x va jusqu'à 1.35, toute la 1.x vise Spring Boot 3.5, le starter 1.35 ne démarre pas sous Boot 4.1, le cœur seul donne un calcul identique (0hard/-20soft). Le critère « le résultat ne change pas » est repris | **au chef** : confirmer qu'il a validé ce plan |
 | 2026-11-15 | **le chef confirme** avoir validé le plan (Spring Boot 4.1, cœur Timefold 1.35 sans starter) ; la décision qui remplace « Timefold 1.31 » du 13 novembre est dans `decisions.md` sur la branche | relecture à faire quand la session aura fini |
+| 2026-11-15 14 h 25 | codée (`ecb94eee`), fiche de session (`46067add`). Relecture : Spring Boot 4.1.2, cœur Timefold 1.35.0 sans starter ; `ConfigurationSolveur` construit fabrique, gestionnaire (2 calculs, comme le 429 du contrôleur) et analyse, avec la seule entité `Lecon`, la solution et le jeu de règles du code ; deux appels dépréciés remplacés ; Jackson 3 réglé pour les `null`. Tests de la fiche : 39 verts (6 nouveaux), image appelée sur le même problème : calcul identique (0hard/-20soft). À surveiller : la vitesse en 1.35 (12 000 à 18 822 coups/s contre 15 985 à 21 866) est **à mesurer dans MOT-02**. Conflit de `suivi.md` avec `main` résolu par le coordinateur (`9a5c76ee`) | **prête** ; CI et parcours trancheront |
