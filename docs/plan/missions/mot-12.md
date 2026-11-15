@@ -10,7 +10,7 @@
 | Fonction | MOT-12 : Spring Boot 3.3.5 vers 4.x, Timefold 1.15 vers 1.31, Java 21 inchangé (décision du 13 novembre), avant MOT-04 ; elle débloque MOT-13b · taille M |
 | Branche | `chore/mot-12-montee-solveur`, depuis `main` après #178 |
 | Dossier de travail | `..\travaux-planner\mot-12-montee-solveur` |
-| Plan de conception | `docs/conception/moteur-planification/mot-12-montee-solveur.md`, commité (`f0678084`) · il porte « validé par Claude20022002 le 2026-11-15 » : **à confirmer par le chef** (tous les agents commitent sous son compte) |
+| Plan de conception | `docs/conception/moteur-planification/mot-12-montee-solveur.md`, commité (`f0678084`) · **validé par le chef le 2026-11-15** (confirmé au coordinateur) |
 
 ## Critère de « terminé »
 
@@ -82,3 +82,4 @@ Quand tu as fini une étape, dis-le : le coordinateur relit ta branche.
 |---|---|---|
 | 2026-11-15 | mission écrite ; personne ne tient MOT-12 (ni branche, ni dossier) | — |
 | 2026-11-15 14 h 10 | tour d'état : une autre session a écrit et commité le plan à 13 h 58, code en cours (`pom.xml`, contrôleur, filtre de jeton, `application.properties`, `ConfigurationSolveur.java`), sans fiche de session. Le plan change la décision du 13 novembre : **Timefold 1.35 au lieu de 1.31, cœur sans le starter**, Spring Boot 4.1. Preuves de l'essai au § 2.2 : la 1.x va jusqu'à 1.35, toute la 1.x vise Spring Boot 3.5, le starter 1.35 ne démarre pas sous Boot 4.1, le cœur seul donne un calcul identique (0hard/-20soft). Le critère « le résultat ne change pas » est repris | **au chef** : confirmer qu'il a validé ce plan |
+| 2026-11-15 | **le chef confirme** avoir validé le plan (Spring Boot 4.1, cœur Timefold 1.35 sans starter) ; la décision qui remplace « Timefold 1.31 » du 13 novembre est dans `decisions.md` sur la branche | relecture à faire quand la session aura fini |
