@@ -37,6 +37,8 @@
   - Conception : [pla-03-base-neuve.md](../../conception/plateforme/pla-03-base-neuve.md).
 - **Encore à faire** : une base neuve rejoue toutes les migrations (60 migrations en 15 s, mesure de PLA-06). Le schéma de départ est l'étape PLA-03b.
 
+- **Banc de mesure D-01 (PLA-06, PR #164 en brouillon)** : étapes 1 à 5 codées, essai sur 3 écoles le 10 novembre. Le § 4 du [plan](../../conception/plateforme/pla-06-mesure-d01.md) est amendé le 15 novembre pour le seul serveur partagé avec n8n ; **revalidation attendue**, aucune série lancée. Les 7 tests purs passent ; les adaptations du pilote local et des protections n8n restent à faire après validation. D-01 n'est pas encore confirmée par la mesure.
+
 ## Fonctions
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
