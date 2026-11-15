@@ -58,7 +58,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PLA-03](modules/PLA-plateforme.md) | Base neuve sans données d'école | 2 | M | PR ouverte : PLA-03a (données), CI verte le 15 nov. ; PLA-03b (schéma de départ) conçue, plan à valider | #173 |
 | [PLA-04](modules/PLA-plateforme.md) | Tests d'isolation de chaque route dans la CI, côté serveur et parcours | 2 | M + S | à faire |  |
 | [PLA-05](modules/PLA-plateforme.md) | Registre des écoles et création d'une école par une commande (base, migrations,… | 2 | L | à faire |  |
-| [PLA-06](modules/PLA-plateforme.md) | Mesure de D-01 | 1 | M | PR ouverte : banc codé (étapes 1 à 5) ; § 4 amendé le 15 nov. pour le serveur unique, à revalider ; 7 tests purs réussis ; aucune série lancée | `etude/pla-06-mesure-d01` · #164 (brouillon) |
+| [PLA-06](modules/PLA-plateforme.md) | Mesure de D-01 | 1 | M | PR ouverte : § 4 et A-3 validés le 15 nov. ; banc adapté au serveur unique et 15 tests locaux réussis ; prérequis, gardes et petit essai à vérifier par le chef ; aucune série serveur | `etude/pla-06-mesure-d01` · #164 (brouillon) |
 | [PLA-07](modules/PLA-plateforme.md) | Sauvegarde et restauration par école (canal I-11) | 2 | M | à faire |  |
 | [PLA-08](modules/PLA-plateforme.md) | Console de l'équipe Planner (créer, suspendre, voir l'état des écoles) | 5, ou juste avant la 1re école extérieure | M | reporté |  |
 | [PLA-09](modules/PLA-plateforme.md) | Migrations par vagues, hors du démarrage du serveur | 5, ou juste avant la 1re école extérieure | M | reporté |  |
