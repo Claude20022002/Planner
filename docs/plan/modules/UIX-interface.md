@@ -12,7 +12,7 @@
 
 ## Ce qui existe
 
-- **UIX-01a (PR #184, à relire)** : accueil des applications après connexion, recherche FR/EN et navigation contextuelle par rôle ; conception validée par le chef le 15 novembre. Ce lot ne réalise pas la migration du socle neutre.
+- **UIX-01a (PR #184 fusionnée, CI verte)** : accueil des applications après connexion, recherche FR/EN et navigation contextuelle par rôle ; conception validée par le chef le 15 novembre. Ce lot ne réalise pas la migration du socle neutre.
 
 - **Site** : React 19, Vite 7, MUI. Le système visuel « panneau à volets » est décrit dans [DESIGN.md](../../../DESIGN.md).
 - **Textes** : `frontend/src/i18n/fr.js` compte 2 575 lignes ; il existe un `en.js` ; il n'y a pas d'arabe. 133 styles dépendent du sens de lecture, dans 81 fichiers.
@@ -25,7 +25,7 @@
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | UIX-01 | Socle neutre : thème neutre, état « en configuration », école fictive, écriture de droite à gauche préparée | SN-1 à SN-5 | 2 | L | — | conçu, à coder |
-| UIX-01a | Accueil des applications et navigation web inspirée d’Odoo, sur les fonctions existantes | — | exception du 15 nov. | M | — | PR #184 ; CI rouge, trois parcours corrigés localement, à pousser |
+| UIX-01a | Accueil des applications et navigation web inspirée d’Odoo, sur les fonctions existantes | — | exception du 15 nov. | M | — | fait : #184 fusionnée, 43 parcours réussis |
 | UIX-02 | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et non cours, trimestre et non semestre…) | F-04 (écrans) | 3 | M | MOT-05 | à faire |
 | UIX-03 | Accessibilité AA : axe-core sans violation dans les parcours | M-13 | libre | M | — | en partie |
 | UIX-04 | Arabe complet : site, application et documents PDF, de droite à gauche ; **prouver d'abord le rendu arabe des PDF** (jsPDF) | F-16 | 4 | XL | UIX-01 | à faire |
@@ -53,3 +53,7 @@ EP-2, EP-11.
 ### Conception du lot UIX-01a
 
 [Accueil des applications et navigation](../../conception/interface/uix-01a-navigation.md), validé par Claude20022002 le 15 novembre. Exception de chantier limitée à ce lot.
+
+### Proposition UIX-06a : marque et premières pages de gestion
+
+[Conception du pilote Personnes](../../conception/interface/uix-06a-interface.md), demandée par le chef le 15 novembre après l'analyse d'OpenEduCat. **À valider**, sans code produit : copie des SVG du dernier kit mosaïque, cohérence de l'accueil/connexion/navigation, puis comptes/enseignants/étudiants. La dépendance au socle UIX-01 et l'exception hors chantier sont explicitement soumises au chef.
