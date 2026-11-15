@@ -28,11 +28,14 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 
 | Quoi | Branche ou PR | À faire |
 |---|---|---|
-| Correctif : le dimanche s'affiche dans l'emploi du temps (CI de `main` rouge le dimanche) | #162 | relancer les parcours en échec (ils ont croisé minuit UTC), puis fusionner |
+| Correctif : le dimanche s'affiche dans l'emploi du temps (CI de `main` rouge le dimanche) | #162 | **fusionnée le 10 nov.** |
 | Essai du contexte d'école (base de PLA-01) | #142 | **fusionnée le 10 nov.** |
 | MOT-01, partie serveur (MP-1) | #156 | **fusionnée le 10 nov.** |
-| Plan par modules | #161 | fusionner (le faux conflit vient de deux ancêtres communs ; `main` fusionné dans la branche le 10 nov.) |
-| Organisation de l'équipe, module MKT | #163 | fusionner après #161 |
+| Plan par modules | #161 | **fusionnée le 10 nov.** |
+| Organisation de l'équipe, module MKT | #163 | **fusionnée le 10 nov.** |
+| Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | décisions I-1 à I-5 prises le 13 nov. ; fusionner |
+| Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | `doc/plan-modules-inventaire` (part de #167) | fusionner après #167 |
+| Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | `doc/comparatif-odoo` (#174) | **PR ouverte** ; fusionner ; 8 points à vérifier au § 7 du document |
 
 ## Numéros de migration réservés
 
@@ -52,7 +55,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 |---|---|---|---|---|---|
 | [PLA-01](modules/PLA-plateforme.md) | Contexte d'école en production | 2 | L | à faire (essai fusionné le 10 nov.) | #142 (essai) |
 | [PLA-02](modules/PLA-plateforme.md) | Fermer les canaux de l'étape 2 | 2 | L | à faire |  |
-| [PLA-03](modules/PLA-plateforme.md) | Base neuve sans données d'école | 2 | M | à faire |  |
+| [PLA-03](modules/PLA-plateforme.md) | Base neuve sans données d'école | 2 | M | PR ouverte : PLA-03a (données), CI verte le 15 nov. ; PLA-03b (schéma de départ) conçue, plan à valider | #173 |
 | [PLA-04](modules/PLA-plateforme.md) | Tests d'isolation de chaque route dans la CI, côté serveur et parcours | 2 | M + S | à faire |  |
 | [PLA-05](modules/PLA-plateforme.md) | Registre des écoles et création d'une école par une commande (base, migrations,… | 2 | L | à faire |  |
 | [PLA-06](modules/PLA-plateforme.md) | Mesure de D-01 | 1 | M | en cours : banc codé (étapes 3 à 5) et essayé sur 3 écoles le 10 nov. ; séries à lancer sur le PC Ubuntu (étape 6) | `etude/pla-06-mesure-d01` |
@@ -63,7 +66,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PLA-11](modules/PLA-plateforme.md) | Comptes communs | 5 | L | reporté |  |
 | [PLA-12](modules/PLA-plateforme.md) | Export complet d'une école | 5 | M | à faire |  |
 | [PLA-13](modules/PLA-plateforme.md) | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) | 5 | M (+ L, conditionnel) | reporté |  |
-| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | en cours |  |
+| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | en cours | `feat/exp-01-reconnaissance` |
 | [EXP-02](modules/EXP-exploitation.md) | Première installation conteneurisée à côté de n8n. Comprend | 1 | L | à faire |  |
 | [EXP-03](modules/EXP-exploitation.md) | ME-0b adapté au nouveau serveur | 1 | M | code fait (#145), adaptation à faire | #145 |
 | [EXP-04](modules/EXP-exploitation.md) | Sauvegardes sur le nouveau serveur | 1 | M | à faire |  |
@@ -101,15 +104,13 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [VSC-02](modules/VSC-vie-scolaire.md) | Élèves et familles | 4 | L | à faire |  |
 | [VSC-03](modules/VSC-vie-scolaire.md) | Absences prévenues aux parents, justificatifs, saisie déléguée (EP-6) | 4 | M | à faire |  |
 | [VSC-04](modules/VSC-vie-scolaire.md) | Notes et bulletins | 4 | XL | à faire |  |
-| [VSC-05](modules/VSC-vie-scolaire.md) | Massar | 4 | M | à faire |  |
-| [VSC-06](modules/VSC-vie-scolaire.md) | Formation professionnelle | 5 | M + S | à faire |  |
+| [VSC-06](modules/VSC-vie-scolaire.md) | Formation professionnelle | 5 | M | à faire |  |
 | [COU-01](modules/COU-espace-de-cours.md) | Sondage de l'enseignant à sa classe | libre | S | fait (#148) | #148 |
 | [COU-02](modules/COU-espace-de-cours.md) | Devoirs avec rendu de fichier, après une revue de sécurité (taille, type, antivirus,… | 4 | L | à faire |  |
 | [COU-03](modules/COU-espace-de-cours.md) | Commentaires sur un support ou un devoir | 4 | M | à faire |  |
 | [COU-04](modules/COU-espace-de-cours.md) | Questions partagées de la classe | 4 | M | à faire |  |
 | [COU-05](modules/COU-espace-de-cours.md) | « Vu » | 4 | M | à faire |  |
 | [COU-06](modules/COU-espace-de-cours.md) | Export des notes d'un devoir | libre | S | à faire |  |
-| [COU-07](modules/COU-espace-de-cours.md) | Offres de stage (espace Carrière) | libre | M | à décider |  |
 | [COU-08](modules/COU-espace-de-cours.md) | Messagerie, si les règles de modération sont tranchées (Q-17) | 5 | L | conditionnel |  |
 | [COU-09](modules/COU-espace-de-cours.md) | LTI | — | L | reporté |  |
 | [BIB-01](modules/BIB-bibliotheque.md) | Identifiants stables (`uid`) des entités partagées, et envois par boîte d'envoi (D-14,… | 2 | M | à faire |  |
@@ -154,7 +155,35 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [VEN-09](modules/VEN-vente-modules.md) | Vidéos par lien dans le Studio quiz | — | M | gelé |  |
 | [FIN-01](modules/FIN-finance-ecole.md) | Frais, échéanciers, caisse, reçus bilingues numérotés sans trou | 4 | XL | à faire |  |
 | [FIN-02](modules/FIN-finance-ecole.md) | Relances, impayés, export comptable (EP-5) | 4 | L | à faire |  |
-| [FIN-03](modules/FIN-finance-ecole.md) | Relevé mensuel des heures des vacataires, à partir des séances visées | libre | M | à faire |  |
+| [COM-01](modules/COM-communication.md) | Service commun d'envoi : application, push, courriel, SMS ; plages de silence, envoi différé, urgence, résumé (EP-7) | 4 | L | à faire |  |
+| [COM-02](modules/COM-communication.md) | Compte famille pour plusieurs enfants, canal préféré, accusé de lecture | 4 | M | à faire |  |
+| [COM-03](modules/COM-communication.md) | WhatsApp et crédits de messages prépayés, alerte avant épuisement | 4 | M | à faire |  |
+| [ETA-01](modules/ETA-echanges-etat.md) | Cadre des connecteurs vers les systèmes d'État (contrôle avant envoi, envoi qu'on peut refaire) | 4 | L | à faire |  |
+| [ETA-02](modules/ETA-echanges-etat.md) | Massar (ancienne VSC-05) | 4 | M | à faire |  |
+| [ETA-03](modules/ETA-echanges-etat.md) | Un connecteur par autre pays visé | 5 | M par pays | reporté |  |
+| [PAI-01](modules/PAI-paiements.md) | Rapprochement des paiements avec les reçus, référence unique par élève, alerte de paiement non imputé | 4 | L | à faire |  |
+| [PAI-02](modules/PAI-paiements.md) | Paiement en ligne par carte et CMI, commission affichée sur le reçu | 4 | M | à faire |  |
+| [PAI-03](modules/PAI-paiements.md) | Argent mobile par des agrégateurs, plusieurs devises | 5 | L | reporté |  |
+| [RHP-01](modules/RHP-personnel-paie.md) | Relevé mensuel des heures des vacataires, à partir des séances visées (ancienne FIN-03) | libre | M | à faire |  |
+| [RHP-02](modules/RHP-personnel-paie.md) | Dossier de l'intervenant : contrat, autorisation de cumul, plafond d'heures, déclaration à l'AREF | 5 | M | à faire |  |
+| [RHP-03](modules/RHP-personnel-paie.md) | Chaîne « prévu, fait, visé, payé », état signé, double validation des comptes bancaires, export vers la paie | 5 | L | à faire |  |
+| [FOR-01](modules/FOR-formation-continue.md) | Sessions et cohortes, conventions, convocations | 5 | L | à faire |  |
+| [FOR-02](modules/FOR-formation-continue.md) | Émargement signé par demi-journée, attestations | 5 | M | à faire |  |
+| [FOR-03](modules/FOR-formation-continue.md) | Dossiers des financeurs (CSF, FDFP, 3FPT, OPCO, CPF), facturation à plusieurs payeurs | 5 | L | à faire |  |
+| [FOR-04](modules/FOR-formation-continue.md) | Preuves qualité rangées par indicateur | 5 | M | à faire |  |
+| [DOC-01](modules/DOC-documents-verifiables.md) | Certificats, attestations et relevés avec code de vérification | 5 | M | à faire |  |
+| [DOC-02](modules/DOC-documents-verifiables.md) | Diplômes vérifiables, page de vérification, archivage, révocation | 5 | M | à faire |  |
+| [INS-01](modules/INS-admissions.md) | Candidature en ligne, pièces, suivi des candidats, liste d'attente | 5 | L | à faire |  |
+| [INS-02](modules/INS-admissions.md) | Acompte, contrat annuel signé, réinscription | 5 | M | à faire |  |
+| [INS-03](modules/INS-admissions.md) | État d'accréditation de chaque filière | 5 | S | à faire |  |
+| [PIL-01](modules/PIL-pilotage.md) | Trésorerie : encaissé, attendu, en retard, prévision | 5 | M | reporté |  |
+| [PIL-02](modules/PIL-pilotage.md) | Présence des enseignants, avancement des notes, somme due aux vacataires | 5 | M | reporté |  |
+| [GRP-01](modules/GRP-groupes-reseaux.md) | Vue consolidée sur plusieurs écoles | 5 | L | reporté |  |
+| [GRP-02](modules/GRP-groupes-reseaux.md) | Paramètres communs avec dérogations, marque du réseau | 5 | M | reporté |  |
+| [STA-01](modules/STA-stages-alternance.md) | Offres de stage (espace Carrière) (ancienne COU-07) | libre | M | à décider |  |
+| [STA-02](modules/STA-stages-alternance.md) | Conventions de stage, tuteur, présence en entreprise, apprentissage | 5 | M | reporté |  |
+| [SER-01](modules/SER-services-annexes.md) | Cantine, transport et internat liés au compte famille, sans refus d'accès automatique | 5 | L | reporté |  |
+| [STK-01](modules/STK-stocks-achats.md) | Inventaire, bons de commande validés, lien avec la vente | 5 | M | reporté |  |
 | [MKT-01](modules/MKT-marketing.md) | Sauvegarder l'agence (premier commit, dépôt privé, règles de l'équipe) | libre | S | à faire |  |
 | [MKT-02](modules/MKT-marketing.md) | Contexte produit et personas à la cible du 7 novembre | libre | M | à faire |  |
 | [MKT-03](modules/MKT-marketing.md) | Argumentaire par cible, tiré des exigences produit | libre | M | à faire |  |

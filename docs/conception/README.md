@@ -6,9 +6,9 @@ Une conception nouvelle se range ici, dans le dossier de son module, nommée `<i
 
 | Dossier | Contenu | Module |
 |---|---|---|
-| [plateforme/](plateforme/) | [Décisions D-01 à D-21](plateforme/02-decisions.md), [architecture](plateforme/03-architecture.md), [modèle de données](plateforme/04-modele-donnees.md), [essai du contexte d'école](plateforme/17-essai-contexte.md), [audit d'isolation](plateforme/18-audit-isolation.md), [mesure de D-01, PLA-06](plateforme/pla-06-mesure-d01.md) (plan validé le 10 novembre) | PLA |
+| [plateforme/](plateforme/) | [Décisions D-01 à D-21](plateforme/02-decisions.md), [architecture](plateforme/03-architecture.md), [modèle de données](plateforme/04-modele-donnees.md), [essai du contexte d'école](plateforme/17-essai-contexte.md), [audit d'isolation](plateforme/18-audit-isolation.md), [mesure de D-01, PLA-06](plateforme/pla-06-mesure-d01.md) (plan validé le 10 novembre), [base neuve sans données d'école (PLA-03)](plateforme/pla-03-base-neuve.md) | PLA |
 | [moteur-planification/](moteur-planification/README.md) | Moteur par profil, [catalogue des 498 paramètres](moteur-planification/catalogue/README.md) (pages générées depuis les JSON du serveur), [écarts du solveur](moteur-planification/ecarts-du-solveur.md), [conception de MP-1](moteur-planification/conception-mp1.md) et [sa relecture](moteur-planification/relecture-mp1-contrat.md) | MOT |
-| [exploitation/](exploitation/) | [Mise en ligne en une commande (ME-0b)](exploitation/conception-me0b-deploiement.md), [supervision (ME-21)](exploitation/conception-me21-supervision.md) | EXP |
+| [exploitation/](exploitation/) | [Mise en ligne en une commande (ME-0b)](exploitation/conception-me0b-deploiement.md), [supervision (ME-21)](exploitation/conception-me21-supervision.md), [reconnaissance du serveur (EXP-01)](exploitation/conception-exp-01-reconnaissance.md) | EXP |
 | [interface/](interface/) | [Socle neutre](interface/conception-socle-neutre.md) | UIX |
 | [espace-de-cours/](espace-de-cours/) | [Sondage de l'enseignant (EC-9)](espace-de-cours/conception-ec9-sondage.md) | COU |
 | [vie-scolaire/](vie-scolaire/) | [Modèle de données du scolaire (C-5)](vie-scolaire/conception-c5-modele-donnees-scolaire.md), plan du document à valider | VSC |

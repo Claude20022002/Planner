@@ -1,4 +1,3 @@
-import fs from "node:fs";
 import { resetDatabase, closeDatabase, createUser, loginAs, anonymous } from "./helpers/testApp.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
 import { JournalSecurite } from "../../models/index.js";
@@ -8,7 +7,8 @@ import { personnaliserCourriel } from "../../utils/sendEmail.js";
 /**
  * Identité et marque de l'école (D-21, lots ME-1 et ME-11) : lecture publique (page de connexion,
  * application), réglage par l'administration seule, couleurs illisibles et faux logos refusés.
- * La migration 0055 crée la ligne de l'école pilote, logo compris.
+ * La migration 0055 crée une ligne neutre dans une base neuve (PLA-03) ; baseNeuve.test.js vérifie
+ * la base d'origine, qui garde l'identité de l'école pilote.
  */
 
 const PNG = Buffer.from("89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000d4944415478da63f8ffff3f0005fe02fea7d6a4a80000000049454e44ae426082", "hex");
@@ -30,21 +30,14 @@ beforeEach(resetRateLimiters);
 const envoyerLogo = (octets, type = "image/png") => direction.agent.put("/api/etablissement/logo").set("X-CSRF-Token", direction.csrf).set("Content-Type", type).send(octets);
 
 describe("Lecture publique", () => {
-    test("sans connexion : nom, produit, couleurs et version du logo de l'école pilote, jamais l'expéditeur", async () => {
+    test("sans connexion : nom, produit et couleurs neutres d'une base neuve, sans logo, jamais l'expéditeur", async () => {
         const res = await anonymous().get("/api/etablissement");
         expect(res.status).toBe(200);
-        expect(res.body).toMatchObject({ nom: "HESTIM Engineering & Business School", nom_court: "HESTIM", produit: "HESTIM Planner", couleur_principale: "#001861", couleur_accent: "#F26322" });
-        expect(res.body.logo.version).toEqual(expect.any(Number));
+        expect(res.body).toMatchObject({ nom: "Planner", nom_court: "Planner", produit: "Planner", couleur_principale: "#1D4ED8", couleur_accent: "#0E7490", modele_edt: "planner" });
+        expect(res.body.logo).toBeNull();
         expect(res.body).not.toHaveProperty("adresse_reponse");
         expect(res.body).not.toHaveProperty("expediteur_nom");
-    });
-
-    test("le logo se lit sans connexion, avec son vrai type et sans détection par le navigateur", async () => {
-        const res = await anonymous().get("/api/etablissement/logo");
-        expect(res.status).toBe(200);
-        expect(res.headers["content-type"]).toBe("image/png");
-        expect(res.headers["x-content-type-options"]).toBe("nosniff");
-        expect(Buffer.compare(res.body, fs.readFileSync(new URL("../../assets/ecole/logo-hestim.png", import.meta.url)))).toBe(0);
+        expect((await anonymous().get("/api/etablissement/logo")).status).toBe(404);
     });
 });
 
@@ -87,12 +80,21 @@ describe("Réglage par l'administration", () => {
 });
 
 describe("Logo", () => {
-    test("une vraie image PNG remplace le logo et change sa version", async () => {
-        const avant = (await anonymous().get("/api/etablissement")).body.logo.version;
+    test("une vraie image PNG devient le logo, puis une autre le remplace et change sa version", async () => {
+        const premier = await envoyerLogo(PNG);
+        expect(premier.status).toBe(200);
+        expect(premier.body.logo.version).toEqual(expect.any(Number));
         const res = await envoyerLogo(PNG);
         expect(res.status).toBe(200);
-        expect(res.body.logo.version).not.toBe(avant);
-        expect(Buffer.compare((await anonymous().get("/api/etablissement/logo")).body, PNG)).toBe(0);
+        expect(res.body.logo.version).not.toBe(premier.body.logo.version);
+    });
+
+    test("le logo se lit sans connexion, avec son vrai type et sans détection par le navigateur", async () => {
+        const res = await anonymous().get("/api/etablissement/logo");
+        expect(res.status).toBe(200);
+        expect(res.headers["content-type"]).toBe("image/png");
+        expect(res.headers["x-content-type-options"]).toBe("nosniff");
+        expect(Buffer.compare(res.body, PNG)).toBe(0);
     });
 
     test("le type se lit dans les octets : un SVG ou un faux PNG est refusé", async () => {
