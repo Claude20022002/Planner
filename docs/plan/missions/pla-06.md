@@ -86,3 +86,4 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche.
 |---|---|---|
 | 2026-11-15 | mission écrite ; CI de #164 verte (dernier passage) | — |
 | 2026-11-15 | tour d'état de 13 h 15 : Codex a fusionné `origin/main` (`5f4153a`), proposé le protocole sur le serveur (`311c0ba`, `a754a4b`), puis inscrit « amendement du § 4 validé par Claude20022002 le 2026-11-15, répartition A-3 validée » (`7794d34`). Enveloppe : MySQL 2 Gio, Node 1 Gio, hôte 512 Mio, 2,5 processeurs, arrêt sous 1 Gio libre, palier 4 Gio suspendu. Code du banc en cours, non commité (`lancer.sh`, `arreter.sh`, `lib/protection.mjs`…) | **au chef** : confirmer que la validation inscrite est la sienne ; A-2 (créneau, témoin n8n) à fournir |
+| 2026-11-15 | **le chef confirme** : c'est lui qui a validé l'amendement du § 4 et la répartition A-3 auprès de Codex | validation acquise ; A-2 attend toujours le chef |

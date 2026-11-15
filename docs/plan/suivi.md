@@ -46,8 +46,9 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 |---|---|---|---|---|---|---|
 | EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan validé par le chef le 15 nov. ; **agent pas encore démarré** (plan toujours non commité à 13 h 15) | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
 | PLA | PLA-03b schéma de départ | agent Claude du coordinateur | `feat/pla-03b-schema-depart` (créée) | plan réécrit (22 questions), non commité ; **validation du chef attendue** | 15 nov. | [pla-03b](missions/pla-03b.md) |
-| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | plan amendé (mesure sur le serveur) ; Codex y a inscrit « validé par le chef le 15 nov. » (§ 4, A-1, A-3) : **à confirmer par le chef** ; code du banc en cours, non commité ; A-2 (créneau, témoin n8n) attend le chef | 15 nov. | [pla-06](missions/pla-06.md) |
+| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | plan amendé (mesure sur le serveur) ; amendement (§ 4, A-1, A-3) **validé par le chef le 15 nov.** (confirmé au coordinateur) ; code du banc en cours, non commité ; A-2 (créneau, témoin n8n) attend le chef | 15 nov. | [pla-06](missions/pla-06.md) |
 | MOT | MOT-13a contraintes déclarées, serveur | Claude Code | #178 | PR ouverte ; conflit avec `main` résolu en local le 15 nov. (QUA fermé), à repousser | 15 nov. : **prête pour la PR** | [mot-13a](missions/mot-13a.md) |
+| MOT | MOT-12 montée du solveur | Claude Code (VS Code, second abonnement) | à créer après #178 : `feat/mot-12-montee-solveur` | mission écrite ; plan à écrire, validé par le chef | 15 nov. | [mot-12](missions/mot-12.md) |
 
 | EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | Claude Code (session inconnue) | #177 | plan court seul, **à valider par le chef** (3 questions) | 15 nov. : lu | — |
 
