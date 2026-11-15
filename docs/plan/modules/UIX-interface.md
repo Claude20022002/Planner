@@ -57,3 +57,5 @@ EP-2, EP-11.
 ### Proposition UIX-06a : marque et premières pages de gestion
 
 [Conception du pilote Personnes](../../conception/interface/uix-06a-interface.md), demandée par le chef le 15 novembre après l'analyse d'OpenEduCat. **À valider**, sans code produit : copie des SVG du dernier kit mosaïque, cohérence de l'accueil/connexion/navigation, puis comptes/enseignants/étudiants. La dépendance au socle UIX-01 et l'exception hors chantier sont explicitement soumises au chef.
+
+Reprise du 15 novembre : PR #185 de conception ouverte en brouillon ; plan et quatre questions toujours à valider. Thème neutre proposé en ardoise (N-4), bleu nuit réservé à la marque. Aucun code produit.

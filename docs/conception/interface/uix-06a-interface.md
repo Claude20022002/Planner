@@ -34,7 +34,7 @@ Critères : dernier logo conforme à son kit ; commandes, filtres, listes, formu
 | 1 | UIX n'est pas un chantier ouvert et UIX-01a avait une exception limitée. Autoriser UIX-06a hors chantier ? | Oui, exception limitée à cette livraison, sans ouvrir un quatrième chantier | En attente | implémentation |
 | 2 | Quelles premières pages pour éprouver le système avant de le déployer partout ? | Connexion, accueil/navigation et domaine Personnes : comptes, enseignants, étudiants | En attente | périmètre |
 | 3 | Comment traiter la dépendance UIX-06 vers UIX-01 ? | Découpler explicitement ce lot visuel sans migration ; garder la dépendance pour l'état en configuration et l'assistant | En attente | découpage |
-| 4 | Quelle direction visuelle ? | Interface de travail sobre, surfaces claires ou sombres, bleu nuit Planner en repli, Inter pour l'interface (déjà prévu dans le socle neutre), logo SVG intact ; identité de l'école conservée | En attente | apparence |
+| 4 | Quelle direction visuelle ? | Interface de travail sobre, surfaces claires ou sombres, encre ardoise sans couleurs d'école (N-4), Inter pour l'interface (N-6), bleu nuit réservé à la marque Planner, logo SVG intact ; identité de l'école conservée | En attente | apparence |
 
 Le logo ne demande aucune création : le chef a demandé le dernier logo et le kit identifie la piste validée. Si un fichier plus récent existe hors de ce kit, le chef peut le signaler avant l'intégration. Aucune supposition sur des prix, des effectifs ou de nouvelles fonctions.
 
@@ -160,3 +160,12 @@ La suite du site sera planifiée en livraisons distinctes après ce pilote : ré
 ## 11. Hors périmètre
 
 Vitrine commerciale, migration 0060 et assistant d'ouverture, application native, création de modules scolaires, modification des comptes/droits, données réelles, backend, serveurs, publication et génération d'un nouveau logo.
+
+## 12. Vérification de reprise du 15 novembre
+
+- Branche distante à `5ce34dd9` et PR #185 ouverte en brouillon, sans commentaire ni relecture au contrôle.
+- Boîte lue : seul message UIX-01a/MOT-02, aucune validation UIX-06a. Message laissé en entrée car sa partie MOT-02 reste à traiter dans sa mission.
+- Aucune fiche UIX-06a disponible ; aucun travail concurrent dans les fichiers frontend prévus relevé dans les PR ouvertes consultées. Périmètre communiqué au coordinateur pour confirmation, sans modifier son tableau des missions.
+- Question 4 précisée avant validation : le thème neutre conserve l’encre ardoise (N-4 et kit, § 11). Le bleu nuit reste réservé à la marque et ne remplace pas la couleur des commandes sans école. Cette proposition précise le point 4.1 et reste à valider.
+- PRODUCT.md et DESIGN.md décrivent encore le contexte historique HESTIM/panneau. Les décisions multi-écoles et le kit approuvé priment ; leur mise à jour ciblée accompagnera le pilote après accord.
+- Plan et questions 1 à 4 toujours en attente du chef. Aucun code produit ni asset intégré.
