@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | en relecture : prête le 2026-11-15 |
+| État | **close le 2026-11-15** : PR #179 fusionnée |
 | Agent | agent de Cursor |
 | Modèle recommandé | un modèle fort (Claude Opus 5.5 dans Cursor, ou l'équivalent) : configuration du proxy d'un serveur partagé, où une erreur expose ou coupe n8n |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |

@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte, **après EXP-02a** pour le même agent |
+| État | **close le 2026-11-15** : PR #177 fusionnée |
 | Agent | agent de Cursor |
 | Modèle recommandé | un modèle de raisonnement moyen suffit (Claude Sonnet 5.5 dans Cursor, ou l'équivalent) : correctif Bash court, bien borné, avec son test |
 | Attribuée le | 2026-11-15, par le coordinateur, par délégation du chef |
