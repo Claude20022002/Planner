@@ -44,14 +44,14 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 
 | Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
 |---|---|---|---|---|---|---|
-| EXP | EXP-01 reconnaissance du serveur | agent de Cursor | #172 | **fusionnée le 15 nov.** ; ligne à retirer au prochain tour | 15 nov. | — |
-| EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan **validé par le chef le 15 nov.**, à commiter par l'agent | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
+| EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan validé par le chef le 15 nov. ; **agent pas encore démarré** (plan toujours non commité à 13 h 15) | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
 | PLA | PLA-03b schéma de départ | agent Claude du coordinateur | `feat/pla-03b-schema-depart` (créée) | plan réécrit (22 questions), non commité ; **validation du chef attendue** | 15 nov. | [pla-03b](missions/pla-03b.md) |
-| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | étapes 1 à 5 faites ; plan à amender (mesure sur le serveur, décision du 15 nov.) puis à revalider | 15 nov. | [pla-06](missions/pla-06.md) |
-| QUA | QUA-03 étude de la pile | Claude Code | #171 | PR ouverte, CI verte, à fusionner ; sa fusion ferme le chantier QUA | 15 nov. : tour d'état seulement | — |
-| MOT | MOT-13a contraintes déclarées, serveur | Claude Code | `feat/mot-13-contraintes` (non poussée) | **codée** (autre session, 15 nov.), fiche de session écrite, `origin/main` fusionnée ; à pousser | 15 nov. : **prête pour la PR** | [mot-13a](missions/mot-13a.md) |
+| PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | plan amendé (mesure sur le serveur) ; Codex y a inscrit « validé par le chef le 15 nov. » (§ 4, A-1, A-3) : **à confirmer par le chef** ; code du banc en cours, non commité ; A-2 (créneau, témoin n8n) attend le chef | 15 nov. | [pla-06](missions/pla-06.md) |
+| MOT | MOT-13a contraintes déclarées, serveur | Claude Code | #178 | PR ouverte ; conflit avec `main` résolu en local le 15 nov. (QUA fermé), à repousser | 15 nov. : **prête pour la PR** | [mot-13a](missions/mot-13a.md) |
 
-Hors chantier, PR ouvertes : #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
+| EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | Claude Code (session inconnue) | #177 | plan court seul, **à valider par le chef** (3 questions) | 15 nov. : lu | — |
+
+Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
 ## Numéros de migration réservés
 
@@ -82,7 +82,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PLA-11](modules/PLA-plateforme.md) | Comptes communs | 5 | L | reporté |  |
 | [PLA-12](modules/PLA-plateforme.md) | Export complet d'une école | 5 | M | à faire |  |
 | [PLA-13](modules/PLA-plateforme.md) | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) | 5 | M (+ L, conditionnel) | reporté |  |
-| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | en cours | `feat/exp-01-reconnaissance` |
+| [EXP-01](modules/EXP-exploitation.md) | Nouveau serveur | 0 | S | fait (#172, 15 nov.) | #172 |
 | [EXP-02](modules/EXP-exploitation.md) | Première installation conteneurisée à côté de n8n. Comprend | 1 | L | à faire |  |
 | [EXP-03](modules/EXP-exploitation.md) | ME-0b adapté au nouveau serveur | 1 | M | code fait (#145), adaptation à faire | #145 |
 | [EXP-04](modules/EXP-exploitation.md) | Sauvegardes sur le nouveau serveur | 1 | M | à faire |  |
@@ -212,7 +212,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MKT-10](modules/MKT-marketing.md) | Campagne de lancement auprès des écoles | quand la vente reprend | L | gelé |  |
 | [QUA-01](modules/QUA-qualite-docs.md) | `README.md` et `PRODUCT.md` à jour | libre | M | à faire |  |
 | [QUA-02](modules/QUA-qualite-docs.md) | Découper les contrôleurs trop longs, sans changer leur comportement, chacun couvert… | libre | M par contrôleur | à faire |  |
-| [QUA-03](modules/QUA-qualite-docs.md) | Clore l'étude de la pile | 1 | S | en cours : étude faite, à fusionner | `etude/qua-03-pile` |
+| [QUA-03](modules/QUA-qualite-docs.md) | Clore l'étude de la pile | 1 | S | fait (#171, 15 nov.) | #171 |
 | [QUA-04](modules/QUA-qualite-docs.md) | Reste des dates | libre | S | à faire |  |
 | [QUA-05](modules/QUA-qualite-docs.md) | Supprimer les branches et les dossiers de travail morts, après vérification de leur… | libre | S | à faire |  |
 | [QUA-06](modules/QUA-qualite-docs.md) | `docs/users.xlsx` | 0 | S | fait (personnes fictives, rien à réécrire) |  |

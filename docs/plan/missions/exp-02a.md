@@ -76,3 +76,4 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-15 | mission écrite ; plan lu, non commité | au chef (validation du plan) |
+| 2026-11-15 | tour d'état de 13 h 15 : plan validé par le chef, mais rien de neuf sur la branche ; l'agent de Cursor n'a pas démarré (sa fiche n'est pas encore sur `main` : #175 ouverte) | — |
