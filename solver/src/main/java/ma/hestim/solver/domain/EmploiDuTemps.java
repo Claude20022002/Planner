@@ -19,6 +19,7 @@ import ai.timefold.solver.core.api.solver.SolverStatus;
 /**
  * Problème et solution : la semaine type des enseignements à placer, avec les créneaux de la
  * grille, les salles, les disponibilités des enseignants et les paramètres de Planner.
+ * {@code contraintesDeclarees} porte les contraintes de l'école, déjà compilées en séances ;
  * {@code poidsDesRegles} porte le poids que l'école donne à chaque règle souple du profil (nom de
  * la règle → poids) ; ProblemeRecu le change en ConstraintWeightOverrides à la réception.
  */
@@ -39,6 +40,14 @@ public class EmploiDuTemps {
 
     @ProblemFactProperty
     private Parametres parametres = new Parametres();
+
+    /** Contraintes déclarées par l'école, compilées par Planner (MOT-13b). */
+    private List<ContrainteDeclaree> contraintesDeclarees = new ArrayList<>();
+
+    /** Une visée par séance (ou salle) de chaque contrainte : construites à la réception, jamais lues du JSON. */
+    @ProblemFactCollectionProperty
+    @JsonIgnore
+    private List<Visee> visees = new ArrayList<>();
 
     @PlanningEntityCollectionProperty
     private List<Lecon> lecons = new ArrayList<>();
@@ -67,6 +76,31 @@ public class EmploiDuTemps {
         lecons.forEach(l -> l.calculerValeursPossibles(creneaux, salles));
     }
 
+    /** Après lecture : une visée par séance de chaque paquet (côtés A et B), ou par salle d'une plage. */
+    public void construireVisees() {
+        List<Visee> faits = new ArrayList<>();
+        for (ContrainteDeclaree c : contraintesDeclarees) {
+            if (c.getFamille() == ContrainteDeclaree.Famille.PLAGE) {
+                if (!c.getSalles().isEmpty()) {
+                    c.getSalles().forEach(s -> faits.add(Visee.deSalle(s, c)));
+                } else {
+                    c.getLecons().forEach(l -> faits.add(Visee.deLecon(l, c, 0, 'A')));
+                }
+                continue;
+            }
+            for (int i = 0; i < c.getPaquets().size(); i++) {
+                ContrainteDeclaree.Paquet paquet = c.getPaquets().get(i);
+                for (String l : paquet.a()) {
+                    faits.add(Visee.deLecon(l, c, i, 'A'));
+                }
+                for (String l : paquet.b()) {
+                    faits.add(Visee.deLecon(l, c, i, 'B'));
+                }
+            }
+        }
+        visees = faits;
+    }
+
     public List<Creneau> getCreneaux() { return creneaux; }
     public void setCreneaux(List<Creneau> creneaux) { this.creneaux = creneaux; }
     public List<Salle> getSalles() { return salles; }
@@ -81,6 +115,12 @@ public class EmploiDuTemps {
     public void setLecons(List<Lecon> lecons) { this.lecons = lecons; }
     public HardMediumSoftScore getScore() { return score; }
     public void setScore(HardMediumSoftScore score) { this.score = score; }
+    public List<ContrainteDeclaree> getContraintesDeclarees() { return contraintesDeclarees; }
+    public void setContraintesDeclarees(List<ContrainteDeclaree> contraintes) { this.contraintesDeclarees = contraintes == null ? new ArrayList<>() : contraintes; }
+    @JsonIgnore
+    public List<Visee> getVisees() { return visees; }
+    @JsonIgnore
+    public void setVisees(List<Visee> visees) { this.visees = visees; }
     public Map<String, Integer> getPoidsDesRegles() { return poidsDesRegles; }
     public void setPoidsDesRegles(Map<String, Integer> poids) { this.poidsDesRegles = poids == null ? new HashMap<>() : poids; }
     @JsonIgnore

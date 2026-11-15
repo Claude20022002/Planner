@@ -1,13 +1,18 @@
 package ma.hestim.solver.rest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import ai.timefold.solver.core.api.domain.solution.ConstraintWeightOverrides;
 import ai.timefold.solver.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 import ma.hestim.solver.contraintes.PreferencesEmploiDuTemps;
+import ma.hestim.solver.domain.ContrainteDeclaree;
+import ma.hestim.solver.domain.ContrainteDeclaree.Famille;
+import ma.hestim.solver.domain.ContrainteDeclaree.Niveau;
 import ma.hestim.solver.domain.Creneau;
 import ma.hestim.solver.domain.EmploiDuTemps;
 import ma.hestim.solver.domain.Lecon;
@@ -16,9 +21,10 @@ import ma.hestim.solver.domain.Salle;
 /**
  * Un problème reçu de Planner, avant le calcul : contrôle de sa taille et de ses champs (le
  * solveur ne croit pas le serveur sans borne), puis liaison des leçons à leurs créneaux et à
- * leurs salles, et poids des règles du profil changés en ConstraintWeightOverrides.
+ * leurs salles, visées des contraintes déclarées, et poids des règles du profil changés en
+ * ConstraintWeightOverrides.
  */
-final class ProblemeRecu {
+public final class ProblemeRecu {
 
     // Bornes d'un problème : HESTIM entier tient très en dessous (≈ 250 leçons par semestre)
     static final int LECONS_MAX = 5000;
@@ -26,12 +32,13 @@ final class ProblemeRecu {
     static final int SALLES_MAX = 2000;
     static final int VOEUX_MAX = 200_000;
     static final int POIDS_MAX = 1000;
+    static final int CONTRAINTES_MAX = 2000;
 
     private ProblemeRecu() {
     }
 
     /** Le refus à renvoyer (400), ou null si le problème est recevable. */
-    static String verifier(EmploiDuTemps p) {
+    public static String verifier(EmploiDuTemps p) {
         if (p.getLecons() == null || p.getCreneaux() == null || p.getSalles() == null) {
             return "Problème incomplet : leçons, créneaux et salles sont requis";
         }
@@ -42,7 +49,50 @@ final class ProblemeRecu {
         if (p.getLecons().stream().anyMatch(l -> l.getId() == null || l.getLongueur() < 1 || l.getLongueur() > 2)) {
             return "Leçon invalide (identifiant manquant ou longueur hors de 1-2)";
         }
-        return verifierPoids(p.getPoidsDesRegles());
+        String refus = verifierPoids(p.getPoidsDesRegles());
+        return refus != null ? refus : verifierContraintes(p);
+    }
+
+    /**
+     * Contraintes déclarées : 2 000 au plus, champs de leur famille présents, poids d'un souhait
+     * entre 0 et 1 000, et aucune séance inconnue (comptées dans le refus).
+     */
+    static String verifierContraintes(EmploiDuTemps p) {
+        List<ContrainteDeclaree> contraintes = p.getContraintesDeclarees();
+        if (contraintes.size() > CONTRAINTES_MAX) {
+            return "Trop de contraintes déclarées (" + CONTRAINTES_MAX + " au plus)";
+        }
+        Set<String> connues = p.getLecons().stream().map(Lecon::getId).collect(Collectors.toSet());
+        long inconnues = 0;
+        for (ContrainteDeclaree c : contraintes) {
+            String champ = champManquant(c);
+            if (champ != null) {
+                return "Contrainte déclarée " + c.getId() + " invalide : " + champ;
+            }
+            inconnues += c.getLecons().stream().filter(l -> !connues.contains(l)).count();
+            inconnues += c.getPaquets().stream().flatMap(q -> java.util.stream.Stream.concat(q.a().stream(), q.b().stream()))
+                    .filter(l -> !connues.contains(l)).count();
+        }
+        return inconnues > 0 ? "Contraintes déclarées : " + inconnues + " séance(s) visée(s) inconnue(s)" : null;
+    }
+
+    private static String champManquant(ContrainteDeclaree c) {
+        if (c.getId() == null || c.getFamille() == null || c.getNiveau() == null) {
+            return "identifiant, famille et niveau sont requis";
+        }
+        if (c.getNiveau() == Niveau.SOUPLE && (c.getPoids() < 0 || c.getPoids() > POIDS_MAX)) {
+            return "poids hors de 0-" + POIDS_MAX;
+        }
+        if (c.getFamille() == Famille.PLAFOND && (c.getQuoi() == null || c.getSeuil() < 0)) {
+            return "quoi et seuil sont requis";
+        }
+        if (c.getFamille() == Famille.REPARTITION && c.getEcart() < 1) {
+            return "écart d'au moins un jour";
+        }
+        if (c.getFamille() == Famille.ENSEMBLE && c.getRelation() == null) {
+            return "relation requise";
+        }
+        return null;
     }
 
     /** Un nom de règle inconnu est refusé, pour ne jamais perdre un poids sans bruit. */
@@ -64,7 +114,7 @@ final class ProblemeRecu {
      * on les remplace par les instances des listes, que le solveur reconnaît. Puis les valeurs
      * possibles de chaque leçon, et les poids des règles.
      */
-    static void relier(EmploiDuTemps probleme) {
+    public static void relier(EmploiDuTemps probleme) {
         Map<Long, Creneau> creneaux = probleme.getCreneaux().stream().collect(Collectors.toMap(Creneau::getId, Function.identity()));
         Map<Long, Salle> salles = probleme.getSalles().stream().collect(Collectors.toMap(Salle::getId, Function.identity()));
         for (Lecon lecon : probleme.getLecons()) {
@@ -80,6 +130,7 @@ final class ProblemeRecu {
             }
         }
         probleme.preparerValeursPossibles();
+        probleme.construireVisees();
         appliquerPoids(probleme);
     }
 

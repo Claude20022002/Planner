@@ -31,7 +31,8 @@ import ma.hestim.solver.domain.Voeu;
  * séance de deux créneaux sur deux créneaux consécutifs ; enseignant disponible ; heures maximales
  * par jour ; temps de trajet entre campus.
  *
- * Les préférences (souples) du profil sont dans PreferencesEmploiDuTemps. Le score est un
+ * Les préférences (souples) du profil sont dans PreferencesEmploiDuTemps, les contraintes
+ * déclarées par l'école dans ContraintesDeclarees. Le score est un
  * HardMediumSoftScore : le niveau intermédiaire ne sert qu'aux souhaits « indispensables »
  * déclarés par l'école (MOT-13b).
  *
@@ -57,7 +58,7 @@ public class ContraintesEmploiDuTemps implements ConstraintProvider {
 
     @Override
     public Constraint[] defineConstraints(ConstraintFactory factory) {
-        return Stream.of(imperatives(factory), PreferencesEmploiDuTemps.regles(factory))
+        return Stream.of(imperatives(factory), PreferencesEmploiDuTemps.regles(factory), ContraintesDeclarees.regles(factory))
                 .flatMap(Arrays::stream)
                 .toArray(Constraint[]::new);
     }

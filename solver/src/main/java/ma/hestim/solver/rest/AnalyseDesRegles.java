@@ -14,6 +14,7 @@ import ai.timefold.solver.core.api.score.analysis.ScoreAnalysis;
 import ai.timefold.solver.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 import ai.timefold.solver.core.api.score.stream.DefaultConstraintJustification;
 import ai.timefold.solver.core.api.solver.SolutionManager;
+import ma.hestim.solver.contraintes.ContraintesDeclarees.JustificationDeclaree;
 import ma.hestim.solver.domain.EmploiDuTemps;
 import ma.hestim.solver.domain.Lecon;
 
@@ -48,7 +49,9 @@ final class AnalyseDesRegles {
             violations.add(violation);
             if (s.hardScore() < 0 && contrainte.matches() != null) {
                 contrainte.matches().forEach(m -> {
-                    if (m.justification() instanceof DefaultConstraintJustification justification) {
+                    if (m.justification() instanceof JustificationDeclaree declaree) {
+                        leconsEnConflit.addAll(declaree.lecons());
+                    } else if (m.justification() instanceof DefaultConstraintJustification justification) {
                         // Faits de la correspondance : des leçons, ou une liste de leçons (conflits regroupés)
                         justification.getFacts().stream()
                                 .flatMap(f -> f instanceof Collection<?> liste ? liste.stream() : Stream.of(f))
