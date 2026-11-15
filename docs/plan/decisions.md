@@ -87,7 +87,7 @@ Registre unique à partir du 7 novembre 2026.
 | 15 nov. | Le coordinateur **valide les plans des fonctions S et M** sans migration, sécurité, donnée de mineur ni choix de produit ; le chef valide les autres | « plan validé par le chef » du 9 novembre, pour ces seuls plans |
 | 15 nov. | **Pousser et fusionner restent au chef seul**, coordinateur compris | — |
 | 15 nov. | Skills de coordination **écrits pour Planner** : les skills publics lus n'ont pas été installés (l'un lance Codex sans bac à sable ni approbation, un autre ajoute un hook aux réglages) ; sources dans `.claude/skills/SOURCES.md` | — |
-| 15 nov. | *(coordinateur)* La vue « qui travaille sur quoi » est un tableau **« Missions en cours »** de `suivi.md`, et non une colonne ajoutée aux 150 lignes du tableau des fonctions : la colonne aurait mis en conflit toutes les branches ouvertes. **Écart avec le plan validé, à confirmer par le chef** | — |
+| 15 nov. | *(coordinateur)* La vue « qui travaille sur quoi » est un tableau **« Missions en cours »** de `suivi.md`, et non une colonne ajoutée aux 150 lignes du tableau des fonctions : la colonne aurait mis en conflit toutes les branches ouvertes. Écart avec le plan validé, **confirmé par le chef le 15 nov.** | — |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.
