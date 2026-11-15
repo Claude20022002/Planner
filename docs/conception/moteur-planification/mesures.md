@@ -1,35 +1,64 @@
 # MOT-02 · Mesures du solveur
 
-État au 15 novembre 2026 : banc et jeu supérieur livrés, série avant/après MOT-12 en cours ; collège en attente de MOT-13b sur `main`. Aucun résultat de série complète n'est encore établi.
+État au 15 novembre 2026 : **grand jeu mesuré, six passages incomplets sur six** ; collège de 600 élèves en attente du générateur MOT-13b sur main. MOT-02 reste en cours.
 
-Plan validé : [mot-02-mesure-solveur.md](mot-02-mesure-solveur.md). Commandes et protocole : [README du banc](../../../scripts/mesures/mot-02/README.md).
+Plan validé : [mot-02-mesure-solveur.md](mot-02-mesure-solveur.md). [Banc et commandes](../../../scripts/mesures/mot-02/README.md). [Résultats structurés](../../../scripts/mesures/mot-02/jeux/resultats-superieur.json). [Manifeste du jeu](../../../scripts/mesures/mot-02/jeux/superieur-manifeste.json).
 
-## Portée
+## Portée du résultat
 
-**EP-10 applicative non démontrée par ce banc.** Les mesures directes du solveur ne certifient ni le déploiement sur les dates, ni les volumes applicatifs, ni les conflits individuels des groupes transversaux. Le collège de 600 élèves doit provenir du générateur de MOT-13b fusionné sur `main` ; il n'a pas encore été mesuré.
+**EP-10 applicative non démontrée par ce banc.** Le collège de 600 élèves n'a pas encore été mesuré. Les appels directs du solveur ne certifient pas non plus le déploiement sur les dates, les volumes applicatifs ou les conflits individuels de groupes transversaux.
 
-Le **jeu supérieur simplifié** comprend 20 000 étudiants en 400 groupes indépendants de 50, 800 enseignants, 400 salles de 50 et 4 800 leçons de deux heures dans une grille de 40 créneaux. Deux enseignants propres à chaque groupe, disponibilité complète et un seul site : ce scénario n'est pas représentatif de toutes les organisations de 20 000 étudiants. Un témoin vérifié prouve que cette construction est faisable ; il n'est pas envoyé comme solution initiale.
+Le **jeu supérieur simplifié** représente 20 000 étudiants en 400 groupes indépendants de 50, 800 enseignants, 400 salles de 50 places et 4 800 leçons de deux heures, dans une grille de 40 créneaux. Deux enseignants propres à chaque groupe, disponibilité complète et un seul site : il ne représente pas toutes les organisations de 20 000 étudiants. Un témoin vérifié démontre sa faisabilité ; il n'est jamais envoyé comme solution initiale.
 
 ## Protocole et provenance
 
-- Avant : `d8d892bc57ea71f2827ebad3a42e94da10b1f46b`, dernier commit de `main` avant #181, Spring Boot 3.3.5 et Timefold 1.15.
-- Après : `38f2f90f16e317ffdd083fab8ba166289754ef7b`, fusion de #181, Spring Boot 4.1.2 et cœur Timefold 1.35, sans starter.
-- Images reconstruites depuis les sources Git et le Dockerfile existant, sans modifier le produit. Même problème et mêmes ressources. Les modes du produit observés dans les journaux sont `REPRODUCIBLE` avant et `PHASE_ASSERT` après ; aucun réglage de mode n'est substitué.
-- Docker Desktop Linux local, Node 22.23.4. Limites inspectées du conteneur : 640 Mio, 1,5 CPU, aucun échange, tas maximal 70 %, un calcul à la fois. Ce n'est pas une mesure sur le serveur Debian ; la machine et ses autres activités influencent les temps.
-- Par version : chauffe demandée de 60 s hors résultats, puis trois passages de 600 s demandées sur conteneurs neufs. Arrêt anticipé existant du produit conservé. Garde externe 660 s ; sondage demandé chaque seconde, latence réelle horodatée.
-- Temps principal du POST au GET final, analyse incluse ; démarrage séparé. Sondage mémoire et API en parallèle : la durée relevée est une borne supérieure conservatrice de réception. Première faisabilité observée, pas instant interne exact.
-- Pic natif cgroup du conteneur, qui peut inclure le démarrage, distinct du maximum échantillonné. Valeur absente conservée comme indisponible. Analyse des violations et contrôle de la présence de toutes les affectations : score nul seul insuffisant.
+- Avant : `d8d892bc57ea71f2827ebad3a42e94da10b1f46b`, dernier commit de main avant #181, Spring Boot 3.3.5 / Timefold 1.15.
+- Après : `38f2f90f16e317ffdd083fab8ba166289754ef7b`, fusion de #181, Spring Boot 4.1.2 / cœur Timefold 1.35 sans starter.
+- Images construites depuis les sources Git et le Dockerfile du dépôt, sans modification du produit. Leurs identifiants complets sont dans les résultats structurés. Modes observés : `REPRODUCIBLE` avant et `PHASE_ASSERT` après ; aucun mode substitué par le banc.
+- Même problème et mêmes requêtes pour les six passages mesurés : une seule empreinte de requête. SHA-256 du problème canonique : `0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc`.
+- Poste local, Docker Desktop Linux (12 CPU et 5 860 114 432 octets exposés à la VM), Node 22.23.4. Ce n'est pas une mesure sur le serveur Debian. Le poste n'est pas réservé exclusivement à cette série ; la dispersion limite les conclusions.
+- Limites de chaque conteneur inspectées : 640 Mio, 1,5 CPU, aucun échange, tas maximal 70 %, un calcul à la fois. Pas de modification de ressources pendant la série.
+- Par version : chauffe demandée de 60 s exclue, puis trois passages demandés de 600 s sur conteneurs neufs. Arrêt anticipé existant conservé ; tous les passages mesurés ont atteint la limite pendant la construction. Garde externe 660 s ; sondage demandé chaque seconde, sans recouvrement.
+- Temps principal : du POST à la réception du GET final, analyse comprise, démarrage séparé. API et sonde mémoire en parallèle : l'horodatage conservé est une borne supérieure conservatrice de réception. Une demande administrative après le GET incomplet est exclue de ce temps. L'extracteur reprend cet horodatage pour les acquisitions déjà réalisées ; la durée totale reste conservée séparément.
+- Le pic natif cgroup du conteneur peut inclure son démarrage et son cache ; il se distingue du maximum échantillonné. Aucune sonde mémoire manquante sur les six passages. Aucun OOM du conteneur, ni échec moteur signalé ; les six échecs sont des plannings incomplets.
 
-## Recette courte, exclue des séries
+## Six passages mesurés
 
-Sur un budget de cinq secondes, les deux images s'arrêtent pendant la construction et laissent presque toutes les leçons sans affectation. Sur un passage 1.35, la réponse finale vaut pourtant `0hard/0soft`, avec 4 790 leçons non affectées ; le journal prévient que la construction est interrompue. Le banc le classe en échec. L'ancien moteur renvoie un score `init` négatif qui traduit déjà l'incomplétude.
+| Passage | POST à GET final, s | Pic natif, Mio | Leçons non affectées / 4 800 | Score final | Évaluations/s du journal |
+|---|---|---|---|---|---|
+| avant-1 | 604.04 | 203.8 | 2419 | `-2418init/-2hard/-20soft` | 47691 |
+| avant-2 | 603.69 | 203.5 | 2537 | `-2536init/0hard/0soft` | 45334 |
+| avant-3 | 605.91 | 195.3 | 2870 | `-2869init/0hard/-10soft` | 38588 |
+| apres-1 | 609.43 | 229.4 | 2818 | `0hard/0soft` | 39342 |
+| apres-2 | 608.21 | 259.9 | 2848 | `0hard/0soft` | 38794 |
+| apres-3 | 610.97 | 254.4 | 2785 | `0hard/0soft` | 39902 |
 
-Cette observation ne mesure pas la capacité à 600 s. Elle démontre que les consommateurs du score doivent également contrôler les affectations. Le constat est transmis au coordinateur ; aucun correctif du produit n'est introduit dans cette étude.
+Aucune première solution complète et faisable n'a été observée. Les listes API `violations` sont **vides sur les six réponses**, y compris sur `avant-1` dont le score dur vaut -2. Le détail des règles enfreintes n'est donc pas exploitable sur ces résultats incomplets : ne pas interpréter cette liste vide comme zéro conflit. Le score dur est une pénalité pondérée, pas un nombre brut de violations.
 
-Deux tentatives de pilote se sont arrêtées prématurément avant requête pendant la recette. Une garde de vie du processus Node corrige ce cas ; un test par sous-processus le reproduit. Leurs deux conteneurs dédiés ont été retirés après contrôle des labels. Ces tentatives sont exclues des résultats.
+Les trois réponses 1.35 affichent `0hard/0soft` avec plus de la moitié des leçons non affectées. Ce score ne démontre pas la faisabilité. Le banc exige la présence de chaque leçon et de ses affectations, en plus du score ; il rejette ces réponses.
 
-## Résultats et suite
+## Comparaison avant et après MOT-12
 
-Les résultats des passages mesurés seront ajoutés après la série. Les réponses complètes, journaux et métadonnées du poste restent dans `.local/`, hors Git. Seule une extraction sans donnée du poste peut être versionnée.
+Le débit médian passe de **45 334 à 39 342 évaluations/s**, soit **13.2 % de moins** sur ces passages. Les plages se chevauchent : 38 588–47 691 avant, 38 794–39 902 après. La médiane de leçons entièrement affectées passe de **2 263 à 1 982**, soit **12.4 % de moins** dans ce budget.
 
-Le collège et son verdict restent en attente. Aucune décision de changer le moteur ou de filtrer ses domaines n'est prise : le coordinateur a réservé une éventuelle optimisation nécessaire à une fonction distincte de MOT-10.
+La tendance sur ce jeu et ce poste est donc défavorable à la version après montée, sans preuve d'une régression stable ou causée par Timefold seul : trois passages, dispersion du poste, Spring Boot et mode d'assertion changent aussi. Le temps d'arrêt, voisin de la limite de 600 s dans les deux versions, n'est pas une preuve de vitesse égale. Les scores partiels ne se comparent pas comme des qualités finales.
+
+Le pic natif médian passe de **203,5 à 254,4 Mio** ; le plus haut pic est **259,9 Mio**, sous les 640 Mio autorisés. Cette série n'a pas échoué par dépassement mémoire.
+
+Les journaux montrent uniquement la construction, interrompue avant la phase d'amélioration. Dans ce jeu, les domaines ouvrent 30 débuts de séance et 400 salles compatibles par leçon : **12 000 couples potentiels**, avant l'option sans salle. Cela explique la taille du domaine exploré, sans prouver qu'un filtrage précis suffirait. Le besoin d'améliorer le résultat à cette taille et dans ce budget est constaté ; la solution technique reste à étudier.
+
+La cible MOT-10 de 20 000 étudiants en moins de 30 minutes **n'est pas évaluée** : l'API actuelle limite les demandes à 600 s. Ne pas déduire de cet échec à 10 minutes un échec à 30 minutes.
+
+## Recette et vérifications
+
+Les essais courts de cinq secondes et les chauffes sont exclus du tableau. Ils ont déjà montré des réponses à score nul mais incomplètes en 1.35. Deux tentatives de pilote se sont arrêtées avant requête ; la garde de vie Node et son test par sous-processus corrigent ce cas. Leurs deux conteneurs ont été retirés après contrôle des labels ; aucune donnée de ces tentatives n'entre dans la comparaison.
+
+Le banc compte **18 tests réussis** : génération stable, témoin faisable, bornes API, complétude, scores non initialisés, erreurs et garde, compteurs mémoire, séparation des profils, nettoyage ciblé, lecture des vitesses et séparation du temps administratif. La syntaxe et le contrôle de neutralité passent. Tous les conteneurs de la série ont été retirés après collecte ; images et résultats détaillés restent pour relecture.
+
+Les requêtes, réponses détaillées, journaux et métadonnées locales sont conservés dans `.local/`, ignoré par Git. Seule l'extraction de résultats sans identifiant du poste est versionnée. Les sources de `solver/` et `backend/` sont inchangées par cette mission.
+
+## Suite
+
+1. Coordinateur : relire le banc et cette comparaison, notamment le contrôle de complétude et l'analyse vide sur score négatif. Les constats sur l'API sont transmis ; aucune correction du produit n'est faite ici.
+2. Attendre MOT-13b fusionnée dans main, puis lire son générateur à provenance stable. Confirmer qu'il donne 600 élèves sans adaptation ; sinon revenir au coordinateur. Mesurer le collège et compléter le verdict de MOT-02.
+3. Une éventuelle optimisation, dont le filtrage si son besoin est démontré, relève d'une fonction distincte rattachée à MOT-10 (décision du coordinateur, Q7). Aucun choix de moteur pris dans cette étude.
