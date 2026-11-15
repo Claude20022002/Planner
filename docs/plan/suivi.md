@@ -47,7 +47,7 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | EXP | EXP-02a branchement Traefik | agent de Cursor | #179 | codée (`5803eff`) ; relue : **prête** ; conflit avec `main` résolu par le coordinateur (`c5ed26ee`), à repousser | 15 nov. 14 h 15 : prête, `compose config` refait | [exp-02a](missions/exp-02a.md) |
 | PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan validé (délégation), non commité ; **l'agent attend le « validé » du chef dans sa session** (VS Code, Fable 5.2) | 15 nov. | [pla-03b](missions/pla-03b.md) |
 | PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | banc adapté au serveur unique (`24b261a`, 13 fichiers) ; fusion de `main` en cours (conflit de liens) ; A-2 et sa sonde à inscrire et coder | 15 nov. 14 h 15 | [pla-06](missions/pla-06.md) |
-| MOT | MOT-12 montée du solveur | Claude Code (VS Code, second abonnement) | à créer : `feat/mot-12-montee-solveur` (#178 fusionnée, plus rien ne la bloque) | après PLA-03b, même agent ; plan à écrire, validé par le chef | 15 nov. | [mot-12](missions/mot-12.md) |
+| MOT | MOT-12 montée du solveur | Claude Code (Opus 5.5), session non lancée par le coordinateur | `chore/mot-12-montee-solveur` (non poussée) | plan commité (Spring Boot 4.1, cœur Timefold 1.35 sans starter) ; validation à confirmer par le chef ; code en cours | 15 nov. 14 h 10 | [mot-12](missions/mot-12.md) |
 
 | EXP | correctif : sauvegarde avant déploiement qui échoue sans bruit (`deployer.sh`, constat REL-01) | agent de Cursor, après EXP-02a | #177 | plan court **validé le 15 nov.** (coordinateur, par délégation) ; code à faire | 15 nov. : lu | [fix-exp-sauvegarde](missions/fix-exp-sauvegarde.md) |
 
