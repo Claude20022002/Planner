@@ -32,6 +32,8 @@ git -C <dossier> diff --stat origin/main...HEAD      # fichiers touchés
 
 et sa dernière fiche dans `docs/sessions/` (lue sur la branche : `git show <branche>:docs/sessions/<fichier>`).
 
+Relevez aussi les boîtes : `..\travaux-planner\boites\<codex et cursor>\sortie\` (rapports et questions à traiter, puis à ranger dans `sortie\traites\`) et `entree\` (un message non rangé dans `traites\` n'a pas encore été lu).
+
 Cherchez ces écarts, ce sont eux qui comptent :
 
 | Écart | Ce qu'il veut dire |
@@ -70,7 +72,8 @@ Vous êtes tenu par les mêmes règles que les autres : une branche par tâche, 
 5. Écrire la fiche `docs/plan/missions/<identifiant>.md` à partir de `docs/plan/modeles/mission.md`, et ajouter la ligne au tableau « Missions en cours » de `suivi.md`. Ces deux fichiers se commitent sur votre branche de coordination (`doc/coordination-<date>`), pas sur la branche de la mission.
 6. Remettre la mission :
    - **session Claude ouverte** : lui envoyer le prompt de la fiche par message direct (lister les sessions, puis écrire à celle du projet) ;
-   - **Codex, agent de Cursor, ou session Claude à ouvrir** : donner au chef le prompt de la fiche, à coller dans l'éditeur.
+   - **Codex ou agent de Cursor** : déposer le prompt dans sa boîte, `..\travaux-planner\boites\<codex ou cursor>\entree\AAAA-MM-JJ-HHMM-<sujet>.md` (format dans `boites\README.md`), puis dire au chef de lui écrire « lis ta boîte » ;
+   - **session Claude à ouvrir** : donner au chef le prompt de la fiche, à coller dans l'éditeur.
 
 ## 4. Quel agent pour quelle mission
 

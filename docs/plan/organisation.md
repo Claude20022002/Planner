@@ -151,7 +151,7 @@ Plusieurs agents travaillent en même temps, dans deux éditeurs : Claude et l'a
 | Claude (Cursor ou VS Code) | fiche de mission, et message direct entre sessions quand la session est ouverte | sa branche, sa fiche de session, ses réponses |
 | Codex, agent de Cursor | fiche de mission : le chef colle son prompt dans l'éditeur | sa branche et sa fiche de session, relues par le coordinateur |
 
-Le coordinateur ne pilote pas Codex ni l'agent de Cursor en direct : il les tient par ce qu'ils lisent ([AGENTS.md](../../AGENTS.md), la fiche de mission) et par ce qu'ils laissent (commits, fiche de session).
+Le coordinateur ne pilote pas Codex ni l'agent de Cursor en direct : il les tient par ce qu'ils lisent ([AGENTS.md](../../AGENTS.md), la fiche de mission) et par ce qu'ils laissent (commits, fiche de session). Depuis le 15 novembre, ils ont chacun une **boîte aux lettres** en fichiers, hors du dépôt (`..\travaux-planner\boites\<agent>\`, avec `entree\` et `sortie\`) : le coordinateur y dépose missions et réponses, l'agent y dépose ses rapports. Le chef n'a plus qu'à leur dire « lis ta boîte ».
 
 ### La fiche de mission
 

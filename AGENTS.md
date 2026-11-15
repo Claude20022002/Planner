@@ -17,7 +17,7 @@ Tout le reste remonte au chef : produit, schéma partagé entre modules, migrati
 
 1. Lire [docs/plan/README.md](docs/plan/README.md), puis [docs/plan/suivi.md](docs/plan/suivi.md) (fonctions, états, **chantiers ouverts**).
 2. Lire les branches et PR ouvertes (`gh pr list`, `git branch -r`), et la dernière fiche de session de la fonction dans `docs/sessions/`.
-3. Si une **fiche de mission** vous est donnée (`docs/plan/missions/<identifiant>.md`), la lire : elle dit la fonction, la branche, le dossier et **les fichiers que vous pouvez écrire**. Ne rien écrire hors de ce périmètre sans le demander. Sinon, si le chef n'a pas dit quelle fonction faire, **le demander**. Ne prendre qu'une fonction d'un **chantier ouvert** (au plus 3 chantiers ouverts ; un chantier commencé se termine avant d'en ouvrir un autre à sa place).
+3. Si une **fiche de mission** vous est donnée (`docs/plan/missions/<identifiant>.md`), la lire : elle dit la fonction, la branche, le dossier et **les fichiers que vous pouvez écrire**. Ne rien écrire hors de ce périmètre sans le demander. **Codex et l'agent de Cursor** lisent aussi leur **boîte aux lettres**, `..\boites\<codex ou cursor>\entree\` depuis un dossier de travail (`..\travaux-planner\boites\…` depuis le dépôt principal) : ils traitent les messages du coordinateur, les rangent dans `entree\traites\`, et déposent leurs rapports et questions dans `sortie\` (format dans `boites\README.md`). Sinon, si le chef n'a pas dit quelle fonction faire, **le demander**. Ne prendre qu'une fonction d'un **chantier ouvert** (au plus 3 chantiers ouverts ; un chantier commencé se termine avant d'en ouvrir un autre à sa place).
 
 ## Avant d'écrire une ligne de code
 
