@@ -82,3 +82,6 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-15 | mission écrite | — |
+| 2026-11-15 | plan réécrit par l'agent dans `..\travaux-planner\pla-03b-schema-depart` (non commité) : 22 questions avec leurs propositions ; trois réponses du chef précisées par la lecture du code (base « vide », collation, contrôle de fraîcheur) | au chef (validation du plan) |
+
+Périmètre étendu par le coordinateur le 15 novembre : `backend/tests/schema/photographie.mjs` (et le script de génération dans `backend/tests/schema/`), la ligne `backend/migrations/sql/*.sql text eol=lf` de `.gitattributes`, une ligne de `backend/tests/integration/contexteEtablissement.test.js`. Refusé : `.github/pull_request_template.md` (le test suffit).

@@ -64,7 +64,7 @@ Vous êtes tenu par les mêmes règles que les autres : une branche par tâche, 
 ## 3. Attribuer une mission
 
 1. Choisir une fonction « à faire » d'un **chantier ouvert**, dont les dépendances sont faites. Si le chef n'a pas choisi, proposez-lui un ordre.
-2. Vérifier que personne ne la tient : `suivi.md`, les branches, les dossiers de travail, `docs/plan/missions/`.
+2. Vérifier que personne ne la tient : `suivi.md`, les branches, les dossiers de travail, `docs/plan/missions/`. **Relire `git log` de la branche juste avant de remettre la mission** : une autre session peut y avoir travaillé depuis le tour d'état (le 15 novembre, MOT-13a a été codée pendant que sa fiche s'écrivait). Lister aussi les sessions Claude ouvertes et demander à celle du projet ce qu'elle tient.
 3. Fixer le **périmètre d'écriture** : les dossiers et fichiers que l'agent pourra modifier. Deux missions ouvertes n'écrivent jamais le même fichier de code. `docs/plan/suivi.md` (sa ligne), le fichier de son module et sa fiche de session sont toujours permis.
 4. Choisir l'agent. Dire au chef pourquoi en une ligne (voir § 4).
 5. Écrire la fiche `docs/plan/missions/<identifiant>.md` à partir de `docs/plan/modeles/mission.md`, et ajouter la ligne au tableau « Missions en cours » de `suivi.md`. Ces deux fichiers se commitent sur votre branche de coordination (`doc/coordination-<date>`), pas sur la branche de la mission.

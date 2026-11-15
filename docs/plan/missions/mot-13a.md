@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | en relecture : prête pour la PR le 2026-11-15 |
 | Agent | Claude Code (session à ouvrir, Cursor ou VS Code) |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |
 | Module et chantier | [MOT](../modules/MOT-moteur.md) · chantier ouvert le 2026-11-15 (ouvert sur la branche ; sur `main` à sa fusion) |
@@ -71,4 +71,13 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
-| 2026-11-15 | mission écrite ; branche lue : plan validé, pas de fiche de session | — |
+| 2026-11-15 | mission écrite ; branche lue à 11 h 43 : plan validé, pas de fiche de session | — |
+| 2026-11-15 | **écart du coordinateur** : une autre session Claude a codé MOT-13a entre 11 h 43 et 12 h 22 (`5a55a56`, `b6f38da`, fiche `f28b6de`), pendant que la fiche était écrite. L'agent de la mission n'a rien codé : il a fusionné `origin/main` (`d9f0d21`) et vérifié | — |
+| 2026-11-15 | relecture : routes sous `authenticateToken` et `requireAdmin` comme MP-1 ; dates contrôlées dans le service ; migration 0080 avec retour arrière ; fichiers de 11 à 145 lignes. Tests de l'agent : 354 unitaires verts ; intégration 591 verts sur 602, les 11 échecs dans `agenda.test.js` (délai du `beforeAll` sur base froide), verts relancé seul ; lint 0 erreur ; `verifier-neutre` passe | **prête pour la PR** ; la CI tranche sur `agenda.test.js` |
+
+Décisions du coordinateur à cette relecture :
+
+1. `backend/models/definitions.js` entre dans le périmètre : c'est le fichier des associations des modèles. Il passe de 646 à 651 lignes, contre la règle « un lot ne fait jamais grossir un fichier déjà trop long » ; accepté pour 5 lignes d'association, son découpage relève de QUA-02.
+2. Deux commits de code au lieu des six étapes du § 9 : gardés. Le contenu suit l'ordre du plan, et l'historique est surmonté d'une fusion.
+3. `verification.js`, onzième fichier du service, accepté : il porte la vérification à blanc.
+4. Si PLA-03b est fusionnée avant cette PR, la PR lance `npm run schema:depart` (décision du 15 novembre).

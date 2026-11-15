@@ -45,10 +45,10 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 |---|---|---|---|---|---|---|
 | EXP | EXP-01 reconnaissance du serveur | agent de Cursor | #172 | **fusionnée le 15 nov.** ; ligne à retirer au prochain tour | 15 nov. | — |
 | EXP | EXP-02a branchement Traefik | agent de Cursor | `feat/exp-02a-traefik` | plan **validé par le chef le 15 nov.**, à commiter par l'agent | 15 nov. : plan lu, trois remarques | [exp-02a](missions/exp-02a.md) |
-| PLA | PLA-03b schéma de départ | Claude Code (à ouvrir) | à créer : `feat/pla-03b-schema-depart` | 11 réponses du chef ; plan à réécrire (brouillon perdu), puis validation du chef | 15 nov. | [pla-03b](missions/pla-03b.md) |
+| PLA | PLA-03b schéma de départ | agent Claude du coordinateur | `feat/pla-03b-schema-depart` (créée) | plan réécrit (22 questions), non commité ; **validation du chef attendue** | 15 nov. | [pla-03b](missions/pla-03b.md) |
 | PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | étapes 1 à 5 faites ; plan à amender (mesure sur le serveur, décision du 15 nov.) puis à revalider | 15 nov. | [pla-06](missions/pla-06.md) |
 | QUA | QUA-03 étude de la pile | Claude Code | #171 | PR ouverte, CI verte, à fusionner ; sa fusion ferme le chantier QUA | 15 nov. : tour d'état seulement | — |
-| MOT | MOT-13a contraintes déclarées, serveur | Claude Code (à ouvrir) | `feat/mot-13-contraintes` (non poussée) | plan validé par le chef le 15 nov. ; code à écrire ; fiche de session manquante | 15 nov. | [mot-13a](missions/mot-13a.md) |
+| MOT | MOT-13a contraintes déclarées, serveur | Claude Code | `feat/mot-13-contraintes` (non poussée) | **codée** (autre session, 15 nov.), fiche de session écrite, `origin/main` fusionnée ; à pousser | 15 nov. : **prête pour la PR** | [mot-13a](missions/mot-13a.md) |
 
 Hors chantier, PR ouvertes : #174 (comparatif Planner et Odoo, 15 nov.), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
