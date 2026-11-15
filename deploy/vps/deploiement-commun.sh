@@ -102,13 +102,39 @@ version_du_serveur() {
 }
 version_du_site() { docker exec hestim_frontend cat /usr/share/nginx/html/version.txt; }
 
-# Sauvegarde de la base avant que le serveur applique ses migrations (C-8). Écrit le fichier.
+# Sauvegarde de la base avant que le serveur applique ses migrations (C-8).
+# Arrête le déploiement si le dump ou gzip échoue, ou si le fichier est illisible ou vide.
+# SAUVEGARDES_DIR : dossier des dumps (défaut /root/sauvegardes) ; les tests le posent hors de /root.
 sauvegarder_base() {
-    local fichier="/root/sauvegardes/hestim-$1.sql.gz"
-    mkdir -p /root/sauvegardes && chmod 700 /root/sauvegardes
+    local dossier="${SAUVEGARDES_DIR:-/root/sauvegardes}"
+    local fichier="$dossier/hestim-$1.sql.gz"
+    local rc_dump rc_gzip octets avait_errexit=0 rcs
+    mkdir -p "$dossier" && chmod 700 "$dossier"
+    case $- in *e*) avait_errexit=1 ;; esac
     # Mot de passe lu dans le conteneur : jamais affiché ni passé en argument visible de l'hôte
+    set +e
     docker exec hestim_mysql sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysqldump -uroot --single-transaction --routines "$MYSQL_DATABASE"' \
         | gzip > "$fichier"
+    rcs=("${PIPESTATUS[@]}")
+    rc_dump="${rcs[0]}"
+    rc_gzip="${rcs[1]:-0}"
+    if [ "$avait_errexit" -eq 1 ]; then set -e; else set +e; fi
+    if [ "$rc_dump" -ne 0 ] || [ "$rc_gzip" -ne 0 ]; then
+        rm -f "$fichier"
+        echo "sauvegarde de la base échouée (mysqldump=$rc_dump gzip=$rc_gzip) : le déploiement s'arrête, rien n'a été mis en ligne. Relancer quand MySQL répond." >&2
+        return 1
+    fi
+    if ! gzip -t "$fichier" 2>/dev/null || [ ! -s "$fichier" ]; then
+        rm -f "$fichier"
+        echo "sauvegarde de la base illisible ou vide : le déploiement s'arrête, rien n'a été mis en ligne." >&2
+        return 1
+    fi
+    octets="$(gzip -l "$fichier" | awk 'NR==2 {print $2}')"
+    if [ "${octets:-0}" -eq 0 ]; then
+        rm -f "$fichier"
+        echo "sauvegarde de la base vide : le déploiement s'arrête, rien n'a été mis en ligne." >&2
+        return 1
+    fi
     chmod 600 "$fichier"
     echo "$fichier"
 }

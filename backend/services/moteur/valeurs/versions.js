@@ -1,5 +1,6 @@
 import { ValeurParametre, VersionParametres } from "../../../models/index.js";
 import { ErreurMetier } from "../../planning/enseignements.js";
+import { AVEC_CONTRAINTES, contenuDeLaVersion, enregistrerContraintes, enregistrerInverses, inversesDesContraintes, preparerContraintes } from "../contraintes/versionsContraintes.js";
 import { controlerEcriture } from "./ecriture.js";
 import { aujourdhui, leCatalogue, lireLignes, valeursEnVigueur } from "./lecture.js";
 
@@ -7,7 +8,8 @@ import { aujourdhui, leCatalogue, lireLignes, valeursEnVigueur } from "./lecture
  * Versions des réglages du moteur (lot MP-1, D-07) : un brouillon se prépare, puis s'applique en une
  * fois ; ensuite il ne change plus (I-D5), et l'annuler crée une version inverse. Le chemin passe par
  * le modèle plutôt que par config/db.js : la connexion ne s'importe pas hors de models/ (R-2).
- * L'aperçu de ce qui bouge reste au lot ME-2b.
+ * Une version porte aussi les contraintes déclarées par l'école (MOT-13) : même cycle, mêmes contrôles
+ * refaits à l'application. L'aperçu de ce qui bouge reste au lot ME-2b.
  */
 
 /** Réglages refusés : la route rend la liste, chacun avec son code et sa phrase. */
@@ -75,22 +77,26 @@ const exigerDate = (date) => {
     if (date < aujourdhui()) throw new ErreurMetier("La date d'effet est passée : un réglage ne change pas le passé", 400, "DATE_EFFET_PASSEE");
 };
 
-/** Crée un brouillon : il n'a aucun effet tant qu'il n'est pas appliqué. */
-export const creerVersion = async ({ libelle, date_effet = aujourdhui(), lignes, id_auteur, auteur }) => {
+const nombre = (liste) => (Array.isArray(liste) ? liste.length : 0);
+
+/** Crée un brouillon (réglages, contraintes ajoutées, contraintes retirées) : sans effet tant qu'il n'est pas appliqué. */
+export const creerVersion = async ({ libelle, date_effet = aujourdhui(), lignes = [], contraintes = [], retirer = [], id_auteur, auteur }) => {
     exigerDate(date_effet);
-    if (!Array.isArray(lignes) || !lignes.length) throw new ErreurMetier("Une version contient au moins un réglage", 400, "VERSION_VIDE");
+    if (!Array.isArray(lignes) || !(nombre(lignes) + nombre(contraintes) + nombre(retirer))) throw new ErreurMetier("Une version contient au moins un réglage ou une contrainte", 400, "VERSION_VIDE");
     const normalisees = lignes.map(normaliser);
-    const violations = await controler(normalisees, auteur, date_effet);
+    const preparees = await preparerContraintes({ contraintes, retirer }, { date: date_effet });
+    const violations = [...(await controler(normalisees, auteur, date_effet)), ...preparees.violations];
     if (violations.length) throw new ErreurReglages(violations);
     return transaction(async (t) => {
         const version = await VersionParametres.create({ libelle, date_effet, statut: "brouillon", id_auteur }, { transaction: t });
         await ValeurParametre.bulkCreate(normalisees.map((l) => ({ ...l, id_version: version.id_version })), { transaction: t });
+        await enregistrerContraintes(version.id_version, preparees, t);
         return version;
     });
 };
 
 const verrouiller = async (id, t) => {
-    const version = await VersionParametres.findByPk(id, { include: [{ model: ValeurParametre, as: "valeurs" }], transaction: t, lock: t.LOCK.UPDATE });
+    const version = await VersionParametres.findByPk(id, { include: [{ model: ValeurParametre, as: "valeurs" }, AVEC_CONTRAINTES()], transaction: t, lock: t.LOCK.UPDATE });
     if (!version) throw new ErreurMetier("Version introuvable", 404);
     return version;
 };
@@ -102,7 +108,8 @@ export const appliquerVersion = (id, { auteur }) =>
         if (version.statut !== "brouillon") throw new ErreurMetier("Seul un brouillon s'applique", 409, "VERSION_NON_BROUILLON");
         exigerDate(version.date_effet);
         const lignes = version.valeurs.map((v) => normaliser({ ...v.get(), force: v.force ?? undefined, poids: v.poids ?? undefined, valeur: v.valeur === null && !v.retiree ? undefined : v.valeur }));
-        const violations = await controler(lignes, auteur, version.date_effet, { transaction: t });
+        const preparees = await preparerContraintes(contenuDeLaVersion(version), { date: version.date_effet, transaction: t });
+        const violations = [...(await controler(lignes, auteur, version.date_effet, { transaction: t })), ...preparees.violations];
         if (violations.length) throw new ErreurReglages(violations);
         return version.update({ statut: "appliquee", appliquee_le: new Date() }, { transaction: t });
     });
@@ -141,14 +148,16 @@ export const annulerVersion = (id, { id_auteur, auteur }) =>
             const reprend = precedente && !precedente.retiree;
             inverses.push({ cle: v.cle, portee: v.portee, id_portee: v.id_portee, valeur: reprend ? precedente.valeur : null, force: reprend ? precedente.force ?? null : null, poids: reprend ? precedente.poids ?? null : null, retiree: !reprend });
         }
+        const inversesContraintes = await inversesDesContraintes(version, t);
         const jour = aujourdhui();
         const inverse = await VersionParametres.create(
             { libelle: `Annulation de la version ${version.id_version}`, date_effet: version.date_effet > jour ? version.date_effet : jour, statut: "appliquee", appliquee_le: new Date(), id_auteur, annule_version: version.id_version },
             { transaction: t }
         );
         await ValeurParametre.bulkCreate(inverses.map((l) => ({ ...l, id_version: inverse.id_version })), { transaction: t });
+        await enregistrerInverses(inverse.id_version, inversesContraintes, t);
         return inverse;
     });
 
-/** Les versions, de la plus récente à la plus ancienne, avec leurs réglages. */
-export const listerVersions = () => VersionParametres.findAll({ include: [{ model: ValeurParametre, as: "valeurs" }], order: [["id_version", "DESC"]], limit: 100 });
+/** Les versions, de la plus récente à la plus ancienne, avec leurs réglages et leurs contraintes. */
+export const listerVersions = () => VersionParametres.findAll({ include: [{ model: ValeurParametre, as: "valeurs" }, AVEC_CONTRAINTES()], order: [["id_version", "DESC"]], limit: 100 });

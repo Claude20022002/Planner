@@ -103,12 +103,12 @@ beforeAll(async () => {
     await Enseignant.update({ statut: "vacataire" }, { where: { id_user: vacataire.id_user } });
     clients = { admin: await loginAs(admin), prof: await loginAs(prof) };
 
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const filiere = await Filiere.create({ code_filiere: "GEN", nom_filiere: "Génération" });
     const promo = await Groupe.create({ nom_groupe: "4A GEN", niveau: "4ème année", annee: 4, effectif: 40, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     const td1 = await Groupe.create({ nom_groupe: "GEN-4A", niveau: "4ème année", annee: 4, effectif: 20, annee_scolaire: "2026-2027", type_groupe: "td", id_groupe_parent: promo.id_groupe, id_filiere: filiere.id_filiere });
-    await Salle.create({ nom_salle: "G-GEN1", type_salle: "Salle de cours", capacite: 50, id_campus: gandhi.id_campus });
-    await Salle.create({ nom_salle: "G-GENLAB", type_salle: "Labo informatique", capacite: 25, id_campus: gandhi.id_campus });
+    await Salle.create({ nom_salle: "N-GEN1", type_salle: "Salle de cours", capacite: 50, id_campus: nord.id_campus });
+    await Salle.create({ nom_salle: "N-GENLAB", type_salle: "Labo informatique", capacite: 25, id_campus: nord.id_campus });
     const c = (jour_semaine, heure_debut, heure_fin, rang) => Creneau.create({ jour_semaine, heure_debut, heure_fin, duree_minutes: 90, rang });
     const lun = [await c("lundi", "09:00", "10:45", 1), await c("lundi", "11:00", "12:30", 2), await c("lundi", "13:30", "15:15", 3), await c("lundi", "15:30", "17:00", 4)];
     const mar = [await c("mardi", "09:00", "10:45", 1), await c("mardi", "11:00", "12:30", 2)];
@@ -173,7 +173,7 @@ describe("Problème envoyé au solveur", () => {
         // Seul le motif récurrent est épinglé ; la séance ponctuelle sera sautée au déploiement
         const epinglees = probleme.lecons.filter((l) => l.epinglee);
         expect(epinglees).toEqual([expect.objectContaining({ enseignants: [prof2.id_user], creneau: { id: ref.lun[2].id_creneau }, distanciel: true })]);
-        expect(probleme.parametres).toMatchObject({ maxMinutesJourGroupe: 480, samediApresMidi: false });
+        expect([probleme.parametres.maxMinutesJourGroupe, "samediApresMidi" in probleme.parametres]).toEqual([480, false]);
     });
 
     test("pas de campus préféré (21 octobre 2026) : aucune leçon n'en porte au solveur", async () => {
@@ -185,7 +185,7 @@ describe("Problème envoyé au solveur", () => {
 describe("Validation en série avec cache (déploiement)", () => {
     test("une séance retenue, pas encore écrite, bloque les validations suivantes de la passe", async () => {
         const cache = new Map();
-        const salle = await Salle.findOne({ where: { nom_salle: "G-GEN1" } });
+        const salle = await Salle.findOne({ where: { nom_salle: "N-GEN1" } });
         // Lundi 7 juin 2027 : hors des semaines déployées
         const cm = { date_seance: "2027-06-07", id_creneau: ref.lun[0].id_creneau, id_salle: salle.id_salle, id_groupe: ref.promo.id_groupe, id_user_enseignant: prof.id_user, id_cours: ref.cours.id_cours, id_enseignement: ref.ensCm.id_enseignement };
         expect((await validerAffectation(cm, { cache })).bloquant).toBe(false);

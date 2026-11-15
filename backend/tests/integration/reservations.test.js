@@ -49,17 +49,17 @@ beforeAll(async () => {
     etudiant = await createUser("etudiant");
     clients = { admin: await loginAs(admin), profA: await loginAs(profA), profB: await loginAs(profB), etudiant: await loginAs(etudiant) };
 
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const filiere = await Filiere.create({ code_filiere: "RSV", nom_filiere: "Réservations" });
     const promo = await Groupe.create({ nom_groupe: "5A RSV", niveau: "5ème année", annee: 5, effectif: 30, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     const td1 = await Groupe.create({ nom_groupe: "RSV-5A", niveau: "5ème année", annee: 5, effectif: 15, annee_scolaire: "2026-2027", type_groupe: "td", id_groupe_parent: promo.id_groupe, id_filiere: filiere.id_filiere });
     await Appartenir.create({ id_user_etudiant: etudiant.id_user, id_groupe: td1.id_groupe });
-    const salle = (nom, extra = {}) => Salle.create({ nom_salle: nom, type_salle: "Salle de cours", capacite: 40, id_campus: gandhi.id_campus, ...extra });
+    const salle = (nom, extra = {}) => Salle.create({ nom_salle: nom, type_salle: "Salle de cours", capacite: 40, id_campus: nord.id_campus, ...extra });
     const salles = {
-        s1: await salle("G-RSV1"),
-        s2: await salle("G-RSV2"),
-        reunion: await salle("G-REU", { type_salle: "Salle de réunion", capacite: 10, reservable_par: "enseignants" }),
-        amphi: await salle("G-AMPHIRSV", { type_salle: "Amphithéâtre", capacite: 100, capacite_examen: 50 }),
+        s1: await salle("N-RSV1"),
+        s2: await salle("N-RSV2"),
+        reunion: await salle("N-REU", { type_salle: "Salle de réunion", capacite: 10, reservable_par: "enseignants" }),
+        amphi: await salle("N-AMPHIRSV", { type_salle: "Amphithéâtre", capacite: 100, capacite_examen: 50 }),
     };
     const lun1 = await Creneau.create({ jour_semaine: "lundi", heure_debut: "09:00", heure_fin: "10:45", duree_minutes: 105, rang: 1 });
     const lun3 = await Creneau.create({ jour_semaine: "lundi", heure_debut: "13:30", heure_fin: "15:15", duree_minutes: 105, rang: 3 });
@@ -235,7 +235,7 @@ describe("Examens et surveillances", () => {
         const enseignement = await Enseignement.create({ id_composante: composante.id_composante, id_periode: periode.id_periode, heures_prevues: 30 });
         await enseignement.setGroupes([ref.td1.id_groupe]);
         await EnseignementEnseignant.create({ id_enseignement: enseignement.id_enseignement, id_user: profB.id_user, role: "principal", statut_service: "accepte" });
-        // Séance du module de profB dans G-RSV2, le lundi 26 avril de 9 h à 10 h 45
+        // Séance du module de profB dans N-RSV2, le lundi 26 avril de 9 h à 10 h 45
         const seance = await clients.admin.send("post", "/api/affectations", { date_seance: "2027-04-26", id_cours: ref.cours.id_cours, id_groupe: ref.td1.id_groupe, id_creneau: ref.lun1.id_creneau, id_user_enseignant: profB.id_user, id_salle: ref.salles.s2.id_salle });
         expect(seance.status).toBe(201);
 

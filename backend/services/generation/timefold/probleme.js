@@ -250,7 +250,6 @@ export const construireProbleme = async ({ id_periode, id_filieres = [], dureeSe
             parametres: {
                 maxMinutesJourGroupe: parametres.max_heures_jour_groupe.valeur * 60,
                 maxMinutesJourEnseignant: parametres.max_heures_jour_enseignant.valeur * 60,
-                samediApresMidi: Boolean(parametres.samedi_apres_midi_initiale.valeur),
                 trajetDefautMinutes: parametres.trajet_inter_campus_defaut_minutes.valeur,
                 trajets,
             },

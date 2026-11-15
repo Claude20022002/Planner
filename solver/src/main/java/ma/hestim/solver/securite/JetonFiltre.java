@@ -52,7 +52,7 @@ public class JetonFiltre extends OncePerRequestFilter {
             return;
         }
         if ("POST".equals(requete.getMethod()) && (requete.getContentLengthLong() < 0 || requete.getContentLengthLong() > tailleMax)) {
-            refuser(reponse, HttpStatus.PAYLOAD_TOO_LARGE, "Problème trop volumineux ou de taille non déclarée");
+            refuser(reponse, HttpStatus.CONTENT_TOO_LARGE, "Problème trop volumineux ou de taille non déclarée");
             return;
         }
         suite.doFilter(requete, reponse);
