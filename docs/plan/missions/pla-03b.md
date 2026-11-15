@@ -92,6 +92,7 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 | 2026-11-15 | comparaison avec le brouillon de la session PLA-03 : **C-1 contredit R-3** (option que le chef avait écartée ; CI rouge et conflits pour toute PR qui porte une migration). Plan renvoyé à l'agent : C-1 rouverte, variante R-3 recommandée ; questions 13 et 18 tranchées par le coordinateur ; `server.js`, deux tests, mesure dans la CI, corrections de texte sur UIX-01 ajoutés | au chef (C-1, puis le plan) |
 
 | 2026-11-15 | plan amendé par l'agent (variante R-3, huit points de la relecture) ; 19 questions au chef. Tranché par le coordinateur : la ligne d'identité du fichier porte `NOW()` pour ses deux dates (une école neuve porte sa date de création) | **au chef** : C-1 (R-3 recommandée) et validation du plan |
+| 2026-11-15 | plan validé par le coordinateur, par délégation du chef (variante R-3) ; mission envoyée à la session de PLA-03a (VS Code, Claude Fable 5.2). Elle attend que **le chef confirme lui-même** la validation dans sa session : la délégation n'est pas sur `main` (#175), et PLA-03b touche au schéma de toute base neuve, que la règle réserve au chef. Le coordinateur lui donne raison | **au chef** : confirmer « validé » dans la session de PLA-03a |
 
 Périmètre étendu par le coordinateur le 15 novembre (2) : `backend/server.js` (message de chargement), le § 11 et la réponse 7 de `docs/conception/plateforme/pla-03-base-neuve.md`, la ligne « EXP-07 ou UIX-01 » de `docs/sessions/2026-11-15-feat-pla-03-base-neuve.md`.
 
