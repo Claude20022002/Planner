@@ -114,7 +114,7 @@ refuser "mysqldump échoué : images pas mises en place" grep -qE "^tag " "$BAC/
 rm -f "$SAUVEGARDES_DIR"/*
 FAUX_DUMP=vide refuser "dump vide : déploiement arrêté" en_vrai "$COURT"
 verifier "dump vide : aucun dump laissé" aucun_dump
-FAUX_DUMP=ok
+unset FAUX_DUMP
 chemin="$(sauvegarder_base 20261115-120000)"
 verifier "dump réussi : chemin renvoyé" egal "$chemin" "$SAUVEGARDES_DIR/hestim-20261115-120000.sql.gz"
 verifier "dump réussi : fichier gzip lisible" gzip -t "$chemin"
