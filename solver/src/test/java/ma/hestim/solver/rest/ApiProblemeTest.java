@@ -24,7 +24,8 @@ import ma.hestim.solver.securite.JetonFiltre;
 /**
  * L'API à travers le vrai contexte Spring (Jackson 3, filtre à jeton, solveur) : un problème
  * venu de Planner est lu malgré un null dans un nombre entier et un champ inconnu (régression
- * du réglage Jackson de MOT-12), puis la réponse garde la forme que lit Planner.
+ * du réglage Jackson de MOT-12), puis la réponse garde la forme que lit Planner, avec le niveau
+ * intermédiaire du score (MOT-13b). L'ancien champ {@code samediApresMidi} est accepté et ignoré.
  */
 @SpringBootTest(properties = "solver.jeton=" + ApiProblemeTest.JETON)
 class ApiProblemeTest {
@@ -34,6 +35,7 @@ class ApiProblemeTest {
     /** Tous les types de champs : nombres, null, chaînes, listes, booléen, énumérations, table de trajets. */
     private static final String PROBLEME = """
             {"dureeSecondes": 5, "champInconnu": "ignoré",
+             "poidsDesRegles": {"Journées sans trous": 30, "Vœu : créneau préféré": 0},
              "creneaux": [
                {"id": 1, "jour": 1, "debut": 480, "fin": 600, "rang": 1, "regime": "initiale", "suivantId": null, "finAvecSuivant": null},
                {"id": 2, "jour": 1, "debut": 630, "fin": 750, "rang": 2, "regime": "initiale"},
@@ -78,8 +80,9 @@ class ApiProblemeTest {
         String id = JsonPath.read(lance, "$.id");
 
         String etat = attendreLaFin(id);
-        assertThat((String) JsonPath.read(etat, "$.score")).matches("-?\\d+hard/-?\\d+soft");
+        assertThat((String) JsonPath.read(etat, "$.score")).matches("-?\\d+hard/-?\\d+medium/-?\\d+soft");
         assertThat((Integer) JsonPath.read(etat, "$.dur")).isZero();
+        assertThat((Integer) JsonPath.read(etat, "$.moyen")).isZero();
         assertThat((Integer) JsonPath.read(etat, "$.souple")).isNotNull();
         assertThat((java.util.List<?>) JsonPath.read(etat, "$.violations")).isNotNull();
         assertThat((java.util.List<?>) JsonPath.read(etat, "$.leconsEnConflit")).isEmpty();
@@ -104,6 +107,16 @@ class ApiProblemeTest {
                         .contentType(MediaType.APPLICATION_JSON).content(invalide.getBytes(StandardCharsets.UTF_8)))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.erreur").exists());
+    }
+
+    @Test
+    void unPoidsDeRegleInconnueEstRefuse() throws Exception {
+        String inconnu = PROBLEME.replace("\"Journées sans trous\": 30", "\"Règle qui n'existe pas\": 30");
+        assertThat(inconnu).isNotEqualTo(PROBLEME);
+        api.perform(post("/timetables").header("X-Solver-Token", JETON)
+                        .contentType(MediaType.APPLICATION_JSON).content(inconnu.getBytes(StandardCharsets.UTF_8)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.erreur").value(org.hamcrest.Matchers.containsString("Règle qui n'existe pas")));
     }
 
     /** Interroge le calcul jusqu'à ce qu'il soit terminé (au plus 30 s ; il est borné à 5 s). */

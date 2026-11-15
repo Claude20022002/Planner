@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore;
+import ai.timefold.solver.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 import ai.timefold.solver.core.api.solver.SolutionManager;
 import ai.timefold.solver.core.api.solver.SolverFactory;
 import ai.timefold.solver.core.api.solver.SolverManager;
@@ -45,7 +45,7 @@ public class ConfigurationSolveur {
     }
 
     @Bean
-    SolutionManager<EmploiDuTemps, HardSoftScore> analyseDesSolutions(SolverFactory<EmploiDuTemps> fabrique) {
+    SolutionManager<EmploiDuTemps, HardMediumSoftScore> analyseDesSolutions(SolverFactory<EmploiDuTemps> fabrique) {
         return SolutionManager.create(fabrique);
     }
 }
