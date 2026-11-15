@@ -1,6 +1,8 @@
 import { Filiere, GenerationSession, Periode } from "../../../models/index.js";
 import { ErreurMetier } from "../../planning/enseignements.js";
-import { exigerAssezDePlace } from "../../moteur/contraintes/avantGeneration.js";
+import { dateDesContraintes, preparerContraintes } from "../../moteur/contraintes/avantGeneration.js";
+import { bilanDesContraintes } from "../../moteur/contraintes/bilan.js";
+import { lirePoidsDuSolveur } from "../../moteur/valeurs/poidsDuSolveur.js";
 import { construireProbleme } from "./probleme.js";
 import { arreterCalcul, attendreSolution, lancerCalcul } from "./solveurClient.js";
 import { deployerSemaineType } from "./deploiement.js";
@@ -12,6 +14,8 @@ import { aCorriger, dureeAutomatique, resume } from "./rapport.js";
  * règles de la phase B. L'avancement et le rapport final vivent dans GenerationSession, que le
  * frontend interroge, avec l'étape en cours (config.etape : preparation, calcul, placement ; R-4).
  * Sans durée demandée, la durée du calcul suit la taille du problème (rapport.js).
+ * Le solveur reçoit aussi les contraintes déclarées de l'école, compilées, et le poids qu'elle donne
+ * aux règles du profil (MOT-13b) ; le rapport porte le bilan de chaque contrainte (rapport.contraintes).
  */
 
 // Calculs en cours (pour l'arrêt anticipé, et pour que les tests attendent la fin)
@@ -31,8 +35,11 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         if (!aPlacer) {
             throw new ErreurMetier(exclus.length ? "Aucun enseignement à placer : tous sont déjà planifiés ou sans enseignant" : "Aucun enseignement sur cette période", 400);
         }
-        // Des plages interdites (MOT-13) qui ne laissent pas assez de créneaux : aucun calcul ne les tiendrait
-        await exigerAssezDePlace({ probleme, periode });
+        // Des plages interdites (MOT-13) qui ne laissent pas assez de créneaux : aucun calcul ne les tiendrait.
+        // Sinon, les contraintes de l'école et les poids des règles du profil partent avec le problème
+        const { contraintes, compilees, libelles } = await preparerContraintes({ probleme, periode });
+        probleme.contraintesDeclarees = compilees;
+        probleme.poidsDesRegles = await lirePoidsDuSolveur({ date: dateDesContraintes(periode) });
 
         if (!dureeSecondes) probleme.dureeSecondes = dureeAutomatique(aPlacer);
         await etape(session, "calcul", { progress: 10, last_message: `Calcul de la semaine type : ${aPlacer} séance(s) à placer, ${probleme.dureeSecondes} s au plus` });
@@ -79,7 +86,9 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
             seances_creees: deploiement.creees,
             id_snapshot: deploiement.snapshot.id_snapshot,
             // Pour le diagnostic seulement : le score interne du solveur, à ne pas afficher tel quel
-            details_solveur: { score: etat.score, regles_dures: etat.dur ?? null, violations: etat.violations ?? [] },
+            details_solveur: { score: etat.score, regles_dures: etat.dur ?? null, regles_moyennes: etat.moyen ?? null, violations: etat.violations ?? [] },
+            // Bilan de chaque contrainte déclarée : respectée, non respectée N fois (et où), ou sans effet
+            contraintes: bilanDesContraintes({ compilees, contraintes, placements: etat.lecons, probleme, libelles }),
         };
         await session.update({
             status: "completed",

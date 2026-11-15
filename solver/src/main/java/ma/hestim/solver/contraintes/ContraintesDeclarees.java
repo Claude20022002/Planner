@@ -107,10 +107,12 @@ public final class ContraintesDeclarees {
     }
 
     static Constraint plage(ConstraintFactory factory, Niveau niveau) {
-        // Par séance visée, ou par salle visée (une contrainte qui cite une salle ne vise aucune séance)
+        // Par séance visée, ou par salle visée (une contrainte qui cite une salle ne vise aucune séance).
+        // Une séance épinglée (déjà publiée) ne bouge pas : elle n'est jamais comptée
         BiConstraintStream<Visee, Lecon> parSalle = factory.forEach(Visee.class)
                 .filter(v -> v.salle() != null && v.de(Famille.PLAGE, niveau))
-                .join(Lecon.class, equal(Visee::salle, l -> l.getSalle().getId()));
+                .join(Lecon.class, equal(Visee::salle, l -> l.getSalle().getId()))
+                .filter((v, l) -> !l.isEpinglee());
         return visees(factory, Famille.PLAGE, niveau)
                 .concat(parSalle)
                 .filter((v, l) -> CalculsDeclares.creneauxVisesOccupes(v.contrainte(), l) > 0)

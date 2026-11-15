@@ -86,11 +86,11 @@ beforeEach(async () => {
 });
 
 describe("Les modèles", () => {
-    test("six modèles, aucun encore tenu par le calcul ; réservés à l'administration", async () => {
+    test("six modèles, tous tenus par le calcul depuis MOT-13b ; réservés à l'administration", async () => {
         const r = await client.get("/api/moteur/gabarits");
         expect(r.status).toBe(200);
         expect(r.body.map((g) => g.code)).toEqual(["plage_interdite", "plage_a_eviter", "moment_de_la_journee", "plafond_par_jour", "repartition", "ensemble_ou_separe"]);
-        expect(r.body.every((g) => g.tenu === false)).toBe(true);
+        expect(r.body.every((g) => g.tenu === true)).toBe(true);
         const prof = await loginAs(ref.prof);
         expect((await prof.get("/api/moteur/gabarits")).status).toBe(403);
         expect((await prof.send("post", "/api/moteur/contraintes/verifier", { contraintes: [] })).status).toBe(403);
@@ -104,7 +104,7 @@ describe("Une version qui porte des contraintes", () => {
         expect(await enVigueur()).toEqual([]);
         expect((await appliquer(creee.body.id_version)).status).toBe(200);
         const [c] = await enVigueur();
-        expect(c).toMatchObject({ gabarit: "plage_interdite", nature: "impossible", insistance: null, tenue_par_le_calcul: false, phrase: "Pas de cours pour le groupe 4A CTR le mardi, de 8 h à 18 h." });
+        expect(c).toMatchObject({ gabarit: "plage_interdite", nature: "impossible", insistance: null, tenue_par_le_calcul: true, phrase: "Pas de cours pour le groupe 4A CTR le mardi, de 8 h à 18 h." });
     });
 
     test("un souhait prend « normal », et son poids suit l'insistance", async () => {

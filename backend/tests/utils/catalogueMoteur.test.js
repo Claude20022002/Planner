@@ -24,11 +24,18 @@ describe("catalogue du moteur : paramètres", () => {
     });
 
     test("chaque règle du solveur a son paramètre, et aucun paramètre n'invente de règle", () => {
-        const java = readFileSync(path.join(RACINE, "solver/src/main/java/ma/hestim/solver/contraintes/ContraintesEmploiDuTemps.java"), "utf8");
-        // Les trois conflits passent leur nom à une fonction commune ; les autres à asConstraint
-        const dansLeCode = [...java.matchAll(/asConstraint\("([^"]+)"\)|, "([^"]+)"\);/g)].map((m) => m[1] ?? m[2]);
+        const dossier = path.join(RACINE, "solver/src/main/java/ma/hestim/solver/contraintes");
+        const java = readFileSync(path.join(dossier, "ContraintesEmploiDuTemps.java"), "utf8");
+        const preferences = readFileSync(path.join(dossier, "PreferencesEmploiDuTemps.java"), "utf8");
+        // Règles dures : les trois conflits passent leur nom à une fonction commune, les autres à asConstraint.
+        // Règles souples du profil : leurs noms sont des constantes. Les 12 règles des contraintes
+        // déclarées (ContraintesDeclarees) sont tenues par les modèles, pas par le catalogue
+        const dansLeCode = [
+            ...[...java.matchAll(/asConstraint\("([^"]+)"\)|, "([^"]+)"\);/g)].map((m) => m[1] ?? m[2]),
+            ...[...preferences.matchAll(/public static final String \w+ = "([^"]+)";/g)].map((m) => m[1]),
+        ];
         const dansLeCatalogue = parametres.map((p) => p.regle_solveur).filter(Boolean);
-        expect(dansLeCode).toHaveLength(22);
+        expect(dansLeCode).toHaveLength(21);
         expect([...dansLeCatalogue].sort()).toEqual([...dansLeCode].sort());
     });
 

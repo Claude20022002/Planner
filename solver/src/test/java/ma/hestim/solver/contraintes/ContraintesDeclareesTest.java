@@ -88,6 +88,10 @@ class ContraintesDeclareesTest extends GrilleDeTest {
         ContrainteDeclaree salle = plage(Niveau.DUR, 0, List.of(1L));
         salle.setSalles(List.of(g1.getId()));
         verifier(salle, 1, dansG1, dansG2);
+        // Une séance épinglée (déjà publiée) ne bouge pas : elle n'est pas comptée
+        dansG1.setEpinglee(true);
+        verifier(salle, 0, dansG1, dansG2);
+        dansG1.setEpinglee(false);
         dansG1.setSalle(g2);
         verifier(salle, 0, dansG1, dansG2);
     }

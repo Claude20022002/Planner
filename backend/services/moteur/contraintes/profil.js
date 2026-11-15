@@ -1,7 +1,8 @@
 /**
  * Liste « Déjà pris en compte » (MOT-13, § 4.3) : les règles du profil résolu que le calcul tient
  * vraiment, chacune avec son état pour l'école. Une règle que le solveur n'applique pas n'est pas
- * montrée (question 14 : ce qui est montré est tenu). « Sans effet » se lit sur les conditions
+ * montrée (question 14 : ce qui est montré est tenu) ; une règle souple ne l'est que si le solveur
+ * lit son poids (`regle_solveur`, MOT-13b). « Sans effet » se lit sur les conditions
  * active_si (réponse 16) : un seul campus, et la règle de trajet ne fait rien. Fonction pure.
  */
 
@@ -37,7 +38,7 @@ export const listeDuProfil = ({ parametres, dependances, resultats, valeurs }) =
     const parId = new Map(parametres.map((p) => [p.id, p]));
     const nomDe = (id) => parId.get(id)?.nom ?? id;
     return parametres
-        .filter((p) => p.role === "regle" && p.etat === "solveur")
+        .filter((p) => p.role === "regle" && p.etat === "solveur" && (p.force !== "souple" || p.regle_solveur))
         .map((p) => {
             const r = resultats.get(p.id);
             const manquees = dependances.filter((d) => d.type === "active_si" && d.de === p.id && !remplie(d, valeurs));
