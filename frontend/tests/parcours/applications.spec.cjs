@@ -25,7 +25,7 @@ test('étudiant : pas de gestion des personnes, accueil utilisable sur télépho
   await page.goto('/applications');
   const applications = page.getByRole('navigation', { name: 'Applications disponibles' });
   await expect(applications.getByRole('link', { name: 'Personnes', exact: true })).toHaveCount(0);
-  await expect(applications.getByRole('link', { name: 'Emploi du temps', exact: true })).toBeVisible();
+  await expect(applications.getByRole('heading', { name: 'Emploi du temps', exact: true }).getByRole('link')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
   await page.getByRole('searchbox').focus();
   await page.keyboard.type('quiz');
