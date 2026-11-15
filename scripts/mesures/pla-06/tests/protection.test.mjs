@@ -33,7 +33,7 @@ test("observation en échec : arrêt unique et surveillance terminée", async ()
     await incident; await stopper(); assert.equal(controles, 1); assert.equal(arrets, 1);
 });
 test("bilan ou relevés incomplets, contrôle manuel absent : invalide", () => {
-    const b = { terminee: true, photos_ok: true, temoin_apres: true, code_charge: 0, raisons: [] };
+    const b = { sonde: { reference_ok: true, reference: { echantillons: 40, duree_ms: 600000, mediane_ms: 5 }, surveillance_terminee: true, mesures: 2, echec: false }, terminee: true, photos_ok: true, temoin_apres: true, code_charge: 0, raisons: [] };
     const c = { valide: true }, r = { valide: true, releves: 1, erreurs: 0 };
     assert.deepEqual(raisonsInvalidite(b, c, r), []);
     for (const x of [{}, { ...b, temoin_apres: false }, { ...b, photos_ok: false }, { ...b, code_charge: 1 }]) assert.ok(raisonsInvalidite(x, c, r).length);
@@ -68,4 +68,9 @@ test("Compose : ports publics, limite contournée et réseau partagé : refus", 
 test("un essai réduit ne devient pas une confirmation de capacité après contrôle manuel", () => {
     const b = { essai: true, terminee: true, photos_ok: true, temoin_apres: true, code_charge: 0 };
     assert.ok(raisonsInvalidite(b, { valide: true }, { valide: true, releves: 1, erreurs: 0 }).some((r) => r.includes("essai technique")));
+});
+
+test("sonde absente ou incomplète : validation impossible malgré des relevés sains", () => {
+    const b = { terminee: true, photos_ok: true, temoin_apres: true, code_charge: 0 };
+    assert.ok(raisonsInvalidite(b, { valide: true }, { valide: true, releves: 1, erreurs: 0 }).some((r) => r.includes("sonde n8n")));
 });

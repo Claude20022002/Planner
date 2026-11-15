@@ -9,7 +9,7 @@ import { groupeHote, photo, photoInitiale, compose, commande } from "./lib/local
 import { verifierPhotos, raisonsInvalidite } from "./lib/protection.mjs";
 
 const [action, ...args] = process.argv.slice(2);
-const autorisees = ["initialiser", "photo", "installer", "preparer", "serie", "confirmer", "nettoyer", "verifier-gardes"];
+const autorisees = ["initialiser", "configurer-sonde", "photo", "installer", "preparer", "serie", "confirmer", "nettoyer", "verifier-gardes"];
 if (!autorisees.includes(action)) throw new Error("action : " + autorisees.join(", "));
 const groupe = groupeHote();
 const contexteDocker = (await commande("docker", ["context", "inspect", "--format", "{{.Endpoints.docker.Host}}"])).trim();
@@ -18,7 +18,10 @@ mkdirSync(LOCAL, { recursive: true });
 const verrou = join(LOCAL, "verrou");
 const fd = openSync(verrou, "wx"); closeSync(fd);
 try {
-    if (action === "initialiser") { initialiserSecrets(); } else if (action === "photo") {
+    if (action === "initialiser") { initialiserSecrets(); } else if (action === "configurer-sonde") {
+        const { configurerSonde } = await import("./configurer-sonde.mjs");
+        await configurerSonde();
+    } else if (action === "photo") {
         const chemin = join(LOCAL, "proteges.json");
         if (existsSync(chemin)) throw new Error("photo déjà présente ; conserver et examiner l'ancienne photo avant de la renouveler");
         writeFileSync(chemin, JSON.stringify(await photoInitiale(), null, 2), { mode: 0o600 });

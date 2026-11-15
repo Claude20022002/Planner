@@ -1,13 +1,13 @@
 # Banc PLA-06 — serveur unique partagé avec n8n
 
-Le [plan, § 4](../../../docs/conception/plateforme/pla-06-mesure-d01.md) et A-3 sont validés par le chef le 15 novembre.
+Le [plan, § 4](../../../docs/conception/plateforme/pla-06-mesure-d01.md), A-3 et la sonde A-2 sont validés directement par le chef le 15 novembre.
 **Seul le chef exécute les commandes serveur**, une par une, dans un dossier de travail distinct de l'installation Planner.
 Le protocole à deux machines est remplacé : aucun SSH/SCP dans le pilote, aucun accès public au banc.
 
 ## Avant toute exécution
 
 Le chef confirme le créneau **avant EXP-02b**, l'absence de Planner et les traitements lourds n8n (P-21).
-Il choisit un traitement témoin et contrôle manuellement la réactivité de n8n avant, pendant et après chaque action.
+Le témoin A-2 est une sonde GET de santé n8n en lecture seule, configurée hors Git. Le chef contrôle aussi manuellement la réactivité de n8n avant, pendant et après chaque action.
 Les photos des conteneurs ne remplacent pas ce contrôle. Aucun essai tant que ces prérequis ne sont pas réunis.
 
 Ressources : MySQL 1 ou 2 Gio et 1 processeur ; Node 1 Gio et 1 processeur ;
@@ -78,6 +78,15 @@ Initialiser les secrets, sans les afficher :
 bash lancer.sh initialiser
 ```
 
+Configurer la sonde par saisie interactive, sans mettre l'URL dans une commande versionnée :
+
+```bash
+bash lancer.sh configurer-sonde
+```
+
+L'URL doit viser la boucle locale et la vraie route de santé n8n. Elle reste dans `.local/sonde.json`.
+Aucun identifiant dans l'URL ; aucune requête à ce stade. Le chef fournit cette URL sans la publier.
+
 Créer la photo initiale de tous les conteneurs existants en service, hors projet de mesure :
 
 ```bash
@@ -87,6 +96,14 @@ bash lancer.sh photo
 Vérifier localement que `.local/proteges.json` couvre bien n8n, sa base, le proxy et Qdrant.
 Le pilote compare ensuite exactement ces identifiants et heures de démarrage.
 Ne pas effacer ni recréer cette référence pour contourner une différence : arrêter et expliquer le changement.
+
+Avant chaque installation, préparation et série, le pilote établit automatiquement une référence pendant **10 minutes sans charge** :
+40 mesures espacées de 15 s. Toute erreur HTTP, réseau ou délai annule le lancement.
+La sonde exige HTTP 2xx sans redirection, avec un délai maximal de 5 s.
+Pendant la charge, elle continue toutes les 15 s : un échec ou une médiane des 4 dernières mesures atteignant
+le double de la référence déclenche l'arrêt ciblé. La garde mémoire et les photos restent actives pendant la référence.
+Le journal `sonde.jsonl` et le résumé `serie.json` n'enregistrent pas l'URL et restent hors Git.
+La santé HTTP ne prouve pas le bon fonctionnement de tous les workflows n8n ; cette limite figure dans le rapport.
 
 Après confirmation de la fenêtre et du témoin :
 
@@ -145,7 +162,7 @@ bash lancer.sh confirmer --nom ajuste-2g-p1 --temoin-apres-verifie
 ```
 
 Le pilote ne rend `valide: true` qu'après exécution complète, photos conformes, charge réussie,
-relevés complets sans erreur et contrôle manuel après. Un essai réduit ne confirme pas la capacité.
+relevés complets sans erreur, sonde A-2 complète et saine, et contrôle manuel après. Un essai réduit ne confirme pas la capacité.
 Toute limitation CPU du groupe hôte pendant la charge invalide la capacité annoncée :
 le générateur a pu limiter le débit. Une interruption brutale laisse un bilan invalide.
 
@@ -205,7 +222,7 @@ Aucun nettoyage global Docker. Aucun réseau, volume, conteneur ou profil des se
 ## Vérifications locales sans serveur
 
 ```bash
-node --test scripts/mesures/pla-06/tests/pur.test.mjs scripts/mesures/pla-06/tests/protection.test.mjs
+node --test scripts/mesures/pla-06/tests/pur.test.mjs scripts/mesures/pla-06/tests/protection.test.mjs scripts/mesures/pla-06/tests/sonde.test.mjs
 ```
 
 Ces tests couvrent les règles et la voie d'arrêt simulée. Ils ne prouvent pas l'exécution systemd,

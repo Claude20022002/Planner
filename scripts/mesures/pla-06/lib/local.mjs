@@ -60,17 +60,18 @@ export async function observer(avant, groupe, fichier) {
 }
 
 /** Surveillance sans recouvrement : vérifie toutes les 5 s et rend l'incident au pilote. */
-export function surveiller({ controle, arreter, delai = 5000 }) {
+export function surveiller({ controle, arreter, delai = 5000, immediat = true }) {
     let timer, fin = false;
     let enCours = Promise.resolve();
     const tour = () => {
+        const debut = performance.now();
         enCours = (async () => {
             try { await controle(); }
             catch (erreur) { fin = true; await arreter(erreur); }
-            if (!fin) timer = setTimeout(tour, delai);
+            if (!fin) timer = setTimeout(tour, Math.max(0, delai - (performance.now() - debut)));
         })();
     };
-    tour();
+    if (immediat) tour(); else timer = setTimeout(tour, delai);
     return async () => { fin = true; clearTimeout(timer); await enCours; };
 }
 

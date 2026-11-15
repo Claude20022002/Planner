@@ -2,12 +2,14 @@
  * Orchestration locale protégée : installation, préparation ou série, dans une fenêtre confirmée.
  * Toute sortie, y compris un incident de surveillance, arrête exclusivement les conteneurs du banc.
  */
-import { mkdirSync, readFileSync, writeFileSync, existsSync, openSync, closeSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync, existsSync, openSync, closeSync, appendFileSync } from "node:fs";
 import { join } from "node:path";
 import { LOCAL, RESULTATS } from "./config.mjs";
 import { compose, commande, observer, surveiller, photo, lancerNode } from "./local.mjs";
 import { verifierPhotos, raisonsInvalidite, champsLinux, PROJET, verifierCompose } from "./protection.mjs";
 import { mesurerSerie } from "./serie-locale.mjs";
+import { demarrerTemoin } from "./temoin.mjs";
+import { verifierUrlSonde } from "./sonde.mjs";
 
 /** Arrête même les conteneurs ponctuels de préparation, repérés exclusivement par leur projet. */
 export async function arreterProjet() {
@@ -27,7 +29,7 @@ export async function piloter(action, args, avant, groupe) {
     const fichier = join(dossier, "serie.json");
     const sauver = () => writeFileSync(fichier, JSON.stringify(bilan, null, 2));
     sauver(); // Une interruption brutale laisse un résultat explicitement invalide.
-    let incident, stopSurveillance, releves, charge, pages, cpuDepart;
+    let incident, stopSurveillance, stopTemoin, releves, charge, pages, cpuDepart;
     const enfants = [];
     const journaux = [];
     const noterIncident = (erreur) => {
@@ -79,6 +81,24 @@ export async function piloter(action, args, avant, groupe) {
         // Aucun téléchargement implicite non borné dans le démon Docker pendant une fenêtre.
         await commande("docker", ["image", "inspect", "mysql:8.4.13", "node:22-bookworm-slim", "--format", "{{.Id}}"]);
         const contexte = { args, nom, dossier, executer, lancer, bilan, echouer: arret, mesurerCpu: () => champsLinux(readFileSync(join(groupe, "cpu.stat"), "utf8")), verifier: () => { if (incident) throw incident; } };
+        if (action !== "verifier-gardes") {
+            const url = verifierUrlSonde(JSON.parse(readFileSync(join(LOCAL, "sonde.json"), "utf8")).url);
+            const verifier = () => { if (incident) throw incident; };
+            console.log("Référence de santé n8n : 10 minutes sans charge de banc.");
+            stopTemoin = await demarrerTemoin({
+                url, bilan, verifier, echouer: arret,
+                noter: (mesure) => appendFileSync(join(dossier, "sonde.jsonl"), JSON.stringify(mesure) + "\n"),
+                attendre: async (ms) => {
+                    const fin = performance.now() + ms;
+                    while (performance.now() < fin) {
+                        verifier();
+                        await new Promise((r) => setTimeout(r, Math.max(0, Math.min(1000, fin - performance.now()))));
+                    }
+                    verifier();
+                },
+            });
+            sauver();
+        }
         if (action === "verifier-gardes") {
             // Test injecté sans consommer la mémoire de l'hôte, et sans lancer de conteneur.
             await arret(new Error("essai volontaire de la voie d'arrêt"));
@@ -99,6 +119,9 @@ export async function piloter(action, args, avant, groupe) {
         }
     } catch (erreur) { noterIncident(erreur); process.exitCode = 1; }
     finally {
+        if (stopTemoin) {
+            try { await stopTemoin(); } catch (erreur) { noterIncident(erreur); }
+        }
         if (stopSurveillance) await stopSurveillance();
         await Promise.allSettled(enfants.map((e) => e.arreter()));
         try {

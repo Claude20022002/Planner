@@ -48,6 +48,8 @@ export function verifierPhotos(avant, apres) {
 export function raisonsInvalidite(bilan, charge, releves) {
     const raisons = [...(bilan.raisons ?? [])];
     if (bilan.essai) raisons.push("essai technique réduit : aucune conclusion sur 200 écoles");
+    const sonde = bilan.sonde;
+    if (!sonde?.reference_ok || sonde.reference?.echantillons !== 40 || !(sonde.reference?.duree_ms >= 600000) || !(sonde.reference?.mediane_ms > 0) || !sonde.surveillance_terminee || sonde.echec || !(sonde.mesures >= 2)) raisons.push("sonde n8n absente, incomplète ou en échec");
     if (!bilan.terminee) raisons.push("exécution incomplète");
     if (!bilan.photos_ok) raisons.push("photos avant/après non confirmées");
     if (!bilan.temoin_apres) raisons.push("contrôle manuel n8n après la série attendu");
