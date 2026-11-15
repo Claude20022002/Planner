@@ -7,6 +7,7 @@
 - **Aucun produit essayé.** Planner : état lu dans le code et dans `docs/plan/suivi.md` de `main` au 15 novembre. Odoo et OpenEduCat : pages de l'éditeur (OpenEduCat, [fonctions](https://newdoc.openeducat.org/features/), [cœur](https://newdoc.openeducat.org/features/core/), [modules](https://newdoc.openeducat.org/settings/modules/), mise à jour janvier 2026) et connaissance générale d'Odoo.
 - **Niveaux de preuve** : **[V]** lu sur une page de l'éditeur ; **[C]** connaissance générale d'Odoo, non revérifiée aujourd'hui ; **[?]** non établi, à vérifier avant de s'en servir dans un argumentaire.
 - Les chiffres de clientèle d'OpenEduCat (« 500+ établissements », « 74+ modules ») sont des affirmations commerciales : les pages ne listent pas 74 modules (36 fiches, 16 modules de configuration).
+- Avis d'utilisateurs relevés le 15 novembre (§ 4) : très peu nombreux pour OpenEduCat, aucun propre à l'éducation pour Odoo seul ; résumés lus dans des résultats de recherche.
 - Les pages d'OpenEduCat se contredisent sur l'édition de plusieurs modules (§ 2.3). Quand c'est le cas, la ligne est marquée « édition ambiguë ».
 
 ## 1. Ce qu'on compare
@@ -72,7 +73,7 @@ Légende de l'état de Planner : **✅ existe** (code sur `main`) · **🟡 part
 | Supports de cours, espace de classe | ✅ `EspaceClasse`, `SupportCours`, sections | ✅ Gestion de cours et programmes (crédits, prérequis, options) [V] |
 | Devoirs avec rendu de fichier | 🟡 code présent mais **éteint** ; 📋 COU-02 après revue de sécurité | ✅ Module Assignment : distribution, remises, notation [V] |
 | Sondages | ✅ anonymes, par l'enseignant (COU-01) | ✅ Sondages et enquêtes d'Odoo [C] |
-| Annonces | 🟡 code présent, **éteint** | ✅ Tableau d'annonces [V] |
+| Annonces | 🟡 code présent, **éteint** | 🟡 Tableau d'annonces : cité dans les modules [V], mais la page de comparaison des éditions le range en **Enterprise** (édition ambiguë) |
 | Messagerie, forum | ⏸ conditionnel (COU-08, modération Q-17) | ✅ Discussion d'Odoo, forums, messagerie enseignant-parent (Enterprise) [V/C] |
 | Plateforme de cours en ligne | 🟡 StudyLib (bibliothèque, séparée) ; **pas de LMS** | ✅ LMS et quiz : cours, vidéo, suivi de progression [V] ; **édition ambiguë** (Community dans un tableau, Enterprise dans la configuration) ; eLearning d'Odoo [C] |
 | **Quiz et jeux pédagogiques** | ✅ **Studio quiz** (10 types de questions, passation par QR code, quiz en direct), jeux, terminal Linux ; 📋 import GIFT et Moodle XML ; 🟡 IA (code présent, fournisseur non choisi) | 🟡 Quiz avec correction automatique et banque de questions, **Enterprise** [V] ; pas de jeux ni de quiz en direct décrits [?] |
@@ -121,7 +122,7 @@ Légende de l'état de Planner : **✅ existe** (code sur `main`) · **🟡 part
 | Rôles et droits | 🟡 trois rôles (admin, enseignant, étudiant) ; 📋 ADM-01 (droits à portée), ADM-05 (parent) | ✅ Droits par groupes, très fins [C] ; flux d'approbation multi-niveaux = **Enterprise** [V] |
 | Connexion sécurisée | ✅ double authentification, journal de sécurité, Planner fournit l'identité (OIDC) | ✅ Double authentification, SSO [C] |
 | Plusieurs écoles sur une installation | 🟡 📋 PLA-01 à PLA-07 (étape 2) ; **aujourd'hui, une seule école** | ✅ Multi-société natif [C] ; multi-campus **Enterprise** [V] |
-| Statistiques et tableaux de bord | ✅ occupation des salles, fréquence d'usage, heures creuses, pics | ✅ Rapports de base (Community), tableau de bord KPI et analyses avancées (**Enterprise**) [V] |
+| Statistiques et tableaux de bord | ✅ occupation des salles, fréquence d'usage, heures creuses, pics | ✅ Rapports de base (Community : tableaux croisés standard d'Odoo, selon la page des éditions), tableau de bord KPI et analyses avancées (**Enterprise**) [V] |
 | Pilotage de la direction (trésorerie, présence des enseignants) | ⏸ PIL-01, PIL-02 | ✅ Tableaux de bord d'Odoo [C] |
 | Réseau d'écoles, vue consolidée | ⏸ GRP-01, GRP-02 | ✅ Multi-société, consolidation comptable [C] |
 
@@ -151,6 +152,9 @@ Lecture qualitative du § 2 (pas de score chiffré : les lignes n'ont pas le mê
 | Prix | Modèle économique à l'étude (PR #169) ; vente **gelée** | Odoo : par utilisateur et par mois en dollars (Standard environ 9 à 11, Custom environ 16 à 20) ; une application gratuite. OpenEduCat : édition libre ; modules Enterprise à partir de 79 $ par an et par module (relevé du 3 et 4 nov. dans 01-concurrents.md, non revérifié) |
 | Mise en place | Assistant de démarrage prévu (ADM-04), mise en route incluse visée | Vendue à part : Success Packs d'Odoo de 190 $ à 8 000 $ ; intégrateur marocain cité à partir de 7 900 DH (benchmark.md) ; OpenEduCat annonce 6 à 10 semaines [V, vendeur] |
 | Avis utilisateurs | Aucun : aucun client réel | Odoo : 4,2/5 sur Capterra (1 314 avis), 3,1/5 sur Trustpilot ; plaintes sur le coût de configuration, les mises à jour qui cassent, la hausse au renouvellement |
+| Avis sur OpenEduCat | Aucun | 3,8/5 sur **4 avis** seulement, surtout de 2021-2022 (Capterra, SoftwareAdvice) ; complet et bon marché ; trop de menus, fiche élève datée, bibliothèque faible, modules à adapter par du développement, assistance en baisse, « puissant mais pas prêt à l'emploi » (G2). **Aucun avis tiers sur son générateur d'emploi du temps** |
+| Mises à jour | Migrations versionnées (Umzug) | Odoo : 73 % des 52 avis Capterra qui en parlent sont négatifs (longues, incompatibles avec les adaptations) |
+| Assistance de l'édition libre d'OpenEduCat | À organiser (WhatsApp, délai annoncé) | Forum et GitHub, délai « un à deux jours » annoncé par l'éditeur, non vérifié |
 | Hébergement | Installation conteneurisée, serveur en préparation (EXP) | Odoo en ligne ou sur serveur propre [C] |
 
 ## 5. Où chacun gagne, honnêtement
@@ -182,9 +186,12 @@ Lecture qualitative du § 2 (pas de score chiffré : les lignes n'ont pas le mê
 6. Remplaçant et circuit de report dans OpenEduCat.
 7. Arabe de droite à gauche dans les écrans d'OpenEduCat (pas seulement dans Odoo).
 8. Prix actuels d'OpenEduCat Enterprise (la page /pricing n'a pas été lue).
+9. Tickets ouverts du dépôt GitHub d'OpenEduCat (bogues, rythme des versions) : non lus.
+10. Odoo Online n'accepte pas les modules tiers : OpenEduCat suppose donc Odoo auto-hébergé ou chez un intégrateur. Coût d'hébergement à ajouter au § 4.
 
 ## Sources
 
 - OpenEduCat : [fonctions](https://newdoc.openeducat.org/features/), [applications de base](https://newdoc.openeducat.org/features/core/), [configuration des modules](https://newdoc.openeducat.org/settings/modules/), [module ERP sur apps.odoo.com](https://apps.odoo.com/apps/modules/19.0/openeducat_erp)
 - Odoo : [notes de version 19.x](https://www.odoo.com/odoo-19-2-release-notes), [applications](https://www.odoo.com/page/all-apps), [tarifs](https://www.odoo.com/pricing)
+- Avis : [Capterra OpenEduCat](https://www.capterra.ae/software/182870/openeducat), [SoftwareAdvice](https://www.softwareadvice.com/school-management/openeducat-profile/), [G2](https://www.g2.com/products/openeducat/reviews), [comparatif des éditions](https://openeducat.org/compare-editions/), [Capterra Odoo](https://www.capterra.com/p/135618/Odoo/reviews/), [SelectHub](https://www.selecthub.com/p/financial-management-systems/odoo/)
 - Dans le dépôt : [01-concurrents.md](01-concurrents.md), [02-arguments-marketing.md](02-arguments-marketing.md), `docs/archives/plans/modele-economique/benchmark.md`, `docs/plan/suivi.md`, `docs/plan/modules/*`
