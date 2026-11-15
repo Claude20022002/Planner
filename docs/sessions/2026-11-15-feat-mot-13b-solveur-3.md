@@ -28,7 +28,7 @@ Suivre la CI de la PR de MOT-13b, faire trancher les questions 22 et 23, et pré
 - **CI de #182** (run 43737454215), tout vert :
   - Test Solveur 34 s, Test Backend 8 min 38, Build Frontend, Test Mobile, Scripts d'exploitation ;
   - **Parcours de démonstration : 41 passés** (8,5 min). L'image du solveur est construite depuis la branche (`docker build -t hestim-solver:parcours ../solver`). Le parcours « génération puis publication : le solveur respecte toutes les règles » passe (22 s).
-- Pas lancé : la requête du § 6 sur la production (au chef).
+- **Requête du § 6** : il n'y a pas de production d'école réelle. Planner ne tourne ni sur le serveur Debian définitif (n8n seul, vu par `docker ps` le 15 nov.) ni sur le serveur provisoire. La seule sauvegarde (Backblaze) vient d'essais de déploiement et de la démonstration (réponse du chef, 15 nov.). Sur la grille de démonstration, la vérification est faite (session 2) : les deux plages reprises ne visent aucun créneau. La requête est à relancer sur toute base d'école réelle restaurée, avant sa première génération.
 
 ## Écarts avec le plan
 
@@ -40,7 +40,7 @@ Aucun dans cette session. Le commit de fin de session ne touche que la documenta
 |---|---|---|---|
 | 22 | Critère « pas moins bon » sur le score souple | accepter ; MOT-02 cherche la cause | **oui** (15 nov.) |
 | 23 | Refuser la coupure fine d'une règle du solveur | oui, étape à part avant 13c | **oui** (15 nov.) |
-| — | Requête du § 6 du plan sur la production : aucun créneau « initiale » le vendredi de 12 h 30 à 14 h 30, ni le samedi après-midi | — | **au chef, avant le déploiement** |
+| — | Requête du § 6 du plan sur la production : aucun créneau « initiale » le vendredi de 12 h 30 à 14 h 30, ni le samedi après-midi | pas de production réelle (essais et démonstration seulement) : vérifiée sur la grille de démonstration ; à relancer sur toute base d'école réelle restaurée | **levée** (15 nov.) |
 | — | Phrases de `ensemble_ou_separe` à plusieurs matières, qui se lisent mal (`phrases.js`, 13a) | à reprendre avec l'écran, en 13c | noté |
 | — | Le coordinateur reporte la réponse 22 dans la fiche de mission de MOT-02 (#180), si elle y est | — | au coordinateur |
 
@@ -53,8 +53,8 @@ Aucun dans cette session. Le commit de fin de session ne touche que la documenta
 ## Reste à faire, dans l'ordre
 
 1. Le chef pousse le commit de fin de session ; la CI de #182 repasse (documentation seule).
-2. Le chef lance la requête du § 6 du plan sur la production. Résultat attendu : vide.
-3. Fusion de #182. **Serveur et solveur partent dans le même paquet** (§ 6 du plan). La migration 0081 passe alors à « fusionnée » dans `suivi.md`.
+2. Fusion de #182 (la requête du § 6 est levée : pas de production réelle ; elle sera relancée sur toute base d'école réelle restaurée).
+3. À la fusion, la migration 0081 passe à « fusionnée » dans `suivi.md`. Au déploiement, **serveur et solveur partent dans le même paquet** (§ 6 du plan).
 4. Petite étape : refuser la coupure fine d'une règle du solveur (réponse 23). Plan court à écrire et à faire valider, sur une nouvelle branche après la fusion.
 5. MOT-13c avec ADM-02 (écran « Règles de génération », affichage du bilan, phrases de `ensemble_ou_separe`), puis MOT-02, MOT-03 et MOT-04.
 
@@ -65,7 +65,7 @@ git -C "..\travaux-planner\mot-13b-solveur" push origin feat/mot-13b-solveur
 gh pr checks 182 --watch
 ```
 
-Sur la production, avant le déploiement : la requête SQL du § 6 de [mot-13b-solveur.md](../conception/moteur-planification/mot-13b-solveur.md).
+Avant la première génération sur une base d'école réelle restaurée : la requête SQL du § 6 de [mot-13b-solveur.md](../conception/moteur-planification/mot-13b-solveur.md).
 
 ## Prompt de reprise
 
@@ -79,8 +79,10 @@ Fait : 13b codée (cinq commits), PR #182 ouverte, CI verte, parcours compris (4
 construite depuis la branche). Réponses du chef le 15 nov. : 22 acceptée (MOT-02 compare la qualité souple
 et cherche la cause de l'écart de 10 %) ; 23 : refuser aussi la coupure fine d'une règle du solveur
 (portee_non_tenue), dans une petite étape à part avant 13c.
-Reste : vérifier si #182 est fusionnée (gh pr view 182) ; avant le déploiement, le chef lance la requête
-du § 6 sur la production (résultat attendu vide) ; serveur et solveur dans le même paquet ; puis la petite
+La requête du § 6 est levée : pas de production d'école réelle (essais et démonstration seulement),
+vérifiée sur la grille de démonstration ; à relancer sur toute base d'école réelle restaurée.
+Reste : vérifier si #182 est fusionnée (gh pr view 182) ; au déploiement, serveur et solveur dans le
+même paquet ; puis la petite
 étape de la réponse 23 (plan court à écrire et à faire valider, nouvelle branche depuis main), puis
 MOT-13c avec ADM-02.
 Règles : pas de code hors du plan validé (s'il faut s'en écarter : s'arrêter, corriger le plan, le refaire
