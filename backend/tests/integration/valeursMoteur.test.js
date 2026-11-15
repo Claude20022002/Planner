@@ -4,7 +4,18 @@ import sequelize from "../../config/db.js";
 import { ParametrePlanning, ValeurParametre, VersionParametres } from "../../models/index.js";
 import { lireParametres } from "../../services/planning/referentiel.js";
 import { aujourdhui, valeursEnVigueur } from "../../services/moteur/valeurs/lecture.js";
-import { down, up } from "../../migrations/0061-valeurs-parametres.js";
+import { down as down0061, up as up0061 } from "../../migrations/0061-valeurs-parametres.js";
+import { down as down0080, up as up0080 } from "../../migrations/0080-contraintes-declarees.js";
+
+// La table des contraintes déclarées (0080) renvoie aux versions : elle tombe avant, et revient après
+const down = async (o) => {
+    await down0080(o);
+    await down0061(o);
+};
+const up = async (o) => {
+    await up0061(o);
+    await up0080(o);
+};
 
 /**
  * Lot MP-1 : les réglages du moteur, versionnés et datés. La génération ne les lit pas encore :
