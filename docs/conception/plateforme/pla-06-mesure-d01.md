@@ -135,7 +135,7 @@ Les règles de chauffe, de répétition, d'isolation, d'erreurs 401/429, d'écha
 - README : remplacer le protocole à deux machines par des commandes serveur, une à une, à exécuter par le chef ; préparation, surveillance, arrêt d'urgence et nettoyage ciblé compris.
 - Vérifications : tests de régression des adaptations ; essai des gardes sans charge réelle ; petite série d'essai seulement après validation et retour des prérequis, puis séries M1 à M8.
 
-Ces adaptations ne sont pas encore écrites. Les tests purs existants vérifient les fonctions de calcul du banc, pas les protections n8n ni l'exécution sur un hôte unique. Ne pas utiliser les commandes de séries de l'ancien README en attendant.
+Adaptations écrites après validation le 15 novembre : lanceur systemd, pilote local, contrôles Compose, photos avant/après et surveillance dans le périmètre du banc. Leur exécution sur le serveur reste à vérifier par le chef. Les tests locaux vérifient les fonctions de calcul, les règles de protection et la voie d'arrêt simulée ; ils ne prouvent ni l'exécution systemd/Docker ni la réactivité de n8n sur le serveur. Ne pas utiliser les commandes de séries de l'ancien README en attendant.
 
 #### Questions avant lancement
 
@@ -185,7 +185,7 @@ docker inspect --format '{{.Id}} {{.State.StartedAt}} {{.State.Status}} {{.Resta
 docker stats --no-stream --format '{{.ID}} {{.CPUPerc}} {{.MemUsage}}'
 ```
 
-Pour comparer avant/après, le chef conserve hors Git la liste initiale des identifiants et inspecte exactement cette liste après chaque série. Les commandes de lancement et d'arrêt seront préparées une à une après validation du plan et adaptation des gardes ; ne pas réutiliser le pilote SSH actuel.
+Pour comparer avant/après, le chef conserve hors Git la liste initiale des identifiants et inspecte exactement cette liste après chaque série. Les commandes de lancement et d'arrêt seront préparées une à une après validation du plan et adaptation des gardes ; utiliser le lanceur local documenté dans le README après vérification des prérequis.
 
 ### 4.2 Une série (sur le serveur, après revalidation et adaptation)
 

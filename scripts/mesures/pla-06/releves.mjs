@@ -98,20 +98,26 @@ const relever = async () => {
     appendFileSync(fichier, `${JSON.stringify(ligne)}\n`);
 };
 
-const minuterie = setInterval(() => relever().catch(() => {}), 5000);
-relever().catch(() => {});
-console.log(`Relevés de la série « ${serie} » dans ${fichier} (Ctrl+C pour arrêter).`);
+let minuterie, arret = false;
+let enCours = Promise.resolve();
+const tour = () => {
+    enCours = relever().catch((erreur) => {
+        resume.erreurs += 1;
+        resume.derniere_erreur = erreur.message;
+    }).finally(() => { if (!arret) minuterie = setTimeout(tour, 5000); });
+};
+tour();
+console.log(`Relevés de la série « ${serie} » dans ${fichier}.`);
 
-const finir = () => {
-    clearInterval(minuterie);
+const finir = async () => {
+    if (arret) return;
+    arret = true;
+    clearTimeout(minuterie);
+    await enCours;
     resume.fin = new Date().toISOString();
-    // Une série où l'hôte a échangé de la mémoire avec le disque ne mesure que le disque (C-26).
-    // Le processeur du banc saturé n'invalide rien : c'est ce que la montée en charge cherche ;
-    // c'est le générateur de charge qui vérifie qu'il ne sature pas lui-même (charge.mjs).
-    resume.valide = !resume.echange_actif;
+    resume.valide = !resume.echange_actif && resume.erreurs === 0 && resume.releves > 0;
     writeFileSync(join(dossier, "releves-resume.json"), JSON.stringify(resume, null, 2));
-    console.log(`Résumé : ${JSON.stringify({ valide: resume.valide, max: resume.max, echange_actif: resume.echange_actif })}`);
-    process.exit(0);
+    process.exit(resume.valide ? 0 : 1);
 };
 process.on("SIGINT", finir);
 process.on("SIGTERM", finir);
