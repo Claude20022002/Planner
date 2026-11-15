@@ -50,7 +50,7 @@
 - **QUA-02** : aucun contrôleur ne dépasse 200 lignes ; la suite complète passe sans changer un seul test.
 - **QUA-05** : `git branch -a --no-merged main` ne liste que des branches en cours, chacune avec sa ligne dans [suivi.md](../suivi.md).
 - **QUA-07** : une PR rouge ne peut plus être fusionnée.
-- **QUA-08** : `SECURITY.md` est sur `main` ; le chef a ouvert le signalement privé dans les réglages du dépôt.
+- **QUA-08** : `SECURITY.md` est sur `main` et promet un accusé de réception sous 7 jours, un correctif ou un avis publié sous 90 jours au plus (décision du 15 nov.) ; le chef a ouvert le signalement privé dans les réglages du dépôt.
 - **QUA-09** : chaque envoi sortant trouvé dans le code (clients HTTP, SMTP, SDK de services) figure dans la liste ; le modèle de PR demande si la PR en ajoute un.
 
 ## Références
