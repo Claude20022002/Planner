@@ -35,6 +35,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Organisation de l'équipe, module MKT | #163 | **fusionnée le 10 nov.** |
 | Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | décisions I-1 à I-5 prises le 13 nov. ; fusionner |
 | Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | `doc/plan-modules-inventaire` (part de #167) | fusionner après #167 |
+| Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | `chore/coordination-agents` | en cours : plan validé le 15 nov. |
 
 ## Numéros de migration réservés
 
