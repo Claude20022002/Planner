@@ -67,7 +67,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0061 | MOT-01 valeurs du moteur (MP-1) | fusionnée (#156, 10 nov.) |
 | 0062 à 0079 | VSC-01 et suivantes : tables du scolaire | réservées |
 | 0080 | MOT-13 contraintes déclarées (`ContrainteDeclaree`) | réservée |
-| 0081 | MOT-13b reprise de la pause du vendredi et du samedi après-midi en contraintes déclarées | écrite (`feat/mot-13b-solveur`) |
+| 0081 | MOT-13b reprise de la pause du vendredi et du samedi après-midi en contraintes déclarées | fusionnée (#182, 15 nov.) |
 | 0082 et plus | libres | — |
 
 ## Fonctions
@@ -108,7 +108,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOT-10](modules/MOT-moteur.md) | Grande échelle | 5 | L | à faire |  |
 | [MOT-11](modules/MOT-moteur.md) | Règles nouvelles, famille par famille (examens dans le calcul F-8, ressources F-7,… | 5 | M par famille | à faire |  |
 | [MOT-12](modules/MOT-moteur.md) | Montée du solveur : Spring Boot 3.3.5 vers 4.1, Timefold 1.15 vers 1.35 (cœur, sans le starter), Java 21 inchangé | 1 | M | fait (15 nov.) | #181 |
-| [MOT-13](modules/MOT-moteur.md) | Contraintes déclarées par l'école (six modèles, liste « Déjà pris en compte », contrôle de place), en trois étapes 13a, 13b, 13c | 3 | M + L + M | en cours : 13a fusionnée (#178, 15 nov.) ; 13b : codée le 15 nov. ([complément](../conception/moteur-planification/mot-13b-solveur.md)), PR ouverte (#182), CI verte parcours compris ; réponses 22 et 23 données le 15 nov. ; requête du § 6 levée (pas de production réelle, grille de démonstration vérifiée ; à relancer sur toute base d'école réelle restaurée) ; ensuite le refus de la coupure fine (réponse 23), puis 13c avec ADM-02 | #178 ; #182 |
+| [MOT-13](modules/MOT-moteur.md) | Contraintes déclarées par l'école (six modèles, liste « Déjà pris en compte », contrôle de place), en trois étapes 13a, 13b, 13c | 3 | M + L + M | en cours : 13a fusionnée (#178, 15 nov.) ; 13b fusionnée (#182, 15 nov., [complément](../conception/moteur-planification/mot-13b-solveur.md)) ; requête du § 6 levée (pas de production réelle ; à relancer sur toute base d'école réelle restaurée) ; refus de l'activation fine d'une règle du solveur (réponses 23 à 25, [plan court](../conception/moteur-planification/mot-13-coupure-fine.md)) codé le 15 nov., PR à ouvrir ; ensuite 13c avec ADM-02 | #178 ; #182 ; `feat/mot-13-coupure-fine` |
 | [EDT-01](modules/EDT-emploi-du-temps.md) | Changement structurel refusé une fois les séances générées (groupes, volumes), avec un… | 3 | S | à faire |  |
 | [EDT-02](modules/EDT-emploi-du-temps.md) | Horaires saisonniers (ramadan, hiver, été) appliqués sans tout regénérer | libre | M | à faire |  |
 | [EDT-03](modules/EDT-emploi-du-temps.md) | Écran d'explication des conflits et des refus | 3 | M | à faire |  |
