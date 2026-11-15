@@ -100,10 +100,11 @@ Registre unique à partir du 7 novembre 2026.
 | 15 nov. | **Chaque agent choisit le modèle le plus adapté à sa tâche**, d'après la recommandation de sa fiche de mission ; s'il ne tourne pas déjà sur ce modèle, il le dit au chef (seul l'utilisateur change le modèle d'un éditeur), et il l'écrit dans sa fiche de session | — |
 | 15 nov. | **Plan EXP-02a validé** (branchement Traefik, sans lancer Planner), avec les trois remarques du coordinateur (`docs/plan/missions/exp-02a.md`) | — |
 | 15 nov. | **PLA-06 : pour le moment, seul le serveur sert de machine** ; le PC Ubuntu n'est pas employé (P-22, P-23 et P-25 sans objet). Le plan de PLA-06 s'amende pour mesurer sur le serveur partagé avec n8n, puis se refait valider par le chef ; seul le chef lance les commandes sur le serveur | la mesure en local du 10 novembre |
+| 15 nov. | **Noms publics de l'installation gardés** (question ouverte « nom de domaine », Q-11) : ceux déjà écrits dans `deploy/vps/nginx-hestim.conf` et `deploy/vps/generer-env.sh`. Le pointage DNS est EXP-02b. Le branchement du nouveau serveur est Traefik (labels, réseau externe), sans port public sur Caddy. | — |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.
-- **Q-11** : essai gratuit effacé après 60 jours (gelé).
+- **Q-11** : essai gratuit effacé après 60 jours (gelé). Le même numéro désigne aussi le nom de domaine : tranché le 15 nov. (ligne ci-dessus), distinct de l'essai gratuit.
 - **Q-12 à Q-14** : 5 ans de conservation, 30 jours de grâce, préavis de 5 jours.
 - **Q-16 et Q-24** : IA avec Haiku 5.5, sous enveloppe.
 - **Q-17, Q-18 et Q-28** : contrat annuel, accompagnement, forfaits (gelés).
@@ -124,7 +125,6 @@ Registre unique à partir du 7 novembre 2026.
 | Q-08 | Le catalogue n'a pas de profil maternelle ; la colonne « École privée » de `profils.md` désigne le profil formation | ajouter un profil ou décider que la maternelle n'est pas générée (avec Q-07) | MOT-05 |
 | Q-09 | École pilote (ancienne Q-25), et où elle est hébergée (Q-23) | gelé avec la vente | VEN |
 | Q-10 | Qui est la deuxième personne en production (ancienne Q-27) ? | à nommer avant la première école extérieure | EXP |
-| Q-11 | Nom de domaine du nouveau serveur, et du site vitrine | à choisir avant EXP-02 et VIT-02 | EXP-02, VIT-02 |
 | Q-12 | Images du registre GitHub (`ghcr.io`) publiques ou privées ? | publiques (aucun secret dans les images) ; sinon un jeton en lecture seule sur le serveur | EXP-03 |
 | Q-13 | Service de sonde : Better Stack ou UptimeRobot | à l'inscription, selon les limites de l'offre gratuite | EXP-05 |
 | Q-16 | Règles du carnet de notes (modification, verrouillage, arrondis) | à faire valider par une scolarité et le juriste | VSC-04 |
