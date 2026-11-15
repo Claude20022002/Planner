@@ -82,6 +82,7 @@ Registre unique à partir du 7 novembre 2026.
 | 13 nov. | Tout module qui prévient quelqu'un passe par **COM** (service d'envoi commun, plages de silence) ; VSC-03 et MOB-05 dépendent de COM-01 | — |
 | 13 nov. | **FIN, COM et PAI attendent les entretiens de VEN-02**, qui confirment le module d'achat de chaque marché (décision I-5 de l'inventaire) | — |
 | 13 nov. | Une **seconde passe de recherche**, ciblée sur ce que l'inventaire n'a pas pu voir (avis des magasins d'applications, aSc, Hyperplanning, paiement des frais au Maroc, pays non couverts), se fera plus tard dans une session à part (décision I-3) | — |
+| 15 nov. | **Ollama retiré du serveur** partagé avec n8n (conteneurs, volume, image). n8n, Traefik, postgres et Qdrant non redémarrés. Ne pas relancer le profil Compose `cpu`. | décision du 11 nov. (PLA-06 / Q-21), appliquée |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.

@@ -23,6 +23,7 @@ Reconnaissance du nouveau serveur (n8n, Traefik, ports, mémoire) et prérequis 
 - Photo n8n après : mêmes identifiants et mêmes heures de démarrage.
 - Aucun conteneur Planner.
 - Recette : [serveur-2026-11.md](../recette/serveur-2026-11.md).
+- Ollama retiré (conteneurs, volume ~47 Go, image) : mémoire disponible 6,5 Gio, disque 8 % ; n8n toujours 200, mêmes id.
 
 ## Vérifié
 
@@ -36,7 +37,7 @@ Reconnaissance du nouveau serveur (n8n, Traefik, ports, mémoire) et prérequis 
 | N° | Question | Réponse | État |
 |---|---|---|---|
 | 1 | Commandes serveur par l’agent | oui, cette session | réglé |
-| 3 | Retirer Ollama | non dans EXP-01 | pour EXP-02 |
+| 3 | Retirer Ollama | oui, 15 nov. | réglé |
 
 ## État laissé
 
@@ -46,7 +47,7 @@ Reconnaissance du nouveau serveur (n8n, Traefik, ports, mémoire) et prérequis 
 ## Reste à faire, dans l’ordre
 
 1. Le chef pousse la branche et ouvre la PR.
-2. EXP-02 : installation à côté de Traefik ; Q-11 ; Ollama (décision du 11 nov. non appliquée) ; disque 81 %.
+2. EXP-02 : installation à côté de Traefik ; Q-11. Ne pas relancer `docker compose --profile cpu up` (Ollama reviendrait).
 
 ## Commandes pour le chef de projet
 
@@ -57,4 +58,4 @@ gh pr create --base main --head feat/exp-01-reconnaissance --title "EXP-01 : rec
 
 ## Prompt de reprise
 
-EXP-01 est écrite (recette du 15 nov.). Personne n’a lancé Planner. Pour EXP-02 : lire `docs/recette/serveur-2026-11.md`, concevoir le branchement Traefik (Caddy sans port public), trancher Q-11, et décider d’Ollama avant tout `compose up` : il prend ~5 Gio et n8n le référence.
+EXP-01 est écrite (recette du 15 nov.). Ollama est retiré. Personne n’a lancé Planner. Pour EXP-02 : lire `docs/recette/serveur-2026-11.md`, concevoir le branchement Traefik (Caddy sans port public), trancher Q-11. Ne pas relancer le profil Compose `cpu`.
