@@ -35,6 +35,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Organisation de l'équipe, module MKT | #163 | **fusionnée le 10 nov.** |
 | Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | **fusionnée** |
 | Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | #170 | **fusionnée** |
+| Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | #174 | **fusionnée le 15 nov.** |
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 
 ## Missions en cours
@@ -50,7 +51,7 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | QUA | QUA-03 étude de la pile | Claude Code | #171 | PR ouverte, CI verte, à fusionner ; sa fusion ferme le chantier QUA | 15 nov. : tour d'état seulement | — |
 | MOT | MOT-13a contraintes déclarées, serveur | Claude Code | `feat/mot-13-contraintes` (non poussée) | **codée** (autre session, 15 nov.), fiche de session écrite, `origin/main` fusionnée ; à pousser | 15 nov. : **prête pour la PR** | [mot-13a](missions/mot-13a.md) |
 
-Hors chantier, PR ouvertes : #174 (comparatif Planner et Odoo, 15 nov.), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
+Hors chantier, PR ouvertes : #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
 ## Numéros de migration réservés
 
