@@ -59,7 +59,7 @@
   - le rapport dit si EP-10 tient.
 - **MOT-03** :
   - toute combinaison de valeurs invalide est refusée **avant** le calcul ;
-  - le message nomme la règle et propose une correction ;
+  - le message nomme la règle, la cible quand ce n'est pas l'établissement, et propose une correction ;
   - un test par famille de règles.
 - **MOT-04** :
   - le même jeu est résolu par les deux moteurs et noté par l'évaluateur indépendant ;

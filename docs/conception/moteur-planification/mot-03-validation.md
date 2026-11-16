@@ -93,6 +93,8 @@ Ton : phrases courtes, comme MOT-13 (`phrases.js`). Le `nom` du catalogue, jamai
 
 Plusieurs refus : comme `ErreurPlace`, le `message` cite le premier et le nombre des autres ; la liste complète est dans `refus`.
 
+Quand le refus concerne un individu (enseignant, groupe, salle, matière), la phrase commence par « Pour l'enseignant {nom} : » (ou « le groupe », « la salle », « la matière »). Le nom est lu dans le problème (`enseignants`, `groupes`, `salles`, `matieres`), jamais l'identifiant seul. L'établissement n'a pas de champ `cible`. La clé de dédoublonnage inclut la portée et l'identifiant : deux cibles en faute donnent deux refus. Correction du 16 novembre (relecture EP-4), sans nouveau gabarit.
+
 ### 4.4 Ce que MOT-03 ne fait pas
 
 Il **ne nourrit pas** le solveur avec les valeurs MOT-01 (collecte, étape 1 du README moteur). Il refuse seulement une combinaison **déjà résolue** qui viole le catalogue.

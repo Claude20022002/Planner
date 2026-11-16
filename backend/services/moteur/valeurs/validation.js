@@ -8,6 +8,7 @@ import { resoudreTout } from "./resolution.js";
  * avec un nom français et une correction (EP-4). Fonctions pures, sauf l'appel qui lit MOT-01.
  * Les liaisons dont un bout est encore `absent` / `solveur` / `base` / `plan` ne bloquent pas :
  * ces données ne vivent pas dans les versions MOT-01 (MOT-13 Q16, collecte MOT-05).
+ * Un refus d'individu porte sa cible et la nomme ; l'établissement n'en a pas (EP-4).
  */
 
 const HORS_MOT01 = new Set(["absent", "solveur", "base", "plan"]);
@@ -39,6 +40,53 @@ const correctionBorne = (op, nomA, nomB) => {
 };
 
 const refus = (code, d, message) => ({ code, cle: d.de, de: d.de, vers: d.vers, message });
+
+const PORTEES = ["enseignant", "groupe", "salle", "matiere"];
+const LISTES = { enseignant: "enseignants", groupe: "groupes", salle: "salles", matiere: "matieres" };
+const ARTICLES = { enseignant: "l'enseignant", groupe: "le groupe", salle: "la salle", matiere: "la matière" };
+
+const identifiantDe = (item) => item?.id ?? item?.id_user ?? item?.id_groupe ?? item?.id_salle ?? item?.id_cours;
+
+/** Nom lisible d'une cible, lu dans le problème. Jamais l'identifiant seul. */
+export const nomDeCible = (probleme, portee, id) => {
+    const liste = probleme?.[LISTES[portee]] ?? [];
+    const trouve = liste.find((x) => String(identifiantDe(x)) === String(id));
+    const brut = trouve?.nom ?? trouve?.nom_groupe ?? trouve?.nom_salle ?? trouve?.nom_cours;
+    const nom = typeof brut === "string" ? brut.trim() : "";
+    return nom || null;
+};
+
+/** `{ portee, id }` pour un individu ; rien pour l'établissement. */
+export const formeCible = (cible) => {
+    const portee = PORTEES.find((p) => cible?.[p] !== undefined && cible[p] !== null && cible[p] !== "");
+    return portee ? { portee, id: String(cible[portee]) } : null;
+};
+
+const habiller = (erreur, cible, probleme) => {
+    const c = formeCible(cible);
+    if (!c) return erreur;
+    const nom = nomDeCible(probleme, c.portee, c.id);
+    const qui = nom ? `${ARTICLES[c.portee]} ${nom}` : ARTICLES[c.portee];
+    return { ...erreur, cible: c, message: `Pour ${qui} : ${erreur.message}` };
+};
+
+const cleDedoublonnage = (r) => `${r.code}|${r.de}|${r.vers}|${r.cle}|${r.cible?.portee ?? ""}|${r.cible?.id ?? ""}`;
+
+/** Un refus par règle et par cible : deux individus en faute ne se confondent pas. */
+export const retenirRefus = (probleme, lots) => {
+    const vus = new Set();
+    const liste = [];
+    for (const { cible, erreurs } of lots) {
+        for (const brut of erreurs) {
+            const r = habiller(brut, cible, probleme);
+            const k = cleDedoublonnage(r);
+            if (vus.has(k)) continue;
+            vus.add(k);
+            liste.push(r);
+        }
+    }
+    return liste;
+};
 
 /**
  * @param {object} o parametres, dependances, valeurs (Map), actives (ids de règles), resultats (Map MOT-01)
@@ -103,16 +151,11 @@ export const exigerValeursCoherentes = async ({ probleme, periode }) => {
     const date = dateDesContraintes(periode);
     const { parametres, profils, dependances } = leCatalogue();
     const [lignes, faits] = await Promise.all([lireLignes(), lireFaits()]);
-    const vus = new Set();
-    const refus = [];
+    const lots = [];
     for (const cible of ciblesDuProbleme(probleme)) {
         const resolu = resoudreTout({ parametres, profils, dependances, lignes, date, cible, faits });
-        for (const r of validerValeurs({ parametres, dependances, ...resolu })) {
-            const k = `${r.code}|${r.de}|${r.vers}|${r.cle}`;
-            if (vus.has(k)) continue;
-            vus.add(k);
-            refus.push(r);
-        }
+        lots.push({ cible, erreurs: validerValeurs({ parametres, dependances, ...resolu }) });
     }
+    const refus = retenirRefus(probleme, lots);
     if (refus.length) throw new ErreurValidation(refus);
 };

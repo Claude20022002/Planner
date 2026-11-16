@@ -1,5 +1,5 @@
 import { chargerDependances, chargerParametres } from "../../services/moteur/catalogue/charger.js";
-import { ciblesDuProbleme, validerValeurs } from "../../services/moteur/valeurs/validation.js";
+import { ciblesDuProbleme, retenirRefus, validerValeurs } from "../../services/moteur/valeurs/validation.js";
 
 // MOT-03 : chaque famille de liaison refuse avec une phrase, et aucune liaison du catalogue n'est oubliée.
 
@@ -122,6 +122,52 @@ describe("MOT-03 : catalogue entier", () => {
             if (ok.length) manques.push(`jeu sain refusé : ${d.type} ${d.de} -> ${d.vers}`);
         }
         expect(manques).toEqual([]);
+    });
+});
+
+describe("MOT-03 : cible du refus", () => {
+    const A = "ENS.CHARGE.MAX_H_JOUR";
+    const B = "REG.TRAVAIL.MAX_JOUR";
+    const erreurs = () => validerValeurs({
+        parametres,
+        dependances: [{ type: "borne", de: A, op: "<=", vers: B }],
+        valeurs: new Map([[A, 600], [B, 480]]),
+    });
+    const probleme = {
+        enseignants: [{ id: "1", nom: "Ada Lovelace" }, { id: "2", nom: "Alan Turing" }, { id: "9" }],
+        salles: [{ id: "4", nom: "N-GEN1" }],
+    };
+
+    test("deux enseignants en faute : deux refus, chacun nommé", () => {
+        const refus = retenirRefus(probleme, [
+            { cible: { enseignant: "1" }, erreurs: erreurs() },
+            { cible: { enseignant: "2" }, erreurs: erreurs() },
+        ]);
+        expect(refus).toHaveLength(2);
+        expect(refus[0].cible).toEqual({ portee: "enseignant", id: "1" });
+        expect(refus[1].cible).toEqual({ portee: "enseignant", id: "2" });
+        expect(refus[0].message).toMatch(/^Pour l'enseignant Ada Lovelace : /);
+        expect(refus[1].message).toMatch(/^Pour l'enseignant Alan Turing : /);
+        expect(refus[0].message).toMatch(/Abaissez/);
+    });
+
+    test("le même enseignant deux fois ne donne qu'un refus", () => {
+        const refus = retenirRefus(probleme, [
+            { cible: { enseignant: "1" }, erreurs: erreurs() },
+            { cible: { enseignant: "1" }, erreurs: erreurs() },
+        ]);
+        expect(refus).toHaveLength(1);
+    });
+
+    test("l'établissement n'a pas de cible, et un nom manquant n'est pas un identifiant", () => {
+        const [etablissement] = retenirRefus(probleme, [{ cible: {}, erreurs: erreurs() }]);
+        expect(etablissement.cible).toBeUndefined();
+        expect(etablissement.message).not.toMatch(/^Pour /);
+        const [sansNom] = retenirRefus(probleme, [{ cible: { enseignant: "9" }, erreurs: erreurs() }]);
+        expect(sansNom.message).toMatch(/^Pour l'enseignant : /);
+        expect(sansNom.message).not.toMatch(/\b9\b/);
+        const [salle] = retenirRefus(probleme, [{ cible: { salle: "4" }, erreurs: erreurs() }]);
+        expect(salle.message).toMatch(/^Pour la salle N-GEN1 : /);
     });
 });
 

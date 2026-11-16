@@ -38,7 +38,12 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
 
         if (!dureeSecondes) probleme.dureeSecondes = dureeAutomatique(aPlacer);
         await etape(session, "calcul", { progress: 10, last_message: `Calcul de la semaine type : ${aPlacer} séance(s) à placer, ${probleme.dureeSecondes} s au plus` });
-        const { id, dureeSecondes: duree } = await lancerCalcul(probleme);
+        // Les listes de noms servent aux refus MOT-03. Le solveur rejette un champ qu'il ne connaît pas.
+        const pourLeSolveur = { ...probleme };
+        delete pourLeSolveur.enseignants;
+        delete pourLeSolveur.groupes;
+        delete pourLeSolveur.matieres;
+        const { id, dureeSecondes: duree } = await lancerCalcul(pourLeSolveur);
         enCours.get(session.id_generation_session).calcul = id;
         const etat = await attendreSolution(id, {
             dureeSecondes: duree,

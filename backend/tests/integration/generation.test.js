@@ -247,6 +247,9 @@ describe("Génération complète", () => {
 
         expect(await PlanningSnapshot.count({ where: { id_snapshot: rapport.id_snapshot, is_active: true } })).toBe(1);
         expect(problemes[0].lecons.filter((l) => !l.epinglee)).toHaveLength(2);
+        expect(problemes[0].enseignants).toBeUndefined();
+        expect(problemes[0].groupes).toBeUndefined();
+        expect(problemes[0].matieres).toBeUndefined();
     });
 
     test("régénérer annule les séances générées précédemment ; réactiver l'ancienne version les rétablit", async () => {
@@ -270,15 +273,20 @@ describe("Génération complète", () => {
             { id_version: version.id_version, cle: "PRF.ENS.MATIN", portee: "enseignant", id_portee: String(prof.id_user), valeur: true },
             { id_version: version.id_version, cle: "PRF.ENS.APRES_MIDI", portee: "enseignant", id_portee: String(prof.id_user), valeur: true },
         ]);
-        const reponse = await clients.admin.send("post", "/api/generation-automatique/generer", { id_periode: ref.periode.id_periode, id_filieres: [ref.filiere.id_filiere], duree_secondes: 10 });
-        await attendreGeneration(reponse.body.session.id_generation_session);
-        const session = (await clients.admin.get(`/api/generation-automatique/sessions/${reponse.body.session.id_generation_session}`)).body;
-        expect(session.status).toBe("failed");
-        expect(session.last_message).toMatch(/Préférence pour le matin/);
-        expect(session.config.refus_valeurs[0].code).toBe("exclusion_mutuelle");
-        expect(problemes).toHaveLength(avant);
-        await ValeurParametre.destroy({ where: { id_version: version.id_version } });
-        await version.destroy();
+        try {
+            const reponse = await clients.admin.send("post", "/api/generation-automatique/generer", { id_periode: ref.periode.id_periode, id_filieres: [ref.filiere.id_filiere], duree_secondes: 10 });
+            await attendreGeneration(reponse.body.session.id_generation_session);
+            const session = (await clients.admin.get(`/api/generation-automatique/sessions/${reponse.body.session.id_generation_session}`)).body;
+            expect(session.status).toBe("failed");
+            expect(session.last_message).toContain(`Pour l'enseignant ${prof.prenom} ${prof.nom}`);
+            expect(session.last_message).toMatch(/Préférence pour le matin/);
+            expect(session.config.refus_valeurs[0].code).toBe("exclusion_mutuelle");
+            expect(session.config.refus_valeurs[0].cible).toEqual({ portee: "enseignant", id: String(prof.id_user) });
+            expect(problemes).toHaveLength(avant);
+        } finally {
+            await ValeurParametre.destroy({ where: { id_version: version.id_version } });
+            await version.destroy();
+        }
     });
 
     test("solveur injoignable : la génération échoue proprement avec un message clair", async () => {

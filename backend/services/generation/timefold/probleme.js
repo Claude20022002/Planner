@@ -92,6 +92,8 @@ export const construireProbleme = async ({ id_periode, id_filieres = [], dureeSe
     const enseignantsUtilises = new Set();
     const groupesUtilises = new Set();
     const regimes = new Set();
+    const nomsGroupes = new Map();
+    const nomsMatieres = new Map();
 
     for (const e of enseignements) {
         const composante = e.composante;
@@ -111,6 +113,8 @@ export const construireProbleme = async ({ id_periode, id_filieres = [], dureeSe
         }
         const enseignants = [...new Set([principal.id_user, ...e.services.filter((s) => s.role === "co_enseignant" && s.statut_service === "accepte").map((s) => s.id_user)])];
         const directs = e.groupes.map((g) => g.id_groupe);
+        for (const g of e.groupes) if (g.nom_groupe) nomsGroupes.set(String(g.id_groupe), g.nom_groupe);
+        if (cours.nom_cours) nomsMatieres.set(String(cours.id_cours), cours.nom_cours);
         const occupes = [...new Set((await Promise.all(directs.map((id) => groupesLies(id)))).flat())];
         // Groupes les plus fins concernés : la journée vue par les étudiants (heures, trous, campus)
         const feuilles = [...new Set((await Promise.all(directs.map((id) => ligneesDe(id)))).flat().map((l) => l.feuille))];
@@ -195,12 +199,27 @@ export const construireProbleme = async ({ id_periode, id_filieres = [], dureeSe
         });
     }
 
+    for (const occ of motifs.values()) {
+        for (const id of occ.enseignants ?? []) if (id) enseignantsUtilises.add(id);
+        for (const id of occ.groupesDirects ?? []) if (id) groupesUtilises.add(id);
+    }
+    const groupesSansNom = [...groupesUtilises].filter((id) => !nomsGroupes.has(String(id)));
+    if (groupesSansNom.length) {
+        const lignes = await Groupe.findAll({ where: { id_groupe: groupesSansNom }, attributes: ["id_groupe", "nom_groupe"] });
+        for (const g of lignes) if (g.nom_groupe) nomsGroupes.set(String(g.id_groupe), g.nom_groupe);
+    }
+
     // Disponibilités : vacataires en opt-in, indisponibilités couvrant toute la période, vœux
+    const nomsEnseignants = new Map();
     const enseignantsInfos = await Enseignant.findAll({
         where: { id_user: [...enseignantsUtilises] },
         attributes: ["id_user", "statut", "max_heures_semaine"],
         include: [{ model: Users, as: "user", attributes: ["nom", "prenom"] }],
     });
+    for (const e of enseignantsInfos) {
+        const nom = `${e.user?.prenom ?? ""} ${e.user?.nom ?? ""}`.trim();
+        if (nom) nomsEnseignants.set(String(e.id_user), nom);
+    }
     const declarations = await Disponibilite.findAll({
         where: { id_user_enseignant: [...enseignantsUtilises], date_debut: { [Op.lte]: periode.date_fin }, date_fin: { [Op.gte]: periode.date_debut } },
     });
@@ -255,6 +274,10 @@ export const construireProbleme = async ({ id_periode, id_filieres = [], dureeSe
                 trajets,
             },
             lecons: [...lecons, ...motifs.values()],
+            // Noms pour les refus MOT-03. Retirés avant l'envoi au solveur (generation.js).
+            enseignants: [...nomsEnseignants].map(([id, nom]) => ({ id, nom })),
+            groupes: [...nomsGroupes].map(([id, nom]) => ({ id, nom })),
+            matieres: [...nomsMatieres].map(([id, nom]) => ({ id, nom })),
         },
     };
 };
