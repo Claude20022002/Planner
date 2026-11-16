@@ -38,7 +38,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | #174 | **fusionnée le 15 nov.** |
 | Étude : failles de cinq ERP scolaires (OpenEduCat, Frappe Education, Fedena, PERIS SCHOOL, Studirium ; Madata en encadré), hors chantier, demande du chef le 15 nov. | #186 | PR ouverte ; questions 5 à 8 tranchées le 15 nov. : EP-13, PLA-04, QUA-08, QUA-09, MOB, ETA-02 inscrites ; 16 nov. : canal de signalement de Frappe corrigé dans le document 09, mentions de l'essai rendues neutres, canal des failles de Planner décidé (site, VIT-02 ; GitHub en attendant) |
 | Étude : essai en local de Frappe Education (décision du chef du 15 nov.) | `etude/frappe-essai-local` | essai fait en local le 16 nov. ; suite hors du dépôt, à traiter par le chef |
-| QUA-08 : `SECURITY.md` (hors chantier, accord du chef le 16 nov.) | `doc/qua-08-security`, empilée sur #186 | plan validé le 16 nov., `SECURITY.md` écrit ; à pousser après la fusion de #186 ; le chef ouvre ensuite le signalement privé dans les réglages |
+| QUA-08 : `SECURITY.md` (hors chantier, accord du chef le 16 nov.) | #188 (empilée sur #186) | plan validé le 16 nov., `SECURITY.md` écrit ; PR ouverte ; signalement privé du dépôt ouvert (API : `enabled: true`, 16 nov.) ; conflit de `suivi.md` avec `main` résolu le 16 nov. ; à fusionner après #186 |
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | **fusionnée le 15 nov.** |
 
