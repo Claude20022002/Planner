@@ -59,7 +59,11 @@ Hors du dépôt : la note privée de l'essai (`..\travaux-planner\prive\frappe-e
 | 2 | Plan de QUA-09 hors chantier ? | oui | réglé (chef) |
 | 3 | Fichier, langue, périmètre, contrôle automatique | voir le plan, § 3, questions 1 à 6 | réglé (chef) |
 | 4 | Portée de QUA-10 | destinations implicites et contenu du push | réglé (chef) |
-| 5 | Noms de domaine réels dans `deploy/vps/` | proposition : une tâche QUA ou EXP pour les remplacer par une variable, et étendre `verifier-neutre` à `deploy/` | en attente (chef) |
+| 5 | Noms de domaine réels dans `deploy/vps/` | proposition : une tâche QUA ou EXP pour les remplacer par une variable, et étendre `verifier-neutre` à `deploy/` | réglé (chef, session suivante du 16 nov.) : fonction **QUA-11** |
+
+## Suite, dans une session suivante du 16 nov.
+
+Sur cette branche, l'état seulement : `49b25f3` (QUA-11 inscrite ; QUA-10 : plan en cours) et `4129b9f` (réponses du plan de QUA-10 ; QUA-12 et MOB-08 inscrites), puis le commit de fin de session (QUA-10 : plan validé, à coder). Le plan de QUA-10 est sur `feat/qua-10-envois-explicites`. Fiche de cette session : `docs/sessions/2026-11-16-feat-qua-10-envois-explicites.md`, sur cette autre branche.
 
 ## État laissé
 
