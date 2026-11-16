@@ -58,14 +58,15 @@ Lu dans le code le 16 nov. 2026, sur `main` (`bd934eb`).
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | IA « anthropic » : choisir `IA_FOURNISSEUR=anthropic` désigne déjà la destination. Garde-t-on son adresse par défaut ? | Oui : le réglage nomme le fournisseur, l'envoi n'est pas implicite. Seule la famille « compatible OpenAI » (qui regroupe DeepSeek, Mistral, OpenAI, Groq…) exige `IA_URL`, et perd aussi son modèle par défaut `deepseek-chat` | | oui |
-| 2 | Push : contenu réduit par défaut, ou push éteint tant que l'école ne l'a pas activé ? | **Contenu réduit par défaut.** Le push garde son rôle (prévenir d'un report), sans rien dire à Expo. L'éteindre priverait les élèves des alertes tant que personne n'y pense | | oui |
-| 3 | Qui choisit le texte complet, et où ? | Un réglage de l'installation, `PUSH_CONTENU=complet` (défaut : `generique`), sans migration. Une seule école par installation aujourd'hui : l'école le demande, l'exploitant le règle. Un réglage dans le panneau de l'école viendra avec l'administration (ADM), s'il est demandé | | oui |
-| 4 | Quel texte générique ? | Titre : le nom du produit (`nomProduit()`, par exemple « Planner ») ; texte : « Nouvelle alerte. Ouvrez l'application pour la lire. » Le lien interne reste (`/annonces/12`, `/gestion/imprevus`) : il ne contient qu'un numéro et le nom d'un écran | | oui |
-| 5 | Courriel mal réglé (compte sans `SMTP_HOST`) : silence comme « non configuré », ou échec ? | **Échec** : `sendEmail` lève une erreur et compte l'échec (`noterEchecCourriel`, ME-21), comme un envoi qui ne passe pas. L'appelant le sait, la supervision aussi. Le contenu du courriel n'est **pas** écrit dans le journal (il peut contenir un lien secret) | | oui |
-| 6 | `backend/.env.example` : vider `IA_URL`, `IA_MODELE` et `SMTP_HOST` ? | Oui : laissés vides, avec en commentaire des exemples d'adresses. Copier le modèle ne doit choisir aucun fournisseur | | non |
-| 7 | pdf.js chargé depuis cdnjs : dans QUA-10 ? | **Non.** Le servir depuis l'application change l'application mobile (nouvelle version à publier) ; c'est une fonction MOB à part, à inscrire si vous le voulez. La liste des envois le dit déjà | | non |
-| 8 | Avertissement au démarrage : seulement les réglages incomplets, ou un résumé de tous les envois actifs ? | Un résumé court : une ligne par envoi (« IA : DeepSeek », « courriel : désactivé », « push : texte générique »), plus une ligne d'avertissement par réglage incomplet. L'exploitant voit d'un coup d'œil ce qui sort | | non |
+| 1 | IA « anthropic » : choisir `IA_FOURNISSEUR=anthropic` désigne déjà la destination. Garde-t-on son adresse par défaut ? | Oui : le réglage nomme le fournisseur, l'envoi n'est pas implicite. Seule la famille « compatible OpenAI » (qui regroupe DeepSeek, Mistral, OpenAI, Groq…) exige `IA_URL`, et perd aussi son modèle par défaut `deepseek-chat` | retenu (chef, 16 nov.) | réglé |
+| 2 | Push : contenu réduit par défaut, ou push éteint tant que l'école ne l'a pas activé ? | **Contenu réduit par défaut.** Le push garde son rôle (prévenir d'un report), sans rien dire à Expo. L'éteindre priverait les élèves des alertes tant que personne n'y pense | retenu (chef, 16 nov.) | réglé |
+| 3 | Qui choisit le texte complet, et où ? | Un réglage de l'installation, `PUSH_CONTENU=complet` (défaut : `generique`), sans migration. Une seule école par installation aujourd'hui : l'école le demande, l'exploitant le règle. Un réglage dans le panneau de l'école viendra avec l'administration (ADM), s'il est demandé | retenu (chef, 16 nov.) | réglé |
+| 4 | Quel texte générique ? | Titre : le nom du produit (`nomProduit()`, par exemple « Planner ») ; texte : « Nouvelle alerte. Ouvrez l'application pour la lire. » Le lien interne reste (`/annonces/12`, `/gestion/imprevus`) : il ne contient qu'un numéro et le nom d'un écran | retenu (chef, 16 nov.) | réglé |
+| 5 | Courriel mal réglé (compte sans `SMTP_HOST`) : silence comme « non configuré », ou échec ? | **Échec** : `sendEmail` lève une erreur et compte l'échec (`noterEchecCourriel`, ME-21), comme un envoi qui ne passe pas. L'appelant le sait, la supervision aussi. Le contenu du courriel n'est **pas** écrit dans le journal (il peut contenir un lien secret) | retenu (chef, 16 nov.) | réglé |
+| 6 | `backend/.env.example` : vider `IA_URL`, `IA_MODELE` et `SMTP_HOST` ? | Oui : laissés vides, avec en commentaire des exemples d'adresses. Copier le modèle ne doit choisir aucun fournisseur | retenu (chef, 16 nov.) | réglé |
+| 7 | pdf.js chargé depuis cdnjs : dans QUA-10 ? | **Non.** Le servir depuis l'application change l'application mobile (nouvelle version à publier) ; c'est une fonction MOB à part, à inscrire si vous le voulez. La liste des envois le dit déjà | retenu (chef, 16 nov.) : fonction **MOB-08** inscrite | réglé |
+| 8 | Avertissement au démarrage : seulement les réglages incomplets, ou un résumé de tous les envois actifs ? | Un résumé court : une ligne par envoi (« IA : DeepSeek », « courriel : désactivé », « push : texte générique »), plus une ligne d'avertissement par réglage incomplet. L'exploitant voit d'un coup d'œil ce qui sort | retenu (chef, 16 nov.) | réglé |
+| 9 | Courriel non configuré : tout le courriel est écrit dans le journal, liens secrets compris (§ 11). Dans QUA-10 ? | Non : ce n'est pas un envoi chez un tiers. Une fonction QUA à part | retenu (chef, 16 nov.) : fonction **QUA-12** inscrite | réglé |
 
 ## 4. Solution
 
@@ -158,8 +159,8 @@ Aucune. Les réglages sont des variables d'environnement.
 
 ## 11. Hors périmètre
 
-- **pdf.js** servi depuis l'application (question 7) : fonction MOB à part.
-- **Courriel « absent »** : aujourd'hui, sans compte réglé, `sendEmail` écrit le courriel entier dans le journal (`sendEmail.js:84-88`), liens secrets d'invitation et de réinitialisation compris. Ce n'est pas un envoi chez un tiers, mais un secret dans les journaux. Constat à traiter à part (QUA ou EXP), sur décision du chef.
+- **pdf.js** servi depuis l'application (question 7) : **MOB-08**.
+- **Courriel « absent »** : aujourd'hui, sans compte réglé, `sendEmail` écrit le courriel entier dans le journal (`sendEmail.js:84-88`), liens secrets d'invitation et de réinitialisation compris. Ce n'est pas un envoi chez un tiers, mais un secret dans les journaux : **QUA-12** (question 9).
 - `EXPO_ACCESS_TOKEN` (sécurité renforcée d'Expo, `push.js:9-10`) : inchangé.
 - Le réglage du push dans le panneau de l'école (question 3).
 - Les forks de ClassQuiz et de StudyLib (non relus, voir QUA-09).
