@@ -18,17 +18,17 @@ Reprise de l'étude des failles de cinq ERP scolaires (PR #186) et de l'essai en
 
 ## Fait
 
-Sur `etude/failles-erp-scolaires` (PR #186), trois commits non poussés :
+Sur `etude/failles-erp-scolaires` (PR #186), quatre commits non poussés (le quatrième, `fa65033`, renomme la note privée dans les fiches) :
 - `0656ded` : document 09, § 5. Le canal de signalement de Frappe est corrigé. Leur `SECURITY.md` (dans `frappe/frappe`) demande un courriel. Le signalement privé de GitHub est fermé sur `frappe/education` et sur `frappe/frappe`, et l'avis `enroll_student` n'est pas arrivé par lui. Vérifié par l'API de GitHub et par frappe.io/security le 16 nov. La version du 15 nov. disait le contraire.
 - `0812a4d` : les mentions de l'essai chez Frappe sont rendues neutres (décision du chef du 16 nov.), sans sujet ni branche essayés. Fichiers touchés : document 09, `decisions.md`, `suivi.md`, fiche du 15 nov. L'historique de Git garde l'ancienne version, déjà poussée.
 - `e8b9619` : décision du 16 nov. sur le canal des failles de Planner, dans `decisions.md`, et critère de VIT-02 (catégorie « faille de sécurité » traitée en privé).
 
 Sur `etude/frappe-essai-local`, un commit non poussé :
-- `cf2b0a0` : sujet retiré de la fiche du 16 nov.
+- `cf2b0a0` et `e26fb25` : sujet retiré de la fiche du 16 nov., nom de la note privée changé.
 
 Sur `doc/qua-08-security`, branche **empilée sur `etude/failles-erp-scolaires`** (les lignes QUA-08 n'existent que dans #186) :
-- `95fc78a` : plan de QUA-08, validé ;
-- `2df707a` : `SECURITY.md`, une ligne dans le `README.md`, le module QUA et `suivi.md` ;
+- `090ed0c` : plan de QUA-08, validé ;
+- `888b853` : `SECURITY.md`, une ligne dans le `README.md`, le module QUA et `suivi.md` ;
 - la fiche que vous lisez.
 
 Hors du dépôt, dans `..\travaux-planner\prive\` :
