@@ -3,13 +3,13 @@
 | | |
 |---|---|
 | Module | UIX, suite du style unifié UIX-06 |
-| Identifiant | UIX-06b proposé, à confirmer avec le chef et le coordinateur |
+| Identifiant | UIX-06b confirmé par le chef le 16 novembre 2026 |
 | Branche | feat/uix-06b-referentiel |
 | Dossier | ..\travaux-planner\uix-06b-referentiel |
 | Base | origin/main, 11329211, fusion de #185 |
 | Rédigé par | Codex, le 16 novembre 2026 |
-| **Validé** | **En attente du chef** : la préparation est demandée, ce plan et son exception d’implémentation ne sont pas validés |
-| Chantier | UIX fermé ; exception UIX-06a terminée et non étendue ; aucun quatrième chantier ouvert |
+| **Validé** | **Validé par Claude20022002 le 16 novembre 2026** : réponse « J’autorise » aux trois propositions et au plan |
+| Chantier | Exception UIX-06b limitée à ce lot autorisée par le chef ; aucun quatrième chantier ouvert |
 
 ## 1. Objet et critère de terminé
 
@@ -40,9 +40,9 @@ Réutilisation du pilote : ThemeGestion, MarquePlanner et jetonsGestion ; entêt
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | Confirmer le lot UIX-06b et son exception hors chantier ? | Oui, limitée à cette livraison ; ne pas ouvrir un quatrième chantier ni étendre le lot suivant | En attente | implémentation |
-| 2 | Quelles pages et quelles fonctions reprendre ? | Les quatre écrans du § 2, avec leurs rôles, vocabulaire, champs, filtres et actions actuels ; aucune nouvelle fonction métier | En attente | périmètre |
-| 3 | Comment conserver la structure sur téléphone ? | Fiches compactes et détails dépliables : parent explicite pour les groupes, composantes dans leur module, sélection et actions d’équipe accessibles pour les enseignements ; aucune information simplement masquée | En attente | conception responsive |
+| 1 | Confirmer le lot UIX-06b et son exception hors chantier ? | Oui, limitée à cette livraison ; ne pas ouvrir un quatrième chantier ni étendre le lot suivant | Oui, chef le 16 novembre | implémentation |
+| 2 | Quelles pages et quelles fonctions reprendre ? | Les quatre écrans du § 2, avec leurs rôles, vocabulaire, champs, filtres et actions actuels ; aucune nouvelle fonction métier | Oui, chef le 16 novembre | périmètre |
+| 3 | Comment conserver la structure sur téléphone ? | Fiches compactes et détails dépliables : parent explicite pour les groupes, composantes dans leur module, sélection et actions d’équipe accessibles pour les enseignements ; aucune information simplement masquée | Oui, chef le 16 novembre | conception responsive |
 
 Le plan réutilise la direction déjà approuvée du pilote : Inter pour l’interface, ardoise sans couleur d’école, marque d’école prioritaire, SVG mosaïque intact, clair/sombre. Il ne rouvre pas ce choix. Le découplage visuel de UIX-01 est proposé pour ce seul lot, sans migration, assistant ou modification des préférences persistées.
 
@@ -163,3 +163,7 @@ Retour arrière par réversion des seuls commits UIX-06b, sans restauration de b
 Salles, campus, créneaux, calendrier, planning/solveur, backend, migrations, assistant UIX-01, vocabulaire scolaire UIX-02, notes/frais/familles, mobile natif, serveur et publication. Aucun nouveau module ni nouvelle dépendance.
 
 Aucune fiche UIX-06b ni message dédié trouvé au début de la préparation. PR #187 : dates/PDF/shared ; PR #183 : validation moteur/backend ; aucun chevauchement direct de leurs fichiers produit avec les quatre écrans proposés au contrôle. suivi.md est partagé : modifier seulement les lignes UIX. Le coordinateur reçoit la branche et ce périmètre ; une confirmation reste nécessaire avant implémentation. La préparation ne crée pas de mission ni d’exception à sa place.
+
+## 12. Validation du chef
+
+Le 16 novembre, après présentation du plan et des trois propositions, le chef répond « J’autorise ». Identifiant UIX-06b, exception limitée, quatre écrans à fonctions et droits constants, fiches et détails téléphone sont validés. L’accord est committé avant code. Le coordinateur reçoit la notification et le périmètre ; aucune nouvelle consigne dédiée en entrée au contrôle.

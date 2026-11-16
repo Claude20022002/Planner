@@ -258,3 +258,5 @@ Demande du chef : poursuivre avec la conception du référentiel pédagogique ap
 Proposition : Filières, Groupes, Modules/maquette et Enseignements ; conserver les fonctions, droits et API ; ordinateur/téléphone, FR/EN, clair/sombre, hiérarchies et composantes lisibles. Trois questions de validation dans le plan. Aucune exception nouvelle accordée, aucun chantier ouvert, aucun code produit. Le coordinateur doit confirmer l’identifiant et les collisions avant l’implémentation. Sa table des missions n’est pas modifiée.
 
 La clôture documentaire 7dadb412 de UIX-06a reste locale dans son dossier d’origine ; la présente conception actualise uniquement les états UIX nécessaires à partir des faits vérifiés.
+
+Validation UIX-06b le 16 novembre : plan et trois propositions autorisés par le chef (« J’autorise »). Implémentation en cours sur feat/uix-06b-referentiel ; accord committé avant code.

@@ -158,3 +158,7 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 - Interface sobre clair/sombre, Inter ; encre ardoise sans couleurs d’école, bleu nuit pour la marque ; identité d’école et SVG approuvés conservés.
 
 [Plan validé](../conception/interface/uix-06a-interface.md). Aucun backend, serveur, push ou fusion autorisé à l’agent.
+
+## Décision du chef du 16 novembre : UIX-06b
+
+Source : conversation Codex, « J’autorise » au plan et aux trois propositions. Exception limitée à UIX-06b sans quatrième chantier ; reprise visuelle de Filières, Groupes, Modules et Enseignements, à fonctions, droits et API constants ; fiches et détails dépliables sur téléphone, hiérarchies/actions conservées. Plan : docs/conception/interface/uix-06b-referentiel.md. Aucun backend, migration ou serveur autorisé.
