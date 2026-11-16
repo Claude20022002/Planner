@@ -11,7 +11,7 @@
 
 ## Objectif de la session
 
-Reprise de l'étude des failles de cinq ERP scolaires (PR #186). Le chef a choisi de faire, dans cette session, l'essai en local d'une branche non publiée de Frappe Education. L'essai porte sur le contrôle d'accès aux fiches d'élèves, avant un éventuel signalement privé.
+Reprise de l'étude des failles de cinq ERP scolaires (PR #186). Le chef a choisi de faire, dans cette session, l'essai en local de Frappe Education. Son sujet n'est pas écrit dans le dépôt avant la réponse de Frappe (décision du chef du 16 nov.).
 
 ## Plan
 
@@ -28,7 +28,7 @@ Pas de plan de conception : étude sans code de Planner. La marche à suivre a �
 - Sur cette branche : cette fiche.
 - Hors du dépôt, dans `..\travaux-planner\prive\` :
   - le résultat de l'essai, ajouté à `frappe-education-develop.md` ;
-  - le brouillon du signalement, `frappe-signalement-brouillon.md` ;
+  - le brouillon de la suite, dans le même dossier ;
   - les fichiers de l'essai, dans `frappe-essai\`.
 
 ## Vérifié
@@ -46,7 +46,7 @@ Pas de plan de conception : étude sans code de Planner. La marche à suivre a �
 | 2 | Comment installer ? | Docker jetable | réglé (chef) |
 | 3 | Délai promis par `SECURITY.md` (QUA-08) ? | accusé de réception sous 7 jours, correctif ou avis sous 90 jours au plus | réglé (chef) ; inscrit dans `ae0f52c` |
 | 4 | Que mettre dans le dépôt public avant la réponse de Frappe ? | une ligne neutre et cette fiche | réglé (chef) |
-| 5 | Envoyer le signalement privé à Frappe, d'après le brouillon de `..\travaux-planner\prive\` ? | à lire par le chef | en attente (chef) |
+| 5 | Suite de l'essai, d'après `..\travaux-planner\prive\` ? | à lire par le chef | en attente (chef) |
 
 ## État laissé
 
@@ -55,7 +55,7 @@ Pas de plan de conception : étude sans code de Planner. La marche à suivre a �
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef lit la note privée et le brouillon dans `..\travaux-planner\prive\`. S'il est d'accord, il envoie le signalement par le canal privé du dépôt de Frappe Education.
+1. Le chef lit la note privée et le brouillon dans `..\travaux-planner\prive\`. S'il est d'accord, il donne la suite décrite dans la note privée.
 2. Le chef pousse `etude/failles-erp-scolaires` (deux commits de plus), puis fusionne la PR #186.
 3. Le chef pousse cette branche s'il le souhaite. Elle ne contient que cette fiche.
 4. Après la réponse de Frappe, ou à l'échéance convenue avec eux : décider ce qui peut entrer dans le document 09 (§ 2.2 et § 6).
@@ -80,8 +80,8 @@ docs/sessions/2026-11-16-etude-frappe-essai-local.md, et, hors du dépôt,
 ..\travaux-planner\prive\frappe-education-develop.md.
 Fait : document 09 ; décisions du 15 nov. inscrites (EP-13, PLA-04, QUA-08 avec son délai
 de 7 j et 90 j, QUA-09, MOB, ETA-02) ; essai en local de Frappe Education fait le 16 nov.,
-résultat et brouillon de signalement hors du dépôt.
-Reste : envoi du signalement privé par le chef ; fusion de #186 ; rien de public sur
+résultat et suite hors du dépôt.
+Reste : suite de l'essai par le chef (note privée) ; fusion de #186 ; rien de public sur
 Frappe avant leur réponse ; ensuite QUA-08, QUA-09 et les points du § 6.
 Règles : aucune affirmation sans source ni niveau de preuve ; ne jamais sonder une
 installation de tiers ; pas de code hors d'un plan validé ; questions avant toute
