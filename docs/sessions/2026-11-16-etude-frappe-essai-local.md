@@ -27,7 +27,7 @@ Pas de plan de conception : étude sans code de Planner. La marche à suivre a �
   - `208cad1` : ligne de l'essai dans `suivi.md`.
 - Sur cette branche : cette fiche.
 - Hors du dépôt, dans `..\travaux-planner\prive\` :
-  - le résultat de l'essai, ajouté à `frappe-education-develop.md` ;
+  - le résultat de l'essai, ajouté à `frappe-essai-note.md` ;
   - le brouillon de la suite, dans le même dossier ;
   - les fichiers de l'essai, dans `frappe-essai\`.
 
@@ -77,7 +77,7 @@ et etude/frappe-essai-local (dossier ..\travaux-planner\frappe-essai-local, une 
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 docs/etude-marche/09-failles-erp-scolaires.md, la fiche
 docs/sessions/2026-11-16-etude-frappe-essai-local.md, et, hors du dépôt,
-..\travaux-planner\prive\frappe-education-develop.md.
+..\travaux-planner\prive\frappe-essai-note.md.
 Fait : document 09 ; décisions du 15 nov. inscrites (EP-13, PLA-04, QUA-08 avec son délai
 de 7 j et 90 j, QUA-09, MOB, ETA-02) ; essai en local de Frappe Education fait le 16 nov.,
 résultat et suite hors du dépôt.
