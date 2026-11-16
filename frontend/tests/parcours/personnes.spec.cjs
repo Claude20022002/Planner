@@ -50,6 +50,7 @@ test('connexion : anglais, thème et clavier restent disponibles', async ({ page
 
 
 test('Comptes : une lecture réseau échouée propose de réessayer', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
   const d = lireDonnees();
   await seConnecter(page, { email: d.admin.email, motDePasse: d.motDePasse, role: 'admin' });
   const motif = '**/api/users?*';
@@ -57,6 +58,21 @@ test('Comptes : une lecture réseau échouée propose de réessayer', async ({ p
   await page.goto('/gestion/utilisateurs');
   await expect(page.getByRole('button', { name: 'Réessayer', exact: true })).toBeVisible();
   await page.unroute(motif);
+  // Le compte connecté peut être sur une autre page : vérifier la réponse réellement rechargée.
+  const lecture = page.waitForResponse((reponse) => {
+    const url = new URL(reponse.url());
+    return reponse.request().method() === 'GET' && url.pathname === '/api/users'
+      && url.searchParams.get('page') === '1' && url.searchParams.get('limit') === '10';
+  });
   await page.getByRole('button', { name: 'Réessayer', exact: true }).click();
-  await expect(page.getByRole('row').filter({ hasText: d.admin.email })).toBeVisible();
+  const reponse = await lecture;
+  expect(reponse.ok()).toBeTruthy();
+  const { data: comptes } = await reponse.json();
+  expect(comptes.length).toBeGreaterThan(0);
+  await expect(page.getByRole('button', { name: 'Réessayer', exact: true })).toBeHidden();
+  const tableau = page.getByRole('table');
+  await expect(tableau.getByRole('row')).toHaveCount(comptes.length + 1);
+  for (const compte of comptes) {
+    await expect(tableau.getByRole('cell', { name: compte.email, exact: true })).toBeVisible();
+  }
 });
