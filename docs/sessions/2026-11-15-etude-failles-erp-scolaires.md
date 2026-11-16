@@ -31,7 +31,7 @@ Principaux constats, détaillés dans le document :
   - son « Generate Timetable » recopie une semaine saisie à la main ;
   - l'édition libre n'a que 12 modules.
 - **Frappe Education** :
-  - jusqu'au 15 octobre 2026, tout élève connecté pouvait lire les fiches de tous les autres. C'est corrigé en 15.2 et en 16 ; les autres branches restent à essayer en local (décision Q6) ;
+  - jusqu'au 15 octobre 2026, tout élève connecté pouvait lire les fiches de tous les autres. C'est corrigé en 15.2 et en 16 ;
   - un avis de sécurité porte sur `enroll_student` ;
   - un générateur d'emploi du temps est en PR (#495), avec un placement en partie au hasard ;
   - des changements cassent les mises à jour.
@@ -78,7 +78,7 @@ Principaux constats, détaillés dans le document :
 | 3 | Profondeur ? | avis, tickets et code, besoins non couverts, conséquences pour Planner | réglé (chef) |
 | 4 | Livrable ? | fichier 09, branche `etude/`, hors chantier, rien en ligne | réglé (chef) |
 | 5 | Inscrire « Planner n'envoie rien chez l'éditeur sans le dire » comme exigence produit (EP-13) ? | oui, dès l'étape 1, avec une liste publique des envois sortants (QUA-09) | réglé (chef) |
-| 6 | Que faire d'une faille supposée, lue dans le code d'une branche non publiée de Frappe Education ? | essai en local d'abord, puis signalement privé par le chef ; rien de public avant leur réponse | réglé (chef) |
+| 6 | Que faire d'une faille supposée chez un tiers ? | essai en local d'abord, puis signalement privé par le chef ; rien de public avant leur réponse | réglé (chef) |
 | 7 | Autres propositions du § 5 : tests de PLA-04, `SECURITY.md` (QUA), fiches de confidentialité de MOB, matricule de l'État dans ETA-02 | les quatre retenues | réglé (chef) |
 | 8 | Le rapport du chef « Failles des ERP scolaires » (`main`, e9e67769) et le 09 : que faire des deux ? | renvoi croisé, sans fusion | réglé (chef) |
 

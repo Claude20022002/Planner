@@ -75,7 +75,6 @@ Choix du chef (15 nov.) : un mélange de deux ERP libres (OpenEduCat, Frappe Edu
    - Jusqu'au 15 octobre 2026, **tout élève ou parent connecté pouvait lire la fiche de tous les autres élèves** : nom, date de naissance, e-mail, parents, frères et sœurs. Il suffisait de passer par l'API, les listes ou l'export.
    - La même PR remplace des requêtes SQL construites par concaténation, une porte ouverte à l'injection.
    - Le correctif est dans les branches `version-15.2` et `version-16`.
-   - L'état des autres branches reste à vérifier par un essai en local (§ 6, point 2). Décision du chef du 15 nov. : rien de plus n'est écrit ici avant que Frappe ait répondu.
 2. **Inscription d'élèves par n'importe quel compte** [DÉPÔT, avis GHSA-64v4-cmpc-f27c, août 2026, gravité moyenne]. L'API `enroll_student` ne vérifiait pas les droits : tout utilisateur connecté pouvait inscrire des candidats en attente et créer des fiches d'élèves.
 3. **Pas de générateur d'emploi du temps dans une version publiée** [CODE].
    - L'outil de planification recopie une semaine de créneaux saisis à la main.
@@ -241,14 +240,14 @@ Propositions, à trancher par le chef de projet. Les identifiants renvoient au p
 - `SECURITY.md` et signalement privé sur le dépôt (QUA-08) ;
 - fiches « confidentialité » de l'application relues avant toute publication (MOB) ;
 - ETA-02 identifie l'élève par le matricule de l'État ;
-- essai en local chez Frappe Education avant tout signalement, et rien de public avant leur réponse.
+- essai en local chez Frappe Education, suite hors du dépôt.
 
 Les autres lignes du tableau (argument, stratégie, questions pour VEN-02, secret par défaut pour EXP-08) restent des propositions.
 
 ## 6. À vérifier avant d'utiliser ce document dans un argumentaire
 
 1. **OpenEduCat** : installer l'édition libre (plan de la PR #176) et observer l'envoi quotidien (contenu réel, possibilité de le couper). Faire relire la question de la loi 09-08 par un juriste avant d'en parler à un client.
-2. **Frappe Education** : essayer **en local**, sans donnée réelle, le contrôle d'accès aux fiches d'élèves des branches non publiées ; si une faille se confirme, le chef la signale à Frappe par leur canal privé, **avant** toute mention publique (décision du chef du 15 nov.).
+2. **Frappe Education** : essai en local fait le 16 nov., sans donnée réelle (décision du chef du 15 nov.) ; suite hors du dépôt.
 3. **Fedena** : savoir si des écoles marocaines ou africaines utilisent encore la version 2.3 (recherche de terrain, VEN-02). Ne jamais sonder une installation qui n'est pas la nôtre.
 4. **PERIS SCHOOL** : demander un devis et une démonstration ; lire sa politique de confidentialité et son hébergement ; comprendre le lien entre « DATA 24 » et PERIS SOLUTIONS.
 5. **Studirium** : savoir s'il reprend le matricule national camerounais.
