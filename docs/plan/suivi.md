@@ -160,6 +160,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOB-05](modules/MOB-application.md) | Espace parents | 4 | L | à faire |  |
 | [MOB-06](modules/MOB-application.md) | Emploi du temps lisible hors ligne (EP-3) | 4 | M | à faire |  |
 | [MOB-07](modules/MOB-application.md) | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes… | libre | M | à faire |  |
+| [MOB-08](modules/MOB-application.md) | pdf.js servi par l'application, plus de chargement depuis cdnjs (EP-13) | libre | S | à faire (inscrite le 16 nov.) |  |
 | [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder |  |
 | [UIX-01a](modules/UIX-interface.md) | Accueil des applications et navigation web, exception autorisée par le chef le 15 nov. | libre | M | fait : #184 fusionnée, CI verte, 43 parcours | #184 |
 | [UIX-02](modules/UIX-interface.md) | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et… | 3 | M | à faire |  |
@@ -234,6 +235,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QUA-09](modules/QUA-qualite-docs.md) | Liste publique des envois sortants (EP-13) | libre | S | en cours (hors chantier, accord du chef le 16 nov.) : liste écrite, à fusionner | `doc/qua-09-envois-sortants` |
 | [QUA-10](modules/QUA-qualite-docs.md) | Aucun envoi implicite chez un tiers : destinations par défaut, contenu du push (EP-13) | libre | S | plan en cours (hors chantier, accord du chef le 16 nov.) | `feat/qua-10-envois-explicites` |
 | [QUA-11](modules/QUA-qualite-docs.md) | Aucune adresse réelle dans `deploy/`, `verifier-neutre` étendu à `deploy/` | libre | S | à faire (inscrite le 16 nov.) |  |
+| [QUA-12](modules/QUA-qualite-docs.md) | Aucun secret dans les journaux (courriel non configuré écrit en entier) | libre | S | à faire (inscrite le 16 nov.) |  |
 
 ## Conception UIX-06a proposée le 15 novembre
 
