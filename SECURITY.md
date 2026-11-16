@@ -36,3 +36,7 @@ Nous vous citons dans l'avis publié si vous le souhaitez.
 - les étapes pour la reproduire ;
 - le commit ou le paquet de mise à jour concerné ;
 - si vous l'avez, une piste de correction.
+
+## Ce que Planner envoie au-dehors
+
+La liste de tout ce que Planner envoie hors de son installation (destinataire, données, raison) est dans [docs/envois-sortants.md](docs/envois-sortants.md). Un envoi qui n'y figure pas est une faille : signalez-le comme ci-dessus.
