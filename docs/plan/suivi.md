@@ -39,7 +39,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | **fusionnée le 15 nov.** |
 
-Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, PR #184 ; CI du 15 nov. : 5 contrôles verts, 3 parcours en échec (correctifs de tests locaux, à pousser). Aucun quatrième chantier ouvert.
+Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, PR #184 fusionnée le 15 nov. (`16b542a1`) ; six contrôles verts, 43 parcours réussis. Aucun quatrième chantier ouvert.
 
 ## Missions en cours
 
@@ -157,12 +157,13 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOB-06](modules/MOB-application.md) | Emploi du temps lisible hors ligne (EP-3) | 4 | M | à faire |  |
 | [MOB-07](modules/MOB-application.md) | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes… | libre | M | à faire |  |
 | [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder |  |
-| [UIX-01a](modules/UIX-interface.md) | Accueil des applications et navigation web, exception autorisée par le chef le 15 nov. | libre | M | PR ouverte : CI rouge, trois parcours corrigés localement | #184 · `feat/uix-01a-navigation` |
+| [UIX-01a](modules/UIX-interface.md) | Accueil des applications et navigation web, exception autorisée par le chef le 15 nov. | libre | M | fait : #184 fusionnée, CI verte, 43 parcours | #184 |
 | [UIX-02](modules/UIX-interface.md) | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et… | 3 | M | à faire |  |
 | [UIX-03](modules/UIX-interface.md) | Accessibilité AA | libre | M | en partie |  |
 | [UIX-04](modules/UIX-interface.md) | Arabe complet | 4 | XL | à faire |  |
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
-| [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | à faire |  |
+| [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
+| [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte : CI parcours rouge, correction du test de reprise réseau committée localement | #185 · feat/uix-06a-interface |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
@@ -225,3 +226,25 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QUA-05](modules/QUA-qualite-docs.md) | Supprimer les branches et les dossiers de travail morts, après vérification de leur… | libre | S | à faire |  |
 | [QUA-06](modules/QUA-qualite-docs.md) | `docs/users.xlsx` | 0 | S | fait (personnes fictives, rien à réécrire) |  |
 | [QUA-07](modules/QUA-qualite-docs.md) | Protéger `main` | 0 | S | fait : les 6 contrôles de la CI sont exigés (contournable seulement par `gh pr merge --admin`) |  |
+
+## Conception UIX-06a proposée le 15 novembre
+
+Demande directe du chef : application dans l'esprit d'OpenEduCat, avec le dernier logo Planner. Branche `feat/uix-06a-interface`, dossier `..\travaux-planner\uix-06a-interface`. [Conception](../conception/interface/uix-06a-interface.md) rédigée, **à valider** : périmètre pilote Personnes, direction visuelle, découpage de la dépendance UIX-01 et nouvelle exception hors chantier. Aucun code produit écrit et aucun quatrième chantier ouvert.
+
+Reprise du 15 novembre : publication vérifiée, PR **#185 ouverte en brouillon**, tête `5ce34dd9` au contrôle ; aucun commentaire ni validation. Questions 1 à 4 toujours en attente du chef ; question 4 précisée : encre ardoise pour le thème neutre, bleu nuit réservé à la marque. Aucun code produit. Voir la [fiche de reprise](../sessions/2026-11-15-feat-uix-06a-interface-2.md).
+
+Validation du chef le 15 novembre : plan et quatre propositions UIX-06a approuvés (« Valider »). Pilote en cours sur feat/uix-06a-interface ; exception limitée sans quatrième chantier. Validation commitée avant code.
+
+
+## Livraison locale UIX-06a du 15 novembre
+
+Plan et quatre propositions validés explicitement par le chef (« Valider »), validation commitée avant code dans f4b730fb. Pilote implémenté sur feat/uix-06a-interface : marque, thème local compatible, connexion/accueil/navigation et trois pages Personnes. Aucun backend, migration, serveur ou push. Les autres domaines restent hors périmètre.
+
+Vérifications : 65 tests unitaires réussis, build réussi, neutralité conforme, lint sans erreur (avertissements historiques hors pilote). Contrôle Chromium/axe-core de composants isolés et de la vraie connexion compilée effectué sans serveur ; les parcours réels et la CI restent à exécuter. Six nouveaux parcours découverts, 49 au total, non exécutés par l’agent. Le tableau « Missions en cours » reste tenu par le coordinateur.
+
+
+## Correction de CI UIX-06a du 16 novembre
+
+PR #185 publiée à df002a8d et sortie du brouillon par le coordinateur. CI 43775905844 : cinq contrôles réussis ; parcours : 47 réussis, un échoué, un non exécuté. Le coordinateur juge le fond prêt et demande la correction.
+
+Les deux traces montrent une reprise réussie : dix comptes reçus et affichés sur 31. Le test attendait à tort le compte connecté sur la première page, alors que l’API trie du plus récent au plus ancien. Correctif limité à personnes.spec.cjs : attendre la vraie réponse et vérifier son contenu affiché. Syntaxe et collecte des 49 parcours conformes ; nouvelle CI attendue après push du chef. Fiche : docs/sessions/2026-11-16-feat-uix-06a-interface.md.
