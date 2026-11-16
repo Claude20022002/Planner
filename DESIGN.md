@@ -1,6 +1,6 @@
 ---
-name: HESTIM Planner
-description: Planification des cours et réservation des salles de HESTIM, lue comme un panneau des départs de gare.
+name: Planner
+description: Pilote de gestion web sobre et thème historique panneau conservé pour les autres surfaces.
 colors:
   hestim-navy: "#001861"
   hestim-navy-deep: "#000E3D"
@@ -140,7 +140,27 @@ components:
     width: "248px"
 ---
 
-# Design System: HESTIM Planner
+# Design System: Planner
+
+## Pilote web UIX-06a
+
+Plan et quatre propositions validés par le chef le 15 novembre 2026. La connexion et les pages de récupération, l’accueil des applications et les pages Comptes, Enseignants et Étudiants utilisent la composition du pilote. Les routes, permissions et API restent celles de l’application existante.
+
+- Inter auto-hébergée pour titres, champs, boutons et données ; casse normale, chiffres tabulaires.
+- Surfaces claires ou sombres, filets et commandes sobres. Sans couleurs d’école : encre ardoise. La couleur principale de l’école est déclinée pour garder le contraste en mode sombre, sans modifier son réglage.
+- Jetons du pilote dans frontend/src/design-system/jetonsGestion.js ; adaptation MUI locale dans ThemeGestion.jsx. Le choix global de famille et le thème historique ne sont pas remplacés.
+- Actions principales en tête ; recherche nommée, filtres et nombre de résultats ensemble. Les recherches Comptes et Étudiants portent sur la page chargée, ce que l’interface indique.
+- Tableau sur ordinateur, liste de fiches sous 700 px ; tous les champs et toutes les actions restent disponibles. Le tri des comptes reste accessible au téléphone.
+- États distincts : chargement, échec avec nouvelle tentative, liste vide, aucun résultat de filtre. Cibles des boutons de 44 px et focus bleu au clavier.
+- Dernier logo mosaïque intact ; sans école, logo complet (120 px minimum). Chez une école, logo ou nom en Barlow Condensed 700, filet puis mot PLANNER seul, capitales à 40 %. Plaque blanche sous le logo d’école en mode sombre. Aucun deuxième symbole.
+- Le favicon générique change uniquement sans école dans les surfaces du pilote. Les documents imprimés continuent à utiliser leur composant existant.
+
+Le socle UIX-01 complet, sa migration 0060 et l’assistant ne sont pas réalisés ici. La traduction arabe complète reste UIX-04 ; les nouvelles mises en page utilisent les propriétés logiques.
+
+## Thème historique hors pilote
+
+Les jetons YAML ci-dessus et les règles qui suivent décrivent le thème historique. Ils restent applicables aux écrans non repris, dont les tableaux de séances. Les règles du pilote priment uniquement sur ses surfaces.
+
 
 ## Overview
 

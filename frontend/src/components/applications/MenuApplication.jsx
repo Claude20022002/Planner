@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Apps, ArrowBack } from '@mui/icons-material';
 import { Box, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import LogoEcole from '../common/LogoEcole';
+import MarquePlanner from '../common/MarquePlanner';
 import PiedDuMenu from '../layouts/PiedDuMenu';
 import IconeApplication from './IconeApplication';
 
@@ -12,7 +12,7 @@ export default function MenuApplication({ application, sections, chemin, aller, 
   const groupes = application ? [{ items: application.rubriques }] : sections;
   return (
     <Box component="nav" aria-label={t('nav.menu')} sx={(theme) => ({ height: '100%', display: 'flex', flexDirection: 'column', bgcolor: 'background.paper', color: 'text.primary', fontFamily: 'Inter, system-ui, sans-serif', borderInlineEnd: '1px solid', borderColor: 'divider', '--nav-letter': theme.palette.text.primary, '--nav-letterDim': theme.palette.text.secondary, '--nav-letterSoft': theme.palette.text.secondary, '--nav-filet': theme.palette.divider, '--nav-bordBouton': theme.palette.divider, '--nav-boutonActif': theme.palette.action.selected })}>
-      <Box sx={{ px: 2.5, py: 3 }}><LogoEcole hauteur={26} /></Box>
+      <Box sx={{ px: 2.5, py: 3 }}><MarquePlanner hauteur={26} /></Box>
       <Button component={RouterLink} to="/applications" onClick={() => aller('/applications')} startIcon={<Apps />} sx={{ mx: 2, mb: 3, minHeight: 44, justifyContent: 'flex-start', fontFamily: 'inherit', textTransform: 'none' }}>{t('applications.retour')}</Button>
       {application && <Box sx={{ px: 2.5, mb: 2, display: 'flex', alignItems: 'center', gap: 1.25 }}>
         <IconeApplication nom={application.icone} />
