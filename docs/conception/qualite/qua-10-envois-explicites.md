@@ -5,7 +5,7 @@
 | Module | [QUA](../../plan/modules/QUA-qualite-docs.md) · hors chantier, accord du chef le 16 nov. 2026 (plan seulement) |
 | Branche | `feat/qua-10-envois-explicites` (part de `main`) |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-16 |
-| **Validé** | en attente |
+| **Validé** | par Claude20022002 le 2026-11-16 (code dans une autre session) |
 
 ## 1. Objet et critère de « terminé »
 
