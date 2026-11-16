@@ -55,7 +55,7 @@ Principaux constats, détaillés dans le document :
   - renvoi croisé avec le rapport du chef ;
   - deux faits du rapport du chef relus à la source et ajoutés : la page école de Madata qui exclut la vie scolaire, la discussion #1053 d'OpenEduCat sur les messages non traduisibles ;
   - § 4 et § 5 mis à jour avec les décisions.
-- Hors du dépôt : `..\travaux-planner\prive\frappe-education-develop.md`, le détail de la faille supposée et la marche à suivre pour l'essai.
+- Hors du dépôt : `..\travaux-planner\prive\frappe-essai-note.md`, le détail de la faille supposée et la marche à suivre pour l'essai.
 
 ## Vérifié
 
@@ -97,7 +97,7 @@ Principaux constats, détaillés dans le document :
 ## Reste à faire, dans l'ordre
 
 1. Le chef pousse la branche. Ensuite, il relit et fusionne la PR #186 (documents seulement).
-2. **Essai de Frappe Education**, dans une tâche `etude/` à part : marche à suivre dans `..\travaux-planner\prive\frappe-education-develop.md`, hors du dépôt. Rien de public avant la réponse de Frappe.
+2. **Essai de Frappe Education**, dans une tâche `etude/` à part : marche à suivre dans `..\travaux-planner\prive\frappe-essai-note.md`, hors du dépôt. Rien de public avant la réponse de Frappe.
 3. QUA-08 (`SECURITY.md`) et QUA-09 (liste des envois sortants), à prendre en « libre » ; le délai de réponse de `SECURITY.md` est une question pour le chef.
 4. Points à vérifier du § 6 du document : essai d'OpenEduCat (PR #176), devis de PERIS SCHOOL, questions pour les entretiens de VEN-02.
 5. Propositions du § 5 non tranchées : secret par défaut dans EXP-08 et PLA-03b, arguments pour MKT, stratégie pour VEN-02.
@@ -120,7 +120,7 @@ docs/etude-marche/09-failles-erp-scolaires.md et cette fiche
 Fait : le document 09 ; les questions 1 à 8 tranchées par le chef le 15 nov. et inscrites
 (decisions.md, EP-13, PLA-04, QUA-08, QUA-09, MOB, ETA-02, renvoi vers le rapport du chef).
 Reste : la PR #186 à fusionner par le chef ; l'essai en local de Frappe Education (tâche
-etude/ à part, détail hors du dépôt dans ..\travaux-planner\prive\frappe-education-develop.md,
+etude/ à part, détail hors du dépôt dans ..\travaux-planner\prive\frappe-essai-note.md,
 rien de public avant la réponse de Frappe) ; QUA-08 et QUA-09 ; les points du § 6.
 Règles : aucune affirmation sans source ni niveau de preuve ; ne jamais sonder une
 installation de tiers ; pas de code hors d'un plan validé ; questions avant toute
