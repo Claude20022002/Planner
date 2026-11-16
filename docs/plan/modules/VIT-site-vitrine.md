@@ -33,6 +33,7 @@
   - un formulaire envoyé crée une demande visible par l'équipe et un accusé de réception ;
   - les données recueillies sont listées dans la politique de confidentialité, relue par le juriste (loi 09-08) ;
   - aucune promesse au-delà de ce qui existe.
+  - une catégorie « faille de sécurité » est traitée **en privé** : elle n'est visible que du chef de projet, et l'accusé de réception rappelle les délais de `SECURITY.md` (7 jours, 90 jours au plus). Une fois en ligne, `SECURITY.md` renvoie à ce formulaire (décision du 16 nov.).
 - **VIT-04** : la page d'état lit la sonde de supervision. Elle ne lit aucune donnée d'école.
 
 ## À trancher avant VIT-02
