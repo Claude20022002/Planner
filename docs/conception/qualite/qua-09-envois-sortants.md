@@ -5,7 +5,7 @@
 | Module | [QUA](../../plan/modules/QUA-qualite-docs.md) · hors chantier, accord du chef le 16 nov. 2026 |
 | Branche | `doc/qua-09-envois-sortants` (empilée sur `doc/qua-08-security`, elle-même empilée sur #186) |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-16 |
-| **Validé** | par Claude20022002 le 2026-11-16 |
+| **Validé** | par Claude20022002 le 2026-11-16 ; § 2 et question 8 corrigés le même jour, **revalidés** par lui le 2026-11-16 |
 
 ## 1. Objet et critère de « terminé »
 
@@ -27,12 +27,12 @@ Lu dans le code le 16 nov. 2026, branche `doc/qua-08-security`. Aucune liste n'e
 
 **Depuis le serveur de Planner (`backend/`)**
 
-| Envoi | Fichier | Destinataire par défaut | Réglage |
-|---|---|---|---|
-| Génération de questions par l'IA (Studio quiz) | `services/ia/client.js:13-27`, appelé par `services/studio/iaGeneration.js` | `api.deepseek.com` (famille « openai-compatible ») ; `api.anthropic.com` si `IA_FOURNISSEUR=anthropic` | `IA_FOURNISSEUR`, `IA_URL`, `IA_CLE`, `IA_MODELE` |
-| Images, voix, transcription par l'IA (Studio) | `services/studio/iaFournisseurs.js:18-20` | `api.openai.com` | une adresse par nature, réglable |
-| Notifications push de l'application | `services/push.js:17`, contenu `:103-105` (titre ≤ 120, texte ≤ 240 caractères, lien) | service Expo, qui relaie à FCM et APNs | `PUSH_DISABLED=true` les coupe |
-| Courriels | `utils/sendEmail.js:17-31` | `smtp.gmail.com` si `SMTP_HOST` est vide ; Gmail si `EMAIL_SERVICE=gmail` | `SMTP_HOST`, `SMTP_PORT`, `EMAIL_*` |
+| Envoi | Fichier | Actif quand | Destinataire par défaut | Données qui partent |
+|---|---|---|---|---|
+| Questions générées par l'IA (quiz et Studio) | `services/ia/client.js:13-34`, appelé par `services/ia/quiz.js` et `services/studio/iaGeneration.js` | seulement si `IA_CLE` et un modèle sont réglés (`estConfigure`, `:32`) ; sinon erreur 503, rien ne part | `api.deepseek.com` ; `api.anthropic.com` si `IA_FOURNISSEUR=anthropic` ; `IA_URL` le change | sujet, texte du support déposé par l'enseignant, transcription d'un média, énoncés déjà présents (50 au plus), étiquettes du quiz (`iaGeneration.js:84-101,137-138`) |
+| Images, voix, transcription par l'IA (Studio) | `services/studio/iaFournisseurs.js:18-20,36-39,66-96` | seulement si clé, modèle et adresse sont réglés pour cette nature (`mediaConfigure`) | `api.openai.com` | consigne d'image ; texte à lire ; fichier audio ou vidéo de l'enseignant à transcrire |
+| Notifications push de l'application | `services/push.js:25,92-110`, déclenché par **chaque** notification créée (`models/definitions.js:620`) | **toujours**, dès qu'un téléphone a enregistré son jeton ; seul `PUSH_DISABLED=true` coupe | service Expo, qui relaie à FCM (Google) et APNs (Apple) | jeton du téléphone, titre (120 caractères) et texte (240) de la notification, lien. Les textes peuvent nommer une personne et donner un motif : absence d'un enseignant avec son motif (`planning/imprevus.js:90-100`), demande de changement de téléphone avec son motif (`presences/changementTelephone.js:55`), titres d'annonces, cours, salles |
+| Courriels | `utils/sendEmail.js:11-36,69-125` | seulement si `EMAIL_USER` ou `SMTP_USER` est réglé (`:83`) ; sinon le courriel est écrit dans le journal du serveur | `smtp.gmail.com` si `SMTP_HOST` est vide ; Gmail si `EMAIL_SERVICE=gmail` | adresse et nom du destinataire, liens secrets d'invitation et de réinitialisation du mot de passe (`services/comptes.js:13-23`, `controllers/authController.js:625-640`), corps des annonces et nom de leur auteur, emplois du temps, reports et annulations |
 
 Appels **internes** à l'installation, à écarter de la liste avec une phrase : solveur (`services/generation/timefold/solveurClient.js`, `http://solver:8080`), StudyLib (`services/cours/studylib.js`, `http://studylib:8080/api`), ClassQuiz (`services/quiz/clientClassQuiz.js`, `services/studio/mediasClassQuiz.js`, `QUIZ_API_INTERNE`).
 
@@ -41,8 +41,8 @@ Appels **internes** à l'installation, à écarter de la liste avec une phrase :
 | Envoi | Fichier | Destinataire |
 |---|---|---|
 | Jeton de notification du téléphone | `mobile/src/push.js:31-33` (`getExpoPushTokenAsync`) | Expo |
-| Lecteur de PDF de l'application : script pdf.js chargé à l'ouverture d'un document | `mobile/src/documents/Lecteur.jsx:15,35` | `cdnjs.cloudflare.com` (avec contrôle d'intégrité) ; le document lui-même ne part pas (à confirmer en écrivant la liste) |
-| Bouton « Google Agenda » de l'abonnement à l'emploi du temps | `frontend/src/components/agenda/AbonnementAgenda.jsx:26` | `calendar.google.com` reçoit l'adresse d'abonnement ; Google lit ensuite l'emploi du temps. Seulement si l'utilisateur clique |
+| Lecteur de PDF de l'application : script pdf.js chargé à l'ouverture d'un document | `mobile/src/documents/Lecteur.jsx:15,35` | `cdnjs.cloudflare.com` (avec contrôle d'intégrité), sur Android seulement ; le document reste sur le téléphone (`Lecteur.jsx:1-12,43-50`) |
+| Bouton « Google Agenda » de l'abonnement à l'emploi du temps | `frontend/src/components/agenda/AbonnementAgenda.jsx:11-12` | `calendar.google.com` reçoit l'**adresse secrète** du flux ICS personnel (`/api/agenda/<jeton>.ics`, lisible sans connexion, `backend/routes/agendaRoutes.js:11`) ; Google lit ensuite l'emploi du temps. Seulement si l'utilisateur clique |
 
 Aucune police ni script tiers dans `frontend/index.html` ni dans `frontend/src` (recherche de `fonts.googleapis`, `@import url`, adresses externes).
 
@@ -50,14 +50,16 @@ Aucune police ni script tiers dans `frontend/index.html` ni dans `frontend/src` 
 
 | Envoi | Fichier | Destinataire |
 |---|---|---|
-| Sauvegardes chiffrées (gpg à clé publique) | `sauvegarde-commun.sh:46-53`, `sauvegarder.sh` | destination rclone, Backblaze B2 aujourd'hui |
+| Sauvegardes chiffrées (gpg à clé publique) : bases de Planner, de la bibliothèque et du quiz, documents de la bibliothèque, images des quiz | `sauvegarde-commun.sh:46-53`, `sauvegarder.sh:5-14` | destination rclone, Backblaze B2 aujourd'hui |
 | Battement de la sonde après chaque sauvegarde | `sauvegarde-commun.sh:17-18,39-43` | adresse `BATTEMENT` du service de sonde (ME-21) ; rien si vide |
 
 **Ce qui n'envoie rien** : télémétrie coupée dans `docker-compose.yml` (Meilisearch `MEILI_NO_ANALYTICS: "true"`, lignes 329 et 448 ; `quiz-api` `TELEMETRY_ENABLED: "false"`, ligne 355), reprise par la surcharge `deploy/vps/docker-compose.vps.yml`. Sentry n'est qu'un commentaire. Les images arrivent par `docker save | docker load` : le serveur ne tire rien.
 
 **Non relu** : le code des forks de ClassQuiz et de StudyLib, et les images MinIO et Redis. Les certificats sont tenus par le Traefik de n8n, pas par Planner.
 
-**Ce qui gêne** (constats, pas corrigés dans QUA-09) : trois valeurs par défaut envoient chez un tiers sans réglage explicite. Le courriel part vers Gmail, le texte de l'IA vers DeepSeek et les médias vers OpenAI. La liste le dira tel quel.
+**Ce qui gêne** (constats, pas corrigés dans QUA-09 ; la liste les dit tels quels) :
+- **Destinations implicites** : l'IA et le courriel n'envoient rien sans clé ou compte réglé. Mais une fois la clé ou le compte réglé, la destination par défaut est DeepSeek (texte de l'IA), OpenAI (médias) ou `smtp.gmail.com` (courriel), si personne n'a donné d'adresse. *Corrigé le 16 nov. : la première version de ce plan disait à tort que ces envois partaient sans réglage.*
+- **Push actif sans réglage** : chaque notification part chez Expo, avec un texte qui peut nommer une personne et donner un motif d'absence.
 
 ## 3. Questions et réponses
 
@@ -67,7 +69,8 @@ Aucune police ni script tiers dans `frontend/index.html` ni dans `frontend/src` 
 | 2 | En quelle langue ? | Comme `SECURITY.md` : en français, avec en tête un court résumé en anglais | retenu (chef, 16 nov.) | réglé |
 | 3 | Quel périmètre ? | Le code de ce dépôt (serveur, site, mobile, solveur, exploitation) et les réglages de nos fichiers compose. Les forks de ClassQuiz et de StudyLib sont cités comme « non relus » ; leur relecture est une tâche à part | retenu (chef, 16 nov.) | réglé |
 | 4 | Les envois depuis l'appareil (jeton Expo, pdf.js, bouton Google Agenda) entrent-ils dans la liste ? | Oui, dans une section à part : ils partent de chez l'utilisateur, pas du serveur, mais ils sortent de Planner | retenu (chef, 16 nov., avec le périmètre) | réglé |
-| 5 | Les trois valeurs par défaut (Gmail, DeepSeek, OpenAI) | La liste les écrit telles quelles. Les changer est du code : une fonction à part, à inscrire (par exemple « aucun envoi sans réglage explicite »), hors de QUA-09 | retenu (chef, 16 nov.) : inscrite comme **QUA-10** | réglé |
+| 5 | Les trois valeurs par défaut (Gmail, DeepSeek, OpenAI) | La liste les écrit telles quelles. Les changer est du code : une fonction à part, à inscrire (par exemple « aucun envoi sans réglage explicite »), hors de QUA-09 | retenu (chef, 16 nov.) : inscrite comme **QUA-10** | réglé ; portée précisée par la question 8 |
+| 8 | Après correction du § 2 : que couvre QUA-10 ? | Deux points : (a) **aucune destination implicite** : une clé ou un compte sans adresse n'envoie rien, et le journal le dit ; (b) **push** : le contenu envoyé à Expo est réduit par défaut (titre générique, le détail s'ouvre dans l'application), ou le push devient à activer par l'école. Le choix entre les deux se fait dans le plan de QUA-10. La liste de QUA-09 décrit l'état d'aujourd'hui | retenu (chef, 16 nov.) : (a) et (b) | réglé |
 | 6 | Un contrôle automatique (script qui signale un nouvel appel externe absent de la liste) ? | Pas dans QUA-09 : la case du modèle de PR suffit pour une S. Le script peut devenir une fonction QUA à part | retenu (chef, 16 nov.) | réglé |
 | 7 | Qui valide ? | Le chef : le texte est public et sert l'argument de la loi 09-08 | le chef, qui a validé le plan le 16 nov. | réglé |
 
@@ -143,7 +146,7 @@ Pas de test automatique (documentation). Vérification à la main décrite au §
 
 ## 11. Hors périmètre
 
-- Changer les valeurs par défaut (Gmail, DeepSeek, OpenAI) : **QUA-10** (question 5). Héberger pdf.js dans l'application : à décider avec QUA-10.
+- Supprimer les destinations implicites (Gmail, DeepSeek, OpenAI) et réduire le contenu du push : **QUA-10** (questions 5 et 8). Héberger pdf.js dans l'application : à décider avec QUA-10.
 - Relire le code des forks de ClassQuiz et de StudyLib.
 - Le contrôle automatique (question 6).
 - La page publique du site (VIT) qui reprendrait la liste.
