@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowForward, NorthEast, Search } from '@mui/icons-material';
 import { Box, Button, InputAdornment, Link, TextField, Typography } from '@mui/material';
 import DashboardLayout from '../components/layouts/DashboardLayout';
-import LogoEcole from '../components/common/LogoEcole';
+import MarquePlanner from '../components/common/MarquePlanner';
 import { navigationFor } from '../components/layouts/navigation';
 import { useAuth } from '../contexts/AuthContext';
 import { construireApplications, filtrerApplications } from '../components/applications/catalogue';
@@ -20,7 +20,7 @@ export default function Applications() {
   return (
     <DashboardLayout>
       <Box sx={{ maxWidth: 1120, mx: 'auto', py: { xs: 2, md: 6 }, fontFamily: 'Inter, system-ui, sans-serif' }}>
-        <Box sx={{ mb: 3 }}><LogoEcole hauteur={32} /></Box>
+        <Box sx={{ mb: 3 }}><MarquePlanner hauteur={32} /></Box>
         <Typography component="h2" sx={{ fontFamily: 'inherit', fontSize: { xs: 28, md: 36 }, fontWeight: 650, lineHeight: 1.2, letterSpacing: '-0.035em', mb: 1.5 }}>
           {t('applications.intro')}
         </Typography>

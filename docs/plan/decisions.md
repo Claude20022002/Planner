@@ -155,3 +155,14 @@ Source : conversation avec Codex, « Application web de gestion », « J’aimer
 - Le registre commercial et l'activation des modules restent dans VEN-01 ; cette interface ne les remplace pas.
 
 Conception : [UIX-01a](../conception/interface/uix-01a-navigation.md). Aucun changement de pile ni migration dans ce lot.
+
+## Décision du chef du 15 novembre : UIX-06a
+
+Source : conversation Codex, réponse « Valider » aux quatre propositions et au plan UIX-06a.
+
+- Exception hors chantier limitée au pilote UIX-06a, sans quatrième chantier.
+- Périmètre : connexion, accueil/navigation, Comptes, Enseignants et Étudiants.
+- Lot visuel découplé de UIX-01 ; migration 0060 et assistant exclus.
+- Interface sobre clair/sombre, Inter ; encre ardoise sans couleurs d’école, bleu nuit pour la marque ; identité d’école et SVG approuvés conservés.
+
+[Plan validé](../conception/interface/uix-06a-interface.md). Aucun backend, serveur, push ou fusion autorisé à l’agent.
