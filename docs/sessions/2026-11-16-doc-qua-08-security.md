@@ -94,7 +94,7 @@ etude/failles-erp-scolaires, PR #186) et etude/frappe-essai-local (une fiche seu
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md, la conception
 docs/conception/qualite/qua-08-security.md (validée le 16 nov.), cette fiche
 (docs/sessions/2026-11-16-doc-qua-08-security.md) et, hors du dépôt,
-..\travaux-planner\prive\frappe-education-develop.md.
+..\travaux-planner\prive\frappe-essai-note.md.
 Fait : SECURITY.md écrit (signalement privé de GitHub, 7 jours et 90 jours au plus, le site
 VIT-02 plus tard) ; document 09 corrigé et neutre ; décision du 16 nov. inscrite.
 Reste : envoi de la suite de l'essai par le chef ; fusion de #186 puis de la PR de QUA-08 ;
