@@ -42,7 +42,8 @@
 | QUA-06 | `docs/users.xlsx` : si les personnes sont réelles, prévenir l'école, changer les mots de passe des comptes concernés s'ils existent encore, puis décider de la réécriture de l'historique (Q-14) | 0-1, A-1 | 0 | S | — | fait : personnes fictives, décision du 8 nov. |
 | QUA-07 | Protéger `main` : CI verte exigée avant de fusionner (Q-15) | — | 0 | S | — | fait : 6 contrôles exigés, constaté le 8 nov. |
 | QUA-08 | `SECURITY.md` (comment signaler une faille, délai de réponse) et signalement privé de GitHub ouvert sur le dépôt (décisions du 15 et du 16 nov.) | — | libre | S | — | en cours ([plan](../../conception/qualite/qua-08-security.md)) |
-| QUA-09 | Liste publique des envois sortants de Planner : destinataire, données envoyées, raison (EP-13, décision du 15 nov.) | — | libre | S | — | à faire |
+| QUA-09 | Liste publique des envois sortants de Planner : destinataire, données envoyées, raison (EP-13, décision du 15 nov.) | — | libre | S | — | en cours ([plan](../../conception/qualite/qua-09-envois-sortants.md), validé le 16 nov.) |
+| QUA-10 | Aucun envoi chez un tiers sans réglage explicite : plus de valeur par défaut vers Gmail (courriel), DeepSeek (texte de l'IA) ni OpenAI (médias de l'IA) ; décider pour pdf.js chargé depuis cdnjs par l'application (EP-13, décision du 16 nov.) | — | libre | S | QUA-09 | à faire |
 
 ## Critères de « terminé »
 
@@ -53,6 +54,7 @@
 - **QUA-07** : une PR rouge ne peut plus être fusionnée.
 - **QUA-08** : `SECURITY.md` est sur `main` et promet un accusé de réception sous 7 jours, un correctif ou un avis publié sous 90 jours au plus (décision du 15 nov.) ; le chef a ouvert le signalement privé dans les réglages du dépôt.
 - **QUA-09** : chaque envoi sortant trouvé dans le code (clients HTTP, SMTP, SDK de services) figure dans la liste ; le modèle de PR demande si la PR en ajoute un.
+- **QUA-10** : sans réglage, Planner n'envoie rien chez un tiers (l'envoi est coupé et le journal le dit) ; un test le fige pour chaque envoi ; la liste des envois sortants est à jour.
 
 ## Références
 
