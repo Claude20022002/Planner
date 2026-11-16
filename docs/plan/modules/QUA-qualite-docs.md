@@ -43,7 +43,8 @@
 | QUA-07 | Protéger `main` : CI verte exigée avant de fusionner (Q-15) | — | 0 | S | — | fait : 6 contrôles exigés, constaté le 8 nov. |
 | QUA-08 | `SECURITY.md` (comment signaler une faille, délai de réponse) et signalement privé de GitHub ouvert sur le dépôt (décisions du 15 et du 16 nov.) | — | libre | S | — | en cours ([plan](../../conception/qualite/qua-08-security.md)) |
 | QUA-09 | Liste publique des envois sortants de Planner : destinataire, données envoyées, raison (EP-13, décision du 15 nov.) | — | libre | S | — | en cours ([plan](../../conception/qualite/qua-09-envois-sortants.md), validé le 16 nov.) : liste écrite, à fusionner |
-| QUA-10 | Aucun envoi implicite chez un tiers : (a) plus de destination par défaut vers DeepSeek (texte de l'IA), OpenAI (médias) ni `smtp.gmail.com` (courriel) une fois la clé ou le compte réglé ; (b) push : contenu envoyé à Expo réduit par défaut, ou push activé par l'école (choix dans le plan) ; décider pour pdf.js chargé depuis cdnjs (EP-13, décision du 16 nov.) | — | libre | S | QUA-09 | à faire |
+| QUA-10 | Aucun envoi implicite chez un tiers : (a) plus de destination par défaut vers DeepSeek (texte de l'IA), OpenAI (médias) ni `smtp.gmail.com` (courriel) une fois la clé ou le compte réglé ; (b) push : contenu envoyé à Expo réduit par défaut, ou push activé par l'école (choix dans le plan) ; décider pour pdf.js chargé depuis cdnjs (EP-13, décision du 16 nov.) | — | libre | S | QUA-09 | plan en cours (hors chantier, accord du chef le 16 nov.), `feat/qua-10-envois-explicites` |
+| QUA-11 | Aucune adresse réelle dans `deploy/` : les adresses de l'installation écrites en dur dans `deploy/vps/appliquer-maj.sh` et `appliquer-quiz.sh` sont lues dans le `.env` du serveur ; `scripts/verifier-neutre.mjs` lit aussi `deploy/` (décision du 16 nov.) | — | libre | S | — | à faire |
 
 ## Critères de « terminé »
 
@@ -55,6 +56,7 @@
 - **QUA-08** : `SECURITY.md` est sur `main` et promet un accusé de réception sous 7 jours, un correctif ou un avis publié sous 90 jours au plus (décision du 15 nov.) ; le chef a ouvert le signalement privé dans les réglages du dépôt.
 - **QUA-09** : chaque envoi sortant trouvé dans le code (clients HTTP, SMTP, SDK de services) figure dans la liste ; le modèle de PR demande si la PR en ajoute un.
 - **QUA-10** : une clé ou un compte sans adresse n'envoie rien, et le journal le dit ; aucun nom de personne ni motif ne part chez Expo sans que l'école l'ait choisi ; un test fige chaque point ; la liste des envois sortants est à jour.
+- **QUA-11** : aucun nom de domaine réel dans `deploy/` ; `verifier-neutre` lit `deploy/` et échoue si une adresse réelle y revient ; `appliquer-maj.sh` et `appliquer-quiz.sh` vérifient toujours les mêmes adresses, lues dans le `.env`.
 
 ## Références
 
