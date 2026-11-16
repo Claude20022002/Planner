@@ -20,6 +20,7 @@
   - parcours de démonstration (Playwright) dans la CI ;
   - le modèle des tests locaux est dans `DEPLOIEMENT.md`.
 - **CI** : `.github/workflows/ci-cd.yml`. **`main` n'est pas protégée** : on a déjà fusionné une PR rouge (#127).
+- **Signalement des failles** : `SECURITY.md` à la racine (QUA-08) : signalement privé de GitHub, 7 jours et 90 jours au plus. Le formulaire du site viendra avec VIT-02.
 - **Documentation d'entrée périmée** :
   - `README.md` : nombres de tests anciens ; « retrait du multi-tenant », contraire au plan ; devoirs pour les étudiants ;
   - `PRODUCT.md` : « jury PACTE » ; « pas d'application mobile » ; deux bâtiments d'HESTIM.
@@ -40,7 +41,7 @@
 | QUA-05 | Supprimer les branches et les dossiers de travail morts, après vérification de leur contenu ; fermer #40 | C-1, P-57 | libre | S | — | à faire |
 | QUA-06 | `docs/users.xlsx` : si les personnes sont réelles, prévenir l'école, changer les mots de passe des comptes concernés s'ils existent encore, puis décider de la réécriture de l'historique (Q-14) | 0-1, A-1 | 0 | S | — | fait : personnes fictives, décision du 8 nov. |
 | QUA-07 | Protéger `main` : CI verte exigée avant de fusionner (Q-15) | — | 0 | S | — | fait : 6 contrôles exigés, constaté le 8 nov. |
-| QUA-08 | `SECURITY.md` (comment signaler une faille, délai de réponse) et signalement privé de GitHub ouvert sur le dépôt (décision du 15 nov.) | — | libre | S | — | à faire |
+| QUA-08 | `SECURITY.md` (comment signaler une faille, délai de réponse) et signalement privé de GitHub ouvert sur le dépôt (décisions du 15 et du 16 nov.) | — | libre | S | — | en cours ([plan](../../conception/qualite/qua-08-security.md)) |
 | QUA-09 | Liste publique des envois sortants de Planner : destinataire, données envoyées, raison (EP-13, décision du 15 nov.) | — | libre | S | — | à faire |
 
 ## Critères de « terminé »
