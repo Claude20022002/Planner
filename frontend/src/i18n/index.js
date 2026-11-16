@@ -1,3 +1,5 @@
+import personnesFr from './personnes.fr.js';
+import personnesEn from './personnes.en.js';
 /**
  * Internationalisation FR / EN.
  * Le français est la langue par défaut (langue d'enseignement des écoles visées) ;
@@ -38,8 +40,8 @@ const readStoredLanguage = () => {
 i18n.use(initReactI18next).init({
   // Studio quiz, sessions de jeu, identité de l'école : textes dans leurs propres fichiers, sous leur clé
   resources: {
-    fr: { translation: { ...fr, applications: applicationsFr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr } },
-    en: { translation: { ...en, applications: applicationsEn, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn } },
+    fr: { translation: { ...fr, personnes: personnesFr, applications: applicationsFr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr } },
+    en: { translation: { ...en, personnes: personnesEn, applications: applicationsEn, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn } },
   },
   lng: readStoredLanguage(),
   fallbackLng: 'fr',

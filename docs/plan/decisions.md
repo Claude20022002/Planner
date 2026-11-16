@@ -77,6 +77,9 @@ Registre unique à partir du 7 novembre 2026.
 | 10 nov. | Chantier **QUA** ouvert, limité à **QUA-03** (clore l'étude de la pile), pour débloquer PLA-01 : 3 chantiers ouverts sur 3 | — |
 | 10 nov. | L'agence marketing se sauvegarde dans un **dépôt GitHub privé** `planner-marketing` (logos, stratégie) ; la vente reste gelée : le marketing prépare, ne publie pas | — |
 | 10 nov. | PLA-06 : mesure en local, MySQL limité aux ressources du nouveau serveur ; 200 bases au schéma complet, chacune avec une école fictive d'environ 300 élèves ; seuils, activité et réglages proposés le 9 novembre, retenus le 10 ; si D-01 tombe, le chantier PLA s'arrête jusqu'à décision | — |
+| 10 nov. | **Jeux : aucun nom ni adresse d'école** ; `curriculum` = discipline et niveau visés. Le § 1 du contrat des jeux est amendé | la page HESTIM du programme exigée le 16 octobre |
+| 10 nov. | **Jeux : un essai raté ne donne pas la réponse.** On dit ce qui est faux ; la solution s'obtient sur demande ou après trois essais ratés, et coûte les points du défi (contrat des jeux, § 1.0) | — |
+| 10 nov. | **QJE-04 : exception à la limite de 3 chantiers**, pour QJE-04 seule (la branche d'Alexis prend du retard sur `main`). Alexis corrige B-1, B-2 et I-1 sur sa branche | — |
 | 13 nov. | **Douze modules ajoutés au plan**, tirés de l'inventaire du 11 novembre ([06-outils-structures-formation.md](../etude-marche/06-outils-structures-formation.md)) : COM, ETA, PAI à l'étape 4 ; RHP, FOR, DOC, INS à l'étape 5 ; PIL, GRP, STA (sauf STA-01), SER, STK, ETA-03 et PAI-03 **reportés** ; tailles provisoires, à corriger dans chaque plan de conception (environ 53 jours bruts de plus) | — |
 | 13 nov. | **Fonctions déplacées**, numéros jamais réutilisés : FIN-03 devient RHP-01, VSC-05 devient ETA-02, COU-07 devient STA-01 ; le plafond de cumul de VSC-06 passe dans RHP-02 | — |
 | 13 nov. | Tout module qui prévient quelqu'un passe par **COM** (service d'envoi commun, plages de silence) ; VSC-03 et MOB-05 dépendent de COM-01 | — |
@@ -150,3 +153,14 @@ Source : conversation avec Codex, « Application web de gestion », « J’aimer
 - Le registre commercial et l'activation des modules restent dans VEN-01 ; cette interface ne les remplace pas.
 
 Conception : [UIX-01a](../conception/interface/uix-01a-navigation.md). Aucun changement de pile ni migration dans ce lot.
+
+## Décision du chef du 15 novembre : UIX-06a
+
+Source : conversation Codex, réponse « Valider » aux quatre propositions et au plan UIX-06a.
+
+- Exception hors chantier limitée au pilote UIX-06a, sans quatrième chantier.
+- Périmètre : connexion, accueil/navigation, Comptes, Enseignants et Étudiants.
+- Lot visuel découplé de UIX-01 ; migration 0060 et assistant exclus.
+- Interface sobre clair/sombre, Inter ; encre ardoise sans couleurs d’école, bleu nuit pour la marque ; identité d’école et SVG approuvés conservés.
+
+[Plan validé](../conception/interface/uix-06a-interface.md). Aucun backend, serveur, push ou fusion autorisé à l’agent.
