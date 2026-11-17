@@ -169,3 +169,29 @@ Deux structures du scolaire relèvent du noyau, pas des extensions, parce qu'ell
 | Q-30-4 | Le modèle « noyau strict, extensions déclarées » (§ 6) devient-il une règle pour VSC-01 et les modules suivants ? | oui, inscrit dans decisions.md et dans le modèle de conception |
 | Q-30-5 | R4 (images hors de la base) et R5 (collations, unicité des séances) : correctifs hors chantier, ou dans un chantier ? | dans PLA, après PLA-03b ; la vérification des collations (une requête) tout de suite |
 | Q-30-6 | Une contre-expertise de cette étude par une session sous Fable 5.2, avant votre décision ? | oui, sur le modèle de la contre-expertise du 24 octobre |
+
+## 10. Réponses du chef (17 novembre) et ce qu'elles changent
+
+| N° | Réponse | Effet sur l'étude |
+|---|---|---|
+| Q-30-1 | « D'ici 3 ans, même 10 écoles » | **R1 baisse fortement** : à 10 écoles, une base par école ne coûte presque rien, sur MySQL comme sur PostgreSQL. L'argument « RLS pour une base partagée de milliers d'écoles » devient un argument de long terme, plus d'urgence. L'essai PostgreSQL se juge donc d'abord sur la **souplesse du schéma** (exigence ci-dessous) |
+| Q-30-2 | Oui à l'essai PostgreSQL | plan de conception de l'essai à écrire, à valider par le chef avant tout code |
+| Q-30-3 | Oui : les écoles créent leurs champs (profils et packs pays d'abord, puis champs libres ; jamais santé ni CIN) | le niveau 4 du § 6 est retenu, avec une interface d'administration |
+| Q-30-4 | Le modèle « noyau strict, extensions déclarées » est une règle pour VSC-01 | inscrit dans decisions.md |
+| Q-30-5 | Validé : R4 et R5 dans le chantier PLA, après PLA-03b ; collations vérifiées tout de suite | voir ci-dessous |
+| Q-30-6 | Oui : contre-expertise sous Fable 5.2 | lancée le 17 nov. ; fichier `contre-expertise-architecture-donnees.md` |
+
+**Exigence nouvelle du chef** : Planner sert la maternelle, le primaire, le collège, le lycée, l'université, les écoles supérieures, les centres de formation. Chaque structure a son propre schéma de données. **Aucun livrable ni aucune discussion technique par école** : la base s'adapte au format que la structure apporte. Exemple : un étudiant a une adresse électronique, un collégien pas forcément.
+
+Conséquence de principe (à détailler avec la contre-expertise) : **la base ne garantit que ce qui est vrai pour toutes les structures** (un élève a un nom, une inscription a une année). Ce qui est obligatoire pour une structure et pas pour une autre (l'adresse électronique, le numéro d'étudiant, le responsable légal) devient une **règle de configuration**, lue dans le profil de la structure et dans les réglages de l'école, et contrôlée par le service à la saisie et à l'import. Ainsi, `Users.email` devient facultatif en base, et obligatoire là où le profil le dit.
+
+**Vérification des collations (Q-30-5), faite sur le code le 17 nov.** : aucune configuration de MySQL ne fixe la collation (ni `docker-compose.yml`, ni `deploy/vps/mysql.cnf`, ni la CI `.github/workflows/ci-cd.yml`) ; les 21 tables du schéma initial sont en `utf8mb4_unicode_ci` ; les tables créées ensuite par `queryInterface.createTable` (par exemple `0042-espace-de-cours.js`) ne fixent rien et prennent donc la collation par défaut de MySQL 8.4, `utf8mb4_0900_ai_ci`. **Le mélange est certain sur toute base construite par les migrations** (CI, base neuve). Pour une base réelle, la requête de contrôle, à lancer par le chef :
+
+```sql
+SELECT TABLE_COLLATION, COUNT(*) AS tables
+FROM information_schema.TABLES
+WHERE TABLE_SCHEMA = DATABASE()
+GROUP BY TABLE_COLLATION;
+```
+
+Le correctif (une seule collation, fixée à chaque création de table) reste dans le chantier PLA, après PLA-03b, comme validé ; il dépend aussi du moteur retenu après l'essai.
