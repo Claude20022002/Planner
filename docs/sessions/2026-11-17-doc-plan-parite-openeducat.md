@@ -55,7 +55,7 @@ Identifiants évités : FIN-03 (ancien nom de RHP-01), MOB-08 (pris par #189), E
 ## Reste à faire, dans l'ordre
 
 1. Fusionner d'abord l'étude (`etude/openeducat-etude-complete`), puis cette branche.
-2. Si #186 ou #189 fusionne avant : conflits simples dans `docs/plan/README.md` (garder EP-13 puis EP-14 à EP-17), `MOB-application.md` (garder MOB-08 puis MOB-09) et `suivi.md` (garder toutes les lignes).
+2. Si #186 ou #189 fusionne avant : conflits simples dans `docs/plan/README.md` (garder EP-13 puis EP-14 à EP-17), `MOB-application.md` (garder MOB-08 puis MOB-09), `suivi.md` (garder toutes les lignes) et `docs/etude-marche/README.md` (garder les lignes du fichier 09 et du fichier 11). Vérifié par `git merge-tree` le 17 nov.
 3. Répondre aux questions 5 et 6.
 
 ## Commandes pour le chef de projet
