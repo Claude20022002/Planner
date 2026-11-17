@@ -26,6 +26,7 @@
 | MOB-05 | Espace parents : enfants, emploi du temps, absences, notes, frais ; notifications par plages et résumés, envoyées par COM (EP-7) | F-15 | 4 | L | ADM-05, VSC-03, COM-01 | à faire |
 | MOB-06 | Emploi du temps lisible hors ligne (EP-3) | F-15 | 4 | M | — | à faire |
 | MOB-07 | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes les installations) | I-12 | libre | M | — | à faire |
+| MOB-09 | Rôle de la scolarité et de la direction sur le téléphone : valider un report, voir les absences du jour, prévenir une classe | — | 5 | M | MOB-02, COM-01 | à faire |
 
 ## Critères de « terminé »
 

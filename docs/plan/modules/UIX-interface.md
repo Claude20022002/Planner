@@ -34,6 +34,8 @@
 | UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | libre | M | — | à faire |
 | UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en cours : pilote UIX-06a codé, à relire et vérifier en CI |
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | PR #185 ouverte, correction de parcours à publier |
+| UIX-07 | Anglais complet : site, application, PDF et messages du serveur, au niveau du français | — | libre | L | — | à faire |
+| UIX-08 | Contrôle des textes non traduits dans la CI : la liste des textes sans traduction en français, anglais ou arabe ; bloquant pour une langue dès qu'elle est déclarée complète (EP-16) | — | libre | M | — | à faire |
 
 ## Critères de « terminé »
 
@@ -43,6 +45,8 @@
 - **UIX-02** : une école fictive de collège parcourt toutes ses pages sans voir un mot propre au supérieur. Un parcours le prouve.
 - **UIX-04** : un bulletin et un emploi du temps en PDF s'impriment en arabe, avec les lettres liées.
 - **UIX-05** : `git grep "(s)"` ne trouve plus rien dans les messages renvoyés par le serveur.
+- **UIX-07** : aucun texte français ne reste visible en anglais, dans les parcours de la CI.
+- **UIX-08** : un message d'erreur du serveur écrit en dur fait échouer la CI.
 
 ## Exigences produit
 

@@ -26,6 +26,8 @@ C'est ce qu'une école privée demande le plus après les notes. L'argent **de P
 |---|---|---|---|---|---|---|
 | FIN-01 | Frais, échéanciers, caisse, reçus bilingues numérotés sans trou ; paiement par élève ou par famille ; colonne `devise` dès le départ | F-14 | 4 | XL | VSC-02, VEN-02 | à faire |
 | FIN-02 | Relances, impayés, export comptable (EP-5) | F-14 | 4 | L | FIN-01 | à faire |
+| FIN-04 | Bourses, remises et remboursements : remise de fratrie, bourse totale ou partielle, avoirs et remboursements tracés, double validation | — | 5 | M | FIN-01 | à faire |
+| FIN-05 | Échange comptable relu : export importable par Odoo et par deux logiciels comptables courants au Maroc (à choisir), rejouable sans doublon ; pas de comptabilité générale dans Planner (décision du 17 nov.) | — | 5 | M | FIN-02 | à faire |
 
 FIN-03 est devenue **RHP-01** le 13 novembre ([RHP](RHP-personnel-paie.md)) ; son numéro ne resservira pas.
 
@@ -37,6 +39,7 @@ FIN-03 est devenue **RHP-01** le 13 novembre ([RHP](RHP-personnel-paie.md)) ; so
   - la règle est confirmée par un expert-comptable ;
   - une fratrie paie en un seul reçu.
 - **FIN-02** : l'export est accepté par le logiciel comptable d'une école, ou par l'expert-comptable.
+- **FIN-05** : le même export importé deux fois ne crée aucune écriture en double.
 
 ## Exigences produit
 

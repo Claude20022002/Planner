@@ -38,6 +38,8 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | **fusionnée** |
 | Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | #170 | **fusionnée** |
 | Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | #174 | **fusionnée le 15 nov.** |
+| Étude complète d'OpenEduCat et comparatif avec Planner, `11-etude-openeducat.md` (hors chantier, demande du chef le 17 nov. ; une autre session a écrit le même soir `10-comparatif-openeducat-planner.md` sur `etude/openeducat-comparatif`) | `etude/openeducat-etude-complete` (non poussée) | le chef choisit entre les deux études ou les garde ensemble ; pousser et ouvrir la PR |
+| Plan : parité avec OpenEduCat, 31 fonctions inscrites, 5 reprises, EP-14 à EP-17, trois langues (hors chantier, décision du chef le 17 nov.) | `doc/plan-parite-openeducat` (non poussée, posée sur la branche de l'étude) | fusionner après l'étude ; conflits simples attendus avec #186 et #189 (EP-13, MOB-08) |
 | Plan d'essai d'OpenEduCat Community (étude hors chantier, demande du chef le 15 nov.) | #176 | à fusionner |
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | **fusionnée le 15 nov.** |
@@ -120,6 +122,8 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [EDT-03](modules/EDT-emploi-du-temps.md) | Écran d'explication des conflits et des refus | 3 | M | à faire |  |
 | [EDT-04](modules/EDT-emploi-du-temps.md) | Publication, PDF et courriels selon l'école | libre | M | à faire |  |
 | [EDT-05](modules/EDT-emploi-du-temps.md) | Paramètres datés complets | 5 | L | reporté |  |
+| [EDT-06](modules/EDT-emploi-du-temps.md) | Convocations aux examens | 5 | S | à faire (inscrite le 17 nov.) |  |
+| [EDT-07](modules/EDT-emploi-du-temps.md) | Équipements et matériel | libre | M | à faire (inscrite le 17 nov.) |  |
 | [ADM-01](modules/ADM-administration.md) | Habilitations à portée | 5 | M | à faire |  |
 | [ADM-02](modules/ADM-administration.md) | Panneau de configuration de l'école | 3 | L | à faire |  |
 | [ADM-03](modules/ADM-administration.md) | Import | 3 | L | à faire |  |
@@ -129,11 +133,18 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [ADM-07](modules/ADM-administration.md) | Enseignants partagés entre écoles | 5 | M | à faire |  |
 | [ADM-08](modules/ADM-administration.md) | Annuaire de l'école | — | M | reporté |  |
 | [ADM-09](modules/ADM-administration.md) | Échanges OneRoster | — | M | reporté |  |
+| [ADM-10](modules/ADM-administration.md) | Champs et listes propres à l'école, sans code | 5 | L | à faire (inscrite le 17 nov.) |  |
 | [VSC-01](modules/VSC-vie-scolaire.md) | Modèle de données du scolaire (conception seule, avec diagrammes) | 1 | L | plan du document à valider |  |
 | [VSC-02](modules/VSC-vie-scolaire.md) | Élèves et familles | 4 | L | à faire |  |
 | [VSC-03](modules/VSC-vie-scolaire.md) | Absences prévenues aux parents, justificatifs, saisie déléguée (EP-6) | 4 | M | à faire |  |
 | [VSC-04](modules/VSC-vie-scolaire.md) | Notes et bulletins | 4 | XL | à faire |  |
 | [VSC-06](modules/VSC-vie-scolaire.md) | Formation professionnelle | 5 | M | à faire |  |
+| [VSC-07](modules/VSC-vie-scolaire.md) | Discipline | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [VSC-08](modules/VSC-vie-scolaire.md) | Infirmerie, module facultatif éteint par défaut | 5 | M | conditionnel (dossier CNDP) (inscrite le 17 nov.) |  |
+| [VSC-09](modules/VSC-vie-scolaire.md) | Activités et clubs | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [VSC-10](modules/VSC-vie-scolaire.md) | Notes du supérieur | 5 | L | à faire (inscrite le 17 nov.) |  |
+| [VSC-11](modules/VSC-vie-scolaire.md) | Mémoires et projets de fin d'études | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [VSC-12](modules/VSC-vie-scolaire.md) | Choix des options et matières facultatives | 5 | M | à faire (inscrite le 17 nov.) |  |
 | [COU-01](modules/COU-espace-de-cours.md) | Sondage de l'enseignant à sa classe | libre | S | fait (#148) | #148 |
 | [COU-02](modules/COU-espace-de-cours.md) | Devoirs avec rendu de fichier, après une revue de sécurité (taille, type, antivirus,… | 4 | L | à faire |  |
 | [COU-03](modules/COU-espace-de-cours.md) | Commentaires sur un support ou un devoir | 4 | M | à faire |  |
@@ -142,10 +153,15 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [COU-06](modules/COU-espace-de-cours.md) | Export des notes d'un devoir | libre | S | à faire |  |
 | [COU-08](modules/COU-espace-de-cours.md) | Messagerie, si les règles de modération sont tranchées (Q-17) | 5 | L | conditionnel |  |
 | [COU-09](modules/COU-espace-de-cours.md) | LTI | — | L | reporté |  |
+| [COU-10](modules/COU-espace-de-cours.md) | Cours en ligne | 5 | XL | à faire (inscrite le 17 nov.) |  |
+| [COU-11](modules/COU-espace-de-cours.md) | Classe virtuelle | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [COU-12](modules/COU-espace-de-cours.md) | Annonces de l'école et de la classe | libre | M | à faire (inscrite le 17 nov.) |  |
+| [COU-13](modules/COU-espace-de-cours.md) | Cahier de textes et progression | libre | M | à faire (inscrite le 17 nov.) |  |
 | [BIB-01](modules/BIB-bibliotheque.md) | Identifiants stables (`uid`) des entités partagées, et envois par boîte d'envoi (D-14,… | 2 | M | à faire |  |
 | [BIB-02](modules/BIB-bibliotheque.md) | StudyLib par école | 5 | M | à faire |  |
 | [BIB-03](modules/BIB-bibliotheque.md) | Médias du Studio quiz (images, sons, vidéos) hors de la base, dans le stockage de fichiers | libre | M | à faire |  |
 | [BIB-04](modules/BIB-bibliotheque.md) | Quiz généré par l'IA à partir d'un document de la Bibliothèque | libre | M | à faire |  |
+| [BIB-05](modules/BIB-bibliotheque.md) | Bibliothèque physique | libre | M | à faire (inscrite le 17 nov.) |  |
 | [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | à faire |  |
 | [QJE-02](modules/QJE-quiz-jeux-ia.md) | Import des formats GIFT et Moodle XML dans le Studio | libre | M | à faire |  |
 | [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | libre | M | à faire |  |
@@ -155,6 +171,10 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QJE-07](modules/QJE-quiz-jeux-ia.md) | Fournisseur d'IA en production | libre | M | à faire |  |
 | [QJE-08](modules/QJE-quiz-jeux-ia.md) | Créateurs de jeux et leur rémunération | — | — | gelé |  |
 | [QJE-09](modules/QJE-quiz-jeux-ia.md) | Défis Linux dans un quiz | — | M | reporté |  |
+| [QJE-10](modules/QJE-quiz-jeux-ia.md) | Évaluation en ligne notée | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [QJE-11](modules/QJE-quiz-jeux-ia.md) | Correction de QCM papier par photo | 5 | L | à faire (inscrite le 17 nov.) |  |
+| [QJE-12](modules/QJE-quiz-jeux-ia.md) | Assistant IA de l'enseignant | libre | M | à faire (inscrite le 17 nov.) |  |
+| [QJE-13](modules/QJE-quiz-jeux-ia.md) | Tuteur IA pour l'élève, sur le contenu de ses cours | — | L | conditionnel (règle « aucune donnée d'élève ») (inscrite le 17 nov.) |  |
 | [MOB-01](modules/MOB-application.md) | Essai sur un vrai téléphone (Android d'entrée de gamme), noté dans la recette | libre | S | à faire |  |
 | [MOB-02](modules/MOB-application.md) | Rôle enseignant | libre | L | à faire |  |
 | [MOB-03](modules/MOB-application.md) | Thème neutre et thème de l'école | 2 | M | à faire |  |
@@ -162,6 +182,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOB-05](modules/MOB-application.md) | Espace parents | 4 | L | à faire |  |
 | [MOB-06](modules/MOB-application.md) | Emploi du temps lisible hors ligne (EP-3) | 4 | M | à faire |  |
 | [MOB-07](modules/MOB-application.md) | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes… | libre | M | à faire |  |
+| [MOB-09](modules/MOB-application.md) | Rôle de la scolarité et de la direction sur le téléphone | 5 | M | à faire (inscrite le 17 nov.) |  |
 | [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder |  |
 | [UIX-01a](modules/UIX-interface.md) | Accueil des applications et navigation web, exception autorisée par le chef le 15 nov. | libre | M | fait : #184 fusionnée, CI verte, 43 parcours | #184 |
 | [UIX-02](modules/UIX-interface.md) | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et… | 3 | M | à faire |  |
@@ -170,6 +191,8 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte : CI parcours rouge, correction du test de reprise réseau committée localement | #185 · feat/uix-06a-interface |
+| [UIX-07](modules/UIX-interface.md) | Anglais complet | libre | L | à faire (inscrite le 17 nov.) |  |
+| [UIX-08](modules/UIX-interface.md) | Contrôle des textes non traduits dans la CI | libre | M | à faire (inscrite le 17 nov.) |  |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
@@ -186,9 +209,13 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [VEN-09](modules/VEN-vente-modules.md) | Vidéos par lien dans le Studio quiz | — | M | gelé |  |
 | [FIN-01](modules/FIN-finance-ecole.md) | Frais, échéanciers, caisse, reçus bilingues numérotés sans trou | 4 | XL | à faire |  |
 | [FIN-02](modules/FIN-finance-ecole.md) | Relances, impayés, export comptable (EP-5) | 4 | L | à faire |  |
+| [FIN-04](modules/FIN-finance-ecole.md) | Bourses, remises et remboursements | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [FIN-05](modules/FIN-finance-ecole.md) | Échange comptable relu | 5 | M | à faire (inscrite le 17 nov.) |  |
 | [COM-01](modules/COM-communication.md) | Service commun d'envoi : application, push, courriel, SMS ; plages de silence, envoi différé, urgence, résumé (EP-7) | 4 | L | à faire |  |
 | [COM-02](modules/COM-communication.md) | Compte famille pour plusieurs enfants, canal préféré, accusé de lecture | 4 | M | à faire |  |
 | [COM-03](modules/COM-communication.md) | WhatsApp et crédits de messages prépayés, alerte avant épuisement | 4 | M | à faire |  |
+| [COM-04](modules/COM-communication.md) | Guichet des demandes | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [COM-05](modules/COM-communication.md) | Réunions parents-enseignants | 5 | M | à faire (inscrite le 17 nov.) |  |
 | [ETA-01](modules/ETA-echanges-etat.md) | Cadre des connecteurs vers les systèmes d'État (contrôle avant envoi, envoi qu'on peut refaire) | 4 | L | à faire |  |
 | [ETA-02](modules/ETA-echanges-etat.md) | Massar (ancienne VSC-05) | 4 | M | à faire |  |
 | [ETA-03](modules/ETA-echanges-etat.md) | Un connecteur par autre pays visé | 5 | M par pays | reporté |  |
@@ -198,6 +225,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [RHP-01](modules/RHP-personnel-paie.md) | Relevé mensuel des heures des vacataires, à partir des séances visées (ancienne FIN-03) | libre | M | à faire |  |
 | [RHP-02](modules/RHP-personnel-paie.md) | Dossier de l'intervenant : contrat, autorisation de cumul, plafond d'heures, déclaration à l'AREF | 5 | M | à faire |  |
 | [RHP-03](modules/RHP-personnel-paie.md) | Chaîne « prévu, fait, visé, payé », état signé, double validation des comptes bancaires, export vers la paie | 5 | L | à faire |  |
+| [RHP-04](modules/RHP-personnel-paie.md) | Congés et absences du personnel | 5 | M | à faire (inscrite le 17 nov.) |  |
 | [FOR-01](modules/FOR-formation-continue.md) | Sessions et cohortes, conventions, convocations | 5 | L | à faire |  |
 | [FOR-02](modules/FOR-formation-continue.md) | Émargement signé par demi-journée, attestations | 5 | M | à faire |  |
 | [FOR-03](modules/FOR-formation-continue.md) | Dossiers des financeurs (CSF, FDFP, 3FPT, OPCO, CPF), facturation à plusieurs payeurs | 5 | L | à faire |  |
@@ -207,14 +235,19 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [INS-01](modules/INS-admissions.md) | Candidature en ligne, pièces, suivi des candidats, liste d'attente | 5 | L | à faire |  |
 | [INS-02](modules/INS-admissions.md) | Acompte, contrat annuel signé, réinscription | 5 | M | à faire |  |
 | [INS-03](modules/INS-admissions.md) | État d'accréditation de chaque filière | 5 | S | à faire |  |
-| [PIL-01](modules/PIL-pilotage.md) | Trésorerie : encaissé, attendu, en retard, prévision | 5 | M | reporté |  |
-| [PIL-02](modules/PIL-pilotage.md) | Présence des enseignants, avancement des notes, somme due aux vacataires | 5 | M | reporté |  |
+| [INS-04](modules/INS-admissions.md) | Prospects et campagnes | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [PIL-01](modules/PIL-pilotage.md) | Trésorerie : encaissé, attendu, en retard, prévision | 5 | M | à faire (décision du 17 nov.) |  |
+| [PIL-02](modules/PIL-pilotage.md) | Présence des enseignants, avancement des notes, somme due aux vacataires | 5 | M | à faire (décision du 17 nov.) |  |
+| [PIL-03](modules/PIL-pilotage.md) | Rapports à la demande | 5 | L | à faire (inscrite le 17 nov.) |  |
 | [GRP-01](modules/GRP-groupes-reseaux.md) | Vue consolidée sur plusieurs écoles | 5 | L | reporté |  |
 | [GRP-02](modules/GRP-groupes-reseaux.md) | Paramètres communs avec dérogations, marque du réseau | 5 | M | reporté |  |
 | [STA-01](modules/STA-stages-alternance.md) | Offres de stage (espace Carrière) (ancienne COU-07) | libre | M | à décider |  |
-| [STA-02](modules/STA-stages-alternance.md) | Conventions de stage, tuteur, présence en entreprise, apprentissage | 5 | M | reporté |  |
-| [SER-01](modules/SER-services-annexes.md) | Cantine, transport et internat liés au compte famille, sans refus d'accès automatique | 5 | L | reporté |  |
-| [STK-01](modules/STK-stocks-achats.md) | Inventaire, bons de commande validés, lien avec la vente | 5 | M | reporté |  |
+| [STA-02](modules/STA-stages-alternance.md) | Conventions de stage, tuteur, présence en entreprise, apprentissage | 5 | M | à faire (décision du 17 nov.) |  |
+| [STA-03](modules/STA-stages-alternance.md) | Anciens élèves | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [SER-01](modules/SER-services-annexes.md) | Cantine, transport et internat liés au compte famille, sans refus d'accès automatique | 5 | L | à faire (décision du 17 nov.) |  |
+| [SER-02](modules/SER-services-annexes.md) | Transport | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [SER-03](modules/SER-services-annexes.md) | Internat | 5 | M | à faire (inscrite le 17 nov.) |  |
+| [STK-01](modules/STK-stocks-achats.md) | Inventaire, bons de commande validés, lien avec la vente | 5 | M | à faire (décision du 17 nov.) |  |
 | [MKT-01](modules/MKT-marketing.md) | Sauvegarder l'agence (premier commit, dépôt privé, règles de l'équipe) | libre | S | à faire |  |
 | [MKT-02](modules/MKT-marketing.md) | Contexte produit et personas à la cible du 7 novembre | libre | M | à faire |  |
 | [MKT-03](modules/MKT-marketing.md) | Argumentaire par cible, tiré des exigences produit | libre | M | à faire |  |
