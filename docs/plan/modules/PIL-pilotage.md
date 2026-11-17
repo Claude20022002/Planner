@@ -23,12 +23,14 @@ Un tableau de bord ne vaut que ce que vaut la saisie : PIL ne montre que des chi
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| PIL-01 | Trésorerie : encaissé, attendu, en retard par classe et par mois ; prévision | — | 5 | M | FIN-02, PAI-01 | reporté |
-| PIL-02 | Personnes : présence des enseignants, avancement de la saisie des notes, somme due aux vacataires | — | 5 | M | RHP-03, VSC-04 | reporté |
+| PIL-01 | Trésorerie : encaissé, attendu, en retard par classe et par mois ; prévision | — | 5 | M | FIN-02, PAI-01 | à faire (décision du 17 nov., parité OpenEduCat) |
+| PIL-02 | Personnes : présence des enseignants, avancement de la saisie des notes, somme due aux vacataires | — | 5 | M | RHP-03, VSC-04 | à faire (décision du 17 nov., parité OpenEduCat) |
+| PIL-03 | Rapports à la demande : colonnes, filtres et regroupements sur les données de l'école, rapport enregistré, export (CSV protégé, PDF), partage à un rôle | — | 5 | L | ADM-01 | à faire |
 
 ## Critères de « terminé »
 
 - **PIL-01 et PIL-02** : chaque chiffre affiché mène, en un clic, aux lignes qui le composent.
+- **PIL-03** : un rapport ne montre que ce que le rôle qui le lit a le droit de voir, même partagé.
 
 ## Références
 
