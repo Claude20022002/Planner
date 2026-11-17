@@ -6,7 +6,7 @@
 | Branche | `etude/essai-postgresql` (à créer après validation ; le code de l'essai **n'est jamais fusionné**, seul le rapport l'est) |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-17, d'après la [contre-expertise](contre-expertise-architecture-donnees.md), § 5 |
 | Taille | **M** (2 jours bruts). Si l'essai dépasse sa taille, c'est déjà un résultat : « la bascule coûte plus que M » |
-| **Validé** | en attente |
+| **Validé** | **par Claude20022002 le 2026-11-17** (« Je valide le plan de l'essai, Docker est lancé ») ; propositions du § 3 retenues |
 
 ## 1. Objet et critère de « terminé »
 
@@ -35,10 +35,10 @@ Dire, **par la mesure**, si Planner gagne assez à passer de MySQL 8.4 à Postgr
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | Ajouter les paquets `pg` et `pg-hstore` au serveur, **dans la branche d'essai seulement** ? | oui ; jamais fusionnés tant que la bascule n'est pas décidée | | le code |
-| 2 | Où tourner l'essai ? | sur le poste, avec Docker Desktop lancé par le chef : un conteneur PostgreSQL 18 (version exacte notée dans le rapport) et le MySQL 8.4.13 de test ; **jamais sur le serveur** | | le code |
-| 3 | Qui fait l'essai ? | une session Claude Code (Opus 5.5) désignée par le coordinateur, avec une fiche de mission | | le code |
-| 4 | Le prototype des champs propres (critère 3) peut-il servir de point de départ à VSC-01 ? | non : c'est un banc jetable ; VSC-01 conçoit le vrai modèle | | — |
+| 1 | Ajouter les paquets `pg` et `pg-hstore` au serveur, **dans la branche d'essai seulement** ? | oui ; jamais fusionnés tant que la bascule n'est pas décidée | oui (plan validé) | le code |
+| 2 | Où tourner l'essai ? | sur le poste, avec Docker Desktop lancé par le chef : un conteneur PostgreSQL 18 (version exacte notée dans le rapport) et le MySQL 8.4.13 de test ; **jamais sur le serveur** | oui ; Docker lancé le 17 nov. | le code |
+| 3 | Qui fait l'essai ? | une session Claude Code (Opus 5.5) désignée par le coordinateur, avec une fiche de mission | la session qui a écrit le plan, à la demande directe du chef (17 nov.) | le code |
+| 4 | Le prototype des champs propres (critère 3) peut-il servir de point de départ à VSC-01 ? | non : c'est un banc jetable ; VSC-01 conçoit le vrai modèle | non (plan validé) | — |
 
 ## 4. Solution : neuf critères et une règle de décision
 
