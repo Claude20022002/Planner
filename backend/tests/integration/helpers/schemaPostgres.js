@@ -22,10 +22,32 @@ const NEUTRE = {
     modele_edt: "planner",
 };
 
+/** Unicités présentes après les migrations MySQL et absentes d'un schéma tiré des modèles (relevé du 17 nov.). */
+const UNICITES_DES_MIGRATIONS = [
+    ["DevoirsRendus", ["id_devoir", "id_user"]],
+    ["EnvoisEdt", ["id_groupe", "mois"]],
+    ["JeuxModules", ["code_jeu", "id_cours"]],
+    ["JeuxProgressions", ["id_user", "code_jeu", "id_defi"]],
+    ["JoueursDirect", ["id_session", "id_user"]],
+    ["ParticipationsJeu", ["id_session_jeu", "id_user"]],
+    ["Presences", ["id_affectation", "appareil"]],
+    ["Presences", ["id_affectation", "id_user"]],
+    ["QuizResultats", ["id_quiz_partie", "pseudo"]],
+    ["ReponsesDirect", ["id_session", "index_question", "id_user"]],
+    ["Surveillances", ["id_session", "id_user"]],
+    ["VersionsParametres", ["annule_version"]],
+];
+
 /** Vide le schéma public, recrée toutes les tables depuis les modèles, puis l'identité neutre. */
 export const reconstruirePostgres = async () => {
     await sequelize.query("DROP SCHEMA IF EXISTS public CASCADE");
     await sequelize.query("CREATE SCHEMA public");
     await sequelize.sync();
+    // CompteursDebit n'a pas de modèle : sa migration (createTable, addIndex) est portable telle quelle
+    const { up } = await import("../../../migrations/0037-compteurs-debit.js");
+    await up({ queryInterface: sequelize.getQueryInterface() });
+    // Critère 2 : 12 unicités métier ne sont déclarées que dans les migrations, pas dans les modèles
+    const qi = sequelize.getQueryInterface();
+    for (const [table, champs] of UNICITES_DES_MIGRATIONS) await qi.addIndex(table, champs, { unique: true });
     await ConfigurationEtablissement.create({ id: 1, ...NEUTRE });
 };

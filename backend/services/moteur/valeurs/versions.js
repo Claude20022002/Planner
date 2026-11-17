@@ -96,7 +96,7 @@ export const creerVersion = async ({ libelle, date_effet = aujourdhui(), lignes 
 };
 
 const verrouiller = async (id, t) => {
-    const version = await VersionParametres.findByPk(id, { include: [{ model: ValeurParametre, as: "valeurs" }, AVEC_CONTRAINTES()], transaction: t, lock: t.LOCK.UPDATE });
+    const version = await VersionParametres.findByPk(id, { include: [{ model: ValeurParametre, as: "valeurs" }, AVEC_CONTRAINTES()], transaction: t, lock: { level: t.LOCK.UPDATE, of: VersionParametres } });
     if (!version) throw new ErreurMetier("Version introuvable", 404);
     return version;
 };

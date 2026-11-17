@@ -21,12 +21,15 @@ export const tacheUnique = (nom, tache) =>
     // verrouille aucune ligne, la tâche elle-même passe par les autres connexions du pool.
     sequelize.transaction(async (transaction) => {
         const verrou = nomDuVerrou(nom);
-        const [{ obtenu }] = await sequelize.query("SELECT GET_LOCK(?, 0) AS obtenu", { replacements: [verrou], type: QueryTypes.SELECT, transaction });
+        const pg = sequelize.getDialect() === "postgres";
+        // Essai PostgreSQL (Q-30) : verrou consultatif lié à la transaction, libéré à sa fin
+        const sql = pg ? "SELECT CASE WHEN pg_try_advisory_xact_lock(hashtext(?)) THEN 1 ELSE 0 END AS obtenu" : "SELECT GET_LOCK(?, 0) AS obtenu";
+        const [{ obtenu }] = await sequelize.query(sql, { replacements: [verrou], type: QueryTypes.SELECT, transaction });
         if (Number(obtenu) !== 1) return { faite: false };
         try {
             return { faite: true, resultat: await tache() };
         } finally {
-            await sequelize.query("SELECT RELEASE_LOCK(?)", { replacements: [verrou], type: QueryTypes.SELECT, transaction });
+            if (!pg) await sequelize.query("SELECT RELEASE_LOCK(?)", { replacements: [verrou], type: QueryTypes.SELECT, transaction });
         }
     });
 

@@ -338,7 +338,7 @@ export const annoncesEnvoyees = async (user) => {
     if (!annonces.length) return [];
     const stats = await AnnonceDestinataire.findAll({
         where: { id_annonce: annonces.map((a) => a.id_annonce) },
-        attributes: ["id_annonce", [fn("COUNT", col("id_user")), "total"], [fn("SUM", literal("lu_le IS NOT NULL")), "lus"]],
+        attributes: ["id_annonce", [fn("COUNT", col("id_user")), "total"], [fn("SUM", literal("CASE WHEN lu_le IS NOT NULL THEN 1 ELSE 0 END")), "lus"]],
         group: ["id_annonce"],
         raw: true,
     });

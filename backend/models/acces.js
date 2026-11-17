@@ -16,3 +16,6 @@ export const enTransaction = (...args) => contexteCourant().sequelize.transactio
 
 /** Lance une requête SQL écrite à la main : mêmes arguments et même retour que sequelize.query. */
 export const requete = (...args) => contexteCourant().sequelize.query(...args);
+
+/** Essai PostgreSQL (Q-30) : vrai quand la base de l'établissement courant est PostgreSQL. */
+export const estPostgres = () => contexteCourant().sequelize.getDialect() === "postgres";

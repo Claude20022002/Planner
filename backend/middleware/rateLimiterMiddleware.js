@@ -1,5 +1,8 @@
 import crypto from "crypto";
-import { requete } from "../models/acces.js";
+import { requete, estPostgres } from "../models/acces.js";
+
+// Essai PostgreSQL (Q-30) : PostgreSQL met en minuscules un nom de table sans guillemets
+const T = () => (estPostgres() ? '"CompteursDebit"' : "CompteursDebit");
 
 /**
  * Middleware de limitation du taux de requêtes (Rate Limiting)
@@ -56,25 +59,29 @@ const magasinMemoire = () => {
 export const magasinBase = (nom) => {
     const cleDe = (cle) => `${nom}:${crypto.createHash("sha256").update(String(cle)).digest("hex")}`;
     return {
-        vider: () => requete("DELETE FROM CompteursDebit WHERE cle LIKE ?", { replacements: [`${nom}:%`] }),
+        vider: () => requete(`DELETE FROM ${T()} WHERE cle LIKE ?`, { replacements: [`${nom}:%`] }),
         compter: async (cle, fenetreMs, maintenant) => {
             const k = cleDe(cle);
             await requete(
-                `INSERT INTO CompteursDebit (cle, compteur, expire_ms) VALUES (?, 1, ?)
+                estPostgres()
+                    ? `INSERT INTO "CompteursDebit" AS c (cle, compteur, expire_ms) VALUES (?, 1, ?)
+                 ON CONFLICT (cle) DO UPDATE SET compteur = CASE WHEN c.expire_ms <= ? THEN 1 ELSE c.compteur + 1 END, expire_ms = CASE WHEN c.expire_ms <= ? THEN ? ELSE c.expire_ms END`
+                    : `INSERT INTO CompteursDebit (cle, compteur, expire_ms) VALUES (?, 1, ?)
                  ON DUPLICATE KEY UPDATE compteur = IF(expire_ms <= ?, 1, compteur + 1), expire_ms = IF(expire_ms <= ?, ?, expire_ms)`,
                 { replacements: [k, maintenant + fenetreMs, maintenant, maintenant, maintenant + fenetreMs] }
             );
-            const [[ligne]] = await requete("SELECT compteur, expire_ms FROM CompteursDebit WHERE cle = ?", { replacements: [k] });
+            const [[ligne]] = await requete(`SELECT compteur, expire_ms FROM ${T()} WHERE cle = ?`, { replacements: [k] });
             return { count: Number(ligne.compteur), reset: Number(ligne.expire_ms) };
         },
-        retirer: (cle) => requete("UPDATE CompteursDebit SET compteur = GREATEST(compteur - 1, 0) WHERE cle = ?", { replacements: [cleDe(cle)] }),
+        retirer: (cle) => requete(`UPDATE ${T()} SET compteur = GREATEST(compteur - 1, 0) WHERE cle = ?`, { replacements: [cleDe(cle)] }),
     };
 };
 
 /** Lignes des fenêtres terminées (tâche quotidienne). Renvoie leur nombre. */
 export const purgerCompteursDebit = async (maintenant = Date.now()) => {
-    const [resultat] = await requete("DELETE FROM CompteursDebit WHERE expire_ms <= ?", { replacements: [maintenant] });
-    return resultat?.affectedRows ?? 0;
+    const [resultat, meta] = await requete(`DELETE FROM ${T()} WHERE expire_ms <= ?`, { replacements: [maintenant] });
+    // Essai PostgreSQL (Q-30) : pg rend le nombre de lignes dans le second élément
+    return resultat?.affectedRows ?? meta?.rowCount ?? 0;
 };
 
 /**

@@ -339,8 +339,8 @@ export const getDashboard = asyncHandler(async (req, res) => {
             where,
             attributes: [
                 [sequelize.fn("COUNT", sequelize.col("id_affectation")), "seances"],
-                [sequelize.literal("COUNT(DISTINCT `id_salle`)"), "salles"],
-                [sequelize.literal("COUNT(DISTINCT `id_user_enseignant`)"), "enseignants"],
+                [sequelize.fn("COUNT", sequelize.fn("DISTINCT", sequelize.col("id_salle"))), "salles"],
+                [sequelize.fn("COUNT", sequelize.fn("DISTINCT", sequelize.col("id_user_enseignant"))), "enseignants"],
             ],
             raw: true,
         }),
