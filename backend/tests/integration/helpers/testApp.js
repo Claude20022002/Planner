@@ -13,7 +13,9 @@ import {
     Affectation,
     Appartenir,
     Campus,
+    ConfigurationEtablissement,
 } from "../../../models/index.js";
+import { estPostgres, reconstruirePostgres } from "./schemaPostgres.js";
 import { hashPassword } from "../../../utils/passwordHelper.js";
 import { resetRateLimiters } from "../../../middleware/rateLimiterMiddleware.js";
 import { runMigrations } from "../../../migrations/migrator.js";
@@ -39,22 +41,28 @@ export const resetDatabase = async ({ neuve = false } = {}) => {
     if (!dbName?.endsWith("_test")) {
         throw new Error(`Refus de réinitialiser "${dbName}" : seule une base *_test est autorisée`);
     }
-    const [tables] = await sequelize.query(
-        "SELECT TABLE_NAME AS name FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE()"
-    );
-    await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
-    for (const { name } of tables) {
-        await sequelize.query(`DROP TABLE IF EXISTS \`${name}\``);
+    if (estPostgres()) {
+        // Essai PostgreSQL (Q-30) : schéma tiré des modèles, les migrations étant écrites pour MySQL
+        await reconstruirePostgres();
+    } else {
+        const [tables] = await sequelize.query(
+            "SELECT TABLE_NAME AS name FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE()"
+        );
+        await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
+        for (const { name } of tables) {
+            await sequelize.query(`DROP TABLE IF EXISTS \`${name}\``);
+        }
+        await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
+        await runMigrations();
     }
-    await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
-    await runMigrations();
     oublierIdentite();
     resetRateLimiters();
     if (neuve) return;
     await Campus.bulkCreate(CAMPUS_DE_TEST);
     // Base vide : la migration 0057 éteint ClassQuiz (installation neuve, lot ME-0c). Les tests
     // l'allument pour que son code reste vérifié ; classQuizEteint.test.js vérifie l'inverse
-    await sequelize.query("UPDATE ConfigurationEtablissement SET classquiz_actif = 1 WHERE id = 1");
+    // Essai PostgreSQL : par le modèle, portable sur les deux moteurs
+    await ConfigurationEtablissement.update({ classquiz_actif: true }, { where: { id: 1 } });
     oublierIdentite();
     resetRateLimiters();
 };
