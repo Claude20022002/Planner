@@ -138,6 +138,7 @@ Registre unique à partir du 7 novembre 2026.
 | Q-18 | Nom de l'application dans les magasins | « Planner » sauf conflit de marque | MOB |
 | Q-19 | Les 28 questions juridiques, fiscales et Massar de l'étude du modèle économique | gelées, sauf Massar (ETA-02, ancienne VSC-05) et loi 09-08 (condition légale) | ETA-02 |
 | Q-20 | Un élève a un compte (décision du 8 novembre), mais un enfant de 6 ans n'a pas d'adresse électronique, et `Users.email` est obligatoire et unique. Avec quoi se connecte-t-il ? | un **identifiant donné par l'école**, adresse facultative, mot de passe initial remis par l'école (ou par le parent) ; pas d'adresse factice. Étude d'impact sur chaque fichier qui lit `Users.email` (connexion, réinitialisation, notifications, import) | VSC-01 |
+| Q-30 | Le moteur de base (MySQL ou PostgreSQL) et le modèle d'isolation pour des milliers de petites écoles ; un modèle « noyau strict, extensions déclarées » pour les données qui varient ([étude du 17 nov.](../conception/plateforme/etude-architecture-donnees.md), questions Q-30-1 à Q-30-6) | dire l'horizon du nombre d'écoles ; essai PostgreSQL court avant EXP-02b, en parallèle de PLA-06 ; le modèle d'extensions entre dans VSC-01 quel que soit le moteur | EXP-02b, EXP-04, PLA-03b, VSC-01 |
 
 ## Décision du chef du 15 novembre : UIX-01a
 
