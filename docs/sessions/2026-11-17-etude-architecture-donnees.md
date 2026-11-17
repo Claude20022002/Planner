@@ -40,7 +40,6 @@ Rien à tester (aucun code). Les faits du § 2 de l'étude ont été relevés su
 | Q-30-4 | Le modèle d'extensions devient une règle pour VSC-01 | oui (voir decisions.md, 17 nov.) | répondue |
 | Q-30-5 | R4 et R5 : où et quand | oui (voir decisions.md, 17 nov.) | répondue |
 | Q-30-6 | Contre-expertise sous Fable 5.2 | oui (voir decisions.md, 17 nov.) | répondue |
-
 | CE-12 à CE-15 | Questions 12 à 15 de la contre-expertise (hiérarchie, profil maternelle, double réservation, principe « code par profil ou pack ») | | en attente |
 | E-1 à E-4 | Questions du plan de l'essai PostgreSQL (§ 3) | | en attente |
 
