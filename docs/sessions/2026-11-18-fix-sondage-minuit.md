@@ -41,7 +41,7 @@ La séance « du jour » des parcours (`donnees.mjs`) va de 00 h 05 à 23 h 55 U
 - `npx eslint` des trois fichiers, dans `frontend/` : aucune erreur.
 - `npx playwright test -c playwright.parcours.config.cjs --list` : 4 tests reconnus dans les deux fichiers (les deux tests de régression, le parcours du sondage, celui de l'espace de cours). `--list` n'exécute rien.
 - Lignes de 160 caractères au plus dans ce que j'ai écrit. Deux lignes plus longues existaient déjà (`sondage.spec.cjs`, ligne 107 ; `espaceCours.spec.cjs`, ligne 31) : je n'y ai pas touché.
-- **Non vérifié** : l'exécution des parcours. Ils tournent dans la CI de la PR, et la mission interdit de lancer un serveur en local. La preuve de l'échec d'avant le correctif est le journal du 15 nov. (passages 43776567449, 43776562606, 43776557149 et 43776765702), comme décidé par le coordinateur.
+- **CI de la PR #202** sur `1293bd4b` : **les six contrôles sont verts**. Dans « Parcours de démonstration », **51 tests passent**, dont les deux tests de régression (à 23 h 58 et à 00 h 02 UTC), le parcours `sondage` et `espaceCours`. Aucun serveur n'a été lancé en local. La preuve de l'échec d'avant le correctif est le journal du 15 nov. (passages 43776567449, 43776562606, 43776557149 et 43776765702), comme décidé par le coordinateur.
 
 ## Écarts avec le plan
 
@@ -58,7 +58,7 @@ Aucune en attente.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef pousse et ouvre la PR. La CI fait tourner les parcours : les deux tests de régression et les parcours `sondage` et `espaceCours` doivent être verts.
+1. PR #202 poussée et verte (six contrôles, 51 parcours).
 2. Le coordinateur relit la branche.
 3. Mission à part, sans agent pour l'instant (inscrite par le coordinateur) : `entreRoles`, `appel` et `appelClasse`, même cause. Ils ont besoin d'une séance **en cours** quand ils tournent, donc le correctif est dans `donnees.mjs`. D'ici là, relancer leur CI quand elle a croisé 23 h 50.
 4. Mission suivante de cette session : la page « Solutions » du site vitrine, plan court à faire valider par le chef.
@@ -79,7 +79,7 @@ et la fiche docs/sessions/2026-11-18-fix-sondage-minuit.md ; la mission est docs
 sur doc/coordination-equipe.
 Fait : plan (e8487fe6, validé dans cae3b133) ; correctif f31bd77e : ouvrirClasse ajoutée à outils.cjs, sondage et espaceCours
 ouvrent la classe par sa carte, deux tests figent l'horloge à 23 h 58 et 00 h 02 UTC et réécrivent la réponse de mes-classes.
-Vérifié : lint, node --check, playwright --list (4 tests). Non vérifié : l'exécution des parcours (CI de la PR).
+Vérifié : lint, node --check, playwright --list (4 tests). PR #202 : six contrôles verts, 51 parcours, dont les quatre tests touchés.
 Reste : PR et CI ; relecture du coordinateur. entreRoles, appel et appelClasse : mission à part (donnees.mjs).
 Règles : seuls les fichiers de la fiche de mission ; ne lance pas de serveur ; jamais de git push.
 ```
