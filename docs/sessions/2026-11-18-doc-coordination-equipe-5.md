@@ -92,6 +92,14 @@ Le chef a fait deux choix :
 - **les jeux se rangent par niveau, puis par filière**, sur le site et dans l'application, et seulement là où il y a des jeux. C'est QJE-15, une exception hors chantier : [fiche](../plan/missions/qje-15-jeux-par-niveau.md), confiée à l'agent de Cursor après VIT-10 ;
 - **les fonctionnalités du site deviennent des apps**, à quatre endroits : l'accueil, le menu « Fonctions », l'en-tête de chaque page et le catalogue. C'est ajouté à VIT-09 (Claude de VS Code). Le registre de VIT-11 porte l'app de chaque entrée.
 
+## Tour de 20 h
+
+- **Prêtes** : #217 (CI entièrement verte) ; #212 et #213, quand leurs parcours seront verts.
+- **#216 (VIT-08) à corriger** : EP-18 (l'appel n'est présenté que par QR code, dans la vidéo et sur l'accueil), et l'onglet « Activités », qui est masqué dans l'application.
+- **VIT-10** : le plan est validé par le chef, mais la validation n'est pas commitée, et du code est déjà en cours. Consigne : commiter la validation seule d'abord.
+- **VIT-11** : le plan est validé (le chef pour les questions 1, 2 et 4 à 10, le coordinateur pour la 3). Le code attend la fusion de VIT-10.
+- Consignes de 20 h dans les deux boîtes.
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |
@@ -142,8 +150,10 @@ Ensuite :
 ```text
 Le coordinateur a repris le 18 nov. à 17 h. Ta file est dans docs/plan/feuille-de-route.md (branche doc/coordination-equipe,
 ..\travaux-planner\coordination-equipe, jusqu'à sa fusion).
-1) VIT-08 : le plan court est validé par le chef (5b62f702). Code-le maintenant, dans ..\travaux-planner\vit-08-video.
-   L'accueil est à toi : accueil.json présente encore l'appel par QR code seulement. Applique EP-18 (l'appel aussi à la main).
+1) VIT-08 (#216) : à corriger avant le rendu final. a) EP-18 : la scène de l'appel (« Le QR code change toutes les 30 secondes »),
+   la description de l'accueil et la section « Appel » de accueil.json ne présentent que le QR code ; dis aussi l'appel à la main
+   (présent, en retard, absent). b) La scène du mobile montre l'onglet « Activités », masqué dans l'application (href: null) :
+   montre les onglets visibles (Tableau, Semaine, Scanner, Bibliothèque, Compte). Le rendu final attend les SVG officiels.
 2) Puis UIX-10b (plan court, après la fusion d'UIX-09). Dans UIX-10b, corrige la ligne UIX-10 de docs/plan/modules/UIX-interface.md :
    « UIX-10a faite (#207, fusionnée le 18 nov.) ».
 2 bis) Puis VIT-09, nouvelle mission (condition 7) : les illustrations de toutes les pages du site, des captures sans nom d'école,

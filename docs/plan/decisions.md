@@ -392,3 +392,13 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Les jeux se rangent par niveau (collège, lycée, supérieur…), puis par filière**, sur le site et dans l'application (web et mobile), à partir du catalogue partagé. On n'affiche que les niveaux et filières qui ont des jeux. **QJE-15**, exception hors chantier, agent de Cursor après VIT-10 ([fiche](missions/qje-15-jeux-par-niveau.md)) | chef, par l'outil de questions |
 | **Les fonctionnalités du site sont représentées comme des apps** : une section de l'accueil, le menu « Fonctions », l'en-tête de chaque page de fonction et le catalogue de VIT-11. Confié à **VIT-09** (Claude de VS Code), avec les mêmes icônes que la grille de l'application | chef, par l'outil de questions |
 | *(coordinateur)* Les filières des jeux sont des domaines génériques, pas l'entité `Filiere` propre à chaque école ; les niveaux suivent les cycles déjà décidés (VIT-05, VSC-01). Le registre de VIT-11 porte l'app de chaque fonctionnalité, pour que VIT-09 y mette les icônes. #217 se fusionne avant QJE-15, avec « en MAD » retiré (`7de7ae3b`) | coordinateur |
+
+**Chef et coordinateur, 18 nov., vers 20 h** :
+
+| Décision | Par |
+|---|---|
+| **La Bibliothèque, c'est StudyLib**, et StudyLib ou ses fonctionnalités **peuvent être vendues séparément** (précision rapportée par Codex à 19 h 27). Sur le site : **le contact seulement**, sans offre ni prix décrits | chef |
+| **Plan de VIT-11 validé** : regroupement par app, adresses `/fonctionnalites/` et `/faq/` ; réponses de la FAQ 4 à 10 validées une à une (la 7, sur le mobile, dans la version du coordinateur, qui dit l'appel à la main et le chemin sans téléphone) | chef, par l'outil de questions |
+| **Plan de VIT-10 validé** : pied de page ouvert, pas de bande de chiffres, deux boutons par page de rôle, avant/après et FAQ seulement avec des phrases déjà publiées | chef |
+| *(coordinateur)* VIT-11, question 3 : les sources de StudyLib se vérifient par un commit épinglé, dans un clone local, hors de la CI ; le build reste autonome. VIT-11 ajoute elle-même ses liens et ses clés de navigation après la fusion de VIT-10, pour qu'aucun lien ne pointe vers une page absente | coordinateur |
+| *(coordinateur)* #216 (VIT-08) : à corriger. L'appel n'est présenté que par QR code (dans la vidéo et sur l'accueil, EP-18), et la scène du mobile montre un onglet masqué dans l'application. #212, #213 et #217 : prêtes quand leur CI est verte | coordinateur |

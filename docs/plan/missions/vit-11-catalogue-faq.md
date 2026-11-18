@@ -47,7 +47,7 @@ Sources de départ : le plan de parité (#193), et les plans de VIT-05 et de VIT
 - `vitrine/tests/` ; le plan court, `docs/plan/modules/VIT-site-vitrine.md`, la fiche de session.
 
 L'agent ne touche pas :
-- à `langues.js` ni à `EnTete.astro` : le lien vers le catalogue se demande à l'agent de Cursor (VIT-10), par le coordinateur ;
+- à `langues.js`, `EnTete.astro` et `PiedDePage.astro` **avant la fusion de VIT-10**. Après elle, VIT-11 y ajoute elle-même ses deux clés et ses liens (catalogue et FAQ), rien d'autre (décision du coordinateur, 18 nov. 20 h) ;
 - à `docs/plan/suivi.md`, à `vitrine/src/styles/`, à l'accueil ;
 - aux illustrations (VIT-09, après lui).
 
@@ -73,3 +73,4 @@ Le code attend la fusion de VIT-10. Ni langues.js ni EnTete.astro. Ne modifie pa
 | 2026-11-18 17 h 55 | consigne écrite par Claude de VS Code à la demande du chef, déposée dans la boîte de Codex | — |
 | 2026-11-18 18 h 40 | inscrite par le coordinateur ; condition 9 ; après VSC-01 dans la file de Codex (chef) | — |
 | 2026-11-18 19 h 25 | ajout : chaque entrée du registre porte son app, pour les icônes d'apps de VIT-09 (chef) | — |
+| 2026-11-18 20 h | plan validé : questions 1, 2 et 4 à 10 par le chef (réponse 7 dans la version du coordinateur, pour EP-18), 3 par le coordinateur ; les liens du catalogue et de la FAQ sont ajoutés par VIT-11 après la fusion de VIT-10 | **validé** |

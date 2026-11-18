@@ -48,3 +48,4 @@ L'agent ne touche pas à `docs/plan/suivi.md`, ni aux pages de VIT-07 (agent de 
 |---|---|---|
 | 2026-11-18 15 h 40 | fiche écrite, sur décision du chef | — |
 | 2026-11-18 17 h 05 | constat : plan court sur `feat/vit-08-video-presentation`, réponses du chef aux questions 1 à 4 (`d1e6bd8d`), **validé par le chef** (`5b62f702`) ; code à faire | — |
+| 2026-11-18 20 h | #216 relue : à corriger. 1) EP-18 : la scène de l'appel (« Le QR code change toutes les 30 secondes »), la description et la section « Appel » de l'accueil ne présentent que le QR code ; dire aussi l'appel à la main. 2) La scène du mobile montre l'onglet « Activités », masqué dans l'application (`href: null`). Rendu final en attente des SVG officiels | **à corriger** |

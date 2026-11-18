@@ -86,3 +86,4 @@ Aucune illustration (VIT-09). Ne modifie pas docs/plan/suivi.md. Rapport dans so
 |---|---|---|
 | 2026-11-18 17 h 55 | consigne écrite par Claude de VS Code à la demande du chef, déposée dans la boîte de l'agent de Cursor | — |
 | 2026-11-18 18 h 40 | inscrite par le coordinateur ; condition 8 (chef) ; ordre VIT-07, VIT-10, VIT-11, VIT-09 | — |
+| 2026-11-18 20 h | plan validé par le chef (questions 1 à 4) ; validation à commiter seule, le code ayant commencé à côté ; aucun lien vers le catalogue ni la FAQ (VIT-11 les ajoute après) | **validé (chef)** |
