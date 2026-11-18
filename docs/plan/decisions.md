@@ -17,7 +17,7 @@ Registre unique à partir du 7 novembre 2026.
 | D-03 | Un contexte d'école obligatoire pour toute lecture ou écriture | en vigueur ; l'essai du 29 octobre montre que la solution tient (`17-essai-contexte.md`) |
 | D-04 | Un service « Plateforme » à part, avec sa base | en vigueur (PLA) |
 | D-05 | Un compte pour la plateforme, des appartenances par école | en vigueur ; à relire avec VSC-01 (parents à deux écoles) |
-| D-06 | Le code garde le sens, l'école nomme | en vigueur ; **à amender** dans VSC-01 pour les groupes transversaux (langues, options), hors de la limite de trois niveaux |
+| D-06 | Le code garde le sens, l'école nomme | en vigueur ; C-5 confirme les groupes transversaux de langue et d’option hors des trois niveaux emboîtés |
 | D-07 | Réglages datés, « aperçu puis appliquer » | en vigueur ; MOT-01 en est le socle |
 | D-08 | Import : zone de préparation, classeur unique, clés naturelles | en vigueur (ADM-03) |
 | D-09 | Solveur : règles dures fixes, règles souples réglables | **amendée le 4 novembre** : 26 règles strictes verrouillées, 22 strictes réglables, 86 souples. Un profil ou la Plateforme peut rendre une règle stricte ; l'école ne choisit que « indispensable » |
@@ -141,7 +141,8 @@ Registre unique à partir du 7 novembre 2026.
 | Q-17 | Règles de modération de la messagerie | à trancher avant COU-08 | COU-08 |
 | Q-18 | Nom de l'application dans les magasins | « Planner » sauf conflit de marque | MOB |
 | Q-19 | Les 28 questions juridiques, fiscales et Massar de l'étude du modèle économique | gelées, sauf Massar (ETA-02, ancienne VSC-05) et loi 09-08 (condition légale) | ETA-02 |
-| Q-20 | Un élève a un compte (décision du 8 novembre), mais un enfant de 6 ans n'a pas d'adresse électronique, et `Users.email` est obligatoire et unique. Avec quoi se connecte-t-il ? | un **identifiant donné par l'école**, adresse facultative, mot de passe initial remis par l'école (ou par le parent) ; pas d'adresse factice. Étude d'impact sur chaque fichier qui lit `Users.email` (connexion, réinitialisation, notifications, import) | VSC-01 |
+
+**Q-20 est tranchée dans C-5.** Identifiant scolaire et adresse facultative. L’inscription peut précéder le compte. Voir [l’étude d’impact](../conception/vie-scolaire/vsc-01-impact-adresse-compte.md).
 
 ## Décision du chef du 15 novembre : UIX-01a
 
