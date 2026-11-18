@@ -41,8 +41,8 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Plan d'essai d'OpenEduCat Community (étude hors chantier, demande du chef le 15 nov.) | #176 | à fusionner |
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | **fusionnée le 15 nov.** |
-| Correctif : audit des dépendances rouge, `backend/` seul (plan validé par le chef le 18 nov. ; `vitrine/` avec la montée d'Astro du 27 nov.) | #198 | **fusionnée le 18 nov.** ; exception picomatch à revoir avant le 18 déc. |
-| Correctif : parcours `sondage` et `espaceCours` rouges après 23 h 55 UTC, fin de la séance du jour des parcours (plan validé par le coordinateur le 18 nov.) | `fix/sondage-minuit` | commité le 18 nov. : ouverture de la classe par sa carte, test à 23 h 58 et 00 h 02 UTC ; à pousser, ouvrir la PR. `entreRoles`, `appel` et `appelClasse`, même cause : mission à part, dans `donnees.mjs` |
+| Correctif : audit des dépendances rouge, `backend/` seul (plan validé par le chef le 18 nov. ; `vitrine/` avec la montée d'Astro du 27 nov.) | #198 | **fusionnée le 18 nov.** (#198) |
+| Correctif : parcours `sondage` et `espaceCours` rouges après 23 h 55 UTC, fin de la séance du jour des parcours (plan validé par le coordinateur le 18 nov.) | `fix/sondage-minuit` | **fusionnée le 18 nov.** (#202) |
 
 Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, PR #184 fusionnée le 15 nov. (`16b542a1`) ; six contrôles verts, 43 parcours réussis. Aucun quatrième chantier ouvert.
 
@@ -54,12 +54,20 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 
 | Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
 |---|---|---|---|---|---|---|
-| PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan validé (délégation), non commité ; **l'agent attend le « validé » du chef dans sa session** (VS Code, Fable 5.2) | 15 nov. | [pla-03b](missions/pla-03b.md) |
+| PLA | PLA-03b schéma de départ | Claude Code (VS Code, Fable 5.2) | `feat/pla-03b-schema-depart` | plan **validé par le chef** dans sa session (variante R-3) ; code en cours | 15 nov. 23 h 50 | [pla-03b](missions/pla-03b.md) |
 | PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | banc adapté, sonde A-2 codée (`1cbdfaa`), 24 tests verts ; relu et poussé ; ensuite recette et séries sur le serveur, par le chef | 15 nov. 14 h 05 : prêt | [pla-06](missions/pla-06.md) |
 | MOT | MOT-02 mesure du solveur sur un jeu scolaire | Codex | `etude/mot-02-mesure-solveur` (non poussée) | banc et grand jeu de 20 000 mesurés (6 passages, avant et après #181 : aucun planning complet en 600 s, débit médian -13 % en 1.35, plages qui se chevauchent) ; reste le collège, débloqué par #182 | 15 nov. 20 h 50 | [mot-02](missions/mot-02.md) |
-| MOT | MOT-03 validation avant le calcul | agent de Cursor | #183 | correction de la cible du refus faite ; branche à jour de main, à repousser | 18 nov. | [mot-03](missions/mot-03.md) |
+| QUA | correctif : `entreRoles`, `appel` et `appelClasse` échouent vers minuit UTC : ils ont besoin d'une séance réellement en cours, et donc de changer `donnees.mjs`, partagé par tous les parcours | à attribuer | — | mission à part, avec son plan ; d'ici là, relancer leur CI quand elle a tourné entre 23 h 50 et minuit passé | 18 nov. 11 h 40 | — |
+| MKT | MKT-05 et MKT-09 : vidéo publicitaire et présentation aux établissements (MKT-09 dégelé pour la préparation par le chef) | agent Claude du coordinateur | `mkt/mkt-05-video-presentation` (non poussée) | argumentaire, 3 scripts et plan de 18 diapositives écrits (`2a921691`) ; réponses du chef reçues ; recherche de sources en cours ; vidéo et .pptx après l'accord du chef | 15 nov. 23 h 50 | [mkt-video-presentation](missions/mkt-video-presentation.md) |
+| EXP | REL-06 (journaux Docker), puis REL-03 (dumps d'avant déploiement), d'après l'audit de rluf01 du 15 nov. | agent de Cursor (codé sur Grok 4.7) | #200 (`05c72f54`), #201 (`0d63c429`) | REL-06 bonne ; REL-03 corrigée, bonne ; encore en conflit sur `suivi.md` après la fusion de #202 : elles prennent la version de `main` (règle du 18 nov.) | 18 nov. 11 h 55 | — |
 
-| UIX | UIX-01a navigation par applications (exception hors chantier accordée par le chef) | Codex | #184 | codée, CI verte parcours compris ; relue : **prête** ; destination après connexion changée (lanceur) : choix de produit à confirmer | 15 nov. 20 h 50 : prête | — |
+| UIX | UIX-06b, mission d'équipe : les quatre écrans | Codex | #199 (`f5349d84`) | **première CI rouge** : 11 parcours sur 71, dont un vrai défaut de contraste (bouton de validation, thème sombre, axe-core) et un bouton « Générer » désactivé à expliquer ; l'ancien `annees.spec.cjs` est à adapter (nom du parent affiché dans les lignes enfants) ; correction demandée à 12 h 46 | 18 nov. 12 h 46 : à corriger | [uix-06b-equipe](missions/uix-06b-equipe.md) |
+| UIX | UIX-09 grille d'applications façon iCloud | Codex | `feat/uix-09-grille-applications` (`c45f70c4`, non poussée) | relue : **bonne** (périmètre tenu, lucide-react 1.68.0 publié le 4 nov., licence MIT copiée, `suivi.md` identique à `main`) ; à pousser **après #199** : fusion de `main`, verrou npm régénéré, axe-core dans le parcours | 18 nov. 12 h 10 | [vit-equipe](missions/vit-equipe.md) |
+| UIX | UIX-06c Salles, Campus, Créneaux, Calendrier | à fixer (Codex en tête) | `feat/uix-06c-ressources-temps` (à créer) | **plan validé par le chef le 18 nov.**, avec l'exception hors chantier ; départ après UIX-09 | 18 nov. 10 h 30 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
+| QJE | QJE-04 : dix simulations et trente défis d'Alexis (catalogue neutre, solution notée par le serveur, suivi enseignant ; migration 0082) | Alexis (Destroya2) et son agent | #196 (`e26cbe8a`) | migration et ordre authentification puis CSRF validés par le chef ; intégration **verte** (3 attentes corrigées, justes) ; **parcours rouge** : `sessionsJeu.spec.cjs` trouve 11 boutons « Lancer en classe » au lieu d'un ; correction demandée à 12 h 30 ; passe après #199 | 18 nov. 12 h 30 : à corriger | — |
+| VIT | plus tard : vidéos de motion design sur les captures, et lien « Ressources » (VIT-03) avec elles | — | — | décisions du chef du 18 nov. ([plan du site](../conception/vitrine/vit-vitrine.md), § 3 bis) | 18 nov. | [vit-equipe](missions/vit-equipe.md) |
+| VIT | VIT-05 (préparation) : page « Solutions » par type d'établissement, sans prix | Claude (VS Code), nouvelle session | `feat/vit-05-solutions` (à créer) | questions au chef, puis plan court à faire valider par le chef ; prompt donné à 12 h 10 | 18 nov. 12 h 10 | [vit-solutions](missions/vit-solutions.md) |
+| EXP | suite de l'audit (#198, fusionnée) : partie `vitrine/` le 27 nov. avec la montée d'Astro ; revue de l'exception picomatch avant le 18 déc. | à attribuer | — | dates fixées par le plan | 18 nov. | [plan](../conception/exploitation/fix-audit-dependances.md) |
 
 Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
@@ -106,7 +114,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [EXP-09](modules/EXP-exploitation.md) | Mises à jour de StudyLib et ClassQuiz par la CI comme le reste (aujourd'hui par paquets) | libre | M | à faire |  |
 | [MOT-01](modules/MOT-moteur.md) | Valeurs du moteur datées et résolues (profil, école, niveau) | 1 | M | fait (serveur, #156, 10 nov.) ; écrans avec ADM-02 | #156 |
 | [MOT-02](modules/MOT-moteur.md) | Mesurer le solveur sur un jeu scolaire (collège de 600 élèves), puis sur 20 000… | 1 | M | en cours : banc et grand jeu mesurés ; collège à faire | `etude/mot-02-mesure-solveur` |
-| [MOT-03](modules/MOT-moteur.md) | Validation avant le calcul | 3 | M | PR ouverte · correction de la cible du refus, à repousser | #183 |
+| [MOT-03](modules/MOT-moteur.md) | Validation avant le calcul | 3 | M | fait : #183 fusionnée le 18 nov. | #183 |
 | [MOT-04](modules/MOT-moteur.md) | Modèle neutre et évaluateur indépendant | 3 | L + M | à faire |  |
 | [MOT-05](modules/MOT-moteur.md) | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe, groupe transversal), à la… | 2 puis 3 | M + L | à faire |  |
 | [MOT-06](modules/MOT-moteur.md) | Collège | 3 | XL | à faire |  |
@@ -165,19 +173,20 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOB-05](modules/MOB-application.md) | Espace parents | 4 | L | à faire |  |
 | [MOB-06](modules/MOB-application.md) | Emploi du temps lisible hors ligne (EP-3) | 4 | M | à faire |  |
 | [MOB-07](modules/MOB-application.md) | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes… | libre | M | à faire |  |
-| [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder |  |
+| [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder ; UIX-01a (navigation, #184) fusionnée le 15 nov. ; UIX-06a (interface unifiée, #185) en relecture |  |
 | [UIX-01a](modules/UIX-interface.md) | Accueil des applications et navigation web, exception autorisée par le chef le 15 nov. | libre | M | fait : #184 fusionnée, CI verte, 43 parcours | #184 |
 | [UIX-02](modules/UIX-interface.md) | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et… | 3 | M | à faire |  |
 | [UIX-03](modules/UIX-interface.md) | Accessibilité AA | libre | M | en partie |  |
 | [UIX-04](modules/UIX-interface.md) | Arabe complet | 4 | XL | à faire |  |
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
-| [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
-| [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte : CI parcours rouge, correction du test de reprise réseau committée localement | #185 · feat/uix-06a-interface |
-| [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | en cours : R0 du site (socle), accueil et cinq pages de fonctions (VIT-05 en préparation) dans la PR #195 ; lot de pages repris par l'intégrateur (chef, 18 nov.) ; relu « prêt sur le fond » par le coordinateur (18 nov.), fusion après `fix/audit-dependances` ; attendus : SVG des logos, contrôles finaux | feat/vit-01-vitrine |
+| [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en partie : UIX-06a fusionnée (#185) ; UIX-06b en PR (#199) | #185, #199 |
+| [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | fait : #185 fusionnée le 16 nov. | #185 |
+| [UIX-09](modules/UIX-interface.md) | Grille d'applications façon iCloud | libre | M | en cours (Codex), plan validé (chef, 18 nov.) | `feat/uix-09-grille-applications` |
+| [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | fait : socle, accueil et cinq pages de fonctions (VIT-05 en préparation), #195 fusionnée le 18 nov. ; rien n'est en ligne | #195 |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
 | [VIT-04](modules/VIT-site-vitrine.md) | Page d'état du service et journal des nouveautés de chaque version | libre | S | à faire |  |
-| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | gelé |  |
+| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | préparation dégelée le 18 nov. (sans tarifs ni mise en ligne) |  |
 | [VEN-01](modules/VEN-vente-modules.md) | Registre des modules | 2 | L | à faire |  |
 | [VEN-02](modules/VEN-vente-modules.md) | Cinq entretiens de terrain avec des directeurs d'écoles privées, séparés de toute… | 3 | S par entretien | à faire |  |
 | [VEN-03](modules/VEN-vente-modules.md) | Abonnements et factures | — | L | gelé |  |
