@@ -36,7 +36,9 @@ test('requires authentication, eligible role, and teacher assignment', async () 
     const catalogue = await eleve.get('/api/jeux');
     expect(catalogue.body.jeux).toHaveLength(3);
     expect(catalogue.body.jeux.every((j) => j.source === null && j.curriculum.discipline.fr && !j.curriculum.url)).toBe(true);
-    expect((await tiers.send('post', `/api/jeux/unknown/modules`, { id_cours: cours })).status).toBe(404);
+    // Un étudiant est refusé par le rôle (403) avant même que le jeu soit cherché ; le professeur, lui, obtient 404
+    expect((await tiers.send('post', `/api/jeux/unknown/modules`, { id_cours: cours })).status).toBe(403);
+    expect((await prof.send('post', `/api/jeux/unknown/modules`, { id_cours: cours })).status).toBe(404);
 });
 
 test('solution requests are authenticated before CSRF and reject unknown or forged payloads', async () => {
@@ -76,8 +78,10 @@ test('evaluates AI and inventory plans on the server', async () => {
 });
 
 test('counts only well-formed server failures and restores them after a reload', async () => {
+    // Trois requêtes simultanées : l'ordre d'arrivée n'est pas garanti, mais le compteur doit passer
+    // par 1, 2 et 3 sans doublon ni perte (verrou de ligne)
     const trois = await Promise.all([1, 2, 3].map(() => eleve.send('post', url('robot-route', 'robot-02'), { reponse: { programme: 'S' } })));
-    expect(trois.map((r) => r.body.echecs)).toEqual([1, 2, 3]);
+    expect(trois.map((r) => r.body.echecs).sort((a, b) => a - b)).toEqual([1, 2, 3]);
     const p = await eleve.get('/api/jeux/robot-route/progression');
     expect(p.body.etats).toEqual(expect.arrayContaining([{ id: 'robot-02', echecs: 3, solution_vue: false, sans_points: false }]));
 });
@@ -97,7 +101,8 @@ test('viewing a solution creates no success, then a correct answer earns zero po
 
 test('viewing after success preserves points and repeated requests stay idempotent', async () => {
     const vue = await eleve.send('post', solution(), {});
-    expect(vue.body).toMatchObject({ reponse: { programme: 'EEESSS' }, echecs: 0, solution_vue: true, sans_points: false });
+    // robot-01 garde l'échec de l'essai raté plus haut : une réussite ultérieure ne l'efface pas
+    expect(vue.body).toMatchObject({ reponse: { programme: 'EEESSS' }, echecs: 1, solution_vue: true, sans_points: false });
     const bis = await eleve.send('post', solution(), {});
     expect(bis.body).toEqual(vue.body);
     expect((await eleve.send('post', url(), bonne)).body).toMatchObject({ cree: false, points: 100, avec_solution: false });
