@@ -97,9 +97,15 @@ jobs:
       - name: Installer les dépendances
         run: npm ci
 
-      # Dépendances livrées (hors outils de développement) : une vulnérabilité haute ou critique bloque
+      # Les règles de l'audit, sans réseau : exception absente, expirée, ou version corrigée publiée
+      - name: Tests du script d'audit
+        run: node --test ../scripts/tests/audit.test.mjs
+
+      # Dépendances livrées (hors outils de développement) : une vulnérabilité haute ou critique bloque,
+      # sauf si deploy/audit-exceptions.json la liste avec sa raison et une date d'expiration (30 jours
+      # au plus). Plan : docs/conception/exploitation/fix-audit-dependances.md
       - name: Audit des dépendances
-        run: npm audit --omit=dev --audit-level=high
+        run: node ../scripts/audit.mjs backend
 
       # Bloquant : une erreur échoue la CI (variable ou import inutilisé…). Les avertissements
       # « max-lines » signalent les fichiers à découper sans rien bloquer.
