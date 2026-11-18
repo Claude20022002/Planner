@@ -1,6 +1,18 @@
 /** Parcours du lanceur : recherche, navigation contextuelle et visibilité selon le rôle. */
 const { test, expect } = require('@playwright/test');
 const { lireDonnees, seConnecter } = require('./outils.cjs');
+
+async function verifierAccessibilite(page) {
+  await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+  const violations = await page.evaluate(async () => {
+    const { violations } = await window.axe.run('main', {
+      runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+    });
+    return violations.map(({ id, nodes }) => ({ id, cibles: nodes.map(({ target }) => target) }));
+  });
+  expect(violations, 'Violations WCAG A/AA dans la grille').toEqual([]);
+}
+
 test('administration : chercher une rubrique, l’ouvrir et revenir', async ({ page }) => {
   const d = lireDonnees();
   await seConnecter(page, { email: d.admin.email, motDePasse: d.motDePasse, role: 'admin' });
@@ -35,6 +47,7 @@ test('étudiant : pas de gestion des personnes, accueil utilisable sur télépho
 test('administration à 1440 px : le clavier ouvre une tuile en anglais et en mode sombre', async ({ page }) => {
   const { admin, motDePasse } = lireDonnees();
   await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
   await page.evaluate(() => {
     localStorage.setItem('hp.lang', 'en');
@@ -45,6 +58,8 @@ test('administration à 1440 px : le clavier ouvre une tuile en anglais et en mo
   await expect(page.getByRole('button', { name: 'Your account' })).toBeVisible();
   const nav = page.getByRole('navigation', { name: 'Available applications' });
   const personnes = nav.getByRole('link', { name: 'People', exact: true });
+  await expect(personnes).toBeVisible();
+  await verifierAccessibilite(page);
   await personnes.focus();
   await expect(personnes).toBeFocused();
   await personnes.press('Enter');
@@ -61,6 +76,7 @@ test('enseignant : grille à 390 px avec mouvement réduit et sans gestion des p
   await expect(nav.getByRole('link', { name: 'Personnes', exact: true })).toHaveCount(0);
   const planning = nav.getByRole('link', { name: 'Emploi du temps', exact: true });
   await expect(planning).toBeVisible();
+  await verifierAccessibilite(page);
   await planning.hover();
   await planning.focus();
   await expect(planning.locator('[data-tuile-application]')).toHaveCSS('transform', 'none');
