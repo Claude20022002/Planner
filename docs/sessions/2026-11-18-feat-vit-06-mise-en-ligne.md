@@ -25,17 +25,20 @@ Le commit `56e3b38c` consigne la validation et nomme les secrets GitHub Actions 
 Le plan précise le cache des captures Astro (AVIF ou WebP), la directive CSP et la recette par page.
 Ce complément est arrivé après le premier rapport de validation et figure dans le commit suivant.
 
+À 18 h 35, le chef a ajouté VIT-10 (pages par rôle, menu « Solutions » ouvrant, pied de page complet)
+et VIT-11 (catalogue des fonctionnalités et FAQ). Le plan et sa recette couvrent neuf conditions.
+Le visa du plan reste acquis. La PR #212 est déjà ouverte.
+
 ## Pour le chef
 
-Publier la branche depuis le dépôt principal puis ouvrir la PR de conception.
+Publier le complément depuis le dépôt principal sur la PR #212.
 
 ~~~powershell
 git -C "..\travaux-planner\vit-06-mise-en-ligne" push -u origin feat/vit-06-mise-en-ligne
-gh pr create --base main --head feat/vit-06-mise-en-ligne --title "VIT-06 · Plan de mise en ligne de la vitrine" --body "Plan de conception et fiche de session."
 ~~~
 
 ## Prompt de reprise
 
-Reprendre VIT-06 en fin de file, une fois les sept conditions vérifiées. Le plan validé
+Reprendre VIT-06 en fin de file, une fois les neuf conditions vérifiées. Le plan validé
 est sur feat/vit-06-mise-en-ligne. Lire AGENTS.md, la fiche de mission et la boîte Codex.
 Le chef configure les secrets et le fichier privé. Lui seul publie et lance les commandes du serveur.
