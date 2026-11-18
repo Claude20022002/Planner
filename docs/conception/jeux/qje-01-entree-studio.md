@@ -5,13 +5,13 @@
 | Module | [QJE](../../plan/modules/QJE-quiz-jeux-ia.md) · exception hors chantier (chef, 18 nov.) |
 | Branche | `feat/qje-01-entree-studio` |
 | Rédigé par | agent de Cursor (Grok 4.7), le 2026-11-18 |
-| **Validé** | en attente du coordinateur (S, sans migration ni sécurité). Ce plan ne touche ni l'identité ni le serveur. Aucun code avant ce « validé ». |
+| **Validé** | Validé par Claude20022002 le 18 novembre 2026. Les quatre propositions sont retenues. |
 
 ## 1. Objet et critère de « terminé »
 
 Dans le sélecteur d'espaces, l'entrée « Quiz » ne construit plus d'adresse vers ClassQuiz. Elle ouvre une page de Planner. Le titre affiché reste « Quiz ».
 
-Vérifié par un test de `adresseEspace` et, si la question 3 est retenue, par le parcours `classQuizEteint.spec.cjs`.
+Vérifié par un test de `adresseEspace` et par le parcours `classQuizEteint.spec.cjs`.
 
 ## 2. Ce qui existe
 
@@ -30,14 +30,14 @@ Le parcours `frontend/tests/parcours/classQuizEteint.spec.cjs` attend que, Class
 
 | N° | Question | Proposition | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | Où arrive l'étudiant, à la place de `/play` ? | `/quiz`, page déjà réservée à l'étudiant. Pas `/studio-quiz`, qui le refuserait. | en attente | oui |
-| 2 | L'enseignant reste-t-il sur `/jeux` ? | Oui. Il n'ouvre déjà pas ClassQuiz. `/studio-quiz` serait un autre choix. | en attente | oui |
-| 3 | L'entrée reste-t-elle visible quand ClassQuiz est éteint ? | Oui. Elle ne dépend plus de `urlQuiz`. L'administration reste sans entrée. Le parcours enseignant change. | en attente | oui |
-| 4 | L'application mobile, qui ne liste pas Quiz ? | On n'y touche pas. | en attente | non |
+| 1 | Où arrive l'étudiant, à la place de `/play` ? | `/quiz`, page déjà réservée à l'étudiant. Pas `/studio-quiz`, qui le refuserait. | **oui, `/quiz` (chef, 18 nov.)** | — |
+| 2 | L'enseignant reste-t-il sur `/jeux` ? | Oui. Il n'ouvre déjà pas ClassQuiz. `/studio-quiz` serait un autre choix. | **oui, il reste sur `/jeux` (chef, 18 nov.)** | — |
+| 3 | L'entrée reste-t-elle visible quand ClassQuiz est éteint ? | Oui. Elle ne dépend plus de `urlQuiz`. L'administration reste sans entrée. Le parcours enseignant change. | **oui (chef, 18 nov.)** | — |
+| 4 | L'application mobile, qui ne liste pas Quiz ? | On n'y touche pas. | **oui, on n'y touche pas (chef, 18 nov.)** | — |
 
 ## 4. Solution
 
-Si les propositions 1 à 3 sont retenues, `adresseEspace('quiz')` ne lit plus `urlQuiz` :
+`adresseEspace('quiz')` ne lit plus `urlQuiz` :
 
 - administration : `null` ;
 - enseignant : `/jeux` ;
@@ -60,7 +60,7 @@ sequenceDiagram
 |---|---|---|---|
 | `shared/espaces.js` | modifié | adresses Quiz | la fonction reste courte |
 | `frontend/src/components/espaces/adresseEspace.test.js` | créé | rôles, absence de `/play` | un fichier court |
-| `frontend/tests/parcours/classQuizEteint.spec.cjs` | modifié si la question 3 est oui | l'entrée enseignant reste visible ClassQuiz éteint | le test existant |
+| `frontend/tests/parcours/classQuizEteint.spec.cjs` | modifié | l'entrée enseignant reste visible ClassQuiz éteint | le test existant |
 | `docs/sessions/…-feat-qje-01-entree-studio.md` | créé | fiche, au moment du code | — |
 
 ## 6. Données et migration
@@ -73,7 +73,7 @@ Pas d'OIDC, pas de conteneur, pas de secret. L'entrée ne sort plus vers un autr
 
 ## 8. Tests
 
-`node --test` sur `adresseEspace.test.js` via `npm run test:unit` dans `frontend/` (ce script n'est pas dans la CI aujourd'hui). Cas : enseignant `/jeux`, étudiant `/quiz`, admin `null`, aucun résultat ne contient `/play`. Si la question 3 est oui, le parcours `classQuizEteint` : l'enseignant voit encore l'entrée quand la config est éteinte.
+`npm run test:unit` dans `frontend/` (ce script n'est pas dans la CI aujourd'hui). Cas : enseignant `/jeux`, étudiant `/quiz`, admin `null`, autre rôle `null`, avec ou sans `urlQuiz`, aucun résultat ne contient `/play`. Le parcours `classQuizEteint` : l'enseignant voit encore l'entrée quand la config est éteinte.
 
 ## 9. Étapes de livraison
 
