@@ -22,11 +22,12 @@ Branche `feat/uix-09-grille-applications`, dossier `..\travaux-planner\uix-09-gr
   Exécutions locales avec API fictive, hors mesures en production.
 - Playwright collecte quatre parcours. Leur exécution avec le serveur et la base attend la CI.
 
-## Points transmis au coordinateur
+## Décisions reçues à 12 h 05
 
-- Le plan UIX-09 prévoit Lucide dans les tuiles. La décision VIT mentionne aussi la variante 4 « dans la grille ».
-  L’emplacement reste à confirmer. Le lanceur utilise la marque actuelle et les icônes du plan UIX-09.
-- Axe-core est audité localement hors des dépendances UIX-09. Sa disponibilité en CI dépend de la PR #199.
+- Le chef réserve la variante 4 au site vitrine. L’application garde la mosaïque et les tuiles Lucide.
+- Le coordinateur confirme l’audit axe-core local, sans dépendance supplémentaire. Une fois la PR #199 fusionnée,
+  intégrer main à cette branche puis ajouter cet audit au parcours avec la dépendance de main.
+- Le coordinateur tient désormais le suivi. La branche a repris la version de suivi.md de origin/main (f28eff4e).
 
 ## Commandes pour le chef après relecture
 
@@ -39,6 +40,6 @@ gh pr create --base main --head feat/uix-09-grille-applications --title "UIX-09 
 
 ~~~text
 Reprends UIX-09 sur feat/uix-09-grille-applications. Lis AGENTS.md, la boîte Codex et cette fiche.
-Vérifie la réponse sur la variante 4 et axe-core. Fais relire la branche et contrôle les quatre parcours en CI.
+Après la fusion de #199, intègre main et active axe-core dans le parcours. Fais relire la branche et contrôle la CI.
 Respecte l’ordre de fusion avec #199. Travaille en local dans le périmètre UIX-09.
 ~~~
