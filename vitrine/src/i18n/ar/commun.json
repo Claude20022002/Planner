@@ -24,7 +24,9 @@
     "scolarite": "",
     "enseignants": "",
     "etudiants": "",
-    "ressources": ""
+    "ressources": "",
+    "mentionsLegales": "",
+    "confidentialite": ""
   },
   "langues": {
     "label": "",
@@ -45,5 +47,8 @@
   "redirection": {
     "titre": "",
     "lien": ""
+  },
+  "contact": {
+    "email": ""
   }
 }

@@ -28,6 +28,8 @@ export const PAGES = {
   scolarite: 'scolarite',
   enseignants: 'enseignants',
   etudiants: 'etudiants',
+  mentionsLegales: 'mentions-legales',
+  confidentialite: 'confidentialite',
 };
 
 /** Pages par rôle, dans l'ordre du menu « Solutions ». Hors du menu « Fonctions ». */

@@ -24,7 +24,9 @@
     "scolarite": "Registrar's office",
     "enseignants": "Teachers",
     "etudiants": "Students",
-    "ressources": "Resources"
+    "ressources": "Resources",
+    "mentionsLegales": "Legal notice",
+    "confidentialite": "Privacy"
   },
   "langues": {
     "label": "Language",
@@ -45,5 +47,8 @@
   "redirection": {
     "titre": "Planner",
     "lien": "Go to the home page"
+  },
+  "contact": {
+    "email": ""
   }
 }
