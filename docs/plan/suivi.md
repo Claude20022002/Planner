@@ -58,6 +58,10 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | MOT | MOT-03 validation avant le calcul | agent de Cursor | #183 | plan validé par le chef ; codée, CI verte ; relue : **à corriger** (le refus doit nommer sa cible, EP-4) | 15 nov. 20 h 50 | [mot-03](missions/mot-03.md) |
 
 | UIX | UIX-01a navigation par applications (exception hors chantier accordée par le chef) | Codex | #184 | codée, CI verte parcours compris ; relue : **prête** ; destination après connexion changée (lanceur) : choix de produit à confirmer | 15 nov. 20 h 50 : prête | — |
+| UIX | UIX-06b, mission d'équipe : intégrateur, commun et Filières | Codex | `feat/uix-06b-referentiel` | code du 16 nov. non commité ; R0 demandé le 18 nov. | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
+| UIX | UIX-06b, mission d'équipe : Groupes et Modules | agent de Cursor | `feat/uix-06b-referentiel-groupes-modules` (à créer à R0) | attend R0 | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
+| UIX | UIX-06b, mission d'équipe : Enseignements | Claude (VS Code) | `feat/uix-06b-referentiel-enseignements` (à créer à R0) | finit QUA-10, puis attend R0 | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
+| UIX | UIX-06c Salles, Campus, Créneaux, Calendrier (même équipe) | — | `feat/uix-06c-ressources-temps` (à créer) | plan écrit, **à valider par le chef**, avec l'exception hors chantier | 18 nov. 00 h 30 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
 
 Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 

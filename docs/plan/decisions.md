@@ -161,3 +161,15 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 - Interface sobre clair/sombre, Inter ; encre ardoise sans couleurs d’école, bleu nuit pour la marque ; identité d’école et SVG approuvés conservés.
 
 [Plan validé](../conception/interface/uix-06a-interface.md). Aucun backend, serveur, push ou fusion autorisé à l’agent.
+
+## Décisions du 17 et du 18 novembre : travail en équipe, UIX-06b puis UIX-06c
+
+**Chef, 17 nov. au soir** : tous les agents (Claude dans VS Code, agent de Cursor, Codex) travaillent ensemble sur la même tâche, synchronisés, sans conflit, chacun avec le modèle le plus adapté, en développement par composants. Tâche : **UIX-06b, puis UIX-06c** si son plan est validé. Les sessions Claude en cours (QUA-10, essai PostgreSQL) finissent leur étape ; celle de QUA-10 rejoint l'équipe.
+
+| Décision | Par |
+|---|---|
+| Règles du travail en équipe : [equipe.md](equipe.md) ; skill `equipe` pour le coordinateur ; renvoi dans `AGENTS.md`, point 3 | coordinateur, à la demande du chef |
+| UIX-06b en trois lots : Codex intégrateur (commun et Filières), agent de Cursor (Groupes et Modules), Claude de VS Code (Enseignements) ; propriétaires et rendez-vous dans [uix-06b-equipe.md](missions/uix-06b-equipe.md) | coordinateur |
+| Les dictionnaires de traduction sont coupés par lot (`i18n/referentiel/<lot>.fr.js` et `.en.js`), pour que deux agents n'écrivent jamais le même fichier | coordinateur |
+| Repères de taille d'une mission d'équipe : page 80 lignes, hook 200, composant et dialogue 150 ([equipe.md](equipe.md), § 3) | coordinateur |
+| UIX-06c ([plan](../conception/interface/uix-06c-ressources-temps.md)) : **à valider par le chef**, avec l'exception hors chantier | chef, en attente |
