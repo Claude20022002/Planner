@@ -103,7 +103,7 @@ const RESUMES = [
   ['Tri Cyber', 'Classer quatre incidents de sécurité par criticité selon portée, sensibilité des données et statut de confinement.'],
   ['Nœuds Réseaux', 'Connecter 4 équipements sur 3 switchs en respectant capacité, segmentation et isolation.'],
   ['Labo des seuils', 'Régler un seuil de détection et comparer les faux positifs, les défauts manqués et le coût des erreurs.'],
-  ['Pilote des stocks', 'Planifier trois jours de réapprovisionnement sans rupture, en respectant capacité et budget en MAD.'],
+  ['Pilote des stocks', 'Planifier trois jours de réapprovisionnement sans rupture, en respectant capacité et budget.'],
   ['Sprint Agile', 'Sélectionner des éléments du backlog en respectant capacité, dépendances, obligations et valeur minimale.'],
   ['Robot Route', 'Programmer un trajet, éviter les obstacles et vérifier chaque déplacement dans une grille simulée.'],
   ['Requête Parfaite', 'Remettre dans le bon ordre les clauses d\u2019une requête SQL à partir de fragments mélangés.'],

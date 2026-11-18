@@ -21,6 +21,7 @@ Présenter quiz, jeux, bibliothèque, cours, annonces et l'application, avec l'a
 - `55b165ca` — EP-18 et Massar ajoutés au plan.
 - `08e39160` — quatre pages, menu Fonctions, carte « prêts de livres » retirée, appel à la main, export vers la plateforme nationale. Massar reste l'exemple du Maroc. Pas de phrase sur un magasin d'applications.
 - `6c5daf9c` — page `/bibliotheque-des-jeux/`, lien « Voir les dix jeux » depuis Quiz et jeux. Titres et résumés repris du catalogue. Hors du menu Fonctions. On n'y joue pas.
+- Ce commit — le résumé de Pilote des stocks ne dit plus « en MAD », en français et en anglais. Le catalogue du jeu n'est pas modifié.
 - Aucune illustration nouvelle. VIT-09 les fera après la fusion.
 
 ## Vérifié
