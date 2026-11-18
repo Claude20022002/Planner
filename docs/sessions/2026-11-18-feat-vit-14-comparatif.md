@@ -39,20 +39,19 @@ Poser les questions au chef sur le comparatif « Pourquoi Planner » (approches,
 | 6 | Ton des cases d'approche | dire aussi ce qu'elles font bien, quand c'est vrai | répondu (chef) |
 | 7 | Méthode sur `/comparer/` | un court encadré, sans lien vers le code | répondu (chef) |
 | 8 | Place sur l'accueil | avant « Bientôt » | répondu (chef) |
-| 9 | Chaque case du tableau (§ 4 du plan), et la ligne 7 sur l'accueil (§ 4 bis) | — | **en attente du chef** |
+| 9 | Chaque case du tableau (§ 4 du plan), et la ligne 7 sur l'accueil (§ 4 bis) | « Je valide le plan » : tableau tel qu'écrit, cases « à confirmer » gardées, ligne 7 sur l'accueil | répondu (chef), `61df2f9b` |
 
 ## État laissé
 
-- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-14 → plan écrit et commité (`592cb077`), à valider par le chef case par case ; code après #216.
+- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-14 → **plan validé par le chef le 18 nov.** (`592cb077`, validation `61df2f9b`) ; code après la fusion de #216 (encore ouverte le 18 nov. au soir).
 - `docs/plan/suivi.md` et la ligne du module VIT ne sont pas touchés : VIT-14 n'est inscrite que sur la branche de coordination (#211), et l'y ajouter ici créerait un conflit.
 - Le lien du plan vers la fiche de mission (`docs/plan/missions/vit-14-comparatif.md`) ne marche qu'après la fusion de #211.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef valide le plan case par case. Les cases marquées « à confirmer » sont gardées, changées ou retirées. La ligne 7 reste sur l'accueil, ou non.
-2. Ajouter la ligne « Validé » au plan, avec la date, qui devient la date de l'encadré « Méthode ». Commit seul.
-3. Après la fusion de #216 : `git merge origin/main` dans la branche (la branche n'est pas poussée), puis le code du § 5 et les vérifications du § 6.
-4. Fiche de session du code, et commandes au chef.
+1. ~~Validation du chef~~ : faite (`61df2f9b`).
+2. Après la fusion de #216 : `git merge origin/main` dans la branche (la branche n'est pas poussée), puis le code du § 5 et les vérifications du § 6.
+3. Fiche de session du code, et commandes au chef.
 
 ## Commandes pour le chef de projet
 
@@ -72,11 +71,12 @@ Lis d'abord AGENTS.md, docs/plan/README.md (EP-5, EP-13, EP-18), docs/plan/suivi
 le plan docs/conception/vitrine/vit-14-comparatif.md et cette fiche
 (docs/sessions/2026-11-18-feat-vit-14-comparatif.md).
 Fait : questions au chef (8 réponses, dans le § 1 du plan) ; plan court commité (592cb077),
-avec le tableau complet et la source de chaque case Planner.
-Reste : la validation du chef case par case (cases « à confirmer », ligne 7 sur l'accueil) ;
-puis la ligne « Validé » commitée seule ; puis, après la fusion de #216, git merge origin/main
-et le code du § 5 avec les vérifications du § 6.
-Questions en attente : la validation du § 4 et du § 4 bis.
+avec le tableau complet et la source de chaque case Planner ; plan validé par le chef le 18 nov.
+(61df2f9b : tableau tel qu'écrit, cases « à confirmer » gardées, ligne 7 sur l'accueil,
+date de la méthode 2026-11-18).
+Reste : vérifier que #216 est fusionnée (gh pr view 216) ; git merge origin/main dans la branche ;
+puis le code du § 5 et les vérifications du § 6.
+Questions en attente : aucune.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; aucun produit nommé,
 aucun prix, aucun chiffre inventé ; fiche de session à jour en fin de session, suivi.md non modifié ;
 jamais de git push.
