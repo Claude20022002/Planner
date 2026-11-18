@@ -34,6 +34,18 @@ export const CLES_VIDEO = ['video.scenes', 'video.illustrations', 'emploi.illust
 /** Les fichiers du site que la vidéo dessine : le logo animé et l'icône des en-têtes d'écran */
 export const LOGOS_VIDEO = ['public/logo/planner-horloge.svg', 'public/logo/planner-icone.svg'];
 
+/**
+ * Les familles de la charte que la vidéo lit (docs/presentation/video/src/accueil/charte.ts). Une
+ * famille qu'elle ne lit pas (par exemple « applications », les teintes des logos de VIT-09a) peut
+ * changer, et la version de la charte monter, sans périmer la vidéo.
+ */
+export const FAMILLES_VIDEO = ['couleurs', 'sombre', 'rayons', 'ombres', 'mouvement'];
+
+/** La part de l'empreinte qui vient de la charte : les valeurs des familles lues par la vidéo */
+export const texteCharte = (jetons) => JSON.stringify(
+  FAMILLES_VIDEO.map((famille) => [famille, Object.entries(jetons.familles[famille]).map(([nom, jeton]) => [nom, jeton.valeur])]),
+);
+
 const lireCle = (objet, cle) => cle.split('.').reduce((valeur, morceau) => valeur?.[morceau], objet);
 
 /** Fins de ligne ramenées à LF : la même empreinte sous Windows et dans la CI */
@@ -41,7 +53,8 @@ const texteNormal = (fichier) => fs.readFileSync(fichier, 'utf8').replace(/\r\n/
 
 /**
  * Calcule l'empreinte à partir du dossier du site (vitrine/) et de la racine du dépôt.
- * Rend { empreinte, charte } : l'empreinte en hexadécimal court, et la version des jetons.
+ * Rend { empreinte, charte } : l'empreinte en hexadécimal court, et la version des jetons (pour
+ * information : seules les valeurs des familles lues par la vidéo entrent dans l'empreinte).
  */
 export const calculerEmpreinte = (dossierSite) => {
   const racine = path.resolve(dossierSite, '..');
@@ -52,7 +65,7 @@ export const calculerEmpreinte = (dossierSite) => {
     const textes = JSON.parse(texteNormal(path.join(dossierSite, 'src', 'i18n', langue, 'accueil.json')));
     for (const cle of CLES_VIDEO) hachage.update(`${langue}:${cle}:${JSON.stringify(lireCle(textes, cle) ?? null)}\n`);
   }
-  hachage.update(`charte:${jetons.version}\n`);
+  hachage.update(`charte:${texteCharte(jetons)}\n`);
   for (const logo of LOGOS_VIDEO) hachage.update(`${logo}:${texteNormal(path.join(dossierSite, logo))}\n`);
 
   return { empreinte: hachage.digest('hex').slice(0, 16), charte: jetons.version };

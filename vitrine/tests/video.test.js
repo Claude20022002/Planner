@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LANGUES_VIDEO, calculerEmpreinte, fichiersVideo, langueVideo } from '../src/components/accueil/empreinteVideo.js';
+import { LANGUES_VIDEO, calculerEmpreinte, fichiersVideo, langueVideo, texteCharte } from '../src/components/accueil/empreinteVideo.js';
 
 const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const VIDEOS = path.join(SITE, 'public', 'videos');
@@ -43,10 +43,21 @@ test('chaque page montre la vidéo de sa langue, et l’arabe la française', ()
 
 test('la vidéo rendue est à jour : textes, charte et logos', { skip: SAUT }, () => {
   const rendu = JSON.parse(fs.readFileSync(path.join(VIDEOS, 'empreinte.json'), 'utf8'));
-  const { empreinte, charte } = calculerEmpreinte(SITE);
+  const { empreinte } = calculerEmpreinte(SITE);
   assert.deepEqual(rendu.langues, [...LANGUES_VIDEO].sort(), 'toutes les langues sont rendues');
-  assert.equal(rendu.charte, charte, 'la charte a changé depuis le rendu');
-  assert.equal(rendu.empreinte, empreinte, 'textes ou logos changés depuis le rendu : lancer « npm run render:accueil » dans docs/presentation/video');
+  assert.equal(rendu.empreinte, empreinte, 'textes, couleurs de la charte ou logos changés depuis le rendu : lancer « npm run render:accueil » dans docs/presentation/video');
+});
+
+test('une famille de la charte que la vidéo ne lit pas ne la périme pas (régression, 18 nov.)', () => {
+  const jetons = JSON.parse(fs.readFileSync(path.join(SITE, '..', 'shared', 'charte', 'jetons.json'), 'utf8'));
+  const avant = texteCharte(jetons);
+  // Une version plus haute et une famille nouvelle, comme les teintes des logos de VIT-09a : même empreinte
+  const ajout = { ...jetons, version: jetons.version + 1, familles: { ...jetons.familles, applications: { 'app-essai': { valeur: '#0B66D6' } } } };
+  assert.equal(texteCharte(ajout), avant);
+  // Une couleur que la vidéo lit : empreinte différente
+  const change = structuredClone(jetons);
+  change.familles.couleurs.bleu.valeur = '#2A67A0';
+  assert.notEqual(texteCharte(change), avant);
 });
 
 test('les fichiers rendus existent et respectent leur poids', { skip: SAUT }, () => {
