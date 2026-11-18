@@ -1,5 +1,6 @@
 import { Appartenir, Cours, CoursComposante, Enseignement, EnseignementEnseignant, EnseignementGroupe, Groupe, JeuModule, JeuProfil, JeuProgression, Users } from "../../models/index.js";
 import { ancetres } from "../planning/groupes.js";
+import { etatsDuJeu } from './etatsDefis.js';
 import { groupesDeLAnnee } from "../annees/annees.js";
 import { peutGererFiliere } from "../planning/droits.js";
 import { butEtNotion } from "../activites/but.js";
@@ -64,7 +65,7 @@ export const peutProposerDansModule = async (user, cours) => {
 
 const resumeProgression = (jeu, lignes) => {
     const reussis = lignes.filter((l) => l.code_jeu === jeu.code && defiDuJeu(jeu, l.id_defi));
-    return { reussis: reussis.length, total: jeu.defis.length, points: reussis.reduce((t, l) => t + l.points, 0), pointsMax: pointsMax(jeu) };
+    return { reussis: reussis.length, avec_solution: reussis.filter((l) => l.avec_solution).length, total: jeu.defis.length, points: reussis.reduce((t, l) => t + l.points, 0), pointsMax: pointsMax(jeu) };
 };
 
 /** Personnage du joueur (choisi, sinon tiré de son numéro) */
@@ -83,7 +84,7 @@ export const choisirAvatar = async (user, avatar) => {
  */
 export const accueilJeux = async (user) => {
     const [lignes, idsModules, profil] = await Promise.all([
-        JeuProgression.findAll({ where: { id_user: user.id_user }, attributes: ["code_jeu", "id_defi", "points"] }),
+        JeuProgression.findAll({ where: { id_user: user.id_user }, attributes: ["code_jeu", "id_defi", "points", "avec_solution"] }),
         modulesDuJoueur(user),
         profilDuJoueur(user.id_user),
     ]);
@@ -130,7 +131,8 @@ export const progressionDuJeu = async (user, code) => {
     const lignes = await JeuProgression.findAll({ where: { id_user: user.id_user, code_jeu: jeu.code }, order: [["reussi_le", "ASC"], ["id_jeu_progression", "ASC"]] });
     return {
         ...resumeProgression(jeu, lignes),
-        defis: lignes.filter((l) => defiDuJeu(jeu, l.id_defi)).map((l) => ({ id: l.id_defi, indices: l.indices, points: l.points, reussi_le: l.reussi_le })),
+        defis: lignes.filter((l) => defiDuJeu(jeu, l.id_defi)).map((l) => ({ id: l.id_defi, indices: l.indices, points: l.points, avec_solution: Boolean(l.avec_solution), reussi_le: l.reussi_le })),
+        etats: await etatsDuJeu(user, jeu, lignes),
     };
 };
 
@@ -169,13 +171,14 @@ export const enregistrerReussite = async (user, code, idDefi, indices, commandes
 };
 
 /** N'enregistre que la première réussite ; le terminal et les simulations utilisent les points calculés par le serveur. */
-export const sauvegarderReussite = async (user, jeu, defi, indices = 0) => {
+export const sauvegarderReussite = async (user, jeu, defi, indices = 0, { transaction, avec_solution = false } = {}) => {
     const [ligne, cree] = await JeuProgression.findOrCreate({
         where: { id_user: user.id_user, code_jeu: jeu.code, id_defi: defi.id },
-        defaults: { indices, points: pointsPour(defi.xp, indices), reussi_le: new Date() },
+        defaults: { indices, points: avec_solution ? 0 : pointsPour(defi.xp, indices), avec_solution, reussi_le: new Date() },
+        transaction,
     });
-    const lignes = await JeuProgression.findAll({ where: { id_user: user.id_user, code_jeu: jeu.code }, attributes: ["code_jeu", "id_defi", "points"] });
-    return { cree, points: ligne.points, progression: resumeProgression(jeu, lignes) };
+    const lignes = await JeuProgression.findAll({ where: { id_user: user.id_user, code_jeu: jeu.code }, attributes: ["code_jeu", "id_defi", "points", "avec_solution"], transaction });
+    return { cree, points: ligne.points, avec_solution: Boolean(ligne.avec_solution), progression: resumeProgression(jeu, lignes) };
 };
 
 const coursOuErreur = async (idCours) => {
@@ -246,11 +249,16 @@ export const suiviDuModule = async (user, code, idCours) => {
 
     const [etudiants, lignes, profils] = await Promise.all([
         Users.findAll({ where: { id_user: ids, actif: true }, attributes: ["id_user", "nom", "prenom"] }),
-        JeuProgression.findAll({ where: { id_user: ids, code_jeu: jeu.code }, attributes: ["id_user", "code_jeu", "id_defi", "points"] }),
+        JeuProgression.findAll({ where: { id_user: ids, code_jeu: jeu.code }, attributes: ["id_user", "code_jeu", "id_defi", "points", "avec_solution"] }),
         JeuProfil.findAll({ where: { id_user: ids } }),
     ]);
     const avatars = new Map(profils.map((p) => [p.id_user, p.avatar]));
-    const parEtudiant = (id) => resumeProgression(jeu, lignes.filter((l) => l.id_user === id));
+    const parEtudiant = (id) => ({
+        ...resumeProgression(jeu, lignes.filter((l) => l.id_user === id)),
+        defis: lignes.filter((l) => l.id_user === id && defiDuJeu(jeu, l.id_defi)).map((l) => ({
+            id: l.id_defi, titre: defiDuJeu(jeu, l.id_defi).titre, points: l.points, avec_solution: Boolean(l.avec_solution),
+        })),
+    });
     return {
         module: { id_cours: cours.id_cours, code: cours.code_cours, nom: cours.nom_cours },
         etudiants: etudiants

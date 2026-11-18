@@ -1,5 +1,5 @@
 /** Simulation « Requête Parfaite » : remise en ordre des clauses SQL (mécanique sql). */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'quete-sql', type: 'simulation', discipline: 'bases-de-donnees', moteur: 'sql',
@@ -7,7 +7,7 @@ export default {
     resume: texte('Remettre dans le bon ordre les clauses d\u2019une requête SQL à partir de fragments mélangés.', 'Reorder shuffled SQL clause fragments into the correct execution order.'),
     objectif: texte('Mémoriser l\u2019ordre canonique SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY sans exécuter de vrai SQL.', 'Learn the canonical clause order without executing any real SQL.'),
     source: null,
-    curriculum: { url: SOURCE.gl, titre: texte('Génie Logiciel : Programmation et administration de bases de données', 'Software Engineering: Database programming and administration'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('Génie Logiciel : Programmation et administration de bases de données', 'Software Engineering: Database programming and administration'),
     defis: [
         {
             id: 'sql-01', niveau: 1, xp: 100,

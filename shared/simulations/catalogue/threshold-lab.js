@@ -1,5 +1,5 @@
 /** Simulation « Labo des seuils » : réglage d'un seuil de détection (mécanique seuil). */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'threshold-lab', type: 'simulation', discipline: 'intelligence-artificielle', moteur: 'seuil',
@@ -7,7 +7,7 @@ export default {
     resume: texte('Régler un seuil de détection et comparer les faux positifs, les défauts manqués et le coût des erreurs.', 'Tune a detection threshold and compare false positives, missed defects, and error costs.'),
     objectif: texte('Interpréter précision, rappel et matrice de confusion sans confondre score et certitude.', 'Interpret precision, recall, and a confusion matrix without treating a score as certainty.'),
     source: null,
-    curriculum: { url: SOURCE.ia, titre: texte('IA & Big Data : Machine Learning', 'AI & Big Data: Machine Learning'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('IA & Big Data : Machine Learning', 'AI & Big Data: Machine Learning'),
     defis: [
         {
             id: 'seuil-01', niveau: 1, xp: 100,

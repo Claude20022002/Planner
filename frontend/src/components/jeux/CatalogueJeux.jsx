@@ -30,7 +30,7 @@ export default function CatalogueJeux({ accueil, erreur, jouer }) {
                         {t('jeux.source', { nom: jeu.source.nom, auteur: jeu.source.auteur, licence: jeu.source.licence })}{' '}
                         <Link href={jeu.source.url} target="_blank" rel="noopener noreferrer" sx={{ color: ds.board.letter }}>{t('jeux.voirSource')}</Link>
                     </> : <>
-                        {t('simulations.original')}{jeu.curriculum && <> · <Link href={jeu.curriculum.url} target="_blank" rel="noopener noreferrer" sx={{ color: ds.board.letter }}>{t('simulations.source')}</Link></>}
+                        {t('simulations.original')}{jeu.curriculum && <> · {t('simulations.curriculum', { discipline: libelle(jeu.curriculum.discipline, i18n.language), niveaux: jeu.curriculum.niveaux.join(', ') })}</>}
                     </>}
                 </Box>
             </LignePanneau>;

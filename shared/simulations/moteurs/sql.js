@@ -16,9 +16,9 @@ export default {
         if (!isPermutation) {
             problemes.push({ code: 'permutation' });
         } else {
-            positions.forEach((p, i) => { if (p !== attendu[i]) problemes.push({ code: 'ordre', valeurs: { index: i + 1, attendu: attendu[i] } }); });
+            positions.forEach((p, i) => { if (p !== attendu[i]) problemes.push({ code: 'ordre', valeurs: { index: i + 1 } }); });
         }
-        const fragments = defi.clauses.map((c, i) => ({ texte: c.texte, position: positions[i], attendu: attendu[i], correct: positions[i] === attendu[i] }));
+        const fragments = defi.clauses.map((c, i) => ({ texte: c.texte, position: positions[i], correct: positions[i] === attendu[i] }));
         return { ok: !problemes.length, problemes, fragments };
     },
     formulaire(valeurs) {

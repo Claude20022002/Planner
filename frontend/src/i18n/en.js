@@ -1456,6 +1456,9 @@ const en = {
       etudiant: 'Student',
       defis: 'Challenges',
       points: 'Points',
+      avecSolution: 'Completed with the solution',
+      aides: 'Completed with the solution: {{count}}',
+      aidesAucun: 'No challenge completed with the solution.',
     },
     terminal: {
       titre: 'Terminal · hestim-lab',

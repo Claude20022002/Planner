@@ -45,7 +45,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0060 | UIX-01 socle neutre | réservée |
 | 0061 | MOT-01 valeurs du moteur (MP-1) | fusionnée (#156, 10 nov.) |
 | 0062 à 0079 | VSC-01 et suivantes : tables du scolaire | réservées |
-| 0080 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) | réservée |
+| 0080 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) | écrite le 18 nov. (`backend/migrations/0080-jeux-solutions.js`), non appliquée |
 | 0081 et plus | libres | — |
 
 ## Fonctions
@@ -121,7 +121,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | à faire |  |
 | [QJE-02](modules/QJE-quiz-jeux-ia.md) | Import des formats GIFT et Moodle XML dans le Studio | libre | M | à faire |  |
 | [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | libre | M | à faire |  |
-| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | en cours : corrections B-1, B-2 et I-1 par Alexis (relecture du 10 nov. ; consignes : `docs/sessions/2026-11-10-jeux-pedagogique.md`) | `jeux-pedagogique` (Alexis) |
+| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | corrections B-1, B-2 et I-1 faites le 18 nov. ; tests locaux verts ; fusion en attente (`docs/sessions/2026-11-18-jeux-pedagogique.md`) | `jeux-pedagogique` (Alexis) |
 | [QJE-05](modules/QJE-quiz-jeux-ia.md) | Service des jeux à part, avec des gabarits | libre | L + M + M | à faire |  |
 | [QJE-06](modules/QJE-quiz-jeux-ia.md) | Sortie complète de ClassQuiz | libre | M | à faire |  |
 | [QJE-07](modules/QJE-quiz-jeux-ia.md) | Fournisseur d'IA en production | libre | M | à faire |  |

@@ -1,5 +1,5 @@
 /** Simulation « Ordonnanceur CPU » : ordre d'exécution de processus sous échéances (mécanique cpu). */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'cpu-process', type: 'simulation', discipline: 'systemes-d-exploitation', moteur: 'cpu',
@@ -7,7 +7,7 @@ export default {
     resume: texte('Choisir l’ordre d’exécution de 4 processus pour respecter les échéances et minimiser le temps de rotation moyen.', 'Choose the execution order of 4 processes to meet deadlines and minimise average turnaround time.'),
     objectif: texte('Comprendre l’ordonnancement non préemptif et ses compromis (FCFS, SJF, priorité).', 'Understand non-preemptive scheduling and its trade-offs (FCFS, SJF, priority).'),
     source: null,
-    curriculum: { url: SOURCE.si, titre: texte('Informatique : Systèmes d’exploitation', 'Computer Science: Operating Systems'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('Informatique : Systèmes d’exploitation', 'Computer Science: Operating Systems'),
     defis: [
         {
             id: 'cpu-01', niveau: 1, xp: 100,

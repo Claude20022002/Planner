@@ -1,5 +1,5 @@
 /** Simulation « Nœuds Réseaux » : placement d'équipements sur des switchs (mécanique reseau). */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'topo-reseau', type: 'simulation', discipline: 'reseaux', moteur: 'reseau',
@@ -7,7 +7,7 @@ export default {
     resume: texte('Connecter 4 équipements sur 3 switchs en respectant capacité, segmentation et isolation.', 'Connect 4 devices to 3 switches while respecting capacity, subnet, and isolation constraints.'),
     objectif: texte('Concevoir une topologie simple conforme aux exigences de sécurité et de bande passante.', 'Design a simple topology meeting security and bandwidth requirements.'),
     source: null,
-    curriculum: { url: SOURCE.cyber, titre: texte('Génie Informatique : Systèmes, Réseaux et Cybersécurité', 'Computer Engineering: Systems, Networks and Cybersecurity'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('Génie Informatique : Systèmes, Réseaux et Cybersécurité', 'Computer Engineering: Systems, Networks and Cybersecurity'),
     defis: [
         {
             id: 'reseau-01', niveau: 1, xp: 100,

@@ -4,6 +4,7 @@ import { creerSession } from '../../../shared/simulations/session.js';
 
 const api = {
     progression: (code) => planner(`/jeux/${encodeURIComponent(code)}/progression`),
+    solution: (code, id) => planner(`/jeux/${encodeURIComponent(code)}/defis/${encodeURIComponent(id)}/solution`, { method: 'POST', body: {} }),
     essayer: (code, id, reponse) => planner(`/jeux/${encodeURIComponent(code)}/defis/${encodeURIComponent(id)}/essais`, { method: 'POST', body: { reponse } }),
 };
 

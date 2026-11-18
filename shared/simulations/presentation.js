@@ -45,3 +45,14 @@ export function resumeSimulation(jeu, defi, resultat, t) {
     const p = REGISTRE[jeu.moteur] ?? seuil;
     return p.resume(defi, resultat, t);
 }
+
+/** Format only an explicitly fetched solution using the existing localized field labels. */
+export function lignesSolution(jeu, defi, reponse, t, langue = 'fr') {
+    if (!reponse) return [];
+    const brut = Object.values(reponse)[0];
+    const valeurs = Array.isArray(brut) ? brut : [brut];
+    return champsSimulation(jeu, defi, t, langue).map((champ, i) => ({
+        label: champ.label,
+        valeur: jeu.moteur === 'complexite' ? t(`classe${valeurs[i]}`) : String(valeurs[i]),
+    }));
+}

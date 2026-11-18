@@ -22,7 +22,7 @@ Depuis cette fiche, `main` est fusionné dans la branche : elle contient le plan
 | # | Quoi | Où | Contrôle |
 |---|---|---|---|
 | B-1 | **Aucun nom d'école** (contrat, § 1, amendé le 10 nov.) : retirer les adresses `hestim.ma` et la mention « publiés par HESTIM ». `curriculum` ne garde que la discipline et le niveau | `shared/simulations/catalogue/_aide.js`, `shared/simulations/i18n.js`, les entrées du catalogue | `node scripts/verifier-neutre.mjs` passe |
-| B-2 | Réponse de référence du **Labo Big-O** dans le test mobile | `mobile/__tests__/simulations.test.js` (`premier`, entrée `big-o-01`) | `npx jest` dans `mobile/` : 73 sur 73 |
+| B-2 | Réponse de référence du **Labo Big-O** dans le test mobile | `mobile/__tests__/simulations.test.js` (`premier`, entrée `complexite-01` — l'ID `big-o-01` était une erreur de documentation) | `npx jest` dans `mobile/` : 73 sur 73 |
 | I-1 | **Ne pas donner la réponse après un échec** (contrat, **§ 1.0**). Voir ci-dessous | `shared/simulations/moteurs/*.js`, `backend/services/jeux/`, écrans web et mobile | les tests de I-1 |
 | m | Si possible : commentaires et noms de tests en français ; remettre le commentaire de `mobile/babel.config.js` ; retirer la condition inutile de `mobile/jest.resolver.js` ; ne pas faire grossir `frontend/src/pages/jeux/Jeux.jsx` (déjà plus de 300 lignes) | — | relecture |
 
@@ -59,7 +59,7 @@ Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md, le contrat des j
 docs/conception/jeux/jeux-pedagogiques.md (§ 1, § 1.0 et § 6) et cette fiche
 (docs/sessions/2026-11-10-jeux-pedagogique.md).
 À faire, dans l'ordre : B-1 (aucun nom d'école dans shared/simulations, verifier-neutre doit passer),
-B-2 (réponse de référence big-o-01 dans mobile/__tests__/simulations.test.js),
+B-2 (réponse de référence complexite-01 dans mobile/__tests__/simulations.test.js),
 puis I-1 (ne plus renvoyer la réponse attendue après un échec ; « Voir la solution » qui coûte les points,
 noté par le serveur, migration 0080 réservée).
 Pour I-1 : pose tes questions, écris le plan dans docs/conception/jeux/qje-04-solution.md et fais-le

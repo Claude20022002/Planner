@@ -1,5 +1,5 @@
 /** Simulation « Robot Route » : programmation d'un trajet en grille (mécanique robot). */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'robot-route', type: 'simulation', discipline: 'robotique', moteur: 'robot',
@@ -7,7 +7,7 @@ export default {
     resume: texte('Programmer un trajet, éviter les obstacles et vérifier chaque déplacement dans une grille simulée.', 'Program a route, avoid obstacles, and inspect every move in a simulated grid.'),
     objectif: texte('Décomposer un trajet en instructions et tester des contraintes de sécurité.', 'Decompose a route into instructions and test safety constraints.'),
     source: null,
-    curriculum: { url: SOURCE.robot, titre: texte('Robotique & Industrie 4.0', 'Robotics & Industry 4.0'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('Robotique & Industrie 4.0', 'Robotics & Industry 4.0'),
     defis: [
         {
             id: 'robot-01', niveau: 1, xp: 100,

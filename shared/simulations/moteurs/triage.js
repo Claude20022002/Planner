@@ -12,9 +12,9 @@ export default {
             const score = evt.portee * MULT_DATA[evt.donnees] * MULT_STATUT[evt.statut];
             const attendu = niveauDuScore(score);
             const donne = severites[i];
-            return { id: evt.id, portee: evt.portee, donnees: evt.donnees, statut: evt.statut, score, attendu, donne, correct: donne === attendu };
+            return { id: evt.id, portee: evt.portee, donnees: evt.donnees, statut: evt.statut, score, donne, correct: donne === attendu };
         });
-        evenements.forEach((e, i) => { if (!e.correct) problemes.push({ code: 'triage', valeurs: { index: i + 1, attendu: e.attendu, donne: e.donne } }); });
+        evenements.forEach((e, i) => { if (!e.correct) problemes.push({ code: 'triage', valeurs: { index: i + 1 } }); });
         return { ok: !problemes.length, problemes, evenements };
     },
     formulaire(valeurs) {

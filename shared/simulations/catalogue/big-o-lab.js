@@ -1,5 +1,5 @@
 /** Simulation « Big-O Lab » : classer des extraits d'algorithmes par leur complexité asymptotique. */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'big-o-lab', type: 'simulation', discipline: 'algorithmique', moteur: 'complexite',
@@ -8,7 +8,7 @@ export default {
     objectif: texte('Relier la structure d’un algorithme à son ordre de grandeur, sans exécuter de code.', 'Connect an algorithm’s structure to its order of growth without running any code.'),
     source: null,
     inspiration: texte('Motifs classiques des cours « Introduction to Algorithms » (MIT 6.006, Stanford CS161) et analyses asymptotiques de CLRS — mécaniques réutilisées, exercices originaux.', 'Classic patterns from introductory algorithms courses (MIT 6.006, Stanford CS161) and CLRS asymptotic analysis — mechanics reused, original exercises.'),
-    curriculum: { url: SOURCE.algo, titre: texte('Informatique : Algorithmique et structures de données', 'Computer Science: Algorithms and Data Structures'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('Informatique : Algorithmique et structures de données', 'Computer Science: Algorithms and Data Structures'),
     defis: [
         {
             id: 'complexite-01', niveau: 1, xp: 100,

@@ -1,5 +1,5 @@
 /** Simulation « Tri Cyber » : classement d'incidents de sécurité par criticité (mécanique triage). */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'tri-cyber', type: 'simulation', discipline: 'cybersecurite', moteur: 'triage',
@@ -7,7 +7,7 @@ export default {
     resume: texte('Classer quatre incidents de sécurité par criticité selon portée, sensibilité des données et statut de confinement.', 'Classify four security incidents by severity using scope, data sensitivity, and containment status.'),
     objectif: texte('Appliquer une grille de criticité pour prioriser les réponses d\u2019un SOC.', 'Apply a severity matrix to prioritise SOC incident response.'),
     source: null,
-    curriculum: { url: SOURCE.cyber, titre: texte('Génie Informatique : Cybersécurité', 'Computer Engineering: Cybersecurity'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('Génie Informatique : Cybersécurité', 'Computer Engineering: Cybersecurity'),
     defis: [
         {
             id: 'triage-01', niveau: 1, xp: 100,

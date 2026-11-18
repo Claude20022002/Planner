@@ -1,11 +1,12 @@
 import { KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
-import { Link, useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ecran from '../board/Ecran';
 import { creerStyles } from '../theme';
 import useSimulation from '../jeux/useSimulation';
 import AtelierSimulation, { BoutonSimulation } from '../jeux/AtelierSimulation';
+import SolutionSimulation from '../jeux/SolutionSimulation';
 import { simulationParCode } from '../../../shared/simulations/catalogue.js';
 import { libelle } from '../../../shared/jeux/catalogue.js';
 
@@ -42,8 +43,9 @@ function Partie({ jeu }) {
                 {etat.statut !== 'chargement' && <BoutonSimulation onPress={session.charger}>{t('reessayer')}</BoutonSimulation>}
             </View> : <>
                 <Text style={s.texte}>{t('progression', { count: etat.reussis.length, total: jeu.defis.length, points: etat.points })}</Text>
+                {etat.aides.length > 0 && <Text style={s.texte}>{t('aides', { count: etat.aides.length })}</Text>}
                 <View style={s.actions}>{jeu.defis.map((d) => <BoutonSimulation key={d.id} selected={d.id === defi.id} onPress={() => session.choisir(d.id)}>
-                    {t('niveau', { n: d.niveau })}{etat.reussis.includes(d.id) ? ` · ${t('reussi')}` : ''}
+                    {t('niveau', { n: d.niveau })}{etat.reussis.includes(d.id) ? ` · ${t(etat.aides.includes(d.id) ? 'avecSolution' : 'reussi')}` : ''}
                 </BoutonSimulation>)}</View>
                 <Text accessibilityRole="header" style={s.titre}>{texte(defi.titre)}</Text>
                 <Text style={s.texte}>{texte(defi.consigne)}</Text>
@@ -59,14 +61,17 @@ function Partie({ jeu }) {
                     {etat.erreur && <Text style={s.texte}>{t(etat.erreur)}</Text>}
                     {resultat && <>
                         <Text style={s.titre}>{t(resultat.ok ? 'succes' : 'ajuste')}</Text>
-                        {resultat.enregistre && <Text style={s.texte}>{t(resultat.cree ? 'sauvegarde' : 'deja', { points: resultat.points })}</Text>}
+                        {resultat.enregistre && <Text style={s.texte}>{t(resultat.cree ? 'sauvegarde' : 'deja', { points: resultat.points })}{resultat.avec_solution ? ` · ${t('avecSolution')}` : ''}</Text>}
                         {resultat.problemes.map((p, i) => <Text key={i} style={s.texte}>{t(`problemes.${p.code}`, p.valeurs)}</Text>)}
-                        <Text accessibilityRole="header" style={s.titre}>{t('bilan')}</Text>
-                        <Text style={s.texte}>{texte(defi.bilan)}</Text>
                     </>}
                 </View>
+                <SolutionSimulation jeu={jeu} defi={defi} etat={etat} session={session} />
+                {(resultat?.enregistre || etat.solution) && <View>
+                    <Text accessibilityRole="header" style={s.titre}>{t('bilan')}</Text>
+                    <Text style={s.texte}>{texte(defi.bilan)}</Text>
+                </View>}
             </>}
-            <Link href={jeu.curriculum.url} style={s.lien}>{t('source')}: {texte(jeu.curriculum.titre)}</Link>
+            <Text style={s.texte}>{t('curriculum', { discipline: texte(jeu.curriculum.discipline), niveaux: jeu.curriculum.niveaux.join(', ') })}</Text>
         </ScrollView>
     </KeyboardAvoidingView>;
 }
@@ -76,5 +81,4 @@ const useStyles = creerStyles((t) => ({
     contenu: { padding: 16, gap: 16 }, actions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
     texte: { color: t.couleurs.lettre, fontFamily: t.polices.texte, fontSize: 16, lineHeight: 24 },
     titre: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 22 },
-    lien: { color: t.couleurs.lettre, fontFamily: t.polices.texte, fontSize: 14, textDecorationLine: 'underline', paddingVertical: 12 },
 }));

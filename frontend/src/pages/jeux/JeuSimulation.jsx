@@ -2,11 +2,12 @@
 import { useEffect, useRef } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Alert, Box, Button, Link, Stack, Typography } from '@mui/material';
+import { Alert, Box, Button, Stack, Typography } from '@mui/material';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
 import PageHeader from '../../design-system/components/PageHeader';
 import Panneau, { LignePanneau } from '../../components/jeux/Panneau';
 import AtelierSimulation from '../../components/jeux/AtelierSimulation';
+import SolutionSimulation from '../../components/jeux/SolutionSimulation';
 import { boutonPanneau } from '../../components/jeux/styles';
 import { simulationParCode } from '../../../../shared/simulations/catalogue.js';
 import { libelle } from '../../../../shared/jeux/catalogue.js';
@@ -50,7 +51,7 @@ function Partie({ jeu }) {
                             <Box component="nav" aria-labelledby="simulation-parcours">
                                 {jeu.defis.map((d, i) => <LignePanneau key={d.id} premier={i === 0}>
                                     <Button onClick={() => session.choisir(d.id)} sx={{ ...boutonPanneau, minHeight: 44, textAlign: 'left' }} aria-current={d.id === defi.id ? 'step' : undefined}>
-                                        {t('niveau', { n: d.niveau })} · {texte(d.titre)}{etat.reussis.includes(d.id) ? ` · ${t('reussi')}` : ''}
+                                        {t('niveau', { n: d.niveau })} · {texte(d.titre)}{etat.reussis.includes(d.id) ? ` · ${t(etat.aides.includes(d.id) ? 'avecSolution' : 'reussi')}` : ''}
                                     </Button>
                                 </LignePanneau>)}
                             </Box>
@@ -72,16 +73,17 @@ function Partie({ jeu }) {
                                 {etat.erreur && <Alert severity="warning" sx={{ mb: 1 }}>{t(etat.erreur)}</Alert>}
                                 {resultat && <Alert severity={resultat.ok ? 'success' : 'info'}>
                                     <Typography>{t(resultat.ok ? 'succes' : 'ajuste')}</Typography>
-                                    {resultat.enregistre && <Typography>{t(resultat.cree ? 'sauvegarde' : 'deja', { points: resultat.points })}</Typography>}
+                                    {resultat.enregistre && <Typography>{t(resultat.cree ? 'sauvegarde' : 'deja', { points: resultat.points })}{resultat.avec_solution ? ` · ${t('avecSolution')}` : ''}</Typography>}
                                     {resultat.problemes.length > 0 && <Box component="ul" sx={{ pl: 2, mb: 0 }}>{resultat.problemes.map((p, i) => <li key={i}>{t(`problemes.${p.code}`, p.valeurs)}</li>)}</Box>}
                                 </Alert>}
                             </Box>
-                            {resultat && <Box sx={{ mt: 2 }}><Typography variant="h3">{t('bilan')}</Typography><Typography>{texte(defi.bilan)}</Typography></Box>}
+                            <SolutionSimulation jeu={jeu} defi={defi} etat={etat} session={session} />
+                            {(resultat?.enregistre || etat.solution) && <Box sx={{ mt: 2 }}><Typography variant="h3">{t('bilan')}</Typography><Typography>{texte(defi.bilan)}</Typography></Box>}
                         </Box>
                     </Box>
                 </>
             )}
-            <Typography variant="caption" sx={{ display: 'block', mt: 2 }}>{t('source')}: <Link href={jeu.curriculum.url} target="_blank" rel="noopener noreferrer">{texte(jeu.curriculum.titre)}</Link></Typography>
+            <Typography variant="caption" sx={{ display: 'block', mt: 2 }}>{t('curriculum', { discipline: texte(jeu.curriculum.discipline), niveaux: jeu.curriculum.niveaux.join(', ') })}</Typography>
         </DashboardLayout>
     );
 }

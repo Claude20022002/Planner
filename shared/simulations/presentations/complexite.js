@@ -8,10 +8,10 @@ export default {
     tableaux(defi, resultat, t, langue, bilingue) {
         return [{
             titre: t('donnees'),
-            colonnes: [t('complexiteExtrait'), t('complexiteCode'), ...(resultat ? [t('attendu'), t('obtenu'), t('correctLabel')] : [])],
+            colonnes: [t('complexiteExtrait'), t('complexiteCode'), ...(resultat ? [t('obtenu'), t('correctLabel')] : [])],
             lignes: defi.extraits.map((ex, i) => [
                 bilingue(ex.titre), bilingue(ex.code),
-                ...(resultat ? [t('classe' + resultat.extraits[i].attendu), t('classe' + resultat.extraits[i].donne), resultat.extraits[i].correct ? t('oui') : t('non')] : []),
+                ...(resultat ? [t('classe' + resultat.extraits[i].donne), resultat.extraits[i].correct ? t('oui') : t('non')] : []),
             ]),
         }];
     },

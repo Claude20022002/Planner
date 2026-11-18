@@ -16,9 +16,9 @@ export default {
         const extraits = defi.extraits.map((ex, i) => {
             const attendu = CLASSE_PAR_PROFIL[ex.profil];
             const donne = classes[i];
-            return { id: ex.id, profil: ex.profil, attendu, donne, correct: donne === attendu };
+            return { id: ex.id, donne, correct: donne === attendu };
         });
-        extraits.forEach((e, i) => { if (!e.correct) problemes.push({ code: 'complexite', valeurs: { index: i + 1, attendu: e.attendu, donne: e.donne } }); });
+        extraits.forEach((e, i) => { if (!e.correct) problemes.push({ code: 'complexite', valeurs: { index: i + 1 } }); });
         return { ok: !problemes.length, problemes, extraits };
     },
     formulaire(valeurs) {

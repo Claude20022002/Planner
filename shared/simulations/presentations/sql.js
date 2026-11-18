@@ -8,10 +8,10 @@ export default {
     tableaux(defi, resultat, t, langue, bilingue) {
         return [{
             titre: t('donnees'),
-            colonnes: [t('fragment'), ...(resultat ? [t('attendu'), t('obtenu'), t('correctLabel')] : [])],
+            colonnes: [t('fragment'), ...(resultat ? [t('obtenu'), t('correctLabel')] : [])],
             lignes: defi.clauses.map((c, i) => [
                 bilingue(c.texte),
-                ...(resultat ? [resultat.fragments[i].attendu, resultat.fragments[i].position, resultat.fragments[i].correct ? t('oui') : t('non')] : []),
+                ...(resultat ? [resultat.fragments[i].position, resultat.fragments[i].correct ? t('oui') : t('non')] : []),
             ]),
         }];
     },

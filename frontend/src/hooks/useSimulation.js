@@ -5,6 +5,7 @@ import { creerSession } from '../../../shared/simulations/session.js';
 
 const api = {
     progression: jeuxAPI.getProgression,
+    solution: (code, id) => request(`/jeux/${encodeURIComponent(code)}/defis/${encodeURIComponent(id)}/solution`, { method: 'POST', body: {} }),
     essayer: (code, id, reponse) => request(`/jeux/${encodeURIComponent(code)}/defis/${encodeURIComponent(id)}/essais`, { method: 'POST', body: { reponse } }),
 };
 

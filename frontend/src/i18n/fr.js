@@ -1454,6 +1454,9 @@ const fr = {
       etudiant: 'Étudiant',
       defis: 'Défis',
       points: 'Points',
+      avecSolution: 'Réussi avec la solution',
+      aides: 'Réussis avec la solution : {{count}}',
+      aidesAucun: 'Aucun défi réussi avec la solution.',
     },
     terminal: {
       titre: 'Terminal · hestim-lab',

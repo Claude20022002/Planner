@@ -1,5 +1,5 @@
 /** Simulation « Pilote des stocks » : réapprovisionnement sous capacité et budget (mécanique stock). */
-import { texte, SOURCE } from './_aide.js';
+import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'stock-pilot', type: 'simulation', discipline: 'logistique', moteur: 'stock',
@@ -7,7 +7,7 @@ export default {
     resume: texte('Planifier trois jours de réapprovisionnement sans rupture, en respectant capacité et budget en MAD.', 'Plan three days of replenishment without stockouts, respecting capacity and a MAD budget.'),
     objectif: texte('Anticiper la demande et les délais, puis arbitrer stock, capacité et coût.', 'Anticipate demand and lead times, then balance inventory, capacity, and cost.'),
     source: null,
-    curriculum: { url: SOURCE.stock, titre: texte('Logistique & Transport : stocks et approvisionnements', 'Logistics & Transport: inventory and procurement'), consulteLe: '2026-10-16' },
+    curriculum: curriculum('Logistique & Transport : stocks et approvisionnements', 'Logistics & Transport: inventory and procurement'),
     defis: [
         {
             id: 'stock-01', niveau: 1, xp: 100,

@@ -49,7 +49,12 @@ describe('Curriculum simulations', () => {
             expect(jeu.defis.map((d) => d.niveau)).toEqual([1, 2, 3]);
             expect(jeu.defis.reduce((s, d) => s + d.xp, 0)).toBe(450);
             expect(jeu.source).toBeNull();
-            expect(jeu.curriculum.url).toMatch(/^https:\/\/.*hestim\.ma\//);
+            expect(jeu.curriculum).toEqual({
+                discipline: { fr: expect.any(String), en: expect.any(String) },
+                niveaux: [1, 2, 3],
+            });
+            expect(jeu.curriculum.url).toBeUndefined();
+            expect(JSON.stringify(jeu.curriculum)).not.toMatch(/hestim/i);
             for (const defi of jeu.defis) for (const champ of ['titre', 'consigne', 'indice', 'bilan']) {
                 expect(defi[champ].fr).toBeTruthy(); expect(defi[champ].en).toBeTruthy();
             }
@@ -128,11 +133,32 @@ describe('Curriculum simulations', () => {
     test('cyber triage uses scope × data × status and reports per-incident severity', () => {
         const niveau0 = evaluer(triage, 0, { severites: [1, 4, 2, 3] });
         expect(niveau0.evenements.map((e) => e.score)).toEqual([48, 1, 12, 8]);
-        expect(niveau0.evenements.map((e) => e.attendu)).toEqual([1, 4, 2, 3]);
+        expect(niveau0.evenements.map((e) => e.donne)).toEqual([1, 4, 2, 3]);
         const erreur = evaluer(triage, 0, { severites: [4, 4, 2, 3] });
         expect(erreur.ok).toBe(false);
         expect(codes(erreur)).toEqual(['triage']);
-        expect(erreur.problemes[0].valeurs).toMatchObject({ index: 1, attendu: 1, donne: 4 });
+        expect(erreur.problemes[0].valeurs).toMatchObject({ index: 1 });
+        expect(JSON.stringify(erreur)).not.toMatch(/attendu/);
+    });
+    test('failed feedback never carries the expected answer', () => {
+        const mutants = [
+            [robot, { programme: 'ES' }], [ia, { seuil: 0 }], [stock, { commandes: [6, 0, 0] }],
+            [triage, { severites: [4, 4, 2, 3] }], [sql, { positions: [3, 2, 1, 4] }],
+            [reseau, { ports: [0, 0, 0, 0] }], [cpu, { ordre: [3, 2, 1, 0] }],
+            [sprint, { choix: [1, 1, 1, 1, 0] }], [budget, { quantites: [10, 10, 10, 10] }],
+            [bigO, { classes: [5, 4, 3, 2] }],
+        ];
+        for (const [jeu, reponse] of mutants) {
+            const resultat = evaluer(jeu, 0, reponse);
+            const devoile = evaluer(jeu, 0, solutions.find(([j, i]) => j === jeu && i === 0)[2]);
+            expect(resultat.ok).toBe(false);
+            const texte = JSON.stringify(resultat);
+            expect(texte).not.toMatch(/attendu|profil|correctAnswer/);
+            expect(resultat.problemes.every((p) => !('attendu' in (p.valeurs ?? {})))).toBe(true);
+            // The same wrong answer always yields the same feedback, whatever the reference is.
+            expect(JSON.stringify(evaluer(jeu, 0, reponse))).toBe(texte);
+            expect(devoile.ok).toBe(true);
+        }
     });
     test('SQL ordering requires a valid permutation and the canonical position for each fragment', () => {
         expect(evaluer(sql, 0, { positions: [2, 3, 1, 4] }).ok).toBe(true);

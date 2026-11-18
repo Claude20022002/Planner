@@ -8,11 +8,11 @@ export default {
     tableaux(defi, resultat, t, langue, bilingue) {
         const evenements = defi.evenements.map((evt, i) => [
             evt.id, bilingue(evt.titre), evt.portee, t(evt.donnees), t(evt.statut),
-            ...(resultat ? [resultat.evenements[i].score, t(`niveau${resultat.evenements[i].attendu}`), resultat.evenements[i].correct ? t('oui') : t('non')] : []),
+            ...(resultat ? [t(`niveau${resultat.evenements[i].donne}`), resultat.evenements[i].correct ? t('oui') : t('non')] : []),
         ]);
         return [{
             titre: t('donnees'),
-            colonnes: [t('evt'), t('evtTitre'), t('portee'), t('sensibilite'), t('statut'), ...(resultat ? [t('scoreLabel'), t('attendu'), t('obtenu')] : [])],
+            colonnes: [t('evt'), t('evtTitre'), t('portee'), t('sensibilite'), t('statut'), ...(resultat ? [t('obtenu'), t('correctLabel')] : [])],
             lignes: evenements,
         }];
     },
