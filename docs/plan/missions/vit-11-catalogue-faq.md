@@ -23,7 +23,8 @@
    - un identifiant, une catégorie, un titre et une phrase, en français et en anglais ;
    - la page du site qui la présente ;
    - **sa source dans le code**, un ou plusieurs chemins du dépôt ;
-   - un état, « existe » ou « bientôt ».
+   - un état, « existe » ou « bientôt » ;
+   - **l'app à laquelle elle appartient** (les noms de `frontend/src/i18n/applications.fr.js`) : VIT-09 affichera l'icône de chaque app sur le catalogue (chef, 18 nov. vers 19 h 20). VIT-11 ne dessine pas les icônes.
 2. **Une page « Toutes les fonctionnalités »**, construite depuis le registre :
    - par catégorie, avec leur nombre ;
    - un filtre par texte, qui laisse tout affiché sans JavaScript ;
@@ -71,3 +72,4 @@ Le code attend la fusion de VIT-10. Ni langues.js ni EnTete.astro. Ne modifie pa
 |---|---|---|
 | 2026-11-18 17 h 55 | consigne écrite par Claude de VS Code à la demande du chef, déposée dans la boîte de Codex | — |
 | 2026-11-18 18 h 40 | inscrite par le coordinateur ; condition 9 ; après VSC-01 dans la file de Codex (chef) | — |
+| 2026-11-18 19 h 25 | ajout : chaque entrée du registre porte son app, pour les icônes d'apps de VIT-09 (chef) | — |

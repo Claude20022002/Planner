@@ -24,6 +24,16 @@
 - **L'agent** : Claude de VS Code, après VIT-08.
 - **La 7e condition** de la mise en ligne : le site ne part pas sans ses illustrations.
 
+## Ajout du chef (18 nov., vers 19 h 20) : les fonctionnalités représentées comme des apps
+
+Sur le site, chaque fonctionnalité (module) est montrée **comme une app**, une icône aux coins arrondis, au style de la grille de l'application (UIX-09 : tuiles, icônes Lucide, teintes). Quatre endroits :
+- **une section de l'accueil** : la grille des apps de Planner, chacune menant à sa page ;
+- **le menu « Fonctions »** : les mêmes icônes à la place de la liste de mots (le menu est de VIT-07 et VIT-10 ; VIT-09 passe après eux) ;
+- **l'en-tête de chaque page de fonction**, qui s'ouvre sur l'icône de son app ;
+- **le catalogue de VIT-11**, qui range les fonctionnalités sous l'icône de leur app (VIT-11 porte l'app de chaque entrée dans son registre).
+
+Les icônes du site et celles de la grille de l'application sont **les mêmes** : le plan dit comment les partager (par exemple `shared/` ou la charte), sans copier deux fois les tracés, et avec la mention de licence de Lucide. Les noms des apps sont ceux de `frontend/src/i18n/applications.fr.js`.
+
 ## Ce qui existe
 
 - Quatre dessins en code : trois dans `vitrine/src/components/accueil/`, un dans `vitrine/src/components/fonctions/`. Ils sont posés dans `CadreAppareil` (socle) sur l'accueil, Emploi du temps, En classe et Établissement. Leurs textes sont dans les fichiers de traduction (par exemple `accueil.json`, `quiz.illustration`).
@@ -33,6 +43,7 @@
 ## Critère de « terminé »
 
 - Chaque page du site a au moins une illustration, et les pages de la liste du chef en ont une de plus.
+- Les fonctionnalités sont représentées comme des apps aux quatre endroits choisis par le chef, avec les mêmes icônes que la grille de l'application.
 - La première section de chaque page est retouchée. Le plan dit en quoi, page par page.
 - **Les captures ne montrent rien de réel** : aucun nom d'école, aucune personne réelle, aucun logo de l'école pilote, aucune adresse de serveur. Elles sont prises sur une base locale remplie de **données fictives et neutres**. Le plan dit lesquelles et comment on les produit. **Le chef voit chaque capture avant le commit.** `verifier-neutre.mjs` ne lit pas les images : la relecture se fait à l'œil, et la fiche de session la consigne.
 - **EP-18, peu de connexion** : le plan fixe un poids maximal par page. Les captures sont compressées (AVIF ou WebP, par les outils d'Astro), aux bonnes tailles, et chargées quand elles approchent de l'écran. Les dessins en code ne pèsent presque rien : ils restent le choix par défaut.
@@ -45,7 +56,9 @@
 ## Périmètre d'écriture
 
 L'agent peut écrire :
-- `vitrine/src/components/` : les dessins nouveaux, et ceux qui existent ; `Ouverture.astro`, `EnTetePage.astro` et les composants du socle utiles à la première section, avec leurs tests ;
+- `vitrine/src/components/` : les dessins nouveaux, et ceux qui existent ; les icônes d'apps ;
+- `vitrine/src/components/socle/EnTete.astro` et `vitrine/src/i18n/langues.js`, pour le menu « Fonctions » en icônes, et la page du catalogue de VIT-11, pour ses icônes : tous après leur fusion ;
+- un dossier partagé pour les icônes communes au site et à l'application, si le plan le retient et que le chef l'accepte (il touche alors `frontend/src/components/applications/`, de UIX-09) ; `Ouverture.astro`, `EnTetePage.astro` et les composants du socle utiles à la première section, avec leurs tests ;
 - `vitrine/src/pages/[lang]/` : y poser les illustrations ;
 - `vitrine/src/i18n/{fr,en,ar}/` : les textes des dessins et les textes de remplacement ;
 - `vitrine/src/assets/` ou `vitrine/public/` (au choix du plan) : les captures ;
@@ -97,3 +110,4 @@ fiche de session à jour ; suivi.md non modifié ; tout est commité ; jamais de
 |---|---|---|
 | 2026-11-18 17 h 45 | fiche écrite par le coordinateur, sur les choix du chef (genre, pages, agent, 7e condition) | — |
 | 2026-11-18 18 h 40 | ordre fixé par le chef : VIT-07, VIT-10, VIT-11, puis VIT-09 ; le plan s'écrit pendant ce temps, et couvre aussi les pages par rôle, le catalogue et la FAQ | — |
+| 2026-11-18 19 h 25 | ajout du chef : les fonctionnalités représentées comme des apps (accueil, menu « Fonctions », en-tête de chaque page, catalogue de VIT-11), confié à VIT-09 | — |

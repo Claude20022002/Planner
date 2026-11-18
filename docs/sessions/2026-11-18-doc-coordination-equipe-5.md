@@ -84,6 +84,14 @@ Fiches : [vit-10-pages-par-role](../plan/missions/vit-10-pages-par-role.md) et [
 - **La page des dix jeux** (validée par le chef) a été commitée et poussée après la fusion de #214. Elle n'est dans aucune PR. Il faut retirer « budget en MAD », puis ouvrir une nouvelle PR depuis la même branche.
 - **Les jeux eux-mêmes** comptent en MAD (`stock-pilot.js`, `budget-erp.js`). Le point est relevé dans la fiche de l'étude EP-18.
 
+## Décisions de 19 h 20
+
+#217 est ouverte (la page des dix jeux). « en MAD » y est retiré en local (`7de7ae3b`), à pousser. #216 (VIT-08) est ouverte, relecture au prochain tour.
+
+Le chef a fait deux choix :
+- **les jeux se rangent par niveau, puis par filière**, sur le site et dans l'application, et seulement là où il y a des jeux. C'est QJE-15, une exception hors chantier : [fiche](../plan/missions/qje-15-jeux-par-niveau.md), confiée à l'agent de Cursor après VIT-10 ;
+- **les fonctionnalités du site deviennent des apps**, à quatre endroits : l'accueil, le menu « Fonctions », l'en-tête de chaque page et le catalogue. C'est ajouté à VIT-09 (Claude de VS Code). Le registre de VIT-11 porte l'app de chaque entrée.
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |
@@ -141,6 +149,8 @@ Le coordinateur a repris le 18 nov. à 17 h. Ta file est dans docs/plan/feuille-
 2 bis) Puis VIT-09, nouvelle mission (condition 7) : les illustrations de toutes les pages du site, des captures sans nom d'école,
    la première section de chaque page améliorée (fiche docs/plan/missions/vit-09-illustrations.md). Plan court au chef après VIT-08 ;
    le code en dernier sur le site, après la fusion de VIT-07, VIT-10 et VIT-11. Chaque capture est montrée au chef avant le commit.
+   VIT-09 comprend aussi (chef, 19 h 20) les fonctionnalités représentées comme des apps : section de l'accueil, menu « Fonctions »,
+   en-tête de chaque page de fonction, catalogue de VIT-11 ; les mêmes icônes que la grille de l'application (UIX-09).
 3) Puis UIX-11, nouvelle mission : le tableau de bord de l'administration, refait à la charte et complété des chiffres qui existent
    (fiche docs/plan/missions/uix-11-tableau-de-bord.md, choix du chef du 18 nov.).
 4) Puis UIX-06c, QJE-14 (plan), l'étude StudyLib (fiche corrigée : aucun prêt de livres dans StudyLib), UIX-10d.

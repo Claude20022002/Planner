@@ -384,3 +384,11 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | *(coordinateur)* La page des dix jeux (VIT-07, `6c5daf9c`, validée par le chef) a été commitée après la fusion de #214 : elle n'est dans aucune PR. Elle demande une **nouvelle PR** depuis `feat/vit-07-contenu-complet`, après une correction : retirer « budget en MAD » du résumé de « Pilote des stocks » (EP-5) | coordinateur |
 | *(coordinateur)* Constat EP-5 : les jeux « Pilote des stocks » et « Budget ERP » comptent en MAD (`shared/simulations/catalogue/`). Pas de correction maintenant : le chantier QJE est fermé. L'étude EP-18 le relève, et le chef dira qui corrige | coordinateur |
 | *(coordinateur)* L'outil de contrôle de la session de Codex lui refuse d'écrire hors de la branche de la mission en cours (VSC-01). Les ajouts de #213 (mention ISC) et de #212 (conditions 8 et 9) demandent une autorisation du chef dans cette session | coordinateur |
+
+**Chef, 18 nov., vers 19 h 20** :
+
+| Décision | Par |
+|---|---|
+| **Les jeux se rangent par niveau (collège, lycée, supérieur…), puis par filière**, sur le site et dans l'application (web et mobile), à partir du catalogue partagé. On n'affiche que les niveaux et filières qui ont des jeux. **QJE-15**, exception hors chantier, agent de Cursor après VIT-10 ([fiche](missions/qje-15-jeux-par-niveau.md)) | chef, par l'outil de questions |
+| **Les fonctionnalités du site sont représentées comme des apps** : une section de l'accueil, le menu « Fonctions », l'en-tête de chaque page de fonction et le catalogue de VIT-11. Confié à **VIT-09** (Claude de VS Code), avec les mêmes icônes que la grille de l'application | chef, par l'outil de questions |
+| *(coordinateur)* Les filières des jeux sont des domaines génériques, pas l'entité `Filiere` propre à chaque école ; les niveaux suivent les cycles déjà décidés (VIT-05, VSC-01). Le registre de VIT-11 porte l'app de chaque fonctionnalité, pour que VIT-09 y mette les icônes. #217 se fusionne avant QJE-15, avec « en MAD » retiré (`7de7ae3b`) | coordinateur |
