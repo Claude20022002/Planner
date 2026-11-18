@@ -1,0 +1,27 @@
+---
+// Logo de Planner, inséré dans la page depuis public/logo/ pour que ses aiguilles puissent tourner.
+// Variante « horloge » (en tête du site) ou « icone » (icône bleu nuit). Décoratif : le texte
+// accessible est porté par le lien ou le titre qui l'entoure.
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  variante?: 'horloge' | 'icone';
+  anime?: boolean;
+  class?: string;
+}
+
+const { variante = 'horloge', anime = false, class: classe } = Astro.props;
+const fichier = path.join(process.cwd(), 'public', 'logo', `planner-${variante}.svg`);
+const svg = fs
+  .readFileSync(fichier, 'utf8')
+  .replace(/<!--[\s\S]*?-->/g, '')
+  .replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
+---
+<span class:list={['logo', classe]} data-logo-anime={anime ? '' : undefined} set:html={svg} />
+
+<style>
+  .logo { display: inline-block; line-height: 0; }
+  .logo :global(svg) { inline-size: 100%; block-size: auto; overflow: visible; }
+  .logo :global(.aiguille) { transform-box: fill-box; transform-origin: center; }
+</style>

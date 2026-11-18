@@ -1,0 +1,29 @@
+---
+// Accueil, section 1 : ouverture. Le logo à l'horloge (ses aiguilles tournent au chargement et au
+// survol), le nom du produit, une phrase sur ce que fait Planner, deux liens d'action.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import Logo from '../socle/Logo.astro';
+
+interface Props {
+  t: (cle: string) => any;
+}
+
+const { t } = Astro.props;
+---
+<Section ton="clair" plein etiquette="ouverture-titre">
+  <Logo anime class="ouverture-logo" />
+  <Titre niveau={1} taille="geant" id="ouverture-titre">{t('ouverture.titre')}</Titre>
+  <Accroche forte>{t('ouverture.accroche')}</Accroche>
+  <div class="actions">
+    <BoutonPrincipal href="#emploi">{t('ouverture.decouvrir')}</BoutonPrincipal>
+    <BoutonPrincipal href="#contact" variante="contour">{t('ouverture.contact')}</BoutonPrincipal>
+  </div>
+</Section>
+
+<style>
+  :global(.ouverture-logo) { inline-size: clamp(9rem, 6rem + 12vw, 15rem); }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-2); }
+</style>

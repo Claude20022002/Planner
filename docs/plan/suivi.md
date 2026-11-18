@@ -42,6 +42,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | **fusionnée le 15 nov.** |
 | Correctif : journaux Docker bornés, 10 Mo sur 5 fichiers (REL-06) | `fix/exp-journaux-docker` | en cours : compose écrit, contrôle `config` vert ; à pousser |
+| Correctif : audit des dépendances rouge, `backend/` seul (plan validé par le chef le 18 nov. ; `vitrine/` avec la montée d'Astro du 27 nov.) | `fix/audit-dependances` | commité le 18 nov. (qs 6.17.1, `scripts/audit.mjs`, exception picomatch jusqu'au 18 déc., CI) ; à pousser, ouvrir la PR et fusionner **avant** #195 |
 
 Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, PR #184 fusionnée le 15 nov. (`16b542a1`) ; six contrôles verts, 43 parcours réussis. Aucun quatrième chantier ouvert.
 
@@ -172,7 +173,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte : CI parcours rouge, correction du test de reprise réseau committée localement | #185 · feat/uix-06a-interface |
-| [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
+| [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | en cours : R0 du site (socle), accueil et cinq pages de fonctions (VIT-05 en préparation) dans la PR #195 ; lot de pages repris par l'intégrateur (chef, 18 nov.) ; relu « prêt sur le fond » par le coordinateur (18 nov.), fusion après `fix/audit-dependances` ; attendus : SVG des logos, contrôles finaux | feat/vit-01-vitrine |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
 | [VIT-04](modules/VIT-site-vitrine.md) | Page d'état du service et journal des nouveautés de chaque version | libre | S | à faire |  |

@@ -1,0 +1,36 @@
+{
+  "produit": "Planner",
+  "evitement": "Skip to content",
+  "logo": "Planner, home",
+  "navigation": {
+    "label": "Main navigation",
+    "menu": "Menu",
+    "accueil": "Home",
+    "emploiDuTemps": "Timetable",
+    "enClasse": "In class",
+    "etablissement": "For schools",
+    "securite": "Security and data",
+    "bientot": "Coming soon",
+    "contact": "Contact us"
+  },
+  "langues": {
+    "label": "Language",
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "pied": {
+    "description": "Timetables and classroom life for schools.",
+    "navigation": "Site pages",
+    "droits": "© 2026 Planner"
+  },
+  "finDePage": {
+    "titre": "See Planner with your own rules.",
+    "texte": "Want to see Planner on a fictional school, with your school's rules? Let's talk.",
+    "accueil": "Back to home"
+  },
+  "redirection": {
+    "titre": "Planner",
+    "lien": "Go to the home page"
+  }
+}

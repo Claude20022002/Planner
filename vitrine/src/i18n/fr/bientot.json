@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "titre": "Bientôt · Planner",
+    "description": "Les modules de Planner en préparation : notes et bulletins, vie scolaire, familles, admissions, frais et paiements, et plus encore. Aucun n'est encore disponible."
+  },
+  "entete": {
+    "surtitre": "Bientôt",
+    "titre": "Ce qui arrive ensuite.",
+    "accroche": "Ces modules sont en préparation. Aucun n'est encore disponible, et aucune date n'est annoncée."
+  },
+  "badge": "Bientôt",
+  "ecole": {
+    "surtitre": "La vie de l'école",
+    "titre": "De l'inscription au diplôme.",
+    "cartes": [
+      {
+        "titre": "Notes et bulletins",
+        "texte": "La saisie des notes et les bulletins, avec les crédits du LMD."
+      },
+      {
+        "titre": "Vie scolaire",
+        "texte": "Les absences, la discipline, le choix des options et les activités."
+      },
+      {
+        "titre": "Familles",
+        "texte": "Un compte pour les parents, pour un ou plusieurs enfants, et les réunions avec les enseignants."
+      },
+      {
+        "titre": "Admissions",
+        "texte": "Les candidatures, jusqu'à l'inscription, sans rien ressaisir."
+      },
+      {
+        "titre": "Frais et paiements",
+        "texte": "Les échéances, les reçus et le paiement en ligne."
+      },
+      {
+        "titre": "Communication",
+        "texte": "Les messages aux familles, aussi par WhatsApp."
+      },
+      {
+        "titre": "Bibliothèque",
+        "texte": "Les prêts de livres, depuis le téléphone."
+      },
+      {
+        "titre": "Transport et internat",
+        "texte": "Les trajets des cars scolaires et les chambres de l'internat."
+      },
+      {
+        "titre": "Stages et anciens",
+        "texte": "Les stages des étudiants, et le lien avec les anciens élèves."
+      }
+    ]
+  },
+  "aussi": {
+    "surtitre": "Et aussi",
+    "titre": "Partout, et dans votre langue.",
+    "cartes": [
+      {
+        "titre": "Documents vérifiables",
+        "texte": "Attestations et certificats, avec un code que chacun peut vérifier."
+      },
+      {
+        "titre": "Tableaux de bord",
+        "texte": "Les chiffres clés de l'école, pour la direction."
+      },
+      {
+        "titre": "En arabe",
+        "texte": "Planner en arabe, en plus du français et de l'anglais."
+      },
+      {
+        "titre": "Hors ligne",
+        "texte": "L'application mobile, utilisable sans connexion."
+      },
+      {
+        "titre": "Export Massar",
+        "texte": "Les données de l'école, exportées au format de Massar."
+      }
+    ]
+  }
+}
