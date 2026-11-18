@@ -56,13 +56,13 @@ Le garde-fou d'umzug vérifie deux choses :
 ## Écarts avec le plan
 
 1. **Le test du script tourne dans « Test Backend »**, juste avant l'audit. Le plan ne dit pas où le mettre ; c'est la tâche où Node 22 est déjà installé.
-2. **`package.json` inchangé** : l'override de `qs` reste `^6.16.0`. Le plan ne parle que du lockfile. Monter l'override à `^6.17.1` empêcherait un retour en arrière par un futur `npm install` ; c'est à décider (question 1).
+2. **Override de `qs` monté à `^6.17.1`** dans `backend/package.json`, en plus du lockfile prévu par le plan : accord du chef, le 18 nov. (question 1). Le lockfile ne change pas ; `npm ci`, l'audit et les 373 tests passent.
 
 ## Questions
 
 | N° | Question | Proposition | À qui | État |
 |---|---|---|---|---|
-| 1 | Monter aussi l'override de `qs` à `^6.17.1` dans `backend/package.json` ? | oui, une ligne, sur cette branche | coordinateur | en attente |
+| 1 | Monter aussi l'override de `qs` à `^6.17.1` dans `backend/package.json` ? | oui, une ligne, sur cette branche | chef | **oui (chef, 18 nov.)**, fait sur cette branche |
 
 ## État laissé
 
@@ -97,6 +97,6 @@ Fait : plan (4d19743b), qs 6.17.1 (fb3ef352), scripts/audit.mjs, deploy/audit-ex
 garde-fou du motif d'umzug (33c0492e), CI de Test Backend (41660c2a). Vérifié en local : audit vert avec l'exception,
 rouge sans elle ; 373 tests du serveur ; lint sans erreur. Non vérifié : la CI GitHub.
 Reste : PR et fusion avant #195 ; vitrine/ avec la montée d'Astro du 27 nov. ; revoir l'exception picomatch avant le 18 déc.
-Question en attente : monter l'override de qs à ^6.17.1 (coordinateur).
+Override de qs monté à ^6.17.1 (accord du chef, 18 nov.).
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; jamais de git push.
 ```
