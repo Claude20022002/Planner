@@ -65,7 +65,7 @@ test('4. une sortie retouchée est signalée ; des fins de ligne CRLF ne le sont
         }
         assert.deepEqual(verifierSorties(sorties, racine), []);
         const css = path.join(racine, CHEMIN_CSS_SITE);
-        fs.writeFileSync(css, fs.readFileSync(css, 'utf8').replace('--bleu: #1F65B3', '--bleu: #1F65B4'));
+        fs.writeFileSync(css, fs.readFileSync(css, 'utf8').replace('--bleu: #2A679F', '--bleu: #2A67A0'));
         assert.deepEqual(verifierSorties(sorties, racine), [CHEMIN_CSS_SITE]);
         fs.rmSync(css);
         assert.deepEqual(verifierSorties(sorties, racine), [CHEMIN_CSS_SITE]);
