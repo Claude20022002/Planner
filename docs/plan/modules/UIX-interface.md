@@ -32,9 +32,9 @@
 | UIX-03 | Accessibilité AA : axe-core sans violation dans les parcours | M-13 | libre | M | — | en partie |
 | UIX-04 | Arabe complet : site, application et documents PDF, de droite à gauche ; **prouver d'abord le rendu arabe des PDF** (jsPDF) | F-16 | 4 | XL | UIX-01 | à faire |
 | UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | libre | M | — | à faire |
-| UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en partie : UIX-06a fusionnée, suite UIX-06b conçue à valider |
+| UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en partie : UIX-06a fusionnée, UIX-06b en cours |
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | fait : #185 fusionnée le 16 novembre, 49 parcours réussis |
-| UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception proposée | — | UIX-06a faite, lot visuel sans migration proposé | conception à valider ; aucun code |
+| UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception validée | L | UIX-06a faite | en cours, R0 validé localement |
 
 ## Critères de « terminé »
 
@@ -68,8 +68,8 @@ EP-2, EP-11.
 Coordinateur : prête sur le fond, PR #185 sortie du brouillon. La CI 43775905844 réussit cinq contrôles ; un parcours échoue sur une attente erronée du test de reprise réseau. Les traces montrent le tableau correctement rechargé. Le test contrôle maintenant les comptes de la vraie réponse, sans supposer que le compte connecté figure sur la première page. Aucun code produit modifié ; relance CI attendue après publication.
 
 
-### Proposition UIX-06b
+### UIX-06b en cours
 
-[Plan du référentiel pédagogique](../../conception/interface/uix-06b-referentiel.md), 2c8fa9f9, demandé par le chef après le pilote fusionné. Identifiant et exception proposés, plan non validé : quatre pages existantes, sans changement métier, migration, droits ou API. Conserver les libellés actuels ; UIX-02 reste distinct. Aucun code produit.
+[Plan du référentiel pédagogique](../../conception/interface/uix-06b-referentiel.md), validé par le chef le 16 novembre. Les quatre pages et leur outillage commun sont sur la branche de travail au point R0 (4963e827). La recette métier et visuelle reste à faire.
 
 Constat de clôture du pilote : #185 fusionnée, six contrôles verts et 49 parcours réussis ; les mentions d’attente précédentes relatent les étapes avant ce résultat.
