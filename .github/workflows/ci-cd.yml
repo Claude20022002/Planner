@@ -57,6 +57,12 @@ jobs:
       - name: Nom de l'école jamais écrit en dur
         run: node ../scripts/verifier-neutre.mjs
 
+      # Charte (UIX-10a) : sorties générées à jour et paires de contraste au seuil, puis ses tests
+      - name: Charte à jour
+        run: node ../shared/charte/generer.mjs --verifier
+      - name: Tests de la charte
+        run: node --test ../shared/charte/charte.test.js
+
       - name: Build de production
         run: npm run build
         env:
