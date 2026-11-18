@@ -44,6 +44,15 @@
 | **Bientôt** | les modules du plan de parité ([parite-openeducat.md](../../plan/parite-openeducat.md)), sans date |
 | **Contact** | section seulement, sans formulaire : le formulaire est VIT-02, qui attend les textes légaux et le nom de domaine (Q-11) |
 
+### 3 bis. Ce qui viendra ensuite (décisions du chef, 18 nov.)
+
+| Élément | Quand | Comment |
+|---|---|---|
+| **Courtes vidéos de motion design** qui illustrent chaque fonction présentée | plus tard, quand toutes les captures d'écran du nouveau style seront faites | sur les captures réelles du jeu de démonstration neutre ; sans son par défaut ; une image fixe à la place quand le mouvement réduit est demandé ; fichiers servis par le site lui-même. Outil proposé : Remotion, déjà employé pour la vidéo de promotion. Plan à faire valider |
+| **Page « Solutions »**, par type d'établissement, avec un lien dans l'en-tête | à préparer maintenant, comme les autres pages de VIT-05 : sans prix et sans mise en ligne | plan court à faire valider par le chef (choix de ce qui est dit) |
+| **Lien « Ressources »** (centre d'aide, VIT-03) | avec les captures d'écran, en même temps que les vidéos | pas de lien vide d'ici là |
+| **Lien « Tarifs »** | avec VIT-05 complet, quand la vente reprend | aucun lien et aucun prix d'ici là |
+
 ## 4. Le style
 
 | Élément | Règle |

@@ -245,3 +245,14 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | Le code de REL-06 et de REL-03 se fait sur le modèle le plus fort de Cursor, que le chef choisit | chef |
 | *(coordinateur)* #198 (audit) **prête** : CI verte, exception datée au 18 déc., 13 tests du script. #183 (MOT-03, `c53d4cbb`) **prête** | coordinateur |
 | *(coordinateur)* UIX-06b : Codex peut replier les trois lignes qu'il a modifiées dans `DashboardLayout.jsx` et `i18n/index.js`, ses fichiers. Restent trois lignes longues dans `useActionsModules.js` et deux parcours « recherche sans résultat » | coordinateur |
+
+**18 nov., vers 11 h 40** :
+
+| Décision | Par |
+|---|---|
+| Le site vitrine aura de **courtes vidéos de motion design** pour illustrer les fonctions présentées, faites si possible sur les captures d'écran. Ce sera **plus tard**, quand toutes les captures seront faites ([plan du site](../conception/vitrine/vit-vitrine.md), § 3 bis) | chef |
+| La page **« Solutions »**, par type d'établissement, se **prépare maintenant**, sans prix et sans mise en ligne ; son plan court est à faire valider par le chef | chef |
+| Le lien **« Ressources »** (centre d'aide, VIT-03) arrive **avec les captures d'écran** ; pas de lien vide d'ici là | chef |
+| **Pas de lien « Tarifs »** tant que la vente est gelée | chef |
+| *(coordinateur)* UIX-06b (`4da1036b`) : **prête pour la PR**. Les trois lignes que je croyais trop longues étaient comptées en octets : en caractères, le maximum est de 134 | coordinateur |
+| *(coordinateur)* Correctif du sondage : `espaceCours.spec.cjs` entre dans la même branche, avec `ouvrirClasse` ajoutée à `outils.cjs` sans rien y modifier. `entreRoles`, `appel` et `appelClasse` font l'objet d'une mission à part, parce qu'ils touchent `donnees.mjs`. Le journal du 15 nov. suffit à prouver l'échec d'avant le correctif | coordinateur |

@@ -28,7 +28,8 @@
 ## Périmètre d'écriture
 
 L'agent peut modifier :
-- `frontend/tests/parcours/sondage.spec.cjs` et, au besoin, un utilitaire de test commun sous `frontend/tests/parcours/` (le nommer dans le plan) ;
+- `frontend/tests/parcours/sondage.spec.cjs` et `frontend/tests/parcours/espaceCours.spec.cjs`, qui casse sur la même ligne (accord du coordinateur, 18 nov. 11 h 40) ;
+- `frontend/tests/parcours/outils.cjs`, **en ajout seulement** : la fonction partagée `ouvrirClasse`. Les fonctions qui existent ne changent pas, car les parcours d'UIX-06b et d'UIX-09 les importent ;
 - `docs/conception/qualite/fix-sondage-minuit.md`, sa ligne de `docs/plan/suivi.md` et sa fiche de session.
 
 L'agent ne touche pas :
@@ -61,3 +62,4 @@ Le coordinateur ne te joint pas par message : le chef relaie. Dis au chef quand 
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 11 h 20 | fiche écrite ; prompt donné au chef | — |
+| 2026-11-18 11 h 40 | questions de l'agent (relayées par le chef) : `espaceCours.spec.cjs` sur cette branche, **oui** ; `entreRoles`, `appel` et `appelClasse` dépendent de `donnees.mjs`, partagé par tous les parcours : **mission à part**, avec son plan ; preuve de l'échec : **le journal du 15 nov. suffit**, avec le numéro du passage cité dans le plan, et le nouveau test à horloge fixée le prouve en CI | — |
