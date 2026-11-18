@@ -19,10 +19,11 @@
 
 - `e4fa58dc` — le plan court.
 - `cf781d33` — quatre pages, menu « Solutions », pied en colonnes. Phrases recopiées. Pas de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
+- Ce commit — la grille partagée ne devient un lien que si la carte a un `href`. Les autres pages n'en passent pas. La colonne Ressources n'a que des pages qui existent : Sécurité et données, Bientôt, Nous contacter. Pas de lien vers le catalogue ni la FAQ.
 
 ## Vérifié
 
-Build Astro : 46 pages. Tests unitaires : 66, tous verts. `verifier-neutre` : aucun nom d'école. Pas de défilement horizontal en 390, 1024 et 1440 px, menu ouvert compris. Échap ferme le menu. Le second bouton de Direction mène à Pour l'établissement.
+Build Astro : 46 pages. Tests unitaires : 67, tous verts. `verifier-neutre` : aucun nom d'école. Pas de défilement horizontal en 390, 1024 et 1440 px, menu ouvert compris. Échap ferme le menu. Le second bouton de Direction mène à Pour l'établissement.
 
 ## Questions
 

@@ -22,6 +22,31 @@ test('les quatre rôles ont une adresse et restent hors du menu Fonctions', () =
   assert.equal(NAVIGATION[0], 'solutions');
 });
 
+test('les autres pages ne passent pas de lien à la grille partagée', () => {
+  const racine = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src');
+  const grille = fs.readFileSync(path.join(racine, 'components', 'fonctions', 'GrilleCartes.astro'), 'utf8');
+  assert.match(grille, /carte\.href \?/);
+  assert.match(grille, /<div class="carte">/);
+  const pages = fs.readdirSync(path.join(racine, 'pages', '[lang]')).filter((nom) => nom.endsWith('.astro'));
+  for (const nom of pages) {
+    const source = fs.readFileSync(path.join(racine, 'pages', '[lang]', nom), 'utf8');
+    if (!source.includes('GrilleCartes')) continue;
+    assert.equal(source.includes('href'), false, nom);
+  }
+  const roles = new Set(['direction', 'scolarite', 'enseignants', 'etudiants']);
+  for (const fichier of fs.readdirSync(path.join(racine, 'i18n', 'fr'))) {
+    if (!fichier.endsWith('.json') || roles.has(fichier.replace('.json', ''))) continue;
+    const visite = (noeud) => {
+      if (Array.isArray(noeud)) return noeud.forEach(visite);
+      if (noeud && typeof noeud === 'object') {
+        if ('titre' in noeud && 'texte' in noeud) assert.equal('href' in noeud, false, fichier);
+        Object.values(noeud).forEach(visite);
+      }
+    };
+    visite(charger('fr', fichier.replace('.json', '')));
+  }
+});
+
 test('Direction recopie la phrase de l\'établissement, sans prix', () => {
   const page = charger('fr', 'direction');
   assert.equal(page.entete.titre, charger('fr', 'etablissement').entete.titre);
