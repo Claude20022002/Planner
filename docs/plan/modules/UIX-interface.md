@@ -34,7 +34,7 @@
 | UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | libre | M | — | à faire |
 | UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en partie : UIX-06a fusionnée, UIX-06b en cours |
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | fait : #185 fusionnée le 16 novembre, 49 parcours réussis |
-| UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception validée | L | UIX-06a faite | en cours, R0 validé localement |
+| UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception validée | L | UIX-06a faite | en cours, R1 vérifié localement |
 
 ## Critères de « terminé »
 
@@ -70,6 +70,6 @@ Coordinateur : prête sur le fond, PR #185 sortie du brouillon. La CI 4377590584
 
 ### UIX-06b en cours
 
-[Plan du référentiel pédagogique](../../conception/interface/uix-06b-referentiel.md), validé par le chef le 16 novembre. Les quatre pages et leur outillage commun sont sur la branche de travail au point R0 (4963e827). La recette métier et visuelle reste à faire.
+[Plan du référentiel pédagogique](../../conception/interface/uix-06b-referentiel.md), validé par le chef le 16 novembre. Les quatre pages et leur outillage commun sont sur la branche de travail. R1 local (2feca82e) couvre les lectures après changement de filtre et les détails mobiles. La recette en CI et le contrôle axe-core restent à faire.
 
 Constat de clôture du pilote : #185 fusionnée, six contrôles verts et 49 parcours réussis ; les mentions d’attente précédentes relatent les étapes avant ce résultat.

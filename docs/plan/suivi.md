@@ -164,7 +164,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en partie : UIX-06a fusionnée ; UIX-06b en cours | #185 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | fait : #185 fusionnée le 16 novembre, six contrôles verts et 49 parcours réussis | #185 · feat/uix-06a-interface |
-| [UIX-06b](modules/UIX-interface.md) | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | exception validée | L | en cours, R0 validé (4963e827), correction du plan Groupes à valider avant R1 | feat/uix-06b-referentiel |
+| [UIX-06b](modules/UIX-interface.md) | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | exception validée | L | en cours, R1 local (2feca82e), parcours CI et contrôle axe-core en attente | feat/uix-06b-referentiel |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
