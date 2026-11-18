@@ -291,3 +291,27 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | *(coordinateur)* #197 et #199 se gênent sur `decisions.md`, `UIX-interface.md` et `suivi.md`, dans les deux ordres. #199 passe d'abord, et le coordinateur met #197 à jour lui-même | coordinateur, 18 nov. 12 h 30 |
 | *(coordinateur)* #199, première CI : **11 parcours rouges sur 71**. Un vrai défaut d'accessibilité : contraste du bouton de validation du dialogue de Filières en thème sombre. Un bouton « Générer depuis la maquette » désactivé, à expliquer. Le reste tient aux attentes ou aux délais des tests. Renvoyée à Codex. Leçon pour les missions d'équipe : des parcours jamais exécutés avant la PR ne prouvent rien. Le rapport doit dire qu'ils n'ont pas tourné, et la relecture compte la CI comme une étape à part | coordinateur, 18 nov. 12 h 46 |
 | *(coordinateur)* Ordre de fusion : la première PR qui passe au vert sur tout passe la première. Pour #196 et #199, en conflit sur `i18n/index.js`, la seconde fusionne `main` après la première | coordinateur, 18 nov. 12 h 46 |
+| *(coordinateur)* #200 (REL-06) : entièrement verte, prête. #201 (REL-03) : un SC2016 de ShellCheck à désactiver, avec sa raison, sur une ligne de test. #203 (page Solutions) : relue, prête dès la CI verte. Ordre : #200, #203, #201, puis #199 et #196 à mesure qu'elles passent au vert | coordinateur, 18 nov. 12 h 58 |
+| *(coordinateur)* #196 (`98ea71d4`) : **prête**. Sa CI est entièrement verte, et chaque bouton « Lancer en classe » porte le nom de son jeu, par la traduction `sessionsJeu.lancer.titre`. Ordre : **#200 et #196 maintenant**, puis #203, #201 et #199. Codex règle le conflit d'`i18n/index.js` de #199 | coordinateur, 18 nov. 13 h 01 |
+| *(coordinateur)* Fusionnées le 18 nov. vers 13 h : #200 (REL-06), #196 (QJE-04, migration 0082 à appliquer au prochain déploiement) et #203 (page Solutions). #196 a été fusionnée pendant les parcours d'un dernier commit d'Alexis, qui ne touchait que la documentation : aucun risque pour le code. Le chantier QJE, ouvert par exception pour QJE-04 seule, est à fermer par le chef | coordinateur, 18 nov. 13 h 11 |
+| **Chantier QJE fermé** : sa seule fonction, QJE-04, est fusionnée (#196). Trois chantiers restent ouverts, sans exception (EXP, PLA, MOT). La suite des jeux attend l'ouverture d'un chantier | chef, 18 nov. 13 h 15 |
+
+**Chef, 18 nov., vers 13 h 30** :
+
+| Décision | Par |
+|---|---|
+| **Toutes les plateformes suivent le style du site vitrine**, avec les mêmes couleurs : application web, mobile, espace des jeux, StudyLib et quiz. Cela étend la décision du 18 nov., qui ne visait d'abord que le site et la grille | chef |
+| La **charte commune vient d'abord** (UIX-10) : une source unique de jetons tirée du site, puis une adoption plateforme par plateforme. **Exception hors chantier**, comme UIX-06, sans API ni migration. Plan écrit par Claude (VS Code), validé par le chef ([fiche](missions/uix-10-charte-commune.md)) | chef |
+| **Le site vitrine sera mis en ligne**, d'abord sur un sous-domaine (VIT-06). Cela remplace « rien en ligne ». Quatre conditions d'abord : audit de `vitrine/` et montée d'Astro le 27 nov. ; mentions légales et page de confidentialité, sans formulaire ni mesure d'audience ; SVG officiels des logos ; site non indexé tant qu'il est sur le sous-domaine. Plan court par l'agent de Cursor, validé par le chef ([fiche](missions/vit-06-mise-en-ligne.md)) | chef |
+| **Modèles** : Grok 4.7 high reste le modèle de l'agent de Cursor pour les tâches courtes et bornées au plan validé. Pour les migrations, la sécurité, le serveur et la charte : le plus fort de Cursor (Claude Fable 5.2, sinon Opus 5.5). Codex : son modèle le plus fort, avec un raisonnement élevé, pour tout | chef |
+
+**Chef, 18 nov., vers 13 h 40** :
+
+| Décision | Par |
+|---|---|
+| UIX-06c **attend la validation d'UIX-10** (« je valide ton plan ») | chef |
+| **Sortie de ClassQuiz maintenant**, par exception hors chantier : QJE-01, puis QJE-03, puis QJE-06. Les quiz de l'école pilote sont transférés dans le Studio et vérifiés avant l'arrêt des conteneurs. Le quiz de la charte commune, c'est le Studio quiz ([fiche](missions/sortie-classquiz.md)). Rappel de la décision du 20 oct. | chef |
+| **StudyLib : étude d'abord.** Garder Laravel ou reconstruire dans la pile de Planner, à trancher avant tout travail sur BIB-02 ([fiche](missions/etude-studylib.md)) | chef |
+| *(coordinateur)* #201 (REL-03) fusionnée. #199 (UIX-06b, `24d96588`) : les parcours sont corrigés, dont un vrai défaut (le dialogue d'Enseignements plantait) et le contraste du bouton en thème sombre. À repousser pour que la CI tranche | coordinateur, 18 nov. 13 h 40 |
+| Les modèles Claude ne sont pas dans le forfait Cursor du chef. **L'agent de Cursor reste sur Grok 4.7 high** pour les tâches bornées. **Codex prend les tâches qui demandent le modèle le plus fort** : VIT-06, QJE-03 et QJE-06, après UIX-09. L'agent de Cursor fait QJE-01 tout de suite. Les sessions Claude Code (VS Code), qui ne dépendent pas de Cursor, gardent UIX-10 et l'étude StudyLib | chef, 18 nov. 13 h 45 |
+| Plan d'UIX-10 (#206) **validé**, questions 9 et 10 comprises. **UIX-10g (restyler ClassQuiz) est retirée** : ClassQuiz disparaît avec QJE-06, et le Studio quiz prend la charte avec UIX-10b et UIX-10e. UIX-10f (StudyLib) attend l'étude. **UIX-10a** se fait maintenant, sur une branche empilée sur #206 ; son plan court est validé par le coordinateur | chef, 18 nov. 13 h 55 |

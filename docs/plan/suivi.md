@@ -10,20 +10,20 @@ Une ligne par fonction. L'état passe à « en cours » (avec la branche) au pre
 
 Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend une fonction que dans un chantier ouvert. Un chantier ouvert se termine avant d'en ouvrir un autre à sa place ([organisation.md](organisation.md), § 3).
 
-### Ouverts (3 sur 3, plus QJE-04 par exception)
+### Ouverts (3 sur 3)
 
 | Module | Ouvert le | Fonctions du chantier, dans l'ordre | Reste | État |
 |---|---|---|---|---|
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
-| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | ouvert pour QJE-04 seule ; corrections d'Alexis (B-1, B-2, I-1) en PR #196, `main` fusionnée et migration renumérotée en 0082 le 18 nov., **six contrôles verts** |
 
 ### Fermés
 
 | Module | Ouvert le | Fermé le | Fonctions |
 |---|---|---|---|
 | [QUA](modules/QUA-qualite-docs.md) | 10 nov. 2026 | 15 nov. 2026 (fusion de #171) | QUA-03 |
+| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, par exception | 18 nov. 2026 (fusion de #196, décision du chef) | QJE-04 |
 
 ### Travaux en cours hors chantier, d'avant la règle
 
@@ -59,14 +59,15 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | MOT | MOT-02 mesure du solveur sur un jeu scolaire | Codex | `etude/mot-02-mesure-solveur` (non poussée) | banc et grand jeu de 20 000 mesurés (6 passages, avant et après #181 : aucun planning complet en 600 s, débit médian -13 % en 1.35, plages qui se chevauchent) ; reste le collège, débloqué par #182 | 15 nov. 20 h 50 | [mot-02](missions/mot-02.md) |
 | QUA | correctif : `entreRoles`, `appel` et `appelClasse` échouent vers minuit UTC : ils ont besoin d'une séance réellement en cours, et donc de changer `donnees.mjs`, partagé par tous les parcours | à attribuer | — | mission à part, avec son plan ; d'ici là, relancer leur CI quand elle a tourné entre 23 h 50 et minuit passé | 18 nov. 11 h 40 | — |
 | MKT | MKT-05 et MKT-09 : vidéo publicitaire et présentation aux établissements (MKT-09 dégelé pour la préparation par le chef) | agent Claude du coordinateur | `mkt/mkt-05-video-presentation` (non poussée) | argumentaire, 3 scripts et plan de 18 diapositives écrits (`2a921691`) ; réponses du chef reçues ; recherche de sources en cours ; vidéo et .pptx après l'accord du chef | 15 nov. 23 h 50 | [mkt-video-presentation](missions/mkt-video-presentation.md) |
-| EXP | REL-06 (journaux Docker), puis REL-03 (dumps d'avant déploiement), d'après l'audit de rluf01 du 15 nov. | agent de Cursor (codé sur Grok 4.7) | #200 (`05c72f54`), #201 (`0d63c429`) | REL-06 bonne ; REL-03 corrigée, bonne ; encore en conflit sur `suivi.md` après la fusion de #202 : elles prennent la version de `main` (règle du 18 nov.) | 18 nov. 11 h 55 | — |
+| UIX | UIX-10 charte commune à toutes les plateformes, d'après le site vitrine | Claude (VS Code) | #206 (`doc/uix-10-charte-commune`) | **plan validé par le chef le 18 nov.** ; UIX-10g (ClassQuiz) retirée par le chef : plan à corriger sur #206 ; suite : UIX-10a (source, générateur, CI), plan court en cours, branche empilée `feat/uix-10a-source-charte` | 18 nov. 13 h 55 | [uix-10a-source-charte](missions/uix-10a-source-charte.md) |
+| VIT | VIT-06 mise en ligne du site vitrine sur un sous-domaine | Codex, après UIX-09 | `feat/vit-06-mise-en-ligne` (à créer) | plan court à écrire, validé par le chef (serveur) ; déploiement après les quatre conditions (audit du 27 nov., mentions légales, SVG officiels, `noindex`) | 18 nov. 13 h 45 | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) |
+| QJE | sortie de ClassQuiz : QJE-01 (entrée « Quiz » vers le Studio), QJE-03 (joueur natif), QJE-06 (plus aucun conteneur ClassQuiz) | QJE-01 : agent de Cursor (Grok 4.7 high), lancée à 13 h 44 ; QJE-03 et QJE-06 : Codex, après VIT-06 | `feat/qje-01-entree-studio` (à créer) | exception hors chantier accordée par le chef le 18 nov. ; QJE-06 attend le transfert vérifié des quiz de l'école pilote | 18 nov. 13 h 45 | [sortie-classquiz](missions/sortie-classquiz.md) |
+| BIB | étude : garder StudyLib en Laravel ou la reconstruire dans la pile de Planner | Claude (VS Code), après le plan d'UIX-10 | `etude/bib-studylib-pile` (à créer) | décision du chef le 18 nov. (« étude d'abord ») ; à trancher avant tout travail sur BIB-02 | 18 nov. 13 h 40 | [etude-studylib](missions/etude-studylib.md) |
 
-| UIX | UIX-06b, mission d'équipe : les quatre écrans | Codex | #199 (`f5349d84`) | **première CI rouge** : 11 parcours sur 71, dont un vrai défaut de contraste (bouton de validation, thème sombre, axe-core) et un bouton « Générer » désactivé à expliquer ; l'ancien `annees.spec.cjs` est à adapter (nom du parent affiché dans les lignes enfants) ; correction demandée à 12 h 46 | 18 nov. 12 h 46 : à corriger | [uix-06b-equipe](missions/uix-06b-equipe.md) |
+| UIX | UIX-06b, mission d'équipe : les quatre écrans | Codex | #199 (`24d96588`, à pousser) | parcours corrigés : un vrai défaut trouvé (le dialogue d'Enseignements plantait, d'où le bouton « Générer » absent) et le contraste du bouton en sombre (5,5:1) ; 74 unitaires, 72 parcours collectés ; sans conflit avec `main` ; CI attendue après le push | 18 nov. 13 h 40 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
 | UIX | UIX-09 grille d'applications façon iCloud | Codex | `feat/uix-09-grille-applications` (`c45f70c4`, non poussée) | relue : **bonne** (périmètre tenu, lucide-react 1.68.0 publié le 4 nov., licence MIT copiée, `suivi.md` identique à `main`) ; à pousser **après #199** : fusion de `main`, verrou npm régénéré, axe-core dans le parcours | 18 nov. 12 h 10 | [vit-equipe](missions/vit-equipe.md) |
-| UIX | UIX-06c Salles, Campus, Créneaux, Calendrier | à fixer (Codex en tête) | `feat/uix-06c-ressources-temps` (à créer) | **plan validé par le chef le 18 nov.**, avec l'exception hors chantier ; départ après UIX-09 | 18 nov. 10 h 30 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
-| QJE | QJE-04 : dix simulations et trente défis d'Alexis (catalogue neutre, solution notée par le serveur, suivi enseignant ; migration 0082) | Alexis (Destroya2) et son agent | #196 (`e26cbe8a`) | migration et ordre authentification puis CSRF validés par le chef ; intégration **verte** (3 attentes corrigées, justes) ; **parcours rouge** : `sessionsJeu.spec.cjs` trouve 11 boutons « Lancer en classe » au lieu d'un ; correction demandée à 12 h 30 ; passe après #199 | 18 nov. 12 h 30 : à corriger | — |
+| UIX | UIX-06c Salles, Campus, Créneaux, Calendrier | à fixer | `feat/uix-06c-ressources-temps` (à créer) | plan validé par le chef le 18 nov. ; **attend la validation d'UIX-10** (chef, 18 nov.), pour ne pas refaire ces écrans deux fois | 18 nov. 13 h 40 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
 | VIT | plus tard : vidéos de motion design sur les captures, et lien « Ressources » (VIT-03) avec elles | — | — | décisions du chef du 18 nov. ([plan du site](../conception/vitrine/vit-vitrine.md), § 3 bis) | 18 nov. | [vit-equipe](missions/vit-equipe.md) |
-| VIT | VIT-05 (préparation) : page « Solutions » par type d'établissement, sans prix | Claude (VS Code), nouvelle session | `feat/vit-05-solutions` (à créer) | questions au chef, puis plan court à faire valider par le chef ; prompt donné à 12 h 10 | 18 nov. 12 h 10 | [vit-solutions](missions/vit-solutions.md) |
 | EXP | suite de l'audit (#198, fusionnée) : partie `vitrine/` le 27 nov. avec la montée d'Astro ; revue de l'exception picomatch avant le 18 déc. | à attribuer | — | dates fixées par le plan | 18 nov. | [plan](../conception/exploitation/fix-audit-dependances.md) |
 
 Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
@@ -157,12 +158,12 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [BIB-02](modules/BIB-bibliotheque.md) | StudyLib par école | 5 | M | à faire |  |
 | [BIB-03](modules/BIB-bibliotheque.md) | Médias du Studio quiz (images, sons, vidéos) hors de la base, dans le stockage de fichiers | libre | M | à faire |  |
 | [BIB-04](modules/BIB-bibliotheque.md) | Quiz généré par l'IA à partir d'un document de la Bibliothèque | libre | M | à faire |  |
-| [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | à faire |  |
+| [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | à faire, exception hors chantier accordée le 18 nov. ([sortie-classquiz](missions/sortie-classquiz.md)) |  |
 | [QJE-02](modules/QJE-quiz-jeux-ia.md) | Import des formats GIFT et Moodle XML dans le Studio | libre | M | à faire |  |
-| [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | libre | M | à faire |  |
-| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | **six contrôles verts le 18 nov.** (dont l'intégration et les parcours), `main` fusionnée et migration renumérotée en 0082 ; relecture du coordinateur, puis validation de la migration par le chef avant la fusion | `jeux-pedagogique` (Alexis) |
+| [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | libre | M | à faire, exception hors chantier accordée le 18 nov. ([sortie-classquiz](missions/sortie-classquiz.md)) |  |
+| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | fait : #196 fusionnée le 18 nov. ; migration 0082 écrite, à appliquer au prochain déploiement | `jeux-pedagogique` (Alexis) |
 | [QJE-05](modules/QJE-quiz-jeux-ia.md) | Service des jeux à part, avec des gabarits | libre | L + M + M | à faire |  |
-| [QJE-06](modules/QJE-quiz-jeux-ia.md) | Sortie complète de ClassQuiz | libre | M | à faire |  |
+| [QJE-06](modules/QJE-quiz-jeux-ia.md) | Sortie complète de ClassQuiz | libre | M | à faire, exception hors chantier accordée le 18 nov. ([sortie-classquiz](missions/sortie-classquiz.md)) |  |
 | [QJE-07](modules/QJE-quiz-jeux-ia.md) | Fournisseur d'IA en production | libre | M | à faire |  |
 | [QJE-08](modules/QJE-quiz-jeux-ia.md) | Créateurs de jeux et leur rémunération | — | — | gelé |  |
 | [QJE-09](modules/QJE-quiz-jeux-ia.md) | Défis Linux dans un quiz | — | M | reporté |  |
@@ -186,7 +187,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
 | [VIT-04](modules/VIT-site-vitrine.md) | Page d'état du service et journal des nouveautés de chaque version | libre | S | à faire |  |
-| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | préparation dégelée le 18 nov. (sans tarifs ni mise en ligne) |  |
+| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | préparation dégelée le 18 nov. (sans tarifs ni mise en ligne) : cinq pages de fonctions (#195) et page Solutions (#203) fusionnées | #195, #203 |
 | [VEN-01](modules/VEN-vente-modules.md) | Registre des modules | 2 | L | à faire |  |
 | [VEN-02](modules/VEN-vente-modules.md) | Cinq entretiens de terrain avec des directeurs d'écoles privées, séparés de toute… | 3 | S par entretien | à faire |  |
 | [VEN-03](modules/VEN-vente-modules.md) | Abonnements et factures | — | L | gelé |  |
