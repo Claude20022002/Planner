@@ -5,50 +5,53 @@
 | Fait par | agent de Cursor (Grok 4.7) |
 | Chantier | VIT · préparation de VIT-05 |
 | Dossier de travail | `..\travaux-planner\vit-07-contenu-complet` |
-| Dernier commit | `55b165ca` |
+| Dernier commit | `08e39160` |
 
 ## Objectif de la session
 
-Coder les quatre pages après le « oui » de la question 1, puis tenir les consignes EP-18 et Massar arrivées dans la boîte.
+Présenter quiz, jeux, bibliothèque, cours, annonces et l'application, avec l'appel à la main et l'export national.
 
 ## Plan
 
-[docs/conception/vitrine/vit-07-contenu-complet.md](../conception/vitrine/vit-07-contenu-complet.md). Question 1 : oui. Question 2 (EP-18, Massar, retrait de la phrase sur le magasin) : en attente du chef.
+[docs/conception/vitrine/vit-07-contenu-complet.md](../conception/vitrine/vit-07-contenu-complet.md). Questions 1 et 2 : oui, le 18 novembre 2026.
 
 ## Fait
 
-- `fafd3f15` — le plan court, seul.
-- `c4cac1a0` — la fiche d'attente.
-- `55b165ca` — le plan corrigé : EP-18 et Massar, question 2 ouverte. Commit seul, comme demandé.
-- Les quatre pages, le menu Fonctions et le retrait de la carte « prêts de livres » sont écrits dans le dossier, pas commités. Ils attendent la question 2, qui change des phrases déjà rédigées.
+- `fafd3f15` — le plan court.
+- `55b165ca` — EP-18 et Massar ajoutés au plan.
+- `08e39160` — quatre pages, menu Fonctions, carte « prêts de livres » retirée, appel à la main, export vers la plateforme nationale. Massar reste l'exemple du Maroc. Pas de phrase sur un magasin d'applications.
 - Aucune illustration nouvelle. VIT-09 les fera après la fusion.
 
 ## Vérifié
 
-Sur les pages écrites, pas encore commitées : build Astro (34 pages), 55 tests unitaires, `verifier-neutre` sans nom d'école. Pas de défilement horizontal en 390, 768 et 1440 px. Menu Fonctions ouvert au clavier et à la souris, au téléphone et sur grand écran. axe-core 4.10.3 : zéro violation sur les quatre pages et sur Bientôt. Lighthouse (instantané, ordinateur) : 100 en accessibilité, bonnes pratiques et SEO sur Quiz et jeux et sur Bibliothèque. Cours et annonces et Application n'ont pas eu Lighthouse. Les parcours de #210 n'ont pas été relancés.
+Build Astro : 34 pages. Tests unitaires : 56, tous verts. `verifier-neutre` : aucun nom d'école. Pas de défilement horizontal en 390, 768 et 1440 px. Menu Fonctions ouvert à la souris, au téléphone et sur grand écran. axe-core 4.10.3 : zéro violation sur les quatre pages, sur En classe et sur Bientôt. Lighthouse instantané, ordinateur : 100 en accessibilité, bonnes pratiques et SEO sur Quiz et jeux et sur Bibliothèque. Cours et annonces et Application ont eu axe, pas Lighthouse.
+
+Bibliothèque, Cours et annonces et Application n'ont pas de visuel. Quiz réutilise `IllustrationQuiz`.
 
 ## Questions
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
 | 1 | Coder ces quatre pages, ces phrases, le retrait de la carte Bibliothèque, et le menu Fonctions ? | oui | répondu |
-| 2 | Écrire les phrases EP-18 et Massar, et retirer la phrase sur le magasin d'applications ? | — | en attente du chef |
+| 2 | Écrire les phrases EP-18 et Massar, et retirer la phrase sur le magasin d'applications ? | oui | répondu |
 
 ## État laissé
 
 - `docs/plan/suivi.md` : non modifié.
-- Module VIT : une ligne VIT-07 est écrite, pas commitée.
-- Les pages et le menu sont dans le dossier de travail, pas dans un commit.
+- Module VIT : ligne VIT-07 en cours, dans `08e39160`.
+- Branche locale, pas poussée.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef répond à la question 2.
-2. Ajuster alors les phrases, committer le code, la ligne du module et cette fiche.
-3. Le chef pousse. Pas avant.
+1. Le chef pousse et ouvre la PR.
+2. Après le vert de la CI, il fusionne. VIT-09 ajoutera les illustrations.
 
 ## Commandes pour le chef de projet
 
-Rien à pousser. Le correctif du plan est local (`55b165ca`).
+```text
+git -C "..\travaux-planner\vit-07-contenu-complet" push -u origin feat/vit-07-contenu-complet
+gh pr create --repo Claude20022002/Planner --base main --head feat/vit-07-contenu-complet --title "VIT-07 : le site présente quiz, bibliothèque, cours et l'application" --fill
+```
 
 ## Prompt de reprise
 
@@ -57,11 +60,9 @@ Tu reprends VIT-07, sur la branche feat/vit-07-contenu-complet,
 dans le dossier ..\travaux-planner\vit-07-contenu-complet.
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 docs/conception/vitrine/vit-07-contenu-complet.md et cette fiche.
-Fait : le plan corrigé est commité (55b165ca). La question 1 a reçu oui.
-Les quatre pages, le menu et le retrait de la carte sont écrits, pas commités.
-Reste : attendre la question 2, puis ajuster les phrases EP-18 et Massar
-et committer le code. Pas d'illustration nouvelle (VIT-09).
-Questions en attente : la question 2 du plan.
+Fait : le code est commité (08e39160). Questions 1 et 2 répondues oui.
+Reste : le chef pousse. Pas d'illustration nouvelle (VIT-09, après la fusion).
+Questions en attente : aucune.
 Règles : pas de styles/, pas d'accueil, pas de suivi.md, jamais de git push.
 StudyLib se lit, il ne s'écrit pas. Grok 4.7 high convient.
 ```
