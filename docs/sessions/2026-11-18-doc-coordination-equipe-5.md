@@ -38,6 +38,23 @@ Reprendre la coordination après la pause de 16 h 05 : tour d'état, boîtes, re
 - **Feuille de route** : retour du coordinateur, files mises à jour, UIX-11 dans la file de Claude de VS Code, une section pour la nouvelle session Claude.
 - **`decisions.md`** : dix lignes pour cette reprise.
 
+## Ajout de 17 h 45 : les illustrations du site (VIT-09)
+
+#210 est fusionnée, et #211 (cette branche) est poussée. Le chef trouve que **le site manque d'illustrations**. Ses choix, faits par l'outil de questions :
+- des dessins en code sur **toutes les pages** ;
+- quelques **captures réelles sans nom d'école** ;
+- **la première section de chaque page améliorée** ;
+- confiée à Claude de VS Code, après VIT-08 ;
+- la **7e condition** de la mise en ligne.
+
+Fait :
+- la fiche [vit-09-illustrations](../plan/missions/vit-09-illustrations.md) ;
+- la 7e condition dans la fiche de VIT-06 et dans la feuille de route ;
+- `suivi.md` et `decisions.md` à jour ;
+- deux consignes de 17 h 48 : Codex intègre la 7e condition au plan de VIT-06, et l'agent de Cursor ne dessine rien dans VIT-07.
+
+**Constat** : les données des parcours portent « hestim » dans leurs adresses e-mail. Les captures demandent donc des données neutres à part. Le chef voit chaque capture avant le commit.
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |
@@ -71,12 +88,11 @@ L'ouverture de VSC n'est donc pas encore à proposer. VSC-01, la conception, res
 ## Commandes pour le chef
 
 ```powershell
-gh pr merge 210 --merge
 git -C "..\travaux-planner\coordination-equipe" push
 gh pr create --base main --head doc/coordination-equipe --title "Coordination du 18 nov., reprise : relectures, suivi.md à l'état réel, UIX-11 et étude EP-18" --fill
 ```
 
-Une minute après le push : `gh pr checks <n> --watch`, puis `gh pr merge <n> --merge` si tout est vert. L'ordre : #210, puis la PR de coordination. Les deux ne touchent pas les mêmes fichiers.
+Une minute après le push : `gh pr checks <n> --watch`, puis `gh pr merge <n> --merge` si tout est vert. #210 est fusionnée. Après le commit de VIT-09, la branche est à repousser : #211 se met à jour, et sa CI repart.
 
 Ensuite :
 - **Codex** : « lis ta boîte » (VIT-06 : ligne « Validé » et secrets, puis UIX-09) ;
@@ -92,6 +108,9 @@ Le coordinateur a repris le 18 nov. à 17 h. Ta file est dans docs/plan/feuille-
 1) VIT-08 : le plan court est validé par le chef (5b62f702). Code-le maintenant, dans ..\travaux-planner\vit-08-video.
 2) Puis UIX-10b (plan court, après la fusion d'UIX-09). Dans UIX-10b, corrige la ligne UIX-10 de docs/plan/modules/UIX-interface.md :
    « UIX-10a faite (#207, fusionnée le 18 nov.) ».
+2 bis) Puis VIT-09, nouvelle mission (condition 7) : les illustrations de toutes les pages du site, des captures sans nom d'école,
+   la première section de chaque page améliorée (fiche docs/plan/missions/vit-09-illustrations.md). Plan court au chef après VIT-08 ;
+   le code après la fusion de VIT-07 et de VIT-08. Chaque capture est montrée au chef avant le commit.
 3) Puis UIX-11, nouvelle mission : le tableau de bord de l'administration, refait à la charte et complété des chiffres qui existent
    (fiche docs/plan/missions/uix-11-tableau-de-bord.md, choix du chef du 18 nov.).
 4) Puis UIX-06c, QJE-14 (plan), l'étude StudyLib (fiche corrigée : aucun prêt de livres dans StudyLib), UIX-10d.
@@ -113,7 +132,7 @@ Commence par le tour d'état (skill coordination, § 1), boîtes comprises (..\t
 Attendu depuis 17 h 30 :
 - Codex : la ligne « Validé » de VIT-06 avec les secrets, puis UIX-09 (fusion de main, verrou, axe-core) ;
 - agent de Cursor : le plan de VIT-07 corrigé (EP-18, Massar), qui va au chef ;
-- Claude de VS Code : le code de VIT-08 ;
+- Claude de VS Code : le code de VIT-08, puis le plan de VIT-09 (illustrations, condition 7) ;
 - nouvelle session Claude : les contextes de l'étude EP-18.
 Relis chaque branche finie (skill relecture-branche) et reporte les états dans suivi.md (toi seul le modifies).
 Suis les écarts : fichiers non commités de PLA-03b, feat/mot-13-coupure-fine à mettre à jour, puis à relire.

@@ -356,3 +356,9 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | *(coordinateur)* Écart : la fiche de l'étude StudyLib parlait de « livres » et d'« emprunts ». L'agent de Cursor n'a trouvé aucun prêt de livres dans StudyLib. Fiche corrigée : l'étude décrit ce que le code fait | coordinateur |
 | *(coordinateur)* La CI de `main` sur `db0e3de7` (15 h 38) était rouge : Maven Central a répondu 429 pendant la construction de l'image du solveur. Échec passager, vert au passage suivant (`5f053ebf`) | coordinateur |
 
+**Chef, 18 nov., vers 17 h 45** :
+
+| Décision | Par |
+|---|---|
+| **Le site vitrine manque d'illustrations.** VIT-09 en met sur **toutes les pages** : des **dessins en code**, comme les quatre qui existent ; **quelques captures réelles où l'on ne voit pas le nom de l'école** ; et **la première section de chaque page améliorée un peu**. **Claude de VS Code** la fait **après VIT-08**. C'est la **7e condition** de la mise en ligne ([fiche](missions/vit-09-illustrations.md)) | chef, par l'outil de questions |
+| *(coordinateur)* Les captures se prennent sur des données fictives et neutres, jamais sur `seed.js` (école pilote). Les données des parcours ne suffisent pas telles quelles : leurs adresses portent « hestim ». Le chef voit chaque capture avant le commit, car `verifier-neutre.mjs` ne lit pas les images. VIT-09 touche les pages après la fusion de VIT-07 et de VIT-08, qui écrivent les mêmes fichiers | coordinateur |

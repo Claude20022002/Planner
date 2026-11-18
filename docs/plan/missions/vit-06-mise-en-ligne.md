@@ -12,7 +12,7 @@
 | Dossier de travail | `..\travaux-planner\vit-06-mise-en-ligne` |
 | Plan de conception | plan court à écrire (`docs/conception/exploitation/vit-06-mise-en-ligne.md`) · **validé par le chef** : c'est le serveur |
 
-## Les quatre conditions avant la mise en ligne (chef, 18 nov.)
+## Les sept conditions avant la mise en ligne (chef, 18 nov.)
 
 1. **Audit de `vitrine/`** et montée d'Astro le 27 nov. (plan de l'audit, § 6), avec `node ../scripts/audit.mjs vitrine` dans `vitrine.yml`.
 2. **Mentions légales et page de confidentialité**, sans formulaire ni mesure d'audience. Leur texte est une décision du chef (textes légaux, Q-11).
@@ -20,8 +20,9 @@
 4. **Site non indexé** tant qu'il est sur le sous-domaine (`noindex` et `robots.txt`).
 5. **Contenu complet** : toutes les applications présentées ([VIT-07](vit-07-contenu-complet.md)). Ajoutée par le chef le 18 nov.
 6. **Vidéo de présentation globale** sur l'accueil ([VIT-08](vit-08-video-presentation.md)). Ajoutée par le chef le 18 nov. Le plan prévoit qu'elle est servie par le site, avec un en-tête de cache adapté.
+7. **Les illustrations** sur toutes les pages : dessins en code, quelques captures réelles sans nom d'école ni donnée réelle, première section de chaque page améliorée ([VIT-09](vit-09-illustrations.md)). Ajoutée par le chef le 18 nov. vers 17 h 45. Les captures sont des images servies par le site : le plan de VIT-06 dit leur cache et la CSP `img-src 'self'`.
 
-Le plan peut s'écrire et se valider maintenant. Le déploiement attend les six conditions.
+Le plan peut s'écrire et se valider maintenant. Le déploiement attend les sept conditions.
 
 ## Ce que le plan doit établir
 
@@ -70,3 +71,4 @@ Rapport « plan prêt, sha … » dans sortie\. Jamais de git push.
 | 2026-11-18 13 h 30 | fiche écrite ; consigne déposée dans la boîte de l'agent de Cursor | — |
 | 2026-11-18 13 h 45 | consigne retirée à l'agent de Cursor (pas de modèle Claude dans le forfait Cursor) ; mission passée à Codex, après UIX-09 | — |
 | 2026-11-18 17 h 15 | plan court de Codex (`5a7a0067`) relu par le coordinateur : complet (Docker Hub, profil Compose, `noindex`, CSP, vidéo, retour arrière, six conditions), sans adresse IP dans le diff ; **validé par le chef** par l'outil de questions. Reste : ligne « Validé » et liste des secrets de CI à créer | **validé (chef)** |
+| 2026-11-18 17 h 45 | 7e condition ajoutée par le chef : les illustrations ([VIT-09](vit-09-illustrations.md)). Consigne déposée pour Codex : intégrer la condition et les images au plan, sans nouveau visa (le reste du plan ne change pas) | — |
