@@ -250,7 +250,12 @@ export default function Jeux() {
                 lampe={!enseignant && p.reussis > 0 ? ds.board.live : null}
                 action={
                   enseignant ? (
-                    <Button variant="contained" sx={boutonPanneauPlein} onClick={() => setLancement(jeu)}>
+                    <Button
+                      variant="contained"
+                      sx={boutonPanneauPlein}
+                      aria-label={t('sessionsJeu.lancer.titre', { jeu: libelle(jeu.titre, i18n.language) })}
+                      onClick={() => setLancement(jeu)}
+                    >
                       {t('sessionsJeu.lancer.bouton')}
                     </Button>
                   ) : (
