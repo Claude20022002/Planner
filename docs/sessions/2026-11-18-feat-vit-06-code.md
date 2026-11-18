@@ -107,3 +107,24 @@ Après CI verte, fusions des contenus et audit Astro à partir du 27 novembre, r
 SHA complet de main et le digest du job de publication, puis vérifie les dix conditions
 sur l’image tirée par digest. Consigne les preuves. Le chef seul pousse et déploie.
 ~~~
+
+## Diagnostic confirmé par le journal du runner
+
+Le journal de « Vérifier le profil Compose » fourni par le chef indique
+`env file …/.env.docker not found`. La commande `config --services` est le seul des trois
+appels à `config` qui omet `--no-env-resolution`. Le fichier temporaire de test fournit
+les valeurs d’interpolation, tandis que Compose cherche le fichier du service backend.
+Le backend est désormais vert dans la CI générale. Les parcours étaient encore en cours
+au relevé.
+
+Le [complément de conception](../conception/exploitation/vit-06-mise-en-ligne.md#correctif-ci-compose-proposé-le-18-novembre--à-valider)
+propose le correctif et sa recette sur un checkout propre. Le code attend la validation.
+
+### Prompt de reprise après validation
+
+~~~text
+Reprends VIT-06 sur feat/vit-06-code. Après validation du complément « Correctif CI Compose »,
+applique le correctif dans le workflow vitrine et rejoue la recette Compose sans .env.docker.
+Le chef pousse sur la branche de la PR #221. Contrôle que Compose et Nginx passent, puis
+reprends les conditions de la version candidate sur un digest publié depuis main.
+~~~
