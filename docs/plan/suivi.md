@@ -52,12 +52,14 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 
 | Module | Fonction | Agent | Branche ou PR | État | Dernière relecture | Fiche |
 |---|---|---|---|---|---|---|
-| PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan validé (délégation), non commité ; **l'agent attend le « validé » du chef dans sa session** (VS Code, Fable 5.2) | 15 nov. | [pla-03b](missions/pla-03b.md) |
+| PLA | PLA-03b schéma de départ | Claude Code (VS Code, Fable 5.2) | `feat/pla-03b-schema-depart` | plan **validé par le chef** dans sa session (variante R-3) ; code en cours | 15 nov. 23 h 50 | [pla-03b](missions/pla-03b.md) |
 | PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | banc adapté, sonde A-2 codée (`1cbdfaa`), 24 tests verts ; relu et poussé ; ensuite recette et séries sur le serveur, par le chef | 15 nov. 14 h 05 : prêt | [pla-06](missions/pla-06.md) |
 | MOT | MOT-02 mesure du solveur sur un jeu scolaire | Codex | `etude/mot-02-mesure-solveur` (non poussée) | banc et grand jeu de 20 000 mesurés (6 passages, avant et après #181 : aucun planning complet en 600 s, débit médian -13 % en 1.35, plages qui se chevauchent) ; reste le collège, débloqué par #182 | 15 nov. 20 h 50 | [mot-02](missions/mot-02.md) |
 | MOT | MOT-03 validation avant le calcul | agent de Cursor | #183 | plan validé par le chef ; codée, CI verte ; relue : **à corriger** (le refus doit nommer sa cible, EP-4) | 15 nov. 20 h 50 | [mot-03](missions/mot-03.md) |
+| QUA | correctif : le parcours `sondage.spec.cjs` échoue quand la CI tourne vers minuit UTC (3 PR de documentation rouges le 15 nov. au soir, `main` verte) | à attribuer | — | test sensible au changement de jour, comme le rappel d'appel (#162) | 16 nov. | — |
+| MKT | MKT-05 et MKT-09 : vidéo publicitaire et présentation aux établissements (MKT-09 dégelé pour la préparation par le chef) | agent Claude du coordinateur | `mkt/mkt-05-video-presentation` (non poussée) | argumentaire, 3 scripts et plan de 18 diapositives écrits (`2a921691`) ; réponses du chef reçues ; recherche de sources en cours ; vidéo et .pptx après l'accord du chef | 15 nov. 23 h 50 | [mkt-video-presentation](missions/mkt-video-presentation.md) |
+| EXP | correctifs de l'audit du 15 nov. : REL-06 (journaux Docker), puis REL-03 (sauvegardes en clair, jamais purgées) | agent de Cursor, après MOT-03 | à créer : `fix/exp-journaux-docker`, `fix/exp-purge-dumps` | plans courts à faire valider par le chef (déploiement de production) | 15 nov. | — |
 
-| UIX | UIX-01a navigation par applications (exception hors chantier accordée par le chef) | Codex | #184 | codée, CI verte parcours compris ; relue : **prête** ; destination après connexion changée (lanceur) : choix de produit à confirmer | 15 nov. 20 h 50 : prête | — |
 | UIX | UIX-06b, mission d'équipe : intégrateur, commun et Filières | Codex | `feat/uix-06b-referentiel` | code du 16 nov. non commité ; R0 demandé le 18 nov. | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
 | UIX | UIX-06b, mission d'équipe : Groupes et Modules | agent de Cursor | `feat/uix-06b-referentiel-groupes-modules` (à créer à R0) | attend R0 | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
 | UIX | UIX-06b, mission d'équipe : Enseignements | Claude (VS Code) | `feat/uix-06b-referentiel-enseignements` (à créer à R0) | finit QUA-10, puis attend R0 | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
@@ -166,7 +168,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOB-05](modules/MOB-application.md) | Espace parents | 4 | L | à faire |  |
 | [MOB-06](modules/MOB-application.md) | Emploi du temps lisible hors ligne (EP-3) | 4 | M | à faire |  |
 | [MOB-07](modules/MOB-application.md) | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes… | libre | M | à faire |  |
-| [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder |  |
+| [UIX-01](modules/UIX-interface.md) | Socle neutre | 2 | L | conçu, à coder ; UIX-01a (navigation, #184) fusionnée le 15 nov. ; UIX-06a (interface unifiée, #185) en relecture |  |
 | [UIX-01a](modules/UIX-interface.md) | Accueil des applications et navigation web, exception autorisée par le chef le 15 nov. | libre | M | fait : #184 fusionnée, CI verte, 43 parcours | #184 |
 | [UIX-02](modules/UIX-interface.md) | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et… | 3 | M | à faire |  |
 | [UIX-03](modules/UIX-interface.md) | Accessibilité AA | libre | M | en partie |  |
