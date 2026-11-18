@@ -31,7 +31,7 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| QJE-01 | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz (`shared/espaces.js`) | SQ-5 | libre | S | — | à faire |
+| QJE-01 | L'entrée « Quiz » du sélecteur d'espaces ouvre Planner, plus ClassQuiz (`shared/espaces.js`) : enseignant sur `/jeux`, étudiant sur `/quiz` | SQ-5 | libre | S | — | en cours (`feat/qje-01-entree-studio`) |
 | QJE-02 | Import des formats GIFT et Moodle XML dans le Studio | SQ-3 | libre | M | — | à faire |
 | QJE-03 | Joueur natif dans l'application, sans passer par le site | SQ-1 | libre | M | — | à faire |
 | QJE-04 | Fusion de `jeux-pedagogique` et ses quatre corrections ; entrée des jeux par scan ou depuis le module (contrat [jeux-pedagogiques](../../conception/jeux/jeux-pedagogiques.md)) | JC-0 | libre | M | — | en cours : corrections faites, tests locaux verts, PR à ouvrir |
