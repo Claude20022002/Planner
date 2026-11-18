@@ -14,6 +14,13 @@
 - Relecture de l’identité de session, du jeton consommé par StudyLib, des usages OIDC et ClassQuiz et du périmètre d’anonymisation.
 - Points de revue ajoutés à la conception C-5 et à l’étude Q-20. Aucun changement de code ou de schéma. Contrôle des différences avec Git.
 
+## Corrections demandées à 18 h 40
+
+- `10ef19a2` restaure `docs/plan/suivi.md` depuis `origin/main`. Le fichier ne figure plus dans le diff de la PR.
+- La conception C-5 décrit les parcours EP-18 et l’identifiant national facultatif selon le pays de l’école.
+  La fiche VSC et le registre des décisions reprennent cette règle. Contrôle Git des différences passé.
+- Le chef organise les avis des groupes A et B sur C-5 et Q-20.
+
 ## Suite
 
 Le coordinateur organise la relecture par les groupes A et B. Le comportement du consommateur StudyLib

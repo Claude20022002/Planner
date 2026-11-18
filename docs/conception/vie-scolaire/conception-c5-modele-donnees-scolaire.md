@@ -14,7 +14,7 @@ Le tableau consigne les propositions du groupe A (P-xx du registre). Le § 11 do
 | Q-4 | **Un parent : un rôle dans `Users`, ou une table à part ?** | **`ResponsableLegal` à part, avec un compte facultatif** ; `Users.role` gagne `parent` seulement si le compte existe | Beaucoup de parents n'auront pas de compte ; le lien de famille existe sans lui. Touche `role`, un ENUM, et D-05 |
 | Q-5 | **Un parent avec des enfants dans deux écoles** | Un seul compte plateforme, une appartenance par école (D-05) ; **chaque école ne voit que sa propre fiche** | Une école ne doit pas apprendre où sont scolarisés les autres enfants |
 | Q-6 | **`Appartenir` (élève et groupe) n'a pas d'année ni d'état. Où vit l'inscription ?** | **Une table `Inscription`** (élève, année, niveau, état). `Appartenir` reste le lien aux groupes, année lue par `Groupe.id_annee` (ME-18) | La réinscription, les frais et l'historique en dépendent |
-| Q-7 | **Le numéro de CIN et les données de santé** | **Aucun champ de CIN obligatoire, pas de santé** dans le socle. Le code Massar (CNE) est facultatif | D'après la loi 09-08 lue, la CIN et la santé imposent une autorisation préalable de la CNDP. À confirmer par la CNDP |
+| Q-7 | **Le numéro de CIN et les données de santé** | **Aucun champ de CIN obligatoire, pas de santé** dans le socle. L’identifiant de l’élève sur la plateforme nationale de son pays est facultatif (au Maroc, le code Massar ou CNE) | D'après la loi 09-08 lue, la CIN et la santé imposent une autorisation préalable de la CNDP. À confirmer par la CNDP |
 | Q-8 | **Note absente, dispensé, à rattraper** | **Un état à part de la valeur** : une absence n'est pas un zéro | Sinon les moyennes sont fausses ; condition du bulletin partiel (F-13) |
 | Q-9 | **Une note ou un paiement peut-il se modifier ?** | **Note** : modifiable jusqu'au verrouillage de la période, ensuite avec une raison, historisée. **Paiement et reçu** : jamais modifiés, on annule par une écriture inverse, reçus numérotés sans trou | Les règles de EC-3 restent à valider par la scolarité et le juriste. La numérotation des reçus est à confirmer avec l'expert-comptable |
 | Q-10 | **Le supérieur reçoit-il aussi les notes et les frais ?** | **Oui en tables, éteints par le registre des modules** (F-02) : HESTIM ne voit rien changer, et pourra les allumer | Évite de construire deux fois |
@@ -42,7 +42,7 @@ sur le compte élève et l’ordre des chantiers. Le § 11 reprend les arbitrage
 | Groupe transversal | Identifiant de groupe, année, langue ou option, capacité | Chaque inscription active a une seule classe et au plus un groupe par langue. La classe et le groupe transverse appartiennent à la même année. |
 | Matière et composante | Identifiants existants de cours et de composante | Le volume et les besoins de salle restent sur la composante. Le coefficient scolaire est défini par matière, niveau et filière. |
 | Professeur principal | Classe, enseignant, année | Le rattachement suit la classe annuelle. Son mode de remplacement reste à préciser avec VSC-02. |
-| Élève | Identifiant local de dossier, numéro local, nom, prénom, référence de compte facultative | Le dossier peut être inscrit et affecté à une classe dès sa création. L’école crée ensuite le compte, dont l’adresse peut être absente. |
+| Élève | Identifiant local de dossier, numéro local, nom, prénom, référence de compte facultative, `identifiant_plateforme_nationale` facultatif | Le dossier peut être inscrit et affecté à une classe dès sa création. L’école crée ensuite le compte, dont l’adresse peut être absente. |
 | Responsable légal et lien de famille | Dossier propre à l’école, relation avec l’élève, compte éventuel | L’autorisation de voir le dossier d’un enfant passe par le lien actif dans l’école courante. Plusieurs liens permettent la fratrie. |
 | Inscription | Élève, année, niveau, état | Une réinscription crée une ligne pour l’année suivante et préserve l’historique. L’appartenance à un groupe reste distincte. |
 | Évaluation et note | Période, matière, barème, inscription, état et valeur de la note | Une absence ou une dispense ne compte pas comme zéro. Une valeur égale à zéro reste une note. |
@@ -224,6 +224,18 @@ flowchart TD
 - Élève : utiliser l’identifiant que l’école lui remet et accéder à ses propres cours et groupes. Les données
   visibles de son compte restent limitées aux besoins de l’écran.
 
+### EP-18 · Accès sans téléphone ni connexion à la maison
+
+- Le secrétariat ouvre le dossier, inscrit l’élève et l’affecte à sa classe depuis le poste de l’école.
+  Dès cette étape, l’élève figure dans la liste de classe. L’école peut lui remettre son emploi du temps
+  sur papier et l’afficher en classe.
+- Si l’école crée un compte, elle remet à l’élève un identifiant scolaire utilisable sans adresse
+  e-mail. L’élève peut consulter ses cours et son emploi du temps depuis un poste connecté à l’école.
+  Sans connexion en classe, l’enseignant peut communiquer l’emploi du temps et les consignes sur papier.
+- L’enseignant doit pouvoir faire l’appel à la main. En cas de coupure, il utilise une feuille de classe
+  imprimée, puis reporte l’appel au retour de la connexion. Le bulletin publié peut être remis sur papier.
+  Les lots EDT/VSC-03 et VSC-04 vérifieront ces parcours avec un élève sans compte ni téléphone.
+
 ## 11. Décisions et questions de relecture
 
 | Questions du plan | Décision ou suite |
@@ -232,7 +244,7 @@ flowchart TD
 | Q-2 | Filière interne par cycle pour les écoles sans filière. |
 | Q-4, Q-5 | Dossier du responsable par école, compte facultatif, premier accès mono-école avec ADM-05 et PLA-01. Le compte commun et les appartenances de D-05 sont le contrat cible de PLA-11. |
 | Q-6 | Inscription annuelle distincte de l’appartenance. VSC-07 et ADM-06 relisent la contrainte entre inscription, groupe et année. |
-| Q-7 | Code Massar facultatif. La CIN et la santé sont hors du socle. Le contrat d’échange et la conformité relèvent d’ETA-02 et d’EXP-08. |
+| Q-7 | L’identifiant de l’élève sur la plateforme nationale de son pays est facultatif (au Maroc, le code Massar ou CNE). La CIN et la santé sont hors du socle. Le contrat d’échange et la conformité relèvent d’ETA et d’EXP-08, avec le connecteur du pays de l’école. |
 | Q-8, Q-9 | État séparé de la note, saisie jusqu’au verrouillage puis correction autorisée avec motif et historique. VSC-04 précise les droits avec la scolarité. FIN conserve l’écriture inverse et fait confirmer les règles de reçu par l’expert-comptable. |
 | Q-10 | Notes et frais désactivés par défaut dans le supérieur. Activation par école après la recette des lots concernés. |
 | Q-11, Q-12, Q-13 | Pile confirmée par QUA-03 sous la condition D-01. Plage 0062 à 0079 réservée. MOT-01 serveur livré via #156. |

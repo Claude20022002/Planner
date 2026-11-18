@@ -6,7 +6,7 @@
 - affectation aux groupes de langue et d'option ;
 - absences prévenues aux parents ;
 - notes, bulletins et conseil de classe ;
-- Massar.
+- les échanges avec la plateforme nationale du pays de l’école, avec un identifiant d’élève facultatif (au Maroc, le code Massar ou CNE).
 
 **Hors module** :
 - l'appel lui-même : il existe déjà, son module propriétaire est EDT pour la séance ; VSC-03 s'appuie dessus ;
@@ -36,7 +36,7 @@
 | VSC-06 | Formation professionnelle : profil, assiduité pour les bourses | F-20 | 5 | M | MOT-05 | à faire |
 | VSC-07 | Affectation des élèves aux groupes de langue et d'option : un élève, une classe, un seul groupe par langue ; effectif plafonné ; ces appartenances sont celles que MOT-06 lit | Q-3 de conception-c5 | 3 | M | VSC-01, MOT-05 | à faire |
 
-Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-echanges-etat.md)) ; le plafond de cumul de VSC-06 (F-22) est passé dans **RHP-02** ([RHP](RHP-personnel-paie.md)). Le numéro VSC-05 ne resservira pas.
+Décisions du 13 novembre : VSC-05 (connecteur marocain pour Massar) est devenue **ETA-02** ([ETA](ETA-echanges-etat.md)) ; le plafond de cumul de VSC-06 (F-22) est passé dans **RHP-02** ([RHP](RHP-personnel-paie.md)). Le numéro VSC-05 ne resservira pas.
 
 ## Critères de « terminé »
 
