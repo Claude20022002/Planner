@@ -69,3 +69,4 @@ Rapport « plan prêt, sha … » dans sortie\. Jamais de git push.
 |---|---|---|
 | 2026-11-18 13 h 30 | fiche écrite ; consigne déposée dans la boîte de l'agent de Cursor | — |
 | 2026-11-18 13 h 45 | consigne retirée à l'agent de Cursor (pas de modèle Claude dans le forfait Cursor) ; mission passée à Codex, après UIX-09 | — |
+| 2026-11-18 17 h 15 | plan court de Codex (`5a7a0067`) relu par le coordinateur : complet (Docker Hub, profil Compose, `noindex`, CSP, vidéo, retour arrière, six conditions), sans adresse IP dans le diff ; **validé par le chef** par l'outil de questions. Reste : ligne « Validé » et liste des secrets de CI à créer | **validé (chef)** |

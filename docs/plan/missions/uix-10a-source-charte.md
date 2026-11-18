@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | **plan court validé par le coordinateur le 18 nov.** (`4dc4f070`) : code en cours |
+| État | **close le 2026-11-18** : #207 fusionnée, relue après coup (conforme) |
 | Agent | Claude (VS Code), la session qui a écrit le plan d'UIX-10 |
 | Modèle recommandé | celui de la session (Opus 5.5 ou Fable 5.2). On ne change pas de modèle en cours de session |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (« plan court d'UIX-10a », branche empilée) |
@@ -65,3 +65,4 @@ Ensuite, l'étude StudyLib (docs/plan/missions/etude-studylib.md) reste ta missi
 |---|---|---|
 | 2026-11-18 13 h 55 | fiche écrite ; décision du chef : UIX-10g retirée | — |
 | 2026-11-18 15 h 15 | correction d'UIX-10g faite sur #206 (`162ba4c4`) et dans le plan court (`4dc4f070`) ; **visa du coordinateur** : M, sans migration ni sécurité, aucun écran ne change, `--verifier` en CI ; seul écart admis : le repli `Inter` de la police | **validé** |
+| 2026-11-18 17 h 05 | #207 fusionnée à 16 h 14 (`5f053ebf`), relue après coup : périmètre tenu, plan suivi, 7 tests de la charte, `--verifier` et `verifier-neutre` relancés par le coordinateur, CI de `main` verte. Écart signalé : la ligne UIX-10 du module dit encore « PR à ouvrir » ; à corriger par UIX-10b | **conforme** ; mission close |

@@ -60,3 +60,4 @@ Build, tests unitaires du site (traductions comprises), `node scripts/verifier-n
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 15 h 40 | fiche écrite, sur décision du chef | — |
+| 2026-11-18 17 h 12 | plan court de l'agent de Cursor (`fafd3f15`) : faits vérifiés (dix types de questions, dix simulations, cinq onglets visibles), mais les deux règles du chef (EP-18, Massar) manquent ; la consigne de 16 h 05 n'avait pas été lue. Six corrections déposées dans sa boîte | **à corriger**, puis au chef |

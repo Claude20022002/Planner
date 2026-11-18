@@ -47,3 +47,4 @@ L'agent ne touche pas à `docs/plan/suivi.md`, ni aux pages de VIT-07 (agent de 
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 15 h 40 | fiche écrite, sur décision du chef | — |
+| 2026-11-18 17 h 05 | constat : plan court sur `feat/vit-08-video-presentation`, réponses du chef aux questions 1 à 4 (`d1e6bd8d`), **validé par le chef** (`5b62f702`) ; code à faire | — |
