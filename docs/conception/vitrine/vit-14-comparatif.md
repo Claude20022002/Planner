@@ -6,7 +6,7 @@
 | Fonction | VIT-14, taille M ([fiche de mission](../../plan/missions/vit-14-comparatif.md), sur la branche de coordination) |
 | Branche | `feat/vit-14-comparatif`, depuis `origin/main` à `427afdea` ; le code après la fusion de #216 (VIT-08) |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| Validé | **à valider par le chef, case par case** (§ 4) |
+| Validé | **Validé par Claude20022002 le 18 novembre 2026** (« Je valide le plan ») : le tableau du § 4 tel qu'écrit, cases « à confirmer » gardées, et la ligne 7 sur l'accueil (§ 4 bis). Date de l'encadré « Méthode » : 2026-11-18 |
 
 ## 1. Ce que le chef a choisi (outil de questions, 18 nov.)
 
