@@ -27,7 +27,7 @@ Mais **il ne vend pas encore**, pour trois raisons :
 | Qualité mesurée | **8/10** | Accessibilité, bonnes pratiques et SEO à 100. Un saut de mise en page de 330 px sur téléphone fait tomber la performance à 79 sur sept pages |
 | Positionnement | **3/10** | Un directeur ne trouve ni la raison de choisir Planner, ni une preuve, ni un moyen d'écrire |
 
-Les dix corrections les plus utiles sont au § 9. Les quatre premières suffisent à rendre le site présentable à un directeur.
+Les dix corrections les plus utiles sont au § 9. Les quatre premières suffisent à rendre le site présentable à un directeur. Les décisions du chef sont au § 12, les solutions détaillées au § 13, et une proposition de découpage pour le coordinateur au § 14.
 
 ## 1. Méthode
 
@@ -124,6 +124,7 @@ Deux écarts plus petits :
 - **Le bilan de chaque contrainte après le calcul** : respectée, non respectée N fois avec des exemples, ou sans effet (`moteur/contraintes/bilan.js`). C'est la preuve de « chaque refus a sa raison ».
 - **L'emploi du temps imprimé** : le PDF existe, et c'est le chemin sans écran ni téléphone d'EP-18.
 - **Les annonces à tout l'établissement, à un campus ou à un niveau**, pas seulement à une classe (`Annonce.portee`).
+- **Une lecture sans réseau** : dans l'application, le dernier tableau et les dernières semaines consultés restent lisibles sans connexion (`mobile/src/cache.js` ; `mobile/src/app/(onglets)/semaine.jsx`, lignes 46 à 50). La page Bientôt annonce pourtant tout le « Hors ligne » comme à venir (`bientot.json` · `aussi.cartes.3`). Le mode hors ligne complet (MOB-06) reste à venir, mais cette lecture existe déjà.
 
 ## 4. Les règles du chef : 7/10
 
@@ -313,6 +314,8 @@ Trois points plus petits, à prendre au passage : ne construire `/ar/` que lorsq
 
 ## 10. Questions au chef
 
+Les quatre propositions sont **validées par le chef le 18 novembre 2026** (« Je valide tes propositions »). Leur mise en œuvre est au § 12.
+
 | N° | Question | Proposition |
 |---|---|---|
 | 1 | Quel canal de contact peut être publié **dès la mise en ligne**, avant le formulaire de VIT-02 ? | une adresse e-mail dédiée au site, dans la section Contact, avec « réponse sous deux jours ouvrés » si tu peux la tenir |
@@ -326,3 +329,186 @@ Trois points plus petits, à prendre au passage : ne construire `/ar/` que lorsq
 - La page Bibliothèque n'a pas été confrontée au code de StudyLib, qui n'est pas dans ce dépôt.
 - Aucun essai sur un vrai téléphone d'entrée de gamme : les chiffres viennent de la simulation de Lighthouse.
 - Aucun lecteur d'écran réel : axe-core et la lecture du code seulement.
+
+## 12. Les décisions du chef (18 novembre 2026)
+
+Réponse du chef aux questions du § 10 : « Je valide tes propositions. » Le coordinateur les reporte dans `docs/plan/decisions.md`.
+
+| N° | Décision | Ce qu'elle change |
+|---|---|---|
+| D1 | **Une adresse e-mail dédiée au site** est publiée dès la mise en ligne, avant le formulaire de VIT-02, avec « réponse sous deux jours ouvrés » | la section Contact et la page `/contact/` (VIT-16). **L'adresse elle-même reste à donner par le chef** : aucune n'est supposée, le dépôt est public |
+| D2 | La formule devient **« quand l'IA est activée pour votre école »**. Un **interrupteur de l'IA par école** est noté comme fonction à venir | toutes les phrases sur l'IA du site ; une fonction nouvelle à inscrire par le coordinateur dans le module de l'IA ou de l'établissement, sans date |
+| D3 | **Plus de pays nommé** : l'exemple « Au Maroc, Massar » est retiré ; « BTS » devient « les formations techniques supérieures » ; « crédits du LMD » devient « crédits », sans système nommé | `solutions.json`, `bientot.json` (fr, en, ar) |
+| D4 | Le site dit franchement que **le calcul de l'emploi du temps sert aujourd'hui le supérieur et la formation professionnelle**, pas encore le collège et le lycée. Le collège passe après le supérieur dans le menu « Solutions » | l'ouverture de l'accueil ; l'ordre de `TYPES` (`src/components/solutions/types.js`) |
+
+## 13. Les solutions proposées, correction par correction
+
+Chaque correction dit ce qui change, où, le texte proposé et comment vérifier qu'elle est faite. **Les textes nouveaux restent à valider par le chef phrase par phrase**, comme pour toutes les missions du site. Seuls ceux qui appliquent D1 à D4 mot pour mot sont déjà validés : ils sont marqués « validé ».
+
+Pour toutes les corrections, le critère de « terminé » commun est : build et `npm run test:unit` verts, `node scripts/verifier-neutre.mjs` vert, axe-core sans violation en 390, 768 et 1440 px, français et anglais à jour (l'arabe garde ses clés).
+
+### C1 · Un vrai chemin de contact (VIT-16, S)
+
+- **Avant VIT-16**, si la mise en ligne arrive d'abord : la section Contact de l'accueil donne l'adresse. Sinon, VIT-16 le fait avec sa page.
+- **Texte** (`accueil.json` · `contact.texte`), validé par D1 sauf l'adresse :
+  - fr : « Vous voulez voir Planner sur une école fictive, avec vos propres règles ? Écrivez-nous à &lt;adresse&gt;. Nous répondons sous deux jours ouvrés. »
+  - en : « Would you like to see Planner on a fictional school, with your own rules? Write to us at &lt;address&gt;. We reply within two working days. »
+- **Lien** : un `mailto:` visible en clair (l'adresse est lisible, pas seulement cliquable), pour qu'on puisse la recopier depuis un téléphone partagé.
+- **Tous les boutons « Nous contacter »** mènent à `/contact/` quand la page existe (`EnTete.astro`, `PageRole.astro`, `FinDePage.astro`, `Ouverture.astro`).
+- **Vérifier** : aucun lien vers `#contact` ne reste sans adresse ; un test cherche l'adresse dans `dist/fr/contact/index.html`.
+
+### C2 · Une ouverture qui vend (VIT-09, S)
+
+- **Titre principal** : la promesse, et non plus le seul mot « Planner ». « Planner » devient le surtitre, sous le logo animé.
+  - fr : « L'emploi du temps calculé selon vos règles. Puis toute la classe. »
+  - en : « A timetable built from your rules. Then the whole classroom. »
+- **Accroche**, qui applique D4 (validée sur le fond, texte à valider) :
+  - fr : « Pour l'enseignement supérieur et la formation professionnelle, Planner calcule l'emploi du temps et accompagne chaque séance. Le collège et le lycée arrivent bientôt. »
+  - en : « For higher education and vocational training, Planner builds the timetable and supports every session. Lower and upper secondary schools are coming soon. »
+- **Une ligne de liens par rôle** sous les deux boutons : « Vous êtes : Direction · Scolarité · Enseignant · Étudiant », vers les quatre pages par rôle.
+- **Fichiers** : `src/components/accueil/Ouverture.astro`, `accueil.json` (`ouverture`), `src/components/solutions/types.js` (ordre de `TYPES` : supérieur, formation, collège et lycée, d'après D4).
+- **Vérifier** : le `h1` de `dist/fr/index.html` contient la promesse ; l'ordre du menu « Solutions » suit D4.
+
+### C3 · Des preuves visuelles (VIT-09, M)
+
+Déjà dans la fiche de VIT-09. Trois précisions que l'expertise ajoute :
+
+1. **Les captures à faire en priorité**, parce qu'elles prouvent les arguments les plus forts : le bilan des contraintes après un calcul (`bilan.js`) ; la liste d'appel à la main ; le Studio en édition ; la semaine du mobile.
+2. **Le dessin de l'appel** montre d'abord la liste à la main, puis le QR code projeté sur un écran de classe, et non sur un téléphone (`IllustrationAppel.astro`, et la clé `accueil.json` · `appel.illustration.label`).
+3. **La vidéo** garde son image fixe soignée (`planner-fr.webp`) tant qu'elle n'a pas été lancée (lien avec C9).
+
+### C4 · « Pourquoi Planner » (VIT-14, M)
+
+Déjà dans la fiche de VIT-14 (#224, plan). L'expertise propose d'ajouter trois critères, chacun sourcé :
+
+- **l'appel qu'on ne peut pas tromper** : un compte, un téléphone ; un téléphone, un étudiant par séance ; vérification surprise au choix (`backend/services/presences/appel.js`, lignes 18 à 24) ;
+- **le bilan de chaque règle après le calcul** : respectée, non respectée N fois avec des exemples, ou sans effet (`backend/services/moteur/contraintes/bilan.js`) ;
+- **la semaine lisible sans réseau** dans l'application (`mobile/src/cache.js`).
+
+### C5 · Raconter EP-18 (nouvelle pour l'accueil et En classe, S ; VIT-15 pour les pages de module)
+
+L'appel commence par le geste qui marche partout. Le QR code devient une option, avec ses garanties.
+
+| Clé | Texte proposé (fr) | Texte proposé (en) |
+|---|---|---|
+| `accueil.json` · `appel.texte` | « L'enseignant coche chaque étudiant : présent, en retard ou absent. S'il le veut, il projette un QR code, que les étudiants scannent avec l'application Planner. Le code change toutes les 30 secondes. » | « The teacher marks each student: present, late or absent. If they wish, they project a QR code that students scan with the Planner app. The code changes every 30 seconds. » |
+| `en-classe.json` · `appel.texte` | même texte, « au début de la séance » ajouté après « coche chaque étudiant » | same, with “at the start of the session” |
+| `en-classe.json` · `appel.points` | dans l'ordre : « À la main : présent, en retard ou absent. Sans téléphone, sans écran. » ; « Par QR code, avec l'application : un téléphone ne pointe qu'un seul étudiant. » ; « La présence est rattachée à la séance de l'emploi du temps. » | “By hand: present, late or absent. No phone, no screen needed.”; “By QR code, with the app: one phone checks in one student only.”; “Attendance is linked to the timetabled session.” |
+| `quiz-et-jeux.json` · `jeux.cartes.1.texte` | « En collectif, le terminal Linux est projeté au tableau : l'enseignant tape une commande, ou choisit celle qu'un étudiant envoie. En individuel, chacun joue sur son téléphone ou sur un ordinateur. » | “Together, the Linux terminal is shown on the board: the teacher types a command, or picks the one a student sends. Individually, each student plays on a phone or a computer.” |
+| `application.json` (nouvelle carte, voir C10) | « La semaine : la dernière consultée reste lisible sans réseau. » | “Week: the last one viewed stays readable offline.” |
+| `bientot.json` · `aussi.cartes.3.texte` | « L'application mobile entièrement utilisable sans connexion. » (la lecture de la semaine existe déjà) | “The mobile app, fully usable offline.” |
+
+Sources : `appel.js`, lignes 10 à 24 ; `frontend/src/App.jsx`, ligne 353 (jeux ouverts aux étudiants dans l'application web) ; `mobile/src/cache.js`.
+
+Pour les pages de module, le bloc « selon votre équipement » de VIT-15 reprend ces phrases et y ajoute l'emploi du temps imprimé en PDF, qui est le chemin sans écran ni téléphone.
+
+### C6 · Supprimer le saut de 330 px du menu sur téléphone (nouvelle, S)
+
+- **Cause** (§ 6) : le script qui replie le menu est un module, exécuté après le premier rendu.
+- **Solution** : rendre ce script **en ligne** (`<script is:inline>`) et le placer juste après la balise `</header>` dans `EnTete.astro`. Il s'exécute alors dès que l'en-tête est lu, avant que le contenu soit peint. Le comportement sans JavaScript ne change pas.
+- **Alternative** : une classe `js` posée sur `<html>` par le script en ligne qui existe déjà dans `Gabarit.astro` (lignes 35 à 41), et des règles CSS qui replient le menu sous cette classe.
+- **Fichiers** : `src/components/socle/EnTete.astro` (et `Gabarit.astro` pour l'alternative).
+- **Vérifier** :
+  - à 390 px, le `<main>` commence au même endroit avec et sans attendre le script (la mesure Playwright du § 6, en test) ;
+  - Lighthouse mobile : CLS sous 0,1 et performance d'au moins 90 sur les 16 pages, sur trois passages.
+
+### C7 · Rendre exactes les phrases P1 à P6 (nouvelle, S)
+
+| Phrase | Clé | Texte proposé (fr) | Texte proposé (en) |
+|---|---|---|---|
+| P1 | `accueil.json` · `ouverture.accroche` | réglé par C2 et D4 | — |
+| P2 | `accueil.json` · `emploi.refus` | « Quand une séance ne trouve pas sa place, Planner dit ce qui la bloque, et où le corriger. » | “When a session cannot be placed, Planner says what is in the way, and where to fix it.” |
+| P2 | `emploi-du-temps.json` · `refus.texte` | « Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant. Vous corrigez, puis vous relancez le calcul. » | “When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher. You fix it, then run the calculation again.” |
+| P3 | `accueil.json` · `quiz.texte` | « Dix types de questions, avec images, sons et vidéos. Six se jouent en direct, les dix à son rythme. L'enseignant propose aussi des jeux à ses classes. » | “Ten question types, with images, sounds and videos. Six can be played live, all ten at one's own pace. Teachers can also offer games to their classes.” |
+| P4 | `accueil.json` · `quiz.titre` | « Des quiz en direct. Des jeux pour s'exercer. » | “Live quizzes. Games to practise.” |
+| P4 | `en-classe.json` · `meta.description` | remplacer « jeux pour réviser » par « jeux d'informatique et de gestion » | replace “revision games” with “computing and management games” |
+| P4 | `quiz-et-jeux.json` · `jeux.texte` | ajouter en tête : « Dix jeux d'informatique et de gestion : » | prepend: “Ten computing and management games:” |
+| P5 | `accueil.json` · `donnees.points.2.texte` ; `securite.json` · `protections.cartes.5.texte` | « Quand l'IA est activée pour votre école, elle ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose. » (validé, D2) | “When AI is turned on for your school, it never receives student data, and teachers review what it suggests.” |
+| P5 | `quiz-et-jeux.json` · `studio.points.3` | « Quand l'IA est activée pour votre école, elle propose des questions. L'enseignant les relit avant de les ouvrir aux étudiants. Sinon, la fonction reste éteinte. » (D2) | “When AI is turned on for your school, it suggests questions. The teacher reviews them before opening them to students. Otherwise, the feature stays off.” |
+| P5 | `bibliotheque.json` · `documents.cartes.5.texte` | « Des suggestions sont proposées quand l'IA est activée pour votre école. » (D2) | “Suggestions are offered when AI is turned on for your school.” |
+| P6 | `solutions.json` · `types.formation.titre` | « Un emploi du temps calculé, que vous ajustez. » | “A calculated timetable you can adjust.” |
+| D3 | `solutions.json` · `types.collegeLycee.bientot.3.texte` ; `bientot.json` · `aussi.cartes.4.texte` | « Les données de l'école, exportées vers la plateforme nationale de votre pays. » (validé, D3) | “School data, exported to your country's national platform.” |
+| D3 | `solutions.json` · `types.superieur.texte` | « Pour l'université, la grande école et les formations techniques supérieures : Planner calcule le semestre, puis accompagne chaque séance. » (validé, D3) | “For universities, specialised schools and higher technical programmes: Planner works out the semester, then supports every session.” |
+| D3 | `bientot.json` · `ecole.cartes.0.texte` ; `solutions.json` · `types.superieur.bientot.0.texte` | « La saisie des notes et les bulletins, avec les crédits. » (validé, D3) | “Grade entry and report cards, with credits.” |
+
+Deux phrases sont **dans la vidéo** et ne changent qu'à son prochain rendu (VIT-08) : `video.scenes.4.lignes.0` (dix types en direct) et `video.scenes.7.lignes.1` (« Quand l'école active l'IA »). La transcription doit rester identique à la vidéo, donc elle change avec elle.
+
+Un test de garde est proposé : `vitrine/tests/contenu.test.js` échoue si un texte fr ou en contient « Maroc », « Morocco », « Massar », « BTS », « LMD » ou « l'école active l'IA ».
+
+### C8 · Des pages par rôle écrites pour le rôle (VIT-10b élargie, S)
+
+La fiche de VIT-10b ajoute « avant → avec » et la FAQ. L'expertise propose deux points de plus :
+
+- **Retirer la phrase sur le site des cartes.** `direction.json` et `scolarite.json` · `cartes.2.texte` reprennent la description déjà publiée de la page Sécurité : « Double authentification, accès par rôle, journal de sécurité, comptes fermés proprement, IA sans données d'élève. » (`securite.json` · `meta.description`, sans sa fin).
+- **Rapprocher les deux boutons de l'accroche** : ils passent dans l'ouverture (`EnTetePage.astro`, par un emplacement), au lieu d'une section à part (`PageRole.astro`, lignes 28 à 33). Le grand vide disparaît.
+
+### C9 · La vidéo ne part pas seule sur téléphone ni sur une connexion lente (nouvelle, S)
+
+- **Règle proposée** : la vidéo ne part seule que sur un écran d'au moins 48rem **et** sans connexion lente. Sur téléphone, l'image fixe reste et le bouton « Lire la vidéo » la lance.
+- **Pourquoi la largeur d'écran** : `navigator.connection` n'existe ni dans Safari ni dans Firefox. La largeur est la seule règle qui protège tous les téléphones.
+- **Code** : dans `src/components/accueil/video.js` (lignes 14 à 16), `seule` devient faux si `matchMedia('(max-width: 48rem)')` est vrai, ou si `navigator.connection?.effectiveType` vaut `slow-2g`, `2g` ou `3g`.
+- **Texte du bouton**, à valider : « Lire la vidéo (1,5 Mo) » sur téléphone, pour que la personne choisisse en connaissance de cause.
+- **Vérifier** : à 390 px, aucune requête vers `/videos/*.mp4` avant un clic (mesure Playwright) ; à 1440 px, la vidéo part comme aujourd'hui.
+
+### C10 · Étoffer les pages minces et combler les grilles (VIT-09 et VIT-15, M)
+
+- **Application** : une carte par onglet, avec des textes tirés du code (`mobile/src/app/(onglets)/`) :
+
+  | Onglet | fr | en |
+  |---|---|---|
+  | Tableau | « Les séances du jour et les alertes. » | “Today's sessions and alerts.” |
+  | Semaine | « La semaine de cours ; la dernière consultée reste lisible sans réseau. » | “The week's classes; the last one viewed stays readable offline.” |
+  | Scanner | texte actuel | current text |
+  | Bibliothèque | « Les documents de l'école, avec le même compte. » | “The school's documents, with the same account.” |
+  | Compte | « Le profil, la langue, les notifications et le téléphone de l'appel. » | “Profile, language, notifications and the attendance phone.” |
+
+- **Le titre** de la page Application devient court : « Planner, dans la poche. » (en : “Planner, in your pocket.”). La longue phrase actuelle passe en accroche.
+- **Grilles** : `GrilleCartes.astro` centre une rangée incomplète, ou passe à deux colonnes quand il y a deux cartes ou moins.
+- **Cours et annonces, Bibliothèque** : leurs illustrations viennent de VIT-09, et leur contenu des pages de module de VIT-15.
+
+### Les petits points
+
+| Point | Solution | Fichiers | Taille |
+|---|---|---|---|
+| Pages `/ar/` en français | ne générer que `LANGUES_PUBLIEES` dans les `getStaticPaths` des pages tant que l'arabe n'est pas rempli (UIX-04) ; les fichiers `ar/*.json` et leur test restent | `src/pages/[lang]/*.astro` (une ligne chacune), ou une fonction `cheminsPublies()` dans `src/i18n/langues.js` | S |
+| Pas de balises Open Graph | `og:title`, `og:description`, `og:locale`, `og:image` (l'image fixe de la vidéo, déjà servie par le site, en adresse absolue) et `twitter:card` ; `site` renseigné dans `astro.config.mjs` avec le sous-domaine de VIT-06 | `src/components/socle/Gabarit.astro`, `astro.config.mjs` | S |
+| `README.md` de `vitrine/` dépassé | « logos officiels du chef (18 nov.), version web » à la place de « logos redessinés » | `vitrine/README.md`, ligne 28 | S |
+
+## 14. Proposition de découpage pour le coordinateur
+
+Ce qui suit est une **proposition** : la répartition, les agents et l'ordre sont du ressort du coordinateur, puis du chef.
+
+### Les lots
+
+| Lot | Contenu | Mission | Taille | Agent proposé | Raison |
+|---|---|---|---|---|---|
+| **A · correctifs techniques** | C6, C9, pages `/ar/`, Open Graph, `README.md` | **nouvelle** (par exemple `fix/vit-17-correctifs-vitrine`) | S | agent de Cursor (Grok 4.7 high) | tâches bornées, vérifiables par une mesure ; aucun texte nouveau, sauf le bouton de C9 |
+| **B · textes exacts** | C7, C5 pour l'accueil et En classe, la carte « Hors ligne » de Bientôt | **nouvelle** (par exemple `fix/vit-18-textes-exacts`) | S | une session Claude | chaque phrase est validée par le chef ; il faut relire le code derrière chacune |
+| C1 | contact | VIT-16 | S | la session de VIT-12 | déjà prévu ; il attend l'adresse du chef (D1) |
+| C2, C3, C10 | ouverture, preuves, pages minces | VIT-09 | M | Claude (VS Code) | déjà prévu ; ajouter à sa fiche les précisions de C2, C3 et C10 |
+| C4 | « Pourquoi Planner » | VIT-14 (#224) | M | la session de VIT-14 | ajouter les trois critères de C4 au plan avant son code |
+| C8 | pages par rôle | VIT-10b | S | agent de Cursor | ajouter les deux points de C8 à la fiche |
+| C5, pour les modules | bloc « selon votre équipement » | VIT-15 | M | Codex | reprendre les phrases de C5 |
+| D2, l'interrupteur | interrupteur de l'IA par école | **fonction nouvelle**, hors du site | à estimer | — | à inscrire dans le module concerné ; aucune date |
+
+### Les fichiers partagés, et l'ordre qui évite les conflits
+
+| Fichier | Touché par | Ordre proposé |
+|---|---|---|
+| `src/i18n/*/accueil.json` | lot B, VIT-09 (C2), VIT-14 (#224), VIT-16 | **#224, puis lot B, puis VIT-16, puis VIT-09**. Le lot B change des clés existantes, VIT-14 en ajoute ; VIT-09 passe en dernier, comme décidé le 18 nov. vers 18 h 35 |
+| `src/i18n/*/solutions.json`, `types.js` | lot B (D3), VIT-13, VIT-09 (D4) | lot B d'abord : il est court |
+| `src/i18n/langues.js` | lot A (`/ar/`), VIT-12 (#223), VIT-16 | **#223 d'abord**, puis le lot A |
+| `src/components/accueil/video.js` | lot A (C9) ; aussi dans #224, mais **sans changement** (la branche part d'avant #216) | lot A quand il veut ; rebaser #224 ensuite ne change rien à ce fichier |
+| `EnTete.astro` | lot A (C6), VIT-16 (lien de contact), VIT-09 (menu en apps) | **lot A d'abord** : son changement est petit et bien isolé |
+| `Gabarit.astro` | lot A (Open Graph) | — |
+| `direction.json`, `scolarite.json`, `PageRole.astro` | VIT-10b élargie | — |
+
+### Ce qui peut partir tout de suite
+
+- **Le lot A** : il ne dépend que de la fusion de #223 pour la partie `/ar/`. C6 et C9 peuvent partir sans attendre.
+- **Le lot B** : il peut écrire son plan et faire valider ses textes maintenant. Son code passe après #224.
+- **Les ajouts aux fiches** de VIT-09, VIT-10b, VIT-14 et VIT-15 : le coordinateur les écrit dans chaque fiche.
+
+### Ce que la mise en ligne (VIT-06) gagne à attendre
+
+Je propose d'ajouter à ses conditions **C1 (un contact réel)** et **C6 (le saut du menu)**. Sans C1, le site ne sert à rien une fois en ligne. Sans C6, l'objectif du plan du site (performance au-dessus de 90 sur l'accueil) n'est pas tenu.

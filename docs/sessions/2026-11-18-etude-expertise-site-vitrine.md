@@ -34,21 +34,24 @@ La fiche de mission tient lieu de plan (étude sans code). Elle est sur `doc/coo
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
-| 1 | Quel canal de contact publier dès la mise en ligne, avant VIT-02 ? | proposition : une adresse e-mail dédiée au site | au chef |
-| 2 | Garder « quand l'école active l'IA », alors que l'IA s'allume par `IA_CLE` côté serveur ? | proposition : « quand l'IA est activée pour votre école » | au chef |
-| 3 | Retirer « Au Maroc, Massar en est un exemple », « BTS » et « crédits du LMD » (EP-5) ? | proposition : oui, avec des formulations sans pays | au chef |
-| 4 | Dire que le calcul sert aujourd'hui le supérieur et la formation, pas encore le collège ? | proposition : oui, sur l'ouverture et dans l'ordre du menu « Solutions » | au chef |
+| 1 | Quel canal de contact publier dès la mise en ligne, avant VIT-02 ? | une adresse e-mail dédiée au site, « réponse sous deux jours ouvrés » ; **l'adresse reste à donner** | **validé** par le chef (D1) |
+| 2 | Garder « quand l'école active l'IA », alors que l'IA s'allume par `IA_CLE` côté serveur ? | « quand l'IA est activée pour votre école » ; interrupteur par école noté comme fonction à venir | **validé** (D2) |
+| 3 | Retirer « Au Maroc, Massar en est un exemple », « BTS » et « crédits du LMD » (EP-5) ? | oui, avec des formulations sans pays | **validé** (D3) |
+| 4 | Dire que le calcul sert aujourd'hui le supérieur et la formation, pas encore le collège ? | oui, sur l'ouverture et dans l'ordre du menu « Solutions » | **validé** (D4) |
+
+Réponse du chef, 18 nov. : « Je valide tes propositions. Propose tes solutions et mentionne-les dans le plan, pour que le coordinateur puisse les voir et proposer un plan d'implémentation aux agents. »
 
 ## État laissé
 
-- Expertise du site vitrine → **rendue**, sur `etude/expertise-site-vitrine`, à pousser par le chef. `suivi.md` n'est pas modifié.
-- Corrections hors de toute mission (à inscrire par le coordinateur si le chef les retient) : saut du menu sur téléphone, vidéo sur connexion lente, relecture des phrases P1 à P6 et des mentions de pays, récit EP-18 sur l'accueil et En classe, pages `/ar/` en français, balises Open Graph, `vitrine/README.md`.
+- Expertise du site vitrine → **rendue**, avec les décisions du chef (§ 12), les solutions détaillées (§ 13) et une proposition de découpage (§ 14). Sur `etude/expertise-site-vitrine`, à pousser par le chef. `suivi.md` n'est pas modifié.
+- Pour le coordinateur : reporter D1 à D4 dans `decisions.md` ; créer les lots A (correctifs techniques) et B (textes exacts) ; ajouter les précisions du § 13 aux fiches de VIT-09, VIT-10b, VIT-14 et VIT-15 ; inscrire l'interrupteur de l'IA par école (D2) ; proposer au chef C1 et C6 comme conditions de VIT-06.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef lit le rapport et répond aux quatre questions du § 10.
-2. Le coordinateur répartit les corrections 6, 7 et 9 (nouvelles) et élargit VIT-10b des deux points de la correction 8.
-3. Si le chef le demande : refaire la mesure avec les PR ouvertes du site (#221 à #224).
+1. Le chef donne l'adresse e-mail du site (D1), pour VIT-16.
+2. Le coordinateur lit les § 12 à 14 et propose le plan d'implémentation aux agents.
+3. Le chef valide les textes nouveaux du § 13, phrase par phrase, dans le plan de chaque lot.
+4. Si le chef le demande : refaire la mesure avec les PR ouvertes du site (#221 à #224).
 
 ## Commandes pour le chef de projet
 
@@ -67,7 +70,8 @@ Lis d'abord AGENTS.md, docs/plan/README.md, la fiche docs/plan/missions/expertis
 docs/etude-marche/12-expertise-site-vitrine.md et cette fiche (docs/sessions/2026-11-18-etude-expertise-site-vitrine.md).
 Fait : site de main (9b3fcb25) construit et mesuré (axe-core 0 violation sur 144 passages, Lighthouse 19 rapports),
 promesses confrontées au code, six notes, dix corrections, quatre questions au chef.
-Reste : intégrer les réponses du chef aux questions du § 10 ; si demandé, refaire la mesure avec les PR ouvertes du site.
+Le chef a validé les quatre propositions (D1 à D4, § 12) ; solutions détaillées au § 13, découpage proposé au § 14.
+Reste : l'adresse e-mail du site (au chef) ; si demandé, refaire la mesure avec les PR ouvertes du site.
 Pour mesurer : npm ci ; npm run build ; npx astro preview sur un port libre (vérifier le port annoncé : 4329 peut être pris).
 Règles : aucun code ; questions avant toute supposition ; suivi.md non modifié ; jamais de git push.
 ```
