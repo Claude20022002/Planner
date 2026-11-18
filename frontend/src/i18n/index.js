@@ -50,8 +50,42 @@ const readStoredLanguage = () => {
 i18n.use(initReactI18next).init({
   // Studio quiz, sessions de jeu, identité de l'école : textes dans leurs propres fichiers, sous leur clé
   resources: {
-    fr: { translation: { ...fr, gestion: { ...gestionFr, filieres: filieresFr, groupes: groupesFr, modules: modulesFr, enseignements: enseignementsFr }, personnes: personnesFr, applications: applicationsFr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr } },
-    en: { translation: { ...en, gestion: { ...gestionEn, filieres: filieresEn, groupes: groupesEn, modules: modulesEn, enseignements: enseignementsEn }, personnes: personnesEn, applications: applicationsEn, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn } },
+    fr: {
+        translation: {
+            ...fr,
+            gestion: {
+                ...gestionFr,
+                filieres: filieresFr,
+                groupes: groupesFr,
+                modules: modulesFr,
+                enseignements: enseignementsFr,
+            },
+            personnes: personnesFr,
+            applications: applicationsFr,
+            studio: studioFr,
+            sessionsJeu: sessionsJeuFr,
+            direct: directFr,
+            etablissement: etablissementFr,
+        },
+    },
+    en: {
+        translation: {
+            ...en,
+            gestion: {
+                ...gestionEn,
+                filieres: filieresEn,
+                groupes: groupesEn,
+                modules: modulesEn,
+                enseignements: enseignementsEn,
+            },
+            personnes: personnesEn,
+            applications: applicationsEn,
+            studio: studioEn,
+            sessionsJeu: sessionsJeuEn,
+            direct: directEn,
+            etablissement: etablissementEn,
+        },
+    },
   },
   lng: readStoredLanguage(),
   fallbackLng: 'fr',

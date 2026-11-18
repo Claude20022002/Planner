@@ -72,3 +72,17 @@ test('Modules : maquette sans module', async ({ page }) => {
   await expect(page.getByText('Aucun élément enregistré', { exact: true })).toBeVisible();
   await expect(page.getByRole('main').getByRole('button', { name: 'Ajouter', exact: true })).toBeVisible();
 });
+
+test('Modules : la recherche sans résultat ne masque pas la liste après effacement', async ({ page }) => {
+  const { admin, motDePasse } = lireDonnees();
+  await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
+  await page.goto('/gestion/cours');
+  const exemple = page.getByRole('main').getByText('Machine Learning', { exact: true }).first();
+  await expect(exemple).toBeVisible();
+  const recherche = page.getByRole('searchbox');
+  await recherche.fill('aucun-resultat-uix-06b');
+  await expect(page.getByText('Aucun résultat', { exact: true })).toBeVisible();
+  await expect(exemple).toHaveCount(0);
+  await recherche.clear();
+  await expect(exemple).toBeVisible();
+});

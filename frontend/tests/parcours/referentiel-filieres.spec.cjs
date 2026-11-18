@@ -133,3 +133,17 @@ test('Filières : état initial sans filière', async ({ page }) => {
   await expect(page.getByText('Aucun élément enregistré', { exact: true })).toBeVisible();
   await expect(page.getByRole('main').getByRole('button', { name: 'Ajouter', exact: true })).toBeVisible();
 });
+
+test('Filières : la recherche sans résultat ne masque pas la liste après effacement', async ({ page }) => {
+  const { admin, motDePasse } = lireDonnees();
+  await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
+  await page.goto('/gestion/filieres');
+  const exemple = page.getByRole('cell', { name: /^GEN · / });
+  await expect(exemple).toBeVisible();
+  const recherche = page.getByRole('searchbox', { name: 'Rechercher une filière' });
+  await recherche.fill('aucun-resultat-uix-06b');
+  await expect(page.getByText('Aucun résultat', { exact: true })).toBeVisible();
+  await expect(exemple).toHaveCount(0);
+  await recherche.clear();
+  await expect(exemple).toBeVisible();
+});
