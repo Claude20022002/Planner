@@ -10,20 +10,20 @@ Une ligne par fonction. L'état passe à « en cours » (avec la branche) au pre
 
 Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend une fonction que dans un chantier ouvert. Un chantier ouvert se termine avant d'en ouvrir un autre à sa place ([organisation.md](organisation.md), § 3).
 
-### Ouverts (3 sur 3, plus QJE-04 par exception)
+### Ouverts (3 sur 3)
 
 | Module | Ouvert le | Fonctions du chantier, dans l'ordre | Reste | État |
 |---|---|---|---|---|
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
-| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | QJE-04 faite : #196 fusionnée le 18 nov. (migration 0082 à appliquer au prochain déploiement) ; chantier à fermer par le chef
 
 ### Fermés
 
 | Module | Ouvert le | Fermé le | Fonctions |
 |---|---|---|---|
 | [QUA](modules/QUA-qualite-docs.md) | 10 nov. 2026 | 15 nov. 2026 (fusion de #171) | QUA-03 |
+| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, par exception | 18 nov. 2026 (fusion de #196, décision du chef) | QJE-04 |
 
 ### Travaux en cours hors chantier, d'avant la règle
 
