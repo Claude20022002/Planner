@@ -1,0 +1,42 @@
+---
+// Accueil, section 3 : l'appel par QR code. Section sombre ; texte d'un côté, téléphone de l'autre.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import Apparition from '../socle/Apparition.astro';
+import CadreAppareil from '../socle/CadreAppareil.astro';
+import Duo from '../socle/Duo.astro';
+import IllustrationAppel from './IllustrationAppel.astro';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  t: (cle: string) => any;
+  langue: string;
+}
+
+const { t, langue } = Astro.props;
+---
+<Section id="appel" ton="sombre" large etiquette="appel-titre">
+  <Duo>
+    <Apparition slot="texte">
+      <div class="texte">
+        <Titre id="appel-titre" surtitre={t('appel.surtitre')}>{t('appel.titre')}</Titre>
+        <Accroche>{t('appel.texte')}</Accroche>
+        <BoutonPrincipal href={chemin(langue, 'enClasse')} variante="lien">{t('appel.lien')}</BoutonPrincipal>
+      </div>
+    </Apparition>
+    <Apparition delai={0.15}>
+      <div class="telephone">
+        <CadreAppareil type="telephone" label={t('appel.illustration.label')}>
+          <IllustrationAppel t={t} />
+        </CadreAppareil>
+      </div>
+    </Apparition>
+  </Duo>
+</Section>
+
+<style>
+  .texte { display: grid; gap: var(--espace-3); justify-items: inherit; }
+  .telephone { display: grid; justify-items: center; }
+</style>

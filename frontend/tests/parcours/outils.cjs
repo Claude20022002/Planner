@@ -67,4 +67,20 @@ const enTeteCsrf = async (page) => {
   return { "X-CSRF-Token": decodeURIComponent(csrf) };
 };
 
-module.exports = { lireDonnees, seConnecter, scannerCommeMobile, publierMois, supprimerModule, enTeteCsrf };
+/**
+ * Ouvre l'espace de la classe de `seance` (lireDonnees().seance) depuis « Mes classes », par sa carte
+ * « Ouvrir <cours> · <groupe> », présente à toute heure. Le bouton « Supports de cours » n'existe que
+ * pendant la séance : après 23 h 55, fin de la séance du jour des parcours, il manque
+ * (docs/conception/qualite/fix-sondage-minuit.md). Comme ce bouton, arrive sur l'onglet par défaut,
+ * même si la carte vise l'appel encore ouvert. Rend { idCours, idGroupe }. `page` est celle de l'enseignante.
+ */
+const ouvrirClasse = async (page, seance) => {
+  await page.goto("/mes-classes");
+  await page.getByRole("button", { name: `Ouvrir ${seance.cours} · ${seance.groupe}`, exact: true }).click();
+  await expect(page).toHaveURL(/\/mes-classes\/\d+\/\d+(\?onglet=\w+)?$/);
+  const [, idCours, idGroupe, onglet] = /\/mes-classes\/(\d+)\/(\d+)(\?onglet=\w+)?$/.exec(page.url());
+  if (onglet) await page.goto(`/mes-classes/${idCours}/${idGroupe}`);
+  return { idCours, idGroupe };
+};
+
+module.exports = { lireDonnees, seConnecter, scannerCommeMobile, publierMois, supprimerModule, enTeteCsrf, ouvrirClasse };

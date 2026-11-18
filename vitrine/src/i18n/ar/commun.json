@@ -1,0 +1,36 @@
+{
+  "produit": "Planner",
+  "evitement": "",
+  "logo": "",
+  "navigation": {
+    "label": "",
+    "menu": "",
+    "accueil": "",
+    "emploiDuTemps": "",
+    "enClasse": "",
+    "etablissement": "",
+    "securite": "",
+    "bientot": "",
+    "contact": ""
+  },
+  "langues": {
+    "label": "",
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "pied": {
+    "description": "",
+    "navigation": "",
+    "droits": ""
+  },
+  "finDePage": {
+    "titre": "",
+    "texte": "",
+    "accueil": ""
+  },
+  "redirection": {
+    "titre": "",
+    "lien": ""
+  }
+}

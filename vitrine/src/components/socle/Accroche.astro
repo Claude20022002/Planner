@@ -1,0 +1,14 @@
+---
+// Paragraphe d'accroche sous un titre : texte de 19 à 21 px, couleur secondaire, largeur de lecture.
+interface Props {
+  forte?: boolean;
+}
+
+const { forte = false } = Astro.props;
+---
+<p class:list={['accroche', { forte }]}><slot /></p>
+
+<style>
+  .accroche { max-inline-size: 38rem; font-size: var(--texte-accroche); line-height: 1.45; color: var(--couleur-secondaire, var(--gris-texte)); text-wrap: pretty; }
+  .forte { color: inherit; font-weight: 500; }
+</style>

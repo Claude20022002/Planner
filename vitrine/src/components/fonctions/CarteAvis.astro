@@ -1,0 +1,25 @@
+---
+// Avis de Planner pour une séance non placée, en grand : icône, titre et raison. Sert de visuel à la
+// section « Les refus expliqués » ; l'étiquette décrit l'image aux lecteurs d'écran.
+import { CircleAlert } from 'lucide-react';
+
+interface Props {
+  label: string;
+  titre: string;
+  texte: string;
+}
+
+const { label, titre, texte } = Astro.props;
+---
+<figure class="avis" role="img" aria-label={label}>
+  <CircleAlert aria-hidden="true" size={28} strokeWidth={1.75} />
+  <p><strong>{titre}</strong><span>{texte}</span></p>
+</figure>
+
+<style>
+  .avis { display: flex; gap: var(--espace-2); max-inline-size: 26rem; margin: 0; padding: var(--espace-3); border-radius: var(--rayon-grand); background: var(--blanc); box-shadow: var(--ombre-appareil); color: var(--encre); text-align: start; }
+  .avis :global(svg) { flex: none; color: var(--bleu); }
+  p { display: grid; gap: 0.35rem; font-size: 1.125rem; }
+  strong { font-weight: 650; }
+  span { color: var(--gris-texte); }
+</style>

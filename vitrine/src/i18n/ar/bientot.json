@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "badge": "",
+  "ecole": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "aussi": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  }
+}

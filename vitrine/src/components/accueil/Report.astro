@@ -1,0 +1,57 @@
+---
+// Accueil, section 5 : le report de séance suivi de bout en bout, en quatre étapes reliées
+// (demande, validation, étudiants prévenus, publication), qui apparaissent l'une après l'autre.
+import { Send, CircleCheck, BellRing, CalendarCheck } from 'lucide-react';
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import Apparition from '../socle/Apparition.astro';
+
+interface Props {
+  t: (cle: string) => any;
+}
+
+const { t } = Astro.props;
+const etapes: { titre: string; texte: string }[] = t('report.etapes');
+const ICONES = [Send, CircleCheck, BellRing, CalendarCheck];
+---
+<Section id="report" ton="gris" large etiquette="report-titre">
+  <Apparition>
+    <div class="entete">
+      <Titre id="report-titre" surtitre={t('report.surtitre')}>{t('report.titre')}</Titre>
+      <Accroche>{t('report.texte')}</Accroche>
+    </div>
+  </Apparition>
+  <ol class="etapes">
+    {etapes.map((etape, i) => {
+      const Icone = ICONES[i];
+      return (
+        <li>
+          <Apparition delai={i * 0.12}>
+            <div class="etape">
+              <span class="pastille"><Icone aria-hidden="true" size={26} strokeWidth={1.5} /></span>
+              <h3>{etape.titre}</h3>
+              <p>{etape.texte}</p>
+            </div>
+          </Apparition>
+        </li>
+      );
+    })}
+  </ol>
+</Section>
+
+<style>
+  .entete { display: grid; gap: var(--espace-3); justify-items: center; }
+  .etapes { display: grid; gap: var(--espace-3); inline-size: 100%; counter-reset: etape; }
+  .etape { position: relative; display: grid; justify-items: center; gap: var(--espace-1); block-size: 100%; padding: var(--espace-4) var(--espace-3); border-radius: var(--rayon-grand); background: var(--blanc); box-shadow: var(--ombre-carte); }
+  .pastille { display: grid; place-items: center; inline-size: 3.5rem; block-size: 3.5rem; margin-block-end: var(--espace-1); border-radius: 50%; background: var(--bleu-nuit); color: var(--blanc); }
+  h3 { font-size: 1.3125rem; font-weight: 650; letter-spacing: -0.01em; }
+  p { color: var(--gris-texte); }
+
+  @media (min-width: 48rem) {
+    .etapes { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 72rem) {
+    .etapes { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
