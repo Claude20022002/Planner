@@ -31,3 +31,38 @@ test('étudiant : pas de gestion des personnes, accueil utilisable sur télépho
   await page.keyboard.type('quiz');
   await expect(applications.getByRole('link', { name: 'Quiz et jeux', exact: true })).toBeVisible();
 });
+
+test('administration à 1440 px : le clavier ouvre une tuile en anglais et en mode sombre', async ({ page }) => {
+  const { admin, motDePasse } = lireDonnees();
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
+  await page.evaluate(() => {
+    localStorage.setItem('hp.lang', 'en');
+    localStorage.setItem('themeMode', 'dark');
+  });
+  await page.goto('/applications');
+  await expect(page.getByRole('heading', { name: /^Hello(?:,|$)/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Your account' })).toBeVisible();
+  const nav = page.getByRole('navigation', { name: 'Available applications' });
+  const personnes = nav.getByRole('link', { name: 'People', exact: true });
+  await personnes.focus();
+  await expect(personnes).toBeFocused();
+  await personnes.press('Enter');
+  await expect(page).toHaveURL(/\/gestion\/utilisateurs$/);
+});
+
+test('enseignant : grille à 390 px avec mouvement réduit et sans gestion des personnes', async ({ page }) => {
+  const { enseignante, motDePasse } = lireDonnees();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await seConnecter(page, { email: enseignante.email, motDePasse, role: 'enseignant' });
+  await page.goto('/applications');
+  const nav = page.getByRole('navigation', { name: 'Applications disponibles' });
+  await expect(nav.getByRole('link', { name: 'Personnes', exact: true })).toHaveCount(0);
+  const planning = nav.getByRole('link', { name: 'Emploi du temps', exact: true });
+  await expect(planning).toBeVisible();
+  await planning.hover();
+  await planning.focus();
+  await expect(planning.locator('[data-tuile-application]')).toHaveCSS('transform', 'none');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});

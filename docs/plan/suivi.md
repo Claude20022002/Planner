@@ -172,6 +172,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte : CI parcours rouge, correction du test de reprise réseau committée localement | #185 · feat/uix-06a-interface |
+| [UIX-09](modules/UIX-interface.md) | Grille du lanceur | libre | M | vérifiée localement, relecture et CI attendues | feat/uix-09-grille-applications |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | en cours : R0 du site (socle), accueil et cinq pages de fonctions (VIT-05 en préparation) dans la PR #195 ; lot de pages repris par l'intégrateur (chef, 18 nov.) ; relu « prêt sur le fond » par le coordinateur (18 nov.), fusion après `fix/audit-dependances` ; attendus : SVG des logos, contrôles finaux | feat/vit-01-vitrine |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
