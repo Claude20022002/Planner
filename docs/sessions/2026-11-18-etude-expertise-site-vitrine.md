@@ -5,7 +5,7 @@
 | Fait par | Claude Code (Opus 5.5), nouvelle session ouverte par le chef |
 | Chantier | VIT (préparation de VIT-05 et conditions de VIT-06) ; étude sans code |
 | Dossier de travail | `..\travaux-planner\expertise-site` |
-| Dernier commit | voir `git log -2` sur la branche (rapport, puis cette fiche) |
+| Dernier commit | `b9c523ac` (le rapport), puis cette fiche |
 
 ## Objectif de la session
 
