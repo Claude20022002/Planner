@@ -49,10 +49,10 @@ La fonction est terminée quand :
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | Le message et l'ordre des neuf scènes du § 4, avec leurs textes | **Tels quels** | | oui |
-| 2 | Où placer la vidéo sur l'accueil ? | **Juste après l'ouverture** (section 2), avec le surtitre « Présentation » et le titre « Tout Planner, en une minute et demie. » / « All of Planner, in ninety seconds. » | | oui |
-| 3 | Comment se lance la lecture ? | **Seule, sans le son, une fois**, quand la moitié de la vidéo est visible. Elle se met en pause hors de l'écran. Un bouton Pause et Lecture reste visible. Avec le mouvement réduit ou l'économie de données : l'image fixe et un bouton « Lire la vidéo », rien ne part seul | | oui |
-| 4 | Les fichiers rendus (environ 25 Mo pour deux langues) vont-ils dans le dépôt ? | **Oui, dans `vitrine/public/videos/`, rendus une seule fois**, après l'arrivée des SVG officiels (condition 3). D'ici là, des aperçus rendus en local, hors du dépôt, pour la relecture (§ 5) | | oui, pour l'étape 5 |
+| 1 | Le message et l'ordre des neuf scènes du § 4, avec leurs textes | **Tels quels** | **tels quels** (18 nov.) | — |
+| 2 | Où placer la vidéo sur l'accueil ? | **Juste après l'ouverture** (section 2), avec le surtitre « Présentation » et le titre « Tout Planner, en une minute et demie. » / « All of Planner, in ninety seconds. » | **après l'ouverture** (18 nov.) | — |
+| 3 | Comment se lance la lecture ? | **Seule, sans le son, une fois**, quand la moitié de la vidéo est visible. Elle se met en pause hors de l'écran. Un bouton Pause et Lecture reste visible. Avec le mouvement réduit ou l'économie de données : l'image fixe et un bouton « Lire la vidéo », rien ne part seul | **seule, une fois** (18 nov.) | — |
+| 4 | Les fichiers rendus (environ 25 Mo pour deux langues) vont-ils dans le dépôt ? | **Oui, dans `vitrine/public/videos/`, rendus une seule fois**, après l'arrivée des SVG officiels (condition 3). D'ici là, des aperçus rendus en local, hors du dépôt, pour la relecture (§ 5) | **option A, rendu unique** après les SVG officiels (18 nov.) | — |
 | 5 | Que dit la dernière image ? | **Le logo, « Planner » et « Parlons de votre établissement. »**, le titre de la section Contact. Ni adresse ni magasin d'applications : le domaine n'est pas choisi (Q-11) et l'application n'est pas sur les magasins | | non |
 | 6 | Sur la page arabe, quelle vidéo ? | **La française**, comme les textes, jusqu'à UIX-04 ; la version arabe se rendra alors avec la même composition | | non |
 
