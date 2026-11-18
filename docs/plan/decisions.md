@@ -375,3 +375,12 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | *(coordinateur)* #214 (VIT-07) : **prête**. Les deux règles du chef sont tenues, le périmètre aussi (`bientot.astro` ne perd que l'icône de la carte retirée), et la CI est entièrement verte. #212 (plan de VIT-06) : prête après l'ajout des conditions 8 et 9 | coordinateur |
 | *(coordinateur)* #215 (VSC-01) : **à corriger**. Elle modifie `suivi.md` (règle du 18 nov.). La conception n'a pas de section EP-18 (règle du chef de 16 h). Le « code Massar » y est le seul identifiant national (EP-5 généralisée). Les avis des groupes A et B sur C-5 et Q-20 sont au chef | coordinateur |
 | *(coordinateur)* Les consignes de 17 h 55 à l'agent de Cursor et à Codex venaient de Claude de VS Code, à la demande du chef. Ce n'était pas une seconde coordination. Rappel : une mission n'existe qu'une fois inscrite (fiche, `suivi.md`, feuille de route), et les deux agents ont bien attendu | coordinateur |
+
+**Coordinateur, 18 nov., 19 h 15** :
+
+| Décision | Par |
+|---|---|
+| *(coordinateur)* VSC-01, corrections `10ef19a2` et `c3a320f0` : **bonnes**. La fusion de la conception attend la décision du chef sur l'avis des groupes A et B | coordinateur |
+| *(coordinateur)* La page des dix jeux (VIT-07, `6c5daf9c`, validée par le chef) a été commitée après la fusion de #214 : elle n'est dans aucune PR. Elle demande une **nouvelle PR** depuis `feat/vit-07-contenu-complet`, après une correction : retirer « budget en MAD » du résumé de « Pilote des stocks » (EP-5) | coordinateur |
+| *(coordinateur)* Constat EP-5 : les jeux « Pilote des stocks » et « Budget ERP » comptent en MAD (`shared/simulations/catalogue/`). Pas de correction maintenant : le chantier QJE est fermé. L'étude EP-18 le relève, et le chef dira qui corrige | coordinateur |
+| *(coordinateur)* L'outil de contrôle de la session de Codex lui refuse d'écrire hors de la branche de la mission en cours (VSC-01). Les ajouts de #213 (mention ISC) et de #212 (conditions 8 et 9) demandent une autorisation du chef dans cette session | coordinateur |

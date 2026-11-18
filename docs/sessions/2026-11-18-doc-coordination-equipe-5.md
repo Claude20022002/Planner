@@ -75,6 +75,15 @@ Fiches : [vit-10-pages-par-role](../plan/missions/vit-10-pages-par-role.md) et [
 
 **Constat pour VIT-08** : `vitrine/src/i18n/fr/accueil.json` (clés `description` et le texte de l'appel) ne présente l'appel que par QR code. L'accueil est à VIT-08, qui doit y appliquer EP-18 : l'appel aussi à la main.
 
+## Tour de 19 h 15
+
+#214 est fusionnée (18 h 53). Deux rapports sont lus et rangés.
+
+- **VSC-01** : les corrections sont **bonnes**. La fusion attend l'avis des groupes A et B.
+- **Codex** n'a pas pu écrire sur UIX-09 et VIT-06 : son outil de contrôle limite la session à VSC-01. Le chef doit l'autoriser.
+- **La page des dix jeux** (validée par le chef) a été commitée et poussée après la fusion de #214. Elle n'est dans aucune PR. Il faut retirer « budget en MAD », puis ouvrir une nouvelle PR depuis la même branche.
+- **Les jeux eux-mêmes** comptent en MAD (`stock-pilot.js`, `budget-erp.js`). Le point est relevé dans la fiche de l'étude EP-18.
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |
