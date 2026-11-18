@@ -46,7 +46,7 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | 3 | UIX-09, après la fusion de #199 : fusion de `main`, verrou npm régénéré, axe-core dans le parcours | [vit-equipe](missions/vit-equipe.md) | déjà validé |
 | 4 | **VSC-01, modèle de données du scolaire** : conception seule, avec diagrammes (`docs/plan/modules/VSC-vie-scolaire.md`). C'est le préalable de l'étape 3. Les numéros de migration se demandent au coordinateur, ou au chef pendant la pause | module VSC | chef |
 | 5 | QJE-03, joueur natif ; puis QJE-06, plus aucun conteneur ClassQuiz (après le transfert vérifié des quiz de l'école pilote) | [sortie-classquiz](missions/sortie-classquiz.md) | chef |
-| 6 | VIT-06, le déploiement, le jour où les quatre conditions sont réunies : le chef lance les commandes du serveur | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef |
+| 6 | VIT-06, le déploiement, le jour où les six conditions sont réunies : le chef lance les commandes du serveur | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef |
 
 ### Agent de Cursor : Grok 4.7 high, pour les tâches bornées au plan validé
 
