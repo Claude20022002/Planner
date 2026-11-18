@@ -17,7 +17,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; liste confirmée le 10 nov. |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 et QUA-03, PLA-07 attend EXP-04 |
 | [QUA](modules/QUA-qualite-docs.md) | 10 nov. 2026 | QUA-03 | 1 | ouvert, limité à QUA-03 pour débloquer PLA-01 |
-| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | ouvert pour QJE-04 seule ; corrections d'Alexis (B-1, B-2, I-1) fusionnées dans `jeux-pedagogique` le 18 nov., PR à ouvrir |
+| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | ouvert pour QJE-04 seule ; corrections d'Alexis (B-1, B-2, I-1) poussées dans `jeux-pedagogique` le 18 nov. (commit 1b26fb57), PR à ouvrir |
 
 ### Fermés
 
