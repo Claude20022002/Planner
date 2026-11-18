@@ -210,9 +210,9 @@ export const validerAffectation = async (seance, { transaction, verrouiller = fa
 
     if (verrouiller) {
         const lock = transaction.LOCK.UPDATE;
-        if (salle) await Salle.findByPk(salle.id_salle, { transaction, lock });
-        await Users.findAll({ where: { id_user: idsEnseignants }, transaction, lock });
-        await Groupe.findAll({ where: { id_groupe: [...groupesOccupes] }, transaction, lock });
+        if (salle) await Salle.findByPk(salle.id_salle, { transaction, lock: { level: lock, of: Salle } });
+        await Users.findAll({ where: { id_user: idsEnseignants }, transaction, lock: { level: lock, of: Users } });
+        await Groupe.findAll({ where: { id_groupe: [...groupesOccupes] }, transaction, lock: { level: lock, of: Groupe } });
     }
 
     const enseignants = await lu(`enseignants|${[...idsEnseignants].sort().join(",")}`, () =>

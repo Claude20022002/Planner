@@ -201,7 +201,8 @@ const verifierForme = (question, reponse) => {
 export const enregistrerReponse = async (user, id, idQuestion, { reponse, marquee, valider = false } = {}) => {
     const idq = Number(idQuestion);
     const sortie = await sequelize.transaction(async (transaction) => {
-        const tentative = await tentativeDe(user, id, { transaction, lock: transaction.LOCK.UPDATE });
+        // Essai PostgreSQL (Q-30) : verrou sur la seule tentative, la session étant jointe
+        const tentative = await tentativeDe(user, id, { transaction, lock: { level: transaction.LOCK.UPDATE, of: TentativeQuiz } });
         const session = tentative.session;
         if (tentative.statut !== "en_cours") throw new ErreurMetier("Cette copie est déjà rendue", 409, "COPIE_RENDUE");
         if (estExpiree(tentative)) return { expiree: true };

@@ -42,8 +42,10 @@ export const etatDeSante = async () => {
 const connexionsMysql = async () => {
     try {
         const sequelize = ConfigurationEtablissement.sequelize;
-        const [[{ ouvertes }]] = await sequelize.query("SELECT VARIABLE_VALUE AS ouvertes FROM performance_schema.global_status WHERE VARIABLE_NAME = 'Threads_connected'");
-        const [[{ plafond }]] = await sequelize.query("SELECT @@max_connections AS plafond");
+        const pg = sequelize.getDialect() === "postgres";
+        // Essai PostgreSQL (Q-30) : mêmes chiffres, lus dans pg_stat_activity et max_connections
+        const [[{ ouvertes }]] = await sequelize.query(pg ? "SELECT COUNT(*) AS ouvertes FROM pg_stat_activity" : "SELECT VARIABLE_VALUE AS ouvertes FROM performance_schema.global_status WHERE VARIABLE_NAME = 'Threads_connected'");
+        const [[{ plafond }]] = await sequelize.query(pg ? "SELECT current_setting('max_connections') AS plafond" : "SELECT @@max_connections AS plafond");
         return { ouvertes: Number(ouvertes), plafond: Number(plafond) };
     } catch {
         return null;

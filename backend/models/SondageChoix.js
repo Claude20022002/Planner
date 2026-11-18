@@ -7,7 +7,7 @@ const SondageChoix = sequelize.define(
     {
         id_choix: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
         id_sondage: { type: DataTypes.INTEGER, allowNull: false },
-        rang: { type: DataTypes.TINYINT, allowNull: false },
+        rang: { type: DataTypes.SMALLINT, allowNull: false },
         libelle: { type: DataTypes.STRING(100), allowNull: false },
         reponses: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     },

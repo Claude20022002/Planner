@@ -42,9 +42,9 @@ export const deployerSemaineType = async ({ periode, placements, index, user, se
         const lock = transaction.LOCK.UPDATE;
         const infos = Object.values(index);
         const idsSalles = [...new Set(placements.map((p) => p.salleId).filter(Boolean))];
-        if (idsSalles.length) await Salle.findAll({ where: { id_salle: idsSalles }, attributes: ["id_salle"], transaction, lock });
-        await Users.findAll({ where: { id_user: [...new Set(infos.map((i) => i.id_user_enseignant))] }, attributes: ["id_user"], transaction, lock });
-        await Groupe.findAll({ where: { id_groupe: [...new Set(infos.map((i) => i.id_groupe))] }, attributes: ["id_groupe"], transaction, lock });
+        if (idsSalles.length) await Salle.findAll({ where: { id_salle: idsSalles }, attributes: ["id_salle"], transaction, lock: { level: lock, of: Salle } });
+        await Users.findAll({ where: { id_user: [...new Set(infos.map((i) => i.id_user_enseignant))] }, attributes: ["id_user"], transaction, lock: { level: lock, of: Users } });
+        await Groupe.findAll({ where: { id_groupe: [...new Set(infos.map((i) => i.id_groupe))] }, attributes: ["id_groupe"], transaction, lock: { level: lock, of: Groupe } });
 
         // Les séances générées précédemment pour ces enseignements (à venir) sont annulées
         await Affectation.update(

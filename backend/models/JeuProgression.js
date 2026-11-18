@@ -9,7 +9,7 @@ const JeuProgression = sequelize.define(
         id_user: { type: DataTypes.INTEGER, allowNull: false },
         code_jeu: { type: DataTypes.STRING(40), allowNull: false },
         id_defi: { type: DataTypes.STRING(60), allowNull: false },
-        indices: { type: DataTypes.TINYINT, allowNull: false, defaultValue: 0 },
+        indices: { type: DataTypes.SMALLINT, allowNull: false, defaultValue: 0 },
         points: { type: DataTypes.INTEGER, allowNull: false },
         reussi_le: { type: DataTypes.DATE, allowNull: false },
     },

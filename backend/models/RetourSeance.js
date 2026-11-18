@@ -7,7 +7,7 @@ const RetourSeance = sequelize.define(
     {
         id_retour: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
         id_affectation: { type: DataTypes.INTEGER, allowNull: false },
-        note: { type: DataTypes.TINYINT, allowNull: false, validate: { min: 1, max: 5 } },
+        note: { type: DataTypes.SMALLINT, allowNull: false, validate: { min: 1, max: 5 } },
         mot: DataTypes.STRING(40),
         jour: { type: DataTypes.DATEONLY, allowNull: false },
     },

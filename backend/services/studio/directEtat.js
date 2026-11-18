@@ -74,7 +74,7 @@ export const scores = async (session) => {
         JoueurDirect.findAll({ where: { id_session: session.id_session }, include: [{ model: Users, as: "etudiant", attributes: ["id_user", "nom", "prenom"] }] }),
         ReponseDirect.findAll({
             where: { id_session: session.id_session },
-            attributes: ["id_user", [fn("SUM", col("points")), "points"], [fn("SUM", literal("statut = 'juste'")), "justes"]],
+            attributes: ["id_user", [fn("SUM", col("points")), "points"], [fn("SUM", literal("CASE WHEN statut = 'juste' THEN 1 ELSE 0 END")), "justes"]],
             group: ["id_user"],
             raw: true,
         }),

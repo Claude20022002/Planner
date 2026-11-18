@@ -1,4 +1,4 @@
-import { Op, fn, col, where as condition } from "sequelize";
+import { Op, fn, col, literal, where as condition } from "sequelize";
 import { Affectation, Campus, Cours, CoursComposante, Creneau, Enseignement, EnseignementGroupe, EnvoiEdt, Salle, Users } from "../../models/index.js";
 import { avecDescendants } from "../planning/groupes.js";
 import { appliquerRamadan } from "../planning/ramadan.js";
@@ -57,7 +57,9 @@ export const publierSeance = async (idAffectation) => {
     const id = Number(idAffectation);
     if (!id) return;
     const seance = await Affectation.findByPk(id, { include: INCLUDES_LIGNE });
-    const contenant = await EnvoiEdt.findAll({ where: condition(fn("JSON_CONTAINS", col("seances"), JSON.stringify({ id })), 1) });
+    // Essai PostgreSQL (Q-30) : opérateur @> de jsonb ; id est un entier vérifié plus haut
+    const contient = EnvoiEdt.sequelize.getDialect() === "postgres" ? literal(`"seances"::jsonb @> '[{"id":${id}}]'`) : condition(fn("JSON_CONTAINS", col("seances"), JSON.stringify({ id })), 1);
+    const contenant = await EnvoiEdt.findAll({ where: contient });
 
     let cibles = [];
     let ligne = null;
