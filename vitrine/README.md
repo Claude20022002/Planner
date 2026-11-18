@@ -21,7 +21,7 @@ npm run preview
 | `src/styles/jetons.css` | couleurs des logos, espaces, rayons, tailles de titres |
 | `src/components/socle/` | gabarit, en-tête, pied, `Section`, `Titre`, `Accroche`, `BoutonPrincipal`, `CadreAppareil`, `Apparition`, `Duo`, `Logo`, `animations.js` |
 | `src/components/accueil/` | une section de l'accueil par fichier |
-| `src/components/fonctions/` | sections des pages de fonctions |
+| `src/components/fonctions/` | sections des pages de fonctions : `EnTetePage` (h1 de la page), `Presentation` (texte, points et visuel), `GrilleCartes` (cartes à icône, badge « Bientôt » facultatif), `CarteAvis`, `IllustrationStatistiques`, `FinDePage` (lien vers le contact) |
 | `src/i18n/<langue>/<page>.json` | tous les textes ; aucun texte en dur dans les composants |
 | `src/i18n/langues.js` | langues construites et publiées, chemins des pages |
 | `src/pages/[lang]/` | une page Astro par page, qui assemble seulement |
