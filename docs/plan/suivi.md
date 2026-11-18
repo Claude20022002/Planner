@@ -56,7 +56,7 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | PLA | PLA-03b schéma de départ | Claude Code (session de PLA-03a, mission envoyée par message) | `feat/pla-03b-schema-depart` (créée) | plan validé (délégation), non commité ; **l'agent attend le « validé » du chef dans sa session** (VS Code, Fable 5.2) | 15 nov. | [pla-03b](missions/pla-03b.md) |
 | PLA | PLA-06 mesure de D-01 | Codex | #164 (brouillon) | banc adapté, sonde A-2 codée (`1cbdfaa`), 24 tests verts ; relu et poussé ; ensuite recette et séries sur le serveur, par le chef | 15 nov. 14 h 05 : prêt | [pla-06](missions/pla-06.md) |
 | MOT | MOT-02 mesure du solveur sur un jeu scolaire | Codex | `etude/mot-02-mesure-solveur` (non poussée) | banc et grand jeu de 20 000 mesurés (6 passages, avant et après #181 : aucun planning complet en 600 s, débit médian -13 % en 1.35, plages qui se chevauchent) ; reste le collège, débloqué par #182 | 15 nov. 20 h 50 | [mot-02](missions/mot-02.md) |
-| MOT | MOT-03 validation avant le calcul | agent de Cursor | #183 | plan validé par le chef ; codée, CI verte ; relue : **à corriger** (le refus doit nommer sa cible, EP-4) | 15 nov. 20 h 50 | [mot-03](missions/mot-03.md) |
+| MOT | MOT-03 validation avant le calcul | agent de Cursor | #183 | correction de la cible du refus faite ; branche à jour de main, à repousser | 18 nov. | [mot-03](missions/mot-03.md) |
 
 | UIX | UIX-01a navigation par applications (exception hors chantier accordée par le chef) | Codex | #184 | codée, CI verte parcours compris ; relue : **prête** ; destination après connexion changée (lanceur) : choix de produit à confirmer | 15 nov. 20 h 50 : prête | — |
 
@@ -105,7 +105,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [EXP-09](modules/EXP-exploitation.md) | Mises à jour de StudyLib et ClassQuiz par la CI comme le reste (aujourd'hui par paquets) | libre | M | à faire |  |
 | [MOT-01](modules/MOT-moteur.md) | Valeurs du moteur datées et résolues (profil, école, niveau) | 1 | M | fait (serveur, #156, 10 nov.) ; écrans avec ADM-02 | #156 |
 | [MOT-02](modules/MOT-moteur.md) | Mesurer le solveur sur un jeu scolaire (collège de 600 élèves), puis sur 20 000… | 1 | M | en cours : banc et grand jeu mesurés ; collège à faire | `etude/mot-02-mesure-solveur` |
-| [MOT-03](modules/MOT-moteur.md) | Validation avant le calcul | 3 | M | PR ouverte | #183 |
+| [MOT-03](modules/MOT-moteur.md) | Validation avant le calcul | 3 | M | PR ouverte · correction de la cible du refus, à repousser | #183 |
 | [MOT-04](modules/MOT-moteur.md) | Modèle neutre et évaluateur indépendant | 3 | L + M | à faire |  |
 | [MOT-05](modules/MOT-moteur.md) | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe, groupe transversal), à la… | 2 puis 3 | M + L | à faire |  |
 | [MOT-06](modules/MOT-moteur.md) | Collège | 3 | XL | à faire |  |
