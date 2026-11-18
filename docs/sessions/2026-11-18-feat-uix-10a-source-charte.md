@@ -4,79 +4,80 @@
 |---|---|
 | Fait par | Claude Code (Opus 5.5), session VS Code |
 | Chantier | UIX, exception hors chantier accordée par le chef le 18 nov. (UIX-10) |
-| Dossier de travail | `..\travaux-planner\uix-10a-source-charte` (la fiche de mission dit `uix-10a-charte` : le dossier existait déjà, il est gardé) |
-| Dernier commit | voir `git log -1` (commit de cette fiche) ; plan court : `4dc4f070` |
+| Dossier de travail | `..\travaux-planner\uix-10a-source-charte` (gardé, sur décision du coordinateur ; la fiche de mission disait `uix-10a-charte`) |
+| Dernier commit | voir `git log -1` (commit de cette fiche) ; code : `9462419a`, `75bb1375`, `d85f276a` |
 
 ## Objectif de la session
 
-Reprendre UIX-10 après la validation du plan d'ensemble, appliquer la fiche de mission d'UIX-10a (corriger le plan d'UIX-10, écrire le plan court) et le faire viser par le coordinateur.
+Coder UIX-10a, selon le plan court visé par le coordinateur : la source `shared/charte/jetons.json`, le générateur et son `--verifier`, le `jetons.css` du site et le guide générés, `index.js`, le contrôle en CI.
 
 ## Plan
 
-- Plan d'ensemble : [uix-10-charte-commune.md](../conception/interface/uix-10-charte-commune.md), validé par le chef le 18 nov. (#206), corrigé le 18 nov. : UIX-10g retirée.
-- Plan court : [uix-10a-source-charte.md](../conception/interface/uix-10a-source-charte.md), **à valider par le coordinateur** (taille M, ni migration ni sécurité).
-- Mission : `docs/plan/missions/uix-10a-source-charte.md`, sur `doc/coordination-equipe`.
+- Plan d'ensemble : [uix-10-charte-commune.md](../conception/interface/uix-10-charte-commune.md), validé par le chef le 18 nov. (#206), corrigé le même jour : UIX-10g retirée (`162ba4c4`).
+- Plan court : [uix-10a-source-charte.md](../conception/interface/uix-10a-source-charte.md), **validé par le coordinateur le 18 nov.** (visa sur `4dc4f070`, ligne écrite dans `c8cba6b4`).
+- Mission : `docs/plan/missions/uix-10a-source-charte.md` ; file de travail : `docs/plan/feuille-de-route.md` (branche `doc/coordination-equipe`).
 
 ## Fait
 
-- Au début, aucune fiche de mission pour UIX-10a : le chef a autorisé la session à commencer sans elle. La fiche est arrivée ensuite, avec la correction d'UIX-10 à faire d'abord.
-- Branche `feat/uix-10a-source-charte`, empilée sur `doc/uix-10-charte-commune`, poussée par le chef (PR #207, brouillon).
-- `18fc230b` : plan court d'UIX-10a, commité seul.
-- `51f31d46` : première version de cette fiche.
-- `162ba4c4` (sur `doc/uix-10-charte-commune`, #206) : plan d'UIX-10 corrigé, en un commit seul. UIX-10g est retirée. Les questions 9 et 10 sont sans objet. Il n'y a plus de sortie `--quiz`. Le Studio quiz entre dans 10b et 10e, et 10f attend la décision de l'étude StudyLib. La ligne UIX-10 du fichier du module suit.
-- `ba59d152` : fusion de `doc/uix-10-charte-commune` dans la branche. Ce n'est pas un rebase, pour ne pas réécrire une branche déjà poussée.
-- `4dc4f070` : plan court aligné sur la fiche de mission : 10g retirée, test permanent des 38 noms de variables du site, comparaison des `dist/` avant et après.
-- Cette fiche, mise à jour.
+Avant cette session : `18fc230b` et `4dc4f070` (plan court), `162ba4c4` sur #206 (plan d'UIX-10 corrigé), `ba59d152` (fusion de `doc/uix-10-charte-commune` dans la branche).
+
+- `c8cba6b4` : ligne « Validé » du plan court, commit seul.
+- `9462419a` (étape 2) : `shared/charte/jetons.json` (version 1 ; 7 familles ; 38 jetons du site marqués `site`, et les ajouts pour les applications : `trait-fort`, `bleu-vif`, `jeu`, le sombre dérivé, l'échelle fixe de la gestion, `rayon-commande`, les durées 120 et 320ms, la courbe en tableau ; 19 paires en clair et 12 en sombre ; 1 paire interdite). `contraste.mjs` calcule le rapport sans arrondi, depuis `luminance` de `shared/couleurs.js`. Tests 1 et 2.
+- `75bb1375` (étape 3) : `generer.mjs` (table de sorties, en-tête avec version et empreinte SHA-256 de 12 caractères, `--verifier`, refus de toute autre option). `vitrine/src/styles/jetons.css` et `shared/charte/README.md` (le guide) sont générés. Tests 3 à 7.
+- `d85f276a` (étape 4) : `index.js` (un import simple du JSON ; `charte`, et un objet « nom → valeur » par famille, gelé). Deux étapes dans la tâche « Build Frontend » de `ci-cd.yml` : `--verifier`, puis les tests de la charte. `shared/charte/**` déclenche `vitrine.yml` (deux lignes `paths`).
+- Ligne UIX-10 du fichier du module : « UIX-10a codée, PR à ouvrir ».
+- Cette fiche.
 
 ## Vérifié
 
-- Lu en lecture seule : `vitrine/src/styles/jetons.css` (38 variables), `vitrine/tests/jetons.test.js`, `shared/couleurs.js`, `shared/tokens.js`, `shared/package.json`, `.github/workflows/ci-cd.yml` et `vitrine.yml`, `scripts/verifier-neutre.mjs`, les imports de `shared/` dans le web et le mobile, `frontend/src/components/studio/`.
-- Relevé : `contraste` de `shared/couleurs.js` arrondit au centième (le plan court calcule sans arrondi). Node 22 refuse l'import de JSON sans `with { type: 'json' }`. Aucune tâche de CI ne lance les tests de `shared/`, ni les tests `node --test` du frontend (`jetonsGestion.test.js` ne tourne qu'en local). Lighthouse et axe-core du site ne sont pas en CI : ils se lancent en local, selon le plan VIT.
+- `node --test shared/charte/charte.test.js` : 7 réussis, 0 échec. Les tests sont aussi lancés depuis `frontend/`, comme en CI.
+- `node shared/charte/generer.mjs --verifier` : passe sur les fichiers que Git sort en CRLF sous Windows (les fins de ligne sont ramenées à LF avant la comparaison). Il sort en code 1 sur un `jetons.css` retouché à la main, et sur une option inconnue.
+- Variables du `jetons.css` généré, comparées au fichier écrit à la main : les mêmes 38 noms dans le même ordre, et les mêmes valeurs, **sauf `--police`** (`Inter` ajouté en repli, réponse 5).
+- Site construit avant et après (`npm run build`), puis les deux `dist/` comparés : une seule feuille change (nom haché nouveau), et la seule valeur qui y diffère est `--police`. Les 21 pages HTML ne diffèrent que par le nom de cette feuille. Lighthouse et axe-core n'ont donc rien qui puisse bouger : ils n'ont pas été relancés (plan court, § 8).
+- `npm run test:unit` du site : 43 réussis, 0 échec, sans changement de `jetons.test.js`.
 - `node scripts/verifier-neutre.mjs` : passe.
-- Aucun test de code lancé : la session n'a écrit aucun code.
+- Les deux workflows se lisent comme du YAML valide. La CI elle-même n'a pas tourné : la branche n'est pas poussée.
+- Les rapports calculés sont ceux du § 4.2 du plan d'ensemble (par exemple `trait-fort` sur blanc 3,51, `bleu-vif` sur l'écran 4,45, `bleu-nuit` sur `jeu` 7,27, `bleu` sur `bleu-pale` 4,16, interdite).
 
-## Écarts
+## Écarts avec le plan court
 
-Avec le plan d'ensemble, validés par le chef dans la session (questions 2, 5 et 6) et écrits dans le plan court :
+Aucun écart de fond. Trois choix de détail, à l'intérieur du module :
 
-- les statuts, les lignes des filières et le panneau entrent dans `jetons.json` en 10b, et non en 10a ;
-- le `jetons.css` du site prend la police commune (`Inter` s'ajoute en repli) : c'est la seule valeur qui change ;
-- `--studylib` passe de 10a à 10f, et `--quiz` disparaît avec UIX-10g.
+- dans `jetons.json`, les six couleurs du logo portent `logo: true`. C'est ce qui sépare, dans le CSS du site, le groupe « Couleurs des logos » du groupe « Neutres dérivés ». Le guide l'affiche en colonne ;
+- le fond (`ecran`) et l'action (`bleu-clair`) du sombre ne sont pas recopiés dans la famille `sombre` : les paires les nomment directement, et le guide comme `index.js` le disent. Ainsi aucune valeur n'existe en double ;
+- seuils : 3:1 pour le focus, les traits et l'action posée sur une surface, comme le veulent les WCAG pour ce qui n'est pas du texte ; 4,5:1 pour tout le texte.
 
-Avec la fiche de mission, à noter par le coordinateur au visa :
-
-- la fiche prévoit `--studylib` en 10a, testé sur un dossier temporaire. La réponse 6 du chef le reporte en 10f ;
-- la fiche demande que les valeurs du site soient « vérifiées par un test ». Le plan court teste en permanence les noms, et vérifie les valeurs une fois dans la session (variables et `dist/` comparés), puisqu'elles changeront avec les SVG ;
-- le dossier de travail s'appelle `uix-10a-source-charte`, et non `uix-10a-charte`.
+`jetons.json` fait 112 lignes, pour ~170 visées : les rôles tiennent sur une ligne par jeton.
 
 ## Questions
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
 | 1 à 6 | Import du JSON, moment des statuts, version et empreinte, place en CI, police du site, sorties voisines | chef, 18 nov. : chaque proposition retenue (plan court, § 3) | répondues |
-| — | Visa du plan court, avec les écarts ci-dessus | coordinateur | **en attente** |
+| — | Visa du plan court | coordinateur, 18 nov. (`4dc4f070`) | fait |
 
 ## État laissé
 
-- État des fonctions, pour `suivi.md` (le coordinateur le reporte) : UIX-10 → plan validé, **corrigé le 18 nov. (UIX-10g retirée, `162ba4c4`, #206)** ; UIX-10a → **plan court écrit, à valider par le coordinateur** (#207, `4dc4f070`).
-- `docs/plan/suivi.md` n'est pas modifié.
-- Signalé au coordinateur : les tests `node --test` du frontend ne tournent pas en CI (hors périmètre d'UIX-10a).
+- État de la fonction, pour `suivi.md` (le chef ou le coordinateur le reporte) : UIX-10a → **codée, à pousser** (#207, à sortir du brouillon). Elle reste empilée sur #206.
+- `docs/plan/suivi.md` n'est pas modifié. Le fichier du module l'est (ligne UIX-10).
+- Toujours signalé : les tests `node --test` du frontend (`jetonsGestion.test.js`) ne tournent pas en CI. C'est hors du périmètre d'UIX-10a.
+- Dans le dossier de travail, `vitrine/node_modules/` et `vitrine/dist/` (ignorés par Git) restent de la construction.
 
 ## Reste à faire, dans l'ordre
 
-1. Le coordinateur vise le plan court et remplit la ligne « Validé ».
-2. Code d'UIX-10a, selon le § 9 du plan court : `jetons.json` et `contraste.mjs`, puis `generer.mjs` (le site et le guide), puis `index.js` et la CI, enfin les tests du site, la comparaison des `dist/` et `verifier-neutre`.
-3. Après la fusion de #206, ramener la branche sur `main`, puis passer #207 sur la base `main`.
-4. Ensuite, mission suivante : l'étude StudyLib (`docs/plan/missions/etude-studylib.md`).
+1. Le chef pousse la branche, sort #207 du brouillon et attend la CI verte : la tâche « Build Frontend » et le workflow du site.
+2. Après la fusion de #206 : ramener la branche sur `origin/main`, puis passer #207 sur la base `main`.
+3. Missions suivantes (feuille de route) : UIX-10b, dont le plan court attend la fusion de #199 et d'UIX-09 ; puis UIX-06c, sur la charte d'UIX-10b ; QJE-14 (le plan) ; l'étude StudyLib ; UIX-10d. La première qu'on peut faire tout de suite est **QJE-14 (plan)**, tant que #199 et UIX-09 ne sont pas fusionnées. Chacune dans une nouvelle session.
 
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "..\travaux-planner\uix-10-charte" push
 git -C "..\travaux-planner\uix-10a-source-charte" push
+gh pr edit 207 --title "UIX-10a : source de la charte, générateur et guide"
+gh pr ready 207
 ```
 
-#206 reçoit la correction d'UIX-10, et #207 le plan court corrigé ainsi que cette fiche. Aucune nouvelle PR.
+#207 garde la base `doc/uix-10-charte-commune` tant que #206 n'est pas fusionnée.
 
 ## Prompt de reprise
 
@@ -85,16 +86,14 @@ Tu reprends UIX-10a (source de la charte, générateur et guide), première fonc
 accordée par le chef le 18 nov., sur la branche feat/uix-10a-source-charte (PR #207, empilée sur doc/uix-10-charte-commune, PR #206),
 dans ..\travaux-planner\uix-10a-source-charte.
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md, la mission docs/plan/missions/uix-10a-source-charte.md
-(branche doc/coordination-equipe), le plan d'ensemble docs/conception/interface/uix-10-charte-commune.md,
-le plan court docs/conception/interface/uix-10a-source-charte.md et cette fiche
-(docs/sessions/2026-11-18-feat-uix-10a-source-charte.md).
-Fait : plan d'UIX-10 corrigé (UIX-10g retirée, 162ba4c4) ; plan court écrit et aligné sur la mission (4dc4f070) ;
-questions 1 à 6 répondues par le chef (import simple du JSON ; statuts, lignes et panneau en 10b ;
-version entière et SHA-256 de 12 caractères ; CI dans « Build Frontend » et shared/charte/** qui déclenche vitrine.yml ;
-police commune pour le site ; --studylib en 10f après l'étude StudyLib).
-Reste : vérifier que la ligne « Validé » du plan court est remplie par le coordinateur, sinon s'arrêter et le demander ;
-puis coder selon le § 9 du plan court ; si #206 est fusionnée, ramener la branche sur origin/main d'abord.
-Ensuite : l'étude StudyLib (docs/plan/missions/etude-studylib.md).
+et docs/plan/feuille-de-route.md (branche doc/coordination-equipe), le plan court docs/conception/interface/uix-10a-source-charte.md
+(validé par le coordinateur le 18 nov.) et cette fiche (docs/sessions/2026-11-18-feat-uix-10a-source-charte.md).
+Fait : UIX-10a codée (9462419a, 75bb1375, d85f276a) : shared/charte/ (jetons.json, contraste.mjs, generer.mjs et --verifier,
+index.js, charte.test.js, README.md généré), vitrine/src/styles/jetons.css généré (38 variables ; seule la police change),
+CI (Build Frontend, et shared/charte/** dans vitrine.yml). 7 tests de la charte et 43 du site réussis ; dist/ comparés.
+Reste : regarder la CI de #207 une fois poussée et corriger ce qui échoue ; si #206 est fusionnée, ramener la branche sur origin/main.
+Ensuite, nouvelle session pour la mission suivante de la feuille de route (QJE-14 plan, tant que #199 et UIX-09 ne sont pas fusionnées ;
+puis UIX-10b, dont le plan court est validé par le chef).
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; ni frontend/, ni mobile/, ni design-tokens.json,
 tokens.js ou couleurs.js (UIX-10b) ; aucun dépôt voisin ; fiche de session à jour ; suivi.md non modifié ; jamais de git push.
 ```
