@@ -16,7 +16,7 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LANGUES_VIDEO, calculerEmpreinte } from '../../../../vitrine/src/components/accueil/empreinteVideo.js';
+import { LANGUES_VIDEO, calculerEmpreinte, fichiersVideo } from '../../../../vitrine/src/components/accueil/empreinteVideo.js';
 
 const PROJET = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.resolve(PROJET, '..', '..', '..', 'vitrine');
@@ -26,12 +26,13 @@ const ECHELLE_720 = '0.6667'; // 1920 → 1280
 const IMAGE_FIXE = 16 * 30; // 0:16, la semaine remplie et son avis (plan, § 5)
 const MO = 1024 * 1024;
 
-/** Les fichiers d'une langue : nom, arguments de rendu, poids maximal (plan, § 5) */
-const fichiers = (langue) => [
-  { nom: `planner-${langue}-1080.webm`, args: ['render', '--codec=vp9', '--crf=40'], max: 8 * MO },
-  { nom: `planner-${langue}-720.mp4`, args: ['render', '--codec=h264', '--crf=28', '--pixel-format=yuv420p', `--scale=${ECHELLE_720}`], max: 6 * MO },
-  { nom: `planner-${langue}.webp`, args: ['still', `--frame=${IMAGE_FIXE}`, '--image-format=webp', '--jpeg-quality=80', `--scale=${ECHELLE_720}`], max: 60 * 1024 },
-];
+/** Comment rendre chaque fichier ; ses noms et poids maximaux sont ceux du site (empreinteVideo.js) */
+const REGLAGES = {
+  mp4: ['render', '--codec=h264', '--crf=28', '--pixel-format=yuv420p', `--scale=${ECHELLE_720}`],
+  webm: ['render', '--codec=vp9', '--crf=40'],
+  image: ['still', `--frame=${IMAGE_FIXE}`, '--image-format=webp', '--jpeg-quality=80', `--scale=${ECHELLE_720}`],
+};
+const fichiers = (langue) => Object.entries(fichiersVideo(langue)).map(([type, { nom, max }]) => ({ nom, max, args: REGLAGES[type] }));
 
 const options = process.argv.slice(2);
 const versSite = options.includes('--site');

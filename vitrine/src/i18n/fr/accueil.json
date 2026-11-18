@@ -173,6 +173,15 @@
   "video": {
     "surtitre": "Présentation",
     "titre": "Tout Planner, en une minute et demie.",
+    "commandes": {
+      "lire": "Lire la vidéo",
+      "pause": "Mettre en pause",
+      "revoir": "Revoir la vidéo"
+    },
+    "transcription": {
+      "ouvrir": "Lire le texte de la vidéo",
+      "image": "À l'image :"
+    },
     "scenes": [
       {
         "titre": "Planner",

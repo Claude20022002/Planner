@@ -10,8 +10,26 @@ import path from 'node:path';
 /** Langues rendues ; l'arabe viendra après UIX-04 */
 export const LANGUES_VIDEO = ['fr', 'en'];
 
-/** Les clés de accueil.json que la vidéo affiche : ses textes, et les illustrations du site qu'elle reprend */
-export const CLES_VIDEO = ['video', 'emploi.illustration', 'appel.illustration', 'quiz.illustration', 'report.etapes'];
+const MO = 1024 * 1024;
+
+/**
+ * Les fichiers rendus d'une langue et leur poids maximal (plan, § 5 et question 7) : le MP4 en 720p
+ * lu par défaut, le WebM en 1080p pour les grands écrans, l'image fixe d'attente.
+ */
+export const fichiersVideo = (langue) => ({
+  mp4: { nom: `planner-${langue}-720.mp4`, max: 6 * MO },
+  webm: { nom: `planner-${langue}-1080.webm`, max: 8 * MO },
+  image: { nom: `planner-${langue}.webp`, max: 60 * 1024 },
+});
+
+/** Langue de la vidéo montrée sur une page : la sienne si elle est rendue, sinon le français */
+export const langueVideo = (langue) => (LANGUES_VIDEO.includes(langue) ? langue : 'fr');
+
+/**
+ * Les clés de accueil.json que la vidéo affiche : ses scènes et ses écrans, et les illustrations du
+ * site qu'elle reprend. Pas le titre de la section ni ses boutons, qui sont sur la page.
+ */
+export const CLES_VIDEO = ['video.scenes', 'video.illustrations', 'emploi.illustration', 'appel.illustration', 'quiz.illustration', 'report.etapes'];
 
 /** Les fichiers du site que la vidéo dessine : le logo animé et l'icône des en-têtes d'écran */
 export const LOGOS_VIDEO = ['public/logo/planner-horloge.svg', 'public/logo/planner-icone.svg'];

@@ -173,6 +173,15 @@
   "video": {
     "surtitre": "Overview",
     "titre": "All of Planner, in ninety seconds.",
+    "commandes": {
+      "lire": "Play the video",
+      "pause": "Pause",
+      "revoir": "Watch again"
+    },
+    "transcription": {
+      "ouvrir": "Read the video transcript",
+      "image": "On screen:"
+    },
     "scenes": [
       {
         "titre": "Planner",
