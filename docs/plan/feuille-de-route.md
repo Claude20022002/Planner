@@ -25,11 +25,13 @@ Les sorties de ClassQuiz (QJE-01, QJE-03, QJE-06) et le Studio « comme Google F
 
 ## Conditions de la mise en ligne du site (VIT-06)
 
-Le site part sur le sous-domaine quand les quatre sont réunies :
+Le site part sur le sous-domaine quand les **six** sont réunies (les conditions 5 et 6 ont été ajoutées par le chef le 18 nov.) :
 1. l'audit de `vitrine/` et la montée d'Astro, le 27 nov. ou après (file de l'agent de Cursor, n° 3) ;
 2. les mentions légales et la page de confidentialité, dont le texte est décidé par le chef ;
 3. les SVG officiels des logos, fournis par le chef ;
-4. le site non indexé tant qu'il est sur le sous-domaine.
+4. le site non indexé tant qu'il est sur le sous-domaine ;
+5. **le contenu complet** : toutes les applications présentées (Quiz et jeux, Bibliothèque, Espace de cours et annonces, Application mobile), et la Bibliothèque sortie de « Bientôt » ([VIT-07](missions/vit-07-contenu-complet.md), agent de Cursor) ;
+6. **la vidéo de présentation globale** sur l'accueil, en motion design, sous-titrée, sans voix ([VIT-08](missions/vit-08-video-presentation.md), Claude de VS Code).
 
 Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement parte le jour même.
 
@@ -51,7 +53,8 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | N° | Mission | Fiche | Validé par |
 |---|---|---|---|
 | 1 | **QJE-01** : plan validé par le chef, code fait (`40abb56b`), relu par le coordinateur : **prête pour la PR** ; suivre la CI après le push du chef | [sortie-classquiz](missions/sortie-classquiz.md) | chef (fait) |
-| 2 | Les parcours `entreRoles`, `appel` et `appelClasse`, qui échouent vers minuit UTC : ils ont besoin d'une séance réellement en cours, ce qui demande de changer `frontend/tests/parcours/donnees.mjs`, partagé par tous les parcours. Plan court d'abord. Branche `fix/parcours-seance-en-cours` | ligne QUA de [suivi.md](suivi.md) ; précédent : #202 | chef |
+| 2 | **VIT-07, le contenu complet du site** (condition 5 de la mise en ligne) : pages Quiz et jeux, Bibliothèque, Espace de cours et annonces, Application mobile ; Bibliothèque sortie de « Bientôt » ; navigation regroupée. Plan court d'abord | [vit-07-contenu-complet](missions/vit-07-contenu-complet.md) | chef |
+| 2 bis | Les parcours `entreRoles`, `appel` et `appelClasse`, qui échouent vers minuit UTC : ils ont besoin d'une séance réellement en cours, ce qui demande de changer `frontend/tests/parcours/donnees.mjs`, partagé par tous les parcours. Plan court d'abord. Branche `fix/parcours-seance-en-cours` | ligne QUA de [suivi.md](suivi.md) ; précédent : #202 | chef |
 | 3 | **Audit de `vitrine/` et montée d'Astro, le 27 nov. ou après** (pas avant : la règle des deux semaines) : `astro` 7.4.12 et `@astrojs/react` 7.1.9, exceptions de `vitrine/` dans `deploy/audit-exceptions.json`, `node ../scripts/audit.mjs vitrine` dans `vitrine.yml`. Branche `fix/audit-vitrine`. C'est la condition 1 de VIT-06 | [plan de l'audit](../conception/exploitation/fix-audit-dependances.md), § 2 point 4 et § 6 | déjà validé |
 | 4 | UIX-10e, les jeux web et mobile avec l'accent « jeu », après UIX-10b et UIX-10d | [plan d'UIX-10](../conception/interface/uix-10-charte-commune.md), § 9 | chef pendant la pause |
 
@@ -60,6 +63,7 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | N° | Mission | Fiche | Validé par |
 |---|---|---|---|
 | 1 | **UIX-10a**, le code : le plan court (`4dc4f070`) a reçu le **visa du coordinateur le 18 nov.** | [uix-10a-source-charte](missions/uix-10a-source-charte.md) | coordinateur (fait) |
+| 1 bis | **VIT-08, la vidéo de présentation globale** pour l'accueil du site (condition 6 de la mise en ligne) : motion design aux couleurs du site, sans captures, sous-titrée en français et en anglais, sans voix. Plan court d'abord | [vit-08-video-presentation](missions/vit-08-video-presentation.md) | chef |
 | 2 | **UIX-10b**, l'application web à la charte : thème, gestion, panneau des départs, Barlow et choix de famille retirés, Studio quiz compris. C'est là que la connexion, l'accueil des modules et les pages de gestion prennent le style du site. Plan court, après la fusion de #199 et d'UIX-09 | plan d'UIX-10, § 9 | chef |
 | 3 | UIX-06c, Salles, Campus, Créneaux et Calendrier : son plan est validé et attendait UIX-10. Il se fait sur la charte d'UIX-10b. Si 06c doit modifier `ThemeGestion`, 10b passe d'abord | [plan d'UIX-06c](../conception/interface/uix-06c-ressources-temps.md) | déjà validé |
 | 4 | QJE-14, le plan du Studio « comme Google Forms » | [qje-14-studio-forms](missions/qje-14-studio-forms.md) | chef |

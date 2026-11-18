@@ -18,8 +18,10 @@
 2. **Mentions légales et page de confidentialité**, sans formulaire ni mesure d'audience. Leur texte est une décision du chef (textes légaux, Q-11).
 3. **Les SVG officiels des logos**, à la place des logos redessinés.
 4. **Site non indexé** tant qu'il est sur le sous-domaine (`noindex` et `robots.txt`).
+5. **Contenu complet** : toutes les applications présentées ([VIT-07](vit-07-contenu-complet.md)). Ajoutée par le chef le 18 nov.
+6. **Vidéo de présentation globale** sur l'accueil ([VIT-08](vit-08-video-presentation.md)). Ajoutée par le chef le 18 nov. Le plan prévoit qu'elle est servie par le site, avec un en-tête de cache adapté.
 
-Le plan peut s'écrire et se valider maintenant. Le déploiement attend les quatre conditions.
+Le plan peut s'écrire et se valider maintenant. Le déploiement attend les six conditions.
 
 ## Ce que le plan doit établir
 
