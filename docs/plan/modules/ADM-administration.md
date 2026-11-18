@@ -50,7 +50,7 @@
 
 - **ADM-01** : un responsable de niveau ne voit ni ne modifie rien hors de son niveau. Un test par route touchée.
 - **ADM-03** : un fichier de 300 élèves avec dix erreurs volontaires est refusé avec dix messages lisibles ; corrigé, il passe en entier ou pas du tout. Une langue en double pour le même élève est l'une de ces erreurs, et le message nomme l'élève.
-- **ADM-04** : la mesure EP-1 est faite par une personne extérieure et notée.
+- **ADM-04** : la mesure EP-1 est faite par une personne extérieure et notée. Le modèle collège lui propose des groupes de langue vides, et l'import ADM-03 les remplit.
 - **ADM-05** : le lien parent-enfant ne se crée que par l'école ; deux parents séparés ont chacun leurs droits. Les règles sont validées avec le juriste (revue A-6).
 - **ADM-06** : une école de démonstration passe d'une année à l'autre en moins d'une demi-journée, et l'année close reste lisible.
 
