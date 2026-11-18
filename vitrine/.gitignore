@@ -1,0 +1,3 @@
+# Sorties de construction du site vitrine
+dist/
+.astro/

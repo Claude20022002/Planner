@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="logo-planner">
+<!-- Redessiné d'après les logos officieux du 18 nov. 2026 ; à remplacer par les fichiers du chef de projet -->
+<rect width="512" height="512" rx="112" fill="#0B3B6F"/>
+<g transform="translate(96 124) scale(0.615)">
+<polygon points="8,196 38,206 38,352 260,404 260,422 8,372" fill="#A8C8EA"/><polygon points="512,196 482,206 482,352 260,404 260,422 512,372" fill="#A8C8EA"/><polygon points="66,178 96,190 96,316 260,380 260,398 66,334" fill="#A8C8EA"/><polygon points="454,178 424,190 424,316 260,380 260,398 454,334" fill="#A8C8EA"/>
+<polygon points="130,208 260,272 390,208 390,290 260,368 130,290" fill="#FFFFFF"/><polygon points="10,130 260,8 510,130 260,252" fill="#FFFFFF"/>
+<g stroke="#0B3B6F" stroke-width="18" stroke-linecap="round" fill="none"><g class="aiguille aiguille-heures"><circle cx="260" cy="130" r="96" stroke="none"/><line x1="260" y1="130" x2="260" y2="74"/></g><g class="aiguille aiguille-minutes"><circle cx="260" cy="130" r="96" stroke="none"/><line x1="260" y1="130" x2="346" y2="130"/></g></g>
+</g>
+</svg>

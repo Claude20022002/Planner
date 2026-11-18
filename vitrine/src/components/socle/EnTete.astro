@@ -1,0 +1,104 @@
+---
+// En-tête du site vitrine : logo et nom, navigation entre les pages, langue, lien de contact.
+// Barre fixe et translucide. Sur téléphone, un bouton replie la navigation ; sans JavaScript,
+// le bouton reste caché et la navigation s'affiche en entier sous la barre.
+import { Menu } from 'lucide-react';
+import Logo from './Logo.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES_PUBLIEES, NAVIGATION, chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  page: string;
+}
+
+const { langue, page } = Astro.props;
+const t = traductions(langue, 'commun');
+---
+<header class="entete">
+  <div class="barre">
+    <a class="marque" href={chemin(langue)} aria-label={t('logo')}>
+      <Logo class="marque-logo" />
+      <span aria-hidden="true">{t('produit')}</span>
+    </a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="navigation-principale" hidden>
+      <Menu aria-hidden="true" size={22} strokeWidth={1.75} />
+      <span class="visuellement-cache">{t('navigation.menu')}</span>
+    </button>
+    <nav class="navigation" id="navigation-principale" aria-label={t('navigation.label')}>
+      <ul class="liens">
+        {NAVIGATION.map((cle) => (
+          <li>
+            <a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{t(`navigation.${cle}`)}</a>
+          </li>
+        ))}
+      </ul>
+      <ul class="langues" aria-label={t('langues.label')}>
+        {LANGUES_PUBLIEES.map((l) => (
+          <li>
+            <a href={chemin(l, page)} hreflang={l} lang={l} aria-current={l === langue ? 'true' : undefined}>{t(`langues.${l}`)}</a>
+          </li>
+        ))}
+      </ul>
+      <a class="contact" href={chemin(langue, 'accueil', 'contact')}>{t('navigation.contact')}</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Menu repliable sur téléphone : le bouton n'apparaît qu'avec JavaScript
+  const entete = document.querySelector('.entete');
+  const bouton = entete?.querySelector('.menu-bouton');
+  if (entete && bouton) {
+    entete.classList.add('repliable');
+    bouton.hidden = false;
+    bouton.addEventListener('click', () => {
+      const ouvert = bouton.getAttribute('aria-expanded') === 'true';
+      bouton.setAttribute('aria-expanded', String(!ouvert));
+    });
+  }
+</script>
+
+<style>
+  .entete {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 50;
+    background: rgb(255 255 255 / 82%);
+    backdrop-filter: saturate(180%) blur(18px);
+    border-block-end: 1px solid rgb(11 59 111 / 8%);
+  }
+  .barre {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: var(--espace-3);
+    max-inline-size: var(--largeur-contenu);
+    min-block-size: var(--hauteur-entete);
+    margin-inline: auto;
+    padding-inline: var(--gouttiere);
+  }
+  .marque { display: inline-flex; align-items: center; gap: 0.5rem; min-block-size: var(--hauteur-entete); font-weight: 650; font-size: 1.0625rem; text-decoration: none; color: var(--bleu-nuit); }
+  .marque :global(.marque-logo) { inline-size: 2rem; }
+  .menu-bouton { display: grid; place-items: center; inline-size: 2.75rem; block-size: 2.75rem; padding: 0; border: 0; background: none; color: var(--encre); cursor: pointer; border-radius: var(--rayon-petit); }
+  .menu-bouton[hidden] { display: none; }
+  .navigation { flex-basis: 100%; display: grid; gap: var(--espace-3); padding-block: var(--espace-2) var(--espace-4); }
+  .repliable .menu-bouton[aria-expanded='false'] + .navigation { display: none; }
+  .liens { display: grid; gap: var(--espace-2); font-size: 1.25rem; font-weight: 600; }
+  .liens a, .langues a { text-decoration: none; }
+  .liens a[aria-current='page'] { color: var(--bleu); }
+  .langues { display: flex; gap: var(--espace-3); font-size: var(--texte-petit); color: var(--gris-texte); }
+  .langues a[aria-current='true'] { color: var(--encre); font-weight: 600; }
+  .contact { justify-self: start; padding: 0.5rem 1rem; border-radius: var(--rayon-pilule); background: var(--bleu); color: var(--blanc); font-size: var(--texte-petit); font-weight: 600; text-decoration: none; }
+  .contact:hover { background: var(--bleu-profond); }
+  .liens a:hover, .langues a:hover { color: var(--bleu); }
+
+  @media (min-width: 64rem) {
+    .barre { flex-wrap: nowrap; }
+    .menu-bouton, .repliable .menu-bouton { display: none; }
+    .navigation, .repliable .menu-bouton[aria-expanded='false'] + .navigation { flex-basis: auto; display: flex; align-items: center; gap: var(--espace-4); padding: 0; }
+    .liens { display: flex; gap: var(--espace-3); font-size: var(--texte-petit); font-weight: 450; }
+    .langues { gap: var(--espace-2); font-size: 0.8125rem; }
+  }
+</style>

@@ -6,7 +6,8 @@
  * {{produit}} dans les textes traduits).
  *
  * Cherche « HESTIM » (en capitales) et le domaine « hestim.ma » dans le code du serveur, du site,
- * de l'application et du dossier partagé, hors commentaires et hors tests. Les identifiants
+ * de l'application, du dossier partagé et du site vitrine (textes, pages, logos), hors commentaires
+ * et hors tests. Les identifiants
  * techniques en minuscules (« hestim-planner », colonne annees_a_hestim…) sont figés et ne
  * s'affichent pas : ils ne sont pas cherchés. Les exceptions sont listées ci-dessous, avec leur
  * raison ; toute autre occurrence fait échouer la vérification (CI : job du site).
@@ -23,6 +24,9 @@ const DOSSIERS = ['backend', 'frontend/src', 'mobile/src', 'shared'];
 const PAGES = ['frontend/index.html'];
 const IGNORES = new Set(['node_modules', 'tests', '__tests__', 'dist', 'coverage', 'uploads']);
 const EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.cjs']);
+// Site vitrine (VIT-01) : ses textes sont dans des .json, ses pages en .astro, ses logos en .svg
+const DOSSIERS_VITRINE = ['vitrine/src', 'vitrine/public'];
+const EXTENSIONS_VITRINE = new Set([...EXTENSIONS, '.astro', '.json', '.svg', '.css', '.html']);
 const MOTIF = /HESTIM|hestim\.ma/;
 
 // Exceptions permises : chemin (préfixe) et raison
@@ -39,18 +43,19 @@ const EXCEPTIONS = [
 // Ligne de commentaire (//, /*, *, {/* en JSX) : la documentation peut nommer l'école pilote
 const estCommentaire = (ligne) => /^\s*(\/\/|\/\*|\*|\{\/\*)/.test(ligne);
 
-const fichiers = (dossier) =>
+const fichiers = (dossier, extensions = EXTENSIONS) =>
   fs.readdirSync(dossier, { withFileTypes: true }).flatMap((entree) => {
     if (IGNORES.has(entree.name)) return [];
     const chemin = path.join(dossier, entree.name);
-    if (entree.isDirectory()) return fichiers(chemin);
-    return EXTENSIONS.has(path.extname(entree.name)) ? [chemin] : [];
+    if (entree.isDirectory()) return fichiers(chemin, extensions);
+    return extensions.has(path.extname(entree.name)) ? [chemin] : [];
   });
 
 const relatif = (chemin) => path.relative(RACINE, chemin).split(path.sep).join('/');
 const permis = (chemin) => EXCEPTIONS.some((e) => chemin.startsWith(e.chemin));
 
-const trouves = [...DOSSIERS.flatMap((dossier) => fichiers(path.join(RACINE, dossier))).map(relatif), ...PAGES]
+const vitrine = DOSSIERS_VITRINE.filter((d) => fs.existsSync(path.join(RACINE, d))).flatMap((d) => fichiers(path.join(RACINE, d), EXTENSIONS_VITRINE));
+const trouves = [...DOSSIERS.flatMap((dossier) => fichiers(path.join(RACINE, dossier))), ...vitrine].map(relatif).concat(PAGES)
   .filter((chemin) => !permis(chemin))
   .flatMap((chemin) =>
     fs
@@ -65,4 +70,4 @@ if (trouves.length) {
   for (const { chemin, numero, ligne } of trouves) console.error(`  ${chemin}:${numero}  ${ligne.trim().slice(0, 140)}`);
   process.exit(1);
 }
-console.log(`Aucun nom d'école écrit en dur (${DOSSIERS.join(', ')} ; ${EXCEPTIONS.length} exceptions justifiées).`);
+console.log(`Aucun nom d'école écrit en dur (${[...DOSSIERS, ...DOSSIERS_VITRINE].join(', ')} ; ${EXCEPTIONS.length} exceptions justifiées).`);

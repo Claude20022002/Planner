@@ -21,6 +21,7 @@ Chiffrer le dump d'avant déploiement avec la phrase, et purger les dumps `hesti
 - `sauvegarder_base` lit `JOURS` et `PHRASE`. Elle ne prend pas `CHIFFRER`. Sans fichier `PHRASE` lisible, le déploiement s'arrête.
 - Le clair est vérifié, chiffré en `hestim-<date>.sql.gz.gpg`, puis effacé. Les `hestim-*.sql.gz` et `hestim-*.sql.gz.gpg` plus vieux que `JOURS` sont effacés, sans entrer dans `quotidien/`.
 - Le retour arrière affiché commence par `. "${CONF:-/root/hestim-sauvegarde.conf}"` et garde `$PHRASE` pour le moment où l'opérateur colle la commande. `sauvegarder_base` tourne dans une sous-commande : sa variable ne remontait pas, et l'ancienne commande montrait `--passphrase-file ""`.
+- Fusion de `origin/main` sans rebase (PR #201). `suivi.md` garde la ligne REL-03 et celle de l'audit. Le module garde la phrase REL-03 et le paragraphe d'audit.
 
 ## Vérifié
 
