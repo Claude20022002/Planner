@@ -44,7 +44,8 @@ Deux pages du seul site vitrine (pas de l'application Planner) : « Mentions lé
 
 **Ce qui reste au chef avant le code** : `[NOM]`, `[E-MAIL]`, `[HÉBERGEUR]`, `[N]`. Et, pour `[N]` : la configuration du serveur doit
 effacer les journaux de la vitrine (Nginx et Traefik) en `[N]` jours au plus. Aujourd'hui la rotation se fait par taille, pas par durée :
-la phrase du § 5.2 n'est vraie qu'une fois ce réglage fait ou vérifié (hors de ce périmètre : `deploy/`, chef).
+la phrase du § 5.2 n'est vraie qu'une fois ce réglage fait ou vérifié (hors de ce périmètre : `deploy/`, chef). **Accord du chef
+(18 nov.)** : ce réglage est un reste à faire de la condition 2 de VIT-06, que le coordinateur attribue.
 
 Écarté faute de réponse : aucune clause de propriété du contenu (pas de licence dans le dépôt), aucun pays, aucune loi nommée (Q-23).
 
@@ -131,9 +132,10 @@ flowchart LR
     L["langues.js : PAGES"] --> F["PiedDePage : colonne Ressources"]
 ```
 
-**Question au coordinateur (périmètre)** : la fiche n'ouvre pas `vitrine/src/components/`. Je propose un composant partagé
-`vitrine/src/components/textes/PageDeTexte.astro` (styles dans le composant, aucun jeton nouveau), réutilisé par la page À propos de VIT-16.
-Sans accord, le balisage et ses styles vont dans chaque page, au prix d'une répétition.
+**Périmètre** : la fiche n'ouvrait pas `vitrine/src/components/`. Le composant partagé `vitrine/src/components/textes/PageDeTexte.astro`
+(styles dans le composant, aucun jeton nouveau), réutilisable par la page À propos de VIT-16, est **accepté par le chef le 18 novembre**.
+Un paragraphe peut porter des liens nommés entre accolades (`{email}`, `{confidentialite}`, `{mentionsLegales}`), que la page remplace
+par des liens internes ou `mailto:`.
 
 ## 7. Fichiers créés ou modifiés
 
