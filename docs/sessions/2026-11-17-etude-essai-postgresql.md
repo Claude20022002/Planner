@@ -36,7 +36,7 @@ Plan validé par Claude20022002 le 17 nov. (« Je valide le plan de l'essai, Doc
 | N° | Question | Réponse | État |
 |---|---|---|---|
 | E-5 | Les corrections portables du § 2.1 du rapport (et les 12 unicités inscrites dans les modèles) méritent-elles une PR à part vers `main`, même si l'on reste sur MySQL ? | **oui** (chef, 18 nov.) : tâche `refactor/` à part | répondue |
-| E-6 | Décision du moteur, selon la règle du plan (rapport, § 7) : le gain du critère 5 (exclusion en base) est-il décisif ? | proposition : non ; rester sur MySQL | en attente |
+| E-6 | Décision du moteur, selon la règle du plan (rapport, § 7) : le gain du critère 5 (exclusion en base) est-il décisif ? | **rester sur MySQL** (chef, 18 nov.) | répondue |
 
 ## État laissé
 
@@ -50,7 +50,7 @@ Plan validé par Claude20022002 le 17 nov. (« Je valide le plan de l'essai, Doc
 
 ## Reste à faire, dans l'ordre (mis à jour le 18 nov.)
 
-1. Le chef tranche E-6 et inscrit la décision du moteur dans decisions.md.
+1. ~~Décision du moteur~~ : **MySQL reste** (chef, 18 nov.), inscrite dans decisions.md.
 2. Tâche `refactor/` séparée : reprendre sur `main` les corrections portables du § 2.1 et inscrire les 12 unicités dans les modèles, avec un test de régression ; plan court à valider.
 3. Le chef pousse les branches ; seul le rapport de l'essai est fusionné.
 
@@ -82,7 +82,7 @@ docs/conception/plateforme/essai-postgresql.md, le rapport intermédiaire
 docs/conception/plateforme/rapport-essai-postgresql.md et cette fiche
 (docs/sessions/2026-11-17-etude-essai-postgresql.md).
 Fait : les neuf critères ; rapport final avec la recommandation « rester sur MySQL » (§ 7).
-Reste : décision du chef (E-6) ; puis la tâche refactor/ séparée des corrections portables
+Décision du chef (18 nov.) : MySQL reste. Reste : la tâche refactor/ séparée des corrections portables
 et des 12 unicités (plan court à valider).
 Environnement : Docker Desktop ; conteneurs essai_mysql_test (3307) et essai_pg_test (5433),
 données en mémoire (tmpfs) ; recréer avec MSYS_NO_PATHCONV=1 sous Git Bash ; tests avec
