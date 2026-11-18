@@ -1,0 +1,53 @@
+/* Styles de base du site vitrine : remise à zéro, typographie, lien d'évitement, état initial des
+   apparitions. Les propriétés logiques (inline, block) préparent l'arabe en droite à gauche. */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-family: var(--police);
+  font-size: 100%;
+  color: var(--encre);
+  background: var(--blanc);
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-padding-block-start: var(--hauteur-entete);
+}
+
+body { margin: 0; font-size: var(--texte); line-height: var(--interligne-texte); overflow-x: clip; }
+
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; max-inline-size: 100%; }
+a { color: inherit; }
+button { font: inherit; }
+
+:focus-visible { outline: 3px solid var(--bleu); outline-offset: 3px; border-radius: 4px; }
+
+.lien-evitement {
+  position: absolute;
+  inset-inline-start: var(--espace-2);
+  inset-block-start: -10rem;
+  z-index: 100;
+  padding: var(--espace-1) var(--espace-2);
+  background: var(--bleu-nuit);
+  color: var(--blanc);
+  border-radius: var(--rayon-petit);
+}
+.lien-evitement:focus { inset-block-start: var(--espace-1); }
+
+.visuellement-cache {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Apparitions : masquées seulement si le script d'animation tourne (classe « anime ») */
+.anime [data-apparition] { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+}

@@ -1,0 +1,44 @@
+---
+// Illustration de l'accueil : écran d'appel par QR code sur un téléphone. Le motif est un dessin
+// fixe (il n'encode rien) ; les textes viennent d'accueil.json (appel.illustration).
+interface Props {
+  t: (cle: string) => any;
+}
+
+const { t } = Astro.props;
+const TAILLE = 21;
+// Repères des trois coins, comme sur tout QR code
+const repere = (x: number, y: number) => x < 7 && y < 7 || x >= TAILLE - 7 && y < 7 || x < 7 && y >= TAILLE - 7;
+// Motif pseudo-aléatoire fixe, pour que le dessin soit le même à chaque build
+const plein = (x: number, y: number) => ((x * 7 + y * 13 + x * y * 3) % 5) < 2;
+const modules: [number, number][] = [];
+for (let y = 0; y < TAILLE; y++) {
+  for (let x = 0; x < TAILLE; x++) if (!repere(x, y) && plein(x, y)) modules.push([x, y]);
+}
+const coins: [number, number][] = [[0, 0], [TAILLE - 7, 0], [0, TAILLE - 7]];
+---
+<div class="ecran-appel" aria-hidden="true">
+  <p class="cours">{t('appel.illustration.cours')}</p>
+  <p class="detail">{t('appel.illustration.detail')}</p>
+  <svg class="qr" viewBox={`-1 -1 ${TAILLE + 2} ${TAILLE + 2}`}>
+    <rect x="-1" y="-1" width={TAILLE + 2} height={TAILLE + 2} rx="1.5" fill="#FFFFFF" />
+    {coins.map(([x, y]) => (
+      <g>
+        <rect x={x + 0.5} y={y + 0.5} width="6" height="6" rx="1.2" fill="none" stroke="#0B3B6F" />
+        <rect x={x + 2} y={y + 2} width="3" height="3" rx="0.6" fill="#0B3B6F" />
+      </g>
+    ))}
+    {modules.map(([x, y]) => <rect x={x + 0.1} y={y + 0.1} width="0.8" height="0.8" rx="0.2" fill="#0B3B6F" />)}
+  </svg>
+  <p class="consigne">{t('appel.illustration.consigne')}</p>
+  <p class="compte">{t('appel.illustration.compte')}</p>
+</div>
+
+<style>
+  .ecran-appel { display: grid; align-content: center; justify-items: center; gap: 0.6rem; block-size: 100%; padding: 1.5rem 1.25rem; background: linear-gradient(180deg, var(--bleu-nuit), var(--ecran)); color: var(--blanc); text-align: center; }
+  .cours { font-size: 1.25rem; font-weight: 650; }
+  .detail { font-size: 0.875rem; color: var(--bleu-pale); }
+  .qr { inline-size: 78%; margin-block: 1rem; }
+  .consigne { font-size: 0.875rem; color: var(--bleu-pale); max-inline-size: 13rem; }
+  .compte { margin-block-start: 0.5rem; padding: 0.35rem 0.9rem; border-radius: var(--rayon-pilule); background: rgb(168 200 234 / 18%); color: var(--bleu-clair); font-size: 0.875rem; font-weight: 600; }
+</style>

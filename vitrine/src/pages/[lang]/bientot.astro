@@ -1,0 +1,27 @@
+---
+// Page « Bientôt », dans chaque langue : les modules en préparation du plan de parité, sans date,
+// chacun marqué « Bientôt ». Rien n'y est présenté comme disponible. Assemble seulement.
+import {
+  GraduationCap, ClipboardList, Users, UserPlus, Wallet, MessagesSquare, BookOpen, Bus, Briefcase,
+  BadgeCheck, LayoutDashboard, Languages, WifiOff, FileOutput,
+} from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'bientot');
+---
+<Gabarit langue={lang} page="bientot" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <GrilleCartes id="ecole" ton="gris" surtitre={t('ecole.surtitre')} titre={t('ecole.titre')} cartes={t('ecole.cartes')} badge={t('badge')}
+    icones={[GraduationCap, ClipboardList, Users, UserPlus, Wallet, MessagesSquare, BookOpen, Bus, Briefcase]} />
+  <GrilleCartes id="aussi" surtitre={t('aussi.surtitre')} titre={t('aussi.titre')} cartes={t('aussi.cartes')} badge={t('badge')}
+    icones={[BadgeCheck, LayoutDashboard, Languages, WifiOff, FileOutput]} />
+  <FinDePage langue={lang} />
+</Gabarit>
