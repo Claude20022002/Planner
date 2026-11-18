@@ -24,6 +24,11 @@
     "navigation": "Pages du site",
     "droits": "© 2026 Planner"
   },
+  "finDePage": {
+    "titre": "Voyez Planner sur vos propres règles.",
+    "texte": "Vous voulez voir Planner sur une école fictive, avec les règles de votre établissement ? Parlons-en.",
+    "accueil": "Retour à l'accueil"
+  },
   "redirection": {
     "titre": "Planner",
     "lien": "Aller à la page d'accueil"

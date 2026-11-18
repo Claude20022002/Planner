@@ -24,6 +24,11 @@
     "navigation": "Site pages",
     "droits": "© 2026 Planner"
   },
+  "finDePage": {
+    "titre": "See Planner with your own rules.",
+    "texte": "Want to see Planner on a fictional school, with your school's rules? Let's talk.",
+    "accueil": "Back to home"
+  },
   "redirection": {
     "titre": "Planner",
     "lien": "Go to the home page"

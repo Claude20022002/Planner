@@ -1,0 +1,35 @@
+---
+// Fin de chaque page de fonction : invitation à voir Planner, lien vers la section contact de
+// l'accueil (sans formulaire : VIT-02) et lien de retour à l'accueil. Textes dans commun.json.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import Apparition from '../socle/Apparition.astro';
+import { traductions } from '../../i18n/index.js';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+}
+
+const { langue } = Astro.props;
+const t = traductions(langue, 'commun');
+---
+<Section ton="gris" etiquette="fin-titre">
+  <Apparition>
+    <div class="fin">
+      <Titre id="fin-titre" taille="moyen">{t('finDePage.titre')}</Titre>
+      <Accroche>{t('finDePage.texte')}</Accroche>
+      <div class="actions">
+        <BoutonPrincipal href={chemin(langue, 'accueil', 'contact')}>{t('navigation.contact')}</BoutonPrincipal>
+        <BoutonPrincipal href={chemin(langue)} variante="lien">{t('finDePage.accueil')}</BoutonPrincipal>
+      </div>
+    </div>
+  </Apparition>
+</Section>
+
+<style>
+  .fin { display: grid; gap: var(--espace-3); justify-items: center; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--espace-3); }
+</style>

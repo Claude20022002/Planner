@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "statistiques": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "points": [
+      "",
+      ""
+    ],
+    "illustration": {
+      "label": "",
+      "titreSalles": "",
+      "titreEnseignants": "",
+      "salles": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "enseignants": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "quotidien": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  }
+}

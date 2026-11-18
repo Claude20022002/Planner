@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "appel": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "points": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "quiz": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "points": [
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "aussi": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  }
+}

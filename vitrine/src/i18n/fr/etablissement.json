@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "titre": "Pour l'établissement · Planner",
+    "description": "Statistiques d'occupation, salles et réservations, examens et surveillances, plusieurs campus, import des données : Planner donne à la direction une vue claire de l'école."
+  },
+  "entete": {
+    "surtitre": "Pour l'établissement",
+    "titre": "Toute l'école, d'un seul regard.",
+    "accroche": "La direction et la scolarité trouvent au même endroit les salles, les examens et les chiffres de l'emploi du temps."
+  },
+  "statistiques": {
+    "surtitre": "Statistiques",
+    "titre": "Les chiffres de votre emploi du temps.",
+    "texte": "Planner montre l'occupation de chaque salle et la charge de chaque enseignant.",
+    "points": [
+      "L'occupation des salles",
+      "La charge des enseignants"
+    ],
+    "illustration": {
+      "label": "Exemple d'écran de statistiques : occupation des salles et charge des enseignants",
+      "titreSalles": "Occupation des salles",
+      "titreEnseignants": "Heures par semaine",
+      "salles": [
+        "Amphi A",
+        "Salle B12",
+        "Labo 2",
+        "Salle C04",
+        "Amphi B"
+      ],
+      "enseignants": [
+        "Ens. A",
+        "Ens. B",
+        "Ens. C",
+        "Ens. D",
+        "Ens. E"
+      ]
+    }
+  },
+  "quotidien": {
+    "surtitre": "Au quotidien",
+    "titre": "Ce que la scolarité gère dans Planner.",
+    "cartes": [
+      {
+        "titre": "Salles et réservations",
+        "texte": "Les salles, leur capacité, et leurs réservations en dehors des cours."
+      },
+      {
+        "titre": "Examens",
+        "texte": "Les sessions d'examen, leurs salles et leurs surveillances."
+      },
+      {
+        "titre": "Plusieurs campus",
+        "texte": "Chaque campus a ses salles, et le temps de trajet entre campus compte dans le calcul."
+      },
+      {
+        "titre": "Import des données",
+        "texte": "Enseignants, étudiants, filières, groupes et cours s'importent depuis un fichier CSV."
+      },
+      {
+        "titre": "Comptes et rôles",
+        "texte": "Chaque personne a un compte et un rôle : étudiant, enseignant ou administration."
+      },
+      {
+        "titre": "Aux couleurs de l'école",
+        "texte": "Le nom, le logo et les couleurs de l'établissement s'affichent dans Planner."
+      }
+    ]
+  }
+}
