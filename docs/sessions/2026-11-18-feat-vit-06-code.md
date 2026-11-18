@@ -66,3 +66,44 @@ Le chef crée les deux secrets Docker Hub, relève le digest du SHA choisi et su
 après les neuf conditions du plan. Le coordinateur tient suivi.md.
 Commits locaux uniquement pour l’agent. Le chef pousse et lance les commandes du serveur.
 ~~~
+
+## Reprise du 18 novembre · contrôle avant déploiement
+
+**Déploiement bloqué.** La [PR #221](https://github.com/Claude20022002/Planner/pull/221) est ouverte sur `261ea4dbfe120813754b6c0d8952de3ff552af58`. Le `main` consulté est `6911d7542f2015fffde55e5a869314094e194244`. Aucun digest candidat n’a pu être confirmé. Ce `main` utilise encore le workflow antérieur à la publication Docker Hub. L’API publique des tags du dépôt Docker Hub a répondu 404.
+
+Le [job vitrine](https://github.com/Claude20022002/Planner/actions/runs/44397095319/job/135129795925) a réussi l’installation, l’audit des dépendances livrées, le contrôle de neutralité, les tests, le build Astro et le dépôt de l’artefact. Il échoue à « Vérifier le profil Compose » avec le code 1. L’étape Nginx est ignorée après cet échec. La publication est ignorée par conception sur la PR. En local, Compose v5.6.1 a rendu les 17 services habituels et le service vitrine sous profil avec l’hôte, le réseau, le port interne et le digest factice attendus. Le journal détaillé de l’étape est nécessaire pour attribuer l’échec sur le runner.
+
+Au dernier relevé de la [CI générale](https://github.com/Claude20022002/Planner/actions/runs/44397095300), le frontend, le mobile, le solveur et les scripts d’exploitation sont verts. Le backend et les parcours de démonstration sont en cours.
+
+| # | Condition | État et preuve |
+|---|---|---|
+| 1 | Audit complet et montée d’Astro | Bloquée jusqu’au 27 novembre au plus tôt. La PR lance `npm audit --omit=dev --audit-level=high`. Le contrôle demandé `node ../scripts/audit.mjs vitrine` reste à voir passer sur le SHA retenu après la montée. |
+| 2 | Mentions légales et confidentialité | Les deux routes sont absentes de `main`. L’approbation des textes par le chef et la vérification du site livré sans formulaire ni mesure d’audience restent à établir. |
+| 3 | SVG officiels | [PR #220](https://github.com/Claude20022002/Planner/pull/220) ouverte. Vérifier les SVG intégrés dans l’image retenue après fusion. |
+| 4 | Non-indexation | La recette locale précédente a vérifié `X-Robots-Tag: noindex` et `robots.txt`. Le job Nginx de #221 a été ignoré. Refaire le contrôle sur le digest retenu, y compris les routes de langue et la 404. |
+| 5 | VIT-07, toutes les applications | [#214](https://github.com/Claude20022002/Planner/pull/214) et [#217](https://github.com/Claude20022002/Planner/pull/217) fusionnées et pages présentes sur `main`. Vérifier le contenu et les liens dans l’image retenue. |
+| 6 | VIT-08, vidéo de présentation | [PR #216](https://github.com/Claude20022002/Planner/pull/216) ouverte. La recette locale précédente porte sur une copie temporaire. Vérifier la lecture et les en-têtes WebM et MP4 sur le digest retenu. |
+| 7 | VIT-09, illustrations | Livraison de VIT-09 non établie sur `main`. Vérifier sur chaque page les images, leurs types MIME, le cache et la CSP dans l’image retenue. |
+| 8 | VIT-10, pages par rôle | [PR #219](https://github.com/Claude20022002/Planner/pull/219) ouverte. Vérifier les pages, l’ouverture de « Solutions » et le pied de page après fusion. |
+| 9 | VIT-11, catalogue et FAQ | [PR #218](https://github.com/Claude20022002/Planner/pull/218) ouverte pour le plan. Vérifier les pages françaises et anglaises et le repli arabe dans l’image retenue. |
+| 10 | Complément décidé par le chef | `f4c5da36` et consigne du coordinateur de 21 h 05. Vérifier « avant → avec Planner » et FAQ par rôle (VIT-10b), « Pourquoi Planner » et regroupement par type d’établissement (VIT-13), méga-menu « Fonctions » par catégorie (VIT-11) et logos de modules (VIT-09). À vérifier sur l’image retenue. |
+
+### Commandes pour le chef
+
+Depuis un terminal où GitHub CLI est authentifié, récupérer le journal de l’étape rouge et suivre les contrôles.
+
+~~~powershell
+gh run view 44397095319 --job 135129795925 --log-failed --repo Claude20022002/Planner
+gh pr checks 221 --watch --repo Claude20022002/Planner
+~~~
+
+### Prompt de reprise après le contrôle
+
+~~~text
+Reprends VIT-06 sur feat/vit-06-code. Lis le plan validé et la section Reprise de
+docs/sessions/2026-11-18-feat-vit-06-code.md. Récupère le log du job Compose de #221,
+identifie la commande en échec et soumets un plan court de correction selon AGENTS.md.
+Après CI verte, fusions des contenus et audit Astro à partir du 27 novembre, relève le
+SHA complet de main et le digest du job de publication, puis vérifie les dix conditions
+sur l’image tirée par digest. Consigne les preuves. Le chef seul pousse et déploie.
+~~~
