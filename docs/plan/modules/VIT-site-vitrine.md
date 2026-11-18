@@ -25,7 +25,7 @@
 | VIT-02 | Une page et un formulaire de contact : nom, école, ville, effectif, besoin, consentement ; WhatsApp et courriel ; accusé de réception ; demandes enregistrées et suivies | SP-3 réduit | libre | M | VIT-01, textes légaux | à faire |
 | VIT-03 | Centre d'aide : guides par rôle, questions fréquentes, vidéos courtes, liens depuis l'aide de l'application | SP-4 | libre | M | VIT-01 | à faire |
 | VIT-04 | Page d'état du service et journal des nouveautés de chaque version | SP-5 | libre | S | EXP-05 | à faire |
-| VIT-05 | Vitrine complète : fonctions par module, solutions par type d'école, sécurité et données, tarifs ; français, puis arabe et anglais | SP-2 | quand la vente reprend | L | VEN | gelé |
+| VIT-05 | Vitrine complète : fonctions par module, solutions par type d'école, sécurité et données, tarifs ; français, puis arabe et anglais | SP-2 | quand la vente reprend | L | VEN | préparation dégelée le 18 nov. : accueil et pages de fonctions, sans tarifs ni mise en ligne ([plan](../../conception/vitrine/vit-vitrine.md)) |
 
 ## Critères de « terminé »
 

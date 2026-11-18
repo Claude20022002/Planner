@@ -176,3 +176,14 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | Les dictionnaires de traduction sont coupés par lot (`i18n/referentiel/<lot>.fr.js` et `.en.js`), pour que deux agents n'écrivent jamais le même fichier | coordinateur |
 | Repères de taille d'une mission d'équipe : page 80 lignes, hook 200, composant et dialogue 150 ([equipe.md](equipe.md), § 3) | coordinateur |
 | UIX-06c ([plan](../conception/interface/uix-06c-ressources-temps.md)) : **à valider par le chef**, avec l'exception hors chantier | chef, en attente |
+
+**Chef, 18 nov., vers 00 h 15** : un site vitrine au style d'apple.com (contenu à la manière d'OpenEduCat), et une grille d'applications façon icloud.com pour les modules de l'école. Logos officieux reçus (icône bleu nuit à la toque-horloge, logo horizontal à l'horloge).
+
+| Décision | Par |
+|---|---|
+| Le style Apple vaut pour le site vitrine et la grille d'abord, puis pour l'application | chef |
+| Travail de ce soir, après UIX-06b, à la place d'UIX-06c (reportée, plan à valider plus tard) | chef |
+| Site construit sans être mis en ligne : la préparation de VIT-05 est dégelée, sans tarifs | chef |
+| Site en français, anglais et arabe dès la structure ; l'arabe se remplit après UIX-04 | chef |
+| Bibliothèques proposées : Motion (déjà là) pour l'animation, Lucide et lucide-animated pour les icônes, Astro pour le site statique ; **à accepter par le chef** avec les plans [vit-vitrine.md](../conception/vitrine/vit-vitrine.md) et [uix-09-grille-applications.md](../conception/interface/uix-09-grille-applications.md) | coordinateur, en attente du chef |
+| Redistribution : le lot Enseignements d'UIX-06b passe à Codex ; Claude (VS Code) devient l'intégrateur du site ; l'agent de Cursor le rejoint et Codex fait UIX-09 après l'intégration d'UIX-06b ([vit-equipe.md](missions/vit-equipe.md)) | coordinateur |

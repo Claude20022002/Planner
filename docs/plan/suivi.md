@@ -60,10 +60,11 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | MKT | MKT-05 et MKT-09 : vidéo publicitaire et présentation aux établissements (MKT-09 dégelé pour la préparation par le chef) | agent Claude du coordinateur | `mkt/mkt-05-video-presentation` (non poussée) | argumentaire, 3 scripts et plan de 18 diapositives écrits (`2a921691`) ; réponses du chef reçues ; recherche de sources en cours ; vidéo et .pptx après l'accord du chef | 15 nov. 23 h 50 | [mkt-video-presentation](missions/mkt-video-presentation.md) |
 | EXP | correctifs de l'audit du 15 nov. : REL-06 (journaux Docker), puis REL-03 (sauvegardes en clair, jamais purgées) | agent de Cursor, après MOT-03 | à créer : `fix/exp-journaux-docker`, `fix/exp-purge-dumps` | plans courts à faire valider par le chef (déploiement de production) | 15 nov. | — |
 
-| UIX | UIX-06b, mission d'équipe : intégrateur, commun et Filières | Codex | `feat/uix-06b-referentiel` | code du 16 nov. non commité ; R0 demandé le 18 nov. | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
+| UIX | UIX-06b, mission d'équipe : intégrateur, commun, Filières et Enseignements | Codex | `feat/uix-06b-referentiel` | code du 16 nov. non commité ; R0 demandé le 18 nov. | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
 | UIX | UIX-06b, mission d'équipe : Groupes et Modules | agent de Cursor | `feat/uix-06b-referentiel-groupes-modules` (à créer à R0) | attend R0 | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
-| UIX | UIX-06b, mission d'équipe : Enseignements | Claude (VS Code) | `feat/uix-06b-referentiel-enseignements` (à créer à R0) | finit QUA-10, puis attend R0 | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
-| UIX | UIX-06c Salles, Campus, Créneaux, Calendrier (même équipe) | — | `feat/uix-06c-ressources-temps` (à créer) | plan écrit, **à valider par le chef**, avec l'exception hors chantier | 18 nov. 00 h 30 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
+| UIX | UIX-06c Salles, Campus, Créneaux, Calendrier (même équipe) | — | `feat/uix-06c-ressources-temps` (à créer) | reportée par le chef le 18 nov. (site vitrine et grille à la place) ; plan à valider plus tard | 18 nov. 00 h 30 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
+| VIT | VIT-01 et VIT-05 (préparation) : site vitrine au style Apple, mission d'équipe | Claude (VS Code), intégrateur ; agent de Cursor après UIX-06b | `feat/vit-01-vitrine` (à créer) | plan écrit, **à valider par le chef** ; SVG des logos à déposer | 18 nov. 00 h 20 | [vit-equipe](missions/vit-equipe.md) |
+| UIX | UIX-09 grille d'applications façon iCloud | Codex, après UIX-06b | `feat/uix-09-grille-applications` (à créer) | plan écrit, **à valider par le chef** | 18 nov. 00 h 20 | [vit-equipe](missions/vit-equipe.md) |
 
 Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
@@ -176,11 +177,12 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte : CI parcours rouge, correction du test de reprise réseau committée localement | #185 · feat/uix-06a-interface |
+| [UIX-09](modules/UIX-interface.md) | Grille d'applications façon iCloud | libre | M | plan à valider (inscrite le 18 nov.) |  |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
 | [VIT-04](modules/VIT-site-vitrine.md) | Page d'état du service et journal des nouveautés de chaque version | libre | S | à faire |  |
-| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | gelé |  |
+| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | préparation dégelée le 18 nov. (sans tarifs ni mise en ligne) |  |
 | [VEN-01](modules/VEN-vente-modules.md) | Registre des modules | 2 | L | à faire |  |
 | [VEN-02](modules/VEN-vente-modules.md) | Cinq entretiens de terrain avec des directeurs d'écoles privées, séparés de toute… | 3 | S par entretien | à faire |  |
 | [VEN-03](modules/VEN-vente-modules.md) | Abonnements et factures | — | L | gelé |  |

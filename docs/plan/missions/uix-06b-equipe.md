@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | État | ouverte |
-| Équipe | Codex (intégrateur), agent de Cursor, Claude (VS Code) ; coordinateur : Claude (Cursor) |
+| Équipe | Codex (intégrateur), agent de Cursor ; coordinateur : Claude (Cursor). Claude (VS Code) est passé au site vitrine le 18 nov. ([vit-equipe](vit-equipe.md)) |
 | Attribuée le | 18 novembre 2026, nuit du 17 au 18, par le coordinateur ; accord du chef : oui, le 17 nov. au soir (« UIX-06b puis UIX-06c », « les sessions finissent, une rejoint ») |
 | Module et chantier | [UIX](../modules/UIX-interface.md) · hors chantier : exception UIX-06b accordée par le chef le 16 nov. |
 | Fonction | UIX-06b : Filières, Groupes, Modules et Enseignements au style du pilote Personnes, fonctions et droits inchangés · taille L |
@@ -19,12 +19,11 @@ Codex a écrit presque tout le code le 16 novembre, **sans le commiter** : les q
 
 | Agent | Rôle | Lot | Modèle | Branche | Dossier |
 |---|---|---|---|---|---|
-| **Codex** | intégrateur | commun et Filières | son modèle le plus fort, raisonnement élevé : il tient les fichiers communs et toutes les fusions | `feat/uix-06b-referentiel` | `..\travaux-planner\uix-06b-referentiel` |
+| **Codex** | intégrateur | commun, Filières et Enseignements | son modèle le plus fort, raisonnement élevé : il tient les fichiers communs et toutes les fusions | `feat/uix-06b-referentiel` | `..\travaux-planner\uix-06b-referentiel` |
 | **Agent de Cursor** | membre | Groupes et Modules | son modèle de code le plus fort, raisonnement élevé : deux domaines et leurs imports | `feat/uix-06b-referentiel-groupes-modules` | `..\travaux-planner\uix-06b-groupes-modules` |
-| **Claude (VS Code)** | membre | Enseignements | **Fable 5.2**, sinon Opus 5.5 : le lot le plus délicat (mutualisation, scission, `EquipeDialog` partagé avec d'autres écrans) | `feat/uix-06b-referentiel-enseignements` | `..\travaux-planner\uix-06b-enseignements` |
 | Claude (Cursor) | coordinateur | aucun | Opus 5.5 | `doc/coordination-equipe` | `..\travaux-planner\coordination-equipe` |
 
-La session Claude de VS Code qui rejoint est celle de QUA-10 : elle finit d'abord son étape et applique `fin-de-session`.
+**Changement du 18 nov., 00 h 20 (coordinateur, à la demande du chef : le site vitrine se fait ce soir)** : le lot Enseignements passe à Codex, qui en a écrit le code ; Claude (VS Code) devient l'intégrateur du site vitrine. Après l'intégration d'UIX-06b, l'agent de Cursor rejoint le site vitrine et Codex fait UIX-09 (grille d'applications).
 
 ## Les propriétaires
 
@@ -40,9 +39,9 @@ Chemins sous `frontend/`. Un fichier absent de ce tableau n'est à personne : le
 | `src/pages/gestion/Groupes.jsx`, `src/components/groupes/`, `src/i18n/referentiel/groupes.*.js` | agent de Cursor |
 | `src/pages/gestion/Cours.jsx`, `src/components/cours/`, `src/i18n/referentiel/modules.*.js` | agent de Cursor |
 | `tests/parcours/referentiel-groupes.spec.cjs`, `tests/parcours/referentiel-modules.spec.cjs`, `tests/parcours/cours.spec.cjs`, `tests/parcours/desactivation.spec.cjs`, `tests/parcours/annees.spec.cjs` | agent de Cursor |
-| `src/pages/gestion/Enseignements.jsx`, `src/components/enseignements/`, `src/i18n/referentiel/enseignements.*.js` | Claude (VS Code) |
-| `src/components/planning/EquipeDialog.jsx` (présentation seulement ; vérifier ses autres usages) | Claude (VS Code) |
-| `tests/parcours/referentiel-enseignements.spec.cjs`, `tests/parcours/generation.spec.cjs` | Claude (VS Code) |
+| `src/pages/gestion/Enseignements.jsx`, `src/components/enseignements/`, `src/i18n/referentiel/enseignements.*.js` | Codex |
+| `src/components/planning/EquipeDialog.jsx` (présentation seulement ; vérifier ses autres usages) | Codex |
+| `tests/parcours/referentiel-enseignements.spec.cjs`, `tests/parcours/generation.spec.cjs` | Codex |
 | sa propre fiche de session `../docs/sessions/2026-11-18-<branche de lot>.md` | chaque membre |
 | tests unitaires `*.test.js` placés dans un dossier de composants | le propriétaire du dossier |
 
@@ -57,7 +56,7 @@ Heures visées, à décaler ensemble si R0 glisse.
 | 00 h 45 | **R0, départ** | Codex | son travail du 16 nov. est commité en trois commits (outils communs et thème ; Filières et Groupes ; Modules et Enseignements, d'après les étapes 3 à 5 du plan) ; les six dictionnaires `src/i18n/referentiel/<lot>.fr.js` et `.en.js` (filieres, groupes, modules, enseignements) existent, vides, et sont inscrits dans `index.js` ; lint, tests unitaires et build passent ; rapport « R0 prêt, sha … » dans `sortie\` |
 | R0 + 10 min | lancement des lots | coordinateur | chaque membre reçoit le sha de départ |
 | 02 h 15 | **R1, fin des lots** | chaque membre | lot commité ; rapport de rendez-vous (modèle dans `equipe.md`, § 7) |
-| 02 h 45 | **intégration** | Codex | fusion dans l'ordre : commun et Filières (déjà là), Groupes et Modules, Enseignements ; contrôle des fichiers de chaque lot ; lint, unitaires, build, `node scripts/verifier-neutre.mjs` ; tailles du § 3 de `equipe.md` ; rapport avec le sha final |
+| 02 h 45 | **intégration** | Codex | fusion de Groupes et Modules dans sa branche, qui porte déjà le commun, Filières et Enseignements ; contrôle des fichiers de chaque lot ; lint, unitaires, build, `node scripts/verifier-neutre.mjs` ; tailles du § 3 de `equipe.md` ; rapport avec le sha final |
 | 03 h 00 | **relecture** | coordinateur | `relecture-branche` sur `feat/uix-06b-referentiel` ; verdict et commandes au chef |
 
 ## Ce que chaque lot doit livrer à R1
@@ -69,9 +68,9 @@ Heures visées, à décaler ensemble si R0 glisse.
 5. **Parcours du lot** dans son fichier : rôles administrateur, responsable, enseignant sans responsabilité, étudiant ; chargement, échec et reprise, liste vide, filtre vide, changements rapides de filtre ; 390 et 1280 px ; français et anglais ; clair et sombre ; axe-core. Les parcours tournent dans la CI de la PR : aucun agent ne lance de serveur (plan, § 8).
 6. **Contrôles** : `npm run lint`, `npm run test:unit`, `npm run build` dans `frontend/`.
 
-## Ensuite : UIX-06c, même équipe
+## UIX-06c : reportée
 
-Le plan [uix-06c-ressources-temps.md](../../conception/interface/uix-06c-ressources-temps.md) attend **la validation du chef** et son accord pour une exception hors chantier. S'il les donne, l'équipe enchaîne après la relecture d'UIX-06b, sur une branche posée sur `feat/uix-06b-referentiel` :
+Le chef a demandé le site vitrine et la grille d'applications pour ce soir, à la place d'UIX-06c (18 nov.). Le plan [uix-06c-ressources-temps.md](../../conception/interface/uix-06c-ressources-temps.md) reste à valider, pour plus tard. Découpage prévu alors :
 
 | Agent | Lot UIX-06c |
 |---|---|
@@ -115,21 +114,9 @@ puis la jonction frontend\node_modules (equipe.md, § 4). Tu n'écris que les fi
 Livre à R1 ce que dit la fiche, puis dépose ton rapport de rendez-vous dans sortie\. Jamais de git push.
 ```
 
-### Claude (VS Code), après sa fin de session QUA-10 et R0
-
-```text
-Tu es membre de la mission d'équipe UIX-06b, lot « Enseignements ». Lis d'abord AGENTS.md,
-docs/plan/equipe.md, puis la fiche docs/plan/missions/uix-06b-equipe.md
-(dossier ..\travaux-planner\coordination-equipe). Crée ton dossier depuis le point de départ :
-git worktree add "..\travaux-planner\uix-06b-enseignements" -b feat/uix-06b-referentiel-enseignements <sha R0>
-puis la jonction frontend\node_modules (equipe.md, § 4). Tu n'écris que les fichiers de ton lot.
-EquipeDialog est utilisé ailleurs : présentation seulement, et vérifie chacun de ses usages.
-Un besoin dans un fichier commun : écris-le au coordinateur (plan-b-projet-pacte-8a).
-Livre à R1 ce que dit la fiche, puis envoie ton rapport de rendez-vous au coordinateur. Jamais de git push.
-```
-
 ## Suivi
 
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
-| 18 nov. | fiche écrite ; Codex reçoit R0 | — |
+| 18 nov. 00 h 01 | fiche écrite ; Codex reçoit R0 | — |
+| 18 nov. 00 h 20 | Enseignements passe à Codex ; Claude (VS Code) au site vitrine | — |
