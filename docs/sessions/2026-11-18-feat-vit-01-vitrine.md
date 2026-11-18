@@ -49,11 +49,23 @@ Versions, publiées depuis plus de deux semaines : astro 7.4.5, @astrojs/react 7
 
 | N° | Question | Proposition | À qui | État |
 |---|---|---|---|---|
-| 1 | Les écarts 1 à 6 ci-dessus sont-ils acceptés ? | oui ; captures réelles à l'intégration | coordinateur | en attente |
-| 2 | La session `plan-b-projet-pacte-8a` était introuvable : le rapport de R0 n'a pas été envoyé par message. Quelle session est le coordinateur ? | le chef relaie cette fiche | chef | en attente |
+| 1 | Les écarts 1 à 6 ci-dessus sont-ils acceptés ? | oui | coordinateur | en attente ; **écart 1 tranché par le chef** à la reprise : illustrations gardées pour l'instant |
+| 2 | La session `plan-b-projet-pacte-8a` était introuvable : le rapport de R0 n'a pas été envoyé par message. Quelle session est le coordinateur ? | le chef relaie cette fiche | chef | **réglé à la reprise** : le chef relaie cette fiche au coordinateur |
 | 3 | `npm audit` complet : 11 failles hautes dans les outils de construction (picomatch, ReDoS, sans version corrigée ; un avis Astro sur l'adaptateur Node, inutilisé ici). Les accepter tant que le site n'est que construit ? | oui ; revoir à la mise en ligne | chef (sécurité) | en attente |
 | 4 | Adresses de contact (courriel, WhatsApp) pour la section contact | attendre VIT-02 et Q-11 | chef | en attente |
 | 5 | SVG officiels des logos | les remplacer dans `public/logo/` et dans les jetons | chef | en attente |
+
+## Reprise du 18 nov. (même branche, même session de travail)
+
+Aucun code : tout ce qui reste attend une décision ou un autre agent.
+
+- **Tour d'état** : le chef a poussé la branche et ouvert la **PR #195** sur `dec87480`. Il n'y a ni branche `feat/vit-01-vitrine-pages`, ni consigne de lot dans `boites\cursor\entree\` (seulement le message d'UIX-06b). Pas de SVG dans `boites\ressources\`, seulement les deux photos. Le coordinateur `plan-b-projet-pacte-8a` est toujours introuvable.
+- **CI de la PR #195** : « Construire le site vitrine » est verte. « Test Backend » est rouge à l'étape « Audit des dépendances » de `backend/` (picomatch, ReDoS, GHSA-fc5q-39xc-vjpf, par `umzug` et `tinyglobby` ; 37 failles hautes). **L'échec est le même sur `main`** depuis `2d74376c` (exécutions 44207283177 et 44209892974) : la vitrine n'y est pour rien.
+- **Décisions du chef**, à inscrire par le coordinateur dans `decisions.md` :
+  1. le chef relaie cette fiche au coordinateur ; aucun message envoyé à une session au hasard ;
+  2. le coordinateur lance le lot de l'agent de Cursor par sa boîte (point de départ `17251fc5`) ;
+  3. écart 1 : les cadres d'appareils gardent les illustrations jusqu'au passage de l'application au nouveau style, pour ne pas montrer des écrans bientôt dépassés ;
+  4. l'audit de `backend/` se corrige sur une branche `fix/` à part, avec un plan court à valider (sécurité et dépendances), hors du chantier VIT, à attribuer par le chef ou le coordinateur.
 
 ## État laissé
 
@@ -62,21 +74,22 @@ Versions, publiées depuis plus de deux semaines : astro 7.4.5, @astrojs/react 7
 - Adresses des pages, fixées dans `src/i18n/langues.js` et déjà dans la navigation : `emploi-du-temps`, `en-classe`, `etablissement`, `securite`, `bientot`.
 ## Reste à faire, dans l'ordre
 
-1. Le coordinateur relit R0 et l'accueil, et tranche les écarts.
-2. L'agent de Cursor fait son lot depuis `17251fc5` : pages de fonctions, sécurité, bientôt.
+1. Le coordinateur relit R0 et l'accueil (PR #195), et tranche les écarts 2 à 6.
+2. Le coordinateur envoie sa consigne à l'agent de Cursor, qui fait son lot depuis `17251fc5` : pages de fonctions, sécurité, bientôt.
 3. Intégration : fusionner `feat/vit-01-vitrine-pages` après le contrôle des fichiers (`git diff --name-only 17251fc5..feat/vit-01-vitrine-pages`), puis vérifier les liens de chaque page dans les trois langues.
-4. Captures réelles sur le jeu de démonstration neutre, à la place des illustrations si le coordinateur le décide.
-5. Remplacer les logos et les jetons par les SVG du chef dès qu'ils arrivent.
-6. Contrôles finaux (tests, build, axe, Lighthouse, 390, 768 et 1440 px), fiche, commandes au chef.
+4. Remplacer les logos et les jetons par les SVG du chef dès qu'ils arrivent.
+5. Contrôles finaux (tests, build, axe, Lighthouse, 390, 768 et 1440 px), fiche, commandes au chef.
+6. Plus tard : captures réelles, une fois l'application passée au nouveau style (décision du chef, écart 1).
 
 ## Commandes pour le chef de projet
 
-Après la relecture du coordinateur et l'intégration des pages :
+La PR #195 est déjà ouverte. Pour y ajouter le commit de cette reprise (fiche et suivi) :
 
 ```powershell
-git -C "..\travaux-planner\vit-01-vitrine" push -u origin feat/vit-01-vitrine
-gh pr create --base main --head feat/vit-01-vitrine --title "VIT-01 : site vitrine, socle et accueil" --fill
+git -C "..\travaux-planner\vit-01-vitrine" push
 ```
+
+Ne pas fusionner la PR #195 avant la relecture du coordinateur et l'intégration des pages.
 
 ## Prompt de reprise
 
@@ -89,11 +102,14 @@ Lis d'abord AGENTS.md, docs/plan/equipe.md, puis, dans ..\travaux-planner\coordi
 puis vitrine/README.md.
 Fait : R0 (17251fc5 : Astro, jetons, logos redessinés, socle, logo animé, CI sans publication,
 neutralité étendue) et l'accueil en huit sections (c0198c75). Tests 23/23, axe sans violation,
-Lighthouse 100.
+Lighthouse 100. PR #195 ouverte par le chef ; « Construire le site vitrine » verte ; « Test Backend »
+rouge à l'audit de backend/ (picomatch), comme sur main : hors de VIT, correctif sur une branche fix/ à part.
+Décisions du chef à la reprise : il relaie la fiche au coordinateur ; le coordinateur lance le lot
+de l'agent de Cursor ; illustrations gardées dans les cadres jusqu'au nouveau style de l'application.
 Reste : relecture du coordinateur ; intégration du lot de l'agent de Cursor (feat/vit-01-vitrine-pages,
-contrôle des fichiers d'abord) ; captures réelles ; SVG officiels des logos ; contrôles finaux.
-Questions en attente : écarts 1 à 6 (coordinateur) ; session du coordinateur introuvable ;
-failles d'audit des outils de build (chef) ; adresses de contact ; SVG des logos.
+contrôle des fichiers d'abord, depuis 17251fc5) ; SVG officiels des logos ; contrôles finaux.
+Questions en attente : écarts 2 à 6 (coordinateur) ; failles d'audit des outils de build de vitrine/ (chef) ;
+adresses de contact ; SVG des logos.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; rien mis en ligne ;
 aucune animation si le mouvement réduit est demandé ; fiche de session et suivi.md à jour en fin
 de session ; jamais de git push.
