@@ -11,6 +11,7 @@ const JeuProgression = sequelize.define(
         id_defi: { type: DataTypes.STRING(60), allowNull: false },
         indices: { type: DataTypes.TINYINT, allowNull: false, defaultValue: 0 },
         points: { type: DataTypes.INTEGER, allowNull: false },
+        avec_solution: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
         reussi_le: { type: DataTypes.DATE, allowNull: false },
     },
     { tableName: "JeuxProgressions", freezeTableName: true }
