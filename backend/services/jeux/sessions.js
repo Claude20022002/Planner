@@ -6,7 +6,7 @@ import { defiDuJeu, jeuParCode, modesDuJeu } from "../../../shared/jeux/catalogu
 import { avatarDe } from "../../../shared/jeux/avatars.js";
 import { COMMANDES_MAX, LONGUEUR_COMMANDE_MAX, rejouerDefi } from "../../../shared/terminal/jeu.js";
 import { JOUEUR_CLASSE } from "../../../shared/terminal/tableau.js";
-import { peutProposerDansModule } from "./jeux.js";
+import { coursDeSesClasses } from "./jeux.js";
 
 /**
  * Sessions de jeu, côté enseignant. Les jeux sont faits pour les étudiants : l'enseignant ne joue
@@ -77,10 +77,7 @@ export const lancerSession = async (user, { code_jeu, id_cours, mode } = {}) => 
     const jeu = jeuParCode(code_jeu);
     if (!jeu) throw new ErreurMetier("Jeu inconnu", 404);
     if (!modesDuJeu(jeu).includes(mode)) throw new ErreurMetier(`mode doit être l'un de : ${modesDuJeu(jeu).join(", ")}`, 400);
-    const idCours = Number(id_cours);
-    const cours = Number.isInteger(idCours) && idCours > 0 ? await Cours.findByPk(idCours, { attributes: ["id_cours", "code_cours", "nom_cours", "id_filiere"] }) : null;
-    if (!cours) throw new ErreurMetier("Module introuvable", 404);
-    if (!(await peutProposerDansModule(user, cours))) throw new ErreurMetier("Vous ne pouvez lancer un jeu que dans vos modules", 403);
+    const cours = await coursDeSesClasses(user, id_cours);
 
     await JeuModule.findOrCreate({ where: { code_jeu: jeu.code, id_cours: cours.id_cours }, defaults: { id_user_auteur: user.id_user } });
     const collectif = mode === "collectif";

@@ -22,7 +22,7 @@ Les routes de jeux répondaient **403** quand un enseignant agit sur un module q
 | `POST /api/jeux/:code/modules` | 403 « Vous ne pouvez proposer un jeu que dans vos modules » | 404 « Module introuvable » |
 | `DELETE /api/jeux/:code/modules/:id_cours` | 403 « Vous ne pouvez retirer un jeu que de vos modules » | 404 « Module introuvable » |
 | `GET /api/jeux/:code/modules/:id_cours/suivi` | 403 « Suivi réservé aux enseignants du module » | 404 « Module introuvable » |
-| `POST /api/jeux/sessions` | 403 « Vous ne pouvez lancer un jeu que dans vos modules » | 404 « Module introuvable » |
+| `POST /api/sessions-jeu` | 403 « Vous ne pouvez lancer un jeu que dans vos modules » | 404 « Module introuvable » |
 
 Un 403 dit « ce module existe mais il n'est pas à vous » : c'est exactement ce que la règle interdit. Le
 404 reprend le message déjà utilisé pour un identifiant inconnu, donc les deux cas sont indiscernables.
