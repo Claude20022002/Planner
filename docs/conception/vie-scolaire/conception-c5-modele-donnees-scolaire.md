@@ -73,7 +73,10 @@ Le chef confirme l’inscription et la visibilité dans la classe avant créatio
 
 ## 4. Profils et nomenclatures
 
-MOT-01 fournit le contrat de résolution des valeurs datées. MOT-05 porte le passage des listes de
+MOT-01 fournit la résolution des valeurs datées, dont `ETA.ID.PROFIL`. La migration 0061 place le profil
+université à la portée établissement sur la base historique. MOT-05 utilisera les codes stables du niveau
+et du cycle comme cibles du catalogue. Les nouveaux référentiels rendront ces cibles vérifiables lors
+de la configuration, comme le demande R-8 de la relecture MP-1. MOT-05 porte le passage des listes de
 `backend/config/referentiel.js` aux nomenclatures en base. D-06 impose des codes dont le sens est compris par le
 moteur et autorise des libellés locaux. Les trois niveaux emboîtés continuent de servir la hiérarchie. Les
 groupes transversaux issus de VSC-07 traversent les classes et sont fournis séparément à MOT-06.
@@ -96,6 +99,7 @@ appartenances par école. Le premier accès parent est mono-école avec ADM-05 e
 | I-2, I-3, I-7, I-8 | Envois et tâches exécutés dans la bonne école. Tester deux écoles, un identifiant local identique et des liens remis dans le bon contexte. |
 | I-4, I-5, I-9, I-10 | Vérifier le contexte de session et des limites de connexion. Préserver les contrats existants des intégrations tant que leur usage par un compte sans adresse est indisponible. |
 | I-11, I-12, I-13, I-14 | Une restauration et un export sont propres à l’école. Le mobile, les domaines et les journaux suivent leurs contrats PLA, EXP et MOB. |
+| I-16 | Lire fuseau et activation par école. Tester deux écoles qui diffèrent sur ces réglages et vérifier leurs périodes, parcours et envois. |
 
 Le personnel n’accède qu’aux dossiers autorisés par sa portée. Le parent ne voit que les enfants liés à son
 dossier dans l’école active et les données publiées pour eux. L’élève ne peut ouvrir un dossier familial.

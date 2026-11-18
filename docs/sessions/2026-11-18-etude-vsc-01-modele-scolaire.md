@@ -13,6 +13,7 @@
 - `b1f95031` rédige la conception C-5, les trois diagrammes, les règles et recettes attendues, la séquence
   de migrations et l’inventaire des consommateurs de l’adresse du compte. Il consigne les arbitrages dans
   le registre des décisions et actualise les fiches VSC et ADM.
+- Le registre a été mis en cohérence sur D-06 et Q-20 dans `d97730fa`. Le contrat MOT-01 et les réglages d’école sont reliés à la conception.
 - Le chef confirme l’inscription et l’affectation avant création du compte, l’accès parent mono-école,
   les périmètres ADM et VSC et les règles des notes et des frais.
 
