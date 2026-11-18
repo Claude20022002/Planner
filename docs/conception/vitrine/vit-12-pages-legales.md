@@ -144,7 +144,7 @@ Sans accord, le balisage et ses styles vont dans chaque page, au prix d'une rép
 | `vitrine/src/pages/[lang]/confidentialite.astro` | créé | assemble la page | 30 lignes |
 | `vitrine/src/components/textes/PageDeTexte.astro` | créé, **si le coordinateur l'accepte** | sections de texte | 60 lignes |
 | `vitrine/src/i18n/{fr,en,ar}/mentions-legales.json`, `confidentialite.json` | créés (ar : textes vides) | textes | — |
-| `vitrine/src/i18n/{fr,en,ar}/commun.json` | modifié | deux clés de navigation : `mentionsLegales`, `confidentialite` | +2 lignes |
+| `vitrine/src/i18n/{fr,en,ar}/commun.json` | modifié | deux clés de navigation : `mentionsLegales`, `confidentialite` ; l'adresse `contact.email`, écrite une seule fois et reprise par VIT-16 | +4 lignes |
 | `vitrine/src/i18n/langues.js` | modifié | deux entrées de `PAGES` | +2 lignes |
 | `vitrine/src/components/socle/PiedDePage.astro` | modifié | deux liens dans « Ressources » | +2 lignes |
 | `vitrine/tests/pages-legales.test.js` | créé | voir § 8 | 60 lignes |
