@@ -17,7 +17,14 @@
     "etablissement": "",
     "securite": "",
     "bientot": "",
-    "contact": ""
+    "contact": "",
+    "parEtablissement": "",
+    "parRole": "",
+    "direction": "",
+    "scolarite": "",
+    "enseignants": "",
+    "etudiants": "",
+    "ressources": ""
   },
   "langues": {
     "label": "",

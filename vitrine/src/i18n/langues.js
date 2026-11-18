@@ -24,7 +24,14 @@ export const PAGES = {
   etablissement: 'etablissement',
   securite: 'securite',
   bientot: 'bientot',
+  direction: 'direction',
+  scolarite: 'scolarite',
+  enseignants: 'enseignants',
+  etudiants: 'etudiants',
 };
+
+/** Pages par rôle, dans l'ordre du menu « Solutions ». Hors du menu « Fonctions ». */
+export const ROLES = ['direction', 'scolarite', 'enseignants', 'etudiants'];
 
 /** Pages de fonction, dans l'ordre du menu « Fonctions » */
 export const FONCTIONS = ['emploiDuTemps', 'enClasse', 'quizEtJeux', 'coursEtAnnonces', 'bibliotheque', 'application', 'etablissement'];

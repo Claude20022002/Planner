@@ -12,7 +12,7 @@ interface Props {
   surtitre?: string;
   titre: string;
   texte?: string;
-  cartes: { titre: string; texte: string }[];
+  cartes: { titre: string; texte: string; href?: string }[];
   icones: any[];
   badge?: string;
   ton?: 'clair' | 'gris' | 'sombre';
@@ -34,12 +34,21 @@ if (icones.length < cartes.length) throw new Error(`Icônes manquantes dans la g
       return (
         <li>
           <Apparition delai={(i % 3) * 0.1} class="carte-enveloppe">
-            <div class="carte">
-              {badge && <span class="badge">{badge}</span>}
-              <Icone aria-hidden="true" size={30} strokeWidth={1.25} />
-              <h3>{carte.titre}</h3>
-              <p>{carte.texte}</p>
-            </div>
+            {carte.href ? (
+              <a class="carte" href={carte.href}>
+                {badge && <span class="badge">{badge}</span>}
+                <Icone aria-hidden="true" size={30} strokeWidth={1.25} />
+                <h3>{carte.titre}</h3>
+                <p>{carte.texte}</p>
+              </a>
+            ) : (
+              <div class="carte">
+                {badge && <span class="badge">{badge}</span>}
+                <Icone aria-hidden="true" size={30} strokeWidth={1.25} />
+                <h3>{carte.titre}</h3>
+                <p>{carte.texte}</p>
+              </div>
+            )}
           </Apparition>
         </li>
       );
@@ -51,7 +60,7 @@ if (icones.length < cartes.length) throw new Error(`Icônes manquantes dans la g
   .entete { display: grid; gap: var(--espace-2); justify-items: center; }
   .cartes { display: grid; gap: var(--espace-2); inline-size: 100%; }
   .cartes > li, .cartes :global(.carte-enveloppe) { display: grid; }
-  .carte { display: grid; align-content: start; justify-items: start; gap: var(--espace-1); padding: var(--espace-3); border-radius: var(--rayon-grand); background: var(--fond-carte, var(--gris-fond)); text-align: start; }
+  .carte { display: grid; align-content: start; justify-items: start; gap: var(--espace-1); padding: var(--espace-3); border-radius: var(--rayon-grand); background: var(--fond-carte, var(--gris-fond)); text-align: start; color: inherit; text-decoration: none; }
   .carte :global(svg) { color: var(--couleur-surtitre, var(--bleu)); margin-block: var(--espace-1) 0; }
   .badge { padding: 0.2rem 0.7rem; border-radius: var(--rayon-pilule); background: var(--fond-badge, var(--blanc)); color: var(--bleu-nuit); font-size: 0.8125rem; font-weight: 600; }
   h3 { font-size: 1.25rem; font-weight: 650; line-height: 1.25; }
