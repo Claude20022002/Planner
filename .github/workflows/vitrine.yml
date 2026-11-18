@@ -76,7 +76,7 @@ jobs:
             sed -E 's/^\$\{(.*):\?$/\1=recette/' | sort -u >> "$RUNNER_TEMP/vitrine.env"
           compose=(docker compose --env-file "$RUNNER_TEMP/vitrine.env" -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml)
           "${compose[@]}" config --no-env-resolution --quiet
-          services="$("${compose[@]}" config --services)"
+          services="$("${compose[@]}" config --no-env-resolution --services)"
           printf '%s\n' "$services" | grep -Fx caddy
           if printf '%s\n' "$services" | grep -Fx vitrine; then
             echo "Le profil vitrine est actif par défaut." >&2
