@@ -17,7 +17,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
-| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | ouvert pour QJE-04 seule ; corrections par Alexis (B-1, B-2, I-1) |
+| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | QJE-04 faite : #196 fusionnée le 18 nov. (migration 0082 à appliquer au prochain déploiement) ; chantier à fermer par le chef
 
 ### Fermés
 
@@ -59,14 +59,12 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | MOT | MOT-02 mesure du solveur sur un jeu scolaire | Codex | `etude/mot-02-mesure-solveur` (non poussée) | banc et grand jeu de 20 000 mesurés (6 passages, avant et après #181 : aucun planning complet en 600 s, débit médian -13 % en 1.35, plages qui se chevauchent) ; reste le collège, débloqué par #182 | 15 nov. 20 h 50 | [mot-02](missions/mot-02.md) |
 | QUA | correctif : `entreRoles`, `appel` et `appelClasse` échouent vers minuit UTC : ils ont besoin d'une séance réellement en cours, et donc de changer `donnees.mjs`, partagé par tous les parcours | à attribuer | — | mission à part, avec son plan ; d'ici là, relancer leur CI quand elle a tourné entre 23 h 50 et minuit passé | 18 nov. 11 h 40 | — |
 | MKT | MKT-05 et MKT-09 : vidéo publicitaire et présentation aux établissements (MKT-09 dégelé pour la préparation par le chef) | agent Claude du coordinateur | `mkt/mkt-05-video-presentation` (non poussée) | argumentaire, 3 scripts et plan de 18 diapositives écrits (`2a921691`) ; réponses du chef reçues ; recherche de sources en cours ; vidéo et .pptx après l'accord du chef | 15 nov. 23 h 50 | [mkt-video-presentation](missions/mkt-video-presentation.md) |
-| EXP | REL-06 (journaux Docker), puis REL-03 (dumps d'avant déploiement), d'après l'audit de rluf01 du 15 nov. | agent de Cursor (codé sur Grok 4.7) | #200 (`d365c264`), #201 (`022de856`) | **#200 entièrement verte, prête à fusionner** ; #201 : « Scripts d'exploitation » rouge sur un SC2016 de ShellCheck (texte littéral voulu dans le test), correction demandée à 12 h 58 ; plus de conflit sur `suivi.md` | 18 nov. 12 h 58 | — |
+| EXP | REL-03 (dumps d'avant déploiement chiffrés par la phrase), d'après l'audit de rluf01 du 15 nov. ; REL-06 fusionnée (#200) | agent de Cursor (codé sur Grok 4.7) | #201 (`022de856`) | « Scripts d'exploitation » rouge sur un SC2016 de ShellCheck (texte littéral voulu dans le test) ; correction demandée à 12 h 58, pas encore lue | 18 nov. 13 h 11 | — |
 
 | UIX | UIX-06b, mission d'équipe : les quatre écrans | Codex | #199 (`f5349d84`) | **première CI rouge** : 11 parcours sur 71, dont un vrai défaut de contraste (bouton de validation, thème sombre, axe-core) et un bouton « Générer » désactivé à expliquer ; l'ancien `annees.spec.cjs` est à adapter (nom du parent affiché dans les lignes enfants) ; correction demandée à 12 h 46 | 18 nov. 12 h 46 : à corriger | [uix-06b-equipe](missions/uix-06b-equipe.md) |
 | UIX | UIX-09 grille d'applications façon iCloud | Codex | `feat/uix-09-grille-applications` (`c45f70c4`, non poussée) | relue : **bonne** (périmètre tenu, lucide-react 1.68.0 publié le 4 nov., licence MIT copiée, `suivi.md` identique à `main`) ; à pousser **après #199** : fusion de `main`, verrou npm régénéré, axe-core dans le parcours | 18 nov. 12 h 10 | [vit-equipe](missions/vit-equipe.md) |
 | UIX | UIX-06c Salles, Campus, Créneaux, Calendrier | à fixer (Codex en tête) | `feat/uix-06c-ressources-temps` (à créer) | **plan validé par le chef le 18 nov.**, avec l'exception hors chantier ; départ après UIX-09 | 18 nov. 10 h 30 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
-| QJE | QJE-04 : dix simulations et trente défis d'Alexis (catalogue neutre, solution notée par le serveur, suivi enseignant ; migration 0082) | Alexis (Destroya2) et son agent | #196 (`98ea71d4`) | migration et ordre authentification puis CSRF validés par le chef ; parcours corrigé (bouton « Lancer en classe » nommé par jeu, traduit) ; **CI entièrement verte, prête à fusionner** | 18 nov. 13 h 01 : prête | — |
 | VIT | plus tard : vidéos de motion design sur les captures, et lien « Ressources » (VIT-03) avec elles | — | — | décisions du chef du 18 nov. ([plan du site](../conception/vitrine/vit-vitrine.md), § 3 bis) | 18 nov. | [vit-equipe](missions/vit-equipe.md) |
-| VIT | VIT-05 (préparation) : page « Solutions » : collège et lycée, enseignement supérieur, formation professionnelle ; sans prix | Claude (VS Code) | #203 | plan validé par le chef ; relue : **prête** (ne dit que ce qui existe, prévu marqué « Bientôt », `langues.js` accordé par le chef, `suivi.md` non touché) ; parcours en cours | 18 nov. 12 h 58 : prête | [vit-solutions](missions/vit-solutions.md) |
 | EXP | suite de l'audit (#198, fusionnée) : partie `vitrine/` le 27 nov. avec la montée d'Astro ; revue de l'exception picomatch avant le 18 déc. | à attribuer | — | dates fixées par le plan | 18 nov. | [plan](../conception/exploitation/fix-audit-dependances.md) |
 
 Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
@@ -83,7 +81,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0062 à 0079 | VSC-01 et suivantes : tables du scolaire | réservées |
 | 0080 | MOT-13 contraintes déclarées (`ContrainteDeclaree`) | réservée |
 | 0081 | MOT-13b reprise de la pause du vendredi et du samedi après-midi en contraintes déclarées | écrite (`feat/mot-13b-solveur`) |
-| 0082 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) ; réservée le 10 nov. sous le numéro 0080, renumérotée le 15 nov. (0080 et 0081 prises par MOT-13) | réservée |
+| 0082 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) ; réservée le 10 nov. sous le numéro 0080, renumérotée le 15 nov. (0080 et 0081 prises par MOT-13) | écrite le 18 nov. (`backend/migrations/0082-jeux-solutions.js`), non appliquée |
 | 0083 et plus | libres | — |
 
 ## Fonctions
@@ -160,7 +158,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | à faire |  |
 | [QJE-02](modules/QJE-quiz-jeux-ia.md) | Import des formats GIFT et Moodle XML dans le Studio | libre | M | à faire |  |
 | [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | libre | M | à faire |  |
-| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | en cours : corrections B-1, B-2 et I-1 par Alexis (relecture du 10 nov.) | `jeux-pedagogique` (Alexis) |
+| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | fait : #196 fusionnée le 18 nov. ; migration 0082 écrite, à appliquer au prochain déploiement | `jeux-pedagogique` (Alexis) |
 | [QJE-05](modules/QJE-quiz-jeux-ia.md) | Service des jeux à part, avec des gabarits | libre | L + M + M | à faire |  |
 | [QJE-06](modules/QJE-quiz-jeux-ia.md) | Sortie complète de ClassQuiz | libre | M | à faire |  |
 | [QJE-07](modules/QJE-quiz-jeux-ia.md) | Fournisseur d'IA en production | libre | M | à faire |  |
@@ -186,7 +184,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
 | [VIT-04](modules/VIT-site-vitrine.md) | Page d'état du service et journal des nouveautés de chaque version | libre | S | à faire |  |
-| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | préparation dégelée le 18 nov. (sans tarifs ni mise en ligne) |  |
+| [VIT-05](modules/VIT-site-vitrine.md) | Vitrine complète | quand la vente reprend | L | préparation dégelée le 18 nov. (sans tarifs ni mise en ligne) : cinq pages de fonctions (#195) et page Solutions (#203) fusionnées | #195, #203 |
 | [VEN-01](modules/VEN-vente-modules.md) | Registre des modules | 2 | L | à faire |  |
 | [VEN-02](modules/VEN-vente-modules.md) | Cinq entretiens de terrain avec des directeurs d'écoles privées, séparés de toute… | 3 | S par entretien | à faire |  |
 | [VEN-03](modules/VEN-vente-modules.md) | Abonnements et factures | — | L | gelé |  |

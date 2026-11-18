@@ -19,6 +19,7 @@ import directFr from './direct.fr.js';
 import directEn from './direct.en.js';
 import etablissementFr from './etablissement.fr.js';
 import etablissementEn from './etablissement.en.js';
+import { fr as simulationsFr, en as simulationsEn } from '../../../shared/simulations/i18n.js';
 
 export const LANGUAGES = [
   { code: 'fr', label: 'Français', short: 'FR' },
@@ -38,10 +39,10 @@ const readStoredLanguage = () => {
 };
 
 i18n.use(initReactI18next).init({
-  // Studio quiz, sessions de jeu, identité de l'école : textes dans leurs propres fichiers, sous leur clé
+  // Studio quiz, sessions de jeu, identité de l'école, simulations : textes dans leurs propres fichiers, sous leur clé
   resources: {
-    fr: { translation: { ...fr, personnes: personnesFr, applications: applicationsFr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr } },
-    en: { translation: { ...en, personnes: personnesEn, applications: applicationsEn, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn } },
+    fr: { translation: { ...fr, personnes: personnesFr, applications: applicationsFr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr, simulations: simulationsFr } },
+    en: { translation: { ...en, personnes: personnesEn, applications: applicationsEn, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn, simulations: simulationsEn } },
   },
   lng: readStoredLanguage(),
   fallbackLng: 'fr',

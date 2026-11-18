@@ -7,7 +7,8 @@
 #   - les noms publics viennent de .env.docker (SITE_ADDRESS, FICHIERS_ADDRESS, QUIZ_ADDRESS) ;
 #   - chaque conteneur a une limite de mémoire : en cas de manque, ce sont eux qui sont
 #     arrêtés, jamais l'application voisine ;
-#   - aucun port de base de données ou d'API publié sur l'hôte.
+#   - aucun port de base de données ou d'API publié sur l'hôte ;
+#   - journaux bornés (REL-06) : json-file, 10 Mo, 5 fichiers, sur chaque service.
 #
 #  Ne jamais lancer docker-compose.yml seul : il publie 80 et 443.
 #  Ne jamais lancer, dans le dossier de n8n, docker compose --profile cpu up
@@ -18,14 +19,22 @@
 #  Le up, toujours avec cette surcharge, est EXP-02b.
 # ────────────────────────────────────────────────────────────────────────────
 
+x-journaux: &journaux
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "5"
+
 services:
   mysql:
+    logging: *journaux
     ports: !reset []
     volumes:
       - ./deploy/vps/mysql.cnf:/etc/mysql/conf.d/hestim.cnf:ro
     mem_limit: 512m
 
   backend:
+    logging: *journaux
     build: !reset null
     ports: !reset []
     environment:
@@ -34,6 +43,7 @@ services:
     mem_limit: 384m
 
   solver:
+    logging: *journaux
     image: claude20022002/hestim-solver:latest
     build: !reset null
     environment:
@@ -45,10 +55,12 @@ services:
           memory: 640m
 
   frontend:
+    logging: *journaux
     build: !reset null
     mem_limit: 64m
 
   caddy:
+    logging: *journaux
     # Aucun port sur l'hôte : 80 et 443 restent à Traefik. Seul Caddy rejoint n8n_default.
     ports: !reset []
     volumes:
@@ -74,23 +86,29 @@ services:
       - traefik.http.services.caddy.loadbalancer.server.port=80
 
   studylib:
+    logging: *journaux
     build: !reset null
     mem_limit: 256m
 
   studylib-queue:
+    logging: *journaux
     mem_limit: 160m
 
   studylib-scheduler:
+    logging: *journaux
     mem_limit: 128m
 
   redis:
+    logging: *journaux
     mem_limit: 96m
 
   minio:
+    logging: *journaux
     mem_limit: 256m
 
   # Crée le compartiment des documents au premier démarrage (idempotent), puis s'arrête
   minio-init:
+    logging: *journaux
     # Même image que le serveur MinIO : elle contient le client mc
     image: pgsty/minio:RELEASE.2026-08-04T00-00-00Z
     container_name: hestim_minio_init
@@ -110,25 +128,31 @@ services:
       - hestim_net
 
   meilisearch:
+    logging: *journaux
     environment:
       MEILI_MAX_INDEXING_MEMORY: 100Mb
     mem_limit: 256m
 
   quiz-api:
+    logging: *journaux
     build: !reset null
     mem_limit: 320m
 
   quiz-worker:
+    logging: *journaux
     mem_limit: 256m
 
   quiz-frontend:
+    logging: *journaux
     build: !reset null
     mem_limit: 256m
 
   quiz-db:
+    logging: *journaux
     mem_limit: 192m
 
   quiz-meilisearch:
+    logging: *journaux
     mem_limit: 192m
 
 # Réseau déjà créé par n8n. On ne le crée pas et on ne le modifie pas.
