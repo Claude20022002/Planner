@@ -5,7 +5,7 @@
 | Module | [UIX](../../plan/modules/UIX-interface.md) · **exception hors chantier** accordée par le chef le 18 nov., comme UIX-06, sans API ni migration |
 | Branche | `doc/uix-10-charte-commune` (ce plan seul), depuis `origin/main` (`57bb122a`) |
 | Mission | [uix-10-charte-commune](../../plan/missions/uix-10-charte-commune.md) |
-| Taille | L pour l'ensemble ; sept fonctions, de S à M (§ 9) |
+| Taille | L pour l'ensemble ; six fonctions, de S à M (§ 9) ; UIX-10g (ClassQuiz) retirée par le chef le 18 nov. |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
 | **Validé** | **par Claude20022002 le 18 novembre 2026** (« Je valide le plan, avec les questions 9 et 10 ») |
 
@@ -15,10 +15,12 @@ Le chef, le 18 nov. : « toutes nos plateformes doivent suivre le style du site 
 
 UIX-10 donne **une seule source de jetons visuels**, tirée du site vitrine : couleurs du logo, Inter, tailles, espaces, rayons, ombres, mouvement. Il fixe aussi **l'ordre** dans lequel chaque plateforme l'adopte.
 
-**Terminé** (pour l'ensemble UIX-10a à UIX-10g) quand :
+Le quiz, c'est le **Studio quiz** de Planner (`frontend/src/components/studio/`), qui fait partie de l'application web. ClassQuiz ne reçoit pas la charte : il disparaît avec QJE-06 (décision du chef du 18 nov., [sortie-classquiz](../../plan/missions/sortie-classquiz.md)).
+
+**Terminé** (pour l'ensemble UIX-10a à UIX-10f) quand :
 
 - les jetons vivent dans un seul fichier, `shared/charte/jetons.json` ; aucune plateforme n'écrit une couleur de la charte à la main ;
-- le site, l'application web, le mobile, les jeux, StudyLib et le quiz affichent les mêmes bleus, Inter, les mêmes rayons et le même mouvement ;
+- le site, l'application web (Studio quiz compris), le mobile, les jeux et StudyLib affichent les mêmes bleus, Inter, les mêmes rayons et le même mouvement ;
 - un contrôle de CI échoue si un fichier généré n'est plus à jour, ou si une paire texte et fond de la charte passe sous 4,5:1 (3:1 pour les traits et les composants) ;
 - le guide de la charte, en Markdown, est généré depuis la même source ;
 - aucune fonction, aucun droit, aucune API, aucune donnée ne change (§ 11).
@@ -57,7 +59,8 @@ Logos : `vitrine/public/logo/planner-horloge.svg` (variante 1, horizontale) et `
 | **Mobile** | [`mobile/src/theme.js`](../../../mobile/src/theme.js) (242 lignes), `marque.js` | quatre thèmes : `planner-sombre` (panneau noir), `planner-clair` (bureau), `studylib-clair`, `studylib-sombre` ; Barlow et Inter par `@expo-google-fonts` ; 47 fichiers lisent le thème ; 6 ont des couleurs en dur | deux thèmes restent (clair, sombre) ; Barlow retirée ; couleurs de la charte |
 | **Jeux** | web : `pages/jeux/` (8), `components/jeux/` (16) ; mobile : `src/jeux/` (7) ; scène Kenney teintée en marine | panneau noir, `ds.font.board`, terminal en chasse fixe, scène #001861 / #24397F | accent « jeu » jaune (réponse 2), scène aux bleus de la charte |
 | **StudyLib** (`..\StudyLib`, Laravel, Tailwind 4, branche `main`) | `resources/css/app.css` (`@theme`, 2 678 lignes), 6 autres feuilles (2 642 lignes) | Inter (police de Bunny, téléchargée à la construction) ; bleu #1D4ED8 ; ardoise #0F172A à #F8FAFC ; rayons 10 à 24 px ; ombres ; courbe `(0.4, 0, 0.2, 1)` ; **pas de sombre** ; **182 couleurs en dur, 64 distinctes**, dans les feuilles et les vues | même structure que la charte (Inter, rayons arrondis) : on remplace les valeurs de `@theme`, puis les couleurs en dur |
-| **Quiz** (`..\ClassQuiz`, fork MPL 2.0, SvelteKit et Tailwind 4, branche `hestim`) | `frontend/src/lib/hestim/theme.css` (132 lignes), `app.css`, `app.html`, `Marque.svelte` | une seule couche de thème : les palettes Tailwind (`gray`, `slate`, `blue`, `green-600`) sont remappées sur les jetons du panneau ; Barlow chargée **depuis Google Fonts** ; sombre par classe | la bonne architecture est déjà là : on remplace les valeurs de `theme.css`. Barlow passe à Inter hébergée par le quiz |
+| **Studio quiz** (`frontend/src/components/studio/`) | partie de l'application web | lit le thème MUI et `ds` comme les autres écrans | suit l'application web (10b), accent `jeu` avec les jeux (10e) |
+| **ClassQuiz**, relevé pour mémoire : **sort du plan** (UIX-10g retirée, chef, 18 nov.) (`..\ClassQuiz`, fork MPL 2.0, SvelteKit et Tailwind 4, branche `hestim`) | `frontend/src/lib/hestim/theme.css` (132 lignes), `app.css`, `app.html`, `Marque.svelte` | une seule couche de thème : les palettes Tailwind (`gray`, `slate`, `blue`, `green-600`) sont remappées sur les jetons du panneau ; Barlow chargée **depuis Google Fonts** ; sombre par classe | la bonne architecture est déjà là : on remplace les valeurs de `theme.css`. Barlow passe à Inter hébergée par le quiz |
 
 Ce qui gêne :
 
@@ -67,7 +70,7 @@ Ce qui gêne :
 
 ## 3. Questions et réponses
 
-Posées le 18 nov. ; le chef a retenu chaque proposition, les questions 9 et 10 avec la validation du plan.
+Posées le 18 nov. ; le chef a retenu chaque proposition, les questions 9 et 10 avec la validation du plan. Le même jour, UIX-10g a été retirée : les questions 9 et 10 sont sans objet ; dans les réponses 2 et 7, « le quiz » désigne désormais le Studio quiz de l'application web ; la réponse 6 ne vaut plus que pour StudyLib.
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
@@ -79,8 +82,8 @@ Posées le 18 nov. ; le chef a retenu chaque proposition, les questions 9 et 10 
 | 6 | Comment StudyLib et le quiz reçoivent-ils les jetons ? | un script de Planner écrit `charte.css` dans les dépôts voisins, avec version et empreinte ; chaque dépôt le commite ; un test vérifie l'empreinte | **fichier généré, commité, contrôlé**, 18 nov. | UIX-10a |
 | 7 | Le mode sombre ? | un sombre dérivé pour l'application, le mobile, les jeux et le quiz ; le site et StudyLib restent clairs pour l'instant | **sombre dérivé, sauf site et StudyLib**, 18 nov. | UIX-10a |
 | 8 | Les couleurs de l'école (D-21) ? | l'école reste prioritaire dans l'application ; la charte sert de repli : bleu nuit, et un accent dérivé « bleu vif » #3B82D6 ; StudyLib et le quiz : charte seule | **école prioritaire, charte en repli**, 18 nov. | UIX-10b |
-| 9 | En-tête de licence du fichier généré pour le quiz | le générateur recopie les lignes SPDX du fichier voisin `theme.css` du fork ; aucun nom d'école n'est écrit dans Planner (dépôt public, `verifier-neutre`) | **oui**, avec la validation du plan, 18 nov. | UIX-10g |
-| 10 | Police du quiz | Inter servie par le quiz lui-même (`@fontsource-variable/inter` 5.3.0, la version du site), au lieu de Barlow chargée depuis Google Fonts : une dépendance de plus dans le fork, une requête vers Google en moins | **oui**, avec la validation du plan, 18 nov. | UIX-10g |
+| 9 | En-tête de licence du fichier généré pour le quiz | le générateur recopie les lignes SPDX du fichier voisin `theme.css` du fork ; aucun nom d'école n'est écrit dans Planner (dépôt public, `verifier-neutre`) | **sans objet** : ClassQuiz est retiré (chef, 18 nov.) | — |
+| 10 | Police du quiz | Inter servie par le quiz lui-même (`@fontsource-variable/inter` 5.3.0, la version du site), au lieu de Barlow chargée depuis Google Fonts : une dépendance de plus dans le fork, une requête vers Google en moins | **sans objet** : ClassQuiz est retiré (chef, 18 nov.) | — |
 
 La décision du 18 nov. sur UIX-09 tient en partie : les tuiles de la grille gardent leurs icônes Lucide, et la variante 4 n'y apparaît pas. Seule change sa seconde moitié : l'en-tête de l'application ne garde plus la mosaïque (réponse 1).
 
@@ -94,7 +97,7 @@ Une source, un générateur, des sorties commitées :
 - **Générateur** : `shared/charte/generer.mjs`, en Node seul, sans dépendance. Il écrit les sorties ; avec `--verifier`, il ne les écrit pas, il dit lesquelles diffèrent et sort en erreur.
 - **Sorties dans Planner** : `vitrine/src/styles/jetons.css` (le fichier d'aujourd'hui devient généré), et `shared/charte/README.md`, le guide (réponse 3).
 - **Lecture directe en JS** : l'application web et le mobile importent `shared/charte/index.js`, comme ils importent déjà `shared/tokens.js`. Le thème MUI et les thèmes du mobile se construisent depuis ces objets ; on ne génère pas de fichier JS.
-- **Sorties dans les dépôts voisins** : `--studylib <chemin>` écrit `resources/css/charte.css` ; `--quiz <chemin>` écrit `frontend/src/lib/hestim/charte.css`. Chaque fichier commence par un en-tête : « généré par Planner, shared/charte, version N, empreinte S ; ne pas modifier ». Chaque dépôt garde un petit test qui recalcule l'empreinte du corps du fichier : une retouche à la main le fait échouer.
+- **Sortie dans le dépôt voisin** : `--studylib <chemin>` écrit `resources/css/charte.css`, ajouté par UIX-10f après la décision de l'étude StudyLib. Le fichier commence par un en-tête : « généré par Planner, shared/charte, version N, empreinte S ; ne pas modifier ». StudyLib garde un petit test qui recalcule l'empreinte du corps du fichier : une retouche à la main le fait échouer. Pas de sortie pour ClassQuiz, qui est retiré.
 
 ```mermaid
 flowchart LR
@@ -102,12 +105,10 @@ flowchart LR
     J --> I["shared/charte/index.js<br/>objets JS"]
     G --> V["vitrine/src/styles/jetons.css"]
     G --> R["shared/charte/README.md<br/>guide + contrastes"]
-    G -- "--studylib ..\StudyLib" --> S["StudyLib<br/>resources/css/charte.css"]
-    G -- "--quiz ..\ClassQuiz" --> Q["quiz<br/>lib/hestim/charte.css"]
-    I --> W["web : ThemeGestion,<br/>thème MUI, panneau"]
+    G -- "--studylib ..\StudyLib (10f)" --> S["StudyLib<br/>resources/css/charte.css"]
+    I --> W["web : ThemeGestion, thème MUI,<br/>panneau, Studio quiz"]
     I --> M["mobile : theme.js"]
     S --> S2["@theme de app.css<br/>lit var(--charte-…)"]
-    Q --> Q2["theme.css remappe<br/>gray, blue, yellow"]
 ```
 
 ### 4.2 Les jetons
@@ -161,22 +162,20 @@ L'école pilote garde son #001861 et son #F26322 par ses réglages enregistrés 
 
 ### 4.5 L'adoption, plateforme par plateforme
 
-Ordre fixé par le chef : la charte, puis le web (suite d'UIX-06), puis le mobile et les jeux, puis StudyLib et le quiz.
+Ordre fixé par le chef : la charte, puis le web (suite d'UIX-06, Studio quiz compris), puis le mobile et les jeux, puis StudyLib, selon l'étude StudyLib.
 
 ```mermaid
 flowchart LR
-    A["UIX-10a<br/>source, générateur,<br/>site, guide"] --> B["UIX-10b<br/>web : thème,<br/>panneau, famille"]
+    A["UIX-10a<br/>source, générateur,<br/>site, guide"] --> B["UIX-10b<br/>web et Studio quiz :<br/>thème, panneau, famille"]
     B --> C["UIX-10c<br/>logos du site<br/>(attend les SVG)"]
     B --> D["UIX-10d<br/>mobile"]
-    B --> E["UIX-10e<br/>jeux web et mobile"]
+    B --> E["UIX-10e<br/>jeux web et mobile,<br/>accent du Studio quiz"]
     D --> E
-    A --> F["UIX-10f<br/>StudyLib"]
-    A --> G["UIX-10g<br/>quiz (MPL 2.0)"]
+    A --> F["UIX-10f<br/>StudyLib<br/>(après l'étude)"]
     B -.-> F
-    B -.-> G
 ```
 
-Les traits pointillés marquent l'ordre voulu par le chef, et non une dépendance technique : StudyLib et le quiz n'ont besoin que d'UIX-10a.
+Le trait pointillé marque l'ordre voulu par le chef, et non une dépendance technique : StudyLib n'a besoin que d'UIX-10a, et de la décision de l'étude ([etude-studylib](../../plan/missions/etude-studylib.md)).
 
 ## 5. Fichiers créés ou modifiés
 
@@ -186,7 +185,7 @@ Par fonction. Chaque fonction écrit son plan court avant le code ; les listes c
 |---|---|---|---|---|
 | 10a | `shared/charte/jetons.json` | créé | la source | ~150 lignes |
 | 10a | `shared/charte/index.js` | créé | objets JS lus par le web et le mobile | < 80 |
-| 10a | `shared/charte/generer.mjs` | créé | sorties CSS, guide, `--verifier`, `--studylib`, `--quiz` | < 250 |
+| 10a | `shared/charte/generer.mjs` | créé | sorties CSS, guide, `--verifier` ; `--studylib` ajouté en 10f | < 250 |
 | 10a | `shared/charte/contraste.mjs` | créé | paires déclarées et seuils (réutilise `shared/couleurs.js`) | < 80 |
 | 10a | `shared/charte/README.md` | généré | le guide (réponse 3) | — |
 | 10a | `shared/charte/charte.test.js` | créé | chaque paire au seuil ; sorties à jour | < 120 |
@@ -199,16 +198,14 @@ Par fonction. Chaque fonction écrit son plan court avant le code ; les listes c
 | 10b | `frontend/src/design-system/board/*` | modifiés | Inter, chiffres tabulaires, fond `ecran` | `DepartureBoard.jsx` ne grossit pas (421) |
 | 10b | `frontend/src/contexts/ThemeContext.jsx`, `components/parametres/Apparence.jsx` | modifiés | choix de famille retiré | plus courts |
 | 10b | `frontend/src/main.jsx`, `index.css`, `frontend/package.json` | modifiés | Barlow retirée ; `@fontsource/barlow*` retirés | — |
+| 10b | `frontend/src/components/studio/` (Studio quiz) | modifiés si besoin | suit le thème de l'application ; ses couleurs en dur ramenées aux jetons | — |
 | 10b | les 50 fichiers qui lisent `ds.font.board` | modifiés | `ds.font.board` pointe vers Inter, en capitales : aucun écran à reprendre un par un, sauf les 11 fichiers aux couleurs en dur | — |
 | 10c | `frontend/public/marque/`, `MarquePlanner`, `choixMarque.test.js`, `mobile/assets/` (icône, écran de lancement) | modifiés | logos officiels, variantes 1 et 4 | — |
 | 10d | `mobile/src/theme.js`, `mobile/src/marque.js`, chargement des polices, `mobile/package.json` | modifiés | deux thèmes (clair, sombre) ; préférence de famille ignorée ; `@expo-google-fonts/barlow*` retirés | `theme.js` < 160 |
-| 10e | `frontend/src/components/jeux/*`, `pages/jeux/*`, `mobile/src/jeux/*` | modifiés | accent `jeu`, scène aux bleus de la charte, nuage de mots | — |
+| 10e | `frontend/src/components/jeux/*`, `pages/jeux/*`, `mobile/src/jeux/*`, `frontend/src/components/studio/` (joueur, direct, résultats) | modifiés | accent `jeu`, scène aux bleus de la charte, nuage de mots ; podium et célébrations du Studio quiz | — |
 | 10f | `..\StudyLib\resources\css\charte.css` | généré | variables `--charte-*` | — |
 | 10f | `..\StudyLib\resources\css\app.css` (`@theme`) et les 6 autres feuilles, les vues aux couleurs en dur | modifiés | `@theme` lit `var(--charte-…)` ; les 64 couleurs en dur ramenées aux jetons | — |
 | 10f | `..\StudyLib\tests\…\CharteTest.php` | créé | empreinte de `charte.css` | — |
-| 10g | `..\ClassQuiz\frontend\src\lib\hestim\charte.css` | généré, en-tête SPDX MPL 2.0 (question 9) | variables `--charte-*` | — |
-| 10g | `..\ClassQuiz\frontend\src\lib\hestim\theme.css`, `Marque.svelte`, `app.css`, `app.html`, `package.json` | modifiés | palettes remappées sur la charte ; Inter servie par le quiz (question 10) ; logo | — |
-| 10g | `..\ClassQuiz\FORK.md` | modifié | `charte.css` ajouté aux fichiers propres du fork | — |
 
 ## 6. Données et migration
 
@@ -219,9 +216,8 @@ Aucune table, aucune migration, aucune route. Les couleurs de l'école restent d
 - Aucun canal d'isolation touché ; aucun droit changé.
 - **EP-2** (interface sobre, axe-core sans violation) : chaque fonction garde axe-core vert en clair et en sombre. Les contrastes sont garantis à la source (§ 4.2), et non retrouvés écran par écran.
 - **EP-3** (mobile rapide) : une police de moins à charger (Barlow retirée).
-- **Dépôt public** : le générateur n'écrit aucun nom d'école dans Planner ; l'en-tête SPDX du quiz est recopié depuis le fork (question 9). `scripts/verifier-neutre.mjs` passe sur `shared/charte/`.
-- **Licence du quiz** : les fichiers du fork modifiés restent sous MPL 2.0, avec leurs avis d'origine. `charte.css` est un fichier nouveau du fork : il porte l'en-tête SPDX que demande `FORK.md`, règle 2. La mention du fork et du projet d'origine reste dans `FORK.md` et le README. La licence ne s'étend pas à Planner : le générateur et `jetons.json` restent à Planner.
-- **Aucune requête nouvelle vers un tiers** ; le quiz en perd une (Google Fonts).
+- **Dépôt public** : le générateur n'écrit aucun nom d'école dans Planner. `scripts/verifier-neutre.mjs` passe sur `shared/charte/`.
+- **Aucune requête nouvelle vers un tiers.** ClassQuiz est retiré (QJE-06) : la charte n'écrit rien dans son fork, et aucune question de licence MPL 2.0 ne se pose ici.
 - **Rien en ligne** : le guide est un fichier du dépôt.
 
 ## 8. Tests
@@ -232,7 +228,6 @@ Aucune table, aucune migration, aucune route. Les couleurs de l'école restent d
 - **10d** : tests Jest de `theme.js` (deux thèmes, contrastes, préférence ancienne) ; export Android vérifié.
 - **10e** : contraste de l'accent `jeu` dans ses seuls usages permis ; parcours des jeux en CI.
 - **10f** : `CharteTest.php` (empreinte) ; tests PHPUnit existants ; construction Vite de StudyLib.
-- **10g** : test d'empreinte de `charte.css` ; tests du quiz existants ; construction du site du quiz ; contrôle REUSE et SPDX s'il existe.
 
 ## 9. Étapes de livraison
 
@@ -241,18 +236,17 @@ Chaque fonction a sa branche, son plan court validé et sa PR. Les tailles sont 
 | Fonction | Contenu | Taille | Dépend de | Plan validé par |
 |---|---|---|---|---|
 | **UIX-10a** | source, générateur, contrôle de CI, `jetons.css` du site généré, guide Markdown | M | ce plan | coordinateur (S/M, ni migration ni sécurité) |
-| **UIX-10b** | web : `ds`, gestion, thème MUI, panneau, Barlow retirée, choix de famille retiré, couleurs livrées | M (L si le panneau résiste ; alors 10b1 thème, 10b2 panneau) | 10a ; #199 (UIX-06b) et UIX-09 fusionnées | chef (choix de produit visible de tous) |
+| **UIX-10b** | web, Studio quiz compris : `ds`, gestion, thème MUI, panneau, Barlow retirée, choix de famille retiré, couleurs livrées | M (L si le panneau résiste ; alors 10b1 thème, 10b2 panneau) | 10a ; #199 (UIX-06b) et UIX-09 fusionnées | chef (choix de produit visible de tous) |
 | **UIX-10c** | logos du site dans le web et le mobile : en-tête (variante 1 et mot), icône et favicon (variante 4) | S | 10b ; **SVG officiels du chef** | coordinateur |
 | **UIX-10d** | mobile : deux thèmes, Barlow retirée, préférence ancienne ignorée | M | 10b | coordinateur |
-| **UIX-10e** | jeux, web et mobile : accent `jeu`, scène, panneau des jeux | S | 10b, 10d | coordinateur |
-| **UIX-10f** | StudyLib, dans son dépôt | M | 10a | chef (autre dépôt) |
-| **UIX-10g** | quiz, dans le fork, sous MPL 2.0 | M | 10a | chef (autre dépôt, licence) |
+| **UIX-10e** | jeux, web et mobile, et Studio quiz : accent `jeu`, scène, panneau des jeux | S | 10b, 10d | coordinateur |
+| **UIX-10f** | StudyLib, dans son dépôt (ou dans le module qui la remplace) | M | 10a ; **après la décision de l'étude StudyLib** | chef (autre dépôt) |
 
 1. Ce plan, commité seul ; validé par le chef.
 2. UIX-10a.
 3. UIX-10b, après #199 et UIX-09. Le coordinateur règle l'ordre avec UIX-06c : 06c lit `ThemeGestion` sans le modifier ; si elle doit le modifier, 10b passe d'abord.
 4. UIX-10c dès les SVG ; UIX-10d ; UIX-10e.
-5. UIX-10f et UIX-10g ; à la fin, `shared/design-tokens.json` et `shared/tokens.js` sont retirés, dans la dernière PR de Planner qui les lit encore.
+5. UIX-10f, après la décision de l'étude StudyLib ; à la fin, `shared/design-tokens.json` et `shared/tokens.js` sont retirés, dans la dernière PR de Planner qui les lit encore.
 
 ## 10. Risques et retour arrière
 
@@ -269,5 +263,5 @@ Chaque fonction a sa branche, son plan court validé et sa PR. Les tailles sont 
 - Le mode sombre du site et de StudyLib (réponse 7).
 - Les documents imprimés (EDT du mois au format de l'école, `ds.document`) : ils gardent les couleurs du papier de l'école.
 - La création des logos : les SVG sont fournis par le chef.
-- Le nom « HESTIM » dans le fork du quiz (dossier `lib/hestim/`, en-têtes SPDX) : un autre sujet, pour le chef.
+- ClassQuiz : retiré avec QJE-06 (UIX-10g retirée, chef, 18 nov.) ; il ne reçoit pas la charte.
 - L'arabe (UIX-04) : les propriétés logiques restent la règle.

@@ -35,7 +35,7 @@
 | UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en cours : pilote UIX-06a codé, à relire et vérifier en CI |
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | PR #185 ouverte, correction de parcours à publier |
 | UIX-09 | Grille d'applications façon iCloud : tuiles aux coins arrondis, icônes Lucide animées, apparition des tuiles, recherche ; catalogue et droits inchangés ([plan](../../conception/interface/uix-09-grille-applications.md)) | — | libre | M | — | plan validé (chef, 18 nov.) |
-| UIX-10 | Charte commune à toutes les plateformes (web, mobile, jeux, StudyLib, quiz), d'après le site vitrine : une source de jetons (`shared/charte/`), un générateur, puis une fonction par plateforme, UIX-10a à UIX-10g ([plan](../../conception/interface/uix-10-charte-commune.md)) | — | exception du 18 nov. | L | — | plan validé (chef, 18 nov.) ; UIX-10a à faire |
+| UIX-10 | Charte commune à toutes les plateformes (web et Studio quiz, mobile, jeux, StudyLib), d'après le site vitrine : une source de jetons (`shared/charte/`), un générateur, puis une fonction par plateforme, UIX-10a à UIX-10f (UIX-10g, ClassQuiz, retirée le 18 nov.) ([plan](../../conception/interface/uix-10-charte-commune.md)) | — | exception du 18 nov. | L | — | plan validé (chef, 18 nov.) ; UIX-10a à faire |
 
 ## Critères de « terminé »
 
