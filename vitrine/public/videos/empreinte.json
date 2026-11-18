@@ -1,0 +1,16 @@
+{
+  "empreinte": "ec92ae6423c2064d",
+  "charte": 2,
+  "langues": [
+    "en",
+    "fr"
+  ],
+  "poids": {
+    "planner-en-1080.webm": 3387954,
+    "planner-en-720.mp4": 1507254,
+    "planner-en.webp": 39418,
+    "planner-fr-1080.webm": 3510591,
+    "planner-fr-720.mp4": 1554474,
+    "planner-fr.webp": 41240
+  }
+}
