@@ -363,3 +363,15 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Le site vitrine manque d'illustrations.** VIT-09 en met sur **toutes les pages** : des **dessins en code**, comme les quatre qui existent ; **quelques captures réelles où l'on ne voit pas le nom de l'école** ; et **la première section de chaque page améliorée un peu**. **Claude de VS Code** la fait **après VIT-08**. C'est la **7e condition** de la mise en ligne ([fiche](missions/vit-09-illustrations.md)) | chef, par l'outil de questions |
 | *(coordinateur)* Les captures se prennent sur des données fictives et neutres, jamais sur `seed.js` (école pilote). Les données des parcours ne suffisent pas telles quelles : leurs adresses portent « hestim ». Le chef voit chaque capture avant le commit, car `verifier-neutre.mjs` ne lit pas les images. VIT-09 touche les pages après la fusion de VIT-07 et de VIT-08, qui écrivent les mêmes fichiers | coordinateur |
 | *(coordinateur)* #211 (documentation seule) : parcours rouges, à nouveau par un 429 de Maven Central pendant la construction de l'image du solveur. Deuxième fois du jour : un correctif de la CI (cache Maven pour cette image) est à proposer au chef, avec un plan court | coordinateur, 18 nov. 17 h 50 |
+
+**Chef et coordinateur, 18 nov., vers 18 h 35** :
+
+| Décision | Par |
+|---|---|
+| **VIT-10** (pages par rôle, menu « Solutions » ouvrant, pied de page complet, agent de Cursor) et **VIT-11** (catalogue de toutes les fonctionnalités et FAQ, Codex) deviennent les **conditions 8 et 9** de la mise en ligne. Elles viennent de la lecture du site d'OpenEduCat par le chef ; leurs consignes ont été écrites par Claude de VS Code et inscrites par le coordinateur ([VIT-10](missions/vit-10-pages-par-role.md), [VIT-11](missions/vit-11-catalogue-faq.md)) | chef, par l'outil de questions |
+| **VIT-11 passe après VSC-01** dans la file de Codex, avant QJE-03 | chef |
+| **Ordre des fusions sur le site : VIT-07, VIT-10, VIT-11, puis VIT-09**, qui illustre toutes les pages d'un coup | chef |
+| **#213 (UIX-09)** : Codex ajoute la mention ISC de Lucide au fichier `LICENSE` des icônes (les tracés de lucide-animated, MIT, viennent de Lucide, ISC), puis le chef fusionne | chef |
+| *(coordinateur)* #214 (VIT-07) : **prête**. Les deux règles du chef sont tenues, le périmètre aussi (`bientot.astro` ne perd que l'icône de la carte retirée), et la CI est entièrement verte. #212 (plan de VIT-06) : prête après l'ajout des conditions 8 et 9 | coordinateur |
+| *(coordinateur)* #215 (VSC-01) : **à corriger**. Elle modifie `suivi.md` (règle du 18 nov.). La conception n'a pas de section EP-18 (règle du chef de 16 h). Le « code Massar » y est le seul identifiant national (EP-5 généralisée). Les avis des groupes A et B sur C-5 et Q-20 sont au chef | coordinateur |
+| *(coordinateur)* Les consignes de 17 h 55 à l'agent de Cursor et à Codex venaient de Claude de VS Code, à la demande du chef. Ce n'était pas une seconde coordination. Rappel : une mission n'existe qu'une fois inscrite (fiche, `suivi.md`, feuille de route), et les deux agents ont bien attendu | coordinateur |

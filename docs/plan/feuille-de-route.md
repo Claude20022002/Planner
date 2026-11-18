@@ -33,14 +33,16 @@ Les sorties de ClassQuiz (QJE-01, QJE-03, QJE-06) et le Studio « comme Google F
 
 ## Conditions de la mise en ligne du site (VIT-06)
 
-Le site part sur le sous-domaine quand les **sept** sont réunies (les conditions 5, 6 et 7 ont été ajoutées par le chef le 18 nov.) :
+Le site part sur le sous-domaine quand les **neuf** sont réunies (les conditions 5 à 9 ont été ajoutées par le chef le 18 nov.). Ordre des fusions sur le site : VIT-07, VIT-10, VIT-11, puis VIT-09 :
 1. l'audit de `vitrine/` et la montée d'Astro, le 27 nov. ou après (file de l'agent de Cursor, n° 3) ;
 2. les mentions légales et la page de confidentialité, dont le texte est décidé par le chef ;
 3. les SVG officiels des logos, fournis par le chef ;
 4. le site non indexé tant qu'il est sur le sous-domaine ;
 5. **le contenu complet** : toutes les applications présentées (Quiz et jeux, Bibliothèque, Espace de cours et annonces, Application mobile), et la Bibliothèque sortie de « Bientôt » ([VIT-07](missions/vit-07-contenu-complet.md), agent de Cursor) ;
 6. **la vidéo de présentation globale** sur l'accueil, en motion design, sous-titrée, sans voix ([VIT-08](missions/vit-08-video-presentation.md), Claude de VS Code) ;
-7. **les illustrations** sur toutes les pages : dessins en code, quelques captures réelles sans nom d'école ni donnée réelle, première section de chaque page améliorée ([VIT-09](missions/vit-09-illustrations.md), Claude de VS Code, après VIT-08).
+7. **les illustrations** sur toutes les pages : dessins en code, quelques captures réelles sans nom d'école ni donnée réelle, première section de chaque page améliorée ([VIT-09](missions/vit-09-illustrations.md), Claude de VS Code, en dernier) ;
+8. **les pages par rôle**, le menu « Solutions » ouvrant et le pied de page complet ([VIT-10](missions/vit-10-pages-par-role.md), agent de Cursor) ;
+9. **le catalogue des fonctionnalités et la FAQ** ([VIT-11](missions/vit-11-catalogue-faq.md), Codex).
 
 Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement parte le jour même.
 
@@ -51,19 +53,21 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | N° | Mission | Fiche | Validé par |
 |---|---|---|---|
 | 1 | ~~UIX-06b (#199)~~ **fait** : fusionnée le 18 nov. (`ae8e814c`) | [uix-06b-equipe](missions/uix-06b-equipe.md) | — |
-| 2 | **VIT-06, plan court de mise en ligne** : écrit (`5a7a0067`), **validé par le chef le 18 nov. vers 17 h 15** ; reste la ligne « Validé » et la liste des secrets de CI à créer (consigne de 17 h 16) | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef |
-| 3 | **UIX-09, maintenant** (consigne de 17 h 12) : fusion de `main`, verrou npm régénéré, axe-core dans le parcours | [vit-equipe](missions/vit-equipe.md) | déjà validé |
-| 4 | **VSC-01, modèle de données du scolaire** : conception seule, avec diagrammes (`docs/plan/modules/VSC-vie-scolaire.md`). C'est le préalable de l'étape 3. Les numéros de migration se demandent au coordinateur, ou au chef pendant la pause | module VSC | chef |
+| 2 | ~~VIT-06, plan court~~ **fait** : validé par le chef, #212 (CI verte) ; reste les conditions 8 et 9 à inscrire (consigne de 18 h 40) | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef (fait) |
+| 3 | **UIX-09** : #213, CI verte ; ajouter la mention ISC de Lucide au fichier LICENSE, puis fusion (consigne de 18 h 40) | [vit-equipe](missions/vit-equipe.md) | déjà validé |
+| 4 | **VSC-01, modèle de données du scolaire** : conception écrite, #215 ; **à corriger** (`suivi.md` à reprendre de `main`, une section EP-18, l'identifiant national sans supposer le Maroc), puis l'avis des groupes A et B, organisé par le chef | module VSC | chef |
+| 4 bis | **VIT-11, le catalogue des fonctionnalités et la FAQ** (condition 9) : plan court après VSC-01 corrigée ; le code après la fusion de VIT-10 | [vit-11-catalogue-faq](missions/vit-11-catalogue-faq.md) | chef |
 | 5 | QJE-03, joueur natif ; puis QJE-06, plus aucun conteneur ClassQuiz (après le transfert vérifié des quiz de l'école pilote) | [sortie-classquiz](missions/sortie-classquiz.md) | chef |
-| 6 | VIT-06, le déploiement, le jour où les sept conditions sont réunies : le chef lance les commandes du serveur | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef |
+| 6 | VIT-06, le déploiement, le jour où les neuf conditions sont réunies : le chef lance les commandes du serveur | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef |
 
 ### Agent de Cursor : Grok 4.7 high, pour les tâches bornées au plan validé
 
 | N° | Mission | Fiche | Validé par |
 |---|---|---|---|
 | 1 | ~~QJE-01~~ **fait** : #208 fusionnée le 18 nov. | [sortie-classquiz](missions/sortie-classquiz.md) | chef (fait) |
-| 2 | **VIT-07, le contenu complet du site** (condition 5 de la mise en ligne) : pages Quiz et jeux, Bibliothèque, Espace de cours et annonces, Application mobile ; Bibliothèque sortie de « Bientôt » ; navigation regroupée. Plan court écrit (`fafd3f15`) : **à corriger** (EP-18 et Massar, consigne de 17 h 12), puis au chef | [vit-07-contenu-complet](missions/vit-07-contenu-complet.md) | chef |
-| 2 bis | Les parcours `entreRoles`, `appel` et `appelClasse`, qui échouent vers minuit UTC : ils ont besoin d'une séance réellement en cours, ce qui demande de changer `frontend/tests/parcours/donnees.mjs`, partagé par tous les parcours. Plan validé par le chef, code fait : **#210**, CI entièrement verte : prête, à fusionner | ligne QUA de [suivi.md](suivi.md) ; précédent : #202 | chef |
+| 2 | ~~VIT-07~~ **prête** : #214, CI verte, relue par le coordinateur | [vit-07-contenu-complet](missions/vit-07-contenu-complet.md) | chef (fait) |
+| 2 ter | **VIT-10, pages par rôle, menu « Solutions » ouvrant, pied de page complet** (condition 8) : plan court après la fusion de #214 | [vit-10-pages-par-role](missions/vit-10-pages-par-role.md) | chef |
+| 2 bis | ~~Parcours vers minuit~~ **fait** : #210 fusionnée le 18 nov. | [plan](../conception/qualite/fix-parcours-seance-en-cours.md) | chef (fait) |
 | 3 | **Audit de `vitrine/` et montée d'Astro, le 27 nov. ou après** (pas avant : la règle des deux semaines) : `astro` 7.4.12 et `@astrojs/react` 7.1.9, exceptions de `vitrine/` dans `deploy/audit-exceptions.json`, `node ../scripts/audit.mjs vitrine` dans `vitrine.yml`. Branche `fix/audit-vitrine`. C'est la condition 1 de VIT-06 | [plan de l'audit](../conception/exploitation/fix-audit-dependances.md), § 2 point 4 et § 6 | déjà validé |
 | 4 | UIX-10e, les jeux web et mobile avec l'accent « jeu », après UIX-10b et UIX-10d | [plan d'UIX-10](../conception/interface/uix-10-charte-commune.md), § 9 | chef pendant la pause |
 
@@ -73,7 +77,7 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 |---|---|---|---|
 | 1 | ~~UIX-10a~~ **fait** : #207 fusionnée le 18 nov., relue après coup (conforme) | [uix-10a-source-charte](missions/uix-10a-source-charte.md) | coordinateur (fait) |
 | 1 bis | **VIT-08, la vidéo de présentation globale** pour l'accueil du site (condition 6 de la mise en ligne) : motion design aux couleurs du site, sans captures, sous-titrée en français et en anglais, sans voix. Plan court **validé par le chef** (`5b62f702`) : **le code, maintenant** | [vit-08-video-presentation](missions/vit-08-video-presentation.md) | chef |
-| 1 ter | **VIT-09, les illustrations du site** (condition 7) : dessins en code sur toutes les pages, quelques captures réelles sans nom d'école ni donnée réelle, première section de chaque page améliorée. Plan court après VIT-08 ; pages touchées après la fusion de VIT-07 | [vit-09-illustrations](missions/vit-09-illustrations.md) | chef |
+| 1 ter | **VIT-09, les illustrations du site** (condition 7) : dessins en code sur toutes les pages, quelques captures réelles sans nom d'école ni donnée réelle, première section de chaque page améliorée. Plan court après VIT-08 ; le code **en dernier sur le site**, après la fusion de VIT-07, VIT-10 et VIT-11 | [vit-09-illustrations](missions/vit-09-illustrations.md) | chef |
 | 2 | **UIX-10b**, l'application web à la charte : thème, gestion, panneau des départs, Barlow et choix de famille retirés, Studio quiz compris. C'est là que la connexion, l'accueil des modules et les pages de gestion prennent le style du site. Plan court, après la fusion de #199 et d'UIX-09 | plan d'UIX-10, § 9 | chef |
 | 2 bis | **UIX-11, le tableau de bord de l'administration** : refait à la charte, complété des chiffres qui existent, chaque chiffre menant à ses lignes. Plan court, après UIX-10b | [uix-11-tableau-de-bord](missions/uix-11-tableau-de-bord.md) | coordinateur, ou chef si une route ou une donnée d'élève s'ajoute |
 | 3 | UIX-06c, Salles, Campus, Créneaux et Calendrier : son plan est validé et attendait UIX-10. Il se fait sur la charte d'UIX-10b. Si 06c doit modifier `ThemeGestion`, 10b passe d'abord | [plan d'UIX-06c](../conception/interface/uix-06c-ressources-temps.md) | déjà validé |

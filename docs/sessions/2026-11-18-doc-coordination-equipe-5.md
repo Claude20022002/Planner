@@ -55,6 +55,26 @@ Fait :
 
 **Constat** : les données des parcours portent « hestim » dans leurs adresses e-mail. Les captures demandent donc des données neutres à part. Le chef voit chaque capture avant le commit.
 
+## Tour de 18 h 30
+
+#211 est verte (la relance a passé le 429). Nouvelles PR : #212 (plan de VIT-06), #213 (UIX-09), #214 (VIT-07), #215 (VSC-01). Dix rapports lus et rangés.
+
+| PR | Verdict |
+|---|---|
+| #212, plan de VIT-06 | prête, après l'ajout des conditions 8 et 9 |
+| #213, UIX-09 | bonne, CI verte. Le chef demande d'ajouter la mention ISC de Lucide au `LICENSE` des icônes, puis il fusionne |
+| #214, VIT-07 | **prête** : les deux règles du chef sont tenues, le périmètre aussi, et la CI est entièrement verte |
+| #215, VSC-01 | **à corriger**. Elle modifie `suivi.md`, n'a pas de section EP-18, et fait du « code Massar » le seul identifiant national. Les avis des groupes A et B sont au chef |
+
+Les consignes de 17 h 55 (VIT-10 pour l'agent de Cursor, VIT-11 pour Codex) venaient de **Claude de VS Code, à la demande du chef**, après sa lecture du site d'OpenEduCat. Elles sont inscrites. Choix du chef :
+- VIT-10 et VIT-11 deviennent les **conditions 8 et 9** ;
+- VIT-11 passe après VSC-01 ;
+- l'ordre sur le site est **VIT-07, VIT-10, VIT-11, puis VIT-09**.
+
+Fiches : [vit-10-pages-par-role](../plan/missions/vit-10-pages-par-role.md) et [vit-11-catalogue-faq](../plan/missions/vit-11-catalogue-faq.md). Consignes de 18 h 40 dans les deux boîtes.
+
+**Constat pour VIT-08** : `vitrine/src/i18n/fr/accueil.json` (clés `description` et le texte de l'appel) ne présente l'appel que par QR code. L'accueil est à VIT-08, qui doit y appliquer EP-18 : l'appel aussi à la main.
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |
@@ -106,11 +126,12 @@ Ensuite :
 Le coordinateur a repris le 18 nov. à 17 h. Ta file est dans docs/plan/feuille-de-route.md (branche doc/coordination-equipe,
 ..\travaux-planner\coordination-equipe, jusqu'à sa fusion).
 1) VIT-08 : le plan court est validé par le chef (5b62f702). Code-le maintenant, dans ..\travaux-planner\vit-08-video.
+   L'accueil est à toi : accueil.json présente encore l'appel par QR code seulement. Applique EP-18 (l'appel aussi à la main).
 2) Puis UIX-10b (plan court, après la fusion d'UIX-09). Dans UIX-10b, corrige la ligne UIX-10 de docs/plan/modules/UIX-interface.md :
    « UIX-10a faite (#207, fusionnée le 18 nov.) ».
 2 bis) Puis VIT-09, nouvelle mission (condition 7) : les illustrations de toutes les pages du site, des captures sans nom d'école,
    la première section de chaque page améliorée (fiche docs/plan/missions/vit-09-illustrations.md). Plan court au chef après VIT-08 ;
-   le code après la fusion de VIT-07 et de VIT-08. Chaque capture est montrée au chef avant le commit.
+   le code en dernier sur le site, après la fusion de VIT-07, VIT-10 et VIT-11. Chaque capture est montrée au chef avant le commit.
 3) Puis UIX-11, nouvelle mission : le tableau de bord de l'administration, refait à la charte et complété des chiffres qui existent
    (fiche docs/plan/missions/uix-11-tableau-de-bord.md, choix du chef du 18 nov.).
 4) Puis UIX-06c, QJE-14 (plan), l'étude StudyLib (fiche corrigée : aucun prêt de livres dans StudyLib), UIX-10d.

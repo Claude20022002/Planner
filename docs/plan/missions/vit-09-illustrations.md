@@ -8,7 +8,7 @@
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. vers 17 h 45 (« le site manque d'illustration ») |
 | Module et chantier | [VIT](../modules/VIT-site-vitrine.md) · préparation de VIT-05, dégelée sans tarifs |
 | Fonction | VIT-09 : des illustrations sur toutes les pages du site, dessinées en code, avec quelques captures réelles sans nom d'école ni donnée réelle, et la première section de chaque page améliorée · taille M |
-| Branche | `feat/vit-09-illustrations`, depuis `origin/main`, **après la fusion de VIT-07 et de VIT-08** (les trois écrivent les mêmes pages) |
+| Branche | `feat/vit-09-illustrations`, depuis `origin/main`, **après la fusion de VIT-07, VIT-08, VIT-10 et VIT-11** : VIT-09 passe en dernier sur le site et illustre toutes les pages d'un coup (chef, 18 nov. vers 18 h 35) |
 | Dossier de travail | `..\travaux-planner\vit-09-illustrations` |
 | Plan de conception | plan court à écrire : `docs/conception/vitrine/vit-09-illustrations.md` · **validé par le chef** : ce que le site montre est un choix de produit, et les captures demandent son accord |
 | Condition de VIT-06 | **condition 7** de la mise en ligne (décision du chef, 18 nov.) |
@@ -96,3 +96,4 @@ fiche de session à jour ; suivi.md non modifié ; tout est commité ; jamais de
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 17 h 45 | fiche écrite par le coordinateur, sur les choix du chef (genre, pages, agent, 7e condition) | — |
+| 2026-11-18 18 h 40 | ordre fixé par le chef : VIT-07, VIT-10, VIT-11, puis VIT-09 ; le plan s'écrit pendant ce temps, et couvre aussi les pages par rôle, le catalogue et la FAQ | — |
