@@ -5,7 +5,7 @@
 | Fait par | Claude Code (Opus 5.5), session de VS Code |
 | Chantier | VIT (préparation de VIT-05) et MKT · condition 6 de la mise en ligne (VIT-06) |
 | Dossier de travail | `..\travaux-planner\vit-08-video` |
-| Dernier commit | celui de cette fiche ; le travail finit à `13d761f7` (rendu final) |
+| Dernier commit | celui de cette fiche ; le travail finit à `2d0ccb4a` (rendu final refait le 18 nov. au soir) |
 
 ## Objectif de la session
 
@@ -106,6 +106,23 @@ Le chef a donné les SVG officiels, puis a répondu à quatre questions : versio
   - axe-core : une seule violation, en 1440 px. C'est le lien « English » de l'en-tête au-dessus de la section sombre, à 4,3:1 : le défaut connu de la question 8, qui vient du socle.
 - **L'empreinte** ramène les fins de ligne à LF : la même sous Windows et dans la CI.
 
+## Correction du 18 nov. (21 h 15), demande du chef relayée par le coordinateur
+
+| Commit | Contenu |
+|---|---|
+| `54e40951` | plan corrigé (questions 8 et 9 du plan), commité seul ; textes choisis par le chef avec l'outil de questions |
+| `0b66d4bd` | scène 4 en deux temps : QR code, puis la liste de la classe avec ses trois boutons (présent, en retard, absent) ; seconde ligne « Ou à la main : présent, en retard, absent. ». Accueil : `appel.texte` et la description disent l'appel à la main. Scènes 3 et 9 : les cinq onglets visibles (Tableau, Semaine, Scanner, Bibliothèque, Compte) ; « Activités » (`href: null`) n'est plus montré ni cité |
+| `ecab6129` | l'empreinte hache les valeurs des familles lues par la vidéo (couleurs, sombre, rayons, ombres, mouvement) au lieu de la version de la charte. Sinon, la version 3 de VIT-09a (teintes des applications) aurait périmé la vidéo. Test de régression |
+| `2d0ccb4a` | rendu final refait : 9,9 Mo (MP4 720p 1,50 et 1,46 Mo ; WebM 1080p 3,38 et 3,25 Mo ; images fixes inchangées), empreinte `047ef0227d9eebea` |
+
+Vérifié :
+- images fixes des scènes 3, 4 et 9 avant le rendu ; images tirées des WebM rendus après (fr et en) ;
+- `tsc` du projet vidéo ; 62 tests du site sur 62 ; construction ; `verifier-neutre` ; `generer.mjs --verifier` ;
+- **fusion avec `origin/main`** (VIT-11 et les logos, #220), dans un dossier temporaire supprimé ensuite : sans conflit, 65 tests sur 65, construction ;
+- la charte v3 de VIT-09a donne la même empreinte que la v2.
+
+Pas relancé : Lighthouse et les contrôles du navigateur. La page n'a pas changé, seuls les fichiers vidéo et deux phrases ont changé.
+
 ## Écarts avec le plan
 
 - **Le logo** est importé directement depuis `vitrine/public/logo/` (le bundler en fait une adresse), au lieu d'être copié par le script. Une seule source ; écrit au § 5 du plan.
@@ -128,8 +145,8 @@ Le chef a donné les SVG officiels, puis a répondu à quatre questions : versio
 
 ## État laissé
 
-- **VIT-08 est terminée** : les étapes 1 à 6 sont faites et commitées en local, sans push.
-- **Ordre de fusion** : cette branche contient `chore/vit-06-logos-officiels`. Celle-ci doit donc être fusionnée dans `main` **avant ou avec** la PR #216. Sinon, #216 apporte les logos et la charte sans leur propre PR.
+- **VIT-08 est terminée**, correction du 18 nov. comprise ; commitée en local, sans push.
+- La branche des logos est fusionnée dans `main` (#220) : plus d'ordre à tenir.
 - **Pour `suivi.md`** (le coordinateur le reporte ; la fiche de mission interdit de le modifier ici) :
   - VIT-08 → faite, PR #216, à relire puis fusionner après la branche des logos ;
   - VIT-06 : condition 3 (logos officiels) et condition 6 (vidéo) remplies.
@@ -137,16 +154,13 @@ Le chef a donné les SVG officiels, puis a répondu à quatre questions : versio
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef pousse `chore/vit-06-logos-officiels` et ouvre sa PR, puis pousse cette branche ; la PR #216 se met à jour.
-2. Relecture par le coordinateur (`relecture-branche`) des deux branches. Il renomme aussi la PR #216, dont le titre dit « sans le rendu final ».
-3. Fusion : les logos d'abord, puis #216.
-4. Ensuite, VIT-09 (illustrations, première section de chaque page, la question 10, et peut-être la question 8).
+1. Le chef pousse cette branche ; la PR #216 se met à jour.
+2. Relecture par le coordinateur (`relecture-branche`), puis fusion.
+3. Ensuite, VIT-09a (en cours, `feat/vit-09a-logos-icones`) puis VIT-09b.
 
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "..\travaux-planner\vit-06-logos" push -u origin chore/vit-06-logos-officiels
-gh pr create --base main --head chore/vit-06-logos-officiels --title "VIT-06 condition 3 : logos officiels et charte en version 2" --fill
 git -C "..\travaux-planner\vit-08-video" push
 gh pr edit 216 --title "VIT-08 : vidéo de présentation de l'accueil (rendu final compris)"
 ```
@@ -168,9 +182,10 @@ Fait : étapes 1 à 5 :
 - test vitrine/tests/video.test.js.
 Lighthouse 99 et 100 ; 27 contrôles de navigateur sur 28.
 Étape 6 faite le 18 nov. au soir : SVG officiels et charte version 2 sur
-chore/vit-06-logos-officiels (fusionnée ici en local), rendu final commité (13d761f7),
-61 tests sur 61, aucun sauté.
-Reste : la relecture et la fusion, la branche des logos avant ou avec la PR #216.
+chore/vit-06-logos-officiels (#220, fusionnée). Correction du 18 nov. 21 h 15 : appel à la main
+(scène 4, EP-18) et onglets visibles du téléphone (scènes 3 et 9) ; empreinte par les couleurs lues ;
+rendu final refait (2d0ccb4a). 62 tests sur 62, fusion avec main essayée : 65 sur 65.
+Reste : la relecture et la fusion de la PR #216.
 Questions en attente, pour le coordinateur :
 - 8 : contraste du lien de langue de l'en-tête translucide au-dessus des sections sombres (socle) ;
 - 9 : inscrire VIT-10 et VIT-11, messages déposés dans les boîtes ;
