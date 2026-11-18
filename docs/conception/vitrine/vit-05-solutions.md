@@ -75,7 +75,8 @@ flowchart TD
 | `vitrine/src/i18n/{fr,en,ar}/solutions.json` | créés | textes ; l'arabe a les mêmes clés, vides | 80 chacun |
 | `vitrine/src/i18n/{fr,en,ar}/commun.json` | modifiés | clé `navigation.solutions` | + 1 ligne |
 | `vitrine/src/i18n/langues.js` | modifié (accordé, Q4) | `solutions` dans `PAGES` et en tête de `NAVIGATION` | + 2 lignes |
-| `vitrine/src/components/socle/EnTete.astro` | modifié seulement si les six liens débordent à 1024 px | espacement des liens | quelques lignes de style |
+| `vitrine/src/components/solutions/types.js` | créé (ajouté au codage) | ordre des types, ancres, tons, page liée à chaque point « Aujourd'hui » | 10 |
+| `vitrine/src/components/socle/EnTete.astro` | **non modifié** (chef, 18 nov.) : la barre demande 1 209 px en français pour tenir sur une ligne ; resserrer l'espacement ne gagnait que 70 px. Les libellés restent sur deux lignes entre 1024 et 1209 px, comme avant le lien | — | — |
 | `vitrine/tests/solutions.test.js` | créé | voir § 8 | 60 |
 | `docs/plan/modules/VIT-site-vitrine.md` | modifié | « Ce qui existe » | |
 
