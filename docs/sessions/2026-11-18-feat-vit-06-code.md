@@ -117,8 +117,8 @@ les valeurs d’interpolation, tandis que Compose cherche le fichier du service 
 Le backend est désormais vert dans la CI générale. Les parcours étaient encore en cours
 au relevé.
 
-Le [complément de conception](../conception/exploitation/vit-06-mise-en-ligne.md#correctif-ci-compose-proposé-le-18-novembre--à-valider)
-propose le correctif et sa recette sur un checkout propre. Le code attend la validation.
+Le [complément de conception](../conception/exploitation/vit-06-mise-en-ligne.md#correctif-ci-compose)
+propose le correctif et sa recette sur un checkout propre. Le chef a validé la proposition le 18 novembre.
 
 ### Prompt de reprise après validation
 
@@ -127,4 +127,34 @@ Reprends VIT-06 sur feat/vit-06-code. Après validation du complément « Correc
 applique le correctif dans le workflow vitrine et rejoue la recette Compose sans .env.docker.
 Le chef pousse sur la branche de la PR #221. Contrôle que Compose et Nginx passent, puis
 reprends les conditions de la version candidate sur un digest publié depuis main.
+~~~
+
+## Correctif validé et exécuté localement
+
+Validation du chef consignée en `3bca1a4d`. Le correctif `121c92c6` ajoute
+`--no-env-resolution` à `config --services`.
+
+Recette de régression réussie avec Compose v5.6.1 sur le checkout sans `.env.docker`.
+Avec le fichier temporaire de test et le profil désactivé, le rendu liste 17 services,
+dont `caddy`. Le service `vitrine` est absent de cette liste. Avec le profil activé,
+le digest factice, le réseau `n8n_default`, la règle d’hôte et le port interne 8080
+sont conformes. La vérification confirme aussi l’absence de port publié et de volume.
+La recette est rejouée localement avec les mêmes commandes Compose et les assertions
+équivalentes en PowerShell. La CI Linux et la recette Nginx sur le correctif attendent le push.
+
+### Commandes pour le chef
+
+~~~powershell
+git -C "..\travaux-planner\vit-06-code" push origin feat/vit-06-code
+gh pr checks 221 --watch --repo Claude20022002/Planner
+~~~
+
+### Prompt de reprise après le push
+
+~~~text
+Reprends VIT-06 sur feat/vit-06-code. Lis la fiche de session et le plan validé.
+Contrôle sur la PR #221 le nouveau run du workflow vitrine, en particulier les étapes
+Compose et Nginx. Le déploiement attend la version complète de main, l’audit Astro
+à partir du 27 novembre, un digest publié et la validation des dix conditions
+sur ce digest. Le chef seul pousse, fusionne et déploie.
 ~~~
