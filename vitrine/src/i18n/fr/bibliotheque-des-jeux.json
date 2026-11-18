@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "titre": "Bibliothèque des jeux · Planner",
+    "description": "Dix simulations, trente défis. Chaque simulation a trois défis."
+  },
+  "entete": {
+    "surtitre": "Jeux",
+    "titre": "Dix simulations, trente défis.",
+    "accroche": "Chaque simulation a trois défis."
+  },
+  "jeux": {
+    "surtitre": "",
+    "titre": "Les dix jeux.",
+    "cartes": [
+      {
+        "titre": "Tri Cyber",
+        "texte": "Classer quatre incidents de sécurité par criticité selon portée, sensibilité des données et statut de confinement."
+      },
+      {
+        "titre": "Nœuds Réseaux",
+        "texte": "Connecter 4 équipements sur 3 switchs en respectant capacité, segmentation et isolation."
+      },
+      {
+        "titre": "Labo des seuils",
+        "texte": "Régler un seuil de détection et comparer les faux positifs, les défauts manqués et le coût des erreurs."
+      },
+      {
+        "titre": "Pilote des stocks",
+        "texte": "Planifier trois jours de réapprovisionnement sans rupture, en respectant capacité et budget en MAD."
+      },
+      {
+        "titre": "Sprint Agile",
+        "texte": "Sélectionner des éléments du backlog en respectant capacité, dépendances, obligations et valeur minimale."
+      },
+      {
+        "titre": "Robot Route",
+        "texte": "Programmer un trajet, éviter les obstacles et vérifier chaque déplacement dans une grille simulée."
+      },
+      {
+        "titre": "Requête Parfaite",
+        "texte": "Remettre dans le bon ordre les clauses d\u2019une requête SQL à partir de fragments mélangés."
+      },
+      {
+        "titre": "Ordonnanceur CPU",
+        "texte": "Choisir l\u2019ordre d\u2019exécution de 4 processus pour respecter les échéances et minimiser le temps de rotation moyen."
+      },
+      {
+        "titre": "Budget ERP",
+        "texte": "Allouer des quantités sur 4 postes de coût pour rester dans le budget tout en couvrant un minimum et un coût unitaire."
+      },
+      {
+        "titre": "Labo Big-O",
+        "texte": "Reconnaître la classe de complexité (O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)) de vrais motifs de boucles et de récursions."
+      }
+    ]
+  }
+}
