@@ -2,6 +2,17 @@
 const { test, expect } = require('@playwright/test');
 const { lireDonnees, seConnecter } = require('./outils.cjs');
 
+async function verifierAccessibilite(page, selecteur = 'main') {
+  await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+  const violations = await page.evaluate(async (selecteur) => {
+    const { violations } = await window.axe.run(selecteur, {
+      runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+    });
+    return violations.map(({ id, nodes }) => ({ id, cibles: nodes.map(({ target }) => target) }));
+  }, selecteur);
+  expect(violations, 'Violations WCAG A/AA dans ' + selecteur).toEqual([]);
+}
+
 test('Enseignements : relance l’initialisation réelle après une panne des périodes', async ({ page }) => {
   const { admin, motDePasse } = lireDonnees();
   await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
@@ -20,6 +31,7 @@ test('Enseignements : relance l’initialisation réelle après une panne des p�
   expect(periode).toBeTruthy();
   await expect(reprendre).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Générer depuis la maquette' })).toBeEnabled();
+  await verifierAccessibilite(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
@@ -38,6 +50,9 @@ test('Enseignements à 1280 px en anglais : la période expose les groupes et l�
   await page.getByRole('option', { name: /^2025-2026 · / }).first().click();
   const ligne = page.getByRole('main').getByRole('row').filter({ hasText: seance.cours }).first();
   await expect(ligne).toContainText(seance.groupe);
+  await page.getByRole('checkbox', { name: /^Select / }).first().check();
+  await verifierAccessibilite(page);
   await ligne.getByRole('button', { name: 'Open the team' }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
+  await verifierAccessibilite(page, '[role="dialog"]');
 });

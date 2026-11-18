@@ -2,6 +2,17 @@
 const { test, expect } = require('@playwright/test');
 const { lireDonnees, seConnecter } = require('./outils.cjs');
 
+async function verifierAccessibilite(page, selecteur = 'main') {
+  await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+  const violations = await page.evaluate(async (selecteur) => {
+    const { violations } = await window.axe.run(selecteur, {
+      runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+    });
+    return violations.map(({ id, nodes }) => ({ id, cibles: nodes.map(({ target }) => target) }));
+  }, selecteur);
+  expect(violations, 'Violations WCAG A/AA dans ' + selecteur).toEqual([]);
+}
+
 test('une réponse lente de l’année en cours ne réapparaît pas après changement', async ({ page }) => {
   const { admin, motDePasse } = lireDonnees();
   await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
@@ -52,6 +63,7 @@ test('une réponse lente de l’année en cours ne réapparaît pas après chang
   await expect(promotion.getByText(/Groupe parent/).first()).toBeVisible();
   await promotion.getByText('Détails', { exact: true }).click();
   await expect(promotion.getByText('Niveau', { exact: true })).toBeVisible();
+  await verifierAccessibilite(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
@@ -71,5 +83,6 @@ test('Groupes à 1280 px en anglais et en thème sombre', async ({ page }) => {
   const promotion = contenu.getByRole('row').filter({ hasText: '4A GEN' }).first();
   await expect(promotion).toBeVisible();
   await expect(contenu.getByRole('columnheader', { name: 'Parent group', exact: true })).toBeVisible();
+  await verifierAccessibilite(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

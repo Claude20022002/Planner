@@ -2,6 +2,17 @@
 const { test, expect } = require('@playwright/test');
 const { lireDonnees, seConnecter, enTeteCsrf } = require('./outils.cjs');
 
+async function verifierAccessibilite(page, selecteur = 'main') {
+  await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+  const violations = await page.evaluate(async (selecteur) => {
+    const { violations } = await window.axe.run(selecteur, {
+      runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+    });
+    return violations.map(({ id, nodes }) => ({ id, cibles: nodes.map(({ target }) => target) }));
+  }, selecteur);
+  expect(violations, 'Violations WCAG A/AA dans ' + selecteur).toEqual([]);
+}
+
 for (const [largeur, langue, theme] of [[390, 'en', 'dark'], [1280, 'fr', 'light']]) {
   test(`Filières à ${largeur}px, ${langue}, ${theme}`, async ({ page }) => {
     const { admin, motDePasse } = lireDonnees();
@@ -18,10 +29,12 @@ for (const [largeur, langue, theme] of [[390, 'en', 'dark'], [1280, 'fr', 'light
     await recherche.fill('aucune-filiere-uix-06b');
     await expect(page.getByText(langue === 'en' ? 'No results' : 'Aucun résultat', { exact: true })).toBeVisible();
     await recherche.fill('GEN');
+    await verifierAccessibilite(page);
     const ajouter = langue === 'en' ? 'Add a program' : 'Ajouter une filière';
     await page.getByRole('button', { name: ajouter, exact: true }).click();
     await expect(page.getByRole('dialog')).toBeVisible();
     await expect(page.getByRole('dialog').getByRole('textbox', { name: 'Code', exact: true })).toBeVisible();
+    await verifierAccessibilite(page, '[role="dialog"]');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
 }

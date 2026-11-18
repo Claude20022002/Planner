@@ -2,6 +2,17 @@
 const { test, expect } = require('@playwright/test');
 const { lireDonnees, seConnecter } = require('./outils.cjs');
 
+async function verifierAccessibilite(page, selecteur = 'main') {
+  await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+  const violations = await page.evaluate(async (selecteur) => {
+    const { violations } = await window.axe.run(selecteur, {
+      runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+    });
+    return violations.map(({ id, nodes }) => ({ id, cibles: nodes.map(({ target }) => target) }));
+  }, selecteur);
+  expect(violations, 'Violations WCAG A/AA dans ' + selecteur).toEqual([]);
+}
+
 for (const [largeur, langue, theme] of [[390, 'en', 'dark'], [1280, 'fr', 'light']]) {
   test(`Modules à ${largeur}px, ${langue}, ${theme}`, async ({ page }) => {
     const { admin, motDePasse } = lireDonnees();
@@ -24,6 +35,7 @@ for (const [largeur, langue, theme] of [[390, 'en', 'dark'], [1280, 'fr', 'light
 
     const contenus = page.locator('main').getByText(langue === 'en' ? 'Session' : 'Séance', { exact: true });
     await expect(contenus.first()).toBeVisible();
+    await verifierAccessibilite(page);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
 }
