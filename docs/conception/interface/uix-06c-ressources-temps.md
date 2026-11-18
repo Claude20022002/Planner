@@ -6,7 +6,7 @@
 | Identifiant | UIX-06c, proposé le 18 novembre 2026 |
 | Branche | `feat/uix-06c-ressources-temps`, posée sur `feat/uix-06b-referentiel` après sa relecture |
 | Rédigé par | Claude Code (Opus 5.5), coordinateur, le 18 novembre 2026 |
-| Validé | **en attente du chef** : plan d'une fonction L, et exception hors chantier (UIX n'est pas un chantier ouvert) |
+| Validé | **Validé par Claude20022002 le 18 novembre 2026**, avec l'exception hors chantier limitée à ces quatre écrans ; départ après UIX-09. La question 3 (UIX-06d) reste ouverte |
 | Travail | mission d'équipe ([equipe.md](../../plan/equipe.md)) : Codex intégrateur, agent de Cursor, Claude (VS Code) |
 
 ## 1. Objet et critère de « terminé »

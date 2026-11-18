@@ -215,3 +215,12 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | *(coordinateur)* Une mission d'équipe écrit **160 caractères au plus par ligne**, en plus des repères de taille ([equipe.md](equipe.md), § 3). Sans cette limite, un repère en nombre de lignes ne veut rien dire : UIX-06b les tenait avec des lignes de 540 caractères | coordinateur |
 | *(coordinateur)* Codex fait les corrections d'UIX-06b, puis UIX-09, dans cet ordre. UIX-09 prend son plan sur `doc/coordination-equipe` et le commite seul en premier | coordinateur |
 | *(coordinateur)* Relecture de `feat/vit-01-vitrine` (`19167d6f`, PR #195) : **prête sur le fond**. Sa fusion attend que « Test Backend » repasse au vert, ce que fera `fix/audit-dependances` | coordinateur |
+
+**Chef, 18 nov., 10 h 30** (réponses aux questions du coordinateur) :
+
+| Décision | Par |
+|---|---|
+| UIX-06b : **confirmés**, l'ajout d'axe-core 4.10.3 comme dépendance de test du frontend (`d941a896`) et la correction du § 2 du plan pour Groupes, « effectif et écart avec la somme des sous-groupes » (`f9fa7477`) | chef |
+| `fix/audit-dependances` ne traite que `backend/`. La partie `vitrine/` se fait avec la montée d'Astro du 27 nov., après la fusion de #195 ([plan](../conception/exploitation/fix-audit-dependances.md), § 6) | chef |
+| REL-06 et REL-03 (agent de Cursor) : journaux Docker en `json-file`, **10 Mo × 5 fichiers** par service ; dumps d'avant déploiement chiffrés comme le quotidien et gardés **14 jours**. Chaque correctif a son plan court, que le chef valide avant le code, car les deux touchent le déploiement de production | chef |
+| **Plan d'UIX-06c validé**, avec l'exception hors chantier limitée à Salles, Campus, Créneaux et Calendrier. Départ après UIX-09. L'équipe et la fiche d'équipe seront fixées à ce moment-là. UIX-06d reste en question | chef |
