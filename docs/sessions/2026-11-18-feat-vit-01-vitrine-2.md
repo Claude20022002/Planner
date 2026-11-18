@@ -20,13 +20,18 @@ Reprendre l'intégration. Au tour d'état, rien n'avait bougé : pas de branche 
 
 À inscrire par le coordinateur dans `decisions.md` et dans la fiche de mission (tableau « Les propriétaires ») :
 
-1. **Le lot « pages de fonctions » passe à Claude (VS Code)** sur `feat/vit-01-vitrine`. L'agent de Cursor reste sur UIX-06b ; sa branche `feat/vit-01-vitrine-pages` n'est plus attendue.
-2. **Écarts 2 à 6** de la fiche précédente : **tous acceptés**.
+1. **Le lot « pages de fonctions » passe à Claude (VS Code)** sur `feat/vit-01-vitrine` ; l'agent de Cursor reste sur UIX-06b (voir la décision 8 : il avait commencé le lot entre-temps).
+2. **Écarts 2 à 6** de la fiche précédente : **tous acceptés** (aussi par le coordinateur, d'après `58d2f7fe`).
 3. **Failles d'audit des outils de construction de `vitrine/`** (11 hautes, picomatch, aucune dans le site publié) : acceptées tant que le site n'est que construit ; audit à refaire avant toute mise en ligne.
 4. **Loi 09-08** : rien sur la page Sécurité tant que Q-23 n'est pas tranchée.
 5. **Aucun envoi caché (EP-13)** : carte marquée « Bientôt » tant que la PR #189 (QUA-09) n'est pas fusionnée.
 6. **IA** : la phrase reste, précisée par « quand l'école active l'IA », sur l'accueil comme sur la page Sécurité (aucun fournisseur choisi en production).
 7. **Page Bientôt** : les fonctions « prévues » du plan de parité (PR #193), groupées par domaine, sans date ; ni ce qui est écarté (biométrie, comptabilité et paie), ni ce qui est soumis à condition (tuteur IA, santé).
+8. **Doublon, tranché en fin de session** : on garde les pages de `55f5ab06`. L'agent de Cursor arrête son lot et revient à UIX-06b ; sa branche `feat/vit-01-vitrine-pages` ne sera pas fusionnée.
+
+## Doublon découvert en fin de session
+
+Au contrôle de fin, un commit d'une autre session est apparu sur la branche : `58d2f7fe` (9 h 33, fiche précédente mise à jour). Il dit que le coordinateur a accepté les écarts 2 à 6 et envoyé à l'agent de Cursor la consigne du lot de pages (`boites\cursor\entree\2026-11-18-0212-vitrine-pages-depart.md`, départ depuis `c0198c75`). Cette consigne n'était pas dans la boîte au tour d'état de cette session. Ensuite, l'agent de Cursor a créé `feat/vit-01-vitrine-pages` et le dossier `..\travaux-planner\vit-01-pages`, et il y écrivait les mêmes pages (fichiers non commités, de 9 h 38 à 9 h 51). Ce dossier n'a pas été touché. Le chef a tranché (décision 8) : **le coordinateur ou le chef préviennent l'agent de Cursor** ; sa consigne est annulée, et son dossier et sa branche peuvent être supprimés une fois qu'il s'est arrêté.
 
 ## Fait
 
@@ -73,10 +78,11 @@ Reprendre l'intégration. Au tour d'état, rien n'avait bougé : pas de branche 
 ## État laissé
 
 - `docs/plan/suivi.md` : VIT-01 → en cours, R0, accueil et cinq pages dans la PR #195 ; ligne VIT-05 non touchée.
-- Aucun message laissé dans la boîte de l'agent de Cursor. Le coordinateur doit savoir que le lot de pages n'est plus à lancer.
+- Aucun message écrit dans la boîte de l'agent de Cursor (c'est au coordinateur ou au chef de le faire). Sa consigne `2026-11-18-0212-vitrine-pages-depart.md` est toujours dans `entree`, et son dossier `vit-01-pages` contient sa version non commitée : à arrêter (décision 8).
 
 ## Reste à faire, dans l'ordre
 
+0. Le chef ou le coordinateur arrêtent l'agent de Cursor (décision 8), puis suppriment `feat/vit-01-vitrine-pages` et `..	ravaux-plannerit-01-pages` une fois qu'il s'est arrêté.
 1. Le coordinateur relit la PR #195 (R0, accueil, pages) et inscrit les décisions de cette fiche dans `decisions.md` et la fiche de mission.
 2. Remplacer les logos et les jetons par les SVG du chef dès qu'ils arrivent.
 3. Contrôles finaux : LCP d'Emploi du temps (question 3), puis tests, build, liens, axe, Lighthouse, 390, 768 et 1440 px ; fiche ; commandes au chef.
@@ -103,7 +109,8 @@ Lis d'abord AGENTS.md, docs/plan/equipe.md, puis, dans ..\travaux-planner\coordi
 et vitrine/README.md.
 Fait : R0 (17251fc5), accueil en huit sections (c0198c75), cinq pages de fonctions en fr, en et ar
 (55f5ab06 : Emploi du temps, En classe, Pour l'établissement, Sécurité et données, Bientôt).
-Le chef a confié le lot de pages à l'intégrateur le 18 nov. (l'agent de Cursor reste sur UIX-06b),
+Le chef a confié le lot de pages à l'intégrateur le 18 nov. ; l'agent de Cursor l'avait commencé en parallèle
+(feat/vit-01-vitrine-pages, non commité) : le chef garde 55f5ab06 et fait arrêter ce lot, à ne pas fusionner ;
 accepté les écarts 2 à 6 et les failles d'audit des outils de build tant que rien n'est en ligne,
 et décidé : rien sur la loi 09-08 (Q-23), EP-13 « Bientôt » jusqu'à #189, IA « quand l'école l'active ».
 Vérifié : tests 33/33, 19 pages construites, 413 liens valides, axe sans violation sur 18 pages
