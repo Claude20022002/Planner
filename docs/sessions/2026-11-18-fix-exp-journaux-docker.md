@@ -20,7 +20,7 @@ Borner les journaux des 17 services de la surcharge VPS, après le « validé »
 - Le code a été écrit sur Grok 4.7.
 - Ancre `journaux` dans `deploy/vps/docker-compose.vps.yml`, posée sur les 17 services : `json-file`, `max-size` 10 Mo, `max-file` 5.
 - Le compose de n8n n'est pas modifié. Aucun `up`.
-- Fusion de `origin/main` sans rebase (PR #200). Le conflit de `suivi.md` garde la ligne REL-06 et la ligne de l'audit des dépendances.
+- Fusion de `origin/main` sans rebase (PR #200). `suivi.md` est repris de `main` : le coordinateur le tient seul.
 
 ## Vérifié
 
@@ -33,7 +33,7 @@ Aucune.
 
 ## État laissé
 
-- `docs/plan/suivi.md` : REL-06 → en cours, PR #200, à jour de `main`, à repousser
+- `docs/plan/suivi.md` : version de `main`, non modifié par cette branche. REL-06 → PR #200, compose écrit, contrôle `config` vert, à fusionner
 - Chantier EXP : inchangé (correctif hors chantier)
 
 ## Reste à faire, dans l'ordre
