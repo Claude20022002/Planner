@@ -1,3 +1,4 @@
+/** Formulaire existant de compte avec champs d’identité et d’accès regroupés. */
 import React, { useEffect } from 'react';
 import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, Link, MenuItem, Select, TextField } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
@@ -88,7 +89,7 @@ export default function FormulaireCompteDialog({ open, editing, onClose, onSaved
             <form onSubmit={formik.handleSubmit}>
                 <DialogTitle>{t(editing ? 'utilisateurs.titreModifier' : 'utilisateurs.titreNouveau')}</DialogTitle>
                 <DialogContent>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 1 }}>
+                    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2, mt: 1, '& > :not(.MuiTextField-root)': { gridColumn: '1 / -1' } }}>
                         <TextField fullWidth label={t('utilisateurs.colonnes.nom')} {...champ('nom')} />
                         <TextField fullWidth label={t('utilisateurs.colonnes.prenom')} {...champ('prenom')} />
                         <TextField fullWidth label={t('utilisateurs.colonnes.email')} type="email" onBlur={formik.handleBlur} {...champ('email')} />
@@ -101,8 +102,8 @@ export default function FormulaireCompteDialog({ open, editing, onClose, onSaved
                         )}
                         {/* Le rôle d'un compte existant ne change pas ici : son profil (étudiant, enseignant) en dépend */}
                         <FormControl fullWidth sx={{ display: editing ? undefined : 'none' }}>
-                            <InputLabel>{t('utilisateurs.colonnes.role')}</InputLabel>
-                            <Select name="role" value={formik.values.role} onChange={formik.handleChange} label={t('utilisateurs.colonnes.role')} disabled>
+                            <InputLabel id="compte-role">{t('utilisateurs.colonnes.role')}</InputLabel>
+                            <Select labelId="compte-role" name="role" value={formik.values.role} onChange={formik.handleChange} label={t('utilisateurs.colonnes.role')} disabled>
                                 <MenuItem value="admin">{t('roles.admin')}</MenuItem>
                                 <MenuItem value="enseignant">{t('roles.enseignant')}</MenuItem>
                                 <MenuItem value="etudiant">{t('roles.etudiant')}</MenuItem>
@@ -120,7 +121,7 @@ export default function FormulaireCompteDialog({ open, editing, onClose, onSaved
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={onClose}>{t('common.cancel')}</Button>
-                    <Button type="submit" variant="contained">{t(editing ? 'utilisateurs.modifier' : 'utilisateurs.creer')}</Button>
+                    <Button type="submit" variant="contained" disabled={formik.isSubmitting}>{t(editing ? 'utilisateurs.modifier' : 'utilisateurs.creer')}</Button>
                 </DialogActions>
             </form>
         </Dialog>

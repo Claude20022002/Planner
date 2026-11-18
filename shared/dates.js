@@ -21,6 +21,14 @@ export const aujourdhui = (maintenant = new Date()) =>
 /** Date de l'école (AAAA-MM-JJ) dans n jours (négatif : il y a n jours). */
 export const dansJours = (n, maintenant = new Date()) => aujourdhui(new Date(maintenant.getTime() + n * JOUR_MS));
 
+/** Jour civil UTC d'un instant déjà calculé, jamais le fuseau du navigateur. */
+export const jourUtc = (instant) => {
+  const date = new Date(instant);
+  const mois = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const jour = String(date.getUTCDate()).padStart(2, '0');
+  return `${date.getUTCFullYear()}-${mois}-${jour}`;
+};
+
 /**
  * Instant réel d'une heure de l'école (date AAAA-MM-JJ, heure HH:MM ou HH:MM:SS), par exemple la fin
  * d'une séance. Jamais `new Date("2026-10-29T23:55")`, lu dans le fuseau du navigateur : avec une

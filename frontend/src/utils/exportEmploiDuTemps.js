@@ -6,6 +6,7 @@
  */
 import { ds } from '../design-system/tokens';
 import { melanger } from '../../../shared/couleurs.js';
+import { jourUtc } from '../../../shared/dates.js';
 import { adresseLogo, identiteEcole } from '../services/etablissement';
 import { creneauAPI } from '../services/api';
 import { JOURS, grilleDuPdf, jourDeSeance, libelleHoraire } from '../../../shared/grilleEdt.js';
@@ -72,9 +73,9 @@ function buildHtmlWeeks(affectations, grille) {
         if (!aff.date_seance) return;
         const d   = midiUtc(aff.date_seance);
         const mon = new Date(d.getTime() - ((d.getUTCDay() + 6) % 7) * JOUR_MS);
-        const key = mon.toISOString().slice(0, 10);
+        const key = jourUtc(mon);
         if (!weekMap[key]) {
-            weekMap[key] = { debut: key, fin: new Date(mon.getTime() + dernierJour * JOUR_MS).toISOString().slice(0, 10), days: joursVides() };
+            weekMap[key] = { debut: key, fin: jourUtc(new Date(mon.getTime() + dernierJour * JOUR_MS)), days: joursVides() };
         }
         placer(weekMap[key].days, aff);
     });
