@@ -6,7 +6,7 @@
 | Mission | [vit-16-contact-a-propos.md](../../plan/missions/vit-16-contact-a-propos.md) |
 | Branche | `feat/vit-16-contact-a-propos`, depuis `origin/main` à `427afdea` (VIT-10 fusionnée) ; le code se rebase après la fusion de VIT-12 |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| **Validé** | en attente : le chef valide le plan, **chaque texte et chaque coordonnée** avant le code |
+| **Validé** | « validé avec corrections » par le chef le 18 nov. ; **les corrections ne sont pas encore parvenues** : pas de code avant elles |
 
 ## 1. Objet et critère de « terminé »
 
@@ -26,7 +26,7 @@
 | Lien « Nous contacter » de la colonne Ressources | `vitrine/src/components/socle/PiedDePage.astro` | mène à `/<langue>/contact/` ; « À propos » ajouté |
 | Section Contact de l'accueil : logo, titre, texte « Le formulaire de contact arrive bientôt sur cette page. » | `components/accueil/Contact.astro`, `i18n/*/accueil.json` → `contact` | texte corrigé, bouton vers la page |
 | Fin de chaque page de fonction : bouton « Nous contacter » → `/#contact` | `components/fonctions/FinDePage.astro` | **hors périmètre** : voir § 6 |
-| Grille de cartes avec un lien par carte (`href`) et un badge « Bientôt » pour toute une grille | `components/fonctions/GrilleCartes.astro` | réutilisée, aucun composant nouveau |
+| Grille de cartes avec un lien par carte (`href`) et un badge « Bientôt » pour toute une grille | `components/fonctions/GrilleCartes.astro` | réutilisée **sans lien** (étapes, principes) ; les liens passent par `PageDeTexte` de VIT-12 (§ 6) |
 | Vidéo de l'accueil, section `#presentation` | VIT-08, PR #216, **non fusionnée** | lien seulement si elle est fusionnée au moment du code |
 | Procédure de signalement des failles | QUA-08, PR #188, **non fusionnée** | rien ne renvoie encore à `SECURITY.md` |
 | Adresse e-mail | posée par VIT-12 dans `commun.json` → `contact.email` | reprise ici, jamais recopiée |
@@ -128,9 +128,11 @@ La page finit par `FinDePage` (invitation à voir Planner).
 
 ## 6. Solution
 
-Deux pages qui assemblent des composants existants : `EnTetePage`, `GrilleCartes` (cartes avec `href` pour les canaux et les parcours,
-badge pour EP-13), `FinDePage` sur À propos. « Qui fait Planner » et « Notre mission » : une grille de deux cartes, ou `PageDeTexte` si
-le coordinateur l'accepte pour VIT-12.
+Deux pages qui assemblent des composants existants. **Correction du 18 nov.** : `vitrine/tests/roles.test.js` (VIT-10) interdit les liens
+(`href`) dans `GrilleCartes` hors des pages par rôle. Les canaux et les parcours, qui portent un lien, passent donc par `PageDeTexte`
+(VIT-12) : une section par canal ou parcours, et le lien nommé dans le paragraphe (`{email}`, `{demonstration}`, `{ecole}`,
+`{partenariat}`, `{securite}`, chacun un `mailto:` avec son objet ; `{reseau}` ; `{solutions}`). Les étapes et les principes, sans lien,
+restent des `GrilleCartes` (badge « Bientôt » pour EP-13). `FinDePage` sur À propos. « Qui fait Planner » et « Notre mission » : `PageDeTexte`.
 
 ```mermaid
 flowchart LR
@@ -144,11 +146,11 @@ flowchart LR
     L --> X["accueil/Contact.astro : bouton vers la page"]
 ```
 
-**Questions au coordinateur (périmètre)** :
+**Périmètre, accepté par le chef le 18 novembre** :
 
-1. `FinDePage.astro` envoie aussi vers `/#contact`, soit deux clics pour arriver à la page. Proposition : l'ouvrir pour ce seul lien.
+1. `FinDePage.astro` envoie aussi vers `/#contact`, soit deux clics pour arriver à la page : il est ouvert pour ce seul lien.
 2. Le texte de la section Contact de l'accueil (`accueil.json` → `contact.texte`, « Le formulaire de contact arrive bientôt sur cette page »)
-   devient faux. Proposition : l'ouvrir pour ses clés `contact` seulement, avec ce texte : « Vous voulez voir Planner sur une école fictive,
+   devient faux : il est ouvert pour ses clés `contact` seulement, avec ce texte : « Vous voulez voir Planner sur une école fictive,
    avec vos propres règles ? Écrivez-nous. » / "Would you like to see Planner on a fictional school, with your own rules? Write to us."
    et un bouton « Nous contacter » / "Contact us".
 
