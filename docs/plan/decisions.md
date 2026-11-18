@@ -166,6 +166,13 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 
 [Plan validé](../conception/interface/uix-06a-interface.md). Aucun backend, serveur, push ou fusion autorisé à l’agent.
 
+## Décision du chef du 16 novembre : UIX-06b
+
+Source : conversation Codex, « J’autorise » au plan et aux trois propositions. Exception limitée à UIX-06b sans quatrième chantier ; reprise visuelle de Filières, Groupes, Modules et Enseignements, à fonctions, droits et API constants ; fiches et détails dépliables sur téléphone, hiérarchies/actions conservées. Plan : docs/conception/interface/uix-06b-referentiel.md. Aucun backend, migration ou serveur autorisé.
+
+- 18 novembre : le chef valide la correction du § 2 de Groupes sur l’effectif et la somme des sous-groupes (`f9fa7477`).
+- 18 novembre : le chef autorise axe-core comme dépendance de test pour les parcours en CI (`d941a896`).
+
 ## Décisions du 17 et du 18 novembre : travail en équipe, UIX-06b puis UIX-06c
 
 **Chef, 17 nov. au soir** : tous les agents (Claude dans VS Code, agent de Cursor, Codex) travaillent ensemble sur la même tâche, synchronisés, sans conflit, chacun avec le modèle le plus adapté, en développement par composants. Tâche : **UIX-06b, puis UIX-06c** si son plan est validé. Les sessions Claude en cours (QUA-10, essai PostgreSQL) finissent leur étape ; celle de QUA-10 rejoint l'équipe.

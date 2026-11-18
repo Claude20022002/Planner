@@ -1,3 +1,13 @@
+import gestionFr from './referentiel.fr.js';
+import filieresFr from './referentiel/filieres.fr.js';
+import groupesFr from './referentiel/groupes.fr.js';
+import modulesFr from './referentiel/modules.fr.js';
+import enseignementsFr from './referentiel/enseignements.fr.js';
+import gestionEn from './referentiel.en.js';
+import filieresEn from './referentiel/filieres.en.js';
+import groupesEn from './referentiel/groupes.en.js';
+import modulesEn from './referentiel/modules.en.js';
+import enseignementsEn from './referentiel/enseignements.en.js';
 import personnesFr from './personnes.fr.js';
 import personnesEn from './personnes.en.js';
 /**
@@ -41,8 +51,44 @@ const readStoredLanguage = () => {
 i18n.use(initReactI18next).init({
   // Studio quiz, sessions de jeu, identité de l'école, simulations : textes dans leurs propres fichiers, sous leur clé
   resources: {
-    fr: { translation: { ...fr, personnes: personnesFr, applications: applicationsFr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr, simulations: simulationsFr } },
-    en: { translation: { ...en, personnes: personnesEn, applications: applicationsEn, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn, simulations: simulationsEn } },
+    fr: {
+        translation: {
+            ...fr,
+            gestion: {
+                ...gestionFr,
+                filieres: filieresFr,
+                groupes: groupesFr,
+                modules: modulesFr,
+                enseignements: enseignementsFr,
+            },
+            personnes: personnesFr,
+            applications: applicationsFr,
+            studio: studioFr,
+            sessionsJeu: sessionsJeuFr,
+            direct: directFr,
+            etablissement: etablissementFr,
+            simulations: simulationsFr,
+        },
+    },
+    en: {
+        translation: {
+            ...en,
+            gestion: {
+                ...gestionEn,
+                filieres: filieresEn,
+                groupes: groupesEn,
+                modules: modulesEn,
+                enseignements: enseignementsEn,
+            },
+            personnes: personnesEn,
+            applications: applicationsEn,
+            studio: studioEn,
+            sessionsJeu: sessionsJeuEn,
+            direct: directEn,
+            etablissement: etablissementEn,
+            simulations: simulationsEn,
+        },
+    },
   },
   lng: readStoredLanguage(),
   fallbackLng: 'fr',
