@@ -224,3 +224,13 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | `fix/audit-dependances` ne traite que `backend/`. La partie `vitrine/` se fait avec la montée d'Astro du 27 nov., après la fusion de #195 ([plan](../conception/exploitation/fix-audit-dependances.md), § 6) | chef |
 | REL-06 et REL-03 (agent de Cursor) : journaux Docker en `json-file`, **10 Mo × 5 fichiers** par service ; dumps d'avant déploiement chiffrés comme le quotidien et gardés **14 jours**. Chaque correctif a son plan court, que le chef valide avant le code, car les deux touchent le déploiement de production | chef |
 | **Plan d'UIX-06c validé**, avec l'exception hors chantier limitée à Salles, Campus, Créneaux et Calendrier. Départ après UIX-09. L'équipe et la fiche d'équipe seront fixées à ce moment-là. UIX-06d reste en question | chef |
+
+**Chef, 18 nov., vers 10 h 40** (« Je valide ta proposition », sur les propositions du coordinateur de 10 h 35) :
+
+| Décision | Par |
+|---|---|
+| Toute réattribution d'un lot passe par le coordinateur, qui retire d'abord la consigne de l'ancien agent ([equipe.md](equipe.md), § 7) | chef |
+| Ordre de fusion : `fix/audit-dependances`, puis #195, UIX-06b, UIX-09 (verrou npm régénéré), et `doc/coordination-equipe` en gardant toutes les lignes | chef |
+| UIX-06d (Conflits, Affectations, Imprévus, Examens) suivra, une fois UIX-06c relue. Son plan est à écrire à ce moment-là | chef |
+| Les adresses de contact du site attendent VIT-02 et Q-11 | chef |
+| L'agent de Cursor fait REL-06 et REL-03 sur le modèle le plus fort de Cursor, que le chef choisit dans l'éditeur | chef |

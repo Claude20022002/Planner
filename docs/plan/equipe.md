@@ -86,6 +86,8 @@ git diff --name-only <sha du point de départ>..feat/uix-06b-referentiel-groupes
 | Codex ou agent de Cursor → coordinateur | boîte `…\sortie\`, un fichier par rapport ou question (format dans `boites\README.md`) |
 | membre → intégrateur | par le coordinateur : il relaie les demandes de fichiers communs |
 
+**Réattribuer un lot** (décision du chef, 18 nov.) : toute réattribution passe par le coordinateur, même quand le chef la décide dans une autre session. Le coordinateur retire d'abord la consigne de l'ancien agent (boîte ou message), puis remet le lot au nouveau. Le 18 nov., deux agents ont écrit les mêmes pages du site parce qu'une consigne était restée dans une boîte.
+
 Tout rapport de rendez-vous suit ce modèle :
 
 ```text

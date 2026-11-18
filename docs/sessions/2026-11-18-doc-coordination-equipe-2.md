@@ -63,10 +63,10 @@ Pas de code par le coordinateur : relectures, consignes, fichiers d'état.
 | 3 | Audit : `vitrine/` hors de la branche | `backend/` seul, `vitrine/` le 27 nov. | chef | **close** |
 | 4 | Chiffres de REL-06 et REL-03 | 10 Mo × 5 ; 14 jours | chef | **close** |
 | 5 | SVG officiels des logos | à déposer dans `vitrine/public/logo/` | chef | ouverte |
-| 6 | Adresses de contact du site | attendre VIT-02 et Q-11 | chef | ouverte |
-| 7 | Modèle de l'agent de Cursor (Grok 4.7) | le plus fort de Cursor pour REL-06 et REL-03 | chef | ouverte |
-| 8 | UIX-06d (Conflits, Affectations, Imprévus, Examens) | oui, après la relecture d'UIX-06c | chef | ouverte |
-| 9 | Règle : toute réattribution passe par le coordinateur | oui | chef | ouverte |
+| 6 | Adresses de contact du site | attendre VIT-02 et Q-11 | chef | **close** : validée |
+| 7 | Modèle de l'agent de Cursor (Grok 4.7) | le plus fort de Cursor pour REL-06 et REL-03 | chef | **close** : validée, le chef le choisit dans Cursor |
+| 8 | UIX-06d (Conflits, Affectations, Imprévus, Examens) | oui, après la relecture d'UIX-06c | chef | **close** : validée |
+| 9 | Règle : toute réattribution passe par le coordinateur | oui | chef | **close** : validée, dans `equipe.md`, § 7 |
 
 ## Reste à faire, dans l'ordre
 
@@ -111,7 +111,7 @@ Ensuite :
 5) MOT-03 (ce00b79e) : relis-la après son push par le chef ;
 6) quand UIX-09 finit, forme l'équipe d'UIX-06c (skill equipe ; plan validé le 18 nov.).
 Ordre de fusion : audit, #195, UIX-06b, UIX-09 (verrou npm à régénérer).
-Questions en attente du chef : SVG des logos, adresses de contact, modèle de l'agent de Cursor, UIX-06d, règle de réattribution.
+Question en attente du chef : SVG des logos. UIX-06d suit UIX-06c (plan à écrire après sa relecture).
 Règles : tu ne codes aucun lot ; pas de code hors d'un plan validé ; questions avant toute supposition ;
 chaque décision dans decisions.md ; fiche de session et suivi.md à jour en fin de session ; jamais de git push.
 La session du site (VS Code) ne te joint pas par message : le chef relaie.
