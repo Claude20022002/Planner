@@ -17,13 +17,15 @@ Chiffrer le dump d'avant déploiement avec la phrase, et purger les dumps `hesti
 
 ## Fait
 
+- Le code a été écrit sur Grok 4.7.
 - `sauvegarder_base` lit `JOURS` et `PHRASE`. Elle ne prend pas `CHIFFRER`. Sans fichier `PHRASE` lisible, le déploiement s'arrête.
 - Le clair est vérifié, chiffré en `hestim-<date>.sql.gz.gpg`, puis effacé. Les `hestim-*.sql.gz` et `hestim-*.sql.gz.gpg` plus vieux que `JOURS` sont effacés, sans entrer dans `quotidien/`.
-- `deployer.sh` affiche le retour arrière : `gpg --decrypt --passphrase-file "$PHRASE" … | gunzip -c`, sur le serveur.
+- Le retour arrière affiché commence par `. "${CONF:-/root/hestim-sauvegarde.conf}"` et garde `$PHRASE` pour le moment où l'opérateur colle la commande. `sauvegarder_base` tourne dans une sous-commande : sa variable ne remontait pas, et l'ancienne commande montrait `--passphrase-file ""`.
 
 ## Vérifié
 
-- `bash deploy/vps/tests/tester-deployer.sh` : tous les tests passent (Git Bash, et un second passage dans `debian:bookworm-slim`, où `stat` voit bien les droits 600).
+- `bash deploy/vps/tests/tester-deployer.sh` : tous les tests passent (Git Bash). Le premier passage, avant cette correction, était aussi vert dans `debian:bookworm-slim` (droits 600).
+- Régression : le texte du retour arrière, avec `PHRASE` vide dans le shell, ne contient pas `--passphrase-file ""` et nomme `hestim-sauvegarde.conf`.
 - Avec `CLE_PUBLIQUE` et `PHRASE`, l'appel porte `--symmetric` et pas `--recipient-file`. Sans `PHRASE`, le déploiement s'arrête et aucun dump ne reste.
 - `appliquer-maj.sh` n'est pas modifié. `..\travaux-planner\exp-sauvegarde-predeploiement` n'est pas touché.
 
@@ -33,20 +35,21 @@ Aucune.
 
 ## État laissé
 
-- `docs/plan/suivi.md` : REL-03 → en cours, branche `fix/exp-purge-dumps`, à pousser
+- `docs/plan/suivi.md` : REL-03 → en cours, PR #201, correction du retour arrière à repousser
 - Chantier EXP : inchangé (correctif hors chantier)
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef pousse la branche et ouvre la PR.
+1. Le chef pousse `fix/exp-purge-dumps` (PR #201).
 2. Le quotidien continue d'utiliser `CLE_PUBLIQUE` quand elle est réglée. Rien à changer de ce côté.
 
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "..\travaux-planner\exp-purge-dumps" push -u origin fix/exp-purge-dumps
-gh pr create --repo Claude20022002/Planner --base main --head fix/exp-purge-dumps --title "REL-03 : chiffrer le dump d'avant déploiement par la phrase" --body "Le dump d'avant migration est chiffré en AES256 avec PHRASE, même si CLE_PUBLIQUE sert au quotidien, puis purgé selon JOURS. appliquer-maj.sh n'est pas modifié. Banc : bash deploy/vps/tests/tester-deployer.sh."
+git -C "..\travaux-planner\exp-purge-dumps" push
 ```
+
+PR déjà ouverte : https://github.com/Claude20022002/Planner/pull/201
 
 ## Prompt de reprise
 

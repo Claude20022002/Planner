@@ -33,8 +33,9 @@ Retour arrière :
   (sans registre : docker tag $NOM_LOCAL/hestim-<backend|frontend|solver>:avant-$1 $NOM_LOCAL/hestim-<…>:latest
    puis, dans $HESTIM : ${COMPOSE[*]} up -d --no-deps backend frontend solver)
   Si une migration a été appliquée, restaurer aussi la base (ses nouvelles tables restent, à supprimer avant de redéployer).
-  Le dump est chiffré avec la phrase, sur ce serveur :
-  gpg --decrypt --batch --quiet --pinentry-mode loopback --passphrase-file "$PHRASE" --output - "$2" | gunzip -c | docker exec -i hestim_mysql sh -c 'MYSQL_PWD="\$MYSQL_ROOT_PASSWORD" mysql -uroot "\$MYSQL_DATABASE"'
+  Le dump est chiffré avec la phrase, sur ce serveur. La commande se suffit : elle relit le fichier de réglage
+  (sauvegarder_base tourne dans une sous-commande, sa variable PHRASE n'est pas ici) :
+  . "\${CONF:-/root/hestim-sauvegarde.conf}" && gpg --decrypt --batch --quiet --pinentry-mode loopback --passphrase-file "\$PHRASE" --output - "$2" | gunzip -c | docker exec -i hestim_mysql sh -c 'MYSQL_PWD="\$MYSQL_ROOT_PASSWORD" mysql -uroot "\$MYSQL_DATABASE"'
 EOF
 }
 

@@ -194,5 +194,13 @@ verifier "purge : récent gardé" test -e "$recent"
 verifier "purge : quotidien gardé" test -e "$quotidien"
 verifier "purge : studylib gardé" test -e "$studylib"
 
+# Retour arrière copiable : PHRASE n'est pas celle du shell (sous-commande), le texte relit le réglage.
+unset PHRASE
+retour="$(afficher_retour 20261118-120000 /root/sauvegardes/hestim-20261118-120000.sql.gz.gpg)"
+contient() { grep -F -q -- "$1" <<<"$2"; }
+refuser "retour : pas de phrase vide" contient '--passphrase-file ""' "$retour"
+verifier "retour : nomme le fichier de réglage" contient "hestim-sauvegarde.conf" "$retour"
+verifier "retour : la phrase est lue au lancement" contient '--passphrase-file "$PHRASE"' "$retour"
+
 echo
 if [ "$echecs" -eq 0 ]; then echo "deployer.sh : tous les tests passent"; else echo "deployer.sh : $echecs échec(s)"; exit 1; fi
