@@ -7,6 +7,8 @@
  *   charte       la source telle quelle (version, familles, paires, interdites)
  *   couleurs     « nom → #RRGGBB » du clair ; le fond du sombre est couleurs.ecran
  *   sombre       « nom → #RRGGBB » propres au sombre ; l'action du sombre est couleurs['bleu-clair']
+ *   applications « nom → #RRGGBB » : teinte de chaque application (app-<id>) et son ton foncé
+ *                (app-<id>-fonce), pour les logos de shared/icones/ (VIT-09a)
  *   typographie, espaces, rayons, ombres, mouvement : « nom → valeur » (mouvement['courbe-tableau']
  *                est un tableau, pour Motion et Reanimated)
  */
@@ -19,6 +21,7 @@ const valeurs = (famille) => Object.freeze(
 export { charte };
 export const couleurs = valeurs('couleurs');
 export const sombre = valeurs('sombre');
+export const applications = valeurs('applications');
 export const typographie = valeurs('typographie');
 export const espaces = valeurs('espaces');
 export const rayons = valeurs('rayons');
