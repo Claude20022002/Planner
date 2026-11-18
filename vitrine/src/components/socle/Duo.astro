@@ -1,0 +1,25 @@
+---
+// Mise en page en deux colonnes : le texte (emplacement « texte ») d'un côté, le visuel de l'autre.
+// Empilés et centrés sur téléphone ; « inverse » met le visuel au début de la ligne sur ordinateur.
+interface Props {
+  inverse?: boolean;
+}
+
+const { inverse = false } = Astro.props;
+---
+<div class:list={['duo', { inverse }]}>
+  <div class="texte"><slot name="texte" /></div>
+  <div class="visuel"><slot /></div>
+</div>
+
+<style>
+  .duo { display: grid; gap: var(--espace-5); align-items: center; justify-items: center; inline-size: 100%; }
+  .texte { display: grid; gap: var(--espace-3); justify-items: center; max-inline-size: 34rem; }
+  .visuel { display: grid; justify-items: center; inline-size: 100%; }
+
+  @media (min-width: 56rem) {
+    .duo { grid-template-columns: 1fr 1fr; text-align: start; }
+    .texte { justify-items: start; justify-self: start; }
+    .inverse .texte { order: 2; }
+  }
+</style>

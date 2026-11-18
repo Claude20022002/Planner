@@ -1,0 +1,50 @@
+---
+// Pied de page du site vitrine : nom et phrase du produit, pages du site, langues, mention de droits.
+import Logo from './Logo.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES_PUBLIEES, NAVIGATION, chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  page: string;
+}
+
+const { langue, page } = Astro.props;
+const t = traductions(langue, 'commun');
+---
+<footer class="pied">
+  <div class="contenu">
+    <div class="marque">
+      <Logo variante="icone" class="pied-logo" />
+      <p><strong>{t('produit')}</strong><br />{t('pied.description')}</p>
+    </div>
+    <nav aria-label={t('pied.navigation')}>
+      <ul class="liens">
+        {NAVIGATION.map((cle) => <li><a href={chemin(langue, cle)}>{t(`navigation.${cle}`)}</a></li>)}
+        <li><a href={chemin(langue, 'accueil', 'contact')}>{t('navigation.contact')}</a></li>
+      </ul>
+    </nav>
+    <div class="bas">
+      <p>{t('pied.droits')}</p>
+      <ul class="langues" aria-label={t('langues.label')}>
+        {LANGUES_PUBLIEES.map((l) => (
+          <li><a href={chemin(l, page)} hreflang={l} lang={l} aria-current={l === langue ? 'true' : undefined}>{t(`langues.${l}`)}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pied { background: var(--gris-fond); color: var(--gris-texte); font-size: var(--texte-petit); }
+  .contenu { display: grid; gap: var(--espace-4); max-inline-size: var(--largeur-contenu); margin-inline: auto; padding: var(--espace-5) var(--gouttiere) var(--espace-4); }
+  .marque { display: flex; align-items: center; gap: var(--espace-2); }
+  .marque strong { color: var(--encre); }
+  .marque :global(.pied-logo) { inline-size: 2.5rem; flex: none; }
+  .liens { display: flex; flex-wrap: wrap; gap: var(--espace-1) var(--espace-3); }
+  a { text-decoration: none; }
+  a:hover { color: var(--bleu); text-decoration: underline; }
+  .bas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--espace-2); padding-block-start: var(--espace-3); border-block-start: 1px solid var(--gris-trait); }
+  .langues { display: flex; gap: var(--espace-3); }
+  .langues a[aria-current='true'] { color: var(--encre); font-weight: 600; }
+</style>

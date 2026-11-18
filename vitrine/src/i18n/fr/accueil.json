@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "titre": "Planner · L'emploi du temps et la vie de classe",
+    "description": "Planner calcule l'emploi du temps de votre établissement en respectant vos règles, et accompagne la classe : appel par QR code, quiz en direct, jeux, reports de séance suivis."
+  },
+  "ouverture": {
+    "titre": "Planner",
+    "accroche": "L'emploi du temps de votre établissement, calculé selon vos règles. Et tout ce qui se passe ensuite en classe.",
+    "decouvrir": "Découvrir",
+    "contact": "Nous contacter"
+  },
+  "emploi": {
+    "surtitre": "Emploi du temps",
+    "titre": "Votre semestre, calculé.",
+    "texte": "Salles, enseignants, groupes, disponibilités, trajets entre campus : Planner place chaque séance en respectant vos règles strictes et souples. Cours, TD et TP suivent leurs groupes.",
+    "refus": "Quand une séance ne trouve pas sa place, Planner dit quelle règle la bloque.",
+    "lien": "En savoir plus sur l'emploi du temps",
+    "illustration": {
+      "label": "Exemple de semaine calculée par Planner, avec une séance non placée et sa raison",
+      "jours": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Jeu",
+        "Ven"
+      ],
+      "heures": [
+        "08:30",
+        "10:30",
+        "14:00",
+        "16:00"
+      ],
+      "seances": [
+        {
+          "titre": "Mathématiques",
+          "lieu": "CM · Amphi A"
+        },
+        {
+          "titre": "Physique",
+          "lieu": "TD · Salle B12"
+        },
+        {
+          "titre": "Anglais",
+          "lieu": "TD · Salle C04"
+        },
+        {
+          "titre": "Informatique",
+          "lieu": "TP · Labo 2"
+        },
+        {
+          "titre": "Économie",
+          "lieu": "CM · Amphi B"
+        },
+        {
+          "titre": "Chimie",
+          "lieu": "TP · Labo 1"
+        },
+        {
+          "titre": "Mathématiques",
+          "lieu": "TD · Salle B12"
+        },
+        {
+          "titre": "Projet",
+          "lieu": "Salle C10"
+        }
+      ],
+      "alerte": {
+        "titre": "Séance non placée",
+        "texte": "TP Biologie : l'enseignant n'est pas disponible le mardi matin."
+      }
+    }
+  },
+  "appel": {
+    "surtitre": "En classe",
+    "titre": "L'appel en un geste.",
+    "texte": "L'enseignant projette un QR code. Les étudiants le scannent avec leur téléphone, et leur présence est notée.",
+    "lien": "En savoir plus sur la classe",
+    "illustration": {
+      "label": "Écran d'appel par QR code sur un téléphone",
+      "cours": "TD Physique",
+      "detail": "Groupe B · 08:30",
+      "consigne": "Scannez le code pour signaler votre présence",
+      "compte": "28 présents sur 32"
+    }
+  },
+  "quiz": {
+    "surtitre": "Quiz et jeux",
+    "titre": "Des quiz en direct. Des jeux pour réviser.",
+    "texte": "Dix types de questions, des images et des vidéos, des quiz en direct ou en devoir. L'enseignant propose aussi des jeux à ses classes.",
+    "lien": "En savoir plus sur les quiz et les jeux",
+    "illustration": {
+      "label": "Question d'un quiz en direct sur un téléphone",
+      "titre": "Quiz en direct",
+      "minuteur": "12 s",
+      "question": "Quelle est la dérivée de x² ?",
+      "reponses": [
+        "2x",
+        "x²",
+        "2",
+        "x / 2"
+      ],
+      "participants": "24 réponses"
+    }
+  },
+  "report": {
+    "surtitre": "Reports de séance",
+    "titre": "Un report, suivi de bout en bout.",
+    "texte": "Chaque étape est visible par ceux qu'elle concerne. Les étudiants apprennent le changement avant de se déplacer.",
+    "etapes": [
+      {
+        "titre": "Demande",
+        "texte": "L'enseignant propose de déplacer sa séance."
+      },
+      {
+        "titre": "Validation",
+        "texte": "La scolarité accepte le nouveau créneau."
+      },
+      {
+        "titre": "Prévenus",
+        "texte": "Les étudiants concernés reçoivent une notification."
+      },
+      {
+        "titre": "Publié",
+        "texte": "L'emploi du temps est à jour pour tous."
+      }
+    ]
+  },
+  "donnees": {
+    "surtitre": "Sécurité et données",
+    "titre": "Chacun voit ce qui le concerne.",
+    "texte": "Les accès suivent le rôle de chaque personne dans l'établissement.",
+    "lien": "En savoir plus sur la sécurité",
+    "points": [
+      {
+        "titre": "Double authentification",
+        "texte": "Un second code protège les comptes qui l'activent."
+      },
+      {
+        "titre": "Accès par rôle",
+        "texte": "Étudiant, enseignant, scolarité : chacun n'ouvre que ce que son rôle permet."
+      },
+      {
+        "titre": "Une IA sans données d'élève",
+        "texte": "Quand l'école active l'IA, celle-ci ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose."
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "Bientôt",
+    "titre": "Ce qui arrive ensuite.",
+    "texte": "Ces modules sont en préparation. Ils ne sont pas encore disponibles.",
+    "badge": "Bientôt",
+    "lien": "Voir tout ce qui arrive",
+    "modules": [
+      {
+        "titre": "Vie scolaire",
+        "texte": "Absences, retards et suivi des élèves."
+      },
+      {
+        "titre": "Familles",
+        "texte": "Un espace pour les parents."
+      },
+      {
+        "titre": "Frais de scolarité",
+        "texte": "Inscriptions, échéances et paiements."
+      }
+    ]
+  },
+  "contact": {
+    "titre": "Parlons de votre établissement.",
+    "texte": "Vous voulez voir Planner sur une école fictive, avec vos propres règles ? Le formulaire de contact arrive bientôt sur cette page."
+  }
+}

@@ -1,0 +1,43 @@
+---
+// Illustration de l'accueil : une question de quiz en direct sur un téléphone, avec son minuteur,
+// quatre réponses (la bonne marquée) et le nombre de réponses. Textes : accueil.json (quiz.illustration).
+import { Check } from 'lucide-react';
+
+interface Props {
+  t: (cle: string) => any;
+}
+
+const { t } = Astro.props;
+const reponses: string[] = t('quiz.illustration.reponses');
+const BONNE = 0;
+---
+<div class="ecran-quiz" aria-hidden="true">
+  <div class="haut">
+    <span>{t('quiz.illustration.titre')}</span>
+    <span class="minuteur">{t('quiz.illustration.minuteur')}</span>
+  </div>
+  <div class="barre"><span></span></div>
+  <p class="question">{t('quiz.illustration.question')}</p>
+  <ul class="reponses">
+    {reponses.map((reponse, i) => (
+      <li class:list={{ bonne: i === BONNE }}>
+        <span>{reponse}</span>
+        {i === BONNE && <Check size={18} strokeWidth={2.5} />}
+      </li>
+    ))}
+  </ul>
+  <p class="participants">{t('quiz.illustration.participants')}</p>
+</div>
+
+<style>
+  .ecran-quiz { display: grid; align-content: start; gap: 1rem; block-size: 100%; padding: 2.25rem 1.1rem 1.25rem; background: var(--gris-fond); color: var(--encre); text-align: start; }
+  .haut { display: flex; justify-content: space-between; font-size: 0.8125rem; font-weight: 600; color: var(--gris-texte); }
+  .minuteur { color: var(--bleu); font-variant-numeric: tabular-nums; }
+  .barre { block-size: 0.3rem; border-radius: var(--rayon-pilule); background: var(--gris-trait); overflow: hidden; }
+  .barre span { display: block; inline-size: 62%; block-size: 100%; background: var(--bleu); border-radius: inherit; }
+  .question { margin-block: 0.75rem; font-size: 1.25rem; font-weight: 650; line-height: 1.25; }
+  .reponses { display: grid; gap: 0.6rem; }
+  .reponses li { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; border-radius: var(--rayon-petit); background: var(--blanc); box-shadow: var(--ombre-carte); font-weight: 550; }
+  .reponses .bonne { background: var(--bleu); color: var(--blanc); }
+  .participants { margin-block-start: 0.5rem; font-size: 0.8125rem; color: var(--gris-texte); text-align: center; }
+</style>

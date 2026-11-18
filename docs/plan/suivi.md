@@ -10,13 +10,14 @@ Une ligne par fonction. L'état passe à « en cours » (avec la branche) au pre
 
 Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend une fonction que dans un chantier ouvert. Un chantier ouvert se termine avant d'en ouvrir un autre à sa place ([organisation.md](organisation.md), § 3).
 
-### Ouverts (3 sur 3)
+### Ouverts (3 sur 3, plus QJE-04 par exception)
 
 | Module | Ouvert le | Fonctions du chantier, dans l'ordre | Reste | État |
 |---|---|---|---|---|
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
+| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | ouvert pour QJE-04 seule ; corrections par Alexis (B-1, B-2, I-1) |
 
 ### Fermés
 
@@ -33,13 +34,18 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | MOT-01, partie serveur (MP-1) | #156 | **fusionnée le 10 nov.** |
 | Plan par modules | #161 | **fusionnée le 10 nov.** |
 | Organisation de l'équipe, module MKT | #163 | **fusionnée le 10 nov.** |
+| Diagramme d'architecture `docs/architecture/vue-d-ensemble/` (demandé par le chef le 11 nov., skill `stack-diagram` de l'agence) | #166 | à fusionner |
 | Inventaire des outils des établissements, modules à créer (hors chantier, accord du chef le 11 nov.) | #167 | **fusionnée** |
 | Douze modules de l'inventaire ajoutés au plan (hors chantier, accord du chef le 13 nov.) | #170 | **fusionnée** |
 | Étude : comparatif Planner et Odoo + OpenEduCat sur la gestion d'école (hors chantier, demande du chef le 15 nov.) | #174 | **fusionnée le 15 nov.** |
+| Plan d'essai d'OpenEduCat Community (étude hors chantier, demande du chef le 15 nov.) | #176 | à fusionner |
 | Coordination des agents : rôle de coordinateur, skills, fiches de mission (hors chantier, demande du chef le 15 nov.) | #175 | PR ouverte ; tableau « Missions en cours » confirmé par le chef le 15 nov. |
 | Correctif : sauvegarde avant déploiement qui échoue sans bruit (REL-01) | #177 | **fusionnée le 15 nov.** |
+| Correctif : audit des dépendances rouge, `backend/` seul (plan validé par le chef le 18 nov. ; `vitrine/` avec la montée d'Astro du 27 nov.) | `fix/audit-dependances` | commité le 18 nov. (qs 6.17.1, `scripts/audit.mjs`, exception picomatch jusqu'au 18 déc., CI) ; à pousser, ouvrir la PR et fusionner **avant** #195 |
 
 Exception UIX autorisée par le chef le 15 novembre : **UIX-01a**, accueil des applications et navigation web, `feat/uix-01a-navigation`, PR #184 fusionnée le 15 nov. (`16b542a1`) ; six contrôles verts, 43 parcours réussis. Aucun quatrième chantier ouvert.
+
+Exception QUA-04 autorisée par le chef le 15 novembre (fonction libre, les trois chantiers restent pleins) : `refactor/qua-04-dates`, plan validé, code fait, 51 tests unitaires du site verts.
 
 ## Missions en cours
 
@@ -68,7 +74,8 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0062 à 0079 | VSC-01 et suivantes : tables du scolaire | réservées |
 | 0080 | MOT-13 contraintes déclarées (`ContrainteDeclaree`) | réservée |
 | 0081 | MOT-13b reprise de la pause du vendredi et du samedi après-midi en contraintes déclarées | écrite (`feat/mot-13b-solveur`) |
-| 0082 et plus | libres | — |
+| 0082 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) ; réservée le 10 nov. sous le numéro 0080, renumérotée le 15 nov. (0080 et 0081 prises par MOT-13) | réservée |
+| 0083 et plus | libres | — |
 
 ## Fonctions
 
@@ -100,11 +107,11 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [MOT-02](modules/MOT-moteur.md) | Mesurer le solveur sur un jeu scolaire (collège de 600 élèves), puis sur 20 000… | 1 | M | en cours : banc et grand jeu mesurés ; collège à faire | `etude/mot-02-mesure-solveur` |
 | [MOT-03](modules/MOT-moteur.md) | Validation avant le calcul | 3 | M | PR ouverte | #183 |
 | [MOT-04](modules/MOT-moteur.md) | Modèle neutre et évaluateur indépendant | 3 | L + M | à faire |  |
-| [MOT-05](modules/MOT-moteur.md) | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe), à la… | 2 puis 3 | M + L | à faire |  |
+| [MOT-05](modules/MOT-moteur.md) | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe, groupe transversal), à la… | 2 puis 3 | M + L | à faire |  |
 | [MOT-06](modules/MOT-moteur.md) | Collège | 3 | XL | à faire |  |
 | [MOT-07](modules/MOT-moteur.md) | Lycée | 3 | L | à faire |  |
 | [MOT-08](modules/MOT-moteur.md) | File simple des calculs | 2 | M | à faire |  |
-| [MOT-09](modules/MOT-moteur.md) | Remplaçant proposé automatiquement en cas d'absence d'un enseignant | 4 | M | à faire |  |
+| [MOT-09](modules/MOT-moteur.md) | Remplaçant proposé automatiquement en cas d'absence d'un enseignant, validé en un geste, enseignants prévenus | 4 | M | à faire |  |
 | [MOT-10](modules/MOT-moteur.md) | Grande échelle | 5 | L | à faire |  |
 | [MOT-11](modules/MOT-moteur.md) | Règles nouvelles, famille par famille (examens dans le calcul F-8, ressources F-7,… | 5 | M par famille | à faire |  |
 | [MOT-12](modules/MOT-moteur.md) | Montée du solveur : Spring Boot 3.3.5 vers 4.1, Timefold 1.15 vers 1.35 (cœur, sans le starter), Java 21 inchangé | 1 | M | fait (15 nov.) | #181 |
@@ -128,6 +135,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [VSC-03](modules/VSC-vie-scolaire.md) | Absences prévenues aux parents, justificatifs, saisie déléguée (EP-6) | 4 | M | à faire |  |
 | [VSC-04](modules/VSC-vie-scolaire.md) | Notes et bulletins | 4 | XL | à faire |  |
 | [VSC-06](modules/VSC-vie-scolaire.md) | Formation professionnelle | 5 | M | à faire |  |
+| [VSC-07](modules/VSC-vie-scolaire.md) | Affectation des élèves aux groupes de langue et d'option | 3 | M | à faire |  |
 | [COU-01](modules/COU-espace-de-cours.md) | Sondage de l'enseignant à sa classe | libre | S | fait (#148) | #148 |
 | [COU-02](modules/COU-espace-de-cours.md) | Devoirs avec rendu de fichier, après une revue de sécurité (taille, type, antivirus,… | 4 | L | à faire |  |
 | [COU-03](modules/COU-espace-de-cours.md) | Commentaires sur un support ou un devoir | 4 | M | à faire |  |
@@ -143,7 +151,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | à faire |  |
 | [QJE-02](modules/QJE-quiz-jeux-ia.md) | Import des formats GIFT et Moodle XML dans le Studio | libre | M | à faire |  |
 | [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | libre | M | à faire |  |
-| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | à faire |  |
+| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | en cours : corrections B-1, B-2 et I-1 par Alexis (relecture du 10 nov.) | `jeux-pedagogique` (Alexis) |
 | [QJE-05](modules/QJE-quiz-jeux-ia.md) | Service des jeux à part, avec des gabarits | libre | L + M + M | à faire |  |
 | [QJE-06](modules/QJE-quiz-jeux-ia.md) | Sortie complète de ClassQuiz | libre | M | à faire |  |
 | [QJE-07](modules/QJE-quiz-jeux-ia.md) | Fournisseur d'IA en production | libre | M | à faire |  |
@@ -164,8 +172,8 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en partie : UIX-06a fusionnée ; UIX-06b en cours | #185 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | fait : #185 fusionnée le 16 novembre, six contrôles verts et 49 parcours réussis | #185 · feat/uix-06a-interface |
-| [UIX-06b](modules/UIX-interface.md) | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | exception validée | L | corrections de relecture vérifiées localement, nouvelle relecture et CI attendues | feat/uix-06b-referentiel |
-| [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
+| [UIX-06b](modules/UIX-interface.md) | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | exception validée | L | PR #199 ouverte, mise à jour locale vérifiée, CI attendue | #199 · feat/uix-06b-referentiel |
+| [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | en cours : R0 du site (socle), accueil et cinq pages de fonctions (VIT-05 en préparation) dans la PR #195 ; lot de pages repris par l'intégrateur (chef, 18 nov.) ; relu « prêt sur le fond » par le coordinateur (18 nov.), fusion après `fix/audit-dependances` ; attendus : SVG des logos, contrôles finaux | feat/vit-01-vitrine |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |
 | [VIT-04](modules/VIT-site-vitrine.md) | Page d'état du service et journal des nouveautés de chaque version | libre | S | à faire |  |
@@ -223,7 +231,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QUA-01](modules/QUA-qualite-docs.md) | `README.md` et `PRODUCT.md` à jour | libre | M | à faire |  |
 | [QUA-02](modules/QUA-qualite-docs.md) | Découper les contrôleurs trop longs, sans changer leur comportement, chacun couvert… | libre | M par contrôleur | à faire |  |
 | [QUA-03](modules/QUA-qualite-docs.md) | Clore l'étude de la pile | 1 | S | fait (#171, 15 nov.) | #171 |
-| [QUA-04](modules/QUA-qualite-docs.md) | Reste des dates | libre | S | à faire |  |
+| [QUA-04](modules/QUA-qualite-docs.md) | Reste des dates | libre | S | en cours : code fait, 51 tests unitaires verts | `refactor/qua-04-dates` |
 | [QUA-05](modules/QUA-qualite-docs.md) | Supprimer les branches et les dossiers de travail morts, après vérification de leur… | libre | S | à faire |  |
 | [QUA-06](modules/QUA-qualite-docs.md) | `docs/users.xlsx` | 0 | S | fait (personnes fictives, rien à réécrire) |  |
 | [QUA-07](modules/QUA-qualite-docs.md) | Protéger `main` | 0 | S | fait : les 6 contrôles de la CI sont exigés (contournable seulement par `gh pr merge --admin`) |  |

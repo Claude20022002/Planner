@@ -1,0 +1,58 @@
+---
+// Accueil, section 6 : sécurité et données. Section sombre ; trois garanties qui existent déjà
+// (double authentification, accès par rôle, IA sans données d'élève), rien de plus.
+import { ShieldCheck, UserRoundCheck, Bot } from 'lucide-react';
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import Apparition from '../socle/Apparition.astro';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  t: (cle: string) => any;
+  langue: string;
+}
+
+const { t, langue } = Astro.props;
+const points: { titre: string; texte: string }[] = t('donnees.points');
+const ICONES = [ShieldCheck, UserRoundCheck, Bot];
+---
+<Section id="donnees" ton="sombre" large etiquette="donnees-titre">
+  <Apparition>
+    <div class="entete">
+      <Titre id="donnees-titre" surtitre={t('donnees.surtitre')}>{t('donnees.titre')}</Titre>
+      <Accroche>{t('donnees.texte')}</Accroche>
+    </div>
+  </Apparition>
+  <ul class="points">
+    {points.map((point, i) => {
+      const Icone = ICONES[i];
+      return (
+        <li>
+          <Apparition delai={i * 0.12}>
+            <div class="point">
+              <Icone aria-hidden="true" size={36} strokeWidth={1.25} />
+              <h3>{point.titre}</h3>
+              <p>{point.texte}</p>
+            </div>
+          </Apparition>
+        </li>
+      );
+    })}
+  </ul>
+  <BoutonPrincipal href={chemin(langue, 'securite')} variante="lien">{t('donnees.lien')}</BoutonPrincipal>
+</Section>
+
+<style>
+  .entete { display: grid; gap: var(--espace-3); justify-items: center; }
+  .points { display: grid; gap: var(--espace-4); inline-size: 100%; }
+  .point { display: grid; justify-items: center; gap: var(--espace-1); }
+  .point :global(svg) { color: var(--bleu-clair); margin-block-end: var(--espace-1); }
+  h3 { font-size: 1.3125rem; font-weight: 650; }
+  p { max-inline-size: 22rem; color: var(--bleu-pale); }
+
+  @media (min-width: 56rem) {
+    .points { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
