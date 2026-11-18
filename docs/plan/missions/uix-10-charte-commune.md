@@ -15,16 +15,18 @@
 ## Ce que le chef a décidé (18 nov.)
 
 - Toutes les plateformes suivent le style du site vitrine, avec les mêmes couleurs : l'application web, le mobile, l'espace des jeux, StudyLib (la bibliothèque) et le quiz.
-- La charte vient d'abord. Ensuite, on l'applique plateforme par plateforme : l'application web (suite d'UIX-06), puis le mobile et les jeux, puis StudyLib et le quiz dans leurs dépôts.
+- **Le quiz, c'est le Studio quiz de Planner** (`frontend/src/components/studio/`), pas ClassQuiz. ClassQuiz sera retiré ([sortie-classquiz](sortie-classquiz.md), décision du chef du 20 oct., confirmée le 18 nov.) : la charte ne s'y applique pas.
+- **StudyLib** : une étude décide s'il faut la garder en Laravel ou la reconstruire ([etude-studylib](etude-studylib.md)). D'ici là, la charte prévoit pour elle des variables CSS reprises par Tailwind 4, sans plus.
+- La charte vient d'abord. Ensuite, on l'applique plateforme par plateforme : l'application web (suite d'UIX-06), puis le mobile et les jeux, puis le Studio quiz, puis StudyLib selon l'étude.
 - C'est une exception hors chantier, sans changement d'API ni migration.
 - Le logo « mosaïque » reste pour l'instant dans l'application (décision du 18 nov.). Le plan dit s'il faut changer ce choix, et le chef tranche.
 
 ## Ce que le plan doit établir
 
-1. **La source unique des jetons** : où elle vit (par exemple `shared/design/`), dans quel format (un fichier JSON ou JS, d'où sortent des variables CSS pour le site, StudyLib et le quiz, un thème MUI pour l'application web, des constantes pour le mobile), et comment chaque dépôt la reçoit sans la recopier à la main. StudyLib (Laravel) et le quiz (fork de ClassQuiz) sont dans leurs propres dépôts.
+1. **La source unique des jetons** : où elle vit (par exemple `shared/design/`), dans quel format (un fichier JSON ou JS, d'où sortent des variables CSS pour le site et StudyLib, un thème MUI pour l'application web, des constantes pour le mobile), et comment chaque dépôt la reçoit sans la recopier à la main. StudyLib (Laravel) est dans son propre dépôt.
 2. **Les jetons eux-mêmes**, relevés dans `vitrine/src/styles/jetons.css` : couleurs (provisoires tant que les SVG manquent), typographie, espacements, rayons, ombres, durées et courbes d'animation, mouvement réduit. Le contraste AA de chaque paire texte et fond, en clair et en sombre.
-3. **L'écart actuel de chaque plateforme** avec ces jetons : thème de gestion d'UIX-06a et UIX-06b, `ThemeGestion`, `jetonsGestion.js`, mobile, jeux, StudyLib, quiz.
-4. **L'ordre et le découpage** : une fonction par plateforme, chacune avec son plan court. Pour le quiz, les fichiers modifiés restent sous licence MPL 2.0, et la mention du fork est gardée.
+3. **L'écart actuel de chaque plateforme** avec ces jetons : thème de gestion d'UIX-06a et UIX-06b, `ThemeGestion`, `jetonsGestion.js`, mobile, jeux, Studio quiz, StudyLib.
+4. **L'ordre et le découpage** : une fonction par plateforme, chacune avec son plan court. UIX-06c (Salles, Campus, Créneaux, Calendrier) attend la validation de ce plan (chef, 18 nov.).
 5. **Ce qui ne change pas** : fonctions, droits, API, données.
 
 ## Périmètre d'écriture
@@ -34,7 +36,7 @@ L'agent peut écrire :
 - `docs/plan/modules/UIX-interface.md`, pour la ligne UIX-10 ;
 - sa fiche de session.
 
-Il **lit** sans les modifier : `vitrine/`, `frontend/`, `mobile/`, `shared/`, et les dépôts voisins `..\StudyLib` et `..\ClassQuiz`.
+Il **lit** sans les modifier : `vitrine/`, `frontend/`, `mobile/`, `shared/`, et le dépôt voisin `..\StudyLib`. Pas ClassQuiz, qui sera retiré.
 
 Il ne touche pas :
 - à **`docs/plan/suivi.md`**, que tient le coordinateur ;
@@ -44,7 +46,7 @@ Il ne touche pas :
 ## Questions déjà connues, à poser au chef avec une proposition
 
 1. Le logo de l'application : garder la mosaïque, ou passer aux logos du site (variante 4 pour l'icône) ?
-2. Les jeux et le quiz gardent-ils une touche de couleur propre (jeu, énergie), ou seulement les bleus du logo ?
+2. Les jeux et le Studio quiz gardent-ils une touche de couleur propre (jeu, énergie), ou seulement les bleus du logo ?
 3. Faut-il une page de la charte (un « guide de style ») consultable, et où ?
 
 ## Prompt à donner à l'agent
@@ -56,7 +58,7 @@ Lis d'abord AGENTS.md, docs/plan/README.md et docs/plan/suivi.md, puis ta fiche 
 sur la branche doc/coordination-equipe (..\travaux-planner\coordination-equipe).
 git worktree add "..\travaux-planner\uix-10-charte" -b doc/uix-10-charte-commune origin/main
 Relève les jetons du site vitrine (vitrine/src/styles/jetons.css), puis l'écart de chaque plateforme : application web,
-mobile, jeux, et les dépôts voisins ..\StudyLib (Laravel) et ..\ClassQuiz (fork, licence MPL 2.0), en lecture seule.
+mobile, jeux, Studio quiz, et le dépôt voisin ..\StudyLib (Laravel), en lecture seule. Pas ClassQuiz : il sera retiré.
 Pose au chef les questions de la fiche, chacune avec ta proposition, puis écris le plan
 (docs/conception/interface/uix-10-charte-commune.md, d'après docs/plan/modeles/conception.md). Commite-le seul.
 Le chef le valide. Ne modifie pas docs/plan/suivi.md : c'est le coordinateur qui le tient.

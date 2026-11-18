@@ -304,3 +304,12 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | La **charte commune vient d'abord** (UIX-10) : une source unique de jetons tirée du site, puis une adoption plateforme par plateforme. **Exception hors chantier**, comme UIX-06, sans API ni migration. Plan écrit par Claude (VS Code), validé par le chef ([fiche](missions/uix-10-charte-commune.md)) | chef |
 | **Le site vitrine sera mis en ligne**, d'abord sur un sous-domaine (VIT-06). Cela remplace « rien en ligne ». Quatre conditions d'abord : audit de `vitrine/` et montée d'Astro le 27 nov. ; mentions légales et page de confidentialité, sans formulaire ni mesure d'audience ; SVG officiels des logos ; site non indexé tant qu'il est sur le sous-domaine. Plan court par l'agent de Cursor, validé par le chef ([fiche](missions/vit-06-mise-en-ligne.md)) | chef |
 | **Modèles** : Grok 4.7 high reste le modèle de l'agent de Cursor pour les tâches courtes et bornées au plan validé. Pour les migrations, la sécurité, le serveur et la charte : le plus fort de Cursor (Claude Fable 5.2, sinon Opus 5.5). Codex : son modèle le plus fort, avec un raisonnement élevé, pour tout | chef |
+
+**Chef, 18 nov., vers 13 h 40** :
+
+| Décision | Par |
+|---|---|
+| UIX-06c **attend la validation d'UIX-10** (« je valide ton plan ») | chef |
+| **Sortie de ClassQuiz maintenant**, par exception hors chantier : QJE-01, puis QJE-03, puis QJE-06. Les quiz de l'école pilote sont transférés dans le Studio et vérifiés avant l'arrêt des conteneurs. Le quiz de la charte commune, c'est le Studio quiz ([fiche](missions/sortie-classquiz.md)). Rappel de la décision du 20 oct. | chef |
+| **StudyLib : étude d'abord.** Garder Laravel ou reconstruire dans la pile de Planner, à trancher avant tout travail sur BIB-02 ([fiche](missions/etude-studylib.md)) | chef |
+| *(coordinateur)* #201 (REL-03) fusionnée. #199 (UIX-06b, `24d96588`) : les parcours sont corrigés, dont un vrai défaut (le dialogue d'Enseignements plantait) et le contraste du bouton en thème sombre. À repousser pour que la CI tranche | coordinateur, 18 nov. 13 h 40 |
