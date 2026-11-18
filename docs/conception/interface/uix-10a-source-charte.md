@@ -8,7 +8,7 @@
 | Mission | [uix-10a-source-charte](../../plan/missions/uix-10a-source-charte.md) (branche `doc/coordination-equipe`), écrite après le début du plan ; le dossier de travail est `..\travaux-planner\uix-10a-source-charte`, créé avant la fiche, et non `uix-10a-charte` |
 | Taille | M |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| **Validé** | en attente · par le coordinateur (taille M, ni migration ni sécurité, § 9 du plan d'ensemble) |
+| **Validé** | **par le coordinateur le 18 novembre 2026** (visa, fiche de mission) |
 
 ## 1. Objet et critère de « terminé »
 
