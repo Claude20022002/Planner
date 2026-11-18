@@ -38,10 +38,6 @@
         "texte": "Les messages aux familles, aussi par WhatsApp."
       },
       {
-        "titre": "Bibliothèque",
-        "texte": "Les prêts de livres, depuis le téléphone."
-      },
-      {
         "titre": "Transport et internat",
         "texte": "Les trajets des cars scolaires et les chambres de l'internat."
       },
@@ -72,8 +68,8 @@
         "texte": "L'application mobile, utilisable sans connexion."
       },
       {
-        "titre": "Export Massar",
-        "texte": "Les données de l'école, exportées au format de Massar."
+        "titre": "Export vers la plateforme nationale",
+        "texte": "Les données de l'école, exportées vers la plateforme nationale de votre pays. Au Maroc, Massar en est un exemple."
       }
     ]
   }

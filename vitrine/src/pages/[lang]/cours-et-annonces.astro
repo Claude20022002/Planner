@@ -1,0 +1,24 @@
+---
+// Page « Cours et annonces » : les supports publiés et les sondages, puis les annonces.
+// Une seule page pour les deux applications. Pas de capture.
+import { MessageCircleQuestion, Mail } from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'cours-et-annonces');
+---
+<Gabarit langue={lang} page="coursEtAnnonces" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <GrilleCartes id="supports" ton="gris" surtitre={t('supports.surtitre')} titre={t('supports.titre')} texte={t('supports.texte')}
+    cartes={t('supports.cartes')} icones={[MessageCircleQuestion]} />
+  <GrilleCartes id="annonces" surtitre={t('annonces.surtitre')} titre={t('annonces.titre')} cartes={t('annonces.cartes')}
+    icones={[Mail]} />
+  <FinDePage langue={lang} />
+</Gabarit>

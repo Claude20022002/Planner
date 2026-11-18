@@ -5,7 +5,7 @@
 | Module | [VIT](../../plan/modules/VIT-site-vitrine.md) · fiche [vit-07-contenu-complet](../../plan/missions/vit-07-contenu-complet.md) |
 | Branche | `feat/vit-07-contenu-complet`, depuis `origin/main` (`5f053ebf`) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 18 novembre 2026 |
-| **Validé** | en attente du chef (question 2). La question 1 a reçu « oui » le 18 novembre 2026. |
+| **Validé** | par Claude20022002, le 18 novembre 2026 (questions 1 et 2) |
 
 Quatre pages nouvelles, la carte « Bibliothèque » retirée de « Bientôt », et un menu « Fonctions ». Aucun prix, aucun nom d'école, aucune date. L'anglais traduit les mêmes phrases. L'arabe reprend les clés vides : le français s'affiche (UIX-04). Les composants du socle ne changent pas, sauf `EnTete.astro` pour le menu. Ni `vitrine/src/styles/`, ni l'accueil.
 
@@ -102,7 +102,7 @@ Build, `vitrine` tests unitaires, `node scripts/verifier-neutre.mjs`, pas de dé
 | N° | Question | Proposition | Réponse du chef |
 |---|---|---|---|
 | 1 | Coder ces quatre pages, ces phrases, le retrait de la carte Bibliothèque, et ce menu Fonctions ? | **oui** | oui, le 18 novembre 2026 |
-| 2 | Écrire les phrases EP-18 et Massar des § 10 et § 11, et retirer la phrase sur le magasin d'applications ? | **oui** | |
+| 2 | Écrire les phrases EP-18 et Massar des § 10 et § 11, et retirer la phrase sur le magasin d'applications ? | **oui** | oui, le 18 novembre 2026 |
 
 ## 10. EP-18 · le téléphone n'est pas le seul chemin
 

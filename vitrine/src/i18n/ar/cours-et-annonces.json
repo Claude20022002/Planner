@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "supports": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "cartes": [
+      { "titre": "", "texte": "" }
+    ]
+  },
+  "annonces": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      { "titre": "", "texte": "" }
+    ]
+  }
+}

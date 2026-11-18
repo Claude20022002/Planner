@@ -18,8 +18,8 @@
       "texte": "Les enseignants font l'appel et lancent leurs quiz depuis Planner. Le calcul de l'emploi du temps d'un collège ou d'un lycée est en préparation.",
       "aujourdhui": [
         {
-          "titre": "L'appel par QR code",
-          "texte": "Les élèves scannent le code projeté, et leur présence est rattachée à la séance."
+          "titre": "L'appel",
+          "texte": "Les élèves scannent le code projeté, ou l'enseignant note chacun à la main : présent, en retard ou absent. La présence est rattachée à la séance."
         },
         {
           "titre": "Des quiz et des jeux",
@@ -48,8 +48,8 @@
           "texte": "Les absences, la saisie des notes et les bulletins."
         },
         {
-          "titre": "Export Massar",
-          "texte": "Les données de l'école, exportées au format de Massar."
+          "titre": "Export vers la plateforme nationale",
+          "texte": "Les données de l'école, exportées vers la plateforme nationale de votre pays. Au Maroc, Massar en est un exemple."
         },
         {
           "titre": "En arabe",
@@ -76,7 +76,7 @@
         },
         {
           "titre": "Appel, quiz et jeux",
-          "texte": "L'appel par QR code, les quiz en direct et les jeux, avec le même compte."
+          "texte": "L'appel par QR code ou à la main, les quiz en direct et les jeux, avec le même compte."
         }
       ],
       "bientot": [
