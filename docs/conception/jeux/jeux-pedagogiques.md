@@ -33,7 +33,7 @@ Un essai raté **ne donne pas la réponse** ; sinon les points s'obtiendraient e
 1. **Après un échec**, le serveur dit **quels éléments sont faux** (`correct: false`) et pourquoi en termes généraux (code de problème). Il ne renvoie **ni la valeur attendue, ni la bonne position, ni le bon classement**.
 2. **La solution** s'obtient par une demande explicite (« Voir la solution ») : sur demande à tout moment, et proposée d'office après **trois essais ratés** du même défi.
 3. **Voir la solution coûte les points** du défi. Une réussite après la solution est enregistrée **sans points** et se distingue dans le suivi de l'enseignant (« réussi avec la solution »).
-4. **Le serveur garde la trace** qu'une solution a été vue (par étudiant, jeu et défi), avant de la renvoyer. Il ne croit jamais le client sur ce point. Le stockage est choisi dans le plan de la correction (migration **0080** réservée) : `JeuProgressions.reussi_le` est obligatoire, une ligne ne peut donc pas noter une solution vue avant une réussite.
+4. **Le serveur garde la trace** qu'une solution a été vue (par étudiant, jeu et défi), avant de la renvoyer. Il ne croit jamais le client sur ce point. Le stockage est choisi dans le plan de la correction (migration **0082** réservée ; d'abord 0080, renumérotée le 15 nov.) : `JeuProgressions.reussi_le` est obligatoire, une ligne ne peut donc pas noter une solution vue avant une réussite.
 5. **Tests** : un échec ne contient aucune valeur attendue (un test par moteur) ; demander la solution puis réussir donne 0 point ; la solution d'un jeu hors module est refusée (403).
 
 ### 1.1 Jouer en classe : les modes

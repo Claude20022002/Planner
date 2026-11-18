@@ -1,10 +1,24 @@
 # Guide de déploiement — HESTIM Planner
 
-Deux parties. La première décrit le **serveur de production** (le VPS de `planner.finadmintech.fr`) : mise à jour, changement de dépendances, retour arrière. La seconde, à partir de « Comparatif des plateformes », décrit l'hébergement gratuit d'origine (Railway et Vercel).
+Deux parties. La première décrit le **serveur de production** (le VPS de `planner.finadmintech.fr`) : mise à jour, changement de dépendances, retour arrière. La seconde, à partir de « Comparatif des plateformes », décrit l'hébergement gratuit d'origine (Railway et Vercel). Le nouveau serveur Debian, partagé avec n8n, est la section qui suit.
+
+## Nouveau serveur Debian, à côté de n8n (EXP-02a)
+
+Reconnaissance : [docs/recette/serveur-2026-11.md](docs/recette/serveur-2026-11.md). Conception : [docs/conception/exploitation/conception-exp-02a-traefik.md](docs/conception/exploitation/conception-exp-02a-traefik.md).
+
+EXP-02a prépare les fichiers. Elle **ne lance pas Planner** et ne se connecte pas au serveur. Le `up` est EXP-02b, lancé par le chef de projet.
+
+- Système : Debian. Compte `debian` (groupe `docker`, `sudo`). Les scripts de `deploy/vps/` écrits pour `root` s'y lancent avec `sudo`.
+- Traefik de n8n tient déjà 80 et 443. On ne réinstalle pas Docker et on ne le met pas à jour : n8n redémarrerait.
+- **Interdit** : dans le dossier de n8n, `docker compose --profile cpu up`. Ce profil ramènerait Ollama. On n'édite pas le compose de n8n, on ne redémarre pas ses conteneurs, et on ne branche pas son réseau à la main.
+- Planner s'utilise **toujours** avec les deux fichiers : `-f docker-compose.yml -f deploy/vps/docker-compose.vps.yml`. Le fichier de base seul publie 80 et 443.
+- La surcharge retire les ports publics de Caddy, pose les labels Traefik et déclare le réseau externe `n8n_default`. Les noms publics sont lus dans `.env.docker` : `SITE_ADDRESS`, `FICHIERS_ADDRESS`, `QUIZ_ADDRESS`. Seul Caddy rejoint ce réseau ; il reste aussi sur `hestim_net`.
+- Contrôle local, sans rien démarrer : `docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml config`. Le YAML de Caddy ne doit montrer ni port 80 ni port 443 sur l'hôte.
+- EXP-02b, par le chef de projet, et seulement avec la surcharge : `docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml up -d`. Avant cette commande : `docker network inspect n8n_default`, puis une photo des conteneurs n8n (identifiant court et heure de démarrage). Après : la même photo. n8n doit être inchangé.
 
 ## Serveur de production : mise à jour et retour arrière
 
-Toutes les commandes du serveur se lancent en `root`. Le chef de projet les lance lui-même. Les scripts sont dans `deploy/vps/` ; chacun explique son rôle dans son en-tête.
+Les scripts de cette section sont écrits pour `root`. Sur le nouveau serveur, le compte `debian` les lance avec `sudo`. Le chef de projet les lance lui-même. Les scripts sont dans `deploy/vps/` ; chacun explique son rôle dans son en-tête.
 
 ### Mettre en ligne par la commande (lot ME-0b)
 
@@ -45,6 +59,12 @@ Pour un correctif du moteur (le code Python de `../ClassQuiz`) qui ne doit pas a
 4. **Lire les contrôles**, copier la commande de retour arrière affichée, puis jouer une partie d'essai.
 
 Si les dépendances Python du quiz (`Pipfile`) ont changé, ce paquet ne suffit pas : il faut une nouvelle image de l'API.
+
+### Ce que contient une base neuve (PLA-03)
+
+Une base sans comptes, une fois migrée, n'a de lignes que dans `SequelizeMeta` et dans `ConfigurationEtablissement` : une seule ligne d'identité neutre (nom « Planner », sans logo, modèle d'emploi du temps `planner`, ClassQuiz éteint). Elle n'a aucun campus : l'école crée les siens avant sa première salle, et règle son identité dans le panneau de configuration.
+
+Les campus et l'identité de l'école d'origine ne sont donnés qu'à une base qui a déjà des comptes au moment où les migrations 0003 et 0055 s'appliquent. Une base déjà migrée ne change pas. Le jeu de démonstration (`npm run seed`) apporte lui-même ses deux campus et son identité (`backend/demo/ecolePilote.js`).
 
 ### Allumer ou éteindre ClassQuiz pour l'école (lot ME-0c)
 

@@ -21,7 +21,7 @@ class TrajetEntreCampusTest extends GrilleDeTest {
         Lecon gandhi = lecon(lun1, g1, Set.of(10L), Set.of(100L));
         Lecon stendhal = lecon(lun2, st, Set.of(11L), Set.of(100L));
         verifier.verifyThat(ContraintesEmploiDuTemps::trajetEntreCampus).given(gandhi, stendhal, parametres).penalizesBy(1);
-        verifier.verifyThat(ContraintesEmploiDuTemps::unSeulCampusParJour).given(gandhi, stendhal).penalizesBy(1);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.unSeulCampusParJour(f)).given(gandhi, stendhal).penalizesBy(1);
     }
 
     @Test
@@ -58,7 +58,7 @@ class TrajetEntreCampusTest extends GrilleDeTest {
         Lecon gandhiEnsuite = lecon(lun2, g2, Set.of(11L), Set.of(100L));
         Lecon stendhalMardi = lecon(mar1, st, Set.of(11L), Set.of(100L));
         verifier.verifyThat(ContraintesEmploiDuTemps::trajetEntreCampus).given(gandhi, gandhiEnsuite, stendhalMardi, new Parametres()).penalizesBy(0);
-        verifier.verifyThat(ContraintesEmploiDuTemps::unSeulCampusParJour).given(gandhi, gandhiEnsuite, stendhalMardi).penalizesBy(0);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.unSeulCampusParJour(f)).given(gandhi, gandhiEnsuite, stendhalMardi).penalizesBy(0);
     }
 
     @Test
@@ -67,6 +67,6 @@ class TrajetEntreCampusTest extends GrilleDeTest {
         Lecon cm = lecon(lun1, g1, Set.of(10L), Set.of(200L));
         cm.setFeuilles(Set.of(202L, 203L));
         Lecon td = lecon(lun3, st, Set.of(11L), Set.of(202L));
-        verifier.verifyThat(ContraintesEmploiDuTemps::unSeulCampusParJour).given(cm, td).penalizesBy(1);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.unSeulCampusParJour(f)).given(cm, td).penalizesBy(1);
     }
 }

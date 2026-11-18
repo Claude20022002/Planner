@@ -16,6 +16,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from './components/common/PrivateRoute';
 import VersTableau from './components/espaces/VersTableau';
+import { routesApplications } from './routes/applications';
 import { routesProjection } from './routes/projection';
 import { routesMotDePasse } from './routes/motDePasse';
 import { routesJeux } from './routes/jeux';
@@ -40,9 +41,6 @@ const Appel          = lazy(() => import('./pages/Appel'));
 const Presence       = lazy(() => import('./pages/Presence'));
 
 // ── Dashboards (chunk par rôle) ───────────────────────────────────────────
-const AdminDashboard = lazy(() => import('./pages/dashboard/AdminDashboard'));
-const EnseignantDashboard = lazy(() => import('./pages/dashboard/EnseignantDashboard'));
-const EtudiantDashboard = lazy(() => import('./pages/dashboard/EtudiantDashboard'));
 
 // ── Gestion admin (chunk "admin-gestion") ─────────────────────────────────
 // Vite détecte le dossier commun → regroupe automatiquement
@@ -151,22 +149,7 @@ export default function App() {
           } />
           {routesMotDePasse()}
 
-          {/* ── Dashboards ────────────────────────────────────────────── */}
-          <Route path="/dashboard/admin" element={
-            <PrivateRoute requiredRole="admin">
-              <AppPage><AdminDashboard /></AppPage>
-            </PrivateRoute>
-          } />
-          <Route path="/dashboard/enseignant" element={
-            <PrivateRoute requiredRole="enseignant">
-              <AppPage><EnseignantDashboard /></AppPage>
-            </PrivateRoute>
-          } />
-          <Route path="/dashboard/etudiant" element={
-            <PrivateRoute requiredRole="etudiant">
-              <AppPage><EtudiantDashboard /></AppPage>
-            </PrivateRoute>
-          } />
+          {routesApplications()}
 
           {/* ── Gestion (admin) ───────────────────────────────────────── */}
           <Route path="/gestion/utilisateurs" element={

@@ -1,0 +1,43 @@
+---
+// Accueil, section 2 : l'emploi du temps calculé. Titre, texte, la phrase sur les refus expliqués,
+// et une semaine dessinée dans un cadre d'ordinateur qui grandit au défilement.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import Apparition from '../socle/Apparition.astro';
+import CadreAppareil from '../socle/CadreAppareil.astro';
+import IllustrationSemaine from './IllustrationSemaine.astro';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  t: (cle: string) => any;
+  langue: string;
+}
+
+const { t, langue } = Astro.props;
+---
+<Section id="emploi" ton="gris" large etiquette="emploi-titre">
+  <Apparition>
+    <div class="entete">
+      <Titre id="emploi-titre" surtitre={t('emploi.surtitre')}>{t('emploi.titre')}</Titre>
+      <Accroche>{t('emploi.texte')}</Accroche>
+    </div>
+  </Apparition>
+  <Apparition effet="grandir" class="visuel">
+    <CadreAppareil type="ordinateur" label={t('emploi.illustration.label')}>
+      <IllustrationSemaine t={t} />
+    </CadreAppareil>
+  </Apparition>
+  <Apparition>
+    <div class="pied">
+      <Accroche forte>{t('emploi.refus')}</Accroche>
+      <BoutonPrincipal href={chemin(langue, 'emploiDuTemps')} variante="lien">{t('emploi.lien')}</BoutonPrincipal>
+    </div>
+  </Apparition>
+</Section>
+
+<style>
+  .entete, .pied { display: grid; gap: var(--espace-3); justify-items: center; }
+  :global(.visuel) { display: grid; justify-items: center; }
+</style>

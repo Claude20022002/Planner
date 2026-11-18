@@ -7,10 +7,11 @@
 - lien de visio ;
 - sondages ;
 - devoirs ;
-- échanges ;
-- offres de stage.
+- échanges.
 
-C'est l'équivalent de Moodle et de Classroom, à l'intérieur de Planner.
+Les offres de stage sont passées dans [STA](STA-stages-alternance.md) le 13 novembre (COU-07 y est devenue STA-01).
+
+Ce n'est pas un second Moodle. Le quotidien visé est celui d'une classe : supports, annonces, devoirs, questions. Les quiz restent dans QJE, et les questions au format Moodle entrent par QJE-02. Ouvrir un outil extérieur est COU-09, reporté.
 
 **Hors module** :
 - les fichiers eux-mêmes, gardés par StudyLib : BIB ;
@@ -40,7 +41,6 @@ C'est l'équivalent de Moodle et de Classroom, à l'intérieur de Planner.
 | COU-04 | Questions partagées de la classe | EC-7 | 4 | M | — | à faire |
 | COU-05 | « Vu » : l'enseignant sait qui a ouvert un support ou une annonce | EC-8 | 4 | M | — | à faire |
 | COU-06 | Export des notes d'un devoir | R-13 | libre | S | COU-02 | à faire |
-| COU-07 | Offres de stage (espace Carrière) : reprendre ou fermer `b/offres-stage` | S-1 | libre | M | — | à décider |
 | COU-08 | Messagerie, si les règles de modération sont tranchées (Q-17) | EC-10 | 5 | L | Q-17 | conditionnel |
 | COU-09 | LTI : ouvrir un outil extérieur dans l'espace de cours | EC-12 | — | L | — | reporté |
 

@@ -1,0 +1,29 @@
+---
+// Accueil, section 8 : contact. Section seulement, sans formulaire ni adresse : le formulaire est
+// VIT-02, qui attend les textes légaux et le nom de domaine (Q-11).
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import Apparition from '../socle/Apparition.astro';
+import Logo from '../socle/Logo.astro';
+
+interface Props {
+  t: (cle: string) => any;
+}
+
+const { t } = Astro.props;
+---
+<Section id="contact" ton="sombre" etiquette="contact-titre">
+  <Apparition>
+    <div class="contenu">
+      <Logo variante="icone" class="contact-logo" />
+      <Titre id="contact-titre">{t('contact.titre')}</Titre>
+      <Accroche>{t('contact.texte')}</Accroche>
+    </div>
+  </Apparition>
+</Section>
+
+<style>
+  .contenu { display: grid; gap: var(--espace-3); justify-items: center; }
+  :global(.contact-logo) { inline-size: 5rem; border-radius: 1.1rem; box-shadow: 0 0 0 1px rgb(168 200 234 / 25%); }
+</style>

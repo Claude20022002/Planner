@@ -43,6 +43,7 @@ export const Periode = resolveur("Periode");
 export const ParametrePlanning = resolveur("ParametrePlanning");
 export const VersionParametres = resolveur("VersionParametres");
 export const ValeurParametre = resolveur("ValeurParametre");
+export const ContrainteDeclaree = resolveur("ContrainteDeclaree");
 export const CoursComposante = resolveur("CoursComposante");
 export const Enseignement = resolveur("Enseignement");
 export const EnseignementGroupe = resolveur("EnseignementGroupe");

@@ -62,23 +62,23 @@ class DisponibilitesTest extends GrilleDeTest {
         Voeu indisponible = new Voeu(VACATAIRE, lun2.getId(), Voeu.Type.INDISPONIBLE);
         verifier.verifyThat(ContraintesEmploiDuTemps::enseignantIndisponible).given(a, indisponible).penalizesBy(1);
         Voeu eviter = new Voeu(VACATAIRE, lun1.getId(), Voeu.Type.EVITER);
-        verifier.verifyThat(ContraintesEmploiDuTemps::voeuEviter).given(a, eviter).penalizesBy(1);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.voeuEviter(f)).given(a, eviter).penalizesBy(1);
     }
 
     @Test
     void voeuPrefere() {
         Lecon a = lecon(lun1, g1, Set.of(10L), Set.of(100L));
         Voeu prefere = new Voeu(10L, 1L, Voeu.Type.PREFERE);
-        verifier.verifyThat(ContraintesEmploiDuTemps::voeuPrefere).given(a, prefere).rewardsWith(1);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.voeuPrefere(f)).given(a, prefere).rewardsWith(1);
         // Le vœu d'un collègue, ou un vœu sur un autre créneau, ne rapporte rien
-        verifier.verifyThat(ContraintesEmploiDuTemps::voeuPrefere).given(a, new Voeu(11L, 1L, Voeu.Type.PREFERE)).rewardsWith(0);
-        verifier.verifyThat(ContraintesEmploiDuTemps::voeuPrefere).given(a, new Voeu(10L, 3L, Voeu.Type.PREFERE)).rewardsWith(0);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.voeuPrefere(f)).given(a, new Voeu(11L, 1L, Voeu.Type.PREFERE)).rewardsWith(0);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.voeuPrefere(f)).given(a, new Voeu(10L, 3L, Voeu.Type.PREFERE)).rewardsWith(0);
 
         // Une demi-journée sur deux créneaux préférés rapporte un point par créneau
         a.setLongueur(2);
-        verifier.verifyThat(ContraintesEmploiDuTemps::voeuPrefere).given(a, prefere, new Voeu(10L, 2L, Voeu.Type.PREFERE)).rewardsWith(2);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.voeuPrefere(f)).given(a, prefere, new Voeu(10L, 2L, Voeu.Type.PREFERE)).rewardsWith(2);
         // Un vœu « à éviter » n'est pas une préférence
-        verifier.verifyThat(ContraintesEmploiDuTemps::voeuPrefere).given(a, new Voeu(10L, 1L, Voeu.Type.EVITER)).rewardsWith(0);
+        verifier.verifyThat((p, f) -> PreferencesEmploiDuTemps.voeuPrefere(f)).given(a, new Voeu(10L, 1L, Voeu.Type.EVITER)).rewardsWith(0);
     }
 
     @Test

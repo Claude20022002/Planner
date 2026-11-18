@@ -1,9 +1,9 @@
 /**
  * Scénario IIIA (lot B-8) : deux promotions de la même filière générées ensemble par le vrai solveur.
  *  - 3A IIIA : les modules de l'emploi du temps 3A IIIA (S6) de l'an dernier, comme si cette classe
- *    existait cette année (docs/exemple_emploi_du_temp - 3A IIIA …pdf) ; à Stendhal ;
+ *    existait cette année (docs/exemple_emploi_du_temp - 3A IIIA …pdf) ; au Campus Sud ;
  *  - 4A IIIA : les modules de l'emploi du temps 4A IIIA (S7) d'octobre 2026 (docs/Planning/…pdf) ;
- *    à Gandhi.
+ *    au Campus Nord.
  * Rythme hebdomadaire et salles repris des PDF ; une séance occupe une demi-journée (deux créneaux).
  * Les enseignants portent des noms fictifs, mais le partage est gardé : la même enseignante encadre
  * le projet des 3A et enseigne deux modules aux 4A (projet PACTE, NoSQL, projet PIC). Pas de
@@ -77,14 +77,14 @@ export const preparerIiia = async (racine) => {
     profs[cle] = await createUser("enseignant", { prenom, nom, email: `${cle}.iiia@exemple.hestim.test` });
   }
 
-  const gandhi = await m.Campus.findOne({ where: { code: "G" } });
-  const stendhal = await m.Campus.findOne({ where: { code: "ST" } });
+  const nord = await m.Campus.findOne({ where: { code: "N" } });
+  const sud = await m.Campus.findOne({ where: { code: "S" } });
   await m.Salle.bulkCreate([
-    { nom_salle: "ST-Amphi C", type_salle: "Salle de cours", capacite: 80, id_campus: stendhal.id_campus },
-    { nom_salle: "ST-Amphi G", type_salle: "Salle de cours", capacite: 60, id_campus: stendhal.id_campus },
-    { nom_salle: "ST-Salle Info", type_salle: "Labo informatique", capacite: 40, id_campus: stendhal.id_campus },
-    { nom_salle: "G-Salle Polyvalente", type_salle: "Salle de cours", capacite: 50, id_campus: gandhi.id_campus },
-    { nom_salle: "G-Salle 03", type_salle: "Salle de cours", capacite: 30, id_campus: gandhi.id_campus },
+    { nom_salle: "S-Amphi C", type_salle: "Salle de cours", capacite: 80, id_campus: sud.id_campus },
+    { nom_salle: "S-Amphi G", type_salle: "Salle de cours", capacite: 60, id_campus: sud.id_campus },
+    { nom_salle: "S-Salle Info", type_salle: "Labo informatique", capacite: 40, id_campus: sud.id_campus },
+    { nom_salle: "N-Salle Polyvalente", type_salle: "Salle de cours", capacite: 50, id_campus: nord.id_campus },
+    { nom_salle: "N-Salle 03", type_salle: "Salle de cours", capacite: 30, id_campus: nord.id_campus },
   ]);
 
   const filiere = await m.Filiere.create({ code_filiere: "IIIA", nom_filiere: "Ingénierie Informatique et Intelligence Artificielle" });

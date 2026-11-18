@@ -10,6 +10,7 @@ import {
 import { JEUX } from '../shared/jeux/catalogue.js';
 import { hashPassword } from './utils/passwordHelper.js';
 import { runMigrations } from './migrations/migrator.js';
+import { installerEcolePilote } from './demo/ecolePilote.js';
 import { recalculerRangs } from './services/planning/referentiel.js';
 import { genererEnseignements, fusionnerEnseignements } from './services/planning/enseignements.js';
 import { evenementsCalendrierMaroc } from './utils/feriesMaroc.js';
@@ -488,7 +489,7 @@ const APRES_MIDI_VENDREDI = [
     { heure_debut:'14:30', heure_fin:'16:15', duree_minutes:105 },
     { heure_debut:'16:30', heure_fin:'18:00', duree_minutes:90  },
 ];
-const GRILLE_HESTIM = {
+export const GRILLE_HESTIM = {
     lundi:    [...MATIN, ...APRES_MIDI],
     mardi:    [...MATIN, ...APRES_MIDI],
     mercredi: [...MATIN, ...APRES_MIDI],
@@ -560,6 +561,8 @@ async function seed() {
 
         // Le schéma vient des migrations versionnées (jamais de sync() implicite)
         await runMigrations();
+        // Une base neuve n'a ni campus ni identité d'école (PLA-03) : la démonstration apporte les siens
+        await installerEcolePilote();
 
         const pwd = await hashPassword('password123');
 

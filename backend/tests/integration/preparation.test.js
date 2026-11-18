@@ -7,6 +7,7 @@ import {
     AnneeUniversitaire,
     Appartenir,
     Campus,
+    ConfigurationEtablissement,
     Cours,
     CoursComposante,
     Creneau,
@@ -21,6 +22,7 @@ import {
     Periode,
     Salle,
 } from "../../models/index.js";
+import { oublierIdentite } from "../../services/etablissement/identite.js";
 
 /**
  * Phase P4 — emploi du temps mensuel au format HESTIM, et assistant « Préparer le semestre ».
@@ -36,6 +38,9 @@ let ref;
 
 beforeAll(async () => {
     await resetDatabase();
+    // École fictive au modèle mensuel de l'école pilote : le préfixe des salles est son nom court
+    await ConfigurationEtablissement.update({ nom: "École Alpha", nom_court: "ALPHA", modele_edt: "hestim" }, { where: { id: 1 } });
+    oublierIdentite();
     admin = await createUser("admin");
     prof = await createUser("enseignant");
     vacataire = await createUser("enseignant");
@@ -44,13 +49,13 @@ beforeAll(async () => {
     await Enseignant.update({ statut: "vacataire" }, { where: { id_user: vacataire.id_user } });
     clients = { admin: await loginAs(admin), prof: await loginAs(prof), etudiant: await loginAs(etudiant), intrus: await loginAs(intrus) };
 
-    const gandhi = await Campus.findOne({ where: { code: "G" } });
+    const nord = await Campus.findOne({ where: { code: "N" } });
     const filiere = await Filiere.create({ code_filiere: "PRP", nom_filiere: "Ingénierie Test", ecole: "engineering", cycle: "ingenieur", intitule_cycle: "cycle Ingénieur d'Etat", premiere_annee_cycle: 3 });
     const promo = await Groupe.create({ nom_groupe: "4A PRP", niveau: "4ème année", annee: 4, effectif: 28, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     const autre = await Groupe.create({ nom_groupe: "3A PRP", niveau: "3ème année", annee: 3, effectif: 20, annee_scolaire: "2026-2027", type_groupe: "promotion", id_filiere: filiere.id_filiere });
     await Appartenir.create({ id_user_etudiant: etudiant.id_user, id_groupe: promo.id_groupe });
     await Appartenir.create({ id_user_etudiant: intrus.id_user, id_groupe: autre.id_groupe });
-    const poly = await Salle.create({ nom_salle: "G-POLY", type_salle: "Salle de cours", capacite: 60, etage: 4, id_campus: gandhi.id_campus });
+    const poly = await Salle.create({ nom_salle: "N-POLY", type_salle: "Salle de cours", capacite: 60, etage: 4, id_campus: nord.id_campus });
 
     const c = (jour_semaine, heure_debut, heure_fin, rang) => Creneau.create({ jour_semaine, heure_debut, heure_fin, duree_minutes: 90, rang });
     const lundi = [await c("lundi", "09:00", "10:45", 1), await c("lundi", "11:00", "12:30", 2), await c("lundi", "13:30", "15:15", 3), await c("lundi", "15:30", "17:00", 4)];
@@ -102,9 +107,9 @@ describe("Emploi du temps mensuel au format HESTIM", () => {
         expect(edt.semaines[1].libelle).toBe("Du 04 Au 08 Janvier 2027");
     });
 
-    test("deux créneaux du même enseignement fusionnés, (P.S) puis (D.S), salle « HESTIM-GANDHI »", () => {
+    test("deux créneaux du même enseignement fusionnés, (P.S) puis (D.S), salle « ALPHA-CAMPUS NORD »", () => {
         const [cellule] = jour("2027-01-04").matin;
-        expect(cellule).toMatchObject({ type: "seance", rangs: [1, 2], heure_debut: "09:00", heure_fin: "12:30", matiere: "Bases de données NoSQL", premiere_seance: true, derniere_seance: false, salle: { campus: "HESTIM-GANDHI", detail: "Étage 4 - G-POLY" } });
+        expect(cellule).toMatchObject({ type: "seance", rangs: [1, 2], heure_debut: "09:00", heure_fin: "12:30", matiere: "Bases de données NoSQL", premiere_seance: true, derniere_seance: false, salle: { campus: "ALPHA-CAMPUS NORD", detail: "Étage 4 - N-POLY" } });
         expect(jour("2027-01-25").matin[0]).toMatchObject({ derniere_seance: true, premiere_seance: false });
         expect(jour("2027-01-04").apres_midi.every((c) => c.type === "vide")).toBe(true);
     });
