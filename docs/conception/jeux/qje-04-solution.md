@@ -44,7 +44,7 @@ sequenceDiagram
 - `shared/simulations/catalogue/`, `i18n.js`: neutral metadata and bilingual feedback.
 - Shared engines/presentations: no expected answer in failed feedback; no expected-answer column after failure.
 - `backend/services/jeux/`: state transactions, backend-only reference solutions, evaluation and tracking.
-- `backend/models/`, migration 0080: persistent state and first-success assistance snapshot.
+- `backend/models/`, migration 0082: persistent state and first-success assistance snapshot.
 - `backend/routes/jeuxRoutes.js`, `backend/app.js`: authenticated solution POST with CSRF intact.
 - Shared session and web/mobile hooks/screens: explicit solution action, persisted failure count, read-only solution panel, no premature takeaway.
 - Extracted teacher dialog and individual-session summary: assisted completions identified without awarding points.

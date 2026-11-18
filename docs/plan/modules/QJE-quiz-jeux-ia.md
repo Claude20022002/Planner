@@ -8,7 +8,7 @@
 
 **Hors module** : le stockage des médias (BIB-03).
 
-**Tables possédées** : les tables du Studio (`models/studio.js`), `quizDirect`, `QuizPartie`, `QuizResultat`, `GenerationQuiz`, `JeuModule`, `JeuProfil`, `JeuProgression`, `JeuEtatDefi` (`JeuxEtatsDefis`, migration 0080 : échecs et solution vue par défi).
+**Tables possédées** : les tables du Studio (`models/studio.js`), `quizDirect`, `QuizPartie`, `QuizResultat`, `GenerationQuiz`, `JeuModule`, `JeuProfil`, `JeuProgression`, `JeuEtatDefi` (`JeuxEtatsDefis`, migration 0082 : échecs et solution vue par défi).
 
 ## Ce qui existe
 
@@ -21,7 +21,7 @@
 - **ClassQuiz** : fork dans un dépôt séparé, derrière l'interrupteur `classquiz_actif` de chaque école (migration 0057). Il est éteint pour une installation neuve et allumé pour HESTIM. Ses conteneurs restent dans le compose.
 - **Jeux** :
   - fichiers : `jeuxRoutes`, `sessionJeuRoutes`, `activiteRoutes`, `shared/jeux`, `shared/simulations`, `shared/terminal` (jeu du terminal Linux) ; écrans `pages/jeux/*` ; dans l'application, les écrans `jeux`, `terminal` et `partie` ;
-  - la branche `jeux-pedagogique` (dix simulations, trente défis) n'est **pas fusionnée** : ses corrections B-1 (catalogue neutre), B-2 (référence Big-O `complexite-01`) et I-1 (solution vue, coût en points, migration 0080) sont faites et testées en local le 18 nov. (`docs/sessions/2026-11-18-jeux-pedagogique.md`).
+  - la branche `jeux-pedagogique` (dix simulations, trente défis) n'est **pas fusionnée** : ses corrections B-1 (catalogue neutre), B-2 (référence Big-O `complexite-01`) et I-1 (solution vue, coût en points, migration 0082) sont faites et testées en local le 18 nov. (`docs/sessions/2026-11-18-jeux-pedagogique.md`).
 - **IA** :
   - fichiers : `services/ia/*` (client générique réglé par `IA_*`, quota), `quizIaRoutes`, `services/studio/iaGeneration.js` ;
   - **le fournisseur n'est pas choisi en production** (loi 09-08). Q-16 et Q-24 visaient Haiku 5.5, sous enveloppe.

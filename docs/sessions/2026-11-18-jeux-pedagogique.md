@@ -158,10 +158,59 @@ I-1 (solution explicite notée par le serveur, migration 0080, aucune réponse a
 suivi enseignant « réussi avec la solution »), nettoyage mobile limité.
 Vérifié en local : backend 443 tests, frontend 42 tests + build, mobile 77 tests, lint sans erreur,
 verifier-neutre OK, Playwright simulations 36 sur 36 (bureau et téléphone).
-Reste : tests d'intégration (base MySQL jetable indisponible ici), relecture et PR ; migration 0080
+Reste : tests d'intégration (base MySQL jetable indisponible ici), relecture et PR ; migration 0082
 à appliquer avant le déploiement. Rien n'est commité, poussé ni fusionné.
 Questions en attente : aucune.
 Règles : périmètre des dix simulations (Terminal Linux et jeu collectif inchangés), points déjà
 gagnés conservés, pas de code hors conception validée, questions avant toute supposition,
 fiche de session et suivi.md à jour en fin de session, jamais de git push.
 ```
+
+## Reprise du 18 novembre, après-midi : migration 0082 et fusion de `main`
+
+Message du chef, écrit le 18 novembre à 11 h 45 dans `docs/plan/decisions.md` (branche
+`doc/coordination-equipe`) : « **QJE-04 (#196) : la mise à jour est faite par Alexis et son agent** :
+renommer la migration en `0082-jeux-solutions.js`, fusionner `main`, obtenir une CI verte, intégration
+comprise. Puis le coordinateur relit, et le chef valide la migration avant la fusion. » Le constat qui
+l'accompagne : la PR #196 était en conflit avec `main` (`App.jsx`, `i18n/index.js`, `suivi.md`), donc
+sans CI, et la migration portait `0080`, déjà pris par MOT-13 (`0080-contraintes-declarees.js`).
+
+**Ce qui change par rapport aux sections ci-dessus** (qui restent le récit de la session du matin) :
+
+1. La migration s'appelle désormais `backend/migrations/0082-jeux-solutions.js` (`git mv`, contenu
+   inchangé) ; les références dans la conception, le module QJE, le registre du suivi et cette fiche
+   suivent. Le registre de `suivi.md` réserve 0082 à QJE-04 depuis le 15 novembre.
+2. `main` est fusionnée dans `jeux-pedagogique` (0 commit de retard après la fusion), avec trois
+   conflits tranchés :
+   - `frontend/src/App.jsx` : la version de `main` est gardée pour les dashboards (ses imports lazy
+     ont disparu de son côté) et nos changements sont conservés (import `routesJeux`, routes de jeux
+     déplacées dans `routes/jeux.jsx`) ;
+   - `frontend/src/i18n/index.js` : union des deux côtés, `personnes` et `applications` (main) avec
+     `simulations` (QJE-04) ;
+   - `docs/plan/suivi.md` : reconstruit sur la version de `main` (qui a déjà le registre à jour et la
+     ligne QJE-04), puis trois lignes ajustées (chantier QJE, registre 0082, fonction QJE-04).
+
+### Vérifié après la fusion
+
+| Contrôle | Commande | Résultat |
+|---|---|---|
+| Tests serveur | `npm test` dans `backend/` | 31 suites, **486 tests passés**, 0 échec |
+| Lint serveur | `npm run lint` dans `backend/` | 0 erreur, 17 avertissements préexistants (`max-lines`) |
+| Tests du site | `npm run test:unit` dans `frontend/` | **66 tests passés**, 0 échec |
+| Build du site | `npm run build` dans `frontend/` | construit en 1 min 1 s |
+| Lint du site | `npm run lint` dans `frontend/` | 0 erreur, 20 avertissements |
+| Tests de l'application | `npx jest --ci` dans `mobile/` | 17 suites, **77 tests passés**, 0 échec |
+| Lint de l'application | `npx eslint src` dans `mobile/` | 0 erreur, 3 avertissements préexistants |
+| Neutralité | `node scripts/verifier-neutre.mjs` | « Aucun nom d'école écrit en dur » (7 exceptions justifiées) |
+| Audit Playwright dédié | `npx playwright test --config playwright.simulations.config.cjs` | **36 tests passés** en 6 min 48 : 18 scénarios × bureau et téléphone |
+
+**Non exécuté ici** : les tests d'intégration, faute de base MySQL jetable sur ce poste. Ils tournent
+en CI, dans le travail « Test Backend » (`npm run test:integration` contre `mysql:8.4.13`, base
+`hestim_test`), et c'est cette CI qui doit être verte avant la relecture.
+
+### Reste à faire, dans l'ordre (remplace la liste du matin)
+
+1. Pousser `jeux-pedagogique` et suivre les six contrôles de la PR #196, intégration comprise.
+2. Relecture par le coordinateur, puis validation de la migration 0082 par le chef avant la fusion.
+3. À la mise en production : appliquer 0082 **avant** le serveur et les clients mis à jour.
+4. Recette : parcours « trois échecs → voir la solution → réussite à 0 point » et suivi enseignant.
