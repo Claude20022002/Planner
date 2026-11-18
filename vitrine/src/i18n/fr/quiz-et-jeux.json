@@ -23,6 +23,7 @@
     "surtitre": "Jeux",
     "titre": "Dix simulations, trente défis.",
     "texte": "Tri Cyber, Nœuds Réseaux, Labo des seuils, Pilote des stocks, Sprint Agile, Robot Route, Requête Parfaite, Ordonnanceur CPU, Budget ERP, Labo Big-O. Chaque simulation a trois défis.",
+    "lien": "Voir les dix jeux",
     "cartes": [
       {
         "titre": "Terminal Linux",

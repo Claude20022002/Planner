@@ -23,6 +23,7 @@
     "surtitre": "Games",
     "titre": "Ten simulations, thirty challenges.",
     "texte": "Tri Cyber, Nœuds Réseaux, Labo des seuils, Pilote des stocks, Sprint Agile, Robot Route, Requête Parfaite, Ordonnanceur CPU, Budget ERP, Labo Big-O. Each simulation has three challenges.",
+    "lien": "See the ten games",
     "cartes": [
       {
         "titre": "Linux terminal",

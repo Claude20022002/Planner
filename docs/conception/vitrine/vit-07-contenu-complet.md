@@ -146,3 +146,15 @@ Le point « À son rythme, chacun ouvre le quiz par le lien, le code ou le QR co
 | `solutions.json`, `types.collegeLycee.bientot` (titre « Export Massar ») | Les données de l'école, exportées au format de Massar. | la même phrase |
 
 Le titre des deux cartes devient « Export vers la plateforme nationale ». L'anglais traduit. L'arabe garde les clés vides. `emploi-du-temps.json` ne contient pas le mot Massar.
+
+## 12. Bibliothèque des jeux
+
+Validé par Claude20022002 le 18 novembre 2026 (« valider »). La page n'entre pas dans le menu Fonctions : on y arrive depuis Quiz et jeux.
+
+| | |
+|---|---|
+| Adresse | `/<langue>/bibliotheque-des-jeux/` |
+| Clé | `bibliothequeJeux`, absente de `FONCTIONS` et de `NAVIGATION` |
+| Lien | Sur Quiz et jeux, sous les jeux : « Voir les dix jeux » |
+
+La page reprend, dans l'ordre déjà écrit sur Quiz et jeux, le titre et le résumé de chaque fichier de `shared/simulations/catalogue/`. Seul écart : le résumé de Pilote des stocks ne dit pas « en MAD ». Le site ne suppose aucun pays, et le catalogue, lui, ne change pas. On n'y joue pas. Aucun lien vers l'application. Pas de consigne de défi, pas de filière. L'en-tête reprend « Jeux », « Dix simulations, trente défis. », « Chaque simulation a trois défis. » Le titre de la grille, « Les dix jeux. », nomme la liste : ce sont les mots du lien, pas une phrase nouvelle. L'anglais reprend les titres et résumés anglais du catalogue. L'arabe garde les clés vides.
