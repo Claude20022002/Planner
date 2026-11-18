@@ -11,7 +11,7 @@ import { C, OMBRE } from "../charte";
 import { Apparition } from "../elements/Apparition";
 import { CadreAppareil } from "../elements/CadreAppareil";
 import { ColonneTexte } from "../elements/ColonneTexte";
-import { EcranTelephone } from "../elements/EcranTelephone";
+import { EcranTelephone, ONGLET } from "../elements/EcranTelephone";
 import { Fond } from "../elements/Fond";
 import { entre, progression, useSecondes } from "../elements/temps";
 import type { Textes } from "../textes";
@@ -69,7 +69,7 @@ export const A3Report: React.FC<{ t: Textes }> = ({ t }) => {
 
       <Apparition effet="grandir" debut={0.3} style={{ position: "absolute", left: 1300, top: 90 }}>
         <CadreAppareil type="telephone" largeur={420}>
-          <EcranTelephone titre={ill.ecran} onglets={t.video.illustrations.mobile.onglets} actif={0}>
+          <EcranTelephone titre={ill.ecran} onglets={t.video.illustrations.mobile.onglets} actif={ONGLET.semaine}>
             <Jour nom={ill.jours[0]} haut={22} />
             <Carte titre={semaine.seances[2].titre} detail={`${semaine.heures[2]} · ${semaine.seances[2].lieu}`} style={{ top: 168 }} />
             <Jour nom={ill.jours[1]} haut={300} />

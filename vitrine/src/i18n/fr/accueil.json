@@ -1,7 +1,7 @@
 {
   "meta": {
     "titre": "Planner · L'emploi du temps et la vie de classe",
-    "description": "Planner calcule l'emploi du temps de votre établissement en respectant vos règles, et accompagne la classe : appel par QR code, quiz en direct, jeux, reports de séance suivis."
+    "description": "Planner calcule l'emploi du temps de votre établissement en respectant vos règles, et accompagne la classe : appel par QR code ou à la main, quiz en direct, jeux, reports de séance suivis."
   },
   "ouverture": {
     "titre": "Planner",
@@ -73,7 +73,7 @@
   "appel": {
     "surtitre": "En classe",
     "titre": "L'appel en un geste.",
-    "texte": "L'enseignant projette un QR code. Les étudiants le scannent avec leur téléphone, et leur présence est notée.",
+    "texte": "L'enseignant projette un QR code. Les étudiants le scannent avec leur téléphone, et leur présence est notée. Il peut aussi noter chacun à la main : présent, en retard ou absent.",
     "lien": "En savoir plus sur la classe",
     "illustration": {
       "label": "Écran d'appel par QR code sur un téléphone",
@@ -208,9 +208,10 @@
       {
         "titre": "L'appel en un geste.",
         "lignes": [
-          "Le QR code change toutes les 30 secondes."
+          "Par QR code : il change toutes les 30 secondes.",
+          "Ou à la main : présent, en retard, absent."
         ],
-        "image": "Un QR code est projeté en classe. Un téléphone le scanne, la présence est notée, et le nombre de présents monte."
+        "image": "Un QR code est projeté en classe. Un téléphone le scanne, la présence est notée, et le nombre de présents monte. Puis l'écran de l'enseignant montre la liste de la classe : trois boutons par étudiant, présent, en retard, absent ; un étudiant est mis en retard, un autre absent."
       },
       {
         "titre": "Des quiz en direct, ou à son rythme.",
@@ -246,10 +247,10 @@
       {
         "titre": "Aussi sur le téléphone.",
         "lignes": [
-          "La semaine, le scanner de l'appel, les jeux, la bibliothèque.",
+          "La semaine, le scanner de l'appel, la bibliothèque.",
           "Parlons de votre établissement."
         ],
-        "image": "Sur un téléphone, les onglets Semaine, Scanner, Activités et Bibliothèque défilent. Puis le logo et le nom de Planner."
+        "image": "Sur un téléphone, la barre du bas montre les onglets Tableau, Semaine, Scanner, Bibliothèque et Compte ; la semaine, le scanner puis la bibliothèque défilent. Puis le logo et le nom de Planner."
       }
     ],
     "illustrations": {
@@ -277,7 +278,12 @@
       },
       "appel": {
         "renouvellement": "Nouveau code dans",
-        "presence": "Présence notée"
+        "presence": "Présence notée",
+        "statuts": {
+          "present": "Présent",
+          "retard": "En retard",
+          "absent": "Absent"
+        }
       },
       "quiz": {
         "types": [
@@ -388,10 +394,11 @@
       },
       "mobile": {
         "onglets": [
+          "Tableau",
           "Semaine",
           "Scanner",
-          "Activités",
-          "Bibliothèque"
+          "Bibliothèque",
+          "Compte"
         ]
       }
     }

@@ -5,12 +5,18 @@
  */
 import React from "react";
 import { AbsoluteFill, Img } from "remotion";
-import { BatteryFull, CalendarDays, Gamepad2, LibraryBig, QrCode, SignalHigh, Wifi } from "lucide-react";
+import { BatteryFull, CalendarDays, CircleUser, LayoutDashboard, LibraryBig, ScanQrCode, SignalHigh, Wifi } from "lucide-react";
 import adresseIcone from "../../../../../../vitrine/public/logo/planner-icone.svg";
 import { C, POLICE } from "../charte";
 
-/** Les quatre onglets montrés, dans l'ordre de accueil.json (video.illustrations.mobile.onglets) */
-export const ICONES_ONGLETS = [CalendarDays, QrCode, Gamepad2, LibraryBig];
+/**
+ * Les cinq onglets visibles de l'application, dans l'ordre de accueil.json
+ * (video.illustrations.mobile.onglets) et de mobile/src/app/(onglets)/_layout.jsx : Tableau, Semaine,
+ * Scanner, Bibliothèque, Compte. « jeux » n'y est pas : son onglet est masqué (href: null).
+ */
+export const ICONES_ONGLETS = [LayoutDashboard, CalendarDays, ScanQrCode, LibraryBig, CircleUser];
+/** Indices des onglets dans cette liste */
+export const ONGLET = { tableau: 0, semaine: 1, scanner: 2, bibliotheque: 3, compte: 4 } as const;
 
 type Props = {
   titre?: string;
@@ -52,8 +58,8 @@ export const EcranTelephone: React.FC<Props> = ({ titre, onglets, actif = 0, fon
           const Icone = ICONES_ONGLETS[i % ICONES_ONGLETS.length];
           const couleur = i === actif ? C.bleu : C.grisTexte;
           return (
-            <div key={libelle} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, color: couleur, fontSize: 14, fontWeight: i === actif ? 700 : 500 }}>
-              <Icone size={28} strokeWidth={i === actif ? 2.2 : 1.8} />
+            <div key={libelle} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, color: couleur, fontSize: 13, fontWeight: i === actif ? 700 : 500, whiteSpace: "nowrap" }}>
+              <Icone size={26} strokeWidth={i === actif ? 2.2 : 1.8} />
               {libelle}
             </div>
           );

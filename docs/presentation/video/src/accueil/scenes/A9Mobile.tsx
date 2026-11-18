@@ -1,16 +1,18 @@
 /**
- * Scène 9 (1:17 – 1:26) : le téléphone de l'étudiant, dont les onglets défilent (Semaine, Scanner,
- * Activités, Bibliothèque : mobile/src/app/(onglets)/) ; puis la fin, sur fond blanc : le logo, ses
- * aiguilles, le nom et « Parlons de votre établissement. ». Ni adresse ni magasin d'applications.
+ * Scène 9 (1:17 – 1:26) : le téléphone de l'étudiant. La barre du bas montre les cinq onglets visibles
+ * de l'application (mobile/src/app/(onglets)/_layout.jsx) ; Semaine, Scanner et Bibliothèque défilent.
+ * L'onglet des jeux est masqué dans l'application (href: null) : il n'est pas montré (correction du
+ * 18 nov., question 9 du plan). Puis la fin, sur fond blanc : le logo, ses aiguilles, le nom et
+ * « Parlons de votre établissement. ». Ni adresse ni magasin d'applications.
  */
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import { BookMarked, Cpu, Database, ListTodo, Network, ShieldCheck, SquareTerminal } from "lucide-react";
+import { BookMarked } from "lucide-react";
 import { C } from "../charte";
 import { Apparition } from "../elements/Apparition";
 import { CadreAppareil } from "../elements/CadreAppareil";
 import { ColonneTexte } from "../elements/ColonneTexte";
-import { EcranTelephone } from "../elements/EcranTelephone";
+import { EcranTelephone, ONGLET } from "../elements/EcranTelephone";
 import { Fond } from "../elements/Fond";
 import { LogoHorloge } from "../elements/LogoHorloge";
 import { QrDessine } from "../elements/QrDessine";
@@ -18,7 +20,8 @@ import { TexteAnime } from "../elements/TexteAnime";
 import { progression, useSecondes } from "../elements/temps";
 import type { Textes } from "../textes";
 
-const CHANGEMENTS = [1.4, 2.5, 3.6]; // passage à l'onglet suivant, en secondes
+const CHANGEMENTS = [1.8, 3.4]; // passage à la page suivante, en secondes
+const ONGLETS_DES_PAGES = [ONGLET.semaine, ONGLET.scanner, ONGLET.bibliotheque];
 const FIN = 5.4;
 
 const Liste: React.FC<{ lignes: { titre: string; detail: string; fonce?: boolean }[] }> = ({ lignes }) => (
@@ -37,9 +40,8 @@ export const A9Mobile: React.FC<{ t: Textes }> = ({ t }) => {
   const scene = t.video.scenes[8];
   const onglets = t.video.illustrations.mobile.onglets;
   const semaine = t.emploi.illustration;
-  const jeux = t.video.illustrations.jeux.cartes;
   const docs = t.video.illustrations.cours.bibliotheque.documents;
-  const actif = CHANGEMENTS.filter((c) => s >= c).length;
+  const actif = ONGLETS_DES_PAGES[CHANGEMENTS.filter((c) => s >= c).length];
   const glisse = CHANGEMENTS.reduce((total, c) => total + progression(s, c, 0.6), 0);
   const fin = progression(s, FIN, 0.7);
 
@@ -49,16 +51,6 @@ export const A9Mobile: React.FC<{ t: Textes }> = ({ t }) => {
       <div style={{ padding: 16, borderRadius: 18, border: `5px solid ${C.blanc}` }}>
         <QrDessine taille={190} graine={11} couleur={C.ecran} fond={C.texteSombre} />
       </div>
-    </div>,
-    <div key="jeux" style={{ padding: 18, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-      {[SquareTerminal, Database, Network, Cpu, ListTodo, ShieldCheck].map((Icone, i) => (
-        <div key={i} style={{ borderRadius: 16, overflow: "hidden", background: C.blanc, boxShadow: `inset 0 0 0 1px ${C.grisTrait}` }}>
-          <div style={{ height: 96, display: "grid", placeItems: "center", background: i ? (i % 2 ? C.bleuNuit : C.bleu) : C.ecran, color: i ? C.blanc : C.jeu }}>
-            <Icone size={44} strokeWidth={1.6} />
-          </div>
-          <div style={{ padding: "10px 12px", fontSize: 16, fontWeight: 700, color: C.bleuNuit, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{jeux[i]}</div>
-        </div>
-      ))}
     </div>,
     <div key="bibliotheque" style={{ padding: 18, display: "grid", gap: 12 }}>
       {docs.map((titre, i) => (

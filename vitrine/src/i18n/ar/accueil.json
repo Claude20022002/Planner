@@ -208,6 +208,7 @@
       {
         "titre": "",
         "lignes": [
+          "",
           ""
         ],
         "image": ""
@@ -277,7 +278,12 @@
       },
       "appel": {
         "renouvellement": "",
-        "presence": ""
+        "presence": "",
+        "statuts": {
+          "present": "",
+          "retard": "",
+          "absent": ""
+        }
       },
       "quiz": {
         "types": [
@@ -388,6 +394,7 @@
       },
       "mobile": {
         "onglets": [
+          "",
           "",
           "",
           "",
