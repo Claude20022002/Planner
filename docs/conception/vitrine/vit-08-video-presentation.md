@@ -121,10 +121,25 @@ Il écrit aussi `vitrine/public/videos/empreinte.json` : l'empreinte des textes 
 
 **Les poids.**
 
-- Ce sont des estimations. Les aplats de couleur se compressent bien, et le rendu de l'étape 3 donnera les vrais poids.
 - Pas de MP4 en 1080p : seul un navigateur sans VP9 le lirait, et le 720p lui suffit.
-- Total pour deux langues : environ 25 Mo.
 - La page ne charge **qu'un fichier**, et seulement quand on arrive à la section.
+
+**Mesurés à l'étape 4** (aperçu du 18 nov., charte version 1, empreinte `a02bbe735eb3e36f`) :
+
+| Fichier | Français | Anglais | Réglage |
+|---|---|---|---|
+| `-720.webm` | 2,16 Mo | 2,08 Mo | VP9, CRF 40 |
+| `-1080.webm` | 3,39 Mo | 3,28 Mo | VP9, CRF 40 |
+| `-720.mp4` | 1,51 Mo | 1,45 Mo | H.264, CRF 28 |
+| `.webp` | 41 Ko | 40 Ko | qualité 80 |
+
+- Total pour deux langues : **14,2 Mo**, au lieu des 25 Mo estimés.
+- **Le CRF du VP9 est passé de 34 à 40.** À 34, le WebM en 720p pesait 2,95 Mo pour la même netteté du texte que 40 (images comparées sur la scène du report).
+- **Le MP4 en 720p est plus léger que le WebM en 720p**, à netteté égale. Quel fichier lire par défaut sur l'accueil se décide à l'étape 5 (question 7 ci-dessous).
+
+**Question 7 (étape 5)** : quel fichier par défaut ?
+- **Proposition** : le MP4 en 720p par défaut (1,5 Mo, lu partout), le WebM en 1080p sur les écrans de 1280 px ou plus.
+- Le WebM en 720p n'aurait alors plus d'usage : on ne le rendrait plus, ce qui retire 4,2 Mo au rendu final.
 
 **L'image fixe** est une image de la scène 2, la semaine remplie avec l'avis. Le chef peut en choisir une autre à la relecture de l'aperçu.
 

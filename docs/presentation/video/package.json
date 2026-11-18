@@ -14,7 +14,9 @@
     "render:direction": "npm run assets && npm run musique && remotion render Direction out/direction.mp4",
     "render:keynote": "npm run assets && npm run musique && remotion render Keynote out/keynote.mp4",
     "render:matinee-reseaux": "npm run assets && npm run musique && remotion render MatineeReseaux out/matinee-ecole-9x16.mp4",
-    "carrousel": "npm run assets && python scripts/carrousel.py"
+    "carrousel": "npm run assets && python scripts/carrousel.py",
+    "apercu:accueil": "node scripts/rendre-accueil.mjs",
+    "render:accueil": "node scripts/rendre-accueil.mjs --site"
   },
   "dependencies": {
     "@remotion/cli": "4.0.533",
