@@ -16,6 +16,9 @@ Les contrôles de conception ont porté sur le Compose du VPS, le workflow vitri
 de publication, les scripts d’exploitation et le HTML produit par les gabarits. Les liens locaux du plan
 et le diff Git ont été vérifiés. Les commandes de recette sont destinées à l’étape de déploiement.
 
+La consigne de 15 h 45 porte à six les conditions de mise en ligne. Le plan ajoute la livraison du
+contenu de VIT-07 et de la vidéo d’accueil VIT-08, ainsi que les contrôles de lecture, de CSP et de cache.
+
 ## Pour le chef
 
 Après relecture et validation, publier la branche depuis le dépôt principal puis ouvrir la PR de conception.
@@ -29,4 +32,4 @@ gh pr create --base main --head feat/vit-06-mise-en-ligne --title "VIT-06 · Pla
 
 Recueillir le visa du chef sur le plan VIT-06 et le reporter sur la branche.
 Après validation, reprendre UIX-09 selon la feuille de route. Appliquer la consigne du 18 novembre à
-12 h 11, archivée dans la boîte Codex. Le déploiement VIT-06 reste en fin de file et exige les quatre conditions.
+12 h 11, archivée dans la boîte Codex. Le déploiement VIT-06 reste en fin de file et exige les six conditions.
