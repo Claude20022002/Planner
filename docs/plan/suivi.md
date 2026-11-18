@@ -63,8 +63,8 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | UIX | UIX-06b, mission d'équipe : intégrateur, commun, Filières et Enseignements | Codex | `feat/uix-06b-referentiel` | code du 16 nov. non commité ; R0 demandé le 18 nov. | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
 | UIX | UIX-06b, mission d'équipe : Groupes et Modules | agent de Cursor | `feat/uix-06b-referentiel-groupes-modules` (à créer à R0) | attend R0 | 18 nov. 00 h 30 | [uix-06b-equipe](missions/uix-06b-equipe.md) |
 | UIX | UIX-06c Salles, Campus, Créneaux, Calendrier (même équipe) | — | `feat/uix-06c-ressources-temps` (à créer) | reportée par le chef le 18 nov. (site vitrine et grille à la place) ; plan à valider plus tard | 18 nov. 00 h 30 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
-| VIT | VIT-01 et VIT-05 (préparation) : site vitrine au style Apple, mission d'équipe | Claude (VS Code), intégrateur ; agent de Cursor après UIX-06b | `feat/vit-01-vitrine` (à créer) | plan écrit, **à valider par le chef** ; SVG des logos à déposer | 18 nov. 00 h 20 | [vit-equipe](missions/vit-equipe.md) |
-| UIX | UIX-09 grille d'applications façon iCloud | Codex, après UIX-06b | `feat/uix-09-grille-applications` (à créer) | plan écrit, **à valider par le chef** | 18 nov. 00 h 20 | [vit-equipe](missions/vit-equipe.md) |
+| VIT | VIT-01 et VIT-05 (préparation) : site vitrine au style Apple, mission d'équipe | Claude (VS Code), intégrateur ; agent de Cursor après UIX-06b | `feat/vit-01-vitrine` (à créer) | plan **validé par le chef le 18 nov.** ; R0 du site à faire | 18 nov. 00 h 20 | [vit-equipe](missions/vit-equipe.md) |
+| UIX | UIX-09 grille d'applications façon iCloud | Codex, après UIX-06b | `feat/uix-09-grille-applications` (à créer) | plan **validé par le chef le 18 nov.** | 18 nov. 00 h 20 | [vit-equipe](missions/vit-equipe.md) |
 
 Hors chantier, PR ouvertes : #176 (plan d'essai d'OpenEduCat, Claude Code, 15 nov. ; faite dans le dépôt principal et non dans un dossier de travail à part), #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
@@ -177,7 +177,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-05](modules/UIX-interface.md) | Ton des messages du serveur | libre | M | à faire |  |
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | libre | M | en cours : pilote UIX-06a codé localement, relecture et CI attendues | #185 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | PR ouverte : CI parcours rouge, correction du test de reprise réseau committée localement | #185 · feat/uix-06a-interface |
-| [UIX-09](modules/UIX-interface.md) | Grille d'applications façon iCloud | libre | M | plan à valider (inscrite le 18 nov.) |  |
+| [UIX-09](modules/UIX-interface.md) | Grille d'applications façon iCloud | libre | M | plan validé (chef, 18 nov.) |  |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | à faire |  |
 | [VIT-02](modules/VIT-site-vitrine.md) | Une page et un formulaire de contact | libre | M | à faire |  |
 | [VIT-03](modules/VIT-site-vitrine.md) | Centre d'aide | libre | M | à faire |  |

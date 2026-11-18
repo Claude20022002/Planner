@@ -6,7 +6,7 @@
 | Fonctions | VIT-01 (conception et socle du site, M) ; VIT-05 en préparation (accueil et pages de fonctions, sans tarifs ni mise en ligne) |
 | Branche | `feat/vit-01-vitrine`, depuis `origin/main` |
 | Rédigé par | Claude Code (Opus 5.5), coordinateur, le 18 novembre 2026 |
-| Validé | **en attente du chef** : choix de produit (allure, messages) et choix de pile (§ 5) |
+| Validé | **Validé par Claude20022002 le 18 novembre 2026** (« Je valide les deux plans »), dépendances comprises (Motion, Lucide, lucide-animated, Astro) |
 | Travail | mission d'équipe ([equipe.md](../../plan/equipe.md)) : Claude (VS Code) intégrateur, puis l'agent de Cursor |
 
 ## 1. Ce que veut le chef (17 et 18 nov.)
@@ -55,6 +55,21 @@
 | Animations | apparition au défilement (fondu et léger glissement), image qui grandit ou se fixe pendant le défilement, ressorts doux ; **aucune animation si l'utilisateur a demandé moins de mouvement** (`prefers-reduced-motion`) |
 | Icônes | trait fin et régulier, coins arrondis (§ 5) |
 | Langues | trois langues ; l'arabe en droite à gauche par les propriétés logiques du CSS dès le départ |
+
+## 4 bis. Couleurs (réponse du chef : « les couleurs du logo »)
+
+Les SVG ne sont pas encore dans le dépôt. Valeurs **provisoires**, relevées à l'œil sur les photos des logos du 18 nov. (`..\travaux-planner\boites\ressources\`, hors dépôt) ; à remplacer par les valeurs exactes des SVG dès qu'ils arrivent :
+
+| Jeton | Rôle | Valeur provisoire |
+|---|---|---|
+| `bleu-nuit` | fond de l'icône, sections sombres, texte des titres sur fond clair | `#0B3B6F` |
+| `bleu` | toque du logo horizontal, liens, bouton principal | `#1F65B3` |
+| `bleu-profond` | face sombre de la toque, survol du bouton | `#0E4A8F` |
+| `bleu-clair` | livre ouvert, fonds légers, accents | `#A8C8EA` |
+| `blanc` | fonds clairs, toque de l'icône | `#FFFFFF` |
+| `encre` | texte courant | `#1D1D1F` |
+
+Le contraste AA de chaque paire texte et fond est vérifié avant R0. Tant que les SVG manquent, l'intégrateur **redessine** les deux logos en SVG à partir des photos (formes simples : carré arrondi, losange de la toque, aiguilles, pages du livre), avec la mention « redessiné d'après les logos officieux du 18 nov. ». Ils seront remplacés par les fichiers du chef. Une version simplifiée sert d'icône d'onglet, à 16 et 32 px.
 
 ## 5. Les bibliothèques choisies
 
@@ -107,7 +122,7 @@ vitrine/
 
 | N° | Question | Proposition |
 |---|---|---|
-| 1 | Valider ce plan, et les dépendances nouvelles Lucide et Astro ? | oui |
+| 1 | Valider ce plan, et les dépendances nouvelles Lucide et Astro ? | **oui (chef, 18 nov.)** |
 | 2 | Quel logo pour le site : l'icône bleu nuit (variante 4) ou le logo horizontal à l'horloge (variante 1) ? | les deux : la variante 1 en tête de page, la variante 4 comme icône du site et dans la grille d'applications |
-| 3 | Le logo « mosaïque » validé pour l'application reste-t-il en place tant que le logo officiel n'est pas choisi ? | oui : le site vitrine prend les nouveaux logos, l'application ne change pas ce soir |
-| 4 | Où déposes-tu les deux SVG ? | dans le dépôt principal, `vitrine/public/logo/`, ou dans un dossier que tu me donnes ; je les copie sur la branche |
+| 3 | Le logo « mosaïque » validé pour l'application reste-t-il en place tant que le logo officiel n'est pas choisi ? | **oui (chef, 18 nov.)** : le site vitrine prend les nouveaux logos, l'application ne change pas ce soir |
+| 4 | Où déposes-tu les deux SVG ? | en attente ; d'ici là, logos redessinés (§ 4 bis) |

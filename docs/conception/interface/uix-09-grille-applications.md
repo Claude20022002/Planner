@@ -7,7 +7,7 @@
 | Taille | M |
 | Branche | `feat/uix-09-grille-applications`, depuis `origin/main` |
 | Rédigé par | Claude Code (Opus 5.5), coordinateur, le 18 novembre 2026 |
-| Validé | **en attente du chef** : choix de produit (ce que l'utilisateur voit) et dépendance nouvelle (Lucide) |
+| Validé | **Validé par Claude20022002 le 18 novembre 2026** (« Je valide les deux plans »), dépendances comprises |
 | Agent | Codex, seul sur cette branche, après l'intégration d'UIX-06b |
 
 ## 1. Ce que veut le chef (17 nov.)
@@ -81,6 +81,6 @@ Aucun changement à `catalogue.js` (sauf pour lire une icône), aux routes, aux 
 
 | N° | Question | Proposition |
 |---|---|---|
-| 1 | Valider ce plan, et la dépendance Lucide ? | oui ; Lucide est partagé avec le site vitrine |
+| 1 | Valider ce plan, et la dépendance Lucide ? | **oui (chef, 18 nov.)** |
 | 2 | Montrer plus tard les modules non achetés, grisés, avec « Découvrir » ? | oui, avec VEN-01, sans prix tant que la vente est gelée |
 | 3 | La grille remplace-t-elle les icônes Material dans le menu de l'application ouverte ? | oui, pour qu'il n'y ait qu'un seul style d'icônes |

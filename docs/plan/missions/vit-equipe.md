@@ -2,11 +2,11 @@
 
 | | |
 |---|---|
-| État | ouverte ; **le code attend la validation des deux plans par le chef** |
+| État | ouverte ; **plans validés par le chef le 18 nov.** |
 | Équipe | Claude (VS Code), intégrateur du site vitrine ; agent de Cursor, après UIX-06b ; Codex, seul sur UIX-09 après UIX-06b ; coordinateur : Claude (Cursor) |
 | Attribuée le | 18 novembre 2026, 00 h 20, par le coordinateur ; demande du chef le 17 nov. au soir : « le travail est pour ce soir » |
 | Fonctions | VIT-01 (conception et socle, M) et VIT-05 en préparation (accueil et pages de fonctions, sans tarifs ni mise en ligne) · UIX-09 (grille façon iCloud, M) |
-| Plans | [vit-vitrine.md](../../conception/vitrine/vit-vitrine.md) · [uix-09-grille-applications.md](../../conception/interface/uix-09-grille-applications.md) · **en attente du chef** |
+| Plans | [vit-vitrine.md](../../conception/vitrine/vit-vitrine.md) · [uix-09-grille-applications.md](../../conception/interface/uix-09-grille-applications.md) · **validés par le chef le 18 nov.** |
 | Règles d'équipe | [equipe.md](../equipe.md) |
 
 ## Décisions du chef qui s'appliquent (17 et 18 nov.)
@@ -21,7 +21,7 @@
 
 | Agent | Rôle | Lot | Modèle | Branche | Dossier |
 |---|---|---|---|---|---|
-| **Claude (VS Code)** | intégrateur du site | socle (Astro, jetons, composants de section, logo animé) puis accueil | **Fable 5.2**, sinon Opus 5.5 : il fixe le style que tout le reste suivra | `feat/vit-01-vitrine` | `..\travaux-planner\vit-01-vitrine` |
+| **Claude (VS Code)** | intégrateur du site | socle (Astro, jetons, composants de section, logo animé) puis accueil | **Opus 5.5 ou Fable 5.2**, le plus capable disponible dans la session ; ne pas changer de modèle en cours de session : il fixe le style que tout le reste suivra | `feat/vit-01-vitrine` | `..\travaux-planner\vit-01-vitrine` |
 | **Agent de Cursor** | membre, après l'intégration d'UIX-06b | pages Emploi du temps, En classe, Pour l'établissement, Sécurité et données, Bientôt | son modèle de code le plus fort : pages nombreuses, à partir des composants du socle | `feat/vit-01-vitrine-pages` | `..\travaux-planner\vit-01-pages` |
 | **Codex** | seul, après l'intégration d'UIX-06b | UIX-09, grille d'applications | son modèle le plus fort, raisonnement élevé : il connaît UIX-01a, qu'il a écrite | `feat/uix-09-grille-applications` | `..\travaux-planner\uix-09-grille` |
 
@@ -42,7 +42,7 @@ Le site vitrine et la grille ne partagent aucun fichier : les deux branches ne p
 
 | Quand | Rendez-vous | Qui | Fait quand |
 |---|---|---|---|
-| dès le « validé » du chef et le dépôt des SVG | **R0 du site** | Claude (VS Code) | socle Astro construit, jetons relevés dans les SVG, composants du socle (`Section`, `Titre`, `Accroche`, `CadreAppareil`, `Apparition`, `EnTete`, `PiedDePage`), logo animé ; build et neutralité passent ; « R0 du site prêt, sha … » au coordinateur |
+| dès maintenant (plans validés ; logos redessinés tant que les SVG manquent) | **R0 du site** | Claude (VS Code) | socle Astro construit, jetons du § 4 bis du plan, logos redessinés, composants du socle (`Section`, `Titre`, `Accroche`, `CadreAppareil`, `Apparition`, `EnTete`, `PiedDePage`), logo animé ; build et neutralité passent ; « R0 du site prêt, sha … » au coordinateur |
 | après l'intégration d'UIX-06b (visée 02 h 45) | départ des deux autres | agent de Cursor, Codex | Cursor crée sa branche de lot depuis le R0 du site ; Codex crée `feat/uix-09-grille-applications` depuis `origin/main` |
 | 04 h 00 | **fin des lots** | chacun | lot commité, rapport de rendez-vous ([equipe.md](../equipe.md), § 7) |
 | 04 h 20 | intégration et relecture | Claude (site), coordinateur | fusion des pages dans `feat/vit-01-vitrine`, contrôles, relecture des deux branches ; commandes au chef |
@@ -64,9 +64,9 @@ Le site vitrine et la grille ne partagent aucun fichier : les deux branches ne p
 
 | N° | Question | Proposition | À qui |
 |---|---|---|---|
-| 1 | Valider les deux plans, et les dépendances Lucide et Astro ? | oui | chef |
-| 2 | Quel logo, et où ? | variante 1 en tête du site, variante 4 comme icône du site et dans la grille ; le logo « mosaïque » de l'application ne change pas ce soir | chef |
-| 3 | Où sont les deux SVG ? | à déposer dans `vitrine/public/logo/` du dépôt principal ; le coordinateur les copie sur la branche | chef |
+| 1 | Valider les deux plans, et les dépendances Lucide et Astro ? | **oui (chef, 18 nov.)** | — |
+| 2 | Quel logo, et où ? | **validé (chef, 18 nov.)** : variante 1 en tête du site, variante 4 comme icône du site et dans la grille ; le logo « mosaïque » de l'application ne change pas | — |
+| 3 | Où sont les deux SVG ? | en attente ; logos redessinés d'ici là (plan, § 4 bis) | chef |
 
 ## Prompts
 
@@ -76,9 +76,9 @@ Le site vitrine et la grille ne partagent aucun fichier : les deux branches ne p
 Tu es l'intégrateur du site vitrine de Planner (VIT-01, VIT-05 en préparation). Lis d'abord AGENTS.md,
 docs/plan/equipe.md, la fiche docs/plan/missions/vit-equipe.md et le plan
 docs/conception/vitrine/vit-vitrine.md, dans ..\travaux-planner\coordination-equipe
-(branche doc/coordination-equipe). Le plan est validé par le chef : <date et réponse>.
+(branche doc/coordination-equipe). Le plan est validé par le chef le 18 nov. (« Je valide les deux plans »).
 Crée ta branche : git worktree add "..\travaux-planner\vit-01-vitrine" -b feat/vit-01-vitrine origin/main
-Fais R0 (socle Astro, jetons tirés des SVG de vitrine/public/logo/, composants du socle, logo dont les aiguilles tournent),
+Fais R0 (socle Astro, jetons du § 4 bis du plan, logos redessinés en SVG d'après les photos de ..\travaux-planner\boites\ressources\, composants du socle, logo dont les aiguilles tournent),
 puis ton lot (accueil). Style Apple sans rien copier d'Apple ; Inter ; Motion pour les animations, Lucide pour les icônes ;
 aucune animation si le mouvement réduit est demandé ; rien n'est mis en ligne.
 Rends compte au coordinateur (plan-b-projet-pacte-8a) à R0 puis à la fin du lot. Jamais de git push.
@@ -99,7 +99,7 @@ dans le socle se demande dans ta boîte sortie\. Rapport de rendez-vous dans sor
 ```text
 Ta mission suivante : UIX-09, grille d'applications façon iCloud. Lis d'abord AGENTS.md, docs/plan/equipe.md,
 docs/plan/missions/vit-equipe.md et docs/conception/interface/uix-09-grille-applications.md
-(dossier ..\travaux-planner\coordination-equipe). Plan validé par le chef : <date et réponse>.
+(dossier ..\travaux-planner\coordination-equipe). Plan validé par le chef le 18 nov. (« Je valide les deux plans »).
 git worktree add "..\travaux-planner\uix-09-grille" -b feat/uix-09-grille-applications origin/main
 Présentation seulement : catalogue, routes et droits inchangés. Lucide pour les icônes, Motion pour les animations,
 mouvement réduit respecté. Rapport dans sortie\. Jamais de git push.
@@ -110,3 +110,4 @@ mouvement réduit respecté. Rapport dans sortie\. Jamais de git push.
 | Date | Événement | Verdict |
 |---|---|---|
 | 18 nov. 00 h 20 | plans et fiche écrits ; attente du chef | — |
+| 18 nov. | plans validés par le chef ; couleurs du logo ; logo « mosaïque » gardé dans l'application | — |
