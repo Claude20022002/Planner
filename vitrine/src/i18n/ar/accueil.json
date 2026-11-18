@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "ouverture": {
+    "titre": "",
+    "accroche": "",
+    "decouvrir": "",
+    "contact": ""
+  },
+  "emploi": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "refus": "",
+    "lien": "",
+    "illustration": {
+      "label": "",
+      "jours": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "heures": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "seances": [
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        }
+      ],
+      "alerte": {
+        "titre": "",
+        "texte": ""
+      }
+    }
+  },
+  "appel": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "lien": "",
+    "illustration": {
+      "label": "",
+      "cours": "",
+      "detail": "",
+      "consigne": "",
+      "compte": ""
+    }
+  },
+  "quiz": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "illustration": {
+      "label": "",
+      "titre": "",
+      "minuteur": "",
+      "question": "",
+      "reponses": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "participants": ""
+    }
+  },
+  "report": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "etapes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "donnees": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "lien": "",
+    "points": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "badge": "",
+    "lien": "",
+    "modules": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "contact": {
+    "titre": "",
+    "texte": ""
+  }
+}

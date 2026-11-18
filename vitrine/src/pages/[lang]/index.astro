@@ -1,0 +1,15 @@
+---
+// Page d'accueil, dans chaque langue : assemble les sections de src/components/accueil/.
+import Gabarit from '../../components/socle/Gabarit.astro';
+import Ouverture from '../../components/accueil/Ouverture.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'accueil');
+---
+<Gabarit langue={lang} page="accueil" titre={t('meta.titre')} description={t('meta.description')}>
+  <Ouverture t={t} />
+</Gabarit>

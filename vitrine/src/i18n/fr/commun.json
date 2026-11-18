@@ -1,0 +1,31 @@
+{
+  "produit": "Planner",
+  "evitement": "Aller au contenu",
+  "logo": "Planner, accueil",
+  "navigation": {
+    "label": "Navigation principale",
+    "menu": "Menu",
+    "accueil": "Accueil",
+    "emploiDuTemps": "Emploi du temps",
+    "enClasse": "En classe",
+    "etablissement": "Pour l'établissement",
+    "securite": "Sécurité et données",
+    "bientot": "Bientôt",
+    "contact": "Nous contacter"
+  },
+  "langues": {
+    "label": "Langue",
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "pied": {
+    "description": "L'emploi du temps et la vie de classe des établissements scolaires.",
+    "navigation": "Pages du site",
+    "droits": "© 2026 Planner"
+  },
+  "redirection": {
+    "titre": "Planner",
+    "lien": "Aller à la page d'accueil"
+  }
+}

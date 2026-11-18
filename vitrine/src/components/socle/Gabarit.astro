@@ -1,0 +1,53 @@
+---
+// Gabarit de toute page du site vitrine : <html> avec langue et sens d'écriture, en-tête de la page
+// (titre, description, langues alternatives, icône), lien d'évitement, en-tête, pied et animations.
+// Une langue pas encore publiée (l'arabe avant UIX-04) est construite mais non indexée.
+import '@fontsource-variable/inter';
+import '../../styles/jetons.css';
+import '../../styles/base.css';
+import EnTete from './EnTete.astro';
+import PiedDePage from './PiedDePage.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES_PUBLIEES, chemin, direction, estPubliee } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  page: string;
+  titre: string;
+  description: string;
+}
+
+const { langue, page, titre, description } = Astro.props;
+const t = traductions(langue, 'commun');
+---
+<!doctype html>
+<html lang={langue} dir={direction(langue)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titre}</title>
+    <meta name="description" content={description} />
+    {!estPubliee(langue) && <meta name="robots" content="noindex" />}
+    {LANGUES_PUBLIEES.map((l) => <link rel="alternate" hreflang={l} href={chemin(l, page)} />)}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <script is:inline>
+      // Animations seulement sans demande de mouvement réduit ; contenu rendu visible si le script manque
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('anime');
+        setTimeout(() => { if (!window.__animations) document.documentElement.classList.remove('anime'); }, 3000);
+      }
+    </script>
+  </head>
+  <body>
+    <a class="lien-evitement" href="#contenu">{t('evitement')}</a>
+    <EnTete langue={langue} page={page} />
+    <main id="contenu">
+      <slot />
+    </main>
+    <PiedDePage langue={langue} page={page} />
+    <script>
+      import './animations.js';
+    </script>
+  </body>
+</html>

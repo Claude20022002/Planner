@@ -1,0 +1,54 @@
+/* Jetons du site vitrine : couleurs des logos du 18 nov. (plan VIT, § 4 bis), espaces, rayons,
+   ombres et tailles de titres. Valeurs provisoires, relevées sur les photos des logos : à remplacer
+   par celles des SVG du chef. Le contraste AA de chaque paire est vérifié par tests/jetons.test.js. */
+:root {
+  /* Couleurs des logos */
+  --bleu-nuit: #0B3B6F;
+  --bleu: #1F65B3;
+  --bleu-profond: #0E4A8F;
+  --bleu-clair: #A8C8EA;
+  --blanc: #FFFFFF;
+  --encre: #1D1D1F;
+
+  /* Neutres dérivés (sans autre teinte vive) */
+  --gris-fond: #F2F5F9;
+  --gris-texte: #5A6472;
+  --gris-trait: #D9E0E8;
+  --bleu-pale: #C9DBEF;
+  --ecran: #0F1A2B;
+
+  /* Typographie */
+  --police: 'Inter Variable', system-ui, sans-serif;
+  --titre-geant: clamp(3rem, 2rem + 5vw, 6rem);
+  --titre-grand: clamp(2.5rem, 1.75rem + 3.5vw, 4.5rem);
+  --titre-moyen: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --texte-accroche: clamp(1.1875rem, 1.05rem + 0.6vw, 1.3125rem);
+  --texte: 1.0625rem;
+  --texte-petit: 0.875rem;
+  --interligne-titre: 1.05;
+  --interligne-texte: 1.5;
+
+  /* Espaces et largeurs */
+  --espace-1: 0.5rem;
+  --espace-2: 1rem;
+  --espace-3: 1.5rem;
+  --espace-4: 2.5rem;
+  --espace-5: 4rem;
+  --espace-section: clamp(5rem, 3rem + 8vw, 10rem);
+  --gouttiere: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --largeur-lecture: 44rem;
+  --largeur-contenu: 76rem;
+  --hauteur-entete: 3.25rem;
+
+  /* Rayons et ombres */
+  --rayon-petit: 0.75rem;
+  --rayon: 1.25rem;
+  --rayon-grand: 2rem;
+  --rayon-pilule: 999px;
+  --ombre-carte: 0 1px 2px rgb(11 59 111 / 6%), 0 8px 24px rgb(11 59 111 / 8%);
+  --ombre-appareil: 0 30px 60px -20px rgb(11 59 111 / 35%);
+
+  /* Mouvement (ignoré si le mouvement réduit est demandé) */
+  --duree: 200ms;
+  --courbe: cubic-bezier(0.22, 1, 0.36, 1);
+}

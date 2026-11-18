@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "titre": "Planner · Timetables and classroom life",
+    "description": "Planner builds your school's timetable from your own rules, then supports the classroom: QR code attendance, live quizzes, games and tracked session changes."
+  },
+  "ouverture": {
+    "titre": "Planner",
+    "accroche": "Your school's timetable, built from your rules. And everything that happens next in class.",
+    "decouvrir": "Discover",
+    "contact": "Contact us"
+  },
+  "emploi": {
+    "surtitre": "Timetable",
+    "titre": "Your semester, worked out.",
+    "texte": "Rooms, teachers, groups, availability, travel between campuses: Planner places every session while respecting your hard and soft rules. Lectures, tutorials and labs follow their groups.",
+    "refus": "When a session cannot be placed, Planner tells you which rule is in the way.",
+    "lien": "Learn more about timetables",
+    "illustration": {
+      "label": "Example week built by Planner, with one unplaced session and its reason",
+      "jours": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "heures": ["08:30", "10:30", "14:00", "16:00"],
+      "seances": [
+        { "titre": "Mathematics", "lieu": "Lecture · Hall A" },
+        { "titre": "Physics", "lieu": "Tutorial · Room B12" },
+        { "titre": "English", "lieu": "Tutorial · Room C04" },
+        { "titre": "Computing", "lieu": "Lab · Lab 2" },
+        { "titre": "Economics", "lieu": "Lecture · Hall B" },
+        { "titre": "Chemistry", "lieu": "Lab · Lab 1" },
+        { "titre": "Mathematics", "lieu": "Tutorial · Room B12" },
+        { "titre": "Project", "lieu": "Room C10" }
+      ],
+      "alerte": {
+        "titre": "Session not placed",
+        "texte": "Biology lab: the teacher is not available on Tuesday morning."
+      }
+    }
+  },
+  "appel": {
+    "surtitre": "In class",
+    "titre": "Attendance in one gesture.",
+    "texte": "The teacher shows a QR code. Students scan it with their phone, and their attendance is recorded.",
+    "lien": "Learn more about the classroom",
+    "illustration": {
+      "label": "QR code attendance screen on a phone",
+      "cours": "Physics tutorial",
+      "detail": "Group B · 08:30",
+      "consigne": "Scan the code to mark yourself present",
+      "compte": "28 present out of 32"
+    }
+  },
+  "quiz": {
+    "surtitre": "Quizzes and games",
+    "titre": "Live quizzes. Games for revision.",
+    "texte": "Ten question types, images and videos, quizzes run live or as homework. Teachers can also offer games to their classes.",
+    "illustration": {
+      "label": "Live quiz question on a phone",
+      "titre": "Live quiz",
+      "minuteur": "12 s",
+      "question": "What is the derivative of x²?",
+      "reponses": ["2x", "x²", "2", "x / 2"],
+      "participants": "24 answers"
+    }
+  },
+  "report": {
+    "surtitre": "Session changes",
+    "titre": "A change, tracked from start to finish.",
+    "texte": "Every step is visible to the people it concerns. Students learn about the change before they travel.",
+    "etapes": [
+      { "titre": "Request", "texte": "The teacher asks to move their session." },
+      { "titre": "Approval", "texte": "The registrar accepts the new slot." },
+      { "titre": "Notified", "texte": "The students concerned receive a notification." },
+      { "titre": "Published", "texte": "The timetable is up to date for everyone." }
+    ]
+  },
+  "donnees": {
+    "surtitre": "Security and data",
+    "titre": "Everyone sees what concerns them.",
+    "texte": "Access follows each person's role in the school.",
+    "lien": "Learn more about security",
+    "points": [
+      { "titre": "Two-factor authentication", "texte": "A second code protects the accounts that turn it on." },
+      { "titre": "Role-based access", "texte": "Student, teacher, registrar: each opens only what their role allows." },
+      { "titre": "AI without student data", "texte": "The AI never receives student data, and teachers review what it suggests." }
+    ]
+  },
+  "bientot": {
+    "surtitre": "Coming soon",
+    "titre": "What comes next.",
+    "texte": "These modules are in preparation. They are not available yet.",
+    "badge": "Coming soon",
+    "lien": "See everything that is coming",
+    "modules": [
+      { "titre": "Student life", "texte": "Absences, lateness and student follow-up." },
+      { "titre": "Families", "texte": "A space for parents." },
+      { "titre": "Tuition fees", "texte": "Enrolment, due dates and payments." }
+    ]
+  },
+  "contact": {
+    "titre": "Let's talk about your school.",
+    "texte": "Would you like to see Planner on a fictional school, with your own rules? The contact form is coming soon to this page."
+  }
+}
