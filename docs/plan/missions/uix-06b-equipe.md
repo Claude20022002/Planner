@@ -120,3 +120,4 @@ Livre à R1 ce que dit la fiche, puis dépose ton rapport de rendez-vous dans so
 |---|---|---|
 | 18 nov. 00 h 01 | fiche écrite ; Codex reçoit R0 | — |
 | 18 nov. 00 h 20 | Enseignements passe à Codex ; Claude (VS Code) au site vitrine | — |
+| 18 nov. 00 h 50 | **R0 fait par Codex : `4963e827`** (trois commits, dictionnaires inscrits ; lint avec 17 avertissements hors du lot, 65 tests unitaires verts, build vert) ; vérifié ; l'agent de Cursor lancé | R0 conforme |
