@@ -40,8 +40,10 @@ for (const [largeur, langue, theme] of [
     await verifierAccessibilite(page);
     const ajouter = langue === 'en' ? 'Add a program' : 'Ajouter une filière';
     await page.getByRole('button', { name: ajouter, exact: true }).click();
-    await expect(page.getByRole('dialog')).toBeVisible();
-    await expect(page.getByRole('dialog').getByRole('textbox', { name: 'Code', exact: true })).toBeVisible();
+    const dialogue = page.getByRole('dialog');
+    await expect(dialogue.getByRole('textbox', { name: 'Code', exact: true })).toBeVisible();
+    // Le champ est déjà visible pendant le fondu, qui modifie le contraste mesuré par axe-core.
+    await expect(page.locator('.MuiDialog-container').filter({ has: dialogue })).toHaveCSS('opacity', '1');
     await verifierAccessibilite(page, '[role="dialog"]');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
