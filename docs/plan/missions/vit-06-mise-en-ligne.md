@@ -12,7 +12,7 @@
 | Dossier de travail | `..\travaux-planner\vit-06-mise-en-ligne` |
 | Plan de conception | plan court à écrire (`docs/conception/exploitation/vit-06-mise-en-ligne.md`) · **validé par le chef** : c'est le serveur |
 
-## Les neuf conditions avant la mise en ligne (chef, 18 nov.)
+## Les dix conditions avant la mise en ligne (chef, 18 nov.)
 
 1. **Audit de `vitrine/`** et montée d'Astro le 27 nov. (plan de l'audit, § 6), avec `node ../scripts/audit.mjs vitrine` dans `vitrine.yml`.
 2. **Mentions légales et page de confidentialité**, sans formulaire ni mesure d'audience. Leur texte est une décision du chef (textes légaux, Q-11). Rédigées par une nouvelle session Claude ([VIT-12](vit-12-pages-legales.md), chef, 18 nov. vers 20 h 35).
@@ -25,7 +25,9 @@
 8. **Les pages par rôle**, le menu « Solutions » ouvrant et le pied de page complet ([VIT-10](vit-10-pages-par-role.md), agent de Cursor). Ajoutée par le chef le 18 nov. vers 18 h 35.
 9. **Le catalogue des fonctionnalités et la FAQ** ([VIT-11](vit-11-catalogue-faq.md), Codex). Ajoutée par le chef le 18 nov. vers 18 h 35.
 
-Le plan peut s'écrire et se valider maintenant. Le déploiement attend les neuf conditions.
+10. **Les ajouts d'après le site d'OpenEduCat** : « avant → avec » et FAQ des pages par rôle ([VIT-10b](vit-10b-avant-avec-faq.md)), « Pourquoi Planner » et les fonctionnalités par type d'établissement ([VIT-13](vit-13-pourquoi-et-types.md)), le méga-menu « Fonctions » ([VIT-11](vit-11-catalogue-faq.md)). Ajoutée par le chef le 18 nov. vers 20 h 55.
+
+Le plan peut s'écrire et se valider maintenant. Le déploiement attend les dix conditions.
 
 ## Ce que le plan doit établir
 
@@ -77,3 +79,4 @@ Rapport « plan prêt, sha … » dans sortie\. Jamais de git push.
 | 2026-11-18 17 h 45 | 7e condition ajoutée par le chef : les illustrations ([VIT-09](vit-09-illustrations.md)). Consigne déposée pour Codex : intégrer la condition et les images au plan, sans nouveau visa (le reste du plan ne change pas) | — |
 | 2026-11-18 18 h 40 | conditions 8 (VIT-10) et 9 (VIT-11) ajoutées par le chef ; Codex les inscrit au plan (#212) sans nouveau visa. #212 : CI verte, plan seul | prête, après ce commit |
 | 2026-11-18 20 h 40 | décision du chef : **le code de VIT-06 se fait maintenant** (Codex, avant QJE-03, branche `feat/vit-06-code` après la fusion de #212) ; le déploiement, le jour où les neuf conditions sont réunies. Condition 2 confiée à VIT-12 ; condition 3 remplie par #220 | — |
+| 2026-11-18 21 h | condition 10 ajoutée par le chef (VIT-10b, VIT-13, méga-menu de VIT-11) ; Codex l'inscrit dans le code de VIT-06 | — |

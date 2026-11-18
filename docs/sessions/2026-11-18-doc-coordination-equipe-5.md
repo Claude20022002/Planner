@@ -112,6 +112,25 @@ Le chef a fait deux choix :
   - **à corriger** : la 6 (#216) ;
   - **à venir** : la 1 (l'audit, le 27 nov.), la 2 (VIT-12), la 4 (le code de VIT-06), la 7 (VIT-09, en dernier), la 9 (le code de VIT-11).
 
+## 21 h : ce qui reste à coder sur le site, et la répartition
+
+Le chef a comparé le site à celui d'OpenEduCat. Il ajoute une **condition 10**, qui réunit quatre éléments :
+- [VIT-10b](../plan/missions/vit-10b-avant-avec-faq.md) : avant → avec et FAQ par rôle ;
+- [VIT-13](../plan/missions/vit-13-pourquoi-et-types.md) : « Pourquoi Planner » et les fonctionnalités par type d'établissement ;
+- le méga-menu « Fonctions » par catégorie, dans VIT-11 ;
+- les logos des modules, dans VIT-09.
+
+Sont écartés, faute de rien de vrai pour les remplir : la bande de chiffres, les témoignages, les badges, le blog, l'essai gratuit, les tarifs et la fenêtre de discussion. « Mon compte » et « code source vérifiable » viendront plus tard.
+
+**Ordre sur le site** : VIT-10, VIT-10b, VIT-11, VIT-12, VIT-13, puis VIT-09 en dernier.
+
+| Agent | Ce qu'il reste à faire sur le site, dans l'ordre |
+|---|---|
+| Claude de VS Code | corriger #216 et refaire le rendu ; puis VIT-09 : illustrations, fonctionnalités en apps, logos des modules, première section de chaque page |
+| Codex | le code de VIT-06 (image, en-têtes, publication) ; puis le code de VIT-11 (catalogue, FAQ, méga-menu), après #219 |
+| Agent de Cursor | #219 ; VIT-10b ; VIT-13 ; puis QJE-15 ; l'audit, le 27 nov. ou après |
+| Nouvelle session Claude | VIT-12, les pages légales |
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |
@@ -175,6 +194,8 @@ Le coordinateur a repris le 18 nov. à 17 h. Ta file est dans docs/plan/feuille-
    en-tête de chaque page de fonction, catalogue de VIT-11 ; les mêmes icônes que la grille de l'application (UIX-09).
 3) Puis UIX-11, nouvelle mission : le tableau de bord de l'administration, refait à la charte et complété des chiffres qui existent
    (fiche docs/plan/missions/uix-11-tableau-de-bord.md, choix du chef du 18 nov.).
+   VIT-09 comprend aussi (chef, 20 h 55) la création des logos des modules : une icône dessinée par app ou module,
+   charte v2, source unique, utilisée sur tout le site ; question au chef : l'application les prend-elle aussi avec UIX-10b ?
 4) Puis UIX-06c, QJE-14 (plan), l'étude StudyLib (fiche corrigée : aucun prêt de livres dans StudyLib), UIX-10d.
 Le coordinateur valide de nouveau les plans S et M sans migration, sécurité, donnée d'élève ni choix de produit ; le reste va au chef.
 Ne modifie pas docs/plan/suivi.md. Fiche de session à jour ; tout est commité ; jamais de git push.

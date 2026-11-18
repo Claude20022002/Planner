@@ -412,3 +412,12 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Le code de VIT-06 se fait maintenant** (Codex, avant QJE-03), le déploiement plus tard, le jour où les neuf conditions sont réunies | chef, par l'outil de questions |
 | *(coordinateur)* Ordre de fusion du site : #213, #212 et #211 (vertes), puis **#220**, puis **#219** (conflit possible sur `EnTete.astro`, réglé par l'agent de Cursor), puis #218 (plan), puis **#216** quand elle sera corrigée et rendue de nouveau. #216 contient déjà #220 | coordinateur |
 | *(coordinateur)* #219 (VIT-10) : conforme. La validation du plan a été commitée avec le code ; c'est accepté après coup, car le chef avait validé avant le code et réécrire une branche poussée aurait été pire. #216 : les corrections de 20 h ne sont pas faites, et le rendu final a été produit sans elles : il est à refaire après la correction | coordinateur |
+
+**Chef, 18 nov., vers 20 h 55, d'après le site d'OpenEduCat** :
+
+| Décision | Par |
+|---|---|
+| Le site reçoit, comme OpenEduCat : le bloc **« avant → avec Planner » et une FAQ** sur chaque page par rôle (VIT-10b) ; une section **« Pourquoi Planner »** sur l'accueil et **les fonctionnalités regroupées par type d'établissement** (VIT-13) ; le **méga-menu « Fonctions » par catégorie**, avec le nombre de chaque catégorie (dans VIT-11) ; **des logos dessinés pour chaque module** (dans VIT-09). C'est la **condition 10** de la mise en ligne | chef, par l'outil de questions |
+| Pas de bande de chiffres. Écartés, faute de rien de vrai pour les remplir : témoignages, logos de clients, badges d'avis, nombres d'utilisateurs, blog, essai gratuit, tarifs, fenêtre de discussion | chef et coordinateur |
+| **« Mon compte » et « code source vérifiable » : plus tard.** Le lien vers l'application attend qu'elle soit en ligne sur son domaine (Q-11). La mention du code source attend que le chef choisisse une licence pour le dépôt (README : « à définir ») | chef |
+| *(coordinateur)* Répartition : VIT-10b et VIT-13 à l'agent de Cursor (il tient les pages par rôle et la navigation), avant QJE-15 ; le méga-menu à Codex dans le code de VIT-11 (il tient le registre) ; les logos à Claude de VS Code dans VIT-09. Ordre sur le site : VIT-10, VIT-10b, VIT-11, VIT-12, VIT-13, puis VIT-09 | coordinateur |

@@ -34,6 +34,12 @@ Sur le site, chaque fonctionnalité (module) est montrée **comme une app**, une
 
 Les icônes du site et celles de la grille de l'application sont **les mêmes** : le plan dit comment les partager (par exemple `shared/` ou la charte), sans copier deux fois les tracés, et avec la mention de licence de Lucide. Les noms des apps sont ceux de `frontend/src/i18n/applications.fr.js`.
 
+## Ajout du chef (18 nov., vers 20 h 55) : les logos des modules
+
+Le chef demande de **créer les logos des différents modules**, comme les icônes colorées de la grille « Nos modules » d'OpenEduCat (inspiration seulement, rien n'est copié) : **une icône dessinée par app ou module**, aux couleurs de la charte v2, en SVG, lisible de 24 à 96 px, en clair et en sombre. Elles servent partout sur le site : la grille de l'accueil, les menus « Fonctions » et « Solutions », l'en-tête des pages, le catalogue de VIT-11 et les fonctionnalités par type d'établissement de VIT-13. Leur source est unique (par exemple `shared/charte/` ou `shared/icones/`).
+
+Question au chef dans le plan : l'application (grille UIX-09, aujourd'hui en icônes Lucide animées) prend-elle aussi ces logos, avec UIX-10b ? Proposition : oui, une seule famille d'icônes pour le site et l'application.
+
 ## Ce qui existe
 
 - Quatre dessins en code : trois dans `vitrine/src/components/accueil/`, un dans `vitrine/src/components/fonctions/`. Ils sont posés dans `CadreAppareil` (socle) sur l'accueil, Emploi du temps, En classe et Établissement. Leurs textes sont dans les fichiers de traduction (par exemple `accueil.json`, `quiz.illustration`).
@@ -111,3 +117,4 @@ fiche de session à jour ; suivi.md non modifié ; tout est commité ; jamais de
 | 2026-11-18 17 h 45 | fiche écrite par le coordinateur, sur les choix du chef (genre, pages, agent, 7e condition) | — |
 | 2026-11-18 18 h 40 | ordre fixé par le chef : VIT-07, VIT-10, VIT-11, puis VIT-09 ; le plan s'écrit pendant ce temps, et couvre aussi les pages par rôle, le catalogue et la FAQ | — |
 | 2026-11-18 19 h 25 | ajout du chef : les fonctionnalités représentées comme des apps (accueil, menu « Fonctions », en-tête de chaque page, catalogue de VIT-11), confié à VIT-09 | — |
+| 2026-11-18 21 h | ajout du chef : créer les logos des modules (une icône dessinée par app ou module, charte v2), utilisés sur tout le site ; question au chef sur l'adoption par l'application | — |
