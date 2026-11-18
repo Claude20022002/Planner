@@ -57,7 +57,7 @@ Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 docs/conception/exploitation/fix-exp-journaux-docker.md
 et cette fiche (docs/sessions/2026-11-18-fix-exp-journaux-docker.md).
 Fait : ancre journaux sur les 17 services. Contrôle config vert. Rien n'est poussé.
-Reste : le chef pousse et ouvre la PR.
+Reste : le chef pousse #200.
 Questions en attente : aucune.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ;
 fiche de session et suivi.md à jour en fin de session ; jamais de git push.
