@@ -70,6 +70,6 @@ Coordinateur : prête sur le fond, PR #185 sortie du brouillon. La CI 4377590584
 
 ### UIX-06b en cours
 
-[Plan du référentiel pédagogique](../../conception/interface/uix-06b-referentiel.md), validé par le chef le 16 novembre. Les quatre pages et leur outillage commun sont sur la branche de travail. R1 local (2feca82e) couvre les lectures après changement de filtre et les détails mobiles. La recette en CI et le contrôle axe-core restent à faire.
+[Plan du référentiel pédagogique](../../conception/interface/uix-06b-referentiel.md), validé par le chef le 16 novembre. Les quatre pages et leur outillage commun sont sur la branche de travail. R1 local (2feca82e) couvre les lectures après changement de filtre et les détails mobiles. Les audits axe-core sont intégrés aux parcours (c66967d5). La relecture et l’exécution de la recette en CI sont attendues.
 
 Constat de clôture du pilote : #185 fusionnée, six contrôles verts et 49 parcours réussis ; les mentions d’attente précédentes relatent les étapes avant ce résultat.
