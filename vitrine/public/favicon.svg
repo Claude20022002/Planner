@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<!-- Redessiné d'après les logos officieux du 18 nov. 2026 ; à remplacer par les fichiers du chef de projet -->
+<rect width="32" height="32" rx="7" fill="#0B3B6F"/>
+<polygon points="3.5,15 6.5,16 6.5,22 16,26 16,28.2 3.5,23.6" fill="#A8C8EA"/><polygon points="28.5,15 25.5,16 25.5,22 16,26 16,28.2 28.5,23.6" fill="#A8C8EA"/>
+<polygon points="9,16 16,19.5 23,16 23,20 16,24 9,20" fill="#FFFFFF"/>
+<polygon points="3.5,12 16,5.5 28.5,12 16,18.5" fill="#FFFFFF"/>
+<path d="M16 12V8.6M16 12h3.6" stroke="#0B3B6F" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+</svg>
