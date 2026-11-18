@@ -5,7 +5,7 @@
 | Fait par | Claude Code (Opus 5.5), session de VS Code |
 | Chantier | VIT (préparation de VIT-05) et MKT · condition 6 de la mise en ligne (VIT-06) |
 | Dossier de travail | `..\travaux-planner\vit-08-video` |
-| Dernier commit | celui de cette fiche ; le travail finit à `3d12a3e7` |
+| Dernier commit | celui de cette fiche ; le travail finit à `13d761f7` (rendu final) |
 
 ## Objectif de la session
 
@@ -29,6 +29,9 @@ La vidéo de présentation globale de Planner pour l'accueil du site (mission `d
 | `07dc9824` | étape 4 : `scripts/rendre-accueil.mjs` (aperçu `out/accueil/`, rendu final `--site`), `vitrine/src/components/accueil/empreinteVideo.js`, section « Accueil » du README vidéo, poids mesurés au § 5 du plan |
 | `b71c7aff`, `4216ca16` | question 7 (réponse du chef) : MP4 720p par défaut, WebM 1080p sur grand écran, plus de WebM 720p |
 | `3d12a3e7` | étape 5 : `Video.astro`, `video.js`, section dans `index.astro`, `tests/video.test.js` |
+| `dd915691` | fusion locale de `chore/vit-06-logos-officiels` (SVG officiels du chef, charte en version 2), qui part de `origin/main` et apporte donc aussi VIT-07 (#214) |
+| `972347d9` | trois ombres de la vidéo (A1, A6, A7) passées au nouveau bleu nuit, comme celles du site |
+| `13d761f7` | **étape 6 : rendu final**, seuls les fichiers de `vitrine/public/videos/` |
 
 Fichier du module mis à jour (`docs/plan/modules/VIT-site-vitrine.md`, « Ce qui existe ») dans le commit de cette fiche.
 
@@ -82,6 +85,27 @@ Fichier du module mis à jour (`docs/plan/modules/VIT-site-vitrine.md`, « Ce qu
   - construction de 34 pages ; `verifier-neutre` propre.
 - **Question 8** : VIT-07 est fusionnée et a modifié `EnTete.astro`. La proposition (corriger le contraste dans VIT-09) peut donc s'appliquer dès maintenant.
 
+## Étape 6, le 18 nov. au soir
+
+Le chef a donné les SVG officiels, puis a répondu à quatre questions : version web au dessin intact, trois couleurs du logo et le survol, branche à part, favicon refait. Le changement est fait sur `chore/vit-06-logos-officiels` ([plan](../conception/vitrine/vit-06-logos-officiels.md), [fiche](2026-11-18-chore-vit-06-logos-officiels.md)), puis fusionné en local ici.
+
+- **Rendu** (`npm ci` puis `npm run render:accueil`), empreinte `ec92ae6423c2064d`, charte version 2 :
+  - MP4 720p : 1,48 Mo (fr), 1,44 Mo (en) ;
+  - WebM 1080p : 3,35 et 3,23 Mo ;
+  - image fixe : 40 Ko chacune ;
+  - 9,8 Mo en tout.
+- **Relu** : 12 images par langue tirées des WebM rendus, de l'ouverture au logo de fin. Logo et icône officiels, nouveaux bleus, textes complets dans les deux langues. La partie « sécurité » de la scène 8 n'a pas de titre propre : c'est voulu par la composition, ce n'est pas un défaut.
+- **Site** :
+  - 61 tests sur 61, **aucun sauté** : l'empreinte et les poids sont maintenant vérifiés ;
+  - construction de 34 pages ; `verifier-neutre` et `generer.mjs --verifier` propres ;
+  - `npx tsc -p .` du projet vidéo sans erreur.
+- **Navigateur** (Playwright, en 390 et 1440 px, fr et en), avec le rendu final :
+  - avant la section, seule l'image fixe est demandée ;
+  - MP4 720p en 390 px, WebM 1080p en 1440 px ;
+  - lecture muette, sans erreur dans la console.
+  - axe-core : une seule violation, en 1440 px. C'est le lien « English » de l'en-tête au-dessus de la section sombre, à 4,3:1 : le défaut connu de la question 8, qui vient du socle.
+- **L'empreinte** ramène les fins de ligne à LF : la même sous Windows et dans la CI.
+
 ## Écarts avec le plan
 
 - **Le logo** est importé directement depuis `vitrine/public/logo/` (le bundler en fait une adresse), au lieu d'être copié par le script. Une seule source ; écrit au § 5 du plan.
@@ -104,29 +128,27 @@ Fichier du module mis à jour (`docs/plan/modules/VIT-site-vitrine.md`, « Ce qu
 
 ## État laissé
 
-- **Pour `suivi.md`** (le coordinateur le reporte ; la fiche de mission interdit de le modifier ici) : VIT-08 → en cours, branche `feat/vit-08-video-presentation`, étapes 1 à 5 faites, étape 6 (rendu final) en attente des SVG officiels.
-- **Condition 6 de VIT-06** : remplie quand le rendu final sera commité. Le code de la page est prêt.
+- **VIT-08 est terminée** : les étapes 1 à 6 sont faites et commitées en local, sans push.
+- **Ordre de fusion** : cette branche contient `chore/vit-06-logos-officiels`. Celle-ci doit donc être fusionnée dans `main` **avant ou avec** la PR #216. Sinon, #216 apporte les logos et la charte sans leur propre PR.
+- **Pour `suivi.md`** (le coordinateur le reporte ; la fiche de mission interdit de le modifier ici) :
+  - VIT-08 → faite, PR #216, à relire puis fusionner après la branche des logos ;
+  - VIT-06 : condition 3 (logos officiels) et condition 6 (vidéo) remplies.
+- Un serveur `astro preview` de la session précédente tourne encore sur le port 4331 (dossier `vit-08-video\vitrine`) : `npx astro preview stop` l'arrête.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef pousse la branche, et la PR peut s'ouvrir dès maintenant : sans fichiers rendus, l'accueil reste celui d'aujourd'hui.
-2. Relecture par le coordinateur (`relecture-branche`).
-3. **Étape 6, à l'arrivée des SVG officiels** :
-   - les poser dans `vitrine/public/logo/` ;
-   - mettre à jour `shared/charte/jetons.json` et sa version ;
-   - dans `docs/presentation/video/`, lancer `npm ci` puis `npm run render:accueil` ;
-   - relire l'aperçu ;
-   - commiter seuls les fichiers de `vitrine/public/videos/` ;
-   - les tests de l'empreinte et des poids ne sont alors plus sautés.
-
-   Vérifier aussi que les SVG officiels gardent les classes `aiguille-minutes` et `aiguille-heures` : sans elles, le logo s'affiche fixe.
-4. Ensuite, VIT-09 (illustrations, première section de chaque page, et la question 10).
+1. Le chef pousse `chore/vit-06-logos-officiels` et ouvre sa PR, puis pousse cette branche ; la PR #216 se met à jour.
+2. Relecture par le coordinateur (`relecture-branche`) des deux branches. Il renomme aussi la PR #216, dont le titre dit « sans le rendu final ».
+3. Fusion : les logos d'abord, puis #216.
+4. Ensuite, VIT-09 (illustrations, première section de chaque page, la question 10, et peut-être la question 8).
 
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "..\travaux-planner\vit-08-video" push -u origin feat/vit-08-video-presentation
-gh pr create --base main --head feat/vit-08-video-presentation --title "VIT-08 : vidéo de présentation de l'accueil (sans le rendu final)" --fill
+git -C "..\travaux-planner\vit-06-logos" push -u origin chore/vit-06-logos-officiels
+gh pr create --base main --head chore/vit-06-logos-officiels --title "VIT-06 condition 3 : logos officiels et charte en version 2" --fill
+git -C "..\travaux-planner\vit-08-video" push
+gh pr edit 216 --title "VIT-08 : vidéo de présentation de l'accueil (rendu final compris)"
 ```
 
 ## Prompt de reprise
@@ -145,9 +167,10 @@ Fait : étapes 1 à 5 :
 - section Video.astro et video.js sur l'accueil ;
 - test vitrine/tests/video.test.js.
 Lighthouse 99 et 100 ; 27 contrôles de navigateur sur 28.
-Reste : l'étape 6, le rendu final, seulement quand les SVG officiels du chef sont dans
-vitrine/public/logo/ et la charte mise à jour. Dans docs/presentation/video : npm ci, puis
-npm run render:accueil. Relire l'aperçu, puis commiter seulement vitrine/public/videos/.
+Étape 6 faite le 18 nov. au soir : SVG officiels et charte version 2 sur
+chore/vit-06-logos-officiels (fusionnée ici en local), rendu final commité (13d761f7),
+61 tests sur 61, aucun sauté.
+Reste : la relecture et la fusion, la branche des logos avant ou avec la PR #216.
 Questions en attente, pour le coordinateur :
 - 8 : contraste du lien de langue de l'en-tête translucide au-dessus des sections sombres (socle) ;
 - 9 : inscrire VIT-10 et VIT-11, messages déposés dans les boîtes ;
