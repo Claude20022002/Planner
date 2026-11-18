@@ -14,6 +14,7 @@ import {
     Users,
 } from "../../models/index.js";
 import { anneeDepuisNiveau } from "../../config/referentiel.js";
+import { plagesDeLaSeance } from "../moteur/contraintes/plagesDeLaSeance.js";
 import { groupesLies, ligneesDe } from "./groupes.js";
 import { lireParametre, minutesTrajet } from "./referentiel.js";
 import { disponibiliteEnseignant } from "./enseignants.js";
@@ -27,10 +28,11 @@ import { appliquerRamadan, creneauEffectif } from "./ramadan.js";
  *
  * Bloquant : chevauchement de salle, d'enseignant (co-enseignants compris) ou de groupe
  * (hiérarchie promotion > TD > TP et groupes mutualisés compris), jour et grille du créneau,
- * pause du vendredi, samedi après-midi, capacité, type de salle et équipements, salle hors
+ * plage interdite déclarée par l'école, capacité, type de salle et équipements, salle hors
  * service, enseignant indisponible (vacataire opt-in, permanent opt-out), trajet entre campus,
  * événement bloquant, maximum d'heures par jour, date passée.
- * Avertissement : vœu « à éviter », plafond hebdomadaire, enseignant hors de l'équipe.
+ * Avertissement : plage à éviter déclarée par l'école, vœu « à éviter », plafond hebdomadaire,
+ * enseignant hors de l'équipe.
  */
 
 // Séances qui occupent leur créneau (une séance reportée l'occupe à sa nouvelle date)
@@ -38,7 +40,6 @@ export const STATUTS_ACTIFS = ["planifie", "confirme", "reporte", "realise"];
 
 const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
 const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
-const APRES_MIDI = 12 * 60 + 30;
 
 export const minutes = (heure) => {
     const [h, m] = String(heure).split(":").map(Number);
@@ -204,6 +205,8 @@ export const validerAffectation = async (seance, { transaction, verrouiller = fa
     const idsEnseignants = enseignantsDe(seance, enseignement);
     const idsGroupes = groupesDe(seance, enseignement);
     const groupesOccupes = new Set((await Promise.all(idsGroupes.map((id) => lu(`lies|${id}`, () => groupesLies(id, transaction))))).flat());
+    // Lignées des étudiants concernés (chaque groupe le plus fin et ses ancêtres) : plages et heures par jour
+    const lignees = (await Promise.all(idsGroupes.map((id) => lu(`lignees|${id}`, () => ligneesDe(id, transaction))))).flat();
 
     if (verrouiller) {
         const lock = transaction.LOCK.UPDATE;
@@ -233,15 +236,12 @@ export const validerAffectation = async (seance, { transaction, verrouiller = fa
     if (creneau.regime !== regime) {
         signaler("grille_regime", `Ce créneau appartient à la grille « ${creneau.regime} », la filière suit la grille « ${regime} »`);
     }
-    if (regime === "initiale" && jour === "vendredi") {
-        const pause = await parametre("pause_vendredi");
-        if (pause?.active && seChevauchent(creneau, { heure_debut: pause.debut, heure_fin: pause.fin })) {
-            signaler("pause_vendredi", `Le créneau empiète sur la pause du vendredi (${pause.debut}-${pause.fin})`);
-        }
-    }
-    if (regime === "initiale" && jour === "samedi" && minutes(creneau.heure_debut) >= APRES_MIDI && !(await parametre("samedi_apres_midi_initiale"))) {
-        signaler("samedi_apres_midi", "Pas de cours de formation initiale le samedi après-midi");
-    }
+    // Plages déclarées par l'école (MOT-13b) : interdite → bloquant, à éviter → avertissement
+    const plages = await plagesDeLaSeance(
+        { date, jour, creneau, regime, idCours: cours.id_cours, idFiliere: cours.id_filiere, feuilles: lignees.map((l) => l.feuille), enseignants: idsEnseignants, idSalle: salle?.id_salle ?? null },
+        { lu, transaction }
+    );
+    for (const p of plages) signaler(p.code, p.message, { id_contrainte: p.id_contrainte }, p.bloquant);
 
     // ── Salle ─────────────────────────────────────────────────────────────
     const composante = enseignement?.composante;
@@ -328,7 +328,6 @@ export const validerAffectation = async (seance, { transaction, verrouiller = fa
     const dureeSeance = duree(creneau);
     const maxGroupe = (await parametre("max_heures_jour_groupe")) * 60;
     // Journée la plus chargée parmi les étudiants concernés (chaque groupe le plus fin et ses ancêtres)
-    const lignees = (await Promise.all(idsGroupes.map((id) => lu(`lignees|${id}`, () => ligneesDe(id, transaction))))).flat();
     const minutesGroupe = Math.max(
         0,
         ...lignees.map(({ lignee }) => autres.filter((o) => o.groupes.some((id) => lignee.includes(id))).reduce((t, o) => t + duree(o.seance.creneau), 0))

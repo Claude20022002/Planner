@@ -77,6 +77,9 @@ Registre unique à partir du 7 novembre 2026.
 | 10 nov. | Chantier **QUA** ouvert, limité à **QUA-03** (clore l'étude de la pile), pour débloquer PLA-01 : 3 chantiers ouverts sur 3 | — |
 | 10 nov. | L'agence marketing se sauvegarde dans un **dépôt GitHub privé** `planner-marketing` (logos, stratégie) ; la vente reste gelée : le marketing prépare, ne publie pas | — |
 | 10 nov. | PLA-06 : mesure en local, MySQL limité aux ressources du nouveau serveur ; 200 bases au schéma complet, chacune avec une école fictive d'environ 300 élèves ; seuils, activité et réglages proposés le 9 novembre, retenus le 10 ; si D-01 tombe, le chantier PLA s'arrête jusqu'à décision | — |
+| 10 nov. | **Jeux : aucun nom ni adresse d'école** ; `curriculum` = discipline et niveau visés. Le § 1 du contrat des jeux est amendé | la page HESTIM du programme exigée le 16 octobre |
+| 10 nov. | **Jeux : un essai raté ne donne pas la réponse.** On dit ce qui est faux ; la solution s'obtient sur demande ou après trois essais ratés, et coûte les points du défi (contrat des jeux, § 1.0) | — |
+| 10 nov. | **QJE-04 : exception à la limite de 3 chantiers**, pour QJE-04 seule (la branche d'Alexis prend du retard sur `main`). Alexis corrige B-1, B-2 et I-1 sur sa branche | — |
 | 13 nov. | **Douze modules ajoutés au plan**, tirés de l'inventaire du 11 novembre ([06-outils-structures-formation.md](../etude-marche/06-outils-structures-formation.md)) : COM, ETA, PAI à l'étape 4 ; RHP, FOR, DOC, INS à l'étape 5 ; PIL, GRP, STA (sauf STA-01), SER, STK, ETA-03 et PAI-03 **reportés** ; tailles provisoires, à corriger dans chaque plan de conception (environ 53 jours bruts de plus) | — |
 | 13 nov. | **Fonctions déplacées**, numéros jamais réutilisés : FIN-03 devient RHP-01, VSC-05 devient ETA-02, COU-07 devient STA-01 ; le plafond de cumul de VSC-06 passe dans RHP-02 | — |
 | 13 nov. | Tout module qui prévient quelqu'un passe par **COM** (service d'envoi commun, plages de silence) ; VSC-03 et MOB-05 dépendent de COM-01 | — |
@@ -99,9 +102,12 @@ Registre unique à partir du 7 novembre 2026.
 | 15 nov. | *(coordinateur, par délégation)* **Plan court de #177 validé** (sauvegarde avant déploiement qui échoue sans bruit) : correctif hors chantier ; suivre le style de `tester-deployer.sh` ; purge et chiffrement des vieux dumps (REL-03) dans une autre PR | — |
 | 15 nov. | *(coordinateur, par délégation)* **PLA-06, A-2** : le témoin n8n est une sonde **en lecture seule** de son adresse de santé, toutes les 15 s, relevée 10 min avant la série pour fixer sa durée de référence ; arrêt si une réponse échoue, ou si la durée médiane sur une minute dépasse le double de la référence. Aucun traitement n8n n'est créé ni lancé (n8n n'est jamais touché). Créneau : celui où le chef lance la série, avant EXP-02b, hors des heures où il sait que n8n travaille ; il le confirme à chaque lancement | — |
 | 15 nov. | **Chaque agent choisit le modèle le plus adapté à sa tâche**, d'après la recommandation de sa fiche de mission ; s'il ne tourne pas déjà sur ce modèle, il le dit au chef (seul l'utilisateur change le modèle d'un éditeur), et il l'écrit dans sa fiche de session | — |
+| 15 nov. | *(coordinateur)* **Un seul générateur de collège fictif** : celui de MOT-13b ; MOT-02 le lit sur `main`. Le **filtrage des domaines du solveur** n'est pas fait dans MOT-02, qui mesure seulement ; s'il est nécessaire, il devient une fonction à part, rattachée à MOT-10 | le renvoi du filtrage à MOT-02 dans le plan de MOT-13b |
+| 15 nov. | *(coordinateur)* **Constat de MOT-02, à traiter dans MOT-04** : avec Timefold 1.35, une solution inachevée (construction coupée à 600 s) rend un score 0hard/0soft et une liste de violations vide. Le serveur ne s'y fie pas (il compte les séances placées et annonce les enseignements incomplets), mais le score et les violations ne doivent jamais servir seuls de preuve de complétude | — |
 | 15 nov. | **Plan EXP-02a validé** (branchement Traefik, sans lancer Planner), avec les trois remarques du coordinateur (`docs/plan/missions/exp-02a.md`) | — |
 | 15 nov. | **PLA-06 : pour le moment, seul le serveur sert de machine** ; le PC Ubuntu n'est pas employé (P-22, P-23 et P-25 sans objet). Le plan de PLA-06 s'amende pour mesurer sur le serveur partagé avec n8n, puis se refait valider par le chef ; seul le chef lance les commandes sur le serveur | la mesure en local du 10 novembre |
 | 15 nov. | **Noms publics de l'installation gardés** (question ouverte « nom de domaine », Q-11) : ceux déjà écrits dans `deploy/vps/nginx-hestim.conf` et `deploy/vps/generer-env.sh`. Le pointage DNS est EXP-02b. Le branchement du nouveau serveur est Traefik (labels, réseau externe), sans port public sur Caddy. | — |
+| 18 nov. | **Face à RosarioSIS, Fedena, OpenEduCat, SchoolTool, openSIS et Moodle.** Le pack de l'étape 4 couvre déjà ce qu'ils ont et que Planner n'a pas (familles, bulletins, frais, parent, arabe, Massar, passage d'année). Le trou du jalon « collège avec groupes de langue » est **VSC-07** : l'affectation des élèves, lue par MOT-06 et importée par ADM-03. MOT-09 prévient les enseignants après validation. L'espace parents (MOB-05) dépend des notes et des frais. On ne crée pas de module discipline, santé, bibliothèque de prêts, comptabilité générale, ni un second Moodle : les questions Moodle entrent par QJE-02, et COU-09 (LTI) reste reporté | étude du 18 novembre |
 
 **Questions anciennes déjà réglées**, gardées pour mémoire :
 - **Q-8** : partage des heures éteint par défaut.
@@ -133,3 +139,26 @@ Registre unique à partir du 7 novembre 2026.
 | Q-18 | Nom de l'application dans les magasins | « Planner » sauf conflit de marque | MOB |
 | Q-19 | Les 28 questions juridiques, fiscales et Massar de l'étude du modèle économique | gelées, sauf Massar (ETA-02, ancienne VSC-05) et loi 09-08 (condition légale) | ETA-02 |
 | Q-20 | Un élève a un compte (décision du 8 novembre), mais un enfant de 6 ans n'a pas d'adresse électronique, et `Users.email` est obligatoire et unique. Avec quoi se connecte-t-il ? | un **identifiant donné par l'école**, adresse facultative, mot de passe initial remis par l'école (ou par le parent) ; pas d'adresse factice. Étude d'impact sur chaque fichier qui lit `Users.email` (connexion, réinitialisation, notifications, import) | VSC-01 |
+
+## Décision du chef du 15 novembre : UIX-01a
+
+Source : conversation avec Codex, « Application web de gestion », « J’aimerai un truc comme celui de Odoo », puis « Oui je valide tes proposition ».
+
+- Inspiration Odoo pour l'organisation et l'apparence générale de l'application, avec une identité propre à Planner.
+- Premier lot limité à l'accueil des applications et à la navigation entre les écrans existants, avant la reprise des écrans métier.
+- Exception hors chantier autorisée pour UIX-01a ; les chantiers EXP, PLA et MOT restent ouverts, aucun quatrième chantier n'est ouvert.
+- Sans destination explicite, la connexion ouvre les applications accessibles au rôle ; les tableaux existants restent disponibles. Les contrôles de sécurité restent appliqués par les routes et le serveur.
+- Le registre commercial et l'activation des modules restent dans VEN-01 ; cette interface ne les remplace pas.
+
+Conception : [UIX-01a](../conception/interface/uix-01a-navigation.md). Aucun changement de pile ni migration dans ce lot.
+
+## Décision du chef du 15 novembre : UIX-06a
+
+Source : conversation Codex, réponse « Valider » aux quatre propositions et au plan UIX-06a.
+
+- Exception hors chantier limitée au pilote UIX-06a, sans quatrième chantier.
+- Périmètre : connexion, accueil/navigation, Comptes, Enseignants et Étudiants.
+- Lot visuel découplé de UIX-01 ; migration 0060 et assistant exclus.
+- Interface sobre clair/sombre, Inter ; encre ardoise sans couleurs d’école, bleu nuit pour la marque ; identité d’école et SVG approuvés conservés.
+
+[Plan validé](../conception/interface/uix-06a-interface.md). Aucun backend, serveur, push ou fusion autorisé à l’agent.

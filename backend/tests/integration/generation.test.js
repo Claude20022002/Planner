@@ -175,7 +175,7 @@ describe("Problème envoyé au solveur", () => {
         // Seul le motif récurrent est épinglé ; la séance ponctuelle sera sautée au déploiement
         const epinglees = probleme.lecons.filter((l) => l.epinglee);
         expect(epinglees).toEqual([expect.objectContaining({ enseignants: [prof2.id_user], creneau: { id: ref.lun[2].id_creneau }, distanciel: true })]);
-        expect(probleme.parametres).toMatchObject({ maxMinutesJourGroupe: 480, samediApresMidi: false });
+        expect([probleme.parametres.maxMinutesJourGroupe, "samediApresMidi" in probleme.parametres]).toEqual([480, false]);
     });
 
     test("pas de campus préféré (21 octobre 2026) : aucune leçon n'en porte au solveur", async () => {

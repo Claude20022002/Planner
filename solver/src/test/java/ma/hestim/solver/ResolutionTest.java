@@ -24,10 +24,10 @@ import ma.hestim.solver.domain.Voeu;
  * Résolution complète d'une petite semaine type : toutes les leçons sont placées sans enfreindre
  * de règle dure, la leçon épinglée reste à sa place, l'indisponibilité est respectée.
  */
-class ResolutionTest {
+public class ResolutionTest {
 
-    @Test
-    void semaineTypeSansRegleDureEnfreinte() {
+    /** La petite semaine type : 5 jours de 4 créneaux, 3 salles, une promotion et ses deux TD, une séance épinglée. */
+    public static EmploiDuTemps probleme() {
         EmploiDuTemps probleme = new EmploiDuTemps();
         List<Creneau> creneaux = new ArrayList<>();
         long id = 1;
@@ -64,7 +64,13 @@ class ResolutionTest {
         // L'enseignant du premier CM est indisponible le mardi matin
         probleme.setVoeux(List.of(new Voeu(20L, 5L, Voeu.Type.INDISPONIBLE), new Voeu(20L, 6L, Voeu.Type.INDISPONIBLE)));
         probleme.setRessources(List.of(new Ressource(Ressource.Nature.GROUPE, 100L), new Ressource(Ressource.Nature.GROUPE, 101L), new Ressource(Ressource.Nature.GROUPE, 102L)));
+        return probleme;
+    }
 
+    @Test
+    void semaineTypeSansRegleDureEnfreinte() {
+        EmploiDuTemps probleme = probleme();
+        List<Creneau> creneaux = probleme.getCreneaux();
         SolverConfig config = new SolverConfig()
                 .withSolutionClass(EmploiDuTemps.class)
                 .withEntityClasses(Lecon.class)

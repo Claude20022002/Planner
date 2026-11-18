@@ -269,15 +269,23 @@ export const construireProbleme = async ({ id_periode, id_filieres = [], dureeSe
             parametres: {
                 maxMinutesJourGroupe: parametres.max_heures_jour_groupe.valeur * 60,
                 maxMinutesJourEnseignant: parametres.max_heures_jour_enseignant.valeur * 60,
-                samediApresMidi: Boolean(parametres.samedi_apres_midi_initiale.valeur),
                 trajetDefautMinutes: parametres.trajet_inter_campus_defaut_minutes.valeur,
                 trajets,
             },
             lecons: [...lecons, ...motifs.values()],
-            // Noms pour les refus MOT-03. Retirés avant l'envoi au solveur (generation.js).
+            // Noms pour les refus MOT-03. pourLeSolveur les retire : le solveur rejette un champ inconnu.
             enseignants: [...nomsEnseignants].map(([id, nom]) => ({ id, nom })),
             groupes: [...nomsGroupes].map(([id, nom]) => ({ id, nom })),
             matieres: [...nomsMatieres].map(([id, nom]) => ({ id, nom })),
         },
     };
+};
+
+/** Copie envoyée au solveur : sans les listes de noms, qu'il ne connaît pas. */
+export const pourLeSolveur = (probleme) => {
+    const copie = { ...probleme };
+    delete copie.enseignants;
+    delete copie.groupes;
+    delete copie.matieres;
+    return copie;
 };

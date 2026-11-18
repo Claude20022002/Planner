@@ -2,10 +2,10 @@
  * Paramètres de planification modifiables par l'administration.
  * La base (table ParametresPlanning) ne stocke que les valeurs modifiées : sans ligne,
  * c'est la valeur par défaut ci-dessous qui s'applique. Les valeurs inconnues de
- * l'école (pause du vendredi, trajet entre campus…) sont des hypothèses à confirmer.
+ * l'école (trajet entre campus…) sont des hypothèses à confirmer.
+ * La pause du vendredi et le samedi après-midi sont devenus des contraintes déclarées de l'école
+ * (MOT-13b, migration 0081) : leurs anciennes lignes restent en base, et ne sont plus lues.
  */
-
-const HEURE = /^([01]\d|2[0-3]):[0-5]\d$/;
 
 const entier = (min, max) => (v) => Number.isInteger(v) && v >= min && v <= max;
 
@@ -19,18 +19,6 @@ export const PARAMETRES_PLANNING = {
         defaut: 8,
         valider: entier(1, 12),
         description: "Nombre maximal d'heures de cours par jour pour un enseignant",
-    },
-    pause_vendredi: {
-        defaut: { active: true, debut: "12:30", fin: "14:30" },
-        valider: (v) =>
-            v !== null && typeof v === "object" && typeof v.active === "boolean" &&
-            HEURE.test(v.debut) && HEURE.test(v.fin) && v.debut < v.fin,
-        description: "Pause du vendredi midi : aucun cours de formation initiale sur cette plage",
-    },
-    samedi_apres_midi_initiale: {
-        defaut: false,
-        valider: (v) => typeof v === "boolean",
-        description: "Autoriser des cours de formation initiale le samedi après-midi",
     },
     duree_seance_defaut_minutes: {
         defaut: 90,

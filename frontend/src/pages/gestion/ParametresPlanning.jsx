@@ -3,11 +3,9 @@ import { useTranslation } from 'react-i18next';
 import {
     Box,
     Button,
-    FormControlLabel,
     InputAdornment,
     Paper,
     Stack,
-    Switch,
     TextField,
     Typography,
 } from '@mui/material';
@@ -17,19 +15,19 @@ import { TableSkeleton } from '../../design-system/components/PremiumSkeleton';
 import { parametrePlanningAPI } from '../../services/api';
 import { useToast } from '../../contexts/ToastContext';
 
-// Ordre d'affichage et nature de chaque paramètre (les valeurs et validations viennent du serveur)
+// Ordre d'affichage et nature de chaque paramètre (les valeurs et validations viennent du serveur).
+// La pause du vendredi et le samedi après-midi sont devenus des contraintes déclarées (MOT-13b) :
+// ils se règlent par l'API des contraintes, puis par l'écran « Règles de génération » (MOT-13c)
 const PARAMETRES = [
     { cle: 'max_heures_jour_groupe', type: 'entier', unite: 'h', min: 1, max: 12 },
     { cle: 'max_heures_jour_enseignant', type: 'entier', unite: 'h', min: 1, max: 12 },
-    { cle: 'pause_vendredi', type: 'plage' },
-    { cle: 'samedi_apres_midi_initiale', type: 'booleen' },
     { cle: 'duree_seance_defaut_minutes', type: 'entier', unite: 'min', min: 30, max: 300 },
     { cle: 'ratio_capacite_examen', type: 'pourcentage', min: 1, max: 100 },
     { cle: 'trajet_inter_campus_defaut_minutes', type: 'entier', unite: 'min', min: 0, max: 240 },
 ];
 
-const versSaisie = (type, valeur) => (type === 'pourcentage' ? String(Math.round(valeur * 100)) : type === 'entier' ? String(valeur) : valeur);
-const depuisSaisie = (type, saisie) => (type === 'pourcentage' ? Number(saisie) / 100 : type === 'entier' ? Number(saisie) : saisie);
+const versSaisie = (type, valeur) => (type === 'pourcentage' ? String(Math.round(valeur * 100)) : String(valeur));
+const depuisSaisie = (type, saisie) => (type === 'pourcentage' ? Number(saisie) / 100 : Number(saisie));
 
 export default function ParametresPlanning() {
     const { t } = useTranslation();
@@ -74,8 +72,6 @@ export default function ParametresPlanning() {
 
     const valeurDefaut = ({ cle, type, unite }) => {
         const defaut = parametres[cle].defaut;
-        if (type === 'booleen') return defaut ? t('ref.settings.allowed') : t('ref.settings.notAllowed');
-        if (type === 'plage') return defaut.active ? `${defaut.debut} – ${defaut.fin}` : t('ref.settings.disabled');
         if (type === 'pourcentage') return `${Math.round(defaut * 100)} %`;
         return `${defaut} ${unite}`;
     };
@@ -83,30 +79,6 @@ export default function ParametresPlanning() {
     const controle = (parametre) => {
         const { cle, type, unite, min, max } = parametre;
         const saisie = saisies[cle];
-        if (type === 'booleen') {
-            return (
-                <FormControlLabel
-                    control={<Switch checked={Boolean(saisie)} onChange={(e) => enregistrer(parametre, e.target.checked)} />}
-                    label={saisie ? t('ref.settings.allowed') : t('ref.settings.notAllowed')}
-                />
-            );
-        }
-        if (type === 'plage') {
-            const changer = (champ, valeur) => setSaisies((s) => ({ ...s, [cle]: { ...s[cle], [champ]: valeur } }));
-            return (
-                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} alignItems={{ sm: 'center' }}>
-                    <FormControlLabel
-                        control={<Switch checked={saisie.active} onChange={(e) => changer('active', e.target.checked)} />}
-                        label={saisie.active ? t('ref.settings.enabled') : t('ref.settings.disabled')}
-                    />
-                    <TextField size="small" type="time" label={t('ref.settings.from')} value={saisie.debut} onChange={(e) => changer('debut', e.target.value)} InputLabelProps={{ shrink: true }} disabled={!saisie.active} />
-                    <TextField size="small" type="time" label={t('ref.settings.to')} value={saisie.fin} onChange={(e) => changer('fin', e.target.value)} InputLabelProps={{ shrink: true }} disabled={!saisie.active} />
-                    <Button variant="outlined" size="small" onClick={() => enregistrer(parametre)}>
-                        {t('common.save')}
-                    </Button>
-                </Stack>
-            );
-        }
         return (
             <Stack direction="row" spacing={1.5} alignItems="center">
                 <TextField
@@ -135,7 +107,7 @@ export default function ParametresPlanning() {
                 </Box>
                 {!parametres ? (
                     <Box sx={{ p: 2 }}>
-                        <TableSkeleton rows={7} />
+                        <TableSkeleton rows={5} />
                     </Box>
                 ) : (
                     PARAMETRES.map((parametre) => (
