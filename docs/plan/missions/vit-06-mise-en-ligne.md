@@ -15,7 +15,7 @@
 ## Les neuf conditions avant la mise en ligne (chef, 18 nov.)
 
 1. **Audit de `vitrine/`** et montée d'Astro le 27 nov. (plan de l'audit, § 6), avec `node ../scripts/audit.mjs vitrine` dans `vitrine.yml`.
-2. **Mentions légales et page de confidentialité**, sans formulaire ni mesure d'audience. Leur texte est une décision du chef (textes légaux, Q-11).
+2. **Mentions légales et page de confidentialité**, sans formulaire ni mesure d'audience. Leur texte est une décision du chef (textes légaux, Q-11). Rédigées par une nouvelle session Claude ([VIT-12](vit-12-pages-legales.md), chef, 18 nov. vers 20 h 35).
 3. **Les SVG officiels des logos**, à la place des logos redessinés.
 4. **Site non indexé** tant qu'il est sur le sous-domaine (`noindex` et `robots.txt`).
 5. **Contenu complet** : toutes les applications présentées ([VIT-07](vit-07-contenu-complet.md)). Ajoutée par le chef le 18 nov.
@@ -76,3 +76,4 @@ Rapport « plan prêt, sha … » dans sortie\. Jamais de git push.
 | 2026-11-18 17 h 15 | plan court de Codex (`5a7a0067`) relu par le coordinateur : complet (Docker Hub, profil Compose, `noindex`, CSP, vidéo, retour arrière, six conditions), sans adresse IP dans le diff ; **validé par le chef** par l'outil de questions. Reste : ligne « Validé » et liste des secrets de CI à créer | **validé (chef)** |
 | 2026-11-18 17 h 45 | 7e condition ajoutée par le chef : les illustrations ([VIT-09](vit-09-illustrations.md)). Consigne déposée pour Codex : intégrer la condition et les images au plan, sans nouveau visa (le reste du plan ne change pas) | — |
 | 2026-11-18 18 h 40 | conditions 8 (VIT-10) et 9 (VIT-11) ajoutées par le chef ; Codex les inscrit au plan (#212) sans nouveau visa. #212 : CI verte, plan seul | prête, après ce commit |
+| 2026-11-18 20 h 40 | décision du chef : **le code de VIT-06 se fait maintenant** (Codex, avant QJE-03, branche `feat/vit-06-code` après la fusion de #212) ; le déploiement, le jour où les neuf conditions sont réunies. Condition 2 confiée à VIT-12 ; condition 3 remplie par #220 | — |

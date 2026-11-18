@@ -35,8 +35,8 @@ Les sorties de ClassQuiz (QJE-01, QJE-03, QJE-06) et le Studio « comme Google F
 
 Le site part sur le sous-domaine quand les **neuf** sont réunies (les conditions 5 à 9 ont été ajoutées par le chef le 18 nov.). Ordre des fusions sur le site : VIT-07, VIT-10, VIT-11, puis VIT-09 :
 1. l'audit de `vitrine/` et la montée d'Astro, le 27 nov. ou après (file de l'agent de Cursor, n° 3) ;
-2. les mentions légales et la page de confidentialité, dont le texte est décidé par le chef ;
-3. les SVG officiels des logos, fournis par le chef ;
+2. les mentions légales et la page de confidentialité, dont le texte est décidé par le chef ([VIT-12](missions/vit-12-pages-legales.md), nouvelle session Claude) ;
+3. les SVG officiels des logos, fournis par le chef (#220, logos posés et charte en version 2) ;
 4. le site non indexé tant qu'il est sur le sous-domaine ;
 5. **le contenu complet** : toutes les applications présentées (Quiz et jeux, Bibliothèque, Espace de cours et annonces, Application mobile), et la Bibliothèque sortie de « Bientôt » ([VIT-07](missions/vit-07-contenu-complet.md), agent de Cursor) ;
 6. **la vidéo de présentation globale** sur l'accueil, en motion design, sous-titrée, sans voix ([VIT-08](missions/vit-08-video-presentation.md), Claude de VS Code) ;
@@ -56,7 +56,8 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | 2 | ~~VIT-06, plan court~~ **fait** : validé par le chef, #212 (CI verte) ; reste les conditions 8 et 9 à inscrire (consigne de 18 h 40) | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef (fait) |
 | 3 | **UIX-09** : #213, CI verte ; ajouter la mention ISC de Lucide au fichier LICENSE, puis fusion (consigne de 18 h 40) | [vit-equipe](missions/vit-equipe.md) | déjà validé |
 | 4 | **VSC-01, modèle de données du scolaire** : conception écrite, #215 ; **à corriger** (`suivi.md` à reprendre de `main`, une section EP-18, l'identifiant national sans supposer le Maroc), puis l'avis des groupes A et B, organisé par le chef | module VSC | chef |
-| 4 bis | **VIT-11, le catalogue des fonctionnalités et la FAQ** (condition 9) : plan court après VSC-01 corrigée ; le code après la fusion de VIT-10 | [vit-11-catalogue-faq](missions/vit-11-catalogue-faq.md) | chef |
+| 4 bis | **VIT-11, le catalogue des fonctionnalités et la FAQ** (condition 9) : plan validé (#218) ; le code après la fusion de VIT-10 | [vit-11-catalogue-faq](missions/vit-11-catalogue-faq.md) | chef (fait) |
+| 4 ter | **VIT-06, le code, maintenant** (chef, 20 h 35) : image Nginx, en-têtes, CSP, `robots.txt`, publication Docker Hub, service Compose inactif, tests en CI ; avant QJE-03 et avant l'audit du 27 nov. | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef (plan validé) |
 | 5 | QJE-03, joueur natif ; puis QJE-06, plus aucun conteneur ClassQuiz (après le transfert vérifié des quiz de l'école pilote) | [sortie-classquiz](missions/sortie-classquiz.md) | chef |
 | 6 | VIT-06, le déploiement, le jour où les neuf conditions sont réunies : le chef lance les commandes du serveur | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef |
 
@@ -91,6 +92,7 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | N° | Mission | Fiche | Validé par |
 |---|---|---|---|
 | 1 | **L'étude « contextes à faible équipement » (EP-18)**, sans code ; le modèle le plus capable | [etude-ep18-faible-equipement](missions/etude-ep18-faible-equipement.md) | recommandation au chef |
+| 2 | **VIT-12, les mentions légales et la page de confidentialité** (condition 2) : questions au chef, puis plan ; chaque texte validé par lui. Session à part de celle de l'étude EP-18 | [vit-12-pages-legales](missions/vit-12-pages-legales.md) | chef |
 
 ### Alexis (Destroya2) et son agent
 

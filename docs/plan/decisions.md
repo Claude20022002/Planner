@@ -402,3 +402,13 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Plan de VIT-10 validé** : pied de page ouvert, pas de bande de chiffres, deux boutons par page de rôle, avant/après et FAQ seulement avec des phrases déjà publiées | chef |
 | *(coordinateur)* VIT-11, question 3 : les sources de StudyLib se vérifient par un commit épinglé, dans un clone local, hors de la CI ; le build reste autonome. VIT-11 ajoute elle-même ses liens et ses clés de navigation après la fusion de VIT-10, pour qu'aucun lien ne pointe vers une page absente | coordinateur |
 | *(coordinateur)* #216 (VIT-08) : à corriger. L'appel n'est présenté que par QR code (dans la vidéo et sur l'accueil, EP-18), et la scène du mobile montre un onglet masqué dans l'application. #212, #213 et #217 : prêtes quand leur CI est verte | coordinateur |
+
+**Chef et coordinateur, 18 nov., vers 20 h 35** :
+
+| Décision | Par |
+|---|---|
+| **Logos officiels** donnés par le chef ; la charte passe en **version 2**, à leurs couleurs (`bleu-nuit` #17395C, `bleu` #2A679F, `bleu-profond` #21507C, `bleu-clair` #A6CAEE). Condition 3 de la mise en ligne (#220, plan validé par le chef) | chef |
+| **Mentions légales et confidentialité** (condition 2) : rédigées par **une nouvelle session Claude**, chaque texte validé par le chef ([VIT-12](missions/vit-12-pages-legales.md)) | chef, par l'outil de questions |
+| **Le code de VIT-06 se fait maintenant** (Codex, avant QJE-03), le déploiement plus tard, le jour où les neuf conditions sont réunies | chef, par l'outil de questions |
+| *(coordinateur)* Ordre de fusion du site : #213, #212 et #211 (vertes), puis **#220**, puis **#219** (conflit possible sur `EnTete.astro`, réglé par l'agent de Cursor), puis #218 (plan), puis **#216** quand elle sera corrigée et rendue de nouveau. #216 contient déjà #220 | coordinateur |
+| *(coordinateur)* #219 (VIT-10) : conforme. La validation du plan a été commitée avec le code ; c'est accepté après coup, car le chef avait validé avant le code et réécrire une branche poussée aurait été pire. #216 : les corrections de 20 h ne sont pas faites, et le rendu final a été produit sans elles : il est à refaire après la correction | coordinateur |

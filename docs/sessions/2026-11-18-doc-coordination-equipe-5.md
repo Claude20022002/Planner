@@ -100,6 +100,18 @@ Le chef a fait deux choix :
 - **VIT-11** : le plan est validé (le chef pour les questions 1, 2 et 4 à 10, le coordinateur pour la 3). Le code attend la fusion de VIT-10.
 - Consignes de 20 h dans les deux boîtes.
 
+## Tour de 20 h 40 : où en est le site
+
+- **Vertes et prêtes** : #213, #212, #211.
+- **Prêtes quand leur CI est verte** : #220 (les logos officiels et la charte en version 2, par Claude de VS Code), puis #219 (VIT-10).
+- **#216** : rendu final fait, mais sans les corrections de 20 h. Elle est à corriger, puis à rendre de nouveau.
+- **#218** : le plan de VIT-11 est validé.
+- Décisions du chef : VIT-12 (les pages légales) confiée à une nouvelle session Claude ; le code de VIT-06 se fait maintenant.
+- Conditions de la mise en ligne :
+  - **remplies ou sur le point de l'être** : la 3 (#220), la 5 (VIT-07), la 8 (#219) ;
+  - **à corriger** : la 6 (#216) ;
+  - **à venir** : la 1 (l'audit, le 27 nov.), la 2 (VIT-12), la 4 (le code de VIT-06), la 7 (VIT-09, en dernier), la 9 (le code de VIT-11).
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |
