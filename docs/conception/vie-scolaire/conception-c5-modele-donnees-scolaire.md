@@ -1,6 +1,6 @@
 # Conception C-5 : modèle de données du scolaire
 
-**Plan du document, à valider par le chef de projet avant de le remplir.** Groupes A et B, lot C-5, vague V1 (`04-plan-fusionne.md`). Conception seulement, sans code.
+**Validé par Claude20022002 le 18 novembre 2026.** Le chef valide la reprise du plan de conception. Les décisions déjà actées sont reprises et les choix encore ouverts lui sont soumis. Groupes A et B, lot C-5, vague V1 (`04-plan-fusionne.md`). Conception seulement, sans code.
 
 Chaque question porte la réponse que le groupe A propose (P-xx du registre). Valider le plan, c'est dire si ces réponses conviennent.
 
