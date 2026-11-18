@@ -82,9 +82,9 @@ test('Groupes à 1280 px en anglais et en thème sombre', async ({ page }) => {
   });
   await page.goto('/gestion/groupes');
   const contenu = page.getByRole('main');
-  await contenu.getByRole('combobox', { name: 'Program', exact: true }).click();
+  await contenu.getByRole('combobox', { name: /^Program(?: |$)/ }).click();
   await page.getByRole('option', { name: /^GEN · / }).click();
-  const promotion = contenu.getByRole('row').filter({ hasText: '4A GEN' }).first();
+  const promotion = contenu.getByRole('row', { name: /^4A GEN.*Top-level group/ });
   await expect(promotion).toBeVisible();
   await expect(contenu.getByRole('columnheader', { name: 'Parent group', exact: true })).toBeVisible();
   await verifierAccessibilite(page);
@@ -97,7 +97,7 @@ test('Groupes : la filière ne contient aucun groupe', async ({ page }) => {
   await page.route('**/api/groupes?*', (route) => route.fulfill({ json: { data: [] } }));
   await page.route('**/api/groupes/arbre?*', (route) => route.fulfill({ json: [] }));
   await page.goto('/gestion/groupes');
-  await page.getByRole('combobox', { name: 'Filière', exact: true }).click();
+  await page.getByRole('combobox', { name: /^Filière(?: |$)/ }).click();
   await page.getByRole('option', { name: /^GEN · / }).click();
   await expect(page.getByText(/^Aucun groupe GEN/)).toBeVisible();
   await expect(
@@ -109,9 +109,9 @@ test('Groupes : l’export Excel suit la filière et l’année choisies', async
   const { admin, motDePasse } = lireDonnees();
   await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
   await page.goto('/gestion/groupes');
-  await page.getByRole('combobox', { name: 'Filière', exact: true }).click();
+  await page.getByRole('combobox', { name: /^Filière(?: |$)/ }).click();
   await page.getByRole('option', { name: /^GEN · / }).click();
-  await expect(page.getByRole('main').getByText('4A GEN', { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('row', { name: /^4A GEN.*Groupe principal/ })).toBeVisible();
   const lecture = page.waitForRequest((requete) => {
     const url = new URL(requete.url());
     return url.pathname === '/api/groupes' && url.searchParams.has('id_filiere') && url.searchParams.has('id_annee');

@@ -46,11 +46,8 @@ for (const largeur of [390, 1280]) {
     });
     await page.goto('/gestion/enseignements');
     await expect(page.getByRole('button', { name: 'Generate from the curriculum' })).toBeEnabled();
-    await page.getByRole('main').getByRole('combobox', { name: 'Period', exact: true }).click();
-    await page
-      .getByRole('option', { name: /^2025-2026 · / })
-      .first()
-      .click();
+    await page.getByRole('main').getByRole('combobox', { name: /^Period(?: |$)/ }).click();
+    await page.getByRole('option', { name: '2025-2026 · S1', exact: true }).click();
     const ligne = page
       .getByRole('main')
       .getByRole(largeur === 390 ? 'listitem' : 'row')
@@ -63,7 +60,10 @@ for (const largeur of [390, 1280]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await verifierAccessibilite(page);
     await ligne.getByRole('button', { name: 'Open the team' }).click();
-    await expect(page.getByRole('dialog')).toBeVisible();
+    const dialogue = page.getByRole('dialog');
+    await expect(dialogue).toBeVisible();
+    // En cours de fondu, la couleur du texte se mélange à celle du fond de la page.
+    await expect(page.locator('.MuiDialog-container').filter({ has: dialogue })).toHaveCSS('opacity', '1');
     await verifierAccessibilite(page, '[role="dialog"]');
   });
 }
@@ -74,7 +74,7 @@ test('Enseignements : période vide et filtre filière sans résultat', async ({
   await page.route('**/api/enseignements?*', (route) => route.fulfill({ json: [] }));
   await page.goto('/gestion/enseignements');
   await expect(page.getByText('Aucun élément enregistré', { exact: true })).toBeVisible();
-  await page.getByRole('combobox', { name: 'Filière', exact: true }).click();
+  await page.getByRole('combobox', { name: /^Filière(?: |$)/ }).click();
   await page.getByRole('option', { name: /^GEN · / }).click();
   await expect(page.getByText('Aucun résultat', { exact: true })).toBeVisible();
 });

@@ -8,7 +8,7 @@ export default function DialogsEnseignements({ modele }) {
     edition,
     setEdition,
     enregistrerEdition,
-    enseignements,
+    tries,
     idEquipe,
     setIdEquipe,
     charger,
@@ -55,7 +55,7 @@ export default function DialogsEnseignements({ modele }) {
         </form>
       </Dialog>
       <EquipeDialog
-        enseignement={enseignements.find((e) => e.id_enseignement === idEquipe) ?? null}
+        enseignement={tries.find((e) => e.id_enseignement === idEquipe) ?? null}
         onClose={() => setIdEquipe(null)}
         onChange={charger}
       />

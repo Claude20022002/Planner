@@ -44,7 +44,7 @@ export default function Enseignements() {
         >
           {m.periodes.map((p) => (
             <MenuItem key={p.id_periode} value={p.id_periode}>
-              {p.libelle_annee} · {p.libelle}
+              {p.libelle_annee} · {p.code}
             </MenuItem>
           ))}
         </TextField>

@@ -17,8 +17,10 @@ test("groupes : l'année en cours par défaut, une autre année sur demande, gar
   await page.getByRole("option", { name: /^GEN · / }).click();
 
   const annee = page.getByRole("combobox", { name: "Année universitaire" });
+  // Le nom de la promotion figure aussi dans la colonne Groupe parent des enfants.
+  const promotion = page.getByRole("row", { name: /^4A GEN.*Groupe principal/ });
   await expect(annee).toHaveText("2026-2027 (en cours)");
-  await expect(page.getByText("4A GEN", { exact: true })).toBeVisible();
+  await expect(promotion).toBeVisible();
   await expect(page.getByText(/pas d’année reconnue/)).toHaveCount(0);
 
   await annee.click();
@@ -27,7 +29,7 @@ test("groupes : l'année en cours par défaut, une autre année sur demande, gar
 
   await annee.click();
   await page.getByRole("option", { name: "Toutes les années" }).click();
-  await expect(page.getByText("4A GEN", { exact: true })).toBeVisible();
+  await expect(promotion).toBeVisible();
 
   // Page compilée à froid par le serveur de développement : le sélecteur attend les années plus de 5 s
   await page.goto("/gestion/etudiants");

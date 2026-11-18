@@ -63,30 +63,25 @@ test('Filières : réessayer réaffiche les données réellement reçues', async
   await expect(page.getByRole('cell', { name: data[0].code_filiere + ' · ' + data[0].nom_filiere, exact: true })).toBeVisible();
 });
 
-test('Filières, Groupes, Modules et Enseignements : accès refusé aux rôles sans responsabilité', async ({ browser }) => {
-  const { enseignante, etudiants, motDePasse } = lireDonnees();
-  for (const [compte, role] of [
-    [enseignante, 'enseignant'],
-    [etudiants[0], 'etudiant'],
-  ]) {
-    const contexte = await browser.newContext();
-    try {
-      const page = await contexte.newPage();
-      await seConnecter(page, { email: compte.email, motDePasse, role });
-      for (const chemin of ['filieres', 'groupes', 'cours', 'enseignements']) {
-        await test.step(role + ' est renvoyé depuis ' + chemin, async () => {
-          await page.goto('/gestion/' + chemin);
-          await expect(page).toHaveURL(new RegExp('/dashboard/' + role + '(?:/|$)'));
-        });
-      }
-    } finally {
-      await contexte.close();
+for (const role of ['enseignant', 'etudiant']) {
+  test('Référentiel : ' + role + ' sans responsabilité est renvoyé vers son accueil', async ({ page }) => {
+    // Les quatre routes peuvent être compilées à froid par Vite en CI.
+    test.setTimeout(90_000);
+    const { enseignante, etudiants, motDePasse } = lireDonnees();
+    const compte = role === 'enseignant' ? enseignante : etudiants[0];
+    await seConnecter(page, { email: compte.email, motDePasse, role });
+    for (const chemin of ['filieres', 'groupes', 'cours', 'enseignements']) {
+      await test.step('Accès refusé depuis ' + chemin, async () => {
+        await page.goto('/gestion/' + chemin);
+        await expect(page).toHaveURL(new RegExp('/dashboard/' + role + '(?:/|$)'));
+      });
     }
-  }
-});
+  });
+}
 
 // Les droits sont accordés et retirés par les vraies routes de l’administration.
-test('Responsable : Filières refusé, une seule filière dans Groupes, Modules et Enseignements', async ({ page, browser }) => {
+test('Responsable : Filières refusé, une seule filière dans Groupes, Modules et Enseignements', async ({ page, browser, baseURL }) => {
+  test.setTimeout(90_000);
   const { admin, enseignante, motDePasse } = lireDonnees();
   await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
   const filieres = await page.request.get('/api/filieres?limit=100');
@@ -98,7 +93,7 @@ test('Responsable : Filières refusé, une seule filière dans Groupes, Modules 
   expect(prof).toBeTruthy();
   const url = '/api/filieres/' + programme.id_filiere + '/responsables';
   const headers = await enTeteCsrf(page);
-  const contexte = await browser.newContext();
+  const contexte = await browser.newContext({ baseURL });
   try {
     const ajout = await page.request.post(url, { headers, data: { id_user: prof.id_user } });
     expect(ajout.ok()).toBe(true);
@@ -110,7 +105,7 @@ test('Responsable : Filières refusé, une seule filière dans Groupes, Modules 
       await test.step('Filière autorisée sur ' + chemin, async () => {
         await responsable.goto('/gestion/' + chemin);
         await expect(responsable).toHaveURL(new RegExp('/gestion/' + chemin + '$'));
-        const selecteur = responsable.getByRole('combobox', { name: 'Filière', exact: true });
+        const selecteur = responsable.getByRole('combobox', { name: /^Filière(?: |$)/ });
         await expect(responsable.getByRole('status', { name: 'Chargement des données' })).toHaveCount(0);
         await selecteur.click();
         await expect(responsable.getByRole('option', { name: /^GEN · / })).toBeVisible();
@@ -119,9 +114,12 @@ test('Responsable : Filières refusé, une seule filière dans Groupes, Modules 
       });
     }
   } finally {
-    await contexte.close();
-    const retrait = await page.request.delete(url + '/' + prof.id_user, { headers });
-    expect([200, 404]).toContain(retrait.status());
+    try {
+      const retrait = await page.request.delete(url + '/' + prof.id_user, { headers });
+      expect([200, 404]).toContain(retrait.status());
+    } finally {
+      await contexte.close();
+    }
   }
 });
 

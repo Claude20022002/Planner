@@ -34,9 +34,9 @@ for (const [largeur, langue, theme] of [
     await recherche.fill('aucun-module-uix-06b');
     await expect(page.getByText(langue === 'en' ? 'No results' : 'Aucun résultat', { exact: true })).toBeVisible();
     await recherche.clear();
-    const deplier = page
-      .getByRole('button', { name: langue === 'en' ? /^Show the components of / : /^Afficher les composantes de / })
-      .first();
+    // La maquette de démonstration donne deux composantes à Machine Learning.
+    const ouvrir = langue === 'en' ? 'Show the components of Machine Learning' : 'Afficher les composantes de Machine Learning';
+    const deplier = page.getByRole('button', { name: ouvrir, exact: true });
     await expect(deplier).toBeVisible();
     await deplier.focus();
     await deplier.press('Enter');
