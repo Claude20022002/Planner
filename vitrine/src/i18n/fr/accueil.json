@@ -169,5 +169,222 @@
   "contact": {
     "titre": "Parlons de votre établissement.",
     "texte": "Vous voulez voir Planner sur une école fictive, avec vos propres règles ? Le formulaire de contact arrive bientôt sur cette page."
+  },
+  "video": {
+    "surtitre": "Présentation",
+    "titre": "Tout Planner, en une minute et demie.",
+    "scenes": [
+      {
+        "titre": "Planner",
+        "lignes": [
+          "Sept applications pour votre école. Un seul compte."
+        ],
+        "image": "Le logo de Planner, une toque dont le dessus est une horloge ; ses aiguilles tournent. Les sept applications apparaissent dessous."
+      },
+      {
+        "titre": "Votre semestre, calculé.",
+        "lignes": [
+          "Salles, enseignants, groupes, campus : vos règles, tenues ensemble.",
+          "Une séance ne trouve pas sa place ? Planner dit quelle règle la bloque."
+        ],
+        "image": "Sur un ordinateur, la semaine se remplit séance par séance. Puis un avis apparaît : une séance non placée, avec sa raison."
+      },
+      {
+        "titre": "Un cours déplacé ? Les étudiants sont prévenus.",
+        "lignes": [
+          "L'enseignant demande, la scolarité valide, l'emploi du temps se met à jour."
+        ],
+        "image": "Sur un téléphone, une séance passe du mardi au jeudi et une notification arrive. Quatre étapes s'allument : demande, validation, prévenus, publié."
+      },
+      {
+        "titre": "L'appel en un geste.",
+        "lignes": [
+          "Le QR code change toutes les 30 secondes."
+        ],
+        "image": "Un QR code est projeté en classe. Un téléphone le scanne, la présence est notée, et le nombre de présents monte."
+      },
+      {
+        "titre": "Des quiz en direct, ou à son rythme.",
+        "lignes": [
+          "Dix types de questions. En direct, les points comptent la justesse et la rapidité."
+        ],
+        "image": "Les dix types de questions s'alignent. Puis, sur un téléphone, une question de quiz en direct avec son minuteur ; la bonne réponse rapporte des points."
+      },
+      {
+        "titre": "Réviser en jouant.",
+        "lignes": [
+          "Dix simulations et un terminal Linux.",
+          "Le terminal se joue aussi au tableau, avec toute la classe."
+        ],
+        "image": "Des cartes de jeux se rangent. Puis un terminal projeté au tableau, et un téléphone qui propose une commande."
+      },
+      {
+        "titre": "Chaque classe a son espace.",
+        "lignes": [
+          "Supports par section, sondages, annonces de l'école.",
+          "La bibliothèque s'ouvre avec le même compte."
+        ],
+        "image": "L'espace d'une classe : ses sections et leurs supports, un sondage dont les barres montent, une annonce. Puis la bibliothèque s'ouvre."
+      },
+      {
+        "titre": "Toute l'école, d'un seul regard.",
+        "lignes": [
+          "Salles, examens et surveillances, sur plusieurs campus.",
+          "Double authentification, accès par rôle. Quand l'école active l'IA, celle-ci ne reçoit aucune donnée d'élève."
+        ],
+        "image": "Deux campus reliés par leur temps de trajet, l'occupation des salles et une session d'examen. Puis un code de vérification à six chiffres et les trois rôles."
+      },
+      {
+        "titre": "Aussi sur le téléphone.",
+        "lignes": [
+          "La semaine, le scanner de l'appel, les jeux, la bibliothèque.",
+          "Parlons de votre établissement."
+        ],
+        "image": "Sur un téléphone, les onglets Semaine, Scanner, Activités et Bibliothèque défilent. Puis le logo et le nom de Planner."
+      }
+    ],
+    "illustrations": {
+      "applications": [
+        "Emploi du temps",
+        "Enseignements",
+        "Personnes",
+        "Établissement",
+        "Annonces",
+        "Quiz et jeux",
+        "Bibliothèque"
+      ],
+      "semaine": "Semaine 12",
+      "calcul": "Calcul de l'emploi du temps",
+      "report": {
+        "ecran": "Ma semaine",
+        "jours": [
+          "Mardi",
+          "Jeudi"
+        ],
+        "notification": {
+          "titre": "Séance déplacée",
+          "texte": "TD Physique : jeudi 14:00, salle B12"
+        }
+      },
+      "appel": {
+        "renouvellement": "Nouveau code dans",
+        "presence": "Présence notée"
+      },
+      "quiz": {
+        "types": [
+          "Choix unique",
+          "Choix multiple",
+          "Vrai ou faux",
+          "Réponse courte",
+          "Nombre",
+          "Texte à trous",
+          "Association",
+          "Remise en ordre",
+          "Zone sur image",
+          "Réponse rédigée"
+        ],
+        "points": "+ 940 points",
+        "classement": "Classement"
+      },
+      "jeux": {
+        "cartes": [
+          "Terminal Linux",
+          "Requête Parfaite",
+          "Nœuds Réseaux",
+          "Ordonnanceur CPU",
+          "Sprint Agile",
+          "Tri Cyber"
+        ],
+        "tableau": "Terminal Linux · au tableau",
+        "commandes": [
+          "cd projets",
+          "ls -l",
+          "mkdir rapport"
+        ],
+        "proposer": "Proposer une commande",
+        "envoyer": "Envoyer"
+      },
+      "cours": {
+        "classe": "Physique · Groupe B",
+        "sections": [
+          {
+            "titre": "Général",
+            "supports": [
+              "Plan du module"
+            ]
+          },
+          {
+            "titre": "Semaine 1",
+            "supports": [
+              "Chapitre 1 · Cinématique",
+              "Exercices corrigés"
+            ]
+          },
+          {
+            "titre": "TP",
+            "supports": [
+              "Énoncé du TP 1"
+            ]
+          }
+        ],
+        "sondage": {
+          "titre": "Sondage",
+          "question": "Quel jour pour la séance de révision ?",
+          "choix": [
+            "Lundi",
+            "Mercredi",
+            "Vendredi"
+          ]
+        },
+        "annonce": {
+          "titre": "Annonce de l'école",
+          "texte": "Les inscriptions aux examens ouvrent lundi."
+        },
+        "bibliotheque": {
+          "titre": "Bibliothèque",
+          "documents": [
+            "Mécanique du point",
+            "Analyse 1",
+            "Chimie organique",
+            "Algorithmique"
+          ]
+        }
+      },
+      "etablissement": {
+        "campus": [
+          "Campus Centre",
+          "Campus Nord"
+        ],
+        "trajet": "25 min",
+        "occupation": "Occupation des salles",
+        "salles": [
+          "Amphi A",
+          "Salle B12",
+          "Labo 2",
+          "Salle C04"
+        ],
+        "examen": {
+          "titre": "Examen · Mathématiques",
+          "detail": "Amphi A et salle B12 · 3 surveillances"
+        }
+      },
+      "securite": {
+        "code": "Code de vérification",
+        "valider": "Valider",
+        "roles": [
+          "Étudiant",
+          "Enseignant",
+          "Administration"
+        ]
+      },
+      "mobile": {
+        "onglets": [
+          "Semaine",
+          "Scanner",
+          "Activités",
+          "Bibliothèque"
+        ]
+      }
+    }
   }
 }
