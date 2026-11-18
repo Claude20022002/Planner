@@ -233,7 +233,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QUA-07](modules/QUA-qualite-docs.md) | Protéger `main` | 0 | S | fait : les 6 contrôles de la CI sont exigés (contournable seulement par `gh pr merge --admin`) |  |
 | [QUA-08](modules/QUA-qualite-docs.md) | `SECURITY.md` et signalement privé des failles | libre | S | en cours (hors chantier, accord du chef le 16 nov.) | `doc/qua-08-security` |
 | [QUA-09](modules/QUA-qualite-docs.md) | Liste publique des envois sortants (EP-13) | libre | S | en cours (hors chantier, accord du chef le 16 nov.) : liste écrite, à fusionner | `doc/qua-09-envois-sortants` |
-| [QUA-10](modules/QUA-qualite-docs.md) | Aucun envoi implicite chez un tiers : destinations par défaut, contenu du push (EP-13) | libre | S | en cours (hors chantier, accord du chef le 16 nov.) : plan validé le 16 nov., à coder | `feat/qua-10-envois-explicites` |
+| [QUA-10](modules/QUA-qualite-docs.md) | Aucun envoi implicite chez un tiers : destinations par défaut, contenu du push (EP-13) | libre | S | en cours (hors chantier, accord du chef le 16 nov.) : plan validé le 16 nov. ; étapes 2 à 5 codées le 18 nov. (IA, courriel, push, résumé au démarrage) ; étape 6 (liste des envois) après la fusion de QUA-09 | `feat/qua-10-envois-explicites` |
 | [QUA-11](modules/QUA-qualite-docs.md) | Aucune adresse réelle dans `deploy/`, `verifier-neutre` étendu à `deploy/` | libre | S | à faire (inscrite le 16 nov.) |  |
 | [QUA-12](modules/QUA-qualite-docs.md) | Aucun secret dans les journaux (courriel non configuré écrit en entier) | libre | S | à faire (inscrite le 16 nov.) |  |
 
