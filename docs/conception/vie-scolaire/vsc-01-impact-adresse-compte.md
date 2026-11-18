@@ -62,6 +62,14 @@ compatibles et les index sur une base neuve et une base existante. Les jeux de t
 scolaire synthétique, conserver les cas historiques par adresse et exercer web, mobile, import, export, MFA et OIDC
 selon le périmètre autorisé. Les consommateurs indirects sont à vérifier par les parcours avant activation.
 
+## Contrats indirects à relire
+
+| Contrat | Observation sur la base de départ | Preuve attendue dans le lot |
+|---|---|---|
+| Session Planner et connexion StudyLib | `authController.js` place l’adresse dans l’identité. Le jeton signé par `utils/jetons.js` sert aussi à StudyLib, dont la consommation effective est hors de ce dépôt. | Vérifier connexion, renouvellement et lecture de session sur le site et le mobile. Faire confirmer par le responsable de StudyLib le traitement de la revendication pour les écoles où la bibliothèque est active. |
+| ClassQuiz | Le fournisseur OIDC construit le nom de connexion à partir de l’adresse et limite l’accès par rôle. Les appels directs de quiz ont leurs propres usages de l’adresse. | Distinguer la recette OIDC de la recette des parcours élève ClassQuiz. Vérifier le contrat de chaque intégration activée et les parcours historiques des comptes par adresse. |
+| Anonymisation | `services/desactivation/anonymisation.js` efface l’identité dans `Users` et remplace le numéro dans `Etudiant`. Les noms déplacés dans le dossier et l’identifiant scolaire étendent le périmètre à examiner. | Faire relire par ADM et VSC le traitement de l’identité dans les deux modèles et vérifier la conservation des liens historiques selon la décision du lot. |
+
 ## Critères transversaux
 
 - L’identifiant de connexion scolaire est interprété dans l’école courante. La règle de normalisation et

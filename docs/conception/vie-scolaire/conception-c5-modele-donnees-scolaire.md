@@ -123,6 +123,26 @@ Pour le profil supérieur de référence, comparer le problème sérialisé envo
 les résultats des parcours existants et les applications activées. Inclure dans la recette une base neuve et
 une base déjà migrée. La preuve et la compatibilité des retours arrière seront exigées dans les PR des lots.
 
+### Points à vérifier dans les plans de reprise
+
+- La clé primaire historique d’`Appartenir` inclut `id_user_etudiant`. Ajouter la référence à l’inscription
+  ne suffit donc pas à enregistrer une appartenance sans compte. Le plan de migration doit expliciter
+  la coexistence des deux représentations, la contrainte d’unicité et le moment où l’écriture scolaire
+  devient possible. La création d’un compte après affectation doit conserver le dossier et le lien
+  existants, y compris après une reprise interrompue.
+- `services/annees/annees.js` conserve aujourd’hui les groupes dont `id_annee` est absent et ajoute les
+  ancêtres des groupes retenus. Le plan de reprise doit chiffrer les liens dont l’année est indéterminée
+  ou dont la hiérarchie est incohérente. Proposer de conserver ces liens lisibles par le chemin historique
+  jusqu’à résolution. Vérifier une promotion, ses groupes de TD et de TP, ainsi que deux années d’un
+  même dossier. Comparer les groupes accessibles et les effectifs, en comptant chaque élève une fois.
+- Les écritures passent notamment par `routes/appartenirRoutes.js`, `controllers/etudiantController.js`
+  et `services/comptes.js`. Le plan doit couvrir création, remplacement, suppression et import répété,
+  puis vérifier leur convergence avec la reprise. La cascade depuis `Users` et l’anonymisation sont à
+  relire avec ADM avant le déplacement de l’identité dans le dossier.
+- L’appel actuel sélectionne les comptes étudiants actifs et `Presence.id_user` est obligatoire.
+  L’apparition du dossier sans compte dans la liste de classe doit être vérifiée séparément.
+  EDT et VSC-03 doivent préciser comment l’appel et son historique prendront en charge cet élève.
+
 ## 7. Propriétaires et contrats
 
 | Propriétaire | Tables ou contrat |

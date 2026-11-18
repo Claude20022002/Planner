@@ -23,7 +23,7 @@
   - fichiers : `presenceRoutes`, `services/presences/*` ; écrans `Appel`, `AppelProjection`, `Presence` ; dans l'application mobile, `scan` et `scanner`.
 - **`Etudiant` dépend de `Users`** : la clé est `id_user`, et `Users.email` et `password_hash` sont obligatoires. **Un élève ne peut donc pas exister sans compte.** C-5 prévoit un dossier inscriptible avant la création du compte puis un compte créé par son établissement, avec un identifiant scolaire et une adresse facultative (Q-20).
 - **Champs obligatoires propres au supérieur** : `Cours.semestre`, `Cours.volume_horaire`, `Cours.type_cours`, `Groupe.id_filiere`.
-- **Conception C-5** : le plan du document et 14 questions, dans [conception-c5](../../conception/vie-scolaire/conception-c5-modele-donnees-scolaire.md). Plan validé le 18 novembre et conception rédigée. La relecture des deux groupes reste à faire.
+- **Conception C-5** : le plan du document et 14 questions, dans [conception-c5](../../conception/vie-scolaire/conception-c5-modele-donnees-scolaire.md). Plan validé le 18 novembre et conception rédigée. Les vérifications sur les appartenances historiques et les contrats indirects de Q-20 figurent dans la conception et son étude d’impact. La relecture des deux groupes reste à faire.
 
 ## Fonctions
 

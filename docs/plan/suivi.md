@@ -142,7 +142,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [ADM-07](modules/ADM-administration.md) | Enseignants partagés entre écoles | 5 | M | à faire |  |
 | [ADM-08](modules/ADM-administration.md) | Annuaire de l'école | — | M | reporté |  |
 | [ADM-09](modules/ADM-administration.md) | Échanges OneRoster | — | M | reporté |  |
-| [VSC-01](modules/VSC-vie-scolaire.md) | Modèle de données du scolaire (conception seule, avec diagrammes) | 1 | L | plan du document à valider |  |
+| [VSC-01](modules/VSC-vie-scolaire.md) | Modèle de données du scolaire (conception seule, avec diagrammes) | 1 | L | en cours : conception rédigée, vérifications documentées, relecture des groupes A et B attendue | #215 · etude/vsc-01-modele-scolaire |
 | [VSC-02](modules/VSC-vie-scolaire.md) | Élèves et familles | 4 | L | à faire |  |
 | [VSC-03](modules/VSC-vie-scolaire.md) | Absences prévenues aux parents, justificatifs, saisie déléguée (EP-6) | 4 | M | à faire |  |
 | [VSC-04](modules/VSC-vie-scolaire.md) | Notes et bulletins | 4 | XL | à faire |  |
