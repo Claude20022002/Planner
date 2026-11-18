@@ -5,8 +5,8 @@ import LigneModule from './LigneModule';
 import CarteModule from './CarteModule';
 export default function ListeModules({ modele: m }) {
  const { t, modulesAffiches, ouverts, nombre, nomEnseignant, basculer, ouvrirModule, setASupprimer, ouvrirComposante } = m;
- const telephone = useMediaQuery('(max-width:699px)');
- if (m.loading || m.erreurChargement || !modulesAffiches.length) return <ListeGestion lignes={modulesAffiches} colonnes={[]} cleLigne={(x) => x.id_cours} titre={(x) => x.nom_cours} actions={() => null} chargement={m.loading} erreur={m.erreurChargement} recharger={m.charger} vide={!m.modules.length} />;
+ const telephone = useMediaQuery('(max-width:1199px)');
+ if (m.loading || m.erreurChargement || !modulesAffiches.length) return <ListeGestion lignes={modulesAffiches} colonnes={[]} cleLigne={(x) => x.id_cours} titre={(x) => x.nom_cours} actions={() => null} chargement={m.loading} erreur={m.erreurChargement} recharger={m.charger} vide={!m.modulesGerables.length} creer={m.filieres.length ? () => m.ouvrirModule() : undefined} />;
  if (telephone) return <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, border: '1px solid', borderColor: 'divider', bgcolor: 'background.paper', borderRadius: 1 }}>
   {modulesAffiches.map((module) => <CarteModule key={module.id_cours} module={module} ouvert={ouverts.has(module.id_cours)} nombre={nombre} nomEnseignant={nomEnseignant}
    onBasculer={() => basculer(module.id_cours)} onModifier={() => ouvrirModule(module)} onSupprimer={() => setASupprimer({ type: 'module', item: module })}
@@ -18,12 +18,12 @@ export default function ListeModules({ modele: m }) {
                                 <TableRow>
                                     <TableCell sx={{ width: 40 }} />
                                     <TableCell>{t('ref.curriculum.cols.module')}</TableCell>
-                                    <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>{t('ref.curriculum.cols.program')}</TableCell>
+                                    <TableCell>{t('ref.curriculum.cols.program')}</TableCell>
                                     <TableCell>{t('ref.curriculum.cols.semester')}</TableCell>
                                     <TableCell>{t('ref.curriculum.cols.components')}</TableCell>
                                     <TableCell align="right">{t('ref.curriculum.cols.volume')}</TableCell>
-                                    <TableCell align="right" sx={{ display: { xs: 'none', lg: 'table-cell' } }}>{t('ref.curriculum.cols.ects')}</TableCell>
-                                    <TableCell sx={{ display: { xs: 'none', lg: 'table-cell' } }}>{t('ref.curriculum.cols.lead')}</TableCell>
+                                    <TableCell align="right">{t('ref.curriculum.cols.ects')}</TableCell>
+                                    <TableCell>{t('ref.curriculum.cols.lead')}</TableCell>
                                     <TableCell align="right">{t('ref.rooms.cols.actions')}</TableCell>
                                 </TableRow>
                             </TableHead>

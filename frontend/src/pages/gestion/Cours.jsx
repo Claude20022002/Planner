@@ -17,7 +17,7 @@ export default function Cours() {
    <Button variant="outlined" startIcon={<UploadFile />} onClick={() => m.setImportOuvert(true)}>{t('ref.import.button')}</Button>
    <Button variant="contained" startIcon={<Add />} onClick={() => m.ouvrirModule()} disabled={!m.filieres.length}>{t('ref.curriculum.addModule')}</Button>
   </EnteteGestion>
-  <RechercheGestion valeur={m.search} changer={m.setSearch} libelle={t('gestion.rechercherModules')} nombre={m.modulesAffiches.length}>
+  <RechercheGestion valeur={m.search} changer={m.setSearch} libelle={t('gestion.modules.rechercher')} nombre={m.modulesAffiches.length}>
    <TextField select label={t('ref.curriculum.program')} value={m.filiere} onChange={(e) => m.setFiliere(e.target.value)} sx={{ minWidth: 0, width: { sm: 240 } }}>
     <MenuItem value="toutes">{t('ref.curriculum.allPrograms')}</MenuItem>
     {m.filieres.map((f) => <MenuItem key={f.id_filiere} value={f.id_filiere}>{f.code_filiere} · {f.nom_filiere}</MenuItem>)}

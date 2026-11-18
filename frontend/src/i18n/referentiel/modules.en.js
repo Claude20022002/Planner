@@ -1,2 +1,5 @@
 /** Dictionnaire du lot de référentiel. */
-export default {};
+export default {
+  rechercher: 'Search for a module',
+  mention: 'Note',
+};

@@ -27,7 +27,7 @@ export default function Enseignements() {
    </TextField>
   </RechercheGestion>
   <BilanGeneration modele={m} />
-  {sansPeriode ? <EmptyState title={t('ref.teaching.noPeriodTitle')} description={t('ref.teaching.noPeriodBody')} /> : <ListeEnseignements modele={m} />}
+  {sansPeriode ? <EmptyState title={t('gestion.enseignements.periodeAbsente')} description={t('ref.teaching.noPeriodBody')} /> : <ListeEnseignements modele={m} />}
   <DialogsEnseignements modele={m} />
  </DashboardLayout>;
 }

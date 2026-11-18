@@ -14,37 +14,41 @@ export default function useGroupes() {
     const { t } = useTranslation();
     const toast = useToast();
     const { user } = useAuth();
-    const { annees, valeur: valeurAnnee, annee, filtre, choisir: choisirAnnee } = useAnneeChoisie();
+    const { annees, valeur: valeurAnnee, annee, filtre, choisir: appliquerAnnee } = useAnneeChoisie();
     const [filieres, setFilieres] = useState([]);
     const [filiere, setFiliere] = useState('');
     const [arbre, setArbre] = useState([]);
-    // Groupes de la filière dont le texte d'année ne correspond à aucune année : le filtre par
-    // année les écarte, on les signale pour qu'ils soient corrigés
     const [sansAnnee, setSansAnnee] = useState(0);
+    const [filtreVide, setFiltreVide] = useState(false);
     const [loading, setLoading] = useState(true);
     const [initialisation, setInitialisation] = useState(true);
     const [erreurChargement, setErreurChargement] = useState('');
     const controle = useMemo(creerControleLecture, []);
+    const options = useMemo(creerControleLecture, []);
+    const [lecture, setLecture] = useState(0);
+    const relire = () => setLecture((n) => n + 1);
     const [dialog, setDialog] = useState({ open: false, editing: null, form: GROUPE_VIDE });
     const [aSupprimer, setASupprimer] = useState(null);
     const [importOuvert, setImportOuvert] = useState(false);
 
-    // Année scolaire proposée pour un nouveau groupe : celle choisie, sinon l'année en cours (même
-    // règle que le serveur) ; le calcul par la date ne sert que s'il n'existe aucune année
     const anneeScolaire = annee?.libelle ?? anneeEnCours(annees)?.libelle ?? anneeScolaireCourante();
 
     const chargerFilieres = useCallback(async () => {
+        const active = options.commencer();
         setInitialisation(true);
         setErreurChargement('');
-            try {
-                const listeFilieres = filieresGerables(await fetchAll(filiereAPI.getAll), user);
-                setFilieres(listeFilieres);
-                setFiliere((f) => f || listeFilieres[0]?.id_filiere || '');
-            } catch {
-                setErreurChargement(t('common.errorLoad'));
-            } finally { setInitialisation(false); }
-    }, [user, t]);
-    useEffect(() => { chargerFilieres(); }, [chargerFilieres]);
+        try {
+            const liste = filieresGerables(await fetchAll(filiereAPI.getAll), user);
+            if (!active()) return;
+            setFilieres(liste);
+            setFiliere((id) => liste.some((f) => f.id_filiere === id) ? id : liste[0]?.id_filiere ?? '');
+        } catch {
+            if (active()) setErreurChargement(t('common.errorLoad'));
+        } finally {
+            if (active()) setInitialisation(false);
+        }
+    }, [user, t, options]);
+    useEffect(() => { chargerFilieres(); return () => options.invalider(); }, [chargerFilieres, options]);
 
     const chargerArbre = useCallback(async () => {
         const active = controle.commencer();
@@ -61,6 +65,7 @@ export default function useGroupes() {
             ]);
             if (!active()) return;
             setArbre(groupes);
+            setFiltreVide(Boolean(tous?.length) && !groupes.length);
             setSansAnnee(tous ? tous.filter((g) => g.id_annee == null).length : 0);
         } catch {
             if (active()) setErreurChargement(t('common.errorLoad'));
@@ -72,7 +77,16 @@ export default function useGroupes() {
     useEffect(() => {
         chargerArbre();
         return () => controle.invalider();
-    }, [chargerArbre, controle]);
+    }, [chargerArbre, controle, lecture]);
+
+    const changerFiltre = (appliquer, actuel) => (suivant) => {
+        if (suivant === actuel) return;
+        controle.invalider();
+        setArbre([]);
+        setSansAnnee(0);
+        setLoading(true);
+        appliquer(suivant);
+    };
 
     const lignes = useMemo(() => aplatir(arbre), [arbre]);
     const erreur = (error) => toast.error(error.response?.data?.error || error.response?.data?.errors?.[0]?.message || error.message);
@@ -118,7 +132,7 @@ export default function useGroupes() {
             else await groupeAPI.create(data);
             toast.success(t('ref.groups.saved'));
             setDialog({ open: false, editing: null, form: GROUPE_VIDE });
-            chargerArbre();
+            relire();
         } catch (error) {
             erreur(error);
         }
@@ -130,13 +144,12 @@ export default function useGroupes() {
         try {
             await groupeAPI.delete(groupe.id_groupe);
             toast.success(t('ref.groups.deleted'));
-            chargerArbre();
+            relire();
         } catch (error) {
             erreur(error);
         }
     };
 
-    // Import : les parents doivent précéder leurs sous-groupes dans le fichier
     const importer = async (lignesFichier) => {
         const parCode = new Map(filieres.map((f) => [f.code_filiere.toLowerCase(), f.id_filiere]));
         const crees = new Map();
@@ -169,7 +182,7 @@ export default function useGroupes() {
                 });
             }
         }
-        if (reussies) chargerArbre();
+        if (reussies) relire();
         return { reussies, erreurs };
     };
 
@@ -182,5 +195,5 @@ export default function useGroupes() {
 
     const filiereCourante = filieres.find((f) => f.id_filiere === filiere);
 
- return { chargerFilieres, t, user, annees, valeurAnnee, choisirAnnee, anneeScolaire, filtre, filieres, filiere, setFiliere, arbre, lignes, filiereCourante, loading, initialisation, erreurChargement, chargerArbre, sansAnnee, dialog, setDialog, aSupprimer, setASupprimer, importOuvert, setImportOuvert, ouvrir, enregistrer, supprimer, importer, ecartEffectif };
+ return { chargerFilieres, t, user, annees, valeurAnnee, choisirAnnee: changerFiltre(appliquerAnnee, valeurAnnee), anneeScolaire, filtre, filieres, filiere, setFiliere: changerFiltre(setFiliere, filiere), lignes, filiereCourante, loading, initialisation, erreurChargement, chargerArbre, sansAnnee, filtreVide, dialog, setDialog, aSupprimer, setASupprimer, importOuvert, setImportOuvert, ouvrir, enregistrer, supprimer, importer, ecartEffectif };
 }

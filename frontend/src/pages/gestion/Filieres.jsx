@@ -14,7 +14,7 @@ export default function Filieres() {
    <Button variant="outlined" startIcon={<UploadFile />} onClick={() => m.setImportOuvert(true)}>{m.t('ref.import.button')}</Button>
    <Button variant="contained" startIcon={<Add />} onClick={() => m.ouvrir()}>{m.t('ref.programs.add')}</Button>
   </EnteteGestion>
-  <RechercheGestion valeur={m.search} changer={m.setSearch} libelle={m.t('gestion.rechercherFilieres')} nombre={m.affichees.length} />
+  <RechercheGestion valeur={m.search} changer={m.setSearch} libelle={m.t('gestion.filieres.rechercher')} nombre={m.affichees.length} />
   <ListeFilieres modele={m} /><DialogsFilieres modele={m} />
  </DashboardLayout>;
 }

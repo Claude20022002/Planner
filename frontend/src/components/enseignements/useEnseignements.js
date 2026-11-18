@@ -25,6 +25,8 @@ export default function useEnseignements() {
     const [erreurChargement, setErreurChargement] = useState('');
     const controle = useMemo(creerControleLecture, []);
     const options = useMemo(creerControleLecture, []);
+    const [lecture, setLecture] = useState(0);
+    const relire = () => setLecture((n) => n + 1);
     const [rapport, setRapport] = useState(null);
     const [edition, setEdition] = useState(null);
     const [aSupprimer, setASupprimer] = useState(null);
@@ -78,7 +80,16 @@ export default function useEnseignements() {
     useEffect(() => {
         charger();
         return () => controle.invalider();
-    }, [charger, controle]);
+    }, [charger, controle, lecture]);
+
+    const changerFiltre = (appliquer, actuel) => (suivant) => {
+        if (suivant === actuel) return;
+        controle.invalider();
+        setEnseignements([]);
+        setSelection(new Set());
+        setLoading(true);
+        appliquer(suivant);
+    };
 
     const erreur = (error) => toast.error(error.response?.data?.error || error.response?.data?.errors?.[0]?.message || error.message);
 
@@ -86,7 +97,7 @@ export default function useEnseignements() {
         try {
             const resultat = await enseignementAPI.generer({ id_periode: idPeriode, ...(filiere !== 'toutes' && { id_filiere: filiere }) });
             setRapport(resultat);
-            charger();
+            relire();
         } catch (error) {
             erreur(error);
         }
@@ -104,7 +115,7 @@ export default function useEnseignements() {
         try {
             await enseignementAPI.fusionner([...selection]);
             toast.success(t('ref.teaching.merged'));
-            charger();
+            relire();
         } catch (error) {
             erreur(error);
         }
@@ -114,7 +125,7 @@ export default function useEnseignements() {
         try {
             await enseignementAPI.scinder(enseignement.id_enseignement);
             toast.success(t('ref.teaching.split'));
-            charger();
+            relire();
         } catch (error) {
             erreur(error);
         }
@@ -126,7 +137,7 @@ export default function useEnseignements() {
             await enseignementAPI.update(edition.id_enseignement, { heures_prevues: Number(edition.heures_prevues), libelle: edition.libelle || null });
             toast.success(t('ref.teaching.saved'));
             setEdition(null);
-            charger();
+            relire();
         } catch (error) {
             erreur(error);
         }
@@ -138,7 +149,7 @@ export default function useEnseignements() {
         try {
             await enseignementAPI.delete(enseignement.id_enseignement);
             toast.success(t('ref.teaching.deleted'));
-            charger();
+            relire();
         } catch (error) {
             erreur(error);
         }
@@ -155,5 +166,5 @@ export default function useEnseignements() {
         [enseignements]
     );
 
- return { t, user, periodes, idPeriode, setIdPeriode, filieres, filiere, setFiliere, enseignements, selection, loading, initialisation, erreurInitiale, erreurChargement, charger, chargerOptions, rapport, setRapport, edition, setEdition, aSupprimer, setASupprimer, idEquipe, setIdEquipe, nombre, generer, basculer, mutualiser, scinder, enregistrerEdition, supprimer, tries };
+ return { t, user, periodes, idPeriode, setIdPeriode: changerFiltre(setIdPeriode, idPeriode), filieres, filiere, setFiliere: changerFiltre(setFiliere, filiere), selection, loading, initialisation, erreurInitiale, erreurChargement, charger: relire, chargerOptions, rapport, setRapport, edition, setEdition, aSupprimer, setASupprimer, idEquipe, setIdEquipe, nombre, generer, basculer, mutualiser, scinder, enregistrerEdition, supprimer, tries };
 }

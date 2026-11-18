@@ -10,6 +10,7 @@ export default function EquipeListe({ services = [], onOuvrir }) {
         <Box
             component="button"
             type="button"
+            aria-label={t('gestion.enseignements.equipe')}
             onClick={onOuvrir}
             sx={{ all: 'unset', cursor: 'pointer', display: 'flex', flexWrap: 'wrap', gap: 0.75, alignItems: 'center', minHeight: 44, '&:focus-visible': { outline: '2px solid', outlineColor: 'primary.main', outlineOffset: 2 } }}
         >

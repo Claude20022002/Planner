@@ -61,14 +61,15 @@ export default function useModules() {
 
     const idsGerables = useMemo(() => new Set(filieres.map((f) => f.id_filiere)), [filieres]);
 
+    const modulesGerables = useMemo(() => modules.filter((m) => idsGerables.has(m.id_filiere)), [modules, idsGerables]);
     const modulesAffiches = useMemo(() => {
         const terme = search.trim().toLowerCase();
-        return modules
-            .filter((m) => (filiere === 'toutes' ? idsGerables.has(m.id_filiere) : m.id_filiere === filiere))
+        return modulesGerables
+            .filter((m) => filiere === 'toutes' || m.id_filiere === filiere)
             .filter((m) => periode === 'toutes' || periodeDe(m.semestre) === periode)
             .filter((m) => !terme || [m.code_cours, m.nom_cours].some((v) => v?.toLowerCase().includes(terme)))
             .sort((a, b) => (a.filiere?.code_filiere || '').localeCompare(b.filiere?.code_filiere || '') || a.semestre.localeCompare(b.semestre, 'fr', { numeric: true }) || a.code_cours.localeCompare(b.code_cours));
-    }, [modules, filiere, periode, search, idsGerables]);
+    }, [modulesGerables, filiere, periode, search]);
 
     const erreur = (error) => toast.error(error.response?.data?.error || error.response?.data?.errors?.[0]?.message || error.message);
 
@@ -194,5 +195,5 @@ export default function useModules() {
         return e ? `${e.user?.prenom || ''} ${e.user?.nom || ''}`.trim() : '-';
     };
 
- return { t, modules, filieres, enseignants, typesSalle, loading, erreurChargement, charger, filiere, setFiliere, periode, setPeriode, search, setSearch, ouverts, moduleDialog, setModuleDialog, composanteDialog, setComposanteDialog, aSupprimer, setASupprimer, importOuvert, setImportOuvert, nombre, modulesAffiches, basculer, ouvrirModule, enregistrerModule, ouvrirComposante, enregistrerComposante, supprimer, importer, nomEnseignant };
+ return { t, modulesGerables, filieres, enseignants, typesSalle, loading, erreurChargement, charger, filiere, setFiliere, periode, setPeriode, search, setSearch, ouverts, moduleDialog, setModuleDialog, composanteDialog, setComposanteDialog, aSupprimer, setASupprimer, importOuvert, setImportOuvert, nombre, modulesAffiches, basculer, ouvrirModule, enregistrerModule, ouvrirComposante, enregistrerComposante, supprimer, importer, nomEnseignant };
 }

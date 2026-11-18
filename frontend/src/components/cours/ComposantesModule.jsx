@@ -7,7 +7,7 @@ import { TYPES } from './constantes';
 import { libelleSeance, rythme } from './formatage';
 export default function ComposantesModule({ module, nombre, onAjouterComposante, onModifierComposante, onSupprimerComposante }) {
  const { t } = useTranslation();
- const telephone = useMediaQuery('(max-width:699px)');
+ const telephone = useMediaQuery('(max-width:1199px)');
  if (telephone) return <Box>
   {module.composantes.map((c) => <Box key={c.id_composante} sx={{ mt: 2, pt: 2, borderTop: '1px solid', borderColor: 'divider' }}>
    <Typography component="h3" variant="body1" fontWeight={600}>{c.type}</Typography>
@@ -17,7 +17,7 @@ export default function ComposantesModule({ module, nombre, onAjouterComposante,
      [t('ref.curriculum.compCols.group'), t('ref.groupTypes.' + c.niveau_groupe)],
      [t('ref.curriculum.compCols.session'), libelleSeance(t, c.creneaux_par_seance)],
      [t('ref.curriculum.compCols.mode'), t('ref.modes.' + c.modalite)],
-     [t('gestion.mention'), c.mention || '-'],
+     [t('gestion.modules.mention'), c.mention || '-'],
      [t('ref.curriculum.compCols.room'), c.type_salle_requis ? t('ref.roomTypes.' + c.type_salle_requis, { defaultValue: c.type_salle_requis }) : '-'],
      [t('ref.curriculum.compCols.rhythm'), rythme(t, c)],
     ].map(([label, valeur]) => <Box key={label} sx={{ minWidth: 0, overflowWrap: 'anywhere' }}><Typography component="dt" variant="caption" color="text.secondary">{label}</Typography><Typography component="dd" variant="body2" sx={{ m: 0 }}>{valeur}</Typography></Box>)}

@@ -35,16 +35,16 @@ export default function LigneModule({ module, ouvert, nombre, nomEnseignant, onB
                         </Box>
                     </Stack>
                 </TableCell>
-                <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>{module.filiere?.code_filiere}</TableCell>
+                <TableCell>{module.filiere?.code_filiere}</TableCell>
                 <TableCell sx={{ fontWeight: 600 }}>{module.semestre}</TableCell>
                 <TableCell>
-                    <Typography variant="body2" sx={{ whiteSpace: 'nowrap' }}>
+                    <Typography variant="body2" sx={{ overflowWrap: 'anywhere' }}>
                         {module.composantes.map((c) => `${c.type} ${nombre.format(c.volume_heures)} h`).join(' · ') || '-'}
                     </Typography>
                 </TableCell>
                 <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>{nombre.format(volumeTotal(module))} h</TableCell>
-                <TableCell align="right" sx={{ display: { xs: 'none', lg: 'table-cell' } }}>{module.ects ?? '-'}</TableCell>
-                <TableCell sx={{ display: { xs: 'none', lg: 'table-cell' } }}>{module.id_responsable ? nomEnseignant(module.id_responsable) : '-'}</TableCell>
+                <TableCell align="right">{module.ects ?? '-'}</TableCell>
+                <TableCell>{module.id_responsable ? nomEnseignant(module.id_responsable) : '-'}</TableCell>
                 <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>
                     <IconButton size="small" onClick={() => onModifier()} aria-label={t('ref.common.editItem', { name: module.nom_cours })}>
                         <Edit fontSize="small" />

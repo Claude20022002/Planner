@@ -5,7 +5,4 @@ export default {
  reessayer: 'Try again', vide: 'No records yet', videAide: 'Use the available actions to prepare your reference data.',
  aucunResultat: 'No results', filtresAide: 'Change the search or filters.',
  ajouter: 'Add', actions: 'Actions', trier: 'Sort the list', details: 'Details',
- parent: 'Parent group', racine: 'Top-level group', rechercherFilieres: 'Search a program',
- rechercherModules: 'Search a module', periodeAbsente: 'No period available',
- equipe: 'Open the team', mention: 'Note',
 };

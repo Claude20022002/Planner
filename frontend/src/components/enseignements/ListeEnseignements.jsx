@@ -16,7 +16,7 @@ export default function ListeEnseignements({ modele: m }) {
  ];
  return <ListeGestion lignes={m.tries} colonnes={colonnes} cleLigne={(e) => e.id_enseignement} titre={(e) => e.libelle || e.composante.cours.nom_cours}
   selection={{ ligne: (e) => <Checkbox checked={m.selection.has(e.id_enseignement)} onChange={() => m.basculer(e.id_enseignement)} inputProps={{ 'aria-label': t('ref.teaching.select', { name: e.composante.cours.nom_cours + ' ' + e.composante.type }) }} /> }}
-  chargement={m.loading || m.initialisation} erreur={m.erreurInitiale ? t('common.errorLoad') : m.erreurChargement} recharger={m.erreurInitiale ? m.chargerOptions : m.charger} vide replierTelephone
+  chargement={m.loading || m.initialisation} erreur={m.erreurInitiale ? t('common.errorLoad') : m.erreurChargement} recharger={m.erreurInitiale ? m.chargerOptions : m.charger} vide={m.filiere === 'toutes' || m.filieres.length < 2} replierTelephone
   actions={(e) => {
    const nom = e.composante.cours.nom_cours;
    return <>
