@@ -5,7 +5,7 @@
 | Module | [VIT](../../plan/modules/VIT-site-vitrine.md) · condition 9 de la mise en ligne |
 | Branche | `feat/vit-11-catalogue-faq`, depuis `origin/main` à `48d65fd8` |
 | Rédigé par | Codex, le 18 novembre 2026 |
-| **Validé** | En attente de Claude20022002, y compris pour chaque réponse de la FAQ |
+| **Validé** | Validé par Claude20022002 le 18 novembre 2026 (questions 1, 2, 4 à 10 ; 3 par le coordinateur) |
 
 ## 1. Objet
 
@@ -28,8 +28,9 @@ et l’anglais et construit l’arabe avec le repli français du socle.
   catégories. VIT-09 posera les icônes. Le filtre par texte porte sur les titres et descriptions dans
   la langue affichée et annonce le nombre de résultats. La page présente toutes les entrées sans
   JavaScript. Les entrées « Bientôt » portent ce libellé sans date et renvoient à leur plan.
-- Adresses proposées : `/<langue>/fonctionnalites/` et `/<langue>/faq/`. Le coordinateur transmet à
-  VIT-10 l’ajout des liens catalogue et FAQ et des clés de routes dans le socle de navigation.
+- Adresses validées : `/<langue>/fonctionnalites/` et `/<langue>/faq/`. Après la fusion de VIT-10,
+  VIT-11 ajoute les clés de route dans `langues.js` et les liens dans `EnTete.astro` et
+  `PiedDePage.astro`. Le coordinateur ouvre ces trois fichiers pour cet ajout uniquement.
   Les preuves de Planner partent des plans [VIT-05](vit-05-solutions.md), [VIT-07](vit-07-contenu-complet.md) et de parité.
 
 ```mermaid
@@ -56,49 +57,35 @@ ci-dessous permettent de présenter les capacités du produit et de discuter de 
 | Événements | Consulter les événements et les administrer selon le rôle. | `app/Http/Controllers/EventController.php`, `app/Http/Controllers/Admin/EventController.php` |
 | Parcours transversaux | Profil, tableau de bord, notifications et API mobile couvrant notamment documents, stages, projets et événements. | `routes/web.php`, `routes/api.php`, `tests/Feature/Planner/MobileApiTest.php` |
 
-Le catalogue public présente ces capacités sous « Bibliothèque · StudyLib ». L’offre peut regrouper
-StudyLib avec Planner, proposer une sélection de familles ou vendre StudyLib séparément. Le périmètre
-exact des offres reste à valider. La connexion web actuelle redirige vers Planner, l’API mobile
-utilise son jeton et le référentiel peut être synchronisé depuis Planner (`routes/auth.php`,
-`routes/api.php`, `app/Console/Commands/SyncPlannerReferential.php`). L’offre autonome demande
-donc de trancher la dépendance d’identité, le référentiel, l’isolation par établissement (BIB-02)
-et les intégrations de cours. La disponibilité commerciale et l’activation à la carte demandent
-un arbitrage distinct de l’existence d’une fonction dans le code.
+Le catalogue public présente les fonctions vérifiées sous « Bibliothèque · StudyLib ». Les demandes
+commerciales passent par le contact. Le site ne décrit aucune offre ni aucun prix.
 
-## 4. Questions à valider par le chef
+## 4. Décisions et réponses de FAQ validées
 
-| N° | Question | Proposition de réponse ou de décision |
-|---|---|---|
-| 1 | Valider le regroupement du catalogue et les deux adresses ? | Les clés des applications Planner pilotent les sections. Les familles de StudyLib restent sous Bibliothèque. VIT-09 fournit les icônes. |
-| 2 | Quel périmètre StudyLib présenter dans VIT-11 ? | Présenter les fonctions vérifiées. Préparer une offre par familles et une offre StudyLib séparée. Afficher le contact pour discuter de l’offre, après validation de la réponse 9. |
-| 3 | Comment vérifier les sources StudyLib ? | Épingler un commit public. Le test de revue lit les chemins avec `git cat-file -e <commit>:<chemin>` dans un clone local de StudyLib. Tester aussi les chemins Planner à chaque exécution. La vérification complète exige le clone épinglé et échoue si une source manque. Le build reste autonome. |
-| 4 | Où sont stockées les données ? | « Demandez-nous où seront hébergées les données de votre établissement. Nous vous préciserons les conditions de l’offre. » Lien vers Sécurité et données, pays d’hébergement à confirmer pour chaque offre. |
-| 5 | Dans quelles langues puis-je consulter le site ? | « Le site est disponible en français et en anglais. Contactez-nous pour connaître les langues disponibles dans les applications qui vous intéressent. » |
-| 6 | Peut-on importer des listes ? | « L’administration peut importer des listes de comptes, d’étudiants et d’enseignants à partir de fichiers CSV compatibles. » Sources : `backend/routes/{userRoutes,etudiantRoutes,enseignantRoutes}.js` et `frontend/src/utils/fileImport.js`. |
-| 7 | Que propose l’application mobile ? | « Les étudiants peuvent retrouver leur emploi du temps et les ressources de la Bibliothèque. Les ressources sont aussi accessibles depuis un navigateur. » Voir la page Application. |
-| 8 | Comment l’IA intervient-elle ? | « Quand l’école active l’IA dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager. » |
-| 9 | Peut-on choisir StudyLib séparément ? | « Contactez-nous pour discuter de StudyLib et des fonctionnalités qui répondent aux besoins de votre établissement. » Publier cette réponse après validation de son libellé commercial. |
-| 10 | Combien cela coûte-t-il ? | « Contactez-nous pour parler des besoins de votre établissement. » Réutiliser le contact existant du site. |
+Visas relayés par le coordinateur dans la boîte Codex le 18 novembre 2026 à 20 h.
 
-La FAQ intègre `FAQPage` en JSON-LD local. Ses questions et réponses reprennent exactement le texte
-visible dans la langue affichée, après validation individuelle. Les décisions 1 à 3 et les réponses
-4 à 10 sont soumises au chef avant le code.
+| N° | Sujet | Décision ou texte validé | Visa |
+|---|---|---|---|
+| 1 | Regroupement et adresses | Regroupement par application avec les clés de `frontend/src/i18n/applications.fr.js`. StudyLib reste sous « Bibliothèque ». Les adresses sont `/<langue>/fonctionnalites/` et `/<langue>/faq/`. VIT-09 pose les icônes. Après la fusion de VIT-10, VIT-11 ajoute les clés et les liens du catalogue et de la FAQ au menu et au pied de page, dans le périmètre ouvert par le coordinateur. | Chef pour le catalogue et les adresses. Coordinateur pour le périmètre des liens. |
+| 2 | Périmètre StudyLib | Présenter les fonctions vérifiées et renvoyer vers le contact. Aucune offre ni aucun prix décrits. | Chef |
+| 3 | Vérification des sources | Épingler le commit de StudyLib et contrôler les chemins avec `git cat-file -e <commit>:<chemin>` dans un clone local, hors CI. La vérification complète échoue si une source manque. Vérifier les chemins Planner à chaque exécution. Le build reste autonome. | Coordinateur |
+| 4 | Où sont stockées les données ? | « Demandez-nous où seront hébergées les données de votre établissement. Nous vous préciserons les conditions de l’offre. » Lien vers Sécurité et données, pays d’hébergement à confirmer pour chaque offre. | Chef |
+| 5 | Dans quelles langues puis-je consulter le site ? | « Le site est disponible en français et en anglais. Contactez-nous pour connaître les langues disponibles dans les applications qui vous intéressent. » | Chef |
+| 6 | Peut-on importer des listes ? | « L’administration peut importer des listes de comptes, d’étudiants et d’enseignants à partir de fichiers CSV compatibles. » Sources : `backend/routes/{userRoutes,etudiantRoutes,enseignantRoutes}.js` et `frontend/src/utils/fileImport.js`. | Chef |
+| 7 | Que propose l’application mobile ? | « L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main. » Voir la page Application et les preuves ci-dessous. | Chef, sur la formulation du coordinateur |
+| 8 | Comment l’IA intervient-elle ? | « Quand l’école active l’IA dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager. » | Chef |
+| 9 | Peut-on choisir StudyLib séparément ? | « Contactez-nous pour discuter de StudyLib et des fonctionnalités qui répondent aux besoins de votre établissement. » | Chef |
+| 10 | Combien cela coûte-t-il ? | « Contactez-nous pour parler des besoins de votre établissement. » Réutiliser le contact existant du site. | Chef |
 
-## 4 bis. Décisions et visas relevés le 18 novembre
+Preuves de la réponse 7, vérifiées sur `main` à `631975af`.
 
-| N° | Décision ou visa | Source et suite |
-|---|---|---|
-| 1 | Le chef décide le regroupement par application. Chaque entrée porte une clé issue de `frontend/src/i18n/applications.fr.js`. Le test vérifie la clé et VIT-09 pose les icônes. | Décision de 19 h 20 transmise par le coordinateur dans la boîte Codex à 19 h 28. Les deux adresses et le détail du regroupement attendent le visa du chef. |
-| 2 | Le chef précise que la Bibliothèque est StudyLib et que ses fonctionnalités ou StudyLib peuvent être vendues séparément. | Précision rapportée à 19 h 27. Le périmètre à publier et les modalités des offres attendent son arbitrage. |
-| 3 | En attente. | Méthode de vérification des sources StudyLib à valider. |
-| 4 | Visa en attente. | Hébergement des données. |
-| 5 | Visa en attente. | Langues. |
-| 6 | Visa en attente. | Import CSV. |
-| 7 | Visa en attente. | Application mobile. |
-| 8 | Visa en attente. | IA activée par l’école. |
-| 9 | Visa en attente. | StudyLib séparément. |
-| 10 | Visa en attente. | Prix et contact. |
+- L’écran `mobile/src/app/(onglets)/semaine.jsx` affiche la liste et la grille des séances de la semaine.
+- `mobile/src/app/scanner.jsx` lit le QR code avec `CameraView` et l’envoie à `/presences/scanner`.
+- `mobile/src/app/(onglets)/_layout.jsx` expose l’onglet Bibliothèque. `mobile/src/app/(onglets)/bibliotheque.jsx` y affiche les cours et les ressources StudyLib.
+- Dans le navigateur, `frontend/src/App.jsx` ouvre l’emploi du temps étudiant à `/emploi-du-temps/etudiant`. `frontend/src/components/layouts/navigation.jsx` propose la Bibliothèque à `/biblio/documents` et `frontend/src/components/layouts/DashboardLayout.jsx` ouvre cette adresse par navigation web.
+- `frontend/src/pages/Appel.jsx` affiche les lignes d’appel et enregistre le statut choisi par l’enseignant via `presenceAPI.marquer`. `frontend/src/components/appel/LigneAppel.jsx` fournit les commandes pour chaque étudiant.
 
+La FAQ intègre `FAQPage` en JSON-LD local. Ses questions et réponses reprennent exactement le texte visible dans la langue affichée.
 
 ## 5. EP-18 et EP-5
 
@@ -112,7 +99,7 @@ le pays et le service pertinent.
 
 ## 6. Livraison et vérifications
 
-1. Commettre le plan seul et faire valider les décisions. Attendre la fusion de VIT-10 avant le code.
+1. Commettre la validation du plan seule. Attendre la fusion de VIT-10 avant le code.
 2. Créer le registre, les deux pages et leurs composants et textes dans les répertoires de VIT-11.
    Le site reste statique et les pages chargent leurs ressources depuis la vitrine.
 3. Ajouter `vitrine/tests/fonctionnalites.test.js`. Vérifier l’unicité des identifiants, les états,
