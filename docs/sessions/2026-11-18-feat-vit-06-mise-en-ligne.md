@@ -19,7 +19,11 @@ et le diff Git ont été vérifiés. Les commandes de recette sont destinées à
 La consigne de 15 h 45 porte à six les conditions de mise en ligne. Le plan ajoute la livraison du
 contenu de VIT-07 et de la vidéo d’accueil VIT-08, ainsi que les contrôles de lecture, de CSP et de cache.
 
-Le commit `56e3b38c` consigne la validation et nomme les secrets GitHub Actions ainsi que les variables du fichier privé du serveur. Les commandes de déploiement attendent les six conditions.
+Le commit `56e3b38c` consigne la validation et nomme les secrets GitHub Actions ainsi que les variables du fichier privé du serveur.
+
+À 17 h 45, le chef a ajouté les illustrations VIT-09 sur toutes les pages comme septième condition.
+Le plan précise le cache des captures Astro (AVIF ou WebP), la directive CSP et la recette par page.
+Ce complément est arrivé après le premier rapport de validation et figure dans le commit suivant.
 
 ## Pour le chef
 
@@ -32,6 +36,6 @@ gh pr create --base main --head feat/vit-06-mise-en-ligne --title "VIT-06 · Pla
 
 ## Prompt de reprise
 
-Reprendre VIT-06 en fin de file, une fois les six conditions vérifiées. Le plan validé
+Reprendre VIT-06 en fin de file, une fois les sept conditions vérifiées. Le plan validé
 est sur feat/vit-06-mise-en-ligne. Lire AGENTS.md, la fiche de mission et la boîte Codex.
 Le chef configure les secrets et le fichier privé. Lui seul publie et lance les commandes du serveur.
