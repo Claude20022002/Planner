@@ -38,15 +38,15 @@ Aucune.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef pousse la branche et ouvre la PR.
-2. REL-03 suit, sur son autre branche.
+1. Le chef pousse `fix/exp-journaux-docker` (PR #200). L'ordre de fusion est #200 d'abord.
 
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "..\travaux-planner\exp-journaux-docker" push -u origin fix/exp-journaux-docker
-gh pr create --repo Claude20022002/Planner --base main --head fix/exp-journaux-docker --title "REL-06 : borner les journaux Docker" --body "Journaux json-file, 10 Mo, 5 fichiers, sur les 17 services de la surcharge VPS. Le compose de n8n n'est pas modifié. Contrôle : docker compose config, sans up."
+git -C "..\travaux-planner\exp-journaux-docker" push
 ```
+
+PR déjà ouverte : https://github.com/Claude20022002/Planner/pull/200
 
 ## Prompt de reprise
 
