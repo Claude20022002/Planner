@@ -13,6 +13,7 @@ export const LANGUE_SECOURS = 'fr';
 /** Pages du site : clé (aussi clé de navigation dans commun.json) → segment d'adresse */
 export const PAGES = {
   accueil: '',
+  solutions: 'solutions',
   emploiDuTemps: 'emploi-du-temps',
   enClasse: 'en-classe',
   etablissement: 'etablissement',
@@ -21,7 +22,7 @@ export const PAGES = {
 };
 
 /** Pages montrées dans la navigation, dans l'ordre */
-export const NAVIGATION = ['emploiDuTemps', 'enClasse', 'etablissement', 'securite', 'bientot'];
+export const NAVIGATION = ['solutions', 'emploiDuTemps', 'enClasse', 'etablissement', 'securite', 'bientot'];
 
 /** Sens d'écriture d'une langue */
 export const direction = (langue) => (langue === 'ar' ? 'rtl' : 'ltr');

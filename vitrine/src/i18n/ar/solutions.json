@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "sommaire": "",
+  "aujourdhui": "",
+  "bientot": "",
+  "types": {
+    "collegeLycee": {
+      "surtitre": "",
+      "titre": "",
+      "texte": "",
+      "aujourdhui": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ]
+    },
+    "superieur": {
+      "surtitre": "",
+      "titre": "",
+      "texte": "",
+      "aujourdhui": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ]
+    },
+    "formation": {
+      "surtitre": "",
+      "titre": "",
+      "texte": "",
+      "aujourdhui": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ]
+    }
+  }
+}

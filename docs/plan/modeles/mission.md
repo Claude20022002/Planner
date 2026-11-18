@@ -24,7 +24,7 @@
 L'agent peut modifier :
 
 - <dossier ou fichier>
-- sa ligne de `docs/plan/suivi.md`, le fichier de son module, sa fiche de session
+- le fichier de son module et sa fiche de session (pas `docs/plan/suivi.md` : le coordinateur le tient)
 
 L'agent ne touche pas :
 
@@ -50,7 +50,7 @@ Branche : <branche>, dans le dossier ..\travaux-planner\<nom>.
 Tu n'écris que dans le périmètre de la fiche. S'il faut en sortir, arrête-toi et demande.
 <Plan validé : chemin. | Aucun plan : pose tes questions, écris le plan, fais-le valider.>
 Règles : pas de code avant le plan validé ; questions avant toute supposition ;
-fiche de session et suivi.md à jour en fin de session ; tout est commité ; jamais de git push.
+fiche de session à jour en fin de session, suivi.md non modifié ; tout est commité ; jamais de git push.
 Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 ```
 

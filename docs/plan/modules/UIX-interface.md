@@ -35,6 +35,7 @@
 | UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en partie : UIX-06a fusionnée, UIX-06b en cours |
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | fait : #185 fusionnée le 16 novembre, 49 parcours réussis |
 | UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception validée | L | UIX-06a faite | en cours, R1 vérifié localement |
+| UIX-09 | Grille d'applications façon iCloud : tuiles aux coins arrondis, icônes Lucide animées, apparition des tuiles, recherche ; catalogue et droits inchangés ([plan](../../conception/interface/uix-09-grille-applications.md)) | — | libre | M | — | plan validé (chef, 18 nov.) |
 
 ## Critères de « terminé »
 
