@@ -234,3 +234,14 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | UIX-06d (Conflits, Affectations, Imprévus, Examens) suivra, une fois UIX-06c relue. Son plan est à écrire à ce moment-là | chef |
 | Les adresses de contact du site attendent VIT-02 et Q-11 | chef |
 | L'agent de Cursor fait REL-06 et REL-03 sur le modèle le plus fort de Cursor, que le chef choisit dans l'éditeur | chef |
+
+**18 nov., vers 11 h 10** :
+
+| Décision | Par |
+|---|---|
+| Plan de REL-06 (`c22603b8`, journaux Docker) **validé tel quel** | chef |
+| Plan de REL-03 (`6240f8d2`) **validé avec un changement** : le dump d'avant déploiement est toujours chiffré par la phrase (`PHRASE`, AES256), même quand le quotidien utilise `CLE_PUBLIQUE`, pour qu'une migration ratée se reprenne sur le serveur seul. Sans phrase, le déploiement s'arrête | chef |
+| `appliquer-maj.sh`, l'ancien script qui écrit encore deux dumps en clair, n'est pas touché par REL-03. **À retirer ou à corriger plus tard**, s'il est encore appelé | chef |
+| Le code de REL-06 et de REL-03 se fait sur le modèle le plus fort de Cursor, que le chef choisit | chef |
+| *(coordinateur)* #198 (audit) **prête** : CI verte, exception datée au 18 déc., 13 tests du script. #183 (MOT-03, `c53d4cbb`) **prête** | coordinateur |
+| *(coordinateur)* UIX-06b : Codex peut replier les trois lignes qu'il a modifiées dans `DashboardLayout.jsx` et `i18n/index.js`, ses fichiers. Restent trois lignes longues dans `useActionsModules.js` et deux parcours « recherche sans résultat » | coordinateur |
