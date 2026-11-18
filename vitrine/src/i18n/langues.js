@@ -17,6 +17,7 @@ export const PAGES = {
   emploiDuTemps: 'emploi-du-temps',
   enClasse: 'en-classe',
   quizEtJeux: 'quiz-et-jeux',
+  bibliothequeJeux: 'bibliotheque-des-jeux',
   coursEtAnnonces: 'cours-et-annonces',
   bibliotheque: 'bibliotheque',
   application: 'application',

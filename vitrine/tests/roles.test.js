@@ -30,8 +30,8 @@ test('les autres pages ne passent pas de lien à la grille partagée', () => {
   const pages = fs.readdirSync(path.join(racine, 'pages', '[lang]')).filter((nom) => nom.endsWith('.astro'));
   for (const nom of pages) {
     const source = fs.readFileSync(path.join(racine, 'pages', '[lang]', nom), 'utf8');
-    if (!source.includes('GrilleCartes')) continue;
-    assert.equal(source.includes('href'), false, nom);
+    const balises = source.match(/<GrilleCartes[\s\S]*?\/>/g) ?? [];
+    for (const balise of balises) assert.equal(balise.includes('href'), false, nom);
   }
   const roles = new Set(['direction', 'scolarite', 'enseignants', 'etudiants']);
   for (const fichier of fs.readdirSync(path.join(racine, 'i18n', 'fr'))) {
