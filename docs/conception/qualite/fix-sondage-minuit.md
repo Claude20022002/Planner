@@ -5,7 +5,7 @@
 | Module | QUA · correctif de test, sans chantier ([fiche de mission](../../plan/missions/fix-sondage-minuit.md), sur `doc/coordination-equipe`) |
 | Branche | `fix/sondage-minuit`, depuis `origin/main` (`bb8973c1`) |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| **Validé** | en attente · par **le coordinateur** si seuls les tests changent (c'est le cas de ce plan) |
+| **Validé** | **par le coordinateur le 18 novembre 2026** (réponses aux questions 1 à 3, relayées par le chef) ; seuls les tests changent |
 
 ## 1. La cause
 
@@ -22,7 +22,7 @@
 
 | Run | Heures (UTC) | Échecs |
 |---|---|---|
-| `doc/qje-04-relecture`, `doc/diagramme-architecture`, `etude/odoo-essai`, 1re tentative | 23:46 → 00:03 | `sondage`, à 23:56–23:59 (après 23:55, avant minuit) ; la relance de 7 h 30 passe |
+| `doc/qje-04-relecture` (43776567449), `doc/diagramme-architecture` (43776562606), `etude/odoo-essai` (43776557149), 1re tentative | 23:46 → 00:03 | `sondage`, à 23:56–23:59 (après 23:55, avant minuit) ; la relance de 7 h 30 passe |
 | `etude/failles-erp-scolaires` (43776765702) | 23:48 → 00:17 | `appel` QR à 23:51 ; `entreRoles` « Mes classes » de 23:55 à 23:59 ; `espaceCours` de 00:00 à 00:05 ; `sondage` de 00:10 à 00:16 |
 | `feat/uix-06a-interface` (43775905844) | 23:38 → 23:52 | `personnes.spec` seulement : **sans rapport** avec l'heure |
 
@@ -62,7 +62,7 @@ sequenceDiagram
 
 | Parcours | Même cause ? | Correctif possible | Proposition |
 |---|---|---|---|
-| `espaceCours.spec.cjs`, ligne 25 | oui, même ligne | la carte, comme pour le sondage | **l'inclure** (question 1) |
+| `espaceCours.spec.cjs`, ligne 25 | oui, même ligne | la carte, comme pour le sondage | **inclus** (question 1 : oui) |
 | `entreRoles.spec.cjs`, ligne 86 | oui | aucun par la carte : ce test vérifie justement le bouton « Supports de cours » de la classe en cours | à part (question 2) |
 | `appel.spec.cjs`, lignes 32 et 44 | oui (23 h 50 → 23 h 55 : rappel ; ensuite, plus de séance en cours) | aucun par la carte : l'appel n'existe que pour la séance **du jour**, en cours | à part (question 2) |
 | `appelClasse.spec.cjs`, lignes 24 et 47 | oui, mêmes lignes (il est passé le 15 nov. parce qu'il a tourné à 23:52) | la carte ne suffit pas : l'appel de la classe est celui de la séance du jour | à part (question 2) |
@@ -74,22 +74,22 @@ Ces quatre derniers tests ont besoin d'une séance **en cours au moment où ils 
 | Fichier | Changement |
 |---|---|
 | `frontend/tests/parcours/sondage.spec.cjs` | ouverture par la carte (lignes 20 à 24) ; test de régression à 23 h 58 et à 00 h 02 |
-| `frontend/tests/parcours/outils.cjs` | **si la question 1 est « oui »** : une fonction `ouvrirClasse(page, seance)`, partagée par `sondage` et `espaceCours`. Sinon, elle reste dans `sondage.spec.cjs` |
-| `frontend/tests/parcours/espaceCours.spec.cjs` | **si la question 1 est « oui »** : ouverture par la carte (lignes 24 à 26) |
+| `frontend/tests/parcours/outils.cjs` | une fonction `ouvrirClasse(page, seance)`, partagée par `sondage` et `espaceCours`, **en ajout seulement** : les fonctions existantes ne changent pas (les parcours d'UIX-06b et d'UIX-09 les importent) |
+| `frontend/tests/parcours/espaceCours.spec.cjs` | ouverture par la carte (lignes 24 à 26) |
 | `docs/plan/suivi.md`, fiche de session | à la fin |
 
 Rien dans `frontend/src/`, `backend/`, `donnees.mjs` ni `serveur.mjs`.
 
 ## 7. Vérifié par
 
-- Les parcours tournent dans la CI de la PR (aucun serveur lancé en local) : `sondage` (les deux tests) et, si la question 1 est « oui », `espaceCours`, verts.
-- Le test de régression passe avec le correctif. Pour l'échec avant correctif, deux preuves possibles (question 3) : le journal du 15 nov., qui montre l'échec à cette ligne et à ces heures, ou un commit d'essai qui remet l'ancienne ligne 22 et que l'on retire ensuite.
+- Les parcours tournent dans la CI de la PR (aucun serveur lancé en local) : `sondage` (les deux tests) et `espaceCours`, verts.
+- L'échec avant correctif : le journal du 15 nov. (passages 43776567449, 43776562606, 43776557149 et 43776765702, § 2), à cette ligne et à ces heures ; pas de commit d'essai (question 3). Le nouveau test, horloge fixée autour de minuit UTC, fait la preuve en CI.
 - `npx eslint tests/parcours/sondage.spec.cjs` (et `espaceCours`, `outils.cjs`) sans erreur.
 
 ## 8. Questions
 
-| N° | Question | Proposition | À qui |
+| N° | Question | Proposition | Réponse |
 |---|---|---|---|
-| 1 | Corriger aussi `espaceCours.spec.cjs` (même ligne, même correctif) sur cette branche, avec `ouvrirClasse` dans `outils.cjs` ? | **oui** : sans lui, la CI reste rouge après 23 h 55 | coordinateur |
-| 2 | `entreRoles` (ligne 86), `appel` et `appelClasse` : un correctif à part, dans les données des parcours (`donnees.mjs`), avec son propre plan ? | **oui**, mission séparée ; d'ici là, relancer leur CI quand elle a tourné entre 23 h 50 et minuit passé | coordinateur |
-| 3 | La preuve « rouge avant le correctif » : un commit d'essai poussé puis retiré, ou seulement le raisonnement et le journal du 15 nov. ? | le journal du 15 nov. suffit : il montre déjà l'échec à cette ligne et à ces heures. Pas de commit d'essai | coordinateur |
+| 1 | Corriger aussi `espaceCours.spec.cjs` (même ligne, même correctif) sur cette branche, avec `ouvrirClasse` dans `outils.cjs` ? | **oui** : sans lui, la CI reste rouge après 23 h 55 | **oui** (coordinateur, 18 nov.) : `ouvrirClasse` en ajout seulement dans `outils.cjs` |
+| 2 | `entreRoles` (ligne 86), `appel` et `appelClasse` : un correctif à part, dans les données des parcours (`donnees.mjs`), avec son propre plan ? | **oui**, mission séparée ; d'ici là, relancer leur CI quand elle a tourné entre 23 h 50 et minuit passé | **oui** (coordinateur, 18 nov.) : mission inscrite dans `suivi.md`, sans agent pour l'instant |
+| 3 | La preuve « rouge avant le correctif » : un commit d'essai poussé puis retiré, ou seulement le raisonnement et le journal du 15 nov. ? | le journal du 15 nov. suffit : il montre déjà l'échec à cette ligne et à ces heures. Pas de commit d'essai | **le journal suffit** (coordinateur, 18 nov.), numéros des passages cités au § 2 |
