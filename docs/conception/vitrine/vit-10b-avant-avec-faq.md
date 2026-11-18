@@ -5,7 +5,7 @@
 | Module | [VIT](../../plan/modules/VIT-site-vitrine.md) · fiche [vit-10b-avant-avec-faq](../../plan/missions/vit-10b-avant-avec-faq.md) (branche `doc/coordination-equipe`, jusqu'à sa fusion) |
 | Branche | `feat/vit-10b-avant-avec-faq`, depuis `origin/main` (`427afdea`, fusion de #219) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 18 novembre 2026 |
-| **Validé** | en attente |
+| **Validé** | par Claude20022002, le 18 novembre 2026 (questions 1 à 3) |
 
 Aucun code avant que la ligne « Validé » soit remplie, et avant la réponse aux questions. Les phrases « avant » sont nouvelles : le chef les valide une à une. Les phrases « avec » et les réponses de FAQ déjà visées ne se réécrivent pas.
 
@@ -106,9 +106,9 @@ FAQ : « Que propose l'application mobile ? » (VIT-11, réponse 7). Deux questi
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | Les vingt phrases « avant », et leur anglais, sont-ils ceux du § 3 ? Une phrase refusée est retirée. Elle n'est pas réécrite sans un nouveau visa. | **oui pour toutes** | | oui |
-| 2 | Les phrases « avec » et les réponses de FAQ déjà visées restent recopiées, sans reformulation ? | **oui** | | oui |
-| 3 | Les titres du § 3, et la place des deux blocs entre les cartes et le bandeau de contact ? | **oui** | | oui |
+| 1 | Les vingt phrases « avant », et leur anglais, sont-ils ceux du § 3 ? Une phrase refusée est retirée. Elle n'est pas réécrite sans un nouveau visa. | **oui pour toutes** | oui, le 18 novembre 2026 | |
+| 2 | Les phrases « avec » et les réponses de FAQ déjà visées restent recopiées, sans reformulation ? | **oui** | oui, le 18 novembre 2026 | |
+| 3 | Les titres du § 3, et la place des deux blocs entre les cartes et le bandeau de contact ? | **oui** | oui, le 18 novembre 2026 | |
 
 ## 5. Fichiers, au moment du code
 
