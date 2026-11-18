@@ -6,7 +6,7 @@
 
 ## Ce qui existe
 
-- **Rien en code.** Le site vitrine n'existe pas.
+- **Socle du site vitrine** (branche `feat/vit-01-vitrine`, non fusionnée) : `vitrine/`, site statique Astro en français, anglais et arabe (l'arabe construit, non indexé), jetons des couleurs du logo, logos redessinés d'après les logos officieux du 18 nov., composants du socle, accueil en huit sections. Aucune mise en ligne : la CI (`vitrine.yml`) construit le site sans le publier.
 - **Ce que font les concurrents**, d'après l'[étude de marché](../../etude-marche/01-concurrents.md) :
   - une page par fonction et par type d'école ;
   - une démonstration ou un essai bien visible ;

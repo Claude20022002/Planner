@@ -19,7 +19,7 @@ npm run preview
 | Dossier | Contenu |
 |---|---|
 | `src/styles/jetons.css` | couleurs des logos, espaces, rayons, tailles de titres |
-| `src/components/socle/` | gabarit, en-tête, pied, `Section`, `Titre`, `Accroche`, `BoutonPrincipal`, `CadreAppareil`, `Apparition`, `Logo`, `animations.js` |
+| `src/components/socle/` | gabarit, en-tête, pied, `Section`, `Titre`, `Accroche`, `BoutonPrincipal`, `CadreAppareil`, `Apparition`, `Duo`, `Logo`, `animations.js` |
 | `src/components/accueil/` | une section de l'accueil par fichier |
 | `src/components/fonctions/` | sections des pages de fonctions |
 | `src/i18n/<langue>/<page>.json` | tous les textes ; aucun texte en dur dans les composants |
