@@ -188,6 +188,17 @@ const coursOuErreur = async (idCours) => {
     return cours;
 };
 
+/**
+ * Un module que l'enseignant peut ouvrir. Hors de ses classes, la réponse est 404 avec le message
+ * d'un module inexistant : le module d'un autre enseignant ne doit pas se distinguer d'un
+ * identifiant qui n'existe pas (règle « 404 hors de ses classes », docs/plan/README.md, § 5).
+ */
+export const coursDeSesClasses = async (user, idCours) => {
+    const cours = await coursOuErreur(idCours);
+    if (!(await peutProposerDansModule(user, cours))) throw new ErreurMetier("Module introuvable", 404);
+    return cours;
+};
+
 /** Modules où un jeu est proposé (vue des enseignants). */
 export const modulesDuJeu = async (code) => {
     const jeu = jeuOuErreur(code);
@@ -198,8 +209,7 @@ export const modulesDuJeu = async (code) => {
 /** Proposer (ou modifier) un jeu dans un module, avec son but et la notion visée. */
 export const proposerDansModule = async (user, code, idCours, donnees = {}) => {
     const jeu = jeuOuErreur(code);
-    const cours = await coursOuErreur(idCours);
-    if (!(await peutProposerDansModule(user, cours))) throw new ErreurMetier("Vous ne pouvez proposer un jeu que dans vos modules", 403);
+    const cours = await coursDeSesClasses(user, idCours);
     const choix = butEtNotion(donnees, "entrainer");
     const [proposition, cree] = await JeuModule.findOrCreate({ where: { code_jeu: jeu.code, id_cours: cours.id_cours }, defaults: { id_user_auteur: user.id_user, ...choix } });
     if (!cree && (donnees.but !== undefined || donnees.notion !== undefined)) await proposition.update(choix);
@@ -208,8 +218,7 @@ export const proposerDansModule = async (user, code, idCours, donnees = {}) => {
 
 export const retirerDuModule = async (user, code, idCours) => {
     const jeu = jeuOuErreur(code);
-    const cours = await coursOuErreur(idCours);
-    if (!(await peutProposerDansModule(user, cours))) throw new ErreurMetier("Vous ne pouvez retirer un jeu que de vos modules", 403);
+    const cours = await coursDeSesClasses(user, idCours);
     return JeuModule.destroy({ where: { code_jeu: jeu.code, id_cours: cours.id_cours } });
 };
 
@@ -241,8 +250,7 @@ export const inscritsDuModule = async (idCours) => {
  */
 export const suiviDuModule = async (user, code, idCours) => {
     const jeu = jeuOuErreur(code);
-    const cours = await coursOuErreur(idCours);
-    if (!(await peutProposerDansModule(user, cours))) throw new ErreurMetier("Suivi réservé aux enseignants du module", 403);
+    const cours = await coursDeSesClasses(user, idCours);
 
     const { etudiants: ids } = await inscritsDuModule(cours.id_cours);
     if (!ids.length) return { module: { id_cours: cours.id_cours, code: cours.code_cours, nom: cours.nom_cours }, etudiants: [] };

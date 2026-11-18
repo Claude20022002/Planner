@@ -1,8 +1,8 @@
 import { resetDatabase, closeDatabase, createUser, createPlanningFixture, loginAs, anonymous } from './helpers/testApp.js';
 import { resetRateLimiters } from '../../middleware/rateLimiterMiddleware.js';
-import { AnneeUniversitaire, CoursComposante, Enseignement, EnseignementEnseignant, JeuEtatDefi, JeuProgression, Periode } from '../../models/index.js';
+import { AnneeUniversitaire, Cours, CoursComposante, Enseignement, EnseignementEnseignant, JeuEtatDefi, JeuProgression, Periode } from '../../models/index.js';
 
-let prof, eleve, tiers, direction, cours;
+let prof, eleve, tiers, direction, cours, coursEtranger;
 const url = (code = 'robot-route', defi = 'robot-01') => `/api/jeux/${code}/defis/${defi}/essais`;
 const solution = (code = 'robot-route', defi = 'robot-01') => `/api/jeux/${code}/defis/${defi}/solution`;
 const bonne = { reponse: { programme: 'EEESSS' }, points: 999999, ok: true };
@@ -15,6 +15,9 @@ beforeAll(async () => {
     const autre = await createUser('etudiant');
     const fixture = await createPlanningFixture({ admin, enseignant, etudiant });
     cours = fixture.cours.id_cours;
+    // Un module de la même filière que l'enseignant ne gère pas : sert à vérifier « 404 hors de ses classes »
+    const horsClasses = await Cours.create({ code_cours: 'INF-ETR', nom_cours: 'Réseaux', niveau: '3A', volume_horaire: 30, type_cours: 'CM', semestre: 'S1', id_filiere: fixture.filiere.id_filiere });
+    coursEtranger = horsClasses.id_cours;
     const annee = await AnneeUniversitaire.create({ libelle: '2026-2027', date_debut: '2026-09-01', date_fin: '2027-07-31', active: true });
     const periode = await Periode.create({ id_annee: annee.id_annee, code: 'S1', date_debut: '2026-09-14', date_fin: '2027-01-22', nb_semaines: 15 });
     const composante = await CoursComposante.create({ id_cours: cours, type: 'TP', volume_heures: 21, niveau_groupe: 'promotion' });
@@ -39,6 +42,22 @@ test('requires authentication, eligible role, and teacher assignment', async () 
     // Un étudiant est refusé par le rôle (403) avant même que le jeu soit cherché ; le professeur, lui, obtient 404
     expect((await tiers.send('post', `/api/jeux/unknown/modules`, { id_cours: cours })).status).toBe(403);
     expect((await prof.send('post', `/api/jeux/unknown/modules`, { id_cours: cours })).status).toBe(404);
+});
+
+test('a module outside the teacher classes answers 404, exactly like an unknown module', async () => {
+    // Règle du projet : « 404 hors de ses classes », pour ne rien révéler de ce qui existe ailleurs
+    const inconnu = await prof.send('post', '/api/jeux/robot-route/modules', { id_cours: 999999 });
+    expect(inconnu.status).toBe(404);
+    const horsClasses = await prof.send('post', '/api/jeux/robot-route/modules', { id_cours: coursEtranger });
+    expect(horsClasses.status).toBe(404);
+    expect(horsClasses.body).toEqual(inconnu.body);
+    expect((await prof.send('delete', `/api/jeux/robot-route/modules/${coursEtranger}`)).body).toEqual(inconnu.body);
+    expect((await prof.get(`/api/jeux/robot-route/modules/${coursEtranger}/suivi`)).body).toEqual(inconnu.body);
+    const session = await prof.send('post', '/api/sessions-jeu', { code_jeu: 'robot-route', id_cours: coursEtranger, mode: 'individuel' });
+    expect(session.status).toBe(404);
+    expect(session.body).toEqual(inconnu.body);
+    // Le titulaire du module, lui, passe : la règle ne ferme que ce qui n'est pas à lui
+    expect((await prof.send('post', '/api/jeux/robot-route/modules', { id_cours: cours })).status).toBe(200);
 });
 
 test('solution requests are authenticated before CSRF and reject unknown or forged payloads', async () => {
@@ -78,12 +97,15 @@ test('evaluates AI and inventory plans on the server', async () => {
 });
 
 test('counts only well-formed server failures and restores them after a reload', async () => {
-    // Trois requêtes simultanées : l'ordre d'arrivée n'est pas garanti, mais le compteur doit passer
-    // par 1, 2 et 3 sans doublon ni perte (verrou de ligne)
+    // Trois essais simultanés. L'ordre des réponses n'est pas garanti : on vérifie l'ensemble reçu,
+    // pas la séquence. Le verrou de ligne (SELECT … FOR UPDATE, services/jeux/etatsDefis.js) doit
+    // sérialiser les trois incréments : 1, 2 et 3 chacun une fois, aucun échec perdu.
     const trois = await Promise.all([1, 2, 3].map(() => eleve.send('post', url('robot-route', 'robot-02'), { reponse: { programme: 'S' } })));
     expect(trois.map((r) => r.body.echecs).sort((a, b) => a - b)).toEqual([1, 2, 3]);
     const p = await eleve.get('/api/jeux/robot-route/progression');
     expect(p.body.etats).toEqual(expect.arrayContaining([{ id: 'robot-02', echecs: 3, solution_vue: false, sans_points: false }]));
+    // Une seule ligne d'état pour ce joueur et ce défi, pas une par requête
+    expect(await JeuEtatDefi.count({ where: { id_user: eleve.user.id_user, code_jeu: 'robot-route', id_defi: 'robot-02' } })).toBe(1);
 });
 
 test('viewing a solution creates no success, then a correct answer earns zero points', async () => {
@@ -100,8 +122,15 @@ test('viewing a solution creates no success, then a correct answer earns zero po
 });
 
 test('viewing after success preserves points and repeated requests stay idempotent', async () => {
+    // Isolation : ce test fabrique son propre état (un échec puis une réussite) au lieu d'hériter de
+    // celui des tests précédents ; il donne le même résultat seul ou dans la suite complète.
+    const propre = { id_user: eleve.user.id_user, code_jeu: 'robot-route', id_defi: 'robot-01' };
+    await JeuEtatDefi.destroy({ where: propre });
+    await JeuProgression.destroy({ where: propre });
+    expect((await eleve.send('post', url(), { reponse: { programme: 'N' } })).body).toMatchObject({ ok: false, enregistre: false, echecs: 1 });
+    expect((await eleve.send('post', url(), bonne)).body).toMatchObject({ cree: true, points: 100 });
     const vue = await eleve.send('post', solution(), {});
-    // robot-01 garde l'échec de l'essai raté plus haut : une réussite ultérieure ne l'efface pas
+    // robot-01 garde l'échec de l'essai raté : une réussite ultérieure ne l'efface pas
     expect(vue.body).toMatchObject({ reponse: { programme: 'EEESSS' }, echecs: 1, solution_vue: true, sans_points: false });
     const bis = await eleve.send('post', solution(), {});
     expect(bis.body).toEqual(vue.body);
