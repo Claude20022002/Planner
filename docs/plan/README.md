@@ -6,7 +6,7 @@
 |---|---|
 | [../../AGENTS.md](../../AGENTS.md) | **Les règles obligatoires de toute session**, pour les agents d'IA comme pour l'équipe |
 | [organisation.md](organisation.md) | Rôles (le chef de projet est **Claude20022002**), chantiers de module, une branche par tâche, plan de conception avant le code, questions, fin de session, sessions longues |
-| [suivi.md](suivi.md) | **À ouvrir en début de session et à mettre à jour à la fin, obligatoirement** : une ligne par fonction (état, branche, PR), chantiers ouverts, numéros de migration réservés |
+| [suivi.md](suivi.md) | **À ouvrir en début de session** : une ligne par fonction (état, branche, PR), chantiers ouverts, numéros de migration réservés. **Tenu par le coordinateur** seul, sur sa branche : une branche de fonction ne le modifie pas (décision du chef du 18 nov.) |
 | [decisions.md](decisions.md) | Décisions en vigueur et questions ouvertes, en un seul endroit |
 | [modules/](modules/) | Un fichier par module : ce qui existe, les fonctions à faire, leur critère de « terminé » |
 | [missions/](missions/) | Une fiche par mission donnée à un agent par le coordinateur : agent, branche, fichiers qu'il peut écrire, prompt à coller |
@@ -91,14 +91,14 @@ cmd /c mklink /J "..\travaux-planner\$F\backend\node_modules" "backend\node_modu
 # 2. Travailler dans ..\travaux-planner\$F
 #    - questions au chef, puis plan de conception (docs/plan/modeles/conception.md) ;
 #    - AUCUN CODE avant que le chef ait validé le plan ;
-#    - premier commit : le plan seul, et suivi.md passé à « en cours » ;
+#    - premier commit : le plan seul (suivi.md est tenu par le coordinateur) ;
 #    - un test qui fige chaque correctif ;
 #    - git add <fichiers>, jamais git add .
 
 # 3. Vérifier en local (base MySQL rapide, voir DEPLOIEMENT.md) : tests du serveur, du site.
 #    Les parcours tournent dans la CI de la PR : ne pas les lancer en même temps que la suite.
 
-# 4. Fin de session (obligatoire) : suivi.md, fichier du module, fiche docs/sessions/…, prompt de reprise.
+# 4. Fin de session (obligatoire) : fichier du module, fiche docs/sessions/…, prompt de reprise.
 #    Puis le CHEF DE PROJET publie et ouvre la PR : le modèle de PR affiche la liste « terminé »
 git -C "..\travaux-planner\$F" push -u origin "$T/$F"
 gh pr create --base main --head "$T/$F" --title "MOT-03 : validation avant le calcul" --fill
@@ -107,7 +107,7 @@ gh pr create --base main --head "$T/$F" --title "MOT-03 : validation avant le ca
 gh pr checks "$T/$F" --watch
 gh pr merge "$T/$F" --merge --delete-branch
 
-# 6. Clore : ligne de suivi.md à « fait » (dans la PR) ; retirer la jonction puis le dossier
+# 6. Clore : le coordinateur passe la ligne de suivi.md à « fait » ; retirer la jonction puis le dossier
 cmd /c rmdir "..\travaux-planner\$F\backend\node_modules"
 git worktree remove "..\travaux-planner\$F"
 git switch main; git pull --ff-only
@@ -123,8 +123,8 @@ Une PR ne se fusionne que si **tout** ceci est vrai :
 2. **Le critère de « terminé »** de la fonction (dans son fichier de module) est atteint et vérifié.
 3. **Un test de régression** fige chaque correctif ; une faille connue non corrigée a son `test.failing`.
 4. **Les exigences produit** (§ 6) qui s'appliquent à la fonction sont tenues.
-5. **La migration**, s'il y en a une, a son numéro réservé dans [suivi.md](suivi.md).
-6. **La documentation** suit : fichier du module (état, ce qui existe), [suivi.md](suivi.md), et la conception si elle a changé.
+5. **La migration**, s'il y en a une, a son numéro réservé dans [suivi.md](suivi.md), par le coordinateur.
+6. **La documentation** suit : fichier du module (état, ce qui existe), fiche de session, et la conception si elle a changé. [suivi.md](suivi.md) est mis à jour par le coordinateur.
 7. **Rien de réel dans le dépôt** : ni donnée personnelle, ni secret, ni nom d'école en dur (`scripts/verifier-neutre.mjs`). **Le dépôt est public** (choix du 7 novembre, à cause de la limite de durée de GitHub Actions).
 
 ## 5. Règles communes

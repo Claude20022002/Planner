@@ -33,7 +33,7 @@ Tout le reste remonte au chef : produit, schéma partagé entre modules, migrati
 ## À la fin de chaque session : obligatoire
 
 9. Commiter le travail.
-10. Mettre à jour **[docs/plan/suivi.md](docs/plan/suivi.md)** (état de la fonction, chantiers) et le fichier du module si ce qui existe a changé.
+10. Mettre à jour le fichier du module si ce qui existe a changé. **Ne pas modifier [docs/plan/suivi.md](docs/plan/suivi.md) sur la branche d'une fonction** : c'est le coordinateur qui le tient, sur sa branche, d'après les fiches de session. L'état de la fonction va dans la fiche de session. Pour réserver un numéro de migration, le demander au coordinateur (décision du chef du 18 nov.).
 11. Écrire la **fiche de session** `docs/sessions/AAAA-MM-JJ-<branche>.md` ([modèle](docs/plan/modeles/fiche-de-session.md)) avec son **prompt de reprise**, et la commiter.
 12. Donner au chef les **commandes à lancer** (push, PR) et le **prompt de reprise**. Un plan non commité ou une fiche absente est un travail que le coordinateur ne voit pas.
 

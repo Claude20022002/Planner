@@ -19,7 +19,7 @@ Le chef garde ses décisions (AGENTS.md) : valider le plan, pousser, fusionner, 
 1. Une mission d'équipe part d'un **plan de conception validé**. Pas de plan validé : pas d'équipe.
 2. Le coordinateur découpe la fonction en **lots**. Un lot, c'est un ou plusieurs **dossiers de composants** (`components/<domaine>/`), la page qui les assemble, leurs traductions et leurs tests.
 3. **Chaque fichier a un seul propriétaire** pendant la mission. La fiche d'équipe le dit, dans un tableau « fichier ou dossier → propriétaire ».
-4. **Les fichiers communs appartiennent à l'intégrateur** : composants partagés (`components/gestion/`, `components/common/`), mise en page, routes, index des traductions, `suivi.md`, fichier du module, conception. Un membre qui a besoin d'un changement dans un fichier commun le **demande** à l'intégrateur. Il ne l'écrit pas lui-même.
+4. **Les fichiers communs appartiennent à l'intégrateur** : composants partagés (`components/gestion/`, `components/common/`), mise en page, routes, index des traductions, fichier du module, conception (`suivi.md` est tenu par le coordinateur). Un membre qui a besoin d'un changement dans un fichier commun le **demande** à l'intégrateur. Il ne l'écrit pas lui-même.
 5. **Les traductions sont découpées par lot** : chaque lot a ses dictionnaires (`i18n/<domaine>/<lot>.fr.js`, `.en.js`, puis `.ar.js` quand l'arabe arrive). L'intégrateur les crée vides au départ et les inscrit dans l'index. Ainsi, personne n'écrit dans le même dictionnaire.
 6. **Les tests sont découpés par lot** : un fichier de parcours par lot (`frontend/tests/parcours/<fonction>-<lot>.spec.cjs`), des tests unitaires à côté des composants du lot.
 
@@ -111,6 +111,6 @@ Seul le chef change le modèle d'un éditeur. Un agent qui ne tourne pas sur le 
 ## 9. La fin
 
 - Chaque membre écrit **sa** fiche de session (`docs/sessions/AAAA-MM-JJ-<branche de lot>.md`) dans sa branche de lot : un fichier nouveau, donc sans conflit.
-- L'intégrateur écrit la fiche de la fonction, met à jour sa ligne de `suivi.md` et le fichier du module, et donne au coordinateur la branche à relire.
+- L'intégrateur écrit la fiche de la fonction, met à jour le fichier du module, et donne au coordinateur la branche à relire. Le coordinateur met `suivi.md` à jour.
 - Le coordinateur relit, puis donne au chef les commandes (une seule PR, celle de la branche d'intégration) et retire les lignes de « Missions en cours ».
 - Les dossiers des lots se retirent après la fusion, jonction `node_modules` d'abord.

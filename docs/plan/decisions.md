@@ -266,3 +266,12 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | QJE-04 (#196) : la mise à jour est faite par **Alexis et son agent** : renommer la migration en `0082-jeux-solutions.js`, fusionner `main`, obtenir une CI verte, intégration comprise. Puis le coordinateur relit, et le chef valide la migration avant la fusion | chef, 18 nov. 11 h 45 |
 | Le code de REL-06 et de REL-03 a été écrit sur Grok 4.7, à la demande du chef dans la session de l'agent de Cursor (rapport de 11 h 28). Cela remplace la décision de 11 h 10. Le défaut trouvé dans REL-03 se corrige sur le modèle le plus fort | chef, 18 nov. |
 | *(coordinateur)* Plan du correctif du sondage **validé après coup** : il ne touche que les tests, et la cause est démontrée. #202 est prête. Rappel pour toutes les sessions : « validé » veut dire que le valideur a lu le plan, pas qu'il a répondu à des questions | coordinateur, 18 nov. 11 h 50 |
+
+**Chef, 18 nov., vers 12 h** :
+
+| Décision | Par |
+|---|---|
+| **`suivi.md` est tenu par le coordinateur seul**, sur sa branche. Les branches de fonction ne le modifient plus : l'état de la fonction va dans la fiche de session, et un numéro de migration se demande au coordinateur. Changé dans `AGENTS.md` (point 10), `README.md`, `organisation.md`, `equipe.md`, les modèles et les skills `fin-de-session`, `relecture-branche` et `coordination`. Raison : chaque fusion mettait toutes les PR ouvertes en conflit sur ce fichier, et leur CI ne tournait plus | chef |
+| UIX-09 : la variante 4 du logo n'apparaît **nulle part dans la grille**. Elle reste l'icône du site vitrine ; dans l'application, l'en-tête garde la mosaïque et les tuiles leurs icônes Lucide | chef |
+| *(coordinateur)* UIX-09 n'ajoute pas axe-core. Codex peut auditer en local avec la même version, sans l'inscrire au manifeste, et active la vérification dans le parcours après la fusion de #199 | coordinateur |
+| *(coordinateur)* REL-03 (`0d63c429`) : correction du retour arrière **bonne**. #200 et #201 sont encore en conflit sur `suivi.md` : elles prennent la version de `main`, d'après la nouvelle règle | coordinateur |
