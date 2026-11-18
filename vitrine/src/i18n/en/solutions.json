@@ -18,8 +18,8 @@
       "texte": "Teachers take attendance and run their quizzes from Planner. Timetable calculation for middle and high schools is in preparation.",
       "aujourdhui": [
         {
-          "titre": "Attendance by QR code",
-          "texte": "Pupils scan the projected code, and their attendance is linked to the session."
+          "titre": "Attendance",
+          "texte": "Pupils scan the projected code, or the teacher marks each one by hand: present, late or absent. Attendance is linked to the session."
         },
         {
           "titre": "Quizzes and games",
@@ -48,8 +48,8 @@
           "texte": "Absences, grade entry and report cards."
         },
         {
-          "titre": "Massar export",
-          "texte": "The school's data, exported in Massar's format."
+          "titre": "Export to the national platform",
+          "texte": "The school's data, exported to your country's national platform. In Morocco, Massar is one example."
         },
         {
           "titre": "In Arabic",
@@ -76,7 +76,7 @@
         },
         {
           "titre": "Attendance, quizzes and games",
-          "texte": "Attendance by QR code, live quizzes and games, with the same account."
+          "texte": "Attendance by QR code or by hand, live quizzes and games, with the same account."
         }
       ],
       "bientot": [
