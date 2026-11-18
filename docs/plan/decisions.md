@@ -256,3 +256,10 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | **Pas de lien « Tarifs »** tant que la vente est gelée | chef |
 | *(coordinateur)* UIX-06b (`4da1036b`) : **prête pour la PR**. Les trois lignes que je croyais trop longues étaient comptées en octets : en caractères, le maximum est de 134 | coordinateur |
 | *(coordinateur)* Correctif du sondage : `espaceCours.spec.cjs` entre dans la même branche, avec `ouvrirClasse` ajoutée à `outils.cjs` sans rien y modifier. `entreRoles`, `appel` et `appelClasse` font l'objet d'une mission à part, parce qu'ils touchent `donnees.mjs`. Le journal du 15 nov. suffit à prouver l'échec d'avant le correctif | coordinateur |
+
+**Coordinateur, 18 nov., 11 h 40** :
+
+| Décision | Par |
+|---|---|
+| *(coordinateur)* REL-06 (#200) : bonne sur le fond. REL-03 (#201) : **à corriger**. Le retour arrière affiché par `deployer.sh` passe `--passphrase-file ""`, car `PHRASE` est lue dans une sous-commande. Il faut une commande qui marche telle qu'elle est copiée, et un test de régression | coordinateur |
+| *(coordinateur)* Constat sur QJE-04 (#196), qui remonte au chef : la migration s'appelle `0080-jeux-solutions.js`, alors que `main` a déjà `0080-contraintes-declarees.js` et `0081-plages-reprises.js`. Le registre de `suivi.md` réserve **0082** à QJE-04 depuis le 15 nov. La PR est aussi en conflit avec `main` (`App.jsx`, `i18n/index.js`, `suivi.md`), donc sans CI | coordinateur |
