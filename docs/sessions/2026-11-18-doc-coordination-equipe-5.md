@@ -63,7 +63,7 @@ Fait :
 | `feat/mot-13-coupure-fine` (`b9f1fbf3`) : finie le 15 nov., **jamais poussée** ; elle modifie `suivi.md`, d'avant la règle | à mettre à jour depuis `main`, en gardant le `suivi.md` de `main`, puis à relire. C'est l'un des verrous de la fermeture de MOT |
 | La consigne de 16 h 05 à l'agent de Cursor était restée dans `entree\` quand il a écrit son plan | rappelé dans la consigne de 17 h 12 ; à surveiller : l'agent doit lire sa boîte avant chaque plan |
 | La ligne UIX-10 du module UIX dit encore « UIX-10a codée, PR à ouvrir » | à corriger par UIX-10b (Claude de VS Code) |
-| CI de `main` rouge sur `db0e3de7` | passager : Maven Central a répondu 429 ; vert ensuite |
+| CI rouge sur `db0e3de7` (`main`, 15 h 38), puis sur #211 (17 h 33) : Maven Central répond 429 pendant la construction de l'image du solveur dans la tâche des parcours | deux fois en deux heures : ce n'est plus un accident. Relancer la tâche ; proposer au chef un correctif court (cache Maven de la CI pour l'image du solveur), plan à valider |
 
 ## État des chantiers
 
