@@ -35,6 +35,8 @@ Repères pour le code d'une mission d'équipe, plus stricts que la règle géné
 | dialogue ou formulaire | un formulaire, ses validations locales | 150 lignes |
 | utilitaire pur (`fiche.js`, `formatage.js`) | fonctions sans effet, testées seules | 150 lignes |
 
+**160 caractères au plus par ligne** (décision du coordinateur, 18 nov.) : un repère en nombre de lignes ne vaut que si les lignes restent lisibles.
+
 Un fichier qui dépasse son repère se coupe avant le rendez-vous suivant. Un lot ne fait jamais grossir un fichier commun : il le demande.
 
 ## 4. Les branches et les dossiers

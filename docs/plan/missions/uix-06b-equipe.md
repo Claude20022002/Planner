@@ -122,3 +122,9 @@ Livre à R1 ce que dit la fiche, puis dépose ton rapport de rendez-vous dans so
 | 18 nov. 00 h 20 | Enseignements passe à Codex ; Claude (VS Code) au site vitrine | — |
 | 18 nov. 00 h 50 | **R0 fait par Codex : `4963e827`** (trois commits, dictionnaires inscrits ; lint avec 17 avertissements hors du lot, 65 tests unitaires verts, build vert) ; vérifié ; l'agent de Cursor lancé | R0 conforme |
 | 18 nov. 02 h 12 | décision du chef : l'agent de Cursor passe au site vitrine ; **Codex tient tout UIX-06b** (Groupes et Modules compris), avec l'inventaire de l'agent de Cursor (00 h 46) ; plus de fusion de lot | — |
+| 18 nov. 10 h 16 | relecture de `feat/uix-06b-referentiel` (`7b5b8fc9`). Relancé par le coordinateur : 71 tests unitaires, neutralité, lint du lot (aucune erreur), fusion avec `origin/main` sans conflit. Cru sur parole : le build, et l'accord du chef pour axe-core et la correction du § 2. Cinq points envoyés à Codex (boîte, 10 h 16), puis UIX-09 (10 h 17) | **à corriger** |
+
+**Ce qui s'est bien ou mal passé** (pour la règle du chef) :
+- Bien : Codex a repris seul les quatre écrans avec l'inventaire de l'agent de Cursor. Il a demandé l'accord du chef quand le plan contredisait l'écran (Groupes) et avant d'ajouter une dépendance (axe-core).
+- Mal : les repères en nombre de lignes ont été tenus en serrant le code sur des lignes de 540 caractères. D'où la limite de 160 caractères ajoutée à `equipe.md`, § 3.
+- Mal : la consigne de l'agent de Cursor (00 h 50) n'a été lue qu'au matin. Une boîte n'est lue que quand le chef dit « lis ta boîte » : un rendez-vous de nuit avec un agent qui ne l'a pas lue ne tient pas.

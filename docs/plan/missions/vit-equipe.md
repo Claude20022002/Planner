@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte ; **plans validés par le chef le 18 nov.** |
+| État | ouverte ; **plans validés par le chef le 18 nov.** ; site relu prêt (18 nov. 10 h 16) ; UIX-09 lancée chez Codex après UIX-06b |
 | Équipe | Claude (VS Code), intégrateur du site vitrine ; agent de Cursor, après UIX-06b ; Codex, seul sur UIX-09 après UIX-06b ; coordinateur : Claude (Cursor) |
 | Attribuée le | 18 novembre 2026, 00 h 20, par le coordinateur ; demande du chef le 17 nov. au soir : « le travail est pour ce soir » |
 | Fonctions | VIT-01 (conception et socle, M) et VIT-05 en préparation (accueil et pages de fonctions, sans tarifs ni mise en ligne) · UIX-09 (grille façon iCloud, M) |
@@ -113,3 +113,7 @@ mouvement réduit respecté. Rapport dans sortie\. Jamais de git push.
 | 18 nov. 00 h 20 | plans et fiche écrits ; attente du chef | — |
 | 18 nov. | plans validés par le chef ; couleurs du logo ; logo « mosaïque » gardé dans l'application | — |
 | 18 nov. 02 h 12 | R0 du site (`17251fc5`) et accueil (`c0198c75`) faits par Claude (VS Code, Opus 5.5) ; PR #195 ouverte par le chef (« Test Backend » rouge : audit de `backend/`, même échec sur `main`, sans lien avec le site) ; écarts 2 à 6 acceptés par le coordinateur ; l'agent de Cursor lancé depuis `c0198c75` | R0 conforme |
+| 18 nov. matin | le chef confie les pages à Claude (VS Code), qui les écrit (`55f5ab06`) ; l'agent de Cursor, qui n'a lu sa consigne de 02 h 12 qu'au matin, écrit les mêmes pages (`12ccb3ba`, 10 h 06) ; **le chef garde `55f5ab06`** ; l'agent de Cursor est prévenu (boîte, 10 h 18) | doublon tranché |
+| 18 nov. 10 h 16 | relecture de `feat/vit-01-vitrine` (`19167d6f`, #195) : périmètre de l'intégrateur et des pages (décision du chef), aucun fichier au-delà de 150 lignes, décisions 4 à 7 du chef respectées. Relancé par le coordinateur : 33 tests unitaires, neutralité, fusion avec `origin/main` sans conflit. CI : six contrôles verts ou en cours ; « Test Backend » rouge, par l'audit déjà rouge sur `main`. Cru sur parole : Lighthouse et axe-core | **prête sur le fond** ; fusion après `fix/audit-dependances` |
+
+**Ce qui s'est mal passé** : deux agents ont écrit le même lot. La session du site ne voyait pas les boîtes, et le coordinateur n'a pas retiré la consigne de l'agent de Cursor quand le chef a confié les pages à l'intégrateur. Règle proposée au chef : quand il réattribue un lot dans une autre session, il le dit au coordinateur, qui retire la consigne de la boîte avant toute autre chose.

@@ -192,3 +192,26 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | L'agent de Cursor passe tout de suite aux pages du site ; Codex reprend tout UIX-06b avec l'inventaire de l'agent de Cursor ; écarts 2 à 6 du site acceptés (section 6 fidèle à l'existant, Motion sans îlot React, pas de hreflang sans domaine, composant `Duo`) | coordinateur, 18 nov. 02 h 12 |
 | Failles des outils de construction du site acceptées tant que le site n'est pas en ligne, revues avant la mise en ligne ; audit de `backend/` corrigé sur `fix/audit-dependances` par la session du site après son intégration ([plan court](../conception/exploitation/fix-audit-dependances.md), **validé** : picomatch sans correctif publié, exception écrite, datée, 30 jours au plus, `qs` corrigé, Astro monté le 27 nov.) | chef, 18 nov. |
 
+
+## Décisions du 18 novembre au matin : site vitrine, relecture d'UIX-06b
+
+**Chef, 18 nov., session du site vitrine** (relevées dans la fiche `docs/sessions/2026-11-18-feat-vit-01-vitrine-2.md` de `feat/vit-01-vitrine`, relayées par le chef) :
+
+| Décision | Par |
+|---|---|
+| Le lot « pages de fonctions » passe à Claude (VS Code), sur `feat/vit-01-vitrine` (`55f5ab06`) | chef |
+| Les onze failles d'audit des outils de construction de `vitrine/` (aucune ne touche le site publié) sont acceptées tant que le site n'est que construit ; l'audit est à refaire avant toute mise en ligne | chef |
+| La page Sécurité ne nomme pas la loi 09-08 tant que Q-23 n'est pas tranchée | chef |
+| La carte « Aucun envoi caché » (EP-13) reste marquée « Bientôt » tant que la PR #189 (QUA-09) n'est pas fusionnée | chef |
+| La phrase sur l'IA reste, précisée par « quand l'école active l'IA », aucun fournisseur n'étant choisi en production | chef |
+| La page Bientôt montre les fonctions « prévues » du plan de parité (#193), groupées par domaine et sans date. Elle ne montre ni ce qui est écarté (biométrie, comptabilité et paie), ni ce qui est soumis à condition (tuteur IA, santé) | chef |
+| **Doublon des pages** : on garde `55f5ab06`. `feat/vit-01-vitrine-pages` (agent de Cursor, `12ccb3ba`) ne sera pas fusionnée ; le chef supprimera la branche et le dossier | chef |
+
+**Coordinateur, 18 nov., 10 h 16** :
+
+| Décision | Par |
+|---|---|
+| *(coordinateur)* Relecture de `feat/uix-06b-referentiel` (`7b5b8fc9`) : **à corriger**, cinq points envoyés à Codex. Lignes trop longues, une page qui charge ses données, parcours plus minces que la fiche (liste vide, filtre sans résultat, 390 px, rôles), un commentaire de rôle manquant, deux accords du chef absents de ce fichier | coordinateur |
+| *(coordinateur)* Une mission d'équipe écrit **160 caractères au plus par ligne**, en plus des repères de taille ([equipe.md](equipe.md), § 3). Sans cette limite, un repère en nombre de lignes ne veut rien dire : UIX-06b les tenait avec des lignes de 540 caractères | coordinateur |
+| *(coordinateur)* Codex fait les corrections d'UIX-06b, puis UIX-09, dans cet ordre. UIX-09 prend son plan sur `doc/coordination-equipe` et le commite seul en premier | coordinateur |
+| *(coordinateur)* Relecture de `feat/vit-01-vitrine` (`19167d6f`, PR #195) : **prête sur le fond**. Sa fusion attend que « Test Backend » repasse au vert, ce que fera `fix/audit-dependances` | coordinateur |
