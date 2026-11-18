@@ -84,6 +84,22 @@ La FAQ intègre `FAQPage` en JSON-LD local. Ses questions et réponses reprennen
 visible dans la langue affichée, après validation individuelle. Les décisions 1 à 3 et les réponses
 4 à 10 sont soumises au chef avant le code.
 
+## 4 bis. Décisions et visas relevés le 18 novembre
+
+| N° | Décision ou visa | Source et suite |
+|---|---|---|
+| 1 | Le chef décide le regroupement par application. Chaque entrée porte une clé issue de `frontend/src/i18n/applications.fr.js`. Le test vérifie la clé et VIT-09 pose les icônes. | Décision de 19 h 20 transmise par le coordinateur dans la boîte Codex à 19 h 28. Les deux adresses et le détail du regroupement attendent le visa du chef. |
+| 2 | Le chef précise que la Bibliothèque est StudyLib et que ses fonctionnalités ou StudyLib peuvent être vendues séparément. | Précision rapportée à 19 h 27. Le périmètre à publier et les modalités des offres attendent son arbitrage. |
+| 3 | En attente. | Méthode de vérification des sources StudyLib à valider. |
+| 4 | Visa en attente. | Hébergement des données. |
+| 5 | Visa en attente. | Langues. |
+| 6 | Visa en attente. | Import CSV. |
+| 7 | Visa en attente. | Application mobile. |
+| 8 | Visa en attente. | IA activée par l’école. |
+| 9 | Visa en attente. | StudyLib séparément. |
+| 10 | Visa en attente. | Prix et contact. |
+
+
 ## 5. EP-18 et EP-5
 
 Le catalogue et la FAQ sont consultables sur le poste de l’école, avec un HTML statique et sans
