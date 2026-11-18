@@ -108,7 +108,7 @@ Ensuite :
 2) UIX-09 chez Codex : premier commit = le plan seul ; suis le périmètre du message 2026-11-18-1017 ;
 3) fix/audit-dependances (backend/ seul, plan § 6) : relis-la dès qu'elle existe ;
 4) plans courts REL-06 et REL-03 de l'agent de Cursor : relis, puis porte-les au chef, qui seul les valide ;
-5) MOT-03 (ce00b79e) : relis-la après son push par le chef ;
+5) MOT-03 : fond bon, l'agent de Cursor fusionne origin/main (conflit avec MOT-13b dans generation.js, message 2026-11-18-1044) ; relis la fusion, puis la CI de #183 ; ensuite REL-06 et REL-03 ;
 6) quand UIX-09 finit, forme l'équipe d'UIX-06c (skill equipe ; plan validé le 18 nov.).
 Ordre de fusion : audit, #195, UIX-06b, UIX-09 (verrou npm à régénérer).
 Question en attente du chef : SVG des logos. UIX-06d suit UIX-06c (plan à écrire après sa relecture).
