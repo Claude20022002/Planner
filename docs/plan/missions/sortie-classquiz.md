@@ -14,7 +14,9 @@
 
 - Le **Studio quiz** de Planner : éditeur, quiz en direct (`frontend/src/components/studio/`), et import depuis ClassQuiz (`studio/ImporterClassQuiz.jsx`).
 - **ClassQuiz** tourne encore : `quiz-api`, `quiz-worker`, `quiz-frontend`, `quiz-db` (PostgreSQL) et `quiz-meilisearch` dans `docker-compose.yml`. Planner lui fournit l'identité par OIDC (`services/oidc/provider.js`, canal I-9 de l'audit d'isolation).
-- Archive du plan : [sortie de ClassQuiz](../../archives/plans/sortie-classquiz.md). À lire en premier.
+- Archive du plan : [sortie de ClassQuiz](../../archives/plans/sortie-classquiz.md). À lire en premier. Il a été validé le 20 oct. : aucun code n'est repris du fork. Ses lots correspondent aux fonctions du plan : SC-3 (rebrancher les écrans) correspond à QJE-01, SC-1c (joueur de l'application) à QJE-03, SC-5 (retirer ClassQuiz) à QJE-06.
+- **Le dépôt du fork est archivé sur GitHub, pas supprimé** (chef, 18 nov., conforme au plan du 20 oct.) : il passe en lecture seule une fois QJE-06 faite.
+- La suite du Studio « comme Google Forms » est une mission à part : [QJE-14](qje-14-studio-forms.md).
 
 ## La condition de QJE-06
 

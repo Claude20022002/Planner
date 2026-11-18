@@ -2,14 +2,14 @@
 
 | | |
 |---|---|
-| État | ouverte : plan court à écrire |
+| État | **plan court validé par le coordinateur le 18 nov.** (`4dc4f070`) : code en cours |
 | Agent | Claude (VS Code), la session qui a écrit le plan d'UIX-10 |
 | Modèle recommandé | celui de la session (Opus 5.5 ou Fable 5.2). On ne change pas de modèle en cours de session |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (« plan court d'UIX-10a », branche empilée) |
 | Module et chantier | [UIX](../modules/UIX-interface.md) · exception hors chantier d'UIX-10, accordée par le chef le 18 nov. |
 | Fonction | UIX-10a : `shared/charte/` (source `jetons.json`, `index.js`, `generer.mjs` et `--verifier`, `contraste.mjs`, guide `README.md` généré, tests) ; `vitrine/src/styles/jetons.css` généré ; contrôle en CI · taille M |
 | Branche | `feat/uix-10a-source-charte`, **empilée sur `doc/uix-10-charte-commune`** (#206, non fusionnée), sur décision du chef. Elle se remet sur `main` dès la fusion de #206 |
-| Dossier de travail | `..\travaux-planner\uix-10a-charte` |
+| Dossier de travail | `..\travaux-planner\uix-10a-source-charte` (nom réel, gardé) |
 | Plan de conception | plan d'UIX-10 (#206, validé par le chef le 18 nov.), § 4.1, § 4.2, § 5 (lignes 10a) et § 8 ; plan court à écrire : `docs/conception/interface/uix-10a-source-charte.md` · **validé par le coordinateur** (M, sans migration, sécurité, donnée de mineur ni choix de produit) |
 
 ## D'abord : corriger le plan d'UIX-10 sur #206 (décision du chef, 18 nov.)
@@ -52,7 +52,7 @@ sur la branche doc/coordination-equipe (..\travaux-planner\coordination-equipe).
 1) D'abord, sur doc/uix-10-charte-commune (#206), corrige le plan d'UIX-10 comme le dit la fiche : UIX-10g est retirée
    (ClassQuiz disparaît avec QJE-06, décision du chef du 18 nov.), plus de sortie --quiz, le Studio quiz dans 10b et 10e,
    10f après l'étude StudyLib. Un commit, seul.
-2) git worktree add "..\travaux-planner\uix-10a-charte" -b feat/uix-10a-source-charte doc/uix-10-charte-commune
+2) dossier ..\travaux-planner\uix-10a-source-charte (déjà créé)
 3) Écris le plan court docs/conception/interface/uix-10a-source-charte.md (modèle docs/plan/modeles/conception.md),
    commite-le seul, et dis au chef qu'il est prêt : le coordinateur le valide (M). Aucun code avant ce visa.
 Ne modifie pas docs/plan/suivi.md. Fiche de session à jour ; tout est commité ; jamais de git push.
@@ -64,3 +64,4 @@ Ensuite, l'étude StudyLib (docs/plan/missions/etude-studylib.md) reste ta missi
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 13 h 55 | fiche écrite ; décision du chef : UIX-10g retirée | — |
+| 2026-11-18 15 h 15 | correction d'UIX-10g faite sur #206 (`162ba4c4`) et dans le plan court (`4dc4f070`) ; **visa du coordinateur** : M, sans migration ni sécurité, aucun écran ne change, `--verifier` en CI ; seul écart admis : le repli `Inter` de la police | **validé** |
