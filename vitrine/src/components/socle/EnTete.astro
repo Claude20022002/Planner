@@ -1,11 +1,12 @@
 ---
 // En-tête du site vitrine : logo et nom, navigation entre les pages, langue, lien de contact.
-// Barre fixe et translucide. Sur téléphone, un bouton replie la navigation ; sans JavaScript,
-// le bouton reste caché et la navigation s'affiche en entier sous la barre.
+// Barre fixe et translucide. « Fonctions » est un menu details, lisible sans JavaScript.
+// Sur téléphone, un bouton replie la navigation ; sans JavaScript, le bouton reste caché
+// et la navigation s'affiche en entier sous la barre.
 import { Menu } from 'lucide-react';
 import Logo from './Logo.astro';
 import { traductions } from '../../i18n/index.js';
-import { LANGUES_PUBLIEES, NAVIGATION, chemin } from '../../i18n/langues.js';
+import { LANGUES_PUBLIEES, BARRE, FONCTIONS, chemin } from '../../i18n/langues.js';
 
 interface Props {
   langue: string;
@@ -27,7 +28,22 @@ const t = traductions(langue, 'commun');
     </button>
     <nav class="navigation" id="navigation-principale" aria-label={t('navigation.label')}>
       <ul class="liens">
-        {NAVIGATION.map((cle) => (
+        <li>
+          <a href={chemin(langue, 'solutions')} aria-current={page === 'solutions' ? 'page' : undefined}>{t('navigation.solutions')}</a>
+        </li>
+        <li>
+          <details class="fonctions">
+            <summary aria-current={FONCTIONS.includes(page) ? 'page' : undefined}>{t('navigation.fonctions')}</summary>
+            <ul>
+              {FONCTIONS.map((cle) => (
+                <li>
+                  <a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{t(`navigation.${cle}`)}</a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </li>
+        {BARRE.filter((cle) => cle !== 'solutions').map((cle) => (
           <li>
             <a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{t(`navigation.${cle}`)}</a>
           </li>
@@ -66,7 +82,7 @@ const t = traductions(langue, 'commun');
     z-index: 50;
     background: rgb(255 255 255 / 82%);
     backdrop-filter: saturate(180%) blur(18px);
-    border-block-end: 1px solid rgb(11 59 111 / 8%);
+    border-block-end: 1px solid rgb(23 57 92 / 8%);
   }
   .barre {
     display: flex;
@@ -87,7 +103,12 @@ const t = traductions(langue, 'commun');
   .repliable .menu-bouton[aria-expanded='false'] + .navigation { display: none; }
   .liens { display: grid; gap: var(--espace-2); font-size: 1.25rem; font-weight: 600; }
   .liens a, .langues a { text-decoration: none; }
-  .liens a[aria-current='page'] { color: var(--bleu); }
+  .liens a[aria-current='page'], .fonctions summary[aria-current='page'] { color: var(--bleu); }
+  .fonctions summary { display: flex; align-items: center; gap: 0.35rem; cursor: pointer; list-style: none; }
+  .fonctions summary::-webkit-details-marker { display: none; }
+  .fonctions summary::after { content: ''; inline-size: 0.4rem; block-size: 0.4rem; border-inline-end: 1.5px solid currentColor; border-block-end: 1.5px solid currentColor; transform: translateY(-0.1rem) rotate(45deg); }
+  .fonctions[open] summary::after { transform: translateY(0.1rem) rotate(225deg); }
+  .fonctions ul { display: grid; gap: 0.5rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
   .langues { display: flex; gap: var(--espace-3); font-size: var(--texte-petit); color: var(--gris-texte); }
   .langues a[aria-current='true'] { color: var(--encre); font-weight: 600; }
   .contact { justify-self: start; padding: 0.5rem 1rem; border-radius: var(--rayon-pilule); background: var(--bleu); color: var(--blanc); font-size: var(--texte-petit); font-weight: 600; text-decoration: none; }
@@ -98,7 +119,10 @@ const t = traductions(langue, 'commun');
     .barre { flex-wrap: nowrap; }
     .menu-bouton, .repliable .menu-bouton { display: none; }
     .navigation, .repliable .menu-bouton[aria-expanded='false'] + .navigation { flex-basis: auto; display: flex; align-items: center; gap: var(--espace-4); padding: 0; }
-    .liens { display: flex; gap: var(--espace-3); font-size: var(--texte-petit); font-weight: 450; }
+    .liens { display: flex; align-items: center; gap: var(--espace-3); font-size: var(--texte-petit); font-weight: 450; }
+    .fonctions { position: relative; }
+    .fonctions ul { position: absolute; z-index: 60; inset-inline-start: 0; inset-block-start: calc(100% + 0.35rem); min-inline-size: 14rem; max-inline-size: min(18rem, calc(100vw - 2 * var(--gouttiere))); margin: 0; padding: 0.75rem 1rem; background: var(--blanc); border: 1px solid rgb(23 57 92 / 12%); border-radius: var(--rayon-petit); }
+    .fonctions ul a { white-space: nowrap; }
     .langues { gap: var(--espace-2); font-size: 0.8125rem; }
   }
 </style>

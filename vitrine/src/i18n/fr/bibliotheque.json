@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "titre": "Bibliothèque · Planner",
+    "description": "La bibliothèque des documents de l'école. Les documents sont rangés par filière et par module."
+  },
+  "entete": {
+    "surtitre": "Bibliothèque",
+    "titre": "La bibliothèque des documents de l'école.",
+    "accroche": "Les documents sont rangés par filière et par module."
+  },
+  "documents": {
+    "surtitre": "Documents",
+    "titre": "Ce que l'on y trouve.",
+    "cartes": [
+      {
+        "titre": "Les types",
+        "texte": "Un document est un cours, un examen, un TD, un TP, un exercice ou un article."
+      },
+      {
+        "titre": "La relecture",
+        "texte": "Un dépôt attend une relecture avant d'être visible."
+      },
+      {
+        "titre": "Télécharger et noter",
+        "texte": "On le télécharge et on le note."
+      },
+      {
+        "titre": "Stages, projets, événements",
+        "texte": "Les étudiants y laissent un avis de stage, une idée de projet, et consultent les événements."
+      },
+      {
+        "titre": "Vidéos",
+        "texte": "Un module peut proposer des vidéos."
+      },
+      {
+        "titre": "Suggestions",
+        "texte": "Des suggestions sont proposées quand l'IA est disponible."
+      }
+    ]
+  }
+}

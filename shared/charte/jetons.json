@@ -1,12 +1,12 @@
 {
-  "version": 1,
-  "note": "Valeurs de couleur provisoires, relevées sur les photos des logos du 18 nov. : à remplacer par celles des SVG officiels du chef. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.",
+  "version": 2,
+  "note": "Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.",
   "familles": {
     "couleurs": {
-      "bleu-nuit": { "valeur": "#0B3B6F", "logo": true, "site": true, "role": "couleur principale du logo : titres, bandeaux, fonds forts" },
-      "bleu": { "valeur": "#1F65B3", "logo": true, "site": true, "role": "liens, boutons et accents sur fond clair ; contour du focus" },
-      "bleu-profond": { "valeur": "#0E4A8F", "logo": true, "site": true, "role": "survol et appui des boutons bleus" },
-      "bleu-clair": { "valeur": "#A8C8EA", "logo": true, "site": true, "role": "texte et accents sur bleu nuit ou sur l'écran ; action du mode sombre" },
+      "bleu-nuit": { "valeur": "#17395C", "logo": true, "site": true, "role": "couleur principale du logo : titres, bandeaux, fonds forts" },
+      "bleu": { "valeur": "#2A679F", "logo": true, "site": true, "role": "liens, boutons et accents sur fond clair ; contour du focus" },
+      "bleu-profond": { "valeur": "#21507C", "logo": true, "site": true, "role": "survol et appui des boutons bleus" },
+      "bleu-clair": { "valeur": "#A6CAEE", "logo": true, "site": true, "role": "texte et accents sur bleu nuit ou sur l'écran ; action du mode sombre" },
       "blanc": { "valeur": "#FFFFFF", "logo": true, "site": true, "role": "fond des pages et des cartes ; texte sur les bleus foncés" },
       "encre": { "valeur": "#1D1D1F", "logo": true, "site": true, "role": "texte courant" },
       "gris-fond": { "valeur": "#F2F5F9", "site": true, "role": "fond des sections alternées et des panneaux clairs" },
@@ -58,8 +58,8 @@
       "rayon-commande": { "valeur": "0.5rem", "role": "champs, boutons et puces de la gestion dense (8 px)" }
     },
     "ombres": {
-      "ombre-carte": { "valeur": "0 1px 2px rgb(11 59 111 / 6%), 0 8px 24px rgb(11 59 111 / 8%)", "site": true, "role": "ombre des cartes" },
-      "ombre-appareil": { "valeur": "0 30px 60px -20px rgb(11 59 111 / 35%)", "site": true, "role": "ombre des appareils mis en scène" }
+      "ombre-carte": { "valeur": "0 1px 2px rgb(23 57 92 / 6%), 0 8px 24px rgb(23 57 92 / 8%)", "site": true, "role": "ombre des cartes" },
+      "ombre-appareil": { "valeur": "0 30px 60px -20px rgb(23 57 92 / 35%)", "site": true, "role": "ombre des appareils mis en scène" }
     },
     "mouvement": {
       "duree": { "valeur": "200ms", "site": true, "role": "durée normale d'une transition" },

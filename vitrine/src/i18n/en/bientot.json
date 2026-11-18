@@ -38,10 +38,6 @@
         "texte": "Messages to families, WhatsApp included."
       },
       {
-        "titre": "Library",
-        "texte": "Book loans, from a phone."
-      },
-      {
         "titre": "Transport and boarding",
         "texte": "School bus routes and boarding rooms."
       },
@@ -72,8 +68,8 @@
         "texte": "The mobile app, usable without a connection."
       },
       {
-        "titre": "Massar export",
-        "texte": "School data, exported in the Massar format."
+        "titre": "Export to the national platform",
+        "texte": "School data, exported to your country's national platform. In Morocco, Massar is one example."
       }
     ]
   }

@@ -16,13 +16,23 @@ export const PAGES = {
   solutions: 'solutions',
   emploiDuTemps: 'emploi-du-temps',
   enClasse: 'en-classe',
+  quizEtJeux: 'quiz-et-jeux',
+  coursEtAnnonces: 'cours-et-annonces',
+  bibliotheque: 'bibliotheque',
+  application: 'application',
   etablissement: 'etablissement',
   securite: 'securite',
   bientot: 'bientot',
 };
 
-/** Pages montrées dans la navigation, dans l'ordre */
-export const NAVIGATION = ['solutions', 'emploiDuTemps', 'enClasse', 'etablissement', 'securite', 'bientot'];
+/** Pages de fonction, dans l'ordre du menu « Fonctions » */
+export const FONCTIONS = ['emploiDuTemps', 'enClasse', 'quizEtJeux', 'coursEtAnnonces', 'bibliotheque', 'application', 'etablissement'];
+
+/** Liens de la barre : Solutions, puis le menu Fonctions, puis ces deux pages */
+export const BARRE = ['solutions', 'securite', 'bientot'];
+
+/** Pages du pied de page, dans l'ordre. « Solutions » reste en tête (test de la page Solutions). */
+export const NAVIGATION = ['solutions', ...FONCTIONS, 'securite', 'bientot'];
 
 /** Sens d'écriture d'une langue */
 export const direction = (langue) => (langue === 'ar' ? 'rtl' : 'ltr');
