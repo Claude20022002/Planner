@@ -29,6 +29,16 @@ Branche `feat/uix-09-grille-applications`, dossier `..\travaux-planner\uix-09-gr
   intégrer main à cette branche puis ajouter cet audit au parcours avec la dépendance de main.
 - Le coordinateur tient désormais le suivi. La branche a repris la version de suivi.md de origin/main (f28eff4e).
 
+## Reprise du 18 novembre après la fusion de #199
+
+- `origin/main` (`e82f0bf4`, qui inclut #199) intégré dans `c5ba3820`. La branche reprend son `suivi.md`.
+- `npm install` a confirmé que le verrou ne diffère de `main` que pour Lucide `1.68.0`. Axe-core `4.10.3` vient de `main`.
+- Le commit `2d7ebdd3` ajoute les contrôles WCAG A/AA dans le contenu principal sur ordinateur (administration, thème sombre, anglais) et téléphone (enseignant, français, mouvement réduit).
+- 79 tests unitaires réussis. Lint sans erreur et 17 avertissements hors du lot. Build et neutralité réussis.
+- Première exécution Playwright : les deux scénarios axe-core réussissent sans violation. Deux scénarios s’arrêtent au chargement de la connexion avec le délai de 30 s.
+- Relance avec le cache Vite initialisé et `--timeout=90000` : 4 sur 4 sous Chromium, avec le backend et MySQL local jetable. Axe-core ne relève aucune violation A/AA dans les deux scénarios.
+- La suite Playwright complète et la CI restent à exécuter.
+
 ## Commandes pour le chef après relecture
 
 ~~~powershell
@@ -40,6 +50,6 @@ gh pr create --base main --head feat/uix-09-grille-applications --title "UIX-09 
 
 ~~~text
 Reprends UIX-09 sur feat/uix-09-grille-applications. Lis AGENTS.md, la boîte Codex et cette fiche.
-Après la fusion de #199, intègre main et active axe-core dans le parcours. Fais relire la branche et contrôle la CI.
-Respecte l’ordre de fusion avec #199. Travaille en local dans le périmètre UIX-09.
+La branche intègre #199 et les parcours axe-core. Fais relire la branche et contrôle la CI après publication par le chef.
+La prochaine mission est VSC-01, après validation du plan C-5 par le chef.
 ~~~
