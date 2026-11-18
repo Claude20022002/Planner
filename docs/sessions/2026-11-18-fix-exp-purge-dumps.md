@@ -27,6 +27,7 @@ Chiffrer le dump d'avant déploiement avec la phrase, et purger les dumps `hesti
 
 - `bash deploy/vps/tests/tester-deployer.sh` : tous les tests passent (Git Bash). Le premier passage, avant cette correction, était aussi vert dans `debian:bookworm-slim` (droits 600).
 - Régression : le texte du retour arrière, avec `PHRASE` vide dans le shell, ne contient pas `--passphrase-file ""` et nomme `hestim-sauvegarde.conf`.
+- ShellCheck SC2016 sur cette recherche littérale de `"$PHRASE"` : directive `disable` juste au-dessus de la ligne. Les apostrophes restent.
 - Avec `CLE_PUBLIQUE` et `PHRASE`, l'appel porte `--symmetric` et pas `--recipient-file`. Sans `PHRASE`, le déploiement s'arrête et aucun dump ne reste.
 - `appliquer-maj.sh` n'est pas modifié. `..\travaux-planner\exp-sauvegarde-predeploiement` n'est pas touché.
 

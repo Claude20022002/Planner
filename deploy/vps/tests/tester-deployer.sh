@@ -200,6 +200,7 @@ retour="$(afficher_retour 20261118-120000 /root/sauvegardes/hestim-20261118-1200
 contient() { grep -F -q -- "$1" <<<"$2"; }
 refuser "retour : pas de phrase vide" contient '--passphrase-file ""' "$retour"
 verifier "retour : nomme le fichier de réglage" contient "hestim-sauvegarde.conf" "$retour"
+# shellcheck disable=SC2016 # on cherche le texte littéral "$PHRASE", qui ne doit pas être développé ici
 verifier "retour : la phrase est lue au lancement" contient '--passphrase-file "$PHRASE"' "$retour"
 
 echo
