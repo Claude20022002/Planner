@@ -36,6 +36,7 @@
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | fait : #185 fusionnée le 16 novembre, 49 parcours réussis |
 | UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception validée | L | UIX-06a faite | en cours, R1 vérifié localement |
 | UIX-09 | Grille d'applications façon iCloud : tuiles aux coins arrondis, icônes Lucide animées, apparition des tuiles, recherche ; catalogue et droits inchangés ([plan](../../conception/interface/uix-09-grille-applications.md)) | — | libre | M | — | plan validé (chef, 18 nov.) |
+| UIX-10 | Charte commune à toutes les plateformes (web et Studio quiz, mobile, jeux, StudyLib), d'après le site vitrine : une source de jetons (`shared/charte/`), un générateur, puis une fonction par plateforme, UIX-10a à UIX-10f (UIX-10g, ClassQuiz, retirée le 18 nov.) ([plan](../../conception/interface/uix-10-charte-commune.md)) | — | exception du 18 nov. | L | — | plan validé (chef, 18 nov.) ; UIX-10a à faire |
 
 ## Critères de « terminé »
 
