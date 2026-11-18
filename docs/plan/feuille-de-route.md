@@ -23,6 +23,12 @@ Ce fichier dit **ce que chaque agent fait ensuite, dans l'ordre**, pour que le t
 
 Les sorties de ClassQuiz (QJE-01, QJE-03, QJE-06) et le Studio « comme Google Forms » (QJE-14) avancent en parallèle, par l'exception accordée le 18 nov.
 
+## Principes qui valent pour toutes les étapes (chef, 18 nov.)
+
+- **EP-18, tous les contextes** : chaque fonction marche sans téléphone de l'élève, avec peu ou pas de connexion, et avec ce qu'a l'école (un écran projeté, du papier). Chaque plan dit comment il le tient. Un plan qui ne le dit pas n'est pas validé.
+- **Aucun pays supposé** : les outils de l'État sont ceux du pays de l'école (Massar au Maroc ; les autres par ETA-03). Aucun écran ni aucun texte ne nomme Massar comme s'il était seul.
+- **À faire par le coordinateur à son retour** : une étude « contextes à faible équipement ». Elle passe en revue chaque fonction existante (appel, quiz, jeux, espace de cours, bibliothèque, mobile) sous l'angle d'EP-18 : ce qui marche déjà sans téléphone ni connexion, ce qui manque (feuille d'appel imprimée, quiz sur papier, mode hors ligne MOB-06, SMS), et l'ordre des correctifs.
+
 ## Conditions de la mise en ligne du site (VIT-06)
 
 Le site part sur le sous-domaine quand les **six** sont réunies (les conditions 5 et 6 ont été ajoutées par le chef le 18 nov.) :

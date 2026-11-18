@@ -146,7 +146,7 @@ Tirées des reproches faits aux autres outils ([étude de marché](../etude-marc
 | EP-2 | Interface sobre | menu limité aux modules actifs ; axe-core sans violation ; trois clics au plus jusqu'à un réglage **montré à l'école** (le reste reste au profil) | 3 |
 | EP-3 | Application rapide et fiable | ouverture en moins de 2 s sur le téléphone de référence (à choisir, MOB-03) ; emploi du temps lisible hors ligne | 2 et 4 |
 | EP-4 | Chaque refus s'explique | tout conflit nomme la règle et le groupe, et propose au moins une solution | 3 |
-| EP-5 | Saisie unique | aucune donnée saisie deux fois ; exports **au format accepté** par Massar et par le comptable | 4 |
+| EP-5 | Saisie unique | aucune donnée saisie deux fois ; exports **au format accepté** par la plateforme nationale du pays de l'école (Massar au Maroc, et celle de chaque autre pays visé, ETA-03) et par le comptable | 4 |
 | EP-6 | L'enseignant saisit moins | appel en un geste ; temps de saisie d'une classe mesuré avant et après chaque fonction qui ajoute une saisie | 4 |
 | EP-7 | Notifications maîtrisées | plages horaires, résumés ; un parent reçoit au plus un résumé par jour hors alerte | 4 |
 | EP-8 | Passage d'année inclus | une école passe d'une année à l'autre en moins d'une demi-journée, sans perte | 5 |
@@ -154,6 +154,7 @@ Tirées des reproches faits aux autres outils ([étude de marché](../etude-marc
 | EP-10 | Rapide à grande échelle | génération d'un collège de 600 élèves en moins de 10 min ; pages de gestion en moins de 1 s | 3 |
 | EP-11 | Accessible et bilingue | contraste AA ; français, arabe (droite à gauche) et anglais | 2 (droite à gauche), 4 (arabe complet) |
 | EP-12 | Les données restent à l'école | isolation testée sur chaque route ; export complet à tout moment | 2 et 5 |
+| EP-18 | S'adapter à tous les contextes | chaque fonction marche **sans téléphone de l'élève** (le QR code et les jeux sur téléphone sont des options, jamais le seul chemin), avec **peu ou pas de connexion**, et avec ce qu'a l'école (un seul écran projeté, du papier imprimé). Aucun écran ni aucun texte ne suppose un pays : les outils de l'État sont ceux du pays de l'école (décision du chef du 18 nov., contexte de la RDC) | toutes |
 
 **Condition légale** : aucune donnée réelle de mineur sur Planner avant le contrat de sous-traitance, le dossier CNDP de l'école et le test d'intrusion (EXP-08).
 

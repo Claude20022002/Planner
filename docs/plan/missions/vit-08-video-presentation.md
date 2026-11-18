@@ -17,6 +17,7 @@
 - **Motion design, sans captures d'écran** : des illustrations dessinées comme les cadres d'appareils du site, aux couleurs et avec l'animation du site. Rien ne vieillit quand l'application change de style (UIX-10b).
 - **Sous-titres, sans voix ni musique** : des textes animés à l'écran, une version en français et une en anglais. L'arabe viendra après UIX-04.
 - Toutes les applications : emploi du temps calculé, appel, Studio quiz et jeux pédagogiques, bibliothèque, espace de cours et annonces, établissement (salles, examens, campus), sécurité, application mobile.
+- **EP-18** : la vidéo montre l'appel à la main aussi bien que par QR code, et les jeux au tableau aussi bien que sur téléphone. Aucun outil d'État n'est nommé. Les textes de l'accueil (`accueil.json`) suivent les mêmes règles : « L'appel en un geste » ne doit pas supposer un téléphone.
 - Plus tard, **une vidéo par module**, avec des captures, après UIX-10b. Celle-ci est la vidéo d'ensemble.
 
 ## Ce que le plan doit établir
