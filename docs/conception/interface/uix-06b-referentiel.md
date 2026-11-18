@@ -160,7 +160,7 @@ Retour arrière par réversion des seuls commits UIX-06b, sans restauration de b
 
 ## 11. Hors périmètre et coordination
 
-Salles, campus, créneaux, calendrier, planning/solveur, backend, migrations, assistant UIX-01, vocabulaire scolaire UIX-02, notes/frais/familles, mobile natif, serveur et publication. Aucun nouveau module ni nouvelle dépendance.
+Salles, campus, créneaux, calendrier, planning/solveur, backend, migrations, assistant UIX-01, vocabulaire scolaire UIX-02, notes/frais/familles, mobile natif, serveur et publication. Aucun nouveau module. Axe-core est autorisé comme dépendance de test du frontend pour les parcours en CI.
 
 Aucune fiche UIX-06b ni message dédié trouvé au début de la préparation. PR #187 : dates/PDF/shared ; PR #183 : validation moteur/backend ; aucun chevauchement direct de leurs fichiers produit avec les quatre écrans proposés au contrôle. suivi.md est partagé : modifier seulement les lignes UIX. Le coordinateur reçoit la branche et ce périmètre ; une confirmation reste nécessaire avant implémentation. La préparation ne crée pas de mission ni d’exception à sa place.
 
@@ -169,3 +169,5 @@ Aucune fiche UIX-06b ni message dédié trouvé au début de la préparation. PR
 Le 16 novembre, après présentation du plan et des trois propositions, le chef répond « J’autorise ». Identifiant UIX-06b, exception limitée, quatre écrans à fonctions et droits constants, fiches et détails téléphone sont validés. L’accord est committé avant code. Le coordinateur reçoit la notification et le périmètre ; aucune nouvelle consigne dédiée en entrée au contrôle.
 
 Le 18 novembre, le chef valide la correction du § 2 : Groupes présente l’effectif et l’écart avec la somme des sous-groupes (8cc60692).
+
+Le 18 novembre, le chef autorise axe-core comme dépendance de test du frontend pour la recette R1 en CI.
