@@ -1,0 +1,10 @@
+{
+  "meta": { "titre": "", "description": "" },
+  "entete": { "surtitre": "", "titre": "", "accroche": "" },
+  "aujourdhui": "",
+  "cartes": [
+    { "page": "bibliotheque", "titre": "", "texte": "" },
+    { "page": "application", "titre": "", "texte": "" },
+    { "page": "quizEtJeux", "titre": "", "texte": "" }
+  ]
+}

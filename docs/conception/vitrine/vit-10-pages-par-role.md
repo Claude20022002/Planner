@@ -5,7 +5,7 @@
 | Module | [VIT](../../plan/modules/VIT-site-vitrine.md) · fiche [vit-10-pages-par-role](../../plan/missions/vit-10-pages-par-role.md) (branche `doc/coordination-equipe`, jusqu'à sa fusion) |
 | Branche | `feat/vit-10-pages-par-role`, depuis `origin/main` (`48d65fd8`, fusion de #214) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 18 novembre 2026 |
-| **Validé** | en attente |
+| **Validé** | par Claude20022002, le 18 novembre 2026 (questions 1 à 4) |
 
 Quatre pages par rôle, un menu « Solutions » qui s'ouvre, et, si le chef l'ouvre, un pied de page en colonnes. Aucun prix, aucun nom d'école, aucune date, aucun chiffre inventé. L'anglais traduit les mêmes phrases. L'arabe reprend les clés vides (UIX-04). Aucune illustration : VIT-09 les dessine après VIT-11. Le style ajouté reste dans `EnTete.astro` et, si le chef l'ouvre, dans `PiedDePage.astro`. Pas dans `vitrine/src/styles/`. L'accueil ne change pas.
 
@@ -68,10 +68,23 @@ Pas de colonne « À propos » ni « Mentions » : ces pages n'existent pas. Auc
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | Ouvrir `PiedDePage.astro` pour le pied en colonnes du § 4 ? | **oui** | | les colonnes |
-| 2 | Une bande de chiffres sur les pages par rôle ? | **non** : aucun chiffre vrai à citer | | la bande |
-| 3 | Deux boutons en tête de chaque page : « Nous contacter », et la page principale du rôle — Direction vers Pour l'établissement, Scolarité vers Emploi du temps, Enseignants vers En classe, Étudiants vers Cours et annonces ? | **oui** | | les boutons |
-| 4 | Le bloc « avant → avec Planner » et une FAQ : seulement des phrases déjà publiées sur les pages de fonctions, chacune citée ici avant le code ; sinon le bloc n'est pas écrit ? | **oui**, et la page se termine par le bandeau de contact qui existe déjà (`FinDePage`) | | les phrases |
+| 1 | Ouvrir `PiedDePage.astro` pour le pied en colonnes du § 4 ? | **oui** | oui, le 18 novembre 2026 | |
+| 2 | Une bande de chiffres sur les pages par rôle ? | **non** : aucun chiffre vrai à citer | non, le 18 novembre 2026 | |
+| 3 | Deux boutons en tête de chaque page : « Nous contacter », et la page principale du rôle — Direction vers Pour l'établissement, Scolarité vers Emploi du temps, Enseignants vers En classe, Étudiants vers Cours et annonces ? | **oui** | oui, le 18 novembre 2026 | |
+| 4 | Le bloc « avant → avec Planner » et une FAQ : seulement des phrases déjà publiées sur les pages de fonctions, chacune citée ici avant le code ; sinon le bloc n'est pas écrit ? | **oui**, et la page se termine par le bandeau de contact qui existe déjà (`FinDePage`) | oui, le 18 novembre 2026 | |
+
+Aucune phrase publiée ne dit un « avant ». Le bloc avant/après n'est pas écrit. Aucune FAQ nouvelle : la page se termine par `FinDePage`.
+
+Chaque titre et chaque texte ci-dessous est recopié. La carte porte le nom de navigation déjà publié, et le texte d'accroche de la page liée.
+
+| Page | Titre recopié | Accroche recopiée | Cartes |
+|---|---|---|---|
+| Direction | Toute l'école, d'un seul regard. | La direction et la scolarité trouvent au même endroit les salles, les examens et les chiffres de l'emploi du temps. | Emploi du temps, En classe, Sécurité et données |
+| Scolarité | Votre semestre, calculé. | Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas. | Pour l'établissement, En classe, Sécurité et données |
+| Enseignants | Après l'emploi du temps, la classe. | L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte. | Quiz et jeux, Cours et annonces, Emploi du temps |
+| Étudiants | Les supports de la classe, et les nouvelles de l'école. | L'étudiant voit les supports publiés de ses cours. | Bibliothèque, Application, Quiz et jeux |
+
+Sources : `etablissement.json`, `emploi-du-temps.json`, `en-classe.json`, `cours-et-annonces.json` (`supports.texte`), `securite.json`, `quiz-et-jeux.json`, `bibliotheque.json`, `application.json`, et `commun.json` pour les noms de navigation. Le second bouton reprend le nom de navigation de la page principale. « Aujourd'hui », au-dessus des cartes, est le mot déjà publié dans `solutions.json`.
 
 EP-18 : aucune page ne présente le téléphone ou le QR code comme le seul chemin. EP-5 : aucun outil d'État nommé seul. Les phrases du bloc « avec Planner » seront recopiées depuis les pages déjà en ligne, pas réécrites. Elles seront ajoutées à ce plan, avec leur fichier, quand la question 4 aura sa réponse, et avant le code.
 

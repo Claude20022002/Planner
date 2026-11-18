@@ -17,7 +17,14 @@
     "etablissement": "For schools",
     "securite": "Security and data",
     "bientot": "Coming soon",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "parEtablissement": "By institution",
+    "parRole": "By role",
+    "direction": "School leaders",
+    "scolarite": "Registrar's office",
+    "enseignants": "Teachers",
+    "etudiants": "Students",
+    "ressources": "Resources"
   },
   "langues": {
     "label": "Language",
