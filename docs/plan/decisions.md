@@ -295,3 +295,12 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | *(coordinateur)* #196 (`98ea71d4`) : **prête**. Sa CI est entièrement verte, et chaque bouton « Lancer en classe » porte le nom de son jeu, par la traduction `sessionsJeu.lancer.titre`. Ordre : **#200 et #196 maintenant**, puis #203, #201 et #199. Codex règle le conflit d'`i18n/index.js` de #199 | coordinateur, 18 nov. 13 h 01 |
 | *(coordinateur)* Fusionnées le 18 nov. vers 13 h : #200 (REL-06), #196 (QJE-04, migration 0082 à appliquer au prochain déploiement) et #203 (page Solutions). #196 a été fusionnée pendant les parcours d'un dernier commit d'Alexis, qui ne touchait que la documentation : aucun risque pour le code. Le chantier QJE, ouvert par exception pour QJE-04 seule, est à fermer par le chef | coordinateur, 18 nov. 13 h 11 |
 | **Chantier QJE fermé** : sa seule fonction, QJE-04, est fusionnée (#196). Trois chantiers restent ouverts, sans exception (EXP, PLA, MOT). La suite des jeux attend l'ouverture d'un chantier | chef, 18 nov. 13 h 15 |
+
+**Chef, 18 nov., vers 13 h 30** :
+
+| Décision | Par |
+|---|---|
+| **Toutes les plateformes suivent le style du site vitrine**, avec les mêmes couleurs : application web, mobile, espace des jeux, StudyLib et quiz. Cela étend la décision du 18 nov., qui ne visait d'abord que le site et la grille | chef |
+| La **charte commune vient d'abord** (UIX-10) : une source unique de jetons tirée du site, puis une adoption plateforme par plateforme. **Exception hors chantier**, comme UIX-06, sans API ni migration. Plan écrit par Claude (VS Code), validé par le chef ([fiche](missions/uix-10-charte-commune.md)) | chef |
+| **Le site vitrine sera mis en ligne**, d'abord sur un sous-domaine (VIT-06). Cela remplace « rien en ligne ». Quatre conditions d'abord : audit de `vitrine/` et montée d'Astro le 27 nov. ; mentions légales et page de confidentialité, sans formulaire ni mesure d'audience ; SVG officiels des logos ; site non indexé tant qu'il est sur le sous-domaine. Plan court par l'agent de Cursor, validé par le chef ([fiche](missions/vit-06-mise-en-ligne.md)) | chef |
+| **Modèles** : Grok 4.7 high reste le modèle de l'agent de Cursor pour les tâches courtes et bornées au plan validé. Pour les migrations, la sécurité, le serveur et la charte : le plus fort de Cursor (Claude Fable 5.2, sinon Opus 5.5). Codex : son modèle le plus fort, avec un raisonnement élevé, pour tout | chef |
