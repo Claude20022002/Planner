@@ -32,8 +32,9 @@ Retour arrière :
   bash $HESTIM/deploy/vps/deployer.sh --retour
   (sans registre : docker tag $NOM_LOCAL/hestim-<backend|frontend|solver>:avant-$1 $NOM_LOCAL/hestim-<…>:latest
    puis, dans $HESTIM : ${COMPOSE[*]} up -d --no-deps backend frontend solver)
-  Si une migration a été appliquée, restaurer aussi la base (ses nouvelles tables restent, à supprimer avant de redéployer) :
-  gunzip -c $2 | docker exec -i hestim_mysql sh -c 'MYSQL_PWD="\$MYSQL_ROOT_PASSWORD" mysql -uroot "\$MYSQL_DATABASE"'
+  Si une migration a été appliquée, restaurer aussi la base (ses nouvelles tables restent, à supprimer avant de redéployer).
+  Le dump est chiffré avec la phrase, sur ce serveur :
+  gpg --decrypt --batch --quiet --pinentry-mode loopback --passphrase-file "$PHRASE" --output - "$2" | gunzip -c | docker exec -i hestim_mysql sh -c 'MYSQL_PWD="\$MYSQL_ROOT_PASSWORD" mysql -uroot "\$MYSQL_DATABASE"'
 EOF
 }
 
