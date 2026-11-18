@@ -10,7 +10,7 @@ Le chef a retenu Docker Hub (`claude20022002/planner-vitrine`, une version par c
 L’équipe prépare les mentions légales et la page de confidentialité, puis le chef valide les deux textes.
 Le chef a validé `vitrine.finadmintech.fr` pour la vitrine en attendant l’achat du domaine officiel.
 Le 18 novembre, Google Public DNS et Cloudflare ont tous deux renvoyé l’adresse IPv4 du serveur Debian indiquée par le chef pour cet hôte. L’application utilise l’hôte prévu par le guide,
-`planner.finadmintech.fr`. Les trois décisions sont consignées. Le visa du plan complet reste en attente.
+`planner.finadmintech.fr`. Les trois décisions sont consignées. Le chef a validé le plan complet le 18 novembre vers 17 h 15. Le coordinateur a transmis son accord dans la boîte Codex.
 
 Les contrôles de conception ont porté sur le Compose du VPS, le workflow vitrine, le registre du workflow
 de publication, les scripts d’exploitation et le HTML produit par les gabarits. Les liens locaux du plan
@@ -19,9 +19,11 @@ et le diff Git ont été vérifiés. Les commandes de recette sont destinées à
 La consigne de 15 h 45 porte à six les conditions de mise en ligne. Le plan ajoute la livraison du
 contenu de VIT-07 et de la vidéo d’accueil VIT-08, ainsi que les contrôles de lecture, de CSP et de cache.
 
+Le commit `56e3b38c` consigne la validation et nomme les secrets GitHub Actions ainsi que les variables du fichier privé du serveur. Les commandes de déploiement attendent les six conditions.
+
 ## Pour le chef
 
-Après relecture et validation, publier la branche depuis le dépôt principal puis ouvrir la PR de conception.
+Publier la branche depuis le dépôt principal puis ouvrir la PR de conception.
 
 ~~~powershell
 git -C "..\travaux-planner\vit-06-mise-en-ligne" push -u origin feat/vit-06-mise-en-ligne
@@ -30,6 +32,6 @@ gh pr create --base main --head feat/vit-06-mise-en-ligne --title "VIT-06 · Pla
 
 ## Prompt de reprise
 
-Recueillir le visa du chef sur le plan VIT-06 et le reporter sur la branche.
-Après validation, reprendre UIX-09 selon la feuille de route. Appliquer la consigne du 18 novembre à
-12 h 11, archivée dans la boîte Codex. Le déploiement VIT-06 reste en fin de file et exige les six conditions.
+Reprendre VIT-06 en fin de file, une fois les six conditions vérifiées. Le plan validé
+est sur feat/vit-06-mise-en-ligne. Lire AGENTS.md, la fiche de mission et la boîte Codex.
+Le chef configure les secrets et le fichier privé. Lui seul publie et lance les commandes du serveur.
