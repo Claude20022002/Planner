@@ -276,3 +276,10 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | UIX-09 : la variante 4 du logo n'apparaît **nulle part dans la grille**. Elle reste l'icône du site vitrine ; dans l'application, l'en-tête garde la mosaïque et les tuiles leurs icônes Lucide | chef |
 | *(coordinateur)* UIX-09 n'ajoute pas axe-core. Codex peut auditer en local avec la même version, sans l'inscrire au manifeste, et active la vérification dans le parcours après la fusion de #199 | coordinateur |
 | *(coordinateur)* REL-03 (`0d63c429`) : correction du retour arrière **bonne**. #200 et #201 sont encore en conflit sur `suivi.md` : elles prennent la version de `main`, d'après la nouvelle règle | coordinateur |
+
+**Coordinateur, 18 nov., 12 h 10** :
+
+| Décision | Par |
+|---|---|
+| *(coordinateur)* QJE-04 (#196, `66f79883`), relecture : migration renommée `0082-jeux-solutions.js`, conforme au registre et additive (une table `JeuxEtatsDefis` et la colonne `avec_solution`, valeur par défaut `false`). L'accès passe par `jeuAccessible` (404 pour un jeu ou un défi inconnu). L'évaluation est faite par le serveur, et la PR fait passer `Jeux.jsx` de 389 à 362 lignes. **Au chef** : valider la migration, et l'ajout dans `app.js` d'`authenticateToken` avant `csrfProtection` sur `POST /api/jeux/:code/defis/:idDefi/solution`. Avis : acceptable, la protection CSRF s'applique toujours et seul l'ordre des refus change (401 avant 403). Remarque sans blocage : commentaires en anglais dans la migration et `app.js` | coordinateur |
+| *(coordinateur)* UIX-09 (`c45f70c4`) : **bonne**. Elle se pousse après la fusion de #199, car les deux branches modifient `package-lock.json` | coordinateur |
