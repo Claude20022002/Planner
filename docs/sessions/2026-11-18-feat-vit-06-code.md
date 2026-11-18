@@ -158,3 +158,23 @@ Compose et Nginx. Le déploiement attend la version complète de main, l’audit
 à partir du 27 novembre, un digest publié et la validation des dix conditions
 sur ce digest. Le chef seul pousse, fusionne et déploie.
 ~~~
+
+## Synchronisation après le push du correctif
+
+GitHub a reçu `f29d1247` sur #221. Le conflit avec `main` empêchait le
+démarrage d’un nouveau contrôle. Le module VIT était le seul fichier en conflit.
+
+`52388f60` intègre `main` à `0c79c00d` dans la branche de la PR. La résolution
+conserve la documentation des logos officiels et celle de l’image de la vitrine.
+Le correctif Compose et la configuration Nginx sont identiques à ceux du push précédent.
+Le diff est propre et le prochain push peut avancer la branche distante sans réécriture.
+
+Les 59 tests Astro passent, 37 pages sont compilées et les deux logos officiels
+et le favicon sont identiques à ceux de `public/` dans `dist/`. La PR des logos
+(#220) et celle du plan VIT-11 (#218) sont fusionnées. L’intégration des SVG reste
+à contrôler dans l’image publiée, et le catalogue et la FAQ restent à livrer.
+Les six contrôles de la CI générale du run précédent sont verts. La CI vitrine
+doit être relancée sur la branche synchronisée.
+
+Le chef pousse avec les commandes ci-dessus. Reprendre ensuite le prompt après
+le push et vérifier le nouveau SHA dans les contrôles de #221.
