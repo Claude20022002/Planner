@@ -162,3 +162,6 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 ## Décision du chef du 16 novembre : UIX-06b
 
 Source : conversation Codex, « J’autorise » au plan et aux trois propositions. Exception limitée à UIX-06b sans quatrième chantier ; reprise visuelle de Filières, Groupes, Modules et Enseignements, à fonctions, droits et API constants ; fiches et détails dépliables sur téléphone, hiérarchies/actions conservées. Plan : docs/conception/interface/uix-06b-referentiel.md. Aucun backend, migration ou serveur autorisé.
+
+- 18 novembre : le chef valide la correction du § 2 de Groupes sur l’effectif et la somme des sous-groupes (`f9fa7477`).
+- 18 novembre : le chef autorise axe-core comme dépendance de test pour les parcours en CI (`d941a896`).

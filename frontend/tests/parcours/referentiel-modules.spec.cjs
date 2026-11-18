@@ -13,22 +13,30 @@ async function verifierAccessibilite(page, selecteur = 'main') {
   expect(violations, 'Violations WCAG A/AA dans ' + selecteur).toEqual([]);
 }
 
-for (const [largeur, langue, theme] of [[390, 'en', 'dark'], [1280, 'fr', 'light']]) {
+for (const [largeur, langue, theme] of [
+  [390, 'en', 'dark'],
+  [1280, 'fr', 'light'],
+]) {
   test(`Modules à ${largeur}px, ${langue}, ${theme}`, async ({ page }) => {
     const { admin, motDePasse } = lireDonnees();
     await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
     await page.setViewportSize({ width: largeur, height: 900 });
-    await page.evaluate(([langue, theme]) => {
-      localStorage.setItem('hp.lang', langue);
-      localStorage.setItem('themeMode', theme);
-    }, [langue, theme]);
+    await page.evaluate(
+      ([langue, theme]) => {
+        localStorage.setItem('hp.lang', langue);
+        localStorage.setItem('themeMode', theme);
+      },
+      [langue, theme],
+    );
     await page.goto('/gestion/cours');
     await expect(page.getByRole('status', { name: /Chargement des données|Loading data/ })).toHaveCount(0);
     const recherche = page.getByRole('searchbox');
     await recherche.fill('aucun-module-uix-06b');
     await expect(page.getByText(langue === 'en' ? 'No results' : 'Aucun résultat', { exact: true })).toBeVisible();
     await recherche.clear();
-    const deplier = page.getByRole('button', { name: langue === 'en' ? /^Show the components of / : /^Afficher les composantes de / }).first();
+    const deplier = page
+      .getByRole('button', { name: langue === 'en' ? /^Show the components of / : /^Afficher les composantes de / })
+      .first();
     await expect(deplier).toBeVisible();
     await deplier.focus();
     await deplier.press('Enter');
@@ -39,7 +47,6 @@ for (const [largeur, langue, theme] of [[390, 'en', 'dark'], [1280, 'fr', 'light
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
 }
-
 
 test('Modules : réessayer relance une lecture de la maquette', async ({ page }) => {
   const { admin, motDePasse } = lireDonnees();
@@ -55,4 +62,13 @@ test('Modules : réessayer relance une lecture de la maquette', async ({ page })
   const { data } = await (await lecture).json();
   expect(data.length).toBeGreaterThan(0);
   await expect(page.getByRole('main').getByText(data[0].nom_cours, { exact: true }).first()).toBeVisible();
+});
+
+test('Modules : maquette sans module', async ({ page }) => {
+  const { admin, motDePasse } = lireDonnees();
+  await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
+  await page.route('**/api/cours?*', (route) => route.fulfill({ json: { data: [] } }));
+  await page.goto('/gestion/cours');
+  await expect(page.getByText('Aucun élément enregistré', { exact: true })).toBeVisible();
+  await expect(page.getByRole('main').getByRole('button', { name: 'Ajouter', exact: true })).toBeVisible();
 });

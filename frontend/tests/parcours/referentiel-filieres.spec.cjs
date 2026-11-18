@@ -13,17 +13,25 @@ async function verifierAccessibilite(page, selecteur = 'main') {
   expect(violations, 'Violations WCAG A/AA dans ' + selecteur).toEqual([]);
 }
 
-for (const [largeur, langue, theme] of [[390, 'en', 'dark'], [1280, 'fr', 'light']]) {
+for (const [largeur, langue, theme] of [
+  [390, 'en', 'dark'],
+  [1280, 'fr', 'light'],
+]) {
   test(`Filières à ${largeur}px, ${langue}, ${theme}`, async ({ page }) => {
     const { admin, motDePasse } = lireDonnees();
     await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
     await page.setViewportSize({ width: largeur, height: 900 });
-    await page.evaluate(([langue, theme]) => {
-      localStorage.setItem('hp.lang', langue);
-      localStorage.setItem('themeMode', theme);
-    }, [langue, theme]);
+    await page.evaluate(
+      ([langue, theme]) => {
+        localStorage.setItem('hp.lang', langue);
+        localStorage.setItem('themeMode', theme);
+      },
+      [langue, theme],
+    );
     await page.goto('/gestion/filieres');
-    const recherche = page.getByRole('searchbox', { name: langue === 'en' ? 'Search for a program' : 'Rechercher une filière' });
+    const recherche = page.getByRole('searchbox', {
+      name: langue === 'en' ? 'Search for a program' : 'Rechercher une filière',
+    });
     await expect(recherche).toBeVisible();
     await expect(page.getByRole('status', { name: /Chargement des données|Loading data/ })).toHaveCount(0);
     await recherche.fill('aucune-filiere-uix-06b');
@@ -55,16 +63,21 @@ test('Filières : réessayer réaffiche les données réellement reçues', async
   await expect(page.getByRole('cell', { name: data[0].code_filiere + ' · ' + data[0].nom_filiere, exact: true })).toBeVisible();
 });
 
-test('étudiant et enseignant sans responsabilité : retour à leur accueil', async ({ browser }) => {
+test('Filières, Groupes, Modules et Enseignements : accès refusé aux rôles sans responsabilité', async ({ browser }) => {
   const { enseignante, etudiants, motDePasse } = lireDonnees();
-  for (const [compte, role] of [[enseignante, 'enseignant'], [etudiants[0], 'etudiant']]) {
+  for (const [compte, role] of [
+    [enseignante, 'enseignant'],
+    [etudiants[0], 'etudiant'],
+  ]) {
     const contexte = await browser.newContext();
     try {
       const page = await contexte.newPage();
       await seConnecter(page, { email: compte.email, motDePasse, role });
       for (const chemin of ['filieres', 'groupes', 'cours', 'enseignements']) {
-        await page.goto('/gestion/' + chemin);
-        await expect(page).toHaveURL(new RegExp('/dashboard/' + role + '(?:/|$)'));
+        await test.step(role + ' est renvoyé depuis ' + chemin, async () => {
+          await page.goto('/gestion/' + chemin);
+          await expect(page).toHaveURL(new RegExp('/dashboard/' + role + '(?:/|$)'));
+        });
       }
     } finally {
       await contexte.close();
@@ -72,9 +85,8 @@ test('étudiant et enseignant sans responsabilité : retour à leur accueil', as
   }
 });
 
-
 // Les droits sont accordés et retirés par les vraies routes de l’administration.
-test('un responsable peut préparer une seule filière et Filières reste réservé à l’administration', async ({ page, browser }) => {
+test('Responsable : Filières refusé, une seule filière dans Groupes, Modules et Enseignements', async ({ page, browser }) => {
   const { admin, enseignante, motDePasse } = lireDonnees();
   await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
   const filieres = await page.request.get('/api/filieres?limit=100');
@@ -95,18 +107,29 @@ test('un responsable peut préparer une seule filière et Filières reste réser
     await responsable.goto('/gestion/filieres');
     await expect(responsable).toHaveURL(/\/dashboard\/enseignant$/);
     for (const chemin of ['groupes', 'cours', 'enseignements']) {
-      await responsable.goto('/gestion/' + chemin);
-      await expect(responsable).toHaveURL(new RegExp('/gestion/' + chemin + '$'));
-      const selecteur = responsable.getByRole('combobox', { name: 'Filière', exact: true });
-      await expect(responsable.getByRole('status', { name: 'Chargement des données' })).toHaveCount(0);
-      await selecteur.click();
-      await expect(responsable.getByRole('option', { name: /^GEN · / })).toBeVisible();
-      await expect(responsable.getByRole('option', { name: / · / })).toHaveCount(1);
-      await responsable.keyboard.press('Escape');
+      await test.step('Filière autorisée sur ' + chemin, async () => {
+        await responsable.goto('/gestion/' + chemin);
+        await expect(responsable).toHaveURL(new RegExp('/gestion/' + chemin + '$'));
+        const selecteur = responsable.getByRole('combobox', { name: 'Filière', exact: true });
+        await expect(responsable.getByRole('status', { name: 'Chargement des données' })).toHaveCount(0);
+        await selecteur.click();
+        await expect(responsable.getByRole('option', { name: /^GEN · / })).toBeVisible();
+        await expect(responsable.getByRole('option', { name: / · / })).toHaveCount(1);
+        await responsable.keyboard.press('Escape');
+      });
     }
   } finally {
     await contexte.close();
     const retrait = await page.request.delete(url + '/' + prof.id_user, { headers });
     expect([200, 404]).toContain(retrait.status());
   }
+});
+
+test('Filières : état initial sans filière', async ({ page }) => {
+  const { admin, motDePasse } = lireDonnees();
+  await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
+  await page.route('**/api/filieres?*', (route) => route.fulfill({ json: { data: [] } }));
+  await page.goto('/gestion/filieres');
+  await expect(page.getByText('Aucun élément enregistré', { exact: true })).toBeVisible();
+  await expect(page.getByRole('main').getByRole('button', { name: 'Ajouter', exact: true })).toBeVisible();
 });

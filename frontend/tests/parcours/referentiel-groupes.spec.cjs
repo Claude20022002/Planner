@@ -27,20 +27,25 @@ test('une réponse lente de l’année en cours ne réapparaît pas après chang
   await filtre.click();
   await page.getByRole('option', { name: '2025-2026' }).click();
   await expect(page.getByText('Aucun groupe GEN en 2025-2026', { exact: true })).toBeVisible();
+  await expect(page.getByText('Modifiez la recherche ou les filtres.', { exact: true })).toBeVisible();
 
   const premiere = Promise.withResolvers();
   const liberer = Promise.withResolvers();
   const envoyee = Promise.withResolvers();
-  await page.route('**/api/groupes/arbre?*', async (route) => {
-    const reponse = await route.fetch();
-    premiere.resolve();
-    await liberer.promise;
-    try {
-      await route.fulfill({ response: reponse });
-    } finally {
-      envoyee.resolve();
-    }
-  }, { times: 1 });
+  await page.route(
+    '**/api/groupes/arbre?*',
+    async (route) => {
+      const reponse = await route.fetch();
+      premiere.resolve();
+      await liberer.promise;
+      try {
+        await route.fulfill({ response: reponse });
+      } finally {
+        envoyee.resolve();
+      }
+    },
+    { times: 1 },
+  );
 
   try {
     await filtre.click();
@@ -67,7 +72,6 @@ test('une réponse lente de l’année en cours ne réapparaît pas après chang
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-
 test('Groupes à 1280 px en anglais et en thème sombre', async ({ page }) => {
   const { admin, motDePasse } = lireDonnees();
   await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
@@ -85,4 +89,35 @@ test('Groupes à 1280 px en anglais et en thème sombre', async ({ page }) => {
   await expect(contenu.getByRole('columnheader', { name: 'Parent group', exact: true })).toBeVisible();
   await verifierAccessibilite(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('Groupes : la filière ne contient aucun groupe', async ({ page }) => {
+  const { admin, motDePasse } = lireDonnees();
+  await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
+  await page.route('**/api/groupes?*', (route) => route.fulfill({ json: { data: [] } }));
+  await page.route('**/api/groupes/arbre?*', (route) => route.fulfill({ json: [] }));
+  await page.goto('/gestion/groupes');
+  await page.getByRole('combobox', { name: 'Filière', exact: true }).click();
+  await page.getByRole('option', { name: /^GEN · / }).click();
+  await expect(page.getByText(/^Aucun groupe GEN/)).toBeVisible();
+  await expect(
+    page.getByText('Utilisez les actions disponibles pour préparer votre référentiel.', { exact: true }),
+  ).toBeVisible();
+});
+
+test('Groupes : l’export Excel suit la filière et l’année choisies', async ({ page }) => {
+  const { admin, motDePasse } = lireDonnees();
+  await seConnecter(page, { email: admin.email, motDePasse, role: 'admin' });
+  await page.goto('/gestion/groupes');
+  await page.getByRole('combobox', { name: 'Filière', exact: true }).click();
+  await page.getByRole('option', { name: /^GEN · / }).click();
+  await expect(page.getByRole('main').getByText('4A GEN', { exact: true }).first()).toBeVisible();
+  const lecture = page.waitForRequest((requete) => {
+    const url = new URL(requete.url());
+    return url.pathname === '/api/groupes' && url.searchParams.has('id_filiere') && url.searchParams.has('id_annee');
+  });
+  const telechargement = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Exporter', exact: true }).click();
+  await lecture;
+  expect((await telechargement).suggestedFilename()).toMatch(/_Groupes_.*\.xlsx$/);
 });
