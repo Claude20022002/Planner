@@ -35,14 +35,26 @@ Plan validé par Claude20022002 le 17 nov. (« Je valide le plan de l'essai, Doc
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
-| E-5 | Les corrections portables du § 2.1 du rapport (et les 12 unicités inscrites dans les modèles) méritent-elles une PR à part vers `main`, même si l'on reste sur MySQL ? | proposition : oui, une tâche `refactor/` hors essai, après la décision | en attente |
+| E-5 | Les corrections portables du § 2.1 du rapport (et les 12 unicités inscrites dans les modèles) méritent-elles une PR à part vers `main`, même si l'on reste sur MySQL ? | **oui** (chef, 18 nov.) : tâche `refactor/` à part | répondue |
+| E-6 | Décision du moteur, selon la règle du plan (rapport, § 7) : le gain du critère 5 (exclusion en base) est-il décisif ? | proposition : non ; rester sur MySQL | en attente |
 
 ## État laissé
 
 - `docs/plan/suivi.md` : essai PostgreSQL en cours, critères 1, 2, 3, 6 mesurés.
 - Conteneurs `essai_mysql_test` (port 3307) et `essai_pg_test` (port 5433) laissés lancés ; leurs données sont en mémoire et disparaissent à l'arrêt. Les conteneurs `finadmintech-*` d'un autre projet n'ont pas été touchés.
 
-## Reste à faire, dans l'ordre
+## Fait le 18 nov. (même session, à la demande du chef)
+
+- Critères 4 et 5 (`migrationEtExclusion.mjs`), 7 (`charge.mjs`), 8 (`sauvegardeEcole.sh`), 9 (`convertir.mjs`, `comparerApi.mjs`) ; rapport final, § 7 : recommandation « rester sur MySQL ».
+- Conteneurs de mesure supprimés ; `essai_mysql_test` et `essai_pg_test` gardés pour la PR séparée.
+
+## Reste à faire, dans l'ordre (mis à jour le 18 nov.)
+
+1. Le chef tranche E-6 et inscrit la décision du moteur dans decisions.md.
+2. Tâche `refactor/` séparée : reprendre sur `main` les corrections portables du § 2.1 et inscrire les 12 unicités dans les modèles, avec un test de régression ; plan court à valider.
+3. Le chef pousse les branches ; seul le rapport de l'essai est fusionné.
+
+### Ancienne liste (17 nov.), faite
 
 1. Critère 4 : migration de trois instructions qui échoue à la deuxième, sur les deux moteurs ; temps de remise en état sous MySQL.
 2. Critère 5 : contrainte d'exclusion partielle (séances actives non forcées, même salle, plages qui se chevauchent, toutes grilles), et ce que fait MySQL à la place.
@@ -69,9 +81,9 @@ Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md, le plan validé
 docs/conception/plateforme/essai-postgresql.md, le rapport intermédiaire
 docs/conception/plateforme/rapport-essai-postgresql.md et cette fiche
 (docs/sessions/2026-11-17-etude-essai-postgresql.md).
-Fait : critères 1, 2, 3 et 6 (MySQL 612/612 ; PostgreSQL 556/612, le reste vient du SQL
-MySQL des tests ; 12 unicités hors des modèles ; collations à déclarer colonne par colonne).
-Reste : critères 4, 5, 7, 8 et 9, puis le rapport final et la règle de décision (§ 4 du plan).
+Fait : les neuf critères ; rapport final avec la recommandation « rester sur MySQL » (§ 7).
+Reste : décision du chef (E-6) ; puis la tâche refactor/ séparée des corrections portables
+et des 12 unicités (plan court à valider).
 Environnement : Docker Desktop ; conteneurs essai_mysql_test (3307) et essai_pg_test (5433),
 données en mémoire (tmpfs) ; recréer avec MSYS_NO_PATHCONV=1 sous Git Bash ; tests avec
 NODE_OPTIONS=--max-old-space-size=4096 ; PostgreSQL : DB_DIALECT=postgres DB_PORT=5433 DB_USER=postgres.

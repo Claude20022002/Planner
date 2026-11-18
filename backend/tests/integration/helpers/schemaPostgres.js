@@ -38,8 +38,8 @@ const UNICITES_DES_MIGRATIONS = [
     ["VersionsParametres", ["annule_version"]],
 ];
 
-/** Vide le schéma public, recrée toutes les tables depuis les modèles, puis l'identité neutre. */
-export const reconstruirePostgres = async () => {
+/** Vide le schéma public, recrée les tables depuis les modèles, la table sans modèle et les 12 unicités. */
+export const schemaDepuisModeles = async () => {
     await sequelize.query("DROP SCHEMA IF EXISTS public CASCADE");
     await sequelize.query("CREATE SCHEMA public");
     await sequelize.sync();
@@ -49,5 +49,10 @@ export const reconstruirePostgres = async () => {
     // Critère 2 : 12 unicités métier ne sont déclarées que dans les migrations, pas dans les modèles
     const qi = sequelize.getQueryInterface();
     for (const [table, champs] of UNICITES_DES_MIGRATIONS) await qi.addIndex(table, champs, { unique: true });
+};
+
+/** Base de test : le schéma, puis l'identité neutre d'une base neuve. */
+export const reconstruirePostgres = async () => {
+    await schemaDepuisModeles();
     await ConfigurationEtablissement.create({ id: 1, ...NEUTRE });
 };
