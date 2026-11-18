@@ -6,7 +6,7 @@
 | Mission | [vit-12-pages-legales.md](../../plan/missions/vit-12-pages-legales.md) |
 | Branche | `feat/vit-12-pages-legales`, depuis `origin/main` à `427afdea` (VIT-10, #219, fusionnée) |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| **Validé** | en attente : le chef valide le plan **et chaque texte** (§ 4 et § 5) avant le code |
+| **Validé** | par Claude20022002 le 2026-11-18, plan et textes « tels quels » (outil de questions) ; les valeurs `[…]` restent à donner |
 
 ## 1. Objet et critère de « terminé »
 
@@ -97,8 +97,7 @@ Fichier `vitrine/src/i18n/<langue>/confidentialite.json`.
 | Il n'est ni vendu, ni utilisé pour suivre vos visites. Il reste sur le serveur du site. | It is not sold, nor used to track your visits. It stays on the site's server. |
 | Il est effacé automatiquement au plus tard après [N] jours. | It is deleted automatically after [N] days at most. |
 
-« Il reste sur le serveur du site » : **fait à confirmer par le chef** (les sauvegardes hors serveur ne doivent pas emporter ces journaux ;
-décision du 30 octobre : aucune erreur hors du serveur). Sans confirmation, la phrase est retirée.
+« Il reste sur le serveur du site » : **confirmé par le chef le 18 novembre** (aucune sauvegarde ni service ne l'emporte ailleurs).
 
 ### 5.3 Qui en est responsable, et vos demandes
 
