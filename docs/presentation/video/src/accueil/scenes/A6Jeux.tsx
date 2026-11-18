@@ -43,7 +43,7 @@ export const A6Jeux: React.FC<{ t: Textes }> = ({ t }) => {
           const p = progression(s, 0.6 + i * 0.18, 0.8);
           const premier = i === 0;
           return (
-            <div key={nom} style={{ height: 300, borderRadius: 28, overflow: "hidden", background: C.blanc, boxShadow: "0 18px 40px -22px rgb(11 59 111 / 40%)", opacity: p, translate: `0px ${(1 - p) * 60}px` }}>
+            <div key={nom} style={{ height: 300, borderRadius: 28, overflow: "hidden", background: C.blanc, boxShadow: "0 18px 40px -22px rgb(23 57 92 / 40%)", opacity: p, translate: `0px ${(1 - p) * 60}px` }}>
               <div style={{ height: 170, display: "grid", placeItems: "center", background: premier ? C.ecran : i % 2 ? C.bleuNuit : C.bleu, color: premier ? C.jeu : C.blanc }}>
                 <Icone size={84} strokeWidth={1.5} />
               </div>

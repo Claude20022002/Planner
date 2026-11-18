@@ -34,7 +34,7 @@ export const A1Ouverture: React.FC<{ t: Textes }> = ({ t }) => {
             const p = progression(s, 2.5 + i * 0.12, 0.8);
             return (
               <div key={nom} style={{ width: 200, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: p, translate: `0px ${(1 - p) * 40}px` }}>
-                <div style={{ width: 104, height: 104, borderRadius: 28, background: i === 5 ? C.jeu : C.bleuNuit, color: i === 5 ? C.bleuNuit : C.blanc, display: "grid", placeItems: "center", boxShadow: "0 18px 36px -18px rgb(11 59 111 / 45%)" }}>
+                <div style={{ width: 104, height: 104, borderRadius: 28, background: i === 5 ? C.jeu : C.bleuNuit, color: i === 5 ? C.bleuNuit : C.blanc, display: "grid", placeItems: "center", boxShadow: "0 18px 36px -18px rgb(23 57 92 / 45%)" }}>
                   <Icone size={50} strokeWidth={1.7} />
                 </div>
                 <span style={{ fontFamily: POLICE, fontSize: 24, fontWeight: 600, color: C.encre, textAlign: "center", lineHeight: 1.2 }}>{nom}</span>

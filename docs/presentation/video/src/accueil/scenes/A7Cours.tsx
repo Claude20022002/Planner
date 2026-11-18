@@ -89,7 +89,7 @@ export const A7Cours: React.FC<{ t: Textes }> = ({ t }) => {
                   const p = progression(s, BIBLIO + 0.4 + i * 0.15, 0.7);
                   return (
                     <div key={titre} style={{ opacity: p, translate: `0px ${(1 - p) * 30}px` }}>
-                      <div style={{ height: 440, borderRadius: 14, background: COUVERTURES[i], color: C.blanc, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow: "0 14px 30px -18px rgb(11 59 111 / 50%)" }}>
+                      <div style={{ height: 440, borderRadius: 14, background: COUVERTURES[i], color: C.blanc, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow: "0 14px 30px -18px rgb(23 57 92 / 50%)" }}>
                         <BookMarked size={30} strokeWidth={1.7} color={C.bleuClair} />
                         <span style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.2 }}>{titre}</span>
                       </div>
