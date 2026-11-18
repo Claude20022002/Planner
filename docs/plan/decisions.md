@@ -336,3 +336,14 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Chantier VSC** : il s'ouvre dès que MOT se ferme. VSC-01 (conception du modèle du scolaire) commence avant, chez Codex | chef |
 | **Pendant la pause du coordinateur**, le chef valide tous les plans et ne fusionne qu'une PR entièrement verte, avec le rapport de l'agent. Chaque agent suit sa file de la feuille de route | chef |
 | **#205 (Alexis) validée** : quatre routes des jeux répondent 404 « Module introuvable » hors des classes de l'enseignant, comme pour un module qui n'existe pas. Le refus selon le rôle reste en 403. Plan validé après coup ; Alexis ajoutera la ligne « Validé » dans sa prochaine PR. Relu par le coordinateur : un seul point d'entrée (`coursDeSesClasses`), un message identique à celui d'un module inconnu, et une CI entièrement verte, intégration comprise | chef, 18 nov. 15 h 25 |
+
+**Chef, 18 nov. · VSC-01, conception C-5**
+
+| Décision | Par |
+|---|---|
+| Plan C-5 validé. Réutiliser les entités du supérieur, garder le nom technique `AnneeUniversitaire` et créer une filière interne par cycle lorsque l’école n’a pas de filière. Les catégories ont un sens commun dans le code, avec des libellés propres à chaque école. La hiérarchie garde ses trois niveaux selon D-06 et les groupes transversaux de langue ou d’option la traversent. | chef |
+| L’inscription annuelle et l’affectation à une classe sont possibles avant la création du compte. Q-20 prévoit ensuite un compte créé par l’école avec un identifiant scolaire et une adresse facultative. Le code Massar est facultatif, la CIN et la santé sont hors du socle. | chef |
+| Le responsable légal a un dossier propre à chaque école et un compte facultatif. Premier accès mono-école avec ADM-05 et PLA-01. Le compte partagé de D-05 reste la cible de PLA-11. | chef |
+| Périodes de notes par cycle et année, coefficients par matière, niveau et filière, conseil de classe et décision de passage dans VSC-04. Saisie jusqu’au verrouillage, puis correction autorisée avec motif et historique. La scolarité précise la portée de la correction. | chef |
+| Un règlement peut couvrir plusieurs enfants grâce à des affectations distinctes aux échéances. FIN confirme les règles de reçu avec l’expert-comptable. Les notes et frais du supérieur sont désactivés par défaut, puis activables par école après recette. | chef |
+| ADM possède `Filiere`, `Groupe`, `Cours` et `CoursComposante` via ADM-02, avec contrat relu par MOT et EDT. VSC possède les inscriptions et les appartenances aux groupes. | chef |

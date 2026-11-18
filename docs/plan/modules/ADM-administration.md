@@ -12,7 +12,7 @@
 - l'élève et sa famille comme personnes : VSC ;
 - l'équipe Planner qui gère les écoles : PLA.
 
-**Tables possédées** : `Users`, `AuthSession`, `MfaDefi`, `MfaCodeSecours`, `PasswordResetToken`, `JournalSecurite`, `Desactivation`, `AnneeUniversitaire`, `Periode`, `ResponsableFiliere`.
+**Tables possédées** : `Users`, `AuthSession`, `MfaDefi`, `MfaCodeSecours`, `PasswordResetToken`, `JournalSecurite`, `Desactivation`, `AnneeUniversitaire`, `Periode`, `ResponsableFiliere`. Pour la mise en œuvre de C-5 via ADM-02, ADM possède aussi `Filiere`, `Groupe`, `Cours` et `CoursComposante` (contrat relu par MOT et EDT).
 
 ## Les rôles
 
