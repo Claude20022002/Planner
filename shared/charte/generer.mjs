@@ -63,9 +63,8 @@ export const cssSite = (source) => {
         return lignes.length ? [`  /* ${titre} */`, ...lignes].join('\n') : null;
     }).filter(Boolean);
     return [
-        '/* Jetons du site vitrine : couleurs des logos du 18 nov. (plan VIT, § 4 bis), espaces, rayons,',
-        '   ombres et tailles de titres. Valeurs provisoires, relevées sur les photos des logos : à remplacer',
-        '   par celles des SVG du chef. Le contraste AA de chaque paire est vérifié à la source (shared/charte)',
+        '/* Jetons du site vitrine : couleurs des SVG officiels du logo (18 nov.), espaces, rayons, ombres',
+        '   et tailles de titres. Le contraste AA de chaque paire est vérifié à la source (shared/charte)',
         '   et par tests/jetons.test.js. */',
         ':root {',
         sections.join('\n\n'),
