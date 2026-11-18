@@ -45,7 +45,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0060 | UIX-01 socle neutre | réservée |
 | 0061 | MOT-01 valeurs du moteur (MP-1) | fusionnée (#156, 10 nov.) |
 | 0062 à 0079 | VSC-01 et suivantes : tables du scolaire | réservées |
-| 0080 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) | écrite le 18 nov. (`backend/migrations/0080-jeux-solutions.js`), non appliquée |
+| 0082 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) | écrite le 18 nov. (`backend/migrations/0082-jeux-solutions.js`), non appliquée |
 | 0081 et plus | libres | — |
 
 ## Fonctions

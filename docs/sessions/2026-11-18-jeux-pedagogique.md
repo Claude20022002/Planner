@@ -41,7 +41,7 @@ Conception validée : [docs/conception/jeux/qje-04-solution.md](../conception/je
   `docs/conception/jeux/jeux-pedagogiques.md` ; aucun défi stocké n'est renommé.
 
 **I-1 — solution explicite, notée par le serveur**
-- `backend/migrations/0080-jeux-solutions.js` : table `JeuxEtatsDefis` (clé primaire, `id_user` en
+- `backend/migrations/0082-jeux-solutions.js` : table `JeuxEtatsDefis` (clé primaire, `id_user` en
   cascade, `code_jeu`, `id_defi`, `echecs` par défaut 0, `solution_vue_le` nullable, horodatages,
   clé unique `(id_user, code_jeu, id_defi)`) et colonne `JeuxProgressions.avec_solution` (faux par défaut).
 - `backend/models/JeuEtatDefi.js`, `backend/models/definitions.js`, `backend/models/index.js` :

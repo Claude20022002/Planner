@@ -51,7 +51,7 @@ sequenceDiagram
 - Existing unit, integration, native, and Playwright suites: regressions.
 
 ## 6. Data and migration
-Migration `0080-jeux-solutions.js` creates `JeuxEtatsDefis`, uniquely keyed by user/game/challenge, with failure count and nullable first-view timestamp. It adds `avec_solution` (default false) to `JeuxProgressions`. All writes for one challenge serialize using the state row. Existing data is preserved. Module owner: QJE. Use the current establishment's model connection for transactions.
+Migration `0082-jeux-solutions.js` creates `JeuxEtatsDefis`, uniquely keyed by user/game/challenge, with failure count and nullable first-view timestamp. It adds `avec_solution` (default false) to `JeuxProgressions`. All writes for one challenge serialize using the state row. Existing data is preserved. Module owner: QJE. Use the current establishment's model connection for transactions.
 
 ## 7. API and security
 `POST /api/jeux/:code/defis/:idDefi/solution` accepts an empty body and returns `{ reponse, echecs, solution_vue, sans_points }`. Reference answers stay in a backend-only registry and are tested against the engines. No answer is returned before persistence succeeds. Anonymous solution requests return 401 via a narrowly scoped pre-CSRF authentication guard; cookie authentication still requires CSRF. Revoked module access returns 403. Invalid fields return 400; unknown game/challenge returns 404.
