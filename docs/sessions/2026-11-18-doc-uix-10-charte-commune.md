@@ -13,7 +13,7 @@
 
 ## Plan
 
-[docs/conception/interface/uix-10-charte-commune.md](../conception/interface/uix-10-charte-commune.md), **à valider par le chef**.
+[docs/conception/interface/uix-10-charte-commune.md](../conception/interface/uix-10-charte-commune.md), **validé par le chef le 18 nov.**, questions 9 et 10 comprises.
 
 En bref : une source `shared/charte/jetons.json` ; un générateur sans dépendance (`generer.mjs`, avec `--verifier` en CI) qui écrit le `jetons.css` du site, un guide Markdown et un `charte.css` dans StudyLib et le quiz, protégé par une empreinte ; le web et le mobile lisent `shared/charte/index.js`. Sombre dérivé, accent « jeu » jaune, panneau gardé aux couleurs de la charte, choix de famille de thème retiré, couleurs de l'école prioritaires. Sept fonctions : UIX-10a (source) → 10b (web) → 10c (logos, attend les SVG) · 10d (mobile) · 10e (jeux) → 10f (StudyLib) · 10g (quiz, MPL 2.0).
 
@@ -35,18 +35,18 @@ En bref : une source `shared/charte/jetons.json` ; un générateur sans dépenda
 | N° | Question | Réponse | État |
 |---|---|---|---|
 | 1 à 8 | Logo, accent des jeux, guide, panneau, choix de famille, diffusion vers les dépôts voisins, sombre, couleurs de l'école | chef, 18 nov. : chaque proposition retenue (plan, § 3) | répondues |
-| 9 | En-tête SPDX du `charte.css` du quiz recopié depuis `theme.css` du fork | à confirmer par le chef avec le plan | en attente |
-| 10 | Inter servie par le quiz (`@fontsource-variable/inter` 5.3.0) au lieu de Barlow par Google Fonts | à confirmer par le chef avec le plan | en attente |
+| 9 | En-tête SPDX du `charte.css` du quiz recopié depuis `theme.css` du fork | oui (chef, 18 nov., avec le plan) | répondue |
+| 10 | Inter servie par le quiz (`@fontsource-variable/inter` 5.3.0) au lieu de Barlow par Google Fonts | oui (chef, 18 nov., avec le plan) | répondue |
 
 ## État laissé
 
-- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : UIX-10 → plan écrit sur `doc/uix-10-charte-commune` (`30edc8af`), à valider par le chef.
+- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : UIX-10 → **plan validé par le chef le 18 nov.** (`doc/uix-10-charte-commune`) ; UIX-10a à 10g à inscrire, UIX-10a à faire.
 - `docs/plan/suivi.md` non modifié, comme le demande la mission.
 - La ligne UIX-06a du fichier du module dit encore « PR #185 ouverte » alors qu'elle est fusionnée : hors de mon périmètre, signalé au coordinateur.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef valide le plan (et les questions 9 et 10), puis la ligne « Validé » est remplie.
+1. Fait : plan validé par le chef le 18 nov., ligne « Validé » remplie.
 2. Le coordinateur inscrit UIX-10a à 10g dans `suivi.md` et écrit la mission d'UIX-10a.
 3. UIX-10a, puis UIX-10b après #199 et UIX-09 ; ordre avec UIX-06c réglé par le coordinateur.
 
@@ -65,9 +65,10 @@ accordée par le chef le 18 nov., sur la branche doc/uix-10-charte-commune, dans
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md, la mission docs/plan/missions/uix-10-charte-commune.md,
 le plan docs/conception/interface/uix-10-charte-commune.md et cette fiche (docs/sessions/2026-11-18-doc-uix-10-charte-commune.md).
 Fait : relevé des jetons du site et de l'écart des cinq plateformes ; questions 1 à 8 répondues par le chef
-(toutes les propositions retenues) ; plan commité (30edc8af), ligne du module (9ca3a860).
-Reste : validation du plan par le chef, avec les questions 9 (en-tête SPDX du charte.css du quiz) et 10
-(Inter servie par le quiz) ; ensuite seulement UIX-10a (shared/charte, générateur, contrôle de CI, guide).
+(toutes les propositions retenues) ; plan commité (30edc8af), ligne du module (9ca3a860) ;
+plan validé par le chef le 18 nov., questions 9 et 10 comprises.
+Reste : UIX-10a (shared/charte, générateur, contrôle de CI, guide), sur sa propre branche, d'après le § 9 du plan,
+une fois la mission écrite par le coordinateur.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; StudyLib et ClassQuiz en lecture seule
 tant que leur fonction n'est pas ouverte ; fiche de session à jour en fin de session ; suivi.md non modifié ; jamais de git push.
 ```

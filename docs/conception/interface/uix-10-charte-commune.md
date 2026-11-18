@@ -7,7 +7,7 @@
 | Mission | [uix-10-charte-commune](../../plan/missions/uix-10-charte-commune.md) |
 | Taille | L pour l'ensemble ; sept fonctions, de S à M (§ 9) |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| **Validé** | en attente (le chef valide : plusieurs dépôts, choix de produit) |
+| **Validé** | **par Claude20022002 le 18 novembre 2026** (« Je valide le plan, avec les questions 9 et 10 ») |
 
 ## 1. Objet et critère de « terminé »
 
@@ -67,7 +67,7 @@ Ce qui gêne :
 
 ## 3. Questions et réponses
 
-Posées le 18 nov. ; le chef a retenu chaque proposition.
+Posées le 18 nov. ; le chef a retenu chaque proposition, les questions 9 et 10 avec la validation du plan.
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
@@ -79,8 +79,8 @@ Posées le 18 nov. ; le chef a retenu chaque proposition.
 | 6 | Comment StudyLib et le quiz reçoivent-ils les jetons ? | un script de Planner écrit `charte.css` dans les dépôts voisins, avec version et empreinte ; chaque dépôt le commite ; un test vérifie l'empreinte | **fichier généré, commité, contrôlé**, 18 nov. | UIX-10a |
 | 7 | Le mode sombre ? | un sombre dérivé pour l'application, le mobile, les jeux et le quiz ; le site et StudyLib restent clairs pour l'instant | **sombre dérivé, sauf site et StudyLib**, 18 nov. | UIX-10a |
 | 8 | Les couleurs de l'école (D-21) ? | l'école reste prioritaire dans l'application ; la charte sert de repli : bleu nuit, et un accent dérivé « bleu vif » #3B82D6 ; StudyLib et le quiz : charte seule | **école prioritaire, charte en repli**, 18 nov. | UIX-10b |
-| 9 | En-tête de licence du fichier généré pour le quiz | le générateur recopie les lignes SPDX du fichier voisin `theme.css` du fork ; aucun nom d'école n'est écrit dans Planner (dépôt public, `verifier-neutre`) | à confirmer avec ce plan | UIX-10g |
-| 10 | Police du quiz | Inter servie par le quiz lui-même (`@fontsource-variable/inter` 5.3.0, la version du site), au lieu de Barlow chargée depuis Google Fonts : une dépendance de plus dans le fork, une requête vers Google en moins | à confirmer avec ce plan | UIX-10g |
+| 9 | En-tête de licence du fichier généré pour le quiz | le générateur recopie les lignes SPDX du fichier voisin `theme.css` du fork ; aucun nom d'école n'est écrit dans Planner (dépôt public, `verifier-neutre`) | **oui**, avec la validation du plan, 18 nov. | UIX-10g |
+| 10 | Police du quiz | Inter servie par le quiz lui-même (`@fontsource-variable/inter` 5.3.0, la version du site), au lieu de Barlow chargée depuis Google Fonts : une dépendance de plus dans le fork, une requête vers Google en moins | **oui**, avec la validation du plan, 18 nov. | UIX-10g |
 
 La décision du 18 nov. sur UIX-09 tient en partie : les tuiles de la grille gardent leurs icônes Lucide, et la variante 4 n'y apparaît pas. Seule change sa seconde moitié : l'en-tête de l'application ne garde plus la mosaïque (réponse 1).
 
