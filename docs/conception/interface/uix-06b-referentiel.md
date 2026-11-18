@@ -167,3 +167,5 @@ Aucune fiche UIX-06b ni message dédié trouvé au début de la préparation. PR
 ## 12. Validation du chef
 
 Le 16 novembre, après présentation du plan et des trois propositions, le chef répond « J’autorise ». Identifiant UIX-06b, exception limitée, quatre écrans à fonctions et droits constants, fiches et détails téléphone sont validés. L’accord est committé avant code. Le coordinateur reçoit la notification et le périmètre ; aucune nouvelle consigne dédiée en entrée au contrôle.
+
+Le 18 novembre, le chef valide la correction du § 2 : Groupes présente l’effectif et l’écart avec la somme des sous-groupes (8cc60692).
