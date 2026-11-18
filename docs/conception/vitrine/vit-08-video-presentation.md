@@ -7,7 +7,7 @@
 | Décision d'origine | chef, 18 nov. : motion design aux couleurs du site, sans captures, sous-titres en français et en anglais, sans voix ni musique |
 | Branche | `feat/vit-08-video-presentation`, depuis `origin/main` (`5f053ebf`, UIX-10a fusionnée) |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| **Validé** | en attente (le chef : le message et l'ordre des scènes sont un choix de produit) |
+| **Validé** | **Validé par Claude20022002 le 18 novembre 2026** (« Validé, commence l'étape 2 ») ; questions 5 et 6 : propositions appliquées |
 
 ## 1. Objet et critère de « terminé »
 
