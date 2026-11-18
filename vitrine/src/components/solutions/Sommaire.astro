@@ -1,0 +1,35 @@
+---
+// Sommaire de la page « Solutions », sous l'en-tête de page : un lien vers la section de chaque type
+// d'établissement, en pastilles centrées qui passent à la ligne sur téléphone.
+import { ArrowDown } from 'lucide-react';
+
+interface Props {
+  label: string;
+  liens: { ancre: string; texte: string }[];
+}
+
+const { label, liens } = Astro.props;
+---
+<nav class="sommaire" aria-label={label}>
+  <ul>
+    {liens.map((lien) => (
+      <li>
+        <a href={`#${lien.ancre}`}>
+          <span>{lien.texte}</span>
+          <ArrowDown aria-hidden="true" size={16} strokeWidth={1.75} />
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .sommaire { padding-inline: var(--gouttiere); padding-block-end: var(--espace-5); background: var(--blanc); }
+  ul { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-1) var(--espace-2); max-inline-size: var(--largeur-lecture); margin-inline: auto; }
+  a {
+    display: inline-flex; align-items: center; gap: 0.4rem; min-block-size: 2.75rem; padding: 0.5rem 1.1rem;
+    border: 1px solid var(--gris-trait); border-radius: var(--rayon-pilule);
+    color: var(--bleu-nuit); font-size: var(--texte-petit); font-weight: 600; text-decoration: none;
+  }
+  a:hover { border-color: var(--bleu); color: var(--bleu); }
+</style>

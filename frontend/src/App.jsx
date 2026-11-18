@@ -19,6 +19,7 @@ import VersTableau from './components/espaces/VersTableau';
 import { routesApplications } from './routes/applications';
 import { routesProjection } from './routes/projection';
 import { routesMotDePasse } from './routes/motDePasse';
+import { routesJeux } from './routes/jeux';
 
 // ── Composants de layout critique (jamais lazy — trop fréquents) ──────────
 import PageSkeleton    from './components/common/PageSkeleton';
@@ -43,57 +44,51 @@ const Presence       = lazy(() => import('./pages/Presence'));
 
 // ── Gestion admin (chunk "admin-gestion") ─────────────────────────────────
 // Vite détecte le dossier commun → regroupe automatiquement
-const Utilisateurs       = lazy(() => import('./pages/gestion/Utilisateurs'));
-const Enseignants        = lazy(() => import('./pages/gestion/Enseignants'));
-const Etudiants          = lazy(() => import('./pages/gestion/Etudiants'));
-const Filieres           = lazy(() => import('./pages/gestion/Filieres'));
-const Groupes            = lazy(() => import('./pages/gestion/Groupes'));
-const Salles             = lazy(() => import('./pages/gestion/Salles'));
-const Cours              = lazy(() => import('./pages/gestion/Cours'));
-const Creneaux           = lazy(() => import('./pages/gestion/Creneaux'));
-const Affectations       = lazy(() => import('./pages/gestion/Affectations'));
-const Conflits           = lazy(() => import('./pages/gestion/Conflits'));
-const DemandesReportAdmin= lazy(() => import('./pages/gestion/DemandesReportAdmin'));
-const GenerationAuto     = lazy(() => import('./pages/gestion/GenerationAutomatique'));
-const Campus             = lazy(() => import('./pages/gestion/Campus'));
-const Calendrier         = lazy(() => import('./pages/gestion/Calendrier'));
+const Utilisateurs = lazy(() => import('./pages/gestion/Utilisateurs'));
+const Enseignants = lazy(() => import('./pages/gestion/Enseignants'));
+const Etudiants = lazy(() => import('./pages/gestion/Etudiants'));
+const Filieres = lazy(() => import('./pages/gestion/Filieres'));
+const Groupes = lazy(() => import('./pages/gestion/Groupes'));
+const Salles = lazy(() => import('./pages/gestion/Salles'));
+const Cours = lazy(() => import('./pages/gestion/Cours'));
+const Creneaux = lazy(() => import('./pages/gestion/Creneaux'));
+const Affectations = lazy(() => import('./pages/gestion/Affectations'));
+const Conflits = lazy(() => import('./pages/gestion/Conflits'));
+const DemandesReportAdmin = lazy(() => import('./pages/gestion/DemandesReportAdmin'));
+const GenerationAuto = lazy(() => import('./pages/gestion/GenerationAutomatique'));
+const Campus = lazy(() => import('./pages/gestion/Campus'));
+const Calendrier = lazy(() => import('./pages/gestion/Calendrier'));
 const ParametresPlanning = lazy(() => import('./pages/gestion/ParametresPlanning'));
 const IdentiteEcole      = lazy(() => import('./pages/gestion/IdentiteEcole'));
 const Enseignements      = lazy(() => import('./pages/gestion/Enseignements'));
 
 // ── Emplois du temps (chunk "calendar" — FullCalendar isolé) ─────────────
-const EmploiDuTempsAdmin     = lazy(() => import('./pages/emploi-du-temps/EmploiDuTempsAdmin'));
-const EmploiDuTempsEnseignant= lazy(() => import('./pages/emploi-du-temps/EmploiDuTempsEnseignant'));
-const EmploiDuTempsEtudiant  = lazy(() => import('./pages/emploi-du-temps/EmploiDuTempsEtudiant'));
+const EmploiDuTempsAdmin = lazy(() => import('./pages/emploi-du-temps/EmploiDuTempsAdmin'));
+const EmploiDuTempsEnseignant = lazy(() => import('./pages/emploi-du-temps/EmploiDuTempsEnseignant'));
+const EmploiDuTempsEtudiant = lazy(() => import('./pages/emploi-du-temps/EmploiDuTempsEtudiant'));
 
 // ── Pages partagées ───────────────────────────────────────────────────────
-const Notifications  = lazy(() => import('./pages/Notifications'));
-const Parametres     = lazy(() => import('./pages/Parametres'));
-const Securite       = lazy(() => import('./pages/Securite'));
-const Statistiques   = lazy(() => import('./pages/Statistiques'));
-const MesAffectations= lazy(() => import('./pages/MesAffectations'));
+const Notifications = lazy(() => import('./pages/Notifications'));
+const Parametres = lazy(() => import('./pages/Parametres'));
+const Securite = lazy(() => import('./pages/Securite'));
+const Statistiques = lazy(() => import('./pages/Statistiques'));
+const MesAffectations = lazy(() => import('./pages/MesAffectations'));
 const DemandesReport = lazy(() => import('./pages/DemandesReport'));
 const Disponibilites = lazy(() => import('./pages/Disponibilites'));
-const MesServices    = lazy(() => import('./pages/MesServices'));
-const MesClasses     = lazy(() => import('./pages/MesClasses'));
-const EspaceClasse   = lazy(() => import('./pages/EspaceClasse'));
-const MesCours       = lazy(() => import('./pages/MesCours'));
+const MesServices = lazy(() => import('./pages/MesServices'));
+const MesClasses = lazy(() => import('./pages/MesClasses'));
+const EspaceClasse = lazy(() => import('./pages/EspaceClasse'));
+const MesCours = lazy(() => import('./pages/MesCours'));
 // Phases P4 à P7 : préparation, réservations, examens, imprévus, suivi, EDT mensuel
-const Reservations   = lazy(() => import('./pages/Reservations'));
-const MesExamens     = lazy(() => import('./pages/MesExamens'));
-const EdtMensuel     = lazy(() => import('./pages/EdtMensuel'));
-const Examens        = lazy(() => import('./pages/gestion/Examens'));
-const Imprevus       = lazy(() => import('./pages/gestion/Imprevus'));
-const Suivi          = lazy(() => import('./pages/gestion/Suivi'));
-const Preparation    = lazy(() => import('./pages/gestion/Preparation'));
+const Reservations = lazy(() => import('./pages/Reservations'));
+const MesExamens = lazy(() => import('./pages/MesExamens'));
+const EdtMensuel = lazy(() => import('./pages/EdtMensuel'));
+const Examens = lazy(() => import('./pages/gestion/Examens'));
+const Imprevus = lazy(() => import('./pages/gestion/Imprevus'));
+const Suivi = lazy(() => import('./pages/gestion/Suivi'));
+const Preparation = lazy(() => import('./pages/gestion/Preparation'));
 const SignalementsPresence = lazy(() => import('./pages/gestion/SignalementsPresence'));
 const JournalSecurite = lazy(() => import('./pages/gestion/JournalSecurite'));
-const Jeux           = lazy(() => import('./pages/jeux/AccueilJeux'));
-const JeuTerminal    = lazy(() => import('./pages/jeux/JeuTerminal'));
-const DevoirJouer    = lazy(() => import('./pages/jeux/DevoirJouer'));
-const SessionJeu     = lazy(() => import('./pages/jeux/SessionJeu'));
-const RejoindreJeu   = lazy(() => import('./pages/jeux/RejoindreJeu'));
-const JeuEnDirect    = lazy(() => import('./pages/jeux/JeuEnDirect'));
 // Studio quiz : banque, éditeur et résultats (enseignant) ; rejoindre et passer un quiz (étudiant)
 const MesQuiz        = lazy(() => import('./pages/studio/MesQuiz'));
 const EditeurQuiz    = lazy(() => import('./pages/studio/EditeurQuiz'));
@@ -400,38 +395,7 @@ export default function App() {
               <AppPage><Epreuve /></AppPage>
             </PrivateRoute>
           } />
-          <Route path="/jeux" element={
-            <PrivateRoute requiredRole={['etudiant', 'enseignant']}>
-              <AppPage><Jeux /></AppPage>
-            </PrivateRoute>
-          } />
-          <Route path="/jeux/terminal-linux" element={
-            <PrivateRoute requiredRole={['etudiant', 'enseignant']}>
-              <AppPage><JeuTerminal /></AppPage>
-            </PrivateRoute>
-          } />
-          {/* Sessions de jeu : l'enseignant projette le QR code (/jeux/sessions/:id) ; l'étudiant le
-              scanne (/jeux/session/<code>) et joue, seul ou avec la classe (/jeux/direct/:id) */}
-          <Route path="/jeux/sessions/:id" element={
-            <PrivateRoute requiredRole="enseignant">
-              <AppPage><SessionJeu /></AppPage>
-            </PrivateRoute>
-          } />
-          <Route path="/jeux/session/:code" element={
-            <PrivateRoute requiredRole="etudiant">
-              <AppPage><RejoindreJeu /></AppPage>
-            </PrivateRoute>
-          } />
-          <Route path="/jeux/direct/:id" element={
-            <PrivateRoute requiredRole="etudiant">
-              <AppPage><JeuEnDirect /></AppPage>
-            </PrivateRoute>
-          } />
-          <Route path="/jeux/devoirs/:id" element={
-            <PrivateRoute requiredRole={['etudiant']}>
-              <AppPage><DevoirJouer /></AppPage>
-            </PrivateRoute>
-          } />
+          {routesJeux()}
 
           {/* Ancienne page « Salles disponibles » : la recherche de salle libre se fait dans Réservations */}
           <Route path="/salles-disponibles" element={<Navigate to="/reservations" replace />} />

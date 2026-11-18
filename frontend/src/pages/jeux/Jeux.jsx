@@ -13,22 +13,18 @@ import {
   Link,
   MenuItem,
   Skeleton,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
   TextField,
   Typography,
 } from '@mui/material';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
 import PageHeader from '../../design-system/components/PageHeader';
 import Panneau, { Capitales, LignePanneau } from '../../components/jeux/Panneau';
-import SceneJoueur, { Personnage } from '../../components/jeux/SceneJoueur';
+import SceneJoueur from '../../components/jeux/SceneJoueur';
 import ResultatsQuiz from '../../components/jeux/ResultatsQuiz';
 import ZoneQuizEtDevoirs from '../../components/jeux/ZoneQuizEtDevoirs';
 import PanneauSessions from '../../components/jeux/session/PanneauSessions';
 import LancerJeuDialog from '../../components/jeux/session/LancerJeuDialog';
+import SuiviModuleDialog from '../../components/jeux/session/SuiviModuleDialog';
 import { boutonPanneau, boutonPanneauPlein } from '../../components/jeux/styles';
 import { useAuth } from '../../contexts/AuthContext';
 import { useToast } from '../../contexts/ToastContext';
@@ -254,7 +250,12 @@ export default function Jeux() {
                 lampe={!enseignant && p.reussis > 0 ? ds.board.live : null}
                 action={
                   enseignant ? (
-                    <Button variant="contained" sx={boutonPanneauPlein} onClick={() => setLancement(jeu)}>
+                    <Button
+                      variant="contained"
+                      sx={boutonPanneauPlein}
+                      aria-label={t('sessionsJeu.lancer.titre', { jeu: libelle(jeu.titre, i18n.language) })}
+                      onClick={() => setLancement(jeu)}
+                    >
                       {t('sessionsJeu.lancer.bouton')}
                     </Button>
                   ) : (
@@ -279,10 +280,21 @@ export default function Jeux() {
                   </Capitales>
                 </Box>
                 <Box sx={{ fontSize: '0.75rem', color: ds.board.letterDim, mt: 0.75 }}>
-                  {t('jeux.source', { nom: jeu.source.nom, auteur: jeu.source.auteur, licence: jeu.source.licence })}{' '}
-                  <Link href={jeu.source.url} target="_blank" rel="noopener noreferrer" sx={{ color: ds.board.letter }}>
-                    {t('jeux.voirSource')}
-                  </Link>
+                  {jeu.source ? (
+                    <>
+                      {t('jeux.source', { nom: jeu.source.nom, auteur: jeu.source.auteur, licence: jeu.source.licence })}{' '}
+                      <Link href={jeu.source.url} target="_blank" rel="noopener noreferrer" sx={{ color: ds.board.letter }}>
+                        {t('jeux.voirSource')}
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      {t('simulations.original')}
+                      {jeu.curriculum && (
+                        <> · {t('simulations.curriculum', { discipline: libelle(jeu.curriculum.discipline, i18n.language), niveaux: jeu.curriculum.niveaux.join(', ') })}</>
+                      )}
+                    </>
+                  )}
                 </Box>
               </LignePanneau>
             );
@@ -349,41 +361,7 @@ export default function Jeux() {
         </DialogActions>
       </Dialog>
 
-      <Dialog open={Boolean(suivi)} onClose={() => setSuivi(null)} fullWidth maxWidth="sm">
-        <DialogTitle>{t('jeux.modules.suiviTitre', { module: suivi?.module ? `${suivi.module.code} · ${suivi.module.nom}` : '' })}</DialogTitle>
-        <DialogContent dividers>
-          {suivi?.chargement && <Skeleton variant="rectangular" height={120} />}
-          {suivi?.etudiants && suivi.etudiants.length === 0 && <Typography color="text.secondary">{t('jeux.modules.aucunEtudiant')}</Typography>}
-          {suivi?.etudiants?.length > 0 && (
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  <TableCell>{t('jeux.modules.etudiant')}</TableCell>
-                  <TableCell align="right">{t('jeux.modules.defis')}</TableCell>
-                  <TableCell align="right">{t('jeux.modules.points')}</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {suivi.etudiants.map((e) => (
-                  <TableRow key={e.id_user}>
-                    <TableCell>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <Personnage avatar={e.avatar} idUser={e.id_user} taille={32} />
-                        {e.prenom} {e.nom}
-                      </Box>
-                    </TableCell>
-                    <TableCell align="right">{e.reussis}/{e.total}</TableCell>
-                    <TableCell align="right">{e.points}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          )}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setSuivi(null)}>{t('common.close')}</Button>
-        </DialogActions>
-      </Dialog>
+      <SuiviModuleDialog suivi={suivi} onClose={() => setSuivi(null)} />
     </DashboardLayout>
   );
 }
