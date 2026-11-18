@@ -9,7 +9,7 @@ Le plan court est dans le commit local `8b49b9aa`, seul fichier du commit. Le po
 Le chef a retenu Docker Hub (`claude20022002/planner-vitrine`, une version par commit).
 L’équipe prépare les mentions légales et la page de confidentialité, puis le chef valide les deux textes.
 Le chef a validé `vitrine.finadmintech.fr` pour la vitrine en attendant l’achat du domaine officiel.
-Il fera pointer cette entrée chez OVH vers le serveur Debian. L’application utilise l’hôte prévu par le guide,
+Le 18 novembre, Google Public DNS et Cloudflare ont tous deux renvoyé l’adresse IPv4 du serveur Debian indiquée par le chef pour cet hôte. L’application utilise l’hôte prévu par le guide,
 `planner.finadmintech.fr`. Les trois décisions sont consignées. Le visa du plan complet reste en attente.
 
 Les contrôles de conception ont porté sur le Compose du VPS, le workflow vitrine, le registre du workflow
