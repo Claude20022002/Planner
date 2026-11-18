@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | État | ouverte : plans à écrire, une fonction après l'autre |
-| Agent | agent de Cursor, après le plan de VIT-06. QJE-01 se fait sur Grok 4.7 high (tâche bornée) ; QJE-03 et QJE-06 sur le modèle le plus fort de Cursor (QJE-06 touche le serveur) |
+| Agent | **QJE-01** : agent de Cursor, sur Grok 4.7 high (tâche bornée), dès le 18 nov. à 13 h 44. **QJE-03 et QJE-06** : Codex, sur son modèle le plus fort, après VIT-06 (les modèles Claude ne sont pas dans le forfait Cursor du chef) |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (« exception, maintenant »), suite de sa décision du 20 oct. (« sortir de ClassQuiz au profit du Studio quiz ») |
 | Module et chantier | [QJE](../modules/QJE-quiz-jeux-ia.md) · **exception hors chantier** accordée par le chef le 18 nov. ; EXP, PLA et MOT restent les trois chantiers ouverts |
 | Fonctions | dans cet ordre : **QJE-01**, l'entrée « Quiz » ouvre le Studio et non plus ClassQuiz (`shared/espaces.js`), taille S ; **QJE-03**, un joueur natif dans l'application, taille M ; **QJE-06**, plus aucun conteneur ClassQuiz, taille M |
@@ -28,7 +28,7 @@
 
 À fixer dans chaque plan court, puis à vérifier par le coordinateur. Dans tous les cas, l'agent ne touche pas à **`docs/plan/suivi.md`**, que tient le coordinateur.
 
-## Prompt pour QJE-01, après le plan de VIT-06
+## Prompt pour QJE-01 (déposé dans la boîte de l'agent de Cursor à 13 h 44)
 
 ```text
 Ta mission suivante : QJE-01, première étape de la sortie de ClassQuiz (exception hors chantier accordée par le chef le 18 nov.).

@@ -3,8 +3,8 @@
 | | |
 |---|---|
 | État | ouverte : plan à écrire |
-| Agent | agent de Cursor : il a écrit REL-06 et connaît la surcharge Docker du serveur et Traefik |
-| Modèle recommandé | **le plus fort de Cursor** (Claude Fable 5.2, sinon Opus 5.5) : c'est le serveur de production (décision du chef du 18 nov. : Grok 4.7 high pour les tâches bornées, le plus fort pour le serveur) |
+| Agent | **Codex**, après UIX-09 (réattribuée le 18 nov. à 13 h 45 : les modèles Claude ne sont pas dans le forfait Cursor du chef) |
+| Modèle recommandé | le modèle le plus fort de Codex, avec un raisonnement élevé : c'est le serveur de production |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (« dès qu'il est prêt on le déploie, d'abord sur un sous-domaine ») |
 | Module et chantier | [VIT](../modules/VIT-site-vitrine.md) et [EXP](../modules/EXP-exploitation.md) · le chantier EXP est ouvert ; la mise en ligne est accordée par le chef |
 | Fonction | VIT-06 : servir le site statique `vitrine/` sur un sous-domaine, derrière Traefik, sans toucher à n8n ni à l'application · taille M |
@@ -66,3 +66,4 @@ Rapport « plan prêt, sha … » dans sortie\. Jamais de git push.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 13 h 30 | fiche écrite ; consigne déposée dans la boîte de l'agent de Cursor | — |
+| 2026-11-18 13 h 45 | consigne retirée à l'agent de Cursor (pas de modèle Claude dans le forfait Cursor) ; mission passée à Codex, après UIX-09 | — |
