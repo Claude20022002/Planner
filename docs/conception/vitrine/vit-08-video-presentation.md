@@ -112,9 +112,8 @@ On ne montre ni chiffre de performance ni « Bientôt ». La vidéo sera rendue 
 
 | Fichier | Format | Poids visé |
 |---|---|---|
-| `planner-<langue>-720.webm` | 1280 × 720, VP9, 30 i/s | **≤ 4 Mo** (le fichier lu par défaut) |
-| `planner-<langue>-1080.webm` | 1920 × 1080, VP9 | ≤ 8 Mo (seulement sur un écran de 1280 px ou plus) |
-| `planner-<langue>-720.mp4` | 1280 × 720, H.264 | ≤ 6 Mo (pour un navigateur sans VP9) |
+| `planner-<langue>-1080.webm` | 1920 × 1080, VP9, 30 i/s | ≤ 8 Mo (seulement sur un écran de 1280 px ou plus, si le navigateur lit le VP9) |
+| `planner-<langue>-720.mp4` | 1280 × 720, H.264 | **≤ 6 Mo** (le fichier lu par défaut, question 7) |
 | `planner-<langue>.webp` | image fixe d'attente, 1280 × 720 | ≤ 60 Ko |
 
 Il écrit aussi `vitrine/public/videos/empreinte.json` : l'empreinte des textes `video`, la version des jetons et l'empreinte du logo. Un test du site échoue si les textes, la charte ou le logo ont changé depuis le dernier rendu. Ainsi, une vidéo périmée ne part pas en ligne.
@@ -122,6 +121,7 @@ Il écrit aussi `vitrine/public/videos/empreinte.json` : l'empreinte des textes 
 **Les poids.**
 
 - Pas de MP4 en 1080p : seul un navigateur sans VP9 le lirait, et le 720p lui suffit.
+- Pas de WebM en 720p : le MP4 en 720p est plus léger à netteté égale (question 7).
 - La page ne charge **qu'un fichier**, et seulement quand on arrive à la section.
 
 **Mesurés à l'étape 4** (aperçu du 18 nov., charte version 1, empreinte `a02bbe735eb3e36f`) :
@@ -135,11 +135,9 @@ Il écrit aussi `vitrine/public/videos/empreinte.json` : l'empreinte des textes 
 
 - Total pour deux langues : **14,2 Mo**, au lieu des 25 Mo estimés.
 - **Le CRF du VP9 est passé de 34 à 40.** À 34, le WebM en 720p pesait 2,95 Mo pour la même netteté du texte que 40 (images comparées sur la scène du report).
-- **Le MP4 en 720p est plus léger que le WebM en 720p**, à netteté égale. Quel fichier lire par défaut sur l'accueil se décide à l'étape 5 (question 7 ci-dessous).
+- **Le MP4 en 720p est plus léger que le WebM en 720p**, à netteté égale : d'où la question 7.
 
-**Question 7 (étape 5)** : quel fichier par défaut ?
-- **Proposition** : le MP4 en 720p par défaut (1,5 Mo, lu partout), le WebM en 1080p sur les écrans de 1280 px ou plus.
-- Le WebM en 720p n'aurait alors plus d'usage : on ne le rendrait plus, ce qui retire 4,2 Mo au rendu final.
+**Question 7 : quel fichier par défaut ?** Réponse du chef, le 18 nov. : **le MP4 en 720p** (1,5 Mo, lu partout), et le WebM en 1080p sur les écrans de 1280 px ou plus. Le WebM en 720p n'est plus rendu : le rendu final passe à environ 10 Mo pour deux langues.
 
 **L'image fixe** est une image de la scène 2, la semaine remplie avec l'avis. Le chef peut en choisir une autre à la relecture de l'aperçu.
 
@@ -148,7 +146,7 @@ Il écrit aussi `vitrine/public/videos/empreinte.json` : l'empreinte des textes 
 Un composant `vitrine/src/components/accueil/Video.astro` et son petit script : une `<section>` avec un titre, la vidéo et sa transcription.
 
 - **Rien n'est chargé avant que la section approche** : pas de `src`, `preload="none"`. L'image fixe est une `<img loading="lazy">`. Un `IntersectionObserver` pose la source quand la section approche, en choisissant le fichier :
-  - 1080p ou 720p, d'après la largeur de l'écran ;
+  - le MP4 en 720p par défaut ; le WebM en 1080p sur un écran de 1280 px ou plus, si `canPlayType` dit que le VP9 est lu ;
   - WebM ou MP4, d'après `canPlayType`.
 - **Sans le son** : `muted` et `playsinline`. La vidéo n'a pas de piste audio, puisqu'elle n'a ni voix ni musique.
 - **Mouvement réduit**, économie de données (`navigator.connection.saveData`) ou JavaScript absent : seule l'image fixe s'affiche ; rien ne part seul.

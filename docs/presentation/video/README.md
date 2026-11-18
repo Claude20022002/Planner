@@ -34,9 +34,8 @@ La vidéo d'ensemble de Planner, placée sur l'accueil du site vitrine. Plan val
 Le test du site la recalcule. S'il échoue, la vidéo est périmée : relancer `npm run render:accueil` et commiter les fichiers rendus.
 
 Poids mesurés le 18 nov. pour une langue :
-- WebM 720p : 2,2 Mo ;
 - WebM 1080p : 3,4 Mo ;
-- MP4 720p : 1,5 Mo ;
+- MP4 720p, le fichier lu par défaut : 1,5 Mo ;
 - image fixe : 41 Ko.
 
 Le détail est au § 5 du plan.

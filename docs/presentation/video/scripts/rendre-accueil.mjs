@@ -1,7 +1,7 @@
 /**
  * Rendu de la vidéo de l'accueil du site (VIT-08, plan : docs/conception/vitrine/
- * vit-08-video-presentation.md, § 5). Pour chaque langue : WebM VP9 en 1080p et en 720p, MP4 H.264
- * en 720p, et l'image fixe d'attente en WebP. Vérifie le poids de chaque fichier, puis écrit
+ * vit-08-video-presentation.md, § 5). Pour chaque langue : MP4 H.264 en 720p (le fichier lu par
+ * défaut, question 7 du plan), WebM VP9 en 1080p (grands écrans), et l'image fixe d'attente en WebP. Vérifie le poids de chaque fichier, puis écrit
  * empreinte.json (vitrine/src/components/accueil/empreinteVideo.js).
  *
  *   node scripts/rendre-accueil.mjs               aperçu, dans out/accueil/ (hors du dépôt)
@@ -27,7 +27,6 @@ const MO = 1024 * 1024;
 
 /** Les fichiers d'une langue : nom, arguments de rendu, poids maximal (plan, § 5) */
 const fichiers = (langue) => [
-  { nom: `planner-${langue}-720.webm`, args: ['render', '--codec=vp9', '--crf=40', `--scale=${ECHELLE_720}`], max: 4 * MO },
   { nom: `planner-${langue}-1080.webm`, args: ['render', '--codec=vp9', '--crf=40'], max: 8 * MO },
   { nom: `planner-${langue}-720.mp4`, args: ['render', '--codec=h264', '--crf=28', '--pixel-format=yuv420p', `--scale=${ECHELLE_720}`], max: 6 * MO },
   { nom: `planner-${langue}.webp`, args: ['still', `--frame=${IMAGE_FIXE}`, '--image-format=webp', '--jpeg-quality=80', `--scale=${ECHELLE_720}`], max: 60 * 1024 },
