@@ -8,7 +8,8 @@ Le plan court est dans le commit local `8b49b9aa`, seul fichier du commit. Le po
 `db0e3de7`, qui contient la fusion de #199 et la feuille de route du coordinateur.
 Le chef a retenu Docker Hub (`claude20022002/planner-vitrine`, une version par commit).
 L’équipe prépare les mentions légales et la page de confidentialité, puis le chef valide les deux textes.
-Le nom DNS complet et la validation du plan restent en attente.
+Le chef a choisi `planner.finadmintech.fr` pour la vitrine en attendant l’achat du domaine officiel.
+Le guide de déploiement cite ce même hôte pour l’application. Son affectation actuelle et le visa du plan restent à confirmer.
 
 Les contrôles de conception ont porté sur le Compose du VPS, le workflow vitrine, le registre du workflow
 de publication, les scripts d’exploitation et le HTML produit par les gabarits. Les liens locaux du plan
@@ -25,6 +26,6 @@ gh pr create --base main --head feat/vit-06-mise-en-ligne --title "VIT-06 · Pla
 
 ## Prompt de reprise
 
-Recueillir le nom DNS complet et le visa du chef pour le plan VIT-06. Les reporter sur la branche.
+Confirmer avec le chef l’affectation actuelle de `planner.finadmintech.fr` et le routage de la vitrine, puis recueillir le visa du plan VIT-06.
 Après validation, reprendre UIX-09 selon la feuille de route. Appliquer la consigne du 18 novembre à
 12 h 11, archivée dans la boîte Codex. Le déploiement VIT-06 reste en fin de file et exige les quatre conditions.
