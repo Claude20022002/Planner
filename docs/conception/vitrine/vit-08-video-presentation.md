@@ -106,7 +106,7 @@ On ne montre ni chiffre de performance ni « Bientôt ». La vidéo sera rendue 
 - Elle lit :
   - les jetons dans `shared/charte/jetons.json` ;
   - les textes dans `vitrine/src/i18n/<langue>/accueil.json`, sous la clé `video` ;
-  - le logo dans `vitrine/public/logo/planner-horloge.svg`, copié par le script de rendu.
+  - le logo dans `vitrine/public/logo/planner-horloge.svg`, importé directement : le bundler de Remotion en fait une adresse, sans copie (précisé à l'étape 2). Ses aiguilles tournent par les classes `aiguille-minutes` et `aiguille-heures`, le même contrat que le site.
 
 **Le rendu.** Un script, `scripts/rendre-accueil.mjs`, produit pour chaque langue :
 
@@ -162,7 +162,8 @@ flowchart LR
 |---|---|---|---|
 | `docs/presentation/video/src/accueil/Accueil.tsx` | créé | la composition : enchaîne les neuf scènes, lit la langue | 120 lignes |
 | `docs/presentation/video/src/accueil/charte.ts` | créé | jetons de `jetons.json`, Inter, courbe et durées du site | 60 |
-| `docs/presentation/video/src/accueil/elements/` | créé | cadres d'appareils, logo animé, texte animé, pastille | 80 à 150 chacun |
+| `docs/presentation/video/src/accueil/elements/` | créé | fond (les trois tons du site), apparition, texte animé, cadres d'appareils, logo animé, pastille | 30 à 80 chacun |
+| `docs/presentation/video/src/accueil/Elements.tsx`, `fichiers.d.ts` | créés | banc d'essai des éléments (composition `AccueilElements`, jamais rendue pour le site) ; type des `.svg` importés | 90 ; 5 |
 | `docs/presentation/video/src/accueil/scenes/A1…A9*.tsx` | créé | une scène par fichier | 200 au plus chacune |
 | `docs/presentation/video/src/Root.tsx` | modifié | une ligne : la composition `Accueil` | + 3 |
 | `docs/presentation/video/scripts/rendre-accueil.mjs` | créé | rendu des fichiers du § 5 et de l'empreinte | 120 |

@@ -15,6 +15,7 @@ import { Carrousel, HAUTEUR, LARGEUR, NB_PAGES } from "./carrousel/Carrousel";
 import { Direction, TEMPS_DIRECTION } from "./Direction";
 import { Keynote, TEMPS_KEYNOTE } from "./Keynote";
 import { Matinee, MatineeReseaux, TEMPS_RESEAUX, TEMPS_SALLE, dureeTotale } from "./Matinee";
+import { DUREE_ELEMENTS, Elements } from "./accueil/Elements";
 
 // ─── Timings (en temps à 120 BPM ; 1 temps = 15 images = 0,5 s) ─────────────────────────
 // Chaque coupe tombe sur un temps. Modifier une durée décale les scènes suivantes.
@@ -127,6 +128,8 @@ export const RemotionRoot: React.FC = () => (
     {/* La vidéo de la présentation de 3 minutes, entre deux moments du discours (../discours-keynote.md) */}
     <Composition id="Keynote" component={Keynote} durationInFrames={dureeTotale(TEMPS_KEYNOTE)} fps={FPS} width={1920} height={1080} />
     <Composition id="MatineeReseaux" component={MatineeReseaux} durationInFrames={dureeTotale(TEMPS_RESEAUX)} fps={FPS} width={1080} height={1920} />
+    {/* Vidéo de l'accueil du site (VIT-08) : banc d'essai des éléments, aux couleurs de shared/charte */}
+    <Composition id="AccueilElements" component={Elements} durationInFrames={DUREE_ELEMENTS * FPS} fps={FPS} width={1920} height={1080} />
     {/* Carrousel LinkedIn : une image par page (npm run carrousel) */}
     <Composition id="Carrousel" component={Carrousel} durationInFrames={NB_PAGES} fps={FPS} width={LARGEUR} height={HAUTEUR} />
   </>
