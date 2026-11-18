@@ -72,6 +72,16 @@ Fichier du module mis à jour (`docs/plan/modules/VIT-site-vitrine.md`, « Ce qu
   - le rendu final : il attend les SVG officiels ;
   - la CI : rien n'est poussé.
 
+## Reprise du 18 nov. au soir
+
+- **Étape 6 toujours bloquée** : `vitrine/public/logo/` n'a pas changé depuis UIX-10a (`9462419a`) et `shared/charte/jetons.json` est toujours en version 1. Les SVG officiels ne sont arrivés ni sur la branche ni sur `origin/main`. Aucun rendu lancé.
+- **PR #216** ouverte par le chef : se fusionne sans conflit ; CI verte pour le site, le frontend, le solveur et les scripts (backend, mobile et parcours encore en cours au moment de la lecture).
+- **Essai de fusion avec VIT-07** (#214, fusionnée dans `main`), dans un dossier temporaire supprimé ensuite, sans rien commiter :
+  - seul fichier touché des deux côtés : `docs/plan/modules/VIT-site-vitrine.md`, fusion automatique ;
+  - 61 tests unitaires du site : 59 réussis, 2 sautés (empreinte et poids, attendus) ;
+  - construction de 34 pages ; `verifier-neutre` propre.
+- **Question 8** : VIT-07 est fusionnée et a modifié `EnTete.astro`. La proposition (corriger le contraste dans VIT-09) peut donc s'appliquer dès maintenant.
+
 ## Écarts avec le plan
 
 - **Le logo** est importé directement depuis `vitrine/public/logo/` (le bundler en fait une adresse), au lieu d'être copié par le script. Une seule source ; écrit au § 5 du plan.
@@ -88,7 +98,7 @@ Fichier du module mis à jour (`docs/plan/modules/VIT-site-vitrine.md`, « Ce qu
 |---|---|---|---|
 | 1 à 4, 7 | voir le plan, § 3 et § 5 | chef, 18 nov. | closes |
 | 5, 6 | fin sans adresse ; vidéo française sur la page arabe | propositions appliquées | closes |
-| 8 | Qui corrige le contraste de l'en-tête au-dessus des sections sombres ? Correctif simple : fond de l'en-tête à 90 % ou plus, ou lien de langue en `encre`. Le socle a été écrit par Claude de VS Code (VIT-01, UIX-10a), mais l'agent de Cursor modifie `EnTete.astro` pour VIT-07 | — | **ouverte, pour le coordinateur** (proposition : après la fusion de VIT-07, dans VIT-09) |
+| 8 | Qui corrige le contraste de l'en-tête au-dessus des sections sombres ? Correctif simple : fond de l'en-tête à 90 % ou plus, ou lien de langue en `encre`. Le socle a été écrit par Claude de VS Code (VIT-01, UIX-10a), mais l'agent de Cursor modifie `EnTete.astro` pour VIT-07 | — | **ouverte, pour le coordinateur** (proposition : dans VIT-09 ; VIT-07 est fusionnée depuis #214) |
 | 9 | VIT-10 (pages par rôle, menu Solutions, pied de page : agent de Cursor) et VIT-11 (catalogue des fonctionnalités et FAQ : Codex), demandés par le chef après lecture du site d'OpenEduCat. Messages déposés le 18 nov. à 17 h 55 dans `boites\cursor\entree\` et `boites\codex\entree\` | — | **ouverte, pour le coordinateur** : inscrire dans la feuille de route, écrire les fiches |
 | 10 | Le chef accepte d'ajouter à **VIT-09** une grille des sept applications et une bande de chiffres vrais sur l'accueil (7 applications, 10 types de questions, QR code renouvelé toutes les 30 s) | oui, chef, 18 nov. | à inscrire dans la fiche de VIT-09 par le coordinateur |
 
