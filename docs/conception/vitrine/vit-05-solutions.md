@@ -7,7 +7,7 @@
 | Plan du site | `docs/conception/vitrine/vit-vitrine.md`, § 3 et § 3 bis (branche `doc/coordination-equipe`) |
 | Branche | `feat/vit-05-solutions`, depuis `origin/main` (`f28eff4e`) |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
-| **Validé** | en attente : choix de produit, validé par le chef seul |
+| **Validé** | **Validé par Claude20022002 le 18 novembre 2026** (« Validé », titres et points du § 4 compris) |
 
 ## 1. Objet et critère de « terminé »
 
