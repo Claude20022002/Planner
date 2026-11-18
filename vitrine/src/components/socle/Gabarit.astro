@@ -1,7 +1,8 @@
 ---
 // Gabarit de toute page du site vitrine : <html> avec langue et sens d'écriture, en-tête de la page
 // (titre, description, langues alternatives, icône), lien d'évitement, en-tête, pied et animations.
-// Une langue pas encore publiée (l'arabe avant UIX-04) est construite mais non indexée.
+// Une langue pas encore publiée (l'arabe avant UIX-04) est construite mais non indexée. Les liens
+// hreflang demandent des adresses complètes : ils n'apparaissent qu'une fois `site` réglé (Q-11).
 import '@fontsource-variable/inter';
 import '../../styles/jetons.css';
 import '../../styles/base.css';
@@ -28,7 +29,7 @@ const t = traductions(langue, 'commun');
     <title>{titre}</title>
     <meta name="description" content={description} />
     {!estPubliee(langue) && <meta name="robots" content="noindex" />}
-    {LANGUES_PUBLIEES.map((l) => <link rel="alternate" hreflang={l} href={chemin(l, page)} />)}
+    {Astro.site && LANGUES_PUBLIEES.map((l) => <link rel="alternate" hreflang={l} href={new URL(chemin(l, page), Astro.site).href} />)}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#FFFFFF" />
     <script is:inline>

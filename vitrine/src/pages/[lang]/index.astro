@@ -1,7 +1,14 @@
 ---
-// Page d'accueil, dans chaque langue : assemble les sections de src/components/accueil/.
+// Page d'accueil, dans chaque langue : assemble les huit sections de src/components/accueil/.
 import Gabarit from '../../components/socle/Gabarit.astro';
 import Ouverture from '../../components/accueil/Ouverture.astro';
+import EmploiDuTemps from '../../components/accueil/EmploiDuTemps.astro';
+import Appel from '../../components/accueil/Appel.astro';
+import QuizJeux from '../../components/accueil/QuizJeux.astro';
+import Report from '../../components/accueil/Report.astro';
+import Donnees from '../../components/accueil/Donnees.astro';
+import Bientot from '../../components/accueil/Bientot.astro';
+import Contact from '../../components/accueil/Contact.astro';
 import { traductions } from '../../i18n/index.js';
 import { LANGUES } from '../../i18n/langues.js';
 
@@ -12,4 +19,11 @@ const t = traductions(lang, 'accueil');
 ---
 <Gabarit langue={lang} page="accueil" titre={t('meta.titre')} description={t('meta.description')}>
   <Ouverture t={t} />
+  <EmploiDuTemps t={t} langue={lang} />
+  <Appel t={t} langue={lang} />
+  <QuizJeux t={t} langue={lang} />
+  <Report t={t} />
+  <Donnees t={t} langue={lang} />
+  <Bientot t={t} langue={lang} />
+  <Contact t={t} />
 </Gabarit>

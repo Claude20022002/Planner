@@ -17,17 +17,52 @@
     "lien": "Learn more about timetables",
     "illustration": {
       "label": "Example week built by Planner, with one unplaced session and its reason",
-      "jours": ["Mon", "Tue", "Wed", "Thu", "Fri"],
-      "heures": ["08:30", "10:30", "14:00", "16:00"],
+      "jours": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "heures": [
+        "08:30",
+        "10:30",
+        "14:00",
+        "16:00"
+      ],
       "seances": [
-        { "titre": "Mathematics", "lieu": "Lecture · Hall A" },
-        { "titre": "Physics", "lieu": "Tutorial · Room B12" },
-        { "titre": "English", "lieu": "Tutorial · Room C04" },
-        { "titre": "Computing", "lieu": "Lab · Lab 2" },
-        { "titre": "Economics", "lieu": "Lecture · Hall B" },
-        { "titre": "Chemistry", "lieu": "Lab · Lab 1" },
-        { "titre": "Mathematics", "lieu": "Tutorial · Room B12" },
-        { "titre": "Project", "lieu": "Room C10" }
+        {
+          "titre": "Mathematics",
+          "lieu": "Lecture · Hall A"
+        },
+        {
+          "titre": "Physics",
+          "lieu": "Tutorial · Room B12"
+        },
+        {
+          "titre": "English",
+          "lieu": "Tutorial · Room C04"
+        },
+        {
+          "titre": "Computing",
+          "lieu": "Lab · Lab 2"
+        },
+        {
+          "titre": "Economics",
+          "lieu": "Lecture · Hall B"
+        },
+        {
+          "titre": "Chemistry",
+          "lieu": "Lab · Lab 1"
+        },
+        {
+          "titre": "Mathematics",
+          "lieu": "Tutorial · Room B12"
+        },
+        {
+          "titre": "Project",
+          "lieu": "Room C10"
+        }
       ],
       "alerte": {
         "titre": "Session not placed",
@@ -52,12 +87,18 @@
     "surtitre": "Quizzes and games",
     "titre": "Live quizzes. Games for revision.",
     "texte": "Ten question types, images and videos, quizzes run live or as homework. Teachers can also offer games to their classes.",
+    "lien": "Learn more about quizzes and games",
     "illustration": {
       "label": "Live quiz question on a phone",
       "titre": "Live quiz",
       "minuteur": "12 s",
       "question": "What is the derivative of x²?",
-      "reponses": ["2x", "x²", "2", "x / 2"],
+      "reponses": [
+        "2x",
+        "x²",
+        "2",
+        "x / 2"
+      ],
       "participants": "24 answers"
     }
   },
@@ -66,10 +107,22 @@
     "titre": "A change, tracked from start to finish.",
     "texte": "Every step is visible to the people it concerns. Students learn about the change before they travel.",
     "etapes": [
-      { "titre": "Request", "texte": "The teacher asks to move their session." },
-      { "titre": "Approval", "texte": "The registrar accepts the new slot." },
-      { "titre": "Notified", "texte": "The students concerned receive a notification." },
-      { "titre": "Published", "texte": "The timetable is up to date for everyone." }
+      {
+        "titre": "Request",
+        "texte": "The teacher asks to move their session."
+      },
+      {
+        "titre": "Approval",
+        "texte": "The registrar accepts the new slot."
+      },
+      {
+        "titre": "Notified",
+        "texte": "The students concerned receive a notification."
+      },
+      {
+        "titre": "Published",
+        "texte": "The timetable is up to date for everyone."
+      }
     ]
   },
   "donnees": {
@@ -78,9 +131,18 @@
     "texte": "Access follows each person's role in the school.",
     "lien": "Learn more about security",
     "points": [
-      { "titre": "Two-factor authentication", "texte": "A second code protects the accounts that turn it on." },
-      { "titre": "Role-based access", "texte": "Student, teacher, registrar: each opens only what their role allows." },
-      { "titre": "AI without student data", "texte": "The AI never receives student data, and teachers review what it suggests." }
+      {
+        "titre": "Two-factor authentication",
+        "texte": "A second code protects the accounts that turn it on."
+      },
+      {
+        "titre": "Role-based access",
+        "texte": "Student, teacher, registrar: each opens only what their role allows."
+      },
+      {
+        "titre": "AI without student data",
+        "texte": "The AI never receives student data, and teachers review what it suggests."
+      }
     ]
   },
   "bientot": {
@@ -90,9 +152,18 @@
     "badge": "Coming soon",
     "lien": "See everything that is coming",
     "modules": [
-      { "titre": "Student life", "texte": "Absences, lateness and student follow-up." },
-      { "titre": "Families", "texte": "A space for parents." },
-      { "titre": "Tuition fees", "texte": "Enrolment, due dates and payments." }
+      {
+        "titre": "Student life",
+        "texte": "Absences, lateness and student follow-up."
+      },
+      {
+        "titre": "Families",
+        "texte": "A space for parents."
+      },
+      {
+        "titre": "Tuition fees",
+        "texte": "Enrolment, due dates and payments."
+      }
     ]
   },
   "contact": {

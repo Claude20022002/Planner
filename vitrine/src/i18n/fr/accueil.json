@@ -17,17 +17,52 @@
     "lien": "En savoir plus sur l'emploi du temps",
     "illustration": {
       "label": "Exemple de semaine calculée par Planner, avec une séance non placée et sa raison",
-      "jours": ["Lun", "Mar", "Mer", "Jeu", "Ven"],
-      "heures": ["08:30", "10:30", "14:00", "16:00"],
+      "jours": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Jeu",
+        "Ven"
+      ],
+      "heures": [
+        "08:30",
+        "10:30",
+        "14:00",
+        "16:00"
+      ],
       "seances": [
-        { "titre": "Mathématiques", "lieu": "CM · Amphi A" },
-        { "titre": "Physique", "lieu": "TD · Salle B12" },
-        { "titre": "Anglais", "lieu": "TD · Salle C04" },
-        { "titre": "Informatique", "lieu": "TP · Labo 2" },
-        { "titre": "Économie", "lieu": "CM · Amphi B" },
-        { "titre": "Chimie", "lieu": "TP · Labo 1" },
-        { "titre": "Mathématiques", "lieu": "TD · Salle B12" },
-        { "titre": "Projet", "lieu": "Salle C10" }
+        {
+          "titre": "Mathématiques",
+          "lieu": "CM · Amphi A"
+        },
+        {
+          "titre": "Physique",
+          "lieu": "TD · Salle B12"
+        },
+        {
+          "titre": "Anglais",
+          "lieu": "TD · Salle C04"
+        },
+        {
+          "titre": "Informatique",
+          "lieu": "TP · Labo 2"
+        },
+        {
+          "titre": "Économie",
+          "lieu": "CM · Amphi B"
+        },
+        {
+          "titre": "Chimie",
+          "lieu": "TP · Labo 1"
+        },
+        {
+          "titre": "Mathématiques",
+          "lieu": "TD · Salle B12"
+        },
+        {
+          "titre": "Projet",
+          "lieu": "Salle C10"
+        }
       ],
       "alerte": {
         "titre": "Séance non placée",
@@ -52,12 +87,18 @@
     "surtitre": "Quiz et jeux",
     "titre": "Des quiz en direct. Des jeux pour réviser.",
     "texte": "Dix types de questions, des images et des vidéos, des quiz en direct ou en devoir. L'enseignant propose aussi des jeux à ses classes.",
+    "lien": "En savoir plus sur les quiz et les jeux",
     "illustration": {
       "label": "Question d'un quiz en direct sur un téléphone",
       "titre": "Quiz en direct",
       "minuteur": "12 s",
       "question": "Quelle est la dérivée de x² ?",
-      "reponses": ["2x", "x²", "2", "x / 2"],
+      "reponses": [
+        "2x",
+        "x²",
+        "2",
+        "x / 2"
+      ],
       "participants": "24 réponses"
     }
   },
@@ -66,10 +107,22 @@
     "titre": "Un report, suivi de bout en bout.",
     "texte": "Chaque étape est visible par ceux qu'elle concerne. Les étudiants apprennent le changement avant de se déplacer.",
     "etapes": [
-      { "titre": "Demande", "texte": "L'enseignant propose de déplacer sa séance." },
-      { "titre": "Validation", "texte": "La scolarité accepte le nouveau créneau." },
-      { "titre": "Prévenus", "texte": "Les étudiants concernés reçoivent une notification." },
-      { "titre": "Publié", "texte": "L'emploi du temps est à jour pour tous." }
+      {
+        "titre": "Demande",
+        "texte": "L'enseignant propose de déplacer sa séance."
+      },
+      {
+        "titre": "Validation",
+        "texte": "La scolarité accepte le nouveau créneau."
+      },
+      {
+        "titre": "Prévenus",
+        "texte": "Les étudiants concernés reçoivent une notification."
+      },
+      {
+        "titre": "Publié",
+        "texte": "L'emploi du temps est à jour pour tous."
+      }
     ]
   },
   "donnees": {
@@ -78,9 +131,18 @@
     "texte": "Les accès suivent le rôle de chaque personne dans l'établissement.",
     "lien": "En savoir plus sur la sécurité",
     "points": [
-      { "titre": "Double authentification", "texte": "Un second code protège les comptes qui l'activent." },
-      { "titre": "Accès par rôle", "texte": "Étudiant, enseignant, scolarité : chacun n'ouvre que ce que son rôle permet." },
-      { "titre": "Une IA sans données d'élève", "texte": "L'IA ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose." }
+      {
+        "titre": "Double authentification",
+        "texte": "Un second code protège les comptes qui l'activent."
+      },
+      {
+        "titre": "Accès par rôle",
+        "texte": "Étudiant, enseignant, scolarité : chacun n'ouvre que ce que son rôle permet."
+      },
+      {
+        "titre": "Une IA sans données d'élève",
+        "texte": "L'IA ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose."
+      }
     ]
   },
   "bientot": {
@@ -90,9 +152,18 @@
     "badge": "Bientôt",
     "lien": "Voir tout ce qui arrive",
     "modules": [
-      { "titre": "Vie scolaire", "texte": "Absences, retards et suivi des élèves." },
-      { "titre": "Familles", "texte": "Un espace pour les parents." },
-      { "titre": "Frais de scolarité", "texte": "Inscriptions, échéances et paiements." }
+      {
+        "titre": "Vie scolaire",
+        "texte": "Absences, retards et suivi des élèves."
+      },
+      {
+        "titre": "Familles",
+        "texte": "Un espace pour les parents."
+      },
+      {
+        "titre": "Frais de scolarité",
+        "texte": "Inscriptions, échéances et paiements."
+      }
     ]
   },
   "contact": {
