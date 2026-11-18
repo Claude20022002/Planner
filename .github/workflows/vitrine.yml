@@ -6,10 +6,10 @@ name: Site vitrine
 on:
   push:
     branches: [main]
-    paths: ["vitrine/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml"]
+    paths: ["vitrine/**", "shared/charte/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml"]
   pull_request:
     branches: [main]
-    paths: ["vitrine/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml"]
+    paths: ["vitrine/**", "shared/charte/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml"]
 
 concurrency:
   group: vitrine-${{ github.ref }}
