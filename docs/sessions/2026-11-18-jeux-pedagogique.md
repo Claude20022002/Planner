@@ -208,9 +208,21 @@ sans CI, et la migration portait `0080`, déjà pris par MOT-13 (`0080-contraint
 en CI, dans le travail « Test Backend » (`npm run test:integration` contre `mysql:8.4.13`, base
 `hestim_test`), et c'est cette CI qui doit être verte avant la relecture.
 
+### CI de la PR #196
+
+Trois passages ont été nécessaires, tous consignés ici.
+
+| Passage | Résultat | Ce qui a été corrigé |
+|---|---|---|
+| 1 | « Test Backend » en échec : 3 attentes de `tests/integration/simulations.test.js` | un étudiant reçoit 403 avant même la recherche du jeu (404 attendu à tort) ; trois essais simultanés reviennent dans un ordre non garanti ; `robot-01` garde l'échec de l'essai raté (1, et non 0) |
+| 2 | « Parcours de démonstration » en échec : `tests/parcours/sessionsJeu.spec.cjs` | le catalogue contient onze jeux, donc onze boutons « Lancer en classe » ; le bouton porte désormais le nom du jeu (`aria-label`) et le parcours vise « Terminal Linux » |
+| 3 | **six contrôles verts** | — |
+
+Troisième passage : Build Frontend 40 s, Test Backend 6 min 25 (intégration et banc compris), Test Mobile 1 min 19,
+Test Solveur 57 s, Scripts d'exploitation 14 s, Parcours de démonstration 15 min 53. La PR est `CLEAN`.
+
 ### Reste à faire, dans l'ordre (remplace la liste du matin)
 
-1. Pousser `jeux-pedagogique` et suivre les six contrôles de la PR #196, intégration comprise.
-2. Relecture par le coordinateur, puis validation de la migration 0082 par le chef avant la fusion.
-3. À la mise en production : appliquer 0082 **avant** le serveur et les clients mis à jour.
-4. Recette : parcours « trois échecs → voir la solution → réussite à 0 point » et suivi enseignant.
+1. Relecture par le coordinateur, puis validation de la migration 0082 par le chef avant la fusion.
+2. À la mise en production : appliquer 0082 **avant** le serveur et les clients mis à jour.
+3. Recette : parcours « trois échecs → voir la solution → réussite à 0 point » et suivi enseignant.

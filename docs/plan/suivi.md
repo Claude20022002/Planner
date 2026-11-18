@@ -17,7 +17,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
-| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | ouvert pour QJE-04 seule ; corrections d'Alexis (B-1, B-2, I-1) en PR #196, `main` fusionnée et migration renumérotée en 0082 le 18 nov. ; CI à obtenir |
+| [QJE](modules/QJE-quiz-jeux-ia.md) | 10 nov. 2026, **exception** à la limite | QJE-04 | 1 | ouvert pour QJE-04 seule ; corrections d'Alexis (B-1, B-2, I-1) en PR #196, `main` fusionnée et migration renumérotée en 0082 le 18 nov., **six contrôles verts** |
 
 ### Fermés
 
@@ -151,7 +151,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | à faire |  |
 | [QJE-02](modules/QJE-quiz-jeux-ia.md) | Import des formats GIFT et Moodle XML dans le Studio | libre | M | à faire |  |
 | [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | libre | M | à faire |  |
-| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | en cours : corrections B-1, B-2, I-1 poussées dans `jeux-pedagogique` (PR #196), `main` fusionnée et migration renumérotée en 0082 le 18 nov. ; CI verte à obtenir, puis relecture et validation de la migration par le chef | `jeux-pedagogique` (Alexis) |
+| [QJE-04](modules/QJE-quiz-jeux-ia.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | **six contrôles verts le 18 nov.** (dont l'intégration et les parcours), `main` fusionnée et migration renumérotée en 0082 ; relecture du coordinateur, puis validation de la migration par le chef avant la fusion | `jeux-pedagogique` (Alexis) |
 | [QJE-05](modules/QJE-quiz-jeux-ia.md) | Service des jeux à part, avec des gabarits | libre | L + M + M | à faire |  |
 | [QJE-06](modules/QJE-quiz-jeux-ia.md) | Sortie complète de ClassQuiz | libre | M | à faire |  |
 | [QJE-07](modules/QJE-quiz-jeux-ia.md) | Fournisseur d'IA en production | libre | M | à faire |  |
