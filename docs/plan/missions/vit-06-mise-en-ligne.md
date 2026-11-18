@@ -25,7 +25,7 @@
 8. **Les pages par rôle**, le menu « Solutions » ouvrant et le pied de page complet ([VIT-10](vit-10-pages-par-role.md), agent de Cursor). Ajoutée par le chef le 18 nov. vers 18 h 35.
 9. **Le catalogue des fonctionnalités et la FAQ** ([VIT-11](vit-11-catalogue-faq.md), Codex). Ajoutée par le chef le 18 nov. vers 18 h 35.
 
-10. **Les ajouts d'après le site d'OpenEduCat** : « avant → avec » et FAQ des pages par rôle ([VIT-10b](vit-10b-avant-avec-faq.md)), « Pourquoi Planner » et les fonctionnalités par type d'établissement ([VIT-13](vit-13-pourquoi-et-types.md)), le méga-menu « Fonctions » ([VIT-11](vit-11-catalogue-faq.md)). Ajoutée par le chef le 18 nov. vers 20 h 55.
+10. **Les ajouts d'après le site d'OpenEduCat** : « avant → avec » et FAQ des pages par rôle ([VIT-10b](vit-10b-avant-avec-faq.md)), « Pourquoi Planner » et les fonctionnalités par type d'établissement ([VIT-13](vit-13-pourquoi-et-types.md)), le méga-menu « Fonctions » ([VIT-11](vit-11-catalogue-faq.md)), le comparatif ([VIT-14](vit-14-comparatif.md)), une page par module ([VIT-15](vit-15-pages-modules.md)), Contact et À propos ([VIT-16](vit-16-contact-a-propos.md)), les logos illustrés et les icônes vivantes (VIT-09a). Ajoutée par le chef le 18 nov. vers 20 h 55, élargie vers 21 h 15.
 
 Le plan peut s'écrire et se valider maintenant. Le déploiement attend les dix conditions.
 

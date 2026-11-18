@@ -131,6 +131,63 @@ Sont écartés, faute de rien de vrai pour les remplir : la bande de chiffres, l
 | Agent de Cursor | #219 ; VIT-10b ; VIT-13 ; puis QJE-15 ; l'audit, le 27 nov. ou après |
 | Nouvelle session Claude | VIT-12, les pages légales |
 
+## 21 h 20 : le site d'après OpenEduCat, suite, et les prompts des sessions Claude
+
+Le relevé des chemins d'OpenEduCat est dans [11-chemins-site-openeducat.md](../etude-marche/11-chemins-site-openeducat.md). Décisions du chef :
+- [VIT-14](../plan/missions/vit-14-comparatif.md) : un comparatif par approche, sans nommer de concurrent ;
+- [VIT-15](../plan/missions/vit-15-pages-modules.md) : une page par module, avec le bloc « selon votre équipement » ;
+- [VIT-16](../plan/missions/vit-16-contact-a-propos.md) : les pages Contact et À propos ;
+- de vrais logos illustrés et des icônes vivantes (VIT-09a) ;
+- une [expertise](../plan/missions/expertise-site-vitrine.md) du site par une nouvelle session ;
+- les études de cas viendront plus tard.
+
+Côté fusions : #212, #213 et #217 sont fusionnées. #219 et #220 sont vertes, mais pas encore fusionnées. #216 est à corriger.
+
+### Prompt 1 · Claude de VS Code (la session de la charte)
+
+```text
+Le coordinateur relaie les décisions du chef du 18 nov. (21 h 15). Ta file, dans l'ordre :
+1) #216 (VIT-08) : corrige avant tout. a) EP-18 : la scène de l'appel (« Le QR code change toutes les 30 secondes »),
+   la description de l'accueil et la section « Appel » de accueil.json ne montrent que le QR code ; dis aussi l'appel à la main
+   (présent, en retard, absent). b) La scène du mobile montre l'onglet « Activités », masqué dans l'application (href: null) :
+   montre les onglets visibles. Puis refais le rendu final (les logos officiels sont posés), commite les vidéos, rapport au chef.
+2) VIT-09a, nouvelle (docs/plan/missions/vit-09-illustrations.md, ligne de suivi du 18 nov. 21 h 20) : la bibliothèque de
+   vrais logos illustrés, un par module (multicolores, en léger volume, charte v2, SVG, lisibles de 24 à 96 px, clair et sombre ;
+   inspirés d'OpenEduCat et d'Apple sans rien copier), et d'icônes vivantes pour les boutons et les liens (animées au survol
+   et au focus, coupées si moins de mouvement est demandé). Source unique (shared/), sans toucher les pages. Plan court au chef,
+   avec la question : l'application les prend-elle aussi avec UIX-10b ?
+3) VIT-09b, en dernier sur le site (après VIT-10b, VIT-11, VIT-12, VIT-16, VIT-13, VIT-14, VIT-15) : illustrations, captures
+   neutres montrées au chef, première section de chaque page, logos et icônes posés partout.
+4) Puis UIX-10b, UIX-11, UIX-06c, QJE-14 (plan), l'étude StudyLib, UIX-10d.
+Fiches et feuille de route sur doc/coordination-equipe. Ne modifie pas docs/plan/suivi.md. Fiche de session à jour ; jamais de git push.
+```
+
+### Prompt 2 · nouvelle session Claude : pages légales, Contact et À propos
+
+```text
+Tu travailles sur Planner. Tes missions : VIT-12 (mentions légales et confidentialité du site vitrine), puis VIT-16 (page Contact
+complète et page À propos), conditions 2 et 10 de sa mise en ligne. Lis AGENTS.md, docs/plan/README.md (EP-5, EP-13, EP-18),
+docs/conception/vitrine/vit-vitrine.md (§ 2), docs/etude-marche/11-chemins-site-openeducat.md (§ 2, leur page Contact),
+puis les fiches docs/plan/missions/vit-12-pages-legales.md et vit-16-contact-a-propos.md (branche doc/coordination-equipe tant qu'elle n'est pas fusionnée).
+Commence par les questions des deux fiches, au chef, par l'outil de questions, chacune avec ta proposition : aucune information
+d'identité ni coordonnée n'est supposée, et le chef dit ce qui peut être publié (le dépôt est public).
+Puis un plan court par mission, avec le texte complet des pages ; commite chacun seul ; le chef valide le plan et chaque texte.
+Le code après la fusion de VIT-10 (#219), une branche par mission depuis origin/main. Pas de formulaire (VIT-02 plus tard).
+Ne modifie pas docs/plan/suivi.md. Fiche de session ; tout est commité ; jamais de git push.
+```
+
+### Prompt 3 · nouvelle session Claude : le comparatif (VIT-14)
+
+Le prompt est dans la fiche [vit-14-comparatif](../plan/missions/vit-14-comparatif.md), § « Prompt à donner à l'agent ».
+
+### Prompt 4 · nouvelle session Claude : l'expertise du site
+
+Le prompt est dans la fiche [expertise-site-vitrine](../plan/missions/expertise-site-vitrine.md), § « Prompt à donner à l'agent ».
+
+### Prompt 5 · nouvelle session Claude : l'étude EP-18
+
+Le prompt est dans la fiche [etude-ep18-faible-equipement](../plan/missions/etude-ep18-faible-equipement.md), § « Prompt à donner à l'agent ».
+
 ## Écarts trouvés
 
 | Écart | Ce qu'il faut |

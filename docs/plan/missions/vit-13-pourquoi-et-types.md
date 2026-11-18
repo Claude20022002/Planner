@@ -32,3 +32,4 @@ Les **logos des modules** (une icône dessinée par app ou module) sont faits pa
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 21 h | fiche écrite, sur la décision du chef | — |
+| 2026-11-18 21 h 20 | **la section « Pourquoi Planner » passe à [VIT-14](vit-14-comparatif.md)**, qui en fait un comparatif par approche (chef) ; VIT-13 ne garde que les fonctionnalités par type d'établissement. Les pages par module sont [VIT-15](vit-15-pages-modules.md) | — |

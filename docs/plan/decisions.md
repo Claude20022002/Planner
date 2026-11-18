@@ -421,3 +421,15 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | Pas de bande de chiffres. Écartés, faute de rien de vrai pour les remplir : témoignages, logos de clients, badges d'avis, nombres d'utilisateurs, blog, essai gratuit, tarifs, fenêtre de discussion | chef et coordinateur |
 | **« Mon compte » et « code source vérifiable » : plus tard.** Le lien vers l'application attend qu'elle soit en ligne sur son domaine (Q-11). La mention du code source attend que le chef choisisse une licence pour le dépôt (README : « à définir ») | chef |
 | *(coordinateur)* Répartition : VIT-10b et VIT-13 à l'agent de Cursor (il tient les pages par rôle et la navigation), avant QJE-15 ; le méga-menu à Codex dans le code de VIT-11 (il tient le registre) ; les logos à Claude de VS Code dans VIT-09. Ordre sur le site : VIT-10, VIT-10b, VIT-11, VIT-12, VIT-13, puis VIT-09 | coordinateur |
+
+**Chef, 18 nov., vers 21 h 15 : le site d'après OpenEduCat, suite** ([relevé de leurs chemins](../etude-marche/11-chemins-site-openeducat.md)) :
+
+| Décision | Par |
+|---|---|
+| **« Pourquoi Planner » devient un comparatif**, **par approche et sans nommer de concurrent** (le tableur et la messagerie, l'ERP généraliste, le LMS seul, le logiciel de vie scolaire), sur l'accueil et une page `/comparer/`. Chaque case est vérifiable et validée par le chef ; ni prix, ni coût estimé ([VIT-14](missions/vit-14-comparatif.md), nouvelle session Claude) | chef, par l'outil de questions |
+| **Les fonctionnalités sont présentées comme des modules adaptables** : une page par module, avec un bloc « selon votre équipement » (sans wifi, sans écran, sans téléphone de l'élève), qui dit ce que le code permet et marque le reste « Bientôt » ([VIT-15](missions/vit-15-pages-modules.md), Codex) | chef |
+| **Une page Contact complète et une page À propos**, sans formulaire avant VIT-02 ([VIT-16](missions/vit-16-contact-a-propos.md), la session de VIT-12). **Les études de cas plus tard**, quand une école accepte d'en publier une | chef |
+| **De vrais logos illustrés pour les modules** (et non de simples icônes), et **des icônes vivantes** sur les boutons et les liens (animées au survol et au focus, coupées si moins de mouvement est demandé) : VIT-09a, Claude de VS Code, juste après la correction de #216 | chef |
+| **Une expertise du site** face à ses promesses et ses objectifs, par une nouvelle session Claude, sans code ([fiche](missions/expertise-site-vitrine.md)) | chef |
+| Toutes ces pages font partie de la **condition 10** de la mise en ligne | chef |
+| *(coordinateur)* VIT-09 est découpée en 09a (bibliothèque de logos et d'icônes, sans toucher les pages, donc sans conflit) et 09b (intégration, en dernier). Écartés d'OpenEduCat : articles, pages par pays, calculateurs, éditions, tarifs | coordinateur |

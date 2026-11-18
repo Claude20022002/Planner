@@ -33,7 +33,7 @@ Les sorties de ClassQuiz (QJE-01, QJE-03, QJE-06) et le Studio « comme Google F
 
 ## Conditions de la mise en ligne du site (VIT-06)
 
-Le site part sur le sous-domaine quand les **dix** sont réunies (les conditions 5 à 10 ont été ajoutées par le chef le 18 nov.). Ordre des fusions sur le site : VIT-07, VIT-10, VIT-10b, VIT-11, VIT-12, VIT-13, puis VIT-09 en dernier :
+Le site part sur le sous-domaine quand les **dix** sont réunies (les conditions 5 à 10 ont été ajoutées par le chef le 18 nov.). Ordre des fusions sur le site : VIT-07, VIT-10, VIT-10b, VIT-11, VIT-12, VIT-16, VIT-13, VIT-14, VIT-15, puis VIT-09b en dernier (VIT-09a, les logos et icônes, peut passer à tout moment : elle ne touche pas les pages) :
 1. l'audit de `vitrine/` et la montée d'Astro, le 27 nov. ou après (file de l'agent de Cursor, n° 3) ;
 2. les mentions légales et la page de confidentialité, dont le texte est décidé par le chef ([VIT-12](missions/vit-12-pages-legales.md), nouvelle session Claude) ;
 3. les SVG officiels des logos, fournis par le chef (#220, logos posés et charte en version 2) ;
@@ -43,7 +43,14 @@ Le site part sur le sous-domaine quand les **dix** sont réunies (les conditions
 7. **les illustrations** sur toutes les pages : dessins en code, quelques captures réelles sans nom d'école ni donnée réelle, première section de chaque page améliorée ([VIT-09](missions/vit-09-illustrations.md), Claude de VS Code, en dernier) ;
 8. **les pages par rôle**, le menu « Solutions » ouvrant et le pied de page complet ([VIT-10](missions/vit-10-pages-par-role.md), agent de Cursor) ;
 9. **le catalogue des fonctionnalités et la FAQ** ([VIT-11](missions/vit-11-catalogue-faq.md), Codex) ;
-10. **les ajouts d'après OpenEduCat** : avant → avec et FAQ par rôle ([VIT-10b](missions/vit-10b-avant-avec-faq.md), agent de Cursor), « Pourquoi Planner » et les fonctionnalités par type d'établissement ([VIT-13](missions/vit-13-pourquoi-et-types.md), agent de Cursor), le méga-menu « Fonctions » (dans VIT-11, Codex), les logos des modules (dans VIT-09).
+10. **les ajouts d'après OpenEduCat** ([relevé du site](../etude-marche/11-chemins-site-openeducat.md)) :
+    - avant → avec et FAQ par rôle ([VIT-10b](missions/vit-10b-avant-avec-faq.md), agent de Cursor) ;
+    - les fonctionnalités par type d'établissement ([VIT-13](missions/vit-13-pourquoi-et-types.md), agent de Cursor) ;
+    - le méga-menu « Fonctions » (dans VIT-11, Codex) ;
+    - « Pourquoi Planner », un comparatif par approche sans nommer de concurrent ([VIT-14](missions/vit-14-comparatif.md), nouvelle session Claude) ;
+    - une page par module, avec un bloc « selon votre équipement » ([VIT-15](missions/vit-15-pages-modules.md), Codex) ;
+    - Contact et À propos ([VIT-16](missions/vit-16-contact-a-propos.md), la session de VIT-12) ;
+    - les logos illustrés et les icônes vivantes (VIT-09a, Claude de VS Code).
 
 Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement parte le jour même.
 
@@ -59,6 +66,7 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | 4 | **VSC-01, modèle de données du scolaire** : conception écrite, #215 ; **à corriger** (`suivi.md` à reprendre de `main`, une section EP-18, l'identifiant national sans supposer le Maroc), puis l'avis des groupes A et B, organisé par le chef | module VSC | chef |
 | 4 bis | **VIT-11, le catalogue des fonctionnalités, la FAQ et le méga-menu « Fonctions » par catégorie** (conditions 9 et 10) : plan validé (#218) ; le méga-menu ajouté par le chef ; le code après la fusion de VIT-10 | [vit-11-catalogue-faq](missions/vit-11-catalogue-faq.md) | chef (fait) ; le méga-menu, au chef dans un complément du plan |
 | 4 ter | **VIT-06, le code, maintenant** (chef, 20 h 35) : image Nginx, en-têtes, CSP, `robots.txt`, publication Docker Hub, service Compose inactif, tests en CI ; avant QJE-03 et avant l'audit du 27 nov. | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef (plan validé) |
+| 4 quater | **VIT-15, une page par module** (condition 10), construite depuis le registre de VIT-11, avec le bloc « selon votre équipement » (sans wifi, sans écran, sans téléphone de l'élève) : après le code de VIT-11 | [vit-15-pages-modules](missions/vit-15-pages-modules.md) | chef |
 | 5 | QJE-03, joueur natif ; puis QJE-06, plus aucun conteneur ClassQuiz (après le transfert vérifié des quiz de l'école pilote) | [sortie-classquiz](missions/sortie-classquiz.md) | chef |
 | 6 | VIT-06, le déploiement, le jour où les dix conditions sont réunies : le chef lance les commandes du serveur | [vit-06-mise-en-ligne](missions/vit-06-mise-en-ligne.md) | chef |
 
@@ -70,7 +78,7 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 | 2 | ~~VIT-07~~ **prête** : #214, CI verte, relue par le coordinateur | [vit-07-contenu-complet](missions/vit-07-contenu-complet.md) | chef (fait) |
 | 2 ter | **VIT-10, pages par rôle, menu « Solutions » ouvrant, pied de page complet** (condition 8) : plan court après la fusion de #214 | [vit-10-pages-par-role](missions/vit-10-pages-par-role.md) | chef |
 | 2 quater | **VIT-10b, avant → avec et FAQ par rôle** (condition 10) : plan court après la fusion de #219 ; chaque phrase validée par le chef | [vit-10b-avant-avec-faq](missions/vit-10b-avant-avec-faq.md) | chef |
-| 2 quinquies | **VIT-13, « Pourquoi Planner » et les fonctionnalités par type d'établissement** (condition 10) : plan court après la fusion de #216 | [vit-13-pourquoi-et-types](missions/vit-13-pourquoi-et-types.md) | chef |
+| 2 quinquies | **VIT-13, les fonctionnalités par type d'établissement** (condition 10 ; « Pourquoi Planner » est passé à VIT-14) : plan court après la fusion de #216 | [vit-13-pourquoi-et-types](missions/vit-13-pourquoi-et-types.md) | chef |
 | 2 sexies | **QJE-15, les jeux rangés par niveau puis par filière**, sur le site et dans l'application (exception hors chantier du chef). Plan court après VIT-10 | [qje-15-jeux-par-niveau](missions/qje-15-jeux-par-niveau.md) | chef |
 | 2 bis | ~~Parcours vers minuit~~ **fait** : #210 fusionnée le 18 nov. | [plan](../conception/qualite/fix-parcours-seance-en-cours.md) | chef (fait) |
 | 3 | **Audit de `vitrine/` et montée d'Astro, le 27 nov. ou après** (pas avant : la règle des deux semaines) : `astro` 7.4.12 et `@astrojs/react` 7.1.9, exceptions de `vitrine/` dans `deploy/audit-exceptions.json`, `node ../scripts/audit.mjs vitrine` dans `vitrine.yml`. Branche `fix/audit-vitrine`. C'est la condition 1 de VIT-06 | [plan de l'audit](../conception/exploitation/fix-audit-dependances.md), § 2 point 4 et § 6 | déjà validé |
@@ -82,7 +90,8 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 |---|---|---|---|
 | 1 | ~~UIX-10a~~ **fait** : #207 fusionnée le 18 nov., relue après coup (conforme) | [uix-10a-source-charte](missions/uix-10a-source-charte.md) | coordinateur (fait) |
 | 1 bis | **VIT-08, la vidéo de présentation globale** pour l'accueil du site (condition 6 de la mise en ligne) : motion design aux couleurs du site, sans captures, sous-titrée en français et en anglais, sans voix. Plan court **validé par le chef** (`5b62f702`) : **le code, maintenant** | [vit-08-video-presentation](missions/vit-08-video-presentation.md) | chef |
-| 1 ter | **VIT-09, les illustrations du site** (condition 7) : dessins en code sur toutes les pages, quelques captures réelles sans nom d'école ni donnée réelle, première section de chaque page améliorée, les fonctionnalités représentées comme des apps (accueil, menus, en-tête des pages, catalogue), et **les logos des modules** à créer (une icône par app ou module). Plan court après VIT-08 ; le code **en dernier sur le site**, après la fusion de VIT-07, VIT-10 et VIT-11 | [vit-09-illustrations](missions/vit-09-illustrations.md) | chef |
+| 1 ter | **VIT-09a, les logos illustrés des modules et les icônes vivantes** (condition 10) : une bibliothèque à source unique (multicolore, charte v2 ; icônes animées au survol et au focus, coupées si moins de mouvement), sans toucher les pages. Plan court juste après la correction de #216 | [vit-09-illustrations](missions/vit-09-illustrations.md) | chef |
+| 1 quater | **VIT-09b, l'intégration** (condition 7) : illustrations, captures neutres, première section de chaque page, logos et icônes posés partout. **En dernier sur le site** | [vit-09-illustrations](missions/vit-09-illustrations.md) | chef |
 | 2 | **UIX-10b**, l'application web à la charte : thème, gestion, panneau des départs, Barlow et choix de famille retirés, Studio quiz compris. C'est là que la connexion, l'accueil des modules et les pages de gestion prennent le style du site. Plan court, après la fusion de #199 et d'UIX-09 | plan d'UIX-10, § 9 | chef |
 | 2 bis | **UIX-11, le tableau de bord de l'administration** : refait à la charte, complété des chiffres qui existent, chaque chiffre menant à ses lignes. Plan court, après UIX-10b | [uix-11-tableau-de-bord](missions/uix-11-tableau-de-bord.md) | coordinateur, ou chef si une route ou une donnée d'élève s'ajoute |
 | 3 | UIX-06c, Salles, Campus, Créneaux et Calendrier : son plan est validé et attendait UIX-10. Il se fait sur la charte d'UIX-10b. Si 06c doit modifier `ThemeGestion`, 10b passe d'abord | [plan d'UIX-06c](../conception/interface/uix-06c-ressources-temps.md) | déjà validé |
@@ -96,6 +105,9 @@ Le plan de VIT-06 (file de Codex) se valide avant, pour que le déploiement part
 |---|---|---|---|
 | 1 | **L'étude « contextes à faible équipement » (EP-18)**, sans code ; le modèle le plus capable | [etude-ep18-faible-equipement](missions/etude-ep18-faible-equipement.md) | recommandation au chef |
 | 2 | **VIT-12, les mentions légales et la page de confidentialité** (condition 2) : questions au chef, puis plan ; chaque texte validé par lui. Session à part de celle de l'étude EP-18 | [vit-12-pages-legales](missions/vit-12-pages-legales.md) | chef |
+| 3 | **VIT-16, Contact et À propos** (condition 10), dans la même session que VIT-12 | [vit-16-contact-a-propos](missions/vit-16-contact-a-propos.md) | chef |
+| 4 | **VIT-14, « Pourquoi Planner » en comparatif par approche** (condition 10) : **une autre nouvelle session Claude** | [vit-14-comparatif](missions/vit-14-comparatif.md) | chef |
+| 5 | **L'expertise du site vitrine** face à ses promesses et ses objectifs, sans code : **une autre nouvelle session Claude** | [expertise-site-vitrine](missions/expertise-site-vitrine.md) | rapport au chef |
 
 ### Alexis (Destroya2) et son agent
 
