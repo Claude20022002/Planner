@@ -5,7 +5,7 @@
 | Fait par | agent de Cursor (Grok 4.7) |
 | Chantier | VIT · préparation de VIT-05 |
 | Dossier de travail | `..\travaux-planner\vit-10-pages-par-role` |
-| Dernier commit | `cf781d33` |
+| Dernier commit | `493f2678` |
 
 ## Objectif de la session
 
@@ -19,11 +19,12 @@
 
 - `e4fa58dc` — le plan court.
 - `cf781d33` — quatre pages, menu « Solutions », pied en colonnes. Phrases recopiées. Pas de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
-- Ce commit — la grille partagée ne devient un lien que si la carte a un `href`. Les autres pages n'en passent pas. La colonne Ressources n'a que des pages qui existent : Sécurité et données, Bientôt, Nous contacter. Pas de lien vers le catalogue ni la FAQ.
+- `c89851b5` — la grille partagée ne devient un lien que si la carte a un `href`. Les autres pages n'en passent pas. La colonne Ressources n'a que des pages qui existent : Sécurité et données, Bientôt, Nous contacter. Pas de lien vers le catalogue ni la FAQ.
+- `493f2678` — fusion de `main` (page Bibliothèque des jeux). Le seul conflit, dans le module VIT, garde les deux phrases. Le test de la grille regarde l'attribut de `GrilleCartes`, pas le bouton « Voir les dix jeux ».
 
 ## Vérifié
 
-Build Astro : 46 pages. Tests unitaires : 67, tous verts. `verifier-neutre` : aucun nom d'école. Pas de défilement horizontal en 390, 1024 et 1440 px, menu ouvert compris. Échap ferme le menu. Le second bouton de Direction mène à Pour l'établissement.
+Build Astro : 49 pages. Tests unitaires : 70, tous verts. `verifier-neutre` : aucun nom d'école. Pas de défilement horizontal en 390, 1024 et 1440 px, menu ouvert compris. Échap ferme le menu. Le second bouton de Direction mène à Pour l'établissement.
 
 ## Questions
 
@@ -38,18 +39,17 @@ Build Astro : 46 pages. Tests unitaires : 67, tous verts. `verifier-neutre` : au
 
 - `docs/plan/suivi.md` : non modifié.
 - Module VIT : ligne VIT-10 en cours.
-- Branche locale, pas poussée. Elle ne suit pas `origin/main`.
+- Branche locale, en avance sur `origin/feat/vit-10-pages-par-role`. Elle ne suit pas `origin/main`. PR #219 ouverte.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef pousse et ouvre la PR.
-2. Après le vert, il fusionne. VIT-11 demandera ensuite son lien de menu. VIT-09 dessinera après.
+1. Le chef pousse. La PR #219 existe déjà.
+2. Une minute après, `gh pr checks 219`. Après le vert, il fusionne. VIT-11 reprend ensuite le catalogue et la FAQ. VIT-09 dessinera après.
 
 ## Commandes pour le chef de projet
 
 ```text
-git -C "..\travaux-planner\vit-10-pages-par-role" push -u origin feat/vit-10-pages-par-role
-gh pr create --repo Claude20022002/Planner --base main --head feat/vit-10-pages-par-role --title "VIT-10 : pages par rôle, menu Solutions, pied en colonnes" --fill
+git -C "..\travaux-planner\vit-10-pages-par-role" push origin feat/vit-10-pages-par-role
 ```
 
 ## Prompt de reprise
@@ -59,7 +59,7 @@ Tu reprends VIT-10, sur la branche feat/vit-10-pages-par-role,
 dans le dossier ..\travaux-planner\vit-10-pages-par-role.
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 docs/conception/vitrine/vit-10-pages-par-role.md et cette fiche.
-Fait : le code est commité (cf781d33). Questions 1 à 4 répondues.
-Reste : le chef pousse et ouvre la PR. Pas d'illustration (VIT-09, après VIT-11).
+Fait : le conflit avec main est résolu (493f2678). Questions 1 à 4 répondues.
+Reste : le chef pousse, attend la CI de la PR #219, puis fusionne. Pas d'illustration (VIT-09, après VIT-11).
 Règles : pas de styles/, pas d'accueil, pas de suivi.md, jamais de git push.
 ```
