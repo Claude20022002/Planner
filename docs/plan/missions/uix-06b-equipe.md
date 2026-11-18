@@ -20,7 +20,7 @@ Codex a écrit presque tout le code le 16 novembre, **sans le commiter** : les q
 | Agent | Rôle | Lot | Modèle | Branche | Dossier |
 |---|---|---|---|---|---|
 | **Codex** | intégrateur | commun, Filières et Enseignements | son modèle le plus fort, raisonnement élevé : il tient les fichiers communs et toutes les fusions | `feat/uix-06b-referentiel` | `..\travaux-planner\uix-06b-referentiel` |
-| **Agent de Cursor** | membre | Groupes et Modules | son modèle de code le plus fort, raisonnement élevé : deux domaines et leurs imports | `feat/uix-06b-referentiel-groupes-modules` | `..\travaux-planner\uix-06b-groupes-modules` |
+| ~~Agent de Cursor~~ | — | ~~Groupes et Modules~~, repris par Codex le 18 nov. à 02 h 12 | son modèle de code le plus fort, raisonnement élevé : deux domaines et leurs imports | `feat/uix-06b-referentiel-groupes-modules` | `..\travaux-planner\uix-06b-groupes-modules` |
 | Claude (Cursor) | coordinateur | aucun | Opus 5.5 | `doc/coordination-equipe` | `..\travaux-planner\coordination-equipe` |
 
 **Changement du 18 nov., 00 h 20 (coordinateur, à la demande du chef : le site vitrine se fait ce soir)** : le lot Enseignements passe à Codex, qui en a écrit le code ; Claude (VS Code) devient l'intégrateur du site vitrine. Après l'intégration d'UIX-06b, l'agent de Cursor rejoint le site vitrine et Codex fait UIX-09 (grille d'applications).
@@ -121,3 +121,4 @@ Livre à R1 ce que dit la fiche, puis dépose ton rapport de rendez-vous dans so
 | 18 nov. 00 h 01 | fiche écrite ; Codex reçoit R0 | — |
 | 18 nov. 00 h 20 | Enseignements passe à Codex ; Claude (VS Code) au site vitrine | — |
 | 18 nov. 00 h 50 | **R0 fait par Codex : `4963e827`** (trois commits, dictionnaires inscrits ; lint avec 17 avertissements hors du lot, 65 tests unitaires verts, build vert) ; vérifié ; l'agent de Cursor lancé | R0 conforme |
+| 18 nov. 02 h 12 | décision du chef : l'agent de Cursor passe au site vitrine ; **Codex tient tout UIX-06b** (Groupes et Modules compris), avec l'inventaire de l'agent de Cursor (00 h 46) ; plus de fusion de lot | — |

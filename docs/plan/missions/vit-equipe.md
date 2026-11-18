@@ -22,7 +22,7 @@
 | Agent | Rôle | Lot | Modèle | Branche | Dossier |
 |---|---|---|---|---|---|
 | **Claude (VS Code)** | intégrateur du site | socle (Astro, jetons, composants de section, logo animé) puis accueil | **Opus 5.5 ou Fable 5.2**, le plus capable disponible dans la session ; ne pas changer de modèle en cours de session : il fixe le style que tout le reste suivra | `feat/vit-01-vitrine` | `..\travaux-planner\vit-01-vitrine` |
-| **Agent de Cursor** | membre, après l'intégration d'UIX-06b | pages Emploi du temps, En classe, Pour l'établissement, Sécurité et données, Bientôt | son modèle de code le plus fort : pages nombreuses, à partir des composants du socle | `feat/vit-01-vitrine-pages` | `..\travaux-planner\vit-01-pages` |
+| **Agent de Cursor** | membre, depuis le 18 nov. à 02 h 12 (décision du chef) | pages Emploi du temps, En classe, Pour l'établissement, Sécurité et données, Bientôt | son modèle de code le plus fort : pages nombreuses, à partir des composants du socle | `feat/vit-01-vitrine-pages` | `..\travaux-planner\vit-01-pages` |
 | **Codex** | seul, après l'intégration d'UIX-06b | UIX-09, grille d'applications | son modèle le plus fort, raisonnement élevé : il connaît UIX-01a, qu'il a écrite | `feat/uix-09-grille-applications` | `..\travaux-planner\uix-09-grille` |
 
 ## Les propriétaires
@@ -43,7 +43,8 @@ Le site vitrine et la grille ne partagent aucun fichier : les deux branches ne p
 | Quand | Rendez-vous | Qui | Fait quand |
 |---|---|---|---|
 | dès maintenant (plans validés ; logos redessinés tant que les SVG manquent) | **R0 du site** | Claude (VS Code) | socle Astro construit, jetons du § 4 bis du plan, logos redessinés, composants du socle (`Section`, `Titre`, `Accroche`, `CadreAppareil`, `Apparition`, `EnTete`, `PiedDePage`), logo animé ; build et neutralité passent ; « R0 du site prêt, sha … » au coordinateur |
-| après l'intégration d'UIX-06b (visée 02 h 45) | départ des deux autres | agent de Cursor, Codex | Cursor crée sa branche de lot depuis le R0 du site ; Codex crée `feat/uix-09-grille-applications` depuis `origin/main` |
+| 02 h 12 | départ de l'agent de Cursor | agent de Cursor | branche de lot depuis `c0198c75` (socle et accueil) |
+| après UIX-06b | départ de Codex | Codex | `feat/uix-09-grille-applications` depuis `origin/main` |
 | 04 h 00 | **fin des lots** | chacun | lot commité, rapport de rendez-vous ([equipe.md](../equipe.md), § 7) |
 | 04 h 20 | intégration et relecture | Claude (site), coordinateur | fusion des pages dans `feat/vit-01-vitrine`, contrôles, relecture des deux branches ; commandes au chef |
 
@@ -111,3 +112,4 @@ mouvement réduit respecté. Rapport dans sortie\. Jamais de git push.
 |---|---|---|
 | 18 nov. 00 h 20 | plans et fiche écrits ; attente du chef | — |
 | 18 nov. | plans validés par le chef ; couleurs du logo ; logo « mosaïque » gardé dans l'application | — |
+| 18 nov. 02 h 12 | R0 du site (`17251fc5`) et accueil (`c0198c75`) faits par Claude (VS Code, Opus 5.5) ; PR #195 ouverte par le chef (« Test Backend » rouge : audit de `backend/`, même échec sur `main`, sans lien avec le site) ; écarts 2 à 6 acceptés par le coordinateur ; l'agent de Cursor lancé depuis `c0198c75` | R0 conforme |
