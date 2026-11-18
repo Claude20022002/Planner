@@ -5,7 +5,7 @@
 | Module | QUA · correctif de test, sans chantier. Suite de [fix-sondage-minuit.md](fix-sondage-minuit.md) (#202) |
 | Branche | `fix/parcours-seance-en-cours`, depuis `origin/main` (`db0e3de7`) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 18 novembre 2026 |
-| **Validé** | en attente du chef |
+| **Validé** | par Claude20022002 le 18 novembre 2026 |
 
 ## 1. La cause
 
@@ -63,4 +63,4 @@ Les parcours ne se lancent pas ici : ils demandent l'application. La preuve est 
 
 | N° | Question | Proposition | Réponse du chef |
 |---|---|---|---|
-| 1 | Coder ce correctif tel quel (créneau 00 h 00–24 h 00, séance du lendemain, les trois fichiers du § 3, aucun code de l'application) ? | **oui** | |
+| 1 | Coder ce correctif tel quel (créneau 00 h 00–24 h 00, séance du lendemain, les trois fichiers du § 3, aucun code de l'application) ? | **oui** | **oui**, le 18 novembre 2026 |
