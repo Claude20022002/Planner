@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | en relecture : prête le 2026-11-18 (#202) |
 | Agent | Claude (VS Code), la session du site vitrine et de l'audit, libre depuis #198 |
 | Modèle recommandé | un modèle moyen suffit (Sonnet 5.5) pour un correctif de test court. Opus 5.5 convient aussi si la session tourne déjà dessus : on ne change pas de modèle en cours de session |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : il a demandé une mission pour Claude |
@@ -63,3 +63,4 @@ Le coordinateur ne te joint pas par message : le chef relaie. Dis au chef quand 
 |---|---|---|
 | 2026-11-18 11 h 20 | fiche écrite ; prompt donné au chef | — |
 | 2026-11-18 11 h 40 | questions de l'agent (relayées par le chef) : `espaceCours.spec.cjs` sur cette branche, **oui** ; `entreRoles`, `appel` et `appelClasse` dépendent de `donnees.mjs`, partagé par tous les parcours : **mission à part**, avec son plan ; preuve de l'échec : **le journal du 15 nov. suffit**, avec le numéro du passage cité dans le plan, et le nouveau test à horloge fixée le prouve en CI | — |
+| 2026-11-18 11 h 50 | relecture de #202 (`1293bd4b`). Plan lu **après le code** : il se disait validé à partir des réponses relayées, sans que le coordinateur l'ait vu. Validé après coup, car seuls les tests changent et la cause est démontrée (fin de séance à 23 h 55, `SeanceEnCours.jsx`). `outils.cjs` ne reçoit que des ajouts. Test de régression à horloge figée | **prêt**, fusion après la CI |
