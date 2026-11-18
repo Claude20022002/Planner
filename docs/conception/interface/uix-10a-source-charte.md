@@ -5,7 +5,7 @@
 | Module | [UIX](../../plan/modules/UIX-interface.md) · **exception hors chantier** accordée par le chef le 18 nov. (UIX-10), sans API ni migration |
 | Plan d'ensemble | [UIX-10](uix-10-charte-commune.md), validé par le chef le 18 nov. ; ce plan court en détaille la première fonction (§ 9) |
 | Branche | `feat/uix-10a-source-charte`, empilée sur `doc/uix-10-charte-commune` (#206, non fusionnée) |
-| Mission | aucune fiche : le chef a autorisé la session à commencer sans elle, le 18 nov. |
+| Mission | [uix-10a-source-charte](../../plan/missions/uix-10a-source-charte.md) (branche `doc/coordination-equipe`), écrite après le début du plan ; le dossier de travail est `..\travaux-planner\uix-10a-source-charte`, créé avant la fiche, et non `uix-10a-charte` |
 | Taille | M |
 | Rédigé par | Claude Code (Opus 5.5), le 18 novembre 2026 |
 | **Validé** | en attente · par le coordinateur (taille M, ni migration ni sécurité, § 9 du plan d'ensemble) |
@@ -41,7 +41,7 @@ Posées au chef le 18 nov., dans la session ; chaque proposition retenue.
 | 3 | D'où viennent la version et l'empreinte de l'en-tête ? | **`version` entière** dans `jetons.json`, augmentée à la main quand une valeur change ; **empreinte** SHA-256 du corps généré (`node:crypto`), 12 caractères |
 | 4 | Où tournent `--verifier` et les tests en CI ? | **tâche « Build Frontend »** de `ci-cd.yml` (deux étapes) ; `shared/charte/**` déclenche aussi `vitrine.yml` |
 | 5 | La police du site : valeur commune ou valeur à part ? | **valeur commune** `'Inter Variable', Inter, system-ui, sans-serif` ; `Inter` s'ajoute en repli au site, sans effet visible ; seule différence admise avec le fichier d'aujourd'hui |
-| 6 | Les sorties `--studylib` et `--quiz` ? | **en 10f et 10g** : chacune ajoute sa sortie à la table du générateur après avoir lu son dépôt ; 10a n'écrit rien hors de Planner |
+| 6 | Les sorties `--studylib` et `--quiz` ? | **en 10f et 10g** : chacune ajoute sa sortie à la table du générateur après avoir lu son dépôt ; 10a n'écrit rien hors de Planner. Depuis, UIX-10g est retirée (chef, 18 nov.) : il ne reste que `--studylib`, en 10f, après l'étude StudyLib. La fiche de mission prévoyait `--studylib` en 10a, testé sur un dossier temporaire ; la réponse du chef l'emporte, et le coordinateur le note au visa |
 
 ## 4. Solution
 
@@ -106,9 +106,14 @@ Aucune.
 3. les sorties commitées sont à jour, comme `--verifier` ;
 4. une sortie retouchée (copie dans un dossier temporaire) est signalée par la vérification ;
 5. l'empreinte de l'en-tête est celle du corps, et la version celle de `jetons.json` ;
-6. le CSS du site ne contient que les jetons marqués `site`.
+6. le CSS du site ne contient que les jetons marqués `site` ;
+7. le CSS du site porte **exactement les noms de variables d'aujourd'hui** (la liste des 38 noms est écrite dans le test) : le site ne change jamais de nom de variable (plan d'ensemble, § 4.2).
 
-Vérifié aussi, une fois, dans la session : les variables du `jetons.css` généré, comparées à celles du fichier d'aujourd'hui (mêmes noms, mêmes valeurs, sauf `--police`) ; `npm run test:unit` et `npm run build` du site ; `node scripts/verifier-neutre.mjs`. Aucun test permanent ne fige les valeurs d'aujourd'hui : elles changeront avec les SVG.
+Les **valeurs** ne sont pas figées par un test permanent, puisqu'elles changeront avec les SVG officiels. Elles sont vérifiées une fois dans la session, ce qui répond au critère de la fiche (« sans aucune différence de rendu ») :
+
+- les variables du `jetons.css` généré sont comparées à celles du fichier d'aujourd'hui : mêmes noms, mêmes valeurs, sauf `--police` ;
+- le site est construit avant et après (`npm run build`), et les deux `dist/` sont comparés. Seule la valeur de la police doit différer dans la feuille construite. Si c'est le cas, Lighthouse et axe-core ne peuvent pas bouger ; sinon, on les relance en local ;
+- `npm run test:unit` du site et `node scripts/verifier-neutre.mjs`.
 
 ## 9. Étapes de livraison
 
@@ -128,4 +133,4 @@ PR de base `main`, à ouvrir après la fusion de #206 (sinon de base `doc/uix-10
 
 ## 11. Hors périmètre
 
-Les statuts, les lignes et le panneau (10b) ; tout écran du web et du mobile (10b, 10d) ; les sorties pour StudyLib et le quiz (10f, 10g) ; le mode sombre du site ; les logos (10c).
+Les statuts, les lignes et le panneau (10b) ; tout écran du web et du mobile (10b, 10d) ; la sortie pour StudyLib (10f, après l'étude) ; ClassQuiz, retiré (UIX-10g retirée) ; le mode sombre du site ; les logos (10c).
