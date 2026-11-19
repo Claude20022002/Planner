@@ -44,3 +44,4 @@ L'agent ne touche pas à `docs/plan/suivi.md`, ni aux logos (VIT-09a), ni aux pa
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 21 h 20 | fiche écrite par le coordinateur, sur la décision du chef | — |
+| 2026-11-19 0 h 20 | **ajouts de l'[expertise](../../etude-marche/12-expertise-site-vitrine.md)** : le bloc « selon votre équipement » reprend les phrases de C5 (appel à la main d'abord, QR code en option ; jeux sur téléphone ou ordinateur ; semaine lisible sans réseau) et ajoute **l'emploi du temps imprimé en PDF**, chemin sans écran ni téléphone (`frontend/src/components/emploi-du-temps/TimetableExportMenu.jsx`) ; les pages Cours et annonces et Bibliothèque prennent leur contenu des pages de module (C10). Les annonces à tout l'établissement, à un campus ou à un niveau (`Annonce.portee`) sont à dire | — |

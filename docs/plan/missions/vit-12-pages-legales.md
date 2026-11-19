@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : questions au chef, puis plan court |
+| État | codée, #223 ; attend les valeurs du chef (CI rouge exprès) |
 | Agent | **nouvelle session Claude Code**, ouverte par le chef (décision du chef, 18 nov. vers 20 h 35) |
 | Modèle recommandé | le plus capable disponible (Claude Fable 5.2, sinon Opus 5.5) : textes juridiques, chaque phrase engage le chef |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. vers 20 h 35 |
@@ -65,3 +65,4 @@ Ne modifie pas docs/plan/suivi.md. Fiche de session ; tout est commité ; jamais
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 20 h 40 | fiche écrite par le coordinateur ; agent choisi par le chef : une nouvelle session Claude | — |
+| 2026-11-19 0 h 20 | plan et textes validés par le chef ; codée (#223, `162694ee`, fiche `3cee3b47`). **CI rouge exprès** : le test « aucun champ à compléter » attend `[NOM]`, `[HÉBERGEUR]`, `[N]` (proposition : 30), `[DATE]` et `[E-MAIL]`. Le chef les écrit **dans le message** de la session (le champ « Autre » de l'outil de questions n'arrive pas). La durée des journaux sur le serveur passe à Codex, dans VIT-06. **Ne pas fusionner avant les valeurs** | en attente du chef |

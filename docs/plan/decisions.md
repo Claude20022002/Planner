@@ -433,3 +433,23 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Une expertise du site** face à ses promesses et ses objectifs, par une nouvelle session Claude, sans code ([fiche](missions/expertise-site-vitrine.md)) | chef |
 | Toutes ces pages font partie de la **condition 10** de la mise en ligne | chef |
 | *(coordinateur)* VIT-09 est découpée en 09a (bibliothèque de logos et d'icônes, sans toucher les pages, donc sans conflit) et 09b (intégration, en dernier). Écartés d'OpenEduCat : articles, pages par pays, calculateurs, éditions, tarifs | coordinateur |
+
+**Chef, 18 nov. au soir : les réponses à l'expertise du site** ([rapport](../etude-marche/12-expertise-site-vitrine.md), § 10 et § 12 ; « Je valide tes propositions ») :
+
+| Décision | Par |
+|---|---|
+| **D1** : une adresse e-mail dédiée au site est publiée dès la mise en ligne, avant le formulaire de VIT-02, avec « réponse sous deux jours ouvrés ». L'adresse reste à donner par le chef : aucune n'est supposée | chef |
+| **D2** : la formule devient « quand l'IA est activée pour votre école » (l'IA dépend aujourd'hui de la clé du serveur, pas d'un réglage de l'école). **Un interrupteur de l'IA par école** est noté comme fonction à venir, sans date (QJE-16) | chef |
+| **D3** : plus aucun pays nommé sur le site. L'exemple de Massar est retiré ; « BTS » devient « les formations techniques supérieures » ; « crédits du LMD » devient « crédits » | chef |
+| **D4** : le site dit franchement que le calcul de l'emploi du temps sert aujourd'hui le supérieur et la formation professionnelle, pas encore le collège et le lycée ; le collège passe après le supérieur dans le menu « Solutions » | chef |
+
+**Chef, 19 nov. vers 0 h 15** :
+
+| Décision | Par |
+|---|---|
+| **Conditions 11 et 12 de la mise en ligne** (VIT-06) : un contact réel (D1, VIT-16) ; le saut du menu sur téléphone supprimé, avec une performance mobile d'au moins 90 sur l'accueil (VIT-17) | chef |
+| *(coordinateur)* Répartition de l'expertise : **lot A → VIT-17** (correctifs techniques : saut du menu, vidéo sur demande sur téléphone et connexion lente, pages `/ar/`, Open Graph, grilles à trous, `README.md`), agent de Cursor ; **lot B → VIT-18** (textes exacts P1 à P6, D2, D3, D4, récit EP-18 de l'accueil et d'En classe, test de garde), la session de l'expertise ; **C4 → VIT-14b** (trois critères du comparatif), la session de VIT-14 après la fusion de #224 ; **C8 → VIT-10b**, complément validé par le coordinateur (aucune phrase nouvelle) ; **C2, C3, C10 → VIT-09b** ; **C5 pour les modules → VIT-15** ; **C1 → VIT-16** | coordinateur |
+| *(coordinateur)* L'accroche de l'accueil qui applique D4 et l'ordre des types passent à VIT-18 et non à VIT-09b : une promesse inexacte ne doit pas attendre l'intégration, qui passe en dernier. Le titre principal et la ligne des rôles restent à VIT-09b | coordinateur |
+| *(coordinateur)* VIT-14 se fusionne telle que validée ; ses trois critères nouveaux font une branche à part (VIT-14b), pour ne pas retarder #224, dont dépendent VIT-18 puis VIT-16 sur `accueil.json` | coordinateur |
+| *(coordinateur)* Ordre des fusions du site : #224 (VIT-14), VIT-10b, VIT-17, VIT-18, #223 (VIT-12, après les valeurs du chef), VIT-16, VIT-11 (code), VIT-13, VIT-14b, VIT-15, VIT-09b en dernier. #222 (VIT-09a) et #225 (expertise, document) passent à tout moment. Un conflit d'une ligne (`langues.js`, `commun.json`, pied de page, fichier du module) se résout en gardant les deux ajouts, par l'agent qui fusionne en second | coordinateur |
+| *(coordinateur)* #224 et #225 relues : conformes. #223 : à ne pas fusionner avant les valeurs du chef (son test rouge est voulu). #221 : à corriger (CI du site rouge sur `.env.docker` même après `121c92c6`, et conflit d'une ligne) | coordinateur |

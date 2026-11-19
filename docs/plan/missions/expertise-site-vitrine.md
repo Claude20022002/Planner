@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | rendue (#225) ; la session poursuit avec [VIT-18](vit-18-textes-exacts.md) |
 | Agent | **nouvelle session Claude Code**, ouverte par le chef (décision du 18 nov. vers 21 h 15) |
 | Modèle recommandé | Claude Fable 5.2, sinon Opus 5.5 |
 | Rôle demandé | un regard de grande agence : directeur de création, expert produit et conversion, expert en accessibilité. Il juge sans complaisance, et chaque jugement s'appuie sur une preuve |
@@ -57,3 +57,4 @@ Ne modifie pas docs/plan/suivi.md. Fiche de session ; tout est commité ; jamais
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 21 h 20 | fiche écrite par le coordinateur, sur la décision du chef | — |
+| 2026-11-19 0 h 20 | rendue : `docs/etude-marche/12-expertise-site-vitrine.md`, #225 (document seul). Notes : objectifs 4, promesses 7, règles 7, design 5, qualité 8, positionnement 3. Décisions D1 à D4 du chef au § 12. **Relue par le coordinateur : conforme** à la fiche (dix corrections rangées, chaque jugement prouvé, aucun code). Découpage repris : lot A → [VIT-17](vit-17-correctifs-vitrine.md), lot B → [VIT-18](vit-18-textes-exacts.md) (cette session), le reste dans VIT-09b, VIT-10b, VIT-14b, VIT-15, VIT-16 | conforme |

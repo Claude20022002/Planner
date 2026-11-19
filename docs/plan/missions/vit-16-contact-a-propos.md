@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : après VIT-12, dans la même session |
+| État | plan écrit ; attend les corrections du chef et `[RÉSEAU]` ; le code après la fusion de VIT-12 |
 | Agent | la **nouvelle session Claude** de VIT-12 (pages légales) : ce sont les mêmes questions d'identité au chef |
 | Modèle recommandé | le plus capable (Claude Fable 5.2, sinon Opus 5.5) |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. vers 21 h 15 (« la page contact est encore vide ») ; **condition 10** de la mise en ligne |
@@ -45,3 +45,4 @@ L'agent ne touche pas à `docs/plan/suivi.md`.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 21 h 20 | fiche écrite par le coordinateur, sur la décision du chef | — |
+| 2026-11-19 0 h 20 | plan écrit (`80d8e603`, corrigé en `b6eaae02`), « validé avec corrections » par le chef, **mais le texte des corrections n'est pas arrivé** (champ « Autre ») ; `[RÉSEAU]` attendu. **D1** (chef, 18 nov.) : une adresse e-mail dédiée au site, avec « réponse sous deux jours ouvrés » ; l'adresse reste à donner. Tous les boutons « Nous contacter » mènent à `/contact/` (expertise, C1). **Condition 11** de la mise en ligne | en attente du chef |

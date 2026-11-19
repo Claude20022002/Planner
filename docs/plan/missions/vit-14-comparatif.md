@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : questions au chef, puis plan court |
+| État | codée, #224 : conforme ; puis VIT-14b (trois critères de l'expertise) |
 | Agent | **nouvelle session Claude Code**, ouverte par le chef (sa demande du 18 nov. vers 21 h 15) |
 | Modèle recommandé | le plus capable (Claude Fable 5.2, sinon Opus 5.5) : chaque case du tableau engage le chef |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui (« un comparatif, un genre de benchmark » ; forme : par approche, sans nom) ; **condition 10** de la mise en ligne |
@@ -60,3 +60,4 @@ Ne modifie pas docs/plan/suivi.md. Fiche de session ; tout est commité ; jamais
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 21 h 20 | fiche écrite par le coordinateur, sur la décision du chef | — |
+| 2026-11-19 0 h 20 | plan validé par le chef (`61df2f9b`), code `56decb04`, #224 ouverte ; la branche se fusionne sans conflit avec `main` depuis la fusion de #216 : `git merge origin/main`, tests, push. **Relue par le coordinateur : conforme** (88 tests, aucun produit nommé, chaque case sourcée). **VIT-14b, complément de l'[expertise](../../etude-marche/12-expertise-site-vitrine.md) (C4)**, même session, après la fusion de #224 : trois critères de plus, chacun sourcé et validé par le chef case par case : l'appel qu'on ne peut pas tromper (`backend/services/presences/appel.js`, lignes 18 à 24), le bilan de chaque règle après le calcul (`backend/services/moteur/contraintes/bilan.js`), la semaine lisible sans réseau dans l'application (`mobile/src/cache.js`). Branche `feat/vit-14b-criteres` depuis `origin/main` | conforme |

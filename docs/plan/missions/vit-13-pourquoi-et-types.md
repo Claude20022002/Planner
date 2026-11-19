@@ -33,3 +33,4 @@ Les **logos des modules** (une icône dessinée par app ou module) sont faits pa
 |---|---|---|
 | 2026-11-18 21 h | fiche écrite, sur la décision du chef | — |
 | 2026-11-18 21 h 20 | **la section « Pourquoi Planner » passe à [VIT-14](vit-14-comparatif.md)**, qui en fait un comparatif par approche (chef) ; VIT-13 ne garde que les fonctionnalités par type d'établissement. Les pages par module sont [VIT-15](vit-15-pages-modules.md) | — |
+| 2026-11-19 0 h 20 | l'ordre des types (supérieur, formation, collège et lycée : D4 du chef) et les textes de `solutions.json` touchés par D3 passent à [VIT-18](vit-18-textes-exacts.md), qui fusionne **avant** VIT-13. VIT-13 part de `origin/main` après VIT-18, et dit franchement, pour le collège et le lycée, ce qui est « Bientôt » (expertise, P1) | — |
