@@ -74,6 +74,10 @@ jobs:
           cat .env.docker.example > "$RUNNER_TEMP/vitrine.env"
           grep -ohE '\$\{[A-Z_][A-Z_0-9]*:\?' docker-compose.yml deploy/vps/docker-compose.vps.yml |
             sed -E 's/^\$\{(.*):\?$/\1=recette/' | sort -u >> "$RUNNER_TEMP/vitrine.env"
+          docker compose version
+          # Le backend attend aussi un env_file à ce chemin sur certaines versions de Compose.
+          ln -sT -- "$RUNNER_TEMP/vitrine.env" .env.docker
+          trap 'rm -- .env.docker' EXIT
           compose=(docker compose --env-file "$RUNNER_TEMP/vitrine.env" -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml)
           "${compose[@]}" config --no-env-resolution --quiet
           services="$("${compose[@]}" config --no-env-resolution --services)"
