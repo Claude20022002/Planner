@@ -166,6 +166,13 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 
 [Plan validé](../conception/interface/uix-06a-interface.md). Aucun backend, serveur, push ou fusion autorisé à l’agent.
 
+## Décision du chef du 16 novembre : UIX-06b
+
+Source : conversation Codex, « J’autorise » au plan et aux trois propositions. Exception limitée à UIX-06b sans quatrième chantier ; reprise visuelle de Filières, Groupes, Modules et Enseignements, à fonctions, droits et API constants ; fiches et détails dépliables sur téléphone, hiérarchies/actions conservées. Plan : docs/conception/interface/uix-06b-referentiel.md. Aucun backend, migration ou serveur autorisé.
+
+- 18 novembre : le chef valide la correction du § 2 de Groupes sur l’effectif et la somme des sous-groupes (`f9fa7477`).
+- 18 novembre : le chef autorise axe-core comme dépendance de test pour les parcours en CI (`d941a896`).
+
 ## Décisions du 17 et du 18 novembre : travail en équipe, UIX-06b puis UIX-06c
 
 **Chef, 17 nov. au soir** : tous les agents (Claude dans VS Code, agent de Cursor, Codex) travaillent ensemble sur la même tâche, synchronisés, sans conflit, chacun avec le modèle le plus adapté, en développement par composants. Tâche : **UIX-06b, puis UIX-06c** si son plan est validé. Les sessions Claude en cours (QUA-10, essai PostgreSQL) finissent leur étape ; celle de QUA-10 rejoint l'équipe.
@@ -315,3 +322,17 @@ Source : conversation Codex, réponse « Valider » aux quatre propositions et a
 | *(coordinateur)* #201 (REL-03) fusionnée. #199 (UIX-06b, `24d96588`) : les parcours sont corrigés, dont un vrai défaut (le dialogue d'Enseignements plantait) et le contraste du bouton en thème sombre. À repousser pour que la CI tranche | coordinateur, 18 nov. 13 h 40 |
 | Les modèles Claude ne sont pas dans le forfait Cursor du chef. **L'agent de Cursor reste sur Grok 4.7 high** pour les tâches bornées. **Codex prend les tâches qui demandent le modèle le plus fort** : VIT-06, QJE-03 et QJE-06, après UIX-09. L'agent de Cursor fait QJE-01 tout de suite. Les sessions Claude Code (VS Code), qui ne dépendent pas de Cursor, gardent UIX-10 et l'étude StudyLib | chef, 18 nov. 13 h 45 |
 | Plan d'UIX-10 (#206) **validé**, questions 9 et 10 comprises. **UIX-10g (restyler ClassQuiz) est retirée** : ClassQuiz disparaît avec QJE-06, et le Studio quiz prend la charte avec UIX-10b et UIX-10e. UIX-10f (StudyLib) attend l'étude. **UIX-10a** se fait maintenant, sur une branche empilée sur #206 ; son plan court est validé par le coordinateur | chef, 18 nov. 13 h 55 |
+| Rappel de la décision du 20 oct., relue avec le chef : **ClassQuiz est abandonné puis retiré, sans reprendre de code du fork**, au profit du Studio quiz. **Le dépôt du fork sera archivé sur GitHub, pas supprimé**, une fois QJE-06 faite | chef, 18 nov. 14 h |
+| **QJE-14** : le Studio quiz devient « comme Google Forms », avec quatre ajouts : sections et logique, tableau des réponses avec synthèses et export, questionnaires non notés (réponses anonymes possibles), création aussi simple qu'un formulaire. Plan validé par le chef, qui tranche aussi l'anonymat et les données d'élèves ([fiche](missions/qje-14-studio-forms.md)) | chef, 18 nov. 14 h |
+| *(coordinateur)* Le coordinateur n'avait pas relu la décision du 20 oct. avant de mettre ClassQuiz dans la charte, corrigé depuis. Leçon : avant de fixer le périmètre d'une mission, chercher dans `decisions.md` et `docs/archives/plans/` ce qui a déjà été décidé sur chaque élément du périmètre | coordinateur, 18 nov. 14 h |
+
+**18 nov., vers 15 h** :
+
+| Décision | Par |
+|---|---|
+| *(coordinateur)* **Visa du plan court d'UIX-10a** (`4dc4f070`) : taille M, sans migration ni sécurité, aucun écran ne change, et `--verifier` tourne en CI. UIX-10g est bien retirée sur #206 (`162ba4c4`) | coordinateur |
+| *(coordinateur)* QJE-01 (`40abb56b`), plan validé par le chef : **prête pour la PR**. #199 (`ca7adfab`) : l'audit du dialogue de Filières attend maintenant la fin du fondu. À pousser | coordinateur |
+| **Feuille de route** : étape 1, le site et la charte ; étape 2, l'espace de l'école (connexion des administrateurs, grille des modules, tableau de bord, pages des enseignants et des étudiants) ; étape 3, le scolaire et les familles (élèves, collégiens, lycéens, vocabulaire, parents) ; étape 4, les modules du plan de parité, dont certains pour Alexis. Le site se déploie dès que les quatre conditions de VIT-06 sont réunies ([feuille-de-route.md](feuille-de-route.md)) | chef |
+| **Chantier VSC** : il s'ouvre dès que MOT se ferme. VSC-01 (conception du modèle du scolaire) commence avant, chez Codex | chef |
+| **Pendant la pause du coordinateur**, le chef valide tous les plans et ne fusionne qu'une PR entièrement verte, avec le rapport de l'agent. Chaque agent suit sa file de la feuille de route | chef |
+| **#205 (Alexis) validée** : quatre routes des jeux répondent 404 « Module introuvable » hors des classes de l'enseignant, comme pour un module qui n'existe pas. Le refus selon le rôle reste en 403. Plan validé après coup ; Alexis ajoutera la ligne « Validé » dans sa prochaine PR. Relu par le coordinateur : un seul point d'entrée (`coursDeSesClasses`), un message identique à celui d'un module inconnu, et une CI entièrement verte, intégration comprise | chef, 18 nov. 15 h 25 |

@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "titre": "Students · Planner",
+    "description": "The student sees the published materials of their courses."
+  },
+  "entete": {
+    "surtitre": "Students",
+    "titre": "Class materials, and news from the school.",
+    "accroche": "The student sees the published materials of their courses."
+  },
+  "aujourdhui": "Today",
+  "cartes": [
+    {
+      "page": "bibliotheque",
+      "titre": "Library",
+      "texte": "Documents are organised by programme and by module."
+    },
+    {
+      "page": "application",
+      "titre": "App",
+      "texte": "Five tabs: the board, the week, the scanner, the library, the account."
+    },
+    {
+      "page": "quizEtJeux",
+      "titre": "Quiz and games",
+      "texte": "The teacher prepares the quiz. The link opens in a browser, on a school computer or elsewhere. A code or a QR code leads to the same link."
+    }
+  ]
+}

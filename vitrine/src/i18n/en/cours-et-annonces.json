@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "titre": "Courses and announcements · Planner",
+    "description": "Class materials, and news from the school."
+  },
+  "entete": {
+    "surtitre": "Courses and announcements",
+    "titre": "Class materials, and news from the school.",
+    "accroche": "The teacher adds a document or a link in a section."
+  },
+  "supports": {
+    "surtitre": "Courses",
+    "titre": "Published materials.",
+    "texte": "The student sees the published materials of their courses.",
+    "cartes": [
+      {
+        "titre": "Polls",
+        "texte": "Class polls open when the school turns them on. One question, from two to six choices."
+      }
+    ]
+  },
+  "annonces": {
+    "surtitre": "Announcements",
+    "titre": "News from the school.",
+    "cartes": [
+      {
+        "titre": "An announcement",
+        "texte": "An announcement goes to a class, a group or a programme. Email is optional."
+      }
+    ]
+  }
+}

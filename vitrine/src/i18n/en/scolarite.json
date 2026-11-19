@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "titre": "Registrar's office · Planner",
+    "description": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
+  },
+  "entete": {
+    "surtitre": "Registrar's office",
+    "titre": "Your semester, worked out.",
+    "accroche": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
+  },
+  "aujourdhui": "Today",
+  "cartes": [
+    {
+      "page": "etablissement",
+      "titre": "For schools",
+      "texte": "School leaders and the registrar's office find rooms, exams and timetable figures in one place."
+    },
+    {
+      "page": "enClasse",
+      "titre": "In class",
+      "texte": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
+    },
+    {
+      "page": "securite",
+      "titre": "Security and data",
+      "texte": "This page only describes what Planner already does. What is in preparation is marked “Coming soon”."
+    }
+  ]
+}

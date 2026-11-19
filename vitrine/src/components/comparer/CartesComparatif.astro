@@ -1,0 +1,63 @@
+---
+// Comparatif sur écran étroit (VIT-14) : une carte par critère, les cinq colonnes en liste de définitions
+// (approche, puis son mot et, hors « court », son texte). Montrée sous le seuil où TableauComparatif
+// se cache : un seul des deux est affiché, donc lu par les lecteurs d'écran.
+import { traductions } from '../../i18n/index.js';
+
+interface Props {
+  langue: string;
+  lignes: string[];
+  court?: boolean;
+  niveau?: 2 | 3;
+}
+
+const { langue, lignes, court = false, niveau = 3 } = Astro.props;
+const t = traductions(langue, 'comparer');
+const approches: string[] = t('approches');
+const Balise = `h${niveau}`;
+---
+<ul class:list={['cartes', court ? 'court' : 'long']} aria-label={t('accueil.texte')}>
+  {lignes.map((cle) => {
+    const cases: { mot: string; texte: string }[] = t(`lignes.${cle}.cases`);
+    return (
+      <li class="carte">
+        <Balise class="critere">{t(`lignes.${cle}.critere`)}</Balise>
+        <dl>
+          {cases.map((c, i) => (
+            <div class:list={['case', { planner: i === 0 }]}>
+              <dt>{approches[i]}</dt>
+              <dd>
+                <span class="mot">{c.mot}</span>
+                {!court && <span class="texte">{c.texte}</span>}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .cartes { display: grid; gap: var(--espace-3); inline-size: 100%; margin: 0; padding: 0; list-style: none; text-align: start; }
+  .carte { display: grid; gap: var(--espace-2); padding: var(--espace-3); border: 1px solid var(--gris-trait); border-radius: var(--rayon); background: var(--blanc); }
+  .critere { font-size: 1.1875rem; font-weight: 650; line-height: 1.25; color: var(--encre); }
+  dl { display: grid; gap: 0.25rem; margin: 0; }
+  .case { display: grid; gap: 0.25rem; padding: 0.625rem 0.75rem; border-radius: var(--rayon-petit); }
+  .court .case { grid-template-columns: 1fr auto; align-items: baseline; gap: var(--espace-2); }
+  .planner { background: color-mix(in srgb, var(--bleu-clair) 28%, var(--blanc)); }
+  dt { font-size: var(--texte-petit); color: var(--gris-texte); }
+  .planner dt { font-weight: 700; color: var(--bleu-nuit); }
+  dd { margin: 0; }
+  .court dd { text-align: end; }
+  .mot { display: block; font-weight: 600; color: var(--encre); }
+  .planner .mot { color: var(--bleu-nuit); }
+  .texte { display: block; margin-block-start: 0.25rem; font-size: 0.9375rem; line-height: 1.45; color: var(--gris-texte); text-wrap: pretty; }
+
+  @media (min-width: 48rem) {
+    .court { display: none; }
+  }
+  @media (min-width: 64rem) {
+    .long { display: none; }
+  }
+</style>
