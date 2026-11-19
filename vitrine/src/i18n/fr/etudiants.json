@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "titre": "Étudiants · Planner",
+    "description": "L'étudiant voit les supports publiés de ses cours."
+  },
+  "entete": {
+    "surtitre": "Étudiants",
+    "titre": "Les supports de la classe, et les nouvelles de l'école.",
+    "accroche": "L'étudiant voit les supports publiés de ses cours."
+  },
+  "aujourdhui": "Aujourd'hui",
+  "cartes": [
+    {
+      "page": "bibliotheque",
+      "titre": "Bibliothèque",
+      "texte": "Les documents sont rangés par filière et par module."
+    },
+    {
+      "page": "application",
+      "titre": "Application",
+      "texte": "Cinq onglets : le tableau, la semaine, le scanner, la bibliothèque, le compte."
+    },
+    {
+      "page": "quizEtJeux",
+      "titre": "Quiz et jeux",
+      "texte": "L'enseignant prépare le quiz. Le lien s'ouvre dans un navigateur, sur un ordinateur de l'école ou ailleurs. Un code ou un QR code mène au même lien."
+    }
+  ]
+}

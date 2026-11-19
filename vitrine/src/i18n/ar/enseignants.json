@@ -1,0 +1,10 @@
+{
+  "meta": { "titre": "", "description": "" },
+  "entete": { "surtitre": "", "titre": "", "accroche": "" },
+  "aujourdhui": "",
+  "cartes": [
+    { "page": "quizEtJeux", "titre": "", "texte": "" },
+    { "page": "coursEtAnnonces", "titre": "", "texte": "" },
+    { "page": "emploiDuTemps", "titre": "", "texte": "" }
+  ]
+}
