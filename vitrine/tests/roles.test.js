@@ -8,6 +8,13 @@ import { FONCTIONS, NAVIGATION, ROLES, chemin } from '../src/i18n/langues.js';
 
 const DOSSIER = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'i18n');
 const charger = (langue, page) => JSON.parse(fs.readFileSync(path.join(DOSSIER, langue, `${page}.json`), 'utf8'));
+const descriptionSecuriteSansFin = (langue) => {
+  const description = charger(langue, 'securite').meta.description;
+  const fin = langue === 'fr' ? ' : ' : ': ';
+  const i = description.indexOf(fin);
+  const debut = (i === -1 ? description : description.slice(0, i)).trim();
+  return debut.endsWith('.') ? debut : `${debut}.`;
+};
 
 test('les quatre rôles ont une adresse et restent hors du menu Fonctions', () => {
   assert.deepEqual(ROLES, ['direction', 'scolarite', 'enseignants', 'etudiants']);
@@ -110,4 +117,23 @@ test('Direction recopie la phrase de l\'établissement, sans prix', () => {
   assert.equal(page.entete.accroche, charger('fr', 'etablissement').entete.accroche);
   assert.equal(page.cartes.some((carte) => carte.page === 'emploiDuTemps'), true);
   assert.equal(/MAD|prix|tarif/i.test(JSON.stringify(page)), false);
+});
+
+test('Direction et Scolarité recopient la carte Sécurité sans la fin de meta.description (C8)', () => {
+  for (const langue of ['fr', 'en']) {
+    const attendu = descriptionSecuriteSansFin(langue);
+    for (const page of ['direction', 'scolarite']) {
+      const carte = charger(langue, page).cartes.find((c) => c.page === 'securite');
+      assert.equal(carte.texte, attendu, `${langue} · ${page}`);
+      assert.equal(/Cette page ne dit|This page only describes/i.test(carte.texte), false);
+    }
+  }
+});
+
+test('les boutons des pages par rôle sont dans l\'ouverture (C8)', () => {
+  const enTete = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'components', 'fonctions', 'EnTetePage.astro'), 'utf8');
+  const pageRole = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'components', 'fonctions', 'PageRole.astro'), 'utf8');
+  assert.match(enTete, /slot name="actions"/);
+  assert.match(pageRole, /slot="actions"/);
+  assert.equal(pageRole.includes('id="actions"'), false);
 });

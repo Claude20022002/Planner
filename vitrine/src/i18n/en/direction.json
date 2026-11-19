@@ -23,7 +23,7 @@
     {
       "page": "securite",
       "titre": "Security and data",
-      "texte": "This page only describes what Planner already does. What is in preparation is marked “Coming soon”."
+      "texte": "Two-factor authentication, role-based access, a security log, properly closed accounts, AI without student data."
     }
   ],
   "passage": {

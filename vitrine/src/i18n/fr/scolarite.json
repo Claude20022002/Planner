@@ -23,7 +23,7 @@
     {
       "page": "securite",
       "titre": "Sécurité et données",
-      "texte": "Cette page ne dit que ce que Planner fait déjà. Ce qui est en préparation est marqué « Bientôt »."
+      "texte": "Double authentification, accès par rôle, journal de sécurité, comptes fermés proprement, IA sans données d'élève."
     }
   ],
   "passage": {
