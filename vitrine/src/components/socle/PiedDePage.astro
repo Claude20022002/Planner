@@ -18,6 +18,7 @@ const colonnes = [
   { titre: t('navigation.solutions'), liens: TYPES.map(({ cle, ancre }) => ({ href: chemin(langue, 'solutions', ancre), texte: solutions(`types.${cle}.surtitre`) })) },
   { titre: t('navigation.parRole'), liens: ROLES.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })) },
   { titre: t('navigation.ressources'), liens: [
+    { href: chemin(langue, 'comparer'), texte: t('navigation.comparer') },
     { href: chemin(langue, 'securite'), texte: t('navigation.securite') },
     { href: chemin(langue, 'bientot'), texte: t('navigation.bientot') },
     { href: chemin(langue, 'accueil', 'contact'), texte: t('navigation.contact') },
