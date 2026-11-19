@@ -1,0 +1,10 @@
+{
+  "meta": { "titre": "", "description": "" },
+  "entete": { "surtitre": "", "titre": "", "accroche": "" },
+  "aujourdhui": "",
+  "cartes": [
+    { "page": "etablissement", "titre": "", "texte": "" },
+    { "page": "enClasse", "titre": "", "texte": "" },
+    { "page": "securite", "titre": "", "texte": "" }
+  ]
+}

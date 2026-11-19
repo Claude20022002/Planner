@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "titre": "Direction · Planner",
+    "description": "La direction et la scolarité trouvent au même endroit les salles, les examens et les chiffres de l'emploi du temps."
+  },
+  "entete": {
+    "surtitre": "Direction",
+    "titre": "Toute l'école, d'un seul regard.",
+    "accroche": "La direction et la scolarité trouvent au même endroit les salles, les examens et les chiffres de l'emploi du temps."
+  },
+  "aujourdhui": "Aujourd'hui",
+  "cartes": [
+    {
+      "page": "emploiDuTemps",
+      "titre": "Emploi du temps",
+      "texte": "Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas."
+    },
+    {
+      "page": "enClasse",
+      "titre": "En classe",
+      "texte": "L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte."
+    },
+    {
+      "page": "securite",
+      "titre": "Sécurité et données",
+      "texte": "Cette page ne dit que ce que Planner fait déjà. Ce qui est en préparation est marqué « Bientôt »."
+    }
+  ]
+}
