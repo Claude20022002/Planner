@@ -7,11 +7,11 @@
 | Origine | [expertise du site](../../etude-marche/12-expertise-site-vitrine.md), § 3 (P1 à P6), § 12 (D1 à D4), § 13 (C5 et C7), § 14 (lot B) |
 | Branche | `fix/vit-18-textes-exacts`, depuis `origin/main` (`d27e30ee`) ; le code après la fusion de VIT-14 (#224) |
 | Rédigé par | Claude Code (Opus 5.5), session de l'expertise, le 19 novembre 2026 |
-| **Validé** | en attente : les phrases marquées « validé (D2) » ou « validé (D3) » le sont déjà ; le chef valide les autres groupe par groupe (§ 4) |
+| **Validé** | **par Claude20022002 le 19 novembre 2026**, par l'outil de questions : groupes 1 à 5 et questions 6 et 7 (« Je valide », pour chacun). Les phrases de D2 et D3 l'étaient déjà |
 
 ## 1. Objet et critère de « terminé »
 
-Rendre exacte chaque phrase du site que l'expertise a trouvée trop large, appliquer les décisions D2, D3 et D4 du chef, et raconter EP-18 sur l'accueil et la page En classe. **Aucun composant ne change**, sauf la question 7 (§ 4). La vidéo n'est pas touchée (§ 6).
+Rendre exacte chaque phrase du site que l'expertise a trouvée trop large, appliquer les décisions D2, D3 et D4 du chef, et raconter EP-18 sur l'accueil et la page En classe. **Aucun composant ne change**, sauf deux lignes de `EnTete.astro` (question 7, accordée). La vidéo n'est pas touchée (§ 6).
 
 « Terminé » quand :
 
@@ -105,13 +105,13 @@ Posées par l'outil de questions, une par groupe. **Ce que le chef tape dans « 
 
 | N° | Question | Proposition | Réponse du chef |
 |---|---|---|---|
-| 1 | Groupe 1 : l'accroche de l'accueil | le texte du § 3.4, groupe 1 | |
-| 2 | Groupe 2 : le refus expliqué (deux phrases) | les textes du groupe 2 | |
-| 3 | Groupe 3 : quiz et jeux (cinq phrases) | les textes du groupe 3 | |
-| 4 | Groupe 4 : l'appel d'abord à la main (trois clés) | les textes du groupe 4 | |
-| 5 | Groupe 5 : jeux sur ordinateur, hors ligne, formation (trois phrases) | les textes du groupe 5 | |
-| 6 | La carte « Hors ligne » de Bientôt peut-elle dire qu'une partie existe déjà, alors que la page Bientôt ne montre que ce qui n'existe pas ? | oui, en une phrase : c'est exact, et c'est un argument d'EP-18 | |
-| 7 | Changer l'ordre de `TYPES` donnerait l'icône de l'école au supérieur, car `EnTete.astro` prend les icônes par position. Puis-je toucher **deux lignes** de `EnTete.astro`, hors de mon périmètre, pour prendre l'icône par clé de type ? | oui : `iconesTypes` devient un objet `{ superieur: Landmark, formation: Briefcase, collegeLycee: School }` (lignes 20 et 43). VIT-17 touche aussi ce fichier (le saut du menu) : le premier fusionné passe, l'autre fusionne `main` | |
+| 1 | Groupe 1 : l'accroche de l'accueil | le texte du § 3.4, groupe 1 | **validé** |
+| 2 | Groupe 2 : le refus expliqué (deux phrases) | les textes du groupe 2 | **validé** |
+| 3 | Groupe 3 : quiz et jeux (cinq phrases) | les textes du groupe 3 | **validé** |
+| 4 | Groupe 4 : l'appel d'abord à la main (trois clés) | les textes du groupe 4 | **validé** |
+| 5 | Groupe 5 : jeux sur ordinateur, hors ligne, formation (trois phrases) | les textes du groupe 5 | **validé** |
+| 6 | La carte « Hors ligne » de Bientôt peut-elle dire qu'une partie existe déjà, alors que la page Bientôt ne montre que ce qui n'existe pas ? | oui, en une phrase : c'est exact, et c'est un argument d'EP-18 | **oui, en une phrase** |
+| 7 | Changer l'ordre de `TYPES` donnerait l'icône de l'école au supérieur, car `EnTete.astro` prend les icônes par position. Puis-je toucher **deux lignes** de `EnTete.astro`, hors de mon périmètre, pour prendre l'icône par clé de type ? | oui : `iconesTypes` devient un objet `{ superieur: Landmark, formation: Briefcase, collegeLycee: School }` (lignes 20 et 43). VIT-17 touche aussi ce fichier (le saut du menu) : le premier fusionné passe, l'autre fusionne `main` | **oui, deux lignes** |
 
 ## 5. Le test de garde
 
@@ -145,7 +145,7 @@ Deux phrases de la vidéo ne suivent plus le site. Elles ne changent qu'au proch
 | `vitrine/src/i18n/fr/` et `en/` : `accueil.json`, `emploi-du-temps.json`, `en-classe.json`, `quiz-et-jeux.json`, `solutions.json`, `bientot.json`, `bibliotheque.json`, `securite.json` | les phrases du § 3 |
 | `vitrine/src/i18n/ar/solutions.json` | l'ordre des clés de `types` seulement |
 | `vitrine/src/components/solutions/types.js` | l'ordre et les tons (§ 3.3) |
-| `vitrine/src/components/socle/EnTete.astro` | deux lignes, **seulement si le chef dit oui à la question 7** |
+| `vitrine/src/components/socle/EnTete.astro` | deux lignes : l'icône prise par clé de type (question 7, accordée par le chef) |
 | `vitrine/tests/contenu.test.js`, `vitrine/tests/solutions.test.js` | le test de garde, les phrases figées, l'ordre des types |
 | `docs/plan/modules/VIT-site-vitrine.md` | la ligne de VIT-18 |
 
