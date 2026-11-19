@@ -23,7 +23,7 @@
   "refus": {
     "surtitre": "Refusals explained",
     "titre": "Every refusal has a reason.",
-    "texte": "When a session cannot be placed, Planner names the rule that blocks it. You fix the data or relax the rule, then run the calculation again.",
+    "texte": "When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher. You fix it, then run the calculation again.",
     "avis": {
       "label": "Example of a Planner notice for a session that could not be placed",
       "titre": "Session not placed",
