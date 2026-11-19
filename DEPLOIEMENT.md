@@ -25,10 +25,10 @@ mise à jour ordinaire de Planner.
 
 ### Préparer l’image et vérifier les conditions
 
-- Consulter les [neuf conditions et la recette validées](docs/conception/exploitation/vit-06-mise-en-ligne.md#conditions-et-recette-du-chef).
+- Consulter les [douze conditions et la recette](docs/conception/exploitation/vit-06-mise-en-ligne.md#conditions-et-recette-du-chef).
   Vérifier notamment l'audit et la montée d'Astro à partir du 27 novembre, les textes légaux approuvés,
   les logos officiels, le `noindex` ainsi que le contenu, la vidéo, les illustrations, les pages
-  par rôle, le catalogue et la FAQ de la version candidate.
+  par rôle, le catalogue, la FAQ, l’adresse de contact publiée, la stabilité du menu sur téléphone et le score mobile de l’accueil.
 - Dans GitHub Actions, le chef crée `VITRINE_DOCKERHUB_USERNAME` et `VITRINE_DOCKERHUB_TOKEN`.
   Le jeton doit expirer et permettre la lecture et l'écriture sur le seul dépôt
   `claude20022002/planner-vitrine`, sans droit de suppression. La CI publie l'image testée
