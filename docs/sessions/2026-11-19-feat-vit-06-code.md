@@ -30,6 +30,21 @@ La PR #221 attend le push du chef et la confirmation du runner GitHub. Les résu
 Le chef a validé l’approche de rétention. Pour la mettre en œuvre, obtenir la sortie des journaux d’accès Traefik et ses montages, ainsi que la portée autorisée si cette sortie est partagée. La valeur de `VITRINE_JOURNAUX_JOURS` est fixée par le chef dans VIT-12.
 La consigne du coordinateur place ensuite VIT-11, puis VIT-15. Le code de VIT-11 s’appuie sur VIT-10 fusionnée et demande un complément au plan pour le méga-menu. La suite de DOC-03 attend le chef.
 
+### Recherche de l’extrait Traefik
+
+La [recette EXP-01](../recette/serveur-2026-11.md#n8n-et-le-proxy-photo-avant) situe le Compose n8n dans `/home/debian/n8n/docker-compose.yml` et identifie le conteneur `n8n-traefik-1`. Elle ne donne ni la destination des accès ni le pilote de journalisation. La recherche dans l’historique Git et les dossiers locaux d’exploitation n’a trouvé aucune copie exploitable de la configuration Traefik.
+
+Sur le VPS, le chef peut relever uniquement le pilote, les montages et les options pertinentes avec cet extrait filtré. Si une configuration statique est montée, il faut aussi relever son bloc `accessLog`.
+
+```sh
+docker inspect n8n-traefik-1 | jq '.[0] | {
+  pilote: .HostConfig.LogConfig.Type,
+  montages: [.Mounts[] | {Type, Destination}],
+  options: [.Args[]? | select(test("^--(accesslog(=|$)|accesslog[.]filepath=|configfile=)"; "i"))],
+  variables: [.Config.Env[]? | select(test("^TRAEFIK_(ACCESSLOG|ACCESSLOG_FILEPATH|CONFIGFILE)="; "i"))]
+}'
+```
+
 ## Commandes pour le chef depuis le dépôt principal
 
 ```powershell
