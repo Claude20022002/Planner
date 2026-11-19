@@ -4,9 +4,10 @@
 |---|---|
 | Fait par | Qoder, agent d'Alexis |
 | Mission | message du chef du 18 novembre : « 11 boutons au même nom ne se distinguent pas au lecteur d'écran » |
-| Module | QJE · suite de [#196](https://github.com/Claude20022002/Planner/pull/196) (fusionnée) et de [#205](https://github.com/Claude20022002/Planner/pull/205) (en relecture) |
-| Dossier de travail | le dépôt principal, branche créée depuis `origin/main` (`7f3c7089`) |
-| Dernier commit | voir `git log -1` ; code : `8723e69b` |
+| Module | QJE · suite de [#196](https://github.com/Claude20022002/Planner/pull/196) et de [#205](https://github.com/Claude20022002/Planner/pull/205), toutes deux fusionnées |
+| Dossier de travail | le dépôt principal, branche créée depuis `origin/main` (`7f3c7089`), `main` (`736a8f7e`) fusionnée le 19 nov. |
+| Dernier commit | voir `git log -1` ; code : `8723e69b` ; fusion de `main` : `506ebd67` |
+| PR | [#229](https://github.com/Claude20022002/Planner/pull/229), poussée le 19 nov. |
 | Fiche précédente | [2026-11-18-fix-qje-404-hors-classes.md](2026-11-18-fix-qje-404-hors-classes.md) |
 
 ## Objectif de la session
@@ -39,6 +40,8 @@ seul (`24e0b4f9`).
 |---|---|
 | `24e0b4f9` | le plan seul |
 | `8723e69b` | les deux clés de traduction, les trois boutons, le test de non-régression |
+| `d6b6971d` | cette fiche, au moment où le push attendait la fusion de #199 |
+| `506ebd67` | fusion de `origin/main` (`736a8f7e`), sans conflit : #199 et #205 y sont entrées entre-temps |
 
 - **`i18n/fr.js`**, **`i18n/en.js`** : `jeux.jouerNom` (« Jouer à « {{jeu}} » » / « Play “{{jeu}}” ») et
   `jeux.continuerNom` (« Continuer « {{jeu}} » » / « Continue “{{jeu}}” »). `jeux.jouer` et
@@ -54,9 +57,9 @@ seul (`24e0b4f9`).
 
 | Contrôle | Résultat |
 |---|---|
-| `npm run test:unit` (frontend) | 66 tests, passés |
-| `npm run lint` (frontend) | 0 erreur, 20 avertissements préexistants |
-| `npm run build` | construit en 44,7 s |
+| `npm run test:unit` (frontend) | 79 tests, passés (66 avant la fusion de `main`) |
+| `npm run lint` (frontend) | 0 erreur, 17 avertissements préexistants |
+| `npm run build` | construit en 36,1 s, après `npm install` (`lucide-react` et `axe-core` viennent de `main`) |
 | `node --check` du parcours | passe |
 | Non vérifié en local | les parcours et l'intégration : pas de MySQL (démon Docker arrêté, 3306 et 3307 fermés). La CI les fait après le push |
 
@@ -70,34 +73,36 @@ Aucune en attente.
 
 ## État laissé
 
-- Deux commits sur `fix/qje-boutons-catalogue`, **pas encore poussés** : le chef a demandé d'attendre
-  l'annonce de la fusion de #199 avant `git fetch` + `git merge origin/main`.
-- `main` non touché, `docs/plan/suivi.md` non touché.
+- Branche `fix/qje-boutons-catalogue` poussée le 19 nov., PR
+  [#229](https://github.com/Claude20022002/Planner/pull/229) ouverte sur `main`.
+- L'attente demandée par le chef est levée : #199 (UIX-06b) et #205 sont fusionnées dans `main`
+  (`736a8f7e`), la fusion s'est faite sans conflit.
+- `main` non touché, `docs/plan/suivi.md` non touché ; `frontend/src/i18n/index.js` non touché par la
+  branche, donc rien à réconcilier de ce côté.
+- `frontend/package-lock.json` : `npm install` y a ajouté des marques `"peer": true` locales ; la
+  modification a été annulée, le verrou reste celui de `main`.
 - `components/jeux/CatalogueJeux.jsx` n'est importé nulle part (code mort) : il porte encore des boutons
   au même nom. Signalé, non modifié.
 
 ## Reste à faire, dans l'ordre
 
-1. Attendre l'annonce : #199 (UIX-06b) fusionnée.
-2. `git fetch`, `git merge origin/main` ; si `frontend/src/i18n/index.js` conflit, **garder les deux
-   côtés** (dictionnaires gestion et jeux) ; pour `docs/plan/suivi.md`, garder la version de `main`.
-3. Pousser, ouvrir la PR, suivre les six contrôles (Parcours compris).
-4. Relecture du coordinateur, puis fusion par le chef.
+1. Suivre les six contrôles de la CI de #229 (Parcours compris).
+2. Relecture du coordinateur, puis fusion par le chef.
 
 ## Prompt de reprise
 
 ```text
 Tu reprends le correctif des noms de boutons du catalogue de jeux de Planner, branche
-fix/qje-boutons-catalogue (2 commits locaux, non poussés).
+fix/qje-boutons-catalogue, poussée, PR #229 ouverte.
 Lis AGENTS.md, le plan docs/conception/jeux/qje-boutons-catalogue.md et la fiche
 docs/sessions/2026-11-18-fix-qje-boutons-catalogue.md.
 Fait : jeux.jouerNom et jeux.continuerNom (fr, en) ; aria-label sur les boutons étudiant du catalogue
 et des modules ; deux assertions de non-régression dans sessionsJeu.spec.cjs.
 Le bouton enseignant avait déjà son nom depuis #196 (98ea71d4) ; l'audit des parcours n'a trouvé aucun
-autre clic générique.
-Vérifié : 66 tests unitaires, lint 0 erreur, build, node --check. Non vérifié : parcours et intégration
-(pas de MySQL local).
-Reste : attendre la fusion de #199, fusionner main (i18n : garder les deux côtés ; suivi.md : version de
-main), pousser, ouvrir la PR, CI verte, relecture du coordinateur.
+autre clic générique. main (736a8f7e) est fusionnée dans la branche, sans conflit (#199 et #205 entrées
+entre-temps), et le push n'attend plus rien.
+Vérifié : 79 tests unitaires, lint 0 erreur, build après npm install, node --check. Non vérifié : parcours
+et intégration (pas de MySQL local).
+Reste : CI verte sur #229, relecture du coordinateur, fusion par le chef.
 Règles : ne touche jamais à main, ne fusionne pas, une branche = une tâche.
 ```
