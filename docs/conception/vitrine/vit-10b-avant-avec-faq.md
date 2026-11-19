@@ -124,3 +124,19 @@ FAQ : « Que propose l'application mobile ? » (VIT-11, réponse 7). Deux questi
 ## 6. Contrôles, au moment du code
 
 Build, tests unitaires de `vitrine`, `node scripts/verifier-neutre.mjs`, pas de défilement horizontal en 390 et 1440 px, axe-core sur une page par rôle, accordéon utilisable sans JavaScript.
+
+## 7. Complément C8 (expertise § 13, validé par le coordinateur le 19 novembre 2026)
+
+Aucune phrase nouvelle. Deux ajustements avant le push de VIT-10b :
+
+1. **`direction.json` et `scolarite.json` · `cartes.2.texte`** (fr et en) : remplacer la phrase sur le site (« Cette page ne dit que… » / « This page only describes… ») par `securite.json` · `meta.description`, sans la fin après le deux-points (la liste « Double authentification… » / « Two-factor authentication… », avec le point final).
+2. **Boutons** : les deux boutons de contact et de fonction principale passent dans l'ouverture (`EnTetePage.astro`, emplacement `actions`) au lieu de la section à part dans `PageRole.astro` (lignes 30 à 35).
+
+| Fichier | Rôle |
+|---|---|
+| `vitrine/src/i18n/{fr,en}/{direction,scolarite}.json` | `cartes[2].texte` recopié |
+| `vitrine/src/components/fonctions/EnTetePage.astro` | emplacement `actions` sous l'accroche |
+| `vitrine/src/components/fonctions/PageRole.astro` | boutons dans `EnTetePage` ; plus de section `actions` |
+| `vitrine/tests/roles.test.js` | la carte Sécurité égale le début de `securite.meta.description` ; ouverture avec emplacement actions |
+
+**Validé par le coordinateur**, le 19 novembre 2026 (aucune phrase nouvelle).
