@@ -10,6 +10,7 @@
 - **Page « Solutions »** (VIT-05 en préparation, branche `feat/vit-05-solutions`, [plan validé le 18 nov.](../../conception/vitrine/vit-05-solutions.md)) : `/<langue>/solutions/`, une section par type d'établissement (collège et lycée, enseignement supérieur, formation professionnelle), chacune avec « Aujourd'hui » (chaque point renvoie à sa page de fonction) et « Bientôt » (plan de parité, sans date) ; aucun prix. Lien « Solutions » en tête de la navigation, dans l'en-tête et le pied de page.
 - **Contenu complet** (VIT-07 en cours, branche `feat/vit-07-contenu-complet`, [plan validé le 18 nov.](../../conception/vitrine/vit-07-contenu-complet.md)) : quatre pages (quiz et jeux, bibliothèque, cours et annonces, application), la carte « prêts de livres » retirée de « Bientôt », et un menu « Fonctions ». Quiz et jeux mène à une page « Bibliothèque des jeux » (titres et résumés du catalogue, hors du menu). Aucun prix, aucun nom d'école.
 - **Logos des applications et icônes vivantes** (VIT-09a, branche `feat/vit-09a-logos-icones`, [plan validé le 18 nov.](../../conception/vitrine/vit-09a-logos-icones.md)) : `shared/icones/`, source unique pour le site et, avec UIX-10b, l'application. Sept logos illustrés (tuile en dégradé, objet en plans ; dessin détaillé et simplifié), aux teintes `app-<id>` de la charte v3, et douze icônes de commandes animées en CSS au survol et au focus, coupées en mouvement réduit. Aucune page ne les pose encore : c'est VIT-09b.
+- **Pages par rôle** (VIT-10 en cours, branche `feat/vit-10-pages-par-role`, [plan validé le 18 nov.](../../conception/vitrine/vit-10-pages-par-role.md)) : Direction, Scolarité, Enseignants, Étudiants. Le menu « Solutions » s'ouvre. Le pied de page est en colonnes. Pas de bande de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
 - **Ce que font les concurrents**, d'après l'[étude de marché](../../etude-marche/01-concurrents.md) :
   - une page par fonction et par type d'école ;
   - une démonstration ou un essai bien visible ;
@@ -19,6 +20,7 @@
   - une version en arabe.
 - **Règle des textes** : ne promettre que ce qui existe ou se démontre ([arguments marketing](../../etude-marche/02-arguments-marketing.md)).
 - **Vidéo de promotion** : la PR #53 (`video/promo`) est ouverte ; `kit-video-planner/` contient le guide et les captures.
+- **Vidéo de présentation de l'accueil** (VIT-08, branche `feat/vit-08-video-presentation`, [plan validé le 18 nov.](../../conception/vitrine/vit-08-video-presentation.md)) : 86 s de motion design sans captures ni son, en français et en anglais, aux couleurs de `shared/charte/` ; composition `Accueil` du projet Remotion (`docs/presentation/video/src/accueil/`), textes tirés de `accueil.json`. Section « Présentation » après l'ouverture, lecture seule et muette, image fixe au mouvement réduit, transcription dessous. Le rendu final (`npm run render:accueil`, environ 10 Mo) attend les SVG officiels : d'ici là la section n'est pas affichée, et le test de l'empreinte est sauté.
 
 ## Fonctions
 
@@ -30,6 +32,7 @@
 | VIT-04 | Page d'état du service et journal des nouveautés de chaque version | SP-5 | libre | S | EXP-05 | à faire |
 | VIT-05 | Vitrine complète : fonctions par module, solutions par type d'école, sécurité et données, tarifs ; français, puis arabe et anglais | SP-2 | quand la vente reprend | L | VEN | préparation dégelée le 18 nov. : accueil et pages de fonctions, sans tarifs ni mise en ligne ([plan](../../conception/vitrine/vit-vitrine.md)) |
 | VIT-07 | Le site présente toutes les applications : quiz et jeux, bibliothèque, cours et annonces, application | — | libre | M | VIT-01 | en cours (`feat/vit-07-contenu-complet`) |
+| VIT-10 | Pages par rôle, menu « Solutions » ouvrant, pied de page en colonnes | — | libre | M | VIT-07 | en cours (`feat/vit-10-pages-par-role`) |
 
 ## Critères de « terminé »
 

@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "titre": "Teachers · Planner",
+    "description": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
+  },
+  "entete": {
+    "surtitre": "Teachers",
+    "titre": "After the timetable, the classroom.",
+    "accroche": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
+  },
+  "aujourdhui": "Today",
+  "cartes": [
+    {
+      "page": "quizEtJeux",
+      "titre": "Quiz and games",
+      "texte": "The teacher prepares the quiz. The link opens in a browser, on a school computer or elsewhere. A code or a QR code leads to the same link."
+    },
+    {
+      "page": "coursEtAnnonces",
+      "titre": "Courses and announcements",
+      "texte": "The teacher adds a document or a link in a section."
+    },
+    {
+      "page": "emploiDuTemps",
+      "titre": "Timetable",
+      "texte": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
+    }
+  ]
+}

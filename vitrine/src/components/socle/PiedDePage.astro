@@ -2,7 +2,8 @@
 // Pied de page du site vitrine : nom et phrase du produit, pages du site, langues, mention de droits.
 import Logo from './Logo.astro';
 import { traductions } from '../../i18n/index.js';
-import { LANGUES_PUBLIEES, NAVIGATION, chemin } from '../../i18n/langues.js';
+import { TYPES } from '../solutions/types.js';
+import { LANGUES_PUBLIEES, FONCTIONS, ROLES, chemin } from '../../i18n/langues.js';
 
 interface Props {
   langue: string;
@@ -11,6 +12,17 @@ interface Props {
 
 const { langue, page } = Astro.props;
 const t = traductions(langue, 'commun');
+const solutions = traductions(langue, 'solutions');
+const colonnes = [
+  { titre: t('navigation.fonctions'), liens: FONCTIONS.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })) },
+  { titre: t('navigation.solutions'), liens: TYPES.map(({ cle, ancre }) => ({ href: chemin(langue, 'solutions', ancre), texte: solutions(`types.${cle}.surtitre`) })) },
+  { titre: t('navigation.parRole'), liens: ROLES.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })) },
+  { titre: t('navigation.ressources'), liens: [
+    { href: chemin(langue, 'securite'), texte: t('navigation.securite') },
+    { href: chemin(langue, 'bientot'), texte: t('navigation.bientot') },
+    { href: chemin(langue, 'accueil', 'contact'), texte: t('navigation.contact') },
+  ] },
+];
 ---
 <footer class="pied">
   <div class="contenu">
@@ -18,11 +30,15 @@ const t = traductions(langue, 'commun');
       <Logo variante="icone" class="pied-logo" />
       <p><strong>{t('produit')}</strong><br />{t('pied.description')}</p>
     </div>
-    <nav aria-label={t('pied.navigation')}>
-      <ul class="liens">
-        {NAVIGATION.map((cle) => <li><a href={chemin(langue, cle)}>{t(`navigation.${cle}`)}</a></li>)}
-        <li><a href={chemin(langue, 'accueil', 'contact')}>{t('navigation.contact')}</a></li>
-      </ul>
+    <nav class="colonnes" aria-label={t('pied.navigation')}>
+      {colonnes.map((colonne) => (
+        <div>
+          <h2>{colonne.titre}</h2>
+          <ul>
+            {colonne.liens.map((lien) => <li><a href={lien.href}>{lien.texte}</a></li>)}
+          </ul>
+        </div>
+      ))}
     </nav>
     <div class="bas">
       <p>{t('pied.droits')}</p>
@@ -38,6 +54,13 @@ const t = traductions(langue, 'commun');
 <style>
   .pied { background: var(--gris-fond); color: var(--gris-texte); font-size: var(--texte-petit); }
   .contenu { display: grid; gap: var(--espace-4); max-inline-size: var(--largeur-contenu); margin-inline: auto; padding: var(--espace-5) var(--gouttiere) var(--espace-4); }
+  .colonnes { display: grid; gap: var(--espace-4); }
+  .colonnes h2 { margin: 0; font-size: var(--texte-petit); font-weight: 650; color: var(--encre); }
+  .colonnes ul { display: grid; gap: 0.4rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
+  .colonnes a { color: inherit; text-decoration: none; }
+  .colonnes a:hover { color: var(--bleu); }
+  @media (min-width: 40rem) { .colonnes { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 64rem) { .colonnes { grid-template-columns: repeat(4, 1fr); } }
   .marque { display: flex; align-items: center; gap: var(--espace-2); }
   .marque strong { color: var(--encre); }
   .marque :global(.pied-logo) { inline-size: 2.5rem; flex: none; }

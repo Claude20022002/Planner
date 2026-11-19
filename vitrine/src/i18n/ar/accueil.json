@@ -169,5 +169,238 @@
   "contact": {
     "titre": "",
     "texte": ""
+  },
+  "video": {
+    "surtitre": "",
+    "titre": "",
+    "commandes": {
+      "lire": "",
+      "pause": "",
+      "revoir": ""
+    },
+    "transcription": {
+      "ouvrir": "",
+      "image": ""
+    },
+    "scenes": [
+      {
+        "titre": "",
+        "lignes": [
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      }
+    ],
+    "illustrations": {
+      "applications": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "semaine": "",
+      "calcul": "",
+      "report": {
+        "ecran": "",
+        "jours": [
+          "",
+          ""
+        ],
+        "notification": {
+          "titre": "",
+          "texte": ""
+        }
+      },
+      "appel": {
+        "renouvellement": "",
+        "presence": "",
+        "statuts": {
+          "present": "",
+          "retard": "",
+          "absent": ""
+        }
+      },
+      "quiz": {
+        "types": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "points": "",
+        "classement": ""
+      },
+      "jeux": {
+        "cartes": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tableau": "",
+        "commandes": [
+          "",
+          "",
+          ""
+        ],
+        "proposer": "",
+        "envoyer": ""
+      },
+      "cours": {
+        "classe": "",
+        "sections": [
+          {
+            "titre": "",
+            "supports": [
+              ""
+            ]
+          },
+          {
+            "titre": "",
+            "supports": [
+              "",
+              ""
+            ]
+          },
+          {
+            "titre": "",
+            "supports": [
+              ""
+            ]
+          }
+        ],
+        "sondage": {
+          "titre": "",
+          "question": "",
+          "choix": [
+            "",
+            "",
+            ""
+          ]
+        },
+        "annonce": {
+          "titre": "",
+          "texte": ""
+        },
+        "bibliotheque": {
+          "titre": "",
+          "documents": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      },
+      "etablissement": {
+        "campus": [
+          "",
+          ""
+        ],
+        "trajet": "",
+        "occupation": "",
+        "salles": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "examen": {
+          "titre": "",
+          "detail": ""
+        }
+      },
+      "securite": {
+        "code": "",
+        "valider": "",
+        "roles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "mobile": {
+        "onglets": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    }
   }
 }

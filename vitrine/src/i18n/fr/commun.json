@@ -17,7 +17,14 @@
     "etablissement": "Pour l'établissement",
     "securite": "Sécurité et données",
     "bientot": "Bientôt",
-    "contact": "Nous contacter"
+    "contact": "Nous contacter",
+    "parEtablissement": "Par établissement",
+    "parRole": "Par rôle",
+    "direction": "Direction",
+    "scolarite": "Scolarité",
+    "enseignants": "Enseignants",
+    "etudiants": "Étudiants",
+    "ressources": "Ressources"
   },
   "langues": {
     "label": "Langue",

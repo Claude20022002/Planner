@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "titre": "School leaders · Planner",
+    "description": "School leaders and the registrar's office find rooms, exams and timetable figures in one place."
+  },
+  "entete": {
+    "surtitre": "School leaders",
+    "titre": "The whole school, at a glance.",
+    "accroche": "School leaders and the registrar's office find rooms, exams and timetable figures in one place."
+  },
+  "aujourdhui": "Today",
+  "cartes": [
+    {
+      "page": "emploiDuTemps",
+      "titre": "Timetable",
+      "texte": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
+    },
+    {
+      "page": "enClasse",
+      "titre": "In class",
+      "texte": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
+    },
+    {
+      "page": "securite",
+      "titre": "Security and data",
+      "texte": "This page only describes what Planner already does. What is in preparation is marked “Coming soon”."
+    }
+  ]
+}
