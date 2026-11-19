@@ -25,5 +25,53 @@
       "titre": "Security and data",
       "texte": "This page only describes what Planner already does. What is in preparation is marked “Coming soon”."
     }
-  ]
+  ],
+  "passage": {
+    "titre": "Before, with Planner.",
+    "avant": "Before",
+    "avec": "With Planner",
+    "lignes": [
+      {
+        "avant": "Room use is tracked in a spreadsheet.",
+        "avec": "Planner shows how much each room is used and how many hours each teacher carries."
+      },
+      {
+        "avant": "Exam sessions and invigilation are kept on a separate list.",
+        "avec": "Exam sessions, their rooms and their invigilation."
+      },
+      {
+        "avant": "A session that does not fit shows up when the grid is read again.",
+        "avec": "When a session cannot be placed, Planner names the rule that blocks it."
+      },
+      {
+        "avant": "A room requested outside class is noted in a message.",
+        "avec": "Rooms, their capacity, and bookings outside of classes."
+      },
+      {
+        "avant": "Going back to an earlier grid means finding the previous file.",
+        "avec": "Every calculation is kept. You go back to an earlier version whenever you want."
+      }
+    ]
+  },
+  "faq": {
+    "titre": "Common questions.",
+    "questions": [
+      {
+        "question": "Where is the data stored?",
+        "reponse": "Ask us where your institution's data will be hosted. We will tell you the terms of the offer."
+      },
+      {
+        "question": "In which languages can I read the site?",
+        "reponse": "The site is available in French and in English. Contact us to find out which languages are available in the applications you are interested in."
+      },
+      {
+        "question": "Can lists be imported?",
+        "reponse": "The administration can import lists of accounts, students and teachers from compatible CSV files."
+      },
+      {
+        "question": "How much does it cost?",
+        "reponse": "Contact us to talk about your institution's needs."
+      }
+    ]
+  }
 }

@@ -10,7 +10,7 @@
 - **Page « Solutions »** (VIT-05 en préparation, branche `feat/vit-05-solutions`, [plan validé le 18 nov.](../../conception/vitrine/vit-05-solutions.md)) : `/<langue>/solutions/`, une section par type d'établissement (collège et lycée, enseignement supérieur, formation professionnelle), chacune avec « Aujourd'hui » (chaque point renvoie à sa page de fonction) et « Bientôt » (plan de parité, sans date) ; aucun prix. Lien « Solutions » en tête de la navigation, dans l'en-tête et le pied de page.
 - **Contenu complet** (VIT-07 en cours, branche `feat/vit-07-contenu-complet`, [plan validé le 18 nov.](../../conception/vitrine/vit-07-contenu-complet.md)) : quatre pages (quiz et jeux, bibliothèque, cours et annonces, application), la carte « prêts de livres » retirée de « Bientôt », et un menu « Fonctions ». Quiz et jeux mène à une page « Bibliothèque des jeux » (titres et résumés du catalogue, hors du menu). Aucun prix, aucun nom d'école.
 - **Pages par rôle** (VIT-10 en cours, branche `feat/vit-10-pages-par-role`, [plan validé le 18 nov.](../../conception/vitrine/vit-10-pages-par-role.md)) : Direction, Scolarité, Enseignants, Étudiants. Le menu « Solutions » s'ouvre. Le pied de page est en colonnes. Pas de bande de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
-- **Avant → avec, et FAQ par rôle** (VIT-10b, plan en attente du chef, branche `feat/vit-10b-avant-avec-faq`, [plan](../../conception/vitrine/vit-10b-avant-avec-faq.md)) : cinq lignes par rôle et une FAQ en accordéon. Les phrases « avec » sont recopiées. Les phrases « avant » attendent le visa. Aucune illustration.
+- **Avant → avec, et FAQ par rôle** (VIT-10b en cours, branche `feat/vit-10b-avant-avec-faq`, [plan validé le 18 nov.](../../conception/vitrine/vit-10b-avant-avec-faq.md)) : cinq lignes par rôle et une FAQ en accordéon. Les phrases « avec » sont recopiées. Aucune illustration.
 - **Ce que font les concurrents**, d'après l'[étude de marché](../../etude-marche/01-concurrents.md) :
   - une page par fonction et par type d'école ;
   - une démonstration ou un essai bien visible ;
@@ -32,7 +32,7 @@
 | VIT-05 | Vitrine complète : fonctions par module, solutions par type d'école, sécurité et données, tarifs ; français, puis arabe et anglais | SP-2 | quand la vente reprend | L | VEN | préparation dégelée le 18 nov. : accueil et pages de fonctions, sans tarifs ni mise en ligne ([plan](../../conception/vitrine/vit-vitrine.md)) |
 | VIT-07 | Le site présente toutes les applications : quiz et jeux, bibliothèque, cours et annonces, application | — | libre | M | VIT-01 | en cours (`feat/vit-07-contenu-complet`) |
 | VIT-10 | Pages par rôle, menu « Solutions » ouvrant, pied de page en colonnes | — | libre | M | VIT-07 | en cours (`feat/vit-10-pages-par-role`) |
-| VIT-10b | Sur les pages par rôle, « avant → avec Planner » et une FAQ | — | libre | S | VIT-10 | plan en attente (`feat/vit-10b-avant-avec-faq`) |
+| VIT-10b | Sur les pages par rôle, « avant → avec Planner » et une FAQ | — | libre | S | VIT-10 | en cours (`feat/vit-10b-avant-avec-faq`) |
 
 ## Critères de « terminé »
 

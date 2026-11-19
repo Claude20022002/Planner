@@ -47,6 +47,63 @@ test('les autres pages ne passent pas de lien à la grille partagée', () => {
   }
 });
 
+test('les lignes « avec » et la FAQ recopient des phrases déjà visées', () => {
+  const etab = charger('fr', 'etablissement');
+  const emploi = charger('fr', 'emploi-du-temps');
+  const enClasse = charger('fr', 'en-classe');
+  const cours = charger('fr', 'cours-et-annonces');
+  const quiz = charger('fr', 'quiz-et-jeux');
+  const biblio = charger('fr', 'bibliotheque');
+  const premiere = (texte) => texte.slice(0, texte.indexOf('. ') + 1);
+  const lien = quiz.entete.accroche.split('. ').slice(1).join('. ');
+  const plan = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs', 'conception', 'vitrine', 'vit-11-catalogue-faq.md'), 'utf8');
+  const vise = (n) => plan.split('\n').find((ligne) => ligne.startsWith(`| ${n} |`)).match(/«([^»]+)»/)[1].trim();
+  const avec = (page) => charger('fr', page).passage.lignes.map((ligne) => ligne.avec);
+  assert.deepEqual(avec('direction'), [
+    etab.statistiques.texte,
+    etab.quotidien.cartes[1].texte,
+    premiere(emploi.refus.texte),
+    etab.quotidien.cartes[0].texte,
+    emploi.suite.cartes[0].texte,
+  ]);
+  assert.deepEqual(avec('scolarite'), [
+    emploi.entete.accroche,
+    etab.quotidien.cartes[3].texte,
+    emploi.suite.cartes[2].texte,
+    emploi.suite.cartes[3].texte,
+    emploi.suite.cartes[0].texte,
+  ]);
+  assert.deepEqual(avec('enseignants'), [
+    enClasse.appel.points[1],
+    enClasse.quiz.texte,
+    cours.entete.accroche,
+    cours.supports.cartes[0].texte,
+    vise(8),
+  ]);
+  assert.deepEqual(avec('etudiants'), [
+    cours.supports.texte,
+    biblio.entete.accroche,
+    vise(7),
+    lien,
+    cours.annonces.cartes[0].texte,
+  ]);
+  const reponses = (page) => charger('fr', page).faq.questions.map((question) => question.reponse);
+  assert.deepEqual(reponses('direction'), [vise(4), vise(5), vise(6), vise(10)]);
+  assert.deepEqual(reponses('scolarite').slice(0, 1), [vise(6)]);
+  assert.equal(reponses('scolarite')[1], premiere(emploi.refus.texte));
+  assert.equal(reponses('enseignants')[0], vise(8));
+  assert.equal(reponses('enseignants')[2], lien);
+  assert.equal(reponses('etudiants')[0], vise(7));
+  for (const page of ['direction', 'scolarite', 'enseignants', 'etudiants']) {
+    assert.equal(charger('fr', page).passage.lignes.length, 5, page);
+    assert.equal(/MAD|prix|tarif/i.test(JSON.stringify(charger('fr', page))), false, page);
+  }
+  const faq = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'components', 'fonctions', 'FaqRole.astro'), 'utf8');
+  assert.match(faq, /<details>/);
+  assert.match(faq, /FAQPage/);
+  assert.match(faq, /question\.reponse/);
+});
+
 test('Direction recopie la phrase de l\'établissement, sans prix', () => {
   const page = charger('fr', 'direction');
   assert.equal(page.entete.titre, charger('fr', 'etablissement').entete.titre);
