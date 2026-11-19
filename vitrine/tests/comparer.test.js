@@ -1,5 +1,5 @@
-// VIT-14 : le comparatif par approche. Forme du tableau, textes français identiques au plan validé,
-// aucun produit nommé, aucun prix, aucun chiffre inventé, et chaque source d'une case Planner présente.
+// VIT-14 et VIT-14b : le comparatif par approche. Forme du tableau, textes français identiques aux plans
+// validés, aucun produit nommé, aucun prix, aucun chiffre inventé, et chaque source d'une case Planner présente.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -12,7 +12,11 @@ const ICI = path.dirname(fileURLToPath(import.meta.url));
 const RACINE = path.join(ICI, '..', '..');
 const charger = (langue) => JSON.parse(fs.readFileSync(path.join(ICI, '..', 'src', 'i18n', langue, 'comparer.json'), 'utf8'));
 const chaines = (valeur) => (typeof valeur === 'string' ? [valeur] : Object.values(valeur).flatMap(chaines));
-const PLAN = fs.readFileSync(path.join(RACINE, 'docs', 'conception', 'vitrine', 'vit-14-comparatif.md'), 'utf8');
+const plan = (nom) => fs.readFileSync(path.join(RACINE, 'docs', 'conception', 'vitrine', nom), 'utf8');
+const PLANS = ['vit-14-comparatif.md', 'vit-14b-criteres.md'].map(plan);
+
+/** Cases Planner qui parlent du QR code : seules à porter un nombre (« 30 secondes ») */
+const AVEC_TRENTE = ['appel', 'appelProtege'];
 
 /** Noms relevés dans les études de marché (docs/etude-marche/) : aucun ne doit paraître sur le site */
 const PRODUITS = [
@@ -25,7 +29,8 @@ const PRODUITS = [
 for (const langue of ['fr', 'en']) {
   const d = charger(langue);
 
-  test(`${langue} : cinq colonnes et sept lignes, un mot et un texte par case`, () => {
+  test(`${langue} : cinq colonnes et neuf lignes, un mot et un texte par case`, () => {
+    assert.equal(LIGNES.length, 9);
     assert.equal(d.approches.length, COLONNES);
     assert.equal(d.approches[0], 'Planner');
     assert.deepEqual(Object.keys(d.lignes), LIGNES);
@@ -44,17 +49,26 @@ for (const langue of ['fr', 'en']) {
   test(`${langue} : aucun prix, et aucun chiffre hors des 30 secondes du QR code`, () => {
     const tout = chaines(d).join('\n');
     assert.doesNotMatch(tout, /[€$£]|\bMAD\b|\bDH\b|dirham|euro|dollar|USD/i);
-    const appel = d.lignes.appel.cases[0].texte;
-    assert.match(appel, /\b30\b/);
-    const sansAppel = chaines(d).filter((s) => s !== appel).join('\n');
-    assert.doesNotMatch(sansAppel, /\d/);
+    const qr = AVEC_TRENTE.map((cle) => d.lignes[cle].cases[0].texte);
+    for (const texte of qr) assert.deepEqual(texte.match(/\d+/g), ['30']);
+    const reste = chaines(d).filter((s) => !qr.includes(s)).join('\n');
+    assert.doesNotMatch(reste, /\d/);
   });
 }
 
-test('le français reprend mot pour mot les textes du plan validé', () => {
+test('le français reprend mot pour mot les textes des plans validés', () => {
   const textes = chaines(charger('fr')).map((s) => s.replace('{date}', '[date]'));
-  for (const s of textes) assert.ok(PLAN.includes(s), `absent du plan : ${s}`);
-  assert.match(PLAN, /\| Validé \| \*\*Validé par Claude20022002/);
+  for (const s of textes) assert.ok(PLANS.some((p) => p.includes(s)), `absent des plans : ${s}`);
+  for (const p of PLANS) assert.match(p, /\| Validé \| \*\*Validé par Claude20022002/);
+});
+
+test('VIT-14b : les deux critères à leur place, et l’accroche à huit critères', () => {
+  assert.equal(LIGNES[LIGNES.indexOf('appel') + 1], 'appelProtege');
+  assert.equal(LIGNES[LIGNES.indexOf('sansTelephone') + 1], 'sansReseau');
+  assert.equal(LIGNES.includes('bilan'), false);
+  assert.equal(LIGNES.length - 1, 8);
+  assert.match(charger('fr').entete.accroche, /huit critères/);
+  assert.match(charger('en').entete.accroche, /eight criteria/);
 });
 
 test('l’accueil montre les critères 1, 2, 4 et 6, puis la ligne « Bientôt »', () => {
@@ -74,8 +88,8 @@ test('chaque case Planner a des sources, et chaque source existe dans le dépôt
 
 test('la date de la méthode, et l’adresse de la page', () => {
   assert.match(DATE, /^\d{4}-\d{2}-\d{2}$/);
-  assert.equal(dateEcrite('fr'), '18 novembre 2026');
-  assert.equal(dateEcrite('en'), 'November 18, 2026');
+  assert.equal(dateEcrite('fr'), '19 novembre 2026');
+  assert.equal(dateEcrite('en'), 'November 19, 2026');
   assert.equal(PAGES.comparer, 'comparer');
   assert.equal(chemin('en', 'comparer'), '/en/comparer/');
 });

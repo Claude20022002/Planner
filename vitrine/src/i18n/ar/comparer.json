@@ -129,6 +129,31 @@
         }
       ]
     },
+    "appelProtege": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
     "compte": {
       "critere": "",
       "cases": [
@@ -155,6 +180,31 @@
       ]
     },
     "sansTelephone": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "sansReseau": {
       "critere": "",
       "cases": [
         {
