@@ -7,7 +7,7 @@
 | Origine | [expertise du site](../../etude-marche/12-expertise-site-vitrine.md), § 13, C4 ; consigne du coordinateur du 19 nov. |
 | Branche | `feat/vit-14b-criteres`, depuis `origin/main` à `d27e30ee` ; le code après la fusion de #224 |
 | Rédigé par | Claude Code (Opus 5.5), le 19 novembre 2026 |
-| Validé | **à valider par le chef, case par case** (§ 3 et § 4) |
+| Validé | **Validé par Claude20022002 le 19 novembre 2026** (« Je valide le complément de VIT-14b ») : les § 3 à § 5 tels qu'écrits, cases « à confirmer » gardées. Date de la méthode : 2026-11-19 |
 
 ## 1. Ce que le chef a choisi (outil de questions, 19 nov.)
 
