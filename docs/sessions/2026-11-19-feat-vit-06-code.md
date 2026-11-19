@@ -26,9 +26,13 @@ Rétablir la recette Compose sur la PR #221, intégrer `main`, tenir à jour les
 
 ## État et reprise
 
-La PR #221 attend le push du chef et la confirmation du runner GitHub. Les résultats ci-dessus couvrent le checkout et l’image locaux.
+La CI vitrine de la PR #221 est verte. La rétention reste à régler avant la mise en ligne.
 Le chef a validé l’approche de rétention. Pour la mettre en œuvre, obtenir la sortie des journaux d’accès Traefik et ses montages, ainsi que la portée autorisée si cette sortie est partagée. La valeur de `VITRINE_JOURNAUX_JOURS` est fixée par le chef dans VIT-12.
 La consigne du coordinateur place ensuite VIT-11, puis VIT-15. Le code de VIT-11 s’appuie sur VIT-10 fusionnée et demande un complément au plan pour le méga-menu. La suite de DOC-03 attend le chef.
+
+### Confirmation GitHub Actions
+
+Le chef a poussé `aa5f3e7e`. Le [job vitrine 44442477804](https://github.com/Claude20022002/Planner/actions/runs/44442477804/job/135286461362) est vert avec Compose **v2.38.2**. Les étapes Compose et Nginx passent. La recette confirme `nginx -t`, neuf ressources image/vidéo et 49 pages dans Chromium avec lecture des trois vidéos. GitHub indique que la PR est fusionnable. La publication est réservée au passage sur `main`. La CI générale est encore en cours au relevé.
 
 ### Recherche de l’extrait Traefik
 
@@ -57,7 +61,7 @@ gh pr checks 221 --watch --repo Claude20022002/Planner
 ```text
 Reprends VIT-06 sur feat/vit-06-code dans ..\travaux-planner\vit-06-code.
 Lis AGENTS.md, le complément du 19 novembre dans le plan VIT-06 et cette fiche.
-Vérifie sur #221 que la recette Compose et l’image Nginx passent après le push du chef.
+La CI vitrine de #221 est verte sur aa5f3e7e. Confirme les contrôles de la CI générale.
 Obtiens la sortie des accès Traefik, ses montages et le périmètre validé, puis
 programme la rétention paramétrée dans deploy/ avec la durée décidée dans VIT-12.
 Après VIT-06, ouvre une session VIT-11 pour le catalogue, la FAQ et le méga-menu
