@@ -41,18 +41,18 @@
 | 2 | Les nouveaux critères sur l'accueil | non, `/comparer/` seulement | répondu (chef) |
 | 3 | « six critères » dans l'accroche | mettre le nouveau nombre (huit) | répondu (chef) |
 | 4 | Libellé de l'appel protégé | « Un appel qu'on ne peut pas tromper » | répondu (chef) |
-| 5 | Chaque case des § 3 et § 4 du complément, et le texte du § 5 | — | **en attente du chef** |
+| 5 | Chaque case des § 3 et § 4 du complément, et le texte du § 5 | « Je valide le complément de VIT-14b » : tel qu'écrit, cases « à confirmer » gardées, date 2026-11-19 | répondu (chef), `98920ba6` |
 
 ## État laissé
 
-- Pour `suivi.md` (le coordinateur le reporte) : VIT-14 → codée, relue conforme, `main` fusionnée (`ac2d203b`), prête à pousser ; VIT-14b → complément de plan écrit (`82ed5c0a`), à valider ; code après la fusion de #224.
+- Pour `suivi.md` (le coordinateur le reporte) : VIT-14 → codée, relue conforme, `main` fusionnée (`ac2d203b`), prête à pousser ; VIT-14b → **complément validé par le chef le 19 nov.** (`82ed5c0a`, validation `98920ba6`) ; code après la fusion de #224 (encore ouverte).
 - `docs/plan/suivi.md` et la fiche de mission ne sont pas touchés.
 - Pour le coordinateur : l'expertise (C4) annonçait trois critères ; le bilan des règles n'entre pas, faute d'écran. Il pourra revenir avec MOT-13c.
 
 ## Reste à faire, dans l'ordre
 
 1. Le chef pousse `feat/vit-14-comparatif` et fusionne #224.
-2. Le chef valide le complément de VIT-14b case par case (cases « à confirmer » comprises) ; ligne « Validé » commitée seule.
+2. ~~Validation du complément~~ : faite (`98920ba6`).
 3. `git merge origin/main` dans `feat/vit-14b-criteres` (après #224), puis le code du § 6 et ses vérifications.
 
 ## Commandes pour le chef de projet
@@ -81,10 +81,10 @@ le complément docs/conception/vitrine/vit-14b-criteres.md et cette fiche
 Fait : VIT-14 fusionnée avec main (ac2d203b), 88 tests, 52 pages ; complément de VIT-14b écrit (82ed5c0a) :
 « Un appel qu'on ne peut pas tromper » et « Les semaines déjà consultées, lisibles sans réseau » ;
 le bilan de chaque règle n'entre pas (aucun écran ne l'affiche) ; l'accueil ne change pas ; « huit critères ».
-Reste : validation du chef case par case (ligne « Validé » commitée seule) ; après la fusion de #224,
-git merge origin/main, puis le code du § 6 (comparatif.js, comparer.json x3, comparer.test.js),
-DATE au jour de la validation, et les vérifications.
-Questions en attente : la validation des § 3 à § 5 du complément.
+Complément validé par le chef le 19 nov. (98920ba6, cases « à confirmer » gardées).
+Reste : vérifier que #224 est fusionnée (gh pr view 224) ; git merge origin/main ; puis le code du § 6
+(comparatif.js, comparer.json x3, comparer.test.js), DATE = 2026-11-19, et les vérifications.
+Questions en attente : aucune.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; aucun produit nommé,
 aucun prix, aucun chiffre inventé ; fiche de session à jour en fin de session, suivi.md non modifié ;
 jamais de git push.
