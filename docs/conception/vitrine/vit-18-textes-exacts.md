@@ -117,7 +117,8 @@ Posées par l'outil de questions, une par groupe. **Ce que le chef tape dans « 
 
 Dans `vitrine/tests/contenu.test.js`, un test lit toutes les chaînes des fichiers `fr` et `en` et échoue si l'une contient : « Maroc », « Morocco », « Massar », « BTS », « LMD », « l'école active l'IA », « the school turns AI on », « quand l'IA est disponible », « when AI is available ».
 
-- **Exception, nommée dans le test** : les deux phrases de la vidéo (`accueil.json` · `video.scenes.4.lignes.0` et `video.scenes.7.lignes.1`). Elles doivent rester identiques au film jusqu'à son prochain rendu (§ 6). L'exception retombe d'elle-même : le test vérifie aussi que seules ces deux clés y échappent.
+- **Exception, nommée dans le test** : la phrase de la vidéo qui contient l'ancienne formule de l'IA (`accueil.json` · `video.scenes.7.lignes.1`, en français et en anglais). Elle doit rester identique au film jusqu'à son prochain rendu (§ 6). Le test vérifie aussi que l'exception sert encore : quand la vidéo sera refaite, il demandera de la retirer.
+  - *Écart au code (19 nov.)* : le plan nommait aussi `video.scenes.4.lignes.0`, mais cette phrase ne contient aucune formule interdite. L'exception n'en garde donc qu'une, ce qui rend le test plus strict. La phrase de la scène 4 reste à refaire au prochain rendu (§ 6).
 - **Les phrases figées du même fichier** changent avec les textes : l'IA du Studio, les jeux, l'IA de la Bibliothèque, l'appel à la main (lignes 24, 28, 36 et 85). L'assertion « Au Maroc, Massar en est un exemple. » (ligne 88) s'inverse : la phrase ne doit plus y être.
 - **Le test de régression** de chaque correction est ce test de garde (formules retirées) et les phrases figées (formules nouvelles).
 
