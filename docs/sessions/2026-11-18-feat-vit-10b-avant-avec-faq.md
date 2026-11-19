@@ -5,7 +5,7 @@
 | Fait par | agent de Cursor (Grok 4.7) |
 | Chantier | VIT · préparation de VIT-05 |
 | Dossier de travail | `..\travaux-planner\vit-10b-avant-avec-faq` |
-| Dernier commit | `69d11750` |
+| Dernier commit | `b7f1a104` |
 
 ## Objectif de la session
 
@@ -13,41 +13,42 @@
 
 ## Plan
 
-[docs/conception/vitrine/vit-10b-avant-avec-faq.md](../conception/vitrine/vit-10b-avant-avec-faq.md). En attente du chef.
+[docs/conception/vitrine/vit-10b-avant-avec-faq.md](../conception/vitrine/vit-10b-avant-avec-faq.md). Validé le 18 novembre 2026, questions 1 à 3.
 
 ## Fait
 
-- `69d11750` — le plan court. Vingt phrases « avant » proposées. Les phrases « avec » et les réponses de FAQ déjà visées sont recopiées, avec leur fichier. Aucun code.
+- `69d11750` — le plan court.
+- `a3cae80d` — le visa des questions 1 à 3, seul, avant le code.
+- `b7f1a104` — cinq lignes et la FAQ sur les quatre pages. Les phrases « avec » et les réponses déjà visées sont recopiées.
 
 ## Vérifié
 
-Aucun test : il n'y a pas de code. La #219 est fusionnée (`427afdea`).
+71 tests unitaires verts. Build : 49 pages. `verifier-neutre` : aucun nom d'école. Page Direction : cinq lignes, la première question s'ouvre, pas de défilement horizontal en 390 px.
 
 ## Questions
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
-| 1 | Les vingt phrases « avant », et leur anglais ? | | ouverte |
-| 2 | Recopier les « avec » et les réponses déjà visées, sans les reformuler ? | | ouverte |
-| 3 | Titres et place, entre les cartes et le bandeau de contact ? | | ouverte |
+| 1 | Les vingt phrases « avant », et leur anglais ? | oui | répondu |
+| 2 | Recopier les « avec » et les réponses déjà visées, sans les reformuler ? | oui | répondu |
+| 3 | Titres et place, entre les cartes et le bandeau de contact ? | oui | répondu |
 
 ## État laissé
 
 - `docs/plan/suivi.md` : non modifié.
-- Module VIT : ligne VIT-10b, plan en attente.
+- Module VIT : ligne VIT-10b en cours.
 - Branche locale. Elle ne suit pas `origin/main`.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef valide, ou retire une phrase.
-2. Ensuite seulement, le code.
-3. VIT-13 après. QJE-15 après VIT-13.
+1. Le chef pousse et ouvre la PR.
+2. Après le vert, il fusionne. VIT-13 vient ensuite.
 
 ## Commandes pour le chef de projet
 
 ```text
 git -C "..\travaux-planner\vit-10b-avant-avec-faq" push -u origin feat/vit-10b-avant-avec-faq
-gh pr create --repo Claude20022002/Planner --base main --head feat/vit-10b-avant-avec-faq --title "VIT-10b : plan avant, avec, et FAQ" --body "Plan court, en attente du visa des phrases. Aucun code."
+gh pr create --repo Claude20022002/Planner --base main --head feat/vit-10b-avant-avec-faq --title "VIT-10b : avant, avec Planner, et FAQ des rôles" --body "Cinq lignes et une FAQ sur les quatre pages par rôle. Phrases avec recopiées. Plan validé avant le code."
 ```
 
 ## Prompt de reprise
@@ -57,7 +58,7 @@ Tu reprends VIT-10b, sur la branche feat/vit-10b-avant-avec-faq,
 dans le dossier ..\travaux-planner\vit-10b-avant-avec-faq.
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 docs/conception/vitrine/vit-10b-avant-avec-faq.md et cette fiche.
-Fait : le plan est commité (69d11750). Aucun code.
-Reste : le visa du chef sur les questions 1 à 3. Pas d'illustration (VIT-09).
+Fait : le code est commité (b7f1a104). Questions 1 à 3 répondues.
+Reste : le chef pousse et ouvre la PR. Pas d'illustration (VIT-09).
 Règles : pas de styles/, pas d'accueil, pas de suivi.md, jamais de git push.
 ```
