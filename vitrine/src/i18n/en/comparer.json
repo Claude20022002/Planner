@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "titre": "Compare · Planner",
+    "description": "Four common approaches, six criteria, and what Planner does not have yet. No product is targeted."
+  },
+  "accueil": {
+    "surtitre": "Why Planner",
+    "titre": "What Planner changes.",
+    "texte": "Four common ways to run a school, and what Planner adds.",
+    "lien": "See the full comparison"
+  },
+  "entete": {
+    "surtitre": "Compare",
+    "titre": "Planner and the other ways of working.",
+    "accroche": "Four common approaches, six criteria, and what Planner does not have yet. No product is targeted."
+  },
+  "methode": {
+    "titre": "Method",
+    "texte": "Prepared on {date}. Each Planner cell describes what the application does on that date. The other columns describe common practices, without targeting any product. What Planner lacks is marked “Coming soon”."
+  },
+  "tableau": {
+    "critere": "Criterion"
+  },
+  "approches": [
+    "Planner",
+    "Spreadsheets and messaging",
+    "General-purpose ERP",
+    "Course platform alone",
+    "Student information system"
+  ],
+  "lignes": {
+    "calcul": {
+      "critere": "A timetable calculated from your rules",
+      "cases": [
+        {
+          "mot": "Yes",
+          "texte": "Planner places sessions while keeping rooms, teachers, groups, availability and travel between campuses together. Strict rules are always kept, flexible rules as far as possible."
+        },
+        {
+          "mot": "By hand",
+          "texte": "The grid is built by hand, often by a single person. The spreadsheet is flexible and everyone knows it."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "The timetable is one module among others: depending on the tool, it is entered by hand or generated. In return, the ERP covers the whole management of the school."
+        },
+        {
+          "mot": "Not its role",
+          "texte": "The platform organises courses online. The timetable comes from another tool."
+        },
+        {
+          "mot": "Usually entered by hand",
+          "texte": "These tools focus on students, absences, grades and families. The timetable is usually entered by hand."
+        }
+      ]
+    },
+    "refus": {
+      "critere": "The reason for every refusal",
+      "cases": [
+        {
+          "mot": "Yes",
+          "texte": "When a session cannot be placed, Planner names the rule that blocks it. You fix the data or relax the rule, then run the calculation again."
+        },
+        {
+          "mot": "Found by yourself",
+          "texte": "The spreadsheet does not flag conflicts: you find them by reading through the grid."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "Depending on the tool, a room or teacher booked twice is flagged when it is entered."
+        },
+        {
+          "mot": "Not its role",
+          "texte": "Without a timetable, the question does not arise."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "When the tool keeps the timetable, it usually checks conflicts as they are entered."
+        }
+      ]
+    },
+    "report": {
+      "critere": "A session change, tracked from end to end",
+      "cases": [
+        {
+          "mot": "Yes",
+          "texte": "The teacher asks, the registrar approves, the students concerned are notified, and the timetable is up to date for everyone."
+        },
+        {
+          "mot": "By message",
+          "texte": "The change goes out in a messaging group, and the grid is corrected separately. It is quick: everyone already has messaging on their phone."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "The session is changed in the module. How students are told depends on the tool and its settings."
+        },
+        {
+          "mot": "By announcement",
+          "texte": "A course announcement tells those enrolled. The timetable is kept elsewhere."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "These tools can notify families, through an app or notifications. The request and approval process depends on the tool."
+        }
+      ]
+    },
+    "appel": {
+      "critere": "Attendance",
+      "cases": [
+        {
+          "mot": "QR code or by hand",
+          "texte": "A projected QR code that changes every 30 seconds. Or attendance by hand: present, late, absent."
+        },
+        {
+          "mot": "On paper",
+          "texte": "A register or attendance sheet, then copied into a spreadsheet or the state platform. Paper works everywhere."
+        },
+        {
+          "mot": "Yes",
+          "texte": "Attendance sheets and their statistics are usually part of the ERP."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "Online presence is tracked through logins. Attendance in the classroom depends on the tool."
+        },
+        {
+          "mot": "Yes",
+          "texte": "Absences are at the heart of these tools, often with a message to families."
+        }
+      ]
+    },
+    "compte": {
+      "critere": "Attendance, quizzes, games and the Library, with one account",
+      "cases": [
+        {
+          "mot": "Yes",
+          "texte": "Attendance, quizzes, games, the course space and the Library open with the same account."
+        },
+        {
+          "mot": "One tool per task",
+          "texte": "Each task has its own tool and account. Each one is simple, and many are free."
+        },
+        {
+          "mot": "Partly",
+          "texte": "Management and courses share the account when the ERP has its own course module. Revision games are rare there."
+        },
+        {
+          "mot": "Partly",
+          "texte": "Courses, quizzes and resources share an account. The timetable and classroom attendance are elsewhere."
+        },
+        {
+          "mot": "Partly",
+          "texte": "Absences, grades and families share an account. Courses and quizzes often go through another platform."
+        }
+      ]
+    },
+    "sansTelephone": {
+      "critere": "Without the student's phone, with what the school has",
+      "cases": [
+        {
+          "mot": "Mostly",
+          "texte": "Attendance is taken by hand. The Linux terminal is played on the board: the teacher types the command the class suggests. The timetable prints as a PDF or opens in a browser, like the Library. Quizzes and simulations need one device per student: a phone or a school computer."
+        },
+        {
+          "mot": "Yes",
+          "texte": "Paper and the board ask nothing of students. Messaging, however, assumes a phone for the student or their parents."
+        },
+        {
+          "mot": "For staff",
+          "texte": "Staff work on a computer. Students and families go through a portal or an app."
+        },
+        {
+          "mot": "One device per student",
+          "texte": "The platform assumes each student has a device and a connection."
+        },
+        {
+          "mot": "For staff",
+          "texte": "Staff enter data on a computer. Families follow through an app or a portal."
+        }
+      ]
+    },
+    "bientot": {
+      "critere": "Grades, fees and families",
+      "cases": [
+        {
+          "mot": "Coming soon",
+          "texte": "Grades and report cards, fees and payments, and the family space are in preparation."
+        },
+        {
+          "mot": "Files and paper",
+          "texte": "Files and paper receipts. It works, but the same data is entered several times."
+        },
+        {
+          "mot": "Yes",
+          "texte": "This is its strength: admissions, fees, staff and grades in one tool."
+        },
+        {
+          "mot": "Course grades",
+          "texte": "Grades for assignments and quizzes, not fees or families."
+        },
+        {
+          "mot": "Yes",
+          "texte": "This is its core: absences, report cards, fees and a family app."
+        }
+      ]
+    }
+  }
+}
