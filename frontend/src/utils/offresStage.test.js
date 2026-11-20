@@ -32,8 +32,8 @@ test('le prix est celui saisi, dans sa devise, ou rien', () => {
 
 test('le lien de partage passe par le jeton, et reste vide sans jeton', () => {
   const jeton = 'a'.repeat(32);
-  assert.equal(lienPartage(jeton, 'https://planner.hestim.ma'), `https://planner.hestim.ma/offres-stage/p/${jeton}`);
-  assert.equal(lienPartage(null, 'https://planner.hestim.ma'), null);
+  assert.equal(lienPartage(jeton, 'https://planner.example.test'), `https://planner.example.test/offres-stage/p/${jeton}`);
+  assert.equal(lienPartage(null, 'https://planner.example.test'), null);
 });
 
 test('un lien de candidature non http(s) n’est pas proposé', () => {
