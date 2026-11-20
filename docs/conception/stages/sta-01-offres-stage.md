@@ -34,16 +34,16 @@ formation professionnelle classée « Libre » dans [le plan](../../plan/README.
 | `description` | TEXT | obligatoire, 30 à 5 000 caractères, texte brut |
 | `id_filiere` | INTEGER, FK `Filiere`, `ON DELETE SET NULL` | facultatif ; obligatoire pour un enseignant |
 | `niveau` | STRING(50) | facultatif (2A, 3A, licence 3…), liste lue dans les groupes de la filière |
-| `debut`, `fin` | DATE | facultatifs, `fin` ≥ `debut` |
+| `debut`, `fin` | DATEONLY | facultatifs, `fin` ≥ `debut` ; lus et rendus sous la forme `AAAA-MM-JJ`, sans heure (les écrans saisissent un jour, pas un instant) |
 | **`gratification`** | **DECIMAL(10,2)** | **le prix : montant mensuel brut, facultatif, 0 à 100 000, deux décimales** |
 | **`devise`** | **CHAR(3)** | **`MAD` par défaut ; liste fermée `DEVISES` du référentiel** |
 | `lien_candidature` | STRING(500) | facultatif, **http ou https seulement** (jamais `javascript:`) |
 | `contact_email` | STRING(190) | facultatif, format vérifié |
 | `statut` | ENUM(`brouillon`, `publiee`, `close`) | `brouillon` par défaut |
 | `jeton_partage` | CHAR(32), unique | 16 octets aléatoires en hexadécimal, posé à la première publication |
-| `publiee_le` | DATE | posée à la publication |
+| `publiee_le` | DATEONLY | posée à la publication |
 | `id_user_auteur` | INTEGER, FK `Users`, `ON DELETE CASCADE` | obligatoire |
-| `createdAt`, `updatedAt` | DATE | |
+| `createdAt`, `updatedAt` | DATE (horodatage) | |
 
 Index : `statut`, (`id_filiere`, `niveau`), unique sur `jeton_partage`.
 
@@ -84,8 +84,8 @@ partage ne doit ni s'indexer, ni se balayer indéfiniment.
 
 ## 6. Les écrans
 
-**Web** (`/offres-stage`, entrée « Stages » au menu de l'administration, de l'enseignant responsable
-de filière et de l'étudiant) :
+**Web** (`/offres-stage`, entrée « Offres de stage » au menu de l'administration, de l'enseignant
+responsable de filière (`estResponsable`) et de l'étudiant) :
 
 1. liste : recherche, filtre par filière et par niveau, badge du statut pour le personnel, prix
    affiché « 1 500 MAD / mois » ;
@@ -97,8 +97,9 @@ de filière et de l'étudiant) :
 navigation, avec le nom de l'école et le contact, et un message si l'offre est fermée ou le lien
 inconnu.
 
-**Mobile** (écran `stage/offres`) : la liste publiée, filtrable par filière, et la fiche. La
-publication reste sur le web, comme les annonces : l'application mobile reçoit, elle ne rédige pas.
+**Mobile** (écran `stage/offres`, ouvert depuis Bibliothèque → Stages → « Offres de stage ») : la
+liste publiée, filtrable par filière, et la fiche. La publication reste sur le web, comme les
+annonces : l'application mobile reçoit, elle ne rédige pas.
 
 Textes en français et en anglais dans un espace propre (`offresStage`), jamais en dur dans les écrans.
 
@@ -109,9 +110,11 @@ Textes en français et en anglais dans un espace propre (`offresStage`), jamais 
 - **Backend, intégration** : création par un responsable, 403 pour un enseignant non responsable,
   brouillon invisible pour l'étudiant, 404 pour l'auteur d'un autre, partage public d'une offre
   publiée et 404 d'une offre fermée, limiteur de débit.
-- **Web** : tests unitaires du formateur (prix et dates) et des filtres ; parcours de démonstration
-  si le module est exposé au menu.
-- **Mobile** : test de l'écran des offres (liste, filtre, fiche).
+- **Web** : tests unitaires du formateur (prix et dates) et des filtres, `src/utils/offresStage.test.js`
+  (`node --test`). Pas de parcours Playwright : il faudrait une base MySQL et le solveur, absents de
+  ce poste ; la CI les a, mais un parcours non joué localement part en aveugle.
+- **Mobile** : tests unitaires des règles d'affichage et des filtres, `__tests__/offresStage.test.js`
+  (`jest`) ; l'écran lui-même est couvert par ces fonctions pures, comme les autres écrans.
 
 ## 8. Ce qui reste hors de ce lot
 

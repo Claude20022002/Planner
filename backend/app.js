@@ -50,6 +50,7 @@ import sessionJeuRoutes from "./routes/sessionJeuRoutes.js";
 import quizDirectRoutes from "./routes/quizDirectRoutes.js";
 import activiteRoutes from "./routes/activiteRoutes.js";
 import annonceRoutes from "./routes/annonceRoutes.js";
+import offreStageRoutes, { offreStagePubliques } from "./routes/offreStageRoutes.js";
 import agendaRoutes from "./routes/agendaRoutes.js";
 import presenceRoutes from "./routes/presenceRoutes.js";
 import devoirRoutes from "./routes/devoirRoutes.js";
@@ -141,6 +142,10 @@ app.use((req, res, next) => (RELUS_EN_CLASSE.some((p) => req.path.startsWith(p))
 // Logging
 app.use(logger);
 
+// Fiche partagée d'une offre de stage (STA-01) : lecture seule, sans compte donc avant CSRF et les
+// gardes de session ; le routeur pose son propre limiteur, no-store et noindex
+app.use("/api/offres-stage/publiques", offreStagePubliques);
+
 // ==================== ROUTES ====================
 
 // Protection CSRF (cookie-to-header) sur toutes les méthodes modifiantes ;
@@ -200,6 +205,7 @@ app.use("/api/sessions-jeu", sessionJeuRoutes);
 app.use("/api/quiz-direct", quizDirectRoutes);
 app.use("/api/activites", activiteRoutes);
 app.use("/api/annonces", annonceRoutes);
+app.use("/api/offres-stage", offreStageRoutes);
 app.use("/api/agenda", agendaRoutes);
 app.use("/api/presences", presenceRoutes);
 app.use("/api/devoirs", devoirRoutes);

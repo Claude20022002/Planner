@@ -118,3 +118,8 @@ export const PREFERENCES_CRENEAU = ["neutre", "prefere", "eviter"];
 export const TYPES_RESERVATION = ["rattrapage", "reunion", "soutenance", "examen", "evenement", "club"];
 export const STATUTS_RESERVATION = ["demandee", "validee", "refusee", "annulee"];
 export const ROLES_PARTICIPANT = ["participant", "jury", "president", "etudiant", "intervenant"];
+
+// ==================== STAGES ET ALTERNANCE (STA-01) ====================
+// Définies dans shared/offresStage.js, avec les règles de saisie : le site et l'application les
+// lisent au même endroit que le serveur.
+export { DEVISES, STATUTS_OFFRE_STAGE } from "../../shared/offresStage.js";
