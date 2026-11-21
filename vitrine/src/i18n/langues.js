@@ -49,6 +49,9 @@ export const direction = (langue) => (langue === 'ar' ? 'rtl' : 'ltr');
 /** Vrai si la langue est montrée et indexée */
 export const estPubliee = (langue) => LANGUES_PUBLIEES.includes(langue);
 
+/** Chemins statiques Astro : seules les langues publiées sont construites (l'arabe reste en JSON pour UIX-04). */
+export const cheminsLangues = () => LANGUES_PUBLIEES.map((lang) => ({ params: { lang } }));
+
 /** Chemin d'une page dans une langue, avec un ancrage facultatif : chemin('en', 'securite') → /en/securite/ */
 export const chemin = (langue, page = 'accueil', ancre = '') => {
   const segment = PAGES[page];

@@ -1,39 +1,14 @@
 import dotenv from "dotenv";
 import { noterEchecCourriel } from "../services/supervision/compteurs.js";
+import { configurationCourriel } from "./configurationCourriel.js";
 
 dotenv.config();
 
-/**
- * Configuration du transporteur d'email
- * Note: En production, installez nodemailer: npm install nodemailer
- * et configurez ces variables dans votre .env
- */
-const createTransporter = async () => {
+/** Transporteur nodemailer aux options choisies par configurationCourriel ; null sans nodemailer. */
+const createTransporter = async (options) => {
     try {
-        // Import dynamique de nodemailer (optionnel)
         const nodemailer = await import("nodemailer").then((m) => m.default);
-
-        // Configuration pour Gmail (exemple)
-        if (process.env.EMAIL_SERVICE === "gmail") {
-            return nodemailer.createTransport({
-                service: "gmail",
-                auth: {
-                    user: process.env.EMAIL_USER,
-                    pass: process.env.EMAIL_PASSWORD,
-                },
-            });
-        }
-
-        // Configuration SMTP générique
-        return nodemailer.createTransport({
-            host: process.env.SMTP_HOST || "smtp.gmail.com",
-            port: process.env.SMTP_PORT || 587,
-            secure: process.env.SMTP_SECURE === "true", // true pour 465, false pour autres ports
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASSWORD,
-            },
-        });
+        return nodemailer.createTransport(options);
     } catch {
         // nodemailer n'est pas installé
         return null;
@@ -79,8 +54,9 @@ export const sendEmail = async (message) => {
             return { success: true, message: "Email ignoré (tests)" };
         }
 
+        const configuration = configurationCourriel(process.env);
         // Si l'envoi d'email n'est pas configuré, logger seulement
-        if (!process.env.EMAIL_USER && !process.env.SMTP_USER) {
+        if (configuration.etat === "absent") {
             console.log("📧 Email (mode développement):", {
                 to,
                 subject,
@@ -91,8 +67,12 @@ export const sendEmail = async (message) => {
                 message: "Email logué (mode développement)",
             };
         }
+        // Un compte sans serveur nommé : rien ne part (QUA-10), et le contenu n'est pas journalisé
+        if (configuration.etat === "incomplet") {
+            throw new Error(`Courriel non envoyé : un compte est réglé, mais pas le serveur (${configuration.manque.join(", ")} manque)`);
+        }
 
-        const transporter = await createTransporter();
+        const transporter = await createTransporter(configuration.options);
 
         // Si nodemailer n'est pas installé, logger seulement
         if (!transporter) {

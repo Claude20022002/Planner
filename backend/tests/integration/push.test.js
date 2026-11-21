@@ -2,12 +2,14 @@ import { resetDatabase, closeDatabase, createUser, loginAs, anonymous, PASSWORD 
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
 import sequelize from "../../config/db.js";
 import { Notification, PushToken, Users } from "../../models/index.js";
-import { attendreFilePush, definirClientPush } from "../../services/push.js";
+import { attendreFilePush, definirClientPush, TEXTE_GENERIQUE } from "../../services/push.js";
+import { nomProduit } from "../../services/etablissement/identite.js";
 import { creerNotificationsMultiples } from "../../utils/notificationHelper.js";
 
 /**
  * Phase D3 : notifications push de l'application mobile. Le service Expo est remplacé par un
- * faux client qui enregistre ce qu'il reçoit.
+ * faux client qui enregistre ce qu'il reçoit. QUA-10 : par défaut, Expo ne reçoit qu'un texte
+ * générique et le lien ; le texte complet seulement avec PUSH_CONTENU=complet.
  */
 
 const MORT = "ExponentPushToken[appareil-desinstalle]";
@@ -86,8 +88,42 @@ describe("Envoi", () => {
 
         expect(appels).toHaveLength(1);
         expect(envoyes().map((m) => m.to).sort()).toEqual([MORT, jeton("autre-1"), jeton("etudiant-1")].sort());
-        expect(envoyes()[0]).toMatchObject({ title: "Séance reportée", body: "Machine Learning passe au mardi", data: { lien: "/emploi-du-temps/etudiant" } });
         expect(await PushToken.count({ where: { token: MORT } })).toBe(0);
+    });
+
+    test("par défaut, Expo ne reçoit que le texte générique et le lien", async () => {
+        await creerNotificationsMultiples({ id_users: [autre.id_user], titre: "Séance reportée", message: "Machine Learning passe au mardi", lien: "/emploi-du-temps/etudiant" });
+        await attendreFilePush();
+        expect(envoyes()).toHaveLength(1);
+        expect(envoyes()[0]).toMatchObject({ title: await nomProduit(), body: TEXTE_GENERIQUE, data: { lien: "/emploi-du-temps/etudiant" } });
+        expect(JSON.stringify(envoyes())).not.toMatch(/Machine Learning|reportée/);
+    });
+
+    test("une absence (nom et motif) : ni le nom ni le motif ne partent chez Expo", async () => {
+        await creerNotificationsMultiples({
+            id_users: [autre.id_user],
+            titre: "Absence d'enseignant",
+            message: "Prénom Essai sera absent du 2026-11-20 au 2026-11-21 (motif-essai) : 2 séance(s) à traiter.",
+            lien: "/gestion/imprevus",
+        });
+        await attendreFilePush();
+        expect(envoyes()).toHaveLength(1);
+        const recu = JSON.stringify(envoyes());
+        expect(recu).not.toContain("Prénom Essai");
+        expect(recu).not.toContain("motif-essai");
+        expect(recu).not.toContain("Absence");
+        expect(envoyes()[0].data).toEqual({ lien: "/gestion/imprevus" });
+    });
+
+    test("PUSH_CONTENU=complet : Expo reçoit le titre et le texte", async () => {
+        process.env.PUSH_CONTENU = "complet";
+        try {
+            await creerNotificationsMultiples({ id_users: [autre.id_user], titre: "Séance reportée", message: "Machine Learning passe au mardi", lien: "/emploi-du-temps/etudiant" });
+            await attendreFilePush();
+        } finally {
+            delete process.env.PUSH_CONTENU;
+        }
+        expect(envoyes()[0]).toMatchObject({ title: "Séance reportée", body: "Machine Learning passe au mardi", data: { lien: "/emploi-du-temps/etudiant" } });
     });
 
     test("rien ne part pour une notification d'une transaction annulée", async () => {
@@ -102,7 +138,7 @@ describe("Envoi", () => {
 
         await sequelize.transaction((transaction) => Notification.create({ id_user: autre.id_user, titre: "Validée", message: "y", type_notification: "info", lue: false }, { transaction }));
         await attendreFilePush();
-        expect(envoyes().map((m) => m.title)).toEqual(["Validée"]);
+        expect(envoyes().map((m) => m.to)).toEqual([jeton("autre-1")]);
     });
 
     test("un compte désactivé ne reçoit plus rien", async () => {
