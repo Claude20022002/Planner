@@ -32,7 +32,7 @@ export default function StatusFlap({ status, variant = 'board', phase }) {
           fontFamily: ds.font.board,
           fontWeight: 600,
           fontSize: '0.75rem',
-          letterSpacing: '0.1em',
+          letterSpacing: '0.06em',
           textTransform: 'uppercase',
           whiteSpace: 'nowrap',
         }}
@@ -49,7 +49,7 @@ export default function StatusFlap({ status, variant = 'board', phase }) {
         fontFamily: ds.font.board,
         fontWeight: 600,
         fontSize: 'inherit',
-        letterSpacing: '0.1em',
+        letterSpacing: '0.06em',
         textTransform: 'uppercase',
         color: boardColor,
         whiteSpace: 'nowrap',
