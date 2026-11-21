@@ -1,5 +1,6 @@
 // VIT-07 : quatre pages, les phrases du plan, la carte de prêt retirée, le menu Fonctions.
 // VIT-18 : les phrases exactes validées le 19 nov., et le test de garde (aucun pays, la formule de l'IA).
+// VIT-18b : le test de garde refuse aussi les superlatifs (décision N4 du chef, 21 nov.).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -157,4 +158,48 @@ test('VIT-18 : aucun pays nommé, et l\'IA « activée pour votre école », en 
       }
     }
   }
+});
+
+// VIT-18b (N4, M15) : aucune première place revendiquée. Formes voisines et « leader » : réponses 2 et 3 du plan
+// docs/conception/vitrine/vit-18b-superlatifs.md. Les limites de mot laissent passer « seulement », « Leaderboard ».
+const SUPERLATIFS = new RegExp([
+  String.raw`\bn[°º]\s?1\b`, String.raw`\bnuméro (1|un)\b`, String.raw`#\s?1\b`,
+  String.raw`\b(le|la) seule?\b`, String.raw`\bles seule?s\b`, String.raw`\b(le|la|les) meilleure?s?\b`,
+  String.raw`\bleader\b`, String.raw`\bleaders du marché`, String.raw`\bmarket leaders?\b`,
+  String.raw`\bnumber one\b`, String.raw`\bno\.?\s?1\b`, String.raw`\bthe only\b`, String.raw`\bthe best\b`,
+].join('|'), 'i');
+
+const SUPERLATIFS_REFUSES = [
+  'Le n° 1 de la gestion scolaire', 'Le n°1', 'Le nº 1', 'N° 1 au pays', 'Le numéro 1', 'Le numéro un',
+  'La solution #1', 'La solution # 1', 'Le seul outil', 'La seule plateforme', 'Les seuls', 'Les seules',
+  'Le meilleur outil', 'La meilleure semaine possible', 'Les meilleurs', 'Les meilleures', 'Le leader des ERP',
+  'Les leaders du marché', 'The number one platform', 'No. 1 for schools', 'No 1', 'The only tool',
+  'The best possible week', 'A leader in education', 'Market leaders', 'The market leader',
+];
+const PHRASES_PERMISES = [
+  'School leaders', 'The school\'s key figures, for its leaders.', 'Leaderboard', 'Assemble seulement',
+  'Un téléphone ne pointe qu\'un seul étudiant.', 'Choix unique', 'Salle n° 12', 'Question #10',
+  'Planner looks for the week that best fits your rules', 'la semaine qui respecte le mieux vos règles',
+];
+
+test('VIT-18b : la règle refuse chaque superlatif de N4 et laisse passer les mots ordinaires', () => {
+  for (const phrase of SUPERLATIFS_REFUSES) assert.match(phrase, SUPERLATIFS, phrase);
+  for (const phrase of PHRASES_PERMISES) assert.doesNotMatch(phrase, SUPERLATIFS, phrase);
+});
+
+test('VIT-18b : aucun superlatif, en français et en anglais', () => {
+  for (const langue of ['fr', 'en']) {
+    for (const fichier of fichiersDe(langue)) {
+      for (const [cle, texte] of aPlat(charger(langue, fichier))) {
+        assert.doesNotMatch(texte, SUPERLATIFS, `${langue}/${fichier}:${cle}`);
+      }
+    }
+  }
+});
+
+test('VIT-18b : la phrase du calcul validée le 21 nov., en français et en anglais', () => {
+  assert.equal(charger('fr', 'emploi-du-temps').calcul.texte,
+    'Planner cherche la semaine qui respecte le mieux vos règles : les règles strictes sont toujours tenues, les règles souples autant que possible.');
+  assert.equal(charger('en', 'emploi-du-temps').calcul.texte,
+    'Planner looks for the week that best fits your rules: hard rules are always kept, soft rules as far as possible.');
 });
