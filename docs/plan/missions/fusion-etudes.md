@@ -51,3 +51,4 @@ le chef pousse et fusionne. Fiche de session en fin de session.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-21 | fiche écrite par le coordinateur, sur la décision du chef | — |
+| 2026-11-21 18 h 40 | #191, #192, #189 et #186 fusionnées ; #188 à fermer (contenue dans `main`) ; restent #190, #169, #234, #193, à mettre à jour depuis `main` une à une | en cours |

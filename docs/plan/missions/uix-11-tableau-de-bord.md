@@ -94,3 +94,4 @@ Quand tu as fini, dis-le au chef : le coordinateur relit ta branche avant la PR.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 17 h 30 | fiche écrite par le coordinateur, sur le choix du chef (refaire et compléter ; Claude de VS Code après UIX-10b) | — |
+| 2026-11-21 18 h 40 | plan court reçu (`b2975e84`, local) : M, routes existantes, sans migration ni donnée d'élève nouvelle, « Ce que disent les études » présente. Réponse 5 : le taux de conflits sort de la bande. Réponse 6 : semaine du lundi au dimanche, isolée dans `periodes.js`. Réponse 7 (UIX-06c) : Claude (VS Code) seul, après UIX-11 (chef) | **plan validé par le coordinateur** ; code après la fusion de #235 |
