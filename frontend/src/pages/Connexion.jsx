@@ -3,7 +3,6 @@ import { Link as RouterLink, useNavigate, useSearchParams } from 'react-router-d
 import { useTranslation } from 'react-i18next';
 import { Alert, Box, Button, CircularProgress, Link, TextField, Typography } from '@mui/material';
 import { useAuth } from '../contexts/AuthContext';
-import { ds } from '../design-system/tokens';
 import { cheminSuivantSur } from '../utils/redirection';
 import EcranPublic, { TitreEcran } from '../components/auth/EcranPublic';
 import ChampMotDePasse from '../components/auth/ChampMotDePasse';
@@ -126,7 +125,7 @@ export default function Connexion() {
               setErreurCode('');
             }}
             disabled={loading}
-            inputProps={{ maxLength: 12, style: { fontFamily: ds.font.board, fontSize: '1.5rem', letterSpacing: '0.2em' } }}
+            inputProps={{ maxLength: 12, style: { fontFamily: 'inherit', fontSize: '1.5rem', letterSpacing: '0.2em' } }}
             helperText={t('login.mfa.secours')}
           />
           <Button type="submit" fullWidth variant="contained" size="large" disabled={loading || !code.trim()} sx={{ mt: 3, minHeight: 48, fontSize: '1rem' }}>

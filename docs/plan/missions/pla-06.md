@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | développement prêt le 2026-11-15 (24 tests relancés par le coordinateur) ; recette et séries sur le serveur par le chef |
 | Agent | Codex (VS Code) |
 | Modèle recommandé | le modèle de code le plus fort de Codex, effort de raisonnement élevé : une erreur du banc peut faire tomber n8n sur le serveur partagé |
 | Attribuée le | 2026-11-15, par le coordinateur ; accord du chef : oui, le 2026-11-15 |

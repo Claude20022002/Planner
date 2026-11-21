@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "titre": "En classe · Planner",
+    "description": "Appel par QR code ou à la main, quiz en direct ou à faire à son rythme, jeux pour réviser et sondages anonymes : Planner accompagne la classe, avec un seul compte."
+  },
+  "entete": {
+    "surtitre": "En classe",
+    "titre": "Après l'emploi du temps, la classe.",
+    "accroche": "L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte."
+  },
+  "appel": {
+    "surtitre": "Appel",
+    "titre": "L'appel en un geste.",
+    "texte": "L'enseignant projette un QR code au début de la séance. Les étudiants le scannent avec leur téléphone, et leur présence est notée. Il peut aussi noter chacun à la main : présent, en retard ou absent.",
+    "points": [
+      "Le scan marque l'étudiant présent.",
+      "L'enseignant note aussi à la main : présent, en retard, absent. Un étudiant sans téléphone est noté ainsi.",
+      "La présence est rattachée à la séance de l'emploi du temps"
+    ]
+  },
+  "quiz": {
+    "surtitre": "Quiz",
+    "titre": "Des quiz en direct, ou à son rythme.",
+    "texte": "L'enseignant prépare ses quiz dans le studio, puis les lance en classe ou les laisse à faire à chacun à son rythme.",
+    "points": [
+      "Dix types de questions",
+      "Des images et des vidéos dans les questions",
+      "Le lien s'ouvre dans un navigateur. Un code ou un QR code mène au même lien.",
+      "En direct en classe, ou à faire à son rythme"
+    ]
+  },
+  "aussi": {
+    "surtitre": "Et aussi",
+    "titre": "Réviser, et donner son avis.",
+    "cartes": [
+      {
+        "titre": "Des jeux",
+        "texte": "L'enseignant propose des jeux à ses classes, dont un terminal Linux simulé pour s'exercer aux commandes."
+      },
+      {
+        "titre": "Des sondages",
+        "texte": "L'enseignant pose une question à sa classe, et les réponses sont anonymes. L'école choisit d'activer ou non les sondages."
+      },
+      {
+        "titre": "Un seul compte",
+        "texte": "Le même compte ouvre Planner, la bibliothèque de cours et les jeux."
+      }
+    ]
+  }
+}

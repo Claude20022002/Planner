@@ -3,7 +3,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aujourdhui, dansJours, instantEcole } from '../../../shared/dates.js';
+import { aujourdhui, dansJours, instantEcole, jourUtc } from '../../../shared/dates.js';
 import { minutesAvantFin } from '../components/mesClasses/classe.js';
 
 test("date de l'école en UTC+0, y compris entre 23 h et minuit", () => {
@@ -16,6 +16,12 @@ test('dans n jours, et il y a n jours', () => {
   assert.equal(dansJours(1, maintenant), '2027-01-01');
   assert.equal(dansJours(-31, maintenant), '2026-11-30');
   assert.equal(dansJours(0, maintenant), '2026-12-31');
+});
+
+test("jour civil UTC d'un instant déjà calculé", () => {
+  assert.equal(jourUtc(new Date('2026-11-15T12:00:00Z')), '2026-11-15');
+  assert.equal(jourUtc(new Date('2026-11-15T23:30:00Z')), '2026-11-15');
+  assert.equal(jourUtc(new Date('2026-03-29T12:00:00Z')), '2026-03-29');
 });
 
 test("une heure de l'école est lue en UTC+0, quel que soit le fuseau du navigateur", () => {

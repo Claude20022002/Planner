@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "onglets": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "cartes": [
+      { "titre": "", "texte": "" }
+    ]
+  }
+}

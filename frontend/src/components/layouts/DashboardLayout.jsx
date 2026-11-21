@@ -16,6 +16,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { Apps, Notifications, Search, Menu as MenuIcon } from '@mui/icons-material';
+import ThemeGestion from '../common/ThemeGestion';
 import GlobalSearch from '../common/GlobalSearch';
 import SelecteurEspaces from '../espaces/SelecteurEspaces';
 import Aide from '../aide/Aide';
@@ -34,6 +35,20 @@ const RAIL_WIDTH = 248;
 
 /** Coquille commune : barre d’outils, accueil des applications et menu du module courant. */
 export default function DashboardLayout({ children }) {
+  const { pathname } = useLocation();
+  const pilote = pathname === '/applications' || [
+    '/gestion/utilisateurs',
+    '/gestion/enseignants',
+    '/gestion/etudiants',
+    '/gestion/filieres',
+    '/gestion/groupes',
+    '/gestion/cours',
+    '/gestion/enseignements',
+  ].includes(pathname);
+  return <ThemeGestion actif={pilote}><ContenuDashboard>{children}</ContenuDashboard></ThemeGestion>;
+}
+
+function ContenuDashboard({ children }) {
   const { t } = useTranslation();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -91,7 +106,7 @@ export default function DashboardLayout({ children }) {
       <LienEvitement />
       {!accueilApplications && (isDesktop ? (
         <Box sx={{ width: RAIL_WIDTH, flexShrink: 0 }}>
-          <Box sx={{ position: 'fixed', top: 0, bottom: 0, left: 0, width: RAIL_WIDTH }}>{rail}</Box>
+          <Box sx={{ position: 'fixed', top: 0, bottom: 0, insetInlineStart: 0, width: RAIL_WIDTH }}>{rail}</Box>
         </Box>
       ) : (
         <Drawer
@@ -115,7 +130,7 @@ export default function DashboardLayout({ children }) {
             borderBottomColor: 'divider',
           }}
         >
-          <Toolbar sx={{ minHeight: { xs: 56, md: 64 }, px: { xs: 1, sm: 2, md: 3 }, gap: 0.5 }}>
+          <Toolbar sx={{ minHeight: { xs: 56, md: 64 }, px: { xs: 1, sm: 2, md: 3 }, gap: 0.5, flexWrap: 'wrap', py: { xs: 0.5, md: 0 } }}>
             {!isDesktop && !accueilApplications && (
               <IconButton aria-label={t('nav.menu')} onClick={() => setDrawerOpen(true)} sx={{ color: 'inherit' }}>
                 <MenuIcon />
@@ -124,7 +139,7 @@ export default function DashboardLayout({ children }) {
             <Tooltip title={t('applications.retour')}>
               <IconButton component={RouterLink} to="/applications" aria-label={t('applications.retour')} sx={{ color: 'inherit', minWidth: 44, minHeight: 44 }}><Apps /></IconButton>
             </Tooltip>
-            <Box sx={{ flexGrow: 1, minWidth: 0, marginInlineStart: 1 }}>
+            <Box sx={{ flexGrow: 1, minWidth: 80, marginInlineStart: 1 }}>
               {application && <Breadcrumbs aria-label={t('applications.titre')} sx={{ fontSize: 12, display: { xs: 'none', sm: 'block' } }}>
                 <Link component={RouterLink} to="/applications" color="inherit" underline="hover">{t('applications.titre')}</Link>
                 <Link component={RouterLink} to={application.chemin} color="inherit" underline="hover">{t(`applications.${application.id}.titre`)}</Link>

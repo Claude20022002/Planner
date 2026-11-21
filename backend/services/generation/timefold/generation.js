@@ -2,8 +2,9 @@ import { Filiere, GenerationSession, Periode } from "../../../models/index.js";
 import { ErreurMetier } from "../../planning/enseignements.js";
 import { dateDesContraintes, preparerContraintes } from "../../moteur/contraintes/avantGeneration.js";
 import { bilanDesContraintes } from "../../moteur/contraintes/bilan.js";
+import { exigerValeursCoherentes } from "../../moteur/valeurs/validation.js";
 import { lirePoidsDuSolveur } from "../../moteur/valeurs/poidsDuSolveur.js";
-import { construireProbleme } from "./probleme.js";
+import { construireProbleme, pourLeSolveur } from "./probleme.js";
 import { arreterCalcul, attendreSolution, lancerCalcul } from "./solveurClient.js";
 import { deployerSemaineType } from "./deploiement.js";
 import { aCorriger, dureeAutomatique, resume } from "./rapport.js";
@@ -35,15 +36,16 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         if (!aPlacer) {
             throw new ErreurMetier(exclus.length ? "Aucun enseignement à placer : tous sont déjà planifiés ou sans enseignant" : "Aucun enseignement sur cette période", 400);
         }
-        // Des plages interdites (MOT-13) qui ne laissent pas assez de créneaux : aucun calcul ne les tiendrait.
-        // Sinon, les contraintes de l'école et les poids des règles du profil partent avec le problème
+        // Combinaison de valeurs invalide (MOT-03) : aucun calcul ne la tiendrait
+        await exigerValeursCoherentes({ probleme, periode });
+        // Plages interdites (MOT-13), puis contraintes compilées et poids du profil (MOT-13b)
         const { contraintes, compilees, libelles } = await preparerContraintes({ probleme, periode });
         probleme.contraintesDeclarees = compilees;
         probleme.poidsDesRegles = await lirePoidsDuSolveur({ date: dateDesContraintes(periode) });
 
         if (!dureeSecondes) probleme.dureeSecondes = dureeAutomatique(aPlacer);
         await etape(session, "calcul", { progress: 10, last_message: `Calcul de la semaine type : ${aPlacer} séance(s) à placer, ${probleme.dureeSecondes} s au plus` });
-        const { id, dureeSecondes: duree } = await lancerCalcul(probleme);
+        const { id, dureeSecondes: duree } = await lancerCalcul(pourLeSolveur(probleme));
         enCours.get(session.id_generation_session).calcul = id;
         const etat = await attendreSolution(id, {
             dureeSecondes: duree,
@@ -104,7 +106,8 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         });
     } catch (error) {
         // Un refus du contrôle de place garde tous ses manques dans le rapport, pour l'écran
-        const config = error.refus ? { ...(session.config || {}), refus_place: error.refus } : session.config;
+        const rapportRefus = error.code === "VALEURS_INVALIDES" ? { refus_valeurs: error.refus } : error.refus ? { refus_place: error.refus } : {};
+        const config = error.refus ? { ...(session.config || {}), ...rapportRefus } : session.config;
         await session.update({ status: "failed", progress: 100, last_message: error.message.slice(0, 250), duration_ms: Date.now() - debut, config }).catch(() => {});
     } finally {
         enCours.delete(session.id_generation_session);

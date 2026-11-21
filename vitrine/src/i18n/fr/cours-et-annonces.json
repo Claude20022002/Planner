@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "titre": "Cours et annonces · Planner",
+    "description": "Les supports de la classe, et les nouvelles de l'école."
+  },
+  "entete": {
+    "surtitre": "Cours et annonces",
+    "titre": "Les supports de la classe, et les nouvelles de l'école.",
+    "accroche": "L'enseignant dépose un document ou un lien dans une section."
+  },
+  "supports": {
+    "surtitre": "Cours",
+    "titre": "Les supports publiés.",
+    "texte": "L'étudiant voit les supports publiés de ses cours.",
+    "cartes": [
+      {
+        "titre": "Sondages",
+        "texte": "Les sondages de la classe s'ouvrent quand l'établissement les active. Une question, de deux à six choix."
+      }
+    ]
+  },
+  "annonces": {
+    "surtitre": "Annonces",
+    "titre": "Les nouvelles de l'école.",
+    "cartes": [
+      {
+        "titre": "Une annonce",
+        "texte": "Une annonce s'adresse à une classe, un groupe ou une filière. L'e-mail est facultatif."
+      }
+    ]
+  }
+}

@@ -39,13 +39,13 @@
 |---|---|---|---|---|---|---|
 | MOT-01 | Valeurs du moteur datées et résolues (profil, école, niveau) ; répondre à la relecture du contrat (Q-04) avant les écrans | MP-1 | 1 | M | — | fait (serveur) ; écrans avec ADM-02 |
 | MOT-02 | Mesurer le solveur sur un **jeu scolaire** (collège de 600 élèves), puis sur 20 000 étudiants | ME-14a | 1 | M | — | à faire |
-| MOT-03 | Validation avant le calcul : toutes les règles `requiert`, `borne` et `exclut` du catalogue, avec un message qui dit quoi faire (EP-4) | MP-2 | 3 | M | MOT-01 | à faire |
+| MOT-03 | Validation avant le calcul : toutes les règles `requiert`, `borne` et `exclut` du catalogue, avec un message qui dit quoi faire (EP-4) | MP-2 | 3 | M | MOT-01 | PR ouverte (#183) |
 | MOT-04 | Modèle neutre et évaluateur indépendant ; essai Timefold contre CP-SAT ; **décision sur la fin de Timefold 1.x** (Q-05) | MP-3, MP-4 | 3 | L + M | MOT-02 | à faire |
-| MOT-05 | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe), à la place de `config/referentiel.js` (importé par 28 fichiers). Version réduite à l'étape 2, complète à l'étape 3 | ME-2a, F-04 | 2 puis 3 | M + L | VSC-01, Q-08 | à faire |
-| MOT-06 | Collège : conflits **par élève** (F-5), groupes transversaux de langue et d'option, demi-groupes, salles spécialisées | MP-6, F-11 | 3 | XL | MOT-03, MOT-05 | à faire |
+| MOT-05 | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe, groupe transversal de langue ou d'option), à la place de `config/referentiel.js` (importé par 28 fichiers). Version réduite à l'étape 2, complète à l'étape 3 | ME-2a, F-04 | 2 puis 3 | M + L | VSC-01, Q-08 | à faire |
+| MOT-06 | Collège : conflits **par élève** (F-5), groupes transversaux de langue et d'option, demi-groupes, salles spécialisées. Le calcul lit les appartenances de VSC-07 ; le collège fictif suffit pour la mesure | MP-6, F-11 | 3 | XL | MOT-03, MOT-05 | à faire |
 | MOT-07 | Lycée : options, plus de 2 créneaux par séance (F-3), semaines A et B (F-1). Le primaire et la maternelle selon Q-07 | MP-6 | 3 | L | MOT-06 | à faire |
 | MOT-08 | File simple des calculs : une école attend son tour sans bloquer les autres | A-3 de la revue | 2 | M | PLA-01 | à faire |
-| MOT-09 | Remplaçant proposé automatiquement en cas d'absence d'un enseignant | F-11 (2e partie) | 4 | M | MOT-06 | à faire |
+| MOT-09 | Remplaçant proposé automatiquement en cas d'absence d'un enseignant : libre sur le créneau, capable de la matière ; l'administration valide en un geste ; les enseignants sont prévenus par COM | F-11 (2e partie) | 4 | M | MOT-06, COM-01 | à faire |
 | MOT-10 | Grande échelle : solveur réglable, file par école, 20 000 étudiants en moins de 30 min ; poids et plages lus depuis les valeurs | ME-14, MP-5 | 5 | L | MOT-04 | à faire |
 | MOT-11 | Règles nouvelles, famille par famille (examens dans le calcul F-8, ressources F-7, etc.), chacune avec ses données et son test | MP-7 | 5 | M par famille | MOT-10 | à faire |
 | MOT-12 | Montée du solveur : Spring Boot 3.3.5 vers 4.1, Timefold 1.15 vers 1.35 (cœur, sans le starter), Java 21 inchangé (décisions des 13 et 15 novembre), avant MOT-04 ([conception](../../conception/moteur-planification/mot-12-montee-solveur.md)) | — | 1 | M | — | fait (#181, fusionnée le 15 nov.) |
@@ -60,12 +60,13 @@
   - la qualité des règles souples est comparée à celle d'avant MOT-13b, sur plusieurs passages et plusieurs tailles, et la cause d'un écart est cherchée (score à trois niveaux) : réponse 22 du [complément 13b](../../conception/moteur-planification/mot-13b-solveur.md), 15 nov.
 - **MOT-03** :
   - toute combinaison de valeurs invalide est refusée **avant** le calcul ;
-  - le message nomme la règle et propose une correction ;
+  - le message nomme la règle, la cible quand ce n'est pas l'établissement, et propose une correction ;
   - un test par famille de règles.
 - **MOT-04** :
   - le même jeu est résolu par les deux moteurs et noté par l'évaluateur indépendant ;
   - la décision est écrite dans [decisions.md](../decisions.md), avec son coût (licence de `ScoreAnalysis` en 2.x).
 - **MOT-06** : un collège de démonstration avec deux langues vivantes réparties sur plusieurs classes est généré **sans conflit d'élève**. C'est le jalon de l'étape 3.
+- **MOT-09** : pour une absence saisie, la proposition nomme un enseignant libre qui peut tenir la matière ; après validation, les deux enseignants sont prévenus. Un parcours le prouve.
 - **MOT-08** : deux écoles lancent un calcul en même temps ; la seconde voit sa place dans la file ; aucune ne bloque l'autre.
 - **MOT-13** : voir le § 1 de [sa conception](../../conception/moteur-planification/mot-13-contraintes-declarees.md). En 13a, une contrainte invalide est refusée avec une phrase, le contrôle de place bloque la génération en nommant les contraintes en cause, et le problème de l'école d'origine ne change pas. En 13b, le collège fictif respecte ses contraintes, ou le bilan dit pourquoi.
 

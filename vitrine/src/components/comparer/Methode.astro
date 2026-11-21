@@ -1,0 +1,25 @@
+---
+// Encadré « Méthode » de la page Comparer (VIT-14, réponse 7) : la date du comparatif, ce que décrit
+// chaque colonne, et la règle « Bientôt ». Aucun lien vers le code : les sources sont dans le plan.
+import { traductions } from '../../i18n/index.js';
+import { estPubliee, LANGUE_SECOURS } from '../../i18n/langues.js';
+import { dateEcrite } from './comparatif.js';
+
+interface Props {
+  langue: string;
+}
+
+const { langue } = Astro.props;
+const t = traductions(langue, 'comparer');
+const texte = t('methode.texte').replace('{date}', dateEcrite(estPubliee(langue) ? langue : LANGUE_SECOURS));
+---
+<aside class="methode" aria-labelledby="methode-titre">
+  <h2 id="methode-titre">{t('methode.titre')}</h2>
+  <p>{texte}</p>
+</aside>
+
+<style>
+  .methode { display: grid; gap: var(--espace-1); inline-size: 100%; max-inline-size: var(--largeur-lecture); padding: var(--espace-3); border-radius: var(--rayon); background: var(--gris-fond); text-align: start; }
+  h2 { font-size: var(--texte); font-weight: 650; color: var(--bleu-nuit); }
+  p { color: var(--gris-texte); line-height: 1.5; }
+</style>
