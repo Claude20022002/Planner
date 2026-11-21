@@ -1,5 +1,30 @@
 # MOT-02 · Mesures du solveur
 
+## Série du 21 novembre · supérieur multi-campus
+
+**Les deux tailles passent le seuil de faisabilité.** Sur la version après MOT-13b, les six plannings sont complets et les scores dur et moyen sont nuls. Les six passages de référence sont eux aussi complets avec un score dur nul. Aucun dépassement du budget de 600 s ni arrêt par manque de mémoire. **À 960 étudiants, l’alerte de qualité souple se déclenche.** [Plan validé, § 12](mot-02-mesure-solveur.md#supérieur-21-novembre) · [Résultats individuels et provenance](../../../scripts/mesures/mot-02/jeux/resultats-campus.json)
+
+| Étudiants et séances | Version | Durées POST → résultat final, en s | Pics du conteneur, en Mio | Scores souples des passages 1, 2, 3 | Médiane par séance |
+|---|---|---|---|---|---:|
+| 480 · 84 | Avant #182 | 81,2 / 87,2 / 90,4 | 156,4 / 163,1 / 157,5 | +4 / +4 / +4 | +0,048 |
+| 480 · 84 | Après #182 | 99,5 / 86,3 / 87,3 | 163,6 / 159,9 / 159,1 | +4 / +4 / +4 | +0,048 |
+| 960 · 168 | Avant #182 | 163,1 / 156,1 / 226,7 | 172,2 / 170,5 / 165,6 | +5 / +5 / 0 | +0,030 |
+| 960 · 168 | Après #182 | 164,1 / 183,2 / 194,6 | 172,4 / 169,7 / 169,0 | +5 / 0 / −15 | 0 |
+
+### Lecture de l’alerte
+
+À 480 étudiants, chacun des six résultats obtient quatre points de récompense sans pénalité souple. À 960 étudiants, les six résultats obtiennent cinq points de récompense. Avant #182, un passage perd cinq points sur la règle des journées sans trous. Après #182, le deuxième passage perd cinq points sur cette même règle et le troisième perd vingt points sur l’ordre des CM par rapport aux TD et TP. La médiane passe de +5 à 0, soit −5 points. Le pourcentage du protocole vaut −100 % sur une référence de seulement cinq points. Le tableau donne les scores bruts et par séance pour situer cet écart.
+
+Les témoins figés, testés sur les deux versions, conservent toutes leurs affectations et leurs scores (−410 et −820 souples, dur nul, moyen nul sur la version actuelle). Les arbres Git de `solver/` sont identiques à la fusion #182 et dans la révision mesurée après #182. Le décompte des points sur le témoin est donc stable. Sur les trois recherches libres à 960, le débit après #182 va de 5 777 à 11 026 évaluations/s, contre 6 755 à 11 690 avant. Les plages se recouvrent. Les pénalités expliquent l’écart de score observé. **La cause de la différence de recherche entre versions reste indéterminée** et est transmise à MOT-04.
+
+### Protocole exécuté
+
+Jeux synthétiques de quatre et huit promotions sur deux campus, avec CM, TD, TP et fenêtres des vacataires. Pour chaque taille, le témoin a été contrôlé par le banc puis épinglé séparément sur les deux images. Les mesures libres partent sans placement. Une chauffe par taille et version, exclue, précède trois passages par version en alternance. Chaque passage utilise un conteneur neuf sur le poste, limité à 1,5 CPU et 640 Mio. Le temps inclut le sondage final et l’analyse. Les résultats structurés donnent les empreintes des requêtes et images, les durées des phases, le débit et les contributions disponibles pour chaque règle. [Reproduction du banc](../../../scripts/mesures/mot-02/README.md)
+
+Le verdict porte sur ces deux semaines fictives et l’API du solveur. La mesure EP-10 du collège de 600 élèves reste à l’étape du scolaire. Le jeu simplifié de 20 000 étudiants ci-dessous conserve ses six résultats historiques.
+
+## Historique du 15 novembre · jeu de charge simplifié
+
 État au 15 novembre 2026 : **grand jeu mesuré, six passages incomplets sur six** ; collège de 600 élèves en attente du générateur MOT-13b sur main. MOT-02 reste en cours.
 
 Plan validé : [mot-02-mesure-solveur.md](mot-02-mesure-solveur.md). [Banc et commandes](../../../scripts/mesures/mot-02/README.md). [Résultats structurés](../../../scripts/mesures/mot-02/jeux/resultats-superieur.json). [Manifeste du jeu](../../../scripts/mesures/mot-02/jeux/superieur-manifeste.json).
@@ -57,7 +82,7 @@ Le banc compte **18 tests réussis** : génération stable, témoin faisable, bo
 
 Les requêtes, réponses détaillées, journaux et métadonnées locales sont conservés dans `.local/`, ignoré par Git. Seule l'extraction de résultats sans identifiant du poste est versionnée. Les sources de `solver/` et `backend/` sont inchangées par cette mission.
 
-## Suite
+## Suite envisagée le 15 novembre
 
 1. Coordinateur : relire le banc et cette comparaison, notamment le contrôle de complétude et l'analyse vide sur score négatif. Les constats sur l'API sont transmis ; aucune correction du produit n'est faite ici.
 2. Attendre MOT-13b fusionnée dans main, puis lire son générateur à provenance stable. Confirmer qu'il donne 600 élèves sans adaptation ; sinon revenir au coordinateur. Mesurer le collège et compléter le verdict de MOT-02.
