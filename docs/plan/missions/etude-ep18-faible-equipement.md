@@ -75,6 +75,7 @@ dans ..\travaux-planner\coordination-equipe, jusqu'à sa fusion dans main).
 Crée la branche etude/ep18-faible-equipement depuis origin/main, dans le dossier ..\travaux-planner\etude-ep18.
 Tu n'écris que le livrable docs/conception/qualite/etude-ep18-faible-equipement.md et ta fiche de session.
 Le code se lit, il ne se modifie pas. StudyLib se lit sans être modifiée.
+Commite ta branche dès le premier jet (le § 1 et tes questions), pour que le coordinateur la voie.
 Commence par le § 1 de la fiche : écris les trois contextes et pose au chef tes questions (outil de questions),
 chacune avec ta proposition. Puis la grille, où chaque case cite le fichier qui la prouve.
 Toute dépense (SMS) et tout choix de produit (papier, hors ligne) sont des questions au chef. Aucun pays supposé.
@@ -89,3 +90,4 @@ Quand tu as fini, dis-le au chef : le coordinateur relit ta branche avant la PR.
 | 2026-11-18 17 h 30 | fiche écrite par le coordinateur ; agent choisi par le chef : une nouvelle session Claude | — |
 | 2026-11-21 | le chef confirme que la session est ouverte ; aucune branche poussée | en cours |
 | 2026-11-21 | ajouts du chef par la synthèse des concurrents : l'étude **compare le hors ligne de Planner à ce qu'annonce Go4School** (appel, présences, transport), comme repère du marché, sans en faire une promesse (étude 13, réponse 3) ; elle prépare la conception de **MOB-08**, l'appel à la main hors ligne (N2, R9) ; et de **N3**, le poids affiché avant chaque téléchargement, avec reprise après coupure (R10). Ordre des correctifs proposé : le supérieur d'abord | ajout |
+| 2026-11-21 (soir) | aucune branche, aucun dossier ni aucune session vus ; **relancée par le chef** dans une session neuve | — |
