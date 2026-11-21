@@ -123,3 +123,11 @@ decisions.md avant de fixer le périmètre d'une mission ; chaque décision dans
 la tienne ; après un push, attends une minute avant gh pr checks --watch ; fiche de session et suivi.md à jour en fin de session ;
 jamais de git push.
 ```
+
+## Ajout, 22 nov. vers 0 h
+
+- Fusionnées : **#246** (correction de `/ar/`, 23 h 27 UTC), **#241** (QUA-10, 23 h 55), **#245** (UIX-06c, 23 h 56). La CI du site est verte sur `main` ; la CI complète de `main` (`e1e8178e`) était en file.
+- `gh pr update-branch 241` a répondu « conflits » : #241 avait déjà été mise à jour (`620f80e5`) et fusionnée ; sans effet.
+- `fix/uix-11-volet` (session `plan-b-projet-pacte-88`, `7839621e`) relu : **prêt pour la PR**, à pousser par le chef.
+- `main` fusionnée dans cette branche (conflit dans le module UIX : colonne « Étape » gardée, état réel écrit) ; modules UIX, QUA et VIT, `suivi.md` et fiches de VIT-17 et QUA-10 à l'état réel (missions closes).
+- Reste au chef : **compléter le `.env` du serveur avant de déployer QUA-10** ; pousser `fix/uix-11-volet` et ouvrir sa PR ; dire « lis ta boîte » à Codex (VIT-11) et à l'agent de Cursor (VIT-19, #244).

@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | étapes 2 à 6 faites ; #241 relue, prête dès que `main` est vert |
+| État | close : #241 fusionnée le 21 nov. à 23 h 55 |
 | Agent | Codex (reprise : la session d'origine est close) |
 | Modèle recommandé | son modèle le plus fort : envois sortants, réglages du serveur, note de mise à jour |
 | Attribuée le | 2026-11-21, par le coordinateur ; accord du chef : plan validé le 16 nov., hors chantier (exception du 16 nov.) |
@@ -30,3 +30,4 @@ Les fichiers déjà touchés par la branche, `docs/envois-sortants.md`, `.env.do
 |---|---|---|
 | 2026-11-21 | branche retrouvée au tour d'état : plan validé, étapes 2 à 5 codées, jamais poussée, absente de `suivi.md` ; fusion avec `main` sans conflit à ce jour | à finir |
 | 2026-11-21 23 h 10 | #241 relue, étape 6 comprise (`docs/envois-sortants.md`, `.env.docker.example`, modèle de PR, module QUA) : **prête** ; sa seule CI rouge (`/ar/`) vient de `main`. Avant le déploiement, le `.env` du serveur nomme ses destinations (IA, médias, courriel) | prête |
+| 2026-11-21 23 h 55 | #241 fusionnée ; reste au chef : compléter le `.env` du serveur avant le déploiement ; mission close | close |
