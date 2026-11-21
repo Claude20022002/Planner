@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "titre": "Legal notice · Planner",
+    "description": "Who publishes this site, who hosts it, and how to reach us."
+  },
+  "entete": {
+    "surtitre": "Legal information",
+    "titre": "Legal notice",
+    "accroche": "This site presents the Planner software. Here is who publishes it and who hosts it."
+  },
+  "sections": [
+    { "titre": "Publisher", "paragraphes": ["This site is published by [NOM], as an individual."] },
+    { "titre": "Publication director", "paragraphes": ["[NOM]."] },
+    { "titre": "Contact", "paragraphes": ["For any question about this site: {email}."] },
+    { "titre": "Hosting", "paragraphes": ["This site is hosted by [HÉBERGEUR]."] },
+    { "titre": "Personal data", "paragraphes": ["What this site collects, and why, is explained on the {confidentialite} page."] }
+  ],
+  "liens": {
+    "confidentialite": "Privacy"
+  }
+}

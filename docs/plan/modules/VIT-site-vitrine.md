@@ -10,6 +10,7 @@
 - **Page « Solutions »** (VIT-05 en préparation, branche `feat/vit-05-solutions`, [plan validé le 18 nov.](../../conception/vitrine/vit-05-solutions.md)) : `/<langue>/solutions/`, une section par type d'établissement (collège et lycée, enseignement supérieur, formation professionnelle), chacune avec « Aujourd'hui » (chaque point renvoie à sa page de fonction) et « Bientôt » (plan de parité, sans date) ; aucun prix. Lien « Solutions » en tête de la navigation, dans l'en-tête et le pied de page.
 - **Contenu complet** (VIT-07 en cours, branche `feat/vit-07-contenu-complet`, [plan validé le 18 nov.](../../conception/vitrine/vit-07-contenu-complet.md)) : quatre pages (quiz et jeux, bibliothèque, cours et annonces, application), la carte « prêts de livres » retirée de « Bientôt », et un menu « Fonctions ». Quiz et jeux mène à une page « Bibliothèque des jeux » (titres et résumés du catalogue, hors du menu). Aucun prix, aucun nom d'école.
 - **Pages par rôle** (VIT-10 en cours, branche `feat/vit-10-pages-par-role`, [plan validé le 18 nov.](../../conception/vitrine/vit-10-pages-par-role.md)) : Direction, Scolarité, Enseignants, Étudiants. Le menu « Solutions » s'ouvre. Le pied de page est en colonnes. Pas de bande de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
+- **Mentions légales et confidentialité du site** (VIT-12, branche `feat/vit-12-pages-legales`, [plan et textes validés le 18 nov.](../../conception/vitrine/vit-12-pages-legales.md), condition 2 de VIT-06) : `/<langue>/mentions-legales/` et `/<langue>/confidentialite/`, liées depuis la colonne « Ressources » ; composant `textes/PageDeTexte.astro` ; l'adresse de contact est écrite une seule fois (`commun.json` → `contact.email`). Le test `pages-legales.test.js` reste rouge tant que le nom, l'e-mail, l'hébergeur, la durée des journaux et la date ne sont pas donnés par le chef ; la durée des journaux doit aussi être réglée sur le serveur.
 - **Ce que font les concurrents**, d'après l'[étude de marché](../../etude-marche/01-concurrents.md) :
   - une page par fonction et par type d'école ;
   - une démonstration ou un essai bien visible ;
@@ -44,7 +45,8 @@
 ## À trancher avant VIT-02
 
 - Le **nom de domaine** (Q-11). Le nom du produit, lui, est décidé : **Planner**.
-- Les **mentions légales** et la **politique de confidentialité**, écrites par le juriste.
+- Les **mentions légales** et la **politique de confidentialité** : celles du site sans formulaire existent (VIT-12, validées par le chef
+  pour la mise en ligne non indexée) ; le juriste les relit, et les complète pour les données du formulaire, avant VIT-02 et avant l'indexation.
 - **Pas de prix publié** tant que la vente est mise de côté : la page parle de « nous contacter ».
 
 ## Références

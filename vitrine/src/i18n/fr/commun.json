@@ -25,7 +25,9 @@
     "scolarite": "Scolarité",
     "enseignants": "Enseignants",
     "etudiants": "Étudiants",
-    "ressources": "Ressources"
+    "ressources": "Ressources",
+    "mentionsLegales": "Mentions légales",
+    "confidentialite": "Confidentialité"
   },
   "langues": {
     "label": "Langue",
@@ -46,5 +48,8 @@
   "redirection": {
     "titre": "Planner",
     "lien": "Aller à la page d'accueil"
+  },
+  "contact": {
+    "email": "[E-MAIL]"
   }
 }

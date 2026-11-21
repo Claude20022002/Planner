@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "titre": "Privacy · Planner",
+    "description": "What this site collects when you visit it, and why."
+  },
+  "entete": {
+    "surtitre": "Privacy",
+    "titre": "This site collects as little as possible.",
+    "accroche": "This page states exactly what this site keeps from your visit."
+  },
+  "sections": [
+    {
+      "titre": "What this site does not do",
+      "paragraphes": [
+        "This site has no form: it does not ask for your name, address or message.",
+        "It sets no cookies and stores nothing on your device.",
+        "It does not measure traffic: no tool counts your visits.",
+        "It loads nothing from another site: fonts, images, videos and scripts come from this site."
+      ]
+    },
+    {
+      "titre": "The server's technical log",
+      "paragraphes": [
+        "Like any web server, this site's server records each request in a technical log: the IP address, the date and time, the page requested, the page you came from and the type of browser.",
+        "This log is used only for the site's security and proper operation: spotting an attack, fixing an error.",
+        "It is not sold, nor used to track your visits. It stays on the site's server.",
+        "It is deleted automatically after [N] days at most."
+      ]
+    },
+    {
+      "titre": "Who is responsible, and your requests",
+      "paragraphes": [
+        "The person responsible for this log is the site's publisher (see the {mentionsLegales}).",
+        "You can ask to see or delete what concerns you by writing to {email}. To find your visit, we will need your IP address and the approximate time."
+      ]
+    },
+    {
+      "titre": "What this page does not cover, and its changes",
+      "paragraphes": [
+        "This page covers this site only. It does not describe the Planner application, nor the data schools manage in it.",
+        "If this site ever collects anything else, for example through a contact form, this page will be updated first.",
+        "Last updated: [DATE]."
+      ]
+    }
+  ],
+  "liens": {
+    "mentionsLegales": "legal notice"
+  }
+}

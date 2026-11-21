@@ -1,0 +1,24 @@
+---
+// Page « Mentions légales » du site vitrine (VIT-12), dans chaque langue : éditeur, directeur de la
+// publication, contact, hébergement, renvoi à la confidentialité. Ne concerne que ce site, pas
+// l'application Planner. Chaque phrase est validée par le chef (plan vit-12-pages-legales.md).
+import Gabarit from '../../components/socle/Gabarit.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import PageDeTexte from '../../components/textes/PageDeTexte.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES, chemin } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'mentions-legales');
+const email = traductions(lang, 'commun')('contact.email');
+const liens = {
+  email: { href: `mailto:${email}`, texte: email },
+  confidentialite: { href: chemin(lang, 'confidentialite'), texte: t('liens.confidentialite') },
+};
+---
+<Gabarit langue={lang} page="mentionsLegales" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <PageDeTexte id="mentions" sections={t('sections')} liens={liens} />
+</Gabarit>

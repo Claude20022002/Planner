@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "titre": "Mentions légales · Planner",
+    "description": "Qui édite ce site, qui l'héberge, et comment nous écrire."
+  },
+  "entete": {
+    "surtitre": "Informations légales",
+    "titre": "Mentions légales",
+    "accroche": "Ce site présente le logiciel Planner. Voici qui le publie et qui l'héberge."
+  },
+  "sections": [
+    { "titre": "Éditeur", "paragraphes": ["Ce site est édité par [NOM], à titre personnel."] },
+    { "titre": "Directeur de la publication", "paragraphes": ["[NOM]."] },
+    { "titre": "Contact", "paragraphes": ["Pour toute question sur ce site : {email}."] },
+    { "titre": "Hébergement", "paragraphes": ["Ce site est hébergé par [HÉBERGEUR]."] },
+    { "titre": "Données personnelles", "paragraphes": ["Ce que ce site recueille, et pourquoi, est expliqué sur la page {confidentialite}."] }
+  ],
+  "liens": {
+    "confidentialite": "Confidentialité"
+  }
+}

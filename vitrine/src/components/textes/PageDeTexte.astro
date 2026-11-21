@@ -1,0 +1,50 @@
+---
+// Corps d'une page de texte (mentions légales, confidentialité, à propos) : une suite de sections,
+// chacune avec un titre h2 et des paragraphes. Un paragraphe peut nommer un lien entre accolades,
+// « {email} » ou « {confidentialite} » : la page donne ces liens (adresse et texte) dans « liens ».
+// Un nom inconnu casse le build, pour qu'aucune accolade n'arrive à l'écran.
+import Section from '../socle/Section.astro';
+
+interface Lien {
+  href: string;
+  texte: string;
+}
+
+interface Props {
+  id: string;
+  sections: { titre: string; paragraphes: string[] }[];
+  liens?: Record<string, Lien>;
+}
+
+const { id, sections, liens = {} } = Astro.props;
+
+/** Découpe un paragraphe en morceaux de texte et en liens nommés */
+const morceaux = (texte: string) =>
+  texte.split(/(\{\w+\})/).filter(Boolean).map((morceau) => {
+    const nom = morceau.match(/^\{(\w+)\}$/)?.[1];
+    if (!nom) return { texte: morceau };
+    if (!liens[nom]) throw new Error(`Lien inconnu dans « ${id} » : {${nom}}`);
+    return liens[nom];
+  });
+---
+<Section ton="clair">
+  <div class="texte">
+    {sections.map((section, i) => (
+      <section aria-labelledby={`${id}-${i}`}>
+        <h2 id={`${id}-${i}`}>{section.titre}</h2>
+        {section.paragraphes.map((paragraphe) => (
+          <p>{morceaux(paragraphe).map((m) => ('href' in m ? <a href={m.href}>{m.texte}</a> : m.texte))}</p>
+        ))}
+      </section>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .texte { display: grid; gap: var(--espace-4); inline-size: 100%; text-align: start; }
+  section { display: grid; gap: var(--espace-2); }
+  h2 { font-size: var(--titre-moyen); font-weight: 650; line-height: var(--interligne-titre); letter-spacing: -0.015em; }
+  p { font-size: var(--texte); line-height: var(--interligne-texte); color: var(--gris-texte); overflow-wrap: anywhere; }
+  a { color: var(--bleu); text-decoration: underline; text-underline-offset: 0.15em; }
+  a:hover { color: var(--bleu-profond); }
+</style>
