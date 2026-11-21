@@ -3,6 +3,8 @@ export default {
   "nombreRubriques_one": "{{count}} page",
   "nombreRubriques_other": "{{count}} pages",
   "titre": "Applications",
+  "salutation": "Hello, {{prenom}}",
+  "salutationGenerique": "Hello",
   "intro": "Your school, your tools.",
   "description": "Choose an application to find your tasks and information.",
   "rechercher": "Search applications or pages",

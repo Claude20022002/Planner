@@ -1,7 +1,7 @@
-<!-- Généré par shared/charte/generer.mjs, version 1, empreinte 10d44dac81d7 : ne pas modifier ; changer shared/charte/jetons.json -->
+<!-- Généré par shared/charte/generer.mjs, version 3, empreinte 6c550805edcf : ne pas modifier ; changer shared/charte/jetons.json -->
 # Charte de Planner
 
-Guide généré depuis [jetons.json](jetons.json), version 1. Valeurs de couleur provisoires, relevées sur les photos des logos du 18 nov. : à remplacer par celles des SVG officiels du chef. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
+Guide généré depuis [jetons.json](jetons.json), version 3. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; teintes des applications (version 3) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a) ; bleu-profond : même teinte que bleu, plus sombre. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
 
 ## Changer une valeur
 
@@ -15,10 +15,10 @@ Ne jamais retoucher une sortie à la main. La colonne « Site » marque les jeto
 
 | Jeton | Valeur | Rôle | Logo | Site |
 |---|---|---|---|---|
-| `bleu-nuit` | `#0B3B6F` | couleur principale du logo : titres, bandeaux, fonds forts | oui | oui |
-| `bleu` | `#1F65B3` | liens, boutons et accents sur fond clair ; contour du focus | oui | oui |
-| `bleu-profond` | `#0E4A8F` | survol et appui des boutons bleus | oui | oui |
-| `bleu-clair` | `#A8C8EA` | texte et accents sur bleu nuit ou sur l'écran ; action du mode sombre | oui | oui |
+| `bleu-nuit` | `#17395C` | couleur principale du logo : titres, bandeaux, fonds forts | oui | oui |
+| `bleu` | `#2A679F` | liens, boutons et accents sur fond clair ; contour du focus | oui | oui |
+| `bleu-profond` | `#21507C` | survol et appui des boutons bleus | oui | oui |
+| `bleu-clair` | `#A6CAEE` | texte et accents sur bleu nuit ou sur l'écran ; action du mode sombre | oui | oui |
 | `blanc` | `#FFFFFF` | fond des pages et des cartes ; texte sur les bleus foncés | oui | oui |
 | `encre` | `#1D1D1F` | texte courant | oui | oui |
 | `gris-fond` | `#F2F5F9` | fond des sections alternées et des panneaux clairs | — | oui |
@@ -40,6 +40,25 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 | `texte-sombre` | `#EDF1F7` | texte courant du mode sombre | — |
 | `texte-sombre-second` | `#A9B6C8` | texte secondaire du mode sombre | — |
 | `focus-sombre` | `#7FB0E6` | contour du focus en mode sombre (l'action du sombre est « bleu-clair », texte « ecran » dessus) | — |
+
+## Teintes des applications (logos)
+
+| Jeton | Valeur | Rôle | Site |
+|---|---|---|---|
+| `app-planning` | `#0B66D6` | logo de l'application Emploi du temps : ton clair du dégradé de la tuile | — |
+| `app-planning-fonce` | `#212F82` | logo de l'application Emploi du temps : ton foncé du dégradé et ombres | — |
+| `app-pedagogie` | `#007B80` | logo de l'application Enseignements : ton clair du dégradé de la tuile | — |
+| `app-pedagogie-fonce` | `#00475C` | logo de l'application Enseignements : ton foncé du dégradé et ombres | — |
+| `app-personnes` | `#775EBA` | logo de l'application Personnes : ton clair du dégradé de la tuile | — |
+| `app-personnes-fonce` | `#3F3687` | logo de l'application Personnes : ton foncé du dégradé et ombres | — |
+| `app-etablissement` | `#3C638C` | logo de l'application Établissement : ton clair du dégradé de la tuile | — |
+| `app-etablissement-fonce` | `#20385C` | logo de l'application Établissement : ton foncé du dégradé et ombres | — |
+| `app-annonces` | `#AE532D` | logo de l'application Annonces : ton clair du dégradé de la tuile | — |
+| `app-annonces-fonce` | `#75201C` | logo de l'application Annonces : ton foncé du dégradé et ombres | — |
+| `app-activites` | `#A94088` | logo de l'application Quiz et jeux : ton clair du dégradé de la tuile | — |
+| `app-activites-fonce` | `#5E256D` | logo de l'application Quiz et jeux : ton foncé du dégradé et ombres | — |
+| `app-bibliotheque` | `#077952` | logo de l'application Bibliothèque : ton clair du dégradé de la tuile | — |
+| `app-bibliotheque-fonce` | `#004C3B` | logo de l'application Bibliothèque : ton foncé du dégradé et ombres | — |
 
 ## Typographie
 
@@ -87,8 +106,8 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 
 | Jeton | Valeur | Rôle | Site |
 |---|---|---|---|
-| `ombre-carte` | `0 1px 2px rgb(11 59 111 / 6%), 0 8px 24px rgb(11 59 111 / 8%)` | ombre des cartes | oui |
-| `ombre-appareil` | `0 30px 60px -20px rgb(11 59 111 / 35%)` | ombre des appareils mis en scène | oui |
+| `ombre-carte` | `0 1px 2px rgb(23 57 92 / 6%), 0 8px 24px rgb(23 57 92 / 8%)` | ombre des cartes | oui |
+| `ombre-appareil` | `0 30px 60px -20px rgb(23 57 92 / 35%)` | ombre des appareils mis en scène | oui |
 
 ## Mouvement
 
@@ -112,21 +131,35 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `encre` | `gris-fond` | 15,39:1 | 4,5:1 |
 | `gris-texte` | `blanc` | 6,00:1 | 4,5:1 |
 | `gris-texte` | `gris-fond` | 5,49:1 | 4,5:1 |
-| `bleu` | `blanc` | 5,88:1 | 4,5:1 |
-| `bleu` | `gris-fond` | 5,38:1 | 4,5:1 |
-| `blanc` | `bleu` | 5,88:1 | 4,5:1 |
-| `blanc` | `bleu-profond` | 8,77:1 | 4,5:1 |
-| `blanc` | `bleu-nuit` | 11,23:1 | 4,5:1 |
-| `bleu-clair` | `bleu-nuit` | 6,48:1 | 4,5:1 |
-| `bleu-pale` | `bleu-nuit` | 7,95:1 | 4,5:1 |
-| `bleu-nuit` | `blanc` | 11,23:1 | 4,5:1 |
-| `bleu-nuit` | `bleu-clair` | 6,48:1 | 4,5:1 |
+| `bleu` | `blanc` | 5,93:1 | 4,5:1 |
+| `bleu` | `gris-fond` | 5,43:1 | 4,5:1 |
+| `blanc` | `bleu` | 5,93:1 | 4,5:1 |
+| `blanc` | `bleu-profond` | 8,39:1 | 4,5:1 |
+| `blanc` | `bleu-nuit` | 11,82:1 | 4,5:1 |
+| `bleu-clair` | `bleu-nuit` | 6,93:1 | 4,5:1 |
+| `bleu-pale` | `bleu-nuit` | 8,37:1 | 4,5:1 |
+| `bleu-nuit` | `blanc` | 11,82:1 | 4,5:1 |
+| `bleu-nuit` | `bleu-clair` | 6,93:1 | 4,5:1 |
 | `blanc` | `ecran` | 17,46:1 | 4,5:1 |
-| `bleu-clair` | `ecran` | 10,07:1 | 4,5:1 |
+| `bleu-clair` | `ecran` | 10,23:1 | 4,5:1 |
 | `trait-fort` | `blanc` | 3,51:1 | 3:1 |
 | `trait-fort` | `gris-fond` | 3,21:1 | 3:1 |
 | `bleu-vif` | `blanc` | 3,93:1 | 3:1 |
-| `bleu-nuit` | `jeu` | 7,27:1 | 4,5:1 |
+| `bleu-nuit` | `jeu` | 7,65:1 | 4,5:1 |
+| `blanc` | `app-planning` | 5,40:1 | 4,5:1 |
+| `blanc` | `app-planning-fonce` | 11,71:1 | 4,5:1 |
+| `blanc` | `app-pedagogie` | 5,07:1 | 4,5:1 |
+| `blanc` | `app-pedagogie-fonce` | 10,21:1 | 4,5:1 |
+| `blanc` | `app-personnes` | 5,13:1 | 4,5:1 |
+| `blanc` | `app-personnes-fonce` | 10,05:1 | 4,5:1 |
+| `blanc` | `app-etablissement` | 6,26:1 | 4,5:1 |
+| `blanc` | `app-etablissement-fonce` | 11,79:1 | 4,5:1 |
+| `blanc` | `app-annonces` | 5,15:1 | 4,5:1 |
+| `blanc` | `app-annonces-fonce` | 10,61:1 | 4,5:1 |
+| `blanc` | `app-activites` | 5,56:1 | 4,5:1 |
+| `blanc` | `app-activites-fonce` | 10,71:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque` | 5,43:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque-fonce` | 10,01:1 | 4,5:1 |
 
 ### Sombre
 
@@ -136,8 +169,8 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `texte-sombre` | `surface-sombre` | 13,89:1 | 4,5:1 |
 | `texte-sombre-second` | `ecran` | 8,49:1 | 4,5:1 |
 | `texte-sombre-second` | `surface-sombre` | 7,66:1 | 4,5:1 |
-| `ecran` | `bleu-clair` | 10,07:1 | 4,5:1 |
-| `bleu-clair` | `surface-sombre` | 9,08:1 | 3:1 |
+| `ecran` | `bleu-clair` | 10,23:1 | 4,5:1 |
+| `bleu-clair` | `surface-sombre` | 9,22:1 | 3:1 |
 | `focus-sombre` | `ecran` | 7,69:1 | 3:1 |
 | `focus-sombre` | `surface-sombre` | 6,94:1 | 3:1 |
 | `trait-fort` | `ecran` | 4,98:1 | 3:1 |
@@ -149,4 +182,4 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 
 | Texte | Fond | Rapport | Pourquoi |
 |---|---|---|---|
-| `bleu` | `bleu-pale` | 4,16:1 | texte bleu sur fond bleu pâle : sous 4,5:1 |
+| `bleu` | `bleu-pale` | 4,20:1 | texte bleu sur fond bleu pâle : sous 4,5:1 |

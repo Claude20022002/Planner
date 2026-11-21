@@ -1,14 +1,13 @@
-/* Généré par shared/charte/generer.mjs, version 1, empreinte 152c56bcb8a9 : ne pas modifier ; changer shared/charte/jetons.json */
-/* Jetons du site vitrine : couleurs des logos du 18 nov. (plan VIT, § 4 bis), espaces, rayons,
-   ombres et tailles de titres. Valeurs provisoires, relevées sur les photos des logos : à remplacer
-   par celles des SVG du chef. Le contraste AA de chaque paire est vérifié à la source (shared/charte)
+/* Généré par shared/charte/generer.mjs, version 3, empreinte 6403082c0e6e : ne pas modifier ; changer shared/charte/jetons.json */
+/* Jetons du site vitrine : couleurs des SVG officiels du logo (18 nov.), espaces, rayons, ombres
+   et tailles de titres. Le contraste AA de chaque paire est vérifié à la source (shared/charte)
    et par tests/jetons.test.js. */
 :root {
   /* Couleurs des logos */
-  --bleu-nuit: #0B3B6F;
-  --bleu: #1F65B3;
-  --bleu-profond: #0E4A8F;
-  --bleu-clair: #A8C8EA;
+  --bleu-nuit: #17395C;
+  --bleu: #2A679F;
+  --bleu-profond: #21507C;
+  --bleu-clair: #A6CAEE;
   --blanc: #FFFFFF;
   --encre: #1D1D1F;
 
@@ -47,8 +46,8 @@
   --rayon: 1.25rem;
   --rayon-grand: 2rem;
   --rayon-pilule: 999px;
-  --ombre-carte: 0 1px 2px rgb(11 59 111 / 6%), 0 8px 24px rgb(11 59 111 / 8%);
-  --ombre-appareil: 0 30px 60px -20px rgb(11 59 111 / 35%);
+  --ombre-carte: 0 1px 2px rgb(23 57 92 / 6%), 0 8px 24px rgb(23 57 92 / 8%);
+  --ombre-appareil: 0 30px 60px -20px rgb(23 57 92 / 35%);
 
   /* Mouvement (ignoré si le mouvement réduit est demandé) */
   --duree: 200ms;

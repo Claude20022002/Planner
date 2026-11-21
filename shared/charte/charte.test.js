@@ -65,7 +65,7 @@ test('4. une sortie retouchée est signalée ; des fins de ligne CRLF ne le sont
         }
         assert.deepEqual(verifierSorties(sorties, racine), []);
         const css = path.join(racine, CHEMIN_CSS_SITE);
-        fs.writeFileSync(css, fs.readFileSync(css, 'utf8').replace('--bleu: #1F65B3', '--bleu: #1F65B4'));
+        fs.writeFileSync(css, fs.readFileSync(css, 'utf8').replace('--bleu: #2A679F', '--bleu: #2A67A0'));
         assert.deepEqual(verifierSorties(sorties, racine), [CHEMIN_CSS_SITE]);
         fs.rmSync(css);
         assert.deepEqual(verifierSorties(sorties, racine), [CHEMIN_CSS_SITE]);
@@ -95,4 +95,13 @@ test('6. le CSS du site ne contient que les jetons marqués « site »', () => {
 
 test('7. le CSS du site porte exactement les noms de variables d\'aujourd\'hui', () => {
     assert.deepEqual(nomsDuCss, NOMS_DU_SITE);
+});
+
+test('8. chaque application a ses deux tons, et le blanc tient 4,5:1 sur chacun (VIT-09a)', () => {
+    const APPS = ['planning', 'pedagogie', 'personnes', 'etablissement', 'annonces', 'activites', 'bibliotheque'];
+    const teintes = source.familles.applications;
+    assert.deepEqual(Object.keys(teintes), APPS.flatMap((id) => [`app-${id}`, `app-${id}-fonce`]));
+    const paires = pairesCalculees(source).filter((p) => p.fond.startsWith('app-'));
+    assert.equal(paires.length, APPS.length * 2);
+    for (const p of paires) assert.ok(p.texte === 'blanc' && p.seuil === 4.5 && p.rapport >= 4.5, `${p.texte} sur ${p.fond}`);
 });
