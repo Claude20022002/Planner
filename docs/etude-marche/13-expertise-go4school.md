@@ -217,6 +217,8 @@ On s'inspire, on ne copie rien : ni texte, ni mise en page, ni nom.
 
 ## 9. Questions au chef
 
+Les trois propositions sont **validées par le chef le 21 novembre 2026** (« Je valide tes propositions »). La ligne de Go4School est ajoutée à [01-concurrents.md](01-concurrents.md), § 8. Le chef demande aussi que toutes les expertises servent le projet : c'est la [synthèse 14](14-reprendre-et-depasser.md).
+
 | N° | Question | Proposition |
 |---|---|---|
 | 1 | Faut-il ajouter Go4School à l'étude des concurrents (`01-concurrents.md`) et au comparatif avec OpenEduCat ? | oui, une ligne dans `01-concurrents.md`, avec le lien vers cette étude ; le coordinateur l'inscrit |
