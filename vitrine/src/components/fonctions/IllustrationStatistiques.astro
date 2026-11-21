@@ -1,0 +1,56 @@
+---
+// Illustration de la page « Pour l'établissement » : un écran de statistiques dessiné en HTML
+// (occupation des salles, charge des enseignants), dans un cadre d'ordinateur. Chiffres fictifs ;
+// textes dans etablissement.json (statistiques.illustration), valeurs des barres ici, sans texte.
+interface Props {
+  t: (cle: string) => any;
+}
+
+const { t } = Astro.props;
+const salles: string[] = t('statistiques.illustration.salles');
+const enseignants: string[] = t('statistiques.illustration.enseignants');
+const OCCUPATION = [82, 74, 61, 48, 35];
+const CHARGE = [18, 16, 14, 12, 9];
+const CHARGE_MAX = 20;
+---
+<div class="statistiques" aria-hidden="true">
+  <div class="panneau">
+    <p class="titre">{t('statistiques.illustration.titreSalles')}</p>
+    <ul class="barres">
+      {salles.map((salle, i) => (
+        <li>
+          <span class="nom">{salle}</span>
+          <span class="piste"><span class="barre" style={`inline-size: ${OCCUPATION[i]}%`}></span></span>
+          <span class="valeur">{OCCUPATION[i]} %</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="panneau">
+    <p class="titre">{t('statistiques.illustration.titreEnseignants')}</p>
+    <ul class="colonnes">
+      {enseignants.map((nom, i) => (
+        <li>
+          <span class="colonne" style={`block-size: ${(CHARGE[i] / CHARGE_MAX) * 100}%`}><span>{CHARGE[i]} h</span></span>
+          <span class="nom">{nom}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .statistiques { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.2em; block-size: 100%; padding: clamp(0.6rem, 2vw, 1.5rem); background: var(--gris-fond); font-size: clamp(0.45rem, 0.3rem + 0.7vw, 0.8125rem); text-align: start; }
+  .panneau { display: grid; grid-template-rows: auto 1fr; gap: 1em; padding: 1.2em; border-radius: 1em; background: var(--blanc); box-shadow: var(--ombre-carte); }
+  .titre { font-weight: 650; color: var(--bleu-nuit); }
+  .barres { display: grid; align-content: space-around; gap: 0.6em; }
+  .barres li { display: grid; grid-template-columns: 5.5em 1fr 3em; align-items: center; gap: 0.6em; }
+  .nom { color: var(--gris-texte); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .piste { block-size: 0.9em; border-radius: var(--rayon-pilule); background: var(--gris-fond); overflow: hidden; }
+  .barre { display: block; block-size: 100%; border-radius: inherit; background: var(--bleu); }
+  .valeur { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--bleu-nuit); text-align: end; }
+  .colonnes { display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; gap: 0.6em; }
+  .colonnes li { display: grid; grid-template-rows: 1fr auto; gap: 0.4em; block-size: 100%; text-align: center; }
+  .colonne { display: grid; align-self: end; align-content: start; justify-items: center; padding-block-start: 0.3em; border-radius: 0.5em 0.5em 0.2em 0.2em; background: var(--bleu-pale); color: var(--bleu-nuit); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .colonnes li:first-child .colonne { background: var(--bleu-nuit); color: var(--blanc); }
+</style>

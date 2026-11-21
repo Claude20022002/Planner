@@ -3,6 +3,8 @@ export default {
   "nombreRubriques_one": "{{count}} rubrique",
   "nombreRubriques_other": "{{count}} rubriques",
   "titre": "Applications",
+  "salutation": "Bonjour, {{prenom}}",
+  "salutationGenerique": "Bonjour",
   "intro": "Votre école, vos outils.",
   "description": "Choisissez une application pour retrouver vos tâches et vos données.",
   "rechercher": "Rechercher une application ou une rubrique",

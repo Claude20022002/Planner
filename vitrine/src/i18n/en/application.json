@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "titre": "App · Planner",
+    "description": "The timetable, attendance, games and the library, on the phone."
+  },
+  "entete": {
+    "surtitre": "App",
+    "titre": "The timetable, attendance, games and the library, on the phone.",
+    "accroche": "Five tabs: the board, the week, the scanner, the library, the account."
+  },
+  "onglets": {
+    "surtitre": "Phone",
+    "titre": "Five tabs.",
+    "texte": "",
+    "cartes": [
+      {
+        "titre": "Scanner",
+        "texte": "The scanner records attendance and joins a quiz or a game."
+      }
+    ]
+  }
+}

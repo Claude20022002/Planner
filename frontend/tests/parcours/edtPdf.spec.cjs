@@ -25,8 +25,8 @@ test("PDF de l'emploi du temps : la grille des créneaux de l'école", async ({ 
   await expect(pdf.locator("thead th.th-mat")).toHaveText("Matin");
   await expect(pdf.locator("thead th.th-apm")).toHaveText("Après-midi");
 
-  // Le vendredi a sa ligne ; la séance du jour (créneau 00:05 - 23:55, hors grille) est imprimée avec son horaire
+  // Le vendredi a sa ligne ; la séance du jour (créneau 00:00 - 24:00, hors grille) est imprimée avec son horaire
   await expect(pdf.locator("th.td-jour", { hasText: "Vendredi" }).first()).toBeVisible();
-  const cellule = pdf.locator("th.td-slot.has-cours", { hasText: seance.cours }).filter({ hasText: "00h05 - 23h55" });
+  const cellule = pdf.locator("th.td-slot.has-cours", { hasText: seance.cours }).filter({ hasText: "00h00 - 24h00" });
   await expect(cellule.first()).toBeVisible();
 });

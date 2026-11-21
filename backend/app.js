@@ -76,6 +76,7 @@ import {
     optionalAuth,
 } from "./middleware/index.js";
 import { choisirEtablissement } from "./middleware/etablissementMiddleware.js";
+import { authenticateToken } from './middleware/authMiddleware.js';
 
 dotenv.config();
 
@@ -144,6 +145,8 @@ app.use(logger);
 
 // Protection CSRF (cookie-to-header) sur toutes les méthodes modifiantes ;
 // les routes d'authentification publiques sont exemptées dans le middleware.
+// Authenticate solution requests first; this does not exempt authenticated writes from CSRF.
+app.post('/api/jeux/:code/defis/:idDefi/solution', authenticateToken);
 app.use(csrfProtection);
 
 // Mot de passe provisoire ou invitation : rien d'autre tant qu'il n'est pas changé

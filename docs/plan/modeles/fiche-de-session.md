@@ -32,7 +32,7 @@
 
 ## État laissé
 
-- `docs/plan/suivi.md` : <fonction> → <état>
+- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : <fonction> → <état>
 - Chantier <CODE> : <reste N fonctions : …>
 
 ## Reste à faire, dans l'ordre
@@ -57,5 +57,5 @@ Fait : <…>.
 Reste : <…>.
 Questions en attente : <…>.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ;
-fiche de session et suivi.md à jour en fin de session ; jamais de git push.
+fiche de session à jour en fin de session, suivi.md non modifié ; jamais de git push.
 ```

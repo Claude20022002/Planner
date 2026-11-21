@@ -1,0 +1,65 @@
+---
+// Tableau du comparatif (VIT-14) : un vrai <table>, critères en lignes (<th scope="row">), Planner et les
+// quatre approches en colonnes (<th scope="col">). « court » ne montre que le mot de chaque case (accueil) ;
+// sinon le mot puis le texte. Caché sous le seuil, où CartesComparatif prend le relais (sans JavaScript).
+import { traductions } from '../../i18n/index.js';
+
+interface Props {
+  langue: string;
+  lignes: string[];
+  court?: boolean;
+}
+
+const { langue, lignes, court = false } = Astro.props;
+const t = traductions(langue, 'comparer');
+const approches: string[] = t('approches');
+---
+<table class:list={['tableau', court ? 'court' : 'long']}>
+  <caption class:list={{ masquee: court }}>{t('accueil.texte')}</caption>
+  <thead>
+    <tr>
+      <th scope="col" class="critere">{t('tableau.critere')}</th>
+      {approches.map((nom, i) => <th scope="col" class:list={{ planner: i === 0 }}>{nom}</th>)}
+    </tr>
+  </thead>
+  <tbody>
+    {lignes.map((cle) => {
+      const cases: { mot: string; texte: string }[] = t(`lignes.${cle}.cases`);
+      return (
+        <tr>
+          <th scope="row" class="critere">{t(`lignes.${cle}.critere`)}</th>
+          {cases.map((c, i) => (
+            <td class:list={{ planner: i === 0 }}>
+              <span class="mot">{c.mot}</span>
+              {!court && <span class="texte">{c.texte}</span>}
+            </td>
+          ))}
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+
+<style>
+  .tableau { display: none; inline-size: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; text-align: start; font-size: 0.9375rem; }
+  caption { margin-block-end: var(--espace-2); caption-side: top; text-align: start; color: var(--gris-texte); font-size: var(--texte-petit); }
+  .masquee { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  th, td { padding: 0.875rem 0.75rem; border-block-end: 1px solid var(--gris-trait); vertical-align: top; text-align: start; }
+  thead th { font-size: var(--texte-petit); font-weight: 650; color: var(--bleu-nuit); }
+  th.critere { inline-size: 18%; font-weight: 650; color: var(--encre); }
+  thead th.critere { color: var(--gris-texte); font-weight: 500; }
+  .planner { background: color-mix(in srgb, var(--bleu-clair) 28%, var(--blanc)); }
+  thead .planner { border-start-start-radius: var(--rayon-petit); border-start-end-radius: var(--rayon-petit); font-size: var(--texte); font-weight: 700; }
+  tbody tr:last-child .planner { border-end-start-radius: var(--rayon-petit); border-end-end-radius: var(--rayon-petit); }
+  tbody tr:last-child > * { border-block-end: 0; }
+  .mot { display: block; font-weight: 600; color: var(--encre); }
+  .planner .mot { color: var(--bleu-nuit); }
+  .texte { display: block; margin-block-start: 0.375rem; color: var(--gris-texte); line-height: 1.45; text-wrap: pretty; }
+
+  @media (min-width: 48rem) {
+    .court { display: table; }
+  }
+  @media (min-width: 64rem) {
+    .long { display: table; }
+  }
+</style>

@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "titre": "Quiz et jeux · Planner",
+    "description": "Dix façons de poser une question, un quiz en direct, dix simulations et un terminal Linux."
+  },
+  "entete": {
+    "surtitre": "Quiz et jeux",
+    "titre": "Créer, projeter, jouer.",
+    "accroche": "L'enseignant prépare le quiz. Le lien s'ouvre dans un navigateur, sur un ordinateur de l'école ou ailleurs. Un code ou un QR code mène au même lien."
+  },
+  "studio": {
+    "surtitre": "Studio",
+    "titre": "Dix façons de poser une question.",
+    "texte": "Choix unique, choix multiple, vrai ou faux, réponse courte, nombre, texte à trous, association, ordre, zone sur une image, réponse libre.",
+    "points": [
+      "Une question peut porter une image, un son ou une vidéo.",
+      "À son rythme, chacun ouvre le quiz par le lien, le code ou le QR code.",
+      "En direct, la classe répond ensemble. Une réponse fausse ne rapporte rien. Une réponse juste rapporte davantage si elle arrive tôt. Le serveur chronomètre.",
+      "Quand l'école active l'IA, elle propose des questions. L'enseignant les relit avant de les ouvrir aux étudiants. Sans clé d'IA, la fonction est éteinte."
+    ]
+  },
+  "jeux": {
+    "surtitre": "Jeux",
+    "titre": "Dix simulations, trente défis.",
+    "texte": "Tri Cyber, Nœuds Réseaux, Labo des seuils, Pilote des stocks, Sprint Agile, Robot Route, Requête Parfaite, Ordonnanceur CPU, Budget ERP, Labo Big-O. Chaque simulation a trois défis.",
+    "lien": "Voir les dix jeux",
+    "cartes": [
+      {
+        "titre": "Terminal Linux",
+        "texte": "Un terminal Linux sert à s'exercer aux commandes."
+      },
+      {
+        "titre": "Une session",
+        "texte": "En individuel, chacun joue sur son téléphone. En collectif, le terminal Linux est projeté au tableau : l'enseignant y tape une commande, ou choisit celle qu'un étudiant envoie."
+      }
+    ]
+  }
+}

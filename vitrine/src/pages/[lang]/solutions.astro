@@ -1,0 +1,29 @@
+---
+// Page « Solutions », dans chaque langue : Planner par type d'établissement (collège et lycée,
+// supérieur, formation professionnelle), ce qui existe et ce qui arrive (« Bientôt », sans date).
+// Plan validé le 18 nov. : docs/conception/vitrine/vit-05-solutions.md. Assemble seulement.
+import Gabarit from '../../components/socle/Gabarit.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import Sommaire from '../../components/solutions/Sommaire.astro';
+import TypeEtablissement from '../../components/solutions/TypeEtablissement.astro';
+import { TYPES } from '../../components/solutions/types.js';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES, chemin } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'solutions');
+---
+<Gabarit langue={lang} page="solutions" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <Sommaire label={t('sommaire')} liens={TYPES.map(({ cle, ancre }) => ({ ancre, texte: t(`types.${cle}.surtitre`) }))} />
+  {TYPES.map(({ cle, ancre, ton, pages }) => (
+    <TypeEtablissement id={ancre} ton={ton} surtitre={t(`types.${cle}.surtitre`)} titre={t(`types.${cle}.titre`)}
+      texte={t(`types.${cle}.texte`)} libelleAujourdhui={t('aujourdhui')} libelleBientot={t('bientot')}
+      existants={t(`types.${cle}.aujourdhui`).map((point, i) => ({ ...point, href: chemin(lang, pages[i]) }))}
+      prevus={t(`types.${cle}.bientot`)} />
+  ))}
+  <FinDePage langue={lang} />
+</Gabarit>
