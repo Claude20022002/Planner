@@ -175,6 +175,7 @@
     "titre": "",
     "commandes": {
       "lire": "",
+      "lireMobile": "",
       "pause": "",
       "revoir": ""
     },
