@@ -65,11 +65,13 @@ Point 1 du prompt de reprise : le plan court d'UIX-10b, validé par le chef avan
 - Pour `suivi.md`, à reporter par le coordinateur : **UIX-10b codée**, `feat/uix-10b-web-charte`, à pousser par le chef ; plan `docs/conception/interface/uix-10b-web-charte.md`.
 - Docker Desktop reste lancé ; les bases de test et la démonstration sont arrêtées.
 
-## Questions en attente
+## Réponses du coordinateur (21 nov., après la relecture de `cb2c74ac` : prête pour la PR)
 
-1. **Coordinateur** : faut-il ajouter au plan d'UIX-10b la section « Ce que disent les études » après coup ? Proposition : non, le plan est validé et codé ; elle s'applique aux plans suivants (UIX-11 d'abord).
-2. **Coordinateur** (reportée) : VIT-15 pose les logos de ses fiches ; VIT-09b ne les refait pas (plan de VIT-09b, § 4.2).
-3. **Coordinateur** : le plan d'UIX-06c parle de `ThemeGestion`, retiré par UIX-10b ; une ligne de ce plan est à corriger avant son code (thème unique).
+1. Pas de section « Ce que disent les études » après coup pour UIX-10b ; elle vaut pour les plans suivants.
+2. UIX-06c : avant son code, corriger dans `docs/conception/interface/uix-06c-ressources-temps.md` la mention de `ThemeGestion`, et nommer ce qui le remplace depuis UIX-10b (le thème unique : `themeCharte.js`, `jetonsInterface.js`). Si ce n'est qu'un renvoi, le coordinateur valide ; si la solution change, le plan repart au chef, avec la section « Ce que disent les études ».
+3. Noté dans les fiches de VIT-15 et de VIT-09 : VIT-15 pose les logos de ses fiches, VIT-09b ne les refait pas.
+
+Plus de question en attente. Surveiller en CI le parcours `entreRoles` réécrit.
 
 ## Reste à faire, dans l'ordre
 
@@ -101,7 +103,11 @@ Reste, dans l'ordre :
    le chef a décidé « le supérieur d'abord », écrans et textes neutres ;
 3) puis UIX-06c (corriger la ligne de son plan sur ThemeGestion, retiré), QJE-14, étude StudyLib, UIX-10d ;
 4) VIT-09b, le code, en dernier sur le site, en montrant au chef la planche des dessins et chaque capture avant le commit.
-Questions au coordinateur : section « études » après coup pour UIX-10b (proposition : non) ; VIT-15 pose les logos de ses fiches.
+Réponses du coordinateur (21 nov.) : UIX-10b prête pour la PR ; pas de section « études » après coup ;
+UIX-06c : corriger d'abord la mention de ThemeGestion dans son plan (renvoi : coordinateur ; solution changée : chef,
+avec la section « études ») ; VIT-15 pose les logos de ses fiches, VIT-09b ne les refait pas.
+UIX-11 : fiche docs/plan/missions/uix-11-tableau-de-bord.md ; plan court validé par le coordinateur,
+par le chef s'il ajoute une route ou une donnée d'élève. Surveiller en CI le parcours entreRoles réécrit.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; rien de réel dans le dépôt ;
 fiche de session à jour en fin de session ; suivi.md non modifié ; jamais de git push.
 ```
