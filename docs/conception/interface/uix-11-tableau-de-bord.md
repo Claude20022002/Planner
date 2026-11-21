@@ -9,7 +9,7 @@
 | Préalable | UIX-10b fusionnée (#235, CI verte le 21 nov., 74 parcours sur 74) : le thème unique (`themeCharte.js`, `jetonsInterface.js`) sur lequel ce tableau se construit |
 | Taille | M · sans route nouvelle, sans migration, sans donnée nominative d'élève nouvelle |
 | Rédigé par | Claude Code (Opus 5.5), le 21 novembre 2026 |
-| **Validé** | en attente : **le coordinateur** (règle de la fiche : routes existantes seulement, aucune donnée nominative d'élève nouvelle). Les questions 1 à 4 ont déjà la réponse du chef |
+| **Validé** | **par le coordinateur, le 21 nov. au soir** (`docs/plan/decisions.md`, branche `doc/coordination-equipe`) : M, routes existantes, aucune migration ni donnée d'élève nouvelle ; réponses 5 et 6 ci-dessous. Les questions 1 à 4 ont la réponse du chef |
 
 ## 1. Objet et critère de « terminé »
 
@@ -49,8 +49,8 @@ Lu dans `feat/uix-10b-web-charte` (`e0b9af3d`), qui sera sur `main` avant le cod
 | 2 | Les pages cibles ne lisent pas de filtre : comment mener « aux lignes » en un clic ? | un volet dans le tableau de bord, qui lit la même route, et « Tout voir » | **Chef, 21 nov. : le volet**. Tout reste dans `components/dashboard/`, sans toucher aux autres pages | non |
 | 3 | L'occupation des salles est fausse sur une année : que faire ? | appeler la même route sur la semaine en cours | **Chef, 21 nov. : la semaine en cours**. `GET /statistiques/kpis?date_debut&date_fin` (paramètres qui existent déjà) ; le serveur ne change pas | non |
 | 4 | Des taux de présence des élèves par classe ? | pas dans UIX-11 : aucune route ne les calcule | **Chef, 21 nov. : pas dans UIX-11.** Ils iront à PIL (étape 5) ou à une fonction à part, avec leur plan | non |
-| 5 | Le **taux de conflits** mélange deux périodes (§ 2) : le garder ? | **le retirer de la bande**. Les conflits non résolus restent comptés dans « À traiter », qui ouvre leurs lignes. Le corriger demanderait une date au conflit côté serveur, hors de ce plan | à trancher à la validation | oui, pour l'étape 3 |
-| 6 | Quelle **semaine** pour « cette semaine » ? | du lundi au dimanche qui contiennent aujourd'hui, à l'heure du navigateur, comme `toLocalISODate` du panneau. Le calcul est isolé dans `periodes.js`, pour qu'un jour de début réglé par école (PLA-13) s'y branche sans rien recoder | à trancher à la validation | oui, pour l'étape 2 |
+| 5 | Le **taux de conflits** mélange deux périodes (§ 2) : le garder ? | **le retirer de la bande**. Les conflits non résolus restent comptés dans « À traiter », qui ouvre leurs lignes. Le corriger demanderait une date au conflit côté serveur, hors de ce plan | **Coordinateur, 21 nov. : le retirer.** Les conflits non résolus restent comptés dans « À traiter » ; la correction côté serveur est un correctif à part, au chef | non |
+| 6 | Quelle **semaine** pour « cette semaine » ? | du lundi au dimanche qui contiennent aujourd'hui, à l'heure du navigateur, comme `toLocalISODate` du panneau. Le calcul est isolé dans `periodes.js`, pour qu'un jour de début réglé par école (PLA-13) s'y branche sans rien recoder | **Coordinateur, 21 nov. : du lundi au dimanche**, à l'heure du navigateur, isolé dans `periodes.js` (PLA-13, EP-5) | non |
 
 ## 4. Solution
 
@@ -93,7 +93,7 @@ sequenceDiagram
 | **E. À venir** (question 1) | épreuves d'examen | les 14 prochains jours | `GET /examens?date_from&date_to` | `SessionExamen` | date, heure, épreuve, salles | Examens |
 | **F. Usage du mois** (question 1, écart accepté) | comptes actifs | ce mois | `GET /statistiques/usage?mois=` | `AuthSession`, `JournalSecurite`, `Users` | **pas de lignes** : le détail par rôle, les appels validés, les parties de quiz et leurs joueurs, les devoirs rendus, et la définition d'un compte actif (`definition_actif`) | Suivi, onglet Usage |
 
-Le taux de conflits n'est plus affiché, si la question 5 est validée. La bande ne garde que des chiffres justes sur la semaine.
+Le taux de conflits n'est plus affiché (réponse 5). La bande ne garde que des chiffres justes sur la semaine.
 
 ### 4.3 La mise en page
 
