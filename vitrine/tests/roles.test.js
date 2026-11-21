@@ -81,7 +81,7 @@ test('les lignes « avec » et la FAQ recopient des phrases déjà visées', () 
     emploi.suite.cartes[0].texte,
   ]);
   assert.deepEqual(avec('enseignants'), [
-    enClasse.appel.points[1],
+    enClasse.appel.points[0], // l'appel à la main, devenu le premier point (VIT-18)
     enClasse.quiz.texte,
     cours.entete.accroche,
     cours.supports.cartes[0].texte,

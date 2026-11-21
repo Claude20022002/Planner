@@ -62,7 +62,7 @@
       },
       {
         "question": "How is a refused session explained?",
-        "reponse": "When a session cannot be placed, Planner names the rule that blocks it."
+        "reponse": "When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher."
       },
       {
         "question": "Who tells students about a postponement?",
