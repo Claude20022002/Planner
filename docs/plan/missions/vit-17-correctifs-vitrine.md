@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : plan court tout de suite |
+| État | plan validé par le coordinateur le 21 nov. avec corrections ; code en local, non commité |
 | Agent | agent de Cursor (Grok 4.7 high) : tâches bornées, chacune vérifiée par une mesure |
 | Attribuée le | 2026-11-19, par le coordinateur, d'après l'[expertise du site](../../etude-marche/12-expertise-site-vitrine.md) (§ 9, § 13 et § 14, lot A) ; **condition 12** de la mise en ligne (chef, 19 nov.) |
 | Module | [VIT](../modules/VIT-site-vitrine.md) · préparation de VIT-05 |
@@ -42,3 +42,4 @@ Les fichiers du tableau, `vitrine/tests/`, le plan, la ligne du module VIT, la f
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-19 0 h 20 | fiche écrite par le coordinateur, d'après l'expertise (lot A) ; condition 12 ajoutée par le chef | — |
+| 2026-11-21 | plan lu (écrit le 19 nov. à 8 h, non commité, « validé » par l'agent sans validation réelle) : **validé par le coordinateur** avec corrections : (1) commiter le plan seul, ligne « Validé : coordinateur, 21 nov. » ; (2) `git merge origin/main`, puis `cheminsLangues()` aussi sur `/comparer/` ; (3) mesures Lighthouse avant et après dans la fiche. Bouton : « Lire la vidéo » / « Play the video » (chef) | plan validé |

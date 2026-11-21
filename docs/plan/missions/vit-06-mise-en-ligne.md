@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : plan à écrire |
+| État | codée, #221 : **prête** (21 nov.), le chef la fusionne ; ensuite VIT-06b (journaux), puis le déploiement |
 | Agent | **Codex**, après UIX-09 (réattribuée le 18 nov. à 13 h 45 : les modèles Claude ne sont pas dans le forfait Cursor du chef) |
 | Modèle recommandé | le modèle le plus fort de Codex, avec un raisonnement élevé : c'est le serveur de production |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (« dès qu'il est prêt on le déploie, d'abord sur un sous-domaine ») |
@@ -81,3 +81,4 @@ Rapport « plan prêt, sha … » dans sortie\. Jamais de git push.
 | 2026-11-18 20 h 40 | décision du chef : **le code de VIT-06 se fait maintenant** (Codex, avant QJE-03, branche `feat/vit-06-code` après la fusion de #212) ; le déploiement, le jour où les neuf conditions sont réunies. Condition 2 confiée à VIT-12 ; condition 3 remplie par #220 | — |
 | 2026-11-18 21 h | condition 10 ajoutée par le chef (VIT-10b, VIT-13, méga-menu de VIT-11) ; Codex l'inscrit dans le code de VIT-06 | — |
 | 2026-11-19 0 h 20 | **conditions 11 et 12 ajoutées par le chef** : un contact réel (une adresse publiée, D1 ; VIT-16 ou la section Contact de l'accueil) et le saut du menu sur téléphone supprimé ([VIT-17](vit-17-correctifs-vitrine.md) ; performance mobile d'au moins 90 sur l'accueil). #221 : **CI du site encore rouge** au run de `89bac430` (« env file .env.docker not found », après le correctif `121c92c6`) et conflit d'une ligne sur le fichier du module VIT. À ajouter au code : la durée des journaux de la vitrine (Nginx et Traefik, `deploy/`), N jours fixé par le chef dans VIT-12 (question 9 de sa session) | à corriger |
+| 2026-11-21 | relue : CI entièrement verte (`aa5f3e7e`, run vitrine 44442477804), conflit résolu, douze conditions inscrites ; le job Docker Hub attend deux secrets du chef. **Prête** ; décision du chef : fusion maintenant, la conservation des journaux devient **VIT-06b** (attend `N` de VIT-12 et le relevé Traefik du VPS) | prête |

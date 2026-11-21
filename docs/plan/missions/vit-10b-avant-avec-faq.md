@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | codée en local (`b7f1a104`) ; complément C8 de l'expertise à ajouter avant le push |
+| État | #226 **prête**, avec C8 (`ff08fffd`, à pousser) |
 | Agent | agent de Cursor (Grok 4.7 high) : il a écrit les pages par rôle |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. vers 20 h 55, d'après le site d'OpenEduCat ; **condition 10** de la mise en ligne |
 | Module | [VIT](../modules/VIT-site-vitrine.md) · préparation de VIT-05 |
@@ -31,3 +31,4 @@ Au plan de VIT-10, le chef avait répondu : le bloc et la FAQ seulement avec des
 |---|---|---|
 | 2026-11-18 21 h | fiche écrite, sur la décision du chef | — |
 | 2026-11-19 0 h 20 | plan validé par le chef (`a3cae80d`, seul avant le code) ; code `b7f1a104`, fiche `3af6748f`, en local. **Complément de l'expertise (C8), validé par le coordinateur** (S, aucune phrase nouvelle) : dans `direction.json` et `scolarite.json` · `cartes.2.texte`, remplacer la phrase sur le site par la description déjà publiée de la page Sécurité (`securite.json` · `meta.description`, sans sa fin) ; et passer les deux boutons dans l'ouverture (`EnTetePage.astro`, par un emplacement) au lieu de leur section à part (`PageRole.astro`, lignes 28 à 33). Le complément s'écrit dans le plan (un commit seul), puis le code, sur la même branche, avant le push | à compléter |
+| 2026-11-21 | C8 relu (`5a43ba5f` plan, `ff08fffd` code) : carte Sécurité recopiée de `securite.meta.description`, boutons dans l'ouverture, deux tests ; VIT-18 ne change pas cette description | prête |

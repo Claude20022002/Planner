@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : plan court à écrire, **après le code de VIT-08** |
+| État | 09a : #222 **prête** ; 09b : plan validé par le chef (#227, brouillon), code en dernier sur le site |
 | Agent | Claude (VS Code), la session de la vidéo de VIT-08 et de la charte : même langage visuel (choix du chef, 18 nov. vers 17 h 45) |
 | Modèle recommandé | celui de la session (Opus 5.5 ou Fable 5.2) : du dessin en code, et des captures à vérifier une à une |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. vers 17 h 45 (« le site manque d'illustration ») |
@@ -120,3 +120,4 @@ fiche de session à jour ; suivi.md non modifié ; tout est commité ; jamais de
 | 2026-11-18 21 h | ajout du chef : créer les logos des modules (une icône dessinée par app ou module, charte v2), utilisés sur tout le site ; question au chef sur l'adoption par l'application | — |
 | 2026-11-18 21 h 20 | décisions du chef : **de vrais logos illustrés** pour les modules (multicolores, en léger volume, charte v2 ; pas de simples icônes), et **des icônes vivantes** sur les boutons et les liens (animées au survol et au focus, coupées si le visiteur demande moins de mouvement). VIT-09 est découpée : **VIT-09a**, la bibliothèque des logos et des icônes animées (source unique, sans toucher les pages), tout de suite après la correction de #216 ; **VIT-09b**, l'intégration sur toutes les pages, les illustrations, les captures et la première section, en dernier sur le site | — |
 | 2026-11-19 0 h 20 | **VIT-09a codée** (#222, planche validée par le chef ; conflit d'une ligne sur le fichier du module VIT, à résoudre en gardant les deux lignes). **Ajouts de l'[expertise](../../etude-marche/12-expertise-site-vitrine.md) à VIT-09b** (§ 13) : C2, le titre principal dit la promesse (« L'emploi du temps calculé selon vos règles. Puis toute la classe. »), « Planner » devient le surtitre, et une ligne de liens vers les quatre rôles sous les boutons (l'accroche D4 et l'ordre des types passent à [VIT-18](vit-18-textes-exacts.md)) ; C3, les captures prioritaires (bilan des contraintes après un calcul, liste d'appel à la main, Studio en édition, semaine du mobile) et le dessin de l'appel qui montre d'abord la liste à la main, puis le QR code sur un écran de classe et non sur un téléphone ; C10, la page Application avec une carte par onglet (textes tirés de `mobile/src/app/(onglets)/`, au chef) et un titre court (« Planner, dans la poche. »). La grille à trous passe à [VIT-17](vit-17-correctifs-vitrine.md). Le nouveau rendu de deux phrases de la vidéo (`scenes.4`, `scenes.7`) suit VIT-18 | — |
+| 2026-11-21 | 09a : conflit résolu (`62775061`), CI verte : **prête**. 09b : plan court validé par le chef (`8f451998`) | 09a prête |

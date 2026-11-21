@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : plan court tout de suite ; le code après la fusion de VIT-14 (#224) |
+| État | #228 **prête** ; `git merge origin/main` après #226 |
 | Agent | **la session Claude de l'expertise** (`etude/expertise-site-vitrine`) : elle a confronté chaque phrase au code et proposé les textes |
 | Modèle recommandé | celui de la session (Opus 5.5), sinon Fable 5.2 |
 | Attribuée le | 2026-11-19, par le coordinateur, d'après l'[expertise du site](../../etude-marche/12-expertise-site-vitrine.md) (§ 13, C5 et C7 ; § 14, lot B) ; décisions D2, D3 et D4 du chef (18 nov.) |
@@ -54,3 +54,4 @@ Ne modifie pas docs/plan/suivi.md. Fiche de session ; tout est commité ; jamais
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-19 0 h 20 | fiche écrite par le coordinateur, d'après l'expertise (lot B) | — |
+| 2026-11-21 | relue : plan validé par le chef phrase par phrase, code `fcd5c029`, test de garde, 78 tests ; l'écart (une phrase exemptée au lieu de deux) accepté. #232 la suit et retire l'exception | prête |

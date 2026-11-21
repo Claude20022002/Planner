@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | ouverte par le chef ; travail local, rien de poussé au 21 nov. |
 | Agent | **nouvelle session Claude Code**, ouverte par le chef (décision du chef du 18 nov., vers 17 h 15). Elle travaille en parallèle des autres et n'écrit aucun code |
 | Modèle recommandé | le plus capable disponible (Claude Fable 5.2, sinon Opus 5.5) : l'étude lit toute l'application et fixera l'ordre de correctifs dans plusieurs modules |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (EP-18 à 16 h ; agent choisi vers 17 h 15) |
@@ -87,3 +87,4 @@ Quand tu as fini, dis-le au chef : le coordinateur relit ta branche avant la PR.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 17 h 30 | fiche écrite par le coordinateur ; agent choisi par le chef : une nouvelle session Claude | — |
+| 2026-11-21 | le chef confirme que la session est ouverte ; aucune branche poussée | en cours |
