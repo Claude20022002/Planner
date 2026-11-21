@@ -8,7 +8,7 @@
 | Dossier de travail | `..\travaux-planner\fix-uix-11-volet` |
 | Taille | S · frontend seul, sans route, sans migration, sans donnée d'élève |
 | Rédigé par | Claude Code (Opus 5.5), le 21 novembre 2026 |
-| **Validé** | *(à remplir : coordinateur ou chef)* |
+| **Validé** | **par le chef, le 21 nov. au soir** (outil de questions), avec la question 1 : oui |
 
 ## 1. Le défaut
 
@@ -46,9 +46,10 @@ Sans le correctif, la réponse en retard remplace les séances par `min(n, 100) 
 | `frontend/src/components/dashboard/periodes.js` | commentaire de `periodeEnCours` |
 | `frontend/tests/parcours/tableauDeBord.spec.cjs` | le test de régression |
 | `docs/conception/interface/uix-11-tableau-de-bord.md` | § 3, réponse 10 |
+| `frontend/src/pages/gestion/Suivi.jsx` | `Object.hasOwn` ; constante remontée au-dessus du commentaire de rôle (question 1) |
 | fiche de session | à la fin |
 
-Rien dans `backend/`, `shared/`, ni dans les autres pages. `suivi.md` reste au coordinateur.
+Rien dans `backend/`, `shared/`, ni dans les autres pages que `Suivi.jsx`. `suivi.md` reste au coordinateur.
 
 ## 5. Vérifié par
 
@@ -59,4 +60,4 @@ Rien dans `backend/`, `shared/`, ni dans les autres pages. `suivi.md` reste au c
 
 | N° | Question | Proposition | Réponse |
 |---|---|---|---|
-| 1 | Les deux petits points de `Suivi.jsx` relevés à la relecture : `ONGLETS_ADRESSE[…]` lit aussi les noms hérités (`?onglet=constructor` rend une fonction comme numéro d'onglet), et la constante s'est glissée entre le commentaire de rôle de `Suivi` et sa fonction. Les corriger ici ? | **oui** : `Object.hasOwn`, et la constante remontée au-dessus du commentaire ; un test unitaire n'est pas possible sans rendre la page, le parcours de la réponse 9 couvre `?onglet=usage` | |
+| 1 | Les deux petits points de `Suivi.jsx` relevés à la relecture : `ONGLETS_ADRESSE[…]` lit aussi les noms hérités (`?onglet=constructor` rend une fonction comme numéro d'onglet), et la constante s'est glissée entre le commentaire de rôle de `Suivi` et sa fonction. Les corriger ici ? | **oui** : `Object.hasOwn`, et la constante remontée au-dessus du commentaire ; un test unitaire n'est pas possible sans rendre la page, le parcours de la réponse 9 couvre `?onglet=usage` | **oui** (chef, 21 nov.) : `Suivi.jsx` entre dans les fichiers du correctif |
