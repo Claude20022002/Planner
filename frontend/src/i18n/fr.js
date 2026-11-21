@@ -22,10 +22,7 @@ const fr = {
     themeDark: 'Mode sombre',
     apparence: {
       titre: 'Apparence',
-      intro: 'Le thème de Planner (panneau des départs) ou celui de la bibliothèque StudyLib, en clair ou en sombre. Retenu sur ce navigateur.',
-      theme: 'Thème',
-      planner: 'Planner',
-      studylib: 'StudyLib',
+      intro: 'Le mode clair ou sombre. Retenu sur ce navigateur.',
       mode: 'Mode',
       clair: 'Clair',
       sombre: 'Sombre',
@@ -1454,6 +1451,9 @@ const fr = {
       etudiant: 'Étudiant',
       defis: 'Défis',
       points: 'Points',
+      avecSolution: 'Réussi avec la solution',
+      aides: 'Réussis avec la solution : {{count}}',
+      aidesAucun: 'Aucun défi réussi avec la solution.',
     },
     terminal: {
       titre: 'Terminal · hestim-lab',

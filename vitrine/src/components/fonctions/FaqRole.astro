@@ -1,0 +1,40 @@
+---
+// FAQ d'une page par rôle : un accordéon lisible sans JavaScript, et le même texte en JSON-LD.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+
+interface Props {
+  titre: string;
+  questions: { question: string; reponse: string }[];
+}
+
+const { titre, questions } = Astro.props;
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: questions.map((question) => ({
+    '@type': 'Question',
+    name: question.question,
+    acceptedAnswer: { '@type': 'Answer', text: question.reponse },
+  })),
+}).replaceAll('<', '\\u003c');
+---
+<Section id="faq" ton="gris" etiquette="faq-titre">
+  <Titre id="faq-titre" taille="moyen">{titre}</Titre>
+  <div class="liste">
+    {questions.map((question) => (
+      <details>
+        <summary>{question.question}</summary>
+        <p>{question.reponse}</p>
+      </details>
+    ))}
+  </div>
+</Section>
+<script type="application/ld+json" set:html={schema} />
+
+<style>
+  .liste { display: grid; gap: var(--espace-2); inline-size: 100%; text-align: start; }
+  details { padding: var(--espace-2) var(--espace-3); border-radius: var(--rayon-petit); background: var(--blanc); }
+  summary { font-weight: 650; cursor: pointer; }
+  p { margin: var(--espace-2) 0 0; color: var(--gris-texte); }
+</style>

@@ -22,10 +22,7 @@ const en = {
     themeDark: 'Dark mode',
     apparence: {
       titre: 'Appearance',
-      intro: 'The Planner theme (departure board) or the StudyLib library theme, light or dark. Remembered on this browser.',
-      theme: 'Theme',
-      planner: 'Planner',
-      studylib: 'StudyLib',
+      intro: 'Light or dark mode. Remembered on this browser.',
       mode: 'Mode',
       clair: 'Light',
       sombre: 'Dark',
@@ -1456,6 +1453,9 @@ const en = {
       etudiant: 'Student',
       defis: 'Challenges',
       points: 'Points',
+      avecSolution: 'Completed with the solution',
+      aides: 'Completed with the solution: {{count}}',
+      aidesAucun: 'No challenge completed with the solution.',
     },
     terminal: {
       titre: 'Terminal · hestim-lab',

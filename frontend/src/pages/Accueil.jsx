@@ -97,9 +97,9 @@ export default function Accueil() {
                 letterSpacing: '0.08em',
                 px: 1.25,
                 py: 0.25,
-                color: ds.nav.letterDim,
+                color: ds.board.letterDim,
                 borderColor: 'rgba(255,255,255,0.22)',
-                '&.Mui-selected': { color: ds.nav.letter, bgcolor: 'rgba(255,255,255,0.14)' },
+                '&.Mui-selected': { color: ds.board.titre, bgcolor: 'rgba(255,255,255,0.14)' },
               },
             }}
           >
@@ -112,7 +112,7 @@ export default function Accueil() {
           <Button
             variant="outlined"
             onClick={() => navigate('/connexion')}
-            sx={{ color: ds.nav.letter, borderColor: 'rgba(255,255,255,0.4)', display: { xs: 'none', sm: 'inline-flex' } }}
+            sx={{ color: ds.board.titre, borderColor: 'rgba(255,255,255,0.4)', display: { xs: 'none', sm: 'inline-flex' } }}
           >
             {t('landing.signIn')}
           </Button>
@@ -171,7 +171,7 @@ export default function Accueil() {
             <Typography
               id="features-title"
               component="h2"
-              sx={{ px: 1.5, pt: 0.5, pb: 1, color: ds.nav.letter, fontFamily: ds.font.board, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '1.0625rem' }}
+              sx={{ px: 1.5, pt: 0.5, pb: 1, color: ds.board.titre, fontFamily: ds.font.board, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '1.0625rem' }}
             >
               {t('landing.featuresTitle')}
             </Typography>

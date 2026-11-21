@@ -23,9 +23,10 @@
 | MOB-02 | Rôle enseignant : emploi du temps, appel, classes ; reprendre ou fermer `b/v4-application` | M-1 à M-3 | libre | L | — | à faire |
 | MOB-03 | Thème neutre et thème de l'école ; **choisir le téléphone de référence** et mesurer l'ouverture (moins de 2 s, EP-3) | SN-1 (application) | 2 | M | UIX-01 | à faire |
 | MOB-04 | Trouver son école : par adresse ou par code | ME-8 réduit | 5 | M | PLA-10, MOB-07 | reporté |
-| MOB-05 | Espace parents : enfants, emploi du temps, absences, notes, frais ; notifications par plages et résumés, envoyées par COM (EP-7) | F-15 | 4 | L | ADM-05, VSC-03, COM-01 | à faire |
+| MOB-05 | Espace parents : enfants, emploi du temps, absences, notes, frais ; notifications par plages et résumés, envoyées par COM (EP-7) | F-15 | 4 | L | ADM-05, VSC-03, VSC-04, FIN-01, COM-01 | à faire |
 | MOB-06 | Emploi du temps lisible hors ligne (EP-3) | F-15 | 4 | M | — | à faire |
 | MOB-07 | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes les installations) | I-12 | libre | M | — | à faire |
+| MOB-08 | pdf.js servi par l'application, et non plus chargé depuis cdnjs à l'ouverture d'un PDF sur Android (`mobile/src/documents/Lecteur.jsx:15`) : plus aucun envoi vers un tiers à la lecture d'un document (EP-13, décision du 16 nov.) | — | libre | S | — | à faire |
 
 ## Critères de « terminé »
 
@@ -33,10 +34,12 @@
 - **MOB-03** : la mesure de départ et la mesure après sont notées pour le téléphone de référence.
 - **MOB-06** : en mode avion, la semaine en cours reste lisible, avec la date de la dernière mise à jour.
 - **MOB-07** : la même construction se connecte à deux installations différentes.
+- **MOB-08** : un PDF s'ouvre sur Android en mode avion ; aucune adresse externe dans `Lecteur.jsx` ; la liste des envois sortants est à jour.
+- **Toute publication dans un magasin** (App Store, Google Play) : les fiches « confidentialité » décrivent ce que l'application collecte vraiment, et sont relues avant l'envoi (décision du 15 nov.).
 
 ## Exigences produit
 
-EP-3, EP-7, EP-11.
+EP-3, EP-7, EP-11, EP-13.
 
 ## Références
 

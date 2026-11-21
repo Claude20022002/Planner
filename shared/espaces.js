@@ -3,8 +3,8 @@
  * (Planner web, application mobile, StudyLib, ClassQuiz) : depuis n'importe quel écran, le
  * sélecteur d'espaces mène à chacun en deux gestes (ouvrir le sélecteur, choisir l'espace).
  *
- * Chemins relatifs à l'origine de la plateforme (Planner et StudyLib partagent la même) ;
- * ClassQuiz vit sur son sous-domaine (QUIZ_URL, renvoyé par GET /api/quiz/config).
+ * Chemins relatifs à l'origine de la plateforme (Planner et StudyLib partagent la même).
+ * L'entrée Quiz reste dans Planner (QJE-01) : elle ne construit plus d'adresse vers ClassQuiz.
  */
 export const ESPACES = [
   {
@@ -31,26 +31,24 @@ export const ESPACES = [
     icone: 'quiz',
     titre: { fr: 'Quiz', en: 'Quiz' },
     resume: { fr: 'Quiz en direct pendant la séance', en: 'Live quizzes during class' },
-    // Adresse absolue fournie par la configuration ; null si ClassQuiz n'est pas installé
+    // L'adresse dépend du rôle (adresseEspace) : l'enseignant sur Activités, l'étudiant sur /quiz.
     chemin: null,
   },
 ];
 
 /**
- * Adresse d'un espace pour un rôle donné. Quiz : l'enseignant reste dans Planner, sur « Mes quiz »
- * de la page Activités (lot CQ-3 : une seule adresse) ; l'étudiant arrive sur la saisie du code de
- * partie du service de quiz.
+ * Adresse d'un espace pour un rôle donné. Quiz (QJE-01) : l'enseignant ouvre Activités (/jeux),
+ * l'étudiant ouvre la saisie du code (/quiz). Les deux restent dans Planner. L'administration
+ * et les autres rôles n'ont pas cette entrée. urlQuiz n'est plus lu.
  * @param {string} code
  * @param {{ role?: string, urlQuiz?: string|null }} contexte
  * @returns {string|null} null si l'espace n'est pas disponible
  */
-export const adresseEspace = (code, { role, urlQuiz } = {}) => {
-  // L'administration ne gère pas les quiz
-  if (role === 'admin' && code === 'quiz') return null;
+export const adresseEspace = (code, { role } = {}) => {
   if (code === 'quiz') {
-    if (typeof urlQuiz !== 'string' || !/^https?:\/\//.test(urlQuiz)) return null;
     if (role === 'enseignant') return '/jeux';
-    return `${urlQuiz.replace(/\/$/, '')}/play`;
+    if (role === 'etudiant') return '/quiz';
+    return null;
   }
   return ESPACES.find((e) => e.code === code)?.chemin ?? null;
 };

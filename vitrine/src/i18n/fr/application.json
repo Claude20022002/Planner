@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "titre": "Application · Planner",
+    "description": "L'emploi du temps, l'appel, les jeux et la bibliothèque, sur le téléphone."
+  },
+  "entete": {
+    "surtitre": "Application",
+    "titre": "L'emploi du temps, l'appel, les jeux et la bibliothèque, sur le téléphone.",
+    "accroche": "Cinq onglets : le tableau, la semaine, le scanner, la bibliothèque, le compte."
+  },
+  "onglets": {
+    "surtitre": "Téléphone",
+    "titre": "Cinq onglets.",
+    "texte": "",
+    "cartes": [
+      {
+        "titre": "Scanner",
+        "texte": "Le scanner enregistre la présence et rejoint un quiz ou un jeu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+/*
+ * Icônes vivantes (VIT-09a) : l'animation de chaque icône de vivantes/*.svg, en CSS seulement.
+ * Elle part quand le bouton ou le lien qui porte l'icône est survolé ou reçoit le focus du clavier :
+ * ce porteur a la classe « icone-vivante ». Elle ne part jamais quand le visiteur demande moins de
+ * mouvement (prefers-reduced-motion). Courbe : celle de la charte (mouvement.courbe).
+ */
+
+.iv { flex: none; overflow: visible; }
+.iv .iv-mouvant, .iv .iv-trait, .iv .iv-barre, .iv .iv-meridien { transform-box: fill-box; transform-origin: center; }
+.iv-menu .iv-trait { transform-origin: left center; }
+.iv-revoir .iv-mouvant { transform-box: view-box; transform-origin: 12px 12px; }
+
+/* Les déclencheurs : survol et focus du porteur */
+.icone-vivante:is(:hover, :focus-visible) :is(.iv-fleche-droite, .iv-chevron-droit) .iv-mouvant { animation: iv-pousse-droite 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) :is(.iv-fleche-bas, .iv-chevron-bas, .iv-telecharger) .iv-mouvant { animation: iv-pousse-bas 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) .iv-lien-externe .iv-mouvant { animation: iv-sortie 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) .iv-envoyer .iv-mouvant { animation: iv-envol 640ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) .iv-menu .iv-trait { animation: iv-trait 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) .iv-menu .iv-trait-2 { animation-delay: 60ms; }
+.icone-vivante:is(:hover, :focus-visible) .iv-menu .iv-trait-3 { animation-delay: 120ms; }
+.icone-vivante:is(:hover, :focus-visible) .iv-lecture .iv-mouvant { animation: iv-battement 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) .iv-pause .iv-barre { animation: iv-barre 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) .iv-pause .iv-barre-2 { animation-delay: 90ms; }
+.icone-vivante:is(:hover, :focus-visible) .iv-revoir .iv-mouvant { animation: iv-tour 700ms cubic-bezier(0.22, 1, 0.36, 1); }
+.icone-vivante:is(:hover, :focus-visible) .iv-langue .iv-meridien { animation: iv-meridien 700ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+@keyframes iv-pousse-droite { 45% { translate: 3px 0; } }
+@keyframes iv-pousse-bas { 45% { translate: 0 3px; } }
+@keyframes iv-sortie { 45% { translate: 2px -2px; } }
+@keyframes iv-envol { 40% { translate: 3px -3px; } }
+@keyframes iv-trait { 40% { scale: 0.55 1; } }
+@keyframes iv-battement { 40% { scale: 1.15; } }
+@keyframes iv-barre { 40% { scale: 1 0.7; } }
+@keyframes iv-tour { from { rotate: 0deg; } to { rotate: -360deg; } }
+@keyframes iv-meridien { 50% { scale: 0.2 1; } }
+
+/* Moins de mouvement demandé : aucune icône ne bouge */
+@media (prefers-reduced-motion: reduce) {
+  .iv, .iv * { animation: none !important; transition: none !important; }
+}

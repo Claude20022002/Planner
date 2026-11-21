@@ -1,10 +1,14 @@
-/** Préférences de thème et provider global ; les écrans du pilote ont une adaptation locale. */
+/**
+ * Préférence clair ou sombre et provider du thème : un seul thème, celui de la charte, pour toutes les
+ * pages (UIX-10b). Le choix de famille Planner / StudyLib est retiré : une préférence « themeFamille »
+ * encore enregistrée dans le navigateur est ignorée, pas effacée.
+ */
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { useTranslation } from 'react-i18next';
-import { buildTheme } from '../design-system/themeHistoriqueMUI';
-import { variablesCss } from '../design-system/themeHistorique';
+import { construireTheme, stylesGlobaux } from '../design-system/themeCharte';
+import { identiteEcole } from '../services/etablissement';
 
 const ThemeContext = createContext(null);
 
@@ -26,61 +30,41 @@ const readStoredMode = () => {
     }
 };
 
-const FAMILLES = ['planner', 'studylib'];
-
-const readStoredFamille = () => {
+const memoriser = (mode) => {
     try {
-        const famille = localStorage.getItem('themeFamille');
-        return FAMILLES.includes(famille) ? famille : 'planner';
+        localStorage.setItem('themeMode', mode);
     } catch {
-        return 'planner';
+        // Préférence non mémorisée : sans conséquence
     }
 };
 
 export const ThemeProvider = ({ children }) => {
     const [mode, setMode] = useState(readStoredMode);
-    const [famille, setFamille] = useState(readStoredFamille);
     const { i18n } = useTranslation();
 
     const toggleTheme = () => {
         setMode((prevMode) => {
             const newMode = prevMode === 'light' ? 'dark' : 'light';
-            try {
-                localStorage.setItem('themeMode', newMode);
-            } catch {
-                // Préférence non mémorisée : sans conséquence
-            }
+            memoriser(newMode);
             return newMode;
         });
-    };
-
-    // Planner (panneau des départs) ou StudyLib (bibliothèque) : choisi dans les Paramètres, retenu sur le navigateur
-    const memoriser = (cle, valeur) => {
-        try {
-            localStorage.setItem(cle, valeur);
-        } catch {
-            // Préférence non mémorisée : sans conséquence
-        }
-    };
-    const choisirFamille = (suivante) => {
-        if (!FAMILLES.includes(suivante)) return;
-        setFamille(suivante);
-        memoriser('themeFamille', suivante);
     };
     const choisirMode = (suivant) => {
         if (suivant !== 'light' && suivant !== 'dark') return;
         setMode(suivant);
-        memoriser('themeMode', suivant);
+        memoriser(suivant);
     };
 
-    const theme = useMemo(() => buildTheme(mode, i18n.language, famille), [mode, i18n.language, famille]);
+    // L'identité de l'école est chargée avant le premier affichage (main.jsx)
+    const identite = identiteEcole();
+    const theme = useMemo(() => construireTheme(mode, i18n.language, identite), [mode, i18n.language, identite]);
 
-    const value = { mode, toggleTheme, choisirMode, famille, choisirFamille, theme };
+    const value = { mode, toggleTheme, choisirMode, theme };
 
     return (
         <ThemeContext.Provider value={value}>
             <MUIThemeProvider theme={theme}>
-                <GlobalStyles styles={{ ':root': variablesCss(famille, mode) }} />
+                <GlobalStyles styles={stylesGlobaux(mode, identite)} />
                 {children}
             </MUIThemeProvider>
         </ThemeContext.Provider>
