@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "note": "Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; teintes des applications (version 3) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a) ; bleu-profond : même teinte que bleu, plus sombre. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.",
+  "version": 4,
+  "note": "Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Teintes des applications (version 3, VIT-09a) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a). Statuts, lignes des filières et panneau (version 4, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.",
   "familles": {
     "couleurs": {
       "bleu-nuit": { "valeur": "#17395C", "logo": true, "site": true, "role": "couleur principale du logo : titres, bandeaux, fonds forts" },
@@ -83,6 +83,35 @@
       "duree-rapide": { "valeur": "120ms", "role": "durée rapide (survol, appui)" },
       "duree-lente": { "valeur": "320ms", "role": "durée lente (ouverture d'un panneau)" },
       "courbe-tableau": { "valeur": [0.22, 1, 0.36, 1], "role": "la même courbe, en tableau, pour Motion (web) et Reanimated (mobile)" }
+    },
+    "statuts": {
+      "statut-planifie": { "valeur": "#3F4759", "role": "séance planifiée : texte et pastille, sur les écrans clairs" },
+      "statut-planifie-fond": { "valeur": "#EEF0F5", "role": "séance planifiée : fond de la pastille" },
+      "statut-confirme": { "valeur": "#137D3F", "role": "séance confirmée : texte et pastille" },
+      "statut-confirme-fond": { "valeur": "#E7F4EC", "role": "séance confirmée : fond de la pastille" },
+      "statut-reporte": { "valeur": "#B4410C", "role": "séance reportée ou à reprogrammer : texte et pastille" },
+      "statut-reporte-fond": { "valeur": "#FDEFE7", "role": "séance reportée ou à reprogrammer : fond de la pastille" },
+      "statut-annule": { "valeur": "#B5161C", "role": "séance annulée : texte et pastille" },
+      "statut-annule-fond": { "valeur": "#FCE8E9", "role": "séance annulée : fond de la pastille" },
+      "statut-realise": { "valeur": "#5B6272", "role": "séance réalisée : texte et pastille" },
+      "statut-realise-fond": { "valeur": "#F1F2F5", "role": "séance réalisée : fond de la pastille" }
+    },
+    "lignes": {
+      "ligne-1": { "valeur": "#3B63E0", "role": "couleur de ligne d'une filière (la même filière garde la même couleur partout) ; jamais orange, rouge ni vert, réservés aux statuts" },
+      "ligne-2": { "valeur": "#1592C9", "role": "couleur de ligne d'une filière" },
+      "ligne-3": { "valeur": "#0F8A7E", "role": "couleur de ligne d'une filière" },
+      "ligne-4": { "valeur": "#7048C9", "role": "couleur de ligne d'une filière" },
+      "ligne-5": { "valeur": "#B03A8C", "role": "couleur de ligne d'une filière" },
+      "ligne-6": { "valeur": "#46508F", "role": "couleur de ligne d'une filière" },
+      "ligne-inconnue": { "valeur": "#6B6B72", "role": "ligne d'une séance sans filière connue" }
+    },
+    "panneau": {
+      "panneau-charniere": { "valeur": "#0C121C", "role": "charnière des volets : surface-sombre mêlée de noir (décor, sans exigence de contraste) ; fond du panneau : ecran ; cases : surface-sombre ; lettres : texte-sombre et texte-sombre-second" },
+      "panneau-joint": { "valeur": "#2C384B", "role": "joints et filets du panneau : surface-sombre mêlée de texte-sombre (décor)" },
+      "lampe-en-cours": { "valeur": "#3FCB74", "role": "lampe et texte « en cours » ou « confirmé » sur le panneau" },
+      "lampe-retard": { "valeur": "#F26322", "role": "lampe et texte « reporté » sur le panneau" },
+      "lampe-annule": { "valeur": "#FF5A5F", "role": "lampe et texte « annulé » sur le panneau" },
+      "pas-volet": { "valeur": "28ms", "role": "décalage entre deux caractères dans la cascade des volets (hors de la famille mouvement, que l'empreinte de la vidéo du site couvre)" }
     }
   },
   "paires": {
@@ -106,6 +135,28 @@
       ["trait-fort", "gris-fond", 3],
       ["bleu-vif", "blanc", 3],
       ["bleu-nuit", "jeu", 4.5],
+      ["statut-planifie", "statut-planifie-fond", 4.5],
+      ["statut-planifie", "blanc", 4.5],
+      ["statut-planifie", "gris-fond", 4.5],
+      ["statut-confirme", "statut-confirme-fond", 4.5],
+      ["statut-confirme", "blanc", 4.5],
+      ["statut-confirme", "gris-fond", 4.5],
+      ["statut-reporte", "statut-reporte-fond", 4.5],
+      ["statut-reporte", "blanc", 4.5],
+      ["statut-reporte", "gris-fond", 4.5],
+      ["statut-annule", "statut-annule-fond", 4.5],
+      ["statut-annule", "blanc", 4.5],
+      ["statut-annule", "gris-fond", 4.5],
+      ["statut-realise", "statut-realise-fond", 4.5],
+      ["statut-realise", "blanc", 4.5],
+      ["statut-realise", "gris-fond", 4.5],
+      ["ligne-1", "blanc", 3],
+      ["ligne-2", "blanc", 3],
+      ["ligne-3", "blanc", 3],
+      ["ligne-4", "blanc", 3],
+      ["ligne-5", "blanc", 3],
+      ["ligne-6", "blanc", 3],
+      ["ligne-inconnue", "blanc", 3],
       ["blanc", "app-planning", 4.5],
       ["blanc", "app-planning-fonce", 4.5],
       ["blanc", "app-pedagogie", 4.5],
@@ -133,7 +184,13 @@
       ["trait-fort", "ecran", 3],
       ["trait-fort", "surface-sombre", 3],
       ["bleu-vif", "ecran", 3],
-      ["jeu", "ecran", 3]
+      ["jeu", "ecran", 3],
+      ["lampe-en-cours", "ecran", 4.5],
+      ["lampe-en-cours", "surface-sombre", 4.5],
+      ["lampe-retard", "ecran", 4.5],
+      ["lampe-retard", "surface-sombre", 4.5],
+      ["lampe-annule", "ecran", 4.5],
+      ["lampe-annule", "surface-sombre", 4.5]
     ]
   },
   "interdites": [
