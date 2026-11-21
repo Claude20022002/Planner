@@ -16,9 +16,9 @@ export const rapport = (a, b) => {
 /** Rapport pour l'affichage : « 4,16 ». */
 export const rapportAffiche = (valeur) => valeur.toFixed(2).replace('.', ',');
 
-/** Toutes les couleurs de la charte, « nom → #RRGGBB » (clair et sombre). */
+/** Toutes les couleurs de la charte, « nom → #RRGGBB » (clair, sombre et teintes des applications). */
 export const couleursDe = (source) => Object.fromEntries(
-    ['couleurs', 'sombre'].flatMap((famille) =>
+    ['couleurs', 'sombre', 'applications'].flatMap((famille) =>
         Object.entries(source.familles[famille]).map(([nom, jeton]) => [nom, jeton.valeur])),
 );
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Enseignements (VIT-09a), dessin détaillé pour 40 à 96 px. Charte v3 : app-pedagogie, app-pedagogie-fonce, blanc, bleu-clair, bleu-nuit, jeu. Un tableau de classe sur son chevalet, ses lignes et une note jaune. -->
+<defs>
+<linearGradient id="vit-pedagogie-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#007B80"/><stop offset="1" stop-color="#00475C"/></linearGradient>
+<linearGradient id="vit-pedagogie-reflet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.22"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-pedagogie-tuile)"/>
+<path d="M26 4h44a22 22 0 0 1 22 22v8C70 44 26 44 4 34v-8A22 22 0 0 1 26 4z" fill="url(#vit-pedagogie-reflet)"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.14"/>
+<g stroke="#A6CAEE" stroke-width="4" stroke-linecap="round"><path d="M34 62 28 80M62 62l6 18M48 64v14"/></g>
+<rect transform="translate(2 4)" opacity="0.45" x="20" y="24" width="56" height="42" rx="6" fill="#00475C"/>
+<rect x="20" y="24" width="56" height="42" rx="6" fill="#FFFFFF"/>
+<g fill="#A6CAEE"><rect x="27" y="32" width="28" height="4.5" rx="2.25"/><rect x="27" y="41" width="36" height="4.5" rx="2.25"/><rect x="27" y="50" width="20" height="4.5" rx="2.25"/></g>
+<g transform="rotate(8 64 54)"><rect transform="translate(1 2)" opacity="0.45" x="57" y="47" width="15" height="15" rx="2.5" fill="#00475C"/><rect x="57" y="47" width="15" height="15" rx="2.5" fill="#FFC83D"/></g>
+</svg>
