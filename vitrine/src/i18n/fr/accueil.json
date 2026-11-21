@@ -5,7 +5,7 @@
   },
   "ouverture": {
     "titre": "Planner",
-    "accroche": "L'emploi du temps de votre établissement, calculé selon vos règles. Et tout ce qui se passe ensuite en classe.",
+    "accroche": "Pour l'enseignement supérieur et la formation professionnelle, Planner calcule l'emploi du temps et accompagne chaque séance. Le collège et le lycée arrivent bientôt.",
     "decouvrir": "Découvrir",
     "contact": "Nous contacter"
   },
@@ -13,7 +13,7 @@
     "surtitre": "Emploi du temps",
     "titre": "Votre semestre, calculé.",
     "texte": "Salles, enseignants, groupes, disponibilités, trajets entre campus : Planner place chaque séance en respectant vos règles strictes et souples. Cours, TD et TP suivent leurs groupes.",
-    "refus": "Quand une séance ne trouve pas sa place, Planner dit quelle règle la bloque.",
+    "refus": "Quand une séance ne trouve pas sa place, Planner dit ce qui la bloque, et où le corriger.",
     "lien": "En savoir plus sur l'emploi du temps",
     "illustration": {
       "label": "Exemple de semaine calculée par Planner, avec une séance non placée et sa raison",
@@ -73,7 +73,7 @@
   "appel": {
     "surtitre": "En classe",
     "titre": "L'appel en un geste.",
-    "texte": "L'enseignant projette un QR code. Les étudiants le scannent avec leur téléphone, et leur présence est notée. Il peut aussi noter chacun à la main : présent, en retard ou absent.",
+    "texte": "L'enseignant coche chaque étudiant : présent, en retard ou absent. S'il le veut, il affiche un QR code, que les étudiants scannent avec l'application Planner. Le code change toutes les 30 secondes.",
     "lien": "En savoir plus sur la classe",
     "illustration": {
       "label": "Écran d'appel par QR code sur un téléphone",
@@ -85,8 +85,8 @@
   },
   "quiz": {
     "surtitre": "Quiz et jeux",
-    "titre": "Des quiz en direct. Des jeux pour réviser.",
-    "texte": "Dix types de questions, des images et des vidéos, des quiz en direct ou en devoir. L'enseignant propose aussi des jeux à ses classes.",
+    "titre": "Des quiz en direct. Des jeux pour s'exercer.",
+    "texte": "Dix types de questions, avec images, sons et vidéos. Six se jouent en direct, les dix à son rythme. L'enseignant propose aussi des jeux à ses classes.",
     "lien": "En savoir plus sur les quiz et les jeux",
     "illustration": {
       "label": "Question d'un quiz en direct sur un téléphone",
@@ -141,7 +141,7 @@
       },
       {
         "titre": "Une IA sans données d'élève",
-        "texte": "Quand l'école active l'IA, celle-ci ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose."
+        "texte": "Quand l'IA est activée pour votre école, elle ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose."
       }
     ]
   },

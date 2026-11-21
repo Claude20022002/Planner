@@ -15,7 +15,7 @@
     "cartes": [
       {
         "titre": "Notes et bulletins",
-        "texte": "La saisie des notes et les bulletins, avec les crédits du LMD."
+        "texte": "La saisie des notes et les bulletins, avec les crédits."
       },
       {
         "titre": "Vie scolaire",
@@ -65,11 +65,11 @@
       },
       {
         "titre": "Hors ligne",
-        "texte": "L'application mobile, utilisable sans connexion."
+        "texte": "L'application mobile entièrement utilisable sans connexion. La semaine déjà consultée se lit dès aujourd'hui sans réseau."
       },
       {
         "titre": "Export vers la plateforme nationale",
-        "texte": "Les données de l'école, exportées vers la plateforme nationale de votre pays. Au Maroc, Massar en est un exemple."
+        "texte": "Les données de l'école, exportées vers la plateforme nationale de votre pays."
       }
     ]
   }

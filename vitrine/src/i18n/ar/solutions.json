@@ -12,51 +12,6 @@
   "aujourdhui": "",
   "bientot": "",
   "types": {
-    "collegeLycee": {
-      "surtitre": "",
-      "titre": "",
-      "texte": "",
-      "aujourdhui": [
-        {
-          "titre": "",
-          "texte": ""
-        },
-        {
-          "titre": "",
-          "texte": ""
-        },
-        {
-          "titre": "",
-          "texte": ""
-        },
-        {
-          "titre": "",
-          "texte": ""
-        }
-      ],
-      "bientot": [
-        {
-          "titre": "",
-          "texte": ""
-        },
-        {
-          "titre": "",
-          "texte": ""
-        },
-        {
-          "titre": "",
-          "texte": ""
-        },
-        {
-          "titre": "",
-          "texte": ""
-        },
-        {
-          "titre": "",
-          "texte": ""
-        }
-      ]
-    },
     "superieur": {
       "surtitre": "",
       "titre": "",
@@ -109,6 +64,51 @@
         }
       ],
       "bientot": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ]
+    },
+    "collegeLycee": {
+      "surtitre": "",
+      "titre": "",
+      "texte": "",
+      "aujourdhui": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "",
+          "texte": ""
+        },
+        {
+          "titre": "",
+          "texte": ""
+        },
         {
           "titre": "",
           "texte": ""
