@@ -23,15 +23,16 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| BIB-01 | Identifiants stables (`uid`) des entités partagées, et envois par boîte d'envoi (D-14, D-15) | ME-2d | 2 | M | PLA-01 | à faire |
-| BIB-02 | StudyLib par école : base et seau par école, jetons avec l'école (`tid`), canaux I-4 et I-5 fermés | ME-2e | 5 | M | BIB-01 | à faire |
-| BIB-03 | Médias du Studio quiz (images, sons, vidéos) hors de la base, dans le stockage de fichiers | SQ-2 | libre | M | — | à faire |
-| BIB-04 | Quiz généré par l'IA à partir d'un document de la Bibliothèque | IA-6 | libre | M | QJE-07 | à faire |
+| BIB-01 | Identifiants stables (`uid`) des entités partagées, et envois par boîte d'envoi (D-14, D-15) | ME-2d | 3 | M | PLA-01 | à faire |
+| BIB-02 | StudyLib par école : base et seau par école, jetons avec l'école (`tid`), canaux I-4 et I-5 fermés | ME-2e | 2 | M | BIB-01 | à faire |
+| BIB-03 | Médias du Studio quiz (images, sons, vidéos) hors de la base, dans le stockage de fichiers | SQ-2 | 3 | M | — | à faire |
+| BIB-04 | Quiz généré par l'IA à partir d'un document de la Bibliothèque | IA-6 | 3 | M | QJE-07 | à faire |
 
 ## Critères de « terminé »
 
 - **BIB-02** : deux écoles ont chacune leur Bibliothèque ; un jeton de l'une est refusé par l'autre ; un test le prouve.
 - **BIB-03** : la base ne contient plus de média ; un quiz exporté puis réimporté garde ses médias.
+- **Toute fonction qui fait télécharger un support ou un document** : le poids est affiché avant le téléchargement, et le téléchargement reprend après une coupure (N3, décision du chef du 21 nov. ; R10 de la [synthèse des concurrents](../../etude-marche/14-reprendre-et-depasser.md)).
 
 ## Exigences produit
 

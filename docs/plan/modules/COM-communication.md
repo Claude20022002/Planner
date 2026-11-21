@@ -34,9 +34,9 @@ Un module qui prévient quelqu'un (report, absence, frais, annonce) **passe par 
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| COM-01 | Service commun d'envoi (application, push, courriel, SMS) : modèles, journal, plages de silence par défaut réglables par l'école (20 h-7 h en semaine et le week-end), envoi différé, canal d'urgence, résumé quotidien ; les envois existants y passent | EP-7 | 4 | L | PLA-01, VEN-02 | à faire |
-| COM-02 | Compte famille : plusieurs enfants, et plusieurs écoles plus tard ; canal préféré par personne ; accusé de lecture ; numéro de l'école à la place des numéros personnels | — | 4 | M | COM-01, ADM-05 | à faire |
-| COM-03 | WhatsApp et crédits de messages : quota inclus, puis crédits prépayés au prix unitaire publié, alerte avant épuisement ; SMS réservé aux alertes et aux familles sans smartphone | — | 4 | M | COM-01, VEN-02 | à faire |
+| COM-01 | Service commun d'envoi (application, push, courriel, SMS) : modèles, journal, plages de silence par défaut réglables par l'école (20 h-7 h en semaine et le week-end), envoi différé, canal d'urgence, résumé quotidien ; les envois existants y passent | EP-7 | 6 | L | PLA-01, VEN-02 | à faire |
+| COM-02 | Compte famille : plusieurs enfants, et plusieurs écoles plus tard ; canal préféré par personne ; accusé de lecture ; numéro de l'école à la place des numéros personnels | — | 6 | M | COM-01, ADM-05 | à faire |
+| COM-03 | WhatsApp et crédits de messages : quota inclus, puis crédits prépayés au prix unitaire publié, alerte avant épuisement ; SMS réservé aux alertes et aux familles sans smartphone | — | 6 | M | COM-01, VEN-02 | à faire |
 
 ## Critères de « terminé »
 

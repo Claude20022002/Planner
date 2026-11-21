@@ -88,3 +88,4 @@ Quand tu as fini, dis-le au chef : le coordinateur relit ta branche avant la PR.
 |---|---|---|
 | 2026-11-18 17 h 30 | fiche écrite par le coordinateur ; agent choisi par le chef : une nouvelle session Claude | — |
 | 2026-11-21 | le chef confirme que la session est ouverte ; aucune branche poussée | en cours |
+| 2026-11-21 | ajouts du chef par la synthèse des concurrents : l'étude **compare le hors ligne de Planner à ce qu'annonce Go4School** (appel, présences, transport), comme repère du marché, sans en faire une promesse (étude 13, réponse 3) ; elle prépare la conception de **MOB-08**, l'appel à la main hors ligne (N2, R9) ; et de **N3**, le poids affiché avant chaque téléchargement, avec reprise après coupure (R10). Ordre des correctifs proposé : le supérieur d'abord | ajout |

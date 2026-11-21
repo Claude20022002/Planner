@@ -36,13 +36,13 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| ADM-01 | Habilitations à portée : un droit vaut pour une filière, un niveau, un cycle ou toute l'école | ME-12 | 5 | M | VSC-01 | à faire |
+| ADM-01 | Habilitations à portée : un droit vaut pour une filière, un niveau, un cycle ou toute l'école | ME-12 | 3 | M | VSC-01 | à faire |
 | ADM-02 | Panneau de configuration de l'école : réglages du moteur montrés à l'école (le reste reste au profil), aperçu puis appliquer | ME-2c | 3 | L | MOT-01, Q-04 | à faire |
 | ADM-03 | Import : zone de préparation, contrôles, tout ou rien, classeur unique, clés naturelles ; le classeur porte la classe et le groupe de langue | ME-9 | 3 | L | VSC-01, VSC-07 | à faire |
-| ADM-04 | Assistant de démarrage avec un modèle par type d'école (EP-1) ; le modèle collège crée les groupes de langue, prêts pour l'import | ME-10 | 3 | L | ADM-02, ADM-03, UIX-01 | à faire |
-| ADM-05 | Rôle parent : compte facultatif, lien prouvé avec l'enfant, droits par enfant | — | 4 | M | VSC-02, PLA-11 | à faire |
-| ADM-06 | Clôture d'une année (lecture seule) et préparation de la suivante : passage des élèves, groupes reconduits (EP-8) | ME-19, ME-20 | 5 | L + M | VSC-02 | à faire |
-| ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 5 | M | PLA-11 | à faire |
+| ADM-04 | Assistant de démarrage avec un modèle par type d'école (EP-1) ; le modèle collège crée les groupes de langue, prêts pour l'import | ME-10 | 3 et 5 | L | ADM-02, ADM-03, UIX-01 | à faire |
+| ADM-05 | Rôle parent : compte facultatif, lien prouvé avec l'enfant, droits par enfant | — | 6 | M | VSC-02, PLA-11 | à faire |
+| ADM-06 | Clôture d'une année (lecture seule) et préparation de la suivante : passage des élèves, groupes reconduits (EP-8) | ME-19, ME-20 | 7 | L + M | VSC-02 | à faire |
+| ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 7 | M | PLA-11 | à faire |
 | ADM-08 | Annuaire de l'école | ME-8b | — | M | — | reporté |
 | ADM-09 | Échanges OneRoster | ME-9b | — | M | ADM-03 | reporté |
 

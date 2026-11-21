@@ -48,7 +48,8 @@ sequenceDiagram
 
 ## 7. Sécurité, isolation et exigences produit
 
-<!-- Canaux d'isolation (I-1 à I-16) touchés ; droits par rôle ; EP-1 à EP-12 concernées. -->
+<!-- Canaux d'isolation (I-1 à I-16) touchés ; droits par rôle ; EP-1 à EP-19 concernées. EP-18 : sans téléphone de l'élève, avec peu ou pas de réseau,
+     avec un écran projeté ou du papier ; EP-19 : poids mesuré. Une fonction qui fait télécharger affiche le poids avant et reprend après coupure (N3). -->
 
 ## 7 bis. Ce que disent les études
 

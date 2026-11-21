@@ -191,3 +191,12 @@ Rien de nouveau sur GitHub depuis le 20 nov. à 1 h 21.
 **Alexis** : le prompt de la fiche [edt-04-publication](../plan/missions/edt-04-publication.md) (il commence par ses corrections de #229 et #230).
 
 **Session de l'expertise** : pousser `etude/expertise-go4school` (le chef), puis la mission de fusion la prend au n° 6.
+
+## Répartition, colonne « Étape » et reports (21 nov., vers 2 h)
+
+- Fusionnées : #222, #226, #232 (avant #228 : la session de l'expertise retire l'exception de son test en intégrant `main`), #233. #191 reste ouverte (CI du 17 nov. rouge) : premier point de la mission de fusion des études.
+- Répartition : messages directs à la session de l'expertise (#228, puis VIT-18b) et à Claude de VS Code (UIX-10b, sa file) ; boîte de Codex (`0145-vit-06-maintenant`) ; fiche [vit-18b-superlatifs](../plan/missions/vit-18b-superlatifs.md).
+- Colonne « Étape » reprise dans `suivi.md` (86 lignes) et les fichiers de module, selon le § 2 du README.
+- Fonctions nouvelles : **MOB-08** (appel à la main hors ligne, N2) et **VIT-19** (contrôle des 200 Ko dans la CI du site, N1).
+- Reports du § 7 de la synthèse : N3 dans les critères de COU et BIB et dans le modèle de conception (§ 7) ; N6 et N8 dans VEN-02, dont les entretiens se mènent auprès d'écoles du supérieur ; N7 dans VSC-01 ; N5 dans la feuille de route ; R2 dans la fiche de VIT-09 ; R2, R4 et N3 dans celle de VIT-15 ; R9, R10 et la réponse 3 de l'étude 13 dans celle d'EP-18.
+- Reste : classer chaque ligne de la synthèse 14 par public, après la fusion de #234 (le fichier est sur sa branche) ; M16 (P-85, aucune demande d'avis dans le produit) attend toujours le chef dans l'étude 11 (#192).

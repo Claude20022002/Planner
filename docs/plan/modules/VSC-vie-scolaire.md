@@ -30,11 +30,11 @@
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | VSC-01 | **Modèle de données du scolaire** (conception seule, avec diagrammes) : entités, correspondance avec le supérieur, profils, plusieurs écoles, plan de migrations, propriétaires des tables, appartenance aux groupes transversaux (Q-3 de conception-c5, retenue le 8 novembre). Réponse à Q-20 (compte de l'élève) | C-5 | 1 | L | — | plan du document à valider |
-| VSC-02 | Élèves et familles : responsables légaux, inscription d'une année, réinscription, fratries | F-10 | 4 | L | VSC-01, PLA-01 | à faire |
-| VSC-03 | Absences prévenues aux parents (envoi par COM), justificatifs, saisie déléguée (EP-6) | F-12 | 4 | M | VSC-02, COM-01 | à faire |
-| VSC-04 | Notes et bulletins : périodes, évaluations, coefficients, note absente distincte de zéro, verrouillage par période, tableau d'avancement de la saisie, conseil de classe ; comprend le carnet de notes officiel et les grilles d'évaluation | F-13, EC-3, EC-4 | 4 | XL | VSC-02, Q-06, Q-16 | à faire |
-| VSC-06 | Formation professionnelle : profil, assiduité pour les bourses | F-20 | 5 | M | MOT-05 | à faire |
-| VSC-07 | Affectation des élèves aux groupes de langue et d'option : un élève, une classe, un seul groupe par langue ; effectif plafonné ; ces appartenances sont celles que MOT-06 lit | Q-3 de conception-c5 | 3 | M | VSC-01, MOT-05 | à faire |
+| VSC-02 | Élèves et familles : responsables légaux, inscription d'une année, réinscription, fratries | F-10 | 6 | L | VSC-01, PLA-01 | à faire |
+| VSC-03 | Absences prévenues aux parents (envoi par COM), justificatifs, saisie déléguée (EP-6) | F-12 | 6 | M | VSC-02, COM-01 | à faire |
+| VSC-04 | Notes et bulletins : périodes, évaluations, coefficients, note absente distincte de zéro, verrouillage par période, tableau d'avancement de la saisie, conseil de classe ; comprend le carnet de notes officiel et les grilles d'évaluation | F-13, EC-3, EC-4 | 6 | XL | VSC-02, Q-06, Q-16 | à faire |
+| VSC-06 | Formation professionnelle : profil, assiduité pour les bourses | F-20 | 4 | M | MOT-05 | à faire |
+| VSC-07 | Affectation des élèves aux groupes de langue et d'option : un élève, une classe, un seul groupe par langue ; effectif plafonné ; ces appartenances sont celles que MOT-06 lit | Q-3 de conception-c5 | 5 | M | VSC-01, MOT-05 | à faire |
 | VSC-08 | Évaluations, crédits et jurys du supérieur : épreuves et coefficients par module, crédits acquis, compensation, rattrapage, délibération du jury, relevé de notes ; modèle commun avec VSC-04 (le scolaire), sans nommer de pays ni de système (crédits, pas « LMD ») | — (décision du chef du 21 nov.) | 3 | L (provisoire) | — ; relevés vérifiables avec DOC-01 | à faire |
 
 Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-echanges-etat.md)) ; le plafond de cumul de VSC-06 (F-22) est passé dans **RHP-02** ([RHP](RHP-personnel-paie.md)). Le numéro VSC-05 ne resservira pas.
@@ -53,6 +53,7 @@ Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-ec
   - le bulletin d'une classe s'imprime en un clic ;
   - une absence à une évaluation ne change pas la moyenne ;
   - une note modifiée après verrouillage garde son historique.
+- **VSC-01** (21 nov.) : la conception prévoit **plusieurs systèmes d'évaluation dans une même école**, réglés par classe (deux sous-systèmes, séquences ou trimestres), sans nommer de pays (N7) ; le modèle d'évaluation reste commun avec VSC-08 (le supérieur). Puis VSC-01 se gèle sans code (le supérieur d'abord).
 
 ## Condition légale
 

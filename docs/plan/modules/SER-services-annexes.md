@@ -25,7 +25,7 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| SER-01 | Abonnements à la cantine, au transport et à l'internat liés au compte famille ; pointage des repas réels ; tarification progressive ; correction et remboursement par l'école ; aucun refus d'accès automatique | — | 5 | L | FIN-01, PAI-01 | reporté |
+| SER-01 | Abonnements à la cantine, au transport et à l'internat liés au compte famille ; pointage des repas réels ; tarification progressive ; correction et remboursement par l'école ; aucun refus d'accès automatique | — | 7 | L | FIN-01, PAI-01 | reporté |
 
 ## Critères de « terminé »
 
