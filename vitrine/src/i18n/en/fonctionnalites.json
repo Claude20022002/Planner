@@ -1,0 +1,30 @@
+{
+  "titre": "All features",
+  "description": "Explore Planner features by application or search for a particular task.",
+  "filtre": "Search features",
+  "resultats": "Results",
+  "fermer": "Close",
+  "categories": "Categories",
+  "applications": {
+    "planning": "Timetable",
+    "pedagogie": "Teaching",
+    "personnes": "People",
+    "etablissement": "School",
+    "annonces": "Announcements",
+    "activites": "Quizzes and games",
+    "bibliotheque": "Library · StudyLib"
+  },
+  "groupes": {
+    "organisation": "Class scheduling",
+    "presence": "Attendance",
+    "cours": "Courses and materials",
+    "comptes": "Accounts and roles",
+    "configuration": "School management",
+    "communication": "Communication",
+    "jeux": "Quizzes and games",
+    "ressources": "Learning resources",
+    "stages": "Internships",
+    "projets": "Projects",
+    "evenements": "Events"
+  }
+}
