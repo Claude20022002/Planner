@@ -21,8 +21,8 @@ test('la page a son adresse, et « Solutions » ouvre la navigation', () => {
   assert.equal(NAVIGATION[0], 'solutions');
 });
 
-test('les trois types, dans l’ordre du plan, avec des ancres distinctes', () => {
-  assert.deepEqual(TYPES.map((type) => type.cle), ['collegeLycee', 'superieur', 'formation']);
+test('les trois types, dans l’ordre de D4 (supérieur, formation, collège et lycée), avec des ancres distinctes', () => {
+  assert.deepEqual(TYPES.map((type) => type.cle), ['superieur', 'formation', 'collegeLycee']);
   assert.equal(new Set(TYPES.map((type) => type.ancre)).size, TYPES.length);
 });
 

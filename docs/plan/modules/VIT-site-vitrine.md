@@ -37,6 +37,8 @@
 | VIT-07 | Le site présente toutes les applications : quiz et jeux, bibliothèque, cours et annonces, application | — | libre | M | VIT-01 | en cours (`feat/vit-07-contenu-complet`) |
 | VIT-10 | Pages par rôle, menu « Solutions » ouvrant, pied de page en colonnes | — | libre | M | VIT-07 | en cours (`feat/vit-10-pages-par-role`) |
 | VIT-10b | Sur les pages par rôle, « avant → avec Planner » et une FAQ | — | libre | S | VIT-10 | en cours (`feat/vit-10b-avant-avec-faq`) |
+| VIT-17 | Correctifs techniques du site : menu mobile, vidéo sur demande, pages `/ar/`, Open Graph, grilles, `README.md` | — | libre | S | VIT-06 (sous-domaine) | PR ouverte (#237) |
+| VIT-18 | Textes exacts du site : phrases P1 à P6 de l'expertise, l'IA « activée pour votre école » (D2), aucun pays (D3), le supérieur et la formation d'abord (D4), l'appel d'abord à la main (EP-18), test de garde | — | libre | S | VIT-14 (#224) | plan validé le 19 nov. ([vit-18-textes-exacts](../../conception/vitrine/vit-18-textes-exacts.md)) ; code fait (`fix/vit-18-textes-exacts`), PR à ouvrir |
 
 ## Critères de « terminé »
 
