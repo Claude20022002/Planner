@@ -6,12 +6,14 @@
 | Rédigé par | Claude Code (Opus 5.5), coordinateur, le 21 novembre 2026 |
 | Pour qui | le chef, qui valide la liste et les packs (§ 8) ; ensuite Codex, qui dessine l'icône de tuile de chaque module (§ 7), et les missions du site (VIT-15) |
 | Nature | proposition sans code et **sans aucun prix**. Les prix viennent après les entretiens de VEN-02 (décision du 13 nov.) |
+| État | **validé par le chef le 21 nov. au soir** (outil de questions) : la liste, un pack par public avec une part gratuite et des fonctions verrouillées visibles (§ 5.4), le connecteur d'État inclus, les six règles. Les questions 3 et 4 du § 8 suivent la liste validée ; 6 et 8 sont tranchées par le coordinateur |
 
 ## 0. En bref
 
 - **Un socle inclus**, jamais vendu : les comptes, l'établissement, le référentiel, la configuration, l'import, l'export complet, l'application web et mobile.
 - **Dix-sept modules vendables** : six se vendent aujourd'hui, en tout ou en partie ; six arrivent avec l'étape 3 (le supérieur jusqu'au bout) ; cinq viennent plus tard, avec la formation professionnelle puis le scolaire.
 - **Cinq packs, un par public**, bâtis chacun autour du module qui fait acheter ce public : *Emploi du temps*, *Classe*, *Supérieur*, *Formation professionnelle*, *École*. Un sixième, *Réseau*, reste reporté.
+- **Une part gratuite et des fonctions verrouillées visibles** (décision du chef) : les fonctions courantes sont gratuites, sans limite de durée ; ce qui distingue Planner se montre avec un cadenas, dans la page et dans la grille, jamais dans le menu.
 - **Six règles de l'offre**, tirées des échecs des concurrents : socle inclus, liaison entre nos modules gratuite, familles jamais facturées, export complet gratuit, consommables à prix public, pack moins cher que ses modules.
 
 ## 1. Les études reprises
@@ -129,6 +131,23 @@ Chaque pack s'achète aussi module par module ; le pack coûte moins que la somm
 | six packs à tester [06, rapport] | *École privée* et *École Afrique* fusionnés en *École* ; *Groupe* devient *Réseau*, reporté ; *Classe* ajouté | aucun pays supposé (EP-5) ; GRP est reporté ; la pédagogie se vend seule chez Classter |
 | « Planification », « Vie de classe », « Annonces et alertes », « Heures des vacataires » comme modules seuls [05, § 3] | repris en 1, 2 à 5, 6, 7 ; *Vie de classe* est séparée en Présences, Espace de cours, Quiz et jeux, Bibliothèque | chacun s'allume et s'éteint seul dans VEN-01, et l'appel sert aussi le pack Emploi du temps |
 
+### 5.4 La part gratuite et les fonctions verrouillées
+
+**Décision du chef, 21 nov. au soir** : un pack par public, avec des fonctions gratuites pour inciter à utiliser Planner, et des fonctions avancées visibles mais fermées, comme le font les offres gratuites des outils de création (l'idée seule est reprise : ni nom, ni visuel, ni texte ; [14, § 1]).
+
+| Choix du chef | Ce qu'il veut dire | Pourquoi |
+|---|---|---|
+| **Gratuit, sans limite de durée : les fonctions courantes** | l'emploi du temps saisi à la main avec le contrôle des conflits ; l'appel par QR code ; les annonces ; le Studio quiz de base | ce sont des fonctions que le marché offre déjà : Schoolz détecte les conflits avant publication, les produits marocains ont l'appel et les annonces [01, § 2 et § 4]. Elles ne distinguent pas Planner : les donner fait entrer l'école sans rien céder |
+| **Verrouillé et visible : ce qui distingue Planner** | la génération automatique et l'explication des refus ; le remplaçant proposé ; la préparation par l'IA ; l'export vers un autre logiciel ; les statistiques détaillées. Le bouton est là, il dit ce qu'il fait et dans quel pack il s'ouvre | ce sont les choses qu'aucun concurrent ne fait [14, § 4 ; 09, § 4] : c'est pour elles qu'une école paie. aSc laisse déjà essayer tout son générateur, et ne fait payer qu'à la sortie (sans export, impressions filigranées) [01, § 2] |
+| **Le cadenas se montre dans la page et dans la grille, pas dans le menu** | sur le bouton de la fonction, dans la page où elle sert ; une tuile inactive dans la grille d'applications (l'état « inactif » prévu par UIX-09) ; le menu ne montre que ce qui est ouvert | « un menu limité aux modules actifs » contre les menus qui submergent [01, § 7 ; 14, M10 ; EP-2] |
+| **Mise en route en libre-service seulement** | l'assistant de démarrage et les modèles d'import, sans accompagnement ; la mise en route accompagnée reste dans les packs payants (règle 1) | le support décide de la marge [05, § 4] ; « gratuit jusqu'à un seuil » coûte du support sans revenu [06, rapport, « Les éditeurs vendent des paliers »] |
+
+Conséquences pour le plan, à reporter par le coordinateur :
+- **VEN-01** (registre des modules) gère trois états par fonction et par école : ouverte, verrouillée et visible, absente ;
+- **UIX** : un composant commun du cadenas (bouton, phrase « Disponible dans le pack … », lien vers l'offre), sur la charte, accessible au clavier et au lecteur d'écran ;
+- **la sécurité ne se vend pas** : l'isolation, l'absence d'envoi caché, les sauvegardes et l'export complet sont les mêmes dans l'offre gratuite (§ 3) ;
+- l'essai de 60 jours avec filigrane (VEN-04, gelé) est à revoir à la reprise de la vente, face à la part gratuite.
+
 ## 6. Les règles de l'offre
 
 À écrire dans l'offre avant de vendre. Chacune répond à un échec documenté :
@@ -163,14 +182,14 @@ Soit **douze ou treize SVG** à dessiner, et **dix-sept images générées**. Le
 
 | N° | Question | Proposition |
 |---|---|---|
-| 1 | La liste des dix-sept modules vendables (§ 4) et leurs noms | la valider ; les noms restent neutres, sans mot propre au supérieur |
-| 2 | Un pack par public (§ 5), au lieu des trois paliers emboîtés de l'étude 05 | oui : *Emploi du temps*, *Classe*, *Supérieur*, *Formation professionnelle*, *École* ; *Réseau* reporté |
-| 3 | Les Présences : module à part, inclus dans le pack Emploi du temps | oui : l'appel sert tous les packs et s'éteint seul |
-| 4 | Le tableau de bord de l'administration (UIX-11) dans le socle, le Pilotage vendu plus tard | oui |
-| 5 | Le connecteur d'État : inclus dans le pack École, ou payant | inclus : il lève l'objection la plus citée (la double saisie) ; les connecteurs vers d'autres logiciels restent payants (règle 2) |
-| 6 | Espace de cours : le logo `pedagogie` (« Enseignements ») ou un logo `cours` nouveau | un logo `cours` nouveau : `pedagogie` désigne déjà le référentiel des enseignements |
-| 7 | Les six règles de l'offre (§ 6) | les valider ; elles iront dans l'offre de VEN, et sur le site quand elles seront vraies |
-| 8 | Ce document sert-il de base au registre de VEN-01 et aux pages de VIT-15 | oui : VIT-15 fait une page par module vendable disponible, et « Bientôt » pour les autres |
+| 1 | La liste des dix-sept modules vendables (§ 4) et leurs noms | **validée** (chef, 21 nov.) |
+| 2 | Un pack par public (§ 5), au lieu des trois paliers emboîtés de l'étude 05 | **validé, avec une part gratuite et des fonctions verrouillées visibles** (chef, 21 nov. ; § 5.4) |
+| 3 | Les Présences : module à part, inclus dans le pack Emploi du temps | **oui**, avec la liste et les packs validés (Présences est le n° 2 du pack Emploi du temps) |
+| 4 | Le tableau de bord de l'administration (UIX-11) dans le socle, le Pilotage vendu plus tard | **oui**, avec la liste validée (§ 3) |
+| 5 | Le connecteur d'État : inclus dans le pack École, ou payant | **inclus** (chef, 21 nov.) ; les connecteurs vers d'autres logiciels restent payants (règle 2) |
+| 6 | Espace de cours : le logo `pedagogie` (« Enseignements ») ou un logo `cours` nouveau | **un logo `cours` nouveau** *(coordinateur)* : `pedagogie` désigne déjà le référentiel des enseignements |
+| 7 | Les six règles de l'offre (§ 6) | **validées** (chef, 21 nov.) ; elles iront dans l'offre de VEN, et sur le site quand elles seront vraies |
+| 8 | Ce document sert-il de base au registre de VEN-01 et aux pages de VIT-15 | **oui** *(coordinateur)* : VIT-15 fait une page par module vendable disponible, et « Bientôt » pour les autres ; VEN-01 part de cette liste |
 
 ## 9. Limites
 
