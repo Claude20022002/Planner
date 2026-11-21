@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "titre": "Comparer · Planner",
+    "description": "Quatre approches courantes, huit critères, et ce que Planner n'a pas encore. Aucun produit n'est visé."
+  },
+  "accueil": {
+    "surtitre": "Pourquoi Planner",
+    "titre": "Ce que Planner change.",
+    "texte": "Quatre façons courantes d'organiser un établissement, et ce que Planner fait de plus.",
+    "lien": "Voir le comparatif complet"
+  },
+  "entete": {
+    "surtitre": "Comparer",
+    "titre": "Planner et les autres façons de faire.",
+    "accroche": "Quatre approches courantes, huit critères, et ce que Planner n'a pas encore. Aucun produit n'est visé."
+  },
+  "methode": {
+    "titre": "Méthode",
+    "texte": "Établi le {date}. Chaque case Planner décrit ce que fait l'application à cette date. Les autres colonnes décrivent des pratiques courantes, sans viser un produit. Ce qui manque à Planner est marqué « Bientôt »."
+  },
+  "tableau": {
+    "critere": "Critère"
+  },
+  "approches": [
+    "Planner",
+    "Tableur et messagerie",
+    "ERP généraliste",
+    "Plateforme de cours seule",
+    "Logiciel de vie scolaire"
+  ],
+  "lignes": {
+    "calcul": {
+      "critere": "L'emploi du temps calculé selon vos règles",
+      "cases": [
+        {
+          "mot": "Oui",
+          "texte": "Planner place les séances en tenant ensemble les salles, les enseignants, les groupes, les disponibilités et les trajets entre campus. Les règles strictes sont toujours tenues, les règles souples autant que possible."
+        },
+        {
+          "mot": "À la main",
+          "texte": "La grille se construit à la main, souvent par une seule personne. Le tableur est souple et tout le monde le connaît."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "L'emploi du temps est un module parmi d'autres : selon l'outil, il se saisit ou se génère. En échange, l'ERP couvre toute la gestion de l'établissement."
+        },
+        {
+          "mot": "Hors de son rôle",
+          "texte": "La plateforme organise les cours en ligne. L'emploi du temps vient d'un autre outil."
+        },
+        {
+          "mot": "Le plus souvent saisi",
+          "texte": "Ces logiciels se concentrent sur les élèves, les absences, les notes et les familles. L'emploi du temps y est le plus souvent saisi."
+        }
+      ]
+    },
+    "refus": {
+      "critere": "La raison de chaque refus",
+      "cases": [
+        {
+          "mot": "Oui",
+          "texte": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque. Vous corrigez la donnée ou vous assouplissez la règle, puis vous relancez le calcul."
+        },
+        {
+          "mot": "À chercher soi-même",
+          "texte": "Le tableur ne signale pas les conflits : on les trouve en relisant la grille."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Selon l'outil, une double réservation de salle ou d'enseignant est signalée à la saisie."
+        },
+        {
+          "mot": "Hors de son rôle",
+          "texte": "Sans emploi du temps, la question ne se pose pas."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Quand l'outil tient l'emploi du temps, il contrôle en général les conflits à la saisie."
+        }
+      ]
+    },
+    "report": {
+      "critere": "Le report de séance, suivi de bout en bout",
+      "cases": [
+        {
+          "mot": "Oui",
+          "texte": "L'enseignant demande, la scolarité valide, les étudiants concernés sont prévenus, et l'emploi du temps est à jour pour tous."
+        },
+        {
+          "mot": "Par message",
+          "texte": "Le changement part dans un groupe de messagerie, et la grille se corrige à part. C'est rapide : chacun a déjà la messagerie sur son téléphone."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "La séance se modifie dans le module. La façon de prévenir les élèves dépend de l'outil et de son réglage."
+        },
+        {
+          "mot": "Par annonce",
+          "texte": "Une annonce du cours prévient les inscrits. L'emploi du temps, lui, se tient ailleurs."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Ces logiciels savent prévenir les familles, par une application ou des notifications. Le circuit de demande et de validation dépend de l'outil."
+        }
+      ]
+    },
+    "appel": {
+      "critere": "L'appel",
+      "cases": [
+        {
+          "mot": "QR code ou à la main",
+          "texte": "Un QR code projeté, qui change toutes les 30 secondes. Ou l'appel à la main : présent, en retard, absent."
+        },
+        {
+          "mot": "Sur papier",
+          "texte": "Un registre ou une feuille d'appel, recopiés ensuite dans un tableur ou dans la plateforme de l'État. Le papier marche partout."
+        },
+        {
+          "mot": "Oui",
+          "texte": "Les feuilles de présence et leurs statistiques font en général partie de l'ERP."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "La présence en ligne se suit par la connexion. L'appel en salle dépend de l'outil."
+        },
+        {
+          "mot": "Oui",
+          "texte": "Les absences sont au cœur de ces logiciels, souvent avec un envoi aux familles."
+        }
+      ]
+    },
+    "appelProtege": {
+      "critere": "Un appel qu'on ne peut pas tromper",
+      "cases": [
+        {
+          "mot": "Oui",
+          "texte": "Le scan passe par l'application Planner. Un compte est lié à un téléphone, et un téléphone ne pointe qu'un étudiant par séance. Le code change toutes les 30 secondes. Si l'enseignant le veut, une vérification surprise appelle quelques présents au hasard."
+        },
+        {
+          "mot": "À l'œil",
+          "texte": "La présence repose sur l'enseignant, qui voit qui est dans la salle."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Selon l'outil, une présence avancée, parfois biométrique, existe, souvent dans une édition supérieure."
+        },
+        {
+          "mot": "Hors de son rôle",
+          "texte": "Une connexion montre qu'un compte s'est ouvert, pas qu'un élève est dans la salle."
+        },
+        {
+          "mot": "Notée par un adulte",
+          "texte": "L'enseignant ou la vie scolaire note l'absence : la présence repose sur leur relevé."
+        }
+      ]
+    },
+    "compte": {
+      "critere": "L'appel, les quiz, les jeux et la Bibliothèque, avec un seul compte",
+      "cases": [
+        {
+          "mot": "Oui",
+          "texte": "L'appel, les quiz, les jeux, l'espace de cours et la Bibliothèque s'ouvrent avec le même compte."
+        },
+        {
+          "mot": "Un outil par usage",
+          "texte": "Chaque usage a son outil et son compte. Chacun est simple, et beaucoup sont gratuits."
+        },
+        {
+          "mot": "En partie",
+          "texte": "Gestion et cours partagent le compte quand l'ERP a son module de cours. Les jeux pour réviser y sont rares."
+        },
+        {
+          "mot": "En partie",
+          "texte": "Les cours, les quiz et les ressources partagent un compte. L'emploi du temps et l'appel en salle sont ailleurs."
+        },
+        {
+          "mot": "En partie",
+          "texte": "Les absences, les notes et les familles partagent un compte. Les cours et les quiz passent souvent par une autre plateforme."
+        }
+      ]
+    },
+    "sansTelephone": {
+      "critere": "Sans téléphone de l'élève, avec ce qu'a l'école",
+      "cases": [
+        {
+          "mot": "En grande partie",
+          "texte": "L'appel se fait à la main. Le terminal Linux se joue au tableau : l'enseignant tape la commande que la classe propose. L'emploi du temps s'imprime en PDF ou s'ouvre dans un navigateur, comme la Bibliothèque. Le quiz et les simulations demandent un appareil par élève : un téléphone ou un poste de l'école."
+        },
+        {
+          "mot": "Oui",
+          "texte": "Le papier et le tableau ne demandent rien aux élèves. La messagerie, elle, suppose un téléphone chez l'élève ou chez ses parents."
+        },
+        {
+          "mot": "Pour le personnel",
+          "texte": "Le personnel travaille sur ordinateur. Les élèves et les familles passent par un portail ou une application."
+        },
+        {
+          "mot": "Un appareil par élève",
+          "texte": "La plateforme suppose que chaque élève ait un appareil et une connexion."
+        },
+        {
+          "mot": "Pour le personnel",
+          "texte": "Le personnel saisit sur ordinateur. Les familles suivent par une application ou un portail."
+        }
+      ]
+    },
+    "sansReseau": {
+      "critere": "Les semaines déjà consultées, lisibles sans réseau",
+      "cases": [
+        {
+          "mot": "Dans l'application",
+          "texte": "Dans l'application, le tableau du jour et les semaines déjà consultés restent lisibles sans réseau, avec l'heure de leur dernière mise à jour. Ils sont effacés à la déconnexion. L'application entièrement utilisable sans connexion est en préparation."
+        },
+        {
+          "mot": "Sur papier",
+          "texte": "Une grille imprimée se lit partout, sans réseau. Elle ne suit pas les changements faits après l'impression."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Selon l'outil, une application mobile garde des données sans réseau. Le travail du secrétariat demande une connexion."
+        },
+        {
+          "mot": "Les cours téléchargés",
+          "texte": "Certaines plateformes laissent télécharger des cours pour les suivre sans réseau. L'emploi du temps n'y est pas."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Quelques éditeurs annoncent une saisie sans réseau."
+        }
+      ]
+    },
+    "bientot": {
+      "critere": "Notes, frais et familles",
+      "cases": [
+        {
+          "mot": "Bientôt",
+          "texte": "Les notes et bulletins, les frais et paiements, et l'espace des familles sont en préparation."
+        },
+        {
+          "mot": "Fichiers et papier",
+          "texte": "Des fichiers et des reçus papier. Cela marche, mais la même donnée se saisit plusieurs fois."
+        },
+        {
+          "mot": "Oui",
+          "texte": "C'est sa force : admissions, frais, personnel et notes dans un même outil."
+        },
+        {
+          "mot": "Notes de cours",
+          "texte": "Les notes des devoirs et des quiz, pas les frais ni les familles."
+        },
+        {
+          "mot": "Oui",
+          "texte": "C'est son cœur : absences, bulletins, frais et application des familles."
+        }
+      ]
+    }
+  }
+}

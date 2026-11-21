@@ -36,7 +36,15 @@ const RAIL_WIDTH = 248;
 /** Coquille commune : barre d’outils, accueil des applications et menu du module courant. */
 export default function DashboardLayout({ children }) {
   const { pathname } = useLocation();
-  const pilote = pathname === '/applications' || ['/gestion/utilisateurs', '/gestion/enseignants', '/gestion/etudiants'].includes(pathname);
+  const pilote = pathname === '/applications' || [
+    '/gestion/utilisateurs',
+    '/gestion/enseignants',
+    '/gestion/etudiants',
+    '/gestion/filieres',
+    '/gestion/groupes',
+    '/gestion/cours',
+    '/gestion/enseignements',
+  ].includes(pathname);
   return <ThemeGestion actif={pilote}><ContenuDashboard>{children}</ContenuDashboard></ThemeGestion>;
 }
 

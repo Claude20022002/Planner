@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "titre": "Sécurité et données · Planner",
+    "description": "Double authentification, accès par rôle, journal de sécurité, comptes fermés proprement, IA sans données d'élève : ce que Planner fait aujourd'hui pour protéger les comptes et les données."
+  },
+  "entete": {
+    "surtitre": "Sécurité et données",
+    "titre": "Chacun voit ce qui le concerne.",
+    "accroche": "Cette page ne dit que ce que Planner fait déjà. Ce qui est en préparation est marqué « Bientôt »."
+  },
+  "protections": {
+    "surtitre": "Aujourd'hui",
+    "titre": "Ce qui protège les comptes et les données.",
+    "cartes": [
+      {
+        "titre": "Double authentification",
+        "texte": "Un code à usage unique, donné par une application d'authentification, protège la connexion. Obligatoire pour l'administration, possible pour les enseignants, avec des codes de secours."
+      },
+      {
+        "titre": "Accès par rôle",
+        "texte": "Étudiant, enseignant, administration : chacun n'ouvre que ce que son rôle permet."
+      },
+      {
+        "titre": "Journal de sécurité",
+        "texte": "Connexions, échecs, changements de mot de passe et de double authentification : tout est noté, et l'administration le consulte."
+      },
+      {
+        "titre": "Un agenda privé",
+        "texte": "L'adresse d'abonnement à l'agenda est secrète, et chacun peut la changer : l'ancienne cesse aussitôt de marcher."
+      },
+      {
+        "titre": "Comptes fermés proprement",
+        "texte": "Un compte qui quitte l'école est désactivé, puis anonymisé : l'historique reste, sans nom."
+      },
+      {
+        "titre": "Une IA sans données d'élève",
+        "texte": "Quand l'école active l'IA, celle-ci ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose."
+      }
+    ]
+  },
+  "site": {
+    "surtitre": "Ce site",
+    "titre": "Ce site ne vous suit pas.",
+    "cartes": [
+      {
+        "titre": "Aucun cookie",
+        "texte": "Ce site ne dépose aucun cookie."
+      },
+      {
+        "titre": "Aucune mesure d'audience",
+        "texte": "Aucun outil ne compte vos visites."
+      },
+      {
+        "titre": "Rien d'un autre site",
+        "texte": "Polices, images et scripts sont servis par ce site, sans appel à un autre."
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "En préparation",
+    "titre": "Ce qui arrive ensuite.",
+    "badge": "Bientôt",
+    "cartes": [
+      {
+        "titre": "Tout ce qui sort, en clair",
+        "texte": "Une liste publique de tout ce que Planner envoie hors de l'école, et à qui."
+      }
+    ]
+  }
+}

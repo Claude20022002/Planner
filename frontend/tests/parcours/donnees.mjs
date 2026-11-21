@@ -3,8 +3,9 @@
  * outils des tests d'intégration du serveur (backend/tests/integration/helpers/testApp.js).
  *
  * Contenu : un administrateur, une enseignante, une classe de 8 étudiants et une séance
- * aujourd'hui, en cours toute la journée (l'appel ne s'ouvre que le jour de la séance, et
- * « Mes classes » met en avant la classe en cours). S'y ajoute, hors de la classe, une étudiante dont
+ * aujourd'hui, en cours de 00 h 00 à 24 h 00, plus la même le lendemain (l'appel ne s'ouvre que le
+ * jour de la séance, et « Mes classes » met en avant la classe en cours ; un passage qui traverse
+ * minuit trouve encore une séance ouverte). S'y ajoute, hors de la classe, une étudiante dont
  * le compte est déjà lié à un téléphone (parcours du changement de téléphone, R-10). Les comptes et
  * leur mot de passe sont créés ici :
  * aucun identifiant n'est écrit dans les tests. Les données de la génération sont dans
@@ -46,34 +47,40 @@ export const preparerDonnees = async (racine) => {
 
   const maintenant = new Date();
   const aujourdhui = maintenant.toLocaleDateString("en-CA", { timeZone: FUSEAU });
-  const jour = JOURS[new Date(`${aujourdhui}T12:00:00Z`).getUTCDay()];
-  const creneau = await Creneau.create({ jour_semaine: jour, heure_debut: "00:05:00", heure_fin: "23:55:00", duree_minutes: 1430 });
-  const seance = await Affectation.create({
-    date_seance: aujourdhui,
+  const jourDe = (date) => JOURS[new Date(`${date}T12:00:00Z`).getUTCDay()];
+  const plusTard = (date, jours) => {
+    const d = new Date(`${date}T12:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + jours);
+    return d.toISOString().slice(0, 10);
+  };
+  // 24:00 reste après 23:59 dans la comparaison du serveur. S'il revient autrement, on s'arrête.
+  const creneauTouteLaJournee = async (jourSemaine) => {
+    const cree = await Creneau.create({ jour_semaine: jourSemaine, heure_debut: "00:00:00", heure_fin: "24:00:00", duree_minutes: 1440 });
+    const relu = await Creneau.findByPk(cree.id_creneau);
+    const fin = String(relu?.heure_fin ?? "").slice(0, 5);
+    if (fin !== "24:00") throw new Error(`Le créneau du ${jourSemaine} n'a pas gardé 24:00 (lu : ${relu?.heure_fin}). Arrêt, sans autre codage.`);
+    return cree;
+  };
+  const creneau = await creneauTouteLaJournee(jourDe(aujourdhui));
+  const seanceDu = (date, idCreneau, idSalle) => Affectation.create({
+    date_seance: date,
     statut: "confirme",
     id_cours: fixture.cours.id_cours,
     id_groupe: fixture.groupe.id_groupe,
     id_user_enseignant: enseignante.id_user,
-    id_salle: fixture.salle.id_salle,
-    id_creneau: creneau.id_creneau,
+    id_salle: idSalle,
+    id_creneau: idCreneau,
     id_user_admin: admin.id_user,
   });
+  const seance = await seanceDu(aujourdhui, creneau.id_creneau, fixture.salle.id_salle);
+  const demain = plusTard(aujourdhui, 1);
+  const creneauDemain = await creneauTouteLaJournee(jourDe(demain));
+  await seanceDu(demain, creneauDemain.id_creneau, fixture.salle.id_salle);
   // La même séance dans une semaine, à distance (sans salle) : son lien de visio (lot EC-11, lienVisio.spec)
-  const semaineSuivante = new Date(`${aujourdhui}T12:00:00Z`);
-  semaineSuivante.setUTCDate(semaineSuivante.getUTCDate() + 7);
-  const seanceADistance = await Affectation.create({
-    date_seance: semaineSuivante.toISOString().slice(0, 10),
-    statut: "confirme",
-    id_cours: fixture.cours.id_cours,
-    id_groupe: fixture.groupe.id_groupe,
-    id_user_enseignant: enseignante.id_user,
-    id_salle: null,
-    id_creneau: creneau.id_creneau,
-    id_user_admin: admin.id_user,
-  });
+  const seanceADistance = await seanceDu(plusTard(aujourdhui, 7), creneau.id_creneau, null);
 
-  // Les étudiants ne voient un mois qu'une fois publié : ceux de la séance du jour, de la séance à distance et de la séance fixe de la classe le sont
-  const moisPublies = [...new Set([aujourdhui, seanceADistance.date_seance, String(fixture.affectation.date_seance).slice(0, 10)].map((d) => String(d).slice(0, 7)))];
+  // Les étudiants ne voient un mois qu'une fois publié : ceux de la séance du jour, du lendemain, de la séance à distance et de la séance fixe de la classe le sont
+  const moisPublies = [...new Set([aujourdhui, demain, seanceADistance.date_seance, String(fixture.affectation.date_seance).slice(0, 10)].map((d) => String(d).slice(0, 7)))];
   // Avec les séances telles que publiées : c'est cette version que lisent les étudiants
   const { lignesDuMois } = await serveur("services/calendrier/envoiEdt.js");
   for (const mois of moisPublies) {

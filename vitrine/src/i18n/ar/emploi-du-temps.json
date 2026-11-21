@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "calcul": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "points": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "refus": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "avis": {
+      "label": "",
+      "titre": "",
+      "texte": ""
+    }
+  },
+  "suite": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "illustration": {
+    "label": ""
+  }
+}

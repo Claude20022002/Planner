@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "titre": "Solutions · Planner",
+    "description": "Planner pour le collège et le lycée, l'enseignement supérieur et la formation professionnelle : ce qui existe aujourd'hui, et ce qui arrive."
+  },
+  "entete": {
+    "surtitre": "Solutions",
+    "titre": "Une école, ses règles.",
+    "accroche": "Collège et lycée, enseignement supérieur, formation professionnelle : voici ce que Planner fait déjà pour chacun, et ce qui arrive."
+  },
+  "sommaire": "Types d'établissement",
+  "aujourdhui": "Aujourd'hui",
+  "bientot": "Bientôt",
+  "types": {
+    "collegeLycee": {
+      "surtitre": "Collège et lycée",
+      "titre": "Toute la classe, en un geste.",
+      "texte": "Les enseignants font l'appel et lancent leurs quiz depuis Planner. Le calcul de l'emploi du temps d'un collège ou d'un lycée est en préparation.",
+      "aujourdhui": [
+        {
+          "titre": "L'appel",
+          "texte": "Les élèves scannent le code projeté, ou l'enseignant note chacun à la main : présent, en retard ou absent. La présence est rattachée à la séance."
+        },
+        {
+          "titre": "Des quiz et des jeux",
+          "texte": "En direct en classe, ou à faire à son rythme."
+        },
+        {
+          "titre": "Salles, examens et statistiques",
+          "texte": "Les salles et leurs réservations, les examens et leurs surveillances, l'occupation des salles."
+        },
+        {
+          "titre": "Des reports suivis",
+          "texte": "L'enseignant demande, la scolarité valide, les élèves concernés sont prévenus."
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "L'emploi du temps calculé",
+          "texte": "Avec les groupes de langue et d'option."
+        },
+        {
+          "titre": "Familles",
+          "texte": "Un compte pour les parents, pour un ou plusieurs enfants."
+        },
+        {
+          "titre": "Absences, notes et bulletins",
+          "texte": "Les absences, la saisie des notes et les bulletins."
+        },
+        {
+          "titre": "Export vers la plateforme nationale",
+          "texte": "Les données de l'école, exportées vers la plateforme nationale de votre pays. Au Maroc, Massar en est un exemple."
+        },
+        {
+          "titre": "En arabe",
+          "texte": "Planner en arabe, en plus du français et de l'anglais."
+        }
+      ]
+    },
+    "superieur": {
+      "surtitre": "Enseignement supérieur",
+      "titre": "Filières, groupes et campus, calculés ensemble.",
+      "texte": "Pour l'université, la grande école et le BTS : Planner calcule le semestre, puis accompagne chaque séance.",
+      "aujourdhui": [
+        {
+          "titre": "L'emploi du temps calculé",
+          "texte": "Les cours, TD et TP de chaque filière suivent leurs groupes et sous-groupes, et chaque refus est expliqué."
+        },
+        {
+          "titre": "Plusieurs campus",
+          "texte": "Chaque campus a ses salles, et le temps de trajet entre campus compte dans le calcul."
+        },
+        {
+          "titre": "Examens",
+          "texte": "Les sessions d'examen, leurs salles et leurs surveillances."
+        },
+        {
+          "titre": "Appel, quiz et jeux",
+          "texte": "L'appel par QR code ou à la main, les quiz en direct et les jeux, avec le même compte."
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "Notes et bulletins",
+          "texte": "La saisie des notes et les bulletins, avec les crédits du LMD."
+        },
+        {
+          "titre": "Stages et anciens",
+          "texte": "Les stages des étudiants, et le lien avec les anciens élèves."
+        }
+      ]
+    },
+    "formation": {
+      "surtitre": "Formation professionnelle",
+      "titre": "Des sessions qui changent, un planning qui suit.",
+      "texte": "Pour les centres de formation : un emploi du temps calculé, que vous ajustez au fil des sessions.",
+      "aujourdhui": [
+        {
+          "titre": "L'emploi du temps calculé",
+          "texte": "Chaque calcul est gardé en version, et l'emploi du temps n'est visible qu'une fois publié."
+        },
+        {
+          "titre": "Reports, PDF et agenda",
+          "texte": "Les reports sont suivis, l'emploi du temps s'exporte en PDF, et chacun l'ajoute à son agenda."
+        },
+        {
+          "titre": "Import des données",
+          "texte": "Les enseignants, les apprenants, les groupes et les cours s'importent depuis un fichier CSV."
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "Admissions",
+          "texte": "Les candidatures, jusqu'à l'inscription, sans rien ressaisir."
+        },
+        {
+          "titre": "Documents vérifiables",
+          "texte": "Attestations et certificats, avec un code que chacun peut vérifier."
+        },
+        {
+          "titre": "Stages",
+          "texte": "Les stages des apprenants, suivis dans Planner."
+        }
+      ]
+    }
+  }
+}

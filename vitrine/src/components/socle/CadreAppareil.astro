@@ -1,0 +1,32 @@
+---
+// Cadre d'appareil dessiné pour le site (ordinateur ou téléphone), autour d'une capture ou d'une
+// illustration. Formes propres à Planner : aucun appareil d'une marque n'est reproduit.
+interface Props {
+  type?: 'ordinateur' | 'telephone';
+  image?: string;
+  alt?: string;
+  label?: string;
+}
+
+const { type = 'ordinateur', image, alt = '', label } = Astro.props;
+---
+<figure class:list={['cadre', type]} role={label ? 'img' : undefined} aria-label={label}>
+  <div class="ecran">
+    {image ? <img src={image} alt={alt} loading="lazy" decoding="async" /> : <slot />}
+  </div>
+  {type === 'ordinateur' && <div class="socle" aria-hidden="true"></div>}
+</figure>
+
+<style>
+  .cadre { margin: 0; filter: drop-shadow(var(--ombre-appareil)); }
+  .ecran { overflow: hidden; background: var(--blanc); }
+  .ecran img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+
+  .ordinateur { inline-size: min(100%, 56rem); }
+  .ordinateur .ecran { aspect-ratio: 16 / 10; border: clamp(0.4rem, 1vw, 0.75rem) solid var(--ecran); border-radius: var(--rayon) var(--rayon) 0 0; }
+  .socle { block-size: clamp(0.6rem, 1.4vw, 1.1rem); margin-inline: -6%; background: linear-gradient(var(--gris-trait), #b8c3d1); border-radius: 0 0 1.5rem 1.5rem; }
+
+  .telephone { inline-size: min(100%, 18rem); }
+  .telephone .ecran { position: relative; aspect-ratio: 9 / 19; border: 0.6rem solid var(--ecran); border-radius: 2.75rem; }
+  .telephone .ecran::before { content: ''; position: absolute; inset-block-start: 0.6rem; inset-inline-start: 50%; inline-size: 0.6rem; block-size: 0.6rem; margin-inline-start: -0.3rem; border-radius: 50%; background: var(--ecran); z-index: 1; }
+</style>

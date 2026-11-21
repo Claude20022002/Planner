@@ -51,7 +51,8 @@ describe("Lancer une session", () => {
 
     test("seulement dans ses modules, pour un jeu et un mode connus", async () => {
         const autre = await loginAs(autreEnseignant);
-        expect((await autre.send("post", "/api/sessions-jeu", { code_jeu: "terminal-linux", id_cours: fixture.cours.id_cours, mode: "individuel" })).status).toBe(403);
+        // Hors de ses classes : 404, comme un module inexistant (règle « 404 hors de ses classes »)
+        expect((await autre.send("post", "/api/sessions-jeu", { code_jeu: "terminal-linux", id_cours: fixture.cours.id_cours, mode: "individuel" })).status).toBe(404);
         const prof = await loginAs(enseignant);
         expect((await prof.send("post", "/api/sessions-jeu", { code_jeu: "inconnu", id_cours: fixture.cours.id_cours, mode: "individuel" })).status).toBe(404);
         expect((await prof.send("post", "/api/sessions-jeu", { code_jeu: "terminal-linux", id_cours: 999999, mode: "individuel" })).status).toBe(404);
