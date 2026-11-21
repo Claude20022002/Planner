@@ -9,6 +9,8 @@
 | Rédigé par | Codex, le 2026-11-15 |
 | **Validé** | **Validé par le coordinateur le 2026-11-15**, réponses Q1 à Q8 dans la boîte Codex à 14:45. |
 
+> **Reprise du 21 novembre 2026.** Le protocole du 15 novembre reste consigné ci-dessous. Le [complément sur le supérieur](#supérieur-21-novembre) porte les nouvelles propositions à valider.
+
 ## 1. Objet et critère de « terminé »
 
 Versionner le jeu scolaire, puis un jeu de 20 000 étudiants ; noter le temps, la mémoire et les règles dures violées dans `mesures.md` ; dire si la génération du collège de 600 élèves tient en moins de 10 minutes (EP-10).
@@ -137,3 +139,56 @@ Retour arrière : retirer uniquement le conteneur du banc ; aucune donnée appli
 ## 11. Hors périmètre
 
 Serveur, n8n, production, `solver/`, `backend/`, modification du générateur 13b, filtrage des domaines, nouvelles contraintes, choix de moteur, évaluateur indépendant complet, nouvelles dépendances du produit, promesse de prise en charge des groupes de langue et certification complète du parcours EP-10.
+
+<a id="supérieur-21-novembre"></a>
+
+## 12. Complément du 21 novembre 2026 · jeu du supérieur soumis au chef
+
+La décision du 21 novembre place le supérieur en premier. Le collège de 600 élèves et son verdict EP-10 passent à l’étape du scolaire. Les six passages déjà publiés sur le jeu simplifié de 20 000 étudiants restent la référence de charge. Ce complément propose un jeu distinct pour répondre à deux questions. Le solveur produit-il une semaine utilisable avec les contraintes du supérieur ? À entrées et poids identiques, comment évolue la qualité souple depuis MOT-13b ? [Décision du chef](https://github.com/Claude20022002/Planner/blob/doc/coordination-equipe/docs/plan/decisions.md) · [Mesures du 15 novembre](mesures.md) · [Réponse 22](mot-13b-solveur.md)
+
+### Jeu et tailles proposés
+
+Une promotion de 120 étudiants comprend deux TD de 60, subdivisés chacun en deux TP de 30. Les quatre groupes de TP partitionnent la promotion. Pour chacun de trois modules, une semaine contient un CM par promotion, un TD par groupe de TD et un TP par groupe de TP. Un étudiant suit donc neuf séances par semaine. Les TP durent deux créneaux consécutifs, les CM et TD un seul.
+
+| Paramètre du jeu fictif | Petite taille | Taille principale |
+|---|---:|---:|
+| Étudiants distincts | 480 | 960 |
+| Promotions / groupes de TD / groupes de TP | 4 / 8 / 16 | 8 / 16 / 32 |
+| Séances de CM / TD / TP | 12 / 24 / 48 | 24 / 48 / 96 |
+| Séances à placer | 84 | 168 |
+| Enseignants, dont vacataires | 12, dont 4 | 24, dont 8 |
+| Salles sur les deux campus | 10 | 20 |
+
+- **Grille et salles.** Les deux campus partagent cinq jours de huit créneaux d’une heure, avec une coupure à midi. Par campus, prévoir pour la petite taille un amphithéâtre de 120 places, deux salles de TD de 60 et deux laboratoires de 30. Doubler ces quantités pour la taille principale. Répartir deux spécialités de laboratoire entre les campus afin que chaque promotion ait au moins un TP à suivre sur chacun. Le trajet proposé entre campus est de 30 minutes dans chaque sens. Deux créneaux contigus sur des sites distincts ne laissent aucun temps de trajet.
+- **Intervenants.** Répartir les enseignements entre promotions afin qu’au moins un permanent intervienne sur les deux campus. Chaque vacataire assure les quatre TP d’un module d’une promotion, soit huit heures, et propose quatre demi-journées de quatre heures. Alterner ces fenêtres selon le vacataire et marquer les créneaux hors fenêtre `INDISPONIBLE`. Un vœu de créneau préféré ou à éviter reste souple. Le manifeste compte les enseignants réellement affectés, les fenêtres et les séances partagées.
+- **Contrôle du jeu.** Construire un emploi du temps témoin distinct pour chaque taille. Avant la mesure, vérifier chaque séance et chaque créneau occupé, les collisions de salle et d’enseignant, les feuilles de groupes communes, les capacités, équipements, fenêtres, plafonds journaliers de huit heures et trajets. Vérifier aussi qu’un CM empêche un TP de la même promotion au même moment et que deux TP frères peuvent travailler en parallèle. Le vérificateur du jeu plat ne contrôle aujourd’hui que les groupes directs. Étendre les contrôles du banc après visa. Si le témoin échoue, corriger le jeu avant toute acquisition et recalculer son empreinte.
+
+### Mesure et seuils proposés
+
+1. **Comparaison.** Construire les images depuis le premier parent de la fusion de MOT-13b (`ab2620a4`, avant #182) et la base intégrée (`53561918`). Comparer les deux tailles sur les règles communes, avec les mêmes entrées sans placement, les mêmes poids par défaut et les mêmes limites. Vérifier sur une affectation figée les scores dur et souple des deux versions. Si le résultat diffère, localiser la règle ou le paramètre avant d’attribuer un écart à la recherche. En cas d’écart entre versions, contrôler aussi la fusion #182 elle-même (`d0359925`) avant de conclure sur son rôle.
+2. **Répétitions.** Pour chaque couple taille/version, reprendre le protocole du 15 novembre. Une chauffe exclue de 60 s précède trois passages de 600 s, chacun dans un conteneur neuf sur le poste. Alterner les versions entre répétitions. Cela représente douze passages mesurés et quatre chauffes. Conserver 1,5 CPU, 640 Mio, tas à 70 %, sondage à la seconde et garde externe de 660 s. Figer la configuration, le problème (SHA-256), l’image et le témoin pour chaque série.
+3. **Faisabilité sur la version actuelle.** Pour chaque taille, proposer comme seuil trois passages sur trois avec toutes les séances affectées une fois, créneau et salle connus, aucun conflit dur, score moyen nul, réponse finale analysée en moins de 600 s depuis le POST et aucun arrêt par manque de mémoire. Indiquer séparément le temps et le pic mémoire de chaque passage. Un résultat partiel, même avec un score nul, compte comme échec. Si un seuil manque, l’étude livre tout de même son constat.
+4. **Qualité souple.** Sur les solutions complètes et faisables, publier pour chaque taille le score souple total, le score par séance et les contributions disponibles par règle, avec médiane et étendue. Proposer une alerte dès que la médiane actuelle perd **plus de 10 %** de la valeur absolue de la médiane de référence, à taille et pondérations identiques. Si la médiane de référence est nulle, signaler toute baisse en points. Avec moins de trois résultats faisables par version, classer la comparaison de qualité comme indéterminée et publier le taux de complétude. Le seuil de 10 % est proposé à partir de l’écart relevé en réponse 22. Il ne vaut pas engagement de performance.
+5. **Recherche de cause et restitution.** Pour un écart, relever les règles en cause (ordre CM/TD, trous, changements de campus ou de salle, vœux), la durée des phases et le débit disponible. Distinguer les pénalités des récompenses de préférence, que la liste des violations omet. Une affectation figée au même score avec des résultats libres différents oriente vers la recherche ou le budget. Si trois passages ne départagent pas les causes, inscrire « cause indéterminée » avec les éléments observés pour MOT-04. Archiver les entrées et résultats sous des noms distincts du jeu de 20 000, puis publier la synthèse dans `mesures.md`.
+
+### Ce que disent les études
+
+Le public de cette mesure est l’enseignement supérieur. Le banc décrit des groupes, ressources et règles de semaine type configurables. L’évaluation du collège pourra réutiliser ses contrôles et son protocole. [Registre des études, §§ 2 à 5 et 7, version du 21 novembre](https://github.com/Claude20022002/Planner/blob/8ba3a7ac7c9b6c0eeb13fa4e254ccf7e00e7b149/docs/etude-marche/14-reprendre-et-depasser.md)
+
+| Ligne | Conséquence pour MOT-02 |
+|---|---|
+| M18 · supérieur | L’échantillon fait intervenir deux campus, trois types de séance, les groupes emboîtés et les vacataires aux horaires limités. |
+| M1 · calcul sous contraintes, M2 · explication des refus | Vérifier la complétude puis documenter les règles et les séances en cause quand la réponse les expose. Les messages de correction de l’application relèvent de MOT-03 et EDT-03. |
+| M3 · contrôles de conflit | Maintenir les contrôles du témoin et les poids communs d’un passage à l’autre. Le forçage applicatif relève du plan de parité. |
+| M15 · preuve des promesses, M17 · neutralité | Publier entrées synthétiques, ressources et résultats par passage. Les volumes sont des paramètres de l’essai, sans pays ni données d’école. |
+| R17 · remplacements | Le jeu exerce la disponibilité des vacataires déjà affectés. La recherche d’un remplaçant relève de MOT-09. |
+
+### Questions pour le chef
+
+| N° | Décision demandée | Proposition |
+|---|---|---|
+| Q9 | Quel jeu clôt la mesure du supérieur ? | Valider la semaine et les deux tailles de 480 et 960 étudiants décrites ci-dessus. Garder les six passages du jeu de 20 000 comme mesure de charge distincte. |
+| Q10 | Quels seuils de faisabilité et de durée ? | Valider trois plannings complets sur trois par taille en moins de 600 s, avec dur et moyen à zéro, sur le profil local du VPS. |
+| Q11 | Comment juger l’écart souple de la réponse 22 ? | Valider les deux versions, les douze passages et l’alerte de 10 % sur les médianes comparables. Transmettre à MOT-04 toute cause qui reste indéterminée. |
+
+**État au 21 novembre.** Le chef a décidé la priorité du supérieur. Le jeu, les tailles et les seuils ci-dessus sont soumis à son visa pour la mise en œuvre et la mesure.
