@@ -10,7 +10,9 @@
 - **Page « Solutions »** (VIT-05 en préparation, branche `feat/vit-05-solutions`, [plan validé le 18 nov.](../../conception/vitrine/vit-05-solutions.md)) : `/<langue>/solutions/`, une section par type d'établissement (collège et lycée, enseignement supérieur, formation professionnelle), chacune avec « Aujourd'hui » (chaque point renvoie à sa page de fonction) et « Bientôt » (plan de parité, sans date) ; aucun prix. Lien « Solutions » en tête de la navigation, dans l'en-tête et le pied de page.
 - **Contenu complet** (VIT-07 en cours, branche `feat/vit-07-contenu-complet`, [plan validé le 18 nov.](../../conception/vitrine/vit-07-contenu-complet.md)) : quatre pages (quiz et jeux, bibliothèque, cours et annonces, application), la carte « prêts de livres » retirée de « Bientôt », et un menu « Fonctions ». Quiz et jeux mène à une page « Bibliothèque des jeux » (titres et résumés du catalogue, hors du menu). Aucun prix, aucun nom d'école.
 - **Image et recette de mise en ligne** (VIT-06). Nginx sert le `dist/` Astro avec une CSP calculée par page et `noindex`. La CI teste l’image et active sa publication par SHA sur `main` avec les deux secrets Docker Hub. La mise en ligne attend les douze conditions du [plan](../../conception/exploitation/vit-06-mise-en-ligne.md#conditions-et-recette-du-chef).
+- **Logos des applications et icônes vivantes** (VIT-09a, branche `feat/vit-09a-logos-icones`, [plan validé le 18 nov.](../../conception/vitrine/vit-09a-logos-icones.md)) : `shared/icones/`, source unique pour le site et, avec UIX-10b, l'application. Sept logos illustrés (tuile en dégradé, objet en plans ; dessin détaillé et simplifié), aux teintes `app-<id>` de la charte v3, et douze icônes de commandes animées en CSS au survol et au focus, coupées en mouvement réduit. Aucune page ne les pose encore : c'est VIT-09b.
 - **Pages par rôle** (VIT-10 en cours, branche `feat/vit-10-pages-par-role`, [plan validé le 18 nov.](../../conception/vitrine/vit-10-pages-par-role.md)) : Direction, Scolarité, Enseignants, Étudiants. Le menu « Solutions » s'ouvre. Le pied de page est en colonnes. Pas de bande de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
+- **Avant → avec, et FAQ par rôle** (VIT-10b en cours, branche `feat/vit-10b-avant-avec-faq`, [plan validé le 18 nov.](../../conception/vitrine/vit-10b-avant-avec-faq.md)) : cinq lignes par rôle et une FAQ en accordéon. Les phrases « avec » sont recopiées. Aucune illustration.
 - **Ce que font les concurrents**, d'après l'[étude de marché](../../etude-marche/01-concurrents.md) :
   - une page par fonction et par type d'école ;
   - une démonstration ou un essai bien visible ;
@@ -20,7 +22,7 @@
   - une version en arabe.
 - **Règle des textes** : ne promettre que ce qui existe ou se démontre ([arguments marketing](../../etude-marche/02-arguments-marketing.md)).
 - **Vidéo de promotion** : la PR #53 (`video/promo`) est ouverte ; `kit-video-planner/` contient le guide et les captures.
-- **Vidéo de présentation de l'accueil** (VIT-08, branche `feat/vit-08-video-presentation`, [plan validé le 18 nov.](../../conception/vitrine/vit-08-video-presentation.md)) : 86 s de motion design sans captures ni son, en français et en anglais, aux couleurs de `shared/charte/` ; composition `Accueil` du projet Remotion (`docs/presentation/video/src/accueil/`), textes tirés de `accueil.json`. Section « Présentation » après l'ouverture, lecture seule et muette, image fixe au mouvement réduit, transcription dessous. Le rendu final (`npm run render:accueil`, environ 10 Mo) attend les SVG officiels : d'ici là la section n'est pas affichée, et le test de l'empreinte est sauté.
+- **Vidéo de présentation de l'accueil** (VIT-08, branche `feat/vit-08-video-presentation`, [plan validé le 18 nov.](../../conception/vitrine/vit-08-video-presentation.md)) : 86 s de motion design sans captures ni son, en français et en anglais, aux couleurs de `shared/charte/` ; composition `Accueil` du projet Remotion (`docs/presentation/video/src/accueil/`), textes tirés de `accueil.json`. Section « Présentation » après l'ouverture, lecture seule et muette, image fixe au mouvement réduit, transcription dessous. Rendu final (`npm run render:accueil`, environ 10 Mo) fait avec les SVG officiels (#216, 18 nov.), puis refait le 19 nov. pour deux phrases de VIT-18 (`video.scenes.4.lignes.0` et `video.scenes.7.lignes.1`, visées par le chef ; `fix/vit-08-phrases-video`). Le test de l'empreinte échoue si les textes de la vidéo, les couleurs qu'elle lit ou les logos changent sans nouveau rendu.
 
 ## Fonctions
 
@@ -34,6 +36,7 @@
 | VIT-06 | Vitrine statique en HTTPS sur un sous-domaine, avec retour arrière par digest | — | libre | M | Douze conditions du [plan](../../conception/exploitation/vit-06-mise-en-ligne.md) | implémentation locale, CI et déploiement à venir |
 | VIT-07 | Le site présente toutes les applications : quiz et jeux, bibliothèque, cours et annonces, application | — | libre | M | VIT-01 | en cours (`feat/vit-07-contenu-complet`) |
 | VIT-10 | Pages par rôle, menu « Solutions » ouvrant, pied de page en colonnes | — | libre | M | VIT-07 | en cours (`feat/vit-10-pages-par-role`) |
+| VIT-10b | Sur les pages par rôle, « avant → avec Planner » et une FAQ | — | libre | S | VIT-10 | en cours (`feat/vit-10b-avant-avec-faq`) |
 
 ## Critères de « terminé »
 

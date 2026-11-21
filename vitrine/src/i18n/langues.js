@@ -24,6 +24,7 @@ export const PAGES = {
   etablissement: 'etablissement',
   securite: 'securite',
   bientot: 'bientot',
+  comparer: 'comparer',
   direction: 'direction',
   scolarite: 'scolarite',
   enseignants: 'enseignants',
