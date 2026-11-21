@@ -39,14 +39,14 @@ async function verifierHttp() {
   assert.equal(simple.headers.get('strict-transport-security'), null);
   await simple.body.cancel();
 
-  for (const chemin of ['/', '/fr/', '/en/', '/ar/', '/fr/index.html']) {
+  for (const chemin of ['/', '/fr/', '/en/', '/fr/index.html']) {
     const reponse = await verifierReponse(chemin, 200, { method: 'HEAD' });
     assert.match(reponse.headers.get('content-type'), /^text\/html/);
     if (chemin !== '/') assert.match(reponse.headers.get('content-security-policy'), /script-src [^;]*'sha256-/);
   }
   const redirection = await verifierReponse('/fr', 301, { method: 'HEAD' });
   assert.equal(redirection.headers.get('location'), '/fr/');
-  for (const chemin of ['/adresse-inconnue/', '/adresse-inconnue', '/_astro/']) {
+  for (const chemin of ['/adresse-inconnue/', '/adresse-inconnue', '/_astro/', '/ar/']) {
     await verifierReponse(chemin, 404, { method: 'HEAD' });
   }
 
