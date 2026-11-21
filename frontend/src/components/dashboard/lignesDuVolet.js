@@ -121,7 +121,7 @@ export const VOLETS = {
       { cle: 'valeur', valeur: (l, o) => o.nombre(l.valeur), nombre: true },
     ],
     note: 'definitionActif',
-    toutVoir: '/gestion/suivi',
+    toutVoir: '/gestion/suivi?onglet=usage',
   },
 };
 

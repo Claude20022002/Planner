@@ -65,6 +65,15 @@ test("tableau de bord : le volet des séances montre autant de lignes que le chi
   await expect(page).toHaveURL(/\/gestion\/emplois-du-temps$/);
 });
 
+test("tableau de bord : « Tout voir » de l’usage ouvre Suivi sur l’onglet Usage (réponse 9)", async ({ page }) => {
+  await ouvrirTableau(page);
+  await attendreLesBlocs(page);
+  await page.getByRole("button", { name: /comptes actifs, ce mois/ }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Tout voir" }).click();
+  await expect(page).toHaveURL(/\/gestion\/suivi\?onglet=usage$/);
+  await expect(page.getByRole("tab", { name: "Usage du mois" })).toHaveAttribute("aria-selected", "true");
+});
+
 test("tableau de bord : une route en panne ne vide que son bloc", async ({ page }) => {
   let panne = true;
   await page.route("**/api/statistiques/kpis*", (route) =>

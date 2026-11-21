@@ -12,6 +12,7 @@ import en from '../../i18n/tableauDeBord.en.js';
 const lire = (chemin) => readFileSync(new URL(chemin, import.meta.url), 'utf8');
 const sourceApi = lire('../../services/api.js');
 const sourceRoutes = lire('../../App.jsx');
+const sourceSuivi = lire('../../pages/gestion/Suivi.jsx');
 
 /** La fonction `fonction` de l'objet exporté `objet` dans services/api.js. */
 const fonctionExiste = (objet, fonction) => {
@@ -22,6 +23,10 @@ const fonctionExiste = (objet, fonction) => {
 };
 
 const outils = { t: (cle, o) => o?.defaultValue ?? cle, nombre: String, date: String, heure: (h) => (h ? String(h).slice(0, 5) : '') };
+
+test('« Tout voir » de l’usage ouvre Suivi sur l’onglet Usage', () => {
+  assert.equal(VOLETS.usage.toutVoir, '/gestion/suivi?onglet=usage');
+});
 
 test('les sept chiffres du plan ont chacun leur volet', () => {
   assert.deepEqual(CHIFFRES.sort(), ['enseignantsSemaine', 'enseignementsEnRetard', 'examens', 'heuresMois', 'occupationSalles', 'seancesSemaine', 'usage']);
@@ -37,6 +42,9 @@ for (const id of CHIFFRES) {
   test(`${id} : sa page « Tout voir » existe dans les routes de l’application`, () => {
     const chemin = volet.toutVoir.split('?')[0];
     assert.match(sourceRoutes, new RegExp(`path="${chemin}"`));
+    // Un onglet demandé dans l'adresse doit être lu par Suivi (réponse 9 du chef : l'usage ouvre l'onglet Usage)
+    const onglet = new URLSearchParams(volet.toutVoir.split('?')[1]).get('onglet');
+    if (onglet) assert.match(sourceSuivi, new RegExp(`ONGLETS_ADRESSE = [{][^}]*[ ,{]${onglet}:`));
   });
 
   test(`${id} : des colonnes, chacune nommée en français et en anglais, sûres sur une ligne vide`, () => {
