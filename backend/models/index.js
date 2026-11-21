@@ -86,6 +86,7 @@ export const GenerationQuiz = resolveur("GenerationQuiz");
 export const MfaDefi = resolveur("MfaDefi");
 export const JeuModule = resolveur("JeuModule");
 export const JeuProgression = resolveur("JeuProgression");
+export const JeuEtatDefi = resolveur("JeuEtatDefi");
 export const JeuProfil = resolveur("JeuProfil");
 export const PasserelleWeb = resolveur("PasserelleWeb");
 export const Annonce = resolveur("Annonce");

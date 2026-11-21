@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "titre": "Planner · Timetables and classroom life",
+    "description": "Planner builds your school's timetable from your own rules, then supports the classroom: attendance by QR code or by hand, live quizzes, games and tracked session changes."
+  },
+  "ouverture": {
+    "titre": "Planner",
+    "accroche": "Your school's timetable, built from your rules. And everything that happens next in class.",
+    "decouvrir": "Discover",
+    "contact": "Contact us"
+  },
+  "emploi": {
+    "surtitre": "Timetable",
+    "titre": "Your semester, worked out.",
+    "texte": "Rooms, teachers, groups, availability, travel between campuses: Planner places every session while respecting your hard and soft rules. Lectures, tutorials and labs follow their groups.",
+    "refus": "When a session cannot be placed, Planner tells you which rule is in the way.",
+    "lien": "Learn more about timetables",
+    "illustration": {
+      "label": "Example week built by Planner, with one unplaced session and its reason",
+      "jours": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "heures": [
+        "08:30",
+        "10:30",
+        "14:00",
+        "16:00"
+      ],
+      "seances": [
+        {
+          "titre": "Mathematics",
+          "lieu": "Lecture · Hall A"
+        },
+        {
+          "titre": "Physics",
+          "lieu": "Tutorial · Room B12"
+        },
+        {
+          "titre": "English",
+          "lieu": "Tutorial · Room C04"
+        },
+        {
+          "titre": "Computing",
+          "lieu": "Lab · Lab 2"
+        },
+        {
+          "titre": "Economics",
+          "lieu": "Lecture · Hall B"
+        },
+        {
+          "titre": "Chemistry",
+          "lieu": "Lab · Lab 1"
+        },
+        {
+          "titre": "Mathematics",
+          "lieu": "Tutorial · Room B12"
+        },
+        {
+          "titre": "Project",
+          "lieu": "Room C10"
+        }
+      ],
+      "alerte": {
+        "titre": "Session not placed",
+        "texte": "Biology lab: the teacher is not available on Tuesday morning."
+      }
+    }
+  },
+  "appel": {
+    "surtitre": "In class",
+    "titre": "Attendance in one gesture.",
+    "texte": "The teacher shows a QR code. Students scan it with their phone, and their attendance is recorded. The teacher can also mark each student by hand: present, late or absent.",
+    "lien": "Learn more about the classroom",
+    "illustration": {
+      "label": "QR code attendance screen on a phone",
+      "cours": "Physics tutorial",
+      "detail": "Group B · 08:30",
+      "consigne": "Scan the code to mark yourself present",
+      "compte": "28 present out of 32"
+    }
+  },
+  "quiz": {
+    "surtitre": "Quizzes and games",
+    "titre": "Live quizzes. Games for revision.",
+    "texte": "Ten question types, images and videos, quizzes run live or as homework. Teachers can also offer games to their classes.",
+    "lien": "Learn more about quizzes and games",
+    "illustration": {
+      "label": "Live quiz question on a phone",
+      "titre": "Live quiz",
+      "minuteur": "12 s",
+      "question": "What is the derivative of x²?",
+      "reponses": [
+        "2x",
+        "x²",
+        "2",
+        "x / 2"
+      ],
+      "participants": "24 answers"
+    }
+  },
+  "report": {
+    "surtitre": "Session changes",
+    "titre": "A change, tracked from start to finish.",
+    "texte": "Every step is visible to the people it concerns. Students learn about the change before they travel.",
+    "etapes": [
+      {
+        "titre": "Request",
+        "texte": "The teacher asks to move their session."
+      },
+      {
+        "titre": "Approval",
+        "texte": "The registrar accepts the new slot."
+      },
+      {
+        "titre": "Notified",
+        "texte": "The students concerned receive a notification."
+      },
+      {
+        "titre": "Published",
+        "texte": "The timetable is up to date for everyone."
+      }
+    ]
+  },
+  "donnees": {
+    "surtitre": "Security and data",
+    "titre": "Everyone sees what concerns them.",
+    "texte": "Access follows each person's role in the school.",
+    "lien": "Learn more about security",
+    "points": [
+      {
+        "titre": "Two-factor authentication",
+        "texte": "A second code protects the accounts that turn it on."
+      },
+      {
+        "titre": "Role-based access",
+        "texte": "Student, teacher, registrar: each opens only what their role allows."
+      },
+      {
+        "titre": "AI without student data",
+        "texte": "When the school turns AI on, it never receives student data, and teachers review what it suggests."
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "Coming soon",
+    "titre": "What comes next.",
+    "texte": "These modules are in preparation. They are not available yet.",
+    "badge": "Coming soon",
+    "lien": "See everything that is coming",
+    "modules": [
+      {
+        "titre": "Student life",
+        "texte": "Absences, lateness and student follow-up."
+      },
+      {
+        "titre": "Families",
+        "texte": "A space for parents."
+      },
+      {
+        "titre": "Tuition fees",
+        "texte": "Enrolment, due dates and payments."
+      }
+    ]
+  },
+  "contact": {
+    "titre": "Let's talk about your school.",
+    "texte": "Would you like to see Planner on a fictional school, with your own rules? The contact form is coming soon to this page."
+  },
+  "video": {
+    "surtitre": "Overview",
+    "titre": "All of Planner, in ninety seconds.",
+    "commandes": {
+      "lire": "Play the video",
+      "pause": "Pause",
+      "revoir": "Watch again"
+    },
+    "transcription": {
+      "ouvrir": "Read the video transcript",
+      "image": "On screen:"
+    },
+    "scenes": [
+      {
+        "titre": "Planner",
+        "lignes": [
+          "Seven apps for your school. One account."
+        ],
+        "image": "The Planner logo, a graduation cap whose top is a clock; its hands turn. The seven apps appear below."
+      },
+      {
+        "titre": "Your semester, worked out.",
+        "lignes": [
+          "Rooms, teachers, groups, campuses: all your rules, held together.",
+          "A session can't be placed? Planner tells you which rule is in the way."
+        ],
+        "image": "On a computer, the week fills up session by session. Then a notice appears: a session that could not be placed, with its reason."
+      },
+      {
+        "titre": "A class moved? Students are notified.",
+        "lignes": [
+          "The teacher asks, the school office approves, the timetable updates."
+        ],
+        "image": "On a phone, a session moves from Tuesday to Thursday and a notification arrives. Four steps light up: request, approval, notified, published."
+      },
+      {
+        "titre": "Attendance in one gesture.",
+        "lignes": [
+          "By QR code: it changes every 30 seconds.",
+          "Or by hand: present, late, absent."
+        ],
+        "image": "A QR code is projected in class. A phone scans it, attendance is recorded, and the number of students present goes up. Then the teacher's screen shows the class list: three buttons per student, present, late, absent; one student is marked late, another absent."
+      },
+      {
+        "titre": "Live quizzes, or at your own pace.",
+        "lignes": [
+          "Ten question types, six of them live. Live, points reward accuracy and speed."
+        ],
+        "image": "The ten question types line up. Then, on a phone, a live quiz question with its timer; the right answer earns points."
+      },
+      {
+        "titre": "Learn by playing.",
+        "lignes": [
+          "Ten simulations and a Linux terminal.",
+          "The terminal can also be played on the board, with the whole class."
+        ],
+        "image": "Game cards line up. Then a terminal projected on the board, and a phone suggesting a command."
+      },
+      {
+        "titre": "Every class has its own space.",
+        "lignes": [
+          "Materials by section, polls, school announcements.",
+          "The library opens with the same account."
+        ],
+        "image": "A class space: its sections and their materials, a poll whose bars rise, an announcement. Then the library opens."
+      },
+      {
+        "titre": "The whole school at a glance.",
+        "lignes": [
+          "Rooms, exams and invigilation, across several campuses.",
+          "Two-step sign-in, role-based access. When AI is turned on for your school, it never receives student data."
+        ],
+        "image": "Two campuses linked by their travel time, room occupancy and an exam session. Then a six-digit verification code and the three roles."
+      },
+      {
+        "titre": "On the phone, too.",
+        "lignes": [
+          "The week, the attendance scanner, the library.",
+          "Let's talk about your school."
+        ],
+        "image": "On a phone, the bottom bar shows the Board, Week, Scan, Library and Account tabs; the week, the scanner, then the library go by. Then the Planner logo and name."
+      }
+    ],
+    "illustrations": {
+      "applications": [
+        "Timetable",
+        "Teaching",
+        "People",
+        "School",
+        "Announcements",
+        "Quizzes and games",
+        "Library"
+      ],
+      "semaine": "Week 12",
+      "calcul": "Building the timetable",
+      "report": {
+        "ecran": "My week",
+        "jours": [
+          "Tuesday",
+          "Thursday"
+        ],
+        "notification": {
+          "titre": "Session moved",
+          "texte": "Physics tutorial: Thursday 14:00, room B12"
+        }
+      },
+      "appel": {
+        "renouvellement": "New code in",
+        "presence": "Attendance recorded",
+        "statuts": {
+          "present": "Present",
+          "retard": "Late",
+          "absent": "Absent"
+        }
+      },
+      "quiz": {
+        "types": [
+          "Single choice",
+          "Multiple choice",
+          "True or false",
+          "Short answer",
+          "Number",
+          "Fill in the blanks",
+          "Matching",
+          "Ordering",
+          "Hotspot",
+          "Essay"
+        ],
+        "points": "+ 940 points",
+        "classement": "Leaderboard"
+      },
+      "jeux": {
+        "cartes": [
+          "Linux terminal",
+          "Perfect Query",
+          "Network Nodes",
+          "CPU Scheduler",
+          "Agile Sprint",
+          "Cyber Triage"
+        ],
+        "tableau": "Linux terminal · on the board",
+        "commandes": [
+          "cd projects",
+          "ls -l",
+          "mkdir report"
+        ],
+        "proposer": "Suggest a command",
+        "envoyer": "Send"
+      },
+      "cours": {
+        "classe": "Physics · Group B",
+        "sections": [
+          {
+            "titre": "General",
+            "supports": [
+              "Course outline"
+            ]
+          },
+          {
+            "titre": "Week 1",
+            "supports": [
+              "Chapter 1 · Kinematics",
+              "Worked exercises"
+            ]
+          },
+          {
+            "titre": "Lab",
+            "supports": [
+              "Lab 1 brief"
+            ]
+          }
+        ],
+        "sondage": {
+          "titre": "Poll",
+          "question": "Which day for the revision session?",
+          "choix": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+          ]
+        },
+        "annonce": {
+          "titre": "School announcement",
+          "texte": "Exam registration opens on Monday."
+        },
+        "bibliotheque": {
+          "titre": "Library",
+          "documents": [
+            "Point mechanics",
+            "Calculus 1",
+            "Organic chemistry",
+            "Algorithms"
+          ]
+        }
+      },
+      "etablissement": {
+        "campus": [
+          "Central campus",
+          "North campus"
+        ],
+        "trajet": "25 min",
+        "occupation": "Room occupancy",
+        "salles": [
+          "Lecture hall A",
+          "Room B12",
+          "Lab 2",
+          "Room C04"
+        ],
+        "examen": {
+          "titre": "Exam · Mathematics",
+          "detail": "Lecture hall A and room B12 · 3 invigilators"
+        }
+      },
+      "securite": {
+        "code": "Verification code",
+        "valider": "Verify",
+        "roles": [
+          "Student",
+          "Teacher",
+          "Administration"
+        ]
+      },
+      "mobile": {
+        "onglets": [
+          "Board",
+          "Week",
+          "Scan",
+          "Library",
+          "Account"
+        ]
+      }
+    }
+  }
+}

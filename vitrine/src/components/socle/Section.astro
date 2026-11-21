@@ -1,0 +1,28 @@
+---
+// Section du site vitrine : une idée par section, contenu centré, ton clair, gris ou sombre.
+// « plein » donne la hauteur de l'écran (ouverture) ; « large » élargit le contenu aux visuels.
+interface Props {
+  id?: string;
+  ton?: 'clair' | 'gris' | 'sombre';
+  plein?: boolean;
+  large?: boolean;
+  etiquette?: string;
+}
+
+const { id, ton = 'clair', plein = false, large = false, etiquette } = Astro.props;
+---
+<section id={id} class:list={['section', ton, { plein, large }]} aria-labelledby={etiquette}>
+  <div class="interieur">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section { padding-block: var(--espace-section); padding-inline: var(--gouttiere); overflow: clip; }
+  .interieur { display: grid; justify-items: center; gap: var(--espace-4); max-inline-size: var(--largeur-lecture); margin-inline: auto; text-align: center; }
+  .large .interieur { max-inline-size: var(--largeur-contenu); }
+  .plein { display: grid; align-items: center; min-block-size: calc(100svh - var(--hauteur-entete)); padding-block: var(--espace-5); }
+  .clair { background: var(--blanc); color: var(--encre); }
+  .gris { background: var(--gris-fond); color: var(--encre); }
+  .sombre { background: var(--bleu-nuit); color: var(--blanc); --couleur-surtitre: var(--bleu-clair); --couleur-secondaire: var(--bleu-pale); --couleur-lien: var(--bleu-clair); }
+</style>

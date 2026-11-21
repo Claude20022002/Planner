@@ -52,6 +52,7 @@ import GenerationQuiz from "./GenerationQuiz.js";
 import MfaDefi from "./MfaDefi.js";
 import JeuModule from "./JeuModule.js";
 import JeuProgression from "./JeuProgression.js";
+import JeuEtatDefi from "./JeuEtatDefi.js";
 import JeuProfil from "./JeuProfil.js";
 import PasserelleWeb from "./PasserelleWeb.js";
 import Annonce from "./Annonce.js";
@@ -596,6 +597,7 @@ MfaDefi.belongsTo(Users, { foreignKey: "id_user", as: "user", targetKey: "id_use
 Cours.hasMany(JeuModule, { foreignKey: "id_cours", as: "jeux", onDelete: "CASCADE" });
 JeuModule.belongsTo(Cours, { foreignKey: "id_cours", as: "cours" });
 Users.hasMany(JeuProgression, { foreignKey: "id_user", as: "progressionsJeux", onDelete: "CASCADE" });
+Users.hasMany(JeuEtatDefi, { foreignKey: "id_user", as: "etatsDefisJeux", onDelete: "CASCADE" });
 Users.hasOne(JeuProfil, { foreignKey: "id_user", as: "profilJeux", onDelete: "CASCADE" });
 Users.hasMany(PasserelleWeb, { foreignKey: "id_user", as: "passerellesWeb", onDelete: "CASCADE" });
 
@@ -705,6 +707,7 @@ export {
     MfaDefi,
     JeuModule,
     JeuProgression,
+    JeuEtatDefi,
     JeuProfil,
     PasserelleWeb,
     Annonce,

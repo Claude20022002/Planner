@@ -175,6 +175,7 @@ export const bottomTabsFor = (role) => {
 export const RUBRIQUES_PARENTES = ['/jeux', '/annonces', '/mes-classes', '/mes-cours'];
 
 const TITLE_KEYS = {
+  '/applications': 'applications.titre',
   '/dashboard/admin': 'nav.dashboard',
   '/dashboard/enseignant': 'nav.board',
   '/dashboard/etudiant': 'nav.board',

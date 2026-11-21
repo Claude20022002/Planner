@@ -17,7 +17,7 @@ Tout le reste remonte au chef : produit, schéma partagé entre modules, migrati
 
 1. Lire [docs/plan/README.md](docs/plan/README.md), puis [docs/plan/suivi.md](docs/plan/suivi.md) (fonctions, états, **chantiers ouverts**).
 2. Lire les branches et PR ouvertes (`gh pr list`, `git branch -r`), et la dernière fiche de session de la fonction dans `docs/sessions/`.
-3. Si une **fiche de mission** vous est donnée (`docs/plan/missions/<identifiant>.md`), la lire : elle dit la fonction, la branche, le dossier et **les fichiers que vous pouvez écrire**. Ne rien écrire hors de ce périmètre sans le demander. **Codex et l'agent de Cursor** lisent aussi leur **boîte aux lettres**, `..\boites\<codex ou cursor>\entree\` depuis un dossier de travail (`..\travaux-planner\boites\…` depuis le dépôt principal) : ils traitent les messages du coordinateur, les rangent dans `entree\traites\`, et déposent leurs rapports et questions dans `sortie\` (format dans `boites\README.md`). Sinon, si le chef n'a pas dit quelle fonction faire, **le demander**. Ne prendre qu'une fonction d'un **chantier ouvert** (au plus 3 chantiers ouverts ; un chantier commencé se termine avant d'en ouvrir un autre à sa place).
+3. Si une **fiche de mission** vous est donnée (`docs/plan/missions/<identifiant>.md`), la lire : elle dit la fonction, la branche, le dossier et **les fichiers que vous pouvez écrire**. Ne rien écrire hors de ce périmètre sans le demander. Une **mission d'équipe** (`…-equipe.md` : plusieurs agents sur la même fonction) suit en plus [docs/plan/equipe.md](docs/plan/equipe.md) : un lot, des fichiers à soi, un point de départ commun et des rendez-vous. **Codex et l'agent de Cursor** lisent aussi leur **boîte aux lettres**, `..\boites\<codex ou cursor>\entree\` depuis un dossier de travail (`..\travaux-planner\boites\…` depuis le dépôt principal) : ils traitent les messages du coordinateur, les rangent dans `entree\traites\`, et déposent leurs rapports et questions dans `sortie\` (format dans `boites\README.md`). Sinon, si le chef n'a pas dit quelle fonction faire, **le demander**. Ne prendre qu'une fonction d'un **chantier ouvert** (au plus 3 chantiers ouverts ; un chantier commencé se termine avant d'en ouvrir un autre à sa place).
 
 ## Avant d'écrire une ligne de code
 
@@ -33,7 +33,7 @@ Tout le reste remonte au chef : produit, schéma partagé entre modules, migrati
 ## À la fin de chaque session : obligatoire
 
 9. Commiter le travail.
-10. Mettre à jour **[docs/plan/suivi.md](docs/plan/suivi.md)** (état de la fonction, chantiers) et le fichier du module si ce qui existe a changé.
+10. Mettre à jour le fichier du module si ce qui existe a changé. **Ne pas modifier [docs/plan/suivi.md](docs/plan/suivi.md) sur la branche d'une fonction** : c'est le coordinateur qui le tient, sur sa branche, d'après les fiches de session. L'état de la fonction va dans la fiche de session. Pour réserver un numéro de migration, le demander au coordinateur (décision du chef du 18 nov.).
 11. Écrire la **fiche de session** `docs/sessions/AAAA-MM-JJ-<branche>.md` ([modèle](docs/plan/modeles/fiche-de-session.md)) avec son **prompt de reprise**, et la commiter.
 12. Donner au chef les **commandes à lancer** (push, PR) et le **prompt de reprise**. Un plan non commité ou une fiche absente est un travail que le coordinateur ne voit pas.
 

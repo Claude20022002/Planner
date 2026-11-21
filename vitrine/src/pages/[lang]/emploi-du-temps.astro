@@ -1,0 +1,35 @@
+---
+// Page « Emploi du temps », dans chaque langue : le calcul, les refus expliqués, ce qui suit le calcul.
+// Assemble seulement ; la semaine dessinée est celle de l'accueil (textes d'accueil.json).
+import { History, Send, CalendarClock, FileDown, CalendarSync, Mail } from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import CadreAppareil from '../../components/socle/CadreAppareil.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import Presentation from '../../components/fonctions/Presentation.astro';
+import CarteAvis from '../../components/fonctions/CarteAvis.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import IllustrationSemaine from '../../components/accueil/IllustrationSemaine.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'emploi-du-temps');
+const tAccueil = traductions(lang, 'accueil');
+---
+<Gabarit langue={lang} page="emploiDuTemps" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <Presentation id="calcul" ton="gris" surtitre={t('calcul.surtitre')} titre={t('calcul.titre')} texte={t('calcul.texte')} points={t('calcul.points')}>
+    <CadreAppareil type="ordinateur" label={t('illustration.label')}>
+      <IllustrationSemaine t={tAccueil} />
+    </CadreAppareil>
+  </Presentation>
+  <Presentation id="refus" ton="sombre" inverse surtitre={t('refus.surtitre')} titre={t('refus.titre')} texte={t('refus.texte')}>
+    <CarteAvis label={t('refus.avis.label')} titre={t('refus.avis.titre')} texte={t('refus.avis.texte')} />
+  </Presentation>
+  <GrilleCartes id="suite" surtitre={t('suite.surtitre')} titre={t('suite.titre')} cartes={t('suite.cartes')}
+    icones={[History, Send, CalendarClock, FileDown, CalendarSync, Mail]} />
+  <FinDePage langue={lang} />
+</Gabarit>

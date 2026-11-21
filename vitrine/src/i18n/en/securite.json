@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "titre": "Security and data · Planner",
+    "description": "Two-factor authentication, role-based access, a security log, properly closed accounts, AI without student data: what Planner does today to protect accounts and data."
+  },
+  "entete": {
+    "surtitre": "Security and data",
+    "titre": "Everyone sees what concerns them.",
+    "accroche": "This page only describes what Planner already does. What is in preparation is marked “Coming soon”."
+  },
+  "protections": {
+    "surtitre": "Today",
+    "titre": "What protects accounts and data.",
+    "cartes": [
+      {
+        "titre": "Two-factor authentication",
+        "texte": "A one-time code from an authenticator app protects sign-in. Required for the administration, available to teachers, with backup codes."
+      },
+      {
+        "titre": "Role-based access",
+        "texte": "Student, teacher, administration: each person opens only what their role allows."
+      },
+      {
+        "titre": "Security log",
+        "texte": "Sign-ins, failures, password and two-factor changes: everything is recorded, and the administration can review it."
+      },
+      {
+        "titre": "A private calendar",
+        "texte": "The calendar subscription address is secret, and anyone can change theirs: the old one stops working at once."
+      },
+      {
+        "titre": "Properly closed accounts",
+        "texte": "An account that leaves the school is deactivated, then anonymised: the history stays, without a name."
+      },
+      {
+        "titre": "AI without student data",
+        "texte": "When the school turns AI on, it never receives student data, and teachers review what it suggests."
+      }
+    ]
+  },
+  "site": {
+    "surtitre": "This site",
+    "titre": "This site does not follow you.",
+    "cartes": [
+      {
+        "titre": "No cookies",
+        "texte": "This site sets no cookies."
+      },
+      {
+        "titre": "No analytics",
+        "texte": "No tool counts your visits."
+      },
+      {
+        "titre": "Nothing from other sites",
+        "texte": "Fonts, images and scripts are served by this site, with no call to another."
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "In preparation",
+    "titre": "What comes next.",
+    "badge": "Coming soon",
+    "cartes": [
+      {
+        "titre": "Everything that leaves, in plain sight",
+        "texte": "A public list of everything Planner sends outside the school, and to whom."
+      }
+    ]
+  }
+}

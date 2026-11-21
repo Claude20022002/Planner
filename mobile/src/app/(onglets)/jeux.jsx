@@ -12,13 +12,14 @@ import Scene from '../../jeux/Scene';
 import { ouvrirPartie } from '../../quiz/ouvrir';
 import useClassQuiz from '../../hooks/useClassQuiz';
 import { libelle } from '../../../../shared/jeux/catalogue.js';
+import { SIMULATIONS } from '../../../../shared/simulations/catalogue.js';
 import { DEVOIRS_ACTIFS } from '../../../../shared/fonctions.js';
 import { CIBLE_TACTILE, creerStyles, espace, useTheme } from '../../theme';
 import { useMargeOnglets } from '../../verre/Verre';
 
 const RAFRAICHISSEMENT_QUIZ_MS = 20000;
 // Écran de chaque jeu intégré
-const ECRAN_JEU = { 'terminal-linux': '/terminal' };
+const ECRAN_JEU = { 'terminal-linux': '/terminal', ...Object.fromEntries(SIMULATIONS.map((jeu) => [jeu.code, { pathname: '/simulation', params: { code: jeu.code } }])) };
 // Lecture seule : le composant applique le résultat dans le .then (aucun état modifié ici). Sans le
 // service de quiz pour l'école (lot ME-0c), son historique n'est pas demandé
 const lireTout = (avecQuiz) =>

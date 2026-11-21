@@ -37,7 +37,6 @@ let ref;
 // Lundi 1er mars 2027 et le mardi suivant : dates futures, sans férié
 const LUNDI = "2027-03-01";
 const MARDI = "2027-03-02";
-const VENDREDI = "2027-03-05";
 
 beforeAll(async () => {
     await resetDatabase();
@@ -150,10 +149,10 @@ describe("Règles bloquantes : 409 et liste des violations", () => {
         expect(codes(response)).toEqual(["trajet_campus"]);
     });
 
-    test("événement bloquant de la filière et pause du vendredi midi", async () => {
+    // La pause du vendredi midi est devenue une plage déclarée (MOT-13b) : plagesReprises.test.js
+    test("événement bloquant de la filière", async () => {
         await Evenement.create({ titre: "Journée projets RGL", date_debut: MARDI, date_fin: MARDI, type_evenement: "autre", portee: "filiere", id_cible: ref.filiere.id_filiere, bloque_affectations: true, id_user_createur: admin.id_user });
         expect(codes(await creer({ date_seance: MARDI, id_creneau: ref.creneaux.mar1.id_creneau }))).toEqual(["evenement"]);
-        expect(codes(await creer({ date_seance: VENDREDI, id_creneau: ref.creneaux.venMidi.id_creneau }))).toEqual(["pause_vendredi"]);
     });
 
     test("maximum d'heures par jour pour un groupe", async () => {

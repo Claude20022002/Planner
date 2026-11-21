@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "ouverture": {
+    "titre": "",
+    "accroche": "",
+    "decouvrir": "",
+    "contact": ""
+  },
+  "emploi": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "refus": "",
+    "lien": "",
+    "illustration": {
+      "label": "",
+      "jours": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "heures": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "seances": [
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        },
+        {
+          "titre": "",
+          "lieu": ""
+        }
+      ],
+      "alerte": {
+        "titre": "",
+        "texte": ""
+      }
+    }
+  },
+  "appel": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "lien": "",
+    "illustration": {
+      "label": "",
+      "cours": "",
+      "detail": "",
+      "consigne": "",
+      "compte": ""
+    }
+  },
+  "quiz": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "lien": "",
+    "illustration": {
+      "label": "",
+      "titre": "",
+      "minuteur": "",
+      "question": "",
+      "reponses": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "participants": ""
+    }
+  },
+  "report": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "etapes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "donnees": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "lien": "",
+    "points": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "badge": "",
+    "lien": "",
+    "modules": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "contact": {
+    "titre": "",
+    "texte": ""
+  },
+  "video": {
+    "surtitre": "",
+    "titre": "",
+    "commandes": {
+      "lire": "",
+      "pause": "",
+      "revoir": ""
+    },
+    "transcription": {
+      "ouvrir": "",
+      "image": ""
+    },
+    "scenes": [
+      {
+        "titre": "",
+        "lignes": [
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      },
+      {
+        "titre": "",
+        "lignes": [
+          "",
+          ""
+        ],
+        "image": ""
+      }
+    ],
+    "illustrations": {
+      "applications": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "semaine": "",
+      "calcul": "",
+      "report": {
+        "ecran": "",
+        "jours": [
+          "",
+          ""
+        ],
+        "notification": {
+          "titre": "",
+          "texte": ""
+        }
+      },
+      "appel": {
+        "renouvellement": "",
+        "presence": "",
+        "statuts": {
+          "present": "",
+          "retard": "",
+          "absent": ""
+        }
+      },
+      "quiz": {
+        "types": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "points": "",
+        "classement": ""
+      },
+      "jeux": {
+        "cartes": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tableau": "",
+        "commandes": [
+          "",
+          "",
+          ""
+        ],
+        "proposer": "",
+        "envoyer": ""
+      },
+      "cours": {
+        "classe": "",
+        "sections": [
+          {
+            "titre": "",
+            "supports": [
+              ""
+            ]
+          },
+          {
+            "titre": "",
+            "supports": [
+              "",
+              ""
+            ]
+          },
+          {
+            "titre": "",
+            "supports": [
+              ""
+            ]
+          }
+        ],
+        "sondage": {
+          "titre": "",
+          "question": "",
+          "choix": [
+            "",
+            "",
+            ""
+          ]
+        },
+        "annonce": {
+          "titre": "",
+          "texte": ""
+        },
+        "bibliotheque": {
+          "titre": "",
+          "documents": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      },
+      "etablissement": {
+        "campus": [
+          "",
+          ""
+        ],
+        "trajet": "",
+        "occupation": "",
+        "salles": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "examen": {
+          "titre": "",
+          "detail": ""
+        }
+      },
+      "securite": {
+        "code": "",
+        "valider": "",
+        "roles": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "mobile": {
+        "onglets": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    }
+  }
+}
