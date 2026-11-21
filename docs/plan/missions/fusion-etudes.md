@@ -16,7 +16,7 @@
 
 | N° | PR | Branche | Ce qu'il faut |
 |---|---|---|---|
-| 1 | #191 | `etude/openeducat-comparatif` | rien : sans conflit. Vérifier seulement les liens et `node scripts/verifier-neutre.mjs` |
+| 1 | #191 | `etude/openeducat-comparatif` | sans conflit, mais sa CI du 17 nov. est rouge (Test Backend, sur le `main` de l'époque) : `git merge origin/main` pour la relancer ; vérifier les liens et `node scripts/verifier-neutre.mjs` |
 | 2 | #192 | `etude/openeducat-etude-complete` | après la fusion de #191 : `git merge origin/main` ; `docs/etude-marche/README.md` peut entrer en conflit : garder les deux lignes |
 | 3 | #186 | `etude/failles-erp-scolaires` | `git merge origin/main` : `decisions.md` (garder toutes les lignes), `suivi.md` (la version de `main`). Elle touche aussi `docs/plan/modeles/conception.md`, que la coordination du 21 nov. a modifié (section 7 bis) : garder les deux ajouts |
 | 4 | #190 | `etude/architecture-donnees` | `git merge origin/main` : `decisions.md` (toutes les lignes), `docs/conception/README.md` (les deux lignes) |
