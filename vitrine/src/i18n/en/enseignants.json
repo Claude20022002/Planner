@@ -33,7 +33,7 @@
     "lignes": [
       {
         "avant": "Attendance is taken on a sheet.",
-        "avec": "The teacher also marks by hand: present, late or absent. A student without a phone is marked that way."
+        "avec": "By hand, on the session list: students need neither a phone nor a projected screen."
       },
       {
         "avant": "The quiz is prepared separately, then shown from another tool.",
@@ -49,7 +49,7 @@
       },
       {
         "avant": "A suggested question is reread on the original document.",
-        "avec": "When the school turns on AI in the quiz Studio, it can suggest questions that the teacher reviews before sharing them."
+        "avec": "When AI is turned on for your school in the quiz Studio, it can suggest questions that the teacher reviews before sharing them."
       }
     ]
   },
@@ -58,7 +58,7 @@
     "questions": [
       {
         "question": "How does AI take part?",
-        "reponse": "When the school turns on AI in the quiz Studio, it can suggest questions that the teacher reviews before sharing them."
+        "reponse": "When AI is turned on for your school in the quiz Studio, it can suggest questions that the teacher reviews before sharing them."
       },
       {
         "question": "How is attendance taken without the student's phone?",

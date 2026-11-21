@@ -62,7 +62,7 @@
       },
       {
         "question": "Comment une séance refusée s'explique-t-elle ?",
-        "reponse": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque."
+        "reponse": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant."
       },
       {
         "question": "Qui prévient les étudiants d'un report ?",

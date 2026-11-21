@@ -1,0 +1,304 @@
+{
+  "version": 1,
+  "designation": "jeu supérieur simplifié",
+  "avertissement": "EP-10 applicative non démontrée par ce banc",
+  "passages": [
+    {
+      "revision": "38f2f90f16e317ffdd083fab8ba166289754ef7b",
+      "image": "sha256:449ef8d81bd815ce56f10c037567277f88dacb3ed93b836d5ff13477de888ba7",
+      "profil": "vps",
+      "indice": "apres-1",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "requeteSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "dureeDemandeeSecondes": 600,
+      "demarrageMs": 17475.669999999925,
+      "dureeMs": 609431.9623,
+      "dureeTotaleAvecArretMs": 609503.3787999998,
+      "premiereFaisableObserveeMs": null,
+      "controle": {
+        "valide": false,
+        "faisable": false,
+        "erreurs": [
+          "affectation manquante ou inconnue"
+        ],
+        "nonAffectees": 2818
+      },
+      "erreur": "affectation manquante ou inconnue",
+      "erreurNettoyage": null,
+      "score": "0hard/0soft",
+      "dur": 0,
+      "moyen": null,
+      "souple": 0,
+      "violations": [],
+      "memoireMaxEchantillonneeOctets": 237682688,
+      "picCgroupOctets": 240529408,
+      "sondesMemoireManquantes": 0,
+      "cpuObserveMicrosecondes": 666188247,
+      "moteur": {
+        "tempsMoteurMs": 606207,
+        "evaluationsParSeconde": 39342,
+        "mode": "PHASE_ASSERT",
+        "etapesConstruction": 1982,
+        "constructionInterrompue": true,
+        "scoreFinal": "0hard/0soft"
+      },
+      "conteneur": {
+        "oom": false,
+        "codeSortie": 0,
+        "actif": true
+      }
+    },
+    {
+      "revision": "38f2f90f16e317ffdd083fab8ba166289754ef7b",
+      "image": "sha256:449ef8d81bd815ce56f10c037567277f88dacb3ed93b836d5ff13477de888ba7",
+      "profil": "vps",
+      "indice": "apres-2",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "requeteSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "dureeDemandeeSecondes": 600,
+      "demarrageMs": 18060.3115000003,
+      "dureeMs": 608212.463,
+      "dureeTotaleAvecArretMs": 608248.2009999999,
+      "premiereFaisableObserveeMs": null,
+      "controle": {
+        "valide": false,
+        "faisable": false,
+        "erreurs": [
+          "affectation manquante ou inconnue"
+        ],
+        "nonAffectees": 2848
+      },
+      "erreur": "affectation manquante ou inconnue",
+      "erreurNettoyage": null,
+      "score": "0hard/0soft",
+      "dur": 0,
+      "moyen": null,
+      "souple": 0,
+      "violations": [],
+      "memoireMaxEchantillonneeOctets": 272482304,
+      "picCgroupOctets": 272564224,
+      "sondesMemoireManquantes": 0,
+      "cpuObserveMicrosecondes": 658457266,
+      "moteur": {
+        "tempsMoteurMs": 605345,
+        "evaluationsParSeconde": 38794,
+        "mode": "PHASE_ASSERT",
+        "etapesConstruction": 1952,
+        "constructionInterrompue": true,
+        "scoreFinal": "0hard/0soft"
+      },
+      "conteneur": {
+        "oom": false,
+        "codeSortie": 0,
+        "actif": true
+      }
+    },
+    {
+      "revision": "38f2f90f16e317ffdd083fab8ba166289754ef7b",
+      "image": "sha256:449ef8d81bd815ce56f10c037567277f88dacb3ed93b836d5ff13477de888ba7",
+      "profil": "vps",
+      "indice": "apres-3",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "requeteSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "dureeDemandeeSecondes": 600,
+      "demarrageMs": 17431.465199999977,
+      "dureeMs": 610966.6978000002,
+      "dureeTotaleAvecArretMs": 611007.5446000001,
+      "premiereFaisableObserveeMs": null,
+      "controle": {
+        "valide": false,
+        "faisable": false,
+        "erreurs": [
+          "affectation manquante ou inconnue"
+        ],
+        "nonAffectees": 2785
+      },
+      "erreur": "affectation manquante ou inconnue",
+      "erreurNettoyage": null,
+      "score": "0hard/0soft",
+      "dur": 0,
+      "moyen": null,
+      "souple": 0,
+      "violations": [],
+      "memoireMaxEchantillonneeOctets": 266772480,
+      "picCgroupOctets": 266772480,
+      "sondesMemoireManquantes": 0,
+      "cpuObserveMicrosecondes": 663433271,
+      "moteur": {
+        "tempsMoteurMs": 607705,
+        "evaluationsParSeconde": 39902,
+        "mode": "PHASE_ASSERT",
+        "etapesConstruction": 2015,
+        "constructionInterrompue": true,
+        "scoreFinal": "0hard/0soft"
+      },
+      "conteneur": {
+        "oom": false,
+        "codeSortie": 0,
+        "actif": true
+      }
+    },
+    {
+      "revision": "d8d892bc57ea71f2827ebad3a42e94da10b1f46b",
+      "image": "sha256:1023d000a272f383eacc60a174c80ca15ce401ac6b2ee54090f2362bd7d775b5",
+      "profil": "vps",
+      "indice": "avant-1",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "requeteSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "dureeDemandeeSecondes": 600,
+      "demarrageMs": 11953.502899999992,
+      "dureeMs": 604039.3174,
+      "dureeTotaleAvecArretMs": 604065.3979000001,
+      "premiereFaisableObserveeMs": null,
+      "controle": {
+        "valide": false,
+        "faisable": false,
+        "erreurs": [
+          "score absent, non initialisé ou incohérent",
+          "affectation manquante ou inconnue"
+        ],
+        "nonAffectees": 2419
+      },
+      "erreur": "score absent, non initialisé ou incohérent, affectation manquante ou inconnue",
+      "erreurNettoyage": null,
+      "score": "-2418init/-2hard/-20soft",
+      "dur": -2,
+      "moyen": null,
+      "souple": -20,
+      "violations": [],
+      "memoireMaxEchantillonneeOctets": 211054592,
+      "picCgroupOctets": 213692416,
+      "sondesMemoireManquantes": 0,
+      "cpuObserveMicrosecondes": 643531344,
+      "moteur": {
+        "tempsMoteurMs": 600603,
+        "evaluationsParSeconde": 47691,
+        "mode": "REPRODUCIBLE",
+        "etapesConstruction": 2381,
+        "constructionInterrompue": false,
+        "scoreFinal": "-2418init/-2hard/-20soft"
+      },
+      "conteneur": {
+        "oom": false,
+        "codeSortie": 0,
+        "actif": true
+      }
+    },
+    {
+      "revision": "d8d892bc57ea71f2827ebad3a42e94da10b1f46b",
+      "image": "sha256:1023d000a272f383eacc60a174c80ca15ce401ac6b2ee54090f2362bd7d775b5",
+      "profil": "vps",
+      "indice": "avant-2",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "requeteSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "dureeDemandeeSecondes": 600,
+      "demarrageMs": 14400.879499999923,
+      "dureeMs": 603685.6712999999,
+      "dureeTotaleAvecArretMs": 603765.769,
+      "premiereFaisableObserveeMs": null,
+      "controle": {
+        "valide": false,
+        "faisable": false,
+        "erreurs": [
+          "score absent, non initialisé ou incohérent",
+          "affectation manquante ou inconnue"
+        ],
+        "nonAffectees": 2537
+      },
+      "erreur": "score absent, non initialisé ou incohérent, affectation manquante ou inconnue",
+      "erreurNettoyage": null,
+      "score": "-2536init/0hard/0soft",
+      "dur": 0,
+      "moyen": null,
+      "souple": 0,
+      "violations": [],
+      "memoireMaxEchantillonneeOctets": 212250624,
+      "picCgroupOctets": 213397504,
+      "sondesMemoireManquantes": 0,
+      "cpuObserveMicrosecondes": 645774490,
+      "moteur": {
+        "tempsMoteurMs": 600731,
+        "evaluationsParSeconde": 45334,
+        "mode": "REPRODUCIBLE",
+        "etapesConstruction": 2263,
+        "constructionInterrompue": false,
+        "scoreFinal": "-2536init/0hard/0soft"
+      },
+      "conteneur": {
+        "oom": false,
+        "codeSortie": 0,
+        "actif": true
+      }
+    },
+    {
+      "revision": "d8d892bc57ea71f2827ebad3a42e94da10b1f46b",
+      "image": "sha256:1023d000a272f383eacc60a174c80ca15ce401ac6b2ee54090f2362bd7d775b5",
+      "profil": "vps",
+      "indice": "avant-3",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "requeteSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "dureeDemandeeSecondes": 600,
+      "demarrageMs": 17306.8554,
+      "dureeMs": 605912.7571999999,
+      "dureeTotaleAvecArretMs": 606318.5593999999,
+      "premiereFaisableObserveeMs": null,
+      "controle": {
+        "valide": false,
+        "faisable": false,
+        "erreurs": [
+          "score absent, non initialisé ou incohérent",
+          "affectation manquante ou inconnue"
+        ],
+        "nonAffectees": 2870
+      },
+      "erreur": "score absent, non initialisé ou incohérent, affectation manquante ou inconnue",
+      "erreurNettoyage": null,
+      "score": "-2869init/0hard/-10soft",
+      "dur": 0,
+      "moyen": null,
+      "souple": -10,
+      "violations": [],
+      "memoireMaxEchantillonneeOctets": 204775424,
+      "picCgroupOctets": 204775424,
+      "sondesMemoireManquantes": 0,
+      "cpuObserveMicrosecondes": 659916999,
+      "moteur": {
+        "tempsMoteurMs": 601904,
+        "evaluationsParSeconde": 38588,
+        "mode": "REPRODUCIBLE",
+        "etapesConstruction": 1930,
+        "constructionInterrompue": false,
+        "scoreFinal": "-2869init/0hard/-10soft"
+      },
+      "conteneur": {
+        "oom": false,
+        "codeSortie": 0,
+        "actif": true
+      }
+    }
+  ],
+  "synthese": [
+    {
+      "revision": "38f2f90f16e317ffdd083fab8ba166289754ef7b",
+      "profil": "vps",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "passages": 3,
+      "echecs": 3,
+      "dureeMinMs": 608212.463,
+      "dureeMedianeMs": 609431.9623,
+      "dureeMaxMs": 610966.6978000002,
+      "conformeSolveur": false
+    },
+    {
+      "revision": "d8d892bc57ea71f2827ebad3a42e94da10b1f46b",
+      "profil": "vps",
+      "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+      "passages": 3,
+      "echecs": 3,
+      "dureeMinMs": 603685.6712999999,
+      "dureeMedianeMs": 604039.3174,
+      "dureeMaxMs": 605912.7571999999,
+      "conformeSolveur": false
+    }
+  ]
+}
