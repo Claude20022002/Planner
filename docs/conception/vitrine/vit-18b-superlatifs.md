@@ -7,7 +7,7 @@
 | Origine | décision **N4** du chef (21 nov.), synthèse 14 (`docs/etude-marche/14-reprendre-et-depasser.md`, sur `etude/expertise-go4school`, #234) ; suite de [VIT-18](vit-18-textes-exacts.md) (#228, fusionnée) |
 | Branche | `fix/vit-18b-superlatifs`, depuis `origin/main` (`71b86df5`) |
 | Rédigé par | Claude Code (Opus 5.5), session de l'expertise, le 21 novembre 2026 |
-| **Validé** | **à valider** : la règle est celle de N4 ; les questions 1 à 3 (§ 5) vont au chef par l'outil de questions |
+| **Validé** | **par Claude20022002 le 21 novembre 2026**, par l'outil de questions : questions 1 à 3 (§ 5), chacune selon la proposition. La règle elle-même est celle de N4 |
 
 ## 1. Objet et critère de « terminé »
 
@@ -60,7 +60,7 @@ Dans `vitrine/tests/contenu.test.js`, à côté du test de garde de VIT-18 :
 - des limites de mot (`\b`) autour de « le seul », « the only », « the best », « leader » : sans elles, « Assemble seulement » serait refusé (vu pendant la recherche du § 3) ;
 - la phrase nouvelle du § 3 rejoint `PHRASES_EXACTES`.
 
-`contenu.test.js` fait aujourd'hui 117 lignes ; il en gagne une trentaine.
+`contenu.test.js` fait aujourd'hui 160 lignes ; il en gagne une trentaine, sous le repère de 300.
 
 ## 5. Questions au chef
 
@@ -68,9 +68,9 @@ Posées par l'outil de questions. **Ce que le chef tape dans « Autre » n'arriv
 
 | N° | Question | Proposition | Réponse du chef |
 |---|---|---|---|
-| 1 | La phrase du calcul (`emploi-du-temps.json` · `calcul.texte`, fr et en) | le texte « Après » du § 3 | *à poser* |
-| 2 | Le test refuse-t-il aussi les formes voisines des mots de N4 ? | oui : féminin et pluriel (« la seule », « les seuls », « les seules », « la meilleure », « les meilleurs », « les meilleures ») ; écritures de « n° 1 » (« n°1 », « nº 1 », « N° 1 », « numéro 1 », « numéro un ») et de « #1 » (« # 1 ») ; en anglais « No. 1 », « No 1 » | *à poser* |
-| 3 | « leader » : le site anglais dit « School leaders » pour la direction (sept fois) et « Leaderboard » pour le classement. Que refuse le test ? | le mot « leader » au singulier (fr et en), et « leaders du marché » / « market leaders » ; « School leaders », « its leaders » et « Leaderboard » restent | *à poser* |
+| 1 | La phrase du calcul (`emploi-du-temps.json` · `calcul.texte`, fr et en) | le texte « Après » du § 3 | **validé** (« Je valide ») |
+| 2 | Le test refuse-t-il aussi les formes voisines des mots de N4 ? | oui : féminin et pluriel (« la seule », « les seuls », « les seules », « la meilleure », « les meilleurs », « les meilleures ») ; écritures de « n° 1 » (« n°1 », « nº 1 », « N° 1 », « numéro 1 », « numéro un ») et de « #1 » (« # 1 ») ; en anglais « No. 1 », « No 1 » | **oui, toutes** |
+| 3 | « leader » : le site anglais dit « School leaders » pour la direction (sept fois) et « Leaderboard » pour le classement. Que refuse le test ? | le mot « leader » au singulier (fr et en), et « leaders du marché » / « market leaders » ; « School leaders », « its leaders » et « Leaderboard » restent | **validé** (le singulier et « du marché ») |
 
 ## 6. Sécurité et exigences produit
 
@@ -84,7 +84,7 @@ Posées par l'outil de questions. **Ce que le chef tape dans « Autre » n'arriv
 | Fichier | Ce qui change |
 |---|---|
 | `vitrine/tests/contenu.test.js` | le test des superlatifs, le test de la règle, la phrase exacte |
-| `vitrine/src/i18n/fr/emploi-du-temps.json`, `vitrine/src/i18n/en/emploi-du-temps.json` | `calcul.texte`, si la question 1 est validée |
+| `vitrine/src/i18n/fr/emploi-du-temps.json`, `vitrine/src/i18n/en/emploi-du-temps.json` | `calcul.texte` (question 1, validée) |
 | `docs/plan/modules/VIT-site-vitrine.md` | la ligne de VIT-18b |
 | `docs/sessions/2026-11-21-fix-vit-18b-superlatifs.md` | la fiche de session |
 
