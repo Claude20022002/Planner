@@ -115,6 +115,16 @@ Recherche du 4 novembre sur les comparateurs (Capterra, G2, GetApp, Software Adv
 | Assistance lente ou injoignable (Fedena, Odoo) | prévoir l'assistance (WhatsApp, délai de réponse) dans l'offre, comme les éditeurs marocains |
 | Double saisie MASSAR | import et export MASSAR, déjà recommandés au § 6 |
 
+## 8. Ajout du 21 novembre 2026 : Go4School
+
+Ajouté sur décision du chef (21 nov.), d'après l'[expertise de son site](13-expertise-go4school.md). Cette analyse du 4 novembre reste centrée sur le Maroc ; depuis, le plan ne suppose plus aucun pays (EP-5 généralisée, EP-18). La synthèse de toutes les études est dans [14-reprendre-et-depasser.md](14-reprendre-et-depasser.md).
+
+| Produit | Éditeur, pays | Cible | Emploi du temps | Prix publié | Mise en route |
+| --- | --- | --- | --- | --- | --- |
+| **Go4School** | FNT TECH SARL, Douala et Yaoundé (Cameroun) | maternelle, primaire, secondaire, complexes scolaires ; tutelles (diocèses, ONG) ; Cameroun d'abord, Afrique subsaharienne | « se remplit de cinq façons » ; au secondaire, grille générée à partir des souhaits des enseignants ; rien sur les règles ni les refus | sur devis ; IA et SMS en crédits prépayés par Mobile Money | « 24 à 48 heures », formation incluse |
+
+C'est une **quatrième famille**, avec PERIS SCHOOL ([09-failles-erp-scolaires.md](09-failles-erp-scolaires.md), branche `etude/failles-erp-scolaires`) : **l'ERP scolaire africain**, large (finances OHADA, paie, cantine, santé, transport), avec argent mobile, guichet et fonctionnement hors ligne annoncé. Il ne vise pas le supérieur.
+
 ## Sources
 
 - Skoolly : [skoolly.ma](https://skoolly.ma/), [tarifs](https://skoolly.ma/tarifs), [App Store](https://apps.apple.com/ma/app/skoolly/id6768355092)
