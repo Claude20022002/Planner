@@ -26,8 +26,8 @@ C'est un besoin réel des lycées professionnels, des CFA et de la formation pro
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| STA-01 | Offres de stage (espace Carrière) : reprendre ou fermer `b/offres-stage` | COU-07, S-1 | libre | M | — | à décider |
-| STA-02 | Conventions de stage, tuteur, présence en entreprise, jalons de l'apprentissage | — | 5 | M | STA-01, FOR-01 | reporté |
+| STA-01 | Offres de stage (espace Carrière) : reprendre ou fermer `b/offres-stage` | COU-07, S-1 | 3 | M | — | à décider |
+| STA-02 | Conventions de stage, tuteur, présence en entreprise, jalons de l'apprentissage | — | 7 | M | STA-01, FOR-01 | reporté |
 
 ## Critères de « terminé »
 

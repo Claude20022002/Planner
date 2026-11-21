@@ -1,0 +1,283 @@
+# Session du 2026-11-18 (5) · Coordination : reprise après la pause, relectures, UIX-11 et étude EP-18 · `doc/coordination-equipe`
+
+| | |
+|---|---|
+| Fait par | Claude Code (Opus 5.5), session de VS Code désignée coordinatrice par le chef |
+| Fiche précédente | [2026-11-18-doc-coordination-equipe-4.md](2026-11-18-doc-coordination-equipe-4.md) : passage |
+| Dossier de travail | `..\travaux-planner\coordination-equipe` |
+| Dernier commit | voir `git log -1` (commit de cette fiche) ; avant : `9342f37c` |
+
+## Objectif de la session
+
+Reprendre la coordination après la pause de 16 h 05 : tour d'état, boîtes, relecture de ce qui a fini depuis 16 h, `suivi.md` à l'état réel, files de la feuille de route, fiches de l'étude EP-18 et du tableau de bord de l'administration.
+
+## Fait
+
+- `git merge origin/main` sans conflit (#199, #205 à #209 et #207 entrés). Aucune autre session de coordination active (`coordination-agents` est la branche du 16 nov.).
+- **Boîtes** : 6 rapports de Codex (VIT-06) et 4 de l'agent de Cursor (QJE-01, parcours, VIT-07) lus et rangés dans `sortie\traites\`, avec 6 anciens rapports (16 et 17 nov.) déjà traités sur le fond. Trois consignes déposées :
+  - Cursor, 17 h 12 : plan de VIT-07 à corriger ;
+  - Codex, 17 h 12 : UIX-09 maintenant ;
+  - Codex, 17 h 16 : VIT-06 validé par le chef.
+- **Relectures** :
+  - **#207 (UIX-10a)**, fusionnée à 16 h 14 sans relecture du code : **conforme**. 7 tests de la charte, `generer.mjs --verifier` et `verifier-neutre.mjs` relancés ici, CI de `main` verte sur `5f053ebf`. Mission close ;
+  - **#210 (parcours vers minuit, agent de Cursor)** : **prête**. Seuls trois fichiers de test changent, le plan est validé par le chef, et la CI est entièrement verte (parcours en 23 min 45) ;
+  - **plan de VIT-07** (`fafd3f15`) : **à corriger**. Ses faits sont justes, mais EP-18 et la règle Massar manquent : la consigne de 16 h 05 n'avait pas été lue ;
+  - **plan de VIT-06** (`5a7a0067`) : complet, sans IP dans le diff. **Validé par le chef** ;
+  - **plan de VIT-08** : déjà validé par le chef (`5b62f702`), constat seulement.
+- **Décisions du chef** (outil de questions, vers 17 h 15) : UIX-11 refait et complété, par Claude de VS Code après UIX-10b ; étude EP-18 par une nouvelle session Claude ; plan de VIT-06 validé.
+- **Fiches de mission** :
+  - [etude-ep18-faible-equipement](../plan/missions/etude-ep18-faible-equipement.md) ;
+  - [uix-11-tableau-de-bord](../plan/missions/uix-11-tableau-de-bord.md) ;
+  - [etude-studylib](../plan/missions/etude-studylib.md) corrigée : aucun prêt de livres dans StudyLib.
+  - Les fiches VIT-06, VIT-07, VIT-08, UIX-10a et sortie de ClassQuiz ont leur ligne de suivi.
+- **`suivi.md`** à l'état réel :
+  - en-tête conforme à la règle du 18 nov. ;
+  - « Missions en cours » refait (#199 et #205 retirées, une ligne vide qui coupait le tableau supprimée) ;
+  - lignes UIX-06b, UIX-06c, UIX-10, UIX-11, VIT-06, VIT-07 et VIT-08 ajoutées, et QJE-01 passée à « fait » ;
+  - liste des PR ouvertes corrigée.
+- **Feuille de route** : retour du coordinateur, files mises à jour, UIX-11 dans la file de Claude de VS Code, une section pour la nouvelle session Claude.
+- **`decisions.md`** : dix lignes pour cette reprise.
+
+## Ajout de 17 h 45 : les illustrations du site (VIT-09)
+
+#210 est fusionnée, et #211 (cette branche) est poussée. Le chef trouve que **le site manque d'illustrations**. Ses choix, faits par l'outil de questions :
+- des dessins en code sur **toutes les pages** ;
+- quelques **captures réelles sans nom d'école** ;
+- **la première section de chaque page améliorée** ;
+- confiée à Claude de VS Code, après VIT-08 ;
+- la **7e condition** de la mise en ligne.
+
+Fait :
+- la fiche [vit-09-illustrations](../plan/missions/vit-09-illustrations.md) ;
+- la 7e condition dans la fiche de VIT-06 et dans la feuille de route ;
+- `suivi.md` et `decisions.md` à jour ;
+- deux consignes de 17 h 48 : Codex intègre la 7e condition au plan de VIT-06, et l'agent de Cursor ne dessine rien dans VIT-07.
+
+**Constat** : les données des parcours portent « hestim » dans leurs adresses e-mail. Les captures demandent donc des données neutres à part. Le chef voit chaque capture avant le commit.
+
+## Tour de 18 h 30
+
+#211 est verte (la relance a passé le 429). Nouvelles PR : #212 (plan de VIT-06), #213 (UIX-09), #214 (VIT-07), #215 (VSC-01). Dix rapports lus et rangés.
+
+| PR | Verdict |
+|---|---|
+| #212, plan de VIT-06 | prête, après l'ajout des conditions 8 et 9 |
+| #213, UIX-09 | bonne, CI verte. Le chef demande d'ajouter la mention ISC de Lucide au `LICENSE` des icônes, puis il fusionne |
+| #214, VIT-07 | **prête** : les deux règles du chef sont tenues, le périmètre aussi, et la CI est entièrement verte |
+| #215, VSC-01 | **à corriger**. Elle modifie `suivi.md`, n'a pas de section EP-18, et fait du « code Massar » le seul identifiant national. Les avis des groupes A et B sont au chef |
+
+Les consignes de 17 h 55 (VIT-10 pour l'agent de Cursor, VIT-11 pour Codex) venaient de **Claude de VS Code, à la demande du chef**, après sa lecture du site d'OpenEduCat. Elles sont inscrites. Choix du chef :
+- VIT-10 et VIT-11 deviennent les **conditions 8 et 9** ;
+- VIT-11 passe après VSC-01 ;
+- l'ordre sur le site est **VIT-07, VIT-10, VIT-11, puis VIT-09**.
+
+Fiches : [vit-10-pages-par-role](../plan/missions/vit-10-pages-par-role.md) et [vit-11-catalogue-faq](../plan/missions/vit-11-catalogue-faq.md). Consignes de 18 h 40 dans les deux boîtes.
+
+**Constat pour VIT-08** : `vitrine/src/i18n/fr/accueil.json` (clés `description` et le texte de l'appel) ne présente l'appel que par QR code. L'accueil est à VIT-08, qui doit y appliquer EP-18 : l'appel aussi à la main.
+
+## Tour de 19 h 15
+
+#214 est fusionnée (18 h 53). Deux rapports sont lus et rangés.
+
+- **VSC-01** : les corrections sont **bonnes**. La fusion attend l'avis des groupes A et B.
+- **Codex** n'a pas pu écrire sur UIX-09 et VIT-06 : son outil de contrôle limite la session à VSC-01. Le chef doit l'autoriser.
+- **La page des dix jeux** (validée par le chef) a été commitée et poussée après la fusion de #214. Elle n'est dans aucune PR. Il faut retirer « budget en MAD », puis ouvrir une nouvelle PR depuis la même branche.
+- **Les jeux eux-mêmes** comptent en MAD (`stock-pilot.js`, `budget-erp.js`). Le point est relevé dans la fiche de l'étude EP-18.
+
+## Décisions de 19 h 20
+
+#217 est ouverte (la page des dix jeux). « en MAD » y est retiré en local (`7de7ae3b`), à pousser. #216 (VIT-08) est ouverte, relecture au prochain tour.
+
+Le chef a fait deux choix :
+- **les jeux se rangent par niveau, puis par filière**, sur le site et dans l'application, et seulement là où il y a des jeux. C'est QJE-15, une exception hors chantier : [fiche](../plan/missions/qje-15-jeux-par-niveau.md), confiée à l'agent de Cursor après VIT-10 ;
+- **les fonctionnalités du site deviennent des apps**, à quatre endroits : l'accueil, le menu « Fonctions », l'en-tête de chaque page et le catalogue. C'est ajouté à VIT-09 (Claude de VS Code). Le registre de VIT-11 porte l'app de chaque entrée.
+
+## Tour de 20 h
+
+- **Prêtes** : #217 (CI entièrement verte) ; #212 et #213, quand leurs parcours seront verts.
+- **#216 (VIT-08) à corriger** : EP-18 (l'appel n'est présenté que par QR code, dans la vidéo et sur l'accueil), et l'onglet « Activités », qui est masqué dans l'application.
+- **VIT-10** : le plan est validé par le chef, mais la validation n'est pas commitée, et du code est déjà en cours. Consigne : commiter la validation seule d'abord.
+- **VIT-11** : le plan est validé (le chef pour les questions 1, 2 et 4 à 10, le coordinateur pour la 3). Le code attend la fusion de VIT-10.
+- Consignes de 20 h dans les deux boîtes.
+
+## Tour de 20 h 40 : où en est le site
+
+- **Vertes et prêtes** : #213, #212, #211.
+- **Prêtes quand leur CI est verte** : #220 (les logos officiels et la charte en version 2, par Claude de VS Code), puis #219 (VIT-10).
+- **#216** : rendu final fait, mais sans les corrections de 20 h. Elle est à corriger, puis à rendre de nouveau.
+- **#218** : le plan de VIT-11 est validé.
+- Décisions du chef : VIT-12 (les pages légales) confiée à une nouvelle session Claude ; le code de VIT-06 se fait maintenant.
+- Conditions de la mise en ligne :
+  - **remplies ou sur le point de l'être** : la 3 (#220), la 5 (VIT-07), la 8 (#219) ;
+  - **à corriger** : la 6 (#216) ;
+  - **à venir** : la 1 (l'audit, le 27 nov.), la 2 (VIT-12), la 4 (le code de VIT-06), la 7 (VIT-09, en dernier), la 9 (le code de VIT-11).
+
+## 21 h : ce qui reste à coder sur le site, et la répartition
+
+Le chef a comparé le site à celui d'OpenEduCat. Il ajoute une **condition 10**, qui réunit quatre éléments :
+- [VIT-10b](../plan/missions/vit-10b-avant-avec-faq.md) : avant → avec et FAQ par rôle ;
+- [VIT-13](../plan/missions/vit-13-pourquoi-et-types.md) : « Pourquoi Planner » et les fonctionnalités par type d'établissement ;
+- le méga-menu « Fonctions » par catégorie, dans VIT-11 ;
+- les logos des modules, dans VIT-09.
+
+Sont écartés, faute de rien de vrai pour les remplir : la bande de chiffres, les témoignages, les badges, le blog, l'essai gratuit, les tarifs et la fenêtre de discussion. « Mon compte » et « code source vérifiable » viendront plus tard.
+
+**Ordre sur le site** : VIT-10, VIT-10b, VIT-11, VIT-12, VIT-13, puis VIT-09 en dernier.
+
+| Agent | Ce qu'il reste à faire sur le site, dans l'ordre |
+|---|---|
+| Claude de VS Code | corriger #216 et refaire le rendu ; puis VIT-09 : illustrations, fonctionnalités en apps, logos des modules, première section de chaque page |
+| Codex | le code de VIT-06 (image, en-têtes, publication) ; puis le code de VIT-11 (catalogue, FAQ, méga-menu), après #219 |
+| Agent de Cursor | #219 ; VIT-10b ; VIT-13 ; puis QJE-15 ; l'audit, le 27 nov. ou après |
+| Nouvelle session Claude | VIT-12, les pages légales |
+
+## 21 h 20 : le site d'après OpenEduCat, suite, et les prompts des sessions Claude
+
+Le relevé des chemins d'OpenEduCat est dans [11-chemins-site-openeducat.md](../etude-marche/11-chemins-site-openeducat.md). Décisions du chef :
+- [VIT-14](../plan/missions/vit-14-comparatif.md) : un comparatif par approche, sans nommer de concurrent ;
+- [VIT-15](../plan/missions/vit-15-pages-modules.md) : une page par module, avec le bloc « selon votre équipement » ;
+- [VIT-16](../plan/missions/vit-16-contact-a-propos.md) : les pages Contact et À propos ;
+- de vrais logos illustrés et des icônes vivantes (VIT-09a) ;
+- une [expertise](../plan/missions/expertise-site-vitrine.md) du site par une nouvelle session ;
+- les études de cas viendront plus tard.
+
+Côté fusions : #212, #213 et #217 sont fusionnées. #219 et #220 sont vertes, mais pas encore fusionnées. #216 est à corriger.
+
+### Prompt 1 · Claude de VS Code (la session de la charte)
+
+```text
+Le coordinateur relaie les décisions du chef du 18 nov. (21 h 15). Ta file, dans l'ordre :
+1) #216 (VIT-08) : corrige avant tout. a) EP-18 : la scène de l'appel (« Le QR code change toutes les 30 secondes »),
+   la description de l'accueil et la section « Appel » de accueil.json ne montrent que le QR code ; dis aussi l'appel à la main
+   (présent, en retard, absent). b) La scène du mobile montre l'onglet « Activités », masqué dans l'application (href: null) :
+   montre les onglets visibles. Puis refais le rendu final (les logos officiels sont posés), commite les vidéos, rapport au chef.
+2) VIT-09a, nouvelle (docs/plan/missions/vit-09-illustrations.md, ligne de suivi du 18 nov. 21 h 20) : la bibliothèque de
+   vrais logos illustrés, un par module (multicolores, en léger volume, charte v2, SVG, lisibles de 24 à 96 px, clair et sombre ;
+   inspirés d'OpenEduCat et d'Apple sans rien copier), et d'icônes vivantes pour les boutons et les liens (animées au survol
+   et au focus, coupées si moins de mouvement est demandé). Source unique (shared/), sans toucher les pages. Plan court au chef,
+   avec la question : l'application les prend-elle aussi avec UIX-10b ?
+3) VIT-09b, en dernier sur le site (après VIT-10b, VIT-11, VIT-12, VIT-16, VIT-13, VIT-14, VIT-15) : illustrations, captures
+   neutres montrées au chef, première section de chaque page, logos et icônes posés partout.
+4) Puis UIX-10b, UIX-11, UIX-06c, QJE-14 (plan), l'étude StudyLib, UIX-10d.
+Fiches et feuille de route sur doc/coordination-equipe. Ne modifie pas docs/plan/suivi.md. Fiche de session à jour ; jamais de git push.
+```
+
+### Prompt 2 · nouvelle session Claude : pages légales, Contact et À propos
+
+```text
+Tu travailles sur Planner. Tes missions : VIT-12 (mentions légales et confidentialité du site vitrine), puis VIT-16 (page Contact
+complète et page À propos), conditions 2 et 10 de sa mise en ligne. Lis AGENTS.md, docs/plan/README.md (EP-5, EP-13, EP-18),
+docs/conception/vitrine/vit-vitrine.md (§ 2), docs/etude-marche/11-chemins-site-openeducat.md (§ 2, leur page Contact),
+puis les fiches docs/plan/missions/vit-12-pages-legales.md et vit-16-contact-a-propos.md (branche doc/coordination-equipe tant qu'elle n'est pas fusionnée).
+Commence par les questions des deux fiches, au chef, par l'outil de questions, chacune avec ta proposition : aucune information
+d'identité ni coordonnée n'est supposée, et le chef dit ce qui peut être publié (le dépôt est public).
+Puis un plan court par mission, avec le texte complet des pages ; commite chacun seul ; le chef valide le plan et chaque texte.
+Le code après la fusion de VIT-10 (#219), une branche par mission depuis origin/main. Pas de formulaire (VIT-02 plus tard).
+Ne modifie pas docs/plan/suivi.md. Fiche de session ; tout est commité ; jamais de git push.
+```
+
+### Prompt 3 · nouvelle session Claude : le comparatif (VIT-14)
+
+Le prompt est dans la fiche [vit-14-comparatif](../plan/missions/vit-14-comparatif.md), § « Prompt à donner à l'agent ».
+
+### Prompt 4 · nouvelle session Claude : l'expertise du site
+
+Le prompt est dans la fiche [expertise-site-vitrine](../plan/missions/expertise-site-vitrine.md), § « Prompt à donner à l'agent ».
+
+### Prompt 5 · nouvelle session Claude : l'étude EP-18
+
+Le prompt est dans la fiche [etude-ep18-faible-equipement](../plan/missions/etude-ep18-faible-equipement.md), § « Prompt à donner à l'agent ».
+
+## Écarts trouvés
+
+| Écart | Ce qu'il faut |
+|---|---|
+| `pla-03b-schema-depart` : trois fichiers modifiés, **non commités depuis le 15 nov.** (`DEPLOIEMENT.md`, `baseNeuve.test.js`, `contexteEtablissement.test.js`) | au chef : rouvrir la session PLA-03b (Fable 5.2) pour les commiter ou dire qu'ils sont à jeter |
+| `feat/mot-13-coupure-fine` (`b9f1fbf3`) : finie le 15 nov., **jamais poussée** ; elle modifie `suivi.md`, d'avant la règle | à mettre à jour depuis `main`, en gardant le `suivi.md` de `main`, puis à relire. C'est l'un des verrous de la fermeture de MOT |
+| La consigne de 16 h 05 à l'agent de Cursor était restée dans `entree\` quand il a écrit son plan | rappelé dans la consigne de 17 h 12 ; à surveiller : l'agent doit lire sa boîte avant chaque plan |
+| La ligne UIX-10 du module UIX dit encore « UIX-10a codée, PR à ouvrir » | à corriger par UIX-10b (Claude de VS Code) |
+| CI rouge sur `db0e3de7` (`main`, 15 h 38), puis sur #211 (17 h 33) : Maven Central répond 429 pendant la construction de l'image du solveur dans la tâche des parcours | deux fois en deux heures : ce n'est plus un accident. Relancer la tâche ; proposer au chef un correctif court (cache Maven de la CI pour l'image du solveur), plan à valider |
+
+## État des chantiers
+
+**MOT n'est pas fini.** Il reste :
+- MOT-13c, avec ADM-02 ;
+- le refus de l'activation fine, non poussé ;
+- le collège de MOT-02 ;
+- MOT-04.
+
+L'ouverture de VSC n'est donc pas encore à proposer. VSC-01, la conception, reste au n° 4 de la file de Codex.
+
+## Questions encore ouvertes
+
+| N° | Question | À qui |
+|---|---|---|
+| 1 | Les SVG officiels des logos (condition 3 de VIT-06) | chef |
+| 2 | Le texte des mentions légales et de la confidentialité (condition 2) : l'équipe le rédige, le chef le valide. Qui le rédige ? | chef |
+| 3 | La prochaine mission d'Alexis (étape 4) | chef |
+| 4 | Qui met `feat/mot-13-coupure-fine` à jour (proposition : l'agent de Cursor, tâche bornée) ; et le sort des fichiers non commités de PLA-03b | chef |
+| 5 | Les trois contextes de l'étude EP-18 (fiche, question 1) | chef, posée par la nouvelle session |
+
+## Commandes pour le chef
+
+```powershell
+git -C "..\travaux-planner\coordination-equipe" push
+gh pr create --base main --head doc/coordination-equipe --title "Coordination du 18 nov., reprise : relectures, suivi.md à l'état réel, UIX-11 et étude EP-18" --fill
+```
+
+Une minute après le push : `gh pr checks <n> --watch`, puis `gh pr merge <n> --merge` si tout est vert. #210 est fusionnée. Après le commit de VIT-09, la branche est à repousser : #211 se met à jour, et sa CI repart.
+
+Ensuite :
+- **Codex** : « lis ta boîte » (VIT-06 : ligne « Validé » et secrets, puis UIX-09) ;
+- **Agent de Cursor** : « lis ta boîte » (VIT-07 : plan à corriger) ;
+- **Claude de VS Code** : le prompt ci-dessous ;
+- **Nouvelle session Claude** (Fable 5.2, sinon Opus 5.5) : le prompt de la fiche [etude-ep18-faible-equipement](../plan/missions/etude-ep18-faible-equipement.md), une fois la PR de coordination fusionnée, ou en lui donnant la branche `doc/coordination-equipe`.
+
+## Prompt pour Claude de VS Code
+
+```text
+Le coordinateur a repris le 18 nov. à 17 h. Ta file est dans docs/plan/feuille-de-route.md (branche doc/coordination-equipe,
+..\travaux-planner\coordination-equipe, jusqu'à sa fusion).
+1) VIT-08 (#216) : à corriger avant le rendu final. a) EP-18 : la scène de l'appel (« Le QR code change toutes les 30 secondes »),
+   la description de l'accueil et la section « Appel » de accueil.json ne présentent que le QR code ; dis aussi l'appel à la main
+   (présent, en retard, absent). b) La scène du mobile montre l'onglet « Activités », masqué dans l'application (href: null) :
+   montre les onglets visibles (Tableau, Semaine, Scanner, Bibliothèque, Compte). Le rendu final attend les SVG officiels.
+2) Puis UIX-10b (plan court, après la fusion d'UIX-09). Dans UIX-10b, corrige la ligne UIX-10 de docs/plan/modules/UIX-interface.md :
+   « UIX-10a faite (#207, fusionnée le 18 nov.) ».
+2 bis) Puis VIT-09, nouvelle mission (condition 7) : les illustrations de toutes les pages du site, des captures sans nom d'école,
+   la première section de chaque page améliorée (fiche docs/plan/missions/vit-09-illustrations.md). Plan court au chef après VIT-08 ;
+   le code en dernier sur le site, après la fusion de VIT-07, VIT-10 et VIT-11. Chaque capture est montrée au chef avant le commit.
+   VIT-09 comprend aussi (chef, 19 h 20) les fonctionnalités représentées comme des apps : section de l'accueil, menu « Fonctions »,
+   en-tête de chaque page de fonction, catalogue de VIT-11 ; les mêmes icônes que la grille de l'application (UIX-09).
+3) Puis UIX-11, nouvelle mission : le tableau de bord de l'administration, refait à la charte et complété des chiffres qui existent
+   (fiche docs/plan/missions/uix-11-tableau-de-bord.md, choix du chef du 18 nov.).
+   VIT-09 comprend aussi (chef, 20 h 55) la création des logos des modules : une icône dessinée par app ou module,
+   charte v2, source unique, utilisée sur tout le site ; question au chef : l'application les prend-elle aussi avec UIX-10b ?
+4) Puis UIX-06c, QJE-14 (plan), l'étude StudyLib (fiche corrigée : aucun prêt de livres dans StudyLib), UIX-10d.
+Le coordinateur valide de nouveau les plans S et M sans migration, sécurité, donnée d'élève ni choix de produit ; le reste va au chef.
+Ne modifie pas docs/plan/suivi.md. Fiche de session à jour ; tout est commité ; jamais de git push.
+```
+
+## Prompt de reprise du coordinateur
+
+```text
+Tu es le coordinateur des agents de Planner (Codex, agent de Cursor, Claude de VS Code, une session Claude pour l'étude EP-18,
+et Alexis avec son agent). Tu reprends sur la branche doc/coordination-equipe, dans ..\travaux-planner\coordination-equipe
+(git fetch puis git merge origin/main ; garde toutes les lignes de decisions.md ; pour suivi.md, garde les deux côtés puis remets-le à l'état réel).
+Une seule session de coordination à la fois : si une autre tourne, arrête-toi et demande au chef.
+Lis AGENTS.md, docs/plan/README.md (EP-5, EP-18), docs/plan/suivi.md (« Missions en cours »), docs/plan/feuille-de-route.md,
+docs/plan/decisions.md (sections du 18 nov.), les skills coordination, equipe et relecture-branche,
+puis cette fiche (docs/sessions/2026-11-18-doc-coordination-equipe-5.md).
+Commence par le tour d'état (skill coordination, § 1), boîtes comprises (..\travaux-planner\boites\codex et cursor).
+Attendu depuis 17 h 30 :
+- Codex : la ligne « Validé » de VIT-06 avec les secrets, puis UIX-09 (fusion de main, verrou, axe-core) ;
+- agent de Cursor : le plan de VIT-07 corrigé (EP-18, Massar), qui va au chef ;
+- Claude de VS Code : le code de VIT-08, puis le plan de VIT-09 (illustrations, condition 7) ;
+- nouvelle session Claude : les contextes de l'étude EP-18.
+Relis chaque branche finie (skill relecture-branche) et reporte les états dans suivi.md (toi seul le modifies).
+Suis les écarts : fichiers non commités de PLA-03b, feat/mot-13-coupure-fine à mettre à jour, puis à relire.
+Propose au chef l'ouverture de VSC quand MOT sera fini (reste : 13c, refus de l'activation fine, collège de MOT-02, MOT-04).
+Règles : tu ne codes aucun lot ; plan validé avant le code ; questions avant toute supposition (outil de questions) ;
+relis decisions.md et docs/archives/plans/ avant de fixer le périmètre d'une mission ; chaque décision dans decisions.md ;
+après un push, attends une minute avant gh pr checks --watch ; jamais de git push.
+```

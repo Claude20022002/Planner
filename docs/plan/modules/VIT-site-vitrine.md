@@ -30,10 +30,11 @@
 | VIT-01 | Conception : arborescence, messages, maquettes, choix technique (site statique séparé de l'application, rapide, référencé), hébergement en conteneur | SP-1 | libre | M | Q-11 | à faire |
 | VIT-02 | Une page et un formulaire de contact : nom, école, ville, effectif, besoin, consentement ; WhatsApp et courriel ; accusé de réception ; demandes enregistrées et suivies | SP-3 réduit | libre | M | VIT-01, textes légaux | à faire |
 | VIT-03 | Centre d'aide : guides par rôle, questions fréquentes, vidéos courtes, liens depuis l'aide de l'application | SP-4 | libre | M | VIT-01 | à faire |
-| VIT-04 | Page d'état du service et journal des nouveautés de chaque version | SP-5 | libre | S | EXP-05 | à faire |
+| VIT-04 | Page d'état du service et journal des nouveautés de chaque version | SP-5 | 3 | S | EXP-05 | à faire |
 | VIT-05 | Vitrine complète : fonctions par module, solutions par type d'école, sécurité et données, tarifs ; français, puis arabe et anglais | SP-2 | quand la vente reprend | L | VEN | préparation dégelée le 18 nov. : accueil et pages de fonctions, sans tarifs ni mise en ligne ([plan](../../conception/vitrine/vit-vitrine.md)) |
 | VIT-07 | Le site présente toutes les applications : quiz et jeux, bibliothèque, cours et annonces, application | — | libre | M | VIT-01 | en cours (`feat/vit-07-contenu-complet`) |
 | VIT-10 | Pages par rôle, menu « Solutions » ouvrant, pied de page en colonnes | — | libre | M | VIT-07 | en cours (`feat/vit-10-pages-par-role`) |
+| VIT-19 | Contrôle d'EP-19 dans la CI du site : une page pèse au plus 200 Ko transférés, hors média lancé à la demande ; la CI échoue au-delà (N1) | — (décision du chef du 21 nov.) | 3 | S | VIT-17 | à faire |
 | VIT-10b | Sur les pages par rôle, « avant → avec Planner » et une FAQ | — | libre | S | VIT-10 | en cours (`feat/vit-10b-avant-avec-faq`) |
 
 ## Critères de « terminé »
@@ -43,6 +44,7 @@
   - les données recueillies sont listées dans la politique de confidentialité, relue par le juriste (loi 09-08) ;
   - aucune promesse au-delà de ce qui existe.
 - **VIT-04** : la page d'état lit la sonde de supervision. Elle ne lit aucune donnée d'école.
+- **VIT-19** : la CI du site échoue quand une page dépasse 200 Ko transférés (hors média lancé à la demande), et le montre sur une page gonflée exprès ; **VIT-04 passe avant VIT-03**, juste après la mise en ligne (N5).
 
 ## À trancher avant VIT-02
 

@@ -36,11 +36,11 @@ Ce n'est pas un second Moodle. Le quotidien visé est celui d'une classe : suppo
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | COU-01 | Sondage de l'enseignant à sa classe | EC-9 | libre | S | — | fait (#148) |
-| COU-02 | Devoirs avec rendu de fichier, après une revue de sécurité (taille, type, antivirus, stockage par StudyLib) | EC-2 | 4 | L | BIB-01 | à faire |
-| COU-03 | Commentaires sur un support ou un devoir | EC-6 | 4 | M | COU-02 | à faire |
-| COU-04 | Questions partagées de la classe | EC-7 | 4 | M | — | à faire |
-| COU-05 | « Vu » : l'enseignant sait qui a ouvert un support ou une annonce | EC-8 | 4 | M | — | à faire |
-| COU-06 | Export des notes d'un devoir | R-13 | libre | S | COU-02 | à faire |
+| COU-02 | Devoirs avec rendu de fichier, après une revue de sécurité (taille, type, antivirus, stockage par StudyLib) | EC-2 | 3 | L | BIB-01 | à faire |
+| COU-03 | Commentaires sur un support ou un devoir | EC-6 | 3 | M | COU-02 | à faire |
+| COU-04 | Questions partagées de la classe | EC-7 | 3 | M | — | à faire |
+| COU-05 | « Vu » : l'enseignant sait qui a ouvert un support ou une annonce | EC-8 | 3 | M | — | à faire |
+| COU-06 | Export des notes d'un devoir | R-13 | 3 | S | COU-02 | à faire |
 | COU-08 | Messagerie, si les règles de modération sont tranchées (Q-17) | EC-10 | 5 | L | Q-17 | conditionnel |
 | COU-09 | LTI : ouvrir un outil extérieur dans l'espace de cours | EC-12 | — | L | — | reporté |
 
@@ -52,6 +52,7 @@ Ce n'est pas un second Moodle. Le quotidien visé est celui d'une classe : suppo
   - le rendu tardif est marqué ;
   - un parcours complet le prouve.
 - **COU-05** : le « vu » ne s'affiche qu'à l'enseignant de la classe, jamais aux autres élèves.
+- **Toute fonction qui fait télécharger un support ou un document** : le poids est affiché avant le téléchargement, et le téléchargement reprend après une coupure (N3, décision du chef du 21 nov. ; R10 de la [synthèse des concurrents](../../etude-marche/14-reprendre-et-depasser.md)).
 
 ## Exigences produit
 

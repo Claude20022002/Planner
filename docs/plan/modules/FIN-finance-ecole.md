@@ -24,8 +24,8 @@ C'est ce qu'une école privée demande le plus après les notes. L'argent **de P
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| FIN-01 | Frais, échéanciers, caisse, reçus bilingues numérotés sans trou ; paiement par élève ou par famille ; colonne `devise` dès le départ | F-14 | 4 | XL | VSC-02, VEN-02 | à faire |
-| FIN-02 | Relances, impayés, export comptable (EP-5) | F-14 | 4 | L | FIN-01 | à faire |
+| FIN-01 | Frais, échéanciers, caisse, reçus bilingues numérotés sans trou ; paiement par élève ou par famille ; colonne `devise` dès le départ | F-14 | 3 | XL | VSC-02, VEN-02 | à faire |
+| FIN-02 | Relances, impayés, export comptable (EP-5) | F-14 | 3 | L | FIN-01 | à faire |
 
 FIN-03 est devenue **RHP-01** le 13 novembre ([RHP](RHP-personnel-paie.md)) ; son numéro ne resservira pas.
 

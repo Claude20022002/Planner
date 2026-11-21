@@ -19,9 +19,9 @@ Faut-il la **garder en Laravel**, en lui appliquant la charte par des variables 
 
 ## Ce que l'étude doit établir
 
-1. **Ce que fait StudyLib**, écran par écran et rôle par rôle : catalogue, emprunts, dépôts de fichiers, recherche, liens avec l'espace de cours et le mobile.
+1. **Ce que fait StudyLib**, écran par écran et rôle par rôle, d'après son code seulement : documents rangés par filière et par module, dépôts et modération, téléchargements et notes, recherche, avis de stage, idées de projet, événements, liens avec l'espace de cours et le mobile. *(Corrigé le 18 nov. à 17 h 30 : la fiche parlait de « catalogue » et d'« emprunts ». En lisant StudyLib pour VIT-07, l'agent de Cursor n'y a trouvé aucun prêt de livres. L'étude le confirme ou le dément, avec les fichiers.)*
 2. **Les deux voies chiffrées** : le travail en tailles du plan (S, M, L, XL), le risque, et ce qui disparaît. Pour la voie « reconstruire », ce sont une pile PHP, une image, une base et une identité à part. Pour la voie « garder », c'est BIB-02 dans Laravel et les mises à jour de PHP.
-3. **La reprise des données de l'école pilote** : livres, emprunts, fichiers dans MinIO, index Meilisearch. Comment on la vérifie, et comment on revient en arrière.
+3. **La reprise des données de l'école pilote** : les tables de sa base `studylib`, les fichiers dans MinIO, l'index Meilisearch. Comment on la vérifie, et comment on revient en arrière.
 4. **Le sort de BIB-01 et BIB-02**, et des canaux I-4 et I-5.
 5. **Une recommandation**, et ce qu'il faudrait décider avant tout travail sur BIB-02.
 
@@ -45,3 +45,4 @@ Pose tes questions au chef avant toute supposition. Ne modifie pas docs/plan/sui
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 13 h 40 | fiche écrite, sur décision du chef | — |
+| 2026-11-18 17 h 30 | points 1 et 3 corrigés : aucun prêt de livres relevé dans StudyLib (plan court de VIT-07, `fafd3f15`) | — |

@@ -26,8 +26,8 @@ L'inventaire relève de faux résultats et des diplômes non reconnus dans plusi
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| DOC-01 | Certificats de scolarité, attestations et relevés, avec un code de vérification ; modèles par école | — | 5 | M | VSC-02 | à faire |
-| DOC-02 | Diplômes vérifiables : page publique de vérification (elle ne montre que ce que l'école autorise), archivage, révocation | — | 5 | M | DOC-01, VSC-04 | à faire |
+| DOC-01 | Certificats de scolarité, attestations et relevés, avec un code de vérification ; modèles par école | — | 3 | M | VSC-02 | à faire |
+| DOC-02 | Diplômes vérifiables : page publique de vérification (elle ne montre que ce que l'école autorise), archivage, révocation | — | 3 | M | DOC-01, VSC-04 | à faire |
 
 ## Critères de « terminé »
 

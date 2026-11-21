@@ -23,8 +23,8 @@ Un tableau de bord ne vaut que ce que vaut la saisie : PIL ne montre que des chi
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| PIL-01 | Trésorerie : encaissé, attendu, en retard par classe et par mois ; prévision | — | 5 | M | FIN-02, PAI-01 | reporté |
-| PIL-02 | Personnes : présence des enseignants, avancement de la saisie des notes, somme due aux vacataires | — | 5 | M | RHP-03, VSC-04 | reporté |
+| PIL-01 | Trésorerie : encaissé, attendu, en retard par classe et par mois ; prévision | — | 7 | M | FIN-02, PAI-01 | reporté |
+| PIL-02 | Personnes : présence des enseignants, avancement de la saisie des notes, somme due aux vacataires | — | 7 | M | RHP-03, VSC-04 | reporté |
 
 ## Critères de « terminé »
 

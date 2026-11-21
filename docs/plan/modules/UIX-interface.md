@@ -28,15 +28,15 @@
 |---|---|---|---|---|---|---|
 | UIX-01 | Socle neutre : thème neutre, état « en configuration », école fictive, écriture de droite à gauche préparée | SN-1 à SN-5 | 2 | L | — | conçu, à coder |
 | UIX-01a | Accueil des applications et navigation web inspirée d’Odoo, sur les fonctions existantes | — | exception du 15 nov. | M | — | fait : #184 fusionnée, 43 parcours réussis |
-| UIX-02 | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et non cours, trimestre et non semestre…) | F-04 (écrans) | 3 | M | MOT-05 | à faire |
-| UIX-03 | Accessibilité AA : axe-core sans violation dans les parcours | M-13 | libre | M | — | en partie |
-| UIX-04 | Arabe complet : site, application et documents PDF, de droite à gauche ; **prouver d'abord le rendu arabe des PDF** (jsPDF) | F-16 | 4 | XL | UIX-01 | à faire |
-| UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | libre | M | — | à faire |
-| UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en partie : UIX-06a fusionnée, UIX-06b en cours |
+| UIX-02 | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et non cours, trimestre et non semestre…) | F-04 (écrans) | 5 | M | MOT-05 | à faire |
+| UIX-03 | Accessibilité AA : axe-core sans violation dans les parcours | M-13 | 3 | M | — | en partie |
+| UIX-04 | Arabe complet : site, application et documents PDF, de droite à gauche ; **prouver d'abord le rendu arabe des PDF** (jsPDF) | F-16 | 6 | XL | UIX-01 | à faire |
+| UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | 3 | M | — | à faire |
+| UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | 3 | M | UIX-01 (pilote visuel découplé) | en partie : UIX-06a fusionnée, UIX-06b en cours |
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | fait : #185 fusionnée le 16 novembre, 49 parcours réussis |
 | UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception validée | L | UIX-06a faite | en cours, R1 vérifié localement |
 | UIX-09 | Grille d'applications façon iCloud : tuiles aux coins arrondis, icônes Lucide animées, apparition des tuiles, recherche ; catalogue et droits inchangés ([plan](../../conception/interface/uix-09-grille-applications.md)) | EP-2, EP-11, EP-16, EP-17 | libre | M | UIX-01a | implémentée, relecture et CI attendues |
-| UIX-10 | Charte commune à toutes les plateformes (web et Studio quiz, mobile, jeux, StudyLib), d'après le site vitrine : une source de jetons (`shared/charte/`), un générateur, puis une fonction par plateforme, UIX-10a à UIX-10f (UIX-10g, ClassQuiz, retirée le 18 nov.) ([plan](../../conception/interface/uix-10-charte-commune.md)) | — | exception du 18 nov. | L | — | plan validé (chef, 18 nov.) ; UIX-10a codée le 18 nov. (`shared/charte/`, `feat/uix-10a-source-charte`), PR à ouvrir ; ensuite UIX-10b |
+| UIX-10 | Charte commune à toutes les plateformes (web et Studio quiz, mobile, jeux, StudyLib), d'après le site vitrine : une source de jetons (`shared/charte/`), un générateur, puis une fonction par plateforme, UIX-10a à UIX-10f (UIX-10g, ClassQuiz, retirée le 18 nov.) ([plan](../../conception/interface/uix-10-charte-commune.md)) | — | 3 | L | — | plan validé (chef, 18 nov.) ; UIX-10a codée le 18 nov. (`shared/charte/`, `feat/uix-10a-source-charte`), PR à ouvrir ; ensuite UIX-10b |
 
 ## Critères de « terminé »
 

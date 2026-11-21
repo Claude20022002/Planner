@@ -336,3 +336,166 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Chantier VSC** : il s'ouvre dès que MOT se ferme. VSC-01 (conception du modèle du scolaire) commence avant, chez Codex | chef |
 | **Pendant la pause du coordinateur**, le chef valide tous les plans et ne fusionne qu'une PR entièrement verte, avec le rapport de l'agent. Chaque agent suit sa file de la feuille de route | chef |
 | **#205 (Alexis) validée** : quatre routes des jeux répondent 404 « Module introuvable » hors des classes de l'enseignant, comme pour un module qui n'existe pas. Le refus selon le rôle reste en 403. Plan validé après coup ; Alexis ajoutera la ligne « Validé » dans sa prochaine PR. Relu par le coordinateur : un seul point d'entrée (`coursDeSesClasses`), un message identique à celui d'un module inconnu, et une CI entièrement verte, intégration comprise | chef, 18 nov. 15 h 25 |
+| Le site vitrine doit présenter **toutes les applications** avant sa mise en ligne. La Bibliothèque, qui existe déjà, sort de « Bientôt ». Il faut des pages Quiz et jeux (Studio et jeux pédagogiques), Bibliothèque, Espace de cours et annonces, et Application mobile. C'est la **condition 5** de VIT-06 ([VIT-07](missions/vit-07-contenu-complet.md), agent de Cursor) | chef, 18 nov. 15 h 40 |
+| **Vidéo de présentation globale** sur l'accueil : motion design aux couleurs du site, sans captures, sous-titrée en français et en anglais, sans voix ni musique. Les vidéos de chaque module, avec captures, viendront après UIX-10b. C'est la **condition 6** de VIT-06 ([VIT-08](missions/vit-08-video-presentation.md), Claude de VS Code, après UIX-10a) | chef, 18 nov. 15 h 40 |
+| **EP-18, s'adapter à tous les contextes** : dans certains pays, comme la RDC, l'appel par QR code ou les jeux sur téléphone ne sont pas possibles. Chaque fonction doit marcher sans téléphone de l'élève, avec peu ou pas de connexion, et avec ce qu'a l'école. Le QR code et le téléphone restent des options, jamais le seul chemin. Inscrite dans le README, la feuille de route et les fiches VIT-07 et VIT-08. Une étude « contextes à faible équipement » est à écrire | chef, 18 nov. 16 h |
+| **EP-5 généralisée** : les exports se font au format de la plateforme nationale du pays de l'école (Massar au Maroc, les autres par ETA-03). Le site remplace « Export Massar » par « Export vers la plateforme nationale de votre pays » | chef, 18 nov. 16 h |
+
+**Reprise de la coordination, 18 nov., de 17 h à 17 h 30** :
+
+| Décision | Par |
+|---|---|
+| **UIX-11, le tableau de bord de l'administration** (étape 2) : il est **refait à la charte et complété des chiffres qui existent déjà** dans la base, chaque chiffre menant aux lignes qui le composent. Écartés : le seul passage à la charte, et le pilotage complet (PIL, étape 5, données absentes). **Claude de VS Code** le fait **après UIX-10b** ([fiche](missions/uix-11-tableau-de-bord.md)) | chef, par l'outil de questions |
+| **L'étude « contextes à faible équipement » (EP-18)** est confiée à **une nouvelle session Claude**, ouverte par le chef, sans code ([fiche](missions/etude-ep18-faible-equipement.md)) | chef, par l'outil de questions |
+| **Plan de VIT-06 validé** (`5a7a0067`) : image Nginx sur Docker Hub, service sous un profil Compose, `noindex`, CSP, vidéo servie par le site, retour arrière, six conditions. Codex ajoute la ligne « Validé » et la liste des secrets de CI à créer | chef, par l'outil de questions |
+| *(coordinateur)* #207 (UIX-10a), fusionnée à 16 h 14 sans relecture du code : **conforme**, relue après coup. Périmètre tenu, plan suivi, 7 tests de la charte, `--verifier` et `verifier-neutre` relancés. Seul écart : la ligne UIX-10 du module dit encore « PR à ouvrir », à corriger par UIX-10b | coordinateur |
+| *(coordinateur)* #210 (parcours vers minuit) : **prête**, CI entièrement verte, parcours compris. Seuls les tests changent (`donnees.mjs`, `appel.spec.cjs`, `edtPdf.spec.cjs`), et le plan est validé par le chef | coordinateur |
+| *(coordinateur)* Plan court de VIT-07 (`fafd3f15`) : **à corriger avant le chef**. Ses faits sont justes, mais il ne tient ni EP-18 ni la règle Massar, qui sont dans la fiche : la consigne de 16 h 05 était restée non lue dans la boîte de l'agent de Cursor | coordinateur |
+| *(coordinateur)* Codex passe à **UIX-09 sans attendre** le visa de VIT-06 : le plan d'UIX-09 est déjà validé et #199 est fusionnée. Une correction de VIT-06 demandée par le chef passerait avant | coordinateur |
+| *(coordinateur)* **MOT n'est pas fini** : il reste MOT-13c (avec ADM-02), le refus de l'activation fine (`feat/mot-13-coupure-fine`, non poussée depuis le 15 nov.), le collège de MOT-02 et MOT-04. L'ouverture de VSC n'est donc pas encore à proposer | coordinateur |
+| *(coordinateur)* Écart : la fiche de l'étude StudyLib parlait de « livres » et d'« emprunts ». L'agent de Cursor n'a trouvé aucun prêt de livres dans StudyLib. Fiche corrigée : l'étude décrit ce que le code fait | coordinateur |
+| *(coordinateur)* La CI de `main` sur `db0e3de7` (15 h 38) était rouge : Maven Central a répondu 429 pendant la construction de l'image du solveur. Échec passager, vert au passage suivant (`5f053ebf`) | coordinateur |
+
+**Chef, 18 nov., vers 17 h 45** :
+
+| Décision | Par |
+|---|---|
+| **Le site vitrine manque d'illustrations.** VIT-09 en met sur **toutes les pages** : des **dessins en code**, comme les quatre qui existent ; **quelques captures réelles où l'on ne voit pas le nom de l'école** ; et **la première section de chaque page améliorée un peu**. **Claude de VS Code** la fait **après VIT-08**. C'est la **7e condition** de la mise en ligne ([fiche](missions/vit-09-illustrations.md)) | chef, par l'outil de questions |
+| *(coordinateur)* Les captures se prennent sur des données fictives et neutres, jamais sur `seed.js` (école pilote). Les données des parcours ne suffisent pas telles quelles : leurs adresses portent « hestim ». Le chef voit chaque capture avant le commit, car `verifier-neutre.mjs` ne lit pas les images. VIT-09 touche les pages après la fusion de VIT-07 et de VIT-08, qui écrivent les mêmes fichiers | coordinateur |
+| *(coordinateur)* #211 (documentation seule) : parcours rouges, à nouveau par un 429 de Maven Central pendant la construction de l'image du solveur. Deuxième fois du jour : un correctif de la CI (cache Maven pour cette image) est à proposer au chef, avec un plan court | coordinateur, 18 nov. 17 h 50 |
+
+**Chef et coordinateur, 18 nov., vers 18 h 35** :
+
+| Décision | Par |
+|---|---|
+| **VIT-10** (pages par rôle, menu « Solutions » ouvrant, pied de page complet, agent de Cursor) et **VIT-11** (catalogue de toutes les fonctionnalités et FAQ, Codex) deviennent les **conditions 8 et 9** de la mise en ligne. Elles viennent de la lecture du site d'OpenEduCat par le chef ; leurs consignes ont été écrites par Claude de VS Code et inscrites par le coordinateur ([VIT-10](missions/vit-10-pages-par-role.md), [VIT-11](missions/vit-11-catalogue-faq.md)) | chef, par l'outil de questions |
+| **VIT-11 passe après VSC-01** dans la file de Codex, avant QJE-03 | chef |
+| **Ordre des fusions sur le site : VIT-07, VIT-10, VIT-11, puis VIT-09**, qui illustre toutes les pages d'un coup | chef |
+| **#213 (UIX-09)** : Codex ajoute la mention ISC de Lucide au fichier `LICENSE` des icônes (les tracés de lucide-animated, MIT, viennent de Lucide, ISC), puis le chef fusionne | chef |
+| *(coordinateur)* #214 (VIT-07) : **prête**. Les deux règles du chef sont tenues, le périmètre aussi (`bientot.astro` ne perd que l'icône de la carte retirée), et la CI est entièrement verte. #212 (plan de VIT-06) : prête après l'ajout des conditions 8 et 9 | coordinateur |
+| *(coordinateur)* #215 (VSC-01) : **à corriger**. Elle modifie `suivi.md` (règle du 18 nov.). La conception n'a pas de section EP-18 (règle du chef de 16 h). Le « code Massar » y est le seul identifiant national (EP-5 généralisée). Les avis des groupes A et B sur C-5 et Q-20 sont au chef | coordinateur |
+| *(coordinateur)* Les consignes de 17 h 55 à l'agent de Cursor et à Codex venaient de Claude de VS Code, à la demande du chef. Ce n'était pas une seconde coordination. Rappel : une mission n'existe qu'une fois inscrite (fiche, `suivi.md`, feuille de route), et les deux agents ont bien attendu | coordinateur |
+
+**Coordinateur, 18 nov., 19 h 15** :
+
+| Décision | Par |
+|---|---|
+| *(coordinateur)* VSC-01, corrections `10ef19a2` et `c3a320f0` : **bonnes**. La fusion de la conception attend la décision du chef sur l'avis des groupes A et B | coordinateur |
+| *(coordinateur)* La page des dix jeux (VIT-07, `6c5daf9c`, validée par le chef) a été commitée après la fusion de #214 : elle n'est dans aucune PR. Elle demande une **nouvelle PR** depuis `feat/vit-07-contenu-complet`, après une correction : retirer « budget en MAD » du résumé de « Pilote des stocks » (EP-5) | coordinateur |
+| *(coordinateur)* Constat EP-5 : les jeux « Pilote des stocks » et « Budget ERP » comptent en MAD (`shared/simulations/catalogue/`). Pas de correction maintenant : le chantier QJE est fermé. L'étude EP-18 le relève, et le chef dira qui corrige | coordinateur |
+| *(coordinateur)* L'outil de contrôle de la session de Codex lui refuse d'écrire hors de la branche de la mission en cours (VSC-01). Les ajouts de #213 (mention ISC) et de #212 (conditions 8 et 9) demandent une autorisation du chef dans cette session | coordinateur |
+
+**Chef, 18 nov., vers 19 h 20** :
+
+| Décision | Par |
+|---|---|
+| **Les jeux se rangent par niveau (collège, lycée, supérieur…), puis par filière**, sur le site et dans l'application (web et mobile), à partir du catalogue partagé. On n'affiche que les niveaux et filières qui ont des jeux. **QJE-15**, exception hors chantier, agent de Cursor après VIT-10 ([fiche](missions/qje-15-jeux-par-niveau.md)) | chef, par l'outil de questions |
+| **Les fonctionnalités du site sont représentées comme des apps** : une section de l'accueil, le menu « Fonctions », l'en-tête de chaque page de fonction et le catalogue de VIT-11. Confié à **VIT-09** (Claude de VS Code), avec les mêmes icônes que la grille de l'application | chef, par l'outil de questions |
+| *(coordinateur)* Les filières des jeux sont des domaines génériques, pas l'entité `Filiere` propre à chaque école ; les niveaux suivent les cycles déjà décidés (VIT-05, VSC-01). Le registre de VIT-11 porte l'app de chaque fonctionnalité, pour que VIT-09 y mette les icônes. #217 se fusionne avant QJE-15, avec « en MAD » retiré (`7de7ae3b`) | coordinateur |
+
+**Chef et coordinateur, 18 nov., vers 20 h** :
+
+| Décision | Par |
+|---|---|
+| **La Bibliothèque, c'est StudyLib**, et StudyLib ou ses fonctionnalités **peuvent être vendues séparément** (précision rapportée par Codex à 19 h 27). Sur le site : **le contact seulement**, sans offre ni prix décrits | chef |
+| **Plan de VIT-11 validé** : regroupement par app, adresses `/fonctionnalites/` et `/faq/` ; réponses de la FAQ 4 à 10 validées une à une (la 7, sur le mobile, dans la version du coordinateur, qui dit l'appel à la main et le chemin sans téléphone) | chef, par l'outil de questions |
+| **Plan de VIT-10 validé** : pied de page ouvert, pas de bande de chiffres, deux boutons par page de rôle, avant/après et FAQ seulement avec des phrases déjà publiées | chef |
+| *(coordinateur)* VIT-11, question 3 : les sources de StudyLib se vérifient par un commit épinglé, dans un clone local, hors de la CI ; le build reste autonome. VIT-11 ajoute elle-même ses liens et ses clés de navigation après la fusion de VIT-10, pour qu'aucun lien ne pointe vers une page absente | coordinateur |
+| *(coordinateur)* #216 (VIT-08) : à corriger. L'appel n'est présenté que par QR code (dans la vidéo et sur l'accueil, EP-18), et la scène du mobile montre un onglet masqué dans l'application. #212, #213 et #217 : prêtes quand leur CI est verte | coordinateur |
+
+**Chef et coordinateur, 18 nov., vers 20 h 35** :
+
+| Décision | Par |
+|---|---|
+| **Logos officiels** donnés par le chef ; la charte passe en **version 2**, à leurs couleurs (`bleu-nuit` #17395C, `bleu` #2A679F, `bleu-profond` #21507C, `bleu-clair` #A6CAEE). Condition 3 de la mise en ligne (#220, plan validé par le chef) | chef |
+| **Mentions légales et confidentialité** (condition 2) : rédigées par **une nouvelle session Claude**, chaque texte validé par le chef ([VIT-12](missions/vit-12-pages-legales.md)) | chef, par l'outil de questions |
+| **Le code de VIT-06 se fait maintenant** (Codex, avant QJE-03), le déploiement plus tard, le jour où les neuf conditions sont réunies | chef, par l'outil de questions |
+| *(coordinateur)* Ordre de fusion du site : #213, #212 et #211 (vertes), puis **#220**, puis **#219** (conflit possible sur `EnTete.astro`, réglé par l'agent de Cursor), puis #218 (plan), puis **#216** quand elle sera corrigée et rendue de nouveau. #216 contient déjà #220 | coordinateur |
+| *(coordinateur)* #219 (VIT-10) : conforme. La validation du plan a été commitée avec le code ; c'est accepté après coup, car le chef avait validé avant le code et réécrire une branche poussée aurait été pire. #216 : les corrections de 20 h ne sont pas faites, et le rendu final a été produit sans elles : il est à refaire après la correction | coordinateur |
+
+**Chef, 18 nov., vers 20 h 55, d'après le site d'OpenEduCat** :
+
+| Décision | Par |
+|---|---|
+| Le site reçoit, comme OpenEduCat : le bloc **« avant → avec Planner » et une FAQ** sur chaque page par rôle (VIT-10b) ; une section **« Pourquoi Planner »** sur l'accueil et **les fonctionnalités regroupées par type d'établissement** (VIT-13) ; le **méga-menu « Fonctions » par catégorie**, avec le nombre de chaque catégorie (dans VIT-11) ; **des logos dessinés pour chaque module** (dans VIT-09). C'est la **condition 10** de la mise en ligne | chef, par l'outil de questions |
+| Pas de bande de chiffres. Écartés, faute de rien de vrai pour les remplir : témoignages, logos de clients, badges d'avis, nombres d'utilisateurs, blog, essai gratuit, tarifs, fenêtre de discussion | chef et coordinateur |
+| **« Mon compte » et « code source vérifiable » : plus tard.** Le lien vers l'application attend qu'elle soit en ligne sur son domaine (Q-11). La mention du code source attend que le chef choisisse une licence pour le dépôt (README : « à définir ») | chef |
+| *(coordinateur)* Répartition : VIT-10b et VIT-13 à l'agent de Cursor (il tient les pages par rôle et la navigation), avant QJE-15 ; le méga-menu à Codex dans le code de VIT-11 (il tient le registre) ; les logos à Claude de VS Code dans VIT-09. Ordre sur le site : VIT-10, VIT-10b, VIT-11, VIT-12, VIT-13, puis VIT-09 | coordinateur |
+
+**Chef, 18 nov., vers 21 h 15 : le site d'après OpenEduCat, suite** ([relevé de leurs chemins](../etude-marche/11-chemins-site-openeducat.md)) :
+
+| Décision | Par |
+|---|---|
+| **« Pourquoi Planner » devient un comparatif**, **par approche et sans nommer de concurrent** (le tableur et la messagerie, l'ERP généraliste, le LMS seul, le logiciel de vie scolaire), sur l'accueil et une page `/comparer/`. Chaque case est vérifiable et validée par le chef ; ni prix, ni coût estimé ([VIT-14](missions/vit-14-comparatif.md), nouvelle session Claude) | chef, par l'outil de questions |
+| **Les fonctionnalités sont présentées comme des modules adaptables** : une page par module, avec un bloc « selon votre équipement » (sans wifi, sans écran, sans téléphone de l'élève), qui dit ce que le code permet et marque le reste « Bientôt » ([VIT-15](missions/vit-15-pages-modules.md), Codex) | chef |
+| **Une page Contact complète et une page À propos**, sans formulaire avant VIT-02 ([VIT-16](missions/vit-16-contact-a-propos.md), la session de VIT-12). **Les études de cas plus tard**, quand une école accepte d'en publier une | chef |
+| **De vrais logos illustrés pour les modules** (et non de simples icônes), et **des icônes vivantes** sur les boutons et les liens (animées au survol et au focus, coupées si moins de mouvement est demandé) : VIT-09a, Claude de VS Code, juste après la correction de #216 | chef |
+| **Une expertise du site** face à ses promesses et ses objectifs, par une nouvelle session Claude, sans code ([fiche](missions/expertise-site-vitrine.md)) | chef |
+| Toutes ces pages font partie de la **condition 10** de la mise en ligne | chef |
+| *(coordinateur)* VIT-09 est découpée en 09a (bibliothèque de logos et d'icônes, sans toucher les pages, donc sans conflit) et 09b (intégration, en dernier). Écartés d'OpenEduCat : articles, pages par pays, calculateurs, éditions, tarifs | coordinateur |
+
+**Chef, 18 nov. au soir : les réponses à l'expertise du site** ([rapport](../etude-marche/12-expertise-site-vitrine.md), § 10 et § 12 ; « Je valide tes propositions ») :
+
+| Décision | Par |
+|---|---|
+| **D1** : une adresse e-mail dédiée au site est publiée dès la mise en ligne, avant le formulaire de VIT-02, avec « réponse sous deux jours ouvrés ». L'adresse reste à donner par le chef : aucune n'est supposée | chef |
+| **D2** : la formule devient « quand l'IA est activée pour votre école » (l'IA dépend aujourd'hui de la clé du serveur, pas d'un réglage de l'école). **Un interrupteur de l'IA par école** est noté comme fonction à venir, sans date (QJE-16) | chef |
+| **D3** : plus aucun pays nommé sur le site. L'exemple de Massar est retiré ; « BTS » devient « les formations techniques supérieures » ; « crédits du LMD » devient « crédits » | chef |
+| **D4** : le site dit franchement que le calcul de l'emploi du temps sert aujourd'hui le supérieur et la formation professionnelle, pas encore le collège et le lycée ; le collège passe après le supérieur dans le menu « Solutions » | chef |
+
+**Chef, 19 nov. vers 0 h 15** :
+
+| Décision | Par |
+|---|---|
+| **Conditions 11 et 12 de la mise en ligne** (VIT-06) : un contact réel (D1, VIT-16) ; le saut du menu sur téléphone supprimé, avec une performance mobile d'au moins 90 sur l'accueil (VIT-17) | chef |
+| *(coordinateur)* Répartition de l'expertise : **lot A → VIT-17** (correctifs techniques : saut du menu, vidéo sur demande sur téléphone et connexion lente, pages `/ar/`, Open Graph, grilles à trous, `README.md`), agent de Cursor ; **lot B → VIT-18** (textes exacts P1 à P6, D2, D3, D4, récit EP-18 de l'accueil et d'En classe, test de garde), la session de l'expertise ; **C4 → VIT-14b** (trois critères du comparatif), la session de VIT-14 après la fusion de #224 ; **C8 → VIT-10b**, complément validé par le coordinateur (aucune phrase nouvelle) ; **C2, C3, C10 → VIT-09b** ; **C5 pour les modules → VIT-15** ; **C1 → VIT-16** | coordinateur |
+| *(coordinateur)* L'accroche de l'accueil qui applique D4 et l'ordre des types passent à VIT-18 et non à VIT-09b : une promesse inexacte ne doit pas attendre l'intégration, qui passe en dernier. Le titre principal et la ligne des rôles restent à VIT-09b | coordinateur |
+| *(coordinateur)* VIT-14 se fusionne telle que validée ; ses trois critères nouveaux font une branche à part (VIT-14b), pour ne pas retarder #224, dont dépendent VIT-18 puis VIT-16 sur `accueil.json` | coordinateur |
+| *(coordinateur)* Ordre des fusions du site : #224 (VIT-14), VIT-10b, VIT-17, VIT-18, #223 (VIT-12, après les valeurs du chef), VIT-16, VIT-11 (code), VIT-13, VIT-14b, VIT-15, VIT-09b en dernier. #222 (VIT-09a) et #225 (expertise, document) passent à tout moment. Un conflit d'une ligne (`langues.js`, `commun.json`, pied de page, fichier du module) se résout en gardant les deux ajouts, par l'agent qui fusionne en second | coordinateur |
+| *(coordinateur)* #224 et #225 relues : conformes. #223 : à ne pas fusionner avant les valeurs du chef (son test rouge est voulu). #221 : à corriger (CI du site rouge sur `.env.docker` même après `121c92c6`, et conflit d'une ligne) | coordinateur |
+
+**Chef et coordinateur, 21 nov.** (tour d'état du coordinateur ; réponses du chef par l'outil de questions) :
+
+| Décision | Par |
+|---|---|
+| **#221 (VIT-06, le code)** se fusionne maintenant : sa CI est entièrement verte, et rien n'est déployé ni publié sans le chef (le job Docker Hub attend deux secrets que lui seul pose). La conservation des journaux de la vitrine devient **VIT-06b** (Codex), à faire avant le jour du déploiement : elle attend `N` (VIT-12) et le relevé de la configuration Traefik du VPS par le chef | chef |
+| **Libellé du bouton de la vidéo sur téléphone (VIT-17)** : « Lire la vidéo », en anglais « Play the video », sans le poids (il changerait à chaque rendu) | chef |
+| **#230 (STA-01, offres de stage, Alexis)** reste ouverte et **ne se fusionne pas** avant la validation de son plan par le chef. STA-01 se fait par exception hors chantier si le chef valide. Avant cela : (1) aucune devise par défaut (EP-5 : `DEVISE_PAR_DEFAUT = "MAD"` dans `shared/offresStage.js` et « dirhams » dans la migration et le modèle) ; (2) la migration prend le numéro **0083, réservé le 21 nov.** ; (3) la route publique sans compte (`/api/offres-stage/publiques`, avant CSRF) est une question de sécurité, au chef ; (4) la ligne « Validé » du plan, remplie par le chef | chef ; points 1 et 2 : coordinateur |
+| L'étude EP-18 a été ouverte par le chef ; elle travaille en local, sans commit visible au 21 nov. | chef |
+| *(coordinateur)* **Plan de VIT-17 validé** (S, sans migration ni texte nouveau sauf le bouton). La ligne « Validé » écrite par l'agent le 19 nov. à 8 h ne correspondait à aucune validation (aucune session de coordination ne tournait) : elle devient « coordinateur, 21 nov. ». Corrections exigées : le plan commité seul avant le code ; `git merge origin/main` d'abord, puis `cheminsLangues()` posé aussi sur `/comparer/` (#224) ; les mesures Lighthouse avant et après dans la fiche (condition 12 : CLS sous 0,1, performance d'au moins 90 sur l'accueil mobile). Les tests unitaires remplacent Playwright pour C6 et C9, faute de Playwright dans `vitrine/` | coordinateur |
+| *(coordinateur)* **Après VIT-17, #223 (VIT-12)** pose `cheminsLangues()` sur ses deux pages nouvelles, sinon `dist/ar/` revient | coordinateur |
+| *(coordinateur)* VIT-18 (#228) : l'écart au plan (une seule phrase de la vidéo exemptée du test de garde au lieu de deux) est accepté, il rend le test plus strict. **#232 (VIT-08, nouveau rendu) se fusionne juste après #228**, après `git merge origin/main` et le retrait de l'exception (`EXCEPTIONS` de `vitrine/tests/contenu.test.js`) : sans cela, le test « l'exception sert encore » met `main` au rouge | coordinateur |
+| *(coordinateur)* **Ordre des fusions du site révisé** (VIT-17 est arrêtée depuis le 19 nov. à 8 h, VIT-18 et VIT-14b sont prêtes) : #222 (VIT-09a), #226 (VIT-10b avec C8), #228 (VIT-18), #232 (VIT-08), #233 (VIT-14b), #221 (VIT-06), puis VIT-17, #223 (VIT-12), VIT-16, VIT-11, VIT-13, VIT-15, VIT-09b en dernier. #228 et #221 intégreront `main` en route (une ligne du fichier du module VIT, garder les deux) | coordinateur |
+| *(coordinateur)* **Plan de #229 (QJE-04 suite, noms accessibles des boutons du catalogue) validé après coup** : correctif S demandé par le chef le 18 nov., sans migration ni donnée. La PR est **à corriger** : son parcours `sessionsJeu.spec.cjs` (ligne 49) attend plus d'un bouton « Lancer « … » en classe » et n'en trouve pas (CI rouge, run 44640514265) | coordinateur |
+| *(coordinateur)* #222, #226 (avec C8, `ff08fffd`), #228, #233 relues : **prêtes**. #227 (plan de VIT-09b validé par le chef) reste en brouillon jusqu'à son code, en dernier sur le site | coordinateur |
+
+**Chef, 21 nov., sur la synthèse des concurrents** ([14-reprendre-et-depasser.md](../etude-marche/14-reprendre-et-depasser.md), § 5, branche `etude/expertise-go4school`, `8ba3a7ac`, à pousser ; « Oui » pour chacune, par l'outil de questions). Report du coordinateur ; le détail de chaque report est au § 7 de la synthèse :
+
+| Décision | Par |
+|---|---|
+| **N1, EP-19 « sobre et mesuré »** : une page du site pèse au plus 200 Ko transférés, hors média lancé à la demande, vérifié en CI ; le premier chargement de l'application web est mesuré et écrit dans chaque PR qui le change. À inscrire au § 6 du README du plan | chef |
+| **N2** : l'appel à la main hors ligne, envoyé au retour du réseau avec l'heure réelle de la saisie ; le QR code reste en ligne. Fonction nouvelle du module MOB (ou MOB-06 élargie), conçue avec l'étude EP-18 | chef |
+| **N3** : le poids affiché avant chaque téléchargement, et la reprise après coupure : critère de « terminé » des fonctions COU et BIB qui téléchargent | chef |
+| **N4** : le test de garde du site refuse aussi les superlatifs (« n° 1 », « le seul », « le meilleur », « leader », et en anglais) : suite de VIT-18, après sa fusion | chef |
+| **N5** : VIT-04 (page d'état publique) passe avant VIT-03, juste après la mise en ligne du site | chef |
+| **N6** : PAI-03 (argent mobile) reste reporté ; la question est posée aux entretiens de VEN-02 | chef |
+| **N7** : plusieurs systèmes d'évaluation dans une même école, réglés par classe : exigence de la conception VSC-01, avant son code | chef |
+| **N8** : une tutelle comme client (réseau d'écoles, diocèse, ONG) : une question de plus dans VEN-02 ; GRP reste reporté | chef |
+
+**Chef, 21 nov. : le supérieur d'abord** (« oui pour les trois, le supérieur d'abord », puis l'outil de questions). Cette décision remplace l'ordre du 7 nov. (« plusieurs écoles d'abord, puis le scolaire, puis le pack École privée ») :
+
+| Décision | Par |
+|---|---|
+| **Le supérieur jusqu'au bout, puis on descend** : formation professionnelle, puis lycée, puis collège, puis primaire et maternelle (en saisie simple, Q-07). La cible commerciale du 7 nov. (écoles privées de la maternelle au lycée) recule d'autant | chef |
+| **Concevoir pour tous, construire pour le supérieur** : le modèle de données et le moteur restent « par profil » (3 nov.) ; VSC-01 (#215) se termine comme document de conception, avec N7, puis se gèle sans code ; PLA (plusieurs écoles sur une installation) reste ouvert, car la deuxième école du supérieur en a besoin | chef |
+| **La ligne d'arrivée** : une deuxième école du supérieur, autre que HESTIM, se configure seule et tourne un semestre complet sur la même installation : emploi du temps (CM, TD, TP, vacataires, campus), appel, examens et surveillances, évaluations, crédits et jurys, espace de cours, quiz, bibliothèque, stages, inscriptions, documents vérifiables, frais, tableau de bord de l'administration, et la vitrine qui dit tout cela | chef |
+| **Fonction nouvelle VSC-08** : les évaluations, les crédits et les jurys du supérieur, conçues avec un modèle qui servira aussi VSC-04 (le scolaire) plus tard | chef |
+| **Dans l'étape du supérieur** : les inscriptions (INS-01 à INS-03), les documents vérifiables (DOC-01, DOC-02) et les frais (FIN-01, FIN-02 ; toujours après les entretiens de VEN-02, décision du 13 nov., menés auprès d'écoles du supérieur). L'arabe complet (UIX-04) reste après | chef |
+| **MOT-02** finit sur un jeu du supérieur (plusieurs campus, CM, TD, TP, vacataires) ; la mesure du collège passe à l'étape du scolaire, avec EP-10 | chef |
+| **Quand MOT se ferme, c'est le chantier ADM qui s'ouvre** (configuration seule d'une école, avec un modèle du supérieur), et non VSC | chef |
+| **Les études restées sur des branches se fusionnent** (documents seuls), pour servir à toute la conception | chef |
+| **Alexis prend EDT-04** (publication de l'emploi du temps, PDF et courriels) après ses corrections de #229 et #230, par exception hors chantier | chef |
+| *(coordinateur)* **Faire servir les études** : la [synthèse des concurrents](../etude-marche/14-reprendre-et-depasser.md) devient le registre des études, tenu par le coordinateur (chaque ligne : reportée, décidée ou écartée, et son public : supérieur, scolaire ou tous). Le modèle de conception reçoit une section « Ce que disent les études » : chaque plan y cite les lignes qu'il applique ou écarte ; un plan sans elle n'est pas validé | coordinateur |
+| *(coordinateur)* **Fusion des études** : #191 et #192 directement (sans conflit) ; #186, #190, #169 et #193 après `git merge origin/main` (decisions.md : garder toutes les lignes ; suivi.md : la version de `main`) ; `etude/expertise-go4school` après son push. #194 (essai PostgreSQL) n'est pas une étude seule (elle porte du code d'essai) : elle reste en brouillon. #193 (parité) se fusionne comme plan, chaque fonction gardant l'étape que le chef lui donnera ; elle passe en dernier. Mission confiée à la session de VIT-14, dont la file est vide | coordinateur |
+| *(coordinateur)* **L'interface reste neutre** : UIX-02 (vocabulaire selon le profil) passe à l'étape du scolaire, mais aucun écran nouveau n'écrit un mot propre au supérieur là où un mot neutre existe | coordinateur |
+| *(coordinateur)* **N2 devient MOB-08** (appel à la main hors ligne), plutôt qu'un élargissement de MOB-06 (lecture de l'emploi du temps hors ligne) : deux fonctions bornées, chacune avec son critère. **N1 devient VIT-19** (le contrôle des 200 Ko dans la CI du site), agent de Cursor après VIT-17, plutôt qu'un ajout à VIT-17 déjà en cours. Colonne « Étape » de `suivi.md` et des modules reprise selon le § 2 du README ; reports du § 7 de la synthèse faits (COU, BIB, VEN, VSC, VIT, modèle de conception, fiches VIT-09, VIT-15, EP-18) | coordinateur |

@@ -27,9 +27,9 @@ Massar est le premier connecteur, les autres pays suivent avec le même cadre.
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| ETA-01 | Cadre des connecteurs : import des listes officielles, export au format exigé, contrôle de cohérence avant envoi, horodatage, envoi qu'on peut refaire, calendrier des échéances, correspondance des identifiants | — | 4 | L | VSC-01 | à faire |
-| ETA-02 | Massar : import des listes, export des absences et des notes **au format accepté** (EP-5) ; premier connecteur du cadre | VSC-05, F-17 | 4 | M | ETA-01, VSC-03, VSC-04 | à faire |
-| ETA-03 | Un connecteur par autre pays visé (cartescolaire.cm, « Vie scolaire » en Tunisie, PLANETE au Sénégal, LSU en France…), quand ce pays est visé | — | 5 | M par pays | ETA-01, PLA-13 | reporté |
+| ETA-01 | Cadre des connecteurs : import des listes officielles, export au format exigé, contrôle de cohérence avant envoi, horodatage, envoi qu'on peut refaire, calendrier des échéances, correspondance des identifiants | — | 6 | L | VSC-01 | à faire |
+| ETA-02 | Massar : import des listes, export des absences et des notes **au format accepté** (EP-5) ; premier connecteur du cadre | VSC-05, F-17 | 6 | M | ETA-01, VSC-03, VSC-04 | à faire |
+| ETA-03 | Un connecteur par autre pays visé (cartescolaire.cm, « Vie scolaire » en Tunisie, PLANETE au Sénégal, LSU en France…), quand ce pays est visé | — | 7 | M par pays | ETA-01, PLA-13 | reporté |
 
 ## Critères de « terminé »
 

@@ -32,12 +32,12 @@
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | QJE-01 | L'entrée « Quiz » du sélecteur d'espaces ouvre Planner, plus ClassQuiz (`shared/espaces.js`) : enseignant sur `/jeux`, étudiant sur `/quiz` | SQ-5 | libre | S | — | en cours (`feat/qje-01-entree-studio`) |
-| QJE-02 | Import des formats GIFT et Moodle XML dans le Studio | SQ-3 | libre | M | — | à faire |
-| QJE-03 | Joueur natif dans l'application, sans passer par le site | SQ-1 | libre | M | — | à faire |
+| QJE-02 | Import des formats GIFT et Moodle XML dans le Studio | SQ-3 | 3 | M | — | à faire |
+| QJE-03 | Joueur natif dans l'application, sans passer par le site | SQ-1 | 2 | M | — | à faire |
 | QJE-04 | Fusion de `jeux-pedagogique` et ses quatre corrections ; entrée des jeux par scan ou depuis le module (contrat [jeux-pedagogiques](../../conception/jeux/jeux-pedagogiques.md)) | JC-0 | libre | M | — | en cours : corrections faites, tests locaux verts, PR à ouvrir |
 | QJE-05 | Service des jeux à part, avec des gabarits ; jeux maison ; bibliothèque des jeux plus belle | JC-1, JC-2, JC-5 | libre | L + M + M | QJE-04 | à faire |
-| QJE-06 | Sortie complète de ClassQuiz : plus aucun conteneur ClassQuiz pour une école qui ne l'a pas | — | libre | M | QJE-01 | à faire |
-| QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | libre | M | — | à faire |
+| QJE-06 | Sortie complète de ClassQuiz : plus aucun conteneur ClassQuiz pour une école qui ne l'a pas | — | 2 | M | QJE-01 | à faire |
+| QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | 3 | M | — | à faire |
 | QJE-08 | Créateurs de jeux et leur rémunération | JC-3, JC-4, JC-6, RC-1 à RC-4 | — | — | vente | gelé |
 | QJE-09 | Défis Linux dans un quiz | J-1 | — | M | QJE-04 | reporté |
 
