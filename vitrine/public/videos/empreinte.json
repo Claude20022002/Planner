@@ -1,16 +1,16 @@
 {
-  "empreinte": "047ef0227d9eebea",
+  "empreinte": "7cf2b58be18e0146",
   "charte": 2,
   "langues": [
     "en",
     "fr"
   ],
   "poids": {
-    "planner-en-1080.webm": 3404905,
-    "planner-en-720.mp4": 1526498,
+    "planner-en-1080.webm": 3421751,
+    "planner-en-720.mp4": 1536413,
     "planner-en.webp": 39418,
-    "planner-fr-1080.webm": 3541014,
-    "planner-fr-720.mp4": 1575845,
+    "planner-fr-1080.webm": 3552306,
+    "planner-fr-720.mp4": 1581594,
     "planner-fr.webp": 41240
   }
 }

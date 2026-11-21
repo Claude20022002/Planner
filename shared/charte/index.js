@@ -7,12 +7,14 @@
  *   charte       la source telle quelle (version, familles, paires, interdites)
  *   couleurs     « nom → #RRGGBB » du clair ; le fond du sombre est couleurs.ecran
  *   sombre       « nom → #RRGGBB » propres au sombre ; l'action du sombre est couleurs['bleu-clair']
+ *   applications « nom → #RRGGBB » : teinte de chaque application (app-<id>) et son ton foncé
+ *                (app-<id>-fonce), pour les logos de shared/icones/ (VIT-09a)
  *   typographie, espaces, rayons, ombres, mouvement : « nom → valeur » (mouvement['courbe-tableau']
  *                est un tableau, pour Motion et Reanimated)
  *   statuts      « statut-<clé> » (texte) et « statut-<clé>-fond » des séances, écrans clairs
  *   lignes       « ligne-1 » à « ligne-6 » et « ligne-inconnue » : couleurs de ligne des filières
- *   panneau      couleurs propres au panneau des départs (charnière, joint, lampes) ; son fond, ses
- *                cases et ses lettres sont couleurs.ecran et les jetons du sombre
+ *   panneau      ce qui est propre au panneau des départs (charnière, joint, lampes, pas-volet) ; son
+ *                fond, ses cases et ses lettres sont couleurs.ecran et les jetons du sombre
  */
 import charte from './jetons.json';
 
@@ -23,6 +25,7 @@ const valeurs = (famille) => Object.freeze(
 export { charte };
 export const couleurs = valeurs('couleurs');
 export const sombre = valeurs('sombre');
+export const applications = valeurs('applications');
 export const typographie = valeurs('typographie');
 export const espaces = valeurs('espaces');
 export const rayons = valeurs('rayons');

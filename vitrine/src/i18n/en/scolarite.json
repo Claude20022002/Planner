@@ -23,7 +23,51 @@
     {
       "page": "securite",
       "titre": "Security and data",
-      "texte": "This page only describes what Planner already does. What is in preparation is marked “Coming soon”."
+      "texte": "Two-factor authentication, role-based access, a security log, properly closed accounts, AI without student data."
     }
-  ]
+  ],
+  "passage": {
+    "titre": "Before, with Planner.",
+    "avant": "Before",
+    "avec": "With Planner",
+    "lignes": [
+      {
+        "avant": "Rooms, teachers and groups are assigned by hand.",
+        "avec": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
+      },
+      {
+        "avant": "Account lists move around in files that get typed in again.",
+        "avec": "Teachers, students, programmes, groups and courses import from a CSV file."
+      },
+      {
+        "avant": "A postponement is confirmed through messages.",
+        "avec": "The teacher asks, the registrar approves, and the students concerned are notified."
+      },
+      {
+        "avant": "The grid goes to teachers as an attachment.",
+        "avec": "The timetable exports as a PDF, on the school's own time-slot grid."
+      },
+      {
+        "avant": "Each version of the grid is another file.",
+        "avec": "Every calculation is kept. You go back to an earlier version whenever you want."
+      }
+    ]
+  },
+  "faq": {
+    "titre": "Common questions.",
+    "questions": [
+      {
+        "question": "Can lists be imported?",
+        "reponse": "The administration can import lists of accounts, students and teachers from compatible CSV files."
+      },
+      {
+        "question": "How is a refused session explained?",
+        "reponse": "When a session cannot be placed, Planner names the rule that blocks it."
+      },
+      {
+        "question": "Who tells students about a postponement?",
+        "reponse": "The teacher asks, the registrar approves, and the students concerned are notified."
+      }
+    ]
+  }
 }

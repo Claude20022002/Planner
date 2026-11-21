@@ -98,8 +98,17 @@ test('7. le CSS du site porte exactement les noms de variables d\'aujourd\'hui',
     assert.deepEqual(nomsDuCss, NOMS_DU_SITE);
 });
 
+test('8. chaque application a ses deux tons, et le blanc tient 4,5:1 sur chacun (VIT-09a)', () => {
+    const APPS = ['planning', 'pedagogie', 'personnes', 'etablissement', 'annonces', 'activites', 'bibliotheque'];
+    const teintes = source.familles.applications;
+    assert.deepEqual(Object.keys(teintes), APPS.flatMap((id) => [`app-${id}`, `app-${id}-fonce`]));
+    const paires = pairesCalculees(source).filter((p) => p.fond.startsWith('app-'));
+    assert.equal(paires.length, APPS.length * 2);
+    for (const p of paires) assert.ok(p.texte === 'blanc' && p.seuil === 4.5 && p.rapport >= 4.5, `${p.texte} sur ${p.fond}`);
+});
+
 // UIX-10b : statuts, lignes et panneau entrent dans la source ; chacun a ses paires déclarées
-test('8. statuts, lignes et lampes du panneau ont leurs paires, et aucune couleur ne sort sur le site', () => {
+test('9. statuts, lignes et lampes du panneau ont leurs paires, et aucune couleur ne sort sur le site', () => {
     const declarees = new Set(Object.values(source.paires).flat().map(([texte, fond]) => `${texte} sur ${fond}`));
     for (const nom of Object.keys(source.familles.statuts).filter((n) => !n.endsWith('-fond'))) {
         for (const fond of [`${nom}-fond`, 'blanc', 'gris-fond']) assert.ok(declarees.has(`${nom} sur ${fond}`), `${nom} sur ${fond}`);
@@ -113,7 +122,7 @@ test('8. statuts, lignes et lampes du panneau ont leurs paires, et aucune couleu
     }
 });
 
-test('9. le fond du panneau de shared/couleurs.js est « ecran » ; un accent se mesure sur ce fond', () => {
+test('10. le fond du panneau de shared/couleurs.js est « ecran » ; un accent se mesure sur ce fond', () => {
     assert.equal(FOND_PANNEAU, source.familles.couleurs.ecran.valeur);
     assert.ok(verifierCouleur('#F26322', 'accent').valide, 'orange livré avant la charte');
     assert.ok(verifierCouleur(source.familles.couleurs['bleu-vif'].valeur, 'accent').valide, 'bleu-vif, accent de repli');

@@ -1,7 +1,7 @@
-<!-- Généré par shared/charte/generer.mjs, version 3, empreinte 3e714a16bced : ne pas modifier ; changer shared/charte/jetons.json -->
+<!-- Généré par shared/charte/generer.mjs, version 4, empreinte 5915b2ce02cd : ne pas modifier ; changer shared/charte/jetons.json -->
 # Charte de Planner
 
-Guide généré depuis [jetons.json](jetons.json), version 3. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Statuts, lignes des filières et panneau (version 3, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
+Guide généré depuis [jetons.json](jetons.json), version 4. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Teintes des applications (version 3, VIT-09a) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a). Statuts, lignes des filières et panneau (version 4, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
 
 ## Changer une valeur
 
@@ -40,6 +40,25 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 | `texte-sombre` | `#EDF1F7` | texte courant du mode sombre | — |
 | `texte-sombre-second` | `#A9B6C8` | texte secondaire du mode sombre | — |
 | `focus-sombre` | `#7FB0E6` | contour du focus en mode sombre (l'action du sombre est « bleu-clair », texte « ecran » dessus) | — |
+
+## Teintes des applications (logos)
+
+| Jeton | Valeur | Rôle | Site |
+|---|---|---|---|
+| `app-planning` | `#0B66D6` | logo de l'application Emploi du temps : ton clair du dégradé de la tuile | — |
+| `app-planning-fonce` | `#212F82` | logo de l'application Emploi du temps : ton foncé du dégradé et ombres | — |
+| `app-pedagogie` | `#007B80` | logo de l'application Enseignements : ton clair du dégradé de la tuile | — |
+| `app-pedagogie-fonce` | `#00475C` | logo de l'application Enseignements : ton foncé du dégradé et ombres | — |
+| `app-personnes` | `#775EBA` | logo de l'application Personnes : ton clair du dégradé de la tuile | — |
+| `app-personnes-fonce` | `#3F3687` | logo de l'application Personnes : ton foncé du dégradé et ombres | — |
+| `app-etablissement` | `#3C638C` | logo de l'application Établissement : ton clair du dégradé de la tuile | — |
+| `app-etablissement-fonce` | `#20385C` | logo de l'application Établissement : ton foncé du dégradé et ombres | — |
+| `app-annonces` | `#AE532D` | logo de l'application Annonces : ton clair du dégradé de la tuile | — |
+| `app-annonces-fonce` | `#75201C` | logo de l'application Annonces : ton foncé du dégradé et ombres | — |
+| `app-activites` | `#A94088` | logo de l'application Quiz et jeux : ton clair du dégradé de la tuile | — |
+| `app-activites-fonce` | `#5E256D` | logo de l'application Quiz et jeux : ton foncé du dégradé et ombres | — |
+| `app-bibliotheque` | `#077952` | logo de l'application Bibliothèque : ton clair du dégradé de la tuile | — |
+| `app-bibliotheque-fonce` | `#004C3B` | logo de l'application Bibliothèque : ton foncé du dégradé et ombres | — |
 
 ## Typographie
 
@@ -99,7 +118,6 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 | `duree-rapide` | `120ms` | durée rapide (survol, appui) | — |
 | `duree-lente` | `320ms` | durée lente (ouverture d'un panneau) | — |
 | `courbe-tableau` | `[0.22, 1, 0.36, 1]` | la même courbe, en tableau, pour Motion (web) et Reanimated (mobile) | — |
-| `pas-volet` | `28ms` | décalage entre deux caractères dans la cascade des volets du panneau | — |
 
 ## Statuts des séances
 
@@ -139,6 +157,7 @@ Le panneau reste sombre, même en thème clair : fond `ecran`, cases `surface-so
 | `lampe-en-cours` | `#3FCB74` | lampe et texte « en cours » ou « confirmé » sur le panneau | — |
 | `lampe-retard` | `#F26322` | lampe et texte « reporté » sur le panneau | — |
 | `lampe-annule` | `#FF5A5F` | lampe et texte « annulé » sur le panneau | — |
+| `pas-volet` | `28ms` | décalage entre deux caractères dans la cascade des volets (hors de la famille mouvement, que l'empreinte de la vidéo du site couvre) | — |
 
 ## Contrastes vérifiés
 
@@ -189,6 +208,20 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `ligne-5` | `blanc` | 5,48:1 | 3:1 |
 | `ligne-6` | `blanc` | 7,49:1 | 3:1 |
 | `ligne-inconnue` | `blanc` | 5,29:1 | 3:1 |
+| `blanc` | `app-planning` | 5,40:1 | 4,5:1 |
+| `blanc` | `app-planning-fonce` | 11,71:1 | 4,5:1 |
+| `blanc` | `app-pedagogie` | 5,07:1 | 4,5:1 |
+| `blanc` | `app-pedagogie-fonce` | 10,21:1 | 4,5:1 |
+| `blanc` | `app-personnes` | 5,13:1 | 4,5:1 |
+| `blanc` | `app-personnes-fonce` | 10,05:1 | 4,5:1 |
+| `blanc` | `app-etablissement` | 6,26:1 | 4,5:1 |
+| `blanc` | `app-etablissement-fonce` | 11,79:1 | 4,5:1 |
+| `blanc` | `app-annonces` | 5,15:1 | 4,5:1 |
+| `blanc` | `app-annonces-fonce` | 10,61:1 | 4,5:1 |
+| `blanc` | `app-activites` | 5,56:1 | 4,5:1 |
+| `blanc` | `app-activites-fonce` | 10,71:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque` | 5,43:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque-fonce` | 10,01:1 | 4,5:1 |
 
 ### Sombre
 

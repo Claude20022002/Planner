@@ -216,7 +216,7 @@
       {
         "titre": "Live quizzes, or at your own pace.",
         "lignes": [
-          "Ten question types. Live, points reward accuracy and speed."
+          "Ten question types, six of them live. Live, points reward accuracy and speed."
         ],
         "image": "The ten question types line up. Then, on a phone, a live quiz question with its timer; the right answer earns points."
       },
@@ -240,7 +240,7 @@
         "titre": "The whole school at a glance.",
         "lignes": [
           "Rooms, exams and invigilation, across several campuses.",
-          "Two-step sign-in, role-based access. When the school turns on AI, it never receives student data."
+          "Two-step sign-in, role-based access. When AI is turned on for your school, it never receives student data."
         ],
         "image": "Two campuses linked by their travel time, room occupancy and an exam session. Then a six-digit verification code and the three roles."
       },

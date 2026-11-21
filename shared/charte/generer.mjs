@@ -75,7 +75,7 @@ export const cssSite = (source) => {
 
 // ── Guide Markdown ──
 const TITRES = {
-    couleurs: 'Couleurs', sombre: 'Mode sombre', typographie: 'Typographie', espaces: 'Espaces et largeurs',
+    couleurs: 'Couleurs', sombre: 'Mode sombre', applications: 'Teintes des applications (logos)', typographie: 'Typographie', espaces: 'Espaces et largeurs',
     rayons: 'Rayons', ombres: 'Ombres', mouvement: 'Mouvement',
     statuts: 'Statuts des séances', lignes: 'Lignes des filières', panneau: 'Panneau des départs',
 };

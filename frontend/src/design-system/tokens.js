@@ -119,7 +119,7 @@ export const ds = {
     normal: parseFloat(mouvement.duree) / 1000,
     slow: parseFloat(mouvement['duree-lente']) / 1000,
     ease: mouvement['courbe-tableau'],
-    flapStepMs: parseFloat(mouvement['pas-volet']), // décalage entre deux caractères dans la cascade des volets
+    flapStepMs: parseFloat(pn['pas-volet']), // décalage entre deux caractères dans la cascade des volets
   },
 };
 
