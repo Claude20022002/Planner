@@ -1,0 +1,30 @@
+{
+  "titre": "Toutes les fonctionnalités",
+  "description": "Parcourez les fonctionnalités de Planner par application ou recherchez un usage précis.",
+  "filtre": "Rechercher une fonctionnalité",
+  "resultats": "Résultats",
+  "fermer": "Fermer",
+  "categories": "Catégories",
+  "applications": {
+    "planning": "Emploi du temps",
+    "pedagogie": "Enseignements",
+    "personnes": "Personnes",
+    "etablissement": "Établissement",
+    "annonces": "Annonces",
+    "activites": "Quiz et jeux",
+    "bibliotheque": "Bibliothèque · StudyLib"
+  },
+  "groupes": {
+    "organisation": "Organisation des séances",
+    "presence": "Présence",
+    "cours": "Cours et supports",
+    "comptes": "Comptes et rôles",
+    "configuration": "Gestion de l’établissement",
+    "communication": "Communication",
+    "jeux": "Quiz et jeux",
+    "ressources": "Ressources pédagogiques",
+    "stages": "Stages",
+    "projets": "Projets",
+    "evenements": "Événements"
+  }
+}

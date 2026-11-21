@@ -13,6 +13,8 @@ export const LANGUE_SECOURS = 'fr';
 /** Pages du site : clé (aussi clé de navigation dans commun.json) → segment d'adresse */
 export const PAGES = {
   accueil: '',
+  fonctionnalites: 'fonctionnalites',
+  faq: 'faq',
   solutions: 'solutions',
   emploiDuTemps: 'emploi-du-temps',
   enClasse: 'en-classe',

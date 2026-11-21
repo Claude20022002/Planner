@@ -1,0 +1,34 @@
+{
+  "titre": "Frequently asked questions",
+  "description": "Answers to schools’ questions about Planner.",
+  "questions": [
+    {
+      "question": "Where is our data stored?",
+      "reponse": "Ask where your school’s data will be hosted. We will explain the terms of the offer."
+    },
+    {
+      "question": "Which languages is the site available in?",
+      "reponse": "The site is available in French and English. Contact us to find out which languages are available in the applications you are interested in."
+    },
+    {
+      "question": "Can we import lists?",
+      "reponse": "Administrators can import lists of accounts, students and teachers from compatible CSV files."
+    },
+    {
+      "question": "What does the mobile app offer?",
+      "reponse": "The student app shows the week’s classes, scans the attendance QR code and opens the library. Without a phone, students can open their timetable and resources in a browser, and the teacher can record attendance manually."
+    },
+    {
+      "question": "How is AI used?",
+      "reponse": "When the school enables AI in the quiz studio, it can suggest questions for teachers to review before sharing."
+    },
+    {
+      "question": "Can we choose StudyLib separately?",
+      "reponse": "Contact us to discuss StudyLib and the features that meet your school’s needs."
+    },
+    {
+      "question": "How much does it cost?",
+      "reponse": "Contact us to discuss your school’s needs."
+    }
+  ]
+}
