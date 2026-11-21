@@ -65,6 +65,38 @@ test("tableau de bord : le volet des séances montre autant de lignes que le chi
   await expect(page).toHaveURL(/\/gestion\/emplois-du-temps$/);
 });
 
+test("tableau de bord : une réponse en retard n’écrit pas dans le volet d’un autre chiffre (fix/uix-11-volet)", async ({ page }) => {
+  await ouvrirTableau(page);
+  await attendreLesBlocs(page);
+  const n = await valeurDe(page.getByRole("button", { name: /séances planifiées, cette semaine/ }));
+  const attendues = Math.min(n, 100);
+  // Les statistiques répondent après 3 s, avec une salle (fictive) de plus que les lignes du volet des séances :
+  // si leur réponse écrivait dans ce volet, son nombre de lignes changerait, quel que soit n
+  let retard = null;
+  await page.route("**/api/statistiques/kpis*", (route) => {
+    const graphique = Array.from({ length: attendues + 1 }, (_, i) => ({ nom: `Salle ${i + 1}`, heures: 1, taux: 1 }));
+    retard = new Promise((fin) => setTimeout(fin, 3000)).then(() =>
+      route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kpis: { taux_occupation_salles: { valeur: 1, graphique } } }) })
+    );
+    return retard;
+  });
+  await page.getByRole("button", { name: /occupation des salles, cette semaine/ }).click();
+  await expect(page.getByRole("dialog", { name: "Occupation des salles" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: /séances planifiées, cette semaine/ }).click();
+  const volet = page.getByRole("dialog", { name: "Séances planifiées" });
+  const lignesAttendues = async () => {
+    if (attendues === 0) await expect(volet.getByText("Aucune ligne sur cette période.")).toBeVisible();
+    else await expect(volet.locator("tbody tr")).toHaveCount(attendues);
+  };
+  await lignesAttendues();
+  // La réponse des statistiques arrive enfin : le volet des séances ne change pas
+  await expect.poll(() => retard !== null).toBe(true);
+  await retard;
+  await page.waitForTimeout(500);
+  await lignesAttendues();
+});
+
 test("tableau de bord : « Tout voir » de l’usage ouvre Suivi sur l’onglet Usage (réponse 9)", async ({ page }) => {
   await ouvrirTableau(page);
   await attendreLesBlocs(page);
