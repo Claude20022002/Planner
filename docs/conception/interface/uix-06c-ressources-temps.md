@@ -64,6 +64,8 @@ Chemins sous `frontend/src/`.
 
 La répartition entre trois agents du 18 nov. est remplacée par la réponse 7 du chef (21 nov. au soir) : un lot ne commence qu'une fois le précédent commité et vérifié.
 
+**Réponses du chef du 21 nov., lot 3** (le coordinateur était injoignable) : 11, les états communs (chargement, échec avec « Réessayer », vide) sortent de `ListeGestion` dans `components/gestion/EtatsGestion.jsx`, réutilisé par Créneaux et Calendrier, sans changer le rendu de `ListeGestion` ; 12, Créneaux à 390 px est une **liste par jour** (chaque jour en titre, ses créneaux dessous), la grille reste sur ordinateur.
+
 **Thème (mise à jour du 21 nov., renvoi)** : depuis UIX-10b (#235), un seul thème tiré de la charte vaut pour toutes les pages (`design-system/themeCharte.js`, `design-system/jetonsInterface.js`). `ThemeGestion` et la liste des pages « pilotes » qui en fixait la portée sont retirés. Les quatre écrans prennent donc ce thème sans rien étendre, et `components/layouts/DashboardLayout.jsx` sort du périmètre : sa liste de routes ne commande plus que le favicon, que UIX-10c change pour toutes les pages. Un besoin dans le thème ou les jetons se demande au coordinateur, comme pour UIX-11.
 
 Ni `App.jsx`, ni les droits, ni les services d'API, ni le serveur.
