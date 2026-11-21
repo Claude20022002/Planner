@@ -177,7 +177,7 @@
     "page": "quizEtJeux",
     "etat": "existe",
     "titre": { "fr": "Préparer des questions avec l’IA", "en": "Draft questions with AI" },
-    "description": { "fr": "Quand l’école active l’IA, l’enseignant relit les questions proposées avant de les partager.", "en": "When the school enables AI, teachers review suggested questions before sharing them." },
+    "description": { "fr": "Quand l’IA est activée pour votre école, l’enseignant relit les questions proposées avant de les partager.", "en": "When AI is turned on for your school, teachers review suggested questions before sharing them." },
     "sources": {
       "planner": ["backend/routes/quizIaRoutes.js", "frontend/src/components/quiz/creation/RelireQuiz.jsx"]
     }

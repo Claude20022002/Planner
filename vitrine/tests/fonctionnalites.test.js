@@ -53,6 +53,18 @@ test('le menu couvre toutes les pages de VIT-07, chaque entrée une fois et le r
   assert.deepEqual(fonctionnalites('ar'), fonctionnalites('fr'));
 });
 
+test('le catalogue et la FAQ reprennent la condition validée pour l’IA du Studio quiz', () => {
+  const quiz = entrees.find((f) => f.id === 'quiz-ia');
+  for (const [langue, condition] of Object.entries({
+    fr: 'Quand l’IA est activée pour votre école',
+    en: 'When AI is turned on for your school',
+  })) {
+    assert.ok(quiz.description[langue].startsWith(condition), langue);
+    const faq = JSON.parse(lire(`vitrine/src/i18n/${langue}/faq.json`));
+    assert.ok(faq.questions.some((q) => q.reponse.startsWith(condition)), langue);
+  }
+});
+
 test('les sept réponses françaises de la FAQ correspondent aux visas du chef', () => {
   const plan = lire('docs/conception/vitrine/vit-11-catalogue-faq.md');
   const faq = JSON.parse(lire('vitrine/src/i18n/fr/faq.json'));
