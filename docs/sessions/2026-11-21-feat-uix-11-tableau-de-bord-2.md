@@ -15,7 +15,7 @@ Le point 1 du prompt de reprise : le plan d'UIX-11 validé et #235 fusionnée, c
 
 [uix-11-tableau-de-bord.md](../conception/interface/uix-11-tableau-de-bord.md), **validé par le coordinateur le 21 nov.** (réponses 5 et 6), corrigé le même jour au § 4.3 par la **réponse 8 du chef** (mise en page, sur les captures).
 
-La validation du coordinateur a été lue dans son dossier de travail (`docs/plan/decisions.md`, branche `doc/coordination-equipe`, ligne « Plan d'UIX-11 validé », **non commitée au moment de la lecture**), avec la réponse 7 du chef pour UIX-06c.
+La validation du coordinateur a été lue dans son dossier de travail (`docs/plan/decisions.md`, branche `doc/coordination-equipe`, ligne « Plan d'UIX-11 validé », non commitée au moment de la lecture, puis **commitée et poussée en `9db2904b`**, confirmée par message du coordinateur), avec la réponse 7 du chef pour UIX-06c.
 
 ## Fait
 
@@ -71,7 +71,7 @@ La validation du coordinateur a été lue dans son dossier de travail (`docs/pla
 ## Reste à faire, dans l'ordre
 
 1. Le chef pousse la branche et ouvre la PR (commandes ci-dessous) ; la CI doit être verte ; le coordinateur relit, et répond aux questions 9 et 10.
-2. UIX-06c, Claude (VS Code) seul, les quatre lots l'un après l'autre (Salles, Campus, Créneaux, Calendrier), depuis `origin/main` (réponse 7, chef, 21 nov.). Plan validé, corrigé (`c36db4f3`, `feat/uix-06c-ressources-temps`).
+2. UIX-06c, Claude (VS Code) seul, les quatre lots l'un après l'autre (Salles, Campus, Créneaux, Calendrier), depuis `origin/main` (réponse 7, chef, 21 nov. ; la fusion `73f417a8` du dossier d'UIX-06c convient, dit le coordinateur). Plan validé, corrigé (`c36db4f3`, `feat/uix-06c-ressources-temps`). **Premier commit d'UIX-06c : corriger l'en-tête du plan** (« posée sur `feat/uix-06b-referentiel` » devient `origin/main`), consigne du coordinateur.
 3. QJE-14, l'étude StudyLib, UIX-10d.
 4. VIT-09b, le code, en dernier sur le site, avec la planche des dessins et chaque capture montrées au chef avant le commit.
 
@@ -99,7 +99,8 @@ Reste, dans l'ordre :
 1) si la PR d'UIX-11 existe : suivre sa CI (personnes.spec.cjs échoue par délai sur la machine locale, avant UIX-11 aussi),
    corriger ce que la relecture du coordinateur demande ; sinon, rappeler au chef les commandes de la fiche ;
 2) UIX-06c, toi seul (réponse 7 du chef) : les quatre lots l'un après l'autre (Salles, Campus, Créneaux, Calendrier),
-   depuis origin/main, plan validé et corrigé (c36db4f3, feat/uix-06c-ressources-temps) ;
+   depuis origin/main, plan validé et corrigé (c36db4f3, feat/uix-06c-ressources-temps) ; premier commit : l'en-tête du plan
+   (« posée sur feat/uix-06b-referentiel » devient origin/main), consigne du coordinateur ;
 3) QJE-14, étude StudyLib, UIX-10d ;
 4) VIT-09b, le code, en dernier sur le site, avec la planche des dessins et chaque capture montrées au chef avant le commit.
 Questions en attente (coordinateur) : 9 « Tout voir » de l'usage vers Suivi, onglet Usage (une ligne dans Suivi.jsx) ?
