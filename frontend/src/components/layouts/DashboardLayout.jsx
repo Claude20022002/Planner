@@ -16,7 +16,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { Apps, Notifications, Search, Menu as MenuIcon } from '@mui/icons-material';
-import ThemeGestion from '../common/ThemeGestion';
+import useFaviconPlanner from '../common/useFaviconPlanner';
 import GlobalSearch from '../common/GlobalSearch';
 import SelecteurEspaces from '../espaces/SelecteurEspaces';
 import Aide from '../aide/Aide';
@@ -36,6 +36,8 @@ const RAIL_WIDTH = 248;
 /** Coquille commune : barre d’outils, accueil des applications et menu du module courant. */
 export default function DashboardLayout({ children }) {
   const { pathname } = useLocation();
+  // Favicon générique du kit sur les pages passées les premières à la nouvelle interface (UIX-06a) ;
+  // le thème est le même partout depuis UIX-10b, le favicon change pour toutes en UIX-10c
   const pilote = pathname === '/applications' || [
     '/gestion/utilisateurs',
     '/gestion/enseignants',
@@ -45,7 +47,8 @@ export default function DashboardLayout({ children }) {
     '/gestion/cours',
     '/gestion/enseignements',
   ].includes(pathname);
-  return <ThemeGestion actif={pilote}><ContenuDashboard>{children}</ContenuDashboard></ThemeGestion>;
+  useFaviconPlanner(pilote);
+  return <ContenuDashboard>{children}</ContenuDashboard>;
 }
 
 function ContenuDashboard({ children }) {
