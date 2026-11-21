@@ -46,7 +46,7 @@ sur le compte élève et l’ordre des chantiers. Le § 11 reprend les arbitrage
 | Responsable légal et lien de famille | Dossier propre à l’école, relation avec l’élève, compte éventuel | L’autorisation de voir le dossier d’un enfant passe par le lien actif dans l’école courante. Plusieurs liens permettent la fratrie. |
 | Inscription | Élève, année, niveau, état | Une réinscription crée une ligne pour l’année suivante et préserve l’historique. L’appartenance à un groupe reste distincte. |
 | Évaluation et note | Période, matière, barème, inscription, état et valeur de la note | Une absence ou une dispense ne compte pas comme zéro. Une valeur égale à zéro reste une note. |
-| Appréciation et bulletin | Inscription, période, contenu attribué, version publiée | Les périodes sont configurées par cycle et année. VSC-04 couvre aussi conseil de classe, décision de passage et correction autorisée avec motif et historique après verrouillage. |
+| Appréciation et bulletin | Inscription, période, contenu attribué, version publiée | Chaque classe utilise pour l’année le système d’évaluation qui lui est affecté (§ 2.1). VSC-04 couvre aussi conseil de classe, décision de passage et correction autorisée avec motif et historique après verrouillage. |
 | Grille de frais et échéance | Année, prestation, montant et date, inscription pour la dette de l’élève | Les montants dus se rattachent au dossier de l’école. |
 | Paiement et reçu | Référence de règlement, date, montant, lien vers les échéances et référence de reçu | Un règlement peut couvrir plusieurs enfants. Chaque affectation précise l’échéance et le montant. FIN conçoit l’annulation par écriture inverse et confirme le contrat de reçu avec l’expert-comptable. |
 
@@ -54,6 +54,21 @@ Pour les groupes de langue à participation obligatoire, VSC-07 vérifie la comp
 jeu scolaire. Une affectation en cours de préparation peut encore manquer. La capacité se vérifie dans la
 transaction d’affectation afin que deux inscriptions simultanées ne dépassent pas le plafond. MOT-06 reçoit
 les appartenances nécessaires aux conflits par élève, avec des identifiants techniques.
+
+### 2.1. N7 · Plusieurs systèmes d’évaluation dans une école
+
+Pour la même année et le même cycle, une classe peut évaluer par séquences et la classe voisine par trimestres. L’établissement définit ses systèmes et choisit celui de chaque classe pour l’année. Plusieurs classes peuvent partager une définition. Chaque évaluation garde la référence à la période de son système et à la classe concernée. Une modification de l’affectation pour l’année suivante préserve les notes, les périodes closes et les bulletins déjà publiés.
+
+| Commun à VSC-04 et VSC-08 | Propre à chaque parcours |
+|---|---|
+| Inscription annuelle, matière ou enseignement, évaluation, période applicable, barème, valeur et état de la note. | VSC-04 construit le bulletin et porte le conseil de classe et la décision de passage. VSC-08 rattache les évaluations aux unités d’enseignement, traite les crédits et enregistre la décision du jury. |
+| Portée des droits, verrouillage, correction motivée et historique. Les deux parcours relisent le résultat autorisé à sa source. | Les règles de calcul et d’attribution des crédits relèvent du plan de VSC-08. Les coefficients scolaires et la présentation du bulletin relèvent de VSC-04. |
+
+**Preuve à demander aux deux lots.** Dans une école fictive, affecter deux systèmes à deux classes du même cycle et de la même année. Saisir un zéro et une absence, puis verrouiller une période de la première classe. Vérifier que la seconde peut toujours saisir ses résultats dans sa propre période, qu’une période étrangère à la classe est refusée et qu’un changement d’année conserve les résultats publiés. Pour le supérieur, un jury doit pouvoir relire la même note et son historique pour rendre sa décision.
+
+#### Ce que disent les études
+
+L’étude sur l’enseignement supérieur rapporte que la publication tardive des notes peut retarder une candidature ou une soutenance. Pour la recette de VSC-08, le jury doit donc pouvoir distinguer une note disponible, une note attendue et un résultat publié. Le choix d’affecter le système par classe est la décision N7 du chef du 21 novembre. [Étude sur l’enseignement supérieur](<../../etude-marche/research_notes/Problèmes des établissements scolaires/enseignement_superieur.md>)
 
 ## 3. Correspondance avec l’existant
 
@@ -63,7 +78,7 @@ les appartenances nécessaires aux conflits par élève, avec des identifiants t
 | `Groupe` | Réutiliser `id_groupe`, `id_filiere`, `id_annee` et le parent actuel. Ajouter la nature transversale et garantir une année résolue pour les nouveaux groupes scolaires. Aujourd’hui `id_annee` est nullable et le crochet part de `annee_scolaire`. |
 | `Cours`, `CoursComposante` | Réutiliser les identifiants et la filière obligatoire du cours. Garder le contrat actuel de volume et de type de composante jusqu’à la reprise des nomenclatures par MOT-05. |
 | `AnneeUniversitaire` | Garder le nom technique, la clé annuelle et les dates. Le vocabulaire scolaire est présenté selon le profil. |
-| `Periode` | Garder les codes S1/S2 pour la planification. La période de notes a son propre périmètre cycle et année. |
+| `Periode` | Garder les codes S1/S2 pour la planification. Le système affecté à la classe pour l’année détermine ses périodes de notes (§ 2.1). |
 | `Etudiant` | Réutiliser le dossier et `numero_etudiant`. Introduire une clé de dossier `id_etudiant` indépendante. Déplacer le nom et le prénom scolaires dans le dossier, avec reprise depuis `Users`. Préserver une référence de compte unique et facultative. |
 | `Appartenir` | Préserver la paire actuelle `id_user_etudiant`, `id_groupe` pendant la transition. Chaque lien scolaire référence l’inscription et le groupe. L’inscription porte l’élève et l’année, ce qui permet l’appartenance avant la création du compte. |
 | `Users` | Conserver la clé et le hash obligatoires d’un compte actif, ajouter le mode identifiant scolaire et permettre l’absence d’adresse dans ce mode. L’extension du rôle parent relève d’ADM-05. |
@@ -172,6 +187,10 @@ erDiagram
     GROUPE ||--o{ APPARTENANCE : recoit
     ELEVE ||--o{ LIEN_FAMILLE : concerne
     RESPONSABLE_LEGAL ||--o{ LIEN_FAMILLE : justifie
+    ANNEE ||--o{ AFFECTATION_SYSTEME : date
+    GROUPE ||--o{ AFFECTATION_SYSTEME : classe
+    SYSTEME_EVALUATION ||--o{ AFFECTATION_SYSTEME : configure
+    SYSTEME_EVALUATION ||--o{ PERIODE_NOTES : definit
     ANNEE ||--o{ PERIODE_NOTES : contient
     PERIODE_NOTES ||--o{ EVALUATION : regroupe
     MATIERE ||--o{ EVALUATION : concerne
@@ -249,7 +268,7 @@ flowchart TD
 | Q-10 | Notes et frais désactivés par défaut dans le supérieur. Activation par école après la recette des lots concernés. |
 | Q-11, Q-12, Q-13 | Pile confirmée par QUA-03 sous la condition D-01. Plage 0062 à 0079 réservée. MOT-01 serveur livré via #156. |
 | Q-14 et Q-20 | Inscription et classe possibles avant création du compte. L’école crée le compte, avec identifiant scolaire et adresse facultative. Voir [l’étude d’impact](vsc-01-impact-adresse-compte.md). |
-| Périmètre VSC-04 | Périodes de notes par cycle et année, coefficient par matière, niveau et filière, conseil de classe et décision de passage dans VSC-04. |
+| Périmètre VSC-04 | Système d’évaluation affecté par classe et année (N7), coefficient par matière, niveau et filière, conseil de classe et décision de passage dans VSC-04. |
 | Vocabulaire et finance | Nom technique `AnneeUniversitaire` conservé, catégories communes dans le code, libellés locaux. Un règlement est ventilable sur plusieurs échéances d’une fratrie. |
 | Propriétaires | ADM possède les référentiels de filières, groupes, cours et composantes. VSC possède le dossier et l’appartenance. |
 
