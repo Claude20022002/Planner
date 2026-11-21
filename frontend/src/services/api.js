@@ -762,6 +762,28 @@ export const annonceAPI = {
     supprimer: (id) => request(`/annonces/${encodeURIComponent(id)}`, { method: 'DELETE' }),
 };
 
+// ==================== OFFRES DE STAGE (STA-01) ====================
+export const offreStageAPI = {
+    // { data: [{ id, titre, entreprise, ville, description, id_filiere, filiere, niveau, debut, fin,
+    //           gratification, devise, lien_candidature, contact_email, statut, jeton_partage,
+    //           publiee_le, auteur, creee_le, modifiee_le }] }
+    lister: (filtres = {}) => {
+        const params = Object.fromEntries(Object.entries(filtres).filter(([, v]) => v !== '' && v !== null && v !== undefined));
+        const query = new URLSearchParams(params).toString();
+        return request(query ? `/offres-stage?${query}` : '/offres-stage');
+    },
+    get: (id) => request(`/offres-stage/${encodeURIComponent(id)}`),
+    // { titre, entreprise, ville, description, id_filiere, niveau, debut, fin, gratification, devise,
+    //   lien_candidature, contact_email } : le brouillon est créé par le serveur
+    creer: (offre) => request('/offres-stage', { method: 'POST', body: offre }),
+    modifier: (id, offre) => request(`/offres-stage/${encodeURIComponent(id)}`, { method: 'PUT', body: offre }),
+    // statut : « publiee » ou « close » (ouvre ou ferme, sans changer le reste)
+    changerStatut: (id, statut) => request(`/offres-stage/${encodeURIComponent(id)}/publication`, { method: 'POST', body: { statut } }),
+    supprimer: (id) => request(`/offres-stage/${encodeURIComponent(id)}`, { method: 'DELETE' }),
+    // Fiche partagée d'une offre publiée : lue sans compte, par son jeton (pas son identifiant)
+    publique: (jeton) => request(`/offres-stage/publiques/${encodeURIComponent(jeton)}`),
+};
+
 // ==================== AGENDA ET ENVOI DE L'EMPLOI DU TEMPS (R4) ====================
 export const agendaAPI = {
     // { chemin: '/api/agenda/<jeton>.ics', cree_le }

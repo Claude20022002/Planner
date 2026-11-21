@@ -29,6 +29,8 @@ import directFr from './direct.fr.js';
 import directEn from './direct.en.js';
 import etablissementFr from './etablissement.fr.js';
 import etablissementEn from './etablissement.en.js';
+import offresStageFr from './offresStage.fr.js';
+import offresStageEn from './offresStage.en.js';
 import { fr as simulationsFr, en as simulationsEn } from '../../../shared/simulations/i18n.js';
 
 export const LANGUAGES = [
@@ -67,6 +69,7 @@ i18n.use(initReactI18next).init({
             sessionsJeu: sessionsJeuFr,
             direct: directFr,
             etablissement: etablissementFr,
+            offresStage: offresStageFr,
             simulations: simulationsFr,
         },
     },
@@ -86,6 +89,7 @@ i18n.use(initReactI18next).init({
             sessionsJeu: sessionsJeuEn,
             direct: directEn,
             etablissement: etablissementEn,
+            offresStage: offresStageEn,
             simulations: simulationsEn,
         },
     },
