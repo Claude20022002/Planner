@@ -175,6 +175,7 @@
     "titre": "All of Planner, in ninety seconds.",
     "commandes": {
       "lire": "Play the video",
+      "lireMobile": "Play the video",
       "pause": "Pause",
       "revoir": "Watch again"
     },

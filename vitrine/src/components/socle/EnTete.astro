@@ -94,14 +94,22 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
     </nav>
   </div>
 </header>
+<script is:inline>
+  // VIT-17 C6 : avant le premier rendu du contenu, pour éviter le saut du menu (condition 12).
+  (function () {
+    const entete = document.currentScript && document.currentScript.previousElementSibling;
+    if (!entete || !entete.classList.contains('entete')) return;
+    entete.classList.add('repliable');
+    const bouton = entete.querySelector('.menu-bouton');
+    if (bouton) bouton.hidden = false;
+  })();
+</script>
 
 <script>
   // Menu repliable sur téléphone : le bouton n'apparaît qu'avec JavaScript
   const entete = document.querySelector('.entete');
   const bouton = entete?.querySelector('.menu-bouton');
   if (entete && bouton) {
-    entete.classList.add('repliable');
-    bouton.hidden = false;
     bouton.addEventListener('click', () => {
       const ouvert = bouton.getAttribute('aria-expanded') === 'true';
       bouton.setAttribute('aria-expanded', String(!ouvert));
