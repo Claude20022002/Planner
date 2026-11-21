@@ -52,12 +52,13 @@ Le plan exemptait deux phrases de la vidéo du test de garde. Seule celle de la 
 ## État laissé
 
 - État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-18 → **code fait, PR à ouvrir**.
+- 21 nov. : `main` intégrée après la fusion de #224 (`1e8e988b`), sans conflit. `npm run test:unit` : 90 tests, 90 verts (avec ceux du comparatif ; le test de garde lit aussi `comparer.json`). Build : 52 pages.
 - `EnTete.astro` est aussi touché par VIT-17 (le saut du menu), à d'autres lignes : le second fusionné intègre `main`.
 - `solutions.json` et `types.js` seront touchés ensuite par VIT-13 : VIT-18 passe d'abord, comme prévu par la fiche.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef pousse la branche et ouvre la PR (commandes ci-dessous) ; après la fusion de #224, intégrer `main` dans la branche.
+1. Le chef pousse la branche et ouvre la PR (commandes ci-dessous) ; `main` est déjà intégrée.
 2. Claude de VS Code (VIT-08) : au prochain rendu de la vidéo, les deux phrases du § 6 du plan. Il retire alors l'exception du test de garde (`contenu.test.js`, `EXCEPTIONS`).
 3. Le coordinateur reporte l'état dans `suivi.md`.
 
