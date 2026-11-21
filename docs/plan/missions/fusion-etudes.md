@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | État | ouverte |
-| Agent | la session Claude de VIT-14 (sa file est vide) |
+| Agent | **agent de Cursor**, après VIT-17 (réattribuée le 21 nov. : la session de VIT-14 n'a pas été ouverte) |
 | Modèle recommandé | un modèle moyen : des fusions de documents, sans code |
 | Attribuée le | 2026-11-21, par le coordinateur ; accord du chef : oui, le 2026-11-21 (« les études se fusionnent ») |
 | Module et chantier | QUA (documentation) · hors chantier, décision du chef |
@@ -18,10 +18,10 @@
 |---|---|---|---|
 | 1 | #191 | `etude/openeducat-comparatif` | sans conflit, mais sa CI du 17 nov. est rouge (Test Backend, sur le `main` de l'époque) : `git merge origin/main` pour la relancer ; vérifier les liens et `node scripts/verifier-neutre.mjs` |
 | 2 | #192 | `etude/openeducat-etude-complete` | après la fusion de #191 : `git merge origin/main` ; `docs/etude-marche/README.md` peut entrer en conflit : garder les deux lignes |
-| 3 | #186 | `etude/failles-erp-scolaires` | `git merge origin/main` : `decisions.md` (garder toutes les lignes), `suivi.md` (la version de `main`). Elle touche aussi `docs/plan/modeles/conception.md`, que la coordination du 21 nov. a modifié (section 7 bis) : garder les deux ajouts |
+| 3 | #189 (contient #186 et #188) | `doc/qua-09-envois-sortants` | les trois branches sont empilées : on ne met à jour que #189. `git merge origin/main` : `decisions.md` (toutes les lignes), `suivi.md` (la version de `main`) ; `docs/plan/modeles/conception.md` et `docs/plan/README.md` : garder les deux ajouts (§ 7 bis et EP-19 du 21 nov.). Une fois #189 fusionnée, GitHub marque #186 et #188 fusionnées. **Codex attend cette fusion** pour finir QUA-10 |
 | 4 | #190 | `etude/architecture-donnees` | `git merge origin/main` : `decisions.md` (toutes les lignes), `docs/conception/README.md` (les deux lignes) |
 | 5 | #169 | `etude/ven-modele-economique` | `git merge origin/main` : `decisions.md` (toutes les lignes) ; elle a plus de 400 commits de retard : relire que rien d'autre ne bouge |
-| 6 | `etude/expertise-go4school` | (après son push par le chef) | `git merge origin/main` si besoin |
+| 6 | #234 | `etude/expertise-go4school` | `git merge origin/main` si besoin |
 | 7 | #193 | `doc/plan-parite-openeducat` | en dernier : `decisions.md` (toutes les lignes), `suivi.md` (la version de `main`), `modules/UIX-interface.md` et `modules/VSC-vie-scolaire.md` (garder les deux côtés, y compris VSC-08 ajoutée le 21 nov.). Ne pas changer l'étape des fonctions : le chef la donnera |
 
 **#194 (essai PostgreSQL) n'est pas dans la mission** : elle porte du code d'essai, elle reste en brouillon.
