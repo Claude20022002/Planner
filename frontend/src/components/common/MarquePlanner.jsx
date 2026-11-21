@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { ds } from '../../design-system/tokens';
 import { adresseLogo, identiteEcole } from '../../services/etablissement';
 import { estSansEcole, fichierMarque, hauteurMot } from './choixMarque.js';
 
@@ -17,9 +18,9 @@ export default function MarquePlanner({ hauteur = 28, identite = identiteEcole()
       {!sansEcole && <>
         {adresse && echec !== adresse ? (
           <Box component="img" src={adresse} alt={identite.nom} onError={() => setEchec(adresse)}
-            sx={{ height: hauteur, maxWidth: 'min(45vw, 120px)', objectFit: 'contain', display: 'block', ...(sombre && { bgcolor: '#FFFFFF', outline: '4px solid #FFFFFF', borderRadius: '1px' }) }} />
+            sx={{ height: hauteur, maxWidth: 'min(45vw, 120px)', objectFit: 'contain', display: 'block', ...(sombre && { bgcolor: ds.white, outline: `4px solid ${ds.white}`, borderRadius: '1px' }) }} />
         ) : (
-          <Box component="span" title={identite.nom} sx={{ minWidth: 0, overflowWrap: 'anywhere', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, textTransform: 'uppercase', fontSize: hauteur * 0.7, lineHeight: 1, color: 'text.primary' }}>
+          <Box component="span" title={identite.nom} sx={{ minWidth: 0, overflowWrap: 'anywhere', fontFamily: ds.font.board, fontWeight: 700, textTransform: 'uppercase', fontSize: hauteur * 0.7, lineHeight: 1, color: 'text.primary' }}>
             {identite.nom_court || identite.nom}
           </Box>
         )}
