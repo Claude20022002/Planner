@@ -255,8 +255,10 @@ jobs:
       - name: Construire l'image du solveur
         uses: docker/build-push-action@v6
         with:
-          context: ../solver
-          file: ../solver/Dockerfile
+          # Chemins depuis la racine du dépôt : build-push-action n'applique pas
+          # defaults.run.working-directory (frontend/) ; ../solver échouait.
+          context: solver
+          file: solver/Dockerfile
           load: true
           tags: hestim-solver:parcours
           cache-from: type=gha,scope=solver
