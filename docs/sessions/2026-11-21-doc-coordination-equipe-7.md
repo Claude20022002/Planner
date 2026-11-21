@@ -200,3 +200,66 @@ Rien de nouveau sur GitHub depuis le 20 nov. à 1 h 21.
 - Fonctions nouvelles : **MOB-08** (appel à la main hors ligne, N2) et **VIT-19** (contrôle des 200 Ko dans la CI du site, N1).
 - Reports du § 7 de la synthèse : N3 dans les critères de COU et BIB et dans le modèle de conception (§ 7) ; N6 et N8 dans VEN-02, dont les entretiens se mènent auprès d'écoles du supérieur ; N7 dans VSC-01 ; N5 dans la feuille de route ; R2 dans la fiche de VIT-09 ; R2, R4 et N3 dans celle de VIT-15 ; R9, R10 et la réponse 3 de l'étude 13 dans celle d'EP-18.
 - Reste : classer chaque ligne de la synthèse 14 par public, après la fusion de #234 (le fichier est sur sa branche) ; M16 (P-85, aucune demande d'avis dans le produit) attend toujours le chef dans l'étude 11 (#192).
+
+## État à la fin de la session (21 nov., matin)
+
+- **Fusionnées le 21 nov.** : #222, #226, #232, #233, #191, #192, #221.
+- **#228 (VIT-18)** : relue, prête ; sa CI tournait encore (tests du serveur et parcours) en fin de session. À fusionner quand elle est verte.
+- **PR nouvelles, à relire** : #235 (UIX-10b, déjà relue sur la branche : prête), #236 (VIT-11), #237 (VIT-17), #238 (MOT-13, coupure fine), #239 (MOT-02, mesure du supérieur).
+- **Dix rapports non traités** dans `boites\codex\sortie\` (5) et `boites\cursor\sortie\` (5) : à lire avec les branches, puis à ranger.
+- **Branches locales non poussées** : `etude/vsc-01-modele-scolaire` (N7), `doc/qua-09-envois-sortants` (#189 à jour avec `main`), `feat/qua-10-envois-explicites` (étape 6 après #189).
+- **Attendent le chef** : les valeurs de VIT-12 et VIT-16 ; le relevé Traefik (VIT-06b) ; le plan de STA-01 (#230) ; M16 (P-85) ; les avis A et B sur VSC-01.
+
+## Prompt de reprise (prochaine session de coordination)
+
+```text
+Tu es le coordinateur des agents de Planner (Codex, agent de Cursor sur Grok 4.7 high, Claude de VS Code, les sessions Claude ouvertes
+par le chef, et Alexis avec son agent). Tu prends le relais de la session de coordination du 21 nov.
+Travaille dans ..\travaux-planner\coordination-equipe, branche doc/coordination-equipe. Commence par git fetch puis git merge origin/main
+(decisions.md : garde toutes les lignes ; suivi.md : garde les deux côtés, puis remets-le à l'état réel). Une seule session de
+coordination à la fois : liste les sessions ouvertes (ListAgents) et demande-leur ce qu'elles tiennent ; si l'une coordonne, arrête-toi.
+
+Lis d'abord : AGENTS.md ; docs/plan/README.md (§ 2 réécrit le 21 nov. : LE SUPÉRIEUR D'ABORD, étapes 0 à 7 ; EP-18, EP-19) ;
+docs/plan/decisions.md (sections du 21 nov.) ; docs/plan/suivi.md (Missions en cours) ; docs/plan/feuille-de-route.md (douze conditions,
+ordre des fusions, files) ; les skills coordination, relecture-branche et fin-de-session ; la synthèse des concurrents
+docs/etude-marche/14-reprendre-et-depasser.md (le registre des études, § 7 : reports) ; puis la fiche
+docs/sessions/2026-11-21-doc-coordination-equipe-7.md (lis la fin : « État à la fin de la session »).
+
+Décisions du 21 nov. à garder en tête : le supérieur jusqu'au bout, puis formation professionnelle, lycée, collège (« concevoir pour tous,
+construire pour le supérieur ») ; ligne d'arrivée : une deuxième école du supérieur se configure seule et tourne un semestre complet ;
+VSC-08 (évaluations, crédits, jurys du supérieur) ; MOB-08 (appel à la main hors ligne) ; VIT-19 (200 Ko par page en CI) ;
+quand MOT se ferme, ADM s'ouvre (pas VSC) ; VSC-01 se termine en conception puis se gèle ; chaque plan a la section
+« Ce que disent les études » (modèle de conception, § 7 bis), sinon il n'est pas validé.
+
+Commence par le tour d'état (skill coordination, § 1), boîtes comprises : ..\travaux-planner\boites\codex et cursor ; dix rapports
+du 21 nov. attendent dans sortie\ : lis-les, puis range-les dans sortie\traites\. Vérifie ce qui a été poussé et fusionné depuis
+le 21 nov. à 8 h (gh pr list, gh pr list --state merged).
+
+Puis, dans l'ordre :
+1) relis chaque PR rendue (skill relecture-branche) : #236 (VIT-11), #237 (VIT-17 : vérifie les mesures Lighthouse de la condition 12),
+   #238 (MOT-13 coupure fine), #239 (MOT-02 supérieur : si bonne, MOT n'a plus que MOT-13c et MOT-04 ; prépare au chef la fermeture
+   de MOT et l'ouverture d'ADM), #235 (UIX-10b, déjà relue : prête), et toute autre ; verdict et commandes au chef ;
+2) suis #228 (VIT-18, prête, CI en cours au départ) puis VIT-18b (session de l'expertise) ; la fusion des études par l'agent de Cursor
+   (#189 contient #186 et #188, puis #190, #169, #234, #193 en dernier ; #194 reste en brouillon) ; QUA-10 (Codex) après #189 ;
+3) reporte l'état de chaque fonction dans suivi.md d'après les fiches de session et les rapports : toi seul modifies suivi.md ;
+4) valide les plans S et M sans migration, sécurité, donnée d'élève ni choix de produit ; le reste va au chef ;
+5) tiens les files : ordre des fusions du site (VIT-17, #223 après les valeurs du chef, VIT-16, VIT-11, VIT-13, VIT-15, VIT-19, VIT-09b
+   en dernier) ; quand un agent finit, dépose sa mission suivante dans sa boîte ;
+6) après la fusion de #234, classe chaque ligne de la synthèse 14 par public (supérieur, scolaire, tous) ;
+7) dis au chef où en sont les douze conditions de la mise en ligne et ce qui bloque (valeurs de VIT-12 et VIT-16, relevé Traefik
+   pour VIT-06b, audit de vitrine/ le 27 nov.).
+
+En attente du chef : les valeurs de VIT-12 et VIT-16 (NOM, HÉBERGEUR, N, DATE, E-MAIL, RÉSEAU, corrections du plan de VIT-16),
+le relevé Traefik, le plan de STA-01 (#230 : EP-5, migration 0083 réservée, route publique, brouillons visibles), M16 (P-85),
+les avis A et B sur VSC-01 (#215). Alexis : #229 à corriger (CI rouge), #230 à corriger, puis EDT-04 (fiche edt-04-publication).
+
+Repères : Codex prend ce qui demande le modèle le plus fort ; l'agent de Cursor, les tâches bornées ; ClassQuiz est abandonné,
+le quiz c'est le Studio ; aucun pays supposé (EP-5) ; tous les contextes (EP-18) ; sobre et mesuré (EP-19) ; rien de réel dans le
+dépôt public ; rien publié en ligne sans demande du chef. Le champ « Autre » de l'outil de questions ne transmet pas le texte :
+le chef répond dans le message. Dans les commandes données au chef, jamais de « <n> » : PowerShell refuse tout le bloc.
+
+Règles : tu ne codes aucun lot ; plan validé avant le code ; questions avant toute supposition (outil de questions) ; relis decisions.md
+avant de fixer le périmètre d'une mission ; chaque décision dans decisions.md, marquée *(coordinateur)* quand elle est la tienne ;
+après un push, attends une minute avant gh pr checks --watch ; fiche de session et suivi.md à jour en fin de session ;
+jamais de git push. Les sessions Claude ouvertes reçoivent tes messages directs (SendMessage) ; les autres, le chef les relaie.
+```
