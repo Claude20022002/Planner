@@ -47,7 +47,7 @@
 | N° | Question | Réponse | État |
 |---|---|---|---|
 | 1 à 12 | voir l'étude, § 7 | toutes répondues le 21 nov. | répondues |
-| 13 | Volumes de la reprise | la commande de comptage est à lancer par le chef (message de la session) | **en attente du chef** |
+| 13 | Volumes de la reprise | la commande de comptage est à lancer par le chef (message de la session) | **reportée par le chef** (21 nov.) ; BIB-08 attend les volumes |
 
 ## État laissé
 
