@@ -187,3 +187,5 @@ ou tout script ajouté. Si le budget est dépassé, soumettre au chef la mesure 
 2. Validez-vous le panneau HTML natif et l’accès direct au catalogue sur les anciens navigateurs ?
 3. Validez-vous le plafond de 4 Kio gzip par page, avec 0 octet de JavaScript et 0 requête
    supplémentaire pour le menu ?
+
+**Visa du 21 novembre 2026.** Claude20022002 valide le complément du commit `6373472e`, y compris les trois décisions du § 7. Le méga-menu peut être réalisé.
