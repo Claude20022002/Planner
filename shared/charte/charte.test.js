@@ -7,6 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import os from 'node:os';
 import { controlerPaires, pairesCalculees } from './contraste.mjs';
+import { FOND_PANNEAU, verifierCouleur } from '../couleurs.js';
 import {
     CHEMIN_CSS_SITE, RACINE, construireSorties, empreinte, lireEntete, verifierSorties,
 } from './generer.mjs';
@@ -95,4 +96,28 @@ test('6. le CSS du site ne contient que les jetons marqués « site »', () => {
 
 test('7. le CSS du site porte exactement les noms de variables d\'aujourd\'hui', () => {
     assert.deepEqual(nomsDuCss, NOMS_DU_SITE);
+});
+
+// UIX-10b : statuts, lignes et panneau entrent dans la source ; chacun a ses paires déclarées
+test('8. statuts, lignes et lampes du panneau ont leurs paires, et aucune couleur ne sort sur le site', () => {
+    const declarees = new Set(Object.values(source.paires).flat().map(([texte, fond]) => `${texte} sur ${fond}`));
+    for (const nom of Object.keys(source.familles.statuts).filter((n) => !n.endsWith('-fond'))) {
+        for (const fond of [`${nom}-fond`, 'blanc', 'gris-fond']) assert.ok(declarees.has(`${nom} sur ${fond}`), `${nom} sur ${fond}`);
+    }
+    for (const nom of Object.keys(source.familles.lignes)) assert.ok(declarees.has(`${nom} sur blanc`), `${nom} sur blanc`);
+    for (const nom of Object.keys(source.familles.panneau).filter((n) => n.startsWith('lampe-'))) {
+        for (const fond of ['ecran', 'surface-sombre']) assert.ok(declarees.has(`${nom} sur ${fond}`), `${nom} sur ${fond}`);
+    }
+    for (const famille of ['statuts', 'lignes', 'panneau']) {
+        assert.ok(Object.values(source.familles[famille]).every((j) => !j.site), `${famille} hors du site`);
+    }
+});
+
+test('9. le fond du panneau de shared/couleurs.js est « ecran » ; un accent se mesure sur ce fond', () => {
+    assert.equal(FOND_PANNEAU, source.familles.couleurs.ecran.valeur);
+    assert.ok(verifierCouleur('#F26322', 'accent').valide, 'orange livré avant la charte');
+    assert.ok(verifierCouleur(source.familles.couleurs['bleu-vif'].valeur, 'accent').valide, 'bleu-vif, accent de repli');
+    // #137D3F passe sur blanc (5,21:1) et sur le fond « ecran » (3,35:1) ; #8B0000 ne passe pas sur le panneau
+    assert.ok(verifierCouleur('#137D3F', 'accent').valide);
+    assert.match(verifierCouleur('#8B0000', 'accent').message, /panneau sombre/);
 });

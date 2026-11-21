@@ -77,6 +77,7 @@ export const cssSite = (source) => {
 const TITRES = {
     couleurs: 'Couleurs', sombre: 'Mode sombre', typographie: 'Typographie', espaces: 'Espaces et largeurs',
     rayons: 'Rayons', ombres: 'Ombres', mouvement: 'Mouvement',
+    statuts: 'Statuts des séances', lignes: 'Lignes des filières', panneau: 'Panneau des départs',
 };
 
 const tableau = (entetes, lignes) => [
@@ -113,6 +114,9 @@ export const guide = (source) => {
         parties.push('', `## ${TITRES[famille] ?? famille}`, '');
         if (famille === 'sombre') {
             parties.push('Le fond du mode sombre est `ecran` ; l\'action est `bleu-clair`, avec le texte `ecran` dessus. Le site vitrine n\'a pas de mode sombre.', '');
+        }
+        if (famille === 'panneau') {
+            parties.push('Le panneau reste sombre, même en thème clair : fond `ecran`, cases `surface-sombre`, lettres `texte-sombre` et `texte-sombre-second`, cadre à la couleur de l\'école ou `bleu-nuit`. Seules ses couleurs propres sont ici.', '');
         }
         parties.push(tableauFamille(famille, jetons));
     }
