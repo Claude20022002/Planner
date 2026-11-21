@@ -144,24 +144,17 @@ test('VIT-18 : les phrases validées sont écrites en français', () => {
 
 // Test de garde (VIT-18, décisions D2 et D3 du chef) : aucun pays nommé, et la seule formule de l'IA.
 const INTERDITS = /Maroc|Morocco|Massar|\bBTS\b|\bLMD\b|l['’]école active l['’]IA|the school turns (AI on|on AI)|quand l['’]IA est disponible|when AI is available/i;
-// La vidéo garde sa phrase jusqu'à son prochain rendu (VIT-08) : la transcription doit rester identique au film.
-const EXCEPTIONS = new Set(['accueil:video.scenes.7.lignes.1']);
+// Aucune exception : la phrase de la vidéo a été refaite par VIT-08 (#232), le texte du film suit la même règle.
 const fichiersDe = (langue) => fs.readdirSync(path.join(DOSSIER, langue)).filter((f) => f.endsWith('.json')).map((f) => f.slice(0, -5));
 const aPlat = (valeur, cle = '') => (typeof valeur === 'string' ? [[cle, valeur]]
   : Object.entries(valeur).flatMap(([k, v]) => aPlat(v, cle ? `${cle}.${k}` : k)));
 
 test('VIT-18 : aucun pays nommé, et l\'IA « activée pour votre école », en français et en anglais', () => {
-  const exceptionsVues = new Set();
   for (const langue of ['fr', 'en']) {
     for (const fichier of fichiersDe(langue)) {
       for (const [cle, texte] of aPlat(charger(langue, fichier))) {
-        if (!INTERDITS.test(texte)) continue;
-        const nom = `${fichier}:${cle}`;
-        assert.ok(EXCEPTIONS.has(nom), `${langue}/${nom} : ${texte}`);
-        exceptionsVues.add(nom);
+        assert.doesNotMatch(texte, INTERDITS, `${langue}/${fichier}:${cle}`);
       }
     }
   }
-  // Une exception qui ne sert plus (la vidéo refaite) doit être retirée de la liste
-  assert.deepEqual([...exceptionsVues].sort(), [...EXCEPTIONS].sort());
 });

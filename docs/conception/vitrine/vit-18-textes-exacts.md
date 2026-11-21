@@ -119,6 +119,7 @@ Dans `vitrine/tests/contenu.test.js`, un test lit toutes les chaînes des fichie
 
 - **Exception, nommée dans le test** : la phrase de la vidéo qui contient l'ancienne formule de l'IA (`accueil.json` · `video.scenes.7.lignes.1`, en français et en anglais). Elle doit rester identique au film jusqu'à son prochain rendu (§ 6). Le test vérifie aussi que l'exception sert encore : quand la vidéo sera refaite, il demandera de la retirer.
   - *Écart au code (19 nov.)* : le plan nommait aussi `video.scenes.4.lignes.0`, mais cette phrase ne contient aucune formule interdite. L'exception n'en garde donc qu'une, ce qui rend le test plus strict. La phrase de la scène 4 reste à refaire au prochain rendu (§ 6).
+  - *Écart au code (21 nov.)* : le nouveau rendu de la vidéo (VIT-08, #232) a été fusionné avant VIT-18, avec les deux phrases du § 6. L'exception n'a plus d'objet : elle est retirée, ainsi que la vérification « l'exception sert encore ». Le test de garde ne connaît plus aucune exception, vidéo comprise.
 - **Les phrases figées du même fichier** changent avec les textes : l'IA du Studio, les jeux, l'IA de la Bibliothèque, l'appel à la main (lignes 24, 28, 36 et 85). L'assertion « Au Maroc, Massar en est un exemple. » (ligne 88) s'inverse : la phrase ne doit plus y être.
 - **Le test de régression** de chaque correction est ce test de garde (formules retirées) et les phrases figées (formules nouvelles).
 
@@ -149,6 +150,7 @@ Deux phrases de la vidéo ne suivent plus le site. Elles ne changent qu'au proch
 | `vitrine/src/components/socle/EnTete.astro` | deux lignes : l'icône prise par clé de type (question 7, accordée par le chef) |
 | `vitrine/tests/contenu.test.js`, `vitrine/tests/solutions.test.js` | le test de garde, les phrases figées, l'ordre des types |
 | `docs/plan/modules/VIT-site-vitrine.md` | la ligne de VIT-18 |
+| `vitrine/src/i18n/{fr,en}/direction.json`, `scolarite.json`, `enseignants.json` ; `vitrine/tests/roles.test.js` ; `docs/conception/vitrine/vit-11-catalogue-faq.md` (réponse 8) | **ajout du 21 nov.**, validé par le chef : VIT-10b, fusionnée avant VIT-18, recopiait trois phrases que VIT-18 change (le refus, l'IA, l'appel à la main). Elles reprennent les phrases validées du groupe 2, de D2 et du groupe 4 (§ 10) |
 
 ## 9. Étapes
 
@@ -156,3 +158,16 @@ Deux phrases de la vidéo ne suivent plus le site. Elles ne changent qu'au proch
 2. Les questions 1 à 7 au chef ; ses réponses dans le § 4 et la ligne « Validé ».
 3. Après la fusion de #224 : `git merge origin/main`, puis les textes, `types.js`, le test de garde.
 4. Build, tests, `verifier-neutre`, axe-core en 390 et 1440 px ; fiche de session.
+
+## 10. Ajout du 21 novembre : les phrases recopiées par VIT-10b
+
+VIT-10b (#226) a été fusionnée avant VIT-18. Ses pages par rôle recopient des phrases publiées, et son test le vérifie (`roles.test.js`). Trois de ces phrases sont celles que VIT-18 change. **Le chef a validé, par l'outil de questions, de les aligner dans VIT-18** :
+
+| Clé | Après (fr) | Après (en) | Source de la phrase |
+|---|---|---|---|
+| `direction.json` · `passage.lignes.2.avec` ; `scolarite.json` · `faq.questions.1.reponse` | « Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant. » | « When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher. » | groupe 2 (§ 3.4) |
+| `enseignants.json` · `passage.lignes.4.avec` et `faq.questions.0.reponse` ; réponse 8 du plan de VIT-11 | « Quand l’IA est activée pour votre école dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager. » | « When AI is turned on for your school in the quiz Studio, it can suggest questions that the teacher reviews before sharing them. » | D2 |
+| `enseignants.json` · `passage.lignes.0.avec` | « À la main, sur la liste de la séance : les étudiants n'ont besoin ni de téléphone, ni d'écran projeté. » | « By hand, on the session list: students need neither a phone nor a projected screen. » | groupe 4 (§ 3.4) |
+
+`roles.test.js` pointe désormais vers le premier point de l'appel (`enClasse.appel.points[0]`), qui est l'appel à la main depuis VIT-18.
+

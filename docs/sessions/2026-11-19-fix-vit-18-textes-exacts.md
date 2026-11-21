@@ -31,6 +31,8 @@ VIT-18, le lot B de l'[expertise du site](../etude-marche/12-expertise-site-vitr
 
 Le plan exemptait deux phrases de la vidéo du test de garde. Seule celle de la scène 7 contient une formule interdite (« Quand l'école active l'IA », et en anglais « When the school turns on AI »). L'exception n'en garde donc qu'une, ce qui rend le test plus strict. Le test vérifie aussi que l'exception sert encore. Le plan est corrigé (§ 5). La phrase de la scène 4 reste à refaire au prochain rendu (§ 6).
 
+Second écart, le 21 nov. (consigne du coordinateur) : le nouveau rendu de la vidéo (#232) a été fusionné avant VIT-18, avec les deux phrases du § 6 du plan. L'exception du test de garde est donc retirée, avec sa vérification. Le plan (§ 5) le note.
+
 ## Vérifié
 
 - `npm run test:unit` : **78 tests, 78 verts** (76 avant, plus les 2 de VIT-18).
@@ -53,6 +55,8 @@ Le plan exemptait deux phrases de la vidéo du test de garde. Seule celle de la 
 
 - État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-18 → **code fait, PR à ouvrir**.
 - 21 nov. : `main` intégrée après la fusion de #224 (`1e8e988b`), sans conflit. `npm run test:unit` : 90 tests, 90 verts (avec ceux du comparatif ; le test de garde lit aussi `comparer.json`). Build : 52 pages.
+- 21 nov., seconde intégration de `main`, après la fusion de #226 (VIT-10b) et de #232 (vidéo) : un conflit dans `docs/plan/modules/VIT-site-vitrine.md`, résolu en gardant les deux lignes (VIT-10b, puis VIT-18). Exception du test de garde retirée.
+- 21 nov. : VIT-10b recopiait trois phrases que VIT-18 change (le refus, l'IA, l'appel à la main) : sa page Direction, sa page Scolarité, sa page Enseignants et la réponse 8 du plan de VIT-11. **Alignées avec l'accord du chef** (deux questions, « Je valide »), plan § 10. Après quoi : `npm run test:unit` 95 sur 95, build de 52 pages, `verifier-neutre` vert.
 - `EnTete.astro` est aussi touché par VIT-17 (le saut du menu), à d'autres lignes : le second fusionné intègre `main`.
 - `solutions.json` et `types.js` seront touchés ensuite par VIT-13 : VIT-18 passe d'abord, comme prévu par la fiche.
 
