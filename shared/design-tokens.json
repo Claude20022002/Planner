@@ -1,5 +1,5 @@
 {
-  "$description": "Jetons partagés par le web (frontend) et l'application mobile : marque, panneau, statuts, lignes. Une seule source de vérité.",
+  "$description": "Jetons d'avant la charte, gelés pour l'application mobile jusqu'à UIX-10d : marque, panneau noir, rayons, cascade des volets. Le web lit shared/charte ; les statuts et les lignes y sont depuis UIX-10b (shared/tokens.js les relaie).",
   "brand": {
     "navy": "#001861",
     "navyDeep": "#000E3D",
@@ -23,53 +23,6 @@
     "delayed": "#F26322",
     "cancelled": "#FF5A5F"
   },
-  "status": {
-    "planifie": {
-      "key": "planifie",
-      "board": "#F2F1EC",
-      "bureau": "#3F4759",
-      "bureauBg": "#EEF0F5"
-    },
-    "confirme": {
-      "key": "confirme",
-      "board": "#3FCB74",
-      "bureau": "#137D3F",
-      "bureauBg": "#E7F4EC"
-    },
-    "reporte": {
-      "key": "reporte",
-      "board": "#F26322",
-      "bureau": "#B4410C",
-      "bureauBg": "#FDEFE7"
-    },
-    "a_reprogrammer": {
-      "key": "a_reprogrammer",
-      "board": "#F26322",
-      "bureau": "#B4410C",
-      "bureauBg": "#FDEFE7"
-    },
-    "annule": {
-      "key": "annule",
-      "board": "#FF5A5F",
-      "bureau": "#B5161C",
-      "bureauBg": "#FCE8E9"
-    },
-    "realise": {
-      "key": "realise",
-      "board": "#A6A6AC",
-      "bureau": "#5B6272",
-      "bureauBg": "#F1F2F5"
-    }
-  },
-  "lines": [
-    "#3B63E0",
-    "#1592C9",
-    "#0F8A7E",
-    "#7048C9",
-    "#B03A8C",
-    "#46508F"
-  ],
-  "lineUnknown": "#6B6B72",
   "radius": {
     "xs": 2,
     "sm": 3,

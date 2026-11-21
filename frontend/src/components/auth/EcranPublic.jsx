@@ -4,7 +4,7 @@ import { DarkModeOutlined, LightModeOutlined } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { LANGUAGES } from '../../i18n';
 import { useTheme } from '../../contexts/ThemeContext';
-import ThemeGestion from '../common/ThemeGestion';
+import useFaviconPlanner from '../common/useFaviconPlanner';
 import MarquePlanner from '../common/MarquePlanner';
 import useTitreOnglet from '../../hooks/useTitreOnglet';
 
@@ -12,7 +12,8 @@ export default function EcranPublic({ children }) {
   const { t, i18n } = useTranslation();
   const { mode, toggleTheme } = useTheme();
   const lignes = t('login.boardLines', { returnObjects: true });
-  return <ThemeGestion>
+  useFaviconPlanner(true);
+  return (
     <Box sx={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
       <Box component="header" sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 2, px: { xs: 2, sm: 4, lg: 6 }, py: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
         <MarquePlanner hauteur={28} />
@@ -40,7 +41,7 @@ export default function EcranPublic({ children }) {
         <Box sx={{ width: '100%', maxWidth: 420, mx: 'auto', minWidth: 0 }}>{children}</Box>
       </Box>
     </Box>
-  </ThemeGestion>;
+  );
 }
 
 /** Titre public traduit, partagé avec le titre de l’onglet. */

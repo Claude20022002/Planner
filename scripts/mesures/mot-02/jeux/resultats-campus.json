@@ -1,0 +1,781 @@
+{
+  "provenance": {
+    "images": {
+      "avant": {
+        "revision": "ab2620a40b377856bd0dfeaec1effc7ebe07029c",
+        "image": "sha256:227dac56ac71ba6701b61d0fd9b2f0c89d1a848f9acafcead17a9b76ae2f998a"
+      },
+      "apres": {
+        "revision": "53561918462fd6ee286ea2ed4fabef4754a83347",
+        "image": "sha256:5c2bbc86ee56f069e785fa0c0c48647585fe275bb2f9cfd310b4452a19e3d65f"
+      }
+    },
+    "arbres": {
+      "fusion182": "0c390fcb446c2d8f57906a5bb3ba5616ab66557c",
+      "apres": "0c390fcb446c2d8f57906a5bb3ba5616ab66557c"
+    }
+  },
+  "jeux": [
+    {
+      "taille": 480,
+      "seances": 84,
+      "problemeSha256": "2b43325a48c93852f80b3671ed83b57662ad7a0acba6adaebd3ae0d3cc558606",
+      "comparaison": {
+        "reference": {
+          "min": 4,
+          "mediane": 4,
+          "max": 4
+        },
+        "actuelle": {
+          "min": 4,
+          "mediane": 4,
+          "max": 4
+        },
+        "ecartPoints": 0,
+        "variationPourCent": 0,
+        "verdict": "conforme"
+      },
+      "versions": {
+        "avant": {
+          "fixe": {
+            "indice": "480-fixe-avant",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 1447.714,
+            "score": "0hard/-410soft",
+            "dur": 0,
+            "moyen": null,
+            "souple": -410,
+            "soupleParSeance": -4.880952380952381,
+            "recompensesNettesNonListees": 2,
+            "violations": [
+              {
+                "souple": -12,
+                "dur": 0,
+                "nombre": 4,
+                "contrainte": "Vœu : créneau à éviter"
+              },
+              {
+                "souple": -240,
+                "dur": 0,
+                "nombre": 48,
+                "contrainte": "CM avant TD et TP du même module"
+              },
+              {
+                "souple": -160,
+                "dur": 0,
+                "nombre": 16,
+                "contrainte": "Journées sans trous"
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 160915456,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "dcbb8fd540d728f7294a34ec400a8c0d32b49812bd0e97a2ca42954e6e9879e3",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": null,
+            "rechercheLocaleMs": null,
+            "evaluationsParSeconde": 0
+          },
+          "chauffe": {
+            "indice": "480-chauffe-avant",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 61156.067,
+            "score": "0hard/-3soft",
+            "dur": 0,
+            "moyen": null,
+            "souple": -3,
+            "soupleParSeance": -0.03571428571428571,
+            "recompensesNettesNonListees": 2,
+            "violations": [
+              {
+                "nombre": 1,
+                "dur": 0,
+                "souple": -5,
+                "contrainte": "CM avant TD et TP du même module"
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 161472512,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "edd6e74d1292a4b711b760b11ddd8785485449fc3e84f54e5bd0763cc1d5f806",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": 2370,
+            "rechercheLocaleMs": 57652,
+            "evaluationsParSeconde": 10025
+          },
+          "mesures": [
+            {
+              "indice": "480-1-avant",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 81227.47499999998,
+              "score": "0hard/4soft",
+              "dur": 0,
+              "moyen": null,
+              "souple": 4,
+              "soupleParSeance": 0.047619047619047616,
+              "recompensesNettesNonListees": 4,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 164036608,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "2b43325a48c93852f80b3671ed83b57662ad7a0acba6adaebd3ae0d3cc558606",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 1628,
+              "rechercheLocaleMs": 78090,
+              "evaluationsParSeconde": 13747
+            },
+            {
+              "indice": "480-2-avant",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 87221.59260000003,
+              "score": "0hard/4soft",
+              "dur": 0,
+              "moyen": null,
+              "souple": 4,
+              "soupleParSeance": 0.047619047619047616,
+              "recompensesNettesNonListees": 4,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 170971136,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "2b43325a48c93852f80b3671ed83b57662ad7a0acba6adaebd3ae0d3cc558606",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 2283,
+              "rechercheLocaleMs": 84235,
+              "evaluationsParSeconde": 12710
+            },
+            {
+              "indice": "480-3-avant",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 90384.61589999998,
+              "score": "0hard/4soft",
+              "dur": 0,
+              "moyen": null,
+              "souple": 4,
+              "soupleParSeance": 0.047619047619047616,
+              "recompensesNettesNonListees": 4,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 165171200,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "2b43325a48c93852f80b3671ed83b57662ad7a0acba6adaebd3ae0d3cc558606",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 1911,
+              "rechercheLocaleMs": 87580,
+              "evaluationsParSeconde": 12017
+            }
+          ]
+        },
+        "apres": {
+          "fixe": {
+            "indice": "480-fixe-apres",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 1658.6318000000028,
+            "score": "0hard/0medium/-410soft",
+            "dur": 0,
+            "moyen": 0,
+            "souple": -410,
+            "soupleParSeance": -4.880952380952381,
+            "recompensesNettesNonListees": 2,
+            "violations": [
+              {
+                "contrainte": "Vœu : créneau à éviter",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -12,
+                "nombre": 4
+              },
+              {
+                "contrainte": "CM avant TD et TP du même module",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -240,
+                "nombre": 48
+              },
+              {
+                "contrainte": "Journées sans trous",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -160,
+                "nombre": 16
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 165736448,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "dcbb8fd540d728f7294a34ec400a8c0d32b49812bd0e97a2ca42954e6e9879e3",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": null,
+            "rechercheLocaleMs": null,
+            "evaluationsParSeconde": 0
+          },
+          "chauffe": {
+            "indice": "480-chauffe-apres",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 61116.93070000001,
+            "score": "0hard/0medium/-3soft",
+            "dur": 0,
+            "moyen": 0,
+            "souple": -3,
+            "soupleParSeance": -0.03571428571428571,
+            "recompensesNettesNonListees": 2,
+            "violations": [
+              {
+                "contrainte": "CM avant TD et TP du même module",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -5,
+                "nombre": 1
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 174219264,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "edd6e74d1292a4b711b760b11ddd8785485449fc3e84f54e5bd0763cc1d5f806",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": 2706,
+            "rechercheLocaleMs": 57303,
+            "evaluationsParSeconde": 9242
+          },
+          "mesures": [
+            {
+              "indice": "480-1-apres",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 99519.61580000003,
+              "score": "0hard/0medium/4soft",
+              "dur": 0,
+              "moyen": 0,
+              "souple": 4,
+              "soupleParSeance": 0.047619047619047616,
+              "recompensesNettesNonListees": 4,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 171499520,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "2b43325a48c93852f80b3671ed83b57662ad7a0acba6adaebd3ae0d3cc558606",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 2166,
+              "rechercheLocaleMs": 96035,
+              "evaluationsParSeconde": 10536
+            },
+            {
+              "indice": "480-2-apres",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 86312.65159999998,
+              "score": "0hard/0medium/4soft",
+              "dur": 0,
+              "moyen": 0,
+              "souple": 4,
+              "soupleParSeance": 0.047619047619047616,
+              "recompensesNettesNonListees": 4,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 167665664,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "2b43325a48c93852f80b3671ed83b57662ad7a0acba6adaebd3ae0d3cc558606",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 2197,
+              "rechercheLocaleMs": 83103,
+              "evaluationsParSeconde": 12569
+            },
+            {
+              "indice": "480-3-apres",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 87311.07189999998,
+              "score": "0hard/0medium/4soft",
+              "dur": 0,
+              "moyen": 0,
+              "souple": 4,
+              "soupleParSeance": 0.047619047619047616,
+              "recompensesNettesNonListees": 4,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 166875136,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "2b43325a48c93852f80b3671ed83b57662ad7a0acba6adaebd3ae0d3cc558606",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 1787,
+              "rechercheLocaleMs": 84047,
+              "evaluationsParSeconde": 12557
+            }
+          ]
+        }
+      }
+    },
+    {
+      "taille": 960,
+      "seances": 168,
+      "problemeSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+      "comparaison": {
+        "reference": {
+          "min": 0,
+          "mediane": 5,
+          "max": 5
+        },
+        "actuelle": {
+          "min": -15,
+          "mediane": 0,
+          "max": 5
+        },
+        "ecartPoints": -5,
+        "variationPourCent": -100,
+        "verdict": "alerte"
+      },
+      "versions": {
+        "avant": {
+          "fixe": {
+            "indice": "960-fixe-avant",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 1462.157300000079,
+            "score": "0hard/-820soft",
+            "dur": 0,
+            "moyen": null,
+            "souple": -820,
+            "soupleParSeance": -4.880952380952381,
+            "recompensesNettesNonListees": 4,
+            "violations": [
+              {
+                "souple": -24,
+                "dur": 0,
+                "nombre": 8,
+                "contrainte": "Vœu : créneau à éviter"
+              },
+              {
+                "souple": -480,
+                "dur": 0,
+                "nombre": 96,
+                "contrainte": "CM avant TD et TP du même module"
+              },
+              {
+                "souple": -320,
+                "dur": 0,
+                "nombre": 32,
+                "contrainte": "Journées sans trous"
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 159240192,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "f6e1e73d48e11ad5baf2a64b69f258c3df42a1b2567e098452a61f2b28be5362",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": null,
+            "rechercheLocaleMs": null,
+            "evaluationsParSeconde": 0
+          },
+          "chauffe": {
+            "indice": "960-chauffe-avant",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 61090.93679999991,
+            "score": "0hard/-72soft",
+            "dur": 0,
+            "moyen": null,
+            "souple": -72,
+            "soupleParSeance": -0.42857142857142855,
+            "recompensesNettesNonListees": 3,
+            "violations": [
+              {
+                "contrainte": "CM avant TD et TP du même module",
+                "souple": -50,
+                "dur": 0,
+                "nombre": 10
+              },
+              {
+                "contrainte": "Journées sans trous",
+                "souple": -15,
+                "dur": 0,
+                "nombre": 2
+              },
+              {
+                "contrainte": "Un seul campus par jour pour un groupe",
+                "souple": -10,
+                "dur": 0,
+                "nombre": 1
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 180973568,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "c82dfb36a188883eded9fa7ad199a158adb838479636585e90bdfd8a586e4004",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": 4082,
+            "rechercheLocaleMs": 55936,
+            "evaluationsParSeconde": 10408
+          },
+          "mesures": [
+            {
+              "indice": "960-1-avant",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 163060.73400000005,
+              "score": "0hard/5soft",
+              "dur": 0,
+              "moyen": null,
+              "souple": 5,
+              "soupleParSeance": 0.02976190476190476,
+              "recompensesNettesNonListees": 5,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 180609024,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 3123,
+              "rechercheLocaleMs": 158554,
+              "evaluationsParSeconde": 11103
+            },
+            {
+              "indice": "960-2-avant",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 156073.9345000002,
+              "score": "0hard/5soft",
+              "dur": 0,
+              "moyen": null,
+              "souple": 5,
+              "soupleParSeance": 0.02976190476190476,
+              "recompensesNettesNonListees": 5,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 178831360,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 3170,
+              "rechercheLocaleMs": 151496,
+              "evaluationsParSeconde": 11690
+            },
+            {
+              "indice": "960-3-avant",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 226730.49840000016,
+              "score": "0hard/0soft",
+              "dur": 0,
+              "moyen": null,
+              "souple": 0,
+              "soupleParSeance": 0,
+              "recompensesNettesNonListees": 5,
+              "violations": [
+                {
+                  "nombre": 1,
+                  "dur": 0,
+                  "souple": -5,
+                  "contrainte": "Journées sans trous"
+                }
+              ],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 173629440,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 4581,
+              "rechercheLocaleMs": 220551,
+              "evaluationsParSeconde": 6755
+            }
+          ]
+        },
+        "apres": {
+          "fixe": {
+            "indice": "960-fixe-apres",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 1658.7057000000495,
+            "score": "0hard/0medium/-820soft",
+            "dur": 0,
+            "moyen": 0,
+            "souple": -820,
+            "soupleParSeance": -4.880952380952381,
+            "recompensesNettesNonListees": 4,
+            "violations": [
+              {
+                "contrainte": "Vœu : créneau à éviter",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -24,
+                "nombre": 8
+              },
+              {
+                "contrainte": "CM avant TD et TP du même module",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -480,
+                "nombre": 96
+              },
+              {
+                "contrainte": "Journées sans trous",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -320,
+                "nombre": 32
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 164904960,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "f6e1e73d48e11ad5baf2a64b69f258c3df42a1b2567e098452a61f2b28be5362",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": null,
+            "rechercheLocaleMs": null,
+            "evaluationsParSeconde": 0
+          },
+          "chauffe": {
+            "indice": "960-chauffe-apres",
+            "conforme": true,
+            "faisable": true,
+            "anomalie": null,
+            "dureeMs": 61115.94180000003,
+            "score": "0hard/0medium/-79soft",
+            "dur": 0,
+            "moyen": 0,
+            "souple": -79,
+            "soupleParSeance": -0.47023809523809523,
+            "recompensesNettesNonListees": 4,
+            "violations": [
+              {
+                "contrainte": "Vœu : créneau à éviter",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -3,
+                "nombre": 1
+              },
+              {
+                "contrainte": "CM avant TD et TP du même module",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -75,
+                "nombre": 15
+              },
+              {
+                "contrainte": "Journées sans trous",
+                "dur": 0,
+                "moyen": 0,
+                "souple": -5,
+                "nombre": 1
+              }
+            ],
+            "leconsNonAffectees": 0,
+            "picCgroupOctets": 179961856,
+            "oom": false,
+            "sondesManquantes": 0,
+            "requeteSha256": "c82dfb36a188883eded9fa7ad199a158adb838479636585e90bdfd8a586e4004",
+            "limites": {
+              "memoireOctets": 671088640,
+              "memoireEtEchangeOctets": 671088640,
+              "cpu": 1.5
+            },
+            "constructionMs": 3620,
+            "rechercheLocaleMs": 56397,
+            "evaluationsParSeconde": 9698
+          },
+          "mesures": [
+            {
+              "indice": "960-1-apres",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 164059.8528,
+              "score": "0hard/0medium/5soft",
+              "dur": 0,
+              "moyen": 0,
+              "souple": 5,
+              "soupleParSeance": 0.02976190476190476,
+              "recompensesNettesNonListees": 5,
+              "violations": [],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 180752384,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 3340,
+              "rechercheLocaleMs": 159536,
+              "evaluationsParSeconde": 11026
+            },
+            {
+              "indice": "960-2-apres",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 183238.74699999997,
+              "score": "0hard/0medium/0soft",
+              "dur": 0,
+              "moyen": 0,
+              "souple": 0,
+              "soupleParSeance": 0,
+              "recompensesNettesNonListees": 5,
+              "violations": [
+                {
+                  "contrainte": "Journées sans trous",
+                  "dur": 0,
+                  "moyen": 0,
+                  "souple": -5,
+                  "nombre": 1
+                }
+              ],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 177958912,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 3541,
+              "rechercheLocaleMs": 178557,
+              "evaluationsParSeconde": 8280
+            },
+            {
+              "indice": "960-3-apres",
+              "conforme": true,
+              "faisable": true,
+              "anomalie": null,
+              "dureeMs": 194630.4989,
+              "score": "0hard/0medium/-15soft",
+              "dur": 0,
+              "moyen": 0,
+              "souple": -15,
+              "soupleParSeance": -0.08928571428571429,
+              "recompensesNettesNonListees": 5,
+              "violations": [
+                {
+                  "contrainte": "CM avant TD et TP du même module",
+                  "dur": 0,
+                  "moyen": 0,
+                  "souple": -20,
+                  "nombre": 4
+                }
+              ],
+              "leconsNonAffectees": 0,
+              "picCgroupOctets": 177205248,
+              "oom": false,
+              "sondesManquantes": 0,
+              "requeteSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+              "limites": {
+                "memoireOctets": 671088640,
+                "memoireEtEchangeOctets": 671088640,
+                "cpu": 1.5
+              },
+              "constructionMs": 5263,
+              "rechercheLocaleMs": 187657,
+              "evaluationsParSeconde": 5777
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
