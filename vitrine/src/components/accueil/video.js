@@ -1,10 +1,13 @@
 // Vidéo de l'accueil (VIT-08, plan § 6) : rien n'est chargé avant que la section arrive à l'écran ;
 // la vidéo part seule, sans le son et une fois, quand la moitié est visible, et se met en pause hors
 // de l'écran. Avec le mouvement réduit ou l'économie de données, rien ne part seul : l'image fixe
-// reste, et le bouton « Lire la vidéo » la lance. Une pause demandée n'est jamais reprise d'office.
+// reste, et le bouton « Lire la vidéo » la lance. Sur un écran de moins de 48rem, ou si la
+// connexion est lente (slow-2g, 2g, 3g), rien ne part seul non plus. Une pause demandée n'est jamais reprise d'office.
 // Fichier : MP4 720p par défaut ; WebM 1080p sur un écran d'au moins 1280 px qui lit le VP9 (question 7).
+import { videoPeutPartirSeule } from './videoAutoplay.js';
 
 const GRAND_ECRAN = '(min-width: 80rem)';
+const MOBILE = '(max-width: 48rem)';
 const VP9 = 'video/webm; codecs="vp9"';
 
 const preparer = (figure) => {
@@ -13,14 +16,22 @@ const preparer = (figure) => {
   const libelle = bouton.querySelector('[data-libelle]');
   const reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const economie = navigator.connection?.saveData === true;
-  const seule = !reduit && !economie;
+  const mobile = matchMedia(MOBILE).matches;
+  const seule = videoPeutPartirSeule({
+    reduit,
+    economie,
+    mobile,
+    effectiveType: navigator.connection?.effectiveType,
+  });
   let pauseVoulue = false; // la personne a mis en pause : on ne relance pas d'office
   let pauseHorsEcran = false;
 
   const etat = (nom) => {
     figure.dataset.etat = nom;
     const action = nom === 'lecture' ? 'pause' : nom === 'fin' ? 'revoir' : 'lire';
-    libelle.textContent = figure.dataset[action];
+    libelle.textContent = action === 'lire' && mobile && figure.dataset.lireMobile
+      ? figure.dataset.lireMobile
+      : figure.dataset[action];
     bouton.querySelectorAll('[data-icone]').forEach((icone) => { icone.hidden = icone.dataset.icone !== action; });
   };
 

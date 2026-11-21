@@ -73,6 +73,12 @@ if (icones.length < cartes.length) throw new Error(`Icônes manquantes dans la g
   }
   @media (min-width: 64rem) {
     .cartes { grid-template-columns: repeat(3, 1fr); }
+    .cartes:has(> li:nth-child(2):last-child) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-inline-size: calc(2 * 24rem + var(--espace-2));
+      margin-inline: auto;
+    }
+    .cartes:has(> li:nth-last-child(1):nth-child(3n+1):not(:only-child)) > li:last-child { grid-column: 2; }
   }
   /* Une carte seule reste centrée, à la largeur d'une colonne */
   .cartes:has(> li:only-child) { grid-template-columns: minmax(0, 24rem); justify-content: center; }
