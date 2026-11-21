@@ -83,3 +83,22 @@ Il conserve les échecs, les pics mémoire et les compteurs de vitesse présents
 ## Ressources et interruption
 
 Le retrait normal vérifie le label de session avant de supprimer son conteneur. Il ne purge ni images, ni volumes, ni ressources d'autres projets. Une interruption forcée du processus peut laisser le conteneur de son passage : relever son nom et son label avant de le retirer. Les images et `.local/` restent pour la relecture. Ne jamais lancer de purge globale pour nettoyer ce banc.
+
+## Rejouer la série multi-campus du supérieur
+
+La série utilise deux tailles, 480 et 960 étudiants, avec le profil local du VPS. Depuis la racine du dépôt, vérifier les six JSON versionnés, construire les deux images et lancer la série. Le pilote affiche le chemin du dossier local de résultats.
+
+```powershell
+node scripts/mesures/mot-02/generer-campus.mjs --verifier
+node --test scripts/mesures/mot-02/tests/banc.test.mjs scripts/mesures/mot-02/tests/campus.test.mjs
+node scripts/mesures/mot-02/mesurer-campus.mjs construire
+node scripts/mesures/mot-02/mesurer-campus.mjs serie
+```
+
+Pour chaque taille, le pilote contrôle le score du même témoin épinglé sur chaque version, exécute deux chauffes puis alterne les versions pour trois passages chacune. L’extracteur vérifie les requêtes exactes, conserve les résultats individuels, les pics mémoire et les contributions souples, et calcule la médiane des trois résultats faisables. Lui passer le chemin affiché par le pilote.
+
+```powershell
+node scripts/mesures/mot-02/extraire-campus.mjs <dossier-local-de-la-serie>
+```
+
+[Résultats de la série du 21 novembre](jeux/resultats-campus.json) · [Protocole et interprétation](../../../docs/conception/moteur-planification/mesures.md)

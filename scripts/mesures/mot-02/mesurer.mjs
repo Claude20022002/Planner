@@ -2,7 +2,7 @@
 import { randomBytes, randomUUID } from 'node:crypto';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { dockerLocal, construire, retirer, sonder, verifierLimites } from './lib/docker.mjs';
 import { appeler, attendreSante, observer, garderProcessus } from './lib/observation.mjs';
@@ -15,7 +15,7 @@ const profils = { vps: { cpu: 1.5, memoireOctets: 640 * 1024 ** 2 },
     general: { cpu: 2, memoireOctets: 1024 ** 3 } };
 
 /** Un conteneur neuf, une requête et des fichiers locaux préservés même en cas d'échec. */
-async function passage(docker, image, probleme, { session, profil, indice, chauffe, fumee, sortie }) {
+export async function passage(docker, image, probleme, { session, profil, indice, chauffe, fumee, sortie }) {
     const nom = `planner-mot02-${session}-${indice}`;
     const jeton = randomBytes(32).toString('hex');
     const limites = profils[profil];
@@ -110,4 +110,4 @@ async function principal() {
     }
     if (passages.some((p) => p.erreur || p.erreurNettoyage)) process.exitCode = 1;
 }
-garderProcessus(principal).catch((erreur) => { console.error(erreur.message); process.exitCode = 1; });
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) garderProcessus(principal).catch((erreur) => { console.error(erreur.message); process.exitCode = 1; });

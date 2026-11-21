@@ -1,4 +1,6 @@
 // Vérifie les réponses et le témoin synthétique sans prétendre remplacer l'évaluateur MOT-04.
+import { verifierOccupation } from './occupation-campus.mjs';
+
 /** Vérifie les bornes actuelles de l'API et l'absence d'affectations fournies au solveur. */
 export function verifierEntree(probleme) {
     for (const [nom, maximum] of [['lecons', 5000], ['creneaux', 500], ['salles', 2000], ['voeux', 200000]]) {
@@ -44,33 +46,12 @@ export function verifierReponse(probleme, reponse, { finale = false } = {}) {
         }).length };
 }
 
-/** Contrôle le témoin du jeu plat : collisions, capacités, grilles, salles et charges quotidiennes. */
+/** Contrôle le témoin du jeu : collisions, capacités, grilles, salles et charges quotidiennes. */
 export function verifierTemoin(probleme, temoin) {
     const resultat = verifierReponse(probleme, { statut: 'NOT_SOLVING', score: '0hard/0soft',
         dur: 0, souple: 0, lecons: temoin, violations: [] }, { finale: true });
     if (!resultat.valide) throw new Error(resultat.erreurs.join(', '));
-    const creneaux = new Map(probleme.creneaux.map((c) => [c.id, c]));
-    const salles = new Map(probleme.salles.map((s) => [s.id, s]));
-    const lecons = new Map(probleme.lecons.map((l) => [l.id, l]));
-    const occupations = new Set(), charges = new Map();
-    for (const affectation of temoin) {
-        const l = lecons.get(affectation.id), c = creneaux.get(affectation.creneauId), salle = salles.get(affectation.salleId);
-        if (l.longueur === 2 && (!c.suivantId || c.finAvecSuivant !== c.fin + 60)) throw new Error('Séance sans suite');
-        if (salle.capacite < l.effectif || salle.type !== l.typeSalleRequis || c.regime !== l.regime) throw new Error('Ressource incompatible');
-        const ressources = [`S:${salle.id}`, ...l.groupesDirects.map((id) => `G:${id}`), ...l.enseignants.map((id) => `E:${id}`)];
-        for (const ressource of ressources) {
-            const jour = `${ressource}:${c.jour}`;
-            charges.set(jour, (charges.get(jour) ?? 0) + l.longueur * 60);
-            const plafond = ressource.startsWith('G:') ? probleme.parametres.maxMinutesJourGroupe
-                : ressource.startsWith('E:') ? probleme.parametres.maxMinutesJourEnseignant : Infinity;
-            if (charges.get(jour) > plafond) throw new Error('Charge quotidienne dépassée');
-            for (const id of [c.id, ...(l.longueur === 2 ? [c.suivantId] : [])]) {
-                const cle = `${ressource}:${id}`;
-                if (occupations.has(cle)) throw new Error('Collision dans le témoin');
-                occupations.add(cle);
-            }
-        }
-    }
+    verifierOccupation(probleme, temoin);
     return true;
 }
 

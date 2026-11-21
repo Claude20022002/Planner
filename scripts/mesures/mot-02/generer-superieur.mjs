@@ -8,14 +8,8 @@ export const serialiser = (objet) => `${JSON.stringify(objet, null, 2)}\n`;
 /** Identifie exactement les octets d'une entrée. */
 export const empreinte = (texte) => createHash('sha256').update(texte).digest('hex');
 
-/** Construit des groupes indépendants avec deux enseignants propres à chaque groupe. */
-export function generer(configuration) {
-    const { groupes, etudiantsParGroupe, seancesParGroupe, enseignantsParGroupe,
-        jours, debutsMinutes, maxMinutesJour, dureeSecondes } = configuration;
-    if (enseignantsParGroupe !== 2 || jours !== 5 || debutsMinutes.length !== 8
-        || seancesParGroupe !== 12 || !Number.isInteger(groupes) || groupes < 1) {
-        throw new Error('Configuration de construction non prise en charge');
-    }
+/** Construit les créneaux et leurs successions, en respectant la pause de midi. */
+export function grilleHoraire(jours, debutsMinutes) {
     const creneaux = [];
     for (let jour = 1; jour <= jours; jour++) {
         for (let rang = 1; rang <= 8; rang++) {
@@ -26,6 +20,18 @@ export function generer(configuration) {
                 finAvecSuivant: suivant ? debut + 120 : null });
         }
     }
+    return creneaux;
+}
+
+/** Construit des groupes indépendants avec deux enseignants propres à chaque groupe. */
+export function generer(configuration) {
+    const { groupes, etudiantsParGroupe, seancesParGroupe, enseignantsParGroupe,
+        jours, debutsMinutes, maxMinutesJour, dureeSecondes } = configuration;
+    if (enseignantsParGroupe !== 2 || jours !== 5 || debutsMinutes.length !== 8
+        || seancesParGroupe !== 12 || !Number.isInteger(groupes) || groupes < 1) {
+        throw new Error('Configuration de construction non prise en charge');
+    }
+    const creneaux = grilleHoraire(jours, debutsMinutes);
     const salles = Array.from({ length: groupes }, (_, n) => ({ id: n + 1,
         nom: `Salle ${n + 1}`, capacite: etudiantsParGroupe, type: 'cours',
         equipements: [], campusId: 1 }));
