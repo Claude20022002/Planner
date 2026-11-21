@@ -1,7 +1,7 @@
 {
   "meta": {
     "titre": "Comparer · Planner",
-    "description": "Quatre approches courantes, six critères, et ce que Planner n'a pas encore. Aucun produit n'est visé."
+    "description": "Quatre approches courantes, huit critères, et ce que Planner n'a pas encore. Aucun produit n'est visé."
   },
   "accueil": {
     "surtitre": "Pourquoi Planner",
@@ -12,7 +12,7 @@
   "entete": {
     "surtitre": "Comparer",
     "titre": "Planner et les autres façons de faire.",
-    "accroche": "Quatre approches courantes, six critères, et ce que Planner n'a pas encore. Aucun produit n'est visé."
+    "accroche": "Quatre approches courantes, huit critères, et ce que Planner n'a pas encore. Aucun produit n'est visé."
   },
   "methode": {
     "titre": "Méthode",
@@ -129,6 +129,31 @@
         }
       ]
     },
+    "appelProtege": {
+      "critere": "Un appel qu'on ne peut pas tromper",
+      "cases": [
+        {
+          "mot": "Oui",
+          "texte": "Le scan passe par l'application Planner. Un compte est lié à un téléphone, et un téléphone ne pointe qu'un étudiant par séance. Le code change toutes les 30 secondes. Si l'enseignant le veut, une vérification surprise appelle quelques présents au hasard."
+        },
+        {
+          "mot": "À l'œil",
+          "texte": "La présence repose sur l'enseignant, qui voit qui est dans la salle."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Selon l'outil, une présence avancée, parfois biométrique, existe, souvent dans une édition supérieure."
+        },
+        {
+          "mot": "Hors de son rôle",
+          "texte": "Une connexion montre qu'un compte s'est ouvert, pas qu'un élève est dans la salle."
+        },
+        {
+          "mot": "Notée par un adulte",
+          "texte": "L'enseignant ou la vie scolaire note l'absence : la présence repose sur leur relevé."
+        }
+      ]
+    },
     "compte": {
       "critere": "L'appel, les quiz, les jeux et la Bibliothèque, avec un seul compte",
       "cases": [
@@ -176,6 +201,31 @@
         {
           "mot": "Pour le personnel",
           "texte": "Le personnel saisit sur ordinateur. Les familles suivent par une application ou un portail."
+        }
+      ]
+    },
+    "sansReseau": {
+      "critere": "Les semaines déjà consultées, lisibles sans réseau",
+      "cases": [
+        {
+          "mot": "Dans l'application",
+          "texte": "Dans l'application, le tableau du jour et les semaines déjà consultés restent lisibles sans réseau, avec l'heure de leur dernière mise à jour. Ils sont effacés à la déconnexion. L'application entièrement utilisable sans connexion est en préparation."
+        },
+        {
+          "mot": "Sur papier",
+          "texte": "Une grille imprimée se lit partout, sans réseau. Elle ne suit pas les changements faits après l'impression."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Selon l'outil, une application mobile garde des données sans réseau. Le travail du secrétariat demande une connexion."
+        },
+        {
+          "mot": "Les cours téléchargés",
+          "texte": "Certaines plateformes laissent télécharger des cours pour les suivre sans réseau. L'emploi du temps n'y est pas."
+        },
+        {
+          "mot": "Selon l'outil",
+          "texte": "Quelques éditeurs annoncent une saisie sans réseau."
         }
       ]
     },

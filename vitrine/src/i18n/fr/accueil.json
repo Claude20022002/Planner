@@ -216,7 +216,7 @@
       {
         "titre": "Des quiz en direct, ou à son rythme.",
         "lignes": [
-          "Dix types de questions. En direct, les points comptent la justesse et la rapidité."
+          "Dix types de questions, six en direct. En direct, les points comptent la justesse et la rapidité."
         ],
         "image": "Les dix types de questions s'alignent. Puis, sur un téléphone, une question de quiz en direct avec son minuteur ; la bonne réponse rapporte des points."
       },
@@ -240,7 +240,7 @@
         "titre": "Toute l'école, d'un seul regard.",
         "lignes": [
           "Salles, examens et surveillances, sur plusieurs campus.",
-          "Double authentification, accès par rôle. Quand l'école active l'IA, celle-ci ne reçoit aucune donnée d'élève."
+          "Double authentification, accès par rôle. Quand l'IA est activée pour votre école, elle ne reçoit aucune donnée d'élève."
         ],
         "image": "Deux campus reliés par leur temps de trajet, l'occupation des salles et une session d'examen. Puis un code de vérification à six chiffres et les trois rôles."
       },

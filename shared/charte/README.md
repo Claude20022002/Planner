@@ -1,7 +1,7 @@
-<!-- Généré par shared/charte/generer.mjs, version 2, empreinte 525603deb6c7 : ne pas modifier ; changer shared/charte/jetons.json -->
+<!-- Généré par shared/charte/generer.mjs, version 3, empreinte 6c550805edcf : ne pas modifier ; changer shared/charte/jetons.json -->
 # Charte de Planner
 
-Guide généré depuis [jetons.json](jetons.json), version 2. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
+Guide généré depuis [jetons.json](jetons.json), version 3. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; teintes des applications (version 3) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a) ; bleu-profond : même teinte que bleu, plus sombre. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
 
 ## Changer une valeur
 
@@ -40,6 +40,25 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 | `texte-sombre` | `#EDF1F7` | texte courant du mode sombre | — |
 | `texte-sombre-second` | `#A9B6C8` | texte secondaire du mode sombre | — |
 | `focus-sombre` | `#7FB0E6` | contour du focus en mode sombre (l'action du sombre est « bleu-clair », texte « ecran » dessus) | — |
+
+## Teintes des applications (logos)
+
+| Jeton | Valeur | Rôle | Site |
+|---|---|---|---|
+| `app-planning` | `#0B66D6` | logo de l'application Emploi du temps : ton clair du dégradé de la tuile | — |
+| `app-planning-fonce` | `#212F82` | logo de l'application Emploi du temps : ton foncé du dégradé et ombres | — |
+| `app-pedagogie` | `#007B80` | logo de l'application Enseignements : ton clair du dégradé de la tuile | — |
+| `app-pedagogie-fonce` | `#00475C` | logo de l'application Enseignements : ton foncé du dégradé et ombres | — |
+| `app-personnes` | `#775EBA` | logo de l'application Personnes : ton clair du dégradé de la tuile | — |
+| `app-personnes-fonce` | `#3F3687` | logo de l'application Personnes : ton foncé du dégradé et ombres | — |
+| `app-etablissement` | `#3C638C` | logo de l'application Établissement : ton clair du dégradé de la tuile | — |
+| `app-etablissement-fonce` | `#20385C` | logo de l'application Établissement : ton foncé du dégradé et ombres | — |
+| `app-annonces` | `#AE532D` | logo de l'application Annonces : ton clair du dégradé de la tuile | — |
+| `app-annonces-fonce` | `#75201C` | logo de l'application Annonces : ton foncé du dégradé et ombres | — |
+| `app-activites` | `#A94088` | logo de l'application Quiz et jeux : ton clair du dégradé de la tuile | — |
+| `app-activites-fonce` | `#5E256D` | logo de l'application Quiz et jeux : ton foncé du dégradé et ombres | — |
+| `app-bibliotheque` | `#077952` | logo de l'application Bibliothèque : ton clair du dégradé de la tuile | — |
+| `app-bibliotheque-fonce` | `#004C3B` | logo de l'application Bibliothèque : ton foncé du dégradé et ombres | — |
 
 ## Typographie
 
@@ -127,6 +146,20 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `trait-fort` | `gris-fond` | 3,21:1 | 3:1 |
 | `bleu-vif` | `blanc` | 3,93:1 | 3:1 |
 | `bleu-nuit` | `jeu` | 7,65:1 | 4,5:1 |
+| `blanc` | `app-planning` | 5,40:1 | 4,5:1 |
+| `blanc` | `app-planning-fonce` | 11,71:1 | 4,5:1 |
+| `blanc` | `app-pedagogie` | 5,07:1 | 4,5:1 |
+| `blanc` | `app-pedagogie-fonce` | 10,21:1 | 4,5:1 |
+| `blanc` | `app-personnes` | 5,13:1 | 4,5:1 |
+| `blanc` | `app-personnes-fonce` | 10,05:1 | 4,5:1 |
+| `blanc` | `app-etablissement` | 6,26:1 | 4,5:1 |
+| `blanc` | `app-etablissement-fonce` | 11,79:1 | 4,5:1 |
+| `blanc` | `app-annonces` | 5,15:1 | 4,5:1 |
+| `blanc` | `app-annonces-fonce` | 10,61:1 | 4,5:1 |
+| `blanc` | `app-activites` | 5,56:1 | 4,5:1 |
+| `blanc` | `app-activites-fonce` | 10,71:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque` | 5,43:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque-fonce` | 10,01:1 | 4,5:1 |
 
 ### Sombre
 
