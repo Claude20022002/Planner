@@ -3,6 +3,9 @@ import { Box, ButtonBase, Typography } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
 import { ds } from '../../design-system/tokens';
 
+/** Le texte avec sa première lettre en capitale (les libellés sont écrits pour se lire dans une phrase). */
+const majuscule =(texte = '') => texte.charAt(0).toLocaleUpperCase() + texte.slice(1);
+
 /**
  * Un chiffre du tableau de bord (UIX-11) : sa valeur, son unité, son libellé et sa période. C'est un
  * bouton, pas un lien : il ouvre le volet de ses lignes. Son nom accessible dit tout
@@ -42,7 +45,7 @@ export default function Chiffre({ valeur, unite, libelle, periode, onOuvrir }) {
     >
       <Box sx={{ minWidth: 0, flexGrow: 1 }}>
         <Typography component="span" sx={{ display: 'block', fontWeight: 500, fontSize: '0.9375rem', lineHeight: 1.35 }}>
-          {libelle}
+          {majuscule(libelle)}
         </Typography>
         <Typography component="span" sx={{ display: 'block', color: 'text.secondary', fontSize: '0.8125rem' }}>
           {periode}
@@ -58,5 +61,28 @@ export default function Chiffre({ valeur, unite, libelle, periode, onOuvrir }) {
       </Typography>
       {!absent && <ChevronRight fontSize="small" aria-hidden="true" sx={{ color: 'text.secondary' }} />}
     </ButtonBase>
+  );
+}
+
+/**
+ * Les chiffres d'un bloc, l'un sous l'autre. Chacun : { id (VOLETS), valeur, unite, libelle,
+ * periode (texte court), parametres (période passée à la route), periodeTexte (texte du volet) }.
+ * `ouvrir` reçoit ce qu'il faut au volet des lignes.
+ */
+export function ListeChiffres({ chiffres, ouvrir }) {
+  return (
+    <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0.5 }}>
+      {chiffres.map((c) => (
+        <Box component="li" key={c.id} sx={{ '& + &': { borderTop: '1px solid', borderColor: 'divider' } }}>
+          <Chiffre
+            valeur={c.valeur}
+            unite={c.unite}
+            libelle={c.libelle}
+            periode={c.periode}
+            onOuvrir={() => ouvrir({ chiffre: c.id, titre: majuscule(c.libelle), periode: c.parametres, periodeTexte: c.periodeTexte })}
+          />
+        </Box>
+      ))}
+    </Box>
   );
 }

@@ -7,6 +7,7 @@
  * rien recoder ailleurs (EP-5).
  */
 import { toLocalISODate } from '../../../../shared/session.js';
+import { localeEcran } from '../../../../shared/dates.js';
 
 /** Premier jour de la semaine, numéroté comme Date.getDay (dimanche = 0, lundi = 1). */
 export const PREMIER_JOUR_SEMAINE = 1;
@@ -48,3 +49,17 @@ export const periodeEnCours = (annees = [], jour = toLocalISODate()) => {
 /** Nom d'une période pour l'écran : son libellé, sinon son code, suivi de l'année (« S1 · 2026-2027 »). */
 export const nomPeriode = (periode) =>
   periode ? [periode.libelle || periode.code, periode.libelle_annee].filter(Boolean).join(' · ') : '';
+
+/** Le jour AAAA-MM-JJ comme jour civil local (sans le décalage UTC de `new Date('AAAA-MM-JJ')`). */
+const jourCivil = (iso) => {
+  const [a, m, j] = String(iso).slice(0, 10).split('-').map(Number);
+  return new Date(a, m - 1, j);
+};
+
+/** Une date courte de l'écran : « 16 nov. » en français, « 16 Nov » en anglais. */
+export const dateCourte = (iso, langue) =>
+  new Intl.DateTimeFormat(localeEcran(langue), { day: 'numeric', month: 'short' }).format(jourCivil(iso));
+
+/** Le mois AAAA-MM en toutes lettres : « novembre 2026 ». */
+export const nomMois = (mois, langue) =>
+  new Intl.DateTimeFormat(localeEcran(langue), { month: 'long', year: 'numeric' }).format(jourCivil(`${mois}-01`));

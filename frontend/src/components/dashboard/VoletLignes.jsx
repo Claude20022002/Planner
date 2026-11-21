@@ -67,7 +67,7 @@ export default function VoletLignes({ chiffre, titre, periode, periodeTexte, onF
       anchor="right"
       open={Boolean(volet)}
       onClose={onFermer}
-      slotProps={{ paper: { 'aria-labelledby': titreId, role: 'dialog', 'aria-modal': true, sx: { width: { xs: '100%', sm: 560 }, maxWidth: '100%' } } }}
+      slotProps={{ paper: { 'aria-labelledby': titreId, role: 'dialog', 'aria-modal': true, sx: { width: { xs: '100%', sm: 560, md: 720 }, maxWidth: '100%' } } }}
     >
       {volet && (
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>

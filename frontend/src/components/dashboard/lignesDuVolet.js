@@ -33,7 +33,8 @@ export const VOLETS = {
   seancesSemaine: {
     api: ['affectationAPI', 'getAll'],
     arguments: (p) => [{ date_from: p.debut, date_to: p.fin, ordre: 'asc', limit: PLAFOND_SEANCES }],
-    lignes: (r) => r?.data ?? [],
+    // Le chiffre (statistiques) ne compte pas les séances annulées : le volet non plus
+    lignes: (r) => (r?.data ?? []).filter((a) => a.statut !== 'annule'),
     colonnes: [
       { cle: 'jour', valeur: (l, o) => o.date(l.date_seance) },
       { cle: 'heure', valeur: (l, o) => plage(l.creneau?.heure_debut, l.creneau?.heure_fin, o) },
@@ -62,7 +63,8 @@ export const VOLETS = {
     arguments: (p) => [{ id_periode: p.id_periode }],
     lignes: (r) => (Array.isArray(r) ? r.filter((l) => l.en_retard) : []),
     colonnes: [
-      { cle: 'enseignement', valeur: (l) => [l.module?.nom_cours, l.type].filter(Boolean).join(' · ') },
+      // Avec ses groupes : deux TD d'un même module se distinguent
+      { cle: 'enseignement', valeur: (l) => [l.module?.nom_cours, l.type, (l.groupes ?? []).join(', ')].filter(Boolean).join(' · ') },
       { cle: 'filiere', valeur: (l) => l.module?.filiere || '-' },
       { cle: 'attendues', valeur: (l, o) => o.nombre(l.heures_attendues), nombre: true },
       { cle: 'realisees', valeur: (l, o) => o.nombre(l.heures_realisees), nombre: true },

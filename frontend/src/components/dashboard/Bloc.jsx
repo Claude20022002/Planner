@@ -31,7 +31,7 @@ export default function Bloc({ id, titre, periode, chargement, erreur, onReessay
           <Typography id={titreId} component="h2" sx={{ fontWeight: 700, fontSize: '1rem', lineHeight: 1.4 }}>
             {titre}
           </Typography>
-          {periode && <Typography sx={{ mt: 0.25, color: 'text.secondary', fontSize: '0.875rem' }}>{periode}</Typography>}
+          {periode && <Typography sx={{ mt: 0.25, color: 'text.secondary', fontSize: '0.875rem', '&::first-letter': { textTransform: 'uppercase' } }}>{periode}</Typography>}
         </Box>
         {action}
       </Box>

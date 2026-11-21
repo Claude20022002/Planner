@@ -71,7 +71,8 @@ test('les lignes sont celles que le chiffre compte', () => {
   // Une épreuve annulée n'est plus à venir
   const examens = [{ statut: 'publiee' }, { statut: 'brouillon' }, { statut: 'annulee' }];
   assert.equal(VOLETS.examens.lignes(examens).length, 2);
-  assert.equal(VOLETS.seancesSemaine.lignes({ data: [{}, {}], pagination: { total: 2 } }).length, 2);
+  // Comme les statistiques, la liste des séances de la semaine laisse les séances annulées
+  assert.equal(VOLETS.seancesSemaine.lignes({ data: [{ statut: 'planifie' }, { statut: 'realise' }, { statut: 'annule' }] }).length, 2);
   const kpis = { kpis: { taux_occupation_salles: { graphique: [{ nom: 'A1', heures: 12, taux: 30 }] } } };
   assert.equal(VOLETS.occupationSalles.lignes(kpis).length, 1);
 });

@@ -1,7 +1,7 @@
 /** Périodes du tableau de bord (UIX-11) : semaine du lundi au dimanche, mois, 14 jours, période en cours. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { joursSuivants, moisEnCours, nomPeriode, periodeEnCours, prochainsJours, semaineEnCours } from './periodes.js';
+import { dateCourte, joursSuivants, moisEnCours, nomMois, nomPeriode, periodeEnCours, prochainsJours, semaineEnCours } from './periodes.js';
 
 // Midi, heure locale : le jour ne dépend pas du fuseau de la machine qui lance les tests
 const le = (a, m, j) => new Date(a, m - 1, j, 12);
@@ -71,4 +71,11 @@ test('le nom d’une période : libellé, sinon code, puis l’année', () => {
   assert.equal(nomPeriode(periodeEnCours(annees, '2026-11-21')), 'Semestre 1 · 2026-2027');
   assert.equal(nomPeriode(periodeEnCours(annees, '2027-03-10')), 'S2 · 2026-2027');
   assert.equal(nomPeriode(null), '');
+});
+
+test('dates courtes et mois dans la langue de l’écran, sans glisser d’un jour', () => {
+  assert.equal(dateCourte('2026-11-16', 'fr'), '16 nov.');
+  assert.equal(dateCourte('2026-11-16', 'en'), '16 Nov');
+  assert.equal(nomMois('2026-11', 'fr'), 'novembre 2026');
+  assert.equal(nomMois('2027-01', 'en'), 'January 2027');
 });
