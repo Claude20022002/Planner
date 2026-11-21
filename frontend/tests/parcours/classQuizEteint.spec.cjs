@@ -3,8 +3,9 @@
  * conception-me0c-ecrans-groupe-b.md). La réponse de GET /api/quiz/config est simulée, éteinte
  * (celle de #141 pour une école sans ClassQuiz) puis allumée (HESTIM). Deux lectures qui ne passent
  * pas par le moteur sont simulées aussi, pour avoir de quoi masquer : un quiz encore à importer dans
- * le Studio, une partie terminée dans l'historique de l'enseignante. Éteint, ces entrées et l'espace
- * « Quiz » disparaissent ; le Studio et les activités restent ouverts. Allumé, rien ne change.
+ * le Studio, une partie terminée dans l'historique de l'enseignante. Éteint, ces entrées disparaissent ;
+ * l'espace « Quiz » du sélecteur reste (QJE-01 : il ne dépend plus de ClassQuiz). Le Studio et les
+ * activités restent ouverts. Allumé, l'import et l'historique reviennent.
  */
 const { test, expect } = require("@playwright/test");
 const { lireDonnees, seConnecter } = require("./outils.cjs");
@@ -40,7 +41,7 @@ for (const etat of ["eteint", "allume"]) {
     await page.getByRole("button", { name: "Changer d’espace" }).first().click();
     const espaces = page.getByRole("navigation", { name: /^Espaces/ });
     await expect(espaces.getByRole("button").first()).toBeVisible();
-    await expect(espaces.getByRole("button").filter({ hasText: "Quiz en direct pendant la séance" })).toHaveCount(visible ? 1 : 0);
+    await expect(espaces.getByRole("button").filter({ hasText: "Quiz en direct pendant la séance" })).toHaveCount(1);
     await page.keyboard.press("Escape");
 
     // Studio « Mes quiz » : toujours ouvert ; l'import depuis l'ancien service seulement si allumé

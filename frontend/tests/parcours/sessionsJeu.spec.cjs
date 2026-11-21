@@ -22,7 +22,8 @@ const capturer = async (page, nom) => {
 const lancer = async (page, mode) => {
   await page.goto("/jeux");
   const catalogue = page.getByRole("region", { name: "Tous les jeux" });
-  await catalogue.getByRole("button", { name: "Lancer en classe" }).click();
+  // Le catalogue contient dix simulations en plus du terminal : le bouton porte le nom du jeu
+  await catalogue.getByRole("button", { name: "Lancer « Terminal Linux » en classe" }).click();
   const fenetre = page.getByRole("dialog", { name: /Lancer « Terminal Linux » en classe/ });
   await fenetre.getByRole("combobox", { name: "Module" }).click();
   await page.getByRole("option", { name: /Algorithmique/ }).click();

@@ -195,3 +195,11 @@ describe("MOT-13b : un poids plus fin que l'école", () => {
         expect(r.body.violations.map((v) => v.code)).toEqual(["portee_non_tenue"]);
     });
 });
+
+describe("MOT-13 : une règle souple du solveur coupée ou remise plus finement que l'école (réponses 23 et 24)", () => {
+    test.each([false, true])("valeur %s à la filière : refusée à l'enregistrement (portee_non_tenue)", async (valeur) => {
+        const r = await client.send("post", "/api/moteur/versions", { lignes: [{ cle: "HOR.REGLE.TROUS", portee: "filiere", id_portee: ref.filiere.id_filiere, valeur }] });
+        expect(r.status).toBe(400);
+        expect(r.body.violations.map((v) => v.code)).toEqual(["portee_non_tenue"]);
+    });
+});

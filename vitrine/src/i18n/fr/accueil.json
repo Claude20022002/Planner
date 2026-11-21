@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "titre": "Planner · L'emploi du temps et la vie de classe",
+    "description": "Planner calcule l'emploi du temps de votre établissement en respectant vos règles, et accompagne la classe : appel par QR code ou à la main, quiz en direct, jeux, reports de séance suivis."
+  },
+  "ouverture": {
+    "titre": "Planner",
+    "accroche": "Pour l'enseignement supérieur et la formation professionnelle, Planner calcule l'emploi du temps et accompagne chaque séance. Le collège et le lycée arrivent bientôt.",
+    "decouvrir": "Découvrir",
+    "contact": "Nous contacter"
+  },
+  "emploi": {
+    "surtitre": "Emploi du temps",
+    "titre": "Votre semestre, calculé.",
+    "texte": "Salles, enseignants, groupes, disponibilités, trajets entre campus : Planner place chaque séance en respectant vos règles strictes et souples. Cours, TD et TP suivent leurs groupes.",
+    "refus": "Quand une séance ne trouve pas sa place, Planner dit ce qui la bloque, et où le corriger.",
+    "lien": "En savoir plus sur l'emploi du temps",
+    "illustration": {
+      "label": "Exemple de semaine calculée par Planner, avec une séance non placée et sa raison",
+      "jours": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Jeu",
+        "Ven"
+      ],
+      "heures": [
+        "08:30",
+        "10:30",
+        "14:00",
+        "16:00"
+      ],
+      "seances": [
+        {
+          "titre": "Mathématiques",
+          "lieu": "CM · Amphi A"
+        },
+        {
+          "titre": "Physique",
+          "lieu": "TD · Salle B12"
+        },
+        {
+          "titre": "Anglais",
+          "lieu": "TD · Salle C04"
+        },
+        {
+          "titre": "Informatique",
+          "lieu": "TP · Labo 2"
+        },
+        {
+          "titre": "Économie",
+          "lieu": "CM · Amphi B"
+        },
+        {
+          "titre": "Chimie",
+          "lieu": "TP · Labo 1"
+        },
+        {
+          "titre": "Mathématiques",
+          "lieu": "TD · Salle B12"
+        },
+        {
+          "titre": "Projet",
+          "lieu": "Salle C10"
+        }
+      ],
+      "alerte": {
+        "titre": "Séance non placée",
+        "texte": "TP Biologie : l'enseignant n'est pas disponible le mardi matin."
+      }
+    }
+  },
+  "appel": {
+    "surtitre": "En classe",
+    "titre": "L'appel en un geste.",
+    "texte": "L'enseignant coche chaque étudiant : présent, en retard ou absent. S'il le veut, il affiche un QR code, que les étudiants scannent avec l'application Planner. Le code change toutes les 30 secondes.",
+    "lien": "En savoir plus sur la classe",
+    "illustration": {
+      "label": "Écran d'appel par QR code sur un téléphone",
+      "cours": "TD Physique",
+      "detail": "Groupe B · 08:30",
+      "consigne": "Scannez le code pour signaler votre présence",
+      "compte": "28 présents sur 32"
+    }
+  },
+  "quiz": {
+    "surtitre": "Quiz et jeux",
+    "titre": "Des quiz en direct. Des jeux pour s'exercer.",
+    "texte": "Dix types de questions, avec images, sons et vidéos. Six se jouent en direct, les dix à son rythme. L'enseignant propose aussi des jeux à ses classes.",
+    "lien": "En savoir plus sur les quiz et les jeux",
+    "illustration": {
+      "label": "Question d'un quiz en direct sur un téléphone",
+      "titre": "Quiz en direct",
+      "minuteur": "12 s",
+      "question": "Quelle est la dérivée de x² ?",
+      "reponses": [
+        "2x",
+        "x²",
+        "2",
+        "x / 2"
+      ],
+      "participants": "24 réponses"
+    }
+  },
+  "report": {
+    "surtitre": "Reports de séance",
+    "titre": "Un report, suivi de bout en bout.",
+    "texte": "Chaque étape est visible par ceux qu'elle concerne. Les étudiants apprennent le changement avant de se déplacer.",
+    "etapes": [
+      {
+        "titre": "Demande",
+        "texte": "L'enseignant propose de déplacer sa séance."
+      },
+      {
+        "titre": "Validation",
+        "texte": "La scolarité accepte le nouveau créneau."
+      },
+      {
+        "titre": "Prévenus",
+        "texte": "Les étudiants concernés reçoivent une notification."
+      },
+      {
+        "titre": "Publié",
+        "texte": "L'emploi du temps est à jour pour tous."
+      }
+    ]
+  },
+  "donnees": {
+    "surtitre": "Sécurité et données",
+    "titre": "Chacun voit ce qui le concerne.",
+    "texte": "Les accès suivent le rôle de chaque personne dans l'établissement.",
+    "lien": "En savoir plus sur la sécurité",
+    "points": [
+      {
+        "titre": "Double authentification",
+        "texte": "Un second code protège les comptes qui l'activent."
+      },
+      {
+        "titre": "Accès par rôle",
+        "texte": "Étudiant, enseignant, scolarité : chacun n'ouvre que ce que son rôle permet."
+      },
+      {
+        "titre": "Une IA sans données d'élève",
+        "texte": "Quand l'IA est activée pour votre école, elle ne reçoit jamais de données d'élève, et l'enseignant relit ce qu'elle propose."
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "Bientôt",
+    "titre": "Ce qui arrive ensuite.",
+    "texte": "Ces modules sont en préparation. Ils ne sont pas encore disponibles.",
+    "badge": "Bientôt",
+    "lien": "Voir tout ce qui arrive",
+    "modules": [
+      {
+        "titre": "Vie scolaire",
+        "texte": "Absences, retards et suivi des élèves."
+      },
+      {
+        "titre": "Familles",
+        "texte": "Un espace pour les parents."
+      },
+      {
+        "titre": "Frais de scolarité",
+        "texte": "Inscriptions, échéances et paiements."
+      }
+    ]
+  },
+  "contact": {
+    "titre": "Parlons de votre établissement.",
+    "texte": "Vous voulez voir Planner sur une école fictive, avec vos propres règles ? Le formulaire de contact arrive bientôt sur cette page."
+  },
+  "video": {
+    "surtitre": "Présentation",
+    "titre": "Tout Planner, en une minute et demie.",
+    "commandes": {
+      "lire": "Lire la vidéo",
+      "pause": "Mettre en pause",
+      "revoir": "Revoir la vidéo"
+    },
+    "transcription": {
+      "ouvrir": "Lire le texte de la vidéo",
+      "image": "À l'image :"
+    },
+    "scenes": [
+      {
+        "titre": "Planner",
+        "lignes": [
+          "Sept applications pour votre école. Un seul compte."
+        ],
+        "image": "Le logo de Planner, une toque dont le dessus est une horloge ; ses aiguilles tournent. Les sept applications apparaissent dessous."
+      },
+      {
+        "titre": "Votre semestre, calculé.",
+        "lignes": [
+          "Salles, enseignants, groupes, campus : vos règles, tenues ensemble.",
+          "Une séance ne trouve pas sa place ? Planner dit quelle règle la bloque."
+        ],
+        "image": "Sur un ordinateur, la semaine se remplit séance par séance. Puis un avis apparaît : une séance non placée, avec sa raison."
+      },
+      {
+        "titre": "Un cours déplacé ? Les étudiants sont prévenus.",
+        "lignes": [
+          "L'enseignant demande, la scolarité valide, l'emploi du temps se met à jour."
+        ],
+        "image": "Sur un téléphone, une séance passe du mardi au jeudi et une notification arrive. Quatre étapes s'allument : demande, validation, prévenus, publié."
+      },
+      {
+        "titre": "L'appel en un geste.",
+        "lignes": [
+          "Par QR code : il change toutes les 30 secondes.",
+          "Ou à la main : présent, en retard, absent."
+        ],
+        "image": "Un QR code est projeté en classe. Un téléphone le scanne, la présence est notée, et le nombre de présents monte. Puis l'écran de l'enseignant montre la liste de la classe : trois boutons par étudiant, présent, en retard, absent ; un étudiant est mis en retard, un autre absent."
+      },
+      {
+        "titre": "Des quiz en direct, ou à son rythme.",
+        "lignes": [
+          "Dix types de questions, six en direct. En direct, les points comptent la justesse et la rapidité."
+        ],
+        "image": "Les dix types de questions s'alignent. Puis, sur un téléphone, une question de quiz en direct avec son minuteur ; la bonne réponse rapporte des points."
+      },
+      {
+        "titre": "Réviser en jouant.",
+        "lignes": [
+          "Dix simulations et un terminal Linux.",
+          "Le terminal se joue aussi au tableau, avec toute la classe."
+        ],
+        "image": "Des cartes de jeux se rangent. Puis un terminal projeté au tableau, et un téléphone qui propose une commande."
+      },
+      {
+        "titre": "Chaque classe a son espace.",
+        "lignes": [
+          "Supports par section, sondages, annonces de l'école.",
+          "La bibliothèque s'ouvre avec le même compte."
+        ],
+        "image": "L'espace d'une classe : ses sections et leurs supports, un sondage dont les barres montent, une annonce. Puis la bibliothèque s'ouvre."
+      },
+      {
+        "titre": "Toute l'école, d'un seul regard.",
+        "lignes": [
+          "Salles, examens et surveillances, sur plusieurs campus.",
+          "Double authentification, accès par rôle. Quand l'IA est activée pour votre école, elle ne reçoit aucune donnée d'élève."
+        ],
+        "image": "Deux campus reliés par leur temps de trajet, l'occupation des salles et une session d'examen. Puis un code de vérification à six chiffres et les trois rôles."
+      },
+      {
+        "titre": "Aussi sur le téléphone.",
+        "lignes": [
+          "La semaine, le scanner de l'appel, la bibliothèque.",
+          "Parlons de votre établissement."
+        ],
+        "image": "Sur un téléphone, la barre du bas montre les onglets Tableau, Semaine, Scanner, Bibliothèque et Compte ; la semaine, le scanner puis la bibliothèque défilent. Puis le logo et le nom de Planner."
+      }
+    ],
+    "illustrations": {
+      "applications": [
+        "Emploi du temps",
+        "Enseignements",
+        "Personnes",
+        "Établissement",
+        "Annonces",
+        "Quiz et jeux",
+        "Bibliothèque"
+      ],
+      "semaine": "Semaine 12",
+      "calcul": "Calcul de l'emploi du temps",
+      "report": {
+        "ecran": "Ma semaine",
+        "jours": [
+          "Mardi",
+          "Jeudi"
+        ],
+        "notification": {
+          "titre": "Séance déplacée",
+          "texte": "TD Physique : jeudi 14:00, salle B12"
+        }
+      },
+      "appel": {
+        "renouvellement": "Nouveau code dans",
+        "presence": "Présence notée",
+        "statuts": {
+          "present": "Présent",
+          "retard": "En retard",
+          "absent": "Absent"
+        }
+      },
+      "quiz": {
+        "types": [
+          "Choix unique",
+          "Choix multiple",
+          "Vrai ou faux",
+          "Réponse courte",
+          "Nombre",
+          "Texte à trous",
+          "Association",
+          "Remise en ordre",
+          "Zone sur image",
+          "Réponse rédigée"
+        ],
+        "points": "+ 940 points",
+        "classement": "Classement"
+      },
+      "jeux": {
+        "cartes": [
+          "Terminal Linux",
+          "Requête Parfaite",
+          "Nœuds Réseaux",
+          "Ordonnanceur CPU",
+          "Sprint Agile",
+          "Tri Cyber"
+        ],
+        "tableau": "Terminal Linux · au tableau",
+        "commandes": [
+          "cd projets",
+          "ls -l",
+          "mkdir rapport"
+        ],
+        "proposer": "Proposer une commande",
+        "envoyer": "Envoyer"
+      },
+      "cours": {
+        "classe": "Physique · Groupe B",
+        "sections": [
+          {
+            "titre": "Général",
+            "supports": [
+              "Plan du module"
+            ]
+          },
+          {
+            "titre": "Semaine 1",
+            "supports": [
+              "Chapitre 1 · Cinématique",
+              "Exercices corrigés"
+            ]
+          },
+          {
+            "titre": "TP",
+            "supports": [
+              "Énoncé du TP 1"
+            ]
+          }
+        ],
+        "sondage": {
+          "titre": "Sondage",
+          "question": "Quel jour pour la séance de révision ?",
+          "choix": [
+            "Lundi",
+            "Mercredi",
+            "Vendredi"
+          ]
+        },
+        "annonce": {
+          "titre": "Annonce de l'école",
+          "texte": "Les inscriptions aux examens ouvrent lundi."
+        },
+        "bibliotheque": {
+          "titre": "Bibliothèque",
+          "documents": [
+            "Mécanique du point",
+            "Analyse 1",
+            "Chimie organique",
+            "Algorithmique"
+          ]
+        }
+      },
+      "etablissement": {
+        "campus": [
+          "Campus Centre",
+          "Campus Nord"
+        ],
+        "trajet": "25 min",
+        "occupation": "Occupation des salles",
+        "salles": [
+          "Amphi A",
+          "Salle B12",
+          "Labo 2",
+          "Salle C04"
+        ],
+        "examen": {
+          "titre": "Examen · Mathématiques",
+          "detail": "Amphi A et salle B12 · 3 surveillances"
+        }
+      },
+      "securite": {
+        "code": "Code de vérification",
+        "valider": "Valider",
+        "roles": [
+          "Étudiant",
+          "Enseignant",
+          "Administration"
+        ]
+      },
+      "mobile": {
+        "onglets": [
+          "Tableau",
+          "Semaine",
+          "Scanner",
+          "Bibliothèque",
+          "Compte"
+        ]
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@
 
 | Fichier | Contenu | Mis à jour |
 |---|---|---|
-| [suivi.md](suivi.md) | **le seul tableau des fonctions et de leur état**, les chantiers ouverts, les numéros de migration | **à la fin de chaque session**, dans la branche de la tâche |
+| [suivi.md](suivi.md) | **le seul tableau des fonctions et de leur état**, les chantiers ouverts, les numéros de migration | par le **coordinateur**, sur sa branche, après chaque session et chaque fusion (décision du chef du 18 nov.) |
 | `docs/sessions/AAAA-MM-JJ-<branche>.md` | la **fiche de session** : ce qui est fait, ce qui reste, les questions, le prompt de reprise ([modèle](modeles/fiche-de-session.md)) | **à la fin de chaque session**, une fiche par session |
 | [modules/](modules/) | ce qui existe, les fonctions, leurs critères de « terminé » | quand une fonction change ce qui existe |
 | [decisions.md](decisions.md) | les décisions datées et les questions ouvertes | quand le chef tranche |
@@ -82,7 +82,7 @@ Les étapes, dans l'ordre :
 2. **Questionner** (§ 6).
 3. **Écrire le plan** avec les réponses du chef.
 4. **Faire valider** : le chef dit « validé », l'agent l'écrit en tête du plan (`Validé par Claude20022002 le AAAA-MM-JJ`). Pour une fonction S ou M sans migration ni enjeu de sécurité, le coordinateur peut valider (`Validé par le coordinateur le AAAA-MM-JJ`, § 10).
-5. **Commiter le plan seul**, comme premier commit de la branche (avec `suivi.md` passé à « en cours »).
+5. **Commiter le plan seul**, comme premier commit de la branche.
 6. **Coder**, en suivant le plan.
 
 Si le code montre que le plan est faux, l'agent **s'arrête**, corrige le plan et le refait valider avant de continuer.
@@ -100,7 +100,7 @@ Si le code montre que le plan est faux, l'agent **s'arrête**, corrige le plan e
 Avant de rendre la main, l'agent :
 
 1. **commite** son travail sur sa branche (localement) ;
-2. met à jour **[suivi.md](suivi.md)** : état de la fonction (« en cours », « PR ouverte », « fait »), et le tableau des chantiers si l'un s'ouvre ou se ferme ;
+2. écrit l'état de la fonction dans sa fiche de session (« en cours », « PR ouverte ») ; **[suivi.md](suivi.md)** est mis à jour par le coordinateur ;
 3. met à jour le **fichier du module** si ce qui existe a changé ;
 4. écrit la **fiche de session** `docs/sessions/AAAA-MM-JJ-<branche>.md` ([modèle](modeles/fiche-de-session.md)), avec le **prompt de reprise** ;
 5. commite ces fichiers ;
@@ -163,4 +163,4 @@ Une fiche par mission, dans `docs/plan/missions/<identifiant>.md` ([modèle](mod
 
 ### `suivi.md` et `decisions.md` à plusieurs
 
-Chaque branche met à jour **sa** ligne de `suivi.md`, comme avant. Quand deux branches touchent le même tableau, on garde toutes les lignes : le coordinateur l'annonce dans l'ordre de fusion qu'il prépare. Après chaque fusion, il vérifie que `suivi.md` sur `main` dit vrai, et prépare une correction (`doc/`) sinon.
+**`suivi.md` n'est modifié que par le coordinateur**, sur sa branche (décision du chef du 18 nov.). Avant, chaque branche écrivait sa ligne : chaque fusion mettait alors toutes les PR ouvertes en conflit, et leur CI ne tournait plus. Le coordinateur lit les fiches de session et les PR, met les lignes à jour, et vérifie après chaque fusion que `suivi.md` dit vrai. Pour `decisions.md`, quand deux branches touchent le même tableau, on garde toutes les lignes, et le coordinateur l'annonce dans l'ordre de fusion.

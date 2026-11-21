@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "titre": "Scolarité · Planner",
+    "description": "Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas."
+  },
+  "entete": {
+    "surtitre": "Scolarité",
+    "titre": "Votre semestre, calculé.",
+    "accroche": "Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas."
+  },
+  "aujourdhui": "Aujourd'hui",
+  "cartes": [
+    {
+      "page": "etablissement",
+      "titre": "Pour l'établissement",
+      "texte": "La direction et la scolarité trouvent au même endroit les salles, les examens et les chiffres de l'emploi du temps."
+    },
+    {
+      "page": "enClasse",
+      "titre": "En classe",
+      "texte": "L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte."
+    },
+    {
+      "page": "securite",
+      "titre": "Sécurité et données",
+      "texte": "Double authentification, accès par rôle, journal de sécurité, comptes fermés proprement, IA sans données d'élève."
+    }
+  ],
+  "passage": {
+    "titre": "Avant, avec Planner.",
+    "avant": "Avant",
+    "avec": "Avec Planner",
+    "lignes": [
+      {
+        "avant": "Les salles, les enseignants et les groupes sont répartis à la main.",
+        "avec": "Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas."
+      },
+      {
+        "avant": "Les listes de comptes circulent dans des fichiers qu'on ressaisit.",
+        "avec": "Enseignants, étudiants, filières, groupes et cours s'importent depuis un fichier CSV."
+      },
+      {
+        "avant": "Un report se confirme par des messages.",
+        "avec": "L'enseignant demande, la scolarité valide, les étudiants concernés sont prévenus."
+      },
+      {
+        "avant": "La grille part aux enseignants en pièce jointe.",
+        "avec": "L'emploi du temps s'exporte en PDF, sur la grille des créneaux de l'école."
+      },
+      {
+        "avant": "Chaque version de la grille est un fichier de plus.",
+        "avec": "Chaque calcul est gardé. Vous revenez à une version précédente quand vous le voulez."
+      }
+    ]
+  },
+  "faq": {
+    "titre": "Questions fréquentes.",
+    "questions": [
+      {
+        "question": "Peut-on importer des listes ?",
+        "reponse": "L’administration peut importer des listes de comptes, d’étudiants et d’enseignants à partir de fichiers CSV compatibles."
+      },
+      {
+        "question": "Comment une séance refusée s'explique-t-elle ?",
+        "reponse": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant."
+      },
+      {
+        "question": "Qui prévient les étudiants d'un report ?",
+        "reponse": "L'enseignant demande, la scolarité valide, les étudiants concernés sont prévenus."
+      }
+    ]
+  }
+}

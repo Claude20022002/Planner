@@ -1,0 +1,27 @@
+{
+  "name": "planner-vitrine",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Site vitrine de Planner (VIT-01) : site statique Astro, construit sans être mis en ligne",
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test:unit": "node --test \"tests/*.test.js\""
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "lucide-react": "1.67.0",
+    "motion": "12.43.0"
+  },
+  "devDependencies": {
+    "@astrojs/react": "7.1.2",
+    "astro": "7.4.5",
+    "react": "19.2.9",
+    "react-dom": "19.2.9"
+  }
+}

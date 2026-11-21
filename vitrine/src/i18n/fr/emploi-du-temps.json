@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "titre": "Emploi du temps · Planner",
+    "description": "Planner calcule l'emploi du temps de votre établissement sous contraintes, dit pourquoi une séance ne trouve pas sa place, garde chaque version et l'exporte en PDF ou dans l'agenda de chacun."
+  },
+  "entete": {
+    "surtitre": "Emploi du temps",
+    "titre": "Votre semestre, calculé.",
+    "accroche": "Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas."
+  },
+  "calcul": {
+    "surtitre": "Le calcul",
+    "titre": "Toutes vos règles, tenues ensemble.",
+    "texte": "Planner cherche la meilleure semaine possible : les règles strictes sont toujours tenues, les règles souples autant que possible.",
+    "points": [
+      "Les salles et leur capacité",
+      "Les enseignants, vacataires compris, et leurs disponibilités",
+      "Les cours, TD et TP, qui suivent leurs groupes",
+      "Plusieurs campus, avec le temps de trajet entre eux",
+      "Des règles strictes et des règles souples, réglées par l'école"
+    ]
+  },
+  "refus": {
+    "surtitre": "Les refus expliqués",
+    "titre": "Chaque refus a sa raison.",
+    "texte": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant. Vous corrigez, puis vous relancez le calcul.",
+    "avis": {
+      "label": "Exemple d'avis de Planner pour une séance non placée",
+      "titre": "Séance non placée",
+      "texte": "TP Biologie : l'enseignant n'est pas disponible le mardi matin."
+    }
+  },
+  "suite": {
+    "surtitre": "Après le calcul",
+    "titre": "Vous gardez la main.",
+    "cartes": [
+      {
+        "titre": "Des versions",
+        "texte": "Chaque calcul est gardé. Vous revenez à une version précédente quand vous le voulez."
+      },
+      {
+        "titre": "Une publication",
+        "texte": "L'emploi du temps devient visible quand l'administration le publie, pas avant."
+      },
+      {
+        "titre": "Des reports suivis",
+        "texte": "L'enseignant demande, la scolarité valide, les étudiants concernés sont prévenus."
+      },
+      {
+        "titre": "En PDF",
+        "texte": "L'emploi du temps s'exporte en PDF, sur la grille des créneaux de l'école."
+      },
+      {
+        "titre": "Dans l'agenda",
+        "texte": "Chacun abonne son agenda à son emploi du temps : les changements y arrivent d'eux-mêmes."
+      },
+      {
+        "titre": "Par courriel",
+        "texte": "L'emploi du temps peut aussi être envoyé par courriel."
+      }
+    ]
+  },
+  "illustration": {
+    "label": "Exemple de semaine calculée par Planner, avec une séance non placée et sa raison"
+  }
+}

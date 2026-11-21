@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | en relecture : à corriger le 2026-11-15 (cible du refus) |
+| État | relue : prête le 2026-11-18 (`c53d4cbb`) ; CI de #183 après le push du chef |
 | Agent | agent de Cursor |
 | Modèle recommandé | un modèle fort (Claude Opus 5.5 dans Cursor, ou l'équivalent) : 498 paramètres et leurs règles `requiert`, `borne`, `exclut` à couvrir sans en oublier |
 | Attribuée le | 2026-11-15, par le coordinateur |
@@ -36,3 +36,5 @@ Ne touche pas : `solver/` (MOT-12), `scripts/mesures/` (MOT-02, PLA-06), les mig
 |---|---|---|
 | 2026-11-15 | mission écrite ; personne ne tient MOT-03 | — |
 | 2026-11-15 20 h 50 | plan validé par le chef lui-même (phrases du § 4.3 comprises) ; codée (`34fc14f9`), CI de #183 verte. Relecture : branchement au même endroit que MOT-13a, fichiers courts, écart documenté. **À corriger** : le refus ne garde pas sa cible (enseignant, groupe, salle, matière), le dédoublonnage l'ignore, et le message ne dit pas à qui la règle s'applique (EP-4) | à corriger |
+| 2026-11-18 10 h 44 | correction `ce00b79e` (16 nov.) poussée par le chef. Relecture : cible `{ portee, id }`, dédoublonnage par cible, message qui nomme la cible ; noms retirés avant le solveur, `probleme` n'est pas enregistré. **Conflit avec `main`** (`generation.js` touché par MOT-13b `866da8ff`, README de conception, `suivi.md`) : pas de CI sur #183. Fusion de `origin/main` demandée | à mettre à jour |
+| 2026-11-18 11 h 06 | fusion de `origin/main` (`c53d4cbb`) : appel MOT-13b gardé, noms retirés par `pourLeSolveur`, `exigerAssezDePlace` absente de `main` (remplacée par `preparerContraintes`) ; fusion propre | **prête** |

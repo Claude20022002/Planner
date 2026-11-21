@@ -1,0 +1,37 @@
+---
+// Page « En classe », dans chaque langue : l'appel par QR code, les quiz, puis jeux, sondages et
+// compte unique. Assemble seulement ; les deux écrans de téléphone sont ceux de l'accueil.
+import { Gamepad2, MessageCircleQuestion, KeyRound } from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import CadreAppareil from '../../components/socle/CadreAppareil.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import Presentation from '../../components/fonctions/Presentation.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import IllustrationAppel from '../../components/accueil/IllustrationAppel.astro';
+import IllustrationQuiz from '../../components/accueil/IllustrationQuiz.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'en-classe');
+const tAccueil = traductions(lang, 'accueil');
+---
+<Gabarit langue={lang} page="enClasse" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <Presentation id="appel" ton="gris" surtitre={t('appel.surtitre')} titre={t('appel.titre')} texte={t('appel.texte')} points={t('appel.points')}>
+    <CadreAppareil type="telephone" label={tAccueil('appel.illustration.label')}>
+      <IllustrationAppel t={tAccueil} />
+    </CadreAppareil>
+  </Presentation>
+  <Presentation id="quiz" inverse surtitre={t('quiz.surtitre')} titre={t('quiz.titre')} texte={t('quiz.texte')} points={t('quiz.points')}>
+    <CadreAppareil type="telephone" label={tAccueil('quiz.illustration.label')}>
+      <IllustrationQuiz t={tAccueil} />
+    </CadreAppareil>
+  </Presentation>
+  <GrilleCartes id="aussi" ton="gris" surtitre={t('aussi.surtitre')} titre={t('aussi.titre')} cartes={t('aussi.cartes')}
+    icones={[Gamepad2, MessageCircleQuestion, KeyRound]} />
+  <FinDePage langue={lang} />
+</Gabarit>

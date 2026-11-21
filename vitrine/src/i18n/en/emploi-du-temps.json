@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "titre": "Timetable · Planner",
+    "description": "Planner builds your school's timetable under constraints, tells you why a session cannot be placed, keeps every version, and exports it as a PDF or into everyone's calendar."
+  },
+  "entete": {
+    "surtitre": "Timetable",
+    "titre": "Your semester, worked out.",
+    "accroche": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
+  },
+  "calcul": {
+    "surtitre": "The calculation",
+    "titre": "All your rules, kept together.",
+    "texte": "Planner looks for the best possible week: hard rules are always kept, soft rules as far as possible.",
+    "points": [
+      "Rooms and their capacity",
+      "Teachers, visiting lecturers included, and their availability",
+      "Lectures, tutorials and labs that follow their groups",
+      "Several campuses, with the travel time between them",
+      "Hard rules and soft rules, set by the school"
+    ]
+  },
+  "refus": {
+    "surtitre": "Refusals explained",
+    "titre": "Every refusal has a reason.",
+    "texte": "When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher. You fix it, then run the calculation again.",
+    "avis": {
+      "label": "Example of a Planner notice for a session that could not be placed",
+      "titre": "Session not placed",
+      "texte": "Biology lab: the teacher is not available on Tuesday morning."
+    }
+  },
+  "suite": {
+    "surtitre": "After the calculation",
+    "titre": "You stay in control.",
+    "cartes": [
+      {
+        "titre": "Versions",
+        "texte": "Every calculation is kept. You go back to an earlier version whenever you want."
+      },
+      {
+        "titre": "Publishing",
+        "texte": "The timetable becomes visible when the administration publishes it, not before."
+      },
+      {
+        "titre": "Tracked rescheduling",
+        "texte": "The teacher asks, the registrar approves, and the students concerned are notified."
+      },
+      {
+        "titre": "As a PDF",
+        "texte": "The timetable exports as a PDF, on the school's own time-slot grid."
+      },
+      {
+        "titre": "In your calendar",
+        "texte": "Everyone subscribes their calendar to their timetable: changes show up on their own."
+      },
+      {
+        "titre": "By email",
+        "texte": "The timetable can also be sent by email."
+      }
+    ]
+  },
+  "illustration": {
+    "label": "Example of a week calculated by Planner, with one session not placed and the reason why"
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "accueil": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "lien": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "methode": {
+    "titre": "",
+    "texte": ""
+  },
+  "tableau": {
+    "critere": ""
+  },
+  "approches": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "lignes": {
+    "calcul": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "refus": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "report": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "appel": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "appelProtege": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "compte": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "sansTelephone": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "sansReseau": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    },
+    "bientot": {
+      "critere": "",
+      "cases": [
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        },
+        {
+          "mot": "",
+          "texte": ""
+        }
+      ]
+    }
+  }
+}

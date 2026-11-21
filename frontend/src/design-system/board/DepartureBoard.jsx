@@ -124,21 +124,19 @@ export default function DepartureBoard({
                   fontFamily: ds.font.board,
                   fontWeight: 600,
                   fontSize: compact ? '0.875rem' : '1.05rem',
-                  letterSpacing: compact ? '0.02em' : '0.04em',
+                  letterSpacing: compact ? 0 : '0.02em',
                   lineHeight: 1.2,
                   textTransform: 'uppercase',
                   overflow: 'hidden',
-                  // Desktop : une ligne ; téléphone : deux lignes au plus, le nom reste lisible
-                  ...(compact
-                    ? {
-                        display: '-webkit-box',
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: 'vertical',
-                        // Mots entiers uniquement : jamais de coupure nue au milieu d'un mot
-                        overflowWrap: 'normal',
-                        wordBreak: 'normal',
-                      }
-                    : { whiteSpace: 'nowrap', textOverflow: 'ellipsis' }),
+                  // Inter en capitales est plus large que l'ancienne police condensée (UIX-10b) : deux lignes
+                  // au plus sur ordinateur, trois sur téléphone ; un mot trop long se coupe avec un trait
+                  // d'union, selon la langue de la page, jamais au milieu sans trait
+                  display: '-webkit-box',
+                  WebkitLineClamp: compact ? 3 : 2,
+                  WebkitBoxOrient: 'vertical',
+                  overflowWrap: 'normal',
+                  wordBreak: 'normal',
+                  hyphens: 'auto',
                   color: dimmed ? palette.dim : palette.text,
                   textDecoration: s.status === 'annule' ? 'line-through' : 'none',
                   textDecorationColor: ds.board.cancelled,
@@ -183,10 +181,10 @@ export default function DepartureBoard({
               sx={{
                 fontFamily: ds.font.board,
                 fontWeight: 600,
-                fontSize: compact ? '0.875rem' : '1.05rem',
-                letterSpacing: compact ? '0.02em' : '0.04em',
+                fontSize: compact ? '0.8125rem' : '1.05rem',
+                letterSpacing: compact ? 0 : '0.02em',
                 color: dimmed ? palette.dim : palette.text,
-                wordBreak: 'keep-all',
+                whiteSpace: 'nowrap',
               }}
             >
               {/* Un changement de salle bascule comme un statut */}
@@ -204,7 +202,7 @@ export default function DepartureBoard({
       case 'status':
         return (
           // Téléphone : statut en petit corps, la place va au nom du cours
-          <Box sx={{ fontSize: compact ? '0.6875rem' : '0.95rem', textAlign: 'right', '& > span': compact ? { letterSpacing: '0.04em' } : undefined }}>
+          <Box sx={{ fontSize: compact ? '0.6875rem' : '0.95rem', textAlign: 'right', '& > span': compact ? { letterSpacing: '0.02em' } : undefined }}>
             <StatusFlap
               status={s.status}
               variant={variant}
@@ -219,10 +217,10 @@ export default function DepartureBoard({
 
   const columnWidth = {
     time: compact ? 54 : 84,
-    room: compact ? 68 : 120,
+    room: compact ? 80 : 120,
     group: 110,
     teacher: 190,
-    status: compact ? 62 : 132,
+    status: compact ? 84 : 132,
   };
 
   const groups = groupDays

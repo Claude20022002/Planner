@@ -6,6 +6,42 @@ Vidéo motion design de **62 s** qui ouvre la présentation (voir `../discours-3
 - Public visé : non technique (investisseurs, direction, jury). On montre des services, pas des technologies.
 - Images : uniquement de vraies captures de l'application (`../captures/`), dans leur version actuelle.
 
+## « Accueil » (VIT-08, 18 novembre 2026) : la vidéo de l'accueil du site
+
+La vidéo d'ensemble de Planner, placée sur l'accueil du site vitrine. Plan validé par le chef : `docs/conception/vitrine/vit-08-video-presentation.md`. Elle ne ressemble pas aux vidéos d'octobre ci-dessous :
+
+- motion design **sans captures** : écrans dessinés dans les cadres d'appareils du site ;
+- **sans voix ni musique** ; textes à l'écran, en français et en anglais (l'arabe après UIX-04) ;
+- **aux couleurs de la charte** : `shared/charte/jetons.json`, Inter ; jamais `src/theme.ts`, qui est l'ancienne charte ;
+- **textes tirés de `vitrine/src/i18n/<langue>/accueil.json`** (clé `video`, et les illustrations de l'accueil) : la vidéo n'écrit aucune phrase, et sa transcription sur la page dit la même chose.
+
+| Composition | Contenu |
+|---|---|
+| `Accueil-fr`, `Accueil-en` | 1920 × 1080, 30 i/s, 86 s, neuf scènes (`src/accueil/scenes/A1…A9`) |
+| `AccueilElements` | banc d'essai des éléments (`src/accueil/elements/`), jamais rendu pour le site |
+
+| Commande | Effet |
+|---|---|
+| `npm run apercu:accueil` | rend tout dans `out/accueil/` (hors du dépôt), vérifie les poids, écrit `empreinte.json` |
+| `npm run render:accueil` | rendu final dans `vitrine/public/videos/`, toutes les langues à la fois. **Une seule fois, après les SVG officiels du chef** : chaque rendu commité reste dans l'historique |
+| `node scripts/rendre-accueil.mjs --langues=fr` | aperçu d'une langue |
+
+**L'empreinte** (`vitrine/src/components/accueil/empreinteVideo.js`) couvre :
+- les textes que la vidéo affiche ;
+- la version de la charte ;
+- les deux logos du site.
+
+Le test du site la recalcule. S'il échoue, la vidéo est périmée : relancer `npm run render:accueil` et commiter les fichiers rendus.
+
+Poids mesurés le 18 nov. pour une langue :
+- WebM 1080p : 3,4 Mo ;
+- MP4 720p, le fichier lu par défaut : 1,5 Mo ;
+- image fixe : 41 Ko.
+
+Le détail est au § 5 du plan.
+
+## Vidéos d'octobre 2026 (présentation et réseaux)
+
 | Fichier | Format |
 | --- | --- |
 | `out/hestim-planner.mp4` | 1920 × 1080, 30 i/s, H.264 (yuv420p), 62 s, 1860 images, son AAC stéréo |

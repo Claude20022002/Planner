@@ -1,0 +1,8 @@
+# Garde le contexte de construction limité au site compilé et à Nginx.
+**
+!dist/
+!dist/**
+!nginx/
+!nginx/generer-csp.py
+!nginx/nginx.conf
+!nginx/robots.txt
