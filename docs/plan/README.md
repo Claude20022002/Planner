@@ -155,6 +155,7 @@ Tirées des reproches faits aux autres outils ([étude de marché](../etude-marc
 | EP-11 | Accessible et bilingue | contraste AA ; français, arabe (droite à gauche) et anglais | 2 (droite à gauche), 4 (arabe complet) |
 | EP-12 | Les données restent à l'école | isolation testée sur chaque route ; export complet à tout moment | 2 et 5 |
 | EP-18 | S'adapter à tous les contextes | chaque fonction marche **sans téléphone de l'élève** (le QR code et les jeux sur téléphone sont des options, jamais le seul chemin), avec **peu ou pas de connexion**, et avec ce qu'a l'école (un seul écran projeté, du papier imprimé). Aucun écran ni aucun texte ne suppose un pays : les outils de l'État sont ceux du pays de l'école (décision du chef du 18 nov., contexte de la RDC) | toutes |
+| EP-19 | Sobre et mesuré | une page du site pèse **au plus 200 Ko transférés**, hors média lancé à la demande, vérifié en CI ; le **premier chargement de l'application web est mesuré** et écrit dans chaque PR qui le change (décision du chef du 21 nov., N1 de la [synthèse des concurrents](../etude-marche/14-reprendre-et-depasser.md)) | toutes |
 
 **Condition légale** : aucune donnée réelle de mineur sur Planner avant le contrat de sous-traitance, le dossier CNDP de l'école et le test d'intrusion (EXP-08).
 

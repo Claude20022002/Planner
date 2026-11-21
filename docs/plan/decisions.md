@@ -468,3 +468,16 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | *(coordinateur)* **Ordre des fusions du site révisé** (VIT-17 est arrêtée depuis le 19 nov. à 8 h, VIT-18 et VIT-14b sont prêtes) : #222 (VIT-09a), #226 (VIT-10b avec C8), #228 (VIT-18), #232 (VIT-08), #233 (VIT-14b), #221 (VIT-06), puis VIT-17, #223 (VIT-12), VIT-16, VIT-11, VIT-13, VIT-15, VIT-09b en dernier. #228 et #221 intégreront `main` en route (une ligne du fichier du module VIT, garder les deux) | coordinateur |
 | *(coordinateur)* **Plan de #229 (QJE-04 suite, noms accessibles des boutons du catalogue) validé après coup** : correctif S demandé par le chef le 18 nov., sans migration ni donnée. La PR est **à corriger** : son parcours `sessionsJeu.spec.cjs` (ligne 49) attend plus d'un bouton « Lancer « … » en classe » et n'en trouve pas (CI rouge, run 44640514265) | coordinateur |
 | *(coordinateur)* #222, #226 (avec C8, `ff08fffd`), #228, #233 relues : **prêtes**. #227 (plan de VIT-09b validé par le chef) reste en brouillon jusqu'à son code, en dernier sur le site | coordinateur |
+
+**Chef, 21 nov., sur la synthèse des concurrents** ([14-reprendre-et-depasser.md](../etude-marche/14-reprendre-et-depasser.md), § 5, branche `etude/expertise-go4school`, `8ba3a7ac`, à pousser ; « Oui » pour chacune, par l'outil de questions). Report du coordinateur ; le détail de chaque report est au § 7 de la synthèse :
+
+| Décision | Par |
+|---|---|
+| **N1, EP-19 « sobre et mesuré »** : une page du site pèse au plus 200 Ko transférés, hors média lancé à la demande, vérifié en CI ; le premier chargement de l'application web est mesuré et écrit dans chaque PR qui le change. À inscrire au § 6 du README du plan | chef |
+| **N2** : l'appel à la main hors ligne, envoyé au retour du réseau avec l'heure réelle de la saisie ; le QR code reste en ligne. Fonction nouvelle du module MOB (ou MOB-06 élargie), conçue avec l'étude EP-18 | chef |
+| **N3** : le poids affiché avant chaque téléchargement, et la reprise après coupure : critère de « terminé » des fonctions COU et BIB qui téléchargent | chef |
+| **N4** : le test de garde du site refuse aussi les superlatifs (« n° 1 », « le seul », « le meilleur », « leader », et en anglais) : suite de VIT-18, après sa fusion | chef |
+| **N5** : VIT-04 (page d'état publique) passe avant VIT-03, juste après la mise en ligne du site | chef |
+| **N6** : PAI-03 (argent mobile) reste reporté ; la question est posée aux entretiens de VEN-02 | chef |
+| **N7** : plusieurs systèmes d'évaluation dans une même école, réglés par classe : exigence de la conception VSC-01, avant son code | chef |
+| **N8** : une tutelle comme client (réseau d'écoles, diocèse, ONG) : une question de plus dans VEN-02 ; GRP reste reporté | chef |
