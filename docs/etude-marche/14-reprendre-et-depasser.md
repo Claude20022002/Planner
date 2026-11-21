@@ -40,7 +40,7 @@
 | R3 | **« Avant → avec »**, sans nommer personne (« le groupe de discussion » face à l'outil) | Go4School ; OpenEduCat | sur les pages par rôle ; et un comparatif par approche | VIT-10b ; VIT-14 (fusionnée) et VIT-14b | prévu ou fait |
 | R4 | **Une page par module** : ce qu'il fait, qui s'en sert, FAQ, modules liés | OpenEduCat (73 pages) ; Go4School (12) | une page par module, avec un bloc « selon votre équipement » | VIT-15 | prévu |
 | R5 | **Les métiers de l'école** présentés à part des rôles (caisse, infirmerie, cantine, surveillance) | Go4School | à reprendre quand ces modules existeront | étape 4 et 5 (SER-01, VSC, FIN-01) | prévu, plus tard |
-| R6 | **Une page d'état publique** du service | Go4School ; aSc | la page d'état existe dans le plan | VIT-04, après EXP-05 | prévu ; § 5, N5 |
+| R6 | **Une page d'état publique** du service | Go4School ; aSc | la page d'état existe dans le plan | VIT-04, après EXP-05 | **décidé** : avancée (N5, 21 nov.) |
 | R7 | **Une offre lisible** : un socle, des modules qui s'ajoutent, ce qui est inclus et ce qui se paie à l'usage | Go4School ; Skoolly, Schoolz | à écrire quand la vente reprendra | VEN | prévu, gelé |
 | R8 | **Un essai ou une démonstration courte**, une mise en route annoncée en heures | tous les produits marocains ; OpenEduCat ; Fedena ; Go4School | l'assistant de démarrage, chronométré (EP-1) | ADM-04 ; VIT-16 (la démonstration) | prévu |
 
@@ -48,13 +48,13 @@
 
 | # | Bonne pratique | Chez qui | Ce que Planner en fait | Fonction | État |
 |---|---|---|---|---|---|
-| R9 | **L'appel sans réseau**, puis synchronisé | Go4School (annoncé) | l'appel **à la main** hors ligne, envoyé au retour du réseau ; le QR code reste en ligne, car sa signature change toutes les 30 s | MOB-06 n'est que la lecture de l'emploi du temps | **proposé** (§ 5, N2) |
-| R10 | **Le poids affiché avant un téléchargement**, reprise après coupure | Go4School (annoncé) | pour les supports de cours et la bibliothèque, dans l'application | COU, BIB, MOB | **proposé** (§ 5, N3) |
+| R9 | **L'appel sans réseau**, puis synchronisé | Go4School (annoncé) | l'appel **à la main** hors ligne, envoyé au retour du réseau ; le QR code reste en ligne, car sa signature change toutes les 30 s | MOB-06 n'est que la lecture de l'emploi du temps | **décidé** (N2, 21 nov.) |
+| R10 | **Le poids affiché avant un téléchargement**, reprise après coupure | Go4School (annoncé) | pour les supports de cours et la bibliothèque, dans l'application | COU, BIB, MOB | **décidé** (N3, 21 nov.) |
 | R11 | **SMS pour ceux qui n'ont pas l'application** | Go4School ; produits marocains | déjà dans le service d'envoi | COM-01, COM-03 | prévu |
 | R12 | **Un canal officiel de l'école** : communiqué ciblé, accusé de lecture, archivé | Go4School | annonces ciblées existantes (`Annonce.portee`) ; accusé de lecture prévu | COM-02 | prévu |
-| R13 | **Argent mobile et guichet** avec reçu numéroté | Go4School ; PERIS ; produits marocains (caisse) | caisse et reçus dans FIN-01 ; argent mobile reporté après PLA-13 | FIN-01, PAI-03 | prévu ; PAI-03 reporté (§ 5, N6) |
-| R14 | **Plusieurs systèmes d'évaluation dans une même école** (deux sous-systèmes, séquences et trimestres) | Go4School | le modèle du scolaire doit le permettre, sans nommer de pays | VSC-01 (conception) | **proposé** (§ 5, N7) |
-| R15 | **Une tutelle qui voit plusieurs écoles** (diocèse, ONG, groupe privé) | Go4School (GO4SPILOT) ; OpenEduCat Enterprise | vue consolidée, chaque école dans sa base | GRP-01, GRP-02 | prévu, reporté après PLA-11 |
+| R13 | **Argent mobile et guichet** avec reçu numéroté | Go4School ; PERIS ; produits marocains (caisse) | caisse et reçus dans FIN-01 ; argent mobile reporté après PLA-13 | FIN-01, PAI-03 | prévu ; PAI-03 reporté, question à VEN-02 (N6, 21 nov.) |
+| R14 | **Plusieurs systèmes d'évaluation dans une même école** (deux sous-systèmes, séquences et trimestres) | Go4School | le modèle du scolaire doit le permettre, sans nommer de pays | VSC-01 (conception) | **décidé** (N7, 21 nov.) |
+| R15 | **Une tutelle qui voit plusieurs écoles** (diocèse, ONG, groupe privé) | Go4School (GO4SPILOT) ; OpenEduCat Enterprise | vue consolidée, chaque école dans sa base | GRP-01, GRP-02 ; VEN-02 | GRP reporté après PLA-11 ; un réseau interrogé dans VEN-02 (N8, 21 nov.) |
 | R16 | **L'IA activée école par école**, payée à l'usage | Go4School | interrupteur par école (D2) ; le paiement à l'usage est une question de vente | QJE-16 (inscrit le 19 nov.) ; VEN | décidé (D2) |
 | R17 | **Remplaçant proposé** quand un enseignant est absent | aSc | déjà prévu | MOT-09 | prévu |
 | R18 | **Import de la liste officielle des élèves** (matricule national) | Go4School (cartescolaire.cm) ; Caisso (Massar) | l'élève identifié par le matricule de l'État, un connecteur par pays | ETA-01, ETA-02, ETA-03 | décidé (15 nov.) |
@@ -76,10 +76,10 @@
 | M9 | **Textes non traduisibles** | OpenEduCat ([DÉPÔT]) | aucun texte en dur, trois langues | EP-16, UIX-08 | le site le tient (règle de son plan) ; UIX-08 au plan de parité |
 | M10 | **Interfaces vieillies, menus qui submergent** | aSc, EduPage, OpenEduCat, Classter (avis) | charte commune, menu limité aux modules actifs | UIX-10, EP-2 | en cours |
 | M11 | **Application mobile lente ou qui plante** | EduPage (3,5 sur 39 100 avis), Fedena | ouverture en moins de 2 s sur un téléphone de référence | EP-3, MOB-03 | prévu |
-| M12 | **Un site lourd, malgré la promesse « 2G »** | Go4School : environ 5,9 Mo et 500 requêtes sur l'accueil, performance mobile 29 à 48 | pages de 81 à 84 Ko, vidéo à la demande sur téléphone (VIT-17) ; à garder par une règle | VIT ; **proposé** EP-19 (§ 5, N1) | proposé |
+| M12 | **Un site lourd, malgré la promesse « 2G »** | Go4School : environ 5,9 Mo et 500 requêtes sur l'accueil, performance mobile 29 à 48 | pages de 81 à 84 Ko, vidéo à la demande sur téléphone (VIT-17) ; à garder par une règle | VIT ; EP-19 | **décidé** (N1, 21 nov.) |
 | M13 | **Traceurs avant tout consentement** | Go4School (Google Analytics, Tawk.to) | le site ne charge rien d'ailleurs et ne dépose aucun cookie | EP-13, règles du site | fait |
 | M14 | **Contraste insuffisant, formulaire de vente inaccessible** | Go4School (bouton 3,13 ; deux violations critiques au devis) | axe-core sans violation, contraste AA vérifié par test | EP-11, EP-2 | fait sur le site ; à tenir sur le formulaire de VIT-02 |
-| M15 | **Promesses sans preuve** : « n° 1 », essai annoncé introuvable, décomptes contradictoires | Go4School ; PERIS (chiffres de clients variables) | chaque phrase sourcée ; test de garde | VIT-18 ; **proposé** son extension (§ 5, N4) | en partie fait |
+| M15 | **Promesses sans preuve** : « n° 1 », essai annoncé introuvable, décomptes contradictoires | Go4School ; PERIS (chiffres de clients variables) | chaque phrase sourcée ; test de garde | VIT-18 ; son extension aux superlatifs | **décidé** (N4, 21 nov.) |
 | M16 | **Avis sollicités dans le produit** | OpenEduCat (fenêtre G2, [DÉPÔT]) | aucune note d'un comparateur citée ; jamais de demande d'avis dans le produit | P-85 | proposé dans l'étude 11 |
 | M17 | **Un pays écrit dans le produit** (barème de paie, examens, devise) | Go4School (Cameroun) ; produits marocains (Massar, MAD) | configuration et connecteurs par pays | EP-5, EP-18, PLA-13, ETA-03 | décidé |
 | M18 | **Le supérieur oublié** : CM, TD, TP, groupes emboîtés, vacataires, plusieurs campus | produits marocains ; Go4School (maternelle au lycée) | c'est le cœur de Planner aujourd'hui (D4) | MOT, EDT | fait |
@@ -97,9 +97,11 @@ D'après toutes les études (01, 07, 09, 11, 13) :
 
 Ce sont les six arguments à porter partout : comparatif (VIT-14), pages de module (VIT-15), FAQ (VIT-11), démonstration. Ils ne se disent qu'une fois vrais dans le code, sans nommer personne.
 
-## 5. Propositions nouvelles, à trancher par le chef
+## 5. Propositions nouvelles : toutes validées par le chef
 
-| N° | Proposition | D'où elle vient | Ce qu'elle change | Taille |
+**Les huit propositions sont validées par le chef le 21 novembre 2026**, par l'outil de questions (« Oui », pour chacune). Le coordinateur les inscrit dans `decisions.md`, et EP-19 dans le § 6 du README du plan.
+
+| N° | Décision | D'où elle vient | Ce qu'elle change | Taille |
 |---|---|---|---|---|
 | N1 | **EP-19, sobre et mesuré** : une page du site pèse au plus 200 Ko transférés, hors média lancé à la demande, vérifié en CI. Le premier chargement de l'application web est mesuré et écrit dans chaque PR qui le change | M12 ; EP-18 (peu de connexion) | une ligne dans le README du plan ; un contrôle dans la CI du site (`vitrine.yml`) | S |
 | N2 | **L'appel à la main hors ligne**, envoyé au retour du réseau, avec l'heure réelle de la saisie. Le QR code reste en ligne | R9 ; EP-18 | une fonction nouvelle dans MOB (ou MOB-06 élargie), conçue avec l'étude EP-18 | M |
@@ -127,10 +129,16 @@ Ce sont les six arguments à porter partout : comparatif (VIT-14), pages de modu
 
 | Ligne | Où la reporter |
 |---|---|
-| R2, R3, R4 et C3 de l'expertise 12 | fiches de VIT-09b, VIT-10b, VIT-15 : « données de démonstration crédibles » (R2) |
-| R9, R10 et la question 3 de l'étude 13 | fiche de l'étude EP-18 (`etude-ep18-faible-equipement`) : comparer le hors ligne de Planner à ce qu'annonce Go4School, comme repère du marché |
-| R14 | conception de VSC-01, après la réponse du chef à N7 |
-| N1 à N8 | `decisions.md`, avec la réponse du chef |
+| D1 à D4, réponses 1 à 3 de l'étude 13, N1 à N8 | `decisions.md`, au 21 nov. |
+| **N1, EP-19** | README du plan, § 6 : « Sobre et mesuré : une page du site pèse au plus 200 Ko transférés, hors média lancé à la demande, vérifié en CI ; le premier chargement de l'application web est mesuré et écrit dans chaque PR qui le change ». Le contrôle de la CI du site : une mission courte (VIT), ou VIT-17 si elle n'est pas finie |
+| **N2** | une fonction nouvelle du module MOB : « Appel à la main sans réseau, envoyé au retour du réseau avec l'heure de la saisie ; le QR code reste en ligne » ; plan conçu avec l'étude EP-18 |
+| **N3** | critère de « terminé » des fonctions COU et BIB qui téléchargent : « poids affiché avant le téléchargement, reprise après coupure » ; à rappeler dans le modèle de conception (section EP-18) |
+| **N4** | la suite de VIT-18 (après sa fusion) : le test de garde refuse « n° 1 », « #1 », « le seul », « le meilleur », « leader », et en anglais « number one », « the only », « the best », « leader » |
+| **N5** | VIT-04 passe avant VIT-03 dans la file, après EXP-05 et la mise en ligne du site |
+| **N6, N8** | VEN-02 : une question sur l'argent mobile aux écoles d'Afrique subsaharienne ; un entretien avec un réseau d'écoles (diocèse, ONG ou groupe privé) |
+| **N7** | conception de VSC-01 (#215) : plusieurs systèmes d'évaluation dans une même école, réglés par classe, sans nommer de pays |
+| R2, R3, R4 | fiches de VIT-09b, VIT-10b, VIT-15 : « données de démonstration crédibles » (R2) |
+| R9, R10 et la réponse 3 de l'étude 13 | fiche de l'étude EP-18 (`etude-ep18-faible-equipement`) : comparer le hors ligne de Planner à ce qu'annonce Go4School, comme repère du marché |
 | M16 (P-85) | rappel : la proposition attend encore le chef dans l'étude 11 |
 | `01-concurrents.md`, § 8 | fait sur cette branche (Go4School) |
 

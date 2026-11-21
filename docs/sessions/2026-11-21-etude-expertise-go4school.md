@@ -38,7 +38,7 @@ Pas de plan de conception : étude sans code. Livrable : [docs/etude-marche/13-e
 | 1 | Ajouter Go4School à `01-concurrents.md` et au comparatif avec OpenEduCat ? | oui, une ligne avec le lien vers l'étude | **validé** (21 nov.) ; fait (§ 8 de `01-concurrents.md`) |
 | 2 | Essayer le produit (démonstration) ? | non sans ton accord, et seulement sous notre vrai nom | **validé** (21 nov.) |
 | 3 | L'étude EP-18 compare-t-elle le hors ligne de Planner à ce que Go4School annonce ? | oui, comme repère du marché | **validé** (21 nov.) ; à reporter dans la fiche de l'étude EP-18 |
-| N1 à N8 | Les huit propositions de la synthèse 14, § 5 | voir la synthèse | au chef |
+| N1 à N8 | Les huit propositions de la synthèse 14, § 5 (EP-19, appel hors ligne, poids avant téléchargement, superlatifs, page d'état, argent mobile, systèmes d'évaluation, réseaux d'écoles) | voir la synthèse | **validées** (21 nov.), par l'outil de questions |
 
 Deuxième demande du chef, le 21 nov. : « Il faut que toutes ces expertises servent pour notre projet, en récupérant ce que les concurrents font de bien et en améliorant ce qu'ils ne font pas ou ne parviennent pas à faire. » Réponse : la synthèse [14-reprendre-et-depasser.md](../etude-marche/14-reprendre-et-depasser.md), qui reprend les études 01, 07, 09, 10, 11, 12, 13 et le plan de parité : 20 bonnes pratiques à reprendre (R1 à R20), 18 échecs que Planner fait mieux (M1 à M18), six arguments que personne d'autre n'a, huit propositions nouvelles (N1 à N8), ce qu'on ne reprend pas, et où le coordinateur reporte chaque ligne.
 
@@ -49,8 +49,8 @@ Deuxième demande du chef, le 21 nov. : « Il faut que toutes ces expertises ser
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef tranche les propositions N1 à N8 de la synthèse 14 (§ 5).
-2. Le coordinateur reporte chaque ligne selon le § 7 de la synthèse, et les décisions dans `decisions.md`.
+1. Le chef pousse la branche et ouvre la PR.
+2. Le coordinateur reporte les décisions dans `decisions.md`, EP-19 dans le README du plan, et chaque ligne selon le § 7 de la synthèse (fonction MOB nouvelle, VEN-02, VSC-01, VIT-04, fiches du site et de l'étude EP-18).
 
 ## Commandes pour le chef de projet
 
