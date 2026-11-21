@@ -1,0 +1,28 @@
+---
+// Page « Comparer » (VIT-14), dans chaque langue : Planner et quatre approches courantes, sans nommer
+// de produit, avec la méthode, le mot et le texte de chaque case. Assemble seulement.
+import Gabarit from '../../components/socle/Gabarit.astro';
+import Section from '../../components/socle/Section.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import Methode from '../../components/comparer/Methode.astro';
+import TableauComparatif from '../../components/comparer/TableauComparatif.astro';
+import CartesComparatif from '../../components/comparer/CartesComparatif.astro';
+import { LIGNES } from '../../components/comparer/comparatif.js';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'comparer');
+---
+<Gabarit langue={lang} page="comparer" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage ton="sombre" surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <Section id="comparatif" large>
+    <Methode langue={lang} />
+    <TableauComparatif langue={lang} lignes={LIGNES} />
+    <CartesComparatif langue={lang} lignes={LIGNES} niveau={2} />
+  </Section>
+  <FinDePage langue={lang} />
+</Gabarit>

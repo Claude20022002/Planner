@@ -25,5 +25,49 @@
       "titre": "Quiz et jeux",
       "texte": "L'enseignant prépare le quiz. Le lien s'ouvre dans un navigateur, sur un ordinateur de l'école ou ailleurs. Un code ou un QR code mène au même lien."
     }
-  ]
+  ],
+  "passage": {
+    "titre": "Avant, avec Planner.",
+    "avant": "Avant",
+    "avec": "Avec Planner",
+    "lignes": [
+      {
+        "avant": "Les supports du cours arrivent par message ou sur papier.",
+        "avec": "L'étudiant voit les supports publiés de ses cours."
+      },
+      {
+        "avant": "Les documents de l'école sont dans des dossiers partagés.",
+        "avec": "Les documents sont rangés par filière et par module."
+      },
+      {
+        "avant": "La semaine se consulte sur une feuille affichée.",
+        "avec": "L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
+      },
+      {
+        "avant": "Participer au quiz demande d'installer une application.",
+        "avec": "Le lien s'ouvre dans un navigateur, sur un ordinateur de l'école ou ailleurs. Un code ou un QR code mène au même lien."
+      },
+      {
+        "avant": "Les nouvelles d'une classe passent par une affiche ou un message.",
+        "avec": "Une annonce s'adresse à une classe, un groupe ou une filière. L'e-mail est facultatif."
+      }
+    ]
+  },
+  "faq": {
+    "titre": "Questions fréquentes.",
+    "questions": [
+      {
+        "question": "Que propose l'application mobile ?",
+        "reponse": "L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
+      },
+      {
+        "question": "Où sont les supports de mes cours ?",
+        "reponse": "L'étudiant voit les supports publiés de ses cours."
+      },
+      {
+        "question": "Où sont les documents de l'école ?",
+        "reponse": "Les documents sont rangés par filière et par module."
+      }
+    ]
+  }
 }
