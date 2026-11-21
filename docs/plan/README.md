@@ -56,19 +56,23 @@ Les douze derniers modules (COM à STK) viennent de l'inventaire du 11 novembre 
 
 ## 2. L'ordre : des étapes, pas des dates
 
-**Décision du 7 novembre : plusieurs écoles sur une installation d'abord.** Le code écrit ensuite est sûr pour plusieurs écoles dès sa création. Cible : les écoles privées, de la maternelle au lycée, puis la formation professionnelle ; HESTIM (supérieur) reste servi.
+**Décision du 21 novembre : le supérieur jusqu'au bout, puis on descend** (elle remplace l'ordre du 7 novembre, « plusieurs écoles d'abord, puis le scolaire »). On **conçoit pour tous et on construit pour le supérieur** : le modèle de données et le moteur restent « par profil », le modèle du scolaire est conçu (VSC-01) mais pas codé, et le code écrit est sûr pour plusieurs écoles dès sa création. Ensuite : la formation professionnelle, puis le lycée, puis le collège, puis le primaire et la maternelle. La cible des écoles privées de la maternelle au lycée vient après ([decisions.md](decisions.md), 21 nov.).
 
 | Étape | Jalon | Fonctions |
 |---|---|---|
 | **0** | Tout ce qui était commencé est fusionné ; ce plan est sur `main` ; le nouveau serveur est prêt | fusions du 7 novembre, EXP-01, QUA-06, QUA-07 |
-| **1. Fondations** | `main` tourne sur le nouveau serveur, sauvegardé et surveillé ; la pile et D-01 sont confirmées ; le modèle du scolaire est conçu | EXP-02 à EXP-05, QUA-03, PLA-06, VSC-01, MOT-01, MOT-02 |
-| **2. Plusieurs écoles** | HESTIM et une école neuve au vocabulaire scolaire tournent sur la même installation, sans StudyLib ni ClassQuiz pour la seconde ; rien ne passe de l'une à l'autre | PLA-01 à PLA-05, PLA-07, VEN-01, UIX-01, MOT-05, MOT-08, MOB-03 |
-| **3. Une école scolaire se configure seule** | Une personne extérieure configure une école et génère **un vrai collège avec groupes de langue** ; chaque refus s'explique | MOT-03, MOT-04, MOT-06, MOT-07, VSC-07, ADM-02 à ADM-04, UIX-02, EDT-01, EDT-03, VEN-02 |
-| **4. Pack « École privée »** | Une école fictive de la maternelle au lycée tourne de bout en bout : familles, emploi du temps, absences prévenues, notes et bulletins, frais, espace parents en arabe et en français | VSC-02 à VSC-04, FIN-01, FIN-02, COM-01 à COM-03, ETA-01, ETA-02, PAI-01, PAI-02, COU-02 à COU-05, MOB-05, MOB-06, UIX-04, MOT-09, EXP-08 |
-| **5. Durée de vie** | Formation professionnelle et continue ; passage d'année sans aide ; export complet d'une école | ADM-01, ADM-06, ADM-07, PLA-08 à PLA-13, MOT-10, MOT-11, VSC-06, BIB-02, EDT-05, RHP-02, RHP-03, FOR-01 à FOR-04, DOC-01, DOC-02, INS-01 à INS-03 ; reportés : ETA-03, PAI-03, PIL-01, PIL-02, GRP-01, GRP-02, STA-02, SER-01, STK-01 |
-| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01 à QJE-07, BIB-03, BIB-04, VIT-01 à VIT-04, COU-01, COU-06, STA-01, MOB-01, MOB-02, MOB-07, UIX-03, UIX-05, UIX-06, EDT-02, EDT-04, EXP-09, RHP-01, QUA-01, QUA-02, QUA-04, QUA-05, MKT-01 à MKT-07 |
+| **1. Fondations** | `main` tourne sur le nouveau serveur, sauvegardé et surveillé ; la pile et D-01 sont confirmées ; le solveur est mesuré sur un jeu du supérieur ; le modèle du scolaire est conçu (sans code) | EXP-02 à EXP-05, QUA-03, PLA-06, VSC-01, MOT-01, MOT-02 |
+| **2. Plusieurs écoles** | HESTIM et une deuxième école du supérieur tournent sur la même installation, chacune avec sa bibliothèque et sans ClassQuiz ; rien ne passe de l'une à l'autre | PLA-01 à PLA-05, PLA-07, VEN-01, UIX-01, MOT-05, MOT-08, MOB-03, BIB-02, QJE-03, QJE-06 |
+| **3. Le supérieur jusqu'au bout** | **Une deuxième école du supérieur, autre que HESTIM, se configure seule et tourne un semestre complet** : emploi du temps (CM, TD, TP, vacataires, campus) dont chaque refus s'explique, appel (aussi à la main hors ligne), examens et surveillances, évaluations, crédits et jurys, espace de cours, quiz, bibliothèque, stages, inscriptions, documents vérifiables, frais, tableau de bord de l'administration ; la vitrine dit tout cela | MOT-03, MOT-04, MOT-13, ADM-01 à ADM-04 (modèle du supérieur), EDT-01 à EDT-04, VSC-08, RHP-01, STA-01, INS-01 à INS-03, DOC-01, DOC-02, FIN-01, FIN-02, VEN-02, COU-02 à COU-06, BIB-01, BIB-03, BIB-04, QJE-02, QJE-07, QJE-16, MOB-01, MOB-02, MOB-06, MOB-07 et l'appel à la main hors ligne (N2), UIX-03, UIX-05, UIX-06, UIX-10, UIX-11, EXP-06, EXP-08, VIT-04 |
+| **4. La formation professionnelle** | Un centre de formation tourne de bout en bout : sessions et cohortes, émargement, financeurs, preuves qualité | VSC-06, FOR-01 à FOR-04, RHP-02, RHP-03 |
+| **5. Le lycée, puis le collège** | Une personne extérieure configure une école et génère **un vrai collège avec groupes de langue** (EP-10 : 600 élèves en moins de 10 min) ; les écrans parlent la langue de l'école | MOT-06, MOT-07, VSC-07, UIX-02, ADM-04 (modèle du scolaire), mesure du collège (suite de MOT-02) |
+| **6. Pack « École privée »** | Une école fictive de la maternelle au lycée tourne de bout en bout : familles, absences prévenues, notes et bulletins, espace parents en arabe et en français | VSC-02 à VSC-04, ADM-05, COM-01 à COM-03, ETA-01, ETA-02, PAI-01, PAI-02, MOB-05, UIX-04, MOT-09 |
+| **7. Durée de vie** | Passage d'année sans aide ; export complet d'une école ; grande échelle | ADM-06, ADM-07, PLA-08 à PLA-13, MOT-10, MOT-11, EDT-05 ; reportés : ETA-03, PAI-03, PIL-01, PIL-02, GRP-01, GRP-02, STA-02, SER-01, STK-01 |
+| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01, QJE-04, QJE-05, VIT-01 à VIT-03, COU-01, EXP-09, QUA-01, QUA-02, QUA-04, QUA-05, MKT-01 à MKT-07 |
 
-FIN, COM et PAI ne se construisent qu'après les entretiens de VEN-02, qui confirment le module d'achat de chaque marché (décision du 13 novembre).
+FIN, COM et PAI ne se construisent qu'après les entretiens de VEN-02, qui confirment le module d'achat de chaque marché (décision du 13 novembre) ; pour l'étape 3, ces entretiens se mènent auprès d'écoles du supérieur.
+
+La colonne « Étape » des fichiers de module et de [suivi.md](suivi.md) suit encore l'ordre du 7 novembre, jusqu'à sa reprise par le coordinateur : **ce tableau fait foi**.
 
 Une fonction d'une étape peut commencer avant la fin de l'étape précédente si ses dépendances (colonne « dépend de ») sont faites.
 

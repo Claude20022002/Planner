@@ -146,3 +146,48 @@ avec corrections (consigne dans la boîte de Cursor) ; Codex : #221 puis VIT-11 
 À suivre : les fusions dans l'ordre, le rapport de VIT-17, les valeurs du chef pour #223 et VIT-16, le relevé Traefik,
 la réponse à #231, la reprise de MOT-13 (coupure fine). Tour d'état d'abord, boîtes comprises ; toi seul modifies suivi.md ; jamais de git push.
 ```
+
+## Suite du 21 nov. : le supérieur d'abord
+
+**Fusionnées pendant la session** : #222 et #233. #226 restait ouverte, CI en cours.
+
+**Décisions du chef** (detail dans `decisions.md`, 21 nov.) :
+- la synthèse des concurrents et N1 à N8 ;
+- **le supérieur jusqu'au bout, puis on descend**, avec la règle « concevoir pour tous, construire pour le supérieur » et la ligne d'arrivée ;
+- VSC-08 créée (évaluations, crédits et jurys du supérieur) ;
+- INS, DOC et FIN dans l'étape du supérieur ;
+- MOT-02 sur un jeu du supérieur ;
+- ADM s'ouvre après MOT, à la place de VSC ;
+- les études se fusionnent ;
+- Alexis prend EDT-04 après ses corrections.
+
+**Fait** :
+- `README.md` du plan : EP-19 ; § 2 réécrit (étapes 0 à 7, la 3 étant le supérieur).
+- `decisions.md`, `suivi.md` (chantier qui suit MOT, MOT-02, VSC-01, VSC-08, EDT-04, deux missions) et `feuille-de-route.md`.
+- Modules VSC (VSC-08) et MOT (MOT-02) ; modèle de conception (§ 7 bis « Ce que disent les études »).
+- Fiches nouvelles : [edt-04-publication](../plan/missions/edt-04-publication.md) (Alexis) et [fusion-etudes](../plan/missions/fusion-etudes.md) (session de VIT-14).
+- Boîte de Codex : `2026-11-21-0130-superieur-mot-02-vsc-01`.
+
+**Reste à faire (prochain coordinateur)** :
+- reprendre la colonne « Étape » de `suivi.md` et des fichiers de module selon le nouveau § 2 du README ;
+- reporter les autres lignes du § 7 de la synthèse 14 dans les fiches (MOB pour N2, COU et BIB pour N3, VIT-04, VEN-02 pour N6 et N8, VIT-09b, VIT-10b, VIT-15 pour R2, EP-18 pour R9 et R10) ;
+- classer chaque ligne du registre par public (supérieur, scolaire, tous).
+
+### Relecture d'Alexis (21 nov.)
+
+Rien de nouveau sur GitHub depuis le 20 nov. à 1 h 21.
+- **#229** : à corriger (CI rouge).
+- **#230** : bonne facture, mais quatre écarts :
+  - le plan a été codé sans validation ;
+  - la devise MAD est mise par défaut (EP-5) ;
+  - la liste montre à tout enseignant les brouillons, même hors de ses filières (`offresVisibles`) ;
+  - `OffresStage.jsx` fait 449 lignes.
+- **#231** : le chef a répondu (EDT-04).
+
+### Prompts à relayer
+
+**Session de VIT-14** : le prompt de la fiche [fusion-etudes](../plan/missions/fusion-etudes.md).
+
+**Alexis** : le prompt de la fiche [edt-04-publication](../plan/missions/edt-04-publication.md) (il commence par ses corrections de #229 et #230).
+
+**Session de l'expertise** : pousser `etude/expertise-go4school` (le chef), puis la mission de fusion la prend au n° 6.

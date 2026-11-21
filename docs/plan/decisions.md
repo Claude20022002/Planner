@@ -481,3 +481,20 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **N6** : PAI-03 (argent mobile) reste reporté ; la question est posée aux entretiens de VEN-02 | chef |
 | **N7** : plusieurs systèmes d'évaluation dans une même école, réglés par classe : exigence de la conception VSC-01, avant son code | chef |
 | **N8** : une tutelle comme client (réseau d'écoles, diocèse, ONG) : une question de plus dans VEN-02 ; GRP reste reporté | chef |
+
+**Chef, 21 nov. : le supérieur d'abord** (« oui pour les trois, le supérieur d'abord », puis l'outil de questions). Cette décision remplace l'ordre du 7 nov. (« plusieurs écoles d'abord, puis le scolaire, puis le pack École privée ») :
+
+| Décision | Par |
+|---|---|
+| **Le supérieur jusqu'au bout, puis on descend** : formation professionnelle, puis lycée, puis collège, puis primaire et maternelle (en saisie simple, Q-07). La cible commerciale du 7 nov. (écoles privées de la maternelle au lycée) recule d'autant | chef |
+| **Concevoir pour tous, construire pour le supérieur** : le modèle de données et le moteur restent « par profil » (3 nov.) ; VSC-01 (#215) se termine comme document de conception, avec N7, puis se gèle sans code ; PLA (plusieurs écoles sur une installation) reste ouvert, car la deuxième école du supérieur en a besoin | chef |
+| **La ligne d'arrivée** : une deuxième école du supérieur, autre que HESTIM, se configure seule et tourne un semestre complet sur la même installation : emploi du temps (CM, TD, TP, vacataires, campus), appel, examens et surveillances, évaluations, crédits et jurys, espace de cours, quiz, bibliothèque, stages, inscriptions, documents vérifiables, frais, tableau de bord de l'administration, et la vitrine qui dit tout cela | chef |
+| **Fonction nouvelle VSC-08** : les évaluations, les crédits et les jurys du supérieur, conçues avec un modèle qui servira aussi VSC-04 (le scolaire) plus tard | chef |
+| **Dans l'étape du supérieur** : les inscriptions (INS-01 à INS-03), les documents vérifiables (DOC-01, DOC-02) et les frais (FIN-01, FIN-02 ; toujours après les entretiens de VEN-02, décision du 13 nov., menés auprès d'écoles du supérieur). L'arabe complet (UIX-04) reste après | chef |
+| **MOT-02** finit sur un jeu du supérieur (plusieurs campus, CM, TD, TP, vacataires) ; la mesure du collège passe à l'étape du scolaire, avec EP-10 | chef |
+| **Quand MOT se ferme, c'est le chantier ADM qui s'ouvre** (configuration seule d'une école, avec un modèle du supérieur), et non VSC | chef |
+| **Les études restées sur des branches se fusionnent** (documents seuls), pour servir à toute la conception | chef |
+| **Alexis prend EDT-04** (publication de l'emploi du temps, PDF et courriels) après ses corrections de #229 et #230, par exception hors chantier | chef |
+| *(coordinateur)* **Faire servir les études** : la [synthèse des concurrents](../etude-marche/14-reprendre-et-depasser.md) devient le registre des études, tenu par le coordinateur (chaque ligne : reportée, décidée ou écartée, et son public : supérieur, scolaire ou tous). Le modèle de conception reçoit une section « Ce que disent les études » : chaque plan y cite les lignes qu'il applique ou écarte ; un plan sans elle n'est pas validé | coordinateur |
+| *(coordinateur)* **Fusion des études** : #191 et #192 directement (sans conflit) ; #186, #190, #169 et #193 après `git merge origin/main` (decisions.md : garder toutes les lignes ; suivi.md : la version de `main`) ; `etude/expertise-go4school` après son push. #194 (essai PostgreSQL) n'est pas une étude seule (elle porte du code d'essai) : elle reste en brouillon. #193 (parité) se fusionne comme plan, chaque fonction gardant l'étape que le chef lui donnera ; elle passe en dernier. Mission confiée à la session de VIT-14, dont la file est vide | coordinateur |
+| *(coordinateur)* **L'interface reste neutre** : UIX-02 (vocabulaire selon le profil) passe à l'étape du scolaire, mais aucun écran nouveau n'écrit un mot propre au supérieur là où un mot neutre existe | coordinateur |

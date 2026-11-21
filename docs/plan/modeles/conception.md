@@ -50,6 +50,16 @@ sequenceDiagram
 
 <!-- Canaux d'isolation (I-1 à I-16) touchés ; droits par rôle ; EP-1 à EP-12 concernées. -->
 
+## 7 bis. Ce que disent les études
+
+<!-- Obligatoire depuis le 21 nov. : un plan sans cette section n'est pas validé.
+     Le registre des études est docs/etude-marche/14-reprendre-et-depasser.md (§ 2 à § 5, et § 7 pour les reports).
+     Citer chaque ligne qui touche la fonction (ex. M18, R9, N3, C5 de l'expertise du site), dire si le plan l'applique ou l'écarte, et pourquoi.
+     Dire aussi à quel public la fonction sert d'abord : le supérieur (étape 3), ou un autre, et ce qui reste neutre pour la suite. -->
+
+| Ligne | Étude | Appliquée ou écartée | Comment, ou pourquoi |
+|---|---|---|---|
+
 ## 8. Tests
 
 <!-- Tests unitaires, d'intégration, parcours ; le test de régression de chaque correctif. -->

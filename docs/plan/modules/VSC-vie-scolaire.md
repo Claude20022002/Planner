@@ -35,6 +35,7 @@
 | VSC-04 | Notes et bulletins : périodes, évaluations, coefficients, note absente distincte de zéro, verrouillage par période, tableau d'avancement de la saisie, conseil de classe ; comprend le carnet de notes officiel et les grilles d'évaluation | F-13, EC-3, EC-4 | 4 | XL | VSC-02, Q-06, Q-16 | à faire |
 | VSC-06 | Formation professionnelle : profil, assiduité pour les bourses | F-20 | 5 | M | MOT-05 | à faire |
 | VSC-07 | Affectation des élèves aux groupes de langue et d'option : un élève, une classe, un seul groupe par langue ; effectif plafonné ; ces appartenances sont celles que MOT-06 lit | Q-3 de conception-c5 | 3 | M | VSC-01, MOT-05 | à faire |
+| VSC-08 | Évaluations, crédits et jurys du supérieur : épreuves et coefficients par module, crédits acquis, compensation, rattrapage, délibération du jury, relevé de notes ; modèle commun avec VSC-04 (le scolaire), sans nommer de pays ni de système (crédits, pas « LMD ») | — (décision du chef du 21 nov.) | 3 | L (provisoire) | — ; relevés vérifiables avec DOC-01 | à faire |
 
 Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-echanges-etat.md)) ; le plafond de cumul de VSC-06 (F-22) est passé dans **RHP-02** ([RHP](RHP-personnel-paie.md)). Le numéro VSC-05 ne resservira pas.
 

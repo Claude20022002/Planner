@@ -38,7 +38,7 @@
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | MOT-01 | Valeurs du moteur datées et résolues (profil, école, niveau) ; répondre à la relecture du contrat (Q-04) avant les écrans | MP-1 | 1 | M | — | fait (serveur) ; écrans avec ADM-02 |
-| MOT-02 | Mesurer le solveur sur un **jeu scolaire** (collège de 600 élèves), puis sur 20 000 étudiants | ME-14a | 1 | M | — | à faire |
+| MOT-02 | Mesurer le solveur sur un **jeu du supérieur** (plusieurs campus, CM, TD, TP, vacataires), puis sur 20 000 étudiants ; la mesure du collège de 600 élèves (EP-10) passe à l'étape 5 (décision du chef du 21 nov.) | ME-14a | 1 | M | — | à faire |
 | MOT-03 | Validation avant le calcul : toutes les règles `requiert`, `borne` et `exclut` du catalogue, avec un message qui dit quoi faire (EP-4) | MP-2 | 3 | M | MOT-01 | PR ouverte (#183) |
 | MOT-04 | Modèle neutre et évaluateur indépendant ; essai Timefold contre CP-SAT ; **décision sur la fin de Timefold 1.x** (Q-05) | MP-3, MP-4 | 3 | L + M | MOT-02 | à faire |
 | MOT-05 | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe, groupe transversal de langue ou d'option), à la place de `config/referentiel.js` (importé par 28 fichiers). Version réduite à l'étape 2, complète à l'étape 3 | ME-2a, F-04 | 2 puis 3 | M + L | VSC-01, Q-08 | à faire |
