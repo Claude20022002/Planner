@@ -17,7 +17,7 @@ Registre unique à partir du 7 novembre 2026.
 | D-03 | Un contexte d'école obligatoire pour toute lecture ou écriture | en vigueur ; l'essai du 29 octobre montre que la solution tient (`17-essai-contexte.md`) |
 | D-04 | Un service « Plateforme » à part, avec sa base | en vigueur (PLA) |
 | D-05 | Un compte pour la plateforme, des appartenances par école | en vigueur ; à relire avec VSC-01 (parents à deux écoles) |
-| D-06 | Le code garde le sens, l'école nomme | en vigueur ; **à amender** dans VSC-01 pour les groupes transversaux (langues, options), hors de la limite de trois niveaux |
+| D-06 | Le code garde le sens, l'école nomme | en vigueur ; C-5 confirme les groupes transversaux de langue et d’option hors des trois niveaux emboîtés |
 | D-07 | Réglages datés, « aperçu puis appliquer » | en vigueur ; MOT-01 en est le socle |
 | D-08 | Import : zone de préparation, classeur unique, clés naturelles | en vigueur (ADM-03) |
 | D-09 | Solveur : règles dures fixes, règles souples réglables | **amendée le 4 novembre** : 26 règles strictes verrouillées, 22 strictes réglables, 86 souples. Un profil ou la Plateforme peut rendre une règle stricte ; l'école ne choisit que « indispensable » |
@@ -141,7 +141,8 @@ Registre unique à partir du 7 novembre 2026.
 | Q-17 | Règles de modération de la messagerie | à trancher avant COU-08 | COU-08 |
 | Q-18 | Nom de l'application dans les magasins | « Planner » sauf conflit de marque | MOB |
 | Q-19 | Les 28 questions juridiques, fiscales et Massar de l'étude du modèle économique | gelées, sauf Massar (ETA-02, ancienne VSC-05) et loi 09-08 (condition légale) | ETA-02 |
-| Q-20 | Un élève a un compte (décision du 8 novembre), mais un enfant de 6 ans n'a pas d'adresse électronique, et `Users.email` est obligatoire et unique. Avec quoi se connecte-t-il ? | un **identifiant donné par l'école**, adresse facultative, mot de passe initial remis par l'école (ou par le parent) ; pas d'adresse factice. Étude d'impact sur chaque fichier qui lit `Users.email` (connexion, réinitialisation, notifications, import) | VSC-01 |
+
+**Q-20 est tranchée dans C-5.** Identifiant scolaire et adresse facultative. L’inscription peut précéder le compte. Voir [l’étude d’impact](../conception/vie-scolaire/vsc-01-impact-adresse-compte.md).
 
 ## Décision du chef du 15 novembre : UIX-01a
 
@@ -336,3 +337,14 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | **Chantier VSC** : il s'ouvre dès que MOT se ferme. VSC-01 (conception du modèle du scolaire) commence avant, chez Codex | chef |
 | **Pendant la pause du coordinateur**, le chef valide tous les plans et ne fusionne qu'une PR entièrement verte, avec le rapport de l'agent. Chaque agent suit sa file de la feuille de route | chef |
 | **#205 (Alexis) validée** : quatre routes des jeux répondent 404 « Module introuvable » hors des classes de l'enseignant, comme pour un module qui n'existe pas. Le refus selon le rôle reste en 403. Plan validé après coup ; Alexis ajoutera la ligne « Validé » dans sa prochaine PR. Relu par le coordinateur : un seul point d'entrée (`coursDeSesClasses`), un message identique à celui d'un module inconnu, et une CI entièrement verte, intégration comprise | chef, 18 nov. 15 h 25 |
+
+**Chef, 18 nov. · VSC-01, conception C-5**
+
+| Décision | Par |
+|---|---|
+| Plan C-5 validé. Réutiliser les entités du supérieur, garder le nom technique `AnneeUniversitaire` et créer une filière interne par cycle lorsque l’école n’a pas de filière. Les catégories ont un sens commun dans le code, avec des libellés propres à chaque école. La hiérarchie garde ses trois niveaux selon D-06 et les groupes transversaux de langue ou d’option la traversent. | chef |
+| L’inscription annuelle et l’affectation à une classe sont possibles avant la création du compte. Q-20 prévoit ensuite un compte créé par l’école avec un identifiant scolaire et une adresse facultative. L’identifiant de l’élève sur la plateforme nationale de son pays est facultatif (au Maroc, le code Massar ou CNE). La CIN et la santé sont hors du socle. | chef |
+| Le responsable légal a un dossier propre à chaque école et un compte facultatif. Premier accès mono-école avec ADM-05 et PLA-01. Le compte partagé de D-05 reste la cible de PLA-11. | chef |
+| Périodes de notes par cycle et année, coefficients par matière, niveau et filière, conseil de classe et décision de passage dans VSC-04. Saisie jusqu’au verrouillage, puis correction autorisée avec motif et historique. La scolarité précise la portée de la correction. | chef |
+| Un règlement peut couvrir plusieurs enfants grâce à des affectations distinctes aux échéances. FIN confirme les règles de reçu avec l’expert-comptable. Les notes et frais du supérieur sont désactivés par défaut, puis activables par école après recette. | chef |
+| ADM possède `Filiere`, `Groupe`, `Cours` et `CoursComposante` via ADM-02, avec contrat relu par MOT et EDT. VSC possède les inscriptions et les appartenances aux groupes. | chef |

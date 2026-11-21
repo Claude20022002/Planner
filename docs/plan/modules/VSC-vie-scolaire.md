@@ -6,7 +6,7 @@
 - affectation aux groupes de langue et d'option ;
 - absences prévenues aux parents ;
 - notes, bulletins et conseil de classe ;
-- Massar.
+- les échanges avec la plateforme nationale du pays de l’école, avec un identifiant d’élève facultatif (au Maroc, le code Massar ou CNE).
 
 **Hors module** :
 - l'appel lui-même : il existe déjà, son module propriétaire est EDT pour la séance ; VSC-03 s'appuie dessus ;
@@ -21,22 +21,22 @@
   - par QR code et à trois statuts (présent, en retard, absent) ;
   - signalements, téléphone de l'étudiant, projection ;
   - fichiers : `presenceRoutes`, `services/presences/*` ; écrans `Appel`, `AppelProjection`, `Presence` ; dans l'application mobile, `scan` et `scanner`.
-- **`Etudiant` dépend de `Users`** : la clé est `id_user`, et `Users.email` et `password_hash` sont obligatoires. **Un élève ne peut donc pas exister sans compte.** Décision du 8 novembre : un élève a un compte, créé par son établissement ; reste à savoir avec quoi se connecte un enfant sans adresse (Q-20).
+- **`Etudiant` dépend de `Users`** : la clé est `id_user`, et `Users.email` et `password_hash` sont obligatoires. **Un élève ne peut donc pas exister sans compte.** C-5 prévoit un dossier inscriptible avant la création du compte puis un compte créé par son établissement, avec un identifiant scolaire et une adresse facultative (Q-20).
 - **Champs obligatoires propres au supérieur** : `Cours.semestre`, `Cours.volume_horaire`, `Cours.type_cours`, `Groupe.id_filiere`.
-- **Conception C-5** : le plan du document et 14 questions, dans [conception-c5](../../conception/vie-scolaire/conception-c5-modele-donnees-scolaire.md). Le plan attend la validation du chef de projet avant d'être rempli.
+- **Conception C-5** : le plan du document et 14 questions, dans [conception-c5](../../conception/vie-scolaire/conception-c5-modele-donnees-scolaire.md). Plan validé le 18 novembre et conception rédigée. Les vérifications sur les appartenances historiques et les contrats indirects de Q-20 figurent dans la conception et son étude d’impact. La relecture des deux groupes reste à faire.
 
 ## Fonctions
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| VSC-01 | **Modèle de données du scolaire** (conception seule, avec diagrammes) : entités, correspondance avec le supérieur, profils, plusieurs écoles, plan de migrations, propriétaires des tables, appartenance aux groupes transversaux (Q-3 de conception-c5, retenue le 8 novembre). Réponse à Q-20 (compte de l'élève) | C-5 | 1 | L | — | plan du document à valider |
+| VSC-01 | **Modèle de données du scolaire** (conception seule, avec diagrammes) : entités, correspondance avec le supérieur, profils, plusieurs écoles, plan de migrations, propriétaires des tables, appartenance aux groupes transversaux (Q-3 de conception-c5, retenue le 8 novembre). Réponse à Q-20 (compte de l'élève) | C-5 | 1 | L | — | conception rédigée, relecture attendue |
 | VSC-02 | Élèves et familles : responsables légaux, inscription d'une année, réinscription, fratries | F-10 | 4 | L | VSC-01, PLA-01 | à faire |
 | VSC-03 | Absences prévenues aux parents (envoi par COM), justificatifs, saisie déléguée (EP-6) | F-12 | 4 | M | VSC-02, COM-01 | à faire |
 | VSC-04 | Notes et bulletins : périodes, évaluations, coefficients, note absente distincte de zéro, verrouillage par période, tableau d'avancement de la saisie, conseil de classe ; comprend le carnet de notes officiel et les grilles d'évaluation | F-13, EC-3, EC-4 | 4 | XL | VSC-02, Q-06, Q-16 | à faire |
 | VSC-06 | Formation professionnelle : profil, assiduité pour les bourses | F-20 | 5 | M | MOT-05 | à faire |
 | VSC-07 | Affectation des élèves aux groupes de langue et d'option : un élève, une classe, un seul groupe par langue ; effectif plafonné ; ces appartenances sont celles que MOT-06 lit | Q-3 de conception-c5 | 3 | M | VSC-01, MOT-05 | à faire |
 
-Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-echanges-etat.md)) ; le plafond de cumul de VSC-06 (F-22) est passé dans **RHP-02** ([RHP](RHP-personnel-paie.md)). Le numéro VSC-05 ne resservira pas.
+Décisions du 13 novembre : VSC-05 (connecteur marocain pour Massar) est devenue **ETA-02** ([ETA](ETA-echanges-etat.md)) ; le plafond de cumul de VSC-06 (F-22) est passé dans **RHP-02** ([RHP](RHP-personnel-paie.md)). Le numéro VSC-05 ne resservira pas.
 
 ## Critères de « terminé »
 
