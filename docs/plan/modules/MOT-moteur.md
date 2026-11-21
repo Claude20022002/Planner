@@ -33,14 +33,14 @@
   - F-7 : une séance ne mobilise que des enseignants et une salle ;
   - F-8 : les examens sont hors du calcul.
 
-- **MOT-02** (branche `etude/mot-02-mesure-solveur`, 15 novembre) : [banc local](../../../scripts/mesures/mot-02/README.md), jeu supérieur simplifié versionné de 20 000 étudiants (4 800 leçons), témoin faisable séparé, contrôles de complétude et compteurs cgroup. Plan validé par le coordinateur, 18 tests verts. Six passages avant/après MOT-12 de 600 s : tous incomplets ; collège après fusion de MOT-13b. [Mesures et limites](../../conception/moteur-planification/mesures.md).
+- **MOT-02** (branche `etude/mot-02-mesure-solveur`, 15 novembre) : [banc local](../../../scripts/mesures/mot-02/README.md), jeu supérieur simplifié versionné de 20 000 étudiants (4 800 leçons), témoin faisable séparé, contrôles de complétude et compteurs cgroup. Plan validé par le coordinateur, 18 tests verts. Six passages avant/après MOT-12 de 600 s : tous incomplets. Le [complément du 21 novembre](../../conception/moteur-planification/mot-02-mesure-solveur.md#supérieur-21-novembre) propose un jeu du supérieur multi-campus et attend le visa du chef. [Mesures et limites](../../conception/moteur-planification/mesures.md).
 
 ## Fonctions
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | MOT-01 | Valeurs du moteur datées et résolues (profil, école, niveau) ; répondre à la relecture du contrat (Q-04) avant les écrans | MP-1 | 1 | M | — | fait (serveur) ; écrans avec ADM-02 |
-| MOT-02 | Mesurer le solveur sur un **jeu scolaire** (collège de 600 élèves), puis sur 20 000 étudiants | ME-14a | 1 | M | — | en cours : grand jeu mesuré (6 échecs), collège après MOT-13b |
+| MOT-02 | Mesurer le solveur sur un jeu du supérieur multi-campus avec CM, TD, TP et vacataires | ME-14a | 1 | M | — | en cours · jeu de charge mesuré, complément du supérieur soumis au chef le 21 novembre |
 | MOT-03 | Validation avant le calcul : toutes les règles `requiert`, `borne` et `exclut` du catalogue, avec un message qui dit quoi faire (EP-4) | MP-2 | 3 | M | MOT-01 | PR ouverte (#183) |
 | MOT-04 | Modèle neutre et évaluateur indépendant ; essai Timefold contre CP-SAT ; **décision sur la fin de Timefold 1.x** (Q-05) | MP-3, MP-4 | 3 | L + M | MOT-02 | à faire |
 | MOT-05 | Profils et nomenclatures lus dans la base (cycle, niveau, classe, demi-groupe, groupe transversal de langue ou d'option), à la place de `config/referentiel.js` (importé par 28 fichiers). Version réduite à l'étape 2, complète à l'étape 3 | ME-2a, F-04 | 2 puis 3 | M + L | VSC-01, Q-08 | à faire |
@@ -58,7 +58,7 @@
 - **MOT-02** :
   - le jeu de démonstration est versionné ;
   - le temps, la mémoire et la qualité (règles dures violées) sont notés dans `docs/conception/moteur-planification/mesures.md` ;
-  - le rapport dit si EP-10 tient ;
+  - le rapport rend un verdict sur le jeu du supérieur. Le collège de 600 élèves et son verdict EP-10 passent à l’étape du scolaire ;
   - la qualité des règles souples est comparée à celle d'avant MOT-13b, sur plusieurs passages et plusieurs tailles, et la cause d'un écart est cherchée (score à trois niveaux) : réponse 22 du [complément 13b](../../conception/moteur-planification/mot-13b-solveur.md), 15 nov.
 - **MOT-03** :
   - toute combinaison de valeurs invalide est refusée **avant** le calcul ;
