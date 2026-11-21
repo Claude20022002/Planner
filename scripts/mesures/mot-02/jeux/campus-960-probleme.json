@@ -1,0 +1,6614 @@
+{
+  "dureeSecondes": 600,
+  "creneaux": [
+    {
+      "id": 1,
+      "jour": 1,
+      "debut": 480,
+      "fin": 540,
+      "rang": 1,
+      "regime": "initiale",
+      "suivantId": 2,
+      "finAvecSuivant": 600
+    },
+    {
+      "id": 2,
+      "jour": 1,
+      "debut": 540,
+      "fin": 600,
+      "rang": 2,
+      "regime": "initiale",
+      "suivantId": 3,
+      "finAvecSuivant": 660
+    },
+    {
+      "id": 3,
+      "jour": 1,
+      "debut": 600,
+      "fin": 660,
+      "rang": 3,
+      "regime": "initiale",
+      "suivantId": 4,
+      "finAvecSuivant": 720
+    },
+    {
+      "id": 4,
+      "jour": 1,
+      "debut": 660,
+      "fin": 720,
+      "rang": 4,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 5,
+      "jour": 1,
+      "debut": 780,
+      "fin": 840,
+      "rang": 5,
+      "regime": "initiale",
+      "suivantId": 6,
+      "finAvecSuivant": 900
+    },
+    {
+      "id": 6,
+      "jour": 1,
+      "debut": 840,
+      "fin": 900,
+      "rang": 6,
+      "regime": "initiale",
+      "suivantId": 7,
+      "finAvecSuivant": 960
+    },
+    {
+      "id": 7,
+      "jour": 1,
+      "debut": 900,
+      "fin": 960,
+      "rang": 7,
+      "regime": "initiale",
+      "suivantId": 8,
+      "finAvecSuivant": 1020
+    },
+    {
+      "id": 8,
+      "jour": 1,
+      "debut": 960,
+      "fin": 1020,
+      "rang": 8,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 9,
+      "jour": 2,
+      "debut": 480,
+      "fin": 540,
+      "rang": 1,
+      "regime": "initiale",
+      "suivantId": 10,
+      "finAvecSuivant": 600
+    },
+    {
+      "id": 10,
+      "jour": 2,
+      "debut": 540,
+      "fin": 600,
+      "rang": 2,
+      "regime": "initiale",
+      "suivantId": 11,
+      "finAvecSuivant": 660
+    },
+    {
+      "id": 11,
+      "jour": 2,
+      "debut": 600,
+      "fin": 660,
+      "rang": 3,
+      "regime": "initiale",
+      "suivantId": 12,
+      "finAvecSuivant": 720
+    },
+    {
+      "id": 12,
+      "jour": 2,
+      "debut": 660,
+      "fin": 720,
+      "rang": 4,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 13,
+      "jour": 2,
+      "debut": 780,
+      "fin": 840,
+      "rang": 5,
+      "regime": "initiale",
+      "suivantId": 14,
+      "finAvecSuivant": 900
+    },
+    {
+      "id": 14,
+      "jour": 2,
+      "debut": 840,
+      "fin": 900,
+      "rang": 6,
+      "regime": "initiale",
+      "suivantId": 15,
+      "finAvecSuivant": 960
+    },
+    {
+      "id": 15,
+      "jour": 2,
+      "debut": 900,
+      "fin": 960,
+      "rang": 7,
+      "regime": "initiale",
+      "suivantId": 16,
+      "finAvecSuivant": 1020
+    },
+    {
+      "id": 16,
+      "jour": 2,
+      "debut": 960,
+      "fin": 1020,
+      "rang": 8,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 17,
+      "jour": 3,
+      "debut": 480,
+      "fin": 540,
+      "rang": 1,
+      "regime": "initiale",
+      "suivantId": 18,
+      "finAvecSuivant": 600
+    },
+    {
+      "id": 18,
+      "jour": 3,
+      "debut": 540,
+      "fin": 600,
+      "rang": 2,
+      "regime": "initiale",
+      "suivantId": 19,
+      "finAvecSuivant": 660
+    },
+    {
+      "id": 19,
+      "jour": 3,
+      "debut": 600,
+      "fin": 660,
+      "rang": 3,
+      "regime": "initiale",
+      "suivantId": 20,
+      "finAvecSuivant": 720
+    },
+    {
+      "id": 20,
+      "jour": 3,
+      "debut": 660,
+      "fin": 720,
+      "rang": 4,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 21,
+      "jour": 3,
+      "debut": 780,
+      "fin": 840,
+      "rang": 5,
+      "regime": "initiale",
+      "suivantId": 22,
+      "finAvecSuivant": 900
+    },
+    {
+      "id": 22,
+      "jour": 3,
+      "debut": 840,
+      "fin": 900,
+      "rang": 6,
+      "regime": "initiale",
+      "suivantId": 23,
+      "finAvecSuivant": 960
+    },
+    {
+      "id": 23,
+      "jour": 3,
+      "debut": 900,
+      "fin": 960,
+      "rang": 7,
+      "regime": "initiale",
+      "suivantId": 24,
+      "finAvecSuivant": 1020
+    },
+    {
+      "id": 24,
+      "jour": 3,
+      "debut": 960,
+      "fin": 1020,
+      "rang": 8,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 25,
+      "jour": 4,
+      "debut": 480,
+      "fin": 540,
+      "rang": 1,
+      "regime": "initiale",
+      "suivantId": 26,
+      "finAvecSuivant": 600
+    },
+    {
+      "id": 26,
+      "jour": 4,
+      "debut": 540,
+      "fin": 600,
+      "rang": 2,
+      "regime": "initiale",
+      "suivantId": 27,
+      "finAvecSuivant": 660
+    },
+    {
+      "id": 27,
+      "jour": 4,
+      "debut": 600,
+      "fin": 660,
+      "rang": 3,
+      "regime": "initiale",
+      "suivantId": 28,
+      "finAvecSuivant": 720
+    },
+    {
+      "id": 28,
+      "jour": 4,
+      "debut": 660,
+      "fin": 720,
+      "rang": 4,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 29,
+      "jour": 4,
+      "debut": 780,
+      "fin": 840,
+      "rang": 5,
+      "regime": "initiale",
+      "suivantId": 30,
+      "finAvecSuivant": 900
+    },
+    {
+      "id": 30,
+      "jour": 4,
+      "debut": 840,
+      "fin": 900,
+      "rang": 6,
+      "regime": "initiale",
+      "suivantId": 31,
+      "finAvecSuivant": 960
+    },
+    {
+      "id": 31,
+      "jour": 4,
+      "debut": 900,
+      "fin": 960,
+      "rang": 7,
+      "regime": "initiale",
+      "suivantId": 32,
+      "finAvecSuivant": 1020
+    },
+    {
+      "id": 32,
+      "jour": 4,
+      "debut": 960,
+      "fin": 1020,
+      "rang": 8,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 33,
+      "jour": 5,
+      "debut": 480,
+      "fin": 540,
+      "rang": 1,
+      "regime": "initiale",
+      "suivantId": 34,
+      "finAvecSuivant": 600
+    },
+    {
+      "id": 34,
+      "jour": 5,
+      "debut": 540,
+      "fin": 600,
+      "rang": 2,
+      "regime": "initiale",
+      "suivantId": 35,
+      "finAvecSuivant": 660
+    },
+    {
+      "id": 35,
+      "jour": 5,
+      "debut": 600,
+      "fin": 660,
+      "rang": 3,
+      "regime": "initiale",
+      "suivantId": 36,
+      "finAvecSuivant": 720
+    },
+    {
+      "id": 36,
+      "jour": 5,
+      "debut": 660,
+      "fin": 720,
+      "rang": 4,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    },
+    {
+      "id": 37,
+      "jour": 5,
+      "debut": 780,
+      "fin": 840,
+      "rang": 5,
+      "regime": "initiale",
+      "suivantId": 38,
+      "finAvecSuivant": 900
+    },
+    {
+      "id": 38,
+      "jour": 5,
+      "debut": 840,
+      "fin": 900,
+      "rang": 6,
+      "regime": "initiale",
+      "suivantId": 39,
+      "finAvecSuivant": 960
+    },
+    {
+      "id": 39,
+      "jour": 5,
+      "debut": 900,
+      "fin": 960,
+      "rang": 7,
+      "regime": "initiale",
+      "suivantId": 40,
+      "finAvecSuivant": 1020
+    },
+    {
+      "id": 40,
+      "jour": 5,
+      "debut": 960,
+      "fin": 1020,
+      "rang": 8,
+      "regime": "initiale",
+      "suivantId": null,
+      "finAvecSuivant": null
+    }
+  ],
+  "salles": [
+    {
+      "id": 1,
+      "nom": "Salle 1",
+      "campusId": 1,
+      "type": "amphi",
+      "capacite": 120,
+      "equipements": []
+    },
+    {
+      "id": 2,
+      "nom": "Salle 2",
+      "campusId": 1,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 3,
+      "nom": "Salle 3",
+      "campusId": 1,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 4,
+      "nom": "Salle 4",
+      "campusId": 1,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-0"
+      ]
+    },
+    {
+      "id": 5,
+      "nom": "Salle 5",
+      "campusId": 1,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-0"
+      ]
+    },
+    {
+      "id": 6,
+      "nom": "Salle 6",
+      "campusId": 2,
+      "type": "amphi",
+      "capacite": 120,
+      "equipements": []
+    },
+    {
+      "id": 7,
+      "nom": "Salle 7",
+      "campusId": 2,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 8,
+      "nom": "Salle 8",
+      "campusId": 2,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 9,
+      "nom": "Salle 9",
+      "campusId": 2,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-1"
+      ]
+    },
+    {
+      "id": 10,
+      "nom": "Salle 10",
+      "campusId": 2,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-1"
+      ]
+    },
+    {
+      "id": 11,
+      "nom": "Salle 11",
+      "campusId": 1,
+      "type": "amphi",
+      "capacite": 120,
+      "equipements": []
+    },
+    {
+      "id": 12,
+      "nom": "Salle 12",
+      "campusId": 1,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 13,
+      "nom": "Salle 13",
+      "campusId": 1,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 14,
+      "nom": "Salle 14",
+      "campusId": 1,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-0"
+      ]
+    },
+    {
+      "id": 15,
+      "nom": "Salle 15",
+      "campusId": 1,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-0"
+      ]
+    },
+    {
+      "id": 16,
+      "nom": "Salle 16",
+      "campusId": 2,
+      "type": "amphi",
+      "capacite": 120,
+      "equipements": []
+    },
+    {
+      "id": 17,
+      "nom": "Salle 17",
+      "campusId": 2,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 18,
+      "nom": "Salle 18",
+      "campusId": 2,
+      "type": "td",
+      "capacite": 60,
+      "equipements": []
+    },
+    {
+      "id": 19,
+      "nom": "Salle 19",
+      "campusId": 2,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-1"
+      ]
+    },
+    {
+      "id": 20,
+      "nom": "Salle 20",
+      "campusId": 2,
+      "type": "labo",
+      "capacite": 30,
+      "equipements": [
+        "atelier-1"
+      ]
+    }
+  ],
+  "voeux": [
+    {
+      "enseignantId": 3,
+      "creneauId": 13,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 14,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 15,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 16,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 17,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 18,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 19,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 20,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 21,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 22,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 23,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 24,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 29,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 30,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 31,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 32,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 33,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 34,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 35,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 36,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 37,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 38,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 39,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 3,
+      "creneauId": 40,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 1,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 2,
+      "creneauId": 33,
+      "type": "EVITER"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 9,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 10,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 11,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 12,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 17,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 18,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 19,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 20,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 21,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 22,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 23,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 24,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 25,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 26,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 27,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 28,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 33,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 34,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 35,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 36,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 37,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 38,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 39,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 6,
+      "creneauId": 40,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 4,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 5,
+      "creneauId": 33,
+      "type": "EVITER"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 9,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 10,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 11,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 12,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 13,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 14,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 15,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 16,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 21,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 22,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 23,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 24,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 25,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 26,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 27,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 28,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 29,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 30,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 31,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 32,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 37,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 38,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 39,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 9,
+      "creneauId": 40,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 7,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 8,
+      "creneauId": 33,
+      "type": "EVITER"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 9,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 10,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 11,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 12,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 13,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 14,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 15,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 16,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 17,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 18,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 19,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 20,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 25,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 26,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 27,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 28,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 29,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 30,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 31,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 32,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 33,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 34,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 35,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 12,
+      "creneauId": 36,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 10,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 11,
+      "creneauId": 33,
+      "type": "EVITER"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 13,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 14,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 15,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 16,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 17,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 18,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 19,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 20,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 21,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 22,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 23,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 24,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 29,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 30,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 31,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 32,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 33,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 34,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 35,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 36,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 37,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 38,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 39,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 15,
+      "creneauId": 40,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 13,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 14,
+      "creneauId": 33,
+      "type": "EVITER"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 9,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 10,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 11,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 12,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 17,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 18,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 19,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 20,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 21,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 22,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 23,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 24,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 25,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 26,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 27,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 28,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 33,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 34,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 35,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 36,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 37,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 38,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 39,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 18,
+      "creneauId": 40,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 16,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 17,
+      "creneauId": 33,
+      "type": "EVITER"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 9,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 10,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 11,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 12,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 13,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 14,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 15,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 16,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 21,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 22,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 23,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 24,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 25,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 26,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 27,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 28,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 29,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 30,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 31,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 32,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 37,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 38,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 39,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 21,
+      "creneauId": 40,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 19,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 20,
+      "creneauId": 33,
+      "type": "EVITER"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 9,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 10,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 11,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 12,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 13,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 14,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 15,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 16,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 17,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 18,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 19,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 20,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 25,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 26,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 27,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 28,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 29,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 30,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 31,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 32,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 33,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 34,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 35,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 24,
+      "creneauId": 36,
+      "type": "INDISPONIBLE"
+    },
+    {
+      "enseignantId": 22,
+      "creneauId": 25,
+      "type": "PREFERE"
+    },
+    {
+      "enseignantId": 23,
+      "creneauId": 33,
+      "type": "EVITER"
+    }
+  ],
+  "ressources": [
+    {
+      "nature": "GROUPE",
+      "id": 4
+    },
+    {
+      "nature": "GROUPE",
+      "id": 5
+    },
+    {
+      "nature": "GROUPE",
+      "id": 6
+    },
+    {
+      "nature": "GROUPE",
+      "id": 7
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 1
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 2
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 3
+    },
+    {
+      "nature": "GROUPE",
+      "id": 11
+    },
+    {
+      "nature": "GROUPE",
+      "id": 12
+    },
+    {
+      "nature": "GROUPE",
+      "id": 13
+    },
+    {
+      "nature": "GROUPE",
+      "id": 14
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 4
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 5
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 6
+    },
+    {
+      "nature": "GROUPE",
+      "id": 18
+    },
+    {
+      "nature": "GROUPE",
+      "id": 19
+    },
+    {
+      "nature": "GROUPE",
+      "id": 20
+    },
+    {
+      "nature": "GROUPE",
+      "id": 21
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 7
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 8
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 9
+    },
+    {
+      "nature": "GROUPE",
+      "id": 25
+    },
+    {
+      "nature": "GROUPE",
+      "id": 26
+    },
+    {
+      "nature": "GROUPE",
+      "id": 27
+    },
+    {
+      "nature": "GROUPE",
+      "id": 28
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 10
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 11
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 12
+    },
+    {
+      "nature": "GROUPE",
+      "id": 32
+    },
+    {
+      "nature": "GROUPE",
+      "id": 33
+    },
+    {
+      "nature": "GROUPE",
+      "id": 34
+    },
+    {
+      "nature": "GROUPE",
+      "id": 35
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 13
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 14
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 15
+    },
+    {
+      "nature": "GROUPE",
+      "id": 39
+    },
+    {
+      "nature": "GROUPE",
+      "id": 40
+    },
+    {
+      "nature": "GROUPE",
+      "id": 41
+    },
+    {
+      "nature": "GROUPE",
+      "id": 42
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 16
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 17
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 18
+    },
+    {
+      "nature": "GROUPE",
+      "id": 46
+    },
+    {
+      "nature": "GROUPE",
+      "id": 47
+    },
+    {
+      "nature": "GROUPE",
+      "id": 48
+    },
+    {
+      "nature": "GROUPE",
+      "id": 49
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 19
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 20
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 21
+    },
+    {
+      "nature": "GROUPE",
+      "id": 53
+    },
+    {
+      "nature": "GROUPE",
+      "id": 54
+    },
+    {
+      "nature": "GROUPE",
+      "id": 55
+    },
+    {
+      "nature": "GROUPE",
+      "id": 56
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 22
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 23
+    },
+    {
+      "nature": "ENSEIGNANT",
+      "id": 24
+    }
+  ],
+  "lecons": [
+    {
+      "id": "1-CM-1",
+      "enseignementId": 1,
+      "coursId": 1,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        4
+      ],
+      "groupesDirects": [
+        1
+      ],
+      "groupes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "feuilles": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "1-TD-2",
+      "enseignementId": 2,
+      "coursId": 1,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        2
+      ],
+      "groupes": [
+        2,
+        4,
+        5
+      ],
+      "feuilles": [
+        4,
+        5
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "1-TD-3",
+      "enseignementId": 3,
+      "coursId": 1,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        3
+      ],
+      "groupes": [
+        3,
+        6,
+        7
+      ],
+      "feuilles": [
+        6,
+        7
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "1-TP-4",
+      "enseignementId": 4,
+      "coursId": 1,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        3
+      ],
+      "groupesDirects": [
+        4
+      ],
+      "groupes": [
+        4
+      ],
+      "feuilles": [
+        4
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "1-TP-5",
+      "enseignementId": 5,
+      "coursId": 1,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        3
+      ],
+      "groupesDirects": [
+        5
+      ],
+      "groupes": [
+        5
+      ],
+      "feuilles": [
+        5
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "1-TP-6",
+      "enseignementId": 6,
+      "coursId": 1,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        3
+      ],
+      "groupesDirects": [
+        6
+      ],
+      "groupes": [
+        6
+      ],
+      "feuilles": [
+        6
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "1-TP-7",
+      "enseignementId": 7,
+      "coursId": 1,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        3
+      ],
+      "groupesDirects": [
+        7
+      ],
+      "groupes": [
+        7
+      ],
+      "feuilles": [
+        7
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "2-CM-1",
+      "enseignementId": 8,
+      "coursId": 2,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        4
+      ],
+      "groupesDirects": [
+        1
+      ],
+      "groupes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "feuilles": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "2-TD-2",
+      "enseignementId": 9,
+      "coursId": 2,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        2
+      ],
+      "groupes": [
+        2,
+        4,
+        5
+      ],
+      "feuilles": [
+        4,
+        5
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "2-TD-3",
+      "enseignementId": 10,
+      "coursId": 2,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        3
+      ],
+      "groupes": [
+        3,
+        6,
+        7
+      ],
+      "feuilles": [
+        6,
+        7
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "2-TP-4",
+      "enseignementId": 11,
+      "coursId": 2,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        1
+      ],
+      "groupesDirects": [
+        4
+      ],
+      "groupes": [
+        4
+      ],
+      "feuilles": [
+        4
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "2-TP-5",
+      "enseignementId": 12,
+      "coursId": 2,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        1
+      ],
+      "groupesDirects": [
+        5
+      ],
+      "groupes": [
+        5
+      ],
+      "feuilles": [
+        5
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "2-TP-6",
+      "enseignementId": 13,
+      "coursId": 2,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        1
+      ],
+      "groupesDirects": [
+        6
+      ],
+      "groupes": [
+        6
+      ],
+      "feuilles": [
+        6
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "2-TP-7",
+      "enseignementId": 14,
+      "coursId": 2,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        1
+      ],
+      "groupesDirects": [
+        7
+      ],
+      "groupes": [
+        7
+      ],
+      "feuilles": [
+        7
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "3-CM-1",
+      "enseignementId": 15,
+      "coursId": 3,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        4
+      ],
+      "groupesDirects": [
+        1
+      ],
+      "groupes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "feuilles": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "3-TD-2",
+      "enseignementId": 16,
+      "coursId": 3,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        2
+      ],
+      "groupes": [
+        2,
+        4,
+        5
+      ],
+      "feuilles": [
+        4,
+        5
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "3-TD-3",
+      "enseignementId": 17,
+      "coursId": 3,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        3
+      ],
+      "groupes": [
+        3,
+        6,
+        7
+      ],
+      "feuilles": [
+        6,
+        7
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "3-TP-4",
+      "enseignementId": 18,
+      "coursId": 3,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        4
+      ],
+      "groupes": [
+        4
+      ],
+      "feuilles": [
+        4
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "3-TP-5",
+      "enseignementId": 19,
+      "coursId": 3,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        5
+      ],
+      "groupes": [
+        5
+      ],
+      "feuilles": [
+        5
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "3-TP-6",
+      "enseignementId": 20,
+      "coursId": 3,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        6
+      ],
+      "groupes": [
+        6
+      ],
+      "feuilles": [
+        6
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "3-TP-7",
+      "enseignementId": 21,
+      "coursId": 3,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        2
+      ],
+      "groupesDirects": [
+        7
+      ],
+      "groupes": [
+        7
+      ],
+      "feuilles": [
+        7
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "4-CM-8",
+      "enseignementId": 22,
+      "coursId": 4,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        7
+      ],
+      "groupesDirects": [
+        8
+      ],
+      "groupes": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "feuilles": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "4-TD-9",
+      "enseignementId": 23,
+      "coursId": 4,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        9
+      ],
+      "groupes": [
+        9,
+        11,
+        12
+      ],
+      "feuilles": [
+        11,
+        12
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "4-TD-10",
+      "enseignementId": 24,
+      "coursId": 4,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        10
+      ],
+      "groupes": [
+        10,
+        13,
+        14
+      ],
+      "feuilles": [
+        13,
+        14
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "4-TP-11",
+      "enseignementId": 25,
+      "coursId": 4,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        6
+      ],
+      "groupesDirects": [
+        11
+      ],
+      "groupes": [
+        11
+      ],
+      "feuilles": [
+        11
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "4-TP-12",
+      "enseignementId": 26,
+      "coursId": 4,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        6
+      ],
+      "groupesDirects": [
+        12
+      ],
+      "groupes": [
+        12
+      ],
+      "feuilles": [
+        12
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "4-TP-13",
+      "enseignementId": 27,
+      "coursId": 4,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        6
+      ],
+      "groupesDirects": [
+        13
+      ],
+      "groupes": [
+        13
+      ],
+      "feuilles": [
+        13
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "4-TP-14",
+      "enseignementId": 28,
+      "coursId": 4,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        6
+      ],
+      "groupesDirects": [
+        14
+      ],
+      "groupes": [
+        14
+      ],
+      "feuilles": [
+        14
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "5-CM-8",
+      "enseignementId": 29,
+      "coursId": 5,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        7
+      ],
+      "groupesDirects": [
+        8
+      ],
+      "groupes": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "feuilles": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "5-TD-9",
+      "enseignementId": 30,
+      "coursId": 5,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        9
+      ],
+      "groupes": [
+        9,
+        11,
+        12
+      ],
+      "feuilles": [
+        11,
+        12
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "5-TD-10",
+      "enseignementId": 31,
+      "coursId": 5,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        10
+      ],
+      "groupes": [
+        10,
+        13,
+        14
+      ],
+      "feuilles": [
+        13,
+        14
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "5-TP-11",
+      "enseignementId": 32,
+      "coursId": 5,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        4
+      ],
+      "groupesDirects": [
+        11
+      ],
+      "groupes": [
+        11
+      ],
+      "feuilles": [
+        11
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "5-TP-12",
+      "enseignementId": 33,
+      "coursId": 5,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        4
+      ],
+      "groupesDirects": [
+        12
+      ],
+      "groupes": [
+        12
+      ],
+      "feuilles": [
+        12
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "5-TP-13",
+      "enseignementId": 34,
+      "coursId": 5,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        4
+      ],
+      "groupesDirects": [
+        13
+      ],
+      "groupes": [
+        13
+      ],
+      "feuilles": [
+        13
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "5-TP-14",
+      "enseignementId": 35,
+      "coursId": 5,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        4
+      ],
+      "groupesDirects": [
+        14
+      ],
+      "groupes": [
+        14
+      ],
+      "feuilles": [
+        14
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "6-CM-8",
+      "enseignementId": 36,
+      "coursId": 6,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        7
+      ],
+      "groupesDirects": [
+        8
+      ],
+      "groupes": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "feuilles": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "6-TD-9",
+      "enseignementId": 37,
+      "coursId": 6,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        9
+      ],
+      "groupes": [
+        9,
+        11,
+        12
+      ],
+      "feuilles": [
+        11,
+        12
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "6-TD-10",
+      "enseignementId": 38,
+      "coursId": 6,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        10
+      ],
+      "groupes": [
+        10,
+        13,
+        14
+      ],
+      "feuilles": [
+        13,
+        14
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "6-TP-11",
+      "enseignementId": 39,
+      "coursId": 6,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        11
+      ],
+      "groupes": [
+        11
+      ],
+      "feuilles": [
+        11
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "6-TP-12",
+      "enseignementId": 40,
+      "coursId": 6,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        12
+      ],
+      "groupes": [
+        12
+      ],
+      "feuilles": [
+        12
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "6-TP-13",
+      "enseignementId": 41,
+      "coursId": 6,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        13
+      ],
+      "groupes": [
+        13
+      ],
+      "feuilles": [
+        13
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "6-TP-14",
+      "enseignementId": 42,
+      "coursId": 6,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        5
+      ],
+      "groupesDirects": [
+        14
+      ],
+      "groupes": [
+        14
+      ],
+      "feuilles": [
+        14
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "7-CM-15",
+      "enseignementId": 43,
+      "coursId": 7,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        10
+      ],
+      "groupesDirects": [
+        15
+      ],
+      "groupes": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "feuilles": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "7-TD-16",
+      "enseignementId": 44,
+      "coursId": 7,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        16
+      ],
+      "groupes": [
+        16,
+        18,
+        19
+      ],
+      "feuilles": [
+        18,
+        19
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "7-TD-17",
+      "enseignementId": 45,
+      "coursId": 7,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        17
+      ],
+      "groupes": [
+        17,
+        20,
+        21
+      ],
+      "feuilles": [
+        20,
+        21
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "7-TP-18",
+      "enseignementId": 46,
+      "coursId": 7,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        9
+      ],
+      "groupesDirects": [
+        18
+      ],
+      "groupes": [
+        18
+      ],
+      "feuilles": [
+        18
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "7-TP-19",
+      "enseignementId": 47,
+      "coursId": 7,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        9
+      ],
+      "groupesDirects": [
+        19
+      ],
+      "groupes": [
+        19
+      ],
+      "feuilles": [
+        19
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "7-TP-20",
+      "enseignementId": 48,
+      "coursId": 7,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        9
+      ],
+      "groupesDirects": [
+        20
+      ],
+      "groupes": [
+        20
+      ],
+      "feuilles": [
+        20
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "7-TP-21",
+      "enseignementId": 49,
+      "coursId": 7,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        9
+      ],
+      "groupesDirects": [
+        21
+      ],
+      "groupes": [
+        21
+      ],
+      "feuilles": [
+        21
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "8-CM-15",
+      "enseignementId": 50,
+      "coursId": 8,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        10
+      ],
+      "groupesDirects": [
+        15
+      ],
+      "groupes": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "feuilles": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "8-TD-16",
+      "enseignementId": 51,
+      "coursId": 8,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        16
+      ],
+      "groupes": [
+        16,
+        18,
+        19
+      ],
+      "feuilles": [
+        18,
+        19
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "8-TD-17",
+      "enseignementId": 52,
+      "coursId": 8,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        17
+      ],
+      "groupes": [
+        17,
+        20,
+        21
+      ],
+      "feuilles": [
+        20,
+        21
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "8-TP-18",
+      "enseignementId": 53,
+      "coursId": 8,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        7
+      ],
+      "groupesDirects": [
+        18
+      ],
+      "groupes": [
+        18
+      ],
+      "feuilles": [
+        18
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "8-TP-19",
+      "enseignementId": 54,
+      "coursId": 8,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        7
+      ],
+      "groupesDirects": [
+        19
+      ],
+      "groupes": [
+        19
+      ],
+      "feuilles": [
+        19
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "8-TP-20",
+      "enseignementId": 55,
+      "coursId": 8,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        7
+      ],
+      "groupesDirects": [
+        20
+      ],
+      "groupes": [
+        20
+      ],
+      "feuilles": [
+        20
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "8-TP-21",
+      "enseignementId": 56,
+      "coursId": 8,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        7
+      ],
+      "groupesDirects": [
+        21
+      ],
+      "groupes": [
+        21
+      ],
+      "feuilles": [
+        21
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "9-CM-15",
+      "enseignementId": 57,
+      "coursId": 9,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        10
+      ],
+      "groupesDirects": [
+        15
+      ],
+      "groupes": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "feuilles": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "9-TD-16",
+      "enseignementId": 58,
+      "coursId": 9,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        16
+      ],
+      "groupes": [
+        16,
+        18,
+        19
+      ],
+      "feuilles": [
+        18,
+        19
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "9-TD-17",
+      "enseignementId": 59,
+      "coursId": 9,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        17
+      ],
+      "groupes": [
+        17,
+        20,
+        21
+      ],
+      "feuilles": [
+        20,
+        21
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "9-TP-18",
+      "enseignementId": 60,
+      "coursId": 9,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        18
+      ],
+      "groupes": [
+        18
+      ],
+      "feuilles": [
+        18
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "9-TP-19",
+      "enseignementId": 61,
+      "coursId": 9,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        19
+      ],
+      "groupes": [
+        19
+      ],
+      "feuilles": [
+        19
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "9-TP-20",
+      "enseignementId": 62,
+      "coursId": 9,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        20
+      ],
+      "groupes": [
+        20
+      ],
+      "feuilles": [
+        20
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "9-TP-21",
+      "enseignementId": 63,
+      "coursId": 9,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        8
+      ],
+      "groupesDirects": [
+        21
+      ],
+      "groupes": [
+        21
+      ],
+      "feuilles": [
+        21
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "10-CM-22",
+      "enseignementId": 64,
+      "coursId": 10,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        1
+      ],
+      "groupesDirects": [
+        22
+      ],
+      "groupes": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "feuilles": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "10-TD-23",
+      "enseignementId": 65,
+      "coursId": 10,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        23
+      ],
+      "groupes": [
+        23,
+        25,
+        26
+      ],
+      "feuilles": [
+        25,
+        26
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "10-TD-24",
+      "enseignementId": 66,
+      "coursId": 10,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        24
+      ],
+      "groupes": [
+        24,
+        27,
+        28
+      ],
+      "feuilles": [
+        27,
+        28
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "10-TP-25",
+      "enseignementId": 67,
+      "coursId": 10,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        12
+      ],
+      "groupesDirects": [
+        25
+      ],
+      "groupes": [
+        25
+      ],
+      "feuilles": [
+        25
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "10-TP-26",
+      "enseignementId": 68,
+      "coursId": 10,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        12
+      ],
+      "groupesDirects": [
+        26
+      ],
+      "groupes": [
+        26
+      ],
+      "feuilles": [
+        26
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "10-TP-27",
+      "enseignementId": 69,
+      "coursId": 10,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        12
+      ],
+      "groupesDirects": [
+        27
+      ],
+      "groupes": [
+        27
+      ],
+      "feuilles": [
+        27
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "10-TP-28",
+      "enseignementId": 70,
+      "coursId": 10,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        12
+      ],
+      "groupesDirects": [
+        28
+      ],
+      "groupes": [
+        28
+      ],
+      "feuilles": [
+        28
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "11-CM-22",
+      "enseignementId": 71,
+      "coursId": 11,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        1
+      ],
+      "groupesDirects": [
+        22
+      ],
+      "groupes": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "feuilles": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "11-TD-23",
+      "enseignementId": 72,
+      "coursId": 11,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        23
+      ],
+      "groupes": [
+        23,
+        25,
+        26
+      ],
+      "feuilles": [
+        25,
+        26
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "11-TD-24",
+      "enseignementId": 73,
+      "coursId": 11,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        24
+      ],
+      "groupes": [
+        24,
+        27,
+        28
+      ],
+      "feuilles": [
+        27,
+        28
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "11-TP-25",
+      "enseignementId": 74,
+      "coursId": 11,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        10
+      ],
+      "groupesDirects": [
+        25
+      ],
+      "groupes": [
+        25
+      ],
+      "feuilles": [
+        25
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "11-TP-26",
+      "enseignementId": 75,
+      "coursId": 11,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        10
+      ],
+      "groupesDirects": [
+        26
+      ],
+      "groupes": [
+        26
+      ],
+      "feuilles": [
+        26
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "11-TP-27",
+      "enseignementId": 76,
+      "coursId": 11,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        10
+      ],
+      "groupesDirects": [
+        27
+      ],
+      "groupes": [
+        27
+      ],
+      "feuilles": [
+        27
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "11-TP-28",
+      "enseignementId": 77,
+      "coursId": 11,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        10
+      ],
+      "groupesDirects": [
+        28
+      ],
+      "groupes": [
+        28
+      ],
+      "feuilles": [
+        28
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "12-CM-22",
+      "enseignementId": 78,
+      "coursId": 12,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        1
+      ],
+      "groupesDirects": [
+        22
+      ],
+      "groupes": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "feuilles": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "12-TD-23",
+      "enseignementId": 79,
+      "coursId": 12,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        23
+      ],
+      "groupes": [
+        23,
+        25,
+        26
+      ],
+      "feuilles": [
+        25,
+        26
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "12-TD-24",
+      "enseignementId": 80,
+      "coursId": 12,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        24
+      ],
+      "groupes": [
+        24,
+        27,
+        28
+      ],
+      "feuilles": [
+        27,
+        28
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "12-TP-25",
+      "enseignementId": 81,
+      "coursId": 12,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        25
+      ],
+      "groupes": [
+        25
+      ],
+      "feuilles": [
+        25
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "12-TP-26",
+      "enseignementId": 82,
+      "coursId": 12,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        26
+      ],
+      "groupes": [
+        26
+      ],
+      "feuilles": [
+        26
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "12-TP-27",
+      "enseignementId": 83,
+      "coursId": 12,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        27
+      ],
+      "groupes": [
+        27
+      ],
+      "feuilles": [
+        27
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "12-TP-28",
+      "enseignementId": 84,
+      "coursId": 12,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        11
+      ],
+      "groupesDirects": [
+        28
+      ],
+      "groupes": [
+        28
+      ],
+      "feuilles": [
+        28
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "13-CM-29",
+      "enseignementId": 85,
+      "coursId": 13,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        16
+      ],
+      "groupesDirects": [
+        29
+      ],
+      "groupes": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "feuilles": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "13-TD-30",
+      "enseignementId": 86,
+      "coursId": 13,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        30
+      ],
+      "groupes": [
+        30,
+        32,
+        33
+      ],
+      "feuilles": [
+        32,
+        33
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "13-TD-31",
+      "enseignementId": 87,
+      "coursId": 13,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        31
+      ],
+      "groupes": [
+        31,
+        34,
+        35
+      ],
+      "feuilles": [
+        34,
+        35
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "13-TP-32",
+      "enseignementId": 88,
+      "coursId": 13,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        15
+      ],
+      "groupesDirects": [
+        32
+      ],
+      "groupes": [
+        32
+      ],
+      "feuilles": [
+        32
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "13-TP-33",
+      "enseignementId": 89,
+      "coursId": 13,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        15
+      ],
+      "groupesDirects": [
+        33
+      ],
+      "groupes": [
+        33
+      ],
+      "feuilles": [
+        33
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "13-TP-34",
+      "enseignementId": 90,
+      "coursId": 13,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        15
+      ],
+      "groupesDirects": [
+        34
+      ],
+      "groupes": [
+        34
+      ],
+      "feuilles": [
+        34
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "13-TP-35",
+      "enseignementId": 91,
+      "coursId": 13,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        15
+      ],
+      "groupesDirects": [
+        35
+      ],
+      "groupes": [
+        35
+      ],
+      "feuilles": [
+        35
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "14-CM-29",
+      "enseignementId": 92,
+      "coursId": 14,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        16
+      ],
+      "groupesDirects": [
+        29
+      ],
+      "groupes": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "feuilles": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "14-TD-30",
+      "enseignementId": 93,
+      "coursId": 14,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        30
+      ],
+      "groupes": [
+        30,
+        32,
+        33
+      ],
+      "feuilles": [
+        32,
+        33
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "14-TD-31",
+      "enseignementId": 94,
+      "coursId": 14,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        31
+      ],
+      "groupes": [
+        31,
+        34,
+        35
+      ],
+      "feuilles": [
+        34,
+        35
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "14-TP-32",
+      "enseignementId": 95,
+      "coursId": 14,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        13
+      ],
+      "groupesDirects": [
+        32
+      ],
+      "groupes": [
+        32
+      ],
+      "feuilles": [
+        32
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "14-TP-33",
+      "enseignementId": 96,
+      "coursId": 14,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        13
+      ],
+      "groupesDirects": [
+        33
+      ],
+      "groupes": [
+        33
+      ],
+      "feuilles": [
+        33
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "14-TP-34",
+      "enseignementId": 97,
+      "coursId": 14,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        13
+      ],
+      "groupesDirects": [
+        34
+      ],
+      "groupes": [
+        34
+      ],
+      "feuilles": [
+        34
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "14-TP-35",
+      "enseignementId": 98,
+      "coursId": 14,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        13
+      ],
+      "groupesDirects": [
+        35
+      ],
+      "groupes": [
+        35
+      ],
+      "feuilles": [
+        35
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "15-CM-29",
+      "enseignementId": 99,
+      "coursId": 15,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        16
+      ],
+      "groupesDirects": [
+        29
+      ],
+      "groupes": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "feuilles": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "15-TD-30",
+      "enseignementId": 100,
+      "coursId": 15,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        30
+      ],
+      "groupes": [
+        30,
+        32,
+        33
+      ],
+      "feuilles": [
+        32,
+        33
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "15-TD-31",
+      "enseignementId": 101,
+      "coursId": 15,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        31
+      ],
+      "groupes": [
+        31,
+        34,
+        35
+      ],
+      "feuilles": [
+        34,
+        35
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "15-TP-32",
+      "enseignementId": 102,
+      "coursId": 15,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        32
+      ],
+      "groupes": [
+        32
+      ],
+      "feuilles": [
+        32
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "15-TP-33",
+      "enseignementId": 103,
+      "coursId": 15,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        33
+      ],
+      "groupes": [
+        33
+      ],
+      "feuilles": [
+        33
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "15-TP-34",
+      "enseignementId": 104,
+      "coursId": 15,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        34
+      ],
+      "groupes": [
+        34
+      ],
+      "feuilles": [
+        34
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "15-TP-35",
+      "enseignementId": 105,
+      "coursId": 15,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        14
+      ],
+      "groupesDirects": [
+        35
+      ],
+      "groupes": [
+        35
+      ],
+      "feuilles": [
+        35
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "16-CM-36",
+      "enseignementId": 106,
+      "coursId": 16,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        19
+      ],
+      "groupesDirects": [
+        36
+      ],
+      "groupes": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "feuilles": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "16-TD-37",
+      "enseignementId": 107,
+      "coursId": 16,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        37
+      ],
+      "groupes": [
+        37,
+        39,
+        40
+      ],
+      "feuilles": [
+        39,
+        40
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "16-TD-38",
+      "enseignementId": 108,
+      "coursId": 16,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        38
+      ],
+      "groupes": [
+        38,
+        41,
+        42
+      ],
+      "feuilles": [
+        41,
+        42
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "16-TP-39",
+      "enseignementId": 109,
+      "coursId": 16,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        18
+      ],
+      "groupesDirects": [
+        39
+      ],
+      "groupes": [
+        39
+      ],
+      "feuilles": [
+        39
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "16-TP-40",
+      "enseignementId": 110,
+      "coursId": 16,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        18
+      ],
+      "groupesDirects": [
+        40
+      ],
+      "groupes": [
+        40
+      ],
+      "feuilles": [
+        40
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "16-TP-41",
+      "enseignementId": 111,
+      "coursId": 16,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        18
+      ],
+      "groupesDirects": [
+        41
+      ],
+      "groupes": [
+        41
+      ],
+      "feuilles": [
+        41
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "16-TP-42",
+      "enseignementId": 112,
+      "coursId": 16,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        18
+      ],
+      "groupesDirects": [
+        42
+      ],
+      "groupes": [
+        42
+      ],
+      "feuilles": [
+        42
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "17-CM-36",
+      "enseignementId": 113,
+      "coursId": 17,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        19
+      ],
+      "groupesDirects": [
+        36
+      ],
+      "groupes": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "feuilles": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "17-TD-37",
+      "enseignementId": 114,
+      "coursId": 17,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        37
+      ],
+      "groupes": [
+        37,
+        39,
+        40
+      ],
+      "feuilles": [
+        39,
+        40
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "17-TD-38",
+      "enseignementId": 115,
+      "coursId": 17,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        38
+      ],
+      "groupes": [
+        38,
+        41,
+        42
+      ],
+      "feuilles": [
+        41,
+        42
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "17-TP-39",
+      "enseignementId": 116,
+      "coursId": 17,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        16
+      ],
+      "groupesDirects": [
+        39
+      ],
+      "groupes": [
+        39
+      ],
+      "feuilles": [
+        39
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "17-TP-40",
+      "enseignementId": 117,
+      "coursId": 17,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        16
+      ],
+      "groupesDirects": [
+        40
+      ],
+      "groupes": [
+        40
+      ],
+      "feuilles": [
+        40
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "17-TP-41",
+      "enseignementId": 118,
+      "coursId": 17,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        16
+      ],
+      "groupesDirects": [
+        41
+      ],
+      "groupes": [
+        41
+      ],
+      "feuilles": [
+        41
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "17-TP-42",
+      "enseignementId": 119,
+      "coursId": 17,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        16
+      ],
+      "groupesDirects": [
+        42
+      ],
+      "groupes": [
+        42
+      ],
+      "feuilles": [
+        42
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "18-CM-36",
+      "enseignementId": 120,
+      "coursId": 18,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        19
+      ],
+      "groupesDirects": [
+        36
+      ],
+      "groupes": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "feuilles": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "18-TD-37",
+      "enseignementId": 121,
+      "coursId": 18,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        37
+      ],
+      "groupes": [
+        37,
+        39,
+        40
+      ],
+      "feuilles": [
+        39,
+        40
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "18-TD-38",
+      "enseignementId": 122,
+      "coursId": 18,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        38
+      ],
+      "groupes": [
+        38,
+        41,
+        42
+      ],
+      "feuilles": [
+        41,
+        42
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "18-TP-39",
+      "enseignementId": 123,
+      "coursId": 18,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        39
+      ],
+      "groupes": [
+        39
+      ],
+      "feuilles": [
+        39
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "18-TP-40",
+      "enseignementId": 124,
+      "coursId": 18,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        40
+      ],
+      "groupes": [
+        40
+      ],
+      "feuilles": [
+        40
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "18-TP-41",
+      "enseignementId": 125,
+      "coursId": 18,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        41
+      ],
+      "groupes": [
+        41
+      ],
+      "feuilles": [
+        41
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "18-TP-42",
+      "enseignementId": 126,
+      "coursId": 18,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        17
+      ],
+      "groupesDirects": [
+        42
+      ],
+      "groupes": [
+        42
+      ],
+      "feuilles": [
+        42
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "19-CM-43",
+      "enseignementId": 127,
+      "coursId": 19,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        22
+      ],
+      "groupesDirects": [
+        43
+      ],
+      "groupes": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "feuilles": [
+        46,
+        47,
+        48,
+        49
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "19-TD-44",
+      "enseignementId": 128,
+      "coursId": 19,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        44
+      ],
+      "groupes": [
+        44,
+        46,
+        47
+      ],
+      "feuilles": [
+        46,
+        47
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "19-TD-45",
+      "enseignementId": 129,
+      "coursId": 19,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        45
+      ],
+      "groupes": [
+        45,
+        48,
+        49
+      ],
+      "feuilles": [
+        48,
+        49
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "19-TP-46",
+      "enseignementId": 130,
+      "coursId": 19,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        21
+      ],
+      "groupesDirects": [
+        46
+      ],
+      "groupes": [
+        46
+      ],
+      "feuilles": [
+        46
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "19-TP-47",
+      "enseignementId": 131,
+      "coursId": 19,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        21
+      ],
+      "groupesDirects": [
+        47
+      ],
+      "groupes": [
+        47
+      ],
+      "feuilles": [
+        47
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "19-TP-48",
+      "enseignementId": 132,
+      "coursId": 19,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        21
+      ],
+      "groupesDirects": [
+        48
+      ],
+      "groupes": [
+        48
+      ],
+      "feuilles": [
+        48
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "19-TP-49",
+      "enseignementId": 133,
+      "coursId": 19,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        21
+      ],
+      "groupesDirects": [
+        49
+      ],
+      "groupes": [
+        49
+      ],
+      "feuilles": [
+        49
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "20-CM-43",
+      "enseignementId": 134,
+      "coursId": 20,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        22
+      ],
+      "groupesDirects": [
+        43
+      ],
+      "groupes": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "feuilles": [
+        46,
+        47,
+        48,
+        49
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "20-TD-44",
+      "enseignementId": 135,
+      "coursId": 20,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        44
+      ],
+      "groupes": [
+        44,
+        46,
+        47
+      ],
+      "feuilles": [
+        46,
+        47
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "20-TD-45",
+      "enseignementId": 136,
+      "coursId": 20,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        45
+      ],
+      "groupes": [
+        45,
+        48,
+        49
+      ],
+      "feuilles": [
+        48,
+        49
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "20-TP-46",
+      "enseignementId": 137,
+      "coursId": 20,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        19
+      ],
+      "groupesDirects": [
+        46
+      ],
+      "groupes": [
+        46
+      ],
+      "feuilles": [
+        46
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "20-TP-47",
+      "enseignementId": 138,
+      "coursId": 20,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        19
+      ],
+      "groupesDirects": [
+        47
+      ],
+      "groupes": [
+        47
+      ],
+      "feuilles": [
+        47
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "20-TP-48",
+      "enseignementId": 139,
+      "coursId": 20,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        19
+      ],
+      "groupesDirects": [
+        48
+      ],
+      "groupes": [
+        48
+      ],
+      "feuilles": [
+        48
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "20-TP-49",
+      "enseignementId": 140,
+      "coursId": 20,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        19
+      ],
+      "groupesDirects": [
+        49
+      ],
+      "groupes": [
+        49
+      ],
+      "feuilles": [
+        49
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "21-CM-43",
+      "enseignementId": 141,
+      "coursId": 21,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        22
+      ],
+      "groupesDirects": [
+        43
+      ],
+      "groupes": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "feuilles": [
+        46,
+        47,
+        48,
+        49
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "21-TD-44",
+      "enseignementId": 142,
+      "coursId": 21,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        44
+      ],
+      "groupes": [
+        44,
+        46,
+        47
+      ],
+      "feuilles": [
+        46,
+        47
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "21-TD-45",
+      "enseignementId": 143,
+      "coursId": 21,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        45
+      ],
+      "groupes": [
+        45,
+        48,
+        49
+      ],
+      "feuilles": [
+        48,
+        49
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "21-TP-46",
+      "enseignementId": 144,
+      "coursId": 21,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        46
+      ],
+      "groupes": [
+        46
+      ],
+      "feuilles": [
+        46
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "21-TP-47",
+      "enseignementId": 145,
+      "coursId": 21,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        47
+      ],
+      "groupes": [
+        47
+      ],
+      "feuilles": [
+        47
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "21-TP-48",
+      "enseignementId": 146,
+      "coursId": 21,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        48
+      ],
+      "groupes": [
+        48
+      ],
+      "feuilles": [
+        48
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "21-TP-49",
+      "enseignementId": 147,
+      "coursId": 21,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        20
+      ],
+      "groupesDirects": [
+        49
+      ],
+      "groupes": [
+        49
+      ],
+      "feuilles": [
+        49
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "22-CM-50",
+      "enseignementId": 148,
+      "coursId": 22,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        13
+      ],
+      "groupesDirects": [
+        50
+      ],
+      "groupes": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "feuilles": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "22-TD-51",
+      "enseignementId": 149,
+      "coursId": 22,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        51
+      ],
+      "groupes": [
+        51,
+        53,
+        54
+      ],
+      "feuilles": [
+        53,
+        54
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "22-TD-52",
+      "enseignementId": 150,
+      "coursId": 22,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        52
+      ],
+      "groupes": [
+        52,
+        55,
+        56
+      ],
+      "feuilles": [
+        55,
+        56
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "22-TP-53",
+      "enseignementId": 151,
+      "coursId": 22,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        24
+      ],
+      "groupesDirects": [
+        53
+      ],
+      "groupes": [
+        53
+      ],
+      "feuilles": [
+        53
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "22-TP-54",
+      "enseignementId": 152,
+      "coursId": 22,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        24
+      ],
+      "groupesDirects": [
+        54
+      ],
+      "groupes": [
+        54
+      ],
+      "feuilles": [
+        54
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "22-TP-55",
+      "enseignementId": 153,
+      "coursId": 22,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        24
+      ],
+      "groupesDirects": [
+        55
+      ],
+      "groupes": [
+        55
+      ],
+      "feuilles": [
+        55
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "22-TP-56",
+      "enseignementId": 154,
+      "coursId": 22,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        24
+      ],
+      "groupesDirects": [
+        56
+      ],
+      "groupes": [
+        56
+      ],
+      "feuilles": [
+        56
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "23-CM-50",
+      "enseignementId": 155,
+      "coursId": 23,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        13
+      ],
+      "groupesDirects": [
+        50
+      ],
+      "groupes": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "feuilles": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "23-TD-51",
+      "enseignementId": 156,
+      "coursId": 23,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        51
+      ],
+      "groupes": [
+        51,
+        53,
+        54
+      ],
+      "feuilles": [
+        53,
+        54
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "23-TD-52",
+      "enseignementId": 157,
+      "coursId": 23,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        52
+      ],
+      "groupes": [
+        52,
+        55,
+        56
+      ],
+      "feuilles": [
+        55,
+        56
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "23-TP-53",
+      "enseignementId": 158,
+      "coursId": 23,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        22
+      ],
+      "groupesDirects": [
+        53
+      ],
+      "groupes": [
+        53
+      ],
+      "feuilles": [
+        53
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "23-TP-54",
+      "enseignementId": 159,
+      "coursId": 23,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        22
+      ],
+      "groupesDirects": [
+        54
+      ],
+      "groupes": [
+        54
+      ],
+      "feuilles": [
+        54
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "23-TP-55",
+      "enseignementId": 160,
+      "coursId": 23,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        22
+      ],
+      "groupesDirects": [
+        55
+      ],
+      "groupes": [
+        55
+      ],
+      "feuilles": [
+        55
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "23-TP-56",
+      "enseignementId": 161,
+      "coursId": 23,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        22
+      ],
+      "groupesDirects": [
+        56
+      ],
+      "groupes": [
+        56
+      ],
+      "feuilles": [
+        56
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-0"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "24-CM-50",
+      "enseignementId": 162,
+      "coursId": 24,
+      "type": "CM",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        13
+      ],
+      "groupesDirects": [
+        50
+      ],
+      "groupes": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "feuilles": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "effectif": 120,
+      "typeSalleRequis": "amphi",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "24-TD-51",
+      "enseignementId": 163,
+      "coursId": 24,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        51
+      ],
+      "groupes": [
+        51,
+        53,
+        54
+      ],
+      "feuilles": [
+        53,
+        54
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "24-TD-52",
+      "enseignementId": 164,
+      "coursId": 24,
+      "type": "TD",
+      "regime": "initiale",
+      "longueur": 1,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        52
+      ],
+      "groupes": [
+        52,
+        55,
+        56
+      ],
+      "feuilles": [
+        55,
+        56
+      ],
+      "effectif": 60,
+      "typeSalleRequis": "td",
+      "equipementsRequis": [],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "24-TP-53",
+      "enseignementId": 165,
+      "coursId": 24,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        53
+      ],
+      "groupes": [
+        53
+      ],
+      "feuilles": [
+        53
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "24-TP-54",
+      "enseignementId": 166,
+      "coursId": 24,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        54
+      ],
+      "groupes": [
+        54
+      ],
+      "feuilles": [
+        54
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "24-TP-55",
+      "enseignementId": 167,
+      "coursId": 24,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        55
+      ],
+      "groupes": [
+        55
+      ],
+      "feuilles": [
+        55
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    },
+    {
+      "id": "24-TP-56",
+      "enseignementId": 168,
+      "coursId": 24,
+      "type": "TP",
+      "regime": "initiale",
+      "longueur": 2,
+      "enseignants": [
+        23
+      ],
+      "groupesDirects": [
+        56
+      ],
+      "groupes": [
+        56
+      ],
+      "feuilles": [
+        56
+      ],
+      "effectif": 30,
+      "typeSalleRequis": "labo",
+      "equipementsRequis": [
+        "atelier-1"
+      ],
+      "distanciel": false,
+      "epinglee": false
+    }
+  ],
+  "parametres": {
+    "maxMinutesJourGroupe": 480,
+    "maxMinutesJourEnseignant": 480,
+    "trajetDefautMinutes": 30,
+    "trajets": {
+      "1-2": 30
+    },
+    "samediApresMidi": false
+  }
+}

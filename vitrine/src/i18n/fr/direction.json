@@ -41,7 +41,7 @@
       },
       {
         "avant": "Une séance qui ne tient pas se voit en relisant la grille.",
-        "avec": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque."
+        "avec": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant."
       },
       {
         "avant": "Une salle demandée en dehors des cours se note dans un message.",

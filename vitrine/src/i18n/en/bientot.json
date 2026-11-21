@@ -15,7 +15,7 @@
     "cartes": [
       {
         "titre": "Grades and report cards",
-        "texte": "Grade entry and report cards, with LMD credits."
+        "texte": "Grade entry and report cards, with credits."
       },
       {
         "titre": "Student life",
@@ -65,11 +65,11 @@
       },
       {
         "titre": "Offline",
-        "texte": "The mobile app, usable without a connection."
+        "texte": "The mobile app, fully usable without a connection. The week already viewed can be read offline today."
       },
       {
         "titre": "Export to the national platform",
-        "texte": "School data, exported to your country's national platform. In Morocco, Massar is one example."
+        "texte": "School data, exported to your country's national platform."
       }
     ]
   }

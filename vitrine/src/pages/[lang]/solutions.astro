@@ -9,9 +9,9 @@ import Sommaire from '../../components/solutions/Sommaire.astro';
 import TypeEtablissement from '../../components/solutions/TypeEtablissement.astro';
 import { TYPES } from '../../components/solutions/types.js';
 import { traductions } from '../../i18n/index.js';
-import { LANGUES, chemin } from '../../i18n/langues.js';
+import { cheminsLangues, chemin } from '../../i18n/langues.js';
 
-export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = cheminsLangues;
 
 const { lang } = Astro.params;
 const t = traductions(lang, 'solutions');

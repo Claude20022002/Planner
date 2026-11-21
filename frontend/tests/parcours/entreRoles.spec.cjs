@@ -88,20 +88,23 @@ test("Mes classes : les supports de cours s'ouvrent dans l'espace de la classe",
   await expect(page.getByRole("heading", { name: seance.cours, exact: true })).toBeVisible({ timeout: 15_000 });
 });
 
-test("Paramètres : le thème StudyLib retire les fonds noirs du panneau et la marine du menu", async ({ page }) => {
+test("Paramètres : un seul thème ; une préférence StudyLib ancienne est ignorée, clair et sombre changent le menu", async ({ page }) => {
   const { enseignante, motDePasse } = lireDonnees();
   await seConnecter(page, { email: enseignante.email, motDePasse, role: "enseignant" });
   // Plus de « Mes séances » dans le menu : le tableau et l'emploi du temps les montrent déjà
   await expect(page.getByRole("navigation").getByText("Mes séances", { exact: true })).toHaveCount(0);
 
+  // Régression d'UIX-10b : le choix de famille est retiré ; une préférence encore enregistrée ne change rien
+  await page.evaluate(() => localStorage.setItem("themeFamille", "studylib"));
   const variable = (nom) => page.evaluate((n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim(), nom);
   await page.goto("/parametres");
-  await page.getByRole("button", { name: "StudyLib", exact: true }).click();
+  await expect(page.getByRole("button", { name: "StudyLib", exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Clair", exact: true }).click();
-  expect(await variable("--board-ground")).toBe("#FFFFFF");
-  expect(await variable("--nav-fond")).toBe("#FFFFFF");
-
-  // Retour au thème Planner : les variables disparaissent, les couleurs du panneau reviennent
-  await page.getByRole("button", { name: "Planner", exact: true }).click();
+  expect((await variable("--nav-fond")).toUpperCase()).toBe("#FFFFFF");
+  // Le panneau garde son fond sombre de la charte : aucune variable ne le remplace
   expect(await variable("--board-ground")).toBe("");
+
+  // Menu sur la surface sombre de la charte en mode sombre
+  await page.getByRole("button", { name: "Sombre", exact: true }).click();
+  expect((await variable("--nav-fond")).toUpperCase()).toBe("#172338");
 });

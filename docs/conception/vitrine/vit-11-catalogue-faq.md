@@ -73,7 +73,7 @@ Visas relayés par le coordinateur dans la boîte Codex le 18 novembre 2026 à 2
 | 5 | Dans quelles langues puis-je consulter le site ? | « Le site est disponible en français et en anglais. Contactez-nous pour connaître les langues disponibles dans les applications qui vous intéressent. » | Chef |
 | 6 | Peut-on importer des listes ? | « L’administration peut importer des listes de comptes, d’étudiants et d’enseignants à partir de fichiers CSV compatibles. » Sources : `backend/routes/{userRoutes,etudiantRoutes,enseignantRoutes}.js` et `frontend/src/utils/fileImport.js`. | Chef |
 | 7 | Que propose l’application mobile ? | « L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main. » Voir la page Application et les preuves ci-dessous. | Chef, sur la formulation du coordinateur |
-| 8 | Comment l’IA intervient-elle ? | « Quand l’école active l’IA dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager. » | Chef |
+| 8 | Comment l’IA intervient-elle ? | « Quand l’IA est activée pour votre école dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager. » | Chef ; formule de l’IA alignée sur D2 le 21 nov. (VIT-18) |
 | 9 | Peut-on choisir StudyLib séparément ? | « Contactez-nous pour discuter de StudyLib et des fonctionnalités qui répondent aux besoins de votre établissement. » | Chef |
 | 10 | Combien cela coûte-t-il ? | « Contactez-nous pour parler des besoins de votre établissement. » Réutiliser le contact existant du site. | Chef |
 
