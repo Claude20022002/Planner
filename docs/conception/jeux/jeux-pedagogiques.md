@@ -130,7 +130,7 @@ Règles :
 | # | Point | Où | Correction |
 |---|---|---|---|
 | B-1 | Adresses du site d'HESTIM et mention « publiés par HESTIM » écrites en dur. Le § 1 de ce contrat demandait la page du programme d'HESTIM, mais la règle du 7 novembre (« aucun nom d'école en dur », dépôt public, plusieurs écoles) l'interdit désormais | `shared/simulations/catalogue/_aide.js`, `shared/simulations/i18n.js` | retirer les adresses ; `curriculum` devient une discipline et un niveau, sans école ; texte de cadre neutre. **Le § 1 de ce contrat est à amender** (décision du chef) |
-| B-2 | Le Labo Big-O n'a pas sa réponse de référence dans le test de l'application | `mobile/__tests__/simulations.test.js` (`premier`) | ajouter l'entrée `big-o-01` |
+| B-2 | Le Labo Big-O n'a pas sa réponse de référence dans le test de l'application | `mobile/__tests__/simulations.test.js` (`premier`) | ajouter l'entrée `complexite-01` (l'ID `big-o-01` cité le 10 nov. était une erreur de documentation : le défi stocké s'appelle `complexite-01`) |
 
 **Important, à décider par le chef de projet** :
 

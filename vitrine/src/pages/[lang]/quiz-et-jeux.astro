@@ -1,0 +1,36 @@
+---
+// Page « Quiz et jeux » : le studio (dix types, médias, rythme, direct, IA) et les jeux
+// (simulations, terminal Linux, session). L'écran de téléphone est celui de l'accueil.
+import { Gamepad2, Terminal } from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import CadreAppareil from '../../components/socle/CadreAppareil.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import Presentation from '../../components/fonctions/Presentation.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import BoutonPrincipal from '../../components/socle/BoutonPrincipal.astro';
+import Section from '../../components/socle/Section.astro';
+import IllustrationQuiz from '../../components/accueil/IllustrationQuiz.astro';
+import { traductions } from '../../i18n/index.js';
+import { cheminsLangues, chemin } from '../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'quiz-et-jeux');
+const tAccueil = traductions(lang, 'accueil');
+---
+<Gabarit langue={lang} page="quizEtJeux" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <Presentation id="studio" ton="gris" surtitre={t('studio.surtitre')} titre={t('studio.titre')} texte={t('studio.texte')} points={t('studio.points')}>
+    <CadreAppareil type="telephone" label={tAccueil('quiz.illustration.label')}>
+      <IllustrationQuiz t={tAccueil} />
+    </CadreAppareil>
+  </Presentation>
+  <GrilleCartes id="jeux" surtitre={t('jeux.surtitre')} titre={t('jeux.titre')} texte={t('jeux.texte')} cartes={t('jeux.cartes')}
+    icones={[Terminal, Gamepad2]} />
+  <Section id="vers-les-jeux">
+    <BoutonPrincipal href={chemin(lang, 'bibliothequeJeux')}>{t('jeux.lien')}</BoutonPrincipal>
+  </Section>
+  <FinDePage langue={lang} />
+</Gabarit>

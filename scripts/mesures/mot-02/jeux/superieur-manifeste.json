@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "designation": "jeu supérieur simplifié",
+  "etudiants": 20000,
+  "groupes": 400,
+  "enseignants": 800,
+  "lecons": 4800,
+  "heuresParGroupe": 24,
+  "creneaux": 40,
+  "salles": 400,
+  "limites": [
+    "Groupes indépendants",
+    "Deux enseignants propres à chaque groupe",
+    "Disponibilité complète",
+    "Un seul site",
+    "Aucun groupe transversal"
+  ],
+  "problemeSha256": "0a88e4a320af753674a65746f71d00bc78343f8a1a113082f8e86ca051fea4bc",
+  "configurationSha256": "042ae3a2d3f3726a5138b09ce046d35ef8d9ddc56f17c4e9fcd32084a9617930"
+}

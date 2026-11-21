@@ -1,0 +1,85 @@
+---
+// Grille de cartes d'une page de fonction : titre et texte de section, puis une carte par élément
+// (icône Lucide, titre, texte). « badge » marque toutes les cartes (« Bientôt ») : rien de ce qui
+// porte ce badge n'est présenté comme disponible. Les icônes sont données par la page, dans l'ordre.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import Apparition from '../socle/Apparition.astro';
+
+interface Props {
+  id: string;
+  surtitre?: string;
+  titre: string;
+  texte?: string;
+  cartes: { titre: string; texte: string; href?: string }[];
+  icones: any[];
+  badge?: string;
+  ton?: 'clair' | 'gris' | 'sombre';
+}
+
+const { id, surtitre, titre, texte, cartes, icones, badge, ton = 'clair' } = Astro.props;
+if (icones.length < cartes.length) throw new Error(`Icônes manquantes dans la grille « ${id} »`);
+---
+<Section id={id} ton={ton} large etiquette={`${id}-titre`}>
+  <Apparition>
+    <div class="entete">
+      <Titre id={`${id}-titre`} taille="moyen" surtitre={surtitre}>{titre}</Titre>
+      {texte && <Accroche>{texte}</Accroche>}
+    </div>
+  </Apparition>
+  <ul class="cartes">
+    {cartes.map((carte, i) => {
+      const Icone = icones[i];
+      return (
+        <li>
+          <Apparition delai={(i % 3) * 0.1} class="carte-enveloppe">
+            {carte.href ? (
+              <a class="carte" href={carte.href}>
+                {badge && <span class="badge">{badge}</span>}
+                <Icone aria-hidden="true" size={30} strokeWidth={1.25} />
+                <h3>{carte.titre}</h3>
+                <p>{carte.texte}</p>
+              </a>
+            ) : (
+              <div class="carte">
+                {badge && <span class="badge">{badge}</span>}
+                <Icone aria-hidden="true" size={30} strokeWidth={1.25} />
+                <h3>{carte.titre}</h3>
+                <p>{carte.texte}</p>
+              </div>
+            )}
+          </Apparition>
+        </li>
+      );
+    })}
+  </ul>
+</Section>
+
+<style>
+  .entete { display: grid; gap: var(--espace-2); justify-items: center; }
+  .cartes { display: grid; gap: var(--espace-2); inline-size: 100%; }
+  .cartes > li, .cartes :global(.carte-enveloppe) { display: grid; }
+  .carte { display: grid; align-content: start; justify-items: start; gap: var(--espace-1); padding: var(--espace-3); border-radius: var(--rayon-grand); background: var(--fond-carte, var(--gris-fond)); text-align: start; color: inherit; text-decoration: none; }
+  .carte :global(svg) { color: var(--couleur-surtitre, var(--bleu)); margin-block: var(--espace-1) 0; }
+  .badge { padding: 0.2rem 0.7rem; border-radius: var(--rayon-pilule); background: var(--fond-badge, var(--blanc)); color: var(--bleu-nuit); font-size: 0.8125rem; font-weight: 600; }
+  h3 { font-size: 1.25rem; font-weight: 650; line-height: 1.25; }
+  p { color: var(--couleur-secondaire, var(--gris-texte)); }
+  :global(.gris) .carte { --fond-carte: var(--blanc); --fond-badge: var(--gris-fond); }
+  :global(.sombre) .carte { --fond-carte: rgb(255 255 255 / 7%); --fond-badge: var(--bleu-clair); }
+
+  @media (min-width: 40rem) {
+    .cartes { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 64rem) {
+    .cartes { grid-template-columns: repeat(3, 1fr); }
+    .cartes:has(> li:nth-child(2):last-child) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-inline-size: calc(2 * 24rem + var(--espace-2));
+      margin-inline: auto;
+    }
+    .cartes:has(> li:nth-last-child(1):nth-child(3n+1):not(:only-child)) > li:last-child { grid-column: 2; }
+  }
+  /* Une carte seule reste centrée, à la largeur d'une colonne */
+  .cartes:has(> li:only-child) { grid-template-columns: minmax(0, 24rem); justify-content: center; }
+</style>

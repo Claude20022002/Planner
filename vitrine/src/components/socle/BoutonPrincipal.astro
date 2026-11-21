@@ -1,0 +1,28 @@
+---
+// Lien d'action : « plein » (pilule bleue), « contour » (pilule bordée) ou « lien » (texte et chevron).
+// Toujours un lien <a> : le site ne poste rien.
+import { ChevronRight } from 'lucide-react';
+
+interface Props {
+  href: string;
+  variante?: 'plein' | 'contour' | 'lien';
+}
+
+const { href, variante = 'plein' } = Astro.props;
+---
+<a class:list={['bouton', variante]} href={href}>
+  <slot />
+  {variante === 'lien' && <ChevronRight className="chevron" aria-hidden="true" size={18} strokeWidth={2} />}
+</a>
+
+<style>
+  .bouton { display: inline-flex; align-items: center; gap: 0.25rem; font-size: var(--texte); font-weight: 500; text-decoration: none; transition: background-color var(--duree) var(--courbe), color var(--duree) var(--courbe); }
+  .plein, .contour { min-block-size: 2.75rem; padding: 0.625rem 1.375rem; border-radius: var(--rayon-pilule); }
+  .plein { background: var(--bleu); color: var(--blanc); }
+  .plein:hover { background: var(--bleu-profond); }
+  .contour { border: 1px solid currentColor; color: var(--couleur-lien, var(--bleu)); }
+  .contour:hover { background: var(--couleur-lien, var(--bleu)); color: var(--blanc); }
+  .lien { color: var(--couleur-lien, var(--bleu)); }
+  .lien:hover { text-decoration: underline; }
+  :global([dir='rtl']) .bouton :global(.chevron) { transform: scaleX(-1); }
+</style>

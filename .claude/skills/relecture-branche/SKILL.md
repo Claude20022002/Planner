@@ -33,7 +33,7 @@ Et : la fiche de mission (`docs/plan/missions/<identifiant>.md`), le plan de con
 | 8 | **Migration** : numéro réservé dans `suivi.md`, « étendre puis contracter » | toute migration remonte au chef |
 | 9 | **Rien de réel** : ni donnée personnelle, ni secret, ni nom d'école en dur | `node scripts/verifier-neutre.mjs`, et lecture du diff |
 | 10 | **Sécurité** : le serveur ne croit pas le client, 404 hors de ses classes, pas de donnée d'élève envoyée à l'IA | lire les routes et contrôleurs touchés ; tout doute remonte au chef |
-| 11 | **Fichiers d'état** : ligne de `suivi.md`, fichier du module, fiche de session avec prompt de reprise, commandes pour le chef | présents et vrais |
+| 11 | **Fichiers d'état** : fichier du module, fiche de session avec l'état de la fonction, prompt de reprise et commandes pour le chef ; **`suivi.md` non modifié** par la branche (depuis le 18 nov.) | présents et vrais |
 | 12 | **Rien de non commité** dans le dossier de travail | `git status -s` vide |
 
 Ne lancez pas les parcours du site en même temps que la suite du serveur : ils tournent dans la CI de la PR.

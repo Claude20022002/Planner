@@ -64,7 +64,7 @@ export default function SelecteurEspaces({ role, sx }) {
       >
         <Box
           component="h2"
-          sx={{ m: 0, px: 1, pt: 0.25, pb: 0.75, color: '#FFFFFF', fontFamily: ds.font.board, fontWeight: 700, fontSize: '0.9375rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}
+          sx={{ m: 0, px: 1, pt: 0.25, pb: 0.75, color: ds.board.titre, fontFamily: ds.font.board, fontWeight: 700, fontSize: '0.9375rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}
         >
           {t('espaces.titre')}
         </Box>
@@ -90,8 +90,8 @@ export default function SelecteurEspaces({ role, sx }) {
                   textAlign: 'left',
                   borderTop: index ? `1px solid ${ds.board.seam}` : 'none',
                   color: ds.board.letter,
-                  '&:hover': { bgcolor: 'rgba(255,255,255,0.05)' },
-                  '&.Mui-focusVisible': { outline: `2px solid ${ds.brand.orange}`, outlineOffset: -2 },
+                  '&:hover': { bgcolor: ds.board.cell },
+                  '&.Mui-focusVisible': { outline: `3px solid ${ds.board.letter}`, outlineOffset: -3 },
                 }}
               >
                 {/* Lampe : vous êtes ici */}

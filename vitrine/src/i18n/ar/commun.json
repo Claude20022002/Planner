@@ -1,0 +1,50 @@
+{
+  "produit": "Planner",
+  "evitement": "",
+  "logo": "",
+  "navigation": {
+    "label": "",
+    "menu": "",
+    "accueil": "",
+    "solutions": "",
+    "fonctions": "",
+    "emploiDuTemps": "",
+    "enClasse": "",
+    "quizEtJeux": "",
+    "coursEtAnnonces": "",
+    "bibliotheque": "",
+    "application": "",
+    "etablissement": "",
+    "securite": "",
+    "bientot": "",
+    "comparer": "",
+    "contact": "",
+    "parEtablissement": "",
+    "parRole": "",
+    "direction": "",
+    "scolarite": "",
+    "enseignants": "",
+    "etudiants": "",
+    "ressources": ""
+  },
+  "langues": {
+    "label": "",
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "pied": {
+    "description": "",
+    "navigation": "",
+    "droits": ""
+  },
+  "finDePage": {
+    "titre": "",
+    "texte": "",
+    "accueil": ""
+  },
+  "redirection": {
+    "titre": "",
+    "lien": ""
+  }
+}

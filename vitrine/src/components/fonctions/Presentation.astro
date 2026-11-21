@@ -1,0 +1,56 @@
+---
+// Section d'une page de fonction : titre, texte et liste de points d'un côté (composant Duo), visuel
+// de l'autre (emplacement par défaut, souvent un CadreAppareil). Chaque point est coché d'une icône.
+import { Check } from 'lucide-react';
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import Apparition from '../socle/Apparition.astro';
+import Duo from '../socle/Duo.astro';
+
+interface Props {
+  id: string;
+  surtitre?: string;
+  titre: string;
+  texte: string;
+  points?: string[];
+  ton?: 'clair' | 'gris' | 'sombre';
+  inverse?: boolean;
+}
+
+const { id, surtitre, titre, texte, points = [], ton = 'clair', inverse = false } = Astro.props;
+---
+<Section id={id} ton={ton} large etiquette={`${id}-titre`}>
+  <Duo inverse={inverse}>
+    <Fragment slot="texte">
+      <Apparition>
+        <div class="texte">
+          <Titre id={`${id}-titre`} taille="moyen" surtitre={surtitre}>{titre}</Titre>
+          <Accroche>{texte}</Accroche>
+        </div>
+      </Apparition>
+      {points.length > 0 && (
+        <ul class="points">
+          {points.map((point, i) => (
+            <li>
+              <Apparition delai={i * 0.08}>
+                <span class="point"><Check aria-hidden="true" size={20} strokeWidth={2} />{point}</span>
+              </Apparition>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Fragment>
+    <Apparition effet="grandir" class="presentation-visuel">
+      <slot />
+    </Apparition>
+  </Duo>
+</Section>
+
+<style>
+  .texte { display: grid; gap: var(--espace-2); }
+  .points { display: grid; gap: var(--espace-1); text-align: start; }
+  .point { display: flex; align-items: start; gap: 0.6rem; font-size: var(--texte); }
+  .point :global(svg) { flex: none; margin-block-start: 0.15rem; color: var(--couleur-surtitre, var(--bleu)); }
+  :global(.presentation-visuel) { display: grid; justify-items: center; }
+</style>

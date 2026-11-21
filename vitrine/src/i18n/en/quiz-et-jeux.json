@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "titre": "Quiz and games · Planner",
+    "description": "Ten ways to ask a question, a live quiz, ten simulations and a Linux terminal."
+  },
+  "entete": {
+    "surtitre": "Quiz and games",
+    "titre": "Create, project, play.",
+    "accroche": "The teacher prepares the quiz. The link opens in a browser, on a school computer or elsewhere. A code or a QR code leads to the same link."
+  },
+  "studio": {
+    "surtitre": "Studio",
+    "titre": "Ten ways to ask a question.",
+    "texte": "Single choice, multiple choice, true or false, short answer, number, fill-in-the-blank, matching, order, a zone on an image, free answer.",
+    "points": [
+      "A question can carry an image, a sound or a video.",
+      "At their own pace, each student opens the quiz with the link, the code or the QR code.",
+      "Live, the class answers together. A wrong answer scores nothing. A right answer scores more when it arrives early. The server keeps the time.",
+      "When AI is turned on for your school, it suggests questions. The teacher reviews them before opening them to students. Otherwise, the feature stays off."
+    ]
+  },
+  "jeux": {
+    "surtitre": "Games",
+    "titre": "Ten simulations, thirty challenges.",
+    "texte": "Ten computing and management games: Tri Cyber, Nœuds Réseaux, Labo des seuils, Pilote des stocks, Sprint Agile, Robot Route, Requête Parfaite, Ordonnanceur CPU, Budget ERP, Labo Big-O. Each simulation has three challenges.",
+    "lien": "See the ten games",
+    "cartes": [
+      {
+        "titre": "Linux terminal",
+        "texte": "A Linux terminal is for practising commands."
+      },
+      {
+        "titre": "A session",
+        "texte": "Together, the Linux terminal is shown on the board: the teacher types a command, or picks the one a student sends. Individually, each student plays on a phone or a computer."
+      }
+    ]
+  }
+}

@@ -37,7 +37,9 @@ Massar est le premier connecteur, les autres pays suivent avec le même cadre.
   - un envoi refusé par le contrôle de cohérence dit, ligne par ligne, ce qui manque ;
   - un envoi refait donne le même fichier ;
   - le journal garde qui a envoyé quoi et quand.
-- **ETA-02** : un fichier exporté est **accepté par Massar**, preuve à l'appui (accusé ou capture de l'import réussi, sans donnée réelle dans le dépôt).
+- **ETA-02** :
+  - un fichier exporté est **accepté par Massar**, preuve à l'appui (accusé ou capture de l'import réussi, sans donnée réelle dans le dépôt) ;
+  - l'élève y est identifié par son **matricule de l'État** (code Massar), sans identifiant créé par Planner pour l'échange (décision du 15 nov.).
 
 ## Exigences produit
 
