@@ -142,7 +142,7 @@ Serveur, n8n, production, `solver/`, `backend/`, modification du générateur 13
 
 <a id="supérieur-21-novembre"></a>
 
-## 12. Complément du 21 novembre 2026 · jeu du supérieur soumis au chef
+## 12. Complément du 21 novembre 2026 · jeu du supérieur validé par le chef
 
 La décision du 21 novembre place le supérieur en premier. Le collège de 600 élèves et son verdict EP-10 passent à l’étape du scolaire. Les six passages déjà publiés sur le jeu simplifié de 20 000 étudiants restent la référence de charge. Ce complément propose un jeu distinct pour répondre à deux questions. Le solveur produit-il une semaine utilisable avec les contraintes du supérieur ? À entrées et poids identiques, comment évolue la qualité souple depuis MOT-13b ? [Décision du chef](https://github.com/Claude20022002/Planner/blob/doc/coordination-equipe/docs/plan/decisions.md) · [Mesures du 15 novembre](mesures.md) · [Réponse 22](mot-13b-solveur.md)
 
@@ -191,4 +191,4 @@ Le public de cette mesure est l’enseignement supérieur. Le banc décrit des g
 | Q10 | Quels seuils de faisabilité et de durée ? | Valider trois plannings complets sur trois par taille en moins de 600 s, avec dur et moyen à zéro, sur le profil local du VPS. |
 | Q11 | Comment juger l’écart souple de la réponse 22 ? | Valider les deux versions, les douze passages et l’alerte de 10 % sur les médianes comparables. Transmettre à MOT-04 toute cause qui reste indéterminée. |
 
-**État au 21 novembre.** Le chef a décidé la priorité du supérieur. Le jeu, les tailles et les seuils ci-dessus sont soumis à son visa pour la mise en œuvre et la mesure.
+**État au 21 novembre.** Le chef a décidé la priorité du supérieur. Le chef a validé Q9, Q10 et Q11 le 21 novembre (« Je valide »). La mise en œuvre des deux jeux et la série de mesures du § 12 sont autorisées.
