@@ -179,6 +179,19 @@ Aucune table, aucune migration, aucune route. Les couleurs de l'école restent d
 - **UIX-06c** lit `ThemeGestion` dans son plan : après 10b, elle s'appuie sur le thème unique ; la ligne de son plan est à corriger avant son code (coordinateur).
 - **Retour arrière** : `git revert` de la PR ; aucune donnée ni migration.
 
+## 11 bis. Écarts constatés pendant le code (21 nov.), validés par le chef le 21 nov. (« Je valide les écarts »)
+
+| N° | Écart | Pourquoi |
+|---|---|---|
+| E1 | `shared/charte/contraste.mjs`, `generer.mjs` et `index.js` modifiés (hors du § 5) : `couleursDe` lit les couleurs de toutes les familles ; titres du guide ; exports `statuts`, `lignes`, `panneau` | nécessaires pour que le générateur vérifie les nouvelles paires ; `couleursDe` générique évite aussi un conflit avec #222, qui ajoute sa propre famille |
+| E2 | Le fond, les cases et les lettres du panneau ne sont pas recopiés dans la famille `panneau` : ce sont `ecran` et les jetons du sombre ; la famille ne garde que la charnière, le joint et les lampes. `pas-volet` est dans `mouvement` | une seule copie de chaque valeur |
+| E3 | `FOND_PANNEAU` reste écrit dans `shared/couleurs.js` (#0F1A2B), et `charte.test.js` vérifie qu'il vaut `ecran` | le serveur lit ce fichier sous Node, qui refuse l'import JSON simple |
+| E4 | `frontend/scripts/import-json-tests.mjs` créé, et `test:unit` le charge | Node 22 refuse l'import JSON simple de `shared/charte/index.js` dans les tests `node --test` ; Vite, Metro et Jest l'acceptent. Le crochet ne sert qu'aux tests |
+| E5 | `pages/Accueil.jsx` et `components/auth/PanneauAccueil.jsx` lisent `ds.board.titre` et `ds.board.letterDim` au lieu de `ds.nav.*` | avec le menu sur surface claire (réponse 2), `ds.nav` donne un texte foncé ; ces deux écrans écrivent sur le cadre sombre du panneau |
+| E6 | Les couleurs du navigateur (sélection, focus, barres de défilement) passent de `index.css` aux styles globaux du thème (`stylesGlobaux` de `themeCharte.js`) ; `index.css` ne garde que des règles sans couleur | un fichier CSS ne lit pas la charte ; aucune couleur de la charte n'est écrite à la main |
+| E7 | `tests/parcours/entreRoles.spec.cjs` : le parcours « thème StudyLib » devient le test de régression du choix retiré (préférence `studylib` ignorée, plus de bouton, menu clair puis sombre) | ce parcours cliquait sur le bouton retiré |
+| E8 | `appliquerMarque` pose la couleur de la barre du navigateur (`theme-color`) pour toutes les écoles, y compris sans couleurs (bleu nuit) | `index.html` porte encore #001861 ; sans cela, une école sans couleurs gardait l'ancienne marine |
+
 ## 11. Hors périmètre
 
 Les logos et le favicon (10c, SVG officiels déjà là) ; le mobile (10d) ; l'accent `jeu`, la scène et le panneau propres aux jeux (10e) ; StudyLib (10f) ; l'EDT imprimé (`ds.document`) ; le mode sombre du site ; les textes, sauf l'introduction des Paramètres d'apparence et le message de refus de l'accent.
