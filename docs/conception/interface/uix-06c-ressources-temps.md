@@ -58,7 +58,9 @@ Chemins sous `frontend/src/`.
 | `pages/gestion/Salles.jsx`, `components/salles/` (nouveau), `i18n/ressources/salles.*.js` | Claude (VS Code) |
 | `pages/gestion/Campus.jsx`, `components/campus/`, `pages/gestion/Creneaux.jsx`, `components/creneaux/` (nouveau), `i18n/ressources/campus.*.js`, `i18n/ressources/creneaux.*.js` | agent de Cursor |
 | `pages/gestion/Calendrier.jsx`, `components/calendrier/`, `i18n/ressources/calendrier.*.js` | Codex |
-| `components/gestion/`, `components/layouts/DashboardLayout.jsx` (portée du thème étendue aux quatre routes), `i18n/index.js` | Codex, intégrateur |
+| `components/gestion/`, `i18n/index.js` | Codex, intégrateur |
+
+**Thème (mise à jour du 21 nov., renvoi)** : depuis UIX-10b (#235), un seul thème tiré de la charte vaut pour toutes les pages (`design-system/themeCharte.js`, `design-system/jetonsInterface.js`). `ThemeGestion` et la liste des pages « pilotes » qui en fixait la portée sont retirés. Les quatre écrans prennent donc ce thème sans rien étendre, et `components/layouts/DashboardLayout.jsx` sort du périmètre : sa liste de routes ne commande plus que le favicon, que UIX-10c change pour toutes les pages. Un besoin dans le thème ou les jetons se demande au coordinateur, comme pour UIX-11.
 | un fichier de parcours par lot, `frontend/tests/parcours/ressources-<lot>.spec.cjs` ; les parcours existants qui passent par ces écrans | propriétaire du lot |
 
 Ni `App.jsx`, ni les droits, ni les services d'API, ni le serveur.
@@ -83,7 +85,7 @@ Celles d'UIX-06b, § 8, appliquées aux quatre écrans :
 ## 7. Étapes
 
 1. Validation de ce plan et de l'exception par le chef ; accord écrit dans `decisions.md`.
-2. R0 par Codex, sur la branche d'UIX-06b relue : outils communs, portée du thème, dictionnaires vides.
+2. R0 par Codex, sur la branche d'UIX-06b relue : outils communs, dictionnaires vides (plus de portée du thème à étendre depuis UIX-10b, § 4).
 3. Trois lots en parallèle (§ 4).
 4. Intégration par Codex, relecture par le coordinateur, PR par le chef.
 
