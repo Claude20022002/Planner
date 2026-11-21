@@ -70,7 +70,7 @@ Le coordinateur n'était pas dans la liste des sessions (seule `plan-b-projet-pa
 
 ## Points à savoir
 
-- `suivi.md` non modifié (consigne) : pour le coordinateur, **UIX-06c → codée, lots 0 à 4 commités, relecture attendue** (`feat/uix-06c-ressources-temps`, non poussée).
+- `suivi.md` non modifié (consigne) : pour le coordinateur, **UIX-06c → codée, lots 0 à 4 commités, relecture attendue** (`feat/uix-06c-ressources-temps`, poussée jusqu'à `cfcc0277` ; le lot 4 et cette fiche restent à pousser).
 - Le parcours crée puis supprime l'année 2030-2031 : rien ne reste pour les parcours suivants.
 - Conteneurs `hestim_mysql_test` et `hestim_mysql_test_cours` toujours démarrés.
 - La question 3 du plan (UIX-06d : Conflits, Affectations, Imprévus, Examens) reste ouverte, au chef.
@@ -78,7 +78,7 @@ Le coordinateur n'était pas dans la liste des sessions (seule `plan-b-projet-pa
 ## Reste à faire, dans l'ordre
 
 1. Push et PR d'UIX-06c par le chef ; relecture du coordinateur ; CI complète.
-2. #240 : la ligne de la réponse 9 (`Suivi.jsx` et le lien « Tout voir » de l'usage), puis ce que demandera la relecture.
+2. #240 : la réponse 9 est **faite** sur `feat/uix-11-tableau-de-bord` (`22275b0f`, fiche `2026-11-21-feat-uix-11-tableau-de-bord-3.md` : 131 tests unitaires, parcours du tableau de bord 7/7) ; reste le push par le chef, puis ce que demandera la relecture.
 3. QJE-14, l'étude StudyLib, UIX-10d.
 4. VIT-09b, le code, en dernier sur le site, avec la planche des dessins et chaque capture montrées au chef avant le commit.
 
@@ -86,6 +86,7 @@ Le coordinateur n'était pas dans la liste des sessions (seule `plan-b-projet-pa
 
 ```powershell
 git -C "..\travaux-planner\uix-06c-ressources-temps" push -u origin feat/uix-06c-ressources-temps
+git -C "..\travaux-planner\uix-11-tableau-de-bord" push
 gh pr create --repo Claude20022002/Planner --base main --head feat/uix-06c-ressources-temps --title "UIX-06c : Salles, Campus, Créneaux et Calendrier découpés au style de Personnes" --body-file "..\travaux-planner\uix-06c-ressources-temps\docs\sessions\2026-11-21-feat-uix-06c-ressources-temps-2.md"
 ```
 
@@ -100,8 +101,7 @@ Fait le 21 nov. : UIX-06c codée, lots 0 à 4 (lot 4 Calendrier : 561ae24b) ; 10
 et calendrier.spec.cjs verts en local ; ligne du module écrite. Réponses du chef : 9 autorisée, 10 validée, 13 suffisante.
 Reste, dans l'ordre :
 1) UIX-06c : suivre la PR (CI complète) et corriger ce que demandera la relecture du coordinateur ;
-2) #240 (UIX-11) : vérifier que la réponse 9 est faite (Suivi.jsx lit ?onglet=usage, « Tout voir » de l'usage y mène),
-   puis corriger ce que demandera la relecture ;
+2) #240 (UIX-11) : réponse 9 faite (22275b0f) ; corriger ce que demandera la relecture du coordinateur ;
 3) QJE-14, étude StudyLib, UIX-10d ; 4) VIT-09b en dernier, planche et captures montrées au chef avant le commit.
 Si le coordinateur n'est pas dans la liste des sessions, poser les questions au chef.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; rien de réel dans le dépôt ;
