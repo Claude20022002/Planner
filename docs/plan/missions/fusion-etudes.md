@@ -52,3 +52,4 @@ le chef pousse et fusionne. Fiche de session en fin de session.
 |---|---|---|
 | 2026-11-21 | fiche écrite par le coordinateur, sur la décision du chef | — |
 | 2026-11-21 18 h 40 | #191, #192, #189 et #186 fusionnées ; #188 à fermer (contenue dans `main`) ; restent #190, #169, #234, #193, à mettre à jour depuis `main` une à une | en cours |
+| 2026-11-21 22 h 46 | #190 fusionnée, fiche corrigée (`9a5ba0ef` : fiche de #189 restaurée, `2026-11-21-etude-architecture-donnees.md` ajoutée) ; reste #169, #234, #193 ; l'agent tourne sous « Auto », accepté par le chef pour ce travail | — |

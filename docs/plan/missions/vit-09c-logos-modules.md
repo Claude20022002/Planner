@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : **après VIT-11** dans la file de Codex, avant VIT-15 (chef, 21 nov. au soir) ; plan court à écrire |
+| État | ouverte : **après VIT-11** dans la file de Codex ; VIT-15 ne l'attend pas (place réservée, chef, 21 nov.) ; plan court à écrire |
 | Agent | Codex (choix du chef, 21 nov. au soir) |
 | Modèle recommandé | son modèle le plus fort, raisonnement élevé : dessin SVG à la main sur une charte, et images générées à tenir dans un poids |
 | Attribuée le | 2026-11-21, par le coordinateur ; accord du chef : oui, le 21 nov. au soir (« que Codex génère les images, icône de tuile, pour chaque module que l'on pourra vendre » ; rendu : « les deux » ; quand : après VIT-11) |
@@ -85,3 +85,4 @@ tout est commité ; jamais de git push. Un rapport dans ta boîte (sortie\) à c
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-21 | fiche écrite par le coordinateur ; liste de l'étude 15 validée par le chef | — |
+| 2026-11-21 23 h 10 | VIT-15 n'attend plus VIT-09c (chef) : les pages gardent une place, VIT-09c la remplit ; la fiche garde son ordre (après VIT-11) | — |

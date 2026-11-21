@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : après la fusion de #228 (VIT-18) |
+| État | close : #243 fusionnée le 21 nov. à 20 h 58 |
 | Agent | la session Claude de l'expertise (elle a écrit VIT-18 et la synthèse 14) |
 | Modèle recommandé | un modèle moyen : une règle de test et, au besoin, quelques phrases |
 | Attribuée le | 2026-11-21, par le coordinateur ; accord du chef : oui, N4 du 21 nov. |
@@ -36,3 +36,4 @@ les phrases à changer au chef, phrase par phrase. Puis le test et le code. Fich
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-21 | fiche écrite par le coordinateur, sur la décision N4 du chef | — |
+| 2026-11-21 20 h 58 | #243 fusionnée par le chef ; mission close | close |

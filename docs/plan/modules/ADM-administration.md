@@ -45,6 +45,7 @@
 | ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 7 | M | PLA-11 | à faire |
 | ADM-08 | Annuaire de l'école | ME-8b | — | M | — | reporté |
 | ADM-09 | Échanges OneRoster | ME-9b | — | M | ADM-03 | reporté |
+| ADM-10 | Fériés selon le pays : l'école choisit son pays, ou aucun, et le Calendrier propose les fériés de ce pays ; aujourd'hui le bouton et le générateur du serveur ne connaissent que le Maroc (EP-5, décision du chef du 21 nov.) | — | 3 | M | ADM-02 | à faire |
 
 ## Critères de « terminé »
 
@@ -53,6 +54,7 @@
 - **ADM-04** : la mesure EP-1 est faite par une personne extérieure et notée. Le modèle collège lui propose des groupes de langue vides, et l'import ADM-03 les remplit.
 - **ADM-05** : le lien parent-enfant ne se crée que par l'école ; deux parents séparés ont chacun leurs droits. Les règles sont validées avec le juriste (revue A-6).
 - **ADM-06** : une école de démonstration passe d'une année à l'autre en moins d'une demi-journée, et l'année close reste lisible.
+- **ADM-10** : une école sans pays choisi ne voit aucun bouton de fériés nommant un pays ; une école qui choisit un pays reçoit ses fériés, les fêtes à date mobile restant « à confirmer ». Aucun texte de l'interface ne nomme un pays par défaut.
 
 ## Exigences produit
 

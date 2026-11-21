@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : plan court à écrire, **après UIX-10b** |
+| État | close : #240 fusionnée le 21 nov. à 22 h 49 |
 | Agent | Claude (VS Code), la session de la charte : elle aura posé le thème d'UIX-10b, sur lequel ce tableau se construit (choix du chef, 18 nov., vers 17 h 15) |
 | Modèle recommandé | celui de la session (Opus 5.5 ou Fable 5.2) : la fonction touche des données de plusieurs modules |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. vers 17 h 15 (contenu : « refaire et compléter » ; agent : Claude de VS Code, après UIX-10b) |
@@ -96,3 +96,4 @@ Quand tu as fini, dis-le au chef : le coordinateur relit ta branche avant la PR.
 | 2026-11-18 17 h 30 | fiche écrite par le coordinateur, sur le choix du chef (refaire et compléter ; Claude de VS Code après UIX-10b) | — |
 | 2026-11-21 18 h 40 | plan court reçu (`b2975e84`, local) : M, routes existantes, sans migration ni donnée d'élève nouvelle, « Ce que disent les études » présente. Réponse 5 : le taux de conflits sort de la bande. Réponse 6 : semaine du lundi au dimanche, isolée dans `periodes.js`. Réponse 7 (UIX-06c) : Claude (VS Code) seul, après UIX-11 (chef) | **plan validé par le coordinateur** ; code après la fusion de #235 |
 | 2026-11-21 20 h 40 | #240 relue : plan validé avant le code, périmètre tenu, tests 130/130, eslint, build, neutralité refaits ; questions 9 (tel quel, correctif à part) et 10 (validée) répondues | **prête** si la CI est verte |
+| 2026-11-21 22 h 49 | #240 fusionnée ; le chef a autorisé la réponse 9 dans #240 (`22275b0f`, `Suivi.jsx` ouvre l'onglet Usage) : le correctif à part n'existe plus ; mission close | close |

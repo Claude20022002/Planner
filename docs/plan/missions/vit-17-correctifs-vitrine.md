@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | plan validé par le coordinateur le 21 nov. avec corrections ; code en local, non commité |
+| État | #237 fusionnée le 21 nov. à 20 h 21, avant la correction de `/ar/` ; la correction (`26c5f0e7`) attend sa PR |
 | Agent | agent de Cursor (Grok 4.7 high) : tâches bornées, chacune vérifiée par une mesure |
 | Attribuée le | 2026-11-19, par le coordinateur, d'après l'[expertise du site](../../etude-marche/12-expertise-site-vitrine.md) (§ 9, § 13 et § 14, lot A) ; **condition 12** de la mise en ligne (chef, 19 nov.) |
 | Module | [VIT](../modules/VIT-site-vitrine.md) · préparation de VIT-05 |
@@ -46,3 +46,4 @@ Les fichiers du tableau, `vitrine/tests/`, le plan, la ligne du module VIT, la f
 | 2026-11-21 18 h 40 | #237 relue : conforme au plan ; tests 99/99, build sans `/ar/`, neutralité, Lighthouse refait par le coordinateur (performance 99, CLS 0,037, 132 Ko) ; CSP de VIT-06 compatible avec le script en ligne (empreinte par page). CI rouge par Maven Central (parent POM introuvable), sans lien avec le site. Conflit d'une ligne avec #228 dans le module VIT | **à corriger** : mise à jour depuis `main` après #228 (garder les deux lignes), retirer `_mesure-avant/` et le stash |
 | 2026-11-21 19 h 30 | mise à jour depuis `main` après #228 (`bc23fbbb`) relue : build 35 pages sans `dist/ar/`, tests 101/101, neutralité refaits ; stash et `_mesure-avant/` retirés | **prête**, à pousser |
 | 2026-11-21 20 h 30 | CI de #237 rouge : `verifier-image.cjs` (VIT-06) attend 200 sur `/ar/` ; correction d'une ligne confiée à l'agent de Cursor ; le fichier entre dans le périmètre pour cela | à corriger |
+| 2026-11-21 23 h 00 | #237 fusionnée avant sa correction : CI de `main` rouge sur `/ar/`. Correction `26c5f0e7` relue (deux lignes, `/ar/` passe des 200 aux 404 ; contrôle Docker vert chez l'agent) : **prête**, PR à part depuis `fix/vit-17-correctifs-vitrine` ; la mission se clôt à sa fusion | prête |
