@@ -19,6 +19,14 @@
 - `..\StudyLib` (`main`, `bb3313b`) lu sans modification : routes, migrations, services, configuration, identité, déploiement et sauvegarde ; côté Planner, l'intégration, l'espace de cours et le mobile.
 - 12 questions posées au chef, toutes répondues (étude, § 7).
 - `3121ec52` : [docs/conception/bibliotheque/etude-studylib-pile.md](../conception/bibliotheque/etude-studylib-pile.md).
+- Le même jour, le chef a tranché :
+  - **voie B** ;
+  - **exception hors chantier** pour les lots B1 à B8 ;
+  - **`@aws-sdk/client-s3`** ;
+  - **événements mis de côté** ;
+  - **la répartition des lots** entre les agents.
+  
+  Tout est inscrit dans l'étude, § 5 et § 8, avec le prompt de la session « BIB ». Ajouté au § 4 : sans StudyLib, le dépôt d'un support de cours ne marche pas avant B5, et COU-02 dépend de B2.
 
 ## Ce que l'étude établit
 
@@ -45,7 +53,12 @@
 
 Pour `suivi.md`, que le coordinateur reporte (non modifié ici) : **étude StudyLib : premier jet écrit** (`etude/bib-studylib-pile`, `3121ec52`). Elle attend deux choses du chef : les volumes, et la décision sur la voie (étude, § 5).
 
-Pour le coordinateur :
+Pour le coordinateur, en plus : **écrire les fiches de mission de la voie B** d'après l'étude, § 8 :
+- les identifiants BIB-05 à BIB-11 ;
+- les numéros de migration de BIB-05 (0087 et suivants proposés) ;
+- les messages à Alexis (STA et BIB-11) et à l'agent de Cursor (Meilisearch).
+
+Le même coordinateur :
 
 - **`decisions.md`** :
   - les 12 réponses de l'étude ;
@@ -59,9 +72,10 @@ Pour le coordinateur :
 
 1. Push de `etude/bib-studylib-pile` et PR par le chef.
 2. Le chef lance la commande de comptage et donne les nombres. L'agent complète l'étude, § 3.2, et confirme la taille de B7.
-3. Le chef décide la voie et les sept points du § 5.
+3. ~~La voie~~ : **B, validée**. Restent du § 5 les points 2, 4, 5 et 7 ; les autres sont tranchés.
+3 bis. Le chef ouvre la session Claude « BIB » avec le prompt de l'étude, § 8.
 4. #245 : corriger ce que demandera la relecture du coordinateur, si elle revient avant la fusion.
-5. UIX-10d, le mobile à la charte (plan d'UIX-10, § 9) : nouvelle fonction, donc **nouvelle session**.
+5. UIX-10d, le mobile à la charte (plan d'UIX-10, § 9) : nouvelle fonction, donc **nouvelle session**. Ensuite BIB-10 (mobile) et BIB-09 (écrans web), après le contrat d'API de BIB-06.
 6. VIT-09b en dernier sur le site : planche et captures montrées au chef avant le commit.
 7. QJE-14a quand elle est attribuée : plan court validé avant tout code.
 
@@ -83,7 +97,8 @@ Fait le 21 nov. : étude StudyLib écrite (3121ec52, docs/conception/bibliothequ
 #245 (UIX-06c) : aucune relecture à la clôture.
 Reste, dans l'ordre :
 1) si le chef donne les volumes (commande de comptage) : compléter l'étude, § 3.2, et la taille de B7 ;
-   s'il décide la voie : l'écrire dans l'étude (§ 5), sans rien coder ;
+   voie B validée et lots répartis (étude, § 8) : ta part est BIB-09 (écrans web) et BIB-10 (mobile, avec UIX-10d),
+   après le contrat d'API de BIB-06 (session « BIB ») ;
 2) #245 : corriger ce que demandera la relecture du coordinateur, s'il revient avant la fusion ;
 3) UIX-10d, le mobile à la charte (plan d'UIX-10, § 9) : branche feat/uix-10d-… depuis origin/main,
    dans ..\travaux-planner\<nom> ; questions et plan court validé avant tout code ;

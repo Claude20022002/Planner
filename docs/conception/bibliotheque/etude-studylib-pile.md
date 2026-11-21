@@ -7,7 +7,7 @@
 | Fiche | [etude-studylib](../../plan/missions/etude-studylib.md) (version du 18 nov., 17 h 30, branche `doc/coordination-equipe`) |
 | Branche | `etude/bib-studylib-pile`, depuis `origin/main` (`686ebaf9`) |
 | Source lue | `..\StudyLib`, branche `main` (`bb3313b`), sans modification ; Planner sur `origin/main` |
-| État | **à décider par le chef** ; § 3.2 (volumes) attend les chiffres de la commande de comptage |
+| État | **voie B validée par le chef le 21 nov.** ; les points 2 à 7 du § 5 restent à trancher ; § 3.2 (volumes) attend les chiffres de la commande de comptage |
 
 ## En bref
 
@@ -183,6 +183,8 @@ La sauvegarde source n'est jamais modifiée. La reprise se rejoue par `uid` : en
 | BIB-03 (médias du Studio hors de la base) | inchangée | se fait sur le stockage de B2 |
 | UIX-10f (charte de StudyLib) | M | **retirée** : B4 est à la charte dès le départ |
 | EXP-09 (StudyLib et ClassQuiz par la CI) | garde la part StudyLib | ne garde que ClassQuiz, qui part avec QJE-06 |
+| Supports de l'espace de cours (COU) | restent dans StudyLib | sur une installation sans StudyLib, **le dépôt d'un support ne marche pas avant B5** : B1, B2 et B5 sont sur le chemin de l'espace de cours |
+| COU-02 (devoirs avec rendu de fichier) | « stockage par StudyLib », dépend de BIB-01 | les rendus vont dans le stockage de B2 ; COU-02 dépend de B2 au lieu de BIB-01 |
 
 ## 5. Recommandation, et ce qu'il faut décider avant tout travail
 
@@ -190,9 +192,9 @@ La sauvegarde source n'est jamais modifiée. La reprise se rejoue par `uid` : en
 
 À décider par le chef, avant tout travail sur la Bibliothèque :
 
-1. **La voie** : A, B ou C.
+1. **La voie** : A, B ou C. **Tranché le 21 nov. : voie B** (« je valide la voie B », Claude20022002).
 2. **Le module et le chantier** : la Bibliothèque reconstruite reste-t-elle BIB, et quand le chantier s'ouvre-t-il ? Au plus trois chantiers sont ouverts : EXP, PLA et ADM aujourd'hui.
-3. **La dépendance S3** (`@aws-sdk/client-s3` ou un client plus léger) : c'est une dépendance majeure, qui revient au chef.
+3. **La dépendance S3** (`@aws-sdk/client-s3` ou un client plus léger) : c'est une dépendance majeure, qui revient au chef. **Tranché le 21 nov. : `@aws-sdk/client-s3`**, avec `@aws-sdk/s3-request-presigner` pour les liens signés.
 4. **Préfixe ou seau par école** dans MinIO (Q12) : à trancher dans le plan de B2, avec la sauvegarde par école (PLA-07).
 5. **Ne pas redéployer StudyLib** sur le nouveau serveur, sauf pour la bascule de la voie C. Ce choix touche EXP-02.
 6. **Les vidéos YouTube** : reprises ou non (Q7). Elles sont un envoi sortant vers Google (QUA-09).
@@ -223,3 +225,52 @@ La sauvegarde source n'est jamais modifiée. La reprise se rejoue par `uid` : en
 | 10 | Retirer Meilisearch tout de suite ? | oui, par un correctif à part |
 | 11 | L'import Google Drive ? | un import générique, valable pour toute école |
 | 12 | MinIO pour tous les fichiers de Planner ? | oui |
+
+## 8. Répartition des lots (validée par le chef le 21 nov.)
+
+Décisions du chef, le 21 nov. :
+
+- **voie B** ;
+- **exception hors chantier** pour les lots B1 à B8, sans quatrième chantier ;
+- **`@aws-sdk/client-s3`** ;
+- les **événements sont mis de côté** : ils ne sont pas repris, restent dans la sauvegarde, et reviennent avec COM ou les annonces ;
+- la répartition ci-dessous.
+
+Le coordinateur inscrit les identifiants, réserve les migrations et écrit les fiches de mission. Les identifiants proposés suivent BIB-04. BIB-01 et BIB-02 sont absorbées (§ 4).
+
+| Lots | Identifiant proposé | Agent | Branche proposée | Modèle | Validé par | Après |
+|---|---|---|---|---|---|---|
+| retrait de Meilisearch (Q10) | EXP, correctif | agent de Cursor | `fix/exp-retirer-meilisearch` | moyen | chef (serveur, plan court) | — |
+| B1, B2 : modèle, migrations, stockage S3 | BIB-05 | **session Claude neuve « BIB »** | `feat/bib-05-modele-stockage` | le plus capable (Fable 5.2, sinon Opus 5.5) | chef (migration, dépendance, sécurité des liens) | numéros de migration réservés (0087 et suivants proposés, après les trois de QJE-14) |
+| B3 : API des documents | BIB-06 | même session « BIB » | `feat/bib-06-api-documents` | le plus capable | chef (L) | BIB-05 |
+| B5 : espace de cours sur le service interne | BIB-07 | même session « BIB » | `feat/bib-07-espace-cours` | le plus capable | coordinateur (M, sans migration) | BIB-06 |
+| B7 : reprise des données de l'école pilote | BIB-08 | même session « BIB » | `feat/bib-08-reprise` | le plus capable | chef (données réelles ; lancement par le chef) | BIB-06, volumes du § 3.2 |
+| B4 : écrans web, à la charte | BIB-09 | Claude de VS Code (session de la charte) | `feat/bib-09-ecrans` | le plus capable | chef (L) | contrat d'API de BIB-06 écrit et testé |
+| B6 : mobile | BIB-10 | Claude de VS Code, **avec UIX-10d** (mêmes fichiers mobiles) | `feat/bib-10-mobile` | le plus capable | coordinateur (M) | BIB-06, UIX-10d |
+| avis de stage et idées de projet → STA (Q5, Q6 ; l'IA par le service de Planner) | STA, suite de STA-01 | Alexis et son agent | à fixer avec sa fiche | le plus fort de son éditeur | chef (données, consentement) | EDT-04, #230 |
+| B8 : import générique de dossier (Q11) | BIB-11 | Alexis et son agent | `feat/bib-11-import` | le plus fort de son éditeur | coordinateur (M) | BIB-06 |
+
+**Ordre** : le retrait de Meilisearch se fait en parallèle. Ensuite BIB-05, puis BIB-06. Viennent après, en parallèle et chacun dans ses fichiers : BIB-07 (`backend/services/cours/`), BIB-09 (`frontend/src/`) et BIB-10 (`mobile/src/`). Puis BIB-08, puis BIB-11.
+
+**Périmètres d'écriture** :
+
+- La session « BIB » écrit dans `backend/` : un dossier `services/bibliotheque/`, ses routes, contrôleurs, modèles et migrations, et `services/cours/` pour BIB-07.
+- Claude de VS Code écrit dans `frontend/src/` et `mobile/src/`.
+- Alexis écrit dans les fichiers de STA, et dans l'import de BIB-11, qui se range sous `services/bibliotheque/import/`.
+- Personne ne modifie `docs/plan/suivi.md`.
+
+**Critères communs** : N3 (poids affiché, reprise après coupure) pour BIB-06, BIB-09 et BIB-10. Un test d'isolation à deux écoles pour BIB-05 et BIB-06 (PLA-04). Le contrat d'API d'abord (README du plan, § 5).
+
+### Prompt de la session Claude neuve « BIB » (à coller par le chef)
+
+```text
+Tu es la session « BIB » de Planner : la Bibliothèque reconstruite dans la pile de Planner (voie B, validée par le chef le 21 nov.).
+Lis AGENTS.md, docs/plan/README.md, docs/plan/suivi.md (branche doc/coordination-equipe), puis l'étude
+docs/conception/bibliotheque/etude-studylib-pile.md (branche etude/bib-studylib-pile, ou main après sa fusion), § 1 à 8.
+Tes lots, dans l'ordre : BIB-05 (modèle, migrations, stockage S3 avec @aws-sdk/client-s3), BIB-06 (API), BIB-07 (espace de cours),
+BIB-08 (reprise des données, après les volumes). Une branche par lot, depuis origin/main, dans ..\travaux-planner\<nom>.
+Avant tout code : questions numérotées au chef, puis plan de conception (docs/plan/modeles/conception.md) dans docs/conception/bibliotheque/,
+avec les sections « Ce que disent les études » et EP-18, validé par le chef. Numéros de migration : les demander au coordinateur.
+Lis ..\StudyLib sans le modifier, pour reprendre ses règles (dépôt, modération, liens signés, droits).
+Règles : rien de réel dans le dépôt ; git add <fichiers> ; suivi.md non modifié ; fiche de session en fin de session ; jamais de git push.
+```
