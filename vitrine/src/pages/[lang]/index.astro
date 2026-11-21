@@ -1,5 +1,5 @@
 ---
-// Page d'accueil, dans chaque langue : assemble les neuf sections de src/components/accueil/.
+// Page d'accueil, dans chaque langue : assemble les dix sections de src/components/accueil/.
 import Gabarit from '../../components/socle/Gabarit.astro';
 import Ouverture from '../../components/accueil/Ouverture.astro';
 import Video from '../../components/accueil/Video.astro';
@@ -8,6 +8,7 @@ import Appel from '../../components/accueil/Appel.astro';
 import QuizJeux from '../../components/accueil/QuizJeux.astro';
 import Report from '../../components/accueil/Report.astro';
 import Donnees from '../../components/accueil/Donnees.astro';
+import Pourquoi from '../../components/accueil/Pourquoi.astro';
 import Bientot from '../../components/accueil/Bientot.astro';
 import Contact from '../../components/accueil/Contact.astro';
 import { traductions } from '../../i18n/index.js';
@@ -26,6 +27,7 @@ const t = traductions(lang, 'accueil');
   <QuizJeux t={t} langue={lang} />
   <Report t={t} />
   <Donnees t={t} langue={lang} />
+  <Pourquoi langue={lang} />
   <Bientot t={t} langue={lang} />
   <Contact t={t} />
 </Gabarit>
