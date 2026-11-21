@@ -16,20 +16,23 @@ import { ds } from '../../design-system/tokens';
 import { aujourdhui } from '../../../../shared/dates.js';
 import { localeEcran } from '../../utils/dates';
 
+/** Onglets que l'adresse peut ouvrir directement (administration seulement). */
+const ONGLETS_ADRESSE = { heures: 1, usage: 2 };
+
+/** Le numéro de l'onglet demandé par « ?onglet= », 0 sinon (les noms hérités de l'objet ne comptent pas). */
+const ongletDeLAdresse = (nom) => (Object.hasOwn(ONGLETS_ADRESSE, nom ?? '') ? ONGLETS_ADRESSE[nom] : 0);
+
 /**
  * Suivi du réalisé (phase P7) : avancement de chaque enseignement face à son rythme (alerte de
  * retard), heures réalisées par enseignant sur un mois et export CSV des vacataires
  * (components/suivi/HeuresDuMois.jsx), usage du mois pour la facturation (UsageDuMois.jsx, R-12).
  */
-/** Onglets que l'adresse peut ouvrir directement (administration seulement). */
-const ONGLETS_ADRESSE = { heures: 1, usage: 2 };
-
 export default function Suivi() {
     const { t, i18n } = useTranslation();
     const { user } = useAuth();
     const admin = user?.role === 'admin';
     // « ?onglet=heures » ouvre les heures du mois (lien « séances à vérifier », R-9) ; « ?onglet=usage », l'usage (« Tout voir », UIX-11)
-    const [onglet, setOnglet] = useState(() => (admin && ONGLETS_ADRESSE[new URLSearchParams(window.location.search).get('onglet')]) || 0);
+    const [onglet, setOnglet] = useState(() => (admin ? ongletDeLAdresse(new URLSearchParams(window.location.search).get('onglet')) : 0));
     const nombre = useMemo(() => new Intl.NumberFormat(localeEcran(i18n.language), { maximumFractionDigits: 1 }), [i18n.language]);
 
     return (
