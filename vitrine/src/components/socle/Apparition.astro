@@ -1,0 +1,20 @@
+---
+// Enveloppe animée au défilement (animations.js, Motion) : « apparaitre » (fondu et glissement) ou
+// « grandir » (l'élément grandit en montant vers le milieu de l'écran). Sans animation possible, le
+// contenu reste simplement affiché.
+interface Props {
+  effet?: 'apparaitre' | 'grandir';
+  delai?: number;
+  class?: string;
+}
+
+const { effet = 'apparaitre', delai = 0, class: classe } = Astro.props;
+const attributs = effet === 'grandir' ? { 'data-grandir': '' } : { 'data-apparition': '', 'data-delai': String(delai) };
+---
+<div class:list={['apparition', classe]} {...attributs}>
+  <slot />
+</div>
+
+<style>
+  .apparition { inline-size: 100%; }
+</style>

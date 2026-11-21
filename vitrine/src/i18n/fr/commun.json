@@ -1,0 +1,50 @@
+{
+  "produit": "Planner",
+  "evitement": "Aller au contenu",
+  "logo": "Planner, accueil",
+  "navigation": {
+    "label": "Navigation principale",
+    "menu": "Menu",
+    "accueil": "Accueil",
+    "solutions": "Solutions",
+    "fonctions": "Fonctions",
+    "emploiDuTemps": "Emploi du temps",
+    "enClasse": "En classe",
+    "quizEtJeux": "Quiz et jeux",
+    "coursEtAnnonces": "Cours et annonces",
+    "bibliotheque": "Bibliothèque",
+    "application": "Application",
+    "etablissement": "Pour l'établissement",
+    "securite": "Sécurité et données",
+    "bientot": "Bientôt",
+    "comparer": "Comparer",
+    "contact": "Nous contacter",
+    "parEtablissement": "Par établissement",
+    "parRole": "Par rôle",
+    "direction": "Direction",
+    "scolarite": "Scolarité",
+    "enseignants": "Enseignants",
+    "etudiants": "Étudiants",
+    "ressources": "Ressources"
+  },
+  "langues": {
+    "label": "Langue",
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "pied": {
+    "description": "L'emploi du temps et la vie de classe des établissements scolaires.",
+    "navigation": "Pages du site",
+    "droits": "© 2026 Planner"
+  },
+  "finDePage": {
+    "titre": "Voyez Planner sur vos propres règles.",
+    "texte": "Vous voulez voir Planner sur une école fictive, avec les règles de votre établissement ? Parlons-en.",
+    "accueil": "Retour à l'accueil"
+  },
+  "redirection": {
+    "titre": "Planner",
+    "lien": "Aller à la page d'accueil"
+  }
+}

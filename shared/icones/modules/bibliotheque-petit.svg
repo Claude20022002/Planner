@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
+<!-- Logo de l'application Bibliothèque (VIT-09a), dessin simplifié pour 24 à 32 px : la tuile et l'objet, sans reflet ni ombre. -->
+<defs>
+<linearGradient id="vit-bibliotheque-petit-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#077952"/><stop offset="1" stop-color="#004C3B"/></linearGradient>
+</defs>
+<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-bibliotheque-petit-tuile)"/>
+<rect x="12" y="74" width="72" height="7" rx="3.5" fill="#FFFFFF"/>
+<rect x="16" y="26" width="17" height="48" rx="3" fill="#FFFFFF"/><rect x="16" y="35" width="17" height="6" fill="#A6CAEE"/>
+<rect x="36" y="34" width="16" height="40" rx="3" fill="#FFC83D"/><rect x="36" y="42" width="16" height="6" fill="#17395C"/>
+<g transform="rotate(-16 56 74)"><rect x="56" y="28" width="17" height="46" rx="3" fill="#A6CAEE"/><rect x="56" y="37" width="17" height="6" fill="#FFFFFF"/></g>
+</svg>

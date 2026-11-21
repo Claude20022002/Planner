@@ -42,7 +42,8 @@ Cherchez ces écarts, ce sont eux qui comptent :
 | une branche a des commits mais pas de fiche de session | session perdue : relire les commits, demander la fiche à l'agent |
 | un fichier non commité dans un dossier de travail (souvent un plan) | travail invisible : le faire commiter, ou le signaler au chef |
 | deux branches ouvertes modifient le même fichier de code | collision : décider laquelle passe d'abord |
-| plusieurs branches modifient `suivi.md` ou `decisions.md` | normal : l'annoncer dans l'ordre de fusion (« garder toutes les lignes ») |
+| une branche de fonction modifie `suivi.md` | contraire à la règle du 18 nov. : lui faire retirer ses changements (garder la version de `main`), et reporter son état sur la branche de coordination |
+| plusieurs branches modifient `decisions.md` | normal : l'annoncer dans l'ordre de fusion (« garder toutes les lignes ») |
 | plus de 3 chantiers ouverts, ou une fonction prise hors chantier | à remonter au chef |
 | une branche ouverte depuis plus d'une semaine sans mise à jour depuis `main` | la faire mettre à jour |
 | une PR ouverte dont la CI est rouge | lire l'échec (`gh pr checks <n>`), renvoyer à l'agent |
@@ -67,7 +68,7 @@ Vous êtes tenu par les mêmes règles que les autres : une branche par tâche, 
 
 1. Choisir une fonction « à faire » d'un **chantier ouvert**, dont les dépendances sont faites. Si le chef n'a pas choisi, proposez-lui un ordre.
 2. Vérifier que personne ne la tient : `suivi.md`, les branches, les dossiers de travail, `docs/plan/missions/`. **Relire `git log` de la branche juste avant de remettre la mission** : une autre session peut y avoir travaillé depuis le tour d'état (le 15 novembre, MOT-13a a été codée pendant que sa fiche s'écrivait). Lister aussi les sessions Claude ouvertes et demander à celle du projet ce qu'elle tient.
-3. Fixer le **périmètre d'écriture** : les dossiers et fichiers que l'agent pourra modifier. Deux missions ouvertes n'écrivent jamais le même fichier de code. `docs/plan/suivi.md` (sa ligne), le fichier de son module et sa fiche de session sont toujours permis.
+3. Fixer le **périmètre d'écriture** : les dossiers et fichiers que l'agent pourra modifier. Deux missions ouvertes n'écrivent jamais le même fichier de code. Le fichier de son module et sa fiche de session sont toujours permis ; `docs/plan/suivi.md` ne l'est jamais : vous le tenez, sur votre branche (décision du chef du 18 nov.).
 4. Choisir l'agent. Dire au chef pourquoi en une ligne (voir § 4).
 5. Écrire la fiche `docs/plan/missions/<identifiant>.md` à partir de `docs/plan/modeles/mission.md`, et ajouter la ligne au tableau « Missions en cours » de `suivi.md`. Ces deux fichiers se commitent sur votre branche de coordination (`doc/coordination-<date>`), pas sur la branche de la mission.
 6. Remettre la mission :

@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "titre": "Solutions · Planner",
+    "description": "Planner for secondary schools, higher education and vocational training: what exists today, and what comes next."
+  },
+  "entete": {
+    "surtitre": "Solutions",
+    "titre": "One school, its own rules.",
+    "accroche": "Secondary schools, higher education, vocational training: here is what Planner already does for each, and what comes next."
+  },
+  "sommaire": "Types of institution",
+  "aujourdhui": "Today",
+  "bientot": "Coming soon",
+  "types": {
+    "collegeLycee": {
+      "surtitre": "Middle and high school",
+      "titre": "The whole class, in one gesture.",
+      "texte": "Teachers take attendance and run their quizzes from Planner. Timetable calculation for middle and high schools is in preparation.",
+      "aujourdhui": [
+        {
+          "titre": "Attendance",
+          "texte": "Pupils scan the projected code, or the teacher marks each one by hand: present, late or absent. Attendance is linked to the session."
+        },
+        {
+          "titre": "Quizzes and games",
+          "texte": "Live in class, or at each pupil's own pace."
+        },
+        {
+          "titre": "Rooms, exams and statistics",
+          "texte": "Rooms and their bookings, exams and their invigilation, room occupancy."
+        },
+        {
+          "titre": "Tracked rescheduling",
+          "texte": "The teacher asks, the school office approves, the pupils concerned are notified."
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "A calculated timetable",
+          "texte": "With language and option groups."
+        },
+        {
+          "titre": "Families",
+          "texte": "An account for parents, for one or several children."
+        },
+        {
+          "titre": "Absences, grades and report cards",
+          "texte": "Absences, grade entry and report cards."
+        },
+        {
+          "titre": "Export to the national platform",
+          "texte": "The school's data, exported to your country's national platform. In Morocco, Massar is one example."
+        },
+        {
+          "titre": "In Arabic",
+          "texte": "Planner in Arabic, as well as French and English."
+        }
+      ]
+    },
+    "superieur": {
+      "surtitre": "Higher education",
+      "titre": "Programmes, groups and campuses, worked out together.",
+      "texte": "For universities, specialised schools and BTS programmes: Planner works out the semester, then supports every session.",
+      "aujourdhui": [
+        {
+          "titre": "A calculated timetable",
+          "texte": "Each programme's lectures, tutorials and labs follow their groups and subgroups, and every refusal is explained."
+        },
+        {
+          "titre": "Several campuses",
+          "texte": "Each campus has its rooms, and the travel time between campuses counts in the calculation."
+        },
+        {
+          "titre": "Exams",
+          "texte": "Exam sessions, their rooms and their invigilation."
+        },
+        {
+          "titre": "Attendance, quizzes and games",
+          "texte": "Attendance by QR code or by hand, live quizzes and games, with the same account."
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "Grades and report cards",
+          "texte": "Grade entry and report cards, with LMD credits."
+        },
+        {
+          "titre": "Internships and alumni",
+          "texte": "Students' internships, and the link with former students."
+        }
+      ]
+    },
+    "formation": {
+      "surtitre": "Vocational training",
+      "titre": "Sessions change, the schedule follows.",
+      "texte": "For training centres: a calculated timetable that you adjust as sessions go by.",
+      "aujourdhui": [
+        {
+          "titre": "A calculated timetable",
+          "texte": "Every calculation is kept as a version, and the timetable is only visible once published."
+        },
+        {
+          "titre": "Rescheduling, PDF and calendar",
+          "texte": "Rescheduling is tracked, the timetable exports as a PDF, and everyone adds it to their calendar."
+        },
+        {
+          "titre": "Data import",
+          "texte": "Teachers, learners, groups and courses are imported from a CSV file."
+        }
+      ],
+      "bientot": [
+        {
+          "titre": "Admissions",
+          "texte": "Applications through to enrolment, with nothing typed twice."
+        },
+        {
+          "titre": "Verifiable documents",
+          "texte": "Certificates and attestations, with a code anyone can check."
+        },
+        {
+          "titre": "Internships",
+          "texte": "Learners' internships, tracked in Planner."
+        }
+      ]
+    }
+  }
+}

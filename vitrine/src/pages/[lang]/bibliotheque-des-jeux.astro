@@ -1,0 +1,22 @@
+---
+// Page « Bibliothèque des jeux » : les dix simulations, titre et résumé pris dans le catalogue.
+// On n'y joue pas. Pas de capture.
+import { Gamepad2 } from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import { traductions } from '../../i18n/index.js';
+import { LANGUES } from '../../i18n/langues.js';
+
+export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'bibliotheque-des-jeux');
+const icones = Array.from({ length: t('jeux.cartes').length }, () => Gamepad2);
+---
+<Gabarit langue={lang} page="bibliothequeJeux" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <GrilleCartes id="jeux" ton="gris" surtitre={t('jeux.surtitre')} titre={t('jeux.titre')} cartes={t('jeux.cartes')} icones={icones} />
+  <FinDePage langue={lang} />
+</Gabarit>

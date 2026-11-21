@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "titre": "For schools · Planner",
+    "description": "Occupancy statistics, rooms and bookings, exams and invigilation, several campuses, data import: Planner gives school leaders a clear view of the whole school."
+  },
+  "entete": {
+    "surtitre": "For schools",
+    "titre": "The whole school, at a glance.",
+    "accroche": "School leaders and the registrar's office find rooms, exams and timetable figures in one place."
+  },
+  "statistiques": {
+    "surtitre": "Statistics",
+    "titre": "The figures behind your timetable.",
+    "texte": "Planner shows how much each room is used and how many hours each teacher carries.",
+    "points": [
+      "Room occupancy",
+      "Teacher workload"
+    ],
+    "illustration": {
+      "label": "Example statistics screen: room occupancy and teacher workload",
+      "titreSalles": "Room occupancy",
+      "titreEnseignants": "Hours per week",
+      "salles": [
+        "Hall A",
+        "Room B12",
+        "Lab 2",
+        "Room C04",
+        "Hall B"
+      ],
+      "enseignants": [
+        "Tch. A",
+        "Tch. B",
+        "Tch. C",
+        "Tch. D",
+        "Tch. E"
+      ]
+    }
+  },
+  "quotidien": {
+    "surtitre": "Day to day",
+    "titre": "What the registrar's office manages in Planner.",
+    "cartes": [
+      {
+        "titre": "Rooms and bookings",
+        "texte": "Rooms, their capacity, and bookings outside of classes."
+      },
+      {
+        "titre": "Exams",
+        "texte": "Exam sessions, their rooms and their invigilation."
+      },
+      {
+        "titre": "Several campuses",
+        "texte": "Each campus has its rooms, and travel time between campuses counts in the calculation."
+      },
+      {
+        "titre": "Data import",
+        "texte": "Teachers, students, programmes, groups and courses import from a CSV file."
+      },
+      {
+        "titre": "Accounts and roles",
+        "texte": "Everyone has an account and a role: student, teacher or administration."
+      },
+      {
+        "titre": "In your school's colours",
+        "texte": "The school's name, logo and colours appear throughout Planner."
+      }
+    ]
+  }
+}

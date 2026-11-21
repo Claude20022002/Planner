@@ -1,0 +1,26 @@
+---
+// Titre d'une section : très gros caractères, interlignage serré, surtitre facultatif au-dessus.
+// La taille (géant, grand, moyen) est indépendante du niveau (h1, h2, h3).
+interface Props {
+  niveau?: 1 | 2 | 3;
+  taille?: 'geant' | 'grand' | 'moyen';
+  surtitre?: string;
+  id?: string;
+}
+
+const { niveau = 2, taille = 'grand', surtitre, id } = Astro.props;
+const Balise = `h${niveau}`;
+---
+<div class="bloc">
+  {surtitre && <p class="surtitre">{surtitre}</p>}
+  <Balise id={id} class:list={['titre', taille]}><slot /></Balise>
+</div>
+
+<style>
+  .bloc { display: grid; gap: var(--espace-2); }
+  .surtitre { font-size: var(--texte-accroche); font-weight: 600; color: var(--couleur-surtitre, var(--bleu)); }
+  .titre { font-weight: 700; line-height: var(--interligne-titre); letter-spacing: -0.025em; text-wrap: balance; }
+  .geant { font-size: var(--titre-geant); letter-spacing: -0.035em; }
+  .grand { font-size: var(--titre-grand); }
+  .moyen { font-size: var(--titre-moyen); font-weight: 650; letter-spacing: -0.015em; }
+</style>
