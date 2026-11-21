@@ -51,6 +51,7 @@ Lu dans `feat/uix-10b-web-charte` (`e0b9af3d`), qui sera sur `main` avant le cod
 | 4 | Des taux de présence des élèves par classe ? | pas dans UIX-11 : aucune route ne les calcule | **Chef, 21 nov. : pas dans UIX-11.** Ils iront à PIL (étape 5) ou à une fonction à part, avec leur plan | non |
 | 5 | Le **taux de conflits** mélange deux périodes (§ 2) : le garder ? | **le retirer de la bande**. Les conflits non résolus restent comptés dans « À traiter », qui ouvre leurs lignes. Le corriger demanderait une date au conflit côté serveur, hors de ce plan | **Coordinateur, 21 nov. : le retirer.** Les conflits non résolus restent comptés dans « À traiter » ; la correction côté serveur est un correctif à part, au chef | non |
 | 6 | Quelle **semaine** pour « cette semaine » ? | du lundi au dimanche qui contiennent aujourd'hui, à l'heure du navigateur, comme `toLocalISODate` du panneau. Le calcul est isolé dans `periodes.js`, pour qu'un jour de début réglé par école (PLA-13) s'y branche sans rien recoder | **Coordinateur, 21 nov. : du lundi au dimanche**, à l'heure du navigateur, isolé dans `periodes.js` (PLA-13, EP-5) | non |
+| 8 | Le panneau liste jusqu'à 100 séances (≈ 6 000 px) : placés dessous (§ 4.3 d'origine), « Cette semaine » et « Suivi » finissaient en bas de la page (captures du 21 nov.) | les chiffres à droite, le panneau seul à gauche ; sur téléphone, le panneau en dernier | **Chef, 21 nov., sur les captures : les chiffres à droite.** Le panneau ne change pas de forme ; § 4.3 corrigé | non |
 
 ## 4. Solution
 
@@ -97,8 +98,10 @@ Le taux de conflits n'est plus affiché (réponse 5). La bande ne garde que des 
 
 ### 4.3 La mise en page
 
-- **Ordinateur (≥ 1200 px)** : à gauche, le panneau (A), puis « Cette semaine » (C) et « Suivi » (D) côte à côte ; à droite, « À traiter » (B), « À venir » (E), « Usage du mois » (F). C'est l'ordre d'urgence : ce qui se passe, ce qui attend, puis ce qui se mesure.
-- **Téléphone (390 px)** : une colonne, dans l'ordre B, A, C, D, E, F. Ce qui attend une décision passe en premier.
+- **Ordinateur (≥ 1200 px)** : à gauche, le panneau (A) seul ; à droite, l'un sous l'autre, « À traiter » (B), « Cette semaine » (C), « Suivi » (D), « À venir » (E), « Usage du mois » (F). Le panneau peut lister 100 séances : les chiffres restent ainsi en haut de la page (réponse 8 du chef, sur les captures).
+- **Téléphone (390 px)** : une colonne, dans l'ordre B, C, D, E, F, A. Ce qui attend une décision passe en premier, puis les chiffres ; le panneau, le plus long, vient en dernier (réponse 8).
+- **Entre les deux (900 à 1199 px)** : deux colonnes de blocs (B seul, puis C et D, E et F), le panneau en dessous.
+- L'ordre du code est celui du téléphone : la tabulation suit l'ordre de lecture sur téléphone, et passe sur ordinateur de la colonne de droite au panneau.
 - Les titres des blocs suivent le thème d'UIX-10b (Inter ; les capitales ne restent qu'au panneau). Un chiffre est un bouton, pas un lien : son nom accessible dit le chiffre, son libellé et sa période (« 12 séances planifiées, cette semaine : voir les lignes »). Le focus est celui de la charte.
 
 ## 5. Fichiers créés ou modifiés
