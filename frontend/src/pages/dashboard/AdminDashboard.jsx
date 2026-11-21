@@ -16,13 +16,15 @@ import VoletLignes from '../../components/dashboard/VoletLignes';
  * Places des blocs (UIX-11, plan § 4.3, réponse 8 du chef). L'ordre du code est celui du téléphone,
  * une colonne : ce qui attend une décision (B), puis les chiffres (C à F), puis le panneau (A), le
  * plus long (jusqu'à 100 séances). Sur ordinateur, le panneau seul à gauche et les blocs l'un sous
- * l'autre à droite ; la dernière rangée « 1fr » absorbe la hauteur du panneau.
+ * l'autre à droite ; la dernière rangée « 1fr » absorbe la hauteur du panneau. Le panneau garde
+ * au moins 576 px (son tableau en demande 560, plus son cadre) : plus étroit, il défilait de côté
+ * sans pouvoir prendre le focus (axe-core, scrollable-region-focusable, à 1200 et 1280 px).
  */
 const grille = {
   display: 'grid',
   gap: { xs: 2, md: 3 },
   alignItems: 'start',
-  gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'repeat(2, minmax(0, 1fr))', lg: 'minmax(0, 1fr) minmax(320px, 400px)' },
+  gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'repeat(2, minmax(0, 1fr))', lg: 'minmax(576px, 1fr) minmax(300px, 400px)' },
   gridTemplateRows: { lg: 'auto auto auto auto 1fr' },
   gridTemplateAreas: {
     xs: '"b" "c" "d" "e" "f" "a"',
