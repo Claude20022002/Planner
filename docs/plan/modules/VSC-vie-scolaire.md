@@ -29,7 +29,7 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| VSC-01 | **Modèle de données du scolaire** (conception seule, avec diagrammes) : entités, correspondance avec le supérieur, profils, plusieurs écoles, plan de migrations, propriétaires des tables, appartenance aux groupes transversaux (Q-3 de conception-c5, retenue le 8 novembre). Réponse à Q-20 (compte de l'élève) | C-5 | 1 | L | — | conception rédigée, relecture attendue |
+| VSC-01 | **Modèle de données du scolaire** (conception seule, avec diagrammes) : entités, correspondance avec le supérieur, profils, plusieurs écoles, plan de migrations, propriétaires des tables, appartenance aux groupes transversaux (Q-3 de conception-c5, retenue le 8 novembre). Réponse à Q-20 (compte de l'élève) | C-5 | 1 | L | — | N7 documenté dans C-5 § 2.1 (système d’évaluation par classe et année, modèle commun à VSC-04 et VSC-08) ; relecture des groupes A et B attendue |
 | VSC-02 | Élèves et familles : responsables légaux, inscription d'une année, réinscription, fratries | F-10 | 4 | L | VSC-01, PLA-01 | à faire |
 | VSC-03 | Absences prévenues aux parents (envoi par COM), justificatifs, saisie déléguée (EP-6) | F-12 | 4 | M | VSC-02, COM-01 | à faire |
 | VSC-04 | Notes et bulletins : périodes, évaluations, coefficients, note absente distincte de zéro, verrouillage par période, tableau d'avancement de la saisie, conseil de classe ; comprend le carnet de notes officiel et les grilles d'évaluation | F-13, EC-3, EC-4 | 4 | XL | VSC-02, Q-06, Q-16 | à faire |
