@@ -163,20 +163,20 @@ Conséquences pour le plan, à reporter par le coordinateur :
 
 ## 7. Les icônes de tuile (pour Codex)
 
-Le chef veut une icône par module vendable : **en SVG, du même style que les sept logos de VIT-09a**, pour l'application et la grille ; **et en images générées**, pour le site et les supports de vente (réponse du 21 nov.). Codex les fait **après VIT-11**, une fois cette liste validée.
+Le chef veut une icône par module vendable : **en SVG, du même style que les sept logos de VIT-09a**, pour l'application et la grille ; **et en images générées**, pour le site et les supports de vente (réponse du 21 nov.). Codex les fait **après VIT-11**, avant VIT-15 : mission [VIT-09c](../plan/missions/vit-09c-logos-modules.md) (branche de coordination).
 
 | N° | Module vendable | Logo existant (`shared/icones/modules/`) | À dessiner |
 |---|---|---|---|
 | 1 | Emploi du temps | `planning` | — (image générée seulement) |
 | 2 | Présences | — | oui |
-| 3 | Espace de cours | `pedagogie` (aujourd'hui « Enseignements ») | à trancher : reprendre `pedagogie` ou dessiner `cours` |
+| 3 | Espace de cours | `pedagogie` (aujourd'hui « Enseignements ») | oui : `cours`, nouveau (question 6) |
 | 4 | Quiz et jeux | `activites` | — |
 | 5 | Bibliothèque | `bibliotheque` | — |
 | 6 | Annonces et messages | `annonces` | — |
 | 7 à 17 | Vacataires et heures, Évaluations, Inscriptions, Documents vérifiables, Stages, Frais et caisse, Formation et financeurs, Vie scolaire et familles, Échanges avec l'État, Paiements en ligne, Pilotage | — | oui, onze logos |
 | socle | Personnes, Établissement | `personnes`, `etablissement` | — |
 
-Soit **douze ou treize SVG** à dessiner, et **dix-sept images générées**. Les images générées suivent la charte (`shared/charte/`) et EP-19 (une page du site pèse au plus 200 Ko).
+Soit **treize SVG** à dessiner, et **dix-sept images générées**. Les images générées suivent la charte (`shared/charte/`) et EP-19 (une page du site pèse au plus 200 Ko).
 
 ## 8. Questions au chef
 
