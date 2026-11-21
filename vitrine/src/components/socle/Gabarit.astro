@@ -9,6 +9,7 @@ import '../../styles/base.css';
 import EnTete from './EnTete.astro';
 import PiedDePage from './PiedDePage.astro';
 import { traductions } from '../../i18n/index.js';
+import { fichiersVideo, langueVideo } from '../accueil/empreinteVideo.js';
 import { LANGUES_PUBLIEES, chemin, direction, estPubliee } from '../../i18n/langues.js';
 
 interface Props {
@@ -20,6 +21,11 @@ interface Props {
 
 const { langue, page, titre, description } = Astro.props;
 const t = traductions(langue, 'commun');
+const locales = { fr: 'fr_FR', en: 'en_GB' };
+const ogLocale = locales[langue] ?? 'fr_FR';
+const imageVideo = fichiersVideo(langueVideo(langue)).image.nom;
+const ogImage = Astro.site ? new URL(`/videos/${imageVideo}`, Astro.site).href : undefined;
+const canonique = Astro.site ? new URL(chemin(langue, page), Astro.site).href : undefined;
 ---
 <!doctype html>
 <html lang={langue} dir={direction(langue)}>
@@ -29,6 +35,21 @@ const t = traductions(langue, 'commun');
     <title>{titre}</title>
     <meta name="description" content={description} />
     {!estPubliee(langue) && <meta name="robots" content="noindex" />}
+    {canonique && <link rel="canonical" href={canonique} />}
+    {canonique && (
+      <>
+        <meta property="og:title" content={titre} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonique} />
+        <meta property="og:locale" content={ogLocale} />
+        {ogImage && <meta property="og:image" content={ogImage} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={titre} />
+        <meta name="twitter:description" content={description} />
+        {ogImage && <meta name="twitter:image" content={ogImage} />}
+      </>
+    )}
     {Astro.site && LANGUES_PUBLIEES.map((l) => <link rel="alternate" hreflang={l} href={new URL(chemin(l, page), Astro.site).href} />)}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#FFFFFF" />

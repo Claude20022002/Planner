@@ -11,7 +11,7 @@
   "calcul": {
     "surtitre": "The calculation",
     "titre": "All your rules, kept together.",
-    "texte": "Planner looks for the best possible week: hard rules are always kept, soft rules as far as possible.",
+    "texte": "Planner looks for the week that best fits your rules: hard rules are always kept, soft rules as far as possible.",
     "points": [
       "Rooms and their capacity",
       "Teachers, visiting lecturers included, and their availability",
