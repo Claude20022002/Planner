@@ -3,7 +3,7 @@
 #
 #  Traefik de n8n tient déjà les ports 80 et 443. Ici :
 #   - aucune construction : les images arrivent toutes faites (docker save | docker load) ;
-#   - Caddy n'a aucun port publié sur l'hôte ; Traefik l'atteint sur le réseau n8n_default ;
+#   - Traefik atteint Caddy et la vitrine optionnelle sur le réseau n8n_default ;
 #   - les noms publics viennent de .env.docker (SITE_ADDRESS, FICHIERS_ADDRESS, QUIZ_ADDRESS) ;
 #   - chaque conteneur a une limite de mémoire : en cas de manque, ce sont eux qui sont
 #     arrêtés, jamais l'application voisine ;
@@ -61,7 +61,7 @@ services:
 
   caddy:
     logging: *journaux
-    # Aucun port sur l'hôte : 80 et 443 restent à Traefik. Seul Caddy rejoint n8n_default.
+    # Aucun port sur l'hôte : 80 et 443 restent à Traefik. Caddy rejoint n8n_default.
     ports: !reset []
     volumes:
       - ./deploy/vps/Caddyfile.vps:/etc/caddy/Caddyfile:ro
@@ -84,6 +84,24 @@ services:
       - traefik.http.routers.quiz.tls.certresolver=mytlschallenge
       - traefik.http.routers.quiz.service=caddy
       - traefik.http.services.caddy.loadbalancer.server.port=80
+
+  vitrine:
+    profiles: [vitrine]
+    # Valeurs inertes pour la lecture du Compose avec un ancien fichier .env.docker.
+    image: "docker.io/claude20022002/planner-vitrine@${VITRINE_IMAGE_DIGEST:-sha256:0000000000000000000000000000000000000000000000000000000000000000}"
+    restart: unless-stopped
+    logging: *journaux
+    mem_limit: 64m
+    networks:
+      - n8n_default
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: n8n_default
+      traefik.http.routers.vitrine.rule: "Host(`${VITRINE_ADDRESS:-vitrine.invalid}`)"
+      traefik.http.routers.vitrine.entrypoints: websecure
+      traefik.http.routers.vitrine.tls.certresolver: mytlschallenge
+      traefik.http.routers.vitrine.service: vitrine
+      traefik.http.services.vitrine.loadbalancer.server.port: "8080"
 
   studylib:
     logging: *journaux

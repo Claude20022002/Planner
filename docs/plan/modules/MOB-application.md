@@ -27,6 +27,7 @@
 | MOB-06 | Emploi du temps lisible hors ligne (EP-3) | F-15 | 3 | M | — | à faire |
 | MOB-07 | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes les installations) | I-12 | 3 | M | — | à faire |
 | MOB-08 | Appel à la main sans réseau, sur le téléphone de l'enseignant : envoyé au retour du réseau avec l'heure réelle de la saisie ; le QR code reste en ligne (N2, synthèse des concurrents) | — (décision du chef du 21 nov.) | 3 | M (provisoire) | MOB-02 ; plan conçu avec l'étude EP-18 | à faire |
+| MOB-09 | pdf.js servi par l'application, et non plus chargé depuis cdnjs à l'ouverture d'un PDF sur Android (`mobile/src/documents/Lecteur.jsx:15`) : plus aucun envoi vers un tiers à la lecture d'un document (EP-13, décision du 16 nov. ; numérotée MOB-08 le 16 nov., renumérotée le 21 nov.) | — | libre | S | — | à faire |
 
 ## Critères de « terminé »
 
@@ -35,10 +36,12 @@
 - **MOB-06** : en mode avion, la semaine en cours reste lisible, avec la date de la dernière mise à jour.
 - **MOB-07** : la même construction se connecte à deux installations différentes.
 - **MOB-08** : en mode avion, l'enseignant fait l'appel de sa séance ; au retour du réseau, les présences arrivent au serveur avec l'heure de la saisie, sans doublon ni perte, et un conflit avec un appel fait entre-temps sur le site est montré, pas écrasé.
+- **MOB-09** : un PDF s'ouvre sur Android en mode avion ; aucune adresse externe dans `Lecteur.jsx` ; la liste des envois sortants est à jour.
+- **Toute publication dans un magasin** (App Store, Google Play) : les fiches « confidentialité » décrivent ce que l'application collecte vraiment, et sont relues avant l'envoi (décision du 15 nov.).
 
 ## Exigences produit
 
-EP-3, EP-7, EP-11.
+EP-3, EP-7, EP-11, EP-13.
 
 ## Références
 

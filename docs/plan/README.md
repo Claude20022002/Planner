@@ -68,7 +68,7 @@ Les douze derniers modules (COM à STK) viennent de l'inventaire du 11 novembre 
 | **5. Le lycée, puis le collège** | Une personne extérieure configure une école et génère **un vrai collège avec groupes de langue** (EP-10 : 600 élèves en moins de 10 min) ; les écrans parlent la langue de l'école | MOT-06, MOT-07, VSC-07, UIX-02, ADM-04 (modèle du scolaire), mesure du collège (suite de MOT-02) |
 | **6. Pack « École privée »** | Une école fictive de la maternelle au lycée tourne de bout en bout : familles, absences prévenues, notes et bulletins, espace parents en arabe et en français | VSC-02 à VSC-04, ADM-05, COM-01 à COM-03, ETA-01, ETA-02, PAI-01, PAI-02, MOB-05, UIX-04, MOT-09 |
 | **7. Durée de vie** | Passage d'année sans aide ; export complet d'une école ; grande échelle | ADM-06, ADM-07, PLA-08 à PLA-13, MOT-10, MOT-11, EDT-05 ; reportés : ETA-03, PAI-03, PIL-01, PIL-02, GRP-01, GRP-02, STA-02, SER-01, STK-01 |
-| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01, QJE-04, QJE-05, VIT-01 à VIT-03, COU-01, EXP-09, QUA-01, QUA-02, QUA-04, QUA-05, MKT-01 à MKT-07 |
+| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01, QJE-04, QJE-05, VIT-01 à VIT-03, COU-01, EXP-09, QUA-01, QUA-02, QUA-04, QUA-05, MOB-09, MKT-01 à MKT-07 |
 
 FIN, COM et PAI ne se construisent qu'après les entretiens de VEN-02, qui confirment le module d'achat de chaque marché (décision du 13 novembre) ; pour l'étape 3, ces entretiens se mènent auprès d'écoles du supérieur.
 
@@ -158,6 +158,7 @@ Tirées des reproches faits aux autres outils ([étude de marché](../etude-marc
 | EP-10 | Rapide à grande échelle | génération d'un collège de 600 élèves en moins de 10 min ; pages de gestion en moins de 1 s | 3 |
 | EP-11 | Accessible et bilingue | contraste AA ; français, arabe (droite à gauche) et anglais | 2 (droite à gauche), 4 (arabe complet) |
 | EP-12 | Les données restent à l'école | isolation testée sur chaque route ; export complet à tout moment | 2 et 5 |
+| EP-13 | Aucun envoi caché | liste publique des envois sortants (destinataire, données, raison), à jour (QUA-09) ; toute PR qui ajoute un envoi sortant la met à jour | 1 |
 | EP-18 | S'adapter à tous les contextes | chaque fonction marche **sans téléphone de l'élève** (le QR code et les jeux sur téléphone sont des options, jamais le seul chemin), avec **peu ou pas de connexion**, et avec ce qu'a l'école (un seul écran projeté, du papier imprimé). Aucun écran ni aucun texte ne suppose un pays : les outils de l'État sont ceux du pays de l'école (décision du chef du 18 nov., contexte de la RDC) | toutes |
 | EP-19 | Sobre et mesuré | une page du site pèse **au plus 200 Ko transférés**, hors média lancé à la demande, vérifié en CI ; le **premier chargement de l'application web est mesuré** et écrit dans chaque PR qui le change (décision du chef du 21 nov., N1 de la [synthèse des concurrents](../etude-marche/14-reprendre-et-depasser.md)) | toutes |
 
