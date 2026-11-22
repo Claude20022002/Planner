@@ -74,3 +74,15 @@ export const detailVersion = async (id) => {
         retraits: retirees.map((c) => ({ id_contrainte: c.id_contrainte, gabarit: c.gabarit, cibles: c.cibles, parametres: c.parametres, nature: c.nature, insistance: c.insistance, phrase: phraseDe(c, noms) })),
     };
 };
+
+/**
+ * Ce que le journal de sécurité retient d'une version (R-6) : son numéro, les clés touchées, le nombre de
+ * contraintes ajoutées et retirées. Jamais une valeur.
+ */
+export const resumeVersion = async (id_version) => {
+    const [valeurs, contraintes] = await Promise.all([
+        ValeurParametre.findAll({ where: { id_version }, attributes: ["cle"], raw: true }),
+        ContrainteDeclaree.findAll({ where: { id_version }, attributes: ["gabarit", "retire_id"], raw: true }),
+    ]);
+    return { id_version, cles: [...new Set(valeurs.map((v) => v.cle))], nb_contraintes: contraintes.filter((c) => c.gabarit).length, nb_retraits: contraintes.filter((c) => c.retire_id).length };
+};

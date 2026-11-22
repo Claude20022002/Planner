@@ -2,7 +2,8 @@ import { asyncHandler } from "../middleware/asyncHandler.js";
 import { valeursEnVigueur } from "../services/moteur/valeurs/lecture.js";
 import { decrireReglages } from "../services/moteur/valeurs/valeursDeLEcole.js";
 import { apercuVersion } from "../services/moteur/valeurs/apercu.js";
-import { detailVersion, listerVersionsAllegees } from "../services/moteur/valeurs/historique.js";
+import { detailVersion, listerVersionsAllegees, resumeVersion } from "../services/moteur/valeurs/historique.js";
+import { contexteDe, journaliser } from "../services/journalSecurite.js";
 import { annulerVersion } from "../services/moteur/valeurs/annulation.js";
 import { abandonnerVersion, appliquerVersion, creerVersion, ErreurReglages } from "../services/moteur/valeurs/versions.js";
 import { corpsErreur } from "../utils/erreurs.js";
@@ -16,6 +17,10 @@ import { corpsErreur } from "../utils/erreurs.js";
 
 const AUTEUR = "etablissement";
 const PORTEES_DE_CIBLE = ["cycle", "niveau", "filiere", "groupe", "matiere", "enseignant", "salle"];
+
+// Journal de sécurité (R-6) : qui a appliqué, abandonné ou annulé quelle version ; les clés, jamais les valeurs
+const noter = async (req, evenement, id_version, plus = {}) =>
+    journaliser(contexteDe(req), { evenement, acteur: req.user, id_user: req.user.id_user, details: { ...(await resumeVersion(id_version)), ...plus } });
 
 // Les refus détaillés suivent le format commun de l'API : { message, code, violations }
 const avecRefus = (travail) =>
@@ -69,6 +74,7 @@ export const postVersionMoteur = avecRefus(async (req, res) => {
     const { libelle, date_effet, lignes, regles, contraintes, retirer, base } = req.body;
     const appliquer = req.body.appliquer === true;
     const version = await creerVersion({ libelle, date_effet, lignes, regles, contraintes, retirer, appliquer, base, id_auteur: req.user.id_user, auteur: AUTEUR });
+    if (appliquer) await noter(req, "parametres_version_appliquee", version.id_version);
     res.status(201).json(version);
 });
 
@@ -79,15 +85,21 @@ export const postApercuVersionMoteur = avecRefus(async (req, res) => {
 
 // ✅ Appliquer un brouillon
 export const appliquerVersionMoteur = avecRefus(async (req, res) => {
-    res.json(await appliquerVersion(req.params.id, { auteur: AUTEUR }));
+    const version = await appliquerVersion(req.params.id, { auteur: AUTEUR });
+    await noter(req, "parametres_version_appliquee", version.id_version);
+    res.json(version);
 });
 
 // 🗑️ Abandonner un brouillon
 export const abandonnerVersionMoteur = asyncHandler(async (req, res) => {
-    res.json(await abandonnerVersion(req.params.id));
+    const version = await abandonnerVersion(req.params.id);
+    await noter(req, "parametres_version_abandonnee", version.id_version);
+    res.json(version);
 });
 
 // ↩️ Annuler une version appliquée : crée sa version inverse
 export const annulerVersionMoteur = asyncHandler(async (req, res) => {
-    res.status(201).json(await annulerVersion(req.params.id, { id_auteur: req.user.id_user, auteur: AUTEUR }));
+    const inverse = await annulerVersion(req.params.id, { id_auteur: req.user.id_user, auteur: AUTEUR });
+    await noter(req, "parametres_version_annulee", inverse.annule_version, { version_inverse: inverse.id_version });
+    res.status(201).json(inverse);
 });

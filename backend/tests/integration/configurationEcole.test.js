@@ -1,6 +1,6 @@
 import { resetDatabase, closeDatabase, createUser, loginAs } from "./helpers/testApp.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
-import { ContrainteDeclaree, ValeurParametre, VersionParametres } from "../../models/index.js";
+import { ContrainteDeclaree, JournalSecurite, ValeurParametre, VersionParametres } from "../../models/index.js";
 
 /**
  * ADM-02a : ce que le panneau de configuration de l'école lit et écrit par /api/moteur
@@ -169,5 +169,37 @@ describe("Aperçu, puis créer et appliquer avec la version de base (R-2, R-4)",
         const corps = { appliquer: true, lignes: [{ cle: "LOG.TRAJET.CAMPUS_DEFAUT", valeur: 20 }] };
         expect((await client.send("post", "/api/moteur/versions", corps)).body.code).toBe("BASE_INVALIDE");
         expect((await client.send("post", "/api/moteur/versions", { ...corps, base: 999999 })).body.code).toBe("BASE_INVALIDE");
+    });
+});
+
+describe("Journal de sécurité (R-6)", () => {
+    const dernier = async (evenement) => JournalSecurite.findOne({ where: { evenement }, order: [["id_evenement", "DESC"]] });
+    const details = (ligne) => (typeof ligne.details === "string" ? JSON.parse(ligne.details) : ligne.details);
+
+    test("appliquer (deux chemins), abandonner, annuler : l'auteur et les clés, jamais les valeurs", async () => {
+        const { version_courante } = (await client.get("/api/moteur/reglages")).body;
+        const directe = await client.send("post", "/api/moteur/versions", { appliquer: true, base: version_courante, lignes: [{ cle: "LOG.TRAJET.CAMPUS_DEFAUT", valeur: 25 }], contraintes: [plage] });
+        expect(directe.status).toBe(201);
+        let ligne = await dernier("parametres_version_appliquee");
+        expect(ligne.id_user).toBe(admin.id_user);
+        expect(details(ligne)).toEqual({ id_version: directe.body.id_version, cles: ["LOG.TRAJET.CAMPUS_DEFAUT"], nb_contraintes: 1, nb_retraits: 0 });
+        expect(JSON.stringify(details(ligne))).not.toMatch(/25/);
+
+        const parBrouillon = await creerEtAppliquer([{ cle: "HOR.REGLE.TROUS", valeur: false }]);
+        expect(details(await dernier("parametres_version_appliquee"))).toMatchObject({ id_version: parBrouillon, cles: ["HOR.REGLE.TROUS"] });
+
+        const brouillon = await client.send("post", "/api/moteur/versions", { lignes: [{ cle: "HOR.REGLE.TROUS", valeur: true }] });
+        expect((await client.send("post", `/api/moteur/versions/${brouillon.body.id_version}/abandonner`)).status).toBe(200);
+        expect(details(await dernier("parametres_version_abandonnee"))).toMatchObject({ id_version: brouillon.body.id_version });
+
+        const inverse = await client.send("post", `/api/moteur/versions/${parBrouillon}/annuler`);
+        expect(inverse.status).toBe(201);
+        expect(details(await dernier("parametres_version_annulee"))).toEqual({ id_version: parBrouillon, cles: ["HOR.REGLE.TROUS"], nb_contraintes: 0, nb_retraits: 0, version_inverse: inverse.body.id_version });
+    });
+
+    test("un refus n'écrit rien au journal", async () => {
+        const avant = await JournalSecurite.count({ where: { evenement: "parametres_version_appliquee" } });
+        expect((await client.send("post", "/api/moteur/versions", { appliquer: true, base: 0, lignes: [{ cle: "HOR.REGLE.MAX_H_JOUR_GROUPE", valeur: 9999 }] })).status).not.toBe(201);
+        expect(await JournalSecurite.count({ where: { evenement: "parametres_version_appliquee" } })).toBe(avant);
     });
 });
