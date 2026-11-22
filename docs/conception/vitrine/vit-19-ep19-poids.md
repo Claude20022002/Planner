@@ -45,7 +45,7 @@ Pour chaque page HTML de `dist/{fr,en}/**/index.html` (et `dist/index.html` s'il
 
 1. Lire le HTML.
 2. Collecter les URLs **locales** du premier chargement : la page elle-même ; `link[rel=stylesheet]` ; `script[src]` ; `img[src]` / `source[srcset]` (premier candidat) ; `link[rel=preload|modulepreload]`. Ignorer les URL absolues hors origine et `/videos/*`.
-3. **Suivre ce que le navigateur charge sans le HTML** (précision 2) : pour chaque script local compté, résoudre les `import` **statiques** récursivement (chaque fichier une fois) ; pour chaque feuille de style, résoudre les `url()` (polices, images), sauf `/videos/*`. Les `import()` **dynamiques** restent hors total.
+3. **Suivre ce que le navigateur charge sans le HTML** (précision 2) : pour chaque script local compté, résoudre les `import` **statiques** récursivement (chaque fichier une fois) ; pour chaque feuille de style, résoudre les `url()` (polices, images), sauf `/videos/*`. Pour un `@font-face` avec `unicode-range`, ne compter que les sous-ensembles qui croisent la langue de la page (`fr`/`en` : latin ; sinon tous si pas de plage). Les `import()` **dynamiques** restent hors total.
 4. Pour chaque fichier unique : taille **gzip niveau 1** (`zlib.gzipSync(..., { level: 1 })`) si le type est dans `gzip_types` **et** la taille brute ≥ 1 024 octets ; sinon taille **brute** (images, woff2, petits fichiers).
 5. Sommer. Si somme > 204 800 : échec avec la page, le total et les cinq plus gros fichiers. En succès : écrire la page la plus lourde et son poids (précision 3).
 
