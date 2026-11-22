@@ -12,6 +12,7 @@ import { demarrerRenvoiQuotidien } from "./services/calendrier/envoiEdt.js";
 import { demarrerRappelsAppel } from "./services/presences/rappelAppel.js";
 import { passage } from "./services/taches/periodiques.js";
 import { passerDesactivations } from "./services/desactivation/programmation.js";
+import { resumerEnvois } from "./services/envois/resumeEnvois.js";
 
 dotenv.config();
 
@@ -50,6 +51,8 @@ const seedIfRequested = async () => {
         console.log(applied.length ? `--> ${applied.length} migration(s) appliquée(s)` : "--> Schéma à jour");
 
         await seedIfRequested();
+        // Ce qui part chez des tiers, et les réglages incomplets (QUA-10, EP-13)
+        resumerEnvois();
 
         app.listen(PORT, () => {
             console.log(`--> Serveur lancé sur http://localhost:${PORT}`);

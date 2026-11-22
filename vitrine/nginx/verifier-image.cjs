@@ -46,7 +46,7 @@ async function verifierHttp() {
   }
   const redirection = await verifierReponse('/fr', 301, { method: 'HEAD' });
   assert.equal(redirection.headers.get('location'), '/fr/');
-  for (const chemin of ['/ar/', '/adresse-inconnue/', '/adresse-inconnue', '/_astro/']) {
+  for (const chemin of ['/adresse-inconnue/', '/adresse-inconnue', '/_astro/', '/ar/']) {
     await verifierReponse(chemin, 404, { method: 'HEAD' });
   }
 

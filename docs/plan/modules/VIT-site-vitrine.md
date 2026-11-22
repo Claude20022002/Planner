@@ -41,6 +41,7 @@
 | VIT-11 | Catalogue, FAQ et méga-menu par catégorie | — | libre | M | VIT-10 | VIT-17 et VIT-18 intégrées, [recette locale](../../sessions/2026-11-21-feat-vit-11-catalogue-faq-3.md) réussie ; PR #236 à actualiser |
 | VIT-17 | Correctifs techniques du site : menu mobile, vidéo sur demande, pages `/ar/`, Open Graph, grilles, `README.md` | — | libre | S | VIT-06 (sous-domaine) | PR ouverte (#237) |
 | VIT-18 | Textes exacts du site : phrases P1 à P6 de l'expertise, l'IA « activée pour votre école » (D2), aucun pays (D3), le supérieur et la formation d'abord (D4), l'appel d'abord à la main (EP-18), test de garde | — | libre | S | VIT-14 (#224) | plan validé le 19 nov. ([vit-18-textes-exacts](../../conception/vitrine/vit-18-textes-exacts.md)) ; code fait (`fix/vit-18-textes-exacts`), PR à ouvrir |
+| VIT-18b | Le test de garde du site refuse aussi les superlatifs (« n° 1 », « #1 », « le seul », « le meilleur », « leader », en anglais « number one », « the only », « the best »), formes voisines comprises ; la phrase du calcul ne dit plus « la meilleure semaine possible » | — | libre | S | VIT-18 (#228) | plan validé le 21 nov. ([vit-18b-superlatifs](../../conception/vitrine/vit-18b-superlatifs.md)) ; code fait (`fix/vit-18b-superlatifs`), PR à ouvrir |
 
 ## Critères de « terminé »
 
