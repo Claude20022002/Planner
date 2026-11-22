@@ -1,0 +1,24 @@
+---
+// Page « Confidentialité » du site vitrine (VIT-12), dans chaque langue : ce que le site ne fait pas
+// (formulaire, cookie, mesure d'audience, appel à un autre site), le journal technique du serveur,
+// qui en répond et comment demander. Ne concerne que ce site, pas l'application Planner.
+import Gabarit from '../../components/socle/Gabarit.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import PageDeTexte from '../../components/textes/PageDeTexte.astro';
+import { traductions } from '../../i18n/index.js';
+import { cheminsLangues, chemin } from '../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'confidentialite');
+const email = traductions(lang, 'commun')('contact.email');
+const liens = {
+  email: { href: `mailto:${email}`, texte: email },
+  mentionsLegales: { href: chemin(lang, 'mentionsLegales'), texte: t('liens.mentionsLegales') },
+};
+---
+<Gabarit langue={lang} page="confidentialite" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <PageDeTexte id="confidentialite" sections={t('sections')} liens={liens} />
+</Gabarit>

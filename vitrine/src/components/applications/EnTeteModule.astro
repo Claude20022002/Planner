@@ -39,6 +39,8 @@ const { langue, module, surtitre, titre, accroche, demonstration, onglets } = As
 
 <style>
   .ouverture { display: grid; gap: var(--espace-3); justify-items: center; padding-block-start: var(--espace-3); }
+  /* « Announcements and messages » ne tenait pas à 390 px : titre plus petit sur téléphone, et coupure d'un mot trop long */
+  .ouverture :global(h1) { font-size: clamp(2.25rem, 1rem + 6vw, var(--titre-geant)); overflow-wrap: break-word; }
   .logo { display: block; inline-size: 5rem; }
   .logo :global(svg) { display: block; inline-size: 100%; block-size: auto; }
   .onglets { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-1); margin: var(--espace-2) 0 0; padding: 0; list-style: none; }
