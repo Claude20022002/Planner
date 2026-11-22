@@ -4,7 +4,7 @@ import BoutonEspaces from '../espaces/BoutonEspaces';
 import { creerStyles, espace } from '../theme';
 
 /**
- * Écran : barre de titre (marine HESTIM sur Planner, blanche ou ardoise sur StudyLib), puis le
+ * Écran : barre de titre sur la surface du thème (charte, UIX-10d), puis le
  * sol. Le bouton des espaces (Planner, Bibliothèque, Jeux, Quiz, sites web) ouvre tous les
  * espaces en deux gestes ; les écrans de détail le remplacent par leur bouton retour.
  */

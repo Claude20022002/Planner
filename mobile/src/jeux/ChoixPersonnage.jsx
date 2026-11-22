@@ -55,11 +55,11 @@ const useStyles = creerStyles((t) => ({
     height: 72,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: t.famille === 'planner' ? t.rayons.md : 16,
+    borderRadius: t.rayons.md,
     backgroundColor: t.couleurs.cellule,
     borderWidth: 2,
     borderColor: 'transparent',
   },
-  caseActive: { borderColor: t.famille === 'planner' ? t.couleurs.lettre : t.couleurs.accent },
+  caseActive: { borderColor: t.couleurs.accent },
   credit: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 12, textAlign: 'center', paddingTop: 14, paddingHorizontal: 16 },
 }));

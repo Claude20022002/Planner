@@ -108,14 +108,14 @@ const useStyles = creerStyles((t) => ({
   pastille: {
     width: 44,
     height: 44,
-    borderRadius: t.famille === 'planner' ? t.rayons.md : 12,
+    borderRadius: t.rayons.md,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: t.couleurs.cellule,
     borderWidth: t.sombre ? 0 : 1,
     borderColor: t.couleurs.filet,
   },
-  nom: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: t.famille === 'planner' ? 19 : 16, textTransform: t.capitales, letterSpacing: espace(t, 0.8) },
+  nom: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 16, textTransform: t.capitales, letterSpacing: espace(t, 0.8) },
   resume: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 13, marginTop: 2, lineHeight: 18 },
   web: {
     minHeight: CIBLE_TACTILE,

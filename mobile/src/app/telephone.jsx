@@ -96,7 +96,7 @@ const useStyles = creerStyles((t) => ({
   etat: { padding: 14, borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.couleurs.filet, gap: 6 },
   etatTexte: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 16, lineHeight: 22 },
   libelle: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 14 },
-  champ: { minHeight: CIBLE_TACTILE, paddingHorizontal: 12, borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.couleurs.filet, color: t.couleurs.lettre, fontFamily: t.polices.texte, fontSize: 15 },
+  champ: { minHeight: CIBLE_TACTILE, paddingHorizontal: 12, borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.couleurs.bord, color: t.couleurs.lettre, fontFamily: t.polices.texte, fontSize: 15 },
   bouton: { minHeight: CIBLE_TACTILE, paddingHorizontal: 20, alignItems: 'center', justifyContent: 'center', borderRadius: t.rayons.sm, backgroundColor: t.couleurs.cadre },
   boutonTexte: { color: t.couleurs.surCadre, fontFamily: t.polices.texteGras, fontSize: 15 },
   succes: { color: t.couleurs.enCours, fontFamily: t.polices.texteGras, fontSize: 15, lineHeight: 22 },
