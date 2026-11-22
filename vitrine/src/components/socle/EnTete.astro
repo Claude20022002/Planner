@@ -110,9 +110,29 @@ const applicationsActif = page.startsWith(PREFIXE_MODULE) || page === 'applicati
     margin-inline: auto;
     padding-inline: var(--gouttiere);
   }
-  .marque { display: inline-flex; align-items: center; gap: 0.5rem; min-block-size: var(--hauteur-entete); font-weight: 650; font-size: 1.0625rem; text-decoration: none; color: var(--bleu-nuit); }
+  .marque {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: var(--hauteur-entete);
+    font-weight: 650;
+    font-size: 1.0625rem;
+    text-decoration: none;
+    color: var(--bleu-nuit);
+  }
   .marque :global(.marque-logo) { inline-size: 2rem; }
-  .menu-bouton { display: grid; place-items: center; inline-size: 2.75rem; block-size: 2.75rem; padding: 0; border: 0; background: none; color: var(--encre); cursor: pointer; border-radius: var(--rayon-petit); }
+  .menu-bouton {
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--encre);
+    cursor: pointer;
+    border-radius: var(--rayon-petit);
+  }
   .menu-bouton[hidden] { display: none; }
   .navigation { flex-basis: 100%; display: grid; gap: var(--espace-3); padding-block: var(--espace-2) var(--espace-4); }
   .repliable .menu-bouton[aria-expanded='false'] + .navigation { display: none; }
@@ -123,7 +143,16 @@ const applicationsActif = page.startsWith(PREFIXE_MODULE) || page === 'applicati
   .connexion { justify-self: start; font-size: var(--texte-petit); font-weight: 600; color: var(--bleu-profond); text-decoration: none; }
   .connexion:hover { text-decoration: underline; }
   .barre { position: relative; }
-  .contact { justify-self: start; padding: 0.5rem 1rem; border-radius: var(--rayon-pilule); background: var(--bleu); color: var(--blanc); font-size: var(--texte-petit); font-weight: 600; text-decoration: none; }
+  .contact {
+    justify-self: start;
+    padding: 0.5rem 1rem;
+    border-radius: var(--rayon-pilule);
+    background: var(--bleu);
+    color: var(--blanc);
+    font-size: var(--texte-petit);
+    font-weight: 600;
+    text-decoration: none;
+  }
   .contact:hover { background: var(--bleu-profond); }
   .liens a:hover, .langues a:hover { color: var(--bleu); }
 
@@ -133,7 +162,13 @@ const applicationsActif = page.startsWith(PREFIXE_MODULE) || page === 'applicati
   @media (min-width: 64rem) {
     .barre { flex-wrap: nowrap; }
     .menu-bouton, .repliable .menu-bouton { display: none; }
-    .navigation, .repliable .menu-bouton[aria-expanded='false'] + .navigation { flex-basis: auto; display: flex; align-items: center; gap: var(--espace-4); padding: 0; }
+    .navigation, .repliable .menu-bouton[aria-expanded='false'] + .navigation {
+      flex-basis: auto;
+      display: flex;
+      align-items: center;
+      gap: var(--espace-4);
+      padding: 0;
+    }
     .liens { display: flex; align-items: center; gap: var(--espace-3); font-size: var(--texte-petit); font-weight: 450; }
     .langues { gap: var(--espace-2); font-size: 0.8125rem; }
   }

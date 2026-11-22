@@ -11,7 +11,10 @@ const axe = requireFrontend('axe-core');
 
 const racine = resolve(__dirname, '../dist');
 const origine = 'http://vitrine.test';
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
+const types = {
+  '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
+};
 const PAGES = ['/fr/', '/en/', '/fr/applications/', '/fr/socle/', '/fr/applications/emploi-du-temps/', '/fr/applications/presences/',
   '/fr/applications/espace-de-cours/', '/fr/applications/quiz-et-jeux/', '/en/applications/annonces-et-messages/'];
 

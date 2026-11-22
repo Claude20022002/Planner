@@ -18,7 +18,14 @@ const { libelle, actif = false, large = false } = Astro.props;
 <style>
   .menu summary { display: flex; align-items: center; gap: 0.35rem; cursor: pointer; list-style: none; }
   .menu summary::-webkit-details-marker { display: none; }
-  .menu summary::after { content: ''; inline-size: 0.4rem; block-size: 0.4rem; border-inline-end: 1.5px solid currentColor; border-block-end: 1.5px solid currentColor; transform: translateY(-0.1rem) rotate(45deg); }
+  .menu summary::after {
+    content: '';
+    inline-size: 0.4rem;
+    block-size: 0.4rem;
+    border-inline-end: 1.5px solid currentColor;
+    border-block-end: 1.5px solid currentColor;
+    transform: translateY(-0.1rem) rotate(45deg);
+  }
   .menu[open] summary::after { transform: translateY(0.1rem) rotate(225deg); }
   .menu summary[aria-current='page'] { color: var(--bleu); }
   .panneau { display: grid; gap: var(--espace-3); padding-block: var(--espace-1); font-size: var(--texte-petit); font-weight: 450; }

@@ -42,7 +42,14 @@ const { langue, module, surtitre, titre, accroche, demonstration, onglets } = As
   .logo { display: block; inline-size: 5rem; }
   .logo :global(svg) { display: block; inline-size: 100%; block-size: auto; }
   .onglets { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-1); margin: var(--espace-2) 0 0; padding: 0; list-style: none; }
-  .onglets a { display: inline-block; padding: 0.5rem 1.1rem; border-radius: var(--rayon-pilule); color: var(--encre); font-weight: 500; text-decoration: none; }
+  .onglets a {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--rayon-pilule);
+    color: var(--encre);
+    font-weight: 500;
+    text-decoration: none;
+  }
   .onglets a:hover { background: var(--gris-fond); }
   .onglets a[aria-current='page'] { background: var(--bleu); color: var(--blanc); }
 </style>

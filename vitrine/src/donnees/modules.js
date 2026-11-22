@@ -6,7 +6,8 @@
 export const CATEGORIES = ['organiser', 'enseigner', 'gerer', 'communiquer'];
 
 /**
- * Les modules, dans l'ordre de l'étude 15 (numero), sauf Paiements en ligne avant Échanges avec l'État comme dans le menu du § 4.2. `etat` : « disponible » (une page) ou « bientot » (tuile grisée,
+ * Les modules, dans l'ordre de l'étude 15 (numero), sauf Paiements en ligne avant
+ * Échanges avec l'État comme dans le menu du § 4.2. `etat` : « disponible » (une page) ou « bientot » (tuile grisée,
  * sans lien). `segment` : fin de l'adresse /<langue>/applications/<segment>/ d'un module disponible.
  * `logo` : nom du logo de shared/icones/modules (VIT-09a) ; null garde la place réservée que VIT-09c remplit.
  */

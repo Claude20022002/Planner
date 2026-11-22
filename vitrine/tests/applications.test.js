@@ -72,7 +72,8 @@ test('les pages par type et par rôle mènent à des pages qui existent', () => 
 
 test('aucun lien du site ne vise plus une page de fonction supprimée', () => {
   const anciens = /chemin\(\s*\w+,\s*'(enClasse|coursEtAnnonces|bibliotheque|application|etablissement)'/;
-  const lister = (dossier) => fs.readdirSync(dossier, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? lister(path.join(dossier, e.name)) : [path.join(dossier, e.name)]));
+  const lister = (dossier) => fs.readdirSync(dossier, { withFileTypes: true })
+    .flatMap((e) => (e.isDirectory() ? lister(path.join(dossier, e.name)) : [path.join(dossier, e.name)]));
   for (const fichier of lister(path.join(VITRINE, 'src')).filter((f) => /\.(astro|js)$/.test(f))) {
     assert.doesNotMatch(fs.readFileSync(fichier, 'utf8'), anciens, path.relative(VITRINE, fichier));
   }

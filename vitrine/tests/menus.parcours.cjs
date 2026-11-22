@@ -9,7 +9,10 @@ const { chromium } = createRequire(resolve(__dirname, '../../frontend/package.js
 
 const racine = resolve(__dirname, '../dist');
 const origine = 'http://vitrine.test';
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
+const types = {
+  '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
+};
 
 /** Répond avec les fichiers du build, sans dépendre d'un serveur. */
 async function servir(route) {
@@ -25,7 +28,9 @@ test('les menus de la barre fonctionnent au clavier et au toucher, avec ou sans 
   for (const largeur of [390, 768, 1440]) {
     for (const scripts of [false, true]) {
       await t.test(`${largeur} px, JavaScript ${scripts}`, async () => {
-        const page = await navigateur.newPage({ javaScriptEnabled: scripts, hasTouch: true, viewport: { width: largeur, height: 900 }, reducedMotion: 'reduce' });
+        const page = await navigateur.newPage({
+          javaScriptEnabled: scripts, hasTouch: true, viewport: { width: largeur, height: 900 }, reducedMotion: 'reduce',
+        });
         try {
           page.setDefaultTimeout(5000);
           await page.route('**/*', servir);

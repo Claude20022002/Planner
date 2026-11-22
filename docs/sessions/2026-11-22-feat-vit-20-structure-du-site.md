@@ -21,7 +21,7 @@ Le plan est validé par le chef. Avant chaque étape, ce que je vais faire :
   de `PageModule.astro`, `equipement.json` vides, `tests/modules.test.js`.
 - **B** : pages `pages/[lang]/applications/*`, `socle.astro`, catalogue rangé par `module`, redirections, pages de fonction supprimées.
 - **A** : `EnTete.astro`, `components/navigation/`, `PiedDePage.astro`.
-- **C** : `index.astro`, `components/accueil/`, îlot React du comparatif.
+- **C** : `index.astro`, `components/accueil/`, comparatif interactif (Astro et script du navigateur).
 
 ## Fait
 
@@ -35,8 +35,8 @@ Commits par étape (`git log origin/main..feat/vit-20-structure-du-site`) :
   catalogue par module, 7 redirections par langue (`astro.config.mjs`), 7 pages de fonction supprimées, liens des rôles, types et accueil mis à jour.
 - **A** : `components/navigation/` (`MenuDeroulant`, trois menus en `<details>`), `EnTete` refait, `PiedDePage` en quatre colonnes,
   `MenuFonctions` et les constantes `FONCTIONS`, `BARRE`, `NAVIGATION` supprimés.
-- **C** : accueil dans l'ordre du § 4.3 (`Applications`, `ParType`, boutons de démonstration), `QuizJeux` et `Bientot` supprimés, îlot
-  `ComparatifInteractif.jsx` (onglets, mode « Critère », `animate` de Motion, mouvement réduit respecté, repli sans JavaScript).
+- **C** : accueil dans l'ordre du § 4.3 (`Applications`, `ParType`, boutons de démonstration), `QuizJeux` et `Bientot` supprimés,
+  `ComparatifInteractif.astro` (onglets et mode « Critère » rendus au build, script du navigateur, `animate` de Motion, mouvement réduit respecté, repli sans JavaScript ; aucun React).
 - Pour la CI : `.github/workflows/vitrine.yml` lance `node --test tests/*.rendu.cjs` après la construction.
 
 ## Vérifié
@@ -46,12 +46,13 @@ Depuis `vitrine/`, sur le dernier commit :
 - `npm ci` ; `node ../scripts/verifier-neutre.mjs` : vert ; `npm run test:unit` : 142 réussis, 0 échec (116 au départ, dont 1 ignoré) ;
 - `npm run build` : 39 pages, sans erreur ;
 - `node --test tests/*.rendu.cjs` (site construit : pages de module, navigation, accueil) : 30 réussis ;
-- `node scripts/verifier-poids-ep19.mjs` : page la plus lourde `fr/index.html` 118,8 Ko. **Le script ne compte pas l'îlot**, chargé quand la section
-  devient visible : `client` (React) 67 Ko gzip, `react` 3 Ko, `ComparatifInteractif` 1,5 Ko (la limite du plan est 15 Ko). Au pire, l'accueil
-  dépasse donc 190 Ko, sous les 200 Ko d'EP-19 mais avec peu de marge : à suivre ;
+- `node scripts/verifier-poids-ep19.mjs` : page la plus lourde `fr/index.html` 117,9 Ko. Le comparatif n'ajoute que 0,9 Ko gzip de script (il réutilise `animate`, déjà chargé par le site) ;
+  aucun HTML ne charge React : le fichier `_astro/client.*.js` est produit par l'intégration React mais n'est référencé par aucune page ;
 - parcours Chromium (`node --test tests/*.parcours.cjs`) : menus au clavier et au toucher, avec et sans JavaScript, 390, 768 et 1440 px (7) ;
   comparatif interactif et son repli, mouvement réduit compris (10) ; axe-core sur 9 pages, 2 largeurs, menu fermé et ouvert (19), 0 violation.
   Chromium a tourné avec des bibliothèques système extraites en local (`apt-get download` sans installation) ; rien n'est installé sur la machine ;
+- image Nginx de la CI : `docker build`, puis `nginx/verifier-image.cjs` (Chromium au lieu de Chrome) : 53 pages dont les 14 pages de renvoi, vert ;
+- lignes de plus de 160 caractères : aucune dans les lignes que j'ai ajoutées (CSS en plusieurs lignes) ; restent des lignes anciennes de textes, de tests et de commentaires de la CI ;
 - à l'œil : accueil (1440), page Quiz et jeux (1440), menu Applications (1440 et 390), page Présences (768). Pas de capture commitée.
   Non vérifiés à l'œil : l'accueil à 390 et 768 px, les pages en anglais (testées par les tests de rendu seulement).
 
@@ -64,7 +65,7 @@ Depuis `vitrine/`, sur le dernier commit :
 | Clé de page d'un module | `module.<clé>` (ex. `module.presences`), pour ne pas heurter les anciennes clés | clés nues | `langues.js` |
 | Ordre des modules | ordre de l'étude 15, sauf Paiements en ligne (16) avant Échanges avec l'État (15), comme dans le menu du § 4.2 | ordre strict | `donnees/modules.js` |
 | Logos | les 7 logos de VIT-09a sur emploiDuTemps (planning), espaceDeCours (pedagogie), quizEtJeux (activites), annoncesEtMessages (annonces), bibliotheque ; Présences et les 11 autres gardent la place réservée | un logo pour Présences | `donnees/modules.js` |
-| Champ `module` du registre | comptes, salles, examens, occupation et semaine → `socle` (§ 4.6 : l'ancienne page Établissement et la page Application vont au socle) ; familles → Vie scolaire et familles ; stages → Stages ; documents, dépôts, noter, vidéos, projets, événements → Bibliothèque | examens sous Emploi du temps (étude 15) | `donnees/fonctionnalites.json` |
+| Champ `module` du registre | comptes, salles, occupation et semaine → `socle` (§ 4.6 : l'ancienne page Établissement et la page Application vont au socle) ; familles → Vie scolaire et familles ; stages → Stages ; documents, dépôts, noter, vidéos, projets, événements → Bibliothèque | examens sous Emploi du temps (étude 15) | `donnees/fonctionnalites.json` |
 | Entrées du registre d'un module « Bientôt » (Bibliothèque, Stages, Vie scolaire) | badge « Bientôt » calculé d'après le module, lien vers « Toutes les applications » ; l'état `existe` du registre n'est pas modifié | changer l'état des entrées | `catalogue/registre.js` |
 | Carte « Des sondages » de l'ancienne page En classe | non reprise : la carte « Sondages » de Cours et annonces dit la même chose et est déjà sur Espace de cours | les deux cartes | `applications/espace-de-cours.astro` |
 | Cartes « Des jeux » et « Un seul compte » de En classe | non reprises : « Des jeux » est couverte par la section Jeux ; « Un seul compte » cite la bibliothèque de cours (phrase relevée plus bas) | les mettre sur Quiz et jeux et le socle | — |
@@ -79,7 +80,7 @@ Depuis `vitrine/`, sur le dernier commit :
 | Section « Par établissement » de l'accueil | titre « Par établissement » (menu), carte = surtitre et titre du type dans `solutions.json` | — | `accueil/ParType.astro` |
 | Onglets du comparatif | les quatre approches, plus un cinquième onglet nommé « Critère » (mot existant) qui montre un critère à la fois ; aucun libellé de mode nouveau | deux boutons de mode (libellés nouveaux) | `accueil/ComparatifInteractif.jsx` |
 | Lignes du comparatif interactif | les cinq de `LIGNES_ACCUEIL` | les neuf de `LIGNES` | `accueil/Pourquoi.astro` |
-| Hydratation de l'îlot | le repli est enveloppé dans un bloc (un `display: contents` n'est jamais « visible » pour `client:visible`) | — | `ComparatifInteractif.jsx` |
+| Comparatif sans React (demandé à la relecture) | composant Astro : onglets rendus au build, `<script>` du navigateur qui montre, cache et anime avec `animate` ; repli visible tant que le script n'a pas tourné | îlot React (retiré : 65 Ko) | `accueil/ComparatifInteractif.astro` |
 | Fond de l'en-tête | 96 % d'opacité au lieu de 82 % : axe-core relevait un contraste insuffisant du lien de langue sur une section sombre | laisser | `socle/EnTete.astro` |
 | Tests qui lisent `dist/` | fichiers `*.rendu.cjs`, lancés par la CI après la construction (les tests unitaires tournent avant) | tests unitaires qui sautent sans `dist/` | `tests/*.rendu.cjs`, `.github/workflows/vitrine.yml` |
 | Parcours des menus | `menu-fonctions.parcours.cjs` remplacé par `menus.parcours.cjs` (le menu à fenêtre a disparu) | — | `tests/` |
@@ -99,6 +100,13 @@ Depuis `vitrine/`, sur le dernier commit :
 - `en-classe.json` : « Le même compte ouvre Planner, la bibliothèque de cours et les jeux » (carte non reprise sur le site).
 - `fonctionnalites.json` (registre, i18n) : le groupe « Bibliothèque · StudyLib » et les entrées documents, dépôts, noter, vidéos, projets, événements à l'état `existe`.
 
+## Corrections de la relecture du coordinateur (d21f7b2a)
+
+1. CI rouge : `nginx/verifier-image.cjs` attend maintenant la cible des pages de renvoi (statut 200 et noindex vérifiés, puis `waitForURL`).
+2. Comparatif refait en composant Astro avec un script du navigateur ; `ComparatifInteractif.jsx` et `client:visible` supprimés.
+3. Registre : `examens` sous `emploiDuTemps`.
+4. Lignes de plus de 160 caractères coupées dans les fichiers ajoutés ou modifiés.
+
 ## Questions
 
 Aucune question bloquante : les points non tranchés par le plan sont dans le tableau des choix.
@@ -115,7 +123,7 @@ Aucune question bloquante : les points non tranchés par le plan sont dans le ta
 3. Quand #223 (VIT-12) et VIT-16 seront fusionnées : Mentions légales, Confidentialité, À propos dans le pied de page ; `CONTACT` de `langues.js` vers `/contact/`.
 4. Quand l'adresse de l'application est fixée : renseigner `ADRESSE_APPLICATION` (« Se connecter » apparaît).
 5. Prendre les captures « après » à 390 et 1440 px pour la recette (aucune n'est commitée) ; compléter à l'œil l'accueil à 390 et 768 px et les pages anglaises.
-6. Suivre le poids de l'accueil (îlot React, voir « Vérifié »).
+6. Les tests unitaires, le rendu et les parcours restent à lancer avant chaque push (voir « Vérifié »).
 
 ## Commandes pour le chef de projet
 
