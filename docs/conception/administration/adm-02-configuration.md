@@ -8,6 +8,7 @@
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-22 |
 | Questions | réponses 1 à 15 du chef, le 2026-11-22, par l'outil de questions (§ 4) |
 | **Validé** | par Claude20022002 le 2026-11-22, avec le critère de « terminé » du § 1 ; numéro de migration à réserver par le coordinateur |
+| Amendé | à la relecture du coordinateur, le 2026-11-22 : réponses 16 et 17 (concordance avec le solveur, raison « sans effet » en données) |
 
 ## 1. Objet et critère de « terminé »
 
@@ -94,6 +95,8 @@ Réponses du chef le 22 nov. 2026, par l'outil de questions.
 | 13 | Date d'effet | **Aujourd'hui, ou plus tard** : champ « À partir du », date du jour à l'école ; une date passée est refusée | 02a, 02b |
 | 14 | Contrôle de place dans l'aperçu | **Période proposée** (en cours, sinon la suivante), modifiable ; avertissement, jamais refus | 02c |
 | 15 | Migration de reprise | **Seulement les écarts**, dans une version appliquée datée du jour ; aucune sur une base neuve ; l'ancienne table reste | 02a |
+| 16 | *(coordinateur, relecture du 22 nov.)* Comment garantir que les règles réglables du panneau sont celles que le solveur lit ? | **Un test, profil par profil**, compare les règles réglables du panneau à celles que `poidsDesRegles` envoie au solveur. Le critère « réglable » vient de `activeeParLEcole` d'`ecriture.js`, **exportée et partagée, pas recopiée** (§ 5.2) | 02a |
+| 17 | *(coordinateur, relecture du 22 nov.)* La raison « sans effet » de `profil.js` est une phrase française : comment l'écran la dit-il en anglais ? | **`raison_code` et ses conditions en données** dans la réponse de `GET /contraintes/profil` ; le site traduit ; la phrase `raison` reste l'aide en français (§ 5.3). Touche `contraintes/profil.js`, hors de la fiche : extension demandée par le coordinateur | 02a, 02c |
 
 **Points de la relecture de MP-1** ([R-1 à R-10](../moteur-planification/relecture-mp1-contrat.md), question Q-04 de `decisions.md`, § 3) :
 
@@ -150,6 +153,12 @@ Pour les six règles souples, `GET /reglages` rend aussi le **choix** en cours, 
 
 « Indispensable » n'existe pas pour une règle du profil : une école ne la rend pas stricte (`force_interdite`, D-09).
 
+**Quelles règles sont réglables** (réponse 16) : aucune liste recopiée. Une règle de la liste du profil est réglable quand `activeeParLEcole(p, force résolue)` est vraie (règle souple que le solveur applique, réglable à la portée de l'école) et que l'école a le droit de la modifier (`modifiable` au rang « établissement » ou en dessous). Les deux tests sont **exportés par `ecriture.js`** (`activeeParLEcole`, `modifiableParLEcole`) et utilisés par `ecriture.js` lui-même, par `reglagesEcole.js` et par le test ; aucun autre fichier ne les réécrit. Aujourd'hui, cela donne les six règles du § 2 pour le profil université.
+
+Le test de concordance, **pour chacun des cinq profils** du catalogue (sans ligne d'école) :
+- chaque règle réglable du panneau a son nom de règle du solveur parmi les clés de `poidsDesRegles` : ce que le panneau laisse régler est lu par le calcul ;
+- chaque règle envoyée au solveur qui n'est pas réglable est montrée « verrouillée » par la liste du profil : rien n'est envoyé sans être montré.
+
 ### 5.3 Les routes (ADM-02a)
 
 Toutes sous `/api/moteur`, `requireAdmin`, au format d'erreur commun `{ message, code, violations: [{ cle | index, champ, code, message }] }`.
@@ -161,6 +170,7 @@ Toutes sous `/api/moteur`, `requireAdmin`, au format d'erreur commun `{ message,
 | `POST /versions` | changée | accepte `appliquer: true` et `base` : crée et applique dans la même transaction ; 409 `VERSION_DEPASSEE` (§ 5.4). Sans `appliquer`, inchangée (brouillon) |
 | `GET /versions` | changée | liste allégée : `id_version, libelle, date_effet, statut, appliquee_le, auteur { id_user, nom }, nb_reglages, nb_contraintes, nb_retraits, annule_version, annulee_par` (100 dernières) |
 | `GET /versions/:id` | nouvelle | détail : lignes (avec le nom du réglage) et contraintes (avec leur phrase en français) ; 404 sinon |
+| `GET /contraintes/profil` | changée (réponse 17) | chaque règle gagne `raison_code` (`aucune_valeur` ou `condition_non_remplie`, `null` sinon) et `conditions: [{ parametre, op, attendu, actuelle }]` (les conditions `active_si` non remplies, en données : par exemple `{ parametre: "ETA.TAILLE.CAMPUS", op: ">=", attendu: 2, actuelle: 1 }`). `raison` reste la phrase française. Le site traduit l'opérateur et le nom du paramètre (deux paramètres servent de condition aujourd'hui : `ETA.TAILLE.CAMPUS`, `MAT.VOL.MODALITE`) |
 | `POST /versions/:id/appliquer`, `abandonner`, `annuler` | changées | **journalisées** (R-6) ; forme de réponse inchangée |
 | `PUT` et `DELETE /api/parametres-planning/:cle` | changées | **410** `REGLAGE_DEPLACE` : « Ce réglage se change dans Configuration. » `GET` inchangé (lu par `useSalles.js`) |
 
@@ -237,7 +247,9 @@ flowchart LR
 
 | Fichier | Créé / modifié | Rôle | Taille visée |
 |---|---|---|---|
-| `backend/services/moteur/valeurs/reglagesEcole.js` | créé | la liste courte (§ 5.2) et les choix des six règles, en données | 80 |
+| `backend/services/moteur/valeurs/reglagesEcole.js` | créé | les cinq réglages en données (§ 5.2) ; les règles réglables, tirées du catalogue par `activeeParLEcole` et `modifiableParLEcole` ; leurs choix | 90 |
+| `backend/services/moteur/valeurs/ecriture.js` | modifié (réponse 16) | exporte `activeeParLEcole` et `modifiableParLEcole` (le test du rang, sorti de `controlerEcriture`), sans changer un refus | 79 → 85 |
+| `backend/services/moteur/contraintes/profil.js` | modifié (réponse 17, extension du coordinateur) | `raison_code` et `conditions` en données ; `raison` inchangée | 64 → 80 |
 | `backend/services/moteur/valeurs/valeursDeLEcole.js` | créé | lecture ciblée de quelques clés à la date du jour à l'école ; valeurs, choix, version courante (pour `GET /reglages`) | 110 |
 | `backend/services/moteur/valeurs/apercu.js` | créé | aperçu à blanc : contrôles, avant → après, effets, appel de la vérification des contraintes | 120 |
 | `backend/services/moteur/valeurs/concurrence.js` | créé | `VERSION_DEPASSEE` : versions appliquées après la base qui touchent les mêmes réglages ou contraintes | 60 |
@@ -251,6 +263,8 @@ flowchart LR
 | `backend/services/journalSecurite.js` | modifié (accord) | trois événements | +3 |
 | `backend/migrations/0088-reprise-parametres-planning.js` | créé (accord ; **numéro à réserver**) | reprise des écarts (§ 7) | 60 |
 | `backend/tests/utils/reglagesEcole.test.js` | créé | choix des règles, bornes, conversions, concurrence (fonctions pures) | 150 |
+| `backend/tests/utils/reglablesEtSolveur.test.js` | créé (réponse 16) | concordance, profil par profil, entre règles réglables et `poidsDesRegles` | 70 |
+| `backend/tests/utils/profilRaisons.test.js` | créé (réponse 17) | `raison_code` et `conditions` : un seul campus, modalité à distance, aucune valeur, règle active sans raison | 80 |
 | `backend/tests/integration/configurationEcole.test.js` | créé | routes nouvelles, 409, journal, 410, bascule, migration | 250 |
 | `backend/tests/integration/valeursMoteur.test.js` | modifié | forme allégée de `GET /versions` ; rejoue 0088 | +20 |
 
@@ -323,6 +337,8 @@ flowchart LR
 
 ## 9. Tests
 
+- **Concordance avec le solveur** (réponse 16) : pour chacun des cinq profils, règles réglables ⊆ règles envoyées par `poidsDesRegles`, et règles envoyées non réglables = règles montrées verrouillées.
+- **Raison en données** (réponse 17) : `raison_code` et `conditions` pour chaque cas ; la phrase `raison` ne change pas (les tests existants de `profil.js` restent verts).
 - **Unitaires, serveur** : chaque choix des six règles, à partir de poids du profil 1, 2, 5, 10, 20 (« Peu » absent pour 1) ; « Réglage particulier » ; bornes de chaque réglage ; conversions aller et retour ; concurrence (même clé, autre portée, même contrainte retirée, deux ajouts sans conflit).
 - **Intégration, serveur** (MySQL) :
   - `GET /reglages` sur une base neuve et sur une base avec une version ;
