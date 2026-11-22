@@ -14,8 +14,8 @@ import { HAUTEUR_ONGLETS, Verre } from '../../verre/Verre';
  * (décision du 11 octobre 2026). L'onglet pose l'écran /scanner par-dessus les onglets.
  * Pas d'onglet Activités (décision du 21 octobre 2026, R-10) : un quiz ou un jeu se rejoint par le
  * scanner. La page jeux.jsx reste joignable par une notification de quiz.
- * Une icône par onglet ; onglet actif avec une barre de 2 px (Planner) ou en bleu StudyLib, les
- * autres atténués. La barre est en verre dépoli : le contenu défile dessous (chaque onglet garde
+ * Une icône par onglet ; onglet actif en couleur d'action (école ou charte), avec une barre de 2 px,
+ * les autres atténués. La barre est en verre dépoli : le contenu défile dessous (chaque onglet garde
  * une marge, useMargeOnglets).
  */
 const ICONES = { index: 'view-dashboard-outline', semaine: 'calendar-week', scan: 'qrcode-scan', bibliotheque: 'bookshelf', compte: 'account-circle-outline' };
@@ -25,7 +25,7 @@ export default function Onglets() {
   const { etat } = useAuth();
   const theme = useTheme();
   const { couleurs, polices } = theme;
-  const actif = theme.famille === 'planner' ? couleurs.lettre : couleurs.accent;
+  const actif = couleurs.accent;
   const marges = useSafeAreaInsets();
   const router = useRouter();
   if (etat === 'chargement') return <View style={{ flex: 1, backgroundColor: couleurs.fond }} />;
@@ -60,7 +60,7 @@ export default function Onglets() {
             paddingBottom: marges.bottom,
           },
           tabBarBackground: () => <Verre style={StyleSheet.absoluteFill} opacite={0.62} />,
-          tabBarLabelStyle: { fontFamily: polices.panneau, fontSize: theme.famille === 'planner' ? 12 : 11, textTransform: theme.capitales, letterSpacing: espace(theme, 0.8) },
+          tabBarLabelStyle: { fontFamily: polices.panneau, fontSize: 11, textTransform: theme.capitales, letterSpacing: espace(theme, 0.8) },
           tabBarItemStyle: { minHeight: 48 },
         }}
       >

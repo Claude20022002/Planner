@@ -138,13 +138,13 @@ export default function JeuDirect() {
 }
 
 const useStyles = creerStyles((t) => {
-  // Le terminal garde les couleurs sombres de la famille, quel que soit le mode (comme terminal.jsx)
-  const nuit = THEMES[`${t.famille}-sombre`].couleurs;
+  // Le terminal garde les couleurs du thème sombre, quel que soit le mode (comme terminal.jsx)
+  const nuit = THEMES.sombre.couleurs;
   return {
     icone: { width: CIBLE_TACTILE, height: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center' },
     niveau: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.panneauGras, fontSize: 12, letterSpacing: espace(t, 1.6), textTransform: t.capitales },
-    titre: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: t.famille === 'planner' ? 24 : 20, letterSpacing: espace(t, 0.6), textTransform: t.capitales },
-    objectif: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 15, lineHeight: 22, paddingLeft: 10, borderLeftWidth: 3, borderLeftColor: t.famille === 'planner' ? t.couleurs.cadre : t.couleurs.accent },
+    titre: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 20, letterSpacing: espace(t, 0.6), textTransform: t.capitales },
+    objectif: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 15, lineHeight: 22, paddingLeft: 10, borderLeftWidth: 3, borderLeftColor: t.couleurs.accent },
     bandeau: { color: t.scene.texte, backgroundColor: t.scene.ciel, fontFamily: t.polices.texteGras, fontSize: 15, padding: 12, borderRadius: t.rayons.md, overflow: 'hidden' },
     texte: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 14, lineHeight: 20 },
     code: { color: t.couleurs.lettre, fontFamily: MONO },

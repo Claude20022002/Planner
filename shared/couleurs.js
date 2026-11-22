@@ -44,8 +44,8 @@ export const melanger = (a, b, t) => {
 };
 
 /**
- * Nuances tirées des deux couleurs de l'école, mêmes noms que les jetons partagés
- * (shared/design-tokens.json, brand) pour que le site et l'application les remplacent sans
+ * Nuances tirées des deux couleurs de l'école, mêmes noms que les jetons du web
+ * (ds.brand, frontend/src/design-system/tokens.js) pour que le site et l'application les remplacent sans
  * toucher aux écrans : navy (principale), navyDeep (survol, plus foncée), navySoft (fonds de
  * sélection, très claire), orange (accent), et frame, le cadre du panneau des séances.
  */
