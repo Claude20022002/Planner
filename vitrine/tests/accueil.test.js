@@ -23,22 +23,30 @@ test('les sections retirées de l\'accueil ne servent plus : leurs fichiers sont
   assert.match(lire('src/pages/[lang]/applications/emploi-du-temps.astro'), /<Report /);
 });
 
-test('l\'îlot du comparatif se charge quand la section devient visible, avec le tableau de repli en enfants', () => {
+test('le comparatif est un composant Astro avec un script du navigateur : ni React, ni client:visible, le repli est dans la page', () => {
   const pourquoi = lire('src/components/accueil/Pourquoi.astro');
-  assert.match(pourquoi, /<ComparatifInteractif client:visible/);
-  assert.match(pourquoi, /<TableauComparatif[^>]*court/);
-  assert.equal(pourquoi.includes('client:load'), false);
+  assert.match(pourquoi, /<ComparatifInteractif langue/);
+  assert.equal(/client:/.test(pourquoi), false);
+  const composant = lire('src/components/accueil/ComparatifInteractif.astro');
+  assert.match(composant, /<TableauComparatif[^>]*court/);
+  assert.match(composant, /<CartesComparatif[^>]*court/);
+  assert.match(composant, /<script>/);
+  assert.equal(fs.existsSync(path.join(VITRINE, 'src/components/accueil/ComparatifInteractif.jsx')), false);
+  assert.equal(/from 'react'|client:|\.jsx/.test(composant), false);
 });
 
-test('l\'îlot : onglets accessibles, titre en aria-live seul, mouvement réduit respecté, sans boucle', () => {
-  const ilot = lire('src/components/accueil/ComparatifInteractif.jsx');
-  for (const attribut of ['role="tablist"', 'role="tab"', 'role="tabpanel"', 'aria-selected', 'aria-controls', 'aria-labelledby']) assert.ok(ilot.includes(attribut), attribut);
-  assert.equal((ilot.match(/aria-live="polite"/g) || []).length, 2, 'seulement sur le titre de la colonne ou du critère');
-  assert.match(ilot, /prefers-reduced-motion: reduce/);
-  assert.match(ilot, /ArrowRight/);
-  assert.match(ilot, /ArrowLeft/);
-  assert.equal(/repeat\s*:|Infinity|setInterval/.test(ilot), false);
-  assert.ok(ilot.split('\n').length <= 150);
+test('le comparatif : onglets accessibles, titre en aria-live seul, mouvement réduit respecté, animate de motion, sans boucle', () => {
+  const composant = lire('src/components/accueil/ComparatifInteractif.astro');
+  for (const attribut of ['role="tablist"', 'role="tab"', 'role="tabpanel"', 'aria-selected', 'aria-controls', 'aria-labelledby']) {
+    assert.ok(composant.includes(attribut), attribut);
+  }
+  assert.equal((composant.match(/aria-live="polite"/g) || []).length, 1, 'seulement sur le titre');
+  assert.match(composant, /prefers-reduced-motion: reduce/);
+  assert.match(composant, /if \(!reduit\) animate\(/);
+  assert.match(composant, /import \{ animate, stagger \} from 'motion'/);
+  for (const touche of ['ArrowRight', 'ArrowLeft', 'Home', 'End']) assert.ok(composant.includes(touche), touche);
+  assert.equal(/repeat\s*:|Infinity|setInterval/.test(composant), false);
+  assert.ok(composant.split('\n').length <= 150);
 });
 
 test('aucune dépendance nouvelle : package.json garde ses trois dépendances', () => {

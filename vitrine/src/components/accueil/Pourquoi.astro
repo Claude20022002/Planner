@@ -1,15 +1,12 @@
 ---
 // Accueil, section « Pourquoi Planner » (VIT-14, rendue interactive par VIT-20 § 4.8) : le tableau court de repli (sans JavaScript),
-// remplacé par l'îlot ComparatifInteractif quand la section devient visible, puis le lien vers la page Comparer.
+// remplacé par les onglets de ComparatifInteractif (script du navigateur, sans React), puis le lien vers la page Comparer.
 import Section from '../socle/Section.astro';
 import Titre from '../socle/Titre.astro';
 import Accroche from '../socle/Accroche.astro';
 import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Apparition from '../socle/Apparition.astro';
-import TableauComparatif from '../comparer/TableauComparatif.astro';
-import CartesComparatif from '../comparer/CartesComparatif.astro';
-import ComparatifInteractif from './ComparatifInteractif.jsx';
-import { LIGNES_ACCUEIL } from '../comparer/comparatif.js';
+import ComparatifInteractif from './ComparatifInteractif.astro';
 import { traductions } from '../../i18n/index.js';
 import { chemin } from '../../i18n/langues.js';
 
@@ -19,7 +16,6 @@ interface Props {
 
 const { langue } = Astro.props;
 const t = traductions(langue, 'comparer');
-const lignes = LIGNES_ACCUEIL.map((cle) => ({ cle, critere: t(`lignes.${cle}.critere`), cases: t(`lignes.${cle}.cases`) }));
 ---
 <Section id="pourquoi" ton="gris" large etiquette="pourquoi-titre">
   <Apparition>
@@ -29,10 +25,7 @@ const lignes = LIGNES_ACCUEIL.map((cle) => ({ cle, critere: t(`lignes.${cle}.cri
     </div>
   </Apparition>
   <div class="comparatif">
-    <ComparatifInteractif client:visible titre={t('accueil.titre')} critereLibelle={t('tableau.critere')} approches={t('approches')} lignes={lignes}>
-      <TableauComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
-      <CartesComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
-    </ComparatifInteractif>
+    <ComparatifInteractif langue={langue} />
   </div>
   <BoutonPrincipal href={chemin(langue, 'comparer')} variante="lien">{t('accueil.lien')}</BoutonPrincipal>
 </Section>

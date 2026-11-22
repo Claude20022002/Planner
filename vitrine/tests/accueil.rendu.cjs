@@ -27,11 +27,13 @@ for (const langue of ['fr', 'en']) {
     assert.equal(tuiles.filter((b) => b.startsWith('<div') && /grisee/.test(b) && !/href=/.test(b)).length, 12);
   });
 
-  test(`${langue} · sans JavaScript, le tableau de repli du comparatif est dans la page, l'îlot se charge à la visibilité`, () => {
+  test(`${langue} · sans JavaScript, le tableau de repli du comparatif est dans la page, les onglets sont cachés et aucun îlot React n'est chargé`, () => {
     const html = page(`/${langue}/`);
     const section = html.slice(html.indexOf('id="pourquoi"'), html.indexOf('id="types"'));
     assert.match(section, /<table[^>]*class="[^"]*tableau[^"]*court/);
-    assert.match(section, /<astro-island[^>]*client="visible"/);
-    assert.equal((section.match(/<tr[ >]/g) || []).length, 6, 'cinq critères et l\'en-tête');
+    assert.match(section, /class="comparatif-interactif[^"]*"[^>]*hidden/);
+    assert.equal(page(`/${langue}/`).includes('astro-island'), false, 'aucun îlot');
+    const repli = section.slice(section.indexOf('class="repli'), section.indexOf('class="comparatif-interactif'));
+    assert.equal((repli.match(/<tr[ >]/g) || []).length, 6, 'cinq critères et l\'en-tête');
   });
 }

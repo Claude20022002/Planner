@@ -9,7 +9,10 @@ const { chromium } = createRequire(resolve(__dirname, '../../frontend/package.js
 
 const racine = resolve(__dirname, '../dist');
 const origine = 'http://vitrine.test';
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
+const types = {
+  '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
+};
 
 async function servir(route) {
   const url = new URL(route.request().url());
@@ -38,28 +41,31 @@ test('le comparatif interactif et son repli', async (t) => {
           const onglets = page.getByRole('tab');
           await onglets.first().waitFor();
           assert.equal(await onglets.count(), 5);
-          assert.equal(await page.locator('#pourquoi table.tableau').count(), 0, 'le tableau de repli cède la place');
+          assert.equal(await page.locator('#pourquoi .repli').isVisible(), false, 'le tableau de repli cède la place');
           assert.equal(await onglets.first().getAttribute('aria-selected'), 'true');
           await onglets.first().focus();
           await page.keyboard.press('ArrowRight');
           assert.equal(await onglets.nth(1).getAttribute('aria-selected'), 'true');
           assert.ok(await onglets.nth(1).evaluate((n) => n === document.activeElement));
-          assert.equal(await page.getByRole('tabpanel').locator('tbody tr').count(), 5);
-          assert.match(await page.getByRole('tabpanel').locator('h3').textContent(), /^Planner · ERP généraliste$/);
+          assert.equal(await page.locator('#comparatif-panneau-2 tbody tr').count(), 5);
+          assert.ok(await page.locator('#comparatif-panneau-2').isVisible());
+          assert.equal(await page.locator('#comparatif-panneau-1').isVisible(), false);
+          assert.equal(await page.locator('#pourquoi h3[aria-live]').textContent(), 'Planner · ERP généraliste');
           assert.equal(await page.locator('#pourquoi [aria-live]').count(), 1, 'aria-live sur le titre seulement');
           if (mouvement === 'reduce') {
-            const etat = await page.locator('#pourquoi tbody tr').first().evaluate((n) => ({ opacite: getComputedStyle(n).opacity, anims: n.getAnimations().length }));
+            const ligne = page.locator('#comparatif-panneau-2 tbody tr').first();
+            const etat = await ligne.evaluate((n) => ({ opacite: getComputedStyle(n).opacity, anims: n.getAnimations().length }));
             assert.deepEqual(etat, { opacite: '1', anims: 0 });
           } else {
             await page.waitForTimeout(700);
-            assert.equal(await page.locator('#pourquoi tbody tr').last().evaluate((n) => getComputedStyle(n).opacity), '1');
+            assert.equal(await page.locator('#comparatif-panneau-2 tbody tr').last().evaluate((n) => getComputedStyle(n).opacity), '1');
           }
           await page.keyboard.press('End');
           assert.equal(await onglets.last().getAttribute('aria-selected'), 'true');
           const choix = page.locator('#pourquoi select');
           await choix.selectOption({ index: 2 });
-          assert.equal(await page.locator('#pourquoi dl .case').count(), 5);
-          assert.equal(await page.getByRole('tabpanel').locator('h3').textContent(), await choix.locator('option:checked').textContent());
+          assert.equal(await page.locator('#pourquoi dl:visible .case').count(), 5);
+          assert.equal(await page.locator('#pourquoi h3[aria-live]').textContent(), await choix.locator('option:checked').textContent());
           await page.keyboard.press('Home');
           assert.equal(await onglets.first().getAttribute('aria-selected'), 'true');
         } finally {
