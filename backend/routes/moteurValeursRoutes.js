@@ -1,5 +1,5 @@
 import express from "express";
-import { abandonnerVersionMoteur, annulerVersionMoteur, appliquerVersionMoteur, getValeursMoteur, getVersionsMoteur, postVersionMoteur } from "../controllers/index.js";
+import { abandonnerVersionMoteur, annulerVersionMoteur, appliquerVersionMoteur, getReglagesMoteur, getValeursMoteur, getVersionsMoteur, postVersionMoteur } from "../controllers/index.js";
 import { authenticateToken, requireAdmin, asyncHandler } from "../middleware/index.js";
 
 const router = express.Router();
@@ -8,6 +8,7 @@ const router = express.Router();
 router.use(authenticateToken, requireAdmin);
 
 router.get("/valeurs", asyncHandler(getValeursMoteur));
+router.get("/reglages", asyncHandler(getReglagesMoteur));
 router.get("/versions", asyncHandler(getVersionsMoteur));
 router.post("/versions", asyncHandler(postVersionMoteur));
 router.post("/versions/:id/appliquer", asyncHandler(appliquerVersionMoteur));

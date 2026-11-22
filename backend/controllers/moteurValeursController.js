@@ -1,5 +1,6 @@
 import { asyncHandler } from "../middleware/asyncHandler.js";
 import { valeursEnVigueur } from "../services/moteur/valeurs/lecture.js";
+import { decrireReglages } from "../services/moteur/valeurs/valeursDeLEcole.js";
 import { abandonnerVersion, annulerVersion, appliquerVersion, creerVersion, ErreurReglages, listerVersions } from "../services/moteur/valeurs/versions.js";
 import { corpsErreur } from "../utils/erreurs.js";
 
@@ -39,6 +40,15 @@ export const getValeursMoteur = asyncHandler(async (req, res) => {
         actives: r.actives,
         alertes: r.alertes,
     });
+});
+
+// 🔍 Ce que le panneau de configuration laisse régler à l'école (ADM-02, R-1) : cinq réglages et les règles réglables
+export const getReglagesMoteur = asyncHandler(async (req, res) => {
+    const { date } = req.query;
+    if (date !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        return res.status(400).json(corpsErreur(400, "La date s'écrit AAAA-MM-JJ", { code: "DATE_INVALIDE" }));
+    }
+    res.json(await decrireReglages({ date }));
 });
 
 // 🔍 Historique des versions

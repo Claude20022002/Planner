@@ -103,7 +103,7 @@ export const regleActive = (p, resolu, valeurs, dependances) => {
 };
 
 /** Le profil se résout d'abord : il dépend de la cible (une école peut avoir un primaire et un lycée). */
-const profilDeLaCible = (parametres, profils, lignes, cible) => {
+export const profilDeLaCible =(parametres, profils, lignes, cible) => {
     const p = parametres.find((x) => x.id === "ETA.ID.PROFIL");
     const code = p ? resoudreParametre(p, { lignes, cible }).valeur : null;
     return profils.find((x) => x.code === code) ?? null;
