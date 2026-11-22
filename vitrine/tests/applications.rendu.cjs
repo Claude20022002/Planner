@@ -32,7 +32,8 @@ for (const langue of ['fr', 'en']) {
   }
 
   test(`${langue} · /applications/ : 17 tuiles, 5 liens vers les modules, 12 tuiles grisées sans lien`, () => {
-    const html = page(`/${langue}/applications/`);
+    const complet = page(`/${langue}/applications/`);
+    const html = complet.slice(complet.indexOf('</header>'), complet.indexOf('<footer')); // hors barre et pied de page
     assert.equal(compter(html, /class="tuile[^"]*"/g), 17);
     const liens = (html.match(/<a [^>]*>/g) || []).filter((balise) => /class="[^"]*tuile/.test(balise));
     assert.equal(liens.length, 5);
