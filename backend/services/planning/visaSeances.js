@@ -1,5 +1,6 @@
 import { Affectation, AppelSeance, VisaSeance } from "../../models/index.js";
 import { ErreurMetier } from "./enseignements.js";
+import { estApresCoup } from "../presences/apresCoup.js";
 
 /**
  * Visa de l'administration sur les séances réalisées, avant l'export de la paie des vacataires
@@ -14,6 +15,8 @@ import { ErreurMetier } from "./enseignements.js";
 /** États d'une séance réalisée pour la paie ; `compte` : ses heures entrent dans les heures du mois. */
 export const ETATS = {
     appel_valide: { libelle: "appel validé", compte: true },
+    // Appel fait sur papier, terminé dans les 7 jours (M-1) : il compte, et se voit (réponse du chef)
+    appel_saisi_apres_coup: { libelle: "appel saisi après coup", compte: true },
     a_verifier: { libelle: "à vérifier (pas d'appel validé)", compte: true },
     confirmee: { libelle: "confirmée par l'administration", compte: true },
     ecartee: { libelle: "écartée par l'administration", compte: false },
@@ -31,7 +34,7 @@ export const NOTE_APPEL = "Un appel validé est un indice que le cours a eu lieu
 export const etatDeLaSeance = (appel, visa) => {
     // Une décision inconnue (ligne modifiée à la main) ne vaut pas décision
     const decision = DECISIONS.includes(visa?.decision) ? visa.decision : null;
-    const etat = decision ?? (appel?.ferme_le ? "appel_valide" : "a_verifier");
+    const etat = decision ?? (appel?.ferme_le ? (estApresCoup(appel) ? "appel_saisi_apres_coup" : "appel_valide") : "a_verifier");
     return { etat, ...ETATS[etat], appel_ouvert: Boolean(appel && !appel.ferme_le), motif: decision ? visa.motif : null, decide_le: decision ? visa.updatedAt : null };
 };
 
@@ -39,7 +42,7 @@ export const etatDeLaSeance = (appel, visa) => {
 export const etatsDesSeances = async (ids) => {
     if (!ids.length) return new Map();
     const [appels, visas] = await Promise.all([
-        AppelSeance.findAll({ where: { id_affectation: ids }, attributes: ["id_affectation", "ferme_le"], raw: true }),
+        AppelSeance.findAll({ where: { id_affectation: ids }, attributes: ["id_affectation", "ferme_le", "secret"], raw: true }),
         VisaSeance.findAll({ where: { id_affectation: ids }, raw: true }),
     ]);
     const appelDe = new Map(appels.map((a) => [a.id_affectation, a]));

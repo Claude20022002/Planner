@@ -151,7 +151,8 @@ const realiseesDuMois = async (mois) => {
             { model: Salle, as: "salle", attributes: ["nom_salle"] },
             { model: Enseignement, as: "enseignement", include: [{ model: EnseignementEnseignant, as: "services", where: { role: "co_enseignant", statut_service: "accepte" }, required: false }] },
             // Appel et visa dans la même requête : la liste du mois garde son budget de requêtes (banc SQL)
-            { model: AppelSeance, as: "appel", attributes: ["id_affectation", "ferme_le"], required: false },
+            // Le secret dit si l'appel a été saisi après coup (M-1) ; il ne sort jamais de cette lecture
+            { model: AppelSeance, as: "appel", attributes: ["id_affectation", "ferme_le", "secret"], required: false },
             { model: VisaSeance, as: "visa", required: false },
         ],
         order: [["date_seance", "ASC"]],

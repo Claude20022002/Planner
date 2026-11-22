@@ -27,7 +27,7 @@ import { APPAREIL, empreinteAppareil } from "./appareil.js";
 const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 export const FENETRE_MS = 30 * 1000;
 const CODE = /^(\d{1,10})\.(\d{1,12})\.([A-Za-z0-9_-]{22})$/;
-const STATUTS_FERMABLES = ["planifie", "confirme", "reporte"];
+export const STATUTS_FERMABLES = ["planifie", "confirme", "reporte"];
 export const VERIFICATION_MAX = 5;
 
 const aujourdhui = (maintenant = new Date()) => maintenant.toLocaleDateString("en-CA", { timeZone: FUSEAU });

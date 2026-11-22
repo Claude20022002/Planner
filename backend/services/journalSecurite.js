@@ -41,6 +41,7 @@ export const EVENEMENTS = [
     "support_retire",
     "support_publie_bibliotheque",
     "presence_corrigee",
+    "appel_saisi_apres_coup",
     "presences_exportees",
 ];
 

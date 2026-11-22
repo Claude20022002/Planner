@@ -4,6 +4,7 @@ import { classeAutorisee } from "../cours/droits.js";
 import { avecDescendants } from "../planning/groupes.js";
 import { aujourdhui } from "../planning/affectationRules.js";
 import { journaliser } from "../journalSecurite.js";
+import { dansLeDelai, limiteApresCoup } from "./apresCoup.js";
 
 /**
  * Historique de l'appel d'une classe (docs/archives/plans/espace-de-cours.md, lot E-6), pour l'enseignant de
@@ -14,10 +15,17 @@ import { journaliser } from "../journalSecurite.js";
 
 const heure = (h) => String(h ?? "").slice(0, 5);
 
-/** Séances passées ou du jour de la classe, les plus récentes d'abord, avec leur appel et leurs présences. */
-const seancesDeLaClasse = async (cours, groupe) => {
+// Séances à venir montrées dans l'onglet « Appel », pour imprimer la liste à l'avance (M-1, question 2)
+const JOURS_A_VENIR = 7;
+const dansJours = (jour, n) => new Date(Date.parse(`${jour}T12:00:00Z`) + n * 24 * 3600 * 1000).toISOString().slice(0, 10);
+
+/**
+ * Séances passées ou du jour de la classe (et, sur demande, celles des `aVenir` prochains jours),
+ * les plus récentes d'abord, avec leur appel et leurs présences.
+ */
+const seancesDeLaClasse = async (cours, groupe, { aVenir = 0 } = {}) => {
     const seances = await Affectation.findAll({
-        where: { id_cours: cours.id_cours, id_groupe: groupe.id_groupe, statut: { [Op.ne]: "annule" }, date_seance: { [Op.lte]: aujourdhui() } },
+        where: { id_cours: cours.id_cours, id_groupe: groupe.id_groupe, statut: { [Op.ne]: "annule" }, date_seance: { [Op.lte]: dansJours(aujourdhui(), aVenir) } },
         attributes: ["id_affectation", "date_seance", "statut"],
         include: [
             { model: Creneau, as: "creneau", attributes: ["heure_debut", "heure_fin"] },
@@ -41,19 +49,25 @@ const etudiantsDeLaClasse = async (groupe) => {
 
 export const appelsDeLaClasse = async (user, idCours, idGroupe) => {
     const { cours, groupe } = await classeAutorisee(user, idCours, idGroupe, { gerer: true });
-    const [{ seances, appels, presences }, etudiants] = await Promise.all([seancesDeLaClasse(cours, groupe), etudiantsDeLaClasse(groupe)]);
+    const [{ seances, appels, presences }, etudiants] = await Promise.all([seancesDeLaClasse(cours, groupe, { aVenir: JOURS_A_VENIR }), etudiantsDeLaClasse(groupe)]);
+    const jour = aujourdhui();
     return seances.map((s) => {
         const appel = appels.get(s.id_affectation);
         const lignes = presences.filter((p) => p.id_affectation === s.id_affectation);
         const presents = lignes.filter((p) => p.statut !== "retard").length;
         const retards = lignes.length - presents;
+        const date = String(s.date_seance).slice(0, 10);
+        // La date de l'école est calculée ici, au serveur : l'écran n'a qu'à lire (M-1, question 4)
+        const apresCoup = !appel && dansLeDelai(date, jour);
         return {
             id_affectation: s.id_affectation,
-            date: String(s.date_seance).slice(0, 10),
+            date,
             heure_debut: heure(s.creneau?.heure_debut),
             heure_fin: heure(s.creneau?.heure_fin),
             salle: s.salle?.nom_salle ?? null,
-            appel: !appel ? "a_faire" : appel.ferme_le ? "ferme" : "ouvert",
+            appel: date > jour ? "a_venir" : !appel ? "a_faire" : appel.ferme_le ? "ferme" : "ouvert",
+            saisie_apres_coup: apresCoup,
+            saisie_possible_jusqu_au: apresCoup ? limiteApresCoup(date) : null,
             presents,
             retards,
             absents: appel ? Math.max(0, etudiants.length - lignes.length) : null,
