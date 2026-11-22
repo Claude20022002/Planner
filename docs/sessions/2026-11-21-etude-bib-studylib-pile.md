@@ -99,7 +99,7 @@ et la répartition des lots (étude, § 8). Le comptage des volumes est reporté
 Reste, dans l'ordre :
 1) #245 : corriger ce que demandera la relecture du coordinateur, s'il revient avant la fusion ;
 2) UIX-10d, le mobile à la charte (plan d'UIX-10, § 9) : branche feat/uix-10d-… depuis origin/main,
-   dans ..	ravaux-planner\<nom> ; questions et plan court validé avant tout code ;
+   dans ..\travaux-planner\<nom> ; questions et plan court validé avant tout code ;
 3) ta part de la voie B, après le contrat d'API de BIB-06 (session « BIB ») : BIB-10 (mobile, à la suite d'UIX-10d,
    mêmes fichiers) et BIB-09 (écrans web à la charte) ; plan validé par le chef avant tout code ;
 4) VIT-09b en dernier, planche et captures montrées au chef avant le commit ;
