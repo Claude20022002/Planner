@@ -69,6 +69,8 @@ Réponses du chef, 22 nov., par l'outil de questions.
 | 16 | Catégories | **quatre** : Organiser, Enseigner, Gérer, Communiquer (§ 4.2) |
 | 17 | VIT-15 | **fondue dans VIT-20** ; VIT-15 est close, Codex prend un lot de VIT-20 |
 | 18 | Coordination | **le coordinateur de cette session tient VIT-20 seule** ; l'autre session de coordination garde le reste |
+| 19 | Qui code | **R0, B, A et C par un agent externe** (l'agent Claude d'un proche du chef), seul et sans échange ; **D par Codex**, après la fusion |
+| 20 | Livraison de l'agent externe | **accès collaborateur** : il pousse sa seule branche et ouvre la PR ; le chef fusionne |
 
 ## 4. Solution
 
@@ -244,10 +246,9 @@ Aucune. Site statique ; aucune base, aucune donnée d'école.
 
 1. **Ce plan** (version 2), visé par le chef, commité seul.
 2. **Avant R0**, le chef fusionne #254 (VIT-13) et #223 (VIT-12), et prend les captures d'Odoo dans son navigateur (huit pages : accueil, toutes les apps, Comptabilité, Planification, toutes les industries, tarifs, contact, aide ; 1440 et 390 px ; `..\travaux-planner\captures-vit-20\odoo\bureau\` et `telephone\`).
-3. **R0** : l'intégrateur crée `feat/vit-20-structure-du-site` depuis `origin/main` à jour, commite le contrat commun (§ 5), vérifie build et tests, et annonce le sha.
-4. **Lots A, B, C, D en parallèle**, chacun sur sa branche de lot, depuis le sha de R0. D commence par son tableau de phrases (§ 4.9), visé par le chef avant son code.
-5. **Intégration** par l'intégrateur, dans l'ordre A, C, D ; tests et parcours complets ; captures à 390 et 1440 px pour la recette du chef, à côté de celles d'Odoo.
-6. **Relecture** par le coordinateur ; une seule PR.
+3. **R0, B, A, C** par un seul agent (l'agent externe, décision du chef du 22 nov., question 19), dans cet ordre, sur `feat/vit-20-structure-du-site`, qu'il pousse lui-même ; la place du bloc D reste vide.
+4. **Relecture** par le coordinateur, captures « après » à 390 et 1440 px, comparées à celles d'avant et d'Odoo ; le chef fusionne.
+5. **Lot D** ensuite, par Codex, dans une PR à part : son tableau de phrases (§ 4.9) est visé par le chef avant son code.
 
 ## 10. Risques et retour arrière
 
