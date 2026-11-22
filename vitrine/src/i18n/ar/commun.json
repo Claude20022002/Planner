@@ -25,7 +25,18 @@
     "scolarite": "",
     "enseignants": "",
     "etudiants": "",
-    "ressources": ""
+    "ressources": "",
+    "applications": "",
+    "etablissements": "",
+    "contactLien": "",
+    "demonstration": "",
+    "seConnecter": "",
+    "toutesLesApplications": "",
+    "voirLesApplications": "",
+    "unBesoin": "",
+    "toutesLesFonctionnalites": "",
+    "apercu": "",
+    "fonctionnalites": ""
   },
   "langues": {
     "label": "",
@@ -46,5 +57,24 @@
   "redirection": {
     "titre": "",
     "lien": ""
+  },
+  "categories": {
+    "organiser": "",
+    "enseigner": "",
+    "gerer": "",
+    "communiquer": ""
+  },
+  "socle": {
+    "titre": "",
+    "etablissement": "",
+    "personnes": "",
+    "webMobile": "",
+    "securite": ""
+  },
+  "pourQui": {
+    "titre": ""
+  },
+  "equipement": {
+    "titre": ""
   }
 }
