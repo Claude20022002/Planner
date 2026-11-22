@@ -1,12 +1,12 @@
 {
   "meta": {
     "titre": "Solutions · Planner",
-    "description": "Planner for secondary schools, higher education and vocational training: what exists today, and what comes next."
+    "description": "Planner for higher education, vocational training and secondary schools: what exists today, and what comes next."
   },
   "entete": {
     "surtitre": "Solutions",
     "titre": "One school, its own rules.",
-    "accroche": "Secondary schools, higher education, vocational training: here is what Planner already does for each, and what comes next."
+    "accroche": "Higher education, vocational training, secondary schools: here is what Planner already does for each, and what comes next."
   },
   "sommaire": "Types of institution",
   "aujourdhui": "Today",
@@ -40,8 +40,8 @@
           "texte": "Grade entry and report cards, with credits."
         },
         {
-          "titre": "Internships and alumni",
-          "texte": "Students' internships, and the link with former students."
+          "titre": "Internships",
+          "texte": "Students' internships."
         }
       ]
     },
@@ -85,11 +85,11 @@
       "aujourdhui": [
         {
           "titre": "Attendance",
-          "texte": "Pupils scan the projected code, or the teacher marks each one by hand: present, late or absent. Attendance is linked to the session."
+          "texte": "The teacher marks each pupil by hand: present, late or absent. The teacher can also project a QR code."
         },
         {
           "titre": "Quizzes and games",
-          "texte": "Live in class, or at each pupil's own pace."
+          "texte": "Live quizzes, or at each pupil's own pace. The games are about computing and management."
         },
         {
           "titre": "Rooms, exams and statistics",
@@ -111,7 +111,7 @@
         },
         {
           "titre": "Absences, grades and report cards",
-          "texte": "Absences, grade entry and report cards."
+          "texte": "Absence follow-up beyond the session call: justification and families. Grade entry and report cards."
         },
         {
           "titre": "Export to the national platform",
