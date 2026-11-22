@@ -87,3 +87,4 @@ tout est commité ; jamais de git push. Un rapport dans ta boîte (sortie\) à c
 | 2026-11-21 | fiche écrite par le coordinateur ; liste de l'étude 15 validée par le chef | — |
 | 2026-11-21 23 h 10 | VIT-15 n'attend plus VIT-09c (chef) : les pages gardent une place, VIT-09c la remplit ; la fiche garde son ordre (après VIT-11) | — |
 | 2026-11-22 11 h 02 | plan relu (`80ff772b`) : **validé** avec trois ajouts (7 ter, teintes distinctes testées, ordre avec UIX-10e) ; question 3 : `shared/icones/images/` ; question 4 (chef) : l'outil de génération inclus dans Codex | validé |
+| 2026-11-22 16 h 40 | branche relue (`19ca17b4`) : **prête pour la PR** ; rendu validé par le chef | prête |

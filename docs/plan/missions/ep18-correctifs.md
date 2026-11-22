@@ -34,3 +34,4 @@ Chaque plan court dit ses fichiers ; le coordinateur vérifie qu'ils ne croisent
 | 22 nov. 11 h | M-10 : serveur, site, application et tableau commités (`2cd93378`) ; parcours de régression en cours, non commité | en cours |
 | 22 nov. 11 h 15 | M-10 relue (`bc54773b`) : **prête pour la PR** ; tests courts refaits ; intégration complète à la CI. M-1 demandée à la session 20 (plan court avec 7 ter) | prête |
 | 22 nov. 16 h 40 | M-1 : plan relu (`30625a36`), **validé** ; question 1 au chef : « compte, et se voit » (état de visa distinct) ; M-10 ouverte en #255 | validé |
+| 22 nov. 16 h 40 | M-12 relue (`ea6c747d`) : **prête pour la PR** ; M-11 : plan validé (« crédits ») ; M-10 : #255 verte | prête / validé |

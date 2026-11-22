@@ -95,3 +95,4 @@ Quand tu as fini une étape, dépose un rapport dans ..\boites\codex\sortie\ : l
 |---|---|---|
 | 22 nov. 9 h 40 | mission écrite, consigne déposée dans la boîte de Codex | — |
 | 22 nov. 11 h 02 | trame relue (`b99446f`, 17 diapositives) : **à corriger** (diapositives 5, 7, 9 au-delà du code ; captures ; deux parties du récit) ; réponses 1 à 3 du chef transmises | à corriger |
+| 22 nov. 16 h 40 | Codex a livré jusqu'à `8d3ce6c` ; la session `plan-b-projet-pacte-d9` reprend depuis `45c7240` (chef) | chez d9 |
