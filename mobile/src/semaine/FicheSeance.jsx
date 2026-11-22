@@ -112,7 +112,7 @@ export default function FicheSeance({ seance: s, fermer }) {
 const useStyles = creerStyles((t) => ({
   feuille: { maxHeight: '85%' },
   entete: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingLeft: 16, paddingRight: 4, paddingTop: 12 },
-  pastille: { width: 14, height: 14, borderRadius: t.famille === 'planner' ? 2 : 7, marginTop: 8 },
+  pastille: { width: 14, height: 14, borderRadius: 2, marginTop: 8 },
   titre: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 22, textTransform: t.capitales, letterSpacing: espace(t, 0.6) },
   sousTitre: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 14, marginTop: 2 },
   fermer: { width: CIBLE_TACTILE, height: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center' },

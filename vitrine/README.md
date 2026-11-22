@@ -25,7 +25,7 @@ npm run preview
 | `src/i18n/<langue>/<page>.json` | tous les textes ; aucun texte en dur dans les composants |
 | `src/i18n/langues.js` | langues construites et publiées, chemins des pages |
 | `src/pages/[lang]/` | une page Astro par page, qui assemble seulement |
-| `public/logo/` | logos redessinés d'après les logos officieux du 18 nov., à remplacer par les SVG du chef |
+| `public/logo/` | logos officiels du chef (18 nov.), version web |
 
 ## Règles
 

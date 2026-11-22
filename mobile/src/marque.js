@@ -1,27 +1,31 @@
-import { tokens } from '../../shared/tokens.js';
-import { melanger, nuancesMarque, verifierCouleur } from '../../shared/couleurs.js';
-import { THEMES } from './theme';
+import { contraste, melanger, verifierCouleur } from '../../shared/couleurs.js';
+import { sceneDe, texteSurAction, THEMES } from './theme';
 
 /**
- * Couleurs de l'école (D-21, lot ME-11) posées sur les thèmes Planner, au lancement et avant le
- * premier écran (app/_layout.jsx) : la barre de titre, le cadre du panneau et la scène des jeux
- * prennent la couleur principale. Les thèmes StudyLib gardent les couleurs de la bibliothèque.
- * Mêmes nuances que le site (shared/couleurs.js).
+ * Couleurs de l'école (D-21) posées sur les deux thèmes de la charte, au lancement et avant le
+ * premier écran (app/_layout.jsx) : la couleur principale devient l'action (onglet actif, boutons,
+ * sélection), ajustée jusqu'au contraste voulu, et teinte la scène des jeux. Même règle que le
+ * web (frontend/src/design-system/jetonsInterface.js). Sans couleurs : la charte en repli.
  */
+
+// Une marge en sombre garde le contraste pendant l'apparition des feuilles (comme le web)
+const MINIMUM = { clair: 4.5, sombre: 5.5 };
+
+/** Couleur d'action lisible sur la cellule d'un thème : l'école, rapprochée du texte s'il le faut */
+export const actionLisible = (couleur, theme) => {
+  const { cellule, lettre } = theme.couleurs;
+  let action = couleur;
+  for (let i = 0; i < 20 && contraste(action, cellule) < MINIMUM[theme.id]; i += 1) action = melanger(action, lettre, 0.15);
+  return action;
+};
+
 export const appliquerMarque = ({ couleur_principale: principale, couleur_accent: accent } = {}) => {
   // Une copie ancienne ou abîmée ne doit jamais rendre l'application illisible
   if (!verifierCouleur(principale, 'principale').valide || !verifierCouleur(accent, 'accent').valide) return;
-  // Les couleurs livrées avec les jetons gardent les nuances réglées à la main
-  if (principale.toUpperCase() === tokens.brand.navy.toUpperCase() && accent.toUpperCase() === tokens.brand.orange.toUpperCase()) return;
 
-  const n = nuancesMarque({ couleur_principale: principale, couleur_accent: accent });
-  const scene = { ciel: n.navy, collines: n.navyDeep, nuages: melanger(n.navy, '#FFFFFF', 0.15), arbres: n.navyDeep, texteAttenue: melanger(n.navy, '#FFFFFF', 0.8) };
-
-  const sombre = THEMES['planner-sombre'];
-  Object.assign(sombre.couleurs, { cadre: n.frame, bordCadre: n.frame });
-  Object.assign(sombre.scene, scene);
-
-  const clair = THEMES['planner-clair'];
-  Object.assign(clair.couleurs, { cadre: n.navy, bordCadre: n.navy, accent: n.navy });
-  Object.assign(clair.scene, scene);
+  for (const theme of Object.values(THEMES)) {
+    const action = actionLisible(principale, theme);
+    Object.assign(theme.couleurs, { accent: action, surAccent: texteSurAction(action) });
+    Object.assign(theme.scene, sceneDe(principale));
+  }
 };

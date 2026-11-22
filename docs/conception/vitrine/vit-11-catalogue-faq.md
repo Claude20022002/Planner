@@ -73,7 +73,7 @@ Visas relayés par le coordinateur dans la boîte Codex le 18 novembre 2026 à 2
 | 5 | Dans quelles langues puis-je consulter le site ? | « Le site est disponible en français et en anglais. Contactez-nous pour connaître les langues disponibles dans les applications qui vous intéressent. » | Chef |
 | 6 | Peut-on importer des listes ? | « L’administration peut importer des listes de comptes, d’étudiants et d’enseignants à partir de fichiers CSV compatibles. » Sources : `backend/routes/{userRoutes,etudiantRoutes,enseignantRoutes}.js` et `frontend/src/utils/fileImport.js`. | Chef |
 | 7 | Que propose l’application mobile ? | « L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main. » Voir la page Application et les preuves ci-dessous. | Chef, sur la formulation du coordinateur |
-| 8 | Comment l’IA intervient-elle ? | « Quand l’école active l’IA dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager. » | Chef |
+| 8 | Comment l’IA intervient-elle ? | « Quand l’IA est activée pour votre école dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager. » | Chef ; formule de l’IA alignée sur D2 le 21 nov. (VIT-18) |
 | 9 | Peut-on choisir StudyLib séparément ? | « Contactez-nous pour discuter de StudyLib et des fonctionnalités qui répondent aux besoins de votre établissement. » | Chef |
 | 10 | Combien cela coûte-t-il ? | « Contactez-nous pour parler des besoins de votre établissement. » Réutiliser le contact existant du site. | Chef |
 
@@ -107,3 +107,85 @@ le pays et le service pertinent.
    la correspondance entre FAQ visible et JSON-LD, le repli et le filtre clavier.
 4. Lancer les tests, le build de la vitrine, la neutralité, axe-core et Lighthouse. Recetter les deux
    pages sur mobile et bureau, avec et sans JavaScript. Documenter les résultats pour le chef.
+
+## 7. Complément soumis au chef le 21 novembre 2026 · Méga-menu « Fonctions »
+
+**Visa demandé.** Les visas du 18 novembre couvrent le catalogue et la FAQ (§ 1 à 6).
+Le chef a ajouté le méga-menu à la condition 10 de mise en ligne. La PR #219 (VIT-10)
+et le plan initial (#218) sont intégrés à la branche, actualisée sur `53561918`.
+
+### 7.1. Ce que voit le visiteur
+
+- Sur ordinateur, « Fonctions » ouvre un panneau. À gauche, chaque catégorie du registre
+  porte son nom et son nombre de fonctionnalités. Activer ce nom amène au titre du groupe
+  correspondant à droite. Chaque fonctionnalité est un lien vers sa page de détail. Le lien
+  « Toutes les fonctionnalités » ouvre `/<langue>/fonctionnalites/` et reste accessible dès le début du panneau.
+- À 390 px, le panneau présente une seule liste verticale. Chaque groupe commence par le nom
+  de la catégorie et son compte, suivis de ses liens. La liste peut défiler jusqu’au dernier
+  lien, même en paysage ou avec du texte agrandi.
+- Astro groupe les entrées du registre à la construction. Le nombre est celui des identifiants
+  distincts affichés dans le groupe, y compris les entrées marquées « Bientôt ». Les catégories
+  vides sont omises. Les libellés suivent la langue de la page (français, anglais, repli français
+  en arabe) et les colonnes suivent le sens de lecture. Le catalogue conserve son classement
+  par application. La recette vérifie que les sept pages de l’actuel menu restent joignables.
+- VIT-11 fournit les libellés et les liens. VIT-09 assure la pose ultérieure des logos.
+  La FAQ reste accessible par son propre lien prévu au § 2.
+
+### 7.2. Parcours sur un poste d’école, JavaScript désactivé (EP-18)
+
+Le HTML livré contient les titres, les comptes et tous les liens du panneau. Proposition pour
+les navigateurs qui le prennent en charge : un bouton « Fonctions » commande un panneau HTML
+natif (`popovertarget`, `popover="auto"`). Clic, toucher, Entrée ou Espace l’ouvrent.
+Tab et Maj+Tab parcourent les liens avec un focus visible. Échap ferme le panneau et le focus
+revient au bouton. Un bouton « Fermer » offre la même action au toucher. Les liens de catégorie
+sont des ancres vers des titres identifiables dans le panneau. [Comportement HTML natif](https://html.spec.whatwg.org/multipage/popover.html)
+
+Sur téléphone, la navigation principale est déjà visible lorsque son script est désactivé.
+Sur un navigateur ancien, le lien « Fonctions » mène directement au catalogue statique et à
+toutes ses catégories. Seuls les navigateurs compatibles affichent le bouton à la place de ce
+lien (détection CSS). Aucun survol, filtre actif ou téléchargement après ouverture n’est
+nécessaire pour atteindre une fonctionnalité.
+
+### 7.3. Poids initial et mesure de recette
+
+| Poste | Budget supplémentaire proposé pour VIT-11 |
+|---|---|
+| HTML du menu et CSS associé sur une page | **4 Kio gzip au total** (4 096 octets) |
+| JavaScript du méga-menu | **0 octet** |
+| Requêtes supplémentaires au chargement ou à l’ouverture | **0** |
+
+Ce plafond est soumis au chef. Le poids réel sera mesuré après réalisation. Le HTML n’embarque
+que les libellés, les comptes, les états et les liens de la langue affichée. Le registre JSON,
+les preuves, les traductions des autres langues, les images et les polices ne sont pas envoyés
+pour le menu. Le style rejoint une ressource déjà chargée ou le HTML de la page.
+
+Pour la recette, construire deux versions de production au même point d’intégration avec le
+même registre et les mêmes outils, l’une avec l’ancien menu et l’autre avec le méga-menu.
+Sur une même page existante (accueil), comparer la somme des tailles de la réponse HTML et des
+feuilles CSS chargées, chaque fichier compressé séparément en gzip au même niveau. Compter le
+CSS intégré une seule fois. Relever le delta brut et gzip en FR, EN et AR et retenir le plus
+grand delta gzip. Dans un navigateur au cache vide, comparer les requêtes initiales, ouvrir le
+menu puis parcourir les catégories avant de suivre un lien. Relever toute requête additionnelle
+ou tout script ajouté. Si le budget est dépassé, soumettre au chef la mesure et une révision.
+
+### 7.4. Vérifications et ordre d’intégration
+
+1. Vérifier sur le HTML construit les comptes et les destinations contre le registre, les ancres
+   uniques, les libellés « Bientôt », les routes localisées et le lien vers le catalogue.
+2. Recetter à 390, 768 et 1440 px, avec et sans JavaScript. Ouvrir au clavier puis au toucher,
+   atteindre une catégorie et sa dernière fonction, suivre un lien, vérifier Échap et le retour
+   du focus. Vérifier aussi le lien de repli, la lecture droite à gauche, le passage entre
+   « Solutions » et « Fonctions » et l’absence de défilement horizontal.
+3. Relever le budget du § 7.3, les tests de la vitrine, axe-core et Lighthouse selon le § 6.
+   Avant la PR, réintégrer `origin/main` après VIT-17 et VIT-18, qui touchent aussi
+   `vitrine/src/components/socle/EnTete.astro`, puis refaire les contrôles sur cette base.
+
+**Décisions demandées au chef avant le code**
+
+1. Validez-vous la navigation par catégorie et la liste à 390 px, avec les entrées « Bientôt »
+   identifiées et comptées ?
+2. Validez-vous le panneau HTML natif et l’accès direct au catalogue sur les anciens navigateurs ?
+3. Validez-vous le plafond de 4 Kio gzip par page, avec 0 octet de JavaScript et 0 requête
+   supplémentaire pour le menu ?
+
+**Visa du 21 novembre 2026.** Claude20022002 valide le complément du commit `6373472e`, y compris les trois décisions du § 7. Le méga-menu peut être réalisé.

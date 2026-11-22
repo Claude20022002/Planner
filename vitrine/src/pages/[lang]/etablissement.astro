@@ -10,9 +10,9 @@ import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
 import FinDePage from '../../components/fonctions/FinDePage.astro';
 import IllustrationStatistiques from '../../components/fonctions/IllustrationStatistiques.astro';
 import { traductions } from '../../i18n/index.js';
-import { LANGUES } from '../../i18n/langues.js';
+import { cheminsLangues } from '../../i18n/langues.js';
 
-export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = cheminsLangues;
 
 const { lang } = Astro.params;
 const t = traductions(lang, 'etablissement');

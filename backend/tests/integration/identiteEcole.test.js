@@ -64,10 +64,10 @@ describe("Réglage par l'administration", () => {
         expect(claire.status).toBe(400);
         expect(claire.body.code).toBe("COULEUR_ILLISIBLE");
         expect(claire.body.message).toMatch(/plus foncée/);
-        // Accent trop sombre : lisible sur blanc, illisible sur le panneau noir
+        // Accent trop sombre : lisible sur blanc, illisible sur le panneau sombre (fond « ecran » de la charte, UIX-10b)
         const sombre = await direction.send("put", "/api/etablissement", { couleur_accent: "#8B0000" });
         expect(sombre.status).toBe(400);
-        expect(sombre.body.message).toMatch(/panneau noir/);
+        expect(sombre.body.message).toMatch(/panneau sombre/);
         expect((await direction.send("put", "/api/etablissement", { couleur_accent: "orange" })).status).toBe(400);
         expect((await anonymous().get("/api/etablissement")).body.couleur_principale).toBe("#00573F");
     });

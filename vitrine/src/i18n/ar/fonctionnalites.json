@@ -1,0 +1,30 @@
+{
+  "titre": "",
+  "description": "",
+  "filtre": "",
+  "resultats": "",
+  "fermer": "",
+  "categories": "",
+  "applications": {
+    "planning": "",
+    "pedagogie": "",
+    "personnes": "",
+    "etablissement": "",
+    "annonces": "",
+    "activites": "",
+    "bibliotheque": ""
+  },
+  "groupes": {
+    "organisation": "",
+    "presence": "",
+    "cours": "",
+    "comptes": "",
+    "configuration": "",
+    "communication": "",
+    "jeux": "",
+    "ressources": "",
+    "stages": "",
+    "projets": "",
+    "evenements": ""
+  }
+}

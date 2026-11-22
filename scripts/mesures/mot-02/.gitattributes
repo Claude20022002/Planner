@@ -1,0 +1,4 @@
+# Les empreintes des jeux portent sur leurs octets, identiques sous Windows et Linux.
+*.json text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf

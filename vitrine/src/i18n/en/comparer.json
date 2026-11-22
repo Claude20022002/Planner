@@ -1,7 +1,7 @@
 {
   "meta": {
     "titre": "Compare · Planner",
-    "description": "Four common approaches, six criteria, and what Planner does not have yet. No product is targeted."
+    "description": "Four common approaches, eight criteria, and what Planner does not have yet. No product is targeted."
   },
   "accueil": {
     "surtitre": "Why Planner",
@@ -12,7 +12,7 @@
   "entete": {
     "surtitre": "Compare",
     "titre": "Planner and the other ways of working.",
-    "accroche": "Four common approaches, six criteria, and what Planner does not have yet. No product is targeted."
+    "accroche": "Four common approaches, eight criteria, and what Planner does not have yet. No product is targeted."
   },
   "methode": {
     "titre": "Method",
@@ -129,6 +129,31 @@
         }
       ]
     },
+    "appelProtege": {
+      "critere": "Attendance that cannot be cheated",
+      "cases": [
+        {
+          "mot": "Yes",
+          "texte": "Scanning goes through the Planner app. An account is linked to one phone, and one phone checks in only one student per session. The code changes every 30 seconds. If the teacher wishes, a surprise check calls out a few students marked present, at random."
+        },
+        {
+          "mot": "By eye",
+          "texte": "Attendance relies on the teacher, who sees who is in the room."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "Depending on the tool, advanced attendance, sometimes biometric, is available, often in a higher edition."
+        },
+        {
+          "mot": "Not its role",
+          "texte": "A login shows that an account was opened, not that a student is in the room."
+        },
+        {
+          "mot": "Recorded by an adult",
+          "texte": "The teacher or school office records the absence: attendance relies on their record."
+        }
+      ]
+    },
     "compte": {
       "critere": "Attendance, quizzes, games and the Library, with one account",
       "cases": [
@@ -176,6 +201,31 @@
         {
           "mot": "For staff",
           "texte": "Staff enter data on a computer. Families follow through an app or a portal."
+        }
+      ]
+    },
+    "sansReseau": {
+      "critere": "Weeks already viewed, readable without a network",
+      "cases": [
+        {
+          "mot": "In the app",
+          "texte": "In the app, today's board and the weeks already viewed stay readable without a network, with the time of their last update. They are erased when you sign out. An app fully usable offline is in preparation."
+        },
+        {
+          "mot": "On paper",
+          "texte": "A printed grid can be read anywhere, without a network. It does not follow changes made after printing."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "Depending on the tool, a mobile app keeps some data without a network. Office work needs a connection."
+        },
+        {
+          "mot": "Downloaded courses",
+          "texte": "Some platforms let students download courses to follow them without a network. The timetable is not there."
+        },
+        {
+          "mot": "Depends on the tool",
+          "texte": "A few vendors announce data entry without a network."
         }
       ]
     },

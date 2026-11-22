@@ -9,8 +9,20 @@ import { PushToken, Users } from "../models/index.js";
  * supprimé. EXPO_ACCESS_TOKEN active la « sécurité renforcée » d'Expo : sans lui, quiconque
  * connaît un jeton d'appareil peut lui envoyer un push ; avec lui, seul Planner le peut.
  *
- * Contenu : titre et message de la notification, et le lien interne ; rien d'autre.
+ * Contenu (QUA-10, EP-13) : par défaut, un texte générique, le même pour toutes les notifications,
+ * et le lien interne (un numéro et un nom d'écran) ; le texte complet se lit dans l'application,
+ * servi par Planner. Expo ne reçoit le titre et le message que si l'installation le demande :
+ * PUSH_CONTENU=complet.
  */
+
+export const TEXTE_GENERIQUE = "Nouvelle alerte. Ouvrez l'application pour la lire.";
+
+/** Mode du contenu des push : « complet » seulement s'il est demandé ; toute autre valeur donne « generique ». */
+export const modeContenuPush = () => (process.env.PUSH_CONTENU === "complet" ? "complet" : "generique");
+
+/** Titre et texte qui partent chez Expo : ceux de la notification, ou le texte générique. */
+export const contenuPush = ({ titre, message }, mode, produit) =>
+    mode === "complet" ? { titre: String(titre).slice(0, 120), message: String(message ?? "").slice(0, 240) } : { titre: produit, message: TEXTE_GENERIQUE };
 
 let client = null;
 const clientPush = () => {
@@ -97,11 +109,15 @@ export const envoyerPush = async (idUsers, { titre, message, lien = null }) => {
             include: [{ model: Users, as: "user", attributes: [], where: { actif: true } }],
         });
         if (!jetons.length) return { envoyes: 0 };
+        const mode = modeContenuPush();
+        // Chargé à l'appel, comme les modèles : l'identité lit la base
+        const produit = mode === "complet" ? null : await (await import("./etablissement/identite.js")).nomProduit();
+        const texte = contenuPush({ titre, message }, mode, produit);
         const messages = jetons.map((j) => ({
             to: j.token,
             sound: "default",
-            title: String(titre).slice(0, 120),
-            body: String(message ?? "").slice(0, 240),
+            title: texte.titre,
+            body: texte.message,
             data: lien ? { lien } : {},
             channelId: "planning",
         }));

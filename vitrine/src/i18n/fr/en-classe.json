@@ -1,7 +1,7 @@
 {
   "meta": {
     "titre": "En classe · Planner",
-    "description": "Appel par QR code ou à la main, quiz en direct ou à faire à son rythme, jeux pour réviser et sondages anonymes : Planner accompagne la classe, avec un seul compte."
+    "description": "Appel par QR code ou à la main, quiz en direct ou à faire à son rythme, jeux d'informatique et de gestion, et sondages anonymes : Planner accompagne la classe, avec un seul compte."
   },
   "entete": {
     "surtitre": "En classe",
@@ -11,11 +11,11 @@
   "appel": {
     "surtitre": "Appel",
     "titre": "L'appel en un geste.",
-    "texte": "L'enseignant projette un QR code au début de la séance. Les étudiants le scannent avec leur téléphone, et leur présence est notée. Il peut aussi noter chacun à la main : présent, en retard ou absent.",
+    "texte": "Au début de la séance, l'enseignant coche chaque étudiant : présent, en retard ou absent. S'il le veut, il affiche un QR code, que les étudiants scannent avec l'application Planner. Le code change toutes les 30 secondes.",
     "points": [
-      "Le scan marque l'étudiant présent.",
-      "L'enseignant note aussi à la main : présent, en retard, absent. Un étudiant sans téléphone est noté ainsi.",
-      "La présence est rattachée à la séance de l'emploi du temps"
+      "À la main, sur la liste de la séance : les étudiants n'ont besoin ni de téléphone, ni d'écran projeté.",
+      "Par QR code, avec l'application : un téléphone ne pointe qu'un seul étudiant.",
+      "La présence est rattachée à la séance de l'emploi du temps."
     ]
   },
   "quiz": {

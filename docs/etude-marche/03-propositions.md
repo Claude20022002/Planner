@@ -161,3 +161,14 @@ Par ordre chronologique. Une décision remplacée reste dans le tableau, avec ce
 | P-81 | 5 nov. | Ajouter au plan les lots du moteur : MP-1 à MP-4, décision sur Timefold, levée des limites ; ME-14a sur un jeu scolaire. | plan-produit 06, B-4 | à trancher |
 | P-82 | 5 nov. | Clore l'étude de la pile en V1 ; mesurer D-01 sur 200 bases ; aucune donnée réelle de mineur avant le contrat, la CNDP et ME-22. | plan-produit 06, A-1, A-4, A-5 | à trancher |
 | P-83 | 5 nov. | Garder `a/mp1-valeurs` (valeurs versionnées, migration 0061) et l'ouvrir en PR avant F-04. | groupe A | proposée (groupe A) |
+
+### Étude OpenEduCat (17 nov.)
+
+| N° | Date | Proposition | Origine | Statut |
+| --- | --- | --- | --- | --- |
+| P-84 | 17 nov. | Lancer l'essai du plan 08 sur le jeu du collège, contrôles de conflit laissés tels que livrés puis cochés, et mesurer Planner sur le même jeu (MOT-02). | 11-etude-openeducat.md § 8 | à trancher |
+| P-85 | 17 nov. | Ne citer aucune note G2 dans un argumentaire : OpenEduCat sollicitait ses avis G2 dans le produit (2023-2026). | 11-etude-openeducat.md § 4.4 | à trancher |
+| P-86 | 17 nov. | Faire de la liste publique des envois sortants (QUA-09) un argument, sans nommer de concurrent. | 11-etude-openeducat.md § 4.2 | à trancher |
+| P-87 | 17 nov. | Ne pas utiliser la faille des présences d'OpenEduCat en communication ; ajouter aux tests de Planner une vérification qu'aucune route n'est ouverte sans connexion hors d'une liste écrite (PLA-04, EXP-08). | 11-etude-openeducat.md § 4.3 | test des routes repris en EP-15 (17 nov., à valider avec la PR) ; communication à trancher |
+| P-88 | 17 nov. | Garder les contrôles de conflit de Planner toujours actifs, avec le forçage tracé actuel. | 11-etude-openeducat.md § 4.1 | reprise en EP-14 (17 nov., à valider avec la PR) |
+| P-89 | 17 nov. | Format importable par Odoo dans FIN-02 et ADM-03 ; échange limité (élèves, groupes, enseignants) si une école pilote a déjà Odoo. | 11-etude-openeducat.md § 8 | export Odoo repris en FIN-05 (17 nov.) ; échange limité à trancher |

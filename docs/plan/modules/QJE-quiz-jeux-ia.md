@@ -40,6 +40,11 @@
 | QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | libre | M | — | à faire |
 | QJE-08 | Créateurs de jeux et leur rémunération | JC-3, JC-4, JC-6, RC-1 à RC-4 | — | — | vente | gelé |
 | QJE-09 | Défis Linux dans un quiz | J-1 | — | M | QJE-04 | reporté |
+| QJE-10 | Évaluation en ligne notée : quiz du Studio passé comme évaluation (minuté, ordre aléatoire, une tentative), note versée au carnet de VSC-04 | — | 5 | M | VSC-04 | à faire |
+| QJE-11 | Correction de QCM papier par photo : feuille-réponse imprimable, photo prise par le téléphone de l'enseignant, note proposée puis validée | — | 5 | L | QJE-10 | à faire |
+| QJE-12 | Assistant IA de l'enseignant : séquence de cours, grille d'évaluation, commentaires de copie à relire ; aucune donnée d'élève envoyée | — | libre | M | QJE-07 | à faire |
+| QJE-13 | Tuteur IA pour l'élève, sur le contenu de ses cours | — | — | L | QJE-07, avis CNDP | conditionnel (règle « aucune donnée d'élève ») |
+| QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |
 
 ## Critères de « terminé »
 
@@ -47,6 +52,8 @@
 - **QJE-04** : un jeu envoie une réponse, jamais un score : le score est calculé par le serveur. Un test le prouve.
 - **QJE-06** : une installation neuve démarre sans les cinq conteneurs de ClassQuiz.
 - **QJE-07** : aucune donnée d'élève n'est envoyée au fournisseur ; la sortie de l'IA est relue par l'enseignant avant publication.
+- **QJE-11** : une feuille photographiée de travers ou mal éclairée est lue ou refusée avec une raison ; aucune note n'entre au carnet sans la validation de l'enseignant.
+- **QJE-12** : un test prouve qu'aucun nom, identifiant ou réponse d'élève ne part vers le fournisseur d'IA.
 
 ## Références
 

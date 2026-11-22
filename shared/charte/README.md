@@ -1,7 +1,7 @@
-<!-- Généré par shared/charte/generer.mjs, version 2, empreinte 525603deb6c7 : ne pas modifier ; changer shared/charte/jetons.json -->
+<!-- Généré par shared/charte/generer.mjs, version 4, empreinte 5915b2ce02cd : ne pas modifier ; changer shared/charte/jetons.json -->
 # Charte de Planner
 
-Guide généré depuis [jetons.json](jetons.json), version 2. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
+Guide généré depuis [jetons.json](jetons.json), version 4. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Teintes des applications (version 3, VIT-09a) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a). Statuts, lignes des filières et panneau (version 4, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
 
 ## Changer une valeur
 
@@ -40,6 +40,25 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 | `texte-sombre` | `#EDF1F7` | texte courant du mode sombre | — |
 | `texte-sombre-second` | `#A9B6C8` | texte secondaire du mode sombre | — |
 | `focus-sombre` | `#7FB0E6` | contour du focus en mode sombre (l'action du sombre est « bleu-clair », texte « ecran » dessus) | — |
+
+## Teintes des applications (logos)
+
+| Jeton | Valeur | Rôle | Site |
+|---|---|---|---|
+| `app-planning` | `#0B66D6` | logo de l'application Emploi du temps : ton clair du dégradé de la tuile | — |
+| `app-planning-fonce` | `#212F82` | logo de l'application Emploi du temps : ton foncé du dégradé et ombres | — |
+| `app-pedagogie` | `#007B80` | logo de l'application Enseignements : ton clair du dégradé de la tuile | — |
+| `app-pedagogie-fonce` | `#00475C` | logo de l'application Enseignements : ton foncé du dégradé et ombres | — |
+| `app-personnes` | `#775EBA` | logo de l'application Personnes : ton clair du dégradé de la tuile | — |
+| `app-personnes-fonce` | `#3F3687` | logo de l'application Personnes : ton foncé du dégradé et ombres | — |
+| `app-etablissement` | `#3C638C` | logo de l'application Établissement : ton clair du dégradé de la tuile | — |
+| `app-etablissement-fonce` | `#20385C` | logo de l'application Établissement : ton foncé du dégradé et ombres | — |
+| `app-annonces` | `#AE532D` | logo de l'application Annonces : ton clair du dégradé de la tuile | — |
+| `app-annonces-fonce` | `#75201C` | logo de l'application Annonces : ton foncé du dégradé et ombres | — |
+| `app-activites` | `#A94088` | logo de l'application Quiz et jeux : ton clair du dégradé de la tuile | — |
+| `app-activites-fonce` | `#5E256D` | logo de l'application Quiz et jeux : ton foncé du dégradé et ombres | — |
+| `app-bibliotheque` | `#077952` | logo de l'application Bibliothèque : ton clair du dégradé de la tuile | — |
+| `app-bibliotheque-fonce` | `#004C3B` | logo de l'application Bibliothèque : ton foncé du dégradé et ombres | — |
 
 ## Typographie
 
@@ -100,6 +119,46 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 | `duree-lente` | `320ms` | durée lente (ouverture d'un panneau) | — |
 | `courbe-tableau` | `[0.22, 1, 0.36, 1]` | la même courbe, en tableau, pour Motion (web) et Reanimated (mobile) | — |
 
+## Statuts des séances
+
+| Jeton | Valeur | Rôle | Site |
+|---|---|---|---|
+| `statut-planifie` | `#3F4759` | séance planifiée : texte et pastille, sur les écrans clairs | — |
+| `statut-planifie-fond` | `#EEF0F5` | séance planifiée : fond de la pastille | — |
+| `statut-confirme` | `#137D3F` | séance confirmée : texte et pastille | — |
+| `statut-confirme-fond` | `#E7F4EC` | séance confirmée : fond de la pastille | — |
+| `statut-reporte` | `#B4410C` | séance reportée ou à reprogrammer : texte et pastille | — |
+| `statut-reporte-fond` | `#FDEFE7` | séance reportée ou à reprogrammer : fond de la pastille | — |
+| `statut-annule` | `#B5161C` | séance annulée : texte et pastille | — |
+| `statut-annule-fond` | `#FCE8E9` | séance annulée : fond de la pastille | — |
+| `statut-realise` | `#5B6272` | séance réalisée : texte et pastille | — |
+| `statut-realise-fond` | `#F1F2F5` | séance réalisée : fond de la pastille | — |
+
+## Lignes des filières
+
+| Jeton | Valeur | Rôle | Site |
+|---|---|---|---|
+| `ligne-1` | `#3B63E0` | couleur de ligne d'une filière (la même filière garde la même couleur partout) ; jamais orange, rouge ni vert, réservés aux statuts | — |
+| `ligne-2` | `#1592C9` | couleur de ligne d'une filière | — |
+| `ligne-3` | `#0F8A7E` | couleur de ligne d'une filière | — |
+| `ligne-4` | `#7048C9` | couleur de ligne d'une filière | — |
+| `ligne-5` | `#B03A8C` | couleur de ligne d'une filière | — |
+| `ligne-6` | `#46508F` | couleur de ligne d'une filière | — |
+| `ligne-inconnue` | `#6B6B72` | ligne d'une séance sans filière connue | — |
+
+## Panneau des départs
+
+Le panneau reste sombre, même en thème clair : fond `ecran`, cases `surface-sombre`, lettres `texte-sombre` et `texte-sombre-second`, cadre à la couleur de l'école ou `bleu-nuit`. Seules ses couleurs propres sont ici.
+
+| Jeton | Valeur | Rôle | Site |
+|---|---|---|---|
+| `panneau-charniere` | `#0C121C` | charnière des volets : surface-sombre mêlée de noir (décor, sans exigence de contraste) ; fond du panneau : ecran ; cases : surface-sombre ; lettres : texte-sombre et texte-sombre-second | — |
+| `panneau-joint` | `#2C384B` | joints et filets du panneau : surface-sombre mêlée de texte-sombre (décor) | — |
+| `lampe-en-cours` | `#3FCB74` | lampe et texte « en cours » ou « confirmé » sur le panneau | — |
+| `lampe-retard` | `#F26322` | lampe et texte « reporté » sur le panneau | — |
+| `lampe-annule` | `#FF5A5F` | lampe et texte « annulé » sur le panneau | — |
+| `pas-volet` | `28ms` | décalage entre deux caractères dans la cascade des volets (hors de la famille mouvement, que l'empreinte de la vidéo du site couvre) | — |
+
 ## Contrastes vérifiés
 
 Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les composants. Le rapport est calculé sans arrondi ; il est arrondi ici pour la lecture.
@@ -127,6 +186,42 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `trait-fort` | `gris-fond` | 3,21:1 | 3:1 |
 | `bleu-vif` | `blanc` | 3,93:1 | 3:1 |
 | `bleu-nuit` | `jeu` | 7,65:1 | 4,5:1 |
+| `statut-planifie` | `statut-planifie-fond` | 8,16:1 | 4,5:1 |
+| `statut-planifie` | `blanc` | 9,30:1 | 4,5:1 |
+| `statut-planifie` | `gris-fond` | 8,51:1 | 4,5:1 |
+| `statut-confirme` | `statut-confirme-fond` | 4,60:1 | 4,5:1 |
+| `statut-confirme` | `blanc` | 5,21:1 | 4,5:1 |
+| `statut-confirme` | `gris-fond` | 4,76:1 | 4,5:1 |
+| `statut-reporte` | `statut-reporte-fond` | 5,05:1 | 4,5:1 |
+| `statut-reporte` | `blanc` | 5,67:1 | 4,5:1 |
+| `statut-reporte` | `gris-fond` | 5,19:1 | 4,5:1 |
+| `statut-annule` | `statut-annule-fond` | 5,77:1 | 4,5:1 |
+| `statut-annule` | `blanc` | 6,78:1 | 4,5:1 |
+| `statut-annule` | `gris-fond` | 6,20:1 | 4,5:1 |
+| `statut-realise` | `statut-realise-fond` | 5,46:1 | 4,5:1 |
+| `statut-realise` | `blanc` | 6,11:1 | 4,5:1 |
+| `statut-realise` | `gris-fond` | 5,59:1 | 4,5:1 |
+| `ligne-1` | `blanc` | 5,19:1 | 3:1 |
+| `ligne-2` | `blanc` | 3,51:1 | 3:1 |
+| `ligne-3` | `blanc` | 4,24:1 | 3:1 |
+| `ligne-4` | `blanc` | 6,07:1 | 3:1 |
+| `ligne-5` | `blanc` | 5,48:1 | 3:1 |
+| `ligne-6` | `blanc` | 7,49:1 | 3:1 |
+| `ligne-inconnue` | `blanc` | 5,29:1 | 3:1 |
+| `blanc` | `app-planning` | 5,40:1 | 4,5:1 |
+| `blanc` | `app-planning-fonce` | 11,71:1 | 4,5:1 |
+| `blanc` | `app-pedagogie` | 5,07:1 | 4,5:1 |
+| `blanc` | `app-pedagogie-fonce` | 10,21:1 | 4,5:1 |
+| `blanc` | `app-personnes` | 5,13:1 | 4,5:1 |
+| `blanc` | `app-personnes-fonce` | 10,05:1 | 4,5:1 |
+| `blanc` | `app-etablissement` | 6,26:1 | 4,5:1 |
+| `blanc` | `app-etablissement-fonce` | 11,79:1 | 4,5:1 |
+| `blanc` | `app-annonces` | 5,15:1 | 4,5:1 |
+| `blanc` | `app-annonces-fonce` | 10,61:1 | 4,5:1 |
+| `blanc` | `app-activites` | 5,56:1 | 4,5:1 |
+| `blanc` | `app-activites-fonce` | 10,71:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque` | 5,43:1 | 4,5:1 |
+| `blanc` | `app-bibliotheque-fonce` | 10,01:1 | 4,5:1 |
 
 ### Sombre
 
@@ -144,6 +239,12 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `trait-fort` | `surface-sombre` | 4,49:1 | 3:1 |
 | `bleu-vif` | `ecran` | 4,45:1 | 3:1 |
 | `jeu` | `ecran` | 11,29:1 | 3:1 |
+| `lampe-en-cours` | `ecran` | 8,32:1 | 4,5:1 |
+| `lampe-en-cours` | `surface-sombre` | 7,50:1 | 4,5:1 |
+| `lampe-retard` | `ecran` | 5,47:1 | 4,5:1 |
+| `lampe-retard` | `surface-sombre` | 4,94:1 | 4,5:1 |
+| `lampe-annule` | `ecran` | 5,72:1 | 4,5:1 |
+| `lampe-annule` | `surface-sombre` | 5,16:1 | 4,5:1 |
 
 ## Paires interdites
 

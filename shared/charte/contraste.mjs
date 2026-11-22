@@ -16,10 +16,15 @@ export const rapport = (a, b) => {
 /** Rapport pour l'affichage : « 4,16 ». */
 export const rapportAffiche = (valeur) => valeur.toFixed(2).replace('.', ',');
 
-/** Toutes les couleurs de la charte, « nom → #RRGGBB » (clair et sombre). */
+const HEXA = /^#[0-9A-F]{6}$/i;
+
+/**
+ * Toutes les couleurs de la charte, « nom → #RRGGBB » : chaque jeton dont la valeur est une couleur,
+ * quelle que soit sa famille (clair, sombre, statuts, lignes, panneau…). Les noms sont uniques.
+ */
 export const couleursDe = (source) => Object.fromEntries(
-    ['couleurs', 'sombre'].flatMap((famille) =>
-        Object.entries(source.familles[famille]).map(([nom, jeton]) => [nom, jeton.valeur])),
+    Object.values(source.familles).flatMap((jetons) =>
+        Object.entries(jetons).filter(([, jeton]) => HEXA.test(String(jeton.valeur))).map(([nom, jeton]) => [nom, jeton.valeur])),
 );
 
 const cle = (texte, fond) => `${texte} sur ${fond}`;

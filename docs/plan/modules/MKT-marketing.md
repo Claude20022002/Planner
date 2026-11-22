@@ -46,7 +46,7 @@ La session principale de `..\planner-marketing` est le **directeur marketing** :
 |---|---|---|---|---|---|
 | MKT-01 | Sauvegarder l'agence : premier commit de `..\planner-marketing`, dépôt GitHub **privé** (logos, stratégie), règles de l'équipe ajoutées à son `CLAUDE.md` | libre | S | — | à faire |
 | MKT-02 | Contexte produit et personas à la cible du 7 novembre (directeur d'école privée, scolarité, enseignant, parent), faits vérifiés dans le code | libre | M | MKT-01 | à faire |
-| MKT-03 | Argumentaire par cible, tiré des exigences produit EP-1 à EP-12 et des reproches faits aux concurrents | libre | M | MKT-02 | à faire |
+| MKT-03 | Argumentaire par cible, tiré des exigences produit EP-1 à EP-13 et des reproches faits aux concurrents | libre | M | MKT-02 | à faire |
 | MKT-04 | Textes du site vitrine et du formulaire de contact | libre | M | MKT-03, VIT-01 | à faire |
 | MKT-05 | Vidéo de démonstration sur une école fictive, sur le socle neutre (aucune donnée réelle) | libre | M | MKT-03, UIX-01 | à faire |
 | MKT-06 | Charte visuelle mise à jour (marque Planner, thème neutre) et gabarits de visuels | libre | M | MKT-02 | à faire |
@@ -67,7 +67,7 @@ La session principale de `..\planner-marketing` est le **directeur marketing** :
 
 ## Exigences produit
 
-Aucune directement ; MKT s'appuie sur EP-1 à EP-12 pour ses arguments et ne promet rien qu'une fonction faite ne tienne.
+Aucune directement ; MKT s'appuie sur EP-1 à EP-13 pour ses arguments et ne promet rien qu'une fonction faite ne tienne.
 
 ## Où se range le travail
 

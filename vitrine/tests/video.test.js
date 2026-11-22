@@ -35,6 +35,20 @@ test('les scènes anglaises ont autant de lignes que les françaises', () => {
   textes('en').scenes.forEach((scene, i) => assert.equal(scene.lignes.length, fr[i].lignes.length, `scène ${i + 1}`));
 });
 
+test('les phrases de VIT-18 sont dans la vidéo : six types en direct, IA activée pour votre école (régression, 19 nov.)', () => {
+  const attendu = {
+    fr: ['Dix types de questions, six en direct.', "Quand l'IA est activée pour votre école"],
+    en: ['Ten question types, six of them live.', 'When AI is turned on for your school'],
+  };
+  const retire = { fr: "l'école active l'IA", en: 'the school turns on AI' };
+  for (const langue of LANGUES_VIDEO) {
+    const { scenes } = textes(langue);
+    assert.ok(scenes[4].lignes[0].startsWith(attendu[langue][0]), `${langue}, scène 5`);
+    assert.ok(scenes[7].lignes[1].includes(attendu[langue][1]), `${langue}, scène 8`);
+    assert.ok(scenes.every((s) => s.lignes.every((l) => !l.includes(retire[langue]))), `${langue} : formule retirée (D2)`);
+  }
+});
+
 test('chaque page montre la vidéo de sa langue, et l’arabe la française', () => {
   assert.equal(langueVideo('fr'), 'fr');
   assert.equal(langueVideo('en'), 'en');
