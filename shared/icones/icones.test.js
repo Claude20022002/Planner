@@ -16,7 +16,7 @@ const COULEURS_CHARTE = new Set(Object.values(jetons.familles)
   .flatMap((famille) => Object.values(famille).map((j) => j.valeur))
   .filter((v) => typeof v === 'string' && /^#[0-9A-F]{6}$/i.test(v))
   .map((v) => v.toUpperCase()));
-const DESSINS = APPLICATIONS.flatMap((id) => [[id, LOGOS[id].detaille, 3 * 1024], [id, LOGOS[id].petit, 1.5 * 1024]]);
+const DESSINS = Object.keys(LOGOS).flatMap((id) => [[id, LOGOS[id].detaille, 3 * 1024], [id, LOGOS[id].petit, 1.5 * 1024]]);
 
 test('les logos sont ceux des sept applications, avec leurs jetons dans la charte', () => {
   assert.deepEqual(APPLICATIONS, ['planning', 'pedagogie', 'personnes', 'etablissement', 'annonces', 'activites', 'bibliotheque']);
@@ -27,6 +27,32 @@ test('les logos sont ceux des sept applications, avec leurs jetons dans la chart
   assert.equal(fichierLogo('planning', 24), 'modules/planning-petit.svg');
   assert.equal(fichierLogo('planning', 32), 'modules/planning-petit.svg');
   assert.equal(fichierLogo('planning', 48), 'modules/planning.svg');
+});
+
+// Angle de teinte HSL d'un ton de départ de la charte, en degrés sur le cercle.
+function teinte(hex) {
+  const [r, v, b] = hex.slice(1).match(/../g).map((canal) => parseInt(canal, 16));
+  const haut = Math.max(r, v, b);
+  const ecart = haut - Math.min(r, v, b);
+  assert.ok(ecart > 0, `Teinte indéfinie pour ${hex}`);
+  let secteur;
+  if (haut === r) secteur = (v - b) / ecart;
+  else if (haut === v) secteur = (b - r) / ecart + 2;
+  else secteur = (r - v) / ecart + 4;
+  return (60 * secteur + 360) % 360;
+}
+
+test('les nouvelles tuiles gardent au moins 14 degrés avec chaque autre ton de départ', () => {
+  const tons = Object.entries(jetons.familles.applications)
+    .filter(([nom]) => !nom.endsWith('-fonce'))
+    .map(([nom, jeton]) => [nom.slice(4), teinte(jeton.valeur)]);
+  for (const [id, angle] of tons.filter(([nom]) => !APPLICATIONS.includes(nom))) {
+    for (const [autre, voisin] of tons) {
+      if (id === autre) continue;
+      const distance = Math.abs(angle - voisin);
+      assert.ok(Math.min(distance, 360 - distance) >= 14, `${id} et ${autre} trop proches`);
+    }
+  }
 });
 
 test('chaque logo : couleurs de la charte seulement', () => {

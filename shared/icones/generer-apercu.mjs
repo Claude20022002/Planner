@@ -9,7 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { APPLICATIONS, CLASSE_PORTEUR, ICONES_VIVANTES, fichierLogo } from './index.js';
+import { LOGOS, CLASSE_PORTEUR, ICONES_VIVANTES, fichierLogo } from './index.js';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
 const jetons = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'charte', 'jetons.json'), 'utf8'));
@@ -49,7 +49,9 @@ const html = `<!doctype html>
 <body>
   <h1>Logos des applications</h1>
   <p>24 et 32 px : dessin simplifié ; 48 et 96 px : dessin détaillé. Fonds : blanc, gris-fond, ecran (sombre).</p>
-  ${APPLICATIONS.map((id) => `<div class="logo"><span class="nom">${id}</span>${ligne(id)}\n  </div>`).join('\n  ')}
+  ${Object.keys(LOGOS).map((id) => `<div class="logo"><span class="nom">${id}</span>${ligne(id)}\n  </div>`).join('\n  ')}
+  <h1 class="suite">Illustration du module Présences</h1>
+  <img src="images/presences.webp" width="256" height="256" alt="Feuille d’appel cochée">
   <h1 class="suite">Icônes vivantes</h1>
   <p>Survoler un bouton, ou l'atteindre avec Tab : l'icône s'anime une fois. Rien ne bouge si le système demande moins de mouvement.</p>
   <div class="icones clair">
@@ -62,4 +64,4 @@ const html = `<!doctype html>
 `;
 
 fs.writeFileSync(path.join(ICI, 'apercu.html'), html);
-console.log(`Aperçu écrit : shared/icones/apercu.html (${APPLICATIONS.length} logos, ${ICONES_VIVANTES.length} icônes vivantes).`);
+console.log(`Aperçu écrit : shared/icones/apercu.html (${Object.keys(LOGOS).length} logos, ${ICONES_VIVANTES.length} icônes vivantes).`);

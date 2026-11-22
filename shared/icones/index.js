@@ -13,7 +13,7 @@ export const APPLICATIONS = ['planning', 'pedagogie', 'personnes', 'etablissemen
 export const TAILLE_PETIT_MAX = 32;
 
 /** Logo d'une application : ses deux dessins et ses deux tons */
-export const LOGOS = Object.freeze(Object.fromEntries(APPLICATIONS.map((id) => [id, Object.freeze({
+export const LOGOS = Object.freeze(Object.fromEntries([...APPLICATIONS, 'presences'].map((id) => [id, Object.freeze({
   id,
   detaille: `modules/${id}.svg`,
   petit: `modules/${id}-petit.svg`,

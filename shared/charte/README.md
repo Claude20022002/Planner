@@ -1,7 +1,7 @@
-<!-- Généré par shared/charte/generer.mjs, version 4, empreinte 5915b2ce02cd : ne pas modifier ; changer shared/charte/jetons.json -->
+<!-- Généré par shared/charte/generer.mjs, version 5, empreinte c9cfa30b2382 : ne pas modifier ; changer shared/charte/jetons.json -->
 # Charte de Planner
 
-Guide généré depuis [jetons.json](jetons.json), version 4. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Teintes des applications (version 3, VIT-09a) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a). Statuts, lignes des filières et panneau (version 4, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
+Guide généré depuis [jetons.json](jetons.json), version 5. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Teintes des applications (version 3, VIT-09a) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a). Statuts, lignes des filières et panneau (version 4, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
 
 ## Changer une valeur
 
@@ -45,6 +45,8 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 
 | Jeton | Valeur | Rôle | Site |
 |---|---|---|---|
+| `app-presences` | `#2F7548` | tuile du module Présences | — |
+| `app-presences-fonce` | `#1F4D2F` | ton foncé de la tuile Présences | — |
 | `app-planning` | `#0B66D6` | logo de l'application Emploi du temps : ton clair du dégradé de la tuile | — |
 | `app-planning-fonce` | `#212F82` | logo de l'application Emploi du temps : ton foncé du dégradé et ombres | — |
 | `app-pedagogie` | `#007B80` | logo de l'application Enseignements : ton clair du dégradé de la tuile | — |
@@ -208,6 +210,8 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `ligne-5` | `blanc` | 5,48:1 | 3:1 |
 | `ligne-6` | `blanc` | 7,49:1 | 3:1 |
 | `ligne-inconnue` | `blanc` | 5,29:1 | 3:1 |
+| `blanc` | `app-presences` | 5,59:1 | 4,5:1 |
+| `blanc` | `app-presences-fonce` | 9,72:1 | 4,5:1 |
 | `blanc` | `app-planning` | 5,40:1 | 4,5:1 |
 | `blanc` | `app-planning-fonce` | 11,71:1 | 4,5:1 |
 | `blanc` | `app-pedagogie` | 5,07:1 | 4,5:1 |
