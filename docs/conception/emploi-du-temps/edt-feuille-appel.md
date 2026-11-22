@@ -6,7 +6,7 @@
 | Branche | `feat/edt-feuille-appel`, depuis `origin/main` (`a4078f87`) |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-22 |
 | Taille | S, sans migration |
-| **Validé** | en attente (coordinateur ; au chef si une migration apparaît) |
+| **Validé** | par le coordinateur, le 22 nov. (`30625a36`), avec la réponse du chef à la question 1 et les précisions A et B (§ 3) |
 
 ## 1. Objet et critère de « terminé »
 
@@ -17,13 +17,16 @@
 - **Ce qui manque vraiment, c'est de terminer l'appel d'une séance passée.** L'appel ne s'ouvre que le jour même (`appel.js:110`). Une séance passée sans appel reste « non fait », en lecture seule (`OngletAppel.jsx`, commentaire de tête).
 - Or l'appel terminé, c'est ce que lit le **visa** de la séance : `visaSeances.js:34` vaut `appel_valide` si l'appel est fermé, et `a_verifier` sinon. C'est aussi ce que comptent les taux de présence (`historique.js`, commentaire de tête : seules les séances dont l'appel est fermé comptent).
 
-Le plan prend donc la décision du chef dans ce sens : **l'appel fait sur papier se saisit et se termine dans les 7 jours, et la séance compte alors comme un appel fait** (visa `appel_valide`, taux de présence). C'est la question 1, au coordinateur. Au chef s'il juge que le sens a changé.
+Le plan prend donc la décision du chef dans ce sens : **l'appel fait sur papier se saisit et se termine dans les 7 jours, et la séance compte alors comme un appel fait** (visa `appel_valide`, taux de présence). C'est la question 1, **tranchée par le chef** (22 nov., par l'outil de questions) : « compte, et se voit ».
+- L'appel terminé après coup compte comme un appel fait : dans les taux de présence, et dans les heures payées (le visa compte, `suivi.js:202`).
+- Le visa affiche un **état distinct**, `appel_saisi_apres_coup`, pour que l'administration le repère. Elle peut toujours le confirmer ou l'écarter.
 
 **Critère de « terminé »** (fixé par la fiche, précisé ici) :
 1. L'enseignant de la séance, ou l'administration, imprime la liste d'appel d'une séance du jour, à venir ou passée. La liste porte les attendus, triés par nom, avec trois cases par ligne, et l'en-tête de la séance.
-2. Dans les 7 jours qui suivent une séance sans appel, l'enseignant saisit l'appel sur le site, puis le termine. L'appel compte alors comme fait : visa `appel_valide`, taux de présence. Passé ce délai, la séance reste en lecture.
+2. Dans les 7 jours qui suivent une séance sans appel, l'enseignant saisit l'appel sur le site, puis le termine. L'appel compte alors comme fait (taux de présence, heures payées). Son visa est `appel_saisi_apres_coup` (`compte: true`), et non `appel_valide`, et la séance figure dans la liste « à vérifier » de l'administration. Passé ce délai, la séance reste en lecture.
 3. **L'heure réelle de la saisie est gardée** : chaque présence garde l'heure où elle a été saisie (`marque_le`, `modifie_le`, déjà le cas). La fin de l'appel après coup s'inscrit au journal de sécurité, avec son heure (question 3).
-4. **Sans migration.** Tests verts, dont un test de régression : une séance d'avant-hier sans appel se termine après coup ; une séance d'il y a 8 jours est refusée.
+4. **Sans migration.** Tests verts, dont un test de régression : une séance d'avant-hier sans appel se termine après coup, avec l'état `appel_saisi_apres_coup` ; une séance terminée le jour même reste `appel_valide` ; une séance d'il y a 8 jours est refusée.
+5. **Aucun pays supposé** (précision A) : la feuille n'impose aucun format de papier (pas de `size` dans `@page`), passe en A4 comme en Letter, et se lit en noir et blanc (cases tracées, aucune couleur porteuse de sens).
 
 ## 2. Ce qui existe
 
@@ -44,12 +47,27 @@ Le plan prend donc la décision du chef dans ce sens : **l'appel fait sur papier
 
 | N° | Question | Proposition | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | Le sens de « marquer réalisée » (§ 1), puisque le statut se pose déjà tout seul | **terminer l'appel après coup** dans les 7 jours, pour que la séance compte comme un appel fait (visa `appel_valide`, taux) ; l'étude est corrigée dans la fiche. *(au coordinateur ; au chef s'il juge que le sens a changé)* | | tout |
-| 2 | Où imprimer une séance à venir (contexte C2 : l'enseignant imprime à l'avance) | l'onglet « Appel » de la classe montre aussi les séances des 7 prochains jours, « à venir », imprimables mais pas ouvrables ; et un bouton « Imprimer la liste d'appel » sur la page de l'appel. *(au coordinateur)* | | 2 |
-| 3 | Le journal de sécurité | un événement `appel_saisi_apres_coup` (qui, quelle séance, sa date, le nombre de présents) ; une correction après la fin reste `presence_corrigee`. *(au coordinateur ; au chef s'il y voit un enjeu de sécurité)* | | 3 |
-| 4 | Le délai de 7 jours | du lendemain de la séance jusqu'au septième jour après elle inclus, à la date de l'école. La séance du jour suit le chemin ordinaire (ouvrir, QR, fermer). *(au coordinateur)* | | 3 |
-| 5 | La saisie à la main d'une séance de plus de 7 jours | inchangée : la route l'accepte déjà, l'écran ne la propose plus. Seule la fin de l'appel est bornée. La borner aussi changerait les corrections de l'administration, hors du périmètre. *(au coordinateur)* | | — |
-| 6 | Le contenu de la feuille | l'en-tête : l'école, la matière, le groupe, la date, l'horaire, la salle et l'enseignant. Puis une ligne par attendu : n°, nom, prénom, trois cases, une colonne « Motif ». Au pied : « À saisir dans Planner dans les 7 jours », et la date d'impression. En français ou en anglais, selon la langue de l'écran. Rien de plus sur l'élève. *(au coordinateur)* | | 2 |
+| 1 | Le sens de « marquer réalisée » (§ 1), puisque le statut se pose déjà tout seul | **terminer l'appel après coup** dans les 7 jours, pour que la séance compte comme un appel fait (visa `appel_valide`, taux) ; l'étude est corrigée dans la fiche. *(au coordinateur ; au chef s'il juge que le sens a changé)* | **chef, 22 nov. : « compte, et se voit »** (§ 1) | tout |
+| 2 | Où imprimer une séance à venir (contexte C2 : l'enseignant imprime à l'avance) | l'onglet « Appel » de la classe montre aussi les séances des 7 prochains jours, « à venir », imprimables mais pas ouvrables ; et un bouton « Imprimer la liste d'appel » sur la page de l'appel. *(au coordinateur)* | **coordinateur, 22 nov. : oui** | 2 |
+| 3 | Le journal de sécurité | un événement `appel_saisi_apres_coup` (qui, quelle séance, sa date, le nombre de présents) ; une correction après la fin reste `presence_corrigee`. *(au coordinateur ; au chef s'il y voit un enjeu de sécurité)* | **coordinateur, 22 nov. : oui** | 3 |
+| 4 | Le délai de 7 jours | du lendemain de la séance jusqu'au septième jour après elle inclus, à la date de l'école. La séance du jour suit le chemin ordinaire (ouvrir, QR, fermer). *(au coordinateur)* | **coordinateur, 22 nov. : oui**, calculé au serveur | 3 |
+| 5 | La saisie à la main d'une séance de plus de 7 jours | inchangée : la route l'accepte déjà, l'écran ne la propose plus. Seule la fin de l'appel est bornée. La borner aussi changerait les corrections de l'administration, hors du périmètre. *(au coordinateur)* | **coordinateur, 22 nov. : oui** | — |
+| 6 | Le contenu de la feuille | l'en-tête : l'école, la matière, le groupe, la date, l'horaire, la salle et l'enseignant. Puis une ligne par attendu : n°, nom, prénom, trois cases, une colonne « Motif ». Au pied : « À saisir dans Planner dans les 7 jours », et la date d'impression. En français ou en anglais, selon la langue de l'écran. Rien de plus sur l'élève. *(au coordinateur)* | **coordinateur, 22 nov. : oui** | 2 |
+
+**Précisions du coordinateur (22 nov.)** :
+- **A.** La feuille n'impose pas de format de papier : pas de `size: A4` dans `@page`, pour qu'elle passe en A4 comme en Letter. Elle reste lisible en noir et blanc : cases tracées, aucune couleur porteuse de sens.
+- **B.** La ligne de M-1 dans le fichier du module EDT dit la correction de l'étude : « réalisée » se pose déjà ; ce qui manquait, c'est de terminer l'appel.
+
+**Le repère de l'appel saisi après coup, sans migration** (demandé par le coordinateur : « le plus sûr ») : **le secret de l'appel commence par `apres-coup.`**. C'est une colonne qui existe (`AppelSeance.secret`, 64 caractères).
+- Il ne signe jamais de QR, puisque l'appel est créé déjà fermé.
+- Il ne demande ni la date de la séance, ni le fuseau, ni une jointure de plus.
+- Il ne peut pas se produire par accident : `ouvrirAppel` tire un secret au hasard en base64url (`appel.js:114`), qui ne contient jamais de point.
+
+Deux autres repères ont été écartés :
+- « ouverture = fermeture » : la base garde les dates à la seconde, et un appel ordinaire ouvert puis fermé dans la même seconde passerait pour un appel après coup ;
+- « jour d'ouverture postérieur à la séance » : il faut le fuseau et la date de la séance à chaque lecture.
+
+`estApresCoup(appel)` est exporté par `apresCoup.js` et lu par `etatDeLaSeance` (`visaSeances.js`). Les deux lectures d'appels qui servent au visa demandent aussi la colonne `secret` : `etatsDesSeances` et l'include de `suivi.js:154`.
 
 ## 4. Solution
 
@@ -102,6 +120,9 @@ sequenceDiagram
 | `backend/routes/presenceRoutes.js` | modifié | `POST /seances/:id/apres-coup` | +4 |
 | `backend/services/presences/historique.js` | modifié | les 7 prochains jours, `a_venir`, `saisie_possible_jusqu_au` | 106 → 125 |
 | `backend/services/journalSecurite.js` | modifié | l'événement `appel_saisi_apres_coup` | +1 |
+| `backend/services/planning/visaSeances.js` | modifié | l'état `appel_saisi_apres_coup` dans `ETATS` (`compte: true`), lu par `etatDeLaSeance` ; `secret` dans la lecture des appels | +6 |
+| `backend/services/planning/suivi.js` | modifié | `secret` dans l'include de l'appel (l. 154) | ±1 |
+| `frontend/src/components/suivi/SeancesAVerifier.jsx` | modifié | le ton de l'état nouveau | ±1 |
 | `backend/tests/integration/appelApresCoup.test.js` | créé | T-1 à T-5 | 150 |
 | `frontend/src/components/appel/feuilleAppel.js`, `feuilleAppel.test.js` | créés | la feuille (fonction pure) et son test | 90, 60 |
 | `frontend/src/components/appel/BoutonImprimer.jsx`, `BandeauApresCoup.jsx` | créés | l'impression, le bandeau | 50, 40 |
@@ -137,12 +158,12 @@ Aucun pays supposé : la feuille ne porte ni format national ni numéro de l'Ét
 ## 8. Tests
 
 - **Intégration** (`appelApresCoup.test.js`) :
-  - **T-1, régression** : une séance d'avant-hier sans appel est saisie, puis terminée après coup. Le visa devient `appel_valide`, et elle compte dans les taux.
+  - **T-1, régression** : une séance d'avant-hier sans appel est saisie, puis terminée après coup. Le visa devient `appel_saisi_apres_coup` (et compte pour la paie), et la séance compte dans les taux. Une séance dont l'appel est terminé le jour même reste `appel_valide`.
   - **T-2** : à 8 jours, la fin après coup est refusée (409, avec le message) ; la séance du jour et une séance à venir sont refusées aussi.
   - **T-3** : un étudiant, ou un autre enseignant, est refusé.
   - **T-4** : un appel déjà fermé est refusé (409). Un appel ouvert le jour même et resté ouvert se ferme toujours par `fermer`.
   - **T-5** : le journal porte `appel_saisi_apres_coup` avec l'auteur. L'onglet donne `a_venir` et `saisie_possible_jusqu_au`.
-- **Site** (`feuilleAppel.test.js`) : la feuille porte l'en-tête, une ligne par attendu dans l'ordre des noms, et trois cases. Un nom qui contient `<script>` est échappé. Les textes existent en anglais.
+- **Site** (`feuilleAppel.test.js`) : la feuille porte l'en-tête, une ligne par attendu dans l'ordre des noms, et trois cases. Un nom qui contient `<script>` est échappé. Les textes existent en anglais. Aucun `size` dans `@page`, et aucune couleur dans les cases (précision A).
 - **Parcours** (`appelApresCoup.spec.cjs`, P-1) : l'onglet « Appel » montre « À saisir » pour une séance passée. La page s'ouvre sans QR, on coche, on termine, et l'onglet montre l'appel fait. Le bouton d'impression ouvre la fenêtre de la feuille. Ce parcours ne touche ni au créneau du jour de #210, ni à M-10.
 
 ## 9. Étapes de livraison
