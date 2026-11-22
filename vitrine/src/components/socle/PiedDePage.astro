@@ -1,9 +1,12 @@
 ---
-// Pied de page du site vitrine : nom et phrase du produit, pages du site, langues, mention de droits.
+// Pied de page du site vitrine (plan VIT-20, § 4.5) : nom et phrase du produit, quatre colonnes (Applications, Établissements,
+// Ressources, Planner), puis les langues et les droits. Mentions légales et Confidentialité (VIT-12) et À propos (VIT-16)
+// s'ajouteront quand ces pages existeront.
 import Logo from './Logo.astro';
 import { traductions } from '../../i18n/index.js';
 import { TYPES } from '../solutions/types.js';
-import { LANGUES_PUBLIEES, FONCTIONS, ROLES, chemin } from '../../i18n/langues.js';
+import { modulesDisponibles } from '../../donnees/modules.js';
+import { LANGUES_PUBLIEES, RESSOURCES, ROLES, chemin, cheminContact, pageModule } from '../../i18n/langues.js';
 
 interface Props {
   langue: string;
@@ -12,23 +15,26 @@ interface Props {
 
 const { langue, page } = Astro.props;
 const t = traductions(langue, 'commun');
+const modules = traductions(langue, 'modules');
 const solutions = traductions(langue, 'solutions');
-const catalogue = traductions(langue, 'fonctionnalites');
 const faq = traductions(langue, 'faq');
+const catalogue = traductions(langue, 'fonctionnalites');
+const libellesRessources = {
+  faq: faq('titre'), comparer: t('navigation.comparer'), securite: t('navigation.securite'), bientot: t('navigation.bientot'),
+  fonctionnalites: catalogue('titre'),
+};
 const colonnes = [
-  { titre: t('navigation.fonctions'), liens: [
-    { href: chemin(langue, 'fonctionnalites'), texte: catalogue('titre') },
-    ...FONCTIONS.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })),
+  { titre: t('navigation.applications'), liens: [
+    ...modulesDisponibles().map((module) => ({ href: chemin(langue, pageModule(module.cle)), texte: modules(`noms.${module.cle}`) })),
+    { href: chemin(langue, 'socle'), texte: t('socle.titre') },
+    { href: chemin(langue, 'applications'), texte: t('navigation.toutesLesApplications') },
   ] },
-  { titre: t('navigation.solutions'), liens: TYPES.map(({ cle, ancre }) => ({ href: chemin(langue, 'solutions', ancre), texte: solutions(`types.${cle}.surtitre`) })) },
-  { titre: t('navigation.parRole'), liens: ROLES.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })) },
-  { titre: t('navigation.ressources'), liens: [
-    { href: chemin(langue, 'faq'), texte: faq('titre') },
-    { href: chemin(langue, 'comparer'), texte: t('navigation.comparer') },
-    { href: chemin(langue, 'securite'), texte: t('navigation.securite') },
-    { href: chemin(langue, 'bientot'), texte: t('navigation.bientot') },
-    { href: chemin(langue, 'accueil', 'contact'), texte: t('navigation.contact') },
+  { titre: t('navigation.etablissements'), liens: [
+    ...TYPES.map(({ cle, ancre }) => ({ href: chemin(langue, 'solutions', ancre), texte: solutions(`types.${cle}.surtitre`) })),
+    ...ROLES.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })),
   ] },
+  { titre: t('navigation.ressources'), liens: RESSOURCES.map((cle) => ({ href: chemin(langue, cle), texte: libellesRessources[cle] })) },
+  { titre: t('produit'), liens: [{ href: cheminContact(langue), texte: t('navigation.contactLien') }] },
 ];
 ---
 <footer class="pied">
