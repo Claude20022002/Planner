@@ -80,7 +80,7 @@ Commence par le tour d'état (skill coordination, § 1), les boîtes de Codex, d
 gh pr list --state merged depuis le 22 nov. 16 h 45.
 
 Puis, dans l'ordre :
-1) relis M-1 (session plan-b-projet-pacte-20, feat/edt-feuille-appel) à son rapport : le visa « appel saisi après coup » compte et se voit ;
+1) relis les corrections de M-1 (session plan-b-projet-pacte-20, feat/edt-feuille-appel ; relue à corriger le 22 nov. à 17 h : séance annulée, date limite à l'écran) ;
 2) relis M-11 (agent de Cursor, fix/qje-jeux-unite-neutre) à son rapport, puis valide le plan de M-9 (fichiers du serveur web : vérifie
    qu'aucune autre branche ne les tient) ;
 3) suis les fusions : #252, #255, #253, #254, #242, puis M-12 et VIT-09c une fois poussées, #193 en dernier ; après #253, range M-3 à M-16
