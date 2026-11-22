@@ -19,7 +19,7 @@ Légende : ✅ existe · 🟡 partiel · 📋 prévu · ⏸ reporté · ❌ éca
 | Notes, bulletins | Community « basic » ; carnet et GPA en Enterprise | 📋 VSC-04, **VSC-10** | note absente distincte de zéro, verrouillage, avancement de la saisie, crédits et LMD |
 | Passage d'année | Enterprise | 📋 ADM-06 | en moins d'une demi-journée (EP-8) |
 | Choix des options | Enterprise (inscription aux matières) | 📋 **VSC-12** | les choix forment les groupes du moteur |
-| Discipline | Enterprise | 📋 **VSC-07** | famille prévenue par COM, durée de conservation fixée |
+| Discipline | Enterprise | 📋 **VSC-13** | famille prévenue par COM, durée de conservation fixée |
 | Santé | Enterprise | 📋 **VSC-08**, facultatif | éteint par défaut, ouvert après le dossier CNDP de l'école |
 | Activités, clubs | Community | 📋 **VSC-09** | créneaux placés sans conflit avec les cours |
 | Mémoires, thèses | Enterprise | 📋 **VSC-11** | soutenance placée sans conflit |
@@ -83,7 +83,7 @@ Elles s'ajoutent au § 6 du [README](README.md) (EP-13 est prise par la liste de
 
 Il suit les dépendances et ce qu'une école privée demande d'abord. Il n'engage pas les chantiers, que le chef ouvre.
 
-1. Après VSC-02 et VSC-04 : VSC-12, VSC-07, EDT-06, FIN-04.
+1. Après VSC-02 et VSC-04 : VSC-12, VSC-13, EDT-06, FIN-04.
 2. Après COM-01 et COM-02 : COM-04, COM-05, SER-01, SER-02.
 3. Ensuite : COU-10, QJE-10, QJE-11, VSC-10, PIL-03, ADM-10.
 4. Le reste selon la demande des écoles (entretiens de VEN-02).

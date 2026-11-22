@@ -58,7 +58,7 @@ Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-ec
   - le bulletin d'une classe s'imprime en un clic ;
   - une absence à une évaluation ne change pas la moyenne ;
   - une note modifiée après verrouillage garde son historique.
-- **VSC-07** : une sanction n'est visible que de la direction, de l'enseignant concerné et de la famille ; elle s'efface à la date fixée par l'école, et un test le prouve.
+- **VSC-13** : une sanction n'est visible que de la direction, de l'enseignant concerné et de la famille ; elle s'efface à la date fixée par l'école, et un test le prouve.
 - **VSC-08** : le module refuse de s'allumer tant que l'école n'a pas déclaré son dossier CNDP ; un enseignant ne lit aucune donnée de santé, sauf l'alerte qu'il doit connaître (allergie grave), si l'école l'a choisi.
 - **VSC-12** : deux élèves de deux classes qui choisissent la même langue sont dans le même groupe du moteur, sans conflit dans leur emploi du temps.
 
