@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Pressable, ScrollView, Switch, Text, useColorScheme, View } from 'react-native';
+import { Pressable, ScrollView, Switch, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import Constants from 'expo-constants';
@@ -7,11 +7,11 @@ import Ecran from '../../board/Ecran';
 import { useAuth } from '../../auth/AuthContext';
 import { changerLangue } from '../../i18n';
 import { desinscrireDesNotifications, inscrireAuxNotifications, notificationsActives } from '../../push';
-import { CIBLE_TACTILE, creerStyles, espace, FAMILLES, MODES, themePour, usePreferenceTheme, useTheme } from '../../theme';
+import { CIBLE_TACTILE, creerStyles, espace, MODES, usePreferenceTheme, useTheme } from '../../theme';
 import { useMargeOnglets } from '../../verre/Verre';
 import { ajouterAuCalendrier } from '../../agenda';
 
-/** Compte : profil, apparence (thème Planner ou StudyLib, clair ou sombre), langue, notifications, téléphone de l'appel, déconnexion. */
+/** Compte : profil, apparence (automatique, clair ou sombre), langue, notifications, téléphone de l'appel, déconnexion. */
 export default function Compte() {
   const { couleurs } = useTheme();
   const styles = useStyles();
@@ -69,7 +69,7 @@ export default function Compte() {
         <Text style={styles.section}>{t('app.compte.notifications')}</Text>
         <View style={[styles.bloc, styles.ligne]}>
           <Text style={[styles.detail, { flex: 1 }]}>{t('app.compte.notificationsAide')}</Text>
-          <Switch value={alertes} disabled={occupe} onValueChange={basculerAlertes} trackColor={{ true: couleurs.enCours, false: couleurs.filet }} accessibilityLabel={t('app.compte.notifications')} />
+          <Switch value={alertes} disabled={occupe} onValueChange={basculerAlertes} trackColor={{ true: couleurs.enCours, false: couleurs.bord }} accessibilityLabel={t('app.compte.notifications')} />
         </View>
 
         <Text style={styles.section}>{t('app.compte.agenda')}</Text>
@@ -106,54 +106,16 @@ export default function Compte() {
   );
 }
 
-/**
- * Apparence : deux thèmes (le panneau de Planner, la bibliothèque StudyLib) montrés en aperçu
- * dans le mode courant, puis le mode automatique (celui du téléphone), clair ou sombre.
- */
+/** Apparence : le mode automatique (celui du téléphone), clair ou sombre. */
 function Apparence() {
   const { t } = useTranslation();
   const styles = useStyles();
-  const schema = useColorScheme();
   const { preference, changer } = usePreferenceTheme();
 
   return (
     <>
       <Text style={styles.section}>{t('app.compte.theme')}</Text>
-      <View style={styles.choix} accessibilityRole="radiogroup">
-        {FAMILLES.map((famille) => {
-          const actif = preference.famille === famille;
-          const apercu = themePour({ famille, mode: preference.mode }, schema);
-          const c = apercu.couleurs;
-          return (
-            <Pressable
-              key={famille}
-              onPress={() => changer({ famille })}
-              style={[styles.theme, actif && styles.optionActive]}
-              accessibilityRole="radio"
-              accessibilityState={{ checked: actif }}
-              accessibilityLabel={`${t(`app.compte.themes.${famille}`)}. ${t(`app.compte.themes.${famille}Aide`)}`}
-            >
-              {/* Aperçu : barre de titre, deux lignes du tableau, un bouton */}
-              <View style={[styles.apercu, { backgroundColor: c.fond, borderColor: c.filet, borderRadius: apercu.rayons.sm }]}>
-                <View style={[styles.apercuBarre, { backgroundColor: c.cadre, borderBottomColor: c.bordCadre }]}>
-                  <View style={[styles.apercuTrait, { width: 34, backgroundColor: c.surCadre }]} />
-                </View>
-                {[0.8, 0.55].map((largeur, i) => (
-                  <View key={largeur} style={[styles.apercuLigne, { borderBottomColor: c.filet }]}>
-                    <View style={[styles.apercuTrait, { width: 12, backgroundColor: c.lettre }]} />
-                    <View style={[styles.apercuTrait, { flex: largeur, backgroundColor: c.lettreAttenuee, opacity: 0.6 }]} />
-                    <View style={[styles.apercuPoint, { backgroundColor: i ? c.reporte : c.enCours }]} />
-                  </View>
-                ))}
-                <View style={[styles.apercuBouton, { backgroundColor: c.accent, borderRadius: apercu.rayons.xs }]} />
-              </View>
-              <Text style={[styles.themeNom, actif && styles.optionTexteActif, { fontFamily: apercu.polices.panneauGras, textTransform: apercu.capitales }]}>{t(`app.compte.themes.${famille}`)}</Text>
-              <Text style={styles.themeAide}>{t(`app.compte.themes.${famille}Aide`)}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
-      <View style={[styles.choix, { marginTop: 8 }]} accessibilityRole="radiogroup" accessibilityLabel={t('app.compte.mode')}>
+      <View style={styles.choix} accessibilityRole="radiogroup" accessibilityLabel={t('app.compte.mode')}>
         {MODES.map((mode) => {
           const actif = preference.mode === mode;
           return (
@@ -175,21 +137,12 @@ const useStyles = creerStyles((t) => ({
   detail: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 14 },
   agendaBouton: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 15, textAlign: 'center' },
   choix: { flexDirection: 'row', marginHorizontal: 16, gap: 8 },
-  option: { flex: 1, minHeight: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center', backgroundColor: t.couleurs.cellule, borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.sombre ? t.couleurs.cellule : t.couleurs.filet },
-  optionActive: { borderColor: t.famille === 'planner' ? t.couleurs.lettre : t.couleurs.accent, borderWidth: 2 },
+  option: { flex: 1, minHeight: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center', backgroundColor: t.couleurs.cellule, borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.couleurs.bord },
+  optionActive: { borderColor: t.couleurs.accent, borderWidth: 2 },
   optionPetite: { fontSize: 14 },
-  theme: { flex: 1, padding: 10, gap: 6, backgroundColor: t.couleurs.cellule, borderRadius: t.rayons.md, borderWidth: 1, borderColor: t.sombre ? t.couleurs.cellule : t.couleurs.filet },
-  apercu: { height: 78, borderWidth: 1, overflow: 'hidden' },
-  apercuBarre: { height: 18, justifyContent: 'center', paddingHorizontal: 6, borderBottomWidth: 1 },
-  apercuLigne: { flexDirection: 'row', alignItems: 'center', gap: 5, height: 18, paddingHorizontal: 6, borderBottomWidth: 1 },
-  apercuTrait: { height: 4, borderRadius: 2 },
-  apercuPoint: { width: 6, height: 6, borderRadius: 3, marginLeft: 'auto' },
-  apercuBouton: { height: 10, width: 36, margin: 6, alignSelf: 'flex-end' },
-  themeNom: { color: t.couleurs.lettreAttenuee, fontSize: 16, letterSpacing: espace(t, 0.6) },
-  themeAide: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 12, lineHeight: 16 },
   optionTexte: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.panneau, fontSize: 16, textTransform: t.capitales },
   optionTexteActif: { color: t.couleurs.lettre },
-  deconnexion: { marginHorizontal: 16, marginTop: 32, minHeight: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: t.couleurs.filet, borderRadius: t.rayons.sm },
+  deconnexion: { marginHorizontal: 16, marginTop: 32, minHeight: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: t.couleurs.bord, borderRadius: t.rayons.sm },
   deconnexionTexte: { color: t.couleurs.lettre, fontFamily: t.polices.panneau, fontSize: 16, textTransform: t.capitales, letterSpacing: espace(t, 1) },
   version: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 12, textAlign: 'center', marginTop: 16 },
 }));

@@ -51,17 +51,17 @@ const useStyles = creerStyles((t) => ({
     backgroundColor: t.couleurs.cellule,
     borderRadius: t.rayons.md,
     gap: 10,
-    // Clair : la carte se détache du sol par un filet, comme les cartes StudyLib
+    // Clair : la carte se détache du sol par un filet
     ...(t.sombre ? null : { borderWidth: 1, borderColor: t.couleurs.filet }),
   },
   entete: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   lampe: { width: 8, height: 8, borderRadius: 4 },
-  phase: { fontFamily: t.polices.panneau, fontSize: 14, textTransform: t.capitales, letterSpacing: espace(t, 1) },
+  phase: { fontFamily: t.polices.panneau, fontSize: 14, textTransform: t.capitalesVolet, letterSpacing: espace(t, 1) },
   quand: { marginLeft: 'auto', color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 13 },
-  cours: { color: t.couleurs.lettre, fontFamily: t.polices.panneau, fontSize: t.famille === 'planner' ? 22 : 19, textTransform: t.capitales, letterSpacing: espace(t, 0.4) },
-  salle: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: t.famille === 'planner' ? 56 : 44, lineHeight: t.famille === 'planner' ? 60 : 50, letterSpacing: espace(t, 1) },
+  cours: { color: t.couleurs.lettre, fontFamily: t.polices.panneau, fontSize: 19, textTransform: t.capitalesVolet, letterSpacing: espace(t, 0.4) },
+  salle: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 44, lineHeight: 50, letterSpacing: espace(t, 1), textTransform: t.capitalesVolet, fontVariant: ['tabular-nums'] },
   details: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 14 },
   avant: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 13, textDecorationLine: 'line-through' },
   supports: { minHeight: CIBLE_TACTILE, justifyContent: 'center' },
-  supportsTexte: { color: t.famille === 'planner' ? t.couleurs.lettre : t.couleurs.accent, fontFamily: t.polices.texteGras, fontSize: 15, textDecorationLine: t.famille === 'planner' ? 'underline' : 'none' },
+  supportsTexte: { color: t.couleurs.accent, fontFamily: t.polices.texteGras, fontSize: 15, textDecorationLine: 'none' },
 }));
