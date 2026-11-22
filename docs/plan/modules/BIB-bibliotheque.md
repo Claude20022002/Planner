@@ -27,11 +27,13 @@
 | BIB-02 | StudyLib par école : base et seau par école, jetons avec l'école (`tid`), canaux I-4 et I-5 fermés | ME-2e | 5 | M | BIB-01 | à faire |
 | BIB-03 | Médias du Studio quiz (images, sons, vidéos) hors de la base, dans le stockage de fichiers | SQ-2 | libre | M | — | à faire |
 | BIB-04 | Quiz généré par l'IA à partir d'un document de la Bibliothèque | IA-6 | libre | M | QJE-07 | à faire |
+| BIB-05 | Bibliothèque physique : catalogue (import par ISBN), exemplaires, prêts et retours par code-barres ou QR code depuis le téléphone, retards, réservations ; pénalités décidées par l'école, jamais automatiques pour un enfant | — | libre | M | — | à faire |
 
 ## Critères de « terminé »
 
 - **BIB-02** : deux écoles ont chacune leur Bibliothèque ; un jeton de l'une est refusé par l'autre ; un test le prouve.
 - **BIB-03** : la base ne contient plus de média ; un quiz exporté puis réimporté garde ses médias.
+- **BIB-05** : un prêt se fait en deux scans (l'élève, puis le livre) ; un retard prévient l'élève et, au primaire, sa famille.
 
 ## Exigences produit
 

@@ -27,6 +27,7 @@
 | MOB-06 | Emploi du temps lisible hors ligne (EP-3) | F-15 | 4 | M | — | à faire |
 | MOB-07 | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes les installations) | I-12 | libre | M | — | à faire |
 | MOB-08 | pdf.js servi par l'application, et non plus chargé depuis cdnjs à l'ouverture d'un PDF sur Android (`mobile/src/documents/Lecteur.jsx:15`) : plus aucun envoi vers un tiers à la lecture d'un document (EP-13, décision du 16 nov.) | — | libre | S | — | à faire |
+| MOB-09 | Rôle de la scolarité et de la direction sur le téléphone : valider un report, voir les absences du jour, prévenir une classe | — | 5 | M | MOB-02, COM-01 | à faire |
 
 ## Critères de « terminé »
 
