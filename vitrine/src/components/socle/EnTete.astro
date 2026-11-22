@@ -1,13 +1,14 @@
 ---
 // En-tête du site vitrine : logo et nom, navigation entre les pages, langue, lien de contact.
-// Barre fixe et translucide. « Fonctions » est un menu details, lisible sans JavaScript.
+// Le panneau « Fonctions » et le catalogue restent accessibles sans JavaScript.
 // Sur téléphone, un bouton replie la navigation ; sans JavaScript, le bouton reste caché
 // et la navigation s'affiche en entier sous la barre.
 import { Briefcase, Landmark, Menu, School } from 'lucide-react';
 import Logo from './Logo.astro';
+import MenuFonctions from '../catalogue/MenuFonctions.astro';
 import { TYPES } from '../solutions/types.js';
 import { traductions } from '../../i18n/index.js';
-import { LANGUES_PUBLIEES, BARRE, FONCTIONS, ROLES, chemin } from '../../i18n/langues.js';
+import { LANGUES_PUBLIEES, BARRE, ROLES, chemin } from '../../i18n/langues.js';
 
 interface Props {
   langue: string;
@@ -66,16 +67,7 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
           </details>
         </li>
         <li>
-          <details class="fonctions">
-            <summary aria-current={FONCTIONS.includes(page) ? 'page' : undefined}>{t('navigation.fonctions')}</summary>
-            <ul>
-              {FONCTIONS.map((cle) => (
-                <li>
-                  <a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{t(`navigation.${cle}`)}</a>
-                </li>
-              ))}
-            </ul>
-          </details>
+          <MenuFonctions langue={langue} page={page} />
         </li>
         {BARRE.filter((cle) => cle !== 'solutions').map((cle) => (
           <li>
@@ -164,6 +156,9 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
   .contact:hover { background: var(--bleu-profond); }
   .liens a:hover, .langues a:hover { color: var(--bleu); }
 
+  @media (max-width: 63.99rem) {
+    .entete:not(.repliable), .entete:has(.menu-bouton[aria-expanded='true']) { position: relative; }
+  }
   @media (min-width: 64rem) {
     .barre { flex-wrap: nowrap; }
     .menu-bouton, .repliable .menu-bouton { display: none; }

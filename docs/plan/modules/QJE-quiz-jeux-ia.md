@@ -40,6 +40,7 @@
 | QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | 3 | M | — | à faire |
 | QJE-08 | Créateurs de jeux et leur rémunération | JC-3, JC-4, JC-6, RC-1 à RC-4 | — | — | vente | gelé |
 | QJE-09 | Défis Linux dans un quiz | J-1 | — | M | QJE-04 | reporté |
+| QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |
 
 ## Critères de « terminé »
 
