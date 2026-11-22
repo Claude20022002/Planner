@@ -54,18 +54,20 @@ test('une petite page passe ; une page gonflée est refusée', async () => {
   }
 });
 
-test('/videos/* est exclu du total', () => {
+test('les .mp4 sous videos/ sont exclus ; une image sous videos/ compte', () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'vit-19-videos-'));
   try {
     fs.mkdirSync(path.join(tmp, 'videos'), { recursive: true });
     fs.writeFileSync(path.join(tmp, 'videos', 'demo.mp4'), Buffer.alloc(300_000));
+    fs.writeFileSync(path.join(tmp, 'videos', 'fixe.webp'), Buffer.alloc(12_000));
     fs.writeFileSync(
       path.join(tmp, 'index.html'),
-      '<!doctype html><img src="/videos/demo.mp4" alt=""><title>v</title>',
+      '<!doctype html><img src="/videos/demo.mp4" alt=""><img src="/videos/fixe.webp" alt=""><title>v</title>',
     );
     const r = mesurerPage(tmp, path.join(tmp, 'index.html'));
     assert.equal(r.ok, true);
-    assert.ok(!r.details.some((d) => d.fichier.startsWith('videos/')));
+    assert.ok(!r.details.some((d) => d.fichier === 'videos/demo.mp4'));
+    assert.ok(r.details.some((d) => d.fichier === 'videos/fixe.webp'));
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }

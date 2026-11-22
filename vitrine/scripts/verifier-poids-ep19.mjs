@@ -29,8 +29,13 @@ function versCle(racine, fichier) {
   return path.relative(racine, fichier).split(path.sep).join('/');
 }
 
+/** Média lancé à la demande : fichiers vidéo (et empreinte lue au lancement), pas les images. */
 function estVideo(cle) {
-  return cle === 'videos' || cle.startsWith('videos/');
+  if (!(cle === 'videos' || cle.startsWith('videos/'))) return false;
+  const ext = path.extname(cle).toLowerCase();
+  if (ext === '.mp4' || ext === '.webm') return true;
+  const base = path.posix.basename(cle).toLowerCase();
+  return base === 'empreinte.json';
 }
 
 function estGzipable(fichier, tailleBrute) {
