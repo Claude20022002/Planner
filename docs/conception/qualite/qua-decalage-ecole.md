@@ -44,6 +44,7 @@
 | 4 | Avant toute table (premier lancement sans réseau, sans copie) | le décalage du navigateur ou du téléphone, faute de mieux, plutôt que 0 ; la table remplace ce décalage dès qu'elle arrive. *(au coordinateur)* | **coordinateur, 22 nov. : oui**, jamais 0 | 3 |
 | 5 | Hors production, sans `APP_TIMEZONE` | UTC, avec un avertissement au démarrage, pour qu'un poste de développement démarre sans fichier d'environnement. *(au coordinateur)* | **coordinateur, 22 nov. : oui** | 1 |
 | 6 | Un parcours de régression dans le navigateur | oui, court : l'horloge figée à 23 h 30 UTC (`page.clock.setFixedTime`, comme `appel.spec.cjs`) et la réponse de `GET /api/etablissement` réécrite à UTC+1 ; la page de l'enseignant affiche alors la date du lendemain. Il ne change pas le fuseau de la CI. *(au coordinateur)* | **coordinateur, 22 nov. : oui**, sans toucher au créneau de #210 | 4 |
+| 7 | *(ajoutée pendant le code)* Le **tableau de bord du site** a le même modèle mural : `frontend/src/components/dashboard/periodes.js:19-31` calcule « les jours suivants » et « la semaine en cours » à partir de `new Date()`, l'heure du navigateur | ajouter dans M-10 une seule ligne : la valeur par défaut `maintenant = maintenantEcole()` dans `periodes.js`, sans toucher aux blocs du tableau de bord (UIX-11). Sinon, une limite écrite et une suite, M-10b. *(au coordinateur)* | | 4 |
 
 **Précisions du coordinateur (22 nov.)** :
 1. `deploy/vps/generer-env.sh` écrit `.env.docker` : il demande le fuseau (un quatrième argument obligatoire) et pose `APP_TIMEZONE`. Le correctif de Meilisearch touche aussi ce script : celui qui fusionne en second fait d'abord `git merge origin/main`.
@@ -77,11 +78,9 @@
 | `heureEcole(instant)` (nouvelle) | rend `{ heures, minutes }` à l'école, pour l'application |
 
 - **Le site** : `main.jsx` appelle `configurerHorloge(identite.horloge)` juste après `chargerIdentite()`. La copie du navigateur porte la table : un rechargement sans réseau garde la bonne date.
-- **L'application** : `ecole.js` fait de même, au lancement, avec sa copie d'`AsyncStorage`. Dans `shared/session.js` :
-  - `combine()` passe par `instantEcole()` ;
-  - « aujourd'hui », dans les quatre écrans relevés au § 2, devient `aujourdhui()` ;
-  - l'heure courante de la grille (`GrilleSemaine.jsx:139`) devient `heureEcole()` ;
-  - le début de la semaine part de `aujourdhui()`, puis compte en jours sur la date, à midi UTC. Ainsi, le fuseau du téléphone ne fait plus glisser la semaine près de minuit ;
+- **L'application** : `ecole.js` fait de même, au lancement, avec sa copie d'`AsyncStorage`.
+  - **Amendement du 22 nov., écrit pendant le code et à revalider.** `combine()` de `shared/session.js` **ne change pas**. L'application et le tableau du site rangent les séances en dates « murales » : des `Date` construites dans le fuseau de l'appareil avec les chiffres de l'école (`shared/session.js:25-30`). Leurs heures se lisent par `getHours()` (`GrilleSemaine.jsx:66-67`), et leurs jours par `toLocalISODate(s.start)` (`VueMois.jsx:58`). Passer `combine()` à un instant réel, comme le prévoyait la première version, déplacerait toutes ces positions sur un téléphone d'un autre fuseau. **Seul « maintenant » est faux dans ce modèle.**
+  - Une fonction de plus dans `shared/dates.js` : `maintenantEcole(instant)` rend « maintenant » dans le même modèle mural, c'est-à-dire une `Date` de l'appareil qui porte les chiffres de l'heure de l'école. Les sources de « maintenant » de l'application l'utilisent à la place de `new Date()` : le tableau (`app/(onglets)/index.jsx`), la grille et son minuteur (`GrilleSemaine.jsx:57-60`), le mois (`VueMois.jsx:53`) et le début de la semaine (`app/(onglets)/semaine.jsx`). Le reste des calculs ne change pas : ils comparent des dates murales entre elles.
   - `toLocalISODate` garde son rôle (une date de calendrier écrite en chiffres) et son nom.
 
 ```mermaid
@@ -112,10 +111,10 @@ sequenceDiagram
 | `.github/workflows/ci-cd.yml` | modifié | `APP_TIMEZONE: UTC` dans l'environnement des tâches du serveur et des parcours | +2 |
 | `frontend/tests/parcours/serveur.mjs`, `donnees.mjs:21` | modifiés | la variable posée à `UTC` si absente ; les données lisent la même variable | +1, ±1 |
 | `shared/dates.js` | modifié | table au lieu de la constante ; `configurerHorloge`, `decalageA`, `heureEcole` | 55 → 90 |
-| `shared/session.js` | modifié | `combine()` à l'heure de l'école | ±3 |
+| `shared/session.js` | **inchangé** (amendement du § 4.2) | — | — |
 | `frontend/src/main.jsx` | modifié | `configurerHorloge` après `chargerIdentite` | +2 |
 | `mobile/src/ecole.js` | modifié | `configurerHorloge` au lancement | +2 |
-| `mobile/src/app/(onglets)/index.jsx`, `(onglets)/semaine.jsx`, `semaine/GrilleSemaine.jsx`, `semaine/VueMois.jsx` | modifiés | « aujourd'hui » et l'heure courante à l'école | ±2 à 6 chacun |
+| `mobile/src/app/(onglets)/index.jsx`, `(onglets)/semaine.jsx`, `semaine/GrilleSemaine.jsx`, `semaine/VueMois.jsx` | modifiés | « maintenant » à l'heure de l'école, par `maintenantEcole()` (amendement du § 4.2) | ±1 à 3 chacun |
 | `frontend/src/utils/aujourdhui.test.js` | modifié | T-1 | +60 |
 | `backend/tests/utils/horloge.test.js` | créé | T-2, T-3, T-6 | 120 |
 | `backend/tests/integration/identiteEcole.test.js` | modifié | T-4 | +15 |
