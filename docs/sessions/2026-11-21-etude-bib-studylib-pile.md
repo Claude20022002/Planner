@@ -92,21 +92,22 @@ gh pr create --base main --head etude/bib-studylib-pile --title "Étude : garder
 Tu es Claude de VS Code sur Planner (ta file d'interface, puis VIT-09b).
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md et la feuille de route (branche doc/coordination-equipe),
 puis la fiche docs/sessions/2026-11-21-etude-bib-studylib-pile.md (branche etude/bib-studylib-pile).
-Fait le 21 nov. : étude StudyLib écrite (3121ec52, docs/conception/bibliotheque/etude-studylib-pile.md),
-12 réponses du chef ; recommandation : voie B (reconstruire dans Planner, en lots), une seule technologie.
+Fait le 21 nov. : étude StudyLib (docs/conception/bibliotheque/etude-studylib-pile.md) ; le chef a validé la voie B
+(reconstruire la Bibliothèque dans Planner), une exception hors chantier, @aws-sdk/client-s3, les événements mis de côté,
+et la répartition des lots (étude, § 8). Le comptage des volumes est reporté par le chef.
 #245 (UIX-06c) : aucune relecture à la clôture.
 Reste, dans l'ordre :
-1) si le chef donne les volumes (commande de comptage) : compléter l'étude, § 3.2, et la taille de B7 ;
-   voie B validée et lots répartis (étude, § 8) : ta part est BIB-09 (écrans web) et BIB-10 (mobile, avec UIX-10d),
-   après le contrat d'API de BIB-06 (session « BIB ») ;
-2) #245 : corriger ce que demandera la relecture du coordinateur, s'il revient avant la fusion ;
-3) UIX-10d, le mobile à la charte (plan d'UIX-10, § 9) : branche feat/uix-10d-… depuis origin/main,
-   dans ..\travaux-planner\<nom> ; questions et plan court validé avant tout code ;
+1) #245 : corriger ce que demandera la relecture du coordinateur, s'il revient avant la fusion ;
+2) UIX-10d, le mobile à la charte (plan d'UIX-10, § 9) : branche feat/uix-10d-… depuis origin/main,
+   dans ..	ravaux-planner\<nom> ; questions et plan court validé avant tout code ;
+3) ta part de la voie B, après le contrat d'API de BIB-06 (session « BIB ») : BIB-10 (mobile, à la suite d'UIX-10d,
+   mêmes fichiers) et BIB-09 (écrans web à la charte) ; plan validé par le chef avant tout code ;
 4) VIT-09b en dernier, planche et captures montrées au chef avant le commit ;
-5) QJE-14a quand elle est attribuée : plan court validé avant tout code.
-Pour le coordinateur : decisions.md (12 réponses de l'étude StudyLib, réponses de QJE-14, réponses 9, 10, 13
-d'UIX-11 et UIX-06c) ; trois migrations pour QJE-14 (0084 à 0086) ; avis de stage dans STA (réponse 6, à dire
-à Alexis pour #230) ; correctif Meilisearch à attribuer.
+5) QJE-14a quand elle est attribuée : plan court validé avant tout code ;
+6) si le chef donne les volumes : compléter l'étude, § 3.2, et la taille de B7.
+Pour le coordinateur : fiches de mission de la voie B d'après l'étude, § 8 (BIB-05 à BIB-11, migrations 0087 et suivantes,
+messages à Alexis et à l'agent de Cursor) ; decisions.md (réponses de l'étude StudyLib et décisions du 21 nov., réponses
+de QJE-14, réponses 9, 10, 13 d'UIX-11 et UIX-06c) ; trois migrations pour QJE-14 (0084 à 0086).
 Règles : pas de code hors du plan validé ; questions avant toute supposition ; rien de réel dans le dépôt ;
 fiche de session à jour en fin de session ; suivi.md non modifié ; jamais de git push.
 ```
