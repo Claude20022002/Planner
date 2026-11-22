@@ -1,7 +1,8 @@
 import { asyncHandler } from "../middleware/asyncHandler.js";
 import { valeursEnVigueur } from "../services/moteur/valeurs/lecture.js";
 import { decrireReglages } from "../services/moteur/valeurs/valeursDeLEcole.js";
-import { abandonnerVersion, annulerVersion, appliquerVersion, creerVersion, ErreurReglages, listerVersions } from "../services/moteur/valeurs/versions.js";
+import { detailVersion, listerVersionsAllegees } from "../services/moteur/valeurs/historique.js";
+import { abandonnerVersion, annulerVersion, appliquerVersion, creerVersion, ErreurReglages } from "../services/moteur/valeurs/versions.js";
 import { corpsErreur } from "../utils/erreurs.js";
 
 /**
@@ -51,9 +52,14 @@ export const getReglagesMoteur = asyncHandler(async (req, res) => {
     res.json(await decrireReglages({ date }));
 });
 
-// 🔍 Historique des versions
+// 🔍 Historique des versions, sans leurs lignes (R-3)
 export const getVersionsMoteur = asyncHandler(async (req, res) => {
-    res.json(await listerVersions());
+    res.json(await listerVersionsAllegees());
+});
+
+// 🔍 Détail d'une version : réglages, contraintes ajoutées et retirées (R-3)
+export const getVersionMoteur = asyncHandler(async (req, res) => {
+    res.json(await detailVersion(req.params.id));
 });
 
 // ➕ Préparer un brouillon : aucun effet tant qu'il n'est pas appliqué

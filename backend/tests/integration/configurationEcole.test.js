@@ -24,6 +24,37 @@ beforeAll(async () => {
 
 beforeEach(() => resetRateLimiters());
 
+const plage = { gabarit: "plage_a_eviter", cibles: [{ type: "ecole" }], parametres: { jours: ["samedi"], debut: "14:00", fin: "18:00" }, nature: "souhait", insistance: "normal" };
+
+describe("Historique des versions (R-3)", () => {
+    test("la liste est allégée : comptes, auteur, annulation, sans les lignes", async () => {
+        const id = await creerEtAppliquer([{ cle: "LOG.TRAJET.CAMPUS_DEFAUT", valeur: 40 }]);
+        const avecContrainte = await client.send("post", "/api/moteur/versions", { libelle: "Samedi", contraintes: [plage] });
+        expect(avecContrainte.status).toBe(201);
+        const annulation = await client.send("post", `/api/moteur/versions/${id}/annuler`);
+        expect(annulation.status).toBe(201);
+
+        const { body } = await client.get("/api/moteur/versions");
+        const v = body.find((x) => x.id_version === id);
+        expect(v).toEqual(expect.objectContaining({ statut: "appliquee", nb_reglages: 1, nb_contraintes: 0, nb_retraits: 0, annulee_par: annulation.body.id_version }));
+        expect(v.auteur).toEqual({ id_user: admin.id_user, nom: expect.any(String) });
+        expect(v.valeurs).toBeUndefined();
+        expect(body.find((x) => x.id_version === avecContrainte.body.id_version)).toMatchObject({ statut: "brouillon", libelle: "Samedi", nb_contraintes: 1 });
+        expect(body.find((x) => x.id_version === annulation.body.id_version)).toMatchObject({ annule_version: id });
+        expect(body.map((x) => x.id_version)).toEqual([...body.map((x) => x.id_version)].sort((a, b) => b - a));
+    });
+
+    test("le détail : réglages nommés, contraintes avec leur phrase ; 404 sinon", async () => {
+        const creee = await client.send("post", "/api/moteur/versions", { lignes: [{ cle: "HOR.REGLE.TROUS", valeur: false }], contraintes: [plage] });
+        const { status, body } = await client.get(`/api/moteur/versions/${creee.body.id_version}`);
+        expect(status).toBe(200);
+        expect(body.reglages).toEqual([expect.objectContaining({ cle: "HOR.REGLE.TROUS", nom: "Éviter les trous", portee: "etablissement", valeur: false })]);
+        expect(body.contraintes).toEqual([expect.objectContaining({ gabarit: "plage_a_eviter", phrase: expect.stringMatching(/samedi/i) })]);
+        expect(body.retraits).toEqual([]);
+        expect((await client.get("/api/moteur/versions/999999")).status).toBe(404);
+    });
+});
+
 afterAll(async () => {
     await closeDatabase();
 });
@@ -59,9 +90,11 @@ describe("GET /api/moteur/reglages", () => {
         expect(body.regles.find((r) => r.id === "HOR.REGLE.CHANGEMENT_SALLE").choix).toBe("coupee");
     });
 
-    test("date mal écrite : 400 ; un enseignant : refusé", async () => {
+    test("date mal écrite : 400 ; un enseignant : refusé (réglages et historique)", async () => {
         expect((await client.get("/api/moteur/reglages?date=22-11-2026")).status).toBe(400);
         const prof = await loginAs(await createUser("enseignant"));
         expect((await prof.get("/api/moteur/reglages")).status).toBe(403);
+        expect((await prof.get("/api/moteur/versions")).status).toBe(403);
+        expect((await prof.get("/api/moteur/versions/1")).status).toBe(403);
     });
 });

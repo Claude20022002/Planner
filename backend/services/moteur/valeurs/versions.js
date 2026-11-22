@@ -159,5 +159,4 @@ export const annulerVersion = (id, { id_auteur, auteur }) =>
         return inverse;
     });
 
-/** Les versions, de la plus récente à la plus ancienne, avec leurs réglages et leurs contraintes. */
-export const listerVersions = () => VersionParametres.findAll({ include: [{ model: ValeurParametre, as: "valeurs" }, AVEC_CONTRAINTES()], order: [["id_version", "DESC"]], limit: 100 });
+// La liste et le détail des versions sont dans historique.js (ADM-02, R-3)
