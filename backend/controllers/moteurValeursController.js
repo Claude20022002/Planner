@@ -1,6 +1,7 @@
 import { asyncHandler } from "../middleware/asyncHandler.js";
 import { valeursEnVigueur } from "../services/moteur/valeurs/lecture.js";
 import { decrireReglages } from "../services/moteur/valeurs/valeursDeLEcole.js";
+import { apercuVersion } from "../services/moteur/valeurs/apercu.js";
 import { detailVersion, listerVersionsAllegees } from "../services/moteur/valeurs/historique.js";
 import { abandonnerVersion, annulerVersion, appliquerVersion, creerVersion, ErreurReglages } from "../services/moteur/valeurs/versions.js";
 import { corpsErreur } from "../utils/erreurs.js";
@@ -62,11 +63,17 @@ export const getVersionMoteur = asyncHandler(async (req, res) => {
     res.json(await detailVersion(req.params.id));
 });
 
-// ➕ Préparer un brouillon : aucun effet tant qu'il n'est pas appliqué
+// ➕ Préparer un brouillon, sans effet tant qu'il n'est pas appliqué ; ou, avec `appliquer` et `base`, créer et appliquer (ADM-02, R-4)
 export const postVersionMoteur = avecRefus(async (req, res) => {
-    const { libelle, date_effet, lignes, contraintes, retirer } = req.body;
-    const version = await creerVersion({ libelle, date_effet, lignes, contraintes, retirer, id_auteur: req.user.id_user, auteur: AUTEUR });
+    const { libelle, date_effet, lignes, regles, contraintes, retirer, base } = req.body;
+    const appliquer = req.body.appliquer === true;
+    const version = await creerVersion({ libelle, date_effet, lignes, regles, contraintes, retirer, appliquer, base, id_auteur: req.user.id_user, auteur: AUTEUR });
     res.status(201).json(version);
+});
+
+// 👁️ Aperçu à blanc de ce que changerait une version : rien n'est écrit (ADM-02)
+export const postApercuVersionMoteur = avecRefus(async (req, res) => {
+    res.json(await apercuVersion(req.body ?? {}, AUTEUR));
 });
 
 // ✅ Appliquer un brouillon

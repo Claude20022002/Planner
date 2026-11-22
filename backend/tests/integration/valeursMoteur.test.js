@@ -180,7 +180,7 @@ describe("Refus", () => {
 
     test("une version vide ou un réglage en double sont refusés", async () => {
         expect((await creer({ lignes: [] })).body.code).toBe("VERSION_VIDE");
-        expect(await refus([{ cle: MAX_JOUR, valeur: 300 }, { cle: MAX_JOUR, valeur: 310 }])).toEqual(["doublon"]);
+        expect(await refus([{ cle: MAX_JOUR, valeur: 300 }, { cle: MAX_JOUR, valeur: 360 }])).toEqual(["doublon"]);
         expect(await refus([{ cle: MAX_JOUR }])).toEqual(["ligne_vide"]);
     });
 

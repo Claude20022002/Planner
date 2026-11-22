@@ -97,6 +97,7 @@ Réponses du chef le 22 nov. 2026, par l'outil de questions.
 | 15 | Migration de reprise | **Seulement les écarts**, dans une version appliquée datée du jour ; aucune sur une base neuve ; l'ancienne table reste | 02a |
 | 16 | *(coordinateur, relecture du 22 nov.)* Comment garantir que les règles réglables du panneau sont celles que le solveur lit ? | **Un test, profil par profil**, compare les règles réglables du panneau à celles que `poidsDesRegles` envoie au solveur. Le critère « réglable » vient de `activeeParLEcole` d'`ecriture.js`, **exportée et partagée, pas recopiée** (§ 5.2) | 02a |
 | 17 | *(coordinateur, relecture du 22 nov.)* La raison « sans effet » de `profil.js` est une phrase française : comment l'écran la dit-il en anglais ? | **`raison_code` et ses conditions en données** dans la réponse de `GET /contraintes/profil` ; le site traduit ; la phrase `raison` reste l'aide en français (§ 5.3). Touche `contraintes/profil.js`, hors de la fiche : extension demandée par le coordinateur | 02a, 02c |
+| 18 | *(au code, 22 nov.)* Les deux réglages d'examen ne sont réglables que par épreuve dans le catalogue (niveaux « PI ») : MP-1 refuse de les écrire pour toute l'école | **Ajouter « école »** : niveaux « GPI » pour `EXA.EPREUVE.RATIO_CAPACITE` et `EXA.EPREUVE.SURVEILLANTS_PAR_SALLE` (`13-examens.json`), une valeur pour toute l'école comme aujourd'hui, par épreuve plus tard. Aucune règle ne change ; la page générée `EXA.md` suit | 02a |
 
 **Points de la relecture de MP-1** ([R-1 à R-10](../moteur-planification/relecture-mp1-contrat.md), question Q-04 de `decisions.md`, § 3) :
 
@@ -166,8 +167,8 @@ Toutes sous `/api/moteur`, `requireAdmin`, au format d'erreur commun `{ message,
 | Route | Nouvelle ou changée | Rôle |
 |---|---|---|
 | `GET /reglages?date=` | nouvelle | `{ date, profil, version_courante, reglages: [{ id, valeur, defaut, min, max, unite, effet, origine }], regles: [{ id, choix, poids, poids_du_profil, choix_possibles }] }`. `version_courante` : le plus grand numéro de version appliquée, à renvoyer comme `base` |
-| `POST /versions/apercu` | nouvelle | corps : `{ date_effet, lignes, contraintes, retirer, id_periode?, base? }`. Rend `{ changements: [{ id, avant, apres, effet }], regles: [{ id, avant, apres }], contraintes: <réponse de /contraintes/verifier>, retirees: [{ id_contrainte, phrase }], violations, depassee }`. **Rien n'est écrit** |
-| `POST /versions` | changée | accepte `appliquer: true` et `base` : crée et applique dans la même transaction ; 409 `VERSION_DEPASSEE` (§ 5.4). Sans `appliquer`, inchangée (brouillon) |
+| `POST /versions/apercu` | nouvelle | corps : `{ date_effet, lignes, regles, contraintes, retirer, id_periode?, base? }`. Rend `{ date_effet, changements: [{ id, nom, avant, apres, effet }], contraintes: <réponse de /contraintes/verifier> ou null, retirees: [{ id_contrainte, phrase }], violations, conflits, peut_appliquer }` ; `avant` et `apres` portent `choix` pour une règle souple. **Rien n'est écrit** |
+| `POST /versions` | changée | accepte `regles: [{ id, choix }]`, changés en lignes **par le serveur** (`ligneDuChoix` ; refus `regle_non_reglable`, `choix_invalide`) ; et `appliquer: true` avec `base` : crée et applique dans la même transaction ; 409 `VERSION_DEPASSEE` (§ 5.4) ; 400 `BASE_INVALIDE` si la base manque ou n'a jamais été lue. Sans `appliquer`, un brouillon comme avant. Les bornes des cinq réglages (`hors_bornes`) valent aussi pour un brouillon |
 | `GET /versions` | changée | liste allégée : `id_version, libelle, date_effet, statut, appliquee_le, auteur { id_user, nom }, nb_reglages, nb_contraintes, nb_retraits, annule_version, annulee_par` (100 dernières) |
 | `GET /versions/:id` | nouvelle | détail : lignes (avec le nom du réglage) et contraintes (avec leur phrase en français) ; 404 sinon |
 | `GET /contraintes/profil` | changée (réponse 17) | chaque règle gagne `raison_code` (`aucune_valeur` ou `condition_non_remplie`, `null` sinon) et `conditions: [{ parametre, op, attendu, actuelle }]` (les conditions `active_si` non remplies, en données : par exemple `{ parametre: "ETA.TAILLE.CAMPUS", op: ">=", attendu: 2, actuelle: 1 }`). `raison` reste la phrase française. Le site traduit l'opérateur et le nom du paramètre (deux paramètres servent de condition aujourd'hui : `ETA.TAILLE.CAMPUS`, `MAT.VOL.MODALITE`) |
@@ -252,7 +253,8 @@ flowchart LR
 | `backend/services/moteur/contraintes/profil.js` | modifié (réponse 17, extension du coordinateur) | `raison_code` et `conditions` en données ; `raison` inchangée | 64 → 80 |
 | `backend/services/moteur/valeurs/valeursDeLEcole.js` | créé | lecture ciblée de quelques clés à la date du jour à l'école ; valeurs, choix, version courante (pour `GET /reglages`) | 110 |
 | `backend/services/moteur/valeurs/apercu.js` | créé | aperçu à blanc : contrôles, avant → après, effets, appel de la vérification des contraintes | 120 |
-| `backend/services/moteur/valeurs/concurrence.js` | créé | `VERSION_DEPASSEE` : versions appliquées après la base qui touchent les mêmes réglages ou contraintes | 60 |
+| `backend/services/moteur/valeurs/concurrence.js` | créé | `VERSION_DEPASSEE` : versions appliquées après la base qui touchent les mêmes réglages ou contraintes ; verrou sur la dernière version appliquée, et reprise d'une transaction victime d'un interblocage | 90 |
+| `backend/services/moteur/catalogue/parametres/13-examens.json`, `docs/conception/moteur-planification/catalogue/EXA.md` | modifiés (réponse 18) | niveaux « GPI » des deux réglages d'examen ; page régénérée par `scripts/catalogue-moteur-doc.mjs` | 2 lignes |
 | `backend/services/moteur/valeurs/historique.js` | créé | liste allégée et détail d'une version | 90 |
 | `backend/services/moteur/valeurs/versions.js` | modifié | exporte `controler` et `normaliser` ; `creerVersion` accepte `appliquer` et `base` ; `listerVersions` passe à `historique.js` | 163 → 175 |
 | `backend/services/moteur/valeurs/anciensParametres.js` | modifié | conversions dans les deux sens | 20 → 35 |
@@ -368,6 +370,7 @@ flowchart LR
 | La bascule change ce que la génération reçoit | test « problème identique » ; migration de reprise des écarts ; lecture à la date du jour à l'école |
 | Lecture de MP-1 trop lente dans les boucles d'examen (une lecture par salle) | lecture ciblée de quelques clés ; si la mesure le montre, une lecture par appel du service, passée en paramètre |
 | Les phrases du site et du serveur divergent | test du site sur des exemples recopiés des tests du serveur ; la phrase du serveur reste visible en aide |
+| Deux « Appliquer » simultanés | verrou sur la dernière version appliquée ; la transaction qu'InnoDB choisit comme victime d'un interblocage est rejouée (3 essais) et rend 409. Limite connue : un brouillon créé par l'API avant l'ouverture de l'écran, puis appliqué par l'API, n'est pas vu comme un conflit (l'écran n'applique jamais de brouillon) |
 | Un brouillon perdu en quittant la page | confirmation avant de quitter ; le brouillon est court (quelques changements) |
 | Des clients de l'ancienne route `PUT /parametres-planning` | seul l'ancien écran l'appelait (relevé) ; 410 avec un message qui dit où aller |
 | `versions.js` grossit | l'historique part dans `historique.js` ; au-delà de 200 lignes, l'annulation part aussi |

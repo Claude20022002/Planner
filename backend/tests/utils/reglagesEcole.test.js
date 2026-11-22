@@ -2,6 +2,7 @@ import { PARAMETRES_PLANNING } from "../../config/parametresPlanning.js";
 import { chargerParametres } from "../../services/moteur/catalogue/charger.js";
 import { ANCIENS_PARAMETRES } from "../../services/moteur/valeurs/anciensParametres.js";
 import { peutModifier } from "../../services/moteur/valeurs/ecriture.js";
+import { conflitsAvecLaBase } from "../../services/moteur/valeurs/concurrence.js";
 import { choixEnCours, choixPossibles, controlerBornes, ligneDuChoix, REGLAGES_ECOLE } from "../../services/moteur/valeurs/reglagesEcole.js";
 
 // ADM-02 : les cinq réglages du panneau (bornes, lien avec l'ancienne table) et les choix d'une règle souple.
@@ -67,5 +68,24 @@ describe("ADM-02 : les choix d'une règle souple (réponse 12)", () => {
     test("un choix non proposé ne donne pas de ligne", () => {
         expect(ligneDuChoix("SAL.REGLE.TAILLE_ADAPTEE", "peu", 1)).toBeNull();
         expect(ligneDuChoix("HOR.REGLE.TROUS", "indispensable", 5)).toBeNull();
+    });
+});
+
+describe("ADM-02 : une version appliquée depuis la base (R-4)", () => {
+    const ligne = (cle, portee = "etablissement", id_portee = "") => ({ cle, portee, id_portee });
+    const recente = (id_version, valeurs = [], contraintes = []) => ({ id_version, valeurs: valeurs.map((v) => ({ ...v, id_portee: v.id_portee || null })), contraintes });
+
+    test("même réglage, même portée : conflit nommé", () => {
+        const conflits = conflitsAvecLaBase({ lignes: [ligne("HOR.REGLE.TROUS")], recentes: [recente(42, [ligne("HOR.REGLE.TROUS")])], nomDe: () => "Éviter les trous" });
+        expect(conflits).toEqual([expect.objectContaining({ cle: "HOR.REGLE.TROUS", id_version: 42, code: "version_depassee", message: expect.stringMatching(/42.*Éviter les trous/) })]);
+    });
+
+    test("autre réglage, ou même réglage à une autre portée : pas de conflit", () => {
+        expect(conflitsAvecLaBase({ lignes: [ligne("HOR.REGLE.TROUS")], recentes: [recente(42, [ligne("HOR.REGLE.CHANGEMENT_SALLE"), ligne("HOR.REGLE.TROUS", "filiere", "3")])] })).toEqual([]);
+    });
+
+    test("même contrainte retirée : conflit ; deux ajouts : pas de conflit", () => {
+        expect(conflitsAvecLaBase({ retraits: [7], recentes: [recente(43, [], [{ retire_id: 7 }])] })).toEqual([expect.objectContaining({ retrait: 7, id_version: 43 })]);
+        expect(conflitsAvecLaBase({ retraits: [], recentes: [recente(43, [], [{ retire_id: null }])] })).toEqual([]);
     });
 });

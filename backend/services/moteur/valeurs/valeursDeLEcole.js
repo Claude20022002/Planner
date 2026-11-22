@@ -1,6 +1,6 @@
 import { VersionParametres } from "../../../models/index.js";
 import { aujourdhui, leCatalogue, lireLignes } from "./lecture.js";
-import { CHOIX, choixEnCours, choixPossibles, REGLAGES_ECOLE, reglesReglables } from "./reglagesEcole.js";
+import { CHOIX, choixEnCours, choixPossibles, ligneDuChoix, REGLAGES_ECOLE, reglesReglables } from "./reglagesEcole.js";
 import { lignesEnVigueur, profilDeLaCible, resoudreParametre } from "./resolution.js";
 
 /**
@@ -35,6 +35,30 @@ export const lireALEcole = async (ids, { date = aujourdhui(), transaction } = {}
     const { parametres, profils } = leCatalogue();
     const lignes = await lireLignes({ cles: [...ids, PROFIL], transaction });
     return { profil: profilDeLaCible(parametres, profils, lignesEnVigueur(lignes, date), {})?.code ?? null, resultats: resoudreALEcole({ parametres, profils, lignes, date, ids }) };
+};
+
+/**
+ * Les choix de l'écran pour les règles réglables (`[{ id, choix }]`), changés en lignes de version par le
+ * serveur (réponse 12) : le site n'écrit jamais un poids.
+ * @returns {Promise<{ lignes: object[], violations: object[] }>}
+ */
+export const lignesDesChoix = async (regles = [], { date, transaction } = {}) => {
+    if (!Array.isArray(regles)) return { lignes: [], violations: [{ code: "forme_invalide", message: "« regles » est une liste." }] };
+    if (!regles.length) return { lignes: [], violations: [] };
+    const { parametres } = leCatalogue();
+    const connus = new Set(parametres.map((p) => p.id));
+    const ids = [...new Set(regles.map((r) => r?.id).filter((id) => connus.has(id)))];
+    const { resultats } = await lireALEcole(ids, { date, transaction });
+    const reglables = new Set(reglesReglables({ parametres: parametres.filter((p) => resultats.has(p.id)), resultats }));
+    const lignes = [];
+    const violations = [];
+    for (const r of regles) {
+        const ligne = reglables.has(r?.id) ? ligneDuChoix(r.id, r.choix, resultats.get(r.id).poids_du_profil) : null;
+        if (!reglables.has(r?.id)) violations.push({ regle: r?.id ?? null, code: "regle_non_reglable", message: "Cette règle ne se règle pas depuis le panneau." });
+        else if (!ligne) violations.push({ regle: r.id, code: "choix_invalide", message: "Ce choix n'existe pas pour cette règle." });
+        else lignes.push(ligne);
+    }
+    return { lignes, violations };
 };
 
 /** Le plus grand numéro de version appliquée : la « base » qu'un écran renvoie à l'application (R-4). */
