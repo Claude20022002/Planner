@@ -13,6 +13,12 @@ git -C "../travaux-planner/vit-09c-logos-modules" push -u origin feat/vit-09c-lo
 gh pr create --base main --head feat/vit-09c-logos-modules --fill
 ```
 
+## Essais Présences remis au chef
+
+Le plan complété est au commit `5d3783d5`, les essais au commit `3d9d56a3`. La planche locale `shared/icones/apercu.html` se reconstruit avec `node shared/icones/generer-apercu.mjs`. Les douze rendus du SVG ont été chargés dans Edge et relus à 24, 32, 48 et 96 px, sur trois fonds. SVG détaillé de 1 119 octets et petit de 792 octets sur le poste. Le WebP décodé mesure 512 × 512 px et pèse 14 678 octets. Tests des icônes et de la charte, 17 réussis sur 17. Générateur vérifié. Sorties mécaniques : `vitrine/src/styles/jetons.css` et `shared/charte/README.md`.
+
+L’illustration a été créée le 22 novembre 2026 avec ImageGen intégré à Codex. L’outil expose son nom mais ne renvoie aucun identifiant de modèle. Conversion en WebP avec Pillow. Pour les comptes individuels, les conditions attribuent à l’utilisateur les droits d’OpenAI sur les sorties dans la mesure permise par la loi. Les obligations de respecter les droits des tiers et de vérifier le résultat s’appliquent aussi aux supports commerciaux. Le résultat peut ressembler à d’autres sorties. [Conditions publiées, « Content »](https://openai.com/policies/terms-of-use/)
+
 ## Prompt de reprise
 
-Reprends vit-09c-logos-modules sur feat/vit-09c-logos-modules. Lis AGENTS.md, le suivi, la fiche de mission sur la branche de coordination, cette fiche et la réponse du coordinateur. 13 paires de teintes proposées, 17 images prévues, cible de 15 Ko par image. Le coordinateur valide le plan, le périmètre des sorties et le moyen de génération. Actualiser depuis origin/main, puis montrer les deux essais au chef avant la série.
+Reprends VIT-09c sur `feat/vit-09c-logos-modules`. Lis cette fiche, la mission et la boîte Codex. Recueille le verdict du chef sur le SVG et le WebP Présences. Si le rendu est validé, réalise les douze logos et seize illustrations restants, vérifie les poids, les contrastes et les teintes, puis soumets la planche complète au chef. S’il demande une retouche, présente à nouveau l’essai concerné.
