@@ -1,0 +1,27 @@
+---
+// Gabarit d'une page de module (plan VIT-20, § 4.4). Squelette de R0 : l'enveloppe et l'emplacement du lot D ; le lot B le
+// remplit (onglets, fonctionnalités, « Pour qui », « Un besoin, une application »).
+import Gabarit from '../socle/Gabarit.astro';
+import EnTetePage from '../fonctions/EnTetePage.astro';
+import FinDePage from '../fonctions/FinDePage.astro';
+import { traductions } from '../../i18n/index.js';
+import { pageModule } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  cle: string;
+  titre: string;
+  description: string;
+  accroche: string;
+}
+
+const { langue, cle, titre, description, accroche } = Astro.props;
+const commun = traductions(langue, 'commun');
+const nom = traductions(langue, 'modules')(`noms.${cle}`);
+---
+<Gabarit langue={langue} page={pageModule(cle)} titre={titre} description={description}>
+  <EnTetePage surtitre={commun('navigation.applications')} titre={nom} accroche={accroche} />
+  <slot />
+  {/* LOT D (Codex, PR à part) : le bloc « Selon votre équipement » (plan § 4.9) se pose ici, sur une seule ligne. Vide dans VIT-20. */}
+  <FinDePage langue={langue} />
+</Gabarit>

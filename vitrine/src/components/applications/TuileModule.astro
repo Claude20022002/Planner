@@ -1,0 +1,44 @@
+---
+// Tuile d'un module : logo, nom, lien vers sa page s'il est disponible. Un module « Bientôt » est une tuile grisée
+// avec le badge « Bientôt », sans lien ni rôle de contrôle (plan VIT-20, § 4.2). « menu » : texte seul, pour le méga-menu.
+import { traductions } from '../../i18n/index.js';
+import { chemin, pageModule } from '../../i18n/langues.js';
+import { estDisponible } from '../../donnees/modules.js';
+import { logoModule } from './logos.js';
+
+interface Props {
+  module: { cle: string; etat: string; logo: string | null; segment: string | null };
+  langue: string;
+  variante?: 'grille' | 'menu';
+}
+
+const { module, langue, variante = 'grille' } = Astro.props;
+const nom = traductions(langue, 'modules')(`noms.${module.cle}`);
+const bientot = traductions(langue, 'commun')('navigation.bientot');
+const disponible = estDisponible(module);
+const Balise = disponible ? 'a' : 'div';
+const href = disponible ? chemin(langue, pageModule(module.cle)) : undefined;
+---
+<Balise class:list={['tuile', variante, { grisee: !disponible }]} href={href}>
+  {variante === 'grille' && <span class="logo" set:html={logoModule(module)} />}
+  <span class="nom">{nom}</span>
+  {!disponible && <span class="badge">{bientot}</span>}
+</Balise>
+
+<style>
+  .tuile { display: flex; align-items: center; gap: var(--espace-2); color: var(--encre); text-decoration: none; text-align: start; }
+  .grille { flex-direction: column; justify-content: center; gap: var(--espace-1); padding: var(--espace-3) var(--espace-2); border-radius: var(--rayon);
+    background: var(--blanc); box-shadow: var(--ombre-carte); text-align: center; min-block-size: 9rem; }
+  a.grille { transition: transform var(--duree) var(--courbe); }
+  a.grille:hover { transform: translateY(-2px); }
+  .logo { display: block; inline-size: 3.5rem; }
+  .logo :global(svg) { display: block; inline-size: 100%; block-size: auto; }
+  .nom { font-weight: 600; }
+  .menu { padding-block: 0.3rem; }
+  a.menu:hover .nom { color: var(--bleu); text-decoration: underline; }
+  .grisee { color: var(--gris-texte); }
+  .grille.grisee { background: var(--gris-fond); box-shadow: none; }
+  .grisee .logo { filter: grayscale(1); opacity: 0.55; }
+  .badge { padding: 0.1rem 0.6rem; border-radius: var(--rayon-pilule); background: var(--gris-trait); color: var(--encre); font-size: 0.75rem; font-weight: 600; }
+  .menu .badge { padding: 0 0.5rem; }
+</style>
