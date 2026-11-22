@@ -9,10 +9,10 @@
     "accroche": "This site presents the Planner software. Here is who publishes it and who hosts it."
   },
   "sections": [
-    { "titre": "Publisher", "paragraphes": ["This site is published by [NOM], as an individual."] },
-    { "titre": "Publication director", "paragraphes": ["[NOM]."] },
+    { "titre": "Publisher", "paragraphes": ["This site is published by FinAdmin Tech, a professional training organisation, 8 rue Arthur Rimbaud, 93160 Noisy-le-Grand."] },
+    { "titre": "Publication director", "paragraphes": ["The management of FinAdmin Tech."] },
     { "titre": "Contact", "paragraphes": ["For any question about this site: {email}."] },
-    { "titre": "Hosting", "paragraphes": ["This site is hosted by [HÉBERGEUR]."] },
+    { "titre": "Hosting", "paragraphes": ["This site is hosted by OVH SAS, RCS Lille Métropole 424 761 419 00045, 2 rue Kellermann, 59100 Roubaix."] },
     { "titre": "Personal data", "paragraphes": ["What this site collects, and why, is explained on the {confidentialite} page."] }
   ],
   "liens": {

@@ -24,7 +24,7 @@
         "Comme tout serveur web, celui de ce site note chaque demande dans un journal technique : l'adresse IP, la date et l'heure, la page demandée, la page d'où vous venez et le type de navigateur.",
         "Ce journal sert seulement à la sécurité et au bon fonctionnement du site : repérer une attaque, corriger une erreur.",
         "Il n'est ni vendu, ni utilisé pour suivre vos visites. Il reste sur le serveur du site.",
-        "Il est effacé automatiquement au plus tard après [N] jours."
+        "Il est effacé automatiquement au plus tard après 30 jours."
       ]
     },
     {
@@ -39,7 +39,7 @@
       "paragraphes": [
         "Cette page ne concerne que ce site. Elle ne décrit pas l'application Planner, ni les données que les écoles y gèrent.",
         "Si ce site recueille un jour autre chose, par exemple avec un formulaire de contact, cette page sera mise à jour avant.",
-        "Dernière mise à jour : [DATE]."
+        "Dernière mise à jour : 22 novembre 2026."
       ]
     }
   ],

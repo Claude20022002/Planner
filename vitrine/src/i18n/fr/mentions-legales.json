@@ -9,10 +9,10 @@
     "accroche": "Ce site présente le logiciel Planner. Voici qui le publie et qui l'héberge."
   },
   "sections": [
-    { "titre": "Éditeur", "paragraphes": ["Ce site est édité par [NOM], à titre personnel."] },
-    { "titre": "Directeur de la publication", "paragraphes": ["[NOM]."] },
+    { "titre": "Éditeur", "paragraphes": ["Ce site est édité par FinAdmin Tech, organisme de formation professionnelle, 8 rue Arthur Rimbaud, 93160 Noisy-le-Grand."] },
+    { "titre": "Directeur de la publication", "paragraphes": ["La direction de FinAdmin Tech."] },
     { "titre": "Contact", "paragraphes": ["Pour toute question sur ce site : {email}."] },
-    { "titre": "Hébergement", "paragraphes": ["Ce site est hébergé par [HÉBERGEUR]."] },
+    { "titre": "Hébergement", "paragraphes": ["Ce site est hébergé par OVH SAS, RCS Lille Métropole 424 761 419 00045, 2 rue Kellermann, 59100 Roubaix."] },
     { "titre": "Données personnelles", "paragraphes": ["Ce que ce site recueille, et pourquoi, est expliqué sur la page {confidentialite}."] }
   ],
   "liens": {

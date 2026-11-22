@@ -24,7 +24,7 @@
         "Like any web server, this site's server records each request in a technical log: the IP address, the date and time, the page requested, the page you came from and the type of browser.",
         "This log is used only for the site's security and proper operation: spotting an attack, fixing an error.",
         "It is not sold, nor used to track your visits. It stays on the site's server.",
-        "It is deleted automatically after [N] days at most."
+        "It is deleted automatically after 30 days at most."
       ]
     },
     {
@@ -39,7 +39,7 @@
       "paragraphes": [
         "This page covers this site only. It does not describe the Planner application, nor the data schools manage in it.",
         "If this site ever collects anything else, for example through a contact form, this page will be updated first.",
-        "Last updated: [DATE]."
+        "Last updated: 22 November 2026."
       ]
     }
   ],
