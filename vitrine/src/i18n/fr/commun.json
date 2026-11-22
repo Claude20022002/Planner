@@ -17,6 +17,7 @@
     "etablissement": "Pour l'établissement",
     "securite": "Sécurité et données",
     "bientot": "Bientôt",
+    "comparer": "Comparer",
     "contact": "Nous contacter",
     "parEtablissement": "Par établissement",
     "parRole": "Par rôle",
@@ -26,7 +27,18 @@
     "etudiants": "Étudiants",
     "ressources": "Ressources",
     "mentionsLegales": "Mentions légales",
-    "confidentialite": "Confidentialité"
+    "confidentialite": "Confidentialité",
+    "applications": "Applications",
+    "etablissements": "Établissements",
+    "contactLien": "Contact",
+    "demonstration": "Demander une démonstration",
+    "seConnecter": "Se connecter",
+    "toutesLesApplications": "Toutes les applications",
+    "voirLesApplications": "Voir les applications",
+    "unBesoin": "Un besoin, une application.",
+    "toutesLesFonctionnalites": "Toutes les fonctionnalités de {module}",
+    "apercu": "Aperçu",
+    "fonctionnalites": "Fonctionnalités"
   },
   "langues": {
     "label": "Langue",
@@ -50,5 +62,24 @@
   },
   "contact": {
     "email": "contact@finadmintech.fr"
+  },
+  "categories": {
+    "organiser": "Organiser",
+    "enseigner": "Enseigner",
+    "gerer": "Gérer",
+    "communiquer": "Communiquer"
+  },
+  "socle": {
+    "titre": "Inclus dans tout abonnement",
+    "etablissement": "Établissement",
+    "personnes": "Personnes",
+    "webMobile": "Web et mobile",
+    "securite": "Sécurité"
+  },
+  "pourQui": {
+    "titre": "Pour qui"
+  },
+  "equipement": {
+    "titre": "Selon votre équipement"
   }
 }

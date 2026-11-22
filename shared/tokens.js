@@ -1,10 +1,14 @@
-import tokens from './design-tokens.json';
+import { lignes } from './charte/index.js';
 
 /**
- * Jetons partagés (web et mobile) et couleur de ligne des filières.
- * Le web y ajoute son sol « bureau », ses polices CSS et ses ombres (design-system/tokens.js).
+ * Couleur de ligne des filières (web et mobile), tirée de la charte (shared/charte).
+ * Depuis UIX-10d, plus aucun jeton d'avant la charte : design-tokens.json est retiré, le web et le
+ * mobile lisent shared/charte pour tout le reste.
  */
-export { tokens };
+
+const LIGNES = ['ligne-1', 'ligne-2', 'ligne-3', 'ligne-4', 'ligne-5', 'ligne-6'].map((nom) => lignes[nom]);
+
+export const tokens = Object.freeze({ lines: LIGNES, lineUnknown: lignes['ligne-inconnue'] });
 
 /**
  * Couleur de ligne stable d'une filière (même code → même couleur sur tous les écrans).

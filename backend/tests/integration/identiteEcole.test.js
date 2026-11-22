@@ -39,6 +39,14 @@ describe("Lecture publique", () => {
         expect(res.body).not.toHaveProperty("expediteur_nom");
         expect((await anonymous().get("/api/etablissement/logo")).status).toBe(404);
     });
+
+    test("l'horloge de l'école (M-10) : le fuseau du serveur et sa table de décalages, sans connexion", async () => {
+        const res = await anonymous().get("/api/etablissement");
+        expect(res.status).toBe(200);
+        // Les tests posent APP_TIMEZONE=UTC (setupEnv.js) : une seule ligne, à 0
+        expect(res.body.horloge).toEqual({ fuseau: "UTC", decalages: [{ depuis: expect.any(String), minutes: 0 }], calcule_le: expect.any(String) });
+        expect(Date.parse(res.body.horloge.decalages[0].depuis)).toBeLessThan(Date.now());
+    });
 });
 
 describe("Réglage par l'administration", () => {
@@ -64,10 +72,10 @@ describe("Réglage par l'administration", () => {
         expect(claire.status).toBe(400);
         expect(claire.body.code).toBe("COULEUR_ILLISIBLE");
         expect(claire.body.message).toMatch(/plus foncée/);
-        // Accent trop sombre : lisible sur blanc, illisible sur le panneau noir
+        // Accent trop sombre : lisible sur blanc, illisible sur le panneau sombre (fond « ecran » de la charte, UIX-10b)
         const sombre = await direction.send("put", "/api/etablissement", { couleur_accent: "#8B0000" });
         expect(sombre.status).toBe(400);
-        expect(sombre.body.message).toMatch(/panneau noir/);
+        expect(sombre.body.message).toMatch(/panneau sombre/);
         expect((await direction.send("put", "/api/etablissement", { couleur_accent: "orange" })).status).toBe(400);
         expect((await anonymous().get("/api/etablissement")).body.couleur_principale).toBe("#00573F");
     });

@@ -11,7 +11,7 @@
   "calcul": {
     "surtitre": "Le calcul",
     "titre": "Toutes vos règles, tenues ensemble.",
-    "texte": "Planner cherche la meilleure semaine possible : les règles strictes sont toujours tenues, les règles souples autant que possible.",
+    "texte": "Planner cherche la semaine qui respecte le mieux vos règles : les règles strictes sont toujours tenues, les règles souples autant que possible.",
     "points": [
       "Les salles et leur capacité",
       "Les enseignants, vacataires compris, et leurs disponibilités",
@@ -23,7 +23,7 @@
   "refus": {
     "surtitre": "Les refus expliqués",
     "titre": "Chaque refus a sa raison.",
-    "texte": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque. Vous corrigez la donnée ou vous assouplissez la règle, puis vous relancez le calcul.",
+    "texte": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant. Vous corrigez, puis vous relancez le calcul.",
     "avis": {
       "label": "Exemple d'avis de Planner pour une séance non placée",
       "titre": "Séance non placée",

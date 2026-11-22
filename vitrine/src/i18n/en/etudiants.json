@@ -11,19 +11,63 @@
   "aujourdhui": "Today",
   "cartes": [
     {
-      "page": "bibliotheque",
+      "page": "applications",
       "titre": "Library",
       "texte": "Documents are organised by programme and by module."
     },
     {
-      "page": "application",
+      "page": "socle",
       "titre": "App",
       "texte": "Five tabs: the board, the week, the scanner, the library, the account."
     },
     {
-      "page": "quizEtJeux",
+      "page": "module.quizEtJeux",
       "titre": "Quiz and games",
       "texte": "The teacher prepares the quiz. The link opens in a browser, on a school computer or elsewhere. A code or a QR code leads to the same link."
     }
-  ]
+  ],
+  "passage": {
+    "titre": "Before, with Planner.",
+    "avant": "Before",
+    "avec": "With Planner",
+    "lignes": [
+      {
+        "avant": "Course materials arrive by message or on paper.",
+        "avec": "The student sees the published materials of their courses."
+      },
+      {
+        "avant": "The school's documents sit in shared folders.",
+        "avec": "Documents are organised by programme and by module."
+      },
+      {
+        "avant": "The week is read from a posted sheet.",
+        "avec": "The students' application shows their week, scans the attendance QR code and opens the Library. Without a phone, the timetable and the resources open in a browser, and the teacher takes attendance by hand."
+      },
+      {
+        "avant": "Taking the quiz means installing an application.",
+        "avec": "The link opens in a browser, on a school computer or elsewhere. A code or a QR code leads to the same link."
+      },
+      {
+        "avant": "News for a class goes out on a notice or in a message.",
+        "avec": "An announcement goes to a class, a group or a programme. Email is optional."
+      }
+    ]
+  },
+  "faq": {
+    "titre": "Common questions.",
+    "questions": [
+      {
+        "question": "What does the mobile application offer?",
+        "reponse": "The students' application shows their week, scans the attendance QR code and opens the Library. Without a phone, the timetable and the resources open in a browser, and the teacher takes attendance by hand."
+      },
+      {
+        "question": "Where are my course materials?",
+        "reponse": "The student sees the published materials of their courses."
+      },
+      {
+        "question": "Where are the school's documents?",
+        "reponse": "Documents are organised by programme and by module."
+      }
+    ]
+  }
 }

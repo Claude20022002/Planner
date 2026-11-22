@@ -1,0 +1,422 @@
+[
+  {
+    "id": "1-CM-1",
+    "creneauId": 25,
+    "salleId": 1
+  },
+  {
+    "id": "1-TD-2",
+    "creneauId": 33,
+    "salleId": 2
+  },
+  {
+    "id": "1-TD-3",
+    "creneauId": 34,
+    "salleId": 2
+  },
+  {
+    "id": "1-TP-4",
+    "creneauId": 1,
+    "salleId": 4
+  },
+  {
+    "id": "1-TP-5",
+    "creneauId": 3,
+    "salleId": 4
+  },
+  {
+    "id": "1-TP-6",
+    "creneauId": 5,
+    "salleId": 4
+  },
+  {
+    "id": "1-TP-7",
+    "creneauId": 7,
+    "salleId": 4
+  },
+  {
+    "id": "2-CM-1",
+    "creneauId": 26,
+    "salleId": 1
+  },
+  {
+    "id": "2-TD-2",
+    "creneauId": 35,
+    "salleId": 2
+  },
+  {
+    "id": "2-TD-3",
+    "creneauId": 36,
+    "salleId": 2
+  },
+  {
+    "id": "2-TP-4",
+    "creneauId": 9,
+    "salleId": 9
+  },
+  {
+    "id": "2-TP-5",
+    "creneauId": 11,
+    "salleId": 9
+  },
+  {
+    "id": "2-TP-6",
+    "creneauId": 13,
+    "salleId": 9
+  },
+  {
+    "id": "2-TP-7",
+    "creneauId": 15,
+    "salleId": 9
+  },
+  {
+    "id": "3-CM-1",
+    "creneauId": 27,
+    "salleId": 1
+  },
+  {
+    "id": "3-TD-2",
+    "creneauId": 37,
+    "salleId": 2
+  },
+  {
+    "id": "3-TD-3",
+    "creneauId": 38,
+    "salleId": 2
+  },
+  {
+    "id": "3-TP-4",
+    "creneauId": 17,
+    "salleId": 4
+  },
+  {
+    "id": "3-TP-5",
+    "creneauId": 19,
+    "salleId": 4
+  },
+  {
+    "id": "3-TP-6",
+    "creneauId": 21,
+    "salleId": 4
+  },
+  {
+    "id": "3-TP-7",
+    "creneauId": 23,
+    "salleId": 4
+  },
+  {
+    "id": "4-CM-8",
+    "creneauId": 25,
+    "salleId": 6
+  },
+  {
+    "id": "4-TD-9",
+    "creneauId": 33,
+    "salleId": 7
+  },
+  {
+    "id": "4-TD-10",
+    "creneauId": 34,
+    "salleId": 7
+  },
+  {
+    "id": "4-TP-11",
+    "creneauId": 1,
+    "salleId": 9
+  },
+  {
+    "id": "4-TP-12",
+    "creneauId": 3,
+    "salleId": 9
+  },
+  {
+    "id": "4-TP-13",
+    "creneauId": 5,
+    "salleId": 9
+  },
+  {
+    "id": "4-TP-14",
+    "creneauId": 7,
+    "salleId": 9
+  },
+  {
+    "id": "5-CM-8",
+    "creneauId": 26,
+    "salleId": 6
+  },
+  {
+    "id": "5-TD-9",
+    "creneauId": 35,
+    "salleId": 7
+  },
+  {
+    "id": "5-TD-10",
+    "creneauId": 36,
+    "salleId": 7
+  },
+  {
+    "id": "5-TP-11",
+    "creneauId": 9,
+    "salleId": 4
+  },
+  {
+    "id": "5-TP-12",
+    "creneauId": 11,
+    "salleId": 4
+  },
+  {
+    "id": "5-TP-13",
+    "creneauId": 13,
+    "salleId": 4
+  },
+  {
+    "id": "5-TP-14",
+    "creneauId": 15,
+    "salleId": 4
+  },
+  {
+    "id": "6-CM-8",
+    "creneauId": 27,
+    "salleId": 6
+  },
+  {
+    "id": "6-TD-9",
+    "creneauId": 37,
+    "salleId": 7
+  },
+  {
+    "id": "6-TD-10",
+    "creneauId": 38,
+    "salleId": 7
+  },
+  {
+    "id": "6-TP-11",
+    "creneauId": 17,
+    "salleId": 9
+  },
+  {
+    "id": "6-TP-12",
+    "creneauId": 19,
+    "salleId": 9
+  },
+  {
+    "id": "6-TP-13",
+    "creneauId": 21,
+    "salleId": 9
+  },
+  {
+    "id": "6-TP-14",
+    "creneauId": 23,
+    "salleId": 9
+  },
+  {
+    "id": "7-CM-15",
+    "creneauId": 29,
+    "salleId": 1
+  },
+  {
+    "id": "7-TD-16",
+    "creneauId": 33,
+    "salleId": 3
+  },
+  {
+    "id": "7-TD-17",
+    "creneauId": 34,
+    "salleId": 3
+  },
+  {
+    "id": "7-TP-18",
+    "creneauId": 1,
+    "salleId": 5
+  },
+  {
+    "id": "7-TP-19",
+    "creneauId": 3,
+    "salleId": 5
+  },
+  {
+    "id": "7-TP-20",
+    "creneauId": 5,
+    "salleId": 5
+  },
+  {
+    "id": "7-TP-21",
+    "creneauId": 7,
+    "salleId": 5
+  },
+  {
+    "id": "8-CM-15",
+    "creneauId": 30,
+    "salleId": 1
+  },
+  {
+    "id": "8-TD-16",
+    "creneauId": 35,
+    "salleId": 3
+  },
+  {
+    "id": "8-TD-17",
+    "creneauId": 36,
+    "salleId": 3
+  },
+  {
+    "id": "8-TP-18",
+    "creneauId": 9,
+    "salleId": 10
+  },
+  {
+    "id": "8-TP-19",
+    "creneauId": 11,
+    "salleId": 10
+  },
+  {
+    "id": "8-TP-20",
+    "creneauId": 13,
+    "salleId": 10
+  },
+  {
+    "id": "8-TP-21",
+    "creneauId": 15,
+    "salleId": 10
+  },
+  {
+    "id": "9-CM-15",
+    "creneauId": 31,
+    "salleId": 1
+  },
+  {
+    "id": "9-TD-16",
+    "creneauId": 37,
+    "salleId": 3
+  },
+  {
+    "id": "9-TD-17",
+    "creneauId": 38,
+    "salleId": 3
+  },
+  {
+    "id": "9-TP-18",
+    "creneauId": 17,
+    "salleId": 5
+  },
+  {
+    "id": "9-TP-19",
+    "creneauId": 19,
+    "salleId": 5
+  },
+  {
+    "id": "9-TP-20",
+    "creneauId": 21,
+    "salleId": 5
+  },
+  {
+    "id": "9-TP-21",
+    "creneauId": 23,
+    "salleId": 5
+  },
+  {
+    "id": "10-CM-22",
+    "creneauId": 29,
+    "salleId": 6
+  },
+  {
+    "id": "10-TD-23",
+    "creneauId": 33,
+    "salleId": 8
+  },
+  {
+    "id": "10-TD-24",
+    "creneauId": 34,
+    "salleId": 8
+  },
+  {
+    "id": "10-TP-25",
+    "creneauId": 1,
+    "salleId": 10
+  },
+  {
+    "id": "10-TP-26",
+    "creneauId": 3,
+    "salleId": 10
+  },
+  {
+    "id": "10-TP-27",
+    "creneauId": 5,
+    "salleId": 10
+  },
+  {
+    "id": "10-TP-28",
+    "creneauId": 7,
+    "salleId": 10
+  },
+  {
+    "id": "11-CM-22",
+    "creneauId": 30,
+    "salleId": 6
+  },
+  {
+    "id": "11-TD-23",
+    "creneauId": 35,
+    "salleId": 8
+  },
+  {
+    "id": "11-TD-24",
+    "creneauId": 36,
+    "salleId": 8
+  },
+  {
+    "id": "11-TP-25",
+    "creneauId": 9,
+    "salleId": 5
+  },
+  {
+    "id": "11-TP-26",
+    "creneauId": 11,
+    "salleId": 5
+  },
+  {
+    "id": "11-TP-27",
+    "creneauId": 13,
+    "salleId": 5
+  },
+  {
+    "id": "11-TP-28",
+    "creneauId": 15,
+    "salleId": 5
+  },
+  {
+    "id": "12-CM-22",
+    "creneauId": 31,
+    "salleId": 6
+  },
+  {
+    "id": "12-TD-23",
+    "creneauId": 37,
+    "salleId": 8
+  },
+  {
+    "id": "12-TD-24",
+    "creneauId": 38,
+    "salleId": 8
+  },
+  {
+    "id": "12-TP-25",
+    "creneauId": 17,
+    "salleId": 10
+  },
+  {
+    "id": "12-TP-26",
+    "creneauId": 19,
+    "salleId": 10
+  },
+  {
+    "id": "12-TP-27",
+    "creneauId": 21,
+    "salleId": 10
+  },
+  {
+    "id": "12-TP-28",
+    "creneauId": 23,
+    "salleId": 10
+  }
+]

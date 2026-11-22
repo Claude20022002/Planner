@@ -20,10 +20,13 @@ const { surtitre, titre, accroche, ton = 'clair' } = Astro.props;
     <div class="ouverture">
       <Titre niveau={1} taille="geant" id="page-titre" surtitre={surtitre}>{titre}</Titre>
       <Accroche>{accroche}</Accroche>
+      <div class="actions"><slot name="actions" /></div>
     </div>
   </Apparition>
 </Section>
 
 <style>
   .ouverture { display: grid; gap: var(--espace-3); justify-items: center; padding-block-start: var(--espace-3); }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-2); width: 100%; }
+  .actions:empty { display: none; }
 </style>

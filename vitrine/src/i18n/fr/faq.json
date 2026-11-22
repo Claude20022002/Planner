@@ -1,0 +1,34 @@
+{
+  "titre": "Questions fréquentes",
+  "description": "Les réponses aux questions des établissements sur Planner.",
+  "questions": [
+    {
+      "question": "Où sont stockées les données ?",
+      "reponse": "Demandez-nous où seront hébergées les données de votre établissement. Nous vous préciserons les conditions de l’offre."
+    },
+    {
+      "question": "Dans quelles langues puis-je consulter le site ?",
+      "reponse": "Le site est disponible en français et en anglais. Contactez-nous pour connaître les langues disponibles dans les applications qui vous intéressent."
+    },
+    {
+      "question": "Peut-on importer des listes ?",
+      "reponse": "L’administration peut importer des listes de comptes, d’étudiants et d’enseignants à partir de fichiers CSV compatibles."
+    },
+    {
+      "question": "Que propose l’application mobile ?",
+      "reponse": "L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
+    },
+    {
+      "question": "Comment l’IA intervient-elle ?",
+      "reponse": "Quand l’IA est activée pour votre école dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager."
+    },
+    {
+      "question": "Peut-on choisir StudyLib séparément ?",
+      "reponse": "Contactez-nous pour discuter de StudyLib et des fonctionnalités qui répondent aux besoins de votre établissement."
+    },
+    {
+      "question": "Combien cela coûte-t-il ?",
+      "reponse": "Contactez-nous pour parler des besoins de votre établissement."
+    }
+  ]
+}

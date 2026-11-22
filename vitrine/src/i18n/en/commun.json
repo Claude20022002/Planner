@@ -17,6 +17,7 @@
     "etablissement": "For schools",
     "securite": "Security and data",
     "bientot": "Coming soon",
+    "comparer": "Compare",
     "contact": "Contact us",
     "parEtablissement": "By institution",
     "parRole": "By role",
@@ -26,7 +27,18 @@
     "etudiants": "Students",
     "ressources": "Resources",
     "mentionsLegales": "Legal notice",
-    "confidentialite": "Privacy"
+    "confidentialite": "Privacy",
+    "applications": "Apps",
+    "etablissements": "Schools",
+    "contactLien": "Contact",
+    "demonstration": "Request a demo",
+    "seConnecter": "Sign in",
+    "toutesLesApplications": "All apps",
+    "voirLesApplications": "See the apps",
+    "unBesoin": "One need, one app.",
+    "toutesLesFonctionnalites": "Everything in {module}",
+    "apercu": "Overview",
+    "fonctionnalites": "Features"
   },
   "langues": {
     "label": "Language",
@@ -50,5 +62,24 @@
   },
   "contact": {
     "email": ""
+  },
+  "categories": {
+    "organiser": "Organise",
+    "enseigner": "Teach",
+    "gerer": "Manage",
+    "communiquer": "Communicate"
+  },
+  "socle": {
+    "titre": "Included in every plan",
+    "etablissement": "School",
+    "personnes": "People",
+    "webMobile": "Web and mobile",
+    "securite": "Security"
+  },
+  "pourQui": {
+    "titre": "Who it is for"
+  },
+  "equipement": {
+    "titre": "Whatever your equipment"
   }
 }

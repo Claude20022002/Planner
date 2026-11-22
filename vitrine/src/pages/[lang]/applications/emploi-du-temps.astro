@@ -1,0 +1,33 @@
+---
+// Page du module « Emploi du temps » : le calcul, les refus expliqués, ce qui suit le calcul (page de fonction d'avant),
+// puis le report suivi de bout en bout (section de l'accueil). Textes de emploi-du-temps.json et accueil.json, déplacés tels quels.
+import { History, Send, CalendarClock, FileDown, CalendarSync, Mail } from 'lucide-react';
+import PageModule from '../../../components/applications/PageModule.astro';
+import CadreAppareil from '../../../components/socle/CadreAppareil.astro';
+import Presentation from '../../../components/fonctions/Presentation.astro';
+import CarteAvis from '../../../components/fonctions/CarteAvis.astro';
+import GrilleCartes from '../../../components/fonctions/GrilleCartes.astro';
+import IllustrationSemaine from '../../../components/accueil/IllustrationSemaine.astro';
+import Report from '../../../components/accueil/Report.astro';
+import { traductions } from '../../../i18n/index.js';
+import { cheminsLangues } from '../../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'emploi-du-temps');
+const tAccueil = traductions(lang, 'accueil');
+---
+<PageModule langue={lang} cle="emploiDuTemps" titre={t('meta.titre')} description={t('meta.description')} accroche={t('entete.accroche')}>
+  <Presentation id="calcul" ton="gris" surtitre={t('calcul.surtitre')} titre={t('calcul.titre')} texte={t('calcul.texte')} points={t('calcul.points')}>
+    <CadreAppareil type="ordinateur" label={t('illustration.label')}>
+      <IllustrationSemaine t={tAccueil} />
+    </CadreAppareil>
+  </Presentation>
+  <Presentation id="refus" ton="sombre" inverse surtitre={t('refus.surtitre')} titre={t('refus.titre')} texte={t('refus.texte')}>
+    <CarteAvis label={t('refus.avis.label')} titre={t('refus.avis.titre')} texte={t('refus.avis.texte')} />
+  </Presentation>
+  <GrilleCartes id="suite" surtitre={t('suite.surtitre')} titre={t('suite.titre')} cartes={t('suite.cartes')}
+    icones={[History, Send, CalendarClock, FileDown, CalendarSync, Mail]} />
+  <Report t={tAccueil} />
+</PageModule>

@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import { Op } from "sequelize";
 import { enTransaction } from "../../models/acces.js";
 import { passage } from "../taches/periodiques.js";
@@ -19,7 +20,6 @@ import { INCLUDES_LIGNE, ligneDe } from "./versionPubliee.js";
  * rappelée des classes qui ont des changements non publiés (décision du 21 octobre 2026).
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 // Les séances annulées sont publiées aussi : l'étudiant les voit barrées ; de même celles à
 // reprogrammer (R-1), « reportées · date à venir » à leur date d'origine
 const STATUTS_PUBLIES = ["planifie", "confirme", "reporte", "realise", "annule", "a_reprogrammer"];

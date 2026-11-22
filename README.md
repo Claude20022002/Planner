@@ -328,7 +328,7 @@ Sur un serveur **partagé** (cas de la production, où tourne aussi n8n) :
 - le proxy de l'hôte termine le TLS et lui transmet les requêtes.
 
 ```bash
-deploy/vps/generer-env.sh <site> <fichiers> <quiz>      # crée .env.docker (secrets générés)
+deploy/vps/generer-env.sh <site> <fichiers> <quiz> <fuseau>   # crée .env.docker (secrets générés ; fuseau obligatoire, M-10)
 docker compose -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml --env-file .env.docker up -d
 deploy/vps/deployer.sh --essai <commit>                  # mise en ligne d'une version publiée par la CI
 deploy/vps/deployer.sh <commit>                          #   (images ghcr.io, version vérifiée par /health)
@@ -363,6 +363,8 @@ Le pas à pas, les secrets à préparer et le retour arrière sont dans [`DEPLOI
 - **Services internes** (solveur, synchronisation) : protégés par des jetons dédiés, comparés en temps constant ; requêtes bornées ; limite d'appels par compte.
 - **IA** : elle ne reçoit jamais de données d'élève, et sa sortie est relue par l'enseignant.
 - **Secrets** : jamais versionnés. Seuls les modèles `*.example` le sont.
+- **Signaler une faille** : en privé, comme le dit [SECURITY.md](SECURITY.md) (accusé de réception sous 7 jours, correctif ou avis sous 90 jours au plus).
+- **Ce que Planner envoie hors de son installation** : [docs/envois-sortants.md](docs/envois-sortants.md). Rien ne part chez ses auteurs.
 
 ---
 

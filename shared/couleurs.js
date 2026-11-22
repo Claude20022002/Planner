@@ -4,15 +4,16 @@
  * Formule de contraste des WCAG 2.2 : luminance relative, puis (L1 + 0,05) / (L2 + 0,05).
  *  - couleur principale : boutons et bandeaux avec un texte blanc, contraste d'au moins 4,5:1 ;
  *  - couleur d'accent : éléments d'interface et grands textes, au moins 3:1 sur blanc (WCAG 1.4.11),
- *    et aussi sur le fond noir du panneau des séances, où elle écrit « PLANNER ».
+ *    et aussi sur le fond sombre du panneau des séances, où elle écrit « PLANNER ».
  */
 
 export const HEXA = /^#[0-9A-Fa-f]{6}$/;
 
 export const SEUILS = { principale: 4.5, accent: 3 };
 
-// Fond du panneau des séances (shared/design-tokens.json, board.ground)
-export const FOND_PANNEAU = "#0B0B0D";
+// Fond du panneau des séances : « ecran » de la charte (shared/charte/jetons.json), recopié ici parce
+// que le serveur lit ce fichier sous Node sans import JSON ; shared/charte/charte.test.js vérifie l'égalité
+export const FOND_PANNEAU = "#0F1A2B";
 // Texte foncé posé sur l'accent (boutons d'appel), le même que celui du thème
 export const TEXTE_FONCE = "#1A0A02";
 
@@ -43,8 +44,8 @@ export const melanger = (a, b, t) => {
 };
 
 /**
- * Nuances tirées des deux couleurs de l'école, mêmes noms que les jetons partagés
- * (shared/design-tokens.json, brand) pour que le site et l'application les remplacent sans
+ * Nuances tirées des deux couleurs de l'école, mêmes noms que les jetons du web
+ * (ds.brand, frontend/src/design-system/tokens.js) pour que le site et l'application les remplacent sans
  * toucher aux écrans : navy (principale), navyDeep (survol, plus foncée), navySoft (fonds de
  * sélection, très claire), orange (accent), et frame, le cadre du panneau des séances.
  */
@@ -79,7 +80,7 @@ export const verifierCouleur = (hexa, usage) => {
     }
     if (usage === "accent") {
         const surPanneau = contraste(hexa, FOND_PANNEAU);
-        if (surPanneau < seuil) return { valide: false, contraste: rapport, seuil, message: `Couleur trop foncée : elle ne se lit pas sur le panneau noir de l'accueil (contraste ${fr(surPanneau)}:1, il faut au moins ${fr(seuil)}:1). Choisissez une teinte plus vive.` };
+        if (surPanneau < seuil) return { valide: false, contraste: rapport, seuil, message: `Couleur trop foncée : elle ne se lit pas sur le panneau sombre de l'accueil (contraste ${fr(surPanneau)}:1, il faut au moins ${fr(seuil)}:1). Choisissez une teinte plus vive.` };
     }
     return { valide: true, contraste: rapport, seuil, message: null };
 };

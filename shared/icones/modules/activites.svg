@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Quiz et jeux (VIT-09a), dessin détaillé pour 40 à 96 px. Charte v3 : app-activites, app-activites-fonce, blanc, bleu-clair, bleu-nuit, jeu. Une manette au premier plan et une bulle de question. -->
+<defs>
+<linearGradient id="vit-activites-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#A94088"/><stop offset="1" stop-color="#5E256D"/></linearGradient>
+<linearGradient id="vit-activites-reflet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.22"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-activites-tuile)"/>
+<path d="M26 4h44a22 22 0 0 1 22 22v8C70 44 26 44 4 34v-8A22 22 0 0 1 26 4z" fill="url(#vit-activites-reflet)"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.14"/>
+<path d="M50 14h20a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8H58l-9 7 2-7a8 8 0 0 1-9-8V22a8 8 0 0 1 8-8z" fill="#A6CAEE"/>
+<path d="M55.5 24.5a4.6 4.6 0 1 1 6.7 4.1c-1.3.7-2.2 1.6-2.2 3.1v.8" fill="none" stroke="#17395C" stroke-width="3.2" stroke-linecap="round"/><circle cx="60" cy="37.6" r="2" fill="#17395C"/>
+<rect transform="translate(2 4)" opacity="0.45" x="17" y="52" width="54" height="28" rx="14" fill="#5E256D"/>
+<rect x="17" y="52" width="54" height="28" rx="14" fill="#FFFFFF"/>
+<g fill="#17395C"><rect x="25" y="64.2" width="12" height="3.6" rx="1.2"/><rect x="29.2" y="60" width="3.6" height="12" rx="1.2"/></g>
+<circle cx="55" cy="62" r="3.6" fill="#FFC83D"/><circle cx="62" cy="69" r="3.6" fill="#17395C"/>
+</svg>

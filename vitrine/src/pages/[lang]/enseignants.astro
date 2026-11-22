@@ -2,9 +2,9 @@
 // Page « Enseignants » : phrases déjà publiées sur En classe, et liens vers les pages qui existent.
 import { Gamepad2, Mail, CalendarClock } from 'lucide-react';
 import PageRole from '../../components/fonctions/PageRole.astro';
-import { LANGUES } from '../../i18n/langues.js';
+import { cheminsLangues } from '../../i18n/langues.js';
 
-export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = cheminsLangues;
 const { lang } = Astro.params;
 ---
-<PageRole lang={lang} page="enseignants" fichier="enseignants" principal="enClasse" icones={[Gamepad2, Mail, CalendarClock]} />
+<PageRole lang={lang} page="enseignants" fichier="enseignants" principal="module.quizEtJeux" icones={[Gamepad2, Mail, CalendarClock]} />

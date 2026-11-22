@@ -15,6 +15,8 @@ const defaults = {
     DB_USER: "root",
     DB_PASSWORD: "test_root",
     DB_DIALECT: "mysql",
+    // Fuseau de l'école des tests (M-10) : UTC, comme la CI et les parcours
+    APP_TIMEZONE: "UTC",
     JWT_SECRET: "jwt_secret_tests_integration",
     JWT_ACCESS_SECRET: "jwt_secret_tests_integration",
     CSRF_SECRET: "csrf_secret_tests_integration",
@@ -40,6 +42,10 @@ const defaults = {
     RATE_LIMIT_PERSISTANT: "false",
     // Vide : aucune génération par IA réelle (les tests remplacent le client)
     IA_CLE: "",
+    // Plus d'adresse ni de modèle par défaut (QUA-10) : les tests qui posent une clé ont besoin des
+    // deux. Adresse injoignable : le client est toujours remplacé, rien ne part
+    IA_URL: "http://127.0.0.1:9/v1",
+    IA_MODELE: "modele-des-tests",
     // Devoirs ouverts : leur code reste testé alors qu'ils sont fermés par défaut en production
     // (lot D-2) ; devoirs.test.js les ferme le temps de vérifier la fermeture
     DEVOIRS_ACTIFS: "true",

@@ -80,6 +80,7 @@ import ResponsableFiliere from "./ResponsableFiliere.js";
 import { MediaQuiz, Questionnaire, QuestionQuiz, SessionQuiz, TentativeQuiz, UsageIaQuiz, relierStudio } from "./studio.js";
 import { ParticipationJeu, PropositionJeu, SessionJeu, relierSessionsJeu } from "./sessionsJeu.js";
 import { JoueurDirect, ReponseDirect, relierQuizDirect } from "./quizDirect.js";
+import { DocumentBibliotheque, NoteDocument, TelechargementDocument, relierBibliotheque } from "./bibliotheque.js";
 
 // ==================== RELATIONS USER ====================
 
@@ -632,6 +633,7 @@ relierSessionsJeu({ Users, Cours });
 
 // Quiz en direct du Studio (migration 0046)
 relierQuizDirect({ Users, SessionQuiz });
+relierBibliotheque({ Users, Cours }); // Bibliothèque reconstruite (migration 0087, BIB-05)
 
 // Export de tous les modèles
 export {
@@ -724,4 +726,5 @@ export {
     PropositionJeu,
     JoueurDirect,
     ReponseDirect,
+    DocumentBibliotheque, NoteDocument, TelechargementDocument,
 };

@@ -123,10 +123,13 @@ jobs:
         env:
           NODE_ENV: test
           JWT_SECRET: test-secret-ci-not-production
+          # Fuseau de l'école des tests (M-10) : pas de défaut de pays dans le serveur
+          APP_TIMEZONE: UTC
 
       - name: Tests d'intégration (API + MySQL)
         run: npm run test:integration
         env:
+          APP_TIMEZONE: UTC
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
           DB_NAME: hestim_test
@@ -247,15 +250,39 @@ jobs:
       - name: Installer Chromium pour Playwright
         run: npx playwright install --with-deps chromium
 
-      # Le vrai solveur (décision du chef de projet) : son image est construite depuis solver/,
-      # puis lancée par la configuration des parcours
+      # Le vrai solveur (décision du chef de projet) : JAR construit hors Docker
+      # (même cache Maven que « Test Solveur »), puis image JRE qui copie le JAR.
+      # Évite les 429 Maven Central dans BuildKit (go-offline à froid).
+      - name: Setup Java 21 (paquet solveur)
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Paqueter le solveur
+        working-directory: solver
+        run: mvn -B -ntp package -DskipTests
+
+      - uses: docker/setup-buildx-action@v3
+
       - name: Construire l'image du solveur
-        run: docker build -t hestim-solver:parcours ../solver
+        uses: docker/build-push-action@v6
+        with:
+          # Chemins depuis la racine du dépôt : build-push-action n'applique pas
+          # defaults.run.working-directory (frontend/) ; ../solver échouait.
+          context: solver
+          file: solver/Dockerfile
+          target: parcours
+          load: true
+          tags: hestim-solver:parcours
 
       - name: Parcours
         run: npm run test:parcours
         env:
           CI: "true"
+          # L'école des parcours est à UTC+0 (créneau du jour de #210) ; P-1 essaie UTC+1 dans le navigateur
+          APP_TIMEZONE: UTC
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
           DB_USER: root

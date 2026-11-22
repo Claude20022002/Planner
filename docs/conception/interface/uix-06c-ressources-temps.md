@@ -4,10 +4,10 @@
 |---|---|
 | Module | UIX, suite d'UIX-06a (Personnes) et d'UIX-06b (référentiel pédagogique) |
 | Identifiant | UIX-06c, proposé le 18 novembre 2026 |
-| Branche | `feat/uix-06c-ressources-temps`, posée sur `feat/uix-06b-referentiel` après sa relecture |
+| Branche | `feat/uix-06c-ressources-temps`, depuis `origin/main` (UIX-06b et UIX-10b fusionnées ; consigne du coordinateur, 21 nov.) |
 | Rédigé par | Claude Code (Opus 5.5), coordinateur, le 18 novembre 2026 |
 | Validé | **Validé par Claude20022002 le 18 novembre 2026**, avec l'exception hors chantier limitée à ces quatre écrans ; départ après UIX-09. La question 3 (UIX-06d) reste ouverte |
-| Travail | mission d'équipe ([equipe.md](../../plan/equipe.md)) : Codex intégrateur, agent de Cursor, Claude (VS Code) |
+| Travail | **Claude (VS Code) seul**, les quatre lots l'un après l'autre (réponse 7 du chef, 21 nov. au soir, `decisions.md`) ; les repères de fichiers d'[equipe.md](../../plan/equipe.md), § 3, restent |
 
 ## 1. Objet et critère de « terminé »
 
@@ -53,13 +53,22 @@ Distinguer partout le chargement, l'échec avec nouvelle tentative, l'absence r�
 
 Chemins sous `frontend/src/`.
 
-| Zone | Lot |
-|---|---|
-| `pages/gestion/Salles.jsx`, `components/salles/` (nouveau), `i18n/ressources/salles.*.js` | Claude (VS Code) |
-| `pages/gestion/Campus.jsx`, `components/campus/`, `pages/gestion/Creneaux.jsx`, `components/creneaux/` (nouveau), `i18n/ressources/campus.*.js`, `i18n/ressources/creneaux.*.js` | agent de Cursor |
-| `pages/gestion/Calendrier.jsx`, `components/calendrier/`, `i18n/ressources/calendrier.*.js` | Codex |
-| `components/gestion/`, `components/layouts/DashboardLayout.jsx` (portée du thème étendue aux quatre routes), `i18n/index.js` | Codex, intégrateur |
-| un fichier de parcours par lot, `frontend/tests/parcours/ressources-<lot>.spec.cjs` ; les parcours existants qui passent par ces écrans | propriétaire du lot |
+| Ordre | Lot | Zone |
+|---|---|---|
+| 0 | dictionnaires | `i18n/ressources/*.js` vides, branchés dans `i18n/index.js` ; `components/gestion/` repris, et demandé au coordinateur s'il doit changer |
+| 1 | Salles | `pages/gestion/Salles.jsx`, `components/salles/` (nouveau), `i18n/ressources/salles.*.js` |
+| 2 | Campus | `pages/gestion/Campus.jsx`, `components/campus/`, `i18n/ressources/campus.*.js` |
+| 3 | Créneaux | `pages/gestion/Creneaux.jsx`, `components/creneaux/` (nouveau), `i18n/ressources/creneaux.*.js` |
+| 4 | Calendrier | `pages/gestion/Calendrier.jsx`, `components/calendrier/`, `i18n/ressources/calendrier.*.js` |
+| chaque lot | parcours | `frontend/tests/parcours/ressources-<lot>.spec.cjs` ; les parcours existants qui passent par ces écrans |
+
+La répartition entre trois agents du 18 nov. est remplacée par la réponse 7 du chef (21 nov. au soir) : un lot ne commence qu'une fois le précédent commité et vérifié.
+
+**Réponses du chef du 21 nov., lot 3** (le coordinateur était injoignable) : 11, les états communs (chargement, échec avec « Réessayer », vide) sortent de `ListeGestion` dans `components/gestion/EtatsGestion.jsx`, réutilisé par Créneaux et Calendrier, sans changer le rendu de `ListeGestion` ; 12, Créneaux à 390 px est une **liste par jour** (chaque jour en titre, ses créneaux dessous), la grille reste sur ordinateur.
+
+**Réponse du chef du 21 nov., lot 4** (le coordinateur était injoignable) : 13, « la confirmation ne disparaît jamais au téléphone » veut dire que le bouton « Confirmer » et sa fenêtre restent visibles à 390 px ; l'avertissement « Date confirmée et décalée » reste une notification passagère, comme avant.
+
+**Thème (mise à jour du 21 nov., renvoi)** : depuis UIX-10b (#235), un seul thème tiré de la charte vaut pour toutes les pages (`design-system/themeCharte.js`, `design-system/jetonsInterface.js`). `ThemeGestion` et la liste des pages « pilotes » qui en fixait la portée sont retirés. Les quatre écrans prennent donc ce thème sans rien étendre, et `components/layouts/DashboardLayout.jsx` sort du périmètre : sa liste de routes ne commande plus que le favicon, que UIX-10c change pour toutes les pages. Un besoin dans le thème ou les jetons se demande au coordinateur, comme pour UIX-11.
 
 Ni `App.jsx`, ni les droits, ni les services d'API, ni le serveur.
 
@@ -83,15 +92,15 @@ Celles d'UIX-06b, § 8, appliquées aux quatre écrans :
 ## 7. Étapes
 
 1. Validation de ce plan et de l'exception par le chef ; accord écrit dans `decisions.md`.
-2. R0 par Codex, sur la branche d'UIX-06b relue : outils communs, portée du thème, dictionnaires vides.
-3. Trois lots en parallèle (§ 4).
-4. Intégration par Codex, relecture par le coordinateur, PR par le chef.
+2. Lot 0, par Claude (VS Code), depuis `origin/main` : dictionnaires vides ; outils communs repris (plus de portée du thème à étendre depuis UIX-10b, § 4).
+3. Les lots 1 à 4 l'un après l'autre (§ 4), chacun commité avec son parcours et ses vérifications.
+4. Relecture par le coordinateur, PR par le chef.
 
 ## 8. Risques et retour arrière
 
 - **Salles** porte l'import d'inventaire : un parcours d'import avec une ligne en erreur est obligatoire.
 - **Calendrier** décale des séances : la confirmation ne doit jamais disparaître sur téléphone.
-- **UIX-06b n'est pas fusionnée** : si sa relecture la renvoie, UIX-06c attend.
+- UIX-06b est fusionnée sur `main` : ses outils communs sont la base ; un lot ne les fait pas grossir, il le demande.
 
 Retour arrière : réverter les commits d'UIX-06c, sans toucher la base.
 

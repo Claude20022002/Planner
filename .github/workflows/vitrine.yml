@@ -1,15 +1,13 @@
 name: Site vitrine
 
-# Construit le site vitrine (VIT-01) à chaque pull request et à chaque push sur main qui le touche.
-# Ne publie rien : le site construit est seulement gardé en artefact de CI pour être prévisualisé
-# (décision du chef : rien n'est mis en ligne tant que la vente est gelée).
+# Construit et teste la vitrine. Le job de publication est réservé aux push sur main.
 on:
   push:
     branches: [main]
-    paths: ["vitrine/**", "shared/charte/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml"]
+    paths: ["vitrine/**", "shared/charte/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml", "docker-compose.yml", "deploy/vps/docker-compose.vps.yml", ".env.docker.example"]
   pull_request:
     branches: [main]
-    paths: ["vitrine/**", "shared/charte/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml"]
+    paths: ["vitrine/**", "shared/charte/**", "scripts/verifier-neutre.mjs", ".github/workflows/vitrine.yml", "docker-compose.yml", "deploy/vps/docker-compose.vps.yml", ".env.docker.example"]
 
 concurrency:
   group: vitrine-${{ github.ref }}
@@ -20,6 +18,7 @@ permissions:
 
 env:
   NODE_VERSION: "22"
+  IMAGE_VITRINE: docker.io/claude20022002/planner-vitrine
   # Astro n'envoie aucune donnée d'usage depuis la CI
   ASTRO_TELEMETRY_DISABLED: "1"
 
@@ -33,6 +32,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v7
@@ -58,9 +59,113 @@ jobs:
       - name: Construction
         run: npm run build
 
+      - name: Tests du site construit (pages de module, accueil)
+        run: node --test tests/*.rendu.cjs
+
+      - name: EP-19 · poids transféré ≤ 200 Ko par page
+        run: node scripts/verifier-poids-ep19.mjs
+
       - name: Site construit, en artefact (non publié)
         uses: actions/upload-artifact@v4
         with:
           name: site-vitrine
           path: vitrine/dist/
           retention-days: 7
+
+      - name: Vérifier le profil Compose
+        working-directory: .
+        shell: bash
+        run: |
+          unset VITRINE_ADDRESS VITRINE_IMAGE_DIGEST COMPOSE_PROFILES
+          cat .env.docker.example > "$RUNNER_TEMP/vitrine.env"
+          grep -ohE '\$\{[A-Z_][A-Z_0-9]*:\?' docker-compose.yml deploy/vps/docker-compose.vps.yml |
+            sed -E 's/^\$\{(.*):\?$/\1=recette/' | sort -u >> "$RUNNER_TEMP/vitrine.env"
+          docker compose version
+          # Le backend attend aussi un env_file à ce chemin sur certaines versions de Compose.
+          ln -sT -- "$RUNNER_TEMP/vitrine.env" .env.docker
+          trap 'rm -- .env.docker' EXIT
+          compose=(docker compose --env-file "$RUNNER_TEMP/vitrine.env" -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml)
+          "${compose[@]}" config --no-env-resolution --quiet
+          services="$("${compose[@]}" config --no-env-resolution --services)"
+          printf '%s\n' "$services" | grep -Fx caddy
+          if printf '%s\n' "$services" | grep -Fx vitrine; then
+            echo "Le profil vitrine est actif par défaut." >&2
+            exit 1
+          fi
+          export VITRINE_ADDRESS=vitrine.example.invalid
+          export VITRINE_IMAGE_DIGEST=sha256:1111111111111111111111111111111111111111111111111111111111111111
+          "${compose[@]}" --profile vitrine config --no-env-resolution --format json |
+            jq -e --arg image "$IMAGE_VITRINE@$VITRINE_IMAGE_DIGEST" --arg hote "$VITRINE_ADDRESS" '
+              .services.vitrine |
+              .image == $image and
+              (.ports // [] | length == 0) and
+              (.volumes // [] | length == 0) and
+              (.networks | keys == ["n8n_default"]) and
+              (.labels["traefik.http.routers.vitrine.rule"] == ("Host(" + "\u0060" + $hote + "\u0060)")) and
+              (.labels["traefik.http.services.vitrine.loadbalancer.server.port"] == "8080")
+            '
+
+      - name: Construire et tester l’image Nginx
+        shell: bash
+        run: |
+          image="$IMAGE_VITRINE:$GITHUB_SHA"
+          docker build --pull --tag "$image" .
+          docker run --rm "$image" nginx -t
+          conteneur="$(docker run --rm --detach --publish 127.0.0.1::8080 "$image")"
+          trap 'docker stop "$conteneur" >/dev/null' EXIT
+          adresse="$(docker port "$conteneur" 8080/tcp)"
+          curl --fail --silent --show-error --retry 10 --retry-connrefused "http://$adresse/robots.txt"
+          npm install --prefix "$RUNNER_TEMP/vitrine-chromium" --no-save --no-package-lock --no-audit --no-fund playwright-core@1.59.1
+          NODE_PATH="$RUNNER_TEMP/vitrine-chromium/node_modules" node nginx/verifier-image.cjs "http://$adresse"
+
+      - name: Préparer l’image testée pour la publication
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: docker save "$IMAGE_VITRINE:$GITHUB_SHA" | gzip > "$RUNNER_TEMP/vitrine-image.tar.gz"
+
+      - name: Transmettre l’image testée au job de publication
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitrine-image
+          path: ${{ runner.temp }}/vitrine-image.tar.gz
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+  publier:
+    name: Publier l’image vitrine sur Docker Hub
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: construire
+    runs-on: ubuntu-24.04
+    env:
+      PUBLICATION_ACTIVE: ${{ secrets.VITRINE_DOCKERHUB_USERNAME != '' && secrets.VITRINE_DOCKERHUB_TOKEN != '' }}
+    steps:
+      - name: Signaler une publication désactivée
+        if: env.PUBLICATION_ACTIVE != 'true'
+        run: |
+          echo "Publication ignorée. Les deux secrets VITRINE_DOCKERHUB sont nécessaires." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Récupérer l’image déjà testée
+        if: env.PUBLICATION_ACTIVE == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: vitrine-image
+          path: ${{ runner.temp }}
+
+      - name: Publier le SHA et consigner le digest
+        if: env.PUBLICATION_ACTIVE == 'true'
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.VITRINE_DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.VITRINE_DOCKERHUB_TOKEN }}
+        shell: bash
+        run: |
+          image="$IMAGE_VITRINE:$GITHUB_SHA"
+          docker load --input "$RUNNER_TEMP/vitrine-image.tar.gz"
+          printf '%s' "$DOCKERHUB_TOKEN" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
+          trap 'docker logout >/dev/null' EXIT
+          docker push "$image"
+          reference="$(docker image inspect --format '{{index .RepoDigests 0}}' "$image")"
+          digest="${reference##*@}"
+          [[ "$digest" =~ ^sha256:[0-9a-f]{64}$ ]]
+          printf 'Image : %s\n\nDigest : %s\n' "$image" "$digest" >> "$GITHUB_STEP_SUMMARY"

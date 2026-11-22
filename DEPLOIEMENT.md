@@ -12,13 +12,82 @@ EXP-02a prépare les fichiers. Elle **ne lance pas Planner** et ne se connecte p
 - Traefik de n8n tient déjà 80 et 443. On ne réinstalle pas Docker et on ne le met pas à jour : n8n redémarrerait.
 - **Interdit** : dans le dossier de n8n, `docker compose --profile cpu up`. Ce profil ramènerait Ollama. On n'édite pas le compose de n8n, on ne redémarre pas ses conteneurs, et on ne branche pas son réseau à la main.
 - Planner s'utilise **toujours** avec les deux fichiers : `-f docker-compose.yml -f deploy/vps/docker-compose.vps.yml`. Le fichier de base seul publie 80 et 443.
-- La surcharge retire les ports publics de Caddy, pose les labels Traefik et déclare le réseau externe `n8n_default`. Les noms publics sont lus dans `.env.docker` : `SITE_ADDRESS`, `FICHIERS_ADDRESS`, `QUIZ_ADDRESS`. Seul Caddy rejoint ce réseau ; il reste aussi sur `hestim_net`.
+- La surcharge retire les ports publics de Caddy, pose les labels Traefik et déclare le réseau externe `n8n_default`. Les noms publics sont lus dans `.env.docker` : `SITE_ADDRESS`, `FICHIERS_ADDRESS`, `QUIZ_ADDRESS`. Caddy rejoint ce réseau et reste aussi sur `hestim_net`. La vitrine y accède via son propre profil.
 - Contrôle local, sans rien démarrer : `docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml config`. Le YAML de Caddy ne doit montrer ni port 80 ni port 443 sur l'hôte.
 - EXP-02b, par le chef de projet, et seulement avec la surcharge : `docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml up -d`. Avant cette commande : `docker network inspect n8n_default`, puis une photo des conteneurs n8n (identifiant court et heure de démarrage). Après : la même photo. n8n doit être inchangé.
+
+## Vitrine publique sur le VPS (VIT-06)
+
+Le profil Compose `vitrine` démarre un Nginx statique sur le réseau `n8n_default`. Traefik
+termine le HTTPS pour `vitrine.finadmintech.fr`. S'assurer que cet hôte diffère de celui de
+l'application (`SITE_ADDRESS=planner.finadmintech.fr`). La vitrine reste désactivée lors d'une
+mise à jour ordinaire de Planner.
+
+### Préparer l’image et vérifier les conditions
+
+- Consulter les [douze conditions et la recette](docs/conception/exploitation/vit-06-mise-en-ligne.md#conditions-et-recette-du-chef).
+  Vérifier notamment l'audit et la montée d'Astro à partir du 27 novembre, les textes légaux approuvés,
+  les logos officiels, le `noindex` ainsi que le contenu, la vidéo, les illustrations, les pages
+  par rôle, le catalogue, la FAQ, l’adresse de contact publiée, la stabilité du menu sur téléphone et le score mobile de l’accueil.
+- Dans GitHub Actions, le chef crée `VITRINE_DOCKERHUB_USERNAME` et `VITRINE_DOCKERHUB_TOKEN`.
+  Le jeton doit expirer et permettre la lecture et l'écriture sur le seul dépôt
+  `claude20022002/planner-vitrine`, sans droit de suppression. La CI publie l'image testée
+  sur un push à `main` si les deux secrets sont configurés. Si un secret est ajouté après
+  le passage de la CI, relancer le workflow complet du push retenu.
+- Relever le `sha256:…` dans le résumé du job « Publier l’image vitrine sur Docker Hub » et
+  le vérifier avec `docker buildx imagetools inspect docker.io/claude20022002/planner-vitrine:<SHA complet>`.
+  Relever aussi le digest actuellement en service pour pouvoir revenir à cette version.
+- Dans le fichier privé `.env.docker` du projet Planner, renseigner `VITRINE_ADDRESS=vitrine.finadmintech.fr`
+  et `VITRINE_IMAGE_DIGEST=sha256:…`. Vérifier que le DNS de la vitrine pointe vers le VPS.
+
+### Activer le profil et contrôler le résultat
+
+Le chef lance ces commandes dans le dossier du déploiement Planner, avec le même nom de projet
+Compose que pour l'installation existante.
+
+```sh
+docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml --profile vitrine config --quiet
+docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml --profile vitrine pull vitrine
+docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml --profile vitrine up -d --no-deps vitrine
+```
+
+- Vérifier le certificat HTTPS, `/`, `/fr/`, `/en/`, les deux pages légales, une image, `/robots.txt`
+  et une URL inconnue (404). Avec `curl -sSI https://vitrine.finadmintech.fr/fr/`, vérifier
+  `X-Robots-Tag: noindex`, HSTS sur ce seul hôte, `nosniff`, `no-referrer` et la CSP.
+  `/robots.txt` doit laisser les robots lire les réponses qui portent `noindex`.
+- Dans le navigateur, vérifier le menu sur mobile, les animations, les illustrations de chaque page,
+  la lecture de la vidéo d'accueil et l'absence de refus CSP ou de requêtes externes. Contrôler
+  les types MIME WebM, MP4, AVIF ou WebP selon les ressources livrées. Les médias à nom stable
+  ont `Cache-Control: public, no-cache` et un validateur. Les fichiers Astro à nom versionné
+  ont `Cache-Control: public, max-age=31536000, immutable`.
+- Vérifier aussi l'accès à Planner et aux services voisins.
+
+Pour revenir à une version précédente, remettre son digest dans `.env.docker`, puis relancer
+les trois commandes ci-dessus. Pour retirer une première publication, arrêter le seul service
+vitrine. Le chef peut ensuite retirer l'enregistrement DNS créé pour elle, si nécessaire.
+
+```sh
+docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml --profile vitrine stop vitrine
+```
+
+Vérifier la version restaurée ou la disparition de la route, puis l'accès aux services voisins.
 
 ## Serveur de production : mise à jour et retour arrière
 
 Les scripts de cette section sont écrits pour `root`. Sur le nouveau serveur, le compte `debian` les lance avec `sudo`. Le chef de projet les lance lui-même. Les scripts sont dans `deploy/vps/` ; chacun explique son rôle dans son en-tête.
+
+### Avant de déployer `main` : ce que `.env.docker` doit contenir
+
+À vérifier sur le serveur **avant** la mise en ligne qui apporte ces variables :
+
+- **`APP_TIMEZONE`**, le fuseau de l'école (M-10), est **obligatoire**. C'est un nom de la base des fuseaux, par exemple `Africa/Casablanca` ou `Africa/Kinshasa`. Sans lui, le serveur de Planner refuse de démarrer : il n'y a plus de fuseau par défaut. Le site et l'application reçoivent l'heure de l'école du serveur, changements d'heure compris. Sur un serveur déjà en service :
+  ```bash
+  grep -q '^APP_TIMEZONE=' /opt/hestim/.env.docker || echo "APP_TIMEZONE=Africa/Casablanca" >> /opt/hestim/.env.docker
+  cd /opt/hestim && docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml up -d --no-deps --force-recreate backend
+  docker logs hestim_backend 2>&1 | grep "fuseau de l'école"
+  ```
+  Un serveur neuf la reçoit de `deploy/vps/generer-env.sh`, qui la demande en quatrième argument.
+- **Les envois chez un tiers** (QUA-10) : le courriel (`SMTP_*` ou `EMAIL_*`) et l'IA (`IA_URL`, `IA_MODELE`, `IA_CLE`) n'ont plus d'adresse ni de modèle par défaut. Ce qui n'est pas réglé ne part pas. Au démarrage, le résumé des envois dit ce qui part et vers qui (`docs/envois-sortants.md`).
 
 ### Mettre en ligne par la commande (lot ME-0b)
 

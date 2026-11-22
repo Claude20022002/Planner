@@ -1,29 +1,32 @@
 ---
-// Page d'accueil, dans chaque langue : assemble les huit sections de src/components/accueil/.
+// Page d'accueil, dans chaque langue (plan VIT-20, § 4.3) : ouverture, grille des modules, vidéo, trois arguments, « Pourquoi
+// Planner » interactif, types d'établissement, appel final. Les sections sont dans src/components/accueil/.
 import Gabarit from '../../components/socle/Gabarit.astro';
 import Ouverture from '../../components/accueil/Ouverture.astro';
+import Applications from '../../components/accueil/Applications.astro';
+import Video from '../../components/accueil/Video.astro';
 import EmploiDuTemps from '../../components/accueil/EmploiDuTemps.astro';
 import Appel from '../../components/accueil/Appel.astro';
-import QuizJeux from '../../components/accueil/QuizJeux.astro';
-import Report from '../../components/accueil/Report.astro';
 import Donnees from '../../components/accueil/Donnees.astro';
-import Bientot from '../../components/accueil/Bientot.astro';
+import Pourquoi from '../../components/accueil/Pourquoi.astro';
+import ParType from '../../components/accueil/ParType.astro';
 import Contact from '../../components/accueil/Contact.astro';
 import { traductions } from '../../i18n/index.js';
-import { LANGUES } from '../../i18n/langues.js';
+import { cheminsLangues } from '../../i18n/langues.js';
 
-export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = cheminsLangues;
 
 const { lang } = Astro.params;
 const t = traductions(lang, 'accueil');
 ---
 <Gabarit langue={lang} page="accueil" titre={t('meta.titre')} description={t('meta.description')}>
-  <Ouverture t={t} />
+  <Ouverture t={t} langue={lang} />
+  <Applications langue={lang} />
+  <Video t={t} langue={lang} />
   <EmploiDuTemps t={t} langue={lang} />
   <Appel t={t} langue={lang} />
-  <QuizJeux t={t} langue={lang} />
-  <Report t={t} />
   <Donnees t={t} langue={lang} />
-  <Bientot t={t} langue={lang} />
-  <Contact t={t} />
+  <Pourquoi langue={lang} />
+  <ParType langue={lang} />
+  <Contact t={t} langue={lang} />
 </Gabarit>

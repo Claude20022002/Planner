@@ -1,0 +1,30 @@
+---
+// Menu « Ressources » : FAQ, Comparer, Sécurité et données, Bientôt, Toutes les fonctionnalités (le centre d'aide, VIT-03, s'y ajoutera).
+import MenuDeroulant from './MenuDeroulant.astro';
+import { traductions } from '../../i18n/index.js';
+import { RESSOURCES, chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  page: string;
+}
+
+const { langue, page } = Astro.props;
+const t = traductions(langue, 'commun');
+const faq = traductions(langue, 'faq');
+const catalogue = traductions(langue, 'fonctionnalites');
+const libelles = {
+  faq: faq('titre'),
+  comparer: t('navigation.comparer'),
+  securite: t('navigation.securite'),
+  bientot: t('navigation.bientot'),
+  fonctionnalites: catalogue('titre'),
+};
+---
+<MenuDeroulant libelle={t('navigation.ressources')} actif={RESSOURCES.includes(page)}>
+  <ul>
+    {RESSOURCES.map((cle) => (
+      <li><a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{libelles[cle]}</a></li>
+    ))}
+  </ul>
+</MenuDeroulant>

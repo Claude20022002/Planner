@@ -17,6 +17,7 @@
     "etablissement": "",
     "securite": "",
     "bientot": "",
+    "comparer": "",
     "contact": "",
     "parEtablissement": "",
     "parRole": "",
@@ -26,7 +27,18 @@
     "etudiants": "",
     "ressources": "",
     "mentionsLegales": "",
-    "confidentialite": ""
+    "confidentialite": "",
+    "applications": "",
+    "etablissements": "",
+    "contactLien": "",
+    "demonstration": "",
+    "seConnecter": "",
+    "toutesLesApplications": "",
+    "voirLesApplications": "",
+    "unBesoin": "",
+    "toutesLesFonctionnalites": "",
+    "apercu": "",
+    "fonctionnalites": ""
   },
   "langues": {
     "label": "",
@@ -50,5 +62,24 @@
   },
   "contact": {
     "email": ""
+  },
+  "categories": {
+    "organiser": "",
+    "enseigner": "",
+    "gerer": "",
+    "communiquer": ""
+  },
+  "socle": {
+    "titre": "",
+    "etablissement": "",
+    "personnes": "",
+    "webMobile": "",
+    "securite": ""
+  },
+  "pourQui": {
+    "titre": ""
+  },
+  "equipement": {
+    "titre": ""
   }
 }

@@ -1,0 +1,14 @@
+---
+ // Catalogue statique des fonctionnalités, classées par application puis par catégorie.
+import Gabarit from '../../components/socle/Gabarit.astro';
+import Catalogue from '../../components/catalogue/Catalogue.astro';
+import { cheminsLangues } from '../../i18n/langues.js';
+import { traductions } from '../../i18n/index.js';
+
+export const getStaticPaths = cheminsLangues;
+const { lang } = Astro.params;
+const t = traductions(lang, 'fonctionnalites');
+---
+<Gabarit langue={lang} page="fonctionnalites" titre={t('titre') + ' · Planner'} description={t('description')}>
+  <Catalogue langue={lang} />
+</Gabarit>

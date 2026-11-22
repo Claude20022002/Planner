@@ -1,25 +1,29 @@
 ---
 // Accueil, section 1 : ouverture. Le logo à l'horloge (ses aiguilles tournent au chargement et au
-// survol), le nom du produit, une phrase sur ce que fait Planner, deux liens d'action.
+// survol), le nom du produit, une phrase sur ce que fait Planner, puis « Demander une démonstration » et « Voir les applications ».
 import Section from '../socle/Section.astro';
 import Titre from '../socle/Titre.astro';
 import Accroche from '../socle/Accroche.astro';
 import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Logo from '../socle/Logo.astro';
+import { traductions } from '../../i18n/index.js';
+import { cheminContact } from '../../i18n/langues.js';
 
 interface Props {
   t: (cle: string) => any;
+  langue: string;
 }
 
-const { t } = Astro.props;
+const { t, langue } = Astro.props;
+const commun = traductions(langue, 'commun');
 ---
 <Section ton="clair" plein etiquette="ouverture-titre">
   <Logo anime class="ouverture-logo" />
   <Titre niveau={1} taille="geant" id="ouverture-titre">{t('ouverture.titre')}</Titre>
   <Accroche forte>{t('ouverture.accroche')}</Accroche>
   <div class="actions">
-    <BoutonPrincipal href="#emploi">{t('ouverture.decouvrir')}</BoutonPrincipal>
-    <BoutonPrincipal href="#contact" variante="contour">{t('ouverture.contact')}</BoutonPrincipal>
+    <BoutonPrincipal href={cheminContact(langue)}>{commun('navigation.demonstration')}</BoutonPrincipal>
+    <BoutonPrincipal href="#applications" variante="contour">{commun('navigation.voirLesApplications')}</BoutonPrincipal>
   </div>
 </Section>
 

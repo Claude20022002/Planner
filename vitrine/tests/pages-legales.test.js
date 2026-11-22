@@ -27,9 +27,9 @@ test('les deux pages ont une adresse dans chaque langue', () => {
   }
 });
 
-test('le pied de page lie les deux pages dans la colonne Ressources', () => {
+test('le pied de page lie les deux pages dans sa barre du bas (plan de VIT-20, § 4.5)', () => {
   const pied = lire('components', 'socle', 'PiedDePage.astro');
-  const ressources = pied.slice(pied.indexOf("t('navigation.ressources')"));
+  const ressources = pied.slice(pied.indexOf('<div class="bas">'));
   for (const cle of Object.keys(PAGES_LEGALES)) {
     assert.match(ressources, new RegExp(`chemin\\(langue, '${cle}'\\)`), cle);
     for (const langue of PUBLIEES) assert.notEqual(charger(langue, 'commun').navigation[cle], '', `${langue} ${cle}`);
