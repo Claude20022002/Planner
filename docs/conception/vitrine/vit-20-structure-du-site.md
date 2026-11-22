@@ -6,7 +6,7 @@
 | Branche | plan : `doc/coordination-2026-11-22` ; code : `feat/vit-20-structure-du-site` (mission d'équipe, après les fusions du § 9) |
 | Rédigé par | Claude Code (Opus 5.5), coordinateur, le 2026-11-22 |
 | Taille | **L** : le plan est validé par le chef |
-| **Validé** | en attente |
+| **Validé** | par Claude20022002 le 2026-11-22 (« Je valide », questions 9 à 13 comprises) |
 
 ## 1. Objet et critère de « terminé »
 
@@ -56,14 +56,16 @@ Posées le 22 nov. par l'outil de questions ; réponses du chef.
 | 7 | Modules prévus | **Tuiles grisées « Bientôt »**, sans lien, dans le menu, la grille de l'accueil et « Toutes les applications » |
 | 8 | Pied de page | **Quatre colonnes** : Applications · Établissements · Ressources · Planner |
 
-À confirmer par le chef à la validation de ce plan :
+Questions posées avec le plan, réponses du chef à la validation (22 nov.) :
 
-| N° | Question | Proposition du coordinateur |
-|---|---|---|
-| 9 | La section « Pourquoi Planner » de l'accueil (comparatif court, lignes choisies par le chef, VIT-14) | **la garder** comme dernier bloc d'arguments, à la place de « L'enfer sans Odoo » ; elle ne dit que ce qui est vérifié |
-| 10 | Les sections « Quiz et jeux », « Report » et « Bientôt » de l'accueil | **les retirer de l'accueil** : « Quiz et jeux » va sur sa page, « Report » sur la page Emploi du temps, « Bientôt » est remplacée par les tuiles grisées |
-| 11 | Les pages « En classe », « Cours et annonces » et « Pour l'établissement » réunissent des fonctions de plusieurs applications | **les répartir** par application (§ 4.6) ; leur ancienne adresse mène à l'application principale |
-| 12 | Le plan de VIT-09b (#227, illustrations et première section de l'accueil) | **le reprendre après VIT-20**, sur le nouvel accueil ; le coordinateur le renvoie à son agent |
+| N° | Question | Proposition du coordinateur | Réponse du chef |
+|---|---|---|---|
+| 9 | La section « Pourquoi Planner » de l'accueil (comparatif court, lignes choisies par le chef, VIT-14) | **la garder** comme dernier bloc d'arguments | **gardée, et rendue dynamique, interactive et animée** (§ 4.8) ; des captures de chaque page de notre site et d'Odoo servent à la préparer |
+| 10 | Les sections « Quiz et jeux », « Report » et « Bientôt » de l'accueil | **les retirer de l'accueil** : « Quiz et jeux » va sur sa page, « Report » sur la page Emploi du temps, « Bientôt » est remplacée par les tuiles grisées | retirées |
+| 11 | Les pages « En classe », « Cours et annonces » et « Pour l'établissement » réunissent des fonctions de plusieurs applications | **les répartir** par application (§ 4.6) ; leur ancienne adresse mène à l'application principale | oui |
+| 12 | Le plan de VIT-09b (#227, illustrations et première section de l'accueil) | **le reprendre après VIT-20**, sur le nouvel accueil ; le coordinateur le renvoie à son agent | oui |
+| 13 | Libellés nouveaux du § 4.7 | tels quels | oui |
+| 14 | Les deux sites comparés, l'usage du comparatif, les largeurs des captures | — | **Planner face à Odoo** ; **section du site public** ; **1440 et 390 px** |
 
 ## 4. Solution
 
@@ -181,6 +183,23 @@ Les redirections passent par `redirects` de `astro.config.mjs` (une page HTML de
 | onglets.apercu · onglets.fonctionnalites | Aperçu · Fonctionnalités | Overview · Features |
 | applications.mobile | Application mobile | Mobile app |
 
+### 4.8 « Pourquoi Planner », comparatif animé et interactif (question 9)
+
+**Captures** (22 nov.) : chaque page du site en français, pleine page, à 1440 et 390 px, prises sur `origin/main` (`110a1d8d`), dans `..\travaux-planner\captures-vit-20\planner\`. Elles restent **hors du dépôt** (poids, et elles changent à chaque fonction). Celles d'Odoo n'ont pas pu être prises : odoo.com répond « 403 » aux navigateurs automatisés, et ce refus n'est pas contourné. Le chef les prend dans son navigateur (§ 9, étape 2), dans `captures-vit-20\odoo\`. Elles servent à la recette de VIT-20 ; **elles ne sont jamais publiées** (droits d'Odoo sur ses images et sa marque).
+
+**Section publique** : la règle de VIT-14 (validée par le chef le 18 nov.) tient. **Aucun produit n'est nommé sur le site**, Odoo compris : la section compare Planner aux quatre approches courantes de `comparer.json`. Nommer Odoo sur le site serait une décision nouvelle du chef, avec un avis juridique (publicité comparative, marque).
+
+Le principe :
+
+- **Sans JavaScript**, la section reste le tableau court d'aujourd'hui (lignes de `LIGNES_ACCUEIL`) : rien ne se perd.
+- **Avec JavaScript**, un sélecteur à onglets (`role="tablist"`, flèches du clavier) propose les quatre approches. La colonne de l'approche choisie glisse à côté de celle de Planner, et les cases apparaissent ligne après ligne. Un second mode montre, critère par critère, Planner face aux quatre approches en même temps.
+- **Animation** avec `motion` (déjà dans `vitrine/package.json`) : fondu et glissement de 200 à 300 ms, sans boucle ni défilement automatique. **Mouvement réduit** : les cases changent sans animation.
+- **Textes** : ceux de `comparer.json` et les lignes de `LIGNES_ACCUEIL`. Aucun texte nouveau, sauf le libellé des onglets, tiré des noms des approches.
+- **Poids** : un îlot de moins de 15 Ko, chargé au moment où la section devient visible (`client:visible`) ; le contrôle d'EP-19 tranche.
+- **Accessibilité** : `aria-selected`, `aria-controls`, cases annoncées une seule fois (`aria-live="polite"` sur le titre de la colonne seulement) ; axe-core sans erreur.
+
+Fichiers (lot C) : `components/accueil/Pourquoi.astro` (modifié : le tableau sert de repli), `components/accueil/ComparatifInteractif.jsx` (créé, < 200 lignes), `tests/comparatif-interactif.test.js` (créé) ; le parcours vérifie le changement d'onglet au clavier et au toucher.
+
 ## 5. Fichiers créés ou modifiés, par lot
 
 Un fichier n'a qu'un lot propriétaire. `commun.json` n'est écrit que par le lot A ; les lots B et C mettent leurs textes dans leurs propres fichiers.
@@ -225,7 +244,7 @@ Aucune. Site statique ; aucune base, aucune donnée d'école.
 ## 9. Étapes de livraison
 
 1. **Ce plan**, validé par le chef, commité seul sur `doc/coordination-2026-11-22`.
-2. **Avant le code**, le chef fusionne : #254 (VIT-13) et #223 (VIT-12). VIT-16 n'est pas attendue : le lien de contact passe par une constante.
+2. **Avant le code**, le chef fusionne : #254 (VIT-13) et #223 (VIT-12). VIT-16 n'est pas attendue : le lien de contact passe par une constante. Le chef prend dans son navigateur les captures d'Odoo, page entière (huit pages : accueil, toutes les apps, Comptabilité, Planification, toutes les industries, tarifs, contact, aide), à 1440 et 390 px, dans `..\travaux-planner\captures-vit-20\odoo\bureau\` et `telephone\`.
 3. **Rendez-vous 0** : branche `feat/vit-20-structure-du-site` depuis `origin/main` à jour ; le lot B commite d'abord `donnees/applications.js` et `GrilleApplications.astro` (le contrat des deux autres lots).
 4. **Lots A, B, C en parallèle**, chacun sur sa sous-branche (`feat/vit-20a-navigation`, `feat/vit-20b-applications`, `feat/vit-20c-accueil`), dans son dossier de travail.
 5. **Intégration** par le lot B (le plus gros) : fusion des trois sous-branches dans `feat/vit-20-structure-du-site`, tests et parcours complets, captures à 390 et 1440 px pour la recette du chef.
