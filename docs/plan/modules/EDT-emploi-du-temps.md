@@ -24,6 +24,10 @@ C'est le cœur du produit d'aujourd'hui, et il est mûr.
   - services `services/planning/*` (ramadan, visas, assistant), `services/calendrier/envoiEdt.js`.
 - **Site** : `pages/gestion/*`, `pages/emploi-du-temps/*`, `EdtMensuel`, `MesAffectations`, `DemandesReport`, `Disponibilites`, `MesExamens`.
 - **PDF** : produit dans le navigateur (`utils/exportEmploiDuTemps.js`). La grille suit les créneaux de l'école (ME-1, #149).
+- **Liste d'appel imprimable et appel saisi après coup** (M-1, correctif de l'étude EP-18, 22 nov., [plan](../../conception/emploi-du-temps/edt-feuille-appel.md)).
+  - **Correction de l'étude** : une séance passée devient déjà « réalisée » toute seule (`marquerRealisees`, `services/planning/suivi.js`). Ce qui manquait, c'est de **terminer l'appel** d'une séance passée.
+  - La liste d'appel de chaque séance s'imprime (`components/appel/feuilleAppel.js`), à l'avance aussi : l'onglet « Appel » d'une classe montre les 7 prochains jours.
+  - L'appel fait sur papier se saisit, puis se termine du lendemain au 7e jour inclus (`services/presences/apresCoup.js`, `POST /api/presences/seances/:id/apres-coup`). Il compte (taux de présence, heures payées) et se voit : son visa est « appel saisi après coup », distinct de l'appel validé (réponse du chef). L'action est journalisée (`appel_saisi_apres_coup`).
 - **Décisions en vigueur** :
   - publication par l'administration ;
   - report proposé par le système puis validé (21 octobre) ;
