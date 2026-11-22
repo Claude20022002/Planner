@@ -4,7 +4,7 @@ Codex · branche `mkt/mkt-09-presentation-produit` · dossier `../travaux-planne
 
 ## Fait et vérifié
 
-Étape de conception commitée seule à `b99446f`. Contrôle du diff Git réussi. Étape documentaire, aucun test applicatif lancé. 17 diapositives proposées pour 20 minutes. Trame révisée à a08c429 après la relecture de 11 h 02. Le chef a choisi un champ contact vide, un démarrage par étapes sans délai annoncé et une preuve par le parcours ORION daté. Reprendre le brief 00-brief.md du 22 novembre dans planner-marketing. Après relecture et validation de a08c429, refaire les captures web sur ORION à la charte, dater les observations du scénario et produire le PowerPoint avec notes.
+Trame révisée a08c429. Le chef a autorisé la production locale pendant l’indisponibilité du coordinateur. PowerPoint de relecture, transcription et générateur commités à f3af1cc dans planner-marketing. Les 17 diapositives ont été exportées par PowerPoint et examinées sur planches, sans débordement. Les 17 notes contiennent les sources et un temps, pour 20 minutes au total. Neutralité contrôlée. Il reste à ajouter les captures web ORION à la charte, le relevé de démonstration daté et le contact du chef.
 
 ## Commandes du chef pour publier la fiche sur Planner
 
@@ -15,4 +15,4 @@ gh pr create --base main --head mkt/mkt-09-presentation-produit --fill
 
 ## Prompt de reprise
 
-Reprends mkt-09-presentation-produit sur mkt/mkt-09-presentation-produit. Lis AGENTS.md, le suivi, la fiche de mission sur la branche de coordination, cette fiche et la réponse du coordinateur. 17 diapositives proposées pour 20 minutes. Trame révisée à a08c429 après la relecture de 11 h 02. Le chef a choisi un champ contact vide, un démarrage par étapes sans délai annoncé et une preuve par le parcours ORION daté. Reprendre le brief 00-brief.md du 22 novembre dans planner-marketing. Après relecture et validation de a08c429, refaire les captures web sur ORION à la charte, dater les observations du scénario et produire le PowerPoint avec notes.
+Reprends MKT-09 sur la branche mkt/mkt-09-presentation-produit. Relis la trame a08c429 et la version de travail f3af1cc dans planner-marketing, puis les retours du coordinateur. Exécute le scénario sur ORION, date les observations, recadre les captures web à la charte, intègre le contact fourni par le chef et régénère le PowerPoint avec notes. Vérifie le rendu et le contrôle créatif avant diffusion.
