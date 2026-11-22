@@ -20,6 +20,7 @@ Rendre #193 fusionnable après #234 et #169 (dernière de la file).
 | `README.md` | EP-13 + EP-14 à EP-17 |
 | modules MOB / UIX / VSC | les deux ajouts ; **VSC-13** = discipline (VSC-07 de la parité : numéro déjà pris sur `main` par l'affectation des groupes de langue) |
 | renvois VSC-13 | critère terminé VSC, tableau et ordre dans `parite-openeducat.md` (consigne 1 h 05) |
+| fusion main, 22 nov. | `089d7b4b` : QJE-10 à QJE-13 de la branche, puis QJE-14 de `main` |
 
 ## Vérifié
 
