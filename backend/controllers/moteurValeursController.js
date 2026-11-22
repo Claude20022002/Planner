@@ -3,7 +3,8 @@ import { valeursEnVigueur } from "../services/moteur/valeurs/lecture.js";
 import { decrireReglages } from "../services/moteur/valeurs/valeursDeLEcole.js";
 import { apercuVersion } from "../services/moteur/valeurs/apercu.js";
 import { detailVersion, listerVersionsAllegees } from "../services/moteur/valeurs/historique.js";
-import { abandonnerVersion, annulerVersion, appliquerVersion, creerVersion, ErreurReglages } from "../services/moteur/valeurs/versions.js";
+import { annulerVersion } from "../services/moteur/valeurs/annulation.js";
+import { abandonnerVersion, appliquerVersion, creerVersion, ErreurReglages } from "../services/moteur/valeurs/versions.js";
 import { corpsErreur } from "../utils/erreurs.js";
 
 /**
