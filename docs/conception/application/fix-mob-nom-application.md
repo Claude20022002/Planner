@@ -6,7 +6,7 @@
 | Mission | `docs/plan/missions/ep18-correctifs.md` (branche `doc/coordination-equipe`) |
 | Branche | `fix/mob-nom-application`, depuis `origin/main` (`b57753e9`) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 22 novembre 2026 |
-| **Validé** | en attente du coordinateur (S, sans migration) |
+| **Validé** | coordinateur, 22 nov. 10 h 57, par délégation (questions 1 et 2 : oui ; le test lit aussi `ios.bundleIdentifier`) |
 
 Complément du 22 nov. 10 h 20 : `buildingOf` entre dans ce correctif.
 
@@ -37,8 +37,8 @@ Terminé quand `node scripts/verifier-neutre.mjs` passe, que ses motifs refusent
 
 | N° | Question | Proposition | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | Quel nom affiché, et quels textes de permission ? | `name` devient « Planner ». Les deux phrases gardent leur sens et commencent par « Planner » à la place de « HESTIM Planner ». | | oui |
-| 2 | Quel préfixe de cache ? | `planner.cache.` | | oui |
+| 1 | Quel nom affiché, et quels textes de permission ? | `name` devient « Planner ». Les deux phrases gardent leur sens et commencent par « Planner » à la place de « HESTIM Planner ». | **oui** | oui |
+| 2 | Quel préfixe de cache ? | `planner.cache.` | **oui** | oui |
 
 ## 4. Solution
 
@@ -69,6 +69,8 @@ flowchart LR
 | `mobile/app.json` | modifié | nom et deux permissions |
 | `mobile/src/cache.js` | modifié | préfixe ; `PREFIXE` exporté pour le test |
 | `shared/session.js` | modifié | `buildingOf` seulement |
+| `mobile/src/api/donnees.js` | modifié | ne recopie plus `campus.nom` dans `batiment` avant l'appel |
+| `frontend/src/utils/mesSeances.js` | modifié | même retrait : le panneau ne lit que `salle.batiment` |
 | `scripts/verifier-neutre.mjs` | modifié | lit `app.json` ; refuse Stendhal et Gandhi |
 | `mobile/__tests__/donnees.test.js` | modifié | sans `batiment`, `building` est vide |
 | `mobile/__tests__/session.test.js` | modifié | régression : `ST-` et `G-` ne nomment plus un bâtiment ; avec `batiment`, ce texte est rendu |
