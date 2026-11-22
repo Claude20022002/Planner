@@ -1,6 +1,6 @@
 ---
  // Navigation des fonctionnalités. Le navigateur gère l’ouverture, le focus et la fermeture.
-import { fonctionnalites, regrouper } from './registre.js';
+import { fonctionnalites, regrouper, lienEntree, entreeBientot } from './registre.js';
 import { chemin, FONCTIONS } from '../../i18n/langues.js';
 import { traductions } from '../../i18n/index.js';
 
@@ -31,8 +31,8 @@ const actif = FONCTIONS.includes(page) || ['fonctionnalites', 'faq'].includes(pa
         <section>
           <h2 id={'menu-' + cle} tabindex="-1">{t('groupes.' + cle)} <span>({entrees.length})</span></h2>
           <ul>{entrees.map((entree) => (
-            <li><a href={chemin(langue, entree.page)}>{entree.titre}
-              {entree.etat === 'bientot' && <small> · {commun('navigation.bientot')}</small>}
+            <li><a href={lienEntree(langue, entree)}>{entree.titre}
+              {entreeBientot(entree) && <small> · {commun('navigation.bientot')}</small>}
             </a></li>
           ))}</ul>
         </section>
