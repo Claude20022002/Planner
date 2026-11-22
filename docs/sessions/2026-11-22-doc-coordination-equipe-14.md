@@ -49,7 +49,7 @@ Faites : 3 à 6, 8, 9, 12. Condition 10 : VIT-13 prête (#254) ; VIT-15 est fond
 
 ## En attente du chef
 
-- **MKT-09** : la session d9 lui demande de trancher entre la mission de 11 h et ses réponses de 14 h 50 (contact FinAdmin affiché, pilote « 3 mois offerts », signature FinAdmin ; noms de concurrents sur les diapositives 3 et 7). Un dépôt distant pour `planner-marketing`.
+- **MKT-09** : tranchée par le chef et relue (`33ec18b`) ; avant l'envoi : la revue `creative-quality-review`, un dépôt distant privé pour `planner-marketing`, l'accord de l'équipe du partenaire sur ses photos, garder ou retirer les notes du présentateur.
 - **VIT-20** : qui coordonne VIT-20 maintenant (la session de l'après-midi n'est plus ouverte) ; la consigne du lot D à Codex.
 - L'agent de QJE-14a (qui fera M-2a).
 - La fiche -13 : valeurs de VIT-16, relevé Traefik, plan de STA-01 (#230), M16 (P-85), avis A et B sur VSC-01 (#215), question 3 d'UIX-06c, volumes de StudyLib, plan du retrait de Meilisearch, seau et clé MinIO.
