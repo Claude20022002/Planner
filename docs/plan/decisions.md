@@ -367,3 +367,12 @@ Inscrit en conséquence, à relire dans la PR : 31 fonctions (liste dans le READ
 | **Chantier VSC** : il s'ouvre dès que MOT se ferme. VSC-01 (conception du modèle du scolaire) commence avant, chez Codex | chef |
 | **Pendant la pause du coordinateur**, le chef valide tous les plans et ne fusionne qu'une PR entièrement verte, avec le rapport de l'agent. Chaque agent suit sa file de la feuille de route | chef |
 | **#205 (Alexis) validée** : quatre routes des jeux répondent 404 « Module introuvable » hors des classes de l'enseignant, comme pour un module qui n'existe pas. Le refus selon le rôle reste en 403. Plan validé après coup ; Alexis ajoutera la ligne « Validé » dans sa prochaine PR. Relu par le coordinateur : un seul point d'entrée (`coursDeSesClasses`), un message identique à celui d'un module inconnu, et une CI entièrement verte, intégration comprise | chef, 18 nov. 15 h 25 |
+
+**Chef, 22 nov.** (réponses aux questions du coordinateur, par l'outil de questions) :
+
+| Décision | Par |
+|---|---|
+| **Le site vitrine prend la structure d'Odoo** (odoo.com/fr_FR) : barre Applications ▾, Établissements ▾, Ressources ▾, Contact ; « Demander une démonstration » ; « Se connecter » prêt mais caché tant que l'adresse de l'application n'est pas fixée (Q-11). **Pas de « Tarifs »** ni d'essai gratuit ; **pas de témoignage** sans accord écrit d'une école. Plan : [vit-20-structure-du-site.md](../conception/vitrine/vit-20-structure-du-site.md), à valider | chef |
+| Accueil resserré, avec la grille des applications sous le titre ; **une page par application** sur un gabarit commun, plus « Toutes les applications » ; les anciennes adresses redirigent | chef |
+| Menu « Applications » en **trois catégories** : Organiser (Emploi du temps, Établissement, Personnes), Enseigner (Enseignements, Quiz et jeux, Bibliothèque), Communiquer (Annonces, Application mobile). Les modules prévus en **tuiles grisées « Bientôt »**, sans lien. Pied de page en quatre colonnes : Applications, Établissements, Ressources, Planner | chef |
+| VIT-20 se code **après la fusion de #254 et #223, en équipe** (trois lots : navigation, pages d'application, accueil) | chef |
