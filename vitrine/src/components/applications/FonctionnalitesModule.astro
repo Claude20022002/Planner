@@ -1,0 +1,56 @@
+---
+// « Toutes les fonctionnalités de <module> » : le registre filtré sur le module (plan VIT-20, § 4.4, point 4). Une entrée
+// de l'état « Bientôt » porte le badge. Les textes sont ceux du registre : aucune phrase nouvelle.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import { fonctionnalites, entreeBientot } from '../catalogue/registre.js';
+import { traductions } from '../../i18n/index.js';
+
+interface Props {
+  langue: string;
+  cle: string;
+  nom: string;
+}
+
+const { langue, cle, nom } = Astro.props;
+const commun = traductions(langue, 'commun');
+const entrees = fonctionnalites(langue).filter((entree) => entree.module === cle);
+const titre = commun('navigation.toutesLesFonctionnalites').replace('{module}', nom);
+---
+{entrees.length > 0 && (
+  <Section id="fonctionnalites" ton="gris" large etiquette="fonctionnalites-titre">
+    <Titre id="fonctionnalites-titre" taille="moyen">{titre}</Titre>
+    <ul class="liste">
+      {entrees.map((entree) => (
+        <li>
+          <h3>{entree.titre} {entreeBientot(entree) && <span class="badge">{commun('navigation.bientot')}</span>}</h3>
+          <p>{entree.description}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+)}
+
+<style>
+  .liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--espace-2);
+    inline-size: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li { padding: var(--espace-3); border-radius: var(--rayon); background: var(--blanc); box-shadow: var(--ombre-carte); text-align: start; }
+  h3 { margin: 0 0 var(--espace-1); font-size: 1.125rem; color: var(--bleu-nuit); }
+  p { margin: 0; color: var(--gris-texte); }
+  .badge {
+    margin-inline-start: 0.4rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: var(--rayon-pilule);
+    background: var(--gris-trait);
+    color: var(--encre);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,116 @@
+---
+// « Pourquoi Planner », comparatif interactif (VIT-20, § 4.8), sans React : le tableau de repli (VIT-14) est la page sans JavaScript ;
+// le script du navigateur le remplace par des onglets (un par approche, flèches du clavier) et un dernier onglet « Critère »
+// qui montre un critère à la fois. Le balisage des onglets est rendu au build ; le script ne fait que montrer, cacher et animer
+// avec `animate` de Motion (fondu et glissement de 250 ms, sans boucle ; rien ne bouge si le mouvement réduit est demandé).
+// Textes : ceux de comparer.json, aucun libellé nouveau.
+import TableauComparatif from '../comparer/TableauComparatif.astro';
+import CartesComparatif from '../comparer/CartesComparatif.astro';
+import { LIGNES_ACCUEIL } from '../comparer/comparatif.js';
+import { traductions } from '../../i18n/index.js';
+import './comparatif-interactif.css';
+
+interface Props {
+  langue: string;
+}
+
+const { langue } = Astro.props;
+const t = traductions(langue, 'comparer');
+const approches: string[] = t('approches');
+const lignes = LIGNES_ACCUEIL.map((cle) => ({ cle, critere: t(`lignes.${cle}.critere`), cases: t(`lignes.${cle}.cases`) }));
+const critere = t('tableau.critere');
+const onglets = [1, 2, 3, 4, 0].map((i) => ({ i, nom: i === 0 ? critere : approches[i] }));
+---
+<div class="comparatif-bloc" data-comparatif>
+  <div class="repli">
+    <TableauComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+    <CartesComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+  </div>
+  <div class="comparatif-interactif" hidden>
+    <div class="onglets" role="tablist" aria-label={t('accueil.titre')}>
+      {onglets.map(({ i, nom }) => (
+        <button type="button" role="tab" id={`comparatif-onglet-${i}`} aria-controls={`comparatif-panneau-${i}`}
+          aria-selected={i === 1 ? 'true' : 'false'} tabindex={i === 1 ? 0 : -1} data-onglet={i}>{nom}</button>
+      ))}
+    </div>
+    <h3 aria-live="polite" data-titre>{approches[0]} · {approches[1]}</h3>
+    {[1, 2, 3, 4].map((i) => (
+      <div role="tabpanel" id={`comparatif-panneau-${i}`} aria-labelledby={`comparatif-onglet-${i}`}
+        data-titre-panneau={`${approches[0]} · ${approches[i]}`} hidden={i !== 1}>
+        <table>
+          <thead>
+            <tr><th scope="col">{critere}</th><th scope="col" class="planner">{approches[0]}</th><th scope="col">{approches[i]}</th></tr>
+          </thead>
+          <tbody>
+            {lignes.map((ligne) => (
+              <tr data-entree><th scope="row">{ligne.critere}</th><td class="planner">{ligne.cases[0].mot}</td><td>{ligne.cases[i].mot}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ))}
+    <div role="tabpanel" id="comparatif-panneau-0" aria-labelledby="comparatif-onglet-0" hidden>
+      <label class="critere-choix">
+        <span>{critere}</span>
+        <select data-critere>{lignes.map((ligne, k) => <option value={k}>{ligne.critere}</option>)}</select>
+      </label>
+      {lignes.map((ligne, k) => (
+        <dl class="cases" data-ligne={k} data-titre-panneau={ligne.critere} hidden={k !== 0}>
+          {ligne.cases.map((c, i) => (
+            <div class:list={['case', { planner: i === 0 }]} data-entree>
+              <dt>{approches[i]}</dt>
+              <dd><span class="mot">{c.mot}</span><span class="texte">{c.texte}</span></dd>
+            </div>
+          ))}
+        </dl>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  import { animate, stagger } from 'motion';
+
+  const racine = document.querySelector<HTMLElement>('[data-comparatif]');
+  const interactif = racine?.querySelector<HTMLElement>('.comparatif-interactif');
+  if (racine && interactif) {
+    const onglets = Array.from(interactif.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const titre = interactif.querySelector<HTMLElement>('[data-titre]')!;
+    const choix = interactif.querySelector<HTMLSelectElement>('[data-critere]')!;
+    const reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const panneau = (onglet: HTMLElement) => interactif.querySelector<HTMLElement>('#' + onglet.getAttribute('aria-controls'))!;
+
+    // Montre la ligne ou le tableau choisi, met à jour le titre annoncé, puis fait entrer les cases l'une après l'autre
+    const afficher = () => {
+      const actif = onglets.find((o) => o.getAttribute('aria-selected') === 'true')!;
+      const zone = panneau(actif);
+      const lignes = Array.from(zone.querySelectorAll<HTMLElement>('[data-ligne]'));
+      lignes.forEach((l) => (l.hidden = l.dataset.ligne !== choix.value));
+      titre.textContent = (lignes.find((l) => !l.hidden) ?? zone).dataset.titrePanneau ?? '';
+      if (!reduit) animate(zone.querySelectorAll('[data-entree]:not([hidden])'), { opacity: [0, 1], x: [16, 0] }, { duration: 0.25, delay: stagger(0.04) });
+    };
+    const choisir = (cible: HTMLButtonElement, focus = false) => {
+      for (const o of onglets) {
+        const ici = o === cible;
+        o.setAttribute('aria-selected', String(ici));
+        o.tabIndex = ici ? 0 : -1;
+        panneau(o).hidden = !ici;
+      }
+      if (focus) cible.focus();
+      afficher();
+    };
+    onglets.forEach((onglet, rang) => {
+      onglet.addEventListener('click', () => choisir(onglet));
+      onglet.addEventListener('keydown', (e) => {
+        const n = onglets.length;
+        const cibles: Record<string, number> = { ArrowRight: (rang + 1) % n, ArrowLeft: (rang + n - 1) % n, Home: 0, End: n - 1 };
+        if (!(e.key in cibles)) return;
+        e.preventDefault();
+        choisir(onglets[cibles[e.key]], true);
+      });
+    });
+    choix.addEventListener('change', afficher);
+    racine.querySelector<HTMLElement>('.repli')!.hidden = true;
+    interactif.hidden = false;
+  }
+</script>

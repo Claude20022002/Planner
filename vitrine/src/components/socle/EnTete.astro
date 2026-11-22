@@ -1,14 +1,16 @@
 ---
-// En-tête du site vitrine : logo et nom, navigation entre les pages, langue, lien de contact.
-// Le panneau « Fonctions » et le catalogue restent accessibles sans JavaScript.
-// Sur téléphone, un bouton replie la navigation ; sans JavaScript, le bouton reste caché
-// et la navigation s'affiche en entier sous la barre.
-import { Briefcase, Landmark, Menu, School } from 'lucide-react';
+// En-tête du site vitrine (plan VIT-20, § 4.2) : logo, trois menus (Applications, Établissements, Ressources), Contact, langues,
+// « Se connecter » (rendu seulement si l'adresse de l'application est fixée) et « Demander une démonstration ».
+// Les menus sont des <details> : clavier et toucher sans JavaScript. Sur téléphone, un bouton replie la navigation ;
+// sans JavaScript, le bouton reste caché et la navigation s'affiche en entier sous la barre.
+import { Menu } from 'lucide-react';
 import Logo from './Logo.astro';
-import MenuFonctions from '../catalogue/MenuFonctions.astro';
-import { TYPES } from '../solutions/types.js';
+import MenuApplications from '../navigation/MenuApplications.astro';
+import MenuEtablissements from '../navigation/MenuEtablissements.astro';
+import MenuRessources from '../navigation/MenuRessources.astro';
 import { traductions } from '../../i18n/index.js';
-import { LANGUES_PUBLIEES, BARRE, ROLES, chemin } from '../../i18n/langues.js';
+import { ADRESSE_APPLICATION } from '../../donnees/site.js';
+import { LANGUES_PUBLIEES, PREFIXE_MODULE, chemin, cheminContact } from '../../i18n/langues.js';
 
 interface Props {
   langue: string;
@@ -17,9 +19,7 @@ interface Props {
 
 const { langue, page } = Astro.props;
 const t = traductions(langue, 'commun');
-const solutions = traductions(langue, 'solutions');
-const iconesTypes = { superieur: Landmark, formation: Briefcase, collegeLycee: School };
-const menuSolutions = page === 'solutions' || ROLES.includes(page);
+const applicationsActif = page.startsWith(PREFIXE_MODULE) || page === 'applications' || page === 'socle';
 ---
 <header class="entete">
   <div class="barre">
@@ -33,47 +33,10 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
     </button>
     <nav class="navigation" id="navigation-principale" aria-label={t('navigation.label')}>
       <ul class="liens">
-        <li>
-          <details class="fonctions solutions">
-            <summary aria-current={menuSolutions ? 'page' : undefined}>{t('navigation.solutions')}</summary>
-            <div class="panneau">
-              <div>
-                <p>{t('navigation.parEtablissement')}</p>
-                <ul>
-                  {TYPES.map(({ cle, ancre }) => {
-                    const Icone = iconesTypes[cle];
-                    return (
-                      <li>
-                        <a href={chemin(langue, 'solutions', ancre)}>
-                          <Icone aria-hidden="true" size={18} strokeWidth={1.75} />
-                          {solutions(`types.${cle}.surtitre`)}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              <div>
-                <p>{t('navigation.parRole')}</p>
-                <ul>
-                  {ROLES.map((cle) => (
-                    <li>
-                      <a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{t(`navigation.${cle}`)}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </details>
-        </li>
-        <li>
-          <MenuFonctions langue={langue} page={page} />
-        </li>
-        {BARRE.filter((cle) => cle !== 'solutions').map((cle) => (
-          <li>
-            <a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{t(`navigation.${cle}`)}</a>
-          </li>
-        ))}
+        <li><MenuApplications langue={langue} actif={applicationsActif} /></li>
+        <li><MenuEtablissements langue={langue} page={page} /></li>
+        <li><MenuRessources langue={langue} page={page} /></li>
+        <li><a href={cheminContact(langue)}>{t('navigation.contactLien')}</a></li>
       </ul>
       <ul class="langues" aria-label={t('langues.label')}>
         {LANGUES_PUBLIEES.map((l) => (
@@ -82,7 +45,8 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
           </li>
         ))}
       </ul>
-      <a class="contact" href={chemin(langue, 'accueil', 'contact')}>{t('navigation.contact')}</a>
+      {ADRESSE_APPLICATION && <a class="connexion" href={ADRESSE_APPLICATION}>{t('navigation.seConnecter')}</a>}
+      <a class="contact" href={cheminContact(langue)}>{t('navigation.demonstration')}</a>
     </nav>
   </div>
 </header>
@@ -107,9 +71,22 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
       bouton.setAttribute('aria-expanded', String(!ouvert));
     });
   }
+  // Un seul menu ouvert à la fois ; Échap et un clic ailleurs le ferment, Échap rend le focus à son titre.
+  const menus = () => Array.from(document.querySelectorAll('.entete details[open]'));
   document.addEventListener('keydown', (evenement) => {
     if (evenement.key !== 'Escape') return;
-    document.querySelectorAll('.entete details[open]').forEach((menu) => menu.removeAttribute('open'));
+    menus().forEach((menu) => {
+      menu.removeAttribute('open');
+      menu.querySelector('summary')?.focus();
+    });
+  });
+  document.addEventListener('click', (evenement) => {
+    menus().forEach((menu) => { if (!menu.contains(evenement.target as Node)) menu.removeAttribute('open'); });
+  });
+  document.querySelectorAll('.entete details').forEach((menu) => {
+    menu.addEventListener('toggle', () => {
+      if ((menu as HTMLDetailsElement).open) menus().forEach((autre) => { if (autre !== menu) autre.removeAttribute('open'); });
+    });
   });
 </script>
 
@@ -118,7 +95,7 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
     position: sticky;
     inset-block-start: 0;
     z-index: 50;
-    background: rgb(255 255 255 / 82%);
+    background: rgb(255 255 255 / 96%);
     backdrop-filter: saturate(180%) blur(18px);
     border-block-end: 1px solid rgb(23 57 92 / 8%);
   }
@@ -133,26 +110,49 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
     margin-inline: auto;
     padding-inline: var(--gouttiere);
   }
-  .marque { display: inline-flex; align-items: center; gap: 0.5rem; min-block-size: var(--hauteur-entete); font-weight: 650; font-size: 1.0625rem; text-decoration: none; color: var(--bleu-nuit); }
+  .marque {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: var(--hauteur-entete);
+    font-weight: 650;
+    font-size: 1.0625rem;
+    text-decoration: none;
+    color: var(--bleu-nuit);
+  }
   .marque :global(.marque-logo) { inline-size: 2rem; }
-  .menu-bouton { display: grid; place-items: center; inline-size: 2.75rem; block-size: 2.75rem; padding: 0; border: 0; background: none; color: var(--encre); cursor: pointer; border-radius: var(--rayon-petit); }
+  .menu-bouton {
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--encre);
+    cursor: pointer;
+    border-radius: var(--rayon-petit);
+  }
   .menu-bouton[hidden] { display: none; }
   .navigation { flex-basis: 100%; display: grid; gap: var(--espace-3); padding-block: var(--espace-2) var(--espace-4); }
   .repliable .menu-bouton[aria-expanded='false'] + .navigation { display: none; }
   .liens { display: grid; gap: var(--espace-2); font-size: 1.25rem; font-weight: 600; }
   .liens a, .langues a { text-decoration: none; }
-  .liens a[aria-current='page'], .fonctions summary[aria-current='page'] { color: var(--bleu); }
-  .fonctions summary { display: flex; align-items: center; gap: 0.35rem; cursor: pointer; list-style: none; }
-  .fonctions summary::-webkit-details-marker { display: none; }
-  .fonctions summary::after { content: ''; inline-size: 0.4rem; block-size: 0.4rem; border-inline-end: 1.5px solid currentColor; border-block-end: 1.5px solid currentColor; transform: translateY(-0.1rem) rotate(45deg); }
-  .fonctions[open] summary::after { transform: translateY(0.1rem) rotate(225deg); }
-  .fonctions > ul, .solutions .panneau ul { display: grid; gap: 0.5rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
-  .solutions .panneau { display: grid; gap: var(--espace-3); }
-  .solutions .panneau p { margin: 0.75rem 0 0; font-size: 0.8125rem; font-weight: 600; color: var(--gris-texte); }
-  .solutions .panneau a { display: inline-flex; align-items: center; gap: 0.5rem; }
   .langues { display: flex; gap: var(--espace-3); font-size: var(--texte-petit); color: var(--gris-texte); }
   .langues a[aria-current='true'] { color: var(--encre); font-weight: 600; }
-  .contact { justify-self: start; padding: 0.5rem 1rem; border-radius: var(--rayon-pilule); background: var(--bleu); color: var(--blanc); font-size: var(--texte-petit); font-weight: 600; text-decoration: none; }
+  .connexion { justify-self: start; font-size: var(--texte-petit); font-weight: 600; color: var(--bleu-profond); text-decoration: none; }
+  .connexion:hover { text-decoration: underline; }
+  .barre { position: relative; }
+  .contact {
+    justify-self: start;
+    padding: 0.5rem 1rem;
+    border-radius: var(--rayon-pilule);
+    background: var(--bleu);
+    color: var(--blanc);
+    font-size: var(--texte-petit);
+    font-weight: 600;
+    text-decoration: none;
+  }
   .contact:hover { background: var(--bleu-profond); }
   .liens a:hover, .langues a:hover { color: var(--bleu); }
 
@@ -162,12 +162,14 @@ const menuSolutions = page === 'solutions' || ROLES.includes(page);
   @media (min-width: 64rem) {
     .barre { flex-wrap: nowrap; }
     .menu-bouton, .repliable .menu-bouton { display: none; }
-    .navigation, .repliable .menu-bouton[aria-expanded='false'] + .navigation { flex-basis: auto; display: flex; align-items: center; gap: var(--espace-4); padding: 0; }
+    .navigation, .repliable .menu-bouton[aria-expanded='false'] + .navigation {
+      flex-basis: auto;
+      display: flex;
+      align-items: center;
+      gap: var(--espace-4);
+      padding: 0;
+    }
     .liens { display: flex; align-items: center; gap: var(--espace-3); font-size: var(--texte-petit); font-weight: 450; }
-    .fonctions { position: relative; }
-    .fonctions > ul { position: absolute; z-index: 60; inset-inline-start: 0; inset-block-start: calc(100% + 0.35rem); min-inline-size: 14rem; max-inline-size: min(18rem, calc(100vw - 2 * var(--gouttiere))); margin: 0; padding: 0.75rem 1rem; background: var(--blanc); border: 1px solid rgb(23 57 92 / 12%); border-radius: var(--rayon-petit); }
-    .solutions .panneau { position: absolute; z-index: 60; inset-inline-start: 0; inset-block-start: calc(100% + 0.35rem); grid-template-columns: repeat(2, minmax(12rem, 1fr)); gap: var(--espace-4); inline-size: max-content; max-inline-size: calc(100vw - 2 * var(--gouttiere)); margin: 0; padding: 0.5rem 1.25rem 1rem; background: var(--blanc); border: 1px solid rgb(23 57 92 / 12%); border-radius: var(--rayon-petit); }
-    .fonctions > ul a, .solutions .panneau a { white-space: nowrap; }
     .langues { gap: var(--espace-2); font-size: 0.8125rem; }
   }
 </style>

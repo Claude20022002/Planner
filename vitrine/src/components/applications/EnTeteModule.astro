@@ -1,0 +1,55 @@
+---
+// Ouverture d'une page de module (plan VIT-20, § 4.4, points 1 et 2) : logo, catégorie, nom (le h1), accroche, bouton de
+// démonstration, puis les onglets « Aperçu » et « Fonctionnalités » (et ceux que la page ajoute, comme la Bibliothèque des jeux).
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import Apparition from '../socle/Apparition.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import { logoModule } from './logos.js';
+import { cheminContact } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  module: { cle: string; logo: string | null };
+  surtitre: string;
+  titre: string;
+  accroche: string;
+  demonstration: string;
+  onglets: { href: string; texte: string; actif?: boolean }[];
+}
+
+const { langue, module, surtitre, titre, accroche, demonstration, onglets } = Astro.props;
+---
+<Section etiquette="page-titre">
+  <Apparition>
+    <div class="ouverture">
+      <span class="logo" set:html={logoModule(module)} />
+      <Titre niveau={1} taille="geant" id="page-titre" surtitre={surtitre}>{titre}</Titre>
+      <Accroche>{accroche}</Accroche>
+      <BoutonPrincipal href={cheminContact(langue)}>{demonstration}</BoutonPrincipal>
+      <ul class="onglets">
+        {onglets.map((onglet) => (
+          <li><a href={onglet.href} aria-current={onglet.actif ? 'page' : undefined}>{onglet.texte}</a></li>
+        ))}
+      </ul>
+    </div>
+  </Apparition>
+</Section>
+
+<style>
+  .ouverture { display: grid; gap: var(--espace-3); justify-items: center; padding-block-start: var(--espace-3); }
+  .logo { display: block; inline-size: 5rem; }
+  .logo :global(svg) { display: block; inline-size: 100%; block-size: auto; }
+  .onglets { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-1); margin: var(--espace-2) 0 0; padding: 0; list-style: none; }
+  .onglets a {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--rayon-pilule);
+    color: var(--encre);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .onglets a:hover { background: var(--gris-fond); }
+  .onglets a[aria-current='page'] { background: var(--bleu); color: var(--blanc); }
+</style>

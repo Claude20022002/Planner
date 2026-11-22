@@ -1,0 +1,26 @@
+---
+// « Toutes les applications » : les 17 modules sous leurs quatre catégories, les cinq disponibles avec un lien, les douze
+// autres en tuiles grisées « Bientôt », puis « Inclus dans tout abonnement ». Textes : commun.json et modules.json.
+import Gabarit from '../../../components/socle/Gabarit.astro';
+import Section from '../../../components/socle/Section.astro';
+import Titre from '../../../components/socle/Titre.astro';
+import BoutonPrincipal from '../../../components/socle/BoutonPrincipal.astro';
+import FinDePage from '../../../components/fonctions/FinDePage.astro';
+import GrilleModules from '../../../components/applications/GrilleModules.astro';
+import { traductions } from '../../../i18n/index.js';
+import { cheminsLangues, chemin } from '../../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const commun = traductions(lang, 'commun');
+const titre = commun('navigation.toutesLesApplications');
+---
+<Gabarit langue={lang} page="applications" titre={`${titre} · Planner`} description={titre}>
+  <Section ton="gris" large etiquette="applications-titre">
+    <Titre niveau={1} taille="grand" id="applications-titre">{titre}</Titre>
+    <GrilleModules langue={lang} parCategorie niveauTitre={2} />
+    <BoutonPrincipal href={chemin(lang, 'socle')} variante="lien">{commun('socle.titre')}</BoutonPrincipal>
+  </Section>
+  <FinDePage langue={lang} />
+</Gabarit>

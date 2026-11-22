@@ -1,0 +1,43 @@
+---
+// Gabarit d'une page de module disponible (plan VIT-20, § 4.4, sur le modèle de la page « Comptabilité » d'Odoo) : ouverture avec
+// onglets, sections propres au module (<slot />), « Toutes les fonctionnalités de … », l'emplacement du lot D, « Pour qui »,
+// « Un besoin, une application. », fin de page.
+import Gabarit from '../socle/Gabarit.astro';
+import FinDePage from '../fonctions/FinDePage.astro';
+import EnTeteModule from './EnTeteModule.astro';
+import FonctionnalitesModule from './FonctionnalitesModule.astro';
+import PourQui from './PourQui.astro';
+import AutresModules from './AutresModules.astro';
+import { traductions } from '../../i18n/index.js';
+import { chemin, pageModule } from '../../i18n/langues.js';
+import { moduleDe } from '../../donnees/modules.js';
+
+interface Props {
+  langue: string;
+  cle: string;
+  titre: string;
+  description: string;
+  accroche: string;
+  ongletsEnPlus?: { href: string; texte: string }[];
+}
+
+const { langue, cle, titre, description, accroche, ongletsEnPlus = [] } = Astro.props;
+const commun = traductions(langue, 'commun');
+const module = moduleDe(cle);
+const nom = traductions(langue, 'modules')(`noms.${cle}`);
+const onglets = [
+  { href: chemin(langue, pageModule(cle)), texte: commun('navigation.apercu'), actif: true },
+  { href: chemin(langue, 'fonctionnalites', cle), texte: commun('navigation.fonctionnalites') },
+  ...ongletsEnPlus,
+];
+---
+<Gabarit langue={langue} page={pageModule(cle)} titre={titre} description={description}>
+  <EnTeteModule langue={langue} module={module} surtitre={commun(`categories.${module.categorie}`)} titre={nom} accroche={accroche}
+    demonstration={commun('navigation.demonstration')} onglets={onglets} />
+  <slot />
+  <FonctionnalitesModule langue={langue} cle={cle} nom={nom} />
+  {/* LOT D (Codex, PR à part) : le bloc « Selon votre équipement » (plan § 4.9) se pose ici, sur une seule ligne. Vide dans VIT-20. */}
+  <PourQui langue={langue} cle={cle} />
+  <AutresModules langue={langue} cle={cle} categorie={module.categorie} />
+  <FinDePage langue={langue} />
+</Gabarit>
