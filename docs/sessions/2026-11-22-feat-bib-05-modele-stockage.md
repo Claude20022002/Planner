@@ -99,7 +99,19 @@ Réponses du chef le 22 nov. (outil de questions), toutes conformes à la propos
    ```
 
    Puis les commandes `mc` du § 12 du plan, et `S3_CLE_ACCES` et `S3_CLE_SECRETE` dans `.env.docker`.
-3. BIB-06 (API des documents, L) : branche `feat/bib-06-api-documents` depuis `origin/main` **après la fusion de BIB-05** (ou depuis cette branche si le chef le préfère), questions puis plan au chef, **contrat d'API d'abord**.
+3. BIB-06 (API des documents, L) : branche `feat/bib-06-api-documents` (nom de la fiche de mission), **tirée de `feat/bib-05-modele-stockage`** (accord du coordinateur) ou de `origin/main` après la fusion de BIB-05 ; questions, puis plan **au chef** (API, droits) ; **contrat d'API d'abord**.
+
+## Relecture du coordinateur (22 nov., session plan-b-projet-pacte-92)
+
+**BIB-05 : prête pour la PR** (`34f7a170`). Il a relancé les 38 tests unitaires de la Bibliothèque et `verifier-neutre`, et relu la migration, les modèles, `stockage.js`, `documents.js`, `fichiers.js` et les ajouts à `docker-compose.yml` et `.env.example`. **La suite d'intégration complète doit être verte dans la CI avant la fusion.** Les réponses 1 à 12 du chef sont inscrites dans `decisions.md`.
+
+À reprendre dans BIB-06 :
+
+- **BIB-12** : c'est le nom de la fonction qui retire le jeton d'intégration, les audiences `studylib` et le JWKS public (réponse 5). Elle est à inscrire au module BIB pendant BIB-06.
+- Trois points à mettre dans le plan de BIB-06 :
+  1. `uid` et `origine` ne viennent **jamais du client** : seule la reprise (BIB-08) les fournit, et un test doit le prouver ;
+  2. `envoyer()` de `stockage.js` écrit l'erreur S3 dans le journal du serveur avant de répondre 502 ;
+  3. `filename*` encode aussi `'`, `(`, `)` et `*` (RFC 5987), ce que `encodeURIComponent` ne fait pas.
 
 ## Commandes pour le chef de projet
 
@@ -114,13 +126,18 @@ gh pr create --base main --head feat/bib-05-modele-stockage --title "BIB-05 : mo
 Tu es la session « BIB » de Planner (Bibliothèque reconstruite, voie B validée par le chef le 21 nov.).
 BIB-05 est faite sur feat/bib-05-modele-stockage (..\travaux-planner\bib-05-modele-stockage) :
 plan validé (docs/conception/bibliotheque/bib-05-modele-stockage.md), migration 0087, models/bibliotheque.js,
-services/bibliotheque/ (fichiers.js, stockage.js, documents.js), test à deux écoles ; à relire par le coordinateur.
+services/bibliotheque/ (fichiers.js, stockage.js, documents.js), test à deux écoles ; relue par le coordinateur : prête pour la PR
+(34f7a170), la CI doit être verte avant la fusion.
 Lis d'abord AGENTS.md, docs/plan/README.md (§ 5 : le contrat d'API d'abord ; EP-5, EP-13, EP-18), docs/plan/suivi.md
 et docs/plan/decisions.md (branche doc/coordination-equipe), la fiche de mission docs/plan/missions/bib-reconstruction.md,
 l'étude docs/conception/bibliotheque/etude-studylib-pile.md (§ 1.2 : les règles à reprendre), le plan de BIB-05
 et cette fiche (docs/sessions/2026-11-22-feat-bib-05-modele-stockage.md).
 Prochain lot : BIB-06, l'API des documents (L), branche feat/bib-06-api-documents dans ..\travaux-planner\bib-06-api-documents,
-depuis origin/main après la fusion de BIB-05. Avant tout code : questions numérotées au chef (outil de questions),
+tirée de feat/bib-05-modele-stockage (accord du coordinateur) ou de origin/main après la fusion de BIB-05.
+Le plan de BIB-06 reprend les consignes de la relecture (section « Relecture du coordinateur » de cette fiche) :
+uid et origine jamais fournis par le client (seule BIB-08 les donne), prouvé par un test ; erreur S3 écrite au journal
+avant le 502 ; filename* encodé selon la RFC 5987 (' ( ) * compris) ; BIB-12 (retrait du jeton, des audiences, du JWKS)
+inscrite au module BIB. Avant tout code : questions numérotées au chef (outil de questions),
 par exemple sur les droits par rôle, la modération et l'avis à l'auteur, la recherche, les débits, l'interrupteur de l'école,
 l'auteur montré sur un document d'élève et l'effacement du journal après 12 mois ; puis le plan (avec « Ce que disent les
 études » et EP-18), validé par le chef, commité seul ; contrat d'API écrit et testé avant les routes (BIB-09 et BIB-10 l'attendent).
