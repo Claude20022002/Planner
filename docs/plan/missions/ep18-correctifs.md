@@ -30,3 +30,5 @@ Chaque plan court dit ses fichiers ; le coordinateur vérifie qu'ils ne croisent
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 22 nov. | fiche écrite sur la décision du chef ; M-10 remis à la session 20 | — |
+| 22 nov. 10 h 57 | M-12 : plan court relu (`11cb4122`), **validé** (questions 1 et 2 selon la proposition ; `buildingOf` sur `salle.batiment`, égal à `campus.nom`) ; deux précisions : test de `ios.bundleIdentifier`, `verifier-neutre` relancé sur le site vitrine | validé |
+| 22 nov. 11 h | M-10 : serveur, site, application et tableau commités (`2cd93378`) ; parcours de régression en cours, non commité | en cours |
