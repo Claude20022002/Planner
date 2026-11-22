@@ -1,7 +1,7 @@
-<!-- Généré par shared/charte/generer.mjs, version 5, empreinte c9cfa30b2382 : ne pas modifier ; changer shared/charte/jetons.json -->
+<!-- Généré par shared/charte/generer.mjs, version 6, empreinte 4dc91132ad0c : ne pas modifier ; changer shared/charte/jetons.json -->
 # Charte de Planner
 
-Guide généré depuis [jetons.json](jetons.json), version 5. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Teintes des applications (version 3, VIT-09a) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a). Statuts, lignes des filières et panneau (version 4, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
+Guide généré depuis [jetons.json](jetons.json), version 6. Couleurs du logo relevées sur les SVG officiels du chef (18 nov., originaux dans shared/charte/logos-officiels/) ; bleu-profond : même teinte que bleu, plus sombre. Teintes des applications (version 3, VIT-09a) : celles de la grille d'UIX-09, converties en hexadécimal (logos de VIT-09a). Statuts, lignes des filières et panneau (version 4, UIX-10b) : valeurs d'avant la charte, sauf le panneau, qui passe au fond « ecran ». Augmenter « version » à chaque valeur changée, puis lancer node shared/charte/generer.mjs.
 
 ## Changer une valeur
 
@@ -45,6 +45,30 @@ Le fond du mode sombre est `ecran` ; l'action est `bleu-clair`, avec le texte `e
 
 | Jeton | Valeur | Rôle | Site |
 |---|---|---|---|
+| `app-cours` | `#2F3475` | tuile du module Espace de cours | — |
+| `app-cours-fonce` | `#1F224D` | ton foncé de la tuile Espace de cours | — |
+| `app-vacataires` | `#756E2F` | tuile du module Vacataires et heures | — |
+| `app-vacataires-fonce` | `#4D481F` | ton foncé de la tuile Vacataires et heures | — |
+| `app-evaluations` | `#542F75` | tuile du module Évaluations, crédits et jurys | — |
+| `app-evaluations-fonce` | `#371F4D` | ton foncé de la tuile Évaluations, crédits et jurys | — |
+| `app-inscriptions` | `#2F7533` | tuile du module Inscriptions | — |
+| `app-inscriptions-fonce` | `#1F4D22` | ton foncé de la tuile Inscriptions | — |
+| `app-documents` | `#3E752F` | tuile du module Documents vérifiables | — |
+| `app-documents-fonce` | `#294D1F` | ton foncé de la tuile Documents vérifiables | — |
+| `app-stages` | `#75592F` | tuile du module Stages | — |
+| `app-stages-fonce` | `#4D3A1F` | ton foncé de la tuile Stages | — |
+| `app-frais` | `#53752F` | tuile du module Frais et caisse | — |
+| `app-frais-fonce` | `#364D1F` | ton foncé de la tuile Frais et caisse | — |
+| `app-formation` | `#752F70` | tuile du module Formation et financeurs | — |
+| `app-formation-fonce` | `#4D1F4A` | ton foncé de la tuile Formation et financeurs | — |
+| `app-familles` | `#752F3B` | tuile du module Vie scolaire et familles | — |
+| `app-familles-fonce` | `#4D1F27` | ton foncé de la tuile Vie scolaire et familles | — |
+| `app-etat` | `#752F4D` | tuile du module Échanges avec l’État | — |
+| `app-etat-fonce` | `#4D1F32` | ton foncé de la tuile Échanges avec l’État | — |
+| `app-paiements` | `#67752F` | tuile du module Paiements en ligne | — |
+| `app-paiements-fonce` | `#434D1F` | ton foncé de la tuile Paiements en ligne | — |
+| `app-pilotage` | `#672F75` | tuile du module Pilotage | — |
+| `app-pilotage-fonce` | `#431F4D` | ton foncé de la tuile Pilotage | — |
 | `app-presences` | `#2F7548` | tuile du module Présences | — |
 | `app-presences-fonce` | `#1F4D2F` | ton foncé de la tuile Présences | — |
 | `app-planning` | `#0B66D6` | logo de l'application Emploi du temps : ton clair du dégradé de la tuile | — |
@@ -210,6 +234,30 @@ Seuils WCAG 2.2 : 4,5:1 pour le texte, 3:1 pour les traits, le focus et les comp
 | `ligne-5` | `blanc` | 5,48:1 | 3:1 |
 | `ligne-6` | `blanc` | 7,49:1 | 3:1 |
 | `ligne-inconnue` | `blanc` | 5,29:1 | 3:1 |
+| `blanc` | `app-cours` | 11,24:1 | 4,5:1 |
+| `blanc` | `app-cours-fonce` | 15,06:1 | 4,5:1 |
+| `blanc` | `app-vacataires` | 5,21:1 | 4,5:1 |
+| `blanc` | `app-vacataires-fonce` | 9,28:1 | 4,5:1 |
+| `blanc` | `app-evaluations` | 10,29:1 | 4,5:1 |
+| `blanc` | `app-evaluations-fonce` | 14,33:1 | 4,5:1 |
+| `blanc` | `app-inscriptions` | 5,66:1 | 4,5:1 |
+| `blanc` | `app-inscriptions-fonce` | 9,80:1 | 4,5:1 |
+| `blanc` | `app-documents` | 5,54:1 | 4,5:1 |
+| `blanc` | `app-documents-fonce` | 9,65:1 | 4,5:1 |
+| `blanc` | `app-stages` | 6,51:1 | 4,5:1 |
+| `blanc` | `app-stages-fonce` | 10,82:1 | 4,5:1 |
+| `blanc` | `app-frais` | 5,31:1 | 4,5:1 |
+| `blanc` | `app-frais-fonce` | 9,38:1 | 4,5:1 |
+| `blanc` | `app-formation` | 8,76:1 | 4,5:1 |
+| `blanc` | `app-formation-fonce` | 13,04:1 | 4,5:1 |
+| `blanc` | `app-familles` | 9,43:1 | 4,5:1 |
+| `blanc` | `app-familles-fonce` | 13,63:1 | 4,5:1 |
+| `blanc` | `app-etat` | 9,25:1 | 4,5:1 |
+| `blanc` | `app-etat-fonce` | 13,48:1 | 4,5:1 |
+| `blanc` | `app-paiements` | 5,05:1 | 4,5:1 |
+| `blanc` | `app-paiements-fonce` | 9,05:1 | 4,5:1 |
+| `blanc` | `app-pilotage` | 9,37:1 | 4,5:1 |
+| `blanc` | `app-pilotage-fonce` | 13,62:1 | 4,5:1 |
 | `blanc` | `app-presences` | 5,59:1 | 4,5:1 |
 | `blanc` | `app-presences-fonce` | 9,72:1 | 4,5:1 |
 | `blanc` | `app-planning` | 5,40:1 | 4,5:1 |
