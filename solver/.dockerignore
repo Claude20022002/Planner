@@ -1,0 +1,5 @@
+# Contexte = solver/. Ne pas exclure target/ : la cible « parcours » copie
+# target/hestim-solver.jar produit par mvn sur le runner CI.
+*.md
+.git
+.gitignore
