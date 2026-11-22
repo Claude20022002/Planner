@@ -5,7 +5,7 @@
 | Fait par | Claude Code (Sonnet 5.5), agent autonome, lots R0, B, A et C |
 | Chantier | VIT |
 | Dossier de travail | dépôt principal (`..\travaux-planner` non créé : session autonome) |
-| Dernier commit | voir la fin de la fiche |
+| Dernier commit | le dernier de la branche (PR #257) |
 
 ## Objectif de la session
 
