@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE } from "../config/fuseau.js";
 import { Affectation, AnneeUniversitaire, Salle, Creneau, Users, Groupe, Cours, Filiere, Conflit } from "../models/index.js";
 import { Op } from "sequelize";
 import sequelize from "../config/db.js";
@@ -37,7 +38,7 @@ export const perimetreStatistiques = async (req, res, next) => {
     delete req.query.date_fin;
     if (portee === "tout") return next();
 
-    const aujourdhui = new Date().toLocaleDateString("en-CA", { timeZone: process.env.APP_TIMEZONE || "Africa/Casablanca" });
+    const aujourdhui = new Date().toLocaleDateString("en-CA", { timeZone: FUSEAU_ECOLE });
     const annee = id_annee
         ? await AnneeUniversitaire.findByPk(Number(id_annee) || 0)
         : (await AnneeUniversitaire.findOne({ where: { date_debut: { [Op.lte]: aujourdhui }, date_fin: { [Op.gte]: aujourdhui } } })) ||

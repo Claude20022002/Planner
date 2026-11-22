@@ -39,6 +39,14 @@ describe("Lecture publique", () => {
         expect(res.body).not.toHaveProperty("expediteur_nom");
         expect((await anonymous().get("/api/etablissement/logo")).status).toBe(404);
     });
+
+    test("l'horloge de l'école (M-10) : le fuseau du serveur et sa table de décalages, sans connexion", async () => {
+        const res = await anonymous().get("/api/etablissement");
+        expect(res.status).toBe(200);
+        // Les tests posent APP_TIMEZONE=UTC (setupEnv.js) : une seule ligne, à 0
+        expect(res.body.horloge).toEqual({ fuseau: "UTC", decalages: [{ depuis: expect.any(String), minutes: 0 }], calcule_le: expect.any(String) });
+        expect(Date.parse(res.body.horloge.decalages[0].depuis)).toBeLessThan(Date.now());
+    });
 });
 
 describe("Réglage par l'administration", () => {

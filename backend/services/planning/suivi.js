@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import { Op } from "sequelize";
 import {
     Affectation,
@@ -28,7 +29,6 @@ import { NOTE_APPEL, etatDeLaSeance } from "./visaSeances.js";
  * des vacataires (paie hors périmètre).
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 const heureCourante = () => new Date().toLocaleTimeString("en-GB", { timeZone: FUSEAU, hour: "2-digit", minute: "2-digit" });
 const heures = (creneau) => (minutes(creneau.heure_fin) - minutes(creneau.heure_debut)) / 60;
 const arrondi = (n) => Math.round(n * 10) / 10;

@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE } from "../../config/fuseau.js";
 import { resetDatabase, closeDatabase, createUser, createPlanningFixture, loginAs, anonymous, PASSWORD } from "./helpers/testApp.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
 import crypto from "crypto";
@@ -27,7 +28,7 @@ const TELEPHONE_A = "installation-telephone-a";
 const TELEPHONE_B = "installation-telephone-b";
 const TELEPHONE_C = "installation-telephone-c";
 
-const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Casablanca" });
+const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: FUSEAU_ECOLE });
 
 /** Session de l'application mobile : Bearer, X-Client: mobile et identifiant d'installation. */
 const application = async (user, appareil) => {
