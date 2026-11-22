@@ -1,0 +1,11 @@
+# Image du solveur pour les parcours CI : JAR déjà produit hors Docker
+# (évite Maven dans BuildKit et les 429 Maven Central au go-offline à froid).
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+RUN addgroup -S solver && adduser -S solver -G solver
+COPY target/hestim-solver.jar app.jar
+USER solver
+EXPOSE 8080
+ENV JAVA_OPTS="-XX:MaxRAMPercentage=75"
+HEALTHCHECK --interval=15s --timeout=5s --retries=5 CMD wget -qO- http://localhost:8080/health || exit 1
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]

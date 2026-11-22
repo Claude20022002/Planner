@@ -247,9 +247,20 @@ jobs:
       - name: Installer Chromium pour Playwright
         run: npx playwright install --with-deps chromium
 
-      # Le vrai solveur (décision du chef de projet) : son image est construite depuis solver/,
-      # puis lancée par la configuration des parcours. Cache GHA : sans lui, go-offline
-      # frappe Maven Central à froid et échoue souvent en 429 (parent POM « introuvable »).
+      # Le vrai solveur (décision du chef de projet) : JAR construit hors Docker
+      # (même cache Maven que « Test Solveur »), puis image JRE qui copie le JAR.
+      # Évite les 429 Maven Central dans BuildKit (go-offline à froid).
+      - name: Setup Java 21 (paquet solveur)
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Paqueter le solveur
+        working-directory: solver
+        run: mvn -B -ntp package -DskipTests
+
       - uses: docker/setup-buildx-action@v3
 
       - name: Construire l'image du solveur
@@ -258,11 +269,9 @@ jobs:
           # Chemins depuis la racine du dépôt : build-push-action n'applique pas
           # defaults.run.working-directory (frontend/) ; ../solver échouait.
           context: solver
-          file: solver/Dockerfile
+          file: solver/Dockerfile.parcours
           load: true
           tags: hestim-solver:parcours
-          cache-from: type=gha,scope=solver
-          cache-to: type=gha,mode=max,scope=solver
 
       - name: Parcours
         run: npm run test:parcours
