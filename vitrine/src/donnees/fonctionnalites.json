@@ -113,7 +113,7 @@
     "id": "examens",
     "application": "etablissement",
     "categorie": "configuration",
-    "module": "socle",
+    "module": "emploiDuTemps",
     "etat": "existe",
     "titre": { "fr": "Organiser les examens", "en": "Organise exams" },
     "description": { "fr": "Préparez les salles et les surveillances des examens.", "en": "Plan exam rooms and invigilation." },
