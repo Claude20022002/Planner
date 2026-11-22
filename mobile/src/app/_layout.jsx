@@ -3,9 +3,7 @@ import { Stack, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import { Notifications } from '../notifications';
-import { useFonts, Barlow_400Regular, Barlow_600SemiBold } from '@expo-google-fonts/barlow';
-import { BarlowCondensed_500Medium, BarlowCondensed_600SemiBold, BarlowCondensed_700Bold } from '@expo-google-fonts/barlow-condensed';
-import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
+import { useFonts, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // Initialise les traductions au chargement du module
 import { nommerEcole, restaurerLangue } from '../i18n';
@@ -23,12 +21,8 @@ export default function Racine() {
   const [langueChargee, setLangueChargee] = useState(false);
   const [ecoleChargee, setEcoleChargee] = useState(false);
   const [preferenceTheme, setPreferenceTheme] = useState(null);
+  // Inter seule, la police de la charte (UIX-10d)
   const [policesChargees] = useFonts({
-    Barlow_400Regular,
-    Barlow_600SemiBold,
-    BarlowCondensed_500Medium,
-    BarlowCondensed_600SemiBold,
-    BarlowCondensed_700Bold,
     Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold,
