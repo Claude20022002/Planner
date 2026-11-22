@@ -6,7 +6,7 @@
 | Mission | `docs/plan/missions/vit-13-pourquoi-et-types.md` (branche `doc/coordination-equipe`) |
 | Branche | `feat/vit-13-pourquoi-et-types`, depuis `origin/main` (`b57753e9`) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 22 novembre 2026 |
-| **Validé** | en attente du chef (ce que le site promet) |
+| **Validé** | par Claude20022002 le 2026-11-22 (outil de questions, les sept propositions ; précision du coordinateur sur le titre de la question 6) |
 
 La section « Pourquoi Planner » est à VIT-14 (`vitrine/src/pages/[lang]/comparer.astro`). VIT-13 ne la réécrit pas.
 
@@ -42,13 +42,13 @@ Les pages par module (`/<langue>/modules/…`) n'existent pas : elles sont à VI
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| 1 | Où montrer les trois types ? | **Rester sur la page Solutions** (choix du 18 nov. : une page, trois sections). Pas de page par type. Chaque point « Aujourd'hui » garde son lien vers la page de fonction déjà en ligne (`types.js`). Le catalogue VIT-11 reste le renvoi « toutes les fonctions ». Les URL de modules sont à VIT-15. | | oui |
-| 2 | L'accroche et la description listent encore le collège en premier (`solutions.json`, `entete.accroche`, `meta.description`). | Les réordonner comme D4 : supérieur, formation professionnelle, collège et lycée. Même sens, aucun fait nouveau. L'anglais suit. | | oui |
-| 3 | L'appel du collège commence par le scan. L'accueil (VIT-18) et EP-18 commencent par la main. | Aligner : « L'enseignant note chacun à la main : présent, en retard ou absent. Il peut aussi projeter un QR code. » Le hors ligne (N2) n'est pas écrit : on ne le promet pas. | | oui |
-| 4 | « Des quiz et des jeux » pour le collège ne dit pas les domaines (P4). | « Des quiz en direct ou à son rythme. Les jeux portent sur l'informatique et la gestion. » Preuve : `shared/simulations/catalogue/`. | | oui |
-| 5 | « Absences » est dans « Bientôt » alors que l'appel note déjà présent, retard, absent. | Garder l'appel dans « Aujourd'hui ». Dans « Bientôt », préciser : le suivi au-delà de la séance (justificatif, familles) — VSC-03, à faire. | | oui |
-| 6 | Le supérieur promet « le lien avec les anciens élèves ». Aucune fonction du plan ne le porte. | Retirer ce membre de phrase. Garder « Les stages des étudiants » comme « Bientôt » (STA-02, reporté). StudyLib ne compte pas : ce sont des avis de stage, pas un suivi de stage. | | oui |
-| 7 | Le collège dit « élèves », le code dit « étudiants ». | Garder « élèves » dans la section collège et lycée (textes validés le 18 nov.). Ne pas renommer le code. | | non |
+| 1 | Où montrer les trois types ? | **Rester sur la page Solutions** (choix du 18 nov. : une page, trois sections). Pas de page par type. Chaque point « Aujourd'hui » garde son lien vers la page de fonction déjà en ligne (`types.js`). Le catalogue VIT-11 reste le renvoi « toutes les fonctions ». Les URL de modules sont à VIT-15. | selon la proposition | oui |
+| 2 | L'accroche et la description listent encore le collège en premier (`solutions.json`, `entete.accroche`, `meta.description`). | Les réordonner comme D4 : supérieur, formation professionnelle, collège et lycée. Même sens, aucun fait nouveau. L'anglais suit. | selon la proposition | oui |
+| 3 | L'appel du collège commence par le scan. L'accueil (VIT-18) et EP-18 commencent par la main. | Aligner : « L'enseignant note chacun à la main : présent, en retard ou absent. Il peut aussi projeter un QR code. » Le hors ligne (N2) n'est pas écrit : on ne le promet pas. | selon la proposition | oui |
+| 4 | « Des quiz et des jeux » pour le collège ne dit pas les domaines (P4). | « Des quiz en direct ou à son rythme. Les jeux portent sur l'informatique et la gestion. » Preuve : `shared/simulations/catalogue/`. | selon la proposition | oui |
+| 5 | « Absences » est dans « Bientôt » alors que l'appel note déjà présent, retard, absent. | Garder l'appel dans « Aujourd'hui ». Dans « Bientôt », préciser : le suivi au-delà de la séance (justificatif, familles) — VSC-03, à faire. | selon la proposition | oui |
+| 6 | Le supérieur promet « le lien avec les anciens élèves ». Aucune fonction du plan ne le porte. | Retirer ce membre de phrase. Garder « Les stages des étudiants » comme « Bientôt » (STA-02, reporté). StudyLib ne compte pas : ce sont des avis de stage, pas un suivi de stage. | selon la proposition ; le titre « Stages et anciens » devient « Stages » (« Internships » en anglais) | oui |
+| 7 | Le collège dit « élèves », le code dit « étudiants ». | Garder « élèves » dans la section collège et lycée (textes validés le 18 nov.). Ne pas renommer le code. | selon la proposition | non |
 
 Les phrases figées par VIT-18 dans `vitrine/tests/contenu.test.js` ne bougent pas : « Pour l'université, la grande école et les formations techniques supérieures » et « Un emploi du temps calculé, que vous ajustez. »
 
