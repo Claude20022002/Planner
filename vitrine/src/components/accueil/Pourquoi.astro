@@ -1,6 +1,6 @@
 ---
-// Accueil, section « Pourquoi Planner » (VIT-14) : le comparatif court, un mot par case, sur les lignes
-// choisies par le chef (LIGNES_ACCUEIL), puis le lien vers la page Comparer. Placée avant « Bientôt ».
+// Accueil, section « Pourquoi Planner » (VIT-14, rendue interactive par VIT-20 § 4.8) : le tableau court de repli (sans JavaScript),
+// remplacé par l'îlot ComparatifInteractif quand la section devient visible, puis le lien vers la page Comparer.
 import Section from '../socle/Section.astro';
 import Titre from '../socle/Titre.astro';
 import Accroche from '../socle/Accroche.astro';
@@ -8,6 +8,7 @@ import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Apparition from '../socle/Apparition.astro';
 import TableauComparatif from '../comparer/TableauComparatif.astro';
 import CartesComparatif from '../comparer/CartesComparatif.astro';
+import ComparatifInteractif from './ComparatifInteractif.jsx';
 import { LIGNES_ACCUEIL } from '../comparer/comparatif.js';
 import { traductions } from '../../i18n/index.js';
 import { chemin } from '../../i18n/langues.js';
@@ -18,6 +19,7 @@ interface Props {
 
 const { langue } = Astro.props;
 const t = traductions(langue, 'comparer');
+const lignes = LIGNES_ACCUEIL.map((cle) => ({ cle, critere: t(`lignes.${cle}.critere`), cases: t(`lignes.${cle}.cases`) }));
 ---
 <Section id="pourquoi" ton="gris" large etiquette="pourquoi-titre">
   <Apparition>
@@ -27,8 +29,10 @@ const t = traductions(langue, 'comparer');
     </div>
   </Apparition>
   <div class="comparatif">
-    <TableauComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
-    <CartesComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+    <ComparatifInteractif client:visible titre={t('accueil.titre')} critereLibelle={t('tableau.critere')} approches={t('approches')} lignes={lignes}>
+      <TableauComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+      <CartesComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+    </ComparatifInteractif>
   </div>
   <BoutonPrincipal href={chemin(langue, 'comparer')} variante="lien">{t('accueil.lien')}</BoutonPrincipal>
 </Section>

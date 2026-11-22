@@ -1,0 +1,25 @@
+---
+// Accueil, section 2 : la grille des modules (plan VIT-20, § 4.3). Les cinq disponibles (logo, nom, lien), puis les douze tuiles
+// grisées « Bientôt », puis « Toutes les applications ». Le titre est le libellé « Un besoin, une application. ».
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import Apparition from '../socle/Apparition.astro';
+import GrilleModules from '../applications/GrilleModules.astro';
+import { traductions } from '../../i18n/index.js';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+}
+
+const { langue } = Astro.props;
+const commun = traductions(langue, 'commun');
+---
+<Section id="applications" ton="gris" large etiquette="applications-titre">
+  <Apparition>
+    <Titre id="applications-titre">{commun('navigation.unBesoin')}</Titre>
+  </Apparition>
+  <GrilleModules langue={langue} />
+  <BoutonPrincipal href={chemin(langue, 'applications')} variante="lien">{commun('navigation.toutesLesApplications')}</BoutonPrincipal>
+</Section>
