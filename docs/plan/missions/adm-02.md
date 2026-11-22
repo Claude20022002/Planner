@@ -100,3 +100,14 @@ jamais de git push. Quand tu as fini une étape, dis-le : le coordinateur relit 
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-21 | fiche écrite par le coordinateur à l'ouverture d'ADM ; agent à choisir par le chef | — |
+
+## Relevé de la session 20, à reprendre dans le plan (22 nov., 9 h 50)
+
+Le chef a retenu le plan de 9 h 37 ; la session `plan-b-projet-pacte-20`, arrêtée, a laissé ce relevé (brouillon complet hors du dépôt : `..\travaux-planner\boites\ressources\2026-11-22-adm-02-brouillon-session-20.md`). Ce que le plan n'a pas déjà :
+
+1. « modifiable: etablissement » est la **valeur par défaut** de `services/moteur/catalogue/charger.js` (l. 46) : d'où les 402 sur 498. Les six règles lues : `MAT.REGLE.JOURS_DIFFERENTS`, `SAL.REGLE.TAILLE_ADAPTEE`, `HOR.REGLE.TROUS`, `HOR.REGLE.CHANGEMENT_SALLE`, `HOR.REGLE.UN_CAMPUS_PAR_JOUR`, `PED.PROG.CM_AVANT_TD`.
+2. **Test « ce qui est montré est tenu »** : pour chaque profil, les règles réglables du panneau sont exactement celles que `poidsDesRegles` envoie au solveur, avec `activeeParLEcole` (`ecriture.js`) exportée et partagée, pas recopiée ; après la bascule (0088), y ajouter les réglages que `lireParametres()` lira dans MP-1.
+3. `profil.js` ne donne la raison « sans effet » qu'en phrase française : un `raison_code` et les conditions en données, pour l'anglais ; `verification.js` ne rend pas les noms des cibles. Un test peut comparer la phrase du site à celle de `phrases.js`.
+4. `ParametresPlanning.jsx` montre 5 des 6 anciennes valeurs : il oublie `surveillants_par_salle`.
+5. Les rythmes (cibles des contraintes) sont les `regime` distincts de `Creneau` (`contraintes/cibles.js`, l. 52) ; `VersionParametres` a déjà `updatedAt`, `appliquee_le` et une colonne `impact` (JSON) inutilisée.
+6. Les fichiers d'i18n partagés (`fr.js`, `en.js`, `frontend/src/i18n/index.js`) ne reçoivent que des **ajouts** de clés (UIX-10e et QJE-14a y viendront).
