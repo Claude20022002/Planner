@@ -72,6 +72,17 @@ export const heureEcole = (instant = new Date()) => {
   return { heures: d.getUTCHours(), minutes: d.getUTCMinutes() };
 };
 
+/**
+ * « Maintenant » à l'heure de l'école, dans le modèle « mural » de shared/session.js : une Date de
+ * l'appareil qui porte les chiffres de l'heure de l'école (année, mois, jour, heure, minute). Les
+ * séances y sont rangées de même (`combine`) : on les compare à cette Date, et l'on lit ses jours et
+ * ses heures par toLocalISODate() et getHours(), quel que soit le fuseau de l'appareil.
+ */
+export const maintenantEcole = (instant = new Date()) => {
+  const d = aLEcole(new Date(instant));
+  return new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds());
+};
+
 /** Jour civil UTC d'un instant déjà calculé, jamais le fuseau du navigateur. */
 export const jourUtc = (instant) => {
   const date = new Date(instant);

@@ -1,13 +1,14 @@
 /**
  * Périodes du tableau de bord de l'administration (UIX-11) : chaque chiffre dit la sienne.
- * Fonctions pures, à l'heure du navigateur comme le panneau des séances (`toLocalISODate`).
+ * Fonctions pures, dans le modèle « mural » du panneau des séances (`toLocalISODate`) : « maintenant »
+ * est l'heure de l'école rendue par le serveur (`maintenantEcole`, M-10), pas celle du navigateur.
  *
  * « Cette semaine » va du lundi au dimanche qui contiennent aujourd'hui (réponse 6 du plan). Le jour
  * de début n'est écrit qu'ici, en paramètre : un réglage par école (PLA-13) s'y branchera sans
  * rien recoder ailleurs (EP-5).
  */
 import { toLocalISODate } from '../../../../shared/session.js';
-import { localeEcran } from '../../../../shared/dates.js';
+import { localeEcran, maintenantEcole } from '../../../../shared/dates.js';
 
 /** Premier jour de la semaine, numéroté comme Date.getDay (dimanche = 0, lundi = 1). */
 export const PREMIER_JOUR_SEMAINE = 1;
@@ -16,23 +17,23 @@ export const PREMIER_JOUR_SEMAINE = 1;
 const decaler = (date, n) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + n);
 
 /** Aujourd'hui et les `n` jours suivants : { debut, fin } au format AAAA-MM-JJ (panneau des séances). */
-export const joursSuivants = (n, maintenant = new Date()) => ({
+export const joursSuivants = (n, maintenant = maintenantEcole()) => ({
   debut: toLocalISODate(maintenant),
   fin: toLocalISODate(decaler(maintenant, n)),
 });
 
 /** Les `n` prochains jours, aujourd'hui compris : { debut, fin } (examens à venir). */
-export const prochainsJours = (n, maintenant = new Date()) => joursSuivants(n - 1, maintenant);
+export const prochainsJours = (n, maintenant = maintenantEcole()) => joursSuivants(n - 1, maintenant);
 
 /** La semaine qui contient aujourd'hui, du premier jour au septième : { debut, fin }. */
-export const semaineEnCours = (maintenant = new Date(), premierJour = PREMIER_JOUR_SEMAINE) => {
+export const semaineEnCours = (maintenant = maintenantEcole(), premierJour = PREMIER_JOUR_SEMAINE) => {
   const ecart = (maintenant.getDay() - premierJour + 7) % 7;
   const debut = decaler(maintenant, -ecart);
   return { debut: toLocalISODate(debut), fin: toLocalISODate(decaler(debut, 6)) };
 };
 
 /** Le mois en cours, au format AAAA-MM (paramètre `mois` des routes du suivi et de l'usage). */
-export const moisEnCours = (maintenant = new Date()) => toLocalISODate(maintenant).slice(0, 7);
+export const moisEnCours = (maintenant = maintenantEcole()) => toLocalISODate(maintenant).slice(0, 7);
 
 /**
  * La période en cours : une période d'une année active qui contient aujourd'hui, sinon la première
