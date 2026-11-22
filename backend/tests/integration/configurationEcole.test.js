@@ -1,5 +1,6 @@
 import { resetDatabase, closeDatabase, createUser, loginAs } from "./helpers/testApp.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
+import { poserReglages, retirerReglages } from "./helpers/reglagesMoteur.js";
 import { ContrainteDeclaree, JournalSecurite, ValeurParametre, VersionParametres } from "../../models/index.js";
 
 /**
@@ -201,5 +202,27 @@ describe("Journal de sécurité (R-6)", () => {
         const avant = await JournalSecurite.count({ where: { evenement: "parametres_version_appliquee" } });
         expect((await client.send("post", "/api/moteur/versions", { appliquer: true, base: 0, lignes: [{ cle: "HOR.REGLE.MAX_H_JOUR_GROUPE", valeur: 9999 }] })).status).not.toBe(201);
         expect(await JournalSecurite.count({ where: { evenement: "parametres_version_appliquee" } })).toBe(avant);
+    });
+});
+
+describe("Bascule des anciens paramètres de planification vers MP-1", () => {
+    const ancien = async () => (await client.get("/api/parametres-planning")).body.max_heures_jour_groupe;
+
+    // Régression E-1 : une seule source. L'ancienne route n'écrit plus (410) ; la lecture suit MP-1
+    test("l'écriture par l'ancienne route est fermée : 410 REGLAGE_DEPLACE, et rien ne change", async () => {
+        const avant = await ancien();
+        const ecrire = await client.send("put", "/api/parametres-planning/max_heures_jour_groupe", { valeur: 5 });
+        expect([ecrire.status, ecrire.body.code]).toEqual([410, "REGLAGE_DEPLACE"]);
+        const remettre = await client.send("delete", "/api/parametres-planning/max_heures_jour_groupe");
+        expect([remettre.status, remettre.body.code]).toEqual([410, "REGLAGE_DEPLACE"]);
+        expect(await ancien()).toEqual(avant);
+    });
+
+    test("la lecture suit les réglages du moteur, dans l'ancienne unité ; annuler rend la valeur d'avant", async () => {
+        const avant = await ancien();
+        const reglage = await poserReglages([{ cle: "HOR.REGLE.MAX_H_JOUR_GROUPE", valeur: 300 }]);
+        expect(await ancien()).toMatchObject({ valeur: 5, defaut: 8, modifie: true });
+        await retirerReglages(reglage);
+        expect(await ancien()).toEqual(avant);
     });
 });

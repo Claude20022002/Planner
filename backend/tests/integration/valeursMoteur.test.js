@@ -248,10 +248,13 @@ describe("Annulation", () => {
 });
 
 describe("Rien ne change ailleurs", () => {
-    test("les anciens réglages, que la génération lit encore, ne bougent pas", async () => {
+    // Depuis ADM-02 (bascule) : la génération, la saisie et les examens lisent ces réglages dans MP-1
+    test("les anciens réglages se lisent dans MP-1, dans leur ancienne unité", async () => {
         const avant = await lireParametres();
         await regler([{ cle: "HOR.REGLE.MAX_H_JOUR_GROUPE", valeur: 240 }, { cle: "LOG.TRAJET.CAMPUS_DEFAUT", valeur: 90 }]);
-        expect(await lireParametres()).toEqual(avant);
+        const apres = await lireParametres();
+        expect([apres.max_heures_jour_groupe.valeur, apres.trajet_inter_campus_defaut_minutes.valeur]).toEqual([4, 90]);
+        expect(apres.surveillants_par_salle).toEqual(avant.surveillants_par_salle);
     });
 
     test("le nombre de campus actifs commande la règle de trajet", async () => {
