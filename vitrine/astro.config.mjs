@@ -10,5 +10,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [react()],
   devToolbar: { enabled: false },
+  // Les logos des modules sont lus dans ../shared/icones/modules (VIT-09a) ; le serveur de développement doit pouvoir les servir.
+  vite: { server: { fs: { allow: ['..'] } } },
   build: { format: 'directory', inlineStylesheets: 'auto' },
 });
