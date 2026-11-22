@@ -9,7 +9,7 @@ import { useToast } from '../../contexts/ToastContext';
 import { localeEcran } from '../../utils/dates';
 
 // Teinte de la pastille de chaque état (codes du serveur, services/planning/visaSeances.js)
-const TONS = { a_verifier: 'warning', confirmee: 'success', ecartee: 'danger' };
+const TONS = { a_verifier: 'warning', confirmee: 'success', ecartee: 'danger', appel_saisi_apres_coup: 'info' };
 const MOTIF_MAX = 255;
 
 /**

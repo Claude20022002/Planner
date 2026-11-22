@@ -783,6 +783,8 @@ export const presenceAPI = {
     // statut : « present », « retard » ou « absent » (lot E-6)
     marquer: (id, idUser, statut) => request(`/presences/seances/${encodeURIComponent(id)}/etudiants/${encodeURIComponent(idUser)}`, { method: 'PUT', body: { statut } }),
     fermer: (id) => request(`/presences/seances/${encodeURIComponent(id)}/fermer`, { method: 'POST' }),
+    // Appel fait sur papier, terminé après coup, dans les 7 jours (M-1)
+    apresCoup: (id) => request(`/presences/seances/${encodeURIComponent(id)}/apres-coup`, { method: 'POST' }),
     // Vérification surprise facultative : { etudiants: [{ id_user, nom, prenom }], restants }
     tirerVerification: (id, nombre) => request(`/presences/seances/${encodeURIComponent(id)}/verification`, { method: 'POST', body: { nombre } }),
     verifier: (id, idUser, present) => request(`/presences/seances/${encodeURIComponent(id)}/verification/${encodeURIComponent(idUser)}`, { method: 'PUT', body: { present } }),

@@ -19,6 +19,9 @@ import DashboardLayout from '../components/layouts/DashboardLayout';
 import ConfirmDialog from '../components/common/ConfirmDialog';
 import VerificationSurprise from '../components/appel/VerificationSurprise';
 import LigneAppel from '../components/appel/LigneAppel';
+import BandeauApresCoup from '../components/appel/BandeauApresCoup';
+import BoutonImprimer from '../components/appel/BoutonImprimer';
+import { aujourdhui } from '../../../shared/dates.js';
 import { presenceAPI } from '../services/api';
 import { useToast } from '../contexts/ToastContext';
 import { ds } from '../design-system/tokens';
@@ -28,7 +31,8 @@ const RAFRAICHIR_LISTE_MS = 5000;
 /**
  * Appel par QR code (I1), écran de l'enseignant : le QR à projeter, qui change toutes les 30 s
  * (un code photographié ne sert plus longtemps), les présents qui arrivent en direct, la liste
- * pour cocher à la main, et la fin de l'appel (la séance est marquée réalisée).
+ * pour cocher à la main, et la fin de l'appel (la séance est marquée réalisée). Une séance passée
+ * sans appel se saisit après coup, sans QR code, puis se termine dans les 7 jours (M-1).
  * Facultatif : une vérification surprise tire quelques présents au hasard, à appeler à voix haute ;
  * un absent perd sa présence et est signalé. Les signalements (téléphone partagé…) s'affichent
  * dans la liste.
@@ -46,6 +50,7 @@ export default function Appel() {
   const [terminer, setTerminer] = useState(false);
   const [ferme, setFerme] = useState(false);
   const [verification, setVerification] = useState(false);
+  const [apresCoup, setApresCoup] = useState(false);
   const minuterie = useRef(null);
 
   const dessiner = useCallback(async ({ url, expire_dans_ms }) => {
@@ -96,6 +101,8 @@ export default function Appel() {
         setListe(l);
         setSeance(l.seance);
         if (l.appel && !l.appel.ouvert) setFerme(true);
+        // Séance passée sans appel : l'appel fait sur papier se saisit, sans QR (M-1)
+        else if (!l.appel && l.seance.date < aujourdhui()) setApresCoup(true);
         else ouvrir();
       })
       .catch((e) => actif && setErreur(e?.message || t('appel.erreur')));
@@ -135,9 +142,10 @@ export default function Appel() {
   const fermer = async () => {
     setTerminer(false);
     try {
-      const r = await presenceAPI.fermer(id);
+      const r = await (apresCoup ? presenceAPI.apresCoup(id) : presenceAPI.fermer(id));
       clearTimeout(minuterie.current);
       setFerme(true);
+      setApresCoup(false);
       setQr(null);
       toast.success(t('appel.termine', { count: r.presents }));
       chargerListe();
@@ -190,10 +198,15 @@ export default function Appel() {
               <Typography sx={{ mt: 1, color: ds.board.letterDim }}>
                 {t(retards ? 'appel.bilanRetards' : 'appel.bilan', { presents, retards, absents: Math.max(0, attendus - presents) })}
               </Typography>
-              <Button variant="outlined" onClick={ouvrir} sx={{ mt: 2, color: ds.board.letter, borderColor: ds.board.seam }}>
-                {t('appel.rouvrir')}
-              </Button>
+              {/* Rouvrir : le jour de la séance seulement (le serveur refuse les autres jours) */}
+              {seance?.date === aujourdhui() && (
+                <Button variant="outlined" onClick={ouvrir} sx={{ mt: 2, color: ds.board.letter, borderColor: ds.board.seam }}>
+                  {t('appel.rouvrir')}
+                </Button>
+              )}
             </Box>
+          ) : apresCoup ? (
+            <BandeauApresCoup seance={seance} />
           ) : qr ? (
             <>
               <Box component="img" src={qr.image} alt={t('appel.qrAlt')} sx={{ width: '100%', maxWidth: 520, aspectRatio: '1', borderRadius: 1, bgcolor: '#FFFFFF' }} />
@@ -230,10 +243,13 @@ export default function Appel() {
         <Paper sx={{ p: 2 }}>
           <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 1 }}>
             <Typography variant="h6">{t('appel.liste')}</Typography>
-            <Stack direction="row" spacing={1}>
-              <Button variant="outlined" onClick={() => setVerification(true)} disabled={!seance || presents === 0} title={t('appel.verifierAide')}>
-                {t('appel.verifier')}
-              </Button>
+            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+              <BoutonImprimer idAffectation={id} />
+              {!apresCoup && (
+                <Button variant="outlined" onClick={() => setVerification(true)} disabled={!seance || presents === 0} title={t('appel.verifierAide')}>
+                  {t('appel.verifier')}
+                </Button>
+              )}
               {!ferme && (
                 <Button variant="contained" onClick={() => setTerminer(true)} disabled={!seance}>
                   {t('appel.terminer')}
