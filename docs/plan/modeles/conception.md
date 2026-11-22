@@ -61,6 +61,20 @@ sequenceDiagram
 | Ligne | Étude | Appliquée ou écartée | Comment, ou pourquoi |
 |---|---|---|---|
 
+## 7 ter. EP-18 : tous les contextes
+
+<!-- Ajoutée le 22 nov. (décision du chef, étude EP-18, § 9.2). Une ligne par contexte (étude EP-18, § 2).
+     « Sans objet » se justifie en une phrase. Une fonction qui ne marche pas dans un contexte dit ce que
+     fait l'utilisateur à la place. -->
+
+| Contexte | Ce que fait la fonction | Preuve ou test |
+|---|---|---|
+| **A. Au moins un élève sans téléphone ni ordinateur** | il est servi sans appareil (l'enseignant saisit pour lui, ou c'est imprimé, projeté) ; sinon, ce qu'il fait à la place | |
+| **B. Connexion lente (Slow 3G : 400 kbit/s, 400 ms) ou coupée** | le poids de l'écran, mesuré et écrit dans la PR (EP-19) ; ce qui se lit et ce qui s'écrit sans réseau, et ce qui arrive au retour du réseau ; pour un téléchargement : le poids affiché avant, et la reprise après coupure (N3) | |
+| **C. Ce qu'a l'école : ordinateur et projecteur (C1), ou rien dans la salle (C2)** | ce qui se projette ; ce qui s'imprime ; ce qui se saisit après coup | |
+
+Aucun pays supposé : aucune devise, aucun fuseau, aucun férié, aucun format de téléphone ni aucun outil de l'État écrit en dur. Ils viennent de la configuration de l'école.
+
 ## 8. Tests
 
 <!-- Tests unitaires, d'intégration, parcours ; le test de régression de chaque correctif. -->
