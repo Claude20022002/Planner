@@ -36,7 +36,7 @@ Ce n'est pas un second Moodle. Le quotidien visé est celui d'une classe : suppo
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | COU-01 | Sondage de l'enseignant à sa classe | EC-9 | libre | S | — | fait (#148) |
-| COU-02 | Devoirs avec rendu de fichier, après une revue de sécurité (taille, type, antivirus, stockage par StudyLib) | EC-2 | 3 | L | BIB-01 | à faire |
+| COU-02 | Devoirs avec rendu de fichier, après une revue de sécurité (taille, type, antivirus, stockage S3 de BIB-05 ; StudyLib n'est plus redéployé, voie B du 21 nov.) | EC-2 | 3 | L | BIB-05 (BIB-01 absorbée) | à faire |
 | COU-03 | Commentaires sur un support ou un devoir | EC-6 | 3 | M | COU-02 | à faire |
 | COU-04 | Questions partagées de la classe | EC-7 | 3 | M | — | à faire |
 | COU-05 | « Vu » : l'enseignant sait qui a ouvert un support ou une annonce | EC-8 | 3 | M | — | à faire |
