@@ -14,7 +14,7 @@ Obligatoire, même si la session est interrompue, même si elle n'a écrit aucun
    - Un plan, même non validé, se commite s'il doit survivre à la session : dites « plan à valider » dans le message. Rien ne reste non commité dans le dossier de travail (`git status -s` vide).
    - Jamais de `git push`.
 
-2. **`docs/plan/suivi.md`** : la ligne de la fonction passe à son état vrai (« en cours » avec la branche, « PR ouverte » avec le numéro, « fait » à la fusion). Ne touchez que votre ligne, et le tableau des chantiers seulement si le chef en a ouvert ou fermé un. Une migration écrite a son numéro réservé dans le tableau.
+2. **`docs/plan/suivi.md`** : **ne le modifiez pas** sur la branche d'une fonction (décision du chef du 18 nov.). Écrivez l'état vrai de la fonction dans la fiche de session (« en cours » avec la branche, « PR ouverte » avec le numéro) : le coordinateur le reporte. Un numéro de migration se demande au coordinateur. Seule la session de coordination met `suivi.md` à jour, sur sa branche.
 
 3. **Fichier du module** (`docs/plan/modules/…`) : seulement si ce qui existe a changé.
 
@@ -27,7 +27,7 @@ Obligatoire, même si la session est interrompue, même si elle n'a écrit aucun
 
 5. **Prompt de reprise**, dans la fiche. Il se suffit à lui-même : quoi lire, où en est le travail, ce qui reste, les questions en attente, la règle « pas de code hors du plan validé ». Quelqu'un qui n'a jamais vu la conversation doit pouvoir reprendre.
 
-6. **Commiter** `suivi.md`, le fichier du module et la fiche.
+6. **Commiter** le fichier du module et la fiche (et `suivi.md` seulement sur la branche de coordination).
 
 7. **Dernier message au chef** : les commandes à lancer (push, PR), puis le prompt de reprise. Si une fiche de mission existe, dites aussi que la branche attend la relecture du coordinateur.
 

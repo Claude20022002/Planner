@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "titre": "Enseignants · Planner",
+    "description": "L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte."
+  },
+  "entete": {
+    "surtitre": "Enseignants",
+    "titre": "Après l'emploi du temps, la classe.",
+    "accroche": "L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte."
+  },
+  "aujourdhui": "Aujourd'hui",
+  "cartes": [
+    {
+      "page": "quizEtJeux",
+      "titre": "Quiz et jeux",
+      "texte": "L'enseignant prépare le quiz. Le lien s'ouvre dans un navigateur, sur un ordinateur de l'école ou ailleurs. Un code ou un QR code mène au même lien."
+    },
+    {
+      "page": "coursEtAnnonces",
+      "titre": "Cours et annonces",
+      "texte": "L'enseignant dépose un document ou un lien dans une section."
+    },
+    {
+      "page": "emploiDuTemps",
+      "titre": "Emploi du temps",
+      "texte": "Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas."
+    }
+  ],
+  "passage": {
+    "titre": "Avant, avec Planner.",
+    "avant": "Avant",
+    "avec": "Avec Planner",
+    "lignes": [
+      {
+        "avant": "L'appel se fait sur une feuille.",
+        "avec": "À la main, sur la liste de la séance : les étudiants n'ont besoin ni de téléphone, ni d'écran projeté."
+      },
+      {
+        "avant": "Le quiz se prépare à part, puis se projette depuis un autre outil.",
+        "avec": "L'enseignant prépare ses quiz dans le studio, puis les lance en classe ou les laisse à faire à chacun à son rythme."
+      },
+      {
+        "avant": "Un document de cours s'envoie aux étudiants.",
+        "avec": "L'enseignant dépose un document ou un lien dans une section."
+      },
+      {
+        "avant": "Un sondage se fait à main levée ou sur un papier.",
+        "avec": "Les sondages de la classe s'ouvrent quand l'établissement les active. Une question, de deux à six choix."
+      },
+      {
+        "avant": "Une question proposée se relit sur le document d'origine.",
+        "avec": "Quand l’IA est activée pour votre école dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager."
+      }
+    ]
+  },
+  "faq": {
+    "titre": "Questions fréquentes.",
+    "questions": [
+      {
+        "question": "Comment l'IA intervient-elle ?",
+        "reponse": "Quand l’IA est activée pour votre école dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager."
+      },
+      {
+        "question": "Comment se fait l'appel sans le téléphone de l'étudiant ?",
+        "reponse": "L'enseignant note aussi à la main : présent, en retard, absent. Un étudiant sans téléphone est noté ainsi."
+      },
+      {
+        "question": "Le quiz demande-t-il une application ?",
+        "reponse": "Le lien s'ouvre dans un navigateur, sur un ordinateur de l'école ou ailleurs. Un code ou un QR code mène au même lien."
+      }
+    ]
+  }
+}

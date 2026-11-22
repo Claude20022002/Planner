@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "protections": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "site": {
+    "surtitre": "",
+    "titre": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  },
+  "bientot": {
+    "surtitre": "",
+    "titre": "",
+    "badge": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  }
+}

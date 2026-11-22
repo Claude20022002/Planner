@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Emploi du temps (VIT-09a), dessin détaillé pour 40 à 96 px. Charte v3 : app-planning, app-planning-fonce, blanc, bleu-clair, bleu-nuit, jeu. Un calendrier en trois plans : le corps, la séance placée, la page du jour qui se soulève. -->
+<defs>
+<linearGradient id="vit-planning-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#0B66D6"/><stop offset="1" stop-color="#212F82"/></linearGradient>
+<linearGradient id="vit-planning-reflet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.22"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-planning-tuile)"/>
+<path d="M26 4h44a22 22 0 0 1 22 22v8C70 44 26 44 4 34v-8A22 22 0 0 1 26 4z" fill="url(#vit-planning-reflet)"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.14"/>
+<rect x="21" y="29" width="50" height="45" rx="8" fill="#212F82" opacity="0.45"/>
+<rect x="19" y="25" width="50" height="45" rx="8" fill="#FFFFFF"/>
+<path d="M27 25h34a8 8 0 0 1 8 8v4H19v-4a8 8 0 0 1 8-8z" fill="#A6CAEE"/>
+<rect x="29" y="20" width="5" height="11" rx="2.5" fill="#17395C"/>
+<rect x="54" y="20" width="5" height="11" rx="2.5" fill="#17395C"/>
+<g fill="#A6CAEE"><rect x="25" y="43" width="9" height="7" rx="2"/><rect x="39.5" y="43" width="9" height="7" rx="2"/><rect x="25" y="55" width="9" height="7" rx="2"/><rect x="39.5" y="55" width="9" height="7" rx="2"/></g>
+<rect x="54" y="43" width="9" height="19" rx="2.5" fill="#FFC83D"/>
+<g transform="rotate(-8 64 64)">
+<rect x="52" y="54" width="26" height="24" rx="5" fill="#212F82" opacity="0.4" transform="translate(1.5 3)"/>
+<rect x="52" y="54" width="26" height="24" rx="5" fill="#FFFFFF"/>
+<path d="M57 54h16a5 5 0 0 1 5 5v2H52v-2a5 5 0 0 1 5-5z" fill="#0B66D6"/>
+<path d="M65 64.5v4.8l3.2 2" fill="none" stroke="#17395C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

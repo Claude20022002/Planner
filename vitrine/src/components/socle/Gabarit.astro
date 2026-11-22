@@ -1,0 +1,75 @@
+---
+// Gabarit de toute page du site vitrine : <html> avec langue et sens d'écriture, en-tête de la page
+// (titre, description, langues alternatives, icône), lien d'évitement, en-tête, pied et animations.
+// Une langue pas encore publiée (l'arabe avant UIX-04) est construite mais non indexée. Les liens
+// hreflang demandent des adresses complètes : ils n'apparaissent qu'une fois `site` réglé (Q-11).
+import '@fontsource-variable/inter';
+import '../../styles/jetons.css';
+import '../../styles/base.css';
+import EnTete from './EnTete.astro';
+import PiedDePage from './PiedDePage.astro';
+import { traductions } from '../../i18n/index.js';
+import { fichiersVideo, langueVideo } from '../accueil/empreinteVideo.js';
+import { LANGUES_PUBLIEES, chemin, direction, estPubliee } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  page: string;
+  titre: string;
+  description: string;
+}
+
+const { langue, page, titre, description } = Astro.props;
+const t = traductions(langue, 'commun');
+const locales = { fr: 'fr_FR', en: 'en_GB' };
+const ogLocale = locales[langue] ?? 'fr_FR';
+const imageVideo = fichiersVideo(langueVideo(langue)).image.nom;
+const ogImage = Astro.site ? new URL(`/videos/${imageVideo}`, Astro.site).href : undefined;
+const canonique = Astro.site ? new URL(chemin(langue, page), Astro.site).href : undefined;
+---
+<!doctype html>
+<html lang={langue} dir={direction(langue)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titre}</title>
+    <meta name="description" content={description} />
+    {!estPubliee(langue) && <meta name="robots" content="noindex" />}
+    {canonique && <link rel="canonical" href={canonique} />}
+    {canonique && (
+      <>
+        <meta property="og:title" content={titre} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonique} />
+        <meta property="og:locale" content={ogLocale} />
+        {ogImage && <meta property="og:image" content={ogImage} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={titre} />
+        <meta name="twitter:description" content={description} />
+        {ogImage && <meta name="twitter:image" content={ogImage} />}
+      </>
+    )}
+    {Astro.site && LANGUES_PUBLIEES.map((l) => <link rel="alternate" hreflang={l} href={new URL(chemin(l, page), Astro.site).href} />)}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <script is:inline>
+      // Animations seulement sans demande de mouvement réduit ; contenu rendu visible si le script manque
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('anime');
+        setTimeout(() => { if (!window.__animations) document.documentElement.classList.remove('anime'); }, 3000);
+      }
+    </script>
+  </head>
+  <body>
+    <a class="lien-evitement" href="#contenu">{t('evitement')}</a>
+    <EnTete langue={langue} page={page} />
+    <main id="contenu">
+      <slot />
+    </main>
+    <PiedDePage langue={langue} page={page} />
+    <script>
+      import './animations.js';
+    </script>
+  </body>
+</html>

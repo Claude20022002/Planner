@@ -30,16 +30,30 @@ afterEach(() => {
 });
 
 describe("Configuration", () => {
-    test("DeepSeek par défaut ; désactivée sans clé", () => {
-        expect(configuration()).toMatchObject({ fournisseur: "openai-compatible", url: "https://api.deepseek.com/v1", modele: "deepseek-chat" });
+    // QUA-10 (EP-13) : plus de destination par défaut pour la famille « compatible OpenAI ».
+    // Ce test figeait DeepSeek par défaut ; il change exprès.
+    test("compatible OpenAI : ni adresse ni modèle par défaut ; une clé seule n'envoie rien", () => {
+        expect(configuration()).toMatchObject({ fournisseur: "openai-compatible", url: "", modele: "" });
         expect(estConfigure()).toBe(false);
         process.env.IA_CLE = "cle-essai";
+        process.env.IA_MODELE = "un-modele";
+        expect(estConfigure()).toBe(false);
+        process.env.IA_URL = "https://api.exemple.test/v1";
         expect(estConfigure()).toBe(true);
     });
 
-    test("Anthropic exige un modèle ; un fournisseur inconnu reste désactivé", () => {
+    test("compatible OpenAI, clé et modèle sans adresse : 503, aucun appel réseau", async () => {
+        process.env.IA_CLE = "cle-essai";
+        process.env.IA_MODELE = "un-modele";
+        repondre({});
+        await expect(genererJson({ systeme: "s", utilisateur: "u" })).rejects.toMatchObject({ status: 503 });
+        expect(appels).toHaveLength(0);
+    });
+
+    test("Anthropic garde son adresse et exige un modèle ; un fournisseur inconnu reste désactivé", () => {
         process.env.IA_CLE = "cle-essai";
         process.env.IA_FOURNISSEUR = "anthropic";
+        expect(configuration().url).toBe("https://api.anthropic.com/v1");
         expect(estConfigure()).toBe(false);
         process.env.IA_MODELE = "un-modele";
         expect(estConfigure()).toBe(true);
@@ -65,6 +79,8 @@ describe("lireJson", () => {
 describe("Compatible OpenAI (DeepSeek)", () => {
     beforeEach(() => {
         process.env.IA_CLE = "cle-secrete";
+        process.env.IA_URL = "https://api.deepseek.com/v1";
+        process.env.IA_MODELE = "deepseek-chat";
     });
 
     test("requête : chat/completions, clé en Bearer, consigne système, réponse JSON exigée", async () => {

@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "titre": "Library · Planner",
+    "description": "The school's document library. Documents are organised by programme and by module."
+  },
+  "entete": {
+    "surtitre": "Library",
+    "titre": "The school's document library.",
+    "accroche": "Documents are organised by programme and by module."
+  },
+  "documents": {
+    "surtitre": "Documents",
+    "titre": "What is there.",
+    "cartes": [
+      {
+        "titre": "Types",
+        "texte": "A document is a course, an exam, a tutorial, a lab, an exercise or an article."
+      },
+      {
+        "titre": "Review",
+        "texte": "A submission waits for a review before it is visible."
+      },
+      {
+        "titre": "Download and rating",
+        "texte": "People download it and rate it."
+      },
+      {
+        "titre": "Internships, projects, events",
+        "texte": "Students leave an internship review, a project idea, and look at the events."
+      },
+      {
+        "titre": "Videos",
+        "texte": "A module can suggest videos."
+      },
+      {
+        "titre": "Suggestions",
+        "texte": "Suggestions are offered when AI is turned on for your school."
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+---
+// Accueil, section « Pourquoi Planner » (VIT-14) : le comparatif court, un mot par case, sur les lignes
+// choisies par le chef (LIGNES_ACCUEIL), puis le lien vers la page Comparer. Placée avant « Bientôt ».
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import Apparition from '../socle/Apparition.astro';
+import TableauComparatif from '../comparer/TableauComparatif.astro';
+import CartesComparatif from '../comparer/CartesComparatif.astro';
+import { LIGNES_ACCUEIL } from '../comparer/comparatif.js';
+import { traductions } from '../../i18n/index.js';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+}
+
+const { langue } = Astro.props;
+const t = traductions(langue, 'comparer');
+---
+<Section id="pourquoi" ton="gris" large etiquette="pourquoi-titre">
+  <Apparition>
+    <div class="entete">
+      <Titre id="pourquoi-titre" surtitre={t('accueil.surtitre')}>{t('accueil.titre')}</Titre>
+      <Accroche>{t('accueil.texte')}</Accroche>
+    </div>
+  </Apparition>
+  <div class="comparatif">
+    <TableauComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+    <CartesComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+  </div>
+  <BoutonPrincipal href={chemin(langue, 'comparer')} variante="lien">{t('accueil.lien')}</BoutonPrincipal>
+</Section>
+
+<style>
+  .entete { display: grid; gap: var(--espace-3); justify-items: center; }
+  .comparatif { inline-size: 100%; padding: var(--espace-3); border-radius: var(--rayon-grand); background: var(--blanc); }
+
+  @media (max-width: 47.99rem) {
+    .comparatif { padding: 0; background: none; }
+  }
+</style>

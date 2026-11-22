@@ -3,6 +3,7 @@
 **Objet** : ce qu'une école privée achète d'abord, et que Planner n'a pas encore :
 - élèves et familles ;
 - inscriptions ;
+- affectation aux groupes de langue et d'option ;
 - absences prévenues aux parents ;
 - notes, bulletins et conseil de classe ;
 - Massar.
@@ -28,17 +29,18 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| VSC-01 | **Modèle de données du scolaire** (conception seule, avec diagrammes) : entités, correspondance avec le supérieur, profils, plusieurs écoles, plan de migrations, propriétaires des tables. Réponse à Q-20 (compte de l'élève) | C-5 | 1 | L | — | plan du document à valider |
+| VSC-01 | **Modèle de données du scolaire** (conception seule, avec diagrammes) : entités, correspondance avec le supérieur, profils, plusieurs écoles, plan de migrations, propriétaires des tables, appartenance aux groupes transversaux (Q-3 de conception-c5, retenue le 8 novembre). Réponse à Q-20 (compte de l'élève) | C-5 | 1 | L | — | plan du document à valider |
 | VSC-02 | Élèves et familles : responsables légaux, inscription d'une année, réinscription, fratries | F-10 | 4 | L | VSC-01, PLA-01 | à faire |
 | VSC-03 | Absences prévenues aux parents (envoi par COM), justificatifs, saisie déléguée (EP-6) | F-12 | 4 | M | VSC-02, COM-01 | à faire |
 | VSC-04 | Notes et bulletins : périodes, évaluations, coefficients, note absente distincte de zéro, verrouillage par période, tableau d'avancement de la saisie, conseil de classe ; comprend le carnet de notes officiel et les grilles d'évaluation | F-13, EC-3, EC-4 | 4 | XL | VSC-02, Q-06, Q-16 | à faire |
 | VSC-06 | Formation professionnelle : profil, assiduité pour les bourses | F-20 | 5 | M | MOT-05 | à faire |
-| VSC-07 | Discipline : incidents, sanctions graduées, conseil de discipline, famille prévenue par COM ; durée de conservation fixée par l'école, puis effacement | — | 5 | M | VSC-02, COM-01 | à faire |
+| VSC-07 | Affectation des élèves aux groupes de langue et d'option : un élève, une classe, un seul groupe par langue ; effectif plafonné ; ces appartenances sont celles que MOT-06 lit | Q-3 de conception-c5 | 3 | M | VSC-01, MOT-05 | à faire |
 | VSC-08 | Infirmerie, **module facultatif éteint par défaut** : allergies et traitements utiles à l'école, passages, contacts d'urgence ; lu par l'infirmier et la direction seulement ; ouvert après le dossier CNDP de l'école | — | 5 | M | VSC-02, ADM-01 | conditionnel (dossier CNDP) |
 | VSC-09 | Activités et clubs : inscription, encadrant, créneaux placés sans conflit avec les cours, présence | — | 5 | M | VSC-02 | à faire |
 | VSC-10 | Notes du supérieur : crédits, système LMD, compensation, rattrapage, relevé ; moyenne pondérée de type GPA pour l'école qui la demande | — | 5 | L | VSC-04 | à faire |
 | VSC-11 | Mémoires et projets de fin d'études : sujet, encadrant, jalons, dépôt, jury, soutenance placée sans conflit | — | 5 | M | VSC-02, COU-02 | à faire |
 | VSC-12 | Choix des options et matières facultatives par l'élève ou sa famille, avec quotas et date limite ; les choix forment les groupes du moteur (groupes de langue de MOT-06) | — | 5 | M | VSC-02, MOT-06 | à faire |
+| VSC-13 | Discipline : incidents, sanctions graduées, conseil de discipline, famille prévenue par COM ; durée de conservation fixée par l'école, puis effacement (parité OpenEduCat ; numéro VSC-07 de [parite-openeducat.md](../parite-openeducat.md) déplacé : VSC-07 pris par l'affectation des groupes de langue sur `main`) | — | 5 | M | VSC-02, COM-01 | à faire |
 
 Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-echanges-etat.md)) ; le plafond de cumul de VSC-06 (F-22) est passé dans **RHP-02** ([RHP](RHP-personnel-paie.md)). Le numéro VSC-05 ne resservira pas.
 
@@ -50,6 +52,8 @@ Décisions du 13 novembre : VSC-05 (Massar) est devenue **ETA-02** ([ETA](ETA-ec
   - les numéros 0062 à 0079 sont réservés dans [suivi.md](../suivi.md) ;
   - le document est relu par les deux groupes.
 - **VSC-02** : une fratrie de trois enfants est inscrite par un seul responsable légal ; un enfant sans compte apparaît dans l'emploi du temps de sa classe.
+- **VSC-03** : le parent est prévenu de l'absence ; un justificatif accepté distingue cette absence de l'absence injustifiée que ETA-02 exporte.
+- **VSC-07** : dans un collège fictif, chaque élève est dans une classe et dans un seul groupe de chaque langue vivante ; un groupe plein est refusé en nommant le groupe et l'effectif ; le fichier produit est calculable par MOT-06 sans conflit d'élève.
 - **VSC-04** :
   - le bulletin d'une classe s'imprime en un clic ;
   - une absence à une évaluation ne change pas la moyenne ;

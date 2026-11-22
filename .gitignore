@@ -46,3 +46,6 @@ Jeux_HESTIM/
 
 # Secrets du serveur (clés Google Drive, etc.), créés par deploy/vps/generer-env.sh dans /opt/hestim
 /secrets/
+
+# Planche d'aperçu des logos et des icônes (VIT-09a), régénérée en local
+shared/icones/apercu.html

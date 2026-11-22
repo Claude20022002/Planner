@@ -11,7 +11,7 @@
 
 Les offres de stage sont passées dans [STA](STA-stages-alternance.md) le 13 novembre (COU-07 y est devenue STA-01).
 
-C'est l'équivalent de Moodle et de Classroom, à l'intérieur de Planner.
+Ce n'est pas un second Moodle. Le quotidien visé est celui d'une classe : supports, annonces, devoirs, questions. Les quiz restent dans QJE, et les questions au format Moodle entrent par QJE-02. Ouvrir un outil extérieur est COU-09, reporté.
 
 **Hors module** :
 - les fichiers eux-mêmes, gardés par StudyLib : BIB ;

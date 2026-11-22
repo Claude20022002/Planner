@@ -1,0 +1,36 @@
+---
+// Page par rôle : un titre déjà publié, deux boutons, puis les pages qui existent.
+// Pas de colonne visuelle : VIT-09 la posera dans l'ouverture.
+import Gabarit from '../socle/Gabarit.astro';
+import EnTetePage from './EnTetePage.astro';
+import GrilleCartes from './GrilleCartes.astro';
+import Passage from './Passage.astro';
+import FaqRole from './FaqRole.astro';
+import FinDePage from './FinDePage.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import { traductions } from '../../i18n/index.js';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  lang: string;
+  page: string;
+  fichier: string;
+  principal: string;
+  icones: any[];
+}
+
+const { lang, page, fichier, principal, icones } = Astro.props;
+const t = traductions(lang, fichier);
+const commun = traductions(lang, 'commun');
+const cartes = t('cartes').map((carte) => ({ ...carte, href: chemin(lang, carte.page) }));
+---
+<Gabarit langue={lang} page={page} titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')}>
+    <BoutonPrincipal slot="actions" href={chemin(lang, 'accueil', 'contact')}>{commun('navigation.contact')}</BoutonPrincipal>
+    <BoutonPrincipal slot="actions" href={chemin(lang, principal)} variante="contour">{commun(`navigation.${principal}`)}</BoutonPrincipal>
+  </EnTetePage>
+  <GrilleCartes id="aujourdhui" ton="gris" titre={t('aujourdhui')} cartes={cartes} icones={icones} />
+  <Passage titre={t('passage.titre')} avant={t('passage.avant')} avec={t('passage.avec')} lignes={t('passage.lignes')} />
+  <FaqRole titre={t('faq.titre')} questions={t('faq.questions')} />
+  <FinDePage langue={lang} />
+</Gabarit>

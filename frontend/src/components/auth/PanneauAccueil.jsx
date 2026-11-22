@@ -17,7 +17,7 @@ export default function PanneauAccueil() {
 
   return (
     <Box sx={{ bgcolor: ds.board.frame, p: '10px', borderRadius: `${ds.radius.lg}px`, width: '100%', maxWidth: 560 }}>
-      <Box sx={{ px: 1, pb: 1.25, display: 'flex', justifyContent: 'space-between', color: ds.nav.letter, fontFamily: ds.font.board, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+      <Box sx={{ px: 1, pb: 1.25, display: 'flex', justifyContent: 'space-between', color: ds.board.titre, fontFamily: ds.font.board, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
         <span>{t('login.boardTitle')}</span>
         <span>{ecole.nom_court}</span>
       </Box>

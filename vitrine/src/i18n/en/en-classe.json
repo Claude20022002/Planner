@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "titre": "In class · Planner",
+    "description": "Attendance by QR code or by hand, live or self-paced quizzes, computing and management games, and anonymous polls: Planner supports the classroom, with a single account."
+  },
+  "entete": {
+    "surtitre": "In class",
+    "titre": "After the timetable, the classroom.",
+    "accroche": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
+  },
+  "appel": {
+    "surtitre": "Attendance",
+    "titre": "Attendance in one gesture.",
+    "texte": "At the start of the session, the teacher marks each student: present, late or absent. If they wish, they display a QR code that students scan with the Planner app. The code changes every 30 seconds.",
+    "points": [
+      "By hand, on the session list: students need neither a phone nor a projected screen.",
+      "By QR code, with the app: one phone checks in one student only.",
+      "Attendance is linked to the timetabled session."
+    ]
+  },
+  "quiz": {
+    "surtitre": "Quizzes",
+    "titre": "Live quizzes, or at your own pace.",
+    "texte": "Teachers build their quizzes in the studio, then run them in class or leave them for each student to take at their own pace.",
+    "points": [
+      "Ten question types",
+      "Images and videos in questions",
+      "The link opens in a browser. A code or a QR code leads to the same link.",
+      "Live in class, or at your own pace"
+    ]
+  },
+  "aussi": {
+    "surtitre": "And also",
+    "titre": "Revise, and have your say.",
+    "cartes": [
+      {
+        "titre": "Games",
+        "texte": "Teachers offer games to their classes, including a simulated Linux terminal to practise commands."
+      },
+      {
+        "titre": "Polls",
+        "texte": "Teachers ask their class a question, and answers are anonymous. The school chooses whether to turn polls on."
+      },
+      {
+        "titre": "One account",
+        "texte": "The same account opens Planner, the course library and the games."
+      }
+    ]
+  }
+}

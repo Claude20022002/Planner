@@ -32,6 +32,11 @@ export default function SuiviIndividuel({ session }) {
             <Personnage avatar={p.avatar} idUser={p.id_user} taille={32} />
             <Box sx={{ fontWeight: 600 }}>{p.prenom} {p.nom}</Box>
           </Box>
+          {p.avec_solution > 0 && (
+            <Box sx={{ fontSize: '0.75rem', color: ds.board.letterDim, mt: 0.5 }}>
+              {t('jeux.modules.aides', { count: p.avec_solution })}
+            </Box>
+          )}
         </LignePanneau>
       ))}
     </Panneau>

@@ -1,0 +1,31 @@
+{
+  "meta": { "titre": "", "description": "" },
+  "entete": { "surtitre": "", "titre": "", "accroche": "" },
+  "aujourdhui": "",
+  "cartes": [
+    { "page": "emploiDuTemps", "titre": "", "texte": "" },
+    { "page": "enClasse", "titre": "", "texte": "" },
+    { "page": "securite", "titre": "", "texte": "" }
+  ],
+  "passage": {
+    "titre": "",
+    "avant": "",
+    "avec": "",
+    "lignes": [
+      { "avant": "", "avec": "" },
+      { "avant": "", "avec": "" },
+      { "avant": "", "avec": "" },
+      { "avant": "", "avec": "" },
+      { "avant": "", "avec": "" }
+    ]
+  },
+  "faq": {
+    "titre": "",
+    "questions": [
+      { "question": "", "reponse": "" },
+      { "question": "", "reponse": "" },
+      { "question": "", "reponse": "" },
+      { "question": "", "reponse": "" }
+    ]
+  }
+}

@@ -22,7 +22,7 @@ test("entre 23 h et minuit : pas de faux rappel, l'appel du jour reste ouvrable"
   await page.clock.setFixedTime(new Date(`${new Date().toISOString().slice(0, 10)}T23:30:00Z`));
   await seConnecter(page, { email: enseignante.email, motDePasse, role: "enseignant" });
 
-  // La séance du jour finit à 23 h 55 : pas encore de rappel, un seul « Faire l'appel »
+  // La séance du jour finit à minuit (24 h 00) : à 23 h 30, pas encore de rappel, un seul « Faire l'appel »
   await page.goto("/mes-classes");
   await expect(page.getByRole("heading", { name: /Algorithmique/, level: 2 }).first()).toBeVisible({ timeout: 20_000 });
   await expect(page.getByRole("alert")).toHaveCount(0);
@@ -36,13 +36,15 @@ test("entre 23 h et minuit : pas de faux rappel, l'appel du jour reste ouvrable"
 });
 
 test("appel par QR : projection, scans, validation", async ({ page, request }) => {
-  const { enseignante, etudiants, motDePasse, seance } = lireDonnees();
+  const { enseignante, etudiants, motDePasse } = lireDonnees();
   await seConnecter(page, { email: enseignante.email, motDePasse, role: "enseignant" });
 
-  // La classe en cours est en tête de Mes classes, avec l'appel à faire
+  // La classe en cours est en tête de Mes classes, avec l'appel à faire.
+  // De 23 h 55 à 23 h 59 le rappel ajoute un second bouton : les deux ouvrent le même appel.
   await page.goto("/mes-classes");
-  await page.getByRole("button", { name: "Faire l’appel" }).click();
-  await expect(page).toHaveURL(new RegExp(`/appel/${seance.id}$`));
+  await page.getByRole("button", { name: "Faire l’appel" }).first().click();
+  await expect(page).toHaveURL(/\/appel\/\d+$/);
+  const idSeance = /\/appel\/(\d+)$/.exec(page.url())[1];
 
   // La projection s'ouvre dans une fenêtre à part, à glisser sur l'écran de la salle
   const [projection] = await Promise.all([page.waitForEvent("popup"), page.getByRole("link", { name: "Projeter le QR code" }).click()]);
@@ -51,7 +53,7 @@ test("appel par QR : projection, scans, validation", async ({ page, request }) =
   await expect(projection.getByText("0 / 8 présents")).toBeVisible();
 
   // Trois étudiants scannent le code affiché
-  const { code } = await projection.evaluate((id) => fetch(`/api/presences/seances/${id}/code`, { credentials: "include" }).then((r) => r.json()), seance.id);
+  const { code } = await projection.evaluate((id) => fetch(`/api/presences/seances/${id}/code`, { credentials: "include" }).then((r) => r.json()), idSeance);
   for (const [i, etudiant] of etudiants.slice(0, 3).entries()) {
     const statut = await scannerCommeMobile(request, { email: etudiant.email, motDePasse, code, appareil: `telephone-parcours-${i + 1}` });
     expect(statut, `scan de ${etudiant.email}`).toBe(200);
