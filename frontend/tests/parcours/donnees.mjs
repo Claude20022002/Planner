@@ -78,6 +78,9 @@ export const preparerDonnees = async (racine) => {
   await seanceDu(demain, creneauDemain.id_creneau, fixture.salle.id_salle);
   // La même séance dans une semaine, à distance (sans salle) : son lien de visio (lot EC-11, lienVisio.spec)
   const seanceADistance = await seanceDu(plusTard(aujourdhui, 7), creneau.id_creneau, null);
+  // Une séance d'hier sans appel, à distance elle aussi (aucune salle prise, aucun créneau de plus) :
+  // l'appel fait sur papier s'y saisit après coup (M-1, appelApresCoup.spec)
+  const seanceHier = await seanceDu(plusTard(aujourdhui, -1), creneau.id_creneau, null);
 
   // Les étudiants ne voient un mois qu'une fois publié : ceux de la séance du jour, du lendemain, de la séance à distance et de la séance fixe de la classe le sont
   const moisPublies = [...new Set([aujourdhui, demain, seanceADistance.date_seance, String(fixture.affectation.date_seance).slice(0, 10)].map((d) => String(d).slice(0, 7)))];
@@ -111,6 +114,7 @@ export const preparerDonnees = async (racine) => {
     changementTelephone: { etudiante: compte(changeDeTelephone), ...TELEPHONES },
     seance: { id: seance.id_affectation, cours: fixture.cours.nom_cours, groupe: fixture.groupe.nom_groupe },
     seanceADistance: { id: seanceADistance.id_affectation, date: String(seanceADistance.date_seance).slice(0, 10) },
+    seanceHier: { id: seanceHier.id_affectation, date: String(seanceHier.date_seance).slice(0, 10) },
     // Séance déjà planifiée lundi 4 janvier 2027 à 9 h (createPlanningFixture) : le parcours des séances la percute
     seanceFixe: { date: String(fixture.affectation.date_seance).slice(0, 10), salle: fixture.salle.nom_salle, groupe: fixture.groupe.nom_groupe, autreGroupe: fixture.autreGroupe.nom_groupe },
     generation,
