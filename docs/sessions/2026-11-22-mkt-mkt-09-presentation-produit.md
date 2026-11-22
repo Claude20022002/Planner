@@ -13,6 +13,10 @@ git -C "../travaux-planner/mkt-09-presentation-produit" push -u origin mkt/mkt-0
 gh pr create --base main --head mkt/mkt-09-presentation-produit --fill
 ```
 
+## Reprise après la revue client du chef
+
+Le PowerPoint f3af1cc a obtenu 11/42. La nouvelle trame pour le supérieur privé est commitée à cb439be avec sa revue client. Contrôles de structure : 15 diapositives, 3 annexes, 1 200 secondes et 35/42 en auto-évaluation. Le chef valide la trame avant un nouveau PowerPoint. Le discours commercial utilise les rôles de la scolarité, du vacataire et de l’étudiant sans nommer l’école fictive.
+
 ## Prompt de reprise
 
-Reprends MKT-09 sur la branche mkt/mkt-09-presentation-produit. Relis la trame a08c429 et la version de travail f3af1cc dans planner-marketing, puis les retours du coordinateur. Exécute le scénario sur ORION, date les observations, recadre les captures web à la charte, intègre le contact fourni par le chef et régénère le PowerPoint avec notes. Vérifie le rendu et le contrôle créatif avant diffusion.
+Reprends MKT-09 dans planner-marketing au commit cb439be. Lis 00-brief.md, sa revue client et la décision du chef sur le report de TD comme test d’achat. Après validation, prépare les captures web et le fichier de sources séparé, produis le PowerPoint puis passe les deux revues sur les images exportées.

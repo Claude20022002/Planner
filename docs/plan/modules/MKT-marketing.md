@@ -52,7 +52,7 @@ La session principale de `..\planner-marketing` est le **directeur marketing** :
 | MKT-06 | Charte visuelle mise à jour (marque Planner, thème neutre) et gabarits de visuels | libre | M | MKT-02 | à faire |
 | MKT-07 | Plan de mesure : objectifs, indicateurs, outils gratuits | libre | S | MKT-03 | à faire |
 | MKT-08 | Calendrier éditorial et publications sur les réseaux | quand la vente reprend | M | MKT-03, MKT-06 | gelé |
-| MKT-09 | Supports commerciaux pour les directeurs (plaquette, présentation) | quand la vente reprend | M | MKT-03, VEN-07 | PowerPoint de relecture produit le 22 nov. dans le dépôt marketing. Diffusion gelée. |
+| MKT-09 | Supports commerciaux pour les directeurs (plaquette, présentation) | quand la vente reprend | M | MKT-03, VEN-07 | Nouvelle trame pour le supérieur privé soumise au chef le 22 nov. Diffusion gelée. |
 | MKT-10 | Campagne de lancement auprès des écoles (reprend `2026-10-31-lancement-ecoles`) | quand la vente reprend | L | MKT-04 à MKT-09 | gelé |
 
 ## Critères de « terminé »
