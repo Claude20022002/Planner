@@ -269,7 +269,8 @@ jobs:
           # Chemins depuis la racine du dépôt : build-push-action n'applique pas
           # defaults.run.working-directory (frontend/) ; ../solver échouait.
           context: solver
-          file: solver/Dockerfile.parcours
+          file: solver/Dockerfile
+          target: parcours
           load: true
           tags: hestim-solver:parcours
 

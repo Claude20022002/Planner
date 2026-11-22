@@ -5,7 +5,7 @@
 | Fait par | agent de Cursor (Auto) |
 | Chantier | hors chantier (correctif CI) |
 | Dossier de travail | `..\travaux-planner\ci-cache-maven-solveur` |
-| Dernier commit | (ce commit) |
+| Dernier commit | (commits plan puis code de cette session) |
 
 ## Objectif de la session
 
@@ -13,18 +13,19 @@ Corriger les **429 Maven Central** du job Parcours : paqueter le solveur hors Do
 
 ## Plan
 
-[fix-ci-maven-solveur-hors-docker.md](../conception/exploitation/fix-ci-maven-solveur-hors-docker.md) — validé par le chef (session Cursor, « allons s'y »).
+[fix-ci-maven-solveur-hors-docker.md](../conception/exploitation/fix-ci-maven-solveur-hors-docker.md) — **Validé : coordinateur, 22 nov. 1 h 05, avec les précisions 1 et 2** (`03982d3c`).
 
 ## Fait
 
-- Plan alternatif (Maven hors Docker) commité seul, puis validé.
-- `solver/Dockerfile.parcours` : JRE Alpine + `COPY target/hestim-solver.jar`.
-- `ci-cd.yml` job Parcours : `setup-java` + `mvn package -DskipTests`, puis build avec `Dockerfile.parcours` (plus de cache BuildKit Maven).
+- Plan alternatif puis statut validé (précisions : un Dockerfile, cibles `parcours` / production ; `.dockerignore` sans exclure `target/`).
+- `solver/Dockerfile` : `AS execution`, cible `parcours` (COPY du contexte), production en dernier (`COPY --from=build`).
+- `solver/.dockerignore` : `target/` non exclu ; retrait de `Dockerfile.parcours`.
+- `ci-cd.yml` : `setup-java` + `mvn package -DskipTests`, puis `target: parcours`.
 - Fusion de `origin/main` (dont #169).
 
 ## Vérifié
 
-- Diff workflow relu ; JAR finalName `hestim-solver` confirmé dans `pom.xml`.
+- Diff workflow et Dockerfile relus ; JAR finalName `hestim-solver` confirmé dans `pom.xml`.
 - Critère de succès = Parcours vert après push du chef.
 
 ## Questions
