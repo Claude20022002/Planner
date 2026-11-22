@@ -3,25 +3,28 @@
 | | |
 |---|---|
 | Module | [VIT](../../plan/modules/VIT-site-vitrine.md) · étape 1 de la [feuille de route](../../plan/feuille-de-route.md) (le site et la charte) |
-| Branche | plan : `doc/coordination-2026-11-22` ; code : `feat/vit-20-structure-du-site` (mission d'équipe, après les fusions du § 9) |
-| Rédigé par | Claude Code (Opus 5.5), coordinateur, le 2026-11-22 |
+| Branche | plan : `doc/coordination-2026-11-22` ; code : `feat/vit-20-structure-du-site` (mission d'équipe, [fiche](../../plan/missions/vit-20-equipe.md)) |
+| Rédigé par | Claude Code (Opus 5.5), coordinateur, le 2026-11-22 ; **version 2** le même jour (17 modules vendables, VIT-15 fondue) |
 | Taille | **L** : le plan est validé par le chef |
-| **Validé** | par Claude20022002 le 2026-11-22 (« Je valide », questions 9 à 13 comprises) |
+| **Validé** | version 1 par Claude20022002 le 2026-11-22 ; **version 2 : choix validés par le chef le 22 nov. (questions 15 à 18) ; texte de la version 2 à viser** |
 
 ## 1. Objet et critère de « terminé »
 
-Demande du chef (22 nov.) : « que notre site soit bien structuré comme https://www.odoo.com/fr_FR ». On reprend **la structure** d'Odoo (barre à méga-menus, accueil avec la grille des applications, une page par application sur un gabarit commun, page « Toutes les applications », pied de page en colonnes). On ne reprend **ni le texte, ni le dessin, ni les prix** d'Odoo. La règle des textes reste : ne promettre que ce qui existe.
+Demande du chef (22 nov.) : « que notre site soit bien structuré comme https://www.odoo.com/fr_FR ». On reprend **la structure** d'Odoo : barre à méga-menus, accueil avec la grille des applications, une page par application sur un gabarit commun, page « Toutes les applications », pied de page en colonnes. On ne reprend **ni le texte, ni le dessin, ni les prix** d'Odoo. La règle des textes reste : ne promettre que ce qui existe.
+
+**Les applications du site sont les 17 modules vendables** validés par le chef le 21 nov. ([étude 15](../../etude-marche/15-modules-et-packs.md), branche `etude/ven-modules-packs`, #242 ; corrigée le 22 nov. : la Bibliothèque passe à l'étape 3). **VIT-15** (une page par module, bloc « selon votre équipement ») **est fondue dans VIT-20** (question 17).
 
 Terminé quand :
 
 1. la barre de navigation est : **Applications ▾ · Établissements ▾ · Ressources ▾ · Contact**, puis les langues, « Se connecter » (caché tant que l'adresse de l'application n'est pas fixée) et le bouton **« Demander une démonstration »** ;
-2. l'accueil suit l'ordre du § 4.3, avec la grille des applications sous le titre ;
-3. chaque application a sa page `/<langue>/applications/<adresse>/`, toutes sur le même gabarit (§ 4.4), et `/<langue>/applications/` les montre toutes ;
-4. les modules prévus apparaissent en **tuiles grisées « Bientôt »**, sans lien, dans le menu, sur l'accueil et sur la page « Toutes les applications » ;
-5. le pied de page a quatre colonnes (§ 4.5), puis la barre légale, les langues et les droits ;
-6. les anciennes adresses des pages de fonction mènent à la nouvelle page ;
-7. français et anglais ; l'arabe garde les mêmes clés, vides (repli sur le français), comme aujourd'hui ;
-8. build, tests de `vitrine/tests/`, `node scripts/verifier-neutre.mjs` (superlatifs compris, VIT-18b), budget d'EP-19 (VIT-19, 200 Ko par page), axe-core, 390, 768 et 1440 px, clavier et toucher sans JavaScript pour les menus.
+2. le menu « Applications » range les 17 modules en **quatre catégories** (§ 4.2), avec la ligne « Inclus dans tout abonnement » au bas ;
+3. les **5 modules disponibles** ont chacun leur page `/<langue>/applications/<module>/`, sur le même gabarit (§ 4.4), avec le bloc « selon votre équipement » ; les **12 autres** sont des **tuiles grisées « Bientôt »**, sans lien, dans le menu, sur l'accueil et sur `/<langue>/applications/` ;
+4. le socle inclus a sa page `/<langue>/socle/` ;
+5. l'accueil suit l'ordre du § 4.3, avec la grille des modules sous le titre et « Pourquoi Planner » animé et interactif (§ 4.8) ;
+6. le pied de page a quatre colonnes (§ 4.5), puis la barre légale, les langues et les droits ;
+7. les anciennes adresses des pages de fonction mènent à la nouvelle page ;
+8. français et anglais ; l'arabe garde les mêmes clés, vides (repli sur le français), comme aujourd'hui ;
+9. build, tests de `vitrine/tests/`, `node scripts/verifier-neutre.mjs` (superlatifs compris, VIT-18b), budget d'EP-19 (VIT-19, 200 Ko par page), axe-core, 390, 768 et 1440 px, clavier et toucher sans JavaScript pour les menus.
 
 ## 2. Ce qui existe (sur `origin/main`, `110a1d8d`)
 
@@ -29,43 +32,43 @@ Terminé quand :
 |---|---|---|
 | En-tête : menu « Solutions » (types et rôles), menu « Fonctions », liens Sécurité et Bientôt, langues, « Nous contacter » | `vitrine/src/components/socle/EnTete.astro` | refait selon le § 4.2 ; le mécanisme `<details>` sans JavaScript est gardé |
 | Menu « Fonctions » par catégorie, tiré du registre | `vitrine/src/components/catalogue/MenuFonctions.astro` | remplacé par le menu « Applications » |
-| Registre des fonctionnalités (application, catégorie, page, état) | `vitrine/src/donnees/fonctionnalites.json`, `components/catalogue/registre.js` | reste la source des listes de fonctionnalités ; le champ `page` devient inutile (§ 4.4) |
-| Sept applications et leurs noms | `vitrine/src/i18n/*/fonctionnalites.json` → `applications` | mêmes clés : `planning`, `pedagogie`, `personnes`, `etablissement`, `annonces`, `activites`, `bibliotheque` |
-| Logos des sept applications | `shared/icones/modules/<clé>.svg` et `-petit.svg` (VIT-09a) | posés dans le menu, la grille, l'en-tête de chaque page d'application |
-| Constantes de navigation | `vitrine/src/i18n/langues.js` : `ROLES`, `FONCTIONS`, `BARRE`, `NAVIGATION` | remplacées par `APPLICATIONS`, `RESSOURCES` (§ 5) |
-| Pages de fonction | `vitrine/src/pages/[lang]/` : `emploi-du-temps`, `en-classe`, `quiz-et-jeux`, `cours-et-annonces`, `bibliotheque`, `application`, `etablissement` | leurs sections passent dans les pages d'application (§ 4.6), puis elles deviennent des redirections |
-| Accueil en dix sections | `vitrine/src/pages/[lang]/index.astro`, `components/accueil/` | resserré (§ 4.3) |
-| Modules en préparation | `vitrine/src/i18n/*/bientot.json` → `ecole.cartes` | source unique des tuiles grisées : rien n'est ajouté |
-| Pied de page en quatre colonnes (Fonctions, Solutions, Par rôle, Ressources) | `vitrine/src/components/socle/PiedDePage.astro` | colonnes renommées et reclassées (§ 4.5) |
-| Catalogue « Toutes les fonctionnalités » | `vitrine/src/pages/[lang]/fonctionnalites.astro` | gardé ; c'est l'onglet « Fonctionnalités » de chaque page d'application |
+| Registre des fonctionnalités (application, catégorie, page, état) | `vitrine/src/donnees/fonctionnalites.json`, `components/catalogue/registre.js` | reste la source des listes ; chaque entrée reçoit un champ `module` (l'un des 17) ; le catalogue se range par module |
+| Sept « applications » du registre | `i18n/*/fonctionnalites.json` → `applications` | remplacées par les 17 modules ; la clé `application` du registre reste pour le logo tant que VIT-09c n'a pas livré |
+| Logos des sept applications | `shared/icones/modules/<clé>.svg` (VIT-09a) | posés sur les modules correspondants ; les autres modules gardent une place réservée que **VIT-09c** (Codex, plan validé) remplit |
+| Constantes de navigation | `vitrine/src/i18n/langues.js` : `ROLES`, `FONCTIONS`, `BARRE`, `NAVIGATION` | remplacées (§ 5, R0) |
+| Pages de fonction | `pages/[lang]/` : `emploi-du-temps`, `en-classe`, `quiz-et-jeux`, `cours-et-annonces`, `bibliotheque`, `application`, `etablissement` | leurs sections passent dans les pages de module et la page du socle (§ 4.6), puis elles deviennent des redirections |
+| Accueil en dix sections | `pages/[lang]/index.astro`, `components/accueil/` | resserré (§ 4.3) |
+| Pied de page en quatre colonnes (Fonctions, Solutions, Par rôle, Ressources) | `components/socle/PiedDePage.astro` | colonnes renommées et reclassées (§ 4.5) |
+| Catalogue « Toutes les fonctionnalités » | `pages/[lang]/fonctionnalites.astro` | gardé ; c'est l'onglet « Fonctionnalités » de chaque page de module |
+| Contenu exigé de VIT-15 | [fiche de VIT-15](../../plan/missions/vit-15-pages-modules.md) (branche `doc/coordination-equipe`) | repris au § 4.9 |
+| Étude EP-18 (contextes à faible équipement) | #253 | source du bloc « selon votre équipement » (§ 4.9) |
 
-Travaux ouverts qui touchent les mêmes fichiers : #254 (VIT-13, `solutions.json`), #223 (VIT-12, pied de page, `langues.js`, `commun.json`), VIT-16 (Contact et À propos, plan sans code, en attente des corrections du chef), #227 (VIT-09b, plan des illustrations et de la première section de l'accueil).
+Travaux ouverts qui touchent les mêmes fichiers : #254 (VIT-13, `solutions.json`), #223 (VIT-12, pied de page, `langues.js`, `commun.json`), VIT-16 (Contact et À propos, plan sans code : son plan touche l'en-tête, le pied de page et `Contact.astro`), #227 (VIT-09b). Voir le § 9.
 
 ## 3. Questions et réponses
 
-Posées le 22 nov. par l'outil de questions ; réponses du chef.
+Réponses du chef, 22 nov., par l'outil de questions.
 
 | N° | Question | Réponse du chef |
 |---|---|---|
-| 1 | Barre de navigation | **Calque d'Odoo adapté** : Applications ▾, Établissements ▾ (types et rôles), Ressources ▾, Contact ; « Se connecter » et « Demander une démonstration ». **Pas de « Tarifs »** : aucun prix publié tant que la vente est mise de côté |
-| 2 | Accueil | **Resserré** : titre et boutons, grille des applications, vidéo, blocs d'arguments, types d'établissement, appel final. **Pas de témoignage** tant qu'aucune école n'a donné son accord écrit |
+| 1 | Barre de navigation | **Calque d'Odoo adapté** : Applications ▾, Établissements ▾ (types et rôles), Ressources ▾, Contact ; « Se connecter » et « Demander une démonstration ». **Pas de « Tarifs »** |
+| 2 | Accueil | **Resserré** ; **pas de témoignage** tant qu'aucune école n'a donné son accord écrit |
 | 3 | Pages détaillées | **Une page par application** sur un gabarit commun, plus « Toutes les applications » ; les anciennes adresses redirigent |
-| 4 | Conduite | **Après la fusion des travaux ouverts du site, en équipe** (trois lots sans fichier commun) |
-| 5 | Regroupement du menu « Applications » | **Trois catégories** : Organiser (Emploi du temps, Établissement, Personnes) · Enseigner (Enseignements, Quiz et jeux, Bibliothèque) · Communiquer (Annonces, Application mobile) |
+| 4 | Conduite | **Après la fusion des travaux ouverts du site, en équipe** |
+| 5 | Regroupement du menu | trois catégories (version 1), **remplacé par la question 16** |
 | 6 | Boutons de droite | **« Demander une démonstration »** vers la page Contact ; **« Se connecter » prêt mais caché** tant que l'adresse de l'application n'est pas fixée (Q-11) |
 | 7 | Modules prévus | **Tuiles grisées « Bientôt »**, sans lien, dans le menu, la grille de l'accueil et « Toutes les applications » |
 | 8 | Pied de page | **Quatre colonnes** : Applications · Établissements · Ressources · Planner |
-
-Questions posées avec le plan, réponses du chef à la validation (22 nov.) :
-
-| N° | Question | Proposition du coordinateur | Réponse du chef |
-|---|---|---|---|
-| 9 | La section « Pourquoi Planner » de l'accueil (comparatif court, lignes choisies par le chef, VIT-14) | **la garder** comme dernier bloc d'arguments | **gardée, et rendue dynamique, interactive et animée** (§ 4.8) ; des captures de chaque page de notre site et d'Odoo servent à la préparer |
-| 10 | Les sections « Quiz et jeux », « Report » et « Bientôt » de l'accueil | **les retirer de l'accueil** : « Quiz et jeux » va sur sa page, « Report » sur la page Emploi du temps, « Bientôt » est remplacée par les tuiles grisées | retirées |
-| 11 | Les pages « En classe », « Cours et annonces » et « Pour l'établissement » réunissent des fonctions de plusieurs applications | **les répartir** par application (§ 4.6) ; leur ancienne adresse mène à l'application principale | oui |
-| 12 | Le plan de VIT-09b (#227, illustrations et première section de l'accueil) | **le reprendre après VIT-20**, sur le nouvel accueil ; le coordinateur le renvoie à son agent | oui |
-| 13 | Libellés nouveaux du § 4.7 | tels quels | oui |
-| 14 | Les deux sites comparés, l'usage du comparatif, les largeurs des captures | — | **Planner face à Odoo** ; **section du site public** ; **1440 et 390 px** |
+| 9 | « Pourquoi Planner » | **gardé, et rendu dynamique, interactif et animé** (§ 4.8) |
+| 10 | Quiz et jeux, Report et Bientôt sur l'accueil | **retirés** |
+| 11 | Pages qui réunissent plusieurs applications | **réparties** (§ 4.6) |
+| 12 | VIT-09b | **reprend son plan après VIT-20** |
+| 13 | Libellés du § 4.7 (version 1) | **visés** |
+| 14 | Comparatif : sites, usage, largeurs | **Planner face à Odoo** ; **section du site public** ; **1440 et 390 px** |
+| 15 | Liste des applications | **les 17 modules vendables** de l'étude 15 : 5 pages, 12 tuiles grisées, le socle en ligne « Inclus dans tout abonnement » |
+| 16 | Catégories | **quatre** : Organiser, Enseigner, Gérer, Communiquer (§ 4.2) |
+| 17 | VIT-15 | **fondue dans VIT-20** ; VIT-15 est close, Codex prend un lot de VIT-20 |
+| 18 | Coordination | **le coordinateur de cette session tient VIT-20 seule** ; l'autre session de coordination garde le reste |
 
 ## 4. Solution
 
@@ -73,19 +76,17 @@ Questions posées avec le plan, réponses du chef à la validation (22 nov.) :
 
 ```mermaid
 flowchart TD
-    A["/langue/ Accueil"] --> APP["/applications/ Toutes les applications"]
-    APP --> P1["emploi-du-temps"] & P2["etablissement"] & P3["personnes"]
-    APP --> P4["enseignements"] & P5["quiz-et-jeux"] & P6["bibliotheque"]
-    APP --> P7["annonces"] & P8["application-mobile"]
-    P5 --> J["/bibliotheque-des-jeux/ (onglet)"]
-    APP -.onglet Fonctionnalités.-> F["/fonctionnalites/#clé"]
+    A["/langue/ Accueil"] --> APP["/applications/ Toutes les applications : 5 pages, 12 tuiles grisées"]
+    APP --> P1["emploi-du-temps"] & P2["presences"] & P3["espace-de-cours"] & P4["quiz-et-jeux"] & P5["annonces-et-messages"]
+    P4 --> J["/bibliotheque-des-jeux/ (onglet)"]
+    APP --> S["/socle/ Inclus dans tout abonnement"]
+    S --> SEC["/securite/"]
+    APP -.onglet Fonctionnalités.-> F["/fonctionnalites/#module"]
     A --> E["Établissements : /solutions/#type, /direction/, /scolarite/, /enseignants/, /etudiants/"]
     A --> R["Ressources : /faq/, /comparer/, /securite/, /bientot/, /fonctionnalites/"]
     A --> C["/contact/ et /a-propos/ (VIT-16)"]
     A --> L["/mentions-legales/ et /confidentialite/ (VIT-12)"]
 ```
-
-Les adresses des pages d'application, dans l'ordre du menu : `emploi-du-temps` (planning), `etablissement`, `personnes`, `enseignements` (pedagogie), `quiz-et-jeux` (activites), `bibliotheque`, `annonces`, `application-mobile`.
 
 ### 4.2 Barre de navigation
 
@@ -93,134 +94,130 @@ Les adresses des pages d'application, dans l'ordre du menu : `emploi-du-temps` (
 [logo] Planner   Applications ▾   Établissements ▾   Ressources ▾   Contact     FR · EN   (Se connecter)   [Demander une démonstration]
 
 Applications ▾
-  Organiser             Enseigner             Communiquer           Bientôt (grisé, sans lien)
-  [logo] Emploi du temps  [logo] Enseignements  [logo] Annonces       Notes et bulletins · Vie scolaire
-  [logo] Établissement    [logo] Quiz et jeux   [·] Application mobile Familles · Admissions · …
-  [logo] Personnes        [logo] Bibliothèque
-  ─────────────────────────────────────────────────────────────────────────────
-  Toutes les applications →                     Toutes les fonctionnalités →
+  Organiser              Enseigner                 Gérer                       Communiquer
+  · Emploi du temps      · Espace de cours         · Inscriptions *            · Annonces et messages
+  · Présences            · Quiz et jeux            · Documents vérifiables *   · Vie scolaire et familles *
+  · Vacataires et heures *  · Bibliothèque *       · Frais et caisse *
+  · Pilotage *           · Évaluations, crédits et jurys *  · Paiements en ligne *
+                         · Stages *                · Échanges avec l'État *
+                         · Formation et financeurs *
+  ─────────────────────────────────────────────────────────────────────────────────────
+  Inclus dans tout abonnement : Établissement · Personnes · Web et mobile · Sécurité      Toutes les applications →
+  * tuile grisée « Bientôt », sans lien
 ```
 
+- Les 17 modules, leur catégorie, leur état et leur adresse tiennent dans **un seul fichier**, `vitrine/src/donnees/modules.js`, dans l'ordre de l'étude 15. Un test vérifie qu'il compte 17 modules, 5 disponibles, et qu'un module disponible a sa page.
 - **Établissements ▾** : le panneau « Solutions » d'aujourd'hui, renommé : « Par type d'établissement » (les trois de `types.js`, dans l'ordre de VIT-13) et « Par rôle » (les quatre de `ROLES`).
 - **Ressources ▾** : FAQ, Comparer, Sécurité et données, Bientôt, Toutes les fonctionnalités. Le centre d'aide (VIT-03) s'y ajoutera.
 - **Contact** et **« Demander une démonstration »** : `/<langue>/contact/` une fois VIT-16 fusionnée ; d'ici là, `/<langue>/#contact`. Une seule constante dans `langues.js`.
-- **« Se connecter »** : lien vers `ADRESSE_APPLICATION` (`vitrine/src/donnees/site.js`), vide aujourd'hui ; vide, le lien n'est pas rendu. Un test le vérifie.
-- **Les tuiles grisées** ne sont pas des liens : texte, badge « Bientôt », `aria-disabled` absent (ce n'est pas un contrôle). Elles reprennent les titres de `bientot.json` → `ecole.cartes`, sans en ajouter.
-- **Application mobile** n'a pas de logo dans `shared/icones/modules/` : l'icône `smartphone` de lucide dans une tuile aux couleurs de la charte, en attendant un logo dessiné (hors périmètre).
-- **Téléphone** : le bouton de menu actuel ; chaque méga-menu devient un volet `<details>` ; aucun JavaScript nécessaire pour l'ouvrir.
+- **« Se connecter »** : lien vers `ADRESSE_APPLICATION` (`vitrine/src/donnees/site.js`), vide aujourd'hui ; vide, le lien n'est pas rendu.
+- **Tuiles grisées** : texte et badge « Bientôt », sans lien ni rôle de contrôle.
+- **Téléphone** : le bouton de menu actuel ; chaque méga-menu devient un volet `<details>`, sans JavaScript nécessaire.
 
 ### 4.3 Accueil
 
 | Ordre | Section | D'où elle vient |
 |---|---|---|
 | 1 | Titre, accroche, **« Demander une démonstration »** et **« Voir les applications »** | `Ouverture.astro` ; seuls les deux boutons changent |
-| 2 | **Grille des applications** : huit tuiles (logo, nom), puis les tuiles grisées « Bientôt », puis « Voir toutes les applications » | nouveau composant `GrilleApplications.astro` (lot B), aussi utilisé par la page « Toutes les applications » |
+| 2 | **Grille des modules** : les 5 disponibles (logo, nom, lien), les 12 grisés, puis « Voir toutes les applications » | `GrilleModules.astro`, posé par l'intégrateur à R0 |
 | 3 | Vidéo de présentation | `Video.astro` (VIT-08), inchangée |
-| 4 | Arguments : emploi du temps, en classe (l'appel), données | `EmploiDuTemps`, `Appel`, `Donnees`, inchangés sauf leur lien, qui mène à la page d'application |
-| 5 | Pourquoi Planner | `Pourquoi.astro` (VIT-14), si la question 9 est acceptée |
-| 6 | Par type d'établissement : trois cartes vers `/solutions/#<type>` | nouveau, textes de `solutions.json` (aucun texte nouveau) |
+| 4 | Arguments : emploi du temps, l'appel, données | `EmploiDuTemps`, `Appel`, `Donnees` ; leur lien mène à la page du module |
+| 5 | **Pourquoi Planner**, animé et interactif | § 4.8 |
+| 6 | Par type d'établissement : trois cartes vers `/solutions/#<type>` | nouveau composant, textes de `solutions.json` |
 | 7 | Appel final | `Contact.astro`, avec le bouton de démonstration |
 
-Retirées de l'accueil (question 10) : `QuizJeux`, `Report`, `Bientot`. Les fichiers restent tant qu'une page d'application les utilise ; sinon ils sont supprimés.
+Retirées de l'accueil : `QuizJeux`, `Report`, `Bientot`. Le lot de l'accueil ne supprime pas leurs fichiers : l'intégrateur le fait s'ils ne servent plus.
 
-### 4.4 Gabarit d'une page d'application
+### 4.4 Gabarit d'une page de module
 
-`vitrine/src/components/applications/PageApplication.astro`, sur le modèle de la page « Comptabilité » d'Odoo :
+`vitrine/src/components/applications/PageModule.astro`, sur le modèle de la page « Comptabilité » d'Odoo, et avec tout ce que demandait VIT-15 :
 
-1. **En-tête** : logo de l'application, surtitre (la catégorie), titre, accroche, bouton « Demander une démonstration ».
-2. **Onglets** sous l'en-tête : « Aperçu » (la page), « Fonctionnalités » (`/fonctionnalites/#<clé>`), et pour Quiz et jeux « Bibliothèque des jeux ».
-3. **Sections** propres à l'application, reprises des pages actuelles (§ 4.6), passées par un `<slot />`.
-4. **« Toutes les fonctionnalités de <application> »** : la liste du registre filtrée sur la clé, avec le badge « Bientôt » pour l'état `bientot`.
-5. **« Un besoin, une application. »** : les autres applications de la même catégorie, puis « Toutes les applications ».
-6. **Fin de page** : `FinDePage.astro`, inchangée.
+1. **En-tête** : logo du module (VIT-09a, ou la place réservée), surtitre (la catégorie), titre, accroche, « Demander une démonstration ».
+2. **Onglets** : « Aperçu », « Fonctionnalités » (`/fonctionnalites/#<module>`), et pour Quiz et jeux « Bibliothèque des jeux ».
+3. **Sections** propres au module, reprises des pages actuelles (§ 4.6), par un `<slot />`.
+4. **« Toutes les fonctionnalités de <module> »** : le registre filtré sur `module`, avec le badge « Bientôt » pour l'état `bientot`.
+5. **« Selon votre équipement »** : § 4.9.
+6. **Pour qui** : les types d'établissement (VIT-13) et les rôles (VIT-10) concernés, en liens.
+7. **« Un besoin, une application. »** : les autres modules de la même catégorie (grisés s'ils sont « Bientôt »), puis « Toutes les applications ».
+8. **Fin de page** : `FinDePage.astro`, inchangée.
 
-Les huit applications et leurs données d'affichage tiennent dans un seul fichier, `vitrine/src/donnees/applications.js` : clé du registre, adresse, catégorie, logo, ordre. Un test vérifie que chaque clé du registre a sa page, et l'inverse.
+La page **« Inclus dans tout abonnement »** (`/socle/`) suit le même gabarit, sans onglets ni bloc d'équipement : Établissement, Personnes, Web et mobile, puis un lien vers Sécurité et données.
 
 ### 4.5 Pied de page
 
 | Applications | Établissements | Ressources | Planner |
 |---|---|---|---|
-| les huit, puis « Toutes les applications » | les trois types, puis les quatre rôles | FAQ, Comparer, Sécurité et données, Bientôt, Toutes les fonctionnalités | À propos, Contact (VIT-16) |
+| les 5 modules disponibles, « Inclus dans tout abonnement », « Toutes les applications » | les trois types, puis les quatre rôles | FAQ, Comparer, Sécurité et données, Bientôt, Toutes les fonctionnalités | À propos, Contact (VIT-16) |
 
 Dessous : Mentions légales et Confidentialité (VIT-12), les langues, les droits.
 
 ### 4.6 Où vont les sections des pages actuelles
 
-| Page actuelle | Section | Page d'application | L'ancienne adresse mène à |
+| Page actuelle | Section | Nouvelle page | L'ancienne adresse mène à |
 |---|---|---|---|
-| `emploi-du-temps` | toutes | Emploi du temps | Emploi du temps |
-| `en-classe` | appel | Emploi du temps (l'appel est dans `planning`) | Emploi du temps |
+| `emploi-du-temps` | toutes ; plus « Report » de l'accueil | Emploi du temps | Emploi du temps |
+| `en-classe` | appel | Présences | Présences |
 | `en-classe` | quiz | Quiz et jeux | — |
-| `en-classe` | aussi (sondages) | Enseignements | — |
-| `cours-et-annonces` | supports | Enseignements | Enseignements |
-| `cours-et-annonces` | annonces | Annonces | — |
-| `etablissement` | statistiques, quotidien (salles, examens) | Établissement | Établissement |
-| registre `comptes` | — | Personnes (titre et accroche tirés du registre) | — |
+| `en-classe` | aussi (sondages) | Espace de cours | — |
+| `cours-et-annonces` | supports | Espace de cours | Espace de cours |
+| `cours-et-annonces` | annonces | Annonces et messages | — |
 | `quiz-et-jeux` | toutes | Quiz et jeux | Quiz et jeux |
-| `bibliotheque` | toutes | Bibliothèque | Bibliothèque |
-| `application` | toutes | Application mobile | Application mobile |
+| `etablissement` | statistiques, quotidien | Socle (Établissement) | Socle |
+| `application` | toutes | Socle (Web et mobile) | Socle |
+| registre `comptes` | — | Socle (Personnes) | — |
+| `bibliotheque` | toutes | **aucune** : la Bibliothèque est « Bientôt » (étape 3, correction du chef du 22 nov.) | Toutes les applications |
 
-**Aucune phrase nouvelle sur le produit** : les pages Enseignements, Personnes et Annonces prennent leur titre et leur accroche dans les textes existants (sections ci-dessus et descriptions du registre). Les seuls textes nouveaux sont les libellés du § 4.7.
+**Aucune phrase nouvelle sur le produit dans les lots A, B et C** : les sections sont déplacées telles quelles ; les titres et accroches des pages Présences, Espace de cours et Annonces et messages sont pris dans les sections déplacées. Les seuls textes nouveaux sont les libellés du § 4.7 et le bloc du § 4.9 (lot D), visés par le chef avant le code.
 
-Les redirections passent par `redirects` de `astro.config.mjs` (une page HTML de renvoi par adresse, sans script, compatible avec la CSP de VIT-06). Le site n'est pas encore en ligne : aucune adresse indexée n'est perdue.
+Les autres phrases du site qui présentent la Bibliothèque comme disponible (rôles, FAQ, solutions) sont relevées par l'intégrateur ; la correction est proposée au chef, phrase par phrase.
 
-### 4.7 Libellés nouveaux (français · anglais), à viser par le chef
+Les redirections passent par `redirects` de `astro.config.mjs` (une page de renvoi sans script, compatible avec la CSP de VIT-06). Le site n'est pas encore en ligne : aucune adresse indexée n'est perdue.
+
+### 4.7 Libellés nouveaux (français · anglais)
+
+Visés le 22 nov. (version 1) : Applications · Apps ; Établissements · Schools ; Ressources · Resources ; Demander une démonstration · Request a demo ; Se connecter · Sign in ; Toutes les applications · All apps ; Voir les applications · See the apps ; Un besoin, une application. · One need, one app. ; Toutes les fonctionnalités de {module} · Everything in {module} ; Aperçu · Overview ; Fonctionnalités · Features.
+
+**À viser (version 2)** :
 
 | Clé | Français | English |
 |---|---|---|
-| navigation.applications | Applications | Apps |
-| navigation.etablissements | Établissements | Schools |
-| navigation.ressources | Ressources | Resources |
-| navigation.demonstration | Demander une démonstration | Request a demo |
-| navigation.connexion | Se connecter | Sign in |
-| categories.organiser | Organiser | Organise |
-| categories.enseigner | Enseigner | Teach |
-| categories.communiquer | Communiquer | Communicate |
-| applications.toutes | Toutes les applications | All apps |
-| applications.voir | Voir les applications | See the apps |
-| applications.uneParBesoin | Un besoin, une application. | One need, one app. |
-| applications.fonctionnalitesDe | Toutes les fonctionnalités de {application} | Everything in {application} |
-| onglets.apercu · onglets.fonctionnalites | Aperçu · Fonctionnalités | Overview · Features |
-| applications.mobile | Application mobile | Mobile app |
+| categories.organiser · enseigner · gerer · communiquer | Organiser · Enseigner · Gérer · Communiquer | Organise · Teach · Manage · Communicate |
+| socle.titre | Inclus dans tout abonnement | Included in every plan |
+| socle.etablissement · personnes · webMobile · securite | Établissement · Personnes · Web et mobile · Sécurité | School · People · Web and mobile · Security |
+| modules (17 noms, étude 15) | Emploi du temps · Présences · Espace de cours · Quiz et jeux · Annonces et messages · Bibliothèque · Vacataires et heures · Évaluations, crédits et jurys · Inscriptions · Documents vérifiables · Stages · Frais et caisse · Formation et financeurs · Vie scolaire et familles · Échanges avec l'État · Paiements en ligne · Pilotage | Timetable · Attendance · Course space · Quizzes and games · Announcements and messages · Library · Part-time staff and hours · Grades, credits and juries · Admissions · Verifiable documents · Internships · Fees and cash desk · Training and funders · School life and families · Government exchanges · Online payments · Analytics |
+| equipement.titre | Selon votre équipement | Whatever your equipment |
+| pourQui.titre | Pour qui | Who it is for |
 
 ### 4.8 « Pourquoi Planner », comparatif animé et interactif (question 9)
 
-**Captures** (22 nov.) : chaque page du site en français, pleine page, à 1440 et 390 px, prises sur `origin/main` (`110a1d8d`), dans `..\travaux-planner\captures-vit-20\planner\`. Elles restent **hors du dépôt** (poids, et elles changent à chaque fonction). Celles d'Odoo n'ont pas pu être prises : odoo.com répond « 403 » aux navigateurs automatisés, et ce refus n'est pas contourné. Le chef les prend dans son navigateur (§ 9, étape 2), dans `captures-vit-20\odoo\`. Elles servent à la recette de VIT-20 ; **elles ne sont jamais publiées** (droits d'Odoo sur ses images et sa marque).
+**Captures** (22 nov.) : chaque page du site en français, pleine page, à 1440 et 390 px, prises sur `origin/main` (`110a1d8d`), dans `..\travaux-planner\captures-vit-20\planner\`, **hors du dépôt**. odoo.com répond « 403 » aux navigateurs automatisés ; ce refus n'est pas contourné : le chef prend les captures d'Odoo dans son navigateur (§ 9), dans `captures-vit-20\odoo\`. Elles servent à la recette ; **elles ne sont jamais publiées**.
 
-**Section publique** : la règle de VIT-14 (validée par le chef le 18 nov.) tient. **Aucun produit n'est nommé sur le site**, Odoo compris : la section compare Planner aux quatre approches courantes de `comparer.json`. Nommer Odoo sur le site serait une décision nouvelle du chef, avec un avis juridique (publicité comparative, marque).
+**Section publique** : la règle de VIT-14 (18 nov.) tient : **aucun produit n'est nommé sur le site**, Odoo compris. La section compare Planner aux quatre approches courantes de `comparer.json`. Nommer Odoo serait une décision nouvelle du chef, avec un avis juridique.
 
-Le principe :
+- **Sans JavaScript** : le tableau court d'aujourd'hui (`LIGNES_ACCUEIL`).
+- **Avec JavaScript** : des onglets (`role="tablist"`, flèches du clavier) pour les quatre approches ; la colonne choisie glisse à côté de celle de Planner, les cases apparaissent ligne après ligne. Un second mode montre un critère à la fois, Planner face aux quatre approches.
+- **Animation** avec `motion` (déjà dans `vitrine/package.json`) : fondu et glissement de 200 à 300 ms, sans boucle ni défilement automatique. **Mouvement réduit** : sans animation.
+- **Textes** : ceux de `comparer.json`. Aucun texte nouveau, sauf le libellé des onglets, tiré des noms des approches.
+- **Poids** : un îlot de moins de 15 Ko, chargé quand la section devient visible (`client:visible`).
+- **Accessibilité** : `aria-selected`, `aria-controls`, `aria-live="polite"` sur le titre de la colonne seulement ; axe-core sans erreur.
 
-- **Sans JavaScript**, la section reste le tableau court d'aujourd'hui (lignes de `LIGNES_ACCUEIL`) : rien ne se perd.
-- **Avec JavaScript**, un sélecteur à onglets (`role="tablist"`, flèches du clavier) propose les quatre approches. La colonne de l'approche choisie glisse à côté de celle de Planner, et les cases apparaissent ligne après ligne. Un second mode montre, critère par critère, Planner face aux quatre approches en même temps.
-- **Animation** avec `motion` (déjà dans `vitrine/package.json`) : fondu et glissement de 200 à 300 ms, sans boucle ni défilement automatique. **Mouvement réduit** : les cases changent sans animation.
-- **Textes** : ceux de `comparer.json` et les lignes de `LIGNES_ACCUEIL`. Aucun texte nouveau, sauf le libellé des onglets, tiré des noms des approches.
-- **Poids** : un îlot de moins de 15 Ko, chargé au moment où la section devient visible (`client:visible`) ; le contrôle d'EP-19 tranche.
-- **Accessibilité** : `aria-selected`, `aria-controls`, cases annoncées une seule fois (`aria-live="polite"` sur le titre de la colonne seulement) ; axe-core sans erreur.
+### 4.9 « Selon votre équipement » (repris de VIT-15)
 
-Fichiers (lot C) : `components/accueil/Pourquoi.astro` (modifié : le tableau sert de repli), `components/accueil/ComparatifInteractif.jsx` (créé, < 200 lignes), `tests/comparatif-interactif.test.js` (créé) ; le parcours vérifie le changement d'onglet au clavier et au toucher.
+Dans chaque page de module disponible, trois lignes : **sans wifi ou avec peu de connexion**, **sans écran projeté**, **sans téléphone de l'élève**. Chaque ligne dit ce que le code permet aujourd'hui, avec sa source dans le dépôt (gardée dans `donnees/equipement.js`, vérifiée par un test, non montrée sur le site). Ce qui manque est marqué « Bientôt ». Une ligne sans solution est écrite telle quelle.
 
-## 5. Fichiers créés ou modifiés, par lot
+Les phrases reprennent l'étude EP-18 (#253) et l'expertise C5 (appel à la main d'abord, QR code en option ; jeux sur téléphone ou ordinateur ; semaine lisible sans réseau ; emploi du temps imprimé en PDF), et N3 (le poids affiché avant téléchargement là où le code le fait, sinon « Bientôt »). Le supérieur d'abord (D4). **Le lot D écrit ces phrases dans un tableau (français, anglais, source), que le chef vise avant le code.**
 
-Un fichier n'a qu'un lot propriétaire. `commun.json` n'est écrit que par le lot A ; les lots B et C mettent leurs textes dans leurs propres fichiers.
+## 5. Lots et fichiers
 
-| Lot | Fichier | Créé / modifié | Taille visée |
-|---|---|---|---|
-| A · navigation | `components/socle/EnTete.astro` | modifié (style sorti dans `EnTete.css` s'il dépasse 300 lignes) | < 300 |
-| A | `components/navigation/MenuApplications.astro`, `MenuEtablissements.astro`, `MenuRessources.astro` | créés ; `catalogue/MenuFonctions.astro` supprimé | < 150 chacun |
-| A | `components/socle/PiedDePage.astro` | modifié | < 200 |
-| A | `i18n/langues.js` (`APPLICATIONS` lu depuis `donnees/applications.js`, `RESSOURCES`, adresse du contact), `donnees/site.js` (`ADRESSE_APPLICATION`) | modifiés, créé | — |
-| A | `i18n/*/commun.json` | modifiés (§ 4.7, navigation) | — |
-| A | `tests/navigation.test.js` ; `menu-fonctions.parcours.cjs` → `menus.parcours.cjs` | créé, renommé | — |
-| B · applications | `donnees/applications.js` | créé (le lot A le lit, il ne l'écrit pas) | < 80 |
-| B | `components/applications/` : `PageApplication`, `EnTeteApplication`, `Onglets`, `ListeFonctionnalites`, `AutresApplications`, `GrilleApplications`, `TuileBientot` | créés | < 150 chacun |
-| B | `pages/[lang]/applications/index.astro`, `pages/[lang]/applications/[application].astro` | créés | < 80 |
-| B | `i18n/*/applications.json` ; textes des pages actuelles déplacés | créés, déplacés | — |
-| B | les sept pages de fonction ; `astro.config.mjs` (`redirects`) | supprimées ; modifié | — |
-| B | `tests/applications.test.js` ; `fonctionnalites.test.js`, `contenu.test.js` adaptés | créé, modifiés | — |
-| C · accueil | `pages/[lang]/index.astro`, `components/accueil/Ouverture.astro`, `TypesEtablissement.astro` (créé) ; liens de `EmploiDuTemps`, `Appel`, `Donnees` | modifiés, créé | < 150 |
-| C | `i18n/*/accueil.json` | modifiés | — |
-| C | `tests/accueil.test.js` | créé | — |
+Un fichier n'a qu'un propriétaire : le détail, avec les agents, est dans la [fiche d'équipe](../../plan/missions/vit-20-equipe.md). En bref :
+
+| Lot | Contenu | Fichiers |
+|---|---|---|
+| **R0 · intégrateur** | le contrat commun | `donnees/modules.js`, `donnees/site.js`, `i18n/langues.js`, `i18n/*/commun.json` (tous les libellés du § 4.7), `i18n/*/modules.json`, `components/applications/GrilleModules.astro` et `TuileModule.astro`, `astro.config.mjs`, fichiers de traduction vides des lots |
+| **B · intégrateur** | pages de module, socle, catalogue, redirections | `components/applications/` (sauf `equipement/`), `pages/[lang]/applications/`, `pages/[lang]/socle.astro`, `donnees/fonctionnalites.json`, `components/catalogue/`, liens de `components/fonctions/` et `components/solutions/`, pages de fonction supprimées |
+| **A** | navigation | `components/socle/EnTete.astro`, `components/navigation/`, `components/socle/PiedDePage.astro` |
+| **C** | accueil et comparatif animé | `pages/[lang]/index.astro`, `components/accueil/`, `i18n/*/accueil.json` |
+| **D** | « Selon votre équipement » | `components/applications/equipement/`, `donnees/equipement.js`, `i18n/*/equipement.json` |
 
 ## 6. Données et migration
 
@@ -229,37 +226,40 @@ Aucune. Site statique ; aucune base, aucune donnée d'école.
 ## 7. Sécurité, isolation et exigences produit
 
 - Aucun formulaire, aucun script tiers, aucune requête vers l'extérieur. La CSP par page de VIT-06 reste calculée par le build.
-- « Se connecter » ne mène nulle part tant que l'adresse n'est pas décidée : pas de lien vers une adresse provisoire.
-- EP-19 (200 Ko transférés par page) : le méga-menu et les logos sont en SVG en ligne ou en fichiers mis en cache ; le contrôle de VIT-19 tranche.
-- Dépôt public : aucun nom d'école, aucune coordonnée réelle, aucun chiffre d'usage, aucun témoignage.
+- « Se connecter » ne mène nulle part tant que l'adresse n'est pas décidée.
+- EP-18 : le bloc du § 4.9 ; aucun parcours ne suppose le téléphone de l'élève.
+- EP-19 (200 Ko transférés par page) : le contrôle de VIT-19 tranche.
+- Dépôt public : aucun nom d'école, aucune coordonnée réelle, aucun chiffre d'usage, aucun témoignage, aucun prix.
 
 ## 8. Tests
 
-- `applications.test.js` : huit pages construites par langue publiée ; chaque clé du registre a sa page et réciproquement ; chaque page contient ses onglets, sa liste de fonctionnalités et « Un besoin, une application » ; chaque ancienne adresse produit une redirection vers la bonne page.
-- `navigation.test.js` : ordre de la barre ; trois catégories et leurs applications ; tuiles grisées sans `href` et identiques aux titres de `bientot.json` ; « Se connecter » absent quand `ADRESSE_APPLICATION` est vide, présent sinon ; quatre colonnes du pied de page.
-- `accueil.test.js` : ordre des sections du § 4.3 ; la grille compte huit tuiles et les tuiles grisées.
-- Existants à garder verts : `traductions`, `solutions`, `roles`, `comparer`, `video`, `poids-ep19`, `jetons`, `correctifs`, et le test de garde des textes (`verifier-neutre.mjs`).
-- Parcours `menus.parcours.cjs` : chaque méga-menu s'ouvre au clavier et au toucher, se ferme par Échap, sans JavaScript ; axe-core sans erreur ; 390, 768 et 1440 px.
+- `modules.test.js` (R0) : 17 modules, 4 catégories, 5 disponibles, chaque disponible a sa page et chaque page un module disponible ; noms présents en français et en anglais.
+- `applications.test.js` (B) : 5 pages et `/socle/` construites par langue publiée ; onglets, liste des fonctionnalités, « Pour qui », « Un besoin, une application » ; chaque entrée du registre a un `module` connu ; chaque ancienne adresse redirige vers la bonne page.
+- `navigation.test.js` (A) : ordre de la barre ; quatre catégories ; tuiles grisées sans `href` ; ligne « Inclus » ; « Se connecter » absent quand `ADRESSE_APPLICATION` est vide ; quatre colonnes du pied de page.
+- `accueil.test.js` et `comparatif-interactif.test.js` (C) : ordre des sections ; 17 tuiles ; le tableau de repli existe sans JavaScript ; mouvement réduit respecté.
+- `equipement.test.js` (D) : trois lignes par module disponible ; chaque source existe dans le dépôt ; « Bientôt » quand la ligne n'a pas de solution.
+- Existants à garder verts, et le test de garde des textes (`verifier-neutre.mjs`) ; parcours des menus au clavier, au toucher et sans JavaScript ; axe-core ; 390, 768 et 1440 px.
 
 ## 9. Étapes de livraison
 
-1. **Ce plan**, validé par le chef, commité seul sur `doc/coordination-2026-11-22`.
-2. **Avant le code**, le chef fusionne : #254 (VIT-13) et #223 (VIT-12). VIT-16 n'est pas attendue : le lien de contact passe par une constante. Le chef prend dans son navigateur les captures d'Odoo, page entière (huit pages : accueil, toutes les apps, Comptabilité, Planification, toutes les industries, tarifs, contact, aide), à 1440 et 390 px, dans `..\travaux-planner\captures-vit-20\odoo\bureau\` et `telephone\`.
-3. **Rendez-vous 0** : branche `feat/vit-20-structure-du-site` depuis `origin/main` à jour ; le lot B commite d'abord `donnees/applications.js` et `GrilleApplications.astro` (le contrat des deux autres lots).
-4. **Lots A, B, C en parallèle**, chacun sur sa sous-branche (`feat/vit-20a-navigation`, `feat/vit-20b-applications`, `feat/vit-20c-accueil`), dans son dossier de travail.
-5. **Intégration** par le lot B (le plus gros) : fusion des trois sous-branches dans `feat/vit-20-structure-du-site`, tests et parcours complets, captures à 390 et 1440 px pour la recette du chef.
-6. Une seule PR. Fiche d'équipe : `docs/plan/missions/vit-20-equipe.md`, écrite par le coordinateur après la validation, avec l'agent et le modèle de chaque lot.
+1. **Ce plan** (version 2), visé par le chef, commité seul.
+2. **Avant R0**, le chef fusionne #254 (VIT-13) et #223 (VIT-12), et prend les captures d'Odoo dans son navigateur (huit pages : accueil, toutes les apps, Comptabilité, Planification, toutes les industries, tarifs, contact, aide ; 1440 et 390 px ; `..\travaux-planner\captures-vit-20\odoo\bureau\` et `telephone\`).
+3. **R0** : l'intégrateur crée `feat/vit-20-structure-du-site` depuis `origin/main` à jour, commite le contrat commun (§ 5), vérifie build et tests, et annonce le sha.
+4. **Lots A, B, C, D en parallèle**, chacun sur sa branche de lot, depuis le sha de R0. D commence par son tableau de phrases (§ 4.9), visé par le chef avant son code.
+5. **Intégration** par l'intégrateur, dans l'ordre A, C, D ; tests et parcours complets ; captures à 390 et 1440 px pour la recette du chef, à côté de celles d'Odoo.
+6. **Relecture** par le coordinateur ; une seule PR.
 
 ## 10. Risques et retour arrière
 
-- **Conflits avec les travaux ouverts** : réglés par l'ordre du § 9 ; VIT-09b reprend son plan après (question 12).
-- **Textes perdus en déplaçant les sections** : le test `traductions` compare les clés avant et après ; chaque texte déplacé garde sa formulation.
+- **Conflits avec les travaux ouverts** : réglés par l'ordre du § 9 et la fiche d'équipe (VIT-16 ne touche plus l'en-tête, le pied de page ni l'accueil avant la fusion de VIT-20 ; VIT-09b refait son plan après).
+- **Textes perdus en déplaçant les sections** : le test `traductions` compare les clés avant et après.
 - **Retour arrière** : une seule PR ; le site n'est pas en ligne, revenir en arrière est un `git revert` de la fusion.
 
 ## 11. Hors périmètre
 
-- Tarifs et page « Tarifs » ; essai gratuit ; témoignages.
+- Tarifs, packs, essai gratuit, témoignages.
 - Centre d'aide (VIT-03), formulaire de contact (VIT-02), page d'état (VIT-04).
-- Logo dessiné de l'application mobile ; nouvelles illustrations (VIT-09b).
+- Les logos et images des modules (VIT-09c) ; nouvelles illustrations (VIT-09b).
+- La page « Bientôt » garde ses cartes ; son alignement sur les 17 modules est une fonction à part.
 - La version arabe publiée (UIX-04).
-- La structure de l'application elle-même (grille des modules : UIX-09).
+- La grille des modules dans l'application elle-même (UIX-09).
