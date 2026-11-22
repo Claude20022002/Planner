@@ -13,6 +13,7 @@
 - **Image et recette de mise en ligne** (VIT-06). Nginx sert le `dist/` Astro avec une CSP calculée par page et `noindex`. La CI teste l’image et active sa publication par SHA sur `main` avec les deux secrets Docker Hub. La mise en ligne attend les douze conditions du [plan](../../conception/exploitation/vit-06-mise-en-ligne.md#conditions-et-recette-du-chef).
 - **Logos des applications et icônes vivantes** (VIT-09a, branche `feat/vit-09a-logos-icones`, [plan validé le 18 nov.](../../conception/vitrine/vit-09a-logos-icones.md)) : `shared/icones/`, source unique pour le site et, avec UIX-10b, l'application. Sept logos illustrés (tuile en dégradé, objet en plans ; dessin détaillé et simplifié), aux teintes `app-<id>` de la charte v3, et douze icônes de commandes animées en CSS au survol et au focus, coupées en mouvement réduit. Aucune page ne les pose encore : c'est VIT-09b.
 - **Pages par rôle** (VIT-10 en cours, branche `feat/vit-10-pages-par-role`, [plan validé le 18 nov.](../../conception/vitrine/vit-10-pages-par-role.md)) : Direction, Scolarité, Enseignants, Étudiants. Le menu « Solutions » s'ouvre. Le pied de page est en colonnes. Pas de bande de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
+- **Mentions légales et confidentialité du site** (VIT-12, branche `feat/vit-12-pages-legales`, [plan et textes validés le 18 nov.](../../conception/vitrine/vit-12-pages-legales.md), condition 2 de VIT-06) : `/<langue>/mentions-legales/` et `/<langue>/confidentialite/`, liées depuis la barre du bas du pied de page (VIT-20, § 4.5) ; composant `textes/PageDeTexte.astro` ; l'adresse de contact est écrite une seule fois (`commun.json` → `contact.email`). Valeurs données par le chef le 22 nov. : éditeur FinAdmin Tech, hébergeur OVH SAS, contact@finadmintech.fr, journaux gardés 30 jours ; le test `pages-legales.test.js` refuse tout champ à compléter. La durée des journaux doit encore être réglée sur le serveur (VIT-06).
 - **Avant → avec, et FAQ par rôle** (VIT-10b en cours, branche `feat/vit-10b-avant-avec-faq`, [plan validé le 18 nov.](../../conception/vitrine/vit-10b-avant-avec-faq.md)) : cinq lignes par rôle et une FAQ en accordéon. Les phrases « avec » sont recopiées. Aucune illustration.
 - **Catalogue, FAQ et menu « Fonctions »** (VIT-11, branche `feat/vit-11-catalogue-faq`, [plan et visa du chef](../../conception/vitrine/vit-11-catalogue-faq.md)) : le registre alimente le catalogue par application et le menu par catégorie. Le panneau se consulte au clavier ou au toucher sans JavaScript. Le lien de repli ouvre le catalogue. Les sept réponses de la FAQ sont aussi disponibles en données structurées.
 - **Ce que font les concurrents**, d'après l'[étude de marché](../../etude-marche/01-concurrents.md) :
@@ -61,7 +62,8 @@
 ## À trancher avant VIT-02
 
 - Le **nom de domaine** (Q-11). Le nom du produit, lui, est décidé : **Planner**.
-- Les **mentions légales** et la **politique de confidentialité**, écrites par le juriste.
+- Les **mentions légales** et la **politique de confidentialité** : celles du site sans formulaire existent (VIT-12, validées par le chef
+  pour la mise en ligne non indexée) ; le juriste les relit, et les complète pour les données du formulaire, avant VIT-02 et avant l'indexation.
 - **Pas de prix publié** tant que la vente est mise de côté : la page parle de « nous contacter ».
 
 ## Références
