@@ -48,7 +48,7 @@ sequenceDiagram
 
 ## 7. Sécurité, isolation et exigences produit
 
-<!-- Canaux d'isolation (I-1 à I-16) touchés ; droits par rôle ; EP-1 à EP-12 concernées. -->
+<!-- Canaux d'isolation (I-1 à I-16) touchés ; droits par rôle ; EP-1 à EP-13 concernées. -->
 
 ## 8. Tests
 

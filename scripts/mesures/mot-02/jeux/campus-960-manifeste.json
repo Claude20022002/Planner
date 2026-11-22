@@ -1,0 +1,87 @@
+{
+  "etudiants": 960,
+  "promotions": 8,
+  "groupesTD": 16,
+  "groupesTP": 32,
+  "enseignants": 24,
+  "vacataires": [
+    {
+      "enseignantId": 3,
+      "demiJournees": [
+        0,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "enseignantId": 6,
+      "demiJournees": [
+        0,
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "enseignantId": 9,
+      "demiJournees": [
+        0,
+        1,
+        4,
+        8
+      ]
+    },
+    {
+      "enseignantId": 12,
+      "demiJournees": [
+        0,
+        1,
+        5,
+        9
+      ]
+    },
+    {
+      "enseignantId": 15,
+      "demiJournees": [
+        0,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "enseignantId": 18,
+      "demiJournees": [
+        0,
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "enseignantId": 21,
+      "demiJournees": [
+        0,
+        1,
+        4,
+        8
+      ]
+    },
+    {
+      "enseignantId": 24,
+      "demiJournees": [
+        0,
+        1,
+        5,
+        9
+      ]
+    }
+  ],
+  "cmParEnseignantAutrePromotion": 24,
+  "salles": 20,
+  "creneaux": 40,
+  "seances": 168,
+  "problemeSha256": "e0c0091bb8e494d2e1f036beee998e9a81bb1fda59b5e8683383d933529e6fef",
+  "temoinSha256": "26140cc7adeae2d665e0f39a7d0427fcdaca339b73b19ba3f1468f5c37f55f2a"
+}

@@ -161,6 +161,21 @@ describe("MP-1 : ce qu'on a le droit d'écrire", () => {
         expect(codes({ parametre: P("HOR.REGLE.PLAGES_RESTREINTES"), poids: 20, portee: "filiere" })).toEqual([]);
     });
 
+    test("une règle souple du solveur ne se coupe ni ne se remet que pour toute l'école (MOT-13, réponses 23 et 24)", () => {
+        expect(codes({ parametre: P("HOR.REGLE.TROUS"), valeur: false, portee: "filiere" })).toEqual(["portee_non_tenue"]);
+        expect(codes({ parametre: P("HOR.REGLE.TROUS"), valeur: true, portee: "niveau" })).toEqual(["portee_non_tenue"]);
+        expect(codes({ parametre: P("MAT.REGLE.JOURS_DIFFERENTS"), valeur: false, portee: "cycle" })).toEqual(["portee_non_tenue"]);
+        // Valeur et poids fins sur la même ligne : un seul refus
+        expect(codes({ parametre: P("HOR.REGLE.TROUS"), valeur: true, poids: 30, portee: "filiere" })).toEqual(["portee_non_tenue"]);
+        expect(codes({ parametre: P("HOR.REGLE.TROUS"), valeur: false, portee: "etablissement" })).toEqual([]);
+    });
+
+    test("le refus de la valeur fine ne touche ni les règles dures, ni les vœux, ni les règles que le solveur ne lit pas (réponse 25)", () => {
+        expect(codes({ parametre: P("ENS.CHARGE.MAX_H_JOUR"), valeur: 420, portee: "enseignant" })).toEqual([]);
+        expect(codes({ parametre: P("HOR.REGLE.PLAGES_RESTREINTES"), valeur: false, portee: "filiere" })).toEqual([]);
+        expect(codes({ parametre: P("PRF.ENS.CRENEAUX_PREFERES"), valeur: [], portee: "enseignant", auteur: "personne" })).toEqual([]);
+    });
+
     test("la portée suit le catalogue", () => {
         expect(porteeAdmise(P("ENS.CHARGE.MAX_H_JOUR"), "enseignant")).toBe(true);
         expect(porteeAdmise(P("ENS.CHARGE.MAX_H_JOUR"), "salle")).toBe(false);
