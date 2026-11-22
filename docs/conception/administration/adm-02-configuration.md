@@ -157,7 +157,7 @@ Pour les six règles souples, `GET /reglages` rend aussi le **choix** en cours, 
 
 Le test de concordance, **pour chacun des cinq profils** du catalogue (sans ligne d'école) :
 - chaque règle réglable du panneau a son nom de règle du solveur parmi les clés de `poidsDesRegles` : ce que le panneau laisse régler est lu par le calcul ;
-- chaque règle envoyée au solveur qui n'est pas réglable est montrée « verrouillée » par la liste du profil : rien n'est envoyé sans être montré.
+- chaque règle envoyée au solveur qui n'est pas réglable est montrée « verrouillée » par la liste du profil, ou bien c'est un vœu réglé par chaque enseignant (`modifiable: personne`) : rien n'est envoyé sans être montré. *Précisé au code* : les deux vœux des enseignants partent au solveur, ne sont pas réglables par l'école, et `profil.js` ne les marque pas verrouillés.
 
 ### 5.3 Les routes (ADM-02a)
 
@@ -248,7 +248,7 @@ flowchart LR
 | Fichier | Créé / modifié | Rôle | Taille visée |
 |---|---|---|---|
 | `backend/services/moteur/valeurs/reglagesEcole.js` | créé | les cinq réglages en données (§ 5.2) ; les règles réglables, tirées du catalogue par `activeeParLEcole` et `modifiableParLEcole` ; leurs choix | 90 |
-| `backend/services/moteur/valeurs/ecriture.js` | modifié (réponse 16) | exporte `activeeParLEcole` et `modifiableParLEcole` (le test du rang, sorti de `controlerEcriture`), sans changer un refus | 79 → 85 |
+| `backend/services/moteur/valeurs/ecriture.js` | modifié (réponse 16) | exporte `activeeParLEcole` et `modifiableParLEcole` (le test du rang, sorti de `controlerEcriture`), sans changer un refus | 67 → 75 |
 | `backend/services/moteur/contraintes/profil.js` | modifié (réponse 17, extension du coordinateur) | `raison_code` et `conditions` en données ; `raison` inchangée | 64 → 80 |
 | `backend/services/moteur/valeurs/valeursDeLEcole.js` | créé | lecture ciblée de quelques clés à la date du jour à l'école ; valeurs, choix, version courante (pour `GET /reglages`) | 110 |
 | `backend/services/moteur/valeurs/apercu.js` | créé | aperçu à blanc : contrôles, avant → après, effets, appel de la vérification des contraintes | 120 |
@@ -337,7 +337,7 @@ flowchart LR
 
 ## 9. Tests
 
-- **Concordance avec le solveur** (réponse 16) : pour chacun des cinq profils, règles réglables ⊆ règles envoyées par `poidsDesRegles`, et règles envoyées non réglables = règles montrées verrouillées.
+- **Concordance avec le solveur** (réponse 16) : pour chacun des cinq profils, règles réglables ⊆ règles envoyées par `poidsDesRegles`, et chaque règle envoyée non réglable est montrée verrouillée ou est un vœu d'enseignant.
 - **Raison en données** (réponse 17) : `raison_code` et `conditions` pour chaque cas ; la phrase `raison` ne change pas (les tests existants de `profil.js` restent verts).
 - **Unitaires, serveur** : chaque choix des six règles, à partir de poids du profil 1, 2, 5, 10, 20 (« Peu » absent pour 1) ; « Réglage particulier » ; bornes de chaque réglage ; conversions aller et retour ; concurrence (même clé, autre portée, même contrainte retirée, deux ajouts sans conflit).
 - **Intégration, serveur** (MySQL) :

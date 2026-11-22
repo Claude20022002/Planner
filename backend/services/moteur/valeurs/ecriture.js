@@ -16,9 +16,15 @@ const RANGS = ["personne", "responsable", "etablissement", "plateforme"];
 
 const erreur = (code, message) => ({ code, message });
 
-// Règle souple que le solveur applique et qu'une école règle : il n'en lit que la portée de l'école.
-// Les vœux d'un enseignant (niveau « personne » seul) en sont exclus : leur valeur est le vœu (réponse 25).
-const activeeParLEcole = (p, force) => p.role === "regle" && Boolean(p.regle_solveur) && (force ?? p.force) === "souple" && p.niveaux.includes("G");
+/** Cet auteur (personne, responsable, etablissement, plateforme) a-t-il le droit de modifier ce paramètre ? */
+export const peutModifier = (p, auteur) => p.modifiable !== "non" && RANGS.indexOf(auteur) >= RANGS.indexOf(p.modifiable);
+
+/**
+ * Règle souple que le solveur applique et qu'une école règle : il n'en lit que la portée de l'école.
+ * Les vœux d'un enseignant (niveau « personne » seul) en sont exclus : leur valeur est le vœu (réponse 25).
+ * Partagée avec le panneau de configuration (ADM-02, réponse 16) : ne pas la recopier.
+ */
+export const activeeParLEcole = (p, force) => p.role === "regle" && Boolean(p.regle_solveur) && (force ?? p.force) === "souple" && p.niveaux.includes("G");
 
 /**
  * @param {object} o
@@ -35,7 +41,7 @@ const activeeParLEcole = (p, force) => p.role === "regle" && Boolean(p.regle_sol
 export const controlerEcriture = ({ parametre: p, portee, valeur, force, poids, auteur, valeurs, dependances = [] }) => {
     const erreurs = [];
     if (p.modifiable === "non") return [erreur("non_modifiable", `${p.nom} ne se modifie pas : c'est une règle ou une valeur calculée par Planner.`)];
-    if (RANGS.indexOf(auteur) < RANGS.indexOf(p.modifiable)) erreurs.push(erreur("droit_insuffisant", `${p.nom} ne peut être modifié qu'au niveau « ${p.modifiable} ».`));
+    if (!peutModifier(p, auteur)) erreurs.push(erreur("droit_insuffisant", `${p.nom} ne peut être modifié qu'au niveau « ${p.modifiable} ».`));
     if (!porteeAdmise(p, portee)) erreurs.push(erreur("portee_interdite", `${p.nom} ne se règle pas au niveau « ${portee} ».`));
 
     if (valeur !== undefined) {
