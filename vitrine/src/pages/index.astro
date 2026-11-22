@@ -1,0 +1,21 @@
+---
+// Racine du site : renvoie vers l'accueil en français (langue de secours), sans JavaScript.
+import { traductions } from '../i18n/index.js';
+import { LANGUE_SECOURS, chemin } from '../i18n/langues.js';
+
+const t = traductions(LANGUE_SECOURS, 'commun');
+const cible = chemin(LANGUE_SECOURS);
+---
+<!doctype html>
+<html lang={LANGUE_SECOURS}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0;url=${cible}`} />
+    <link rel="canonical" href={cible} />
+    <title>{t('redirection.titre')}</title>
+  </head>
+  <body>
+    <a href={cible}>{t('redirection.lien')}</a>
+  </body>
+</html>

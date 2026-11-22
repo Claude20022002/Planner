@@ -52,6 +52,7 @@ import GenerationQuiz from "./GenerationQuiz.js";
 import MfaDefi from "./MfaDefi.js";
 import JeuModule from "./JeuModule.js";
 import JeuProgression from "./JeuProgression.js";
+import JeuEtatDefi from "./JeuEtatDefi.js";
 import JeuProfil from "./JeuProfil.js";
 import PasserelleWeb from "./PasserelleWeb.js";
 import Annonce from "./Annonce.js";
@@ -69,6 +70,7 @@ import Periode from "./Periode.js";
 import ParametrePlanning from "./ParametrePlanning.js";
 import VersionParametres from "./VersionParametres.js";
 import ValeurParametre from "./ValeurParametre.js";
+import ContrainteDeclaree from "./ContrainteDeclaree.js";
 import CoursComposante from "./CoursComposante.js";
 import Enseignement from "./Enseignement.js";
 import EnseignementGroupe from "./EnseignementGroupe.js";
@@ -595,6 +597,7 @@ MfaDefi.belongsTo(Users, { foreignKey: "id_user", as: "user", targetKey: "id_use
 Cours.hasMany(JeuModule, { foreignKey: "id_cours", as: "jeux", onDelete: "CASCADE" });
 JeuModule.belongsTo(Cours, { foreignKey: "id_cours", as: "cours" });
 Users.hasMany(JeuProgression, { foreignKey: "id_user", as: "progressionsJeux", onDelete: "CASCADE" });
+Users.hasMany(JeuEtatDefi, { foreignKey: "id_user", as: "etatsDefisJeux", onDelete: "CASCADE" });
 Users.hasOne(JeuProfil, { foreignKey: "id_user", as: "profilJeux", onDelete: "CASCADE" });
 Users.hasMany(PasserelleWeb, { foreignKey: "id_user", as: "passerellesWeb", onDelete: "CASCADE" });
 
@@ -609,6 +612,9 @@ AnnonceDestinataire.belongsTo(Users, { foreignKey: "id_user", as: "user", target
 VersionParametres.hasMany(ValeurParametre, { foreignKey: "id_version", as: "valeurs", onDelete: "CASCADE" });
 ValeurParametre.belongsTo(VersionParametres, { foreignKey: "id_version", as: "version" });
 VersionParametres.belongsTo(Users, { foreignKey: "id_auteur", as: "auteur", targetKey: "id_user", onDelete: "SET NULL" });
+// Contraintes déclarées par l'école, portées par la même version (MOT-13)
+VersionParametres.hasMany(ContrainteDeclaree, { foreignKey: "id_version", as: "contraintes", onDelete: "CASCADE" });
+ContrainteDeclaree.belongsTo(VersionParametres, { foreignKey: "id_version", as: "version" });
 
 // Push (D3) : chaque notification part aussi vers les appareils du destinataire, une fois validée
 // la transaction qui l'a créée (jamais pour un changement finalement annulé).
@@ -658,6 +664,7 @@ export {
     ParametrePlanning,
     VersionParametres,
     ValeurParametre,
+    ContrainteDeclaree,
     CoursComposante,
     Enseignement,
     EnseignementGroupe,
@@ -700,6 +707,7 @@ export {
     MfaDefi,
     JeuModule,
     JeuProgression,
+    JeuEtatDefi,
     JeuProfil,
     PasserelleWeb,
     Annonce,

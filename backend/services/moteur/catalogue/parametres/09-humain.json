@@ -7,7 +7,7 @@
         { "code": "ACCESSIBILITE", "nom": "Besoins d'accessibilité", "desc": "Un élève ou un enseignant à mobilité réduite impose des salles accessibles.", "type": "booleen", "defaut": false, "src": "3.38 12.10" },
         { "code": "PAUSE_NECESSAIRE", "nom": "Temps de pause nécessaire", "desc": "Pause propre à un groupe.", "type": "duree_min", "src": "3.37" },
         { "code": "MINEURS", "nom": "Public mineur", "desc": "Active les règles d'accueil et d'encadrement des mineurs.", "type": "booleen", "defaut": false, "niveaux": "P", "priorite": 1, "src": "9.19 16A.13" },
-        { "code": "PRIERE", "nom": "Temps de prière", "desc": "Plages à laisser libres si l'école l'a décidé ; ce choix reste le sien.", "type": "structure", "niveaux": "GP", "priorite": 3, "etat": "parametre", "ref": "pause_vendredi", "src": "7.46" }
+        { "code": "PRIERE", "nom": "Temps de prière", "desc": "Plages à laisser libres si l'école l'a décidé ; ce choix reste le sien.", "type": "structure", "niveaux": "GP", "priorite": 3, "etat": "parametre", "ref": "gabarit plage_interdite (ex-pause_vendredi, migration 0081)", "src": "7.46" }
       ] },
     { "code": "REGLE", "nom": "Règles humaines",
       "defauts": { "role": "regle", "type": "booleen", "defaut": true, "niveaux": "G", "force": "strict", "priorite": 1, "etat": "absent" },

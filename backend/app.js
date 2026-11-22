@@ -32,6 +32,7 @@ import calendrierRoutes from "./routes/calendrierRoutes.js";
 import evenementRoutes from "./routes/evenementRoutes.js";
 import parametrePlanningRoutes from "./routes/parametrePlanningRoutes.js";
 import moteurValeursRoutes from "./routes/moteurValeursRoutes.js";
+import moteurContraintesRoutes from "./routes/moteurContraintesRoutes.js";
 import composanteRoutes from "./routes/composanteRoutes.js";
 import enseignementRoutes from "./routes/enseignementRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
@@ -75,6 +76,7 @@ import {
     optionalAuth,
 } from "./middleware/index.js";
 import { choisirEtablissement } from "./middleware/etablissementMiddleware.js";
+import { authenticateToken } from './middleware/authMiddleware.js';
 
 dotenv.config();
 
@@ -143,6 +145,8 @@ app.use(logger);
 
 // Protection CSRF (cookie-to-header) sur toutes les méthodes modifiantes ;
 // les routes d'authentification publiques sont exemptées dans le middleware.
+// Authenticate solution requests first; this does not exempt authenticated writes from CSRF.
+app.post('/api/jeux/:code/defis/:idDefi/solution', authenticateToken);
 app.use(csrfProtection);
 
 // Mot de passe provisoire ou invitation : rien d'autre tant qu'il n'est pas changé
@@ -180,6 +184,7 @@ app.use("/api/calendrier", calendrierRoutes);
 app.use("/api/evenements", evenementRoutes);
 app.use("/api/parametres-planning", parametrePlanningRoutes);
 app.use("/api/moteur", moteurValeursRoutes);
+app.use("/api/moteur", moteurContraintesRoutes);
 app.use("/api/composantes", composanteRoutes);
 app.use("/api/enseignements", enseignementRoutes);
 app.use("/api/services", serviceRoutes);

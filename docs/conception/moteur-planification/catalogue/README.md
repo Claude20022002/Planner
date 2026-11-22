@@ -8,7 +8,7 @@
 | Règles | 134 |
 | dont strictes | 48 |
 | dont souples | 86 |
-| dont tenues par le solveur aujourd'hui | 22 |
+| dont tenues par le solveur aujourd'hui | 21 |
 | Données | 267 |
 | Pilotage du moteur | 19 |
 | Indicateurs | 30 |

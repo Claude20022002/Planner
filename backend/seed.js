@@ -5,10 +5,12 @@ import './models/index.js';
 import {
     Users, Enseignant, Etudiant, Filiere, Groupe, Salle, Cours, Creneau, Disponibilite, Appartenir, Campus,
     CoursComposante, AnneeUniversitaire, Periode, Evenement, Enseignement,
-    CompetenceEnseignant, EnseignementEnseignant, ResponsableFiliere,
+    CompetenceEnseignant, EnseignementEnseignant, ResponsableFiliere, JeuModule,
 } from './models/index.js';
+import { JEUX } from '../shared/jeux/catalogue.js';
 import { hashPassword } from './utils/passwordHelper.js';
 import { runMigrations } from './migrations/migrator.js';
+import { installerEcolePilote } from './demo/ecolePilote.js';
 import { recalculerRangs } from './services/planning/referentiel.js';
 import { genererEnseignements, fusionnerEnseignements } from './services/planning/enseignements.js';
 import { evenementsCalendrierMaroc } from './utils/feriesMaroc.js';
@@ -487,7 +489,7 @@ const APRES_MIDI_VENDREDI = [
     { heure_debut:'14:30', heure_fin:'16:15', duree_minutes:105 },
     { heure_debut:'16:30', heure_fin:'18:00', duree_minutes:90  },
 ];
-const GRILLE_HESTIM = {
+export const GRILLE_HESTIM = {
     lundi:    [...MATIN, ...APRES_MIDI],
     mardi:    [...MATIN, ...APRES_MIDI],
     mercredi: [...MATIN, ...APRES_MIDI],
@@ -530,6 +532,23 @@ const DISPONIBILITES_VACATAIRES = [
     [['mardi','09:00','prefere'], ['mardi','11:00','prefere'], ['jeudi','09:00','neutre'], ['jeudi','11:00','neutre'], ['samedi','09:00','eviter']],
 ];
 
+// ── Jeux : module de démonstration par discipline ───────────────────────────
+// Le seed propose chaque jeu dans un module où sa discipline est enseignée. Les disciplines
+// sans module dédié dans la maquette de démonstration sont rattachées au module le plus proche.
+const MODULE_JEU_PAR_DISCIPLINE = {
+    algorithmique: 'IIIA-3-ASD',              // Algorithmique avancée et structures de données
+    informatique: 'CPI-1-PY',                 // Informatique de 1re année (terminal, outils)
+    robotique: 'GIL-4-P40',                   // Production 4.0 (robotique et industrie 4.0)
+    'intelligence-artificielle': 'IIIA-4-IA', // Intelligence artificielle
+    logistique: 'GIL-3-STOCK',                // Inventory Management
+    cybersecurite: 'CYB-5-INCID',             // Cybercriminalité et gestion des incidents
+    'bases-de-donnees': 'IIIA-3-ABD',         // Administration des bases de données
+    reseaux: 'IIIA-3-RES',                    // Réseaux informatiques
+    'systemes-d-exploitation': 'IIIA-3-SE',   // Systèmes d'exploitation
+    'gestion-de-projet': 'IIIA-4-GP',         // Gestion de projet
+    gestion: 'LMEO-3-CDG',                    // Contrôle de gestion (budget et coûts)
+};
+
 // ── seed() ────────────────────────────────────────────────────────────────────
 async function seed() {
     // Le seed crée des comptes de démonstration au mot de passe connu : interdit en production.
@@ -542,6 +561,8 @@ async function seed() {
 
         // Le schéma vient des migrations versionnées (jamais de sync() implicite)
         await runMigrations();
+        // Une base neuve n'a ni campus ni identité d'école (PLA-03) : la démonstration apporte les siens
+        await installerEcolePilote();
 
         const pwd = await hashPassword('password123');
 
@@ -908,6 +929,45 @@ async function seed() {
             await declarer(ens, { id_creneau: creneauxMap['samedi_09:00'].id_creneau, date_debut: debutS1, date_fin: finS1, disponible: true, preference: 'eviter' });
         }
         console.log(`✅ ${nbDispos} disponibilités et vœux déclarés`);
+
+        // ── 15. Jeux pédagogiques proposés dans le module de leur discipline ──
+        // Le code des jeux est versionné (shared/) ; proposer un jeu dans un module est une DONNÉE en base,
+        // donc absente d'un simple `git pull`. On la rejoue ici : un `npm run seed` suffit à rendre les
+        // jeux visibles aux étudiants des modules concernés (affectation idempotente, jamais en double).
+        // Les propositions automatiques d'un ancien seed (tous les jeux dans CPI-1-PY) sont retirées
+        // pour que la base converge vers la répartition par discipline ; celles des enseignants restent.
+        const propositionsAttendues = [];
+        const modulesJeux = new Set();
+        const jeuxSansModule = [];
+        for (const jeu of JEUX) {
+            const codeModule = MODULE_JEU_PAR_DISCIPLINE[jeu.discipline];
+            const moduleJeu = codeModule ? coursMap[codeModule] : null;
+            if (!moduleJeu) {
+                jeuxSansModule.push(`${jeu.code} (${jeu.discipline})`);
+                continue;
+            }
+            propositionsAttendues.push({ code_jeu: jeu.code, id_cours: moduleJeu.id_cours });
+            modulesJeux.add(moduleJeu.code_cours);
+        }
+
+        const attendues = new Set(propositionsAttendues.map((p) => `${p.code_jeu}|${p.id_cours}`));
+        const anciennes = await JeuModule.findAll({ where: { id_user_auteur: null } });
+        for (const proposition of anciennes) {
+            if (!attendues.has(`${proposition.code_jeu}|${proposition.id_cours}`)) await proposition.destroy();
+        }
+
+        let nbJeuxProposes = 0;
+        for (const { code_jeu, id_cours } of propositionsAttendues) {
+            const [, cree] = await JeuModule.findOrCreate({
+                where: { code_jeu, id_cours },
+                defaults: { but: 'entrainer', notion: null },
+            });
+            if (cree) nbJeuxProposes++;
+        }
+        console.log(`✅ Jeux : ${propositionsAttendues.length} proposés dans ${modulesJeux.size} modules (${nbJeuxProposes} ajoutés, ${propositionsAttendues.length - nbJeuxProposes} déjà présents)`);
+        if (jeuxSansModule.length) {
+            console.log(`⚠️ Jeux sans module pour leur discipline : ${jeuxSansModule.join(', ')}`);
+        }
 
         // ── Récapitulatif ─────────────────────────────────────────────────────
         const profDemo = proposes[0]?.principal ?? enseignantsList[0];

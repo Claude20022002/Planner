@@ -29,15 +29,21 @@
 - **Fonctionnalités par école** : `services/etablissement/fonctionnalites.js` ; ClassQuiz par école (migration 0057).
 - **Identité de l'école** : migration 0055.
 - **Contrôle CI** `scripts/verifier-neutre.mjs` : aucun nom d'école écrit en dur.
-- **Problème connu** : `migrations/0003-campus-salles.js` crée les campus d'HESTIM dans **toute** base neuve.
+- **Base neuve** (PLA-03a) :
+  - les migrations 0003 et 0055 ne donnent les campus et l'identité d'HESTIM qu'à une base qui a déjà des comptes ;
+  - une base neuve n'a qu'une ligne d'identité neutre, et aucun campus ;
+  - le jeu de démonstration apporte les siens (`backend/demo/ecolePilote.js`) ;
+  - c'est vérifié par `backend/tests/integration/baseNeuve.test.js`.
+  - Conception : [pla-03-base-neuve.md](../../conception/plateforme/pla-03-base-neuve.md).
+- **Encore à faire** : une base neuve rejoue toutes les migrations (60 migrations en 15 s, mesure de PLA-06). Le schéma de départ est l'étape PLA-03b.
 
 ## Fonctions
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| PLA-01 | Contexte d'école en production : mode strict allumé, toute requête dans le contexte de son école | ME-3a | 2 | L | EXP-02, QUA-03 | à faire (essai fait) |
+| PLA-01 | Contexte d'école en production : mode strict allumé, toute requête dans le contexte de son école | ME-3a | 2 | L | EXP-02 | à faire (essai fait) |
 | PLA-02 | Fermer les canaux de l'étape 2 : I-1, I-2, I-3, I-6, I-7, I-8, I-10, I-13, **I-16** (réglages par école au lieu de variables d'environnement) | ME-3b, I-16 | 2 | L | PLA-01 | à faire |
-| PLA-03 | Base neuve sans données d'école : la migration 0003 ne crée plus de campus dans une base sans comptes ; un **schéma de départ** évite de rejouer 60 migrations | B-1 de la revue | 2 | M | — | à faire |
+| PLA-03 | Base neuve sans données d'école : la migration 0003 ne crée plus de campus dans une base sans comptes ; un **schéma de départ** évite de rejouer 60 migrations | B-1 de la revue | 2 | M | — | en cours : PLA-03a (données) codée, PLA-03b (schéma de départ) à concevoir |
 | PLA-04 | Tests d'isolation de chaque route dans la CI, côté serveur et parcours : rien d'une école n'apparaît dans l'autre | ME-6 | 2 | M + S | PLA-01 | à faire |
 | PLA-05 | Registre des écoles et création d'une école **par une commande** (base, migrations, premier administrateur), temps mesuré | ME-4 réduit | 2 | L | PLA-03 | à faire |
 | PLA-06 | Mesure de D-01 : 200 bases sur un serveur (mémoire des pools, temps de migration, démarrage) | A-1 de la revue | 1 | M | — | à faire |
@@ -57,7 +63,9 @@
   - I-16 : deux écoles ont `DEVOIRS_ACTIFS` différent, et le fuseau est lu dans la configuration de l'école ;
   - les canaux laissés ouverts sont écrits ici, avec le module qui les ferme : I-4 et I-5 → BIB-02 ; I-9 → la seconde école n'a pas ClassQuiz ; I-11 → PLA-07 ; I-12 → PLA-10 ; I-14 → EXP-05 ; I-15 → QJE-07.
 - **PLA-03** : une base neuve ne contient aucun nom, campus ni salle d'HESTIM ; une base qui a des comptes garde tout (même règle que la migration 0057).
-- **PLA-04** : une route nouvelle sans test d'isolation fait échouer la CI.
+- **PLA-04** :
+  - une route nouvelle sans test d'isolation fait échouer la CI ;
+  - un élève, ou un parent, qui demande la fiche d'un autre élève (de son école ou d'une autre) par l'API, une liste ou un export reçoit un refus (décision du 15 nov.).
 - **PLA-05** : `creer-ecole <code>` donne une école utilisable ; le temps est mesuré et noté ; la création est refaite deux fois sans erreur.
 - **PLA-06** : rapport chiffré ; D-01 confirmée ou rouverte dans [decisions.md](../decisions.md).
 - **PLA-07** : une école se restaure seule, sans toucher les autres ; l'essai est noté dans `docs/recette/essais-restauration.md`.

@@ -107,8 +107,8 @@ describe("PARAMETRES_PLANNING", () => {
         }
     });
 
-    test("la pause du vendredi refuse une fin avant le début", () => {
-        const { valider } = PARAMETRES_PLANNING.pause_vendredi;
-        expect(valider({ active: true, debut: "14:30", fin: "12:30" })).toBe(false);
+    test("la pause du vendredi et le samedi après-midi ne sont plus des réglages (contraintes déclarées, 0081)", () => {
+        expect(Object.keys(PARAMETRES_PLANNING)).not.toContain("pause_vendredi");
+        expect(Object.keys(PARAMETRES_PLANNING)).not.toContain("samedi_apres_midi_initiale");
     });
 });

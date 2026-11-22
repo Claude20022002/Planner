@@ -7,7 +7,7 @@
  */
 const path = require("node:path");
 const { test, expect } = require("@playwright/test");
-const { lireDonnees, seConnecter } = require("./outils.cjs");
+const { lireDonnees, seConnecter, ouvrirClasse } = require("./outils.cjs");
 
 const capturer = async (page, nom) => {
   if (process.env.PARCOURS_CAPTURES) await page.screenshot({ path: path.join(process.env.PARCOURS_CAPTURES, `${nom}.png`), fullPage: true });
@@ -20,10 +20,8 @@ test("espace de cours : l'enseignante dépose, l'étudiant consulte", async ({ b
   const prof = await browser.newPage();
   await seConnecter(prof, { email: enseignante.email, motDePasse, role: "enseignant" });
 
-  // Mes classes → Supports de cours de la classe en cours
-  await prof.goto("/mes-classes");
-  await prof.getByRole("button", { name: "Supports de cours" }).first().click();
-  await expect(prof).toHaveURL(/\/mes-classes\/\d+\/\d+$/);
+  // Mes classes → la carte de la classe : à toute heure, même la séance du jour finie
+  await ouvrirClasse(prof, seance);
   await expect(prof.getByText("Aucun support dans cette classe")).toBeVisible({ timeout: 20_000 });
   await capturer(prof, "espace-vide");
   await prof.getByRole("button", { name: "Ajouter des supports" }).click();

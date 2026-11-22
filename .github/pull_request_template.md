@@ -22,6 +22,7 @@
 - [ ] La migration, s'il y en a une, a son numéro réservé dans `docs/plan/suivi.md`
 - [ ] Le module et `docs/plan/suivi.md` sont à jour (état, PR) ; la conception aussi si elle a changé
 - [ ] Rien de réel dans le dépôt : ni donnée personnelle, ni secret, ni nom d'école en dur
+- [ ] Aucun envoi sortant ajouté ou changé, ou bien [docs/envois-sortants.md](../docs/envois-sortants.md) et le résumé des envois au démarrage sont à jour (EP-13)
 
 ## Règles de l'équipe (AGENTS.md)
 

@@ -6,10 +6,11 @@
 |---|---|
 | [../../AGENTS.md](../../AGENTS.md) | **Les règles obligatoires de toute session**, pour les agents d'IA comme pour l'équipe |
 | [organisation.md](organisation.md) | Rôles (le chef de projet est **Claude20022002**), chantiers de module, une branche par tâche, plan de conception avant le code, questions, fin de session, sessions longues |
-| [suivi.md](suivi.md) | **À ouvrir en début de session et à mettre à jour à la fin, obligatoirement** : une ligne par fonction (état, branche, PR), chantiers ouverts, numéros de migration réservés |
+| [suivi.md](suivi.md) | **À ouvrir en début de session** : une ligne par fonction (état, branche, PR), chantiers ouverts, numéros de migration réservés. **Tenu par le coordinateur** seul, sur sa branche : une branche de fonction ne le modifie pas (décision du chef du 18 nov.) |
 | [decisions.md](decisions.md) | Décisions en vigueur et questions ouvertes, en un seul endroit |
 | [modules/](modules/) | Un fichier par module : ce qui existe, les fonctions à faire, leur critère de « terminé » |
-| [modeles/](modeles/) | Modèles du [plan de conception](modeles/conception.md) et de la [fiche de session](modeles/fiche-de-session.md) |
+| [missions/](missions/) | Une fiche par mission donnée à un agent par le coordinateur : agent, branche, fichiers qu'il peut écrire, prompt à coller |
+| [modeles/](modeles/) | Modèles du [plan de conception](modeles/conception.md), de la [fiche de session](modeles/fiche-de-session.md) et de la [fiche de mission](modeles/mission.md) |
 | [../sessions/](../sessions/) | Une fiche par session, avec son prompt de reprise ; les comptes rendus d'avant le 9 novembre |
 | [../conception/](../conception/README.md) | Conceptions et contrats encore en vigueur (architecture, moteur, isolation, déploiement…) |
 | [../ecole/plan.txt](../ecole/plan.txt) | La **vision** à long terme (ERP modulaire pour l'Afrique). Pas un plan : ses choix de pile et de prix ne s'appliquent pas |
@@ -27,7 +28,7 @@ Un module se travaille par **chantier** : le chef l'ouvre, au plus 3 sont ouvert
 | MOT | Moteur de planification (solveur, catalogue, profils) | [MOT-moteur.md](modules/MOT-moteur.md) | `MOT-01`… |
 | EDT | Emploi du temps, côté application (séances, publication, examens, salles) | [EDT-emploi-du-temps.md](modules/EDT-emploi-du-temps.md) | `EDT-01`… |
 | ADM | Administration selon les rôles (comptes, droits, configuration, import, années) | [ADM-administration.md](modules/ADM-administration.md) | `ADM-01`… |
-| VSC | Vie scolaire (élèves, familles, absences, notes, bulletins, Massar) | [VSC-vie-scolaire.md](modules/VSC-vie-scolaire.md) | `VSC-01`… |
+| VSC | Vie scolaire (élèves, familles, absences, notes, bulletins) | [VSC-vie-scolaire.md](modules/VSC-vie-scolaire.md) | `VSC-01`… |
 | COU | Espace de cours (supports, devoirs, sondages, échanges) | [COU-espace-de-cours.md](modules/COU-espace-de-cours.md) | `COU-01`… |
 | BIB | Bibliothèque (StudyLib, fichiers) | [BIB-bibliotheque.md](modules/BIB-bibliotheque.md) | `BIB-01`… |
 | QJE | Quiz, jeux pédagogiques et IA | [QJE-quiz-jeux-ia.md](modules/QJE-quiz-jeux-ia.md) | `QJE-01`… |
@@ -35,9 +36,23 @@ Un module se travaille par **chantier** : le chef l'ouvre, au plus 3 sont ouvert
 | UIX | Interface du site (socle neutre, accessibilité, langues, textes) | [UIX-interface.md](modules/UIX-interface.md) | `UIX-01`… |
 | VIT | Site vitrine public et contact | [VIT-site-vitrine.md](modules/VIT-site-vitrine.md) | `VIT-01`… |
 | VEN | Vente, registre des modules, abonnements | [VEN-vente-modules.md](modules/VEN-vente-modules.md) | `VEN-01`… |
-| FIN | Finance de l'école (frais, caisse, reçus, heures des vacataires) | [FIN-finance-ecole.md](modules/FIN-finance-ecole.md) | `FIN-01`… |
+| FIN | Finance de l'école (frais, caisse, reçus, relances, export comptable) | [FIN-finance-ecole.md](modules/FIN-finance-ecole.md) | `FIN-01`… |
 | QUA | Qualité du code, tests et documentation | [QUA-qualite-docs.md](modules/QUA-qualite-docs.md) | `QUA-01`… |
 | MKT | Marketing, par des agents spécialisés (vente gelée : on prépare, on ne publie pas) | [MKT-marketing.md](modules/MKT-marketing.md) | `MKT-01`… |
+| COM | Communication et notifications (service d'envoi commun, plages de silence, compte famille, crédits de messages) | [COM-communication.md](modules/COM-communication.md) | `COM-01`… |
+| ETA | Échanges avec l'État (cadre de connecteurs ; Massar d'abord) | [ETA-echanges-etat.md](modules/ETA-echanges-etat.md) | `ETA-01`… |
+| PAI | Paiements en ligne et rapprochement | [PAI-paiements.md](modules/PAI-paiements.md) | `PAI-01`… |
+| RHP | Personnel, vacataires et paie | [RHP-personnel-paie.md](modules/RHP-personnel-paie.md) | `RHP-01`… |
+| FOR | Formation continue et financeurs | [FOR-formation-continue.md](modules/FOR-formation-continue.md) | `FOR-01`… |
+| DOC | Documents et attestations vérifiables | [DOC-documents-verifiables.md](modules/DOC-documents-verifiables.md) | `DOC-01`… |
+| INS | Admissions et prospects | [INS-admissions.md](modules/INS-admissions.md) | `INS-01`… |
+| PIL | Pilotage (tableaux de bord de la direction) | [PIL-pilotage.md](modules/PIL-pilotage.md) | `PIL-01`… |
+| GRP | Groupes et réseaux d'écoles | [GRP-groupes-reseaux.md](modules/GRP-groupes-reseaux.md) | `GRP-01`… |
+| STA | Stages et alternance | [STA-stages-alternance.md](modules/STA-stages-alternance.md) | `STA-01`… |
+| SER | Services annexes (cantine, transport, internat) | [SER-services-annexes.md](modules/SER-services-annexes.md) | `SER-01`… |
+| STK | Stocks et achats | [STK-stocks-achats.md](modules/STK-stocks-achats.md) | `STK-01`… |
+
+Les douze derniers modules (COM à STK) viennent de l'inventaire du 11 novembre ([06-outils-structures-formation.md](../etude-marche/06-outils-structures-formation.md)), ajoutés au plan le 13 novembre.
 
 ## 2. L'ordre : des étapes, pas des dates
 
@@ -48,14 +63,16 @@ Un module se travaille par **chantier** : le chef l'ouvre, au plus 3 sont ouvert
 | **0** | Tout ce qui était commencé est fusionné ; ce plan est sur `main` ; le nouveau serveur est prêt | fusions du 7 novembre, EXP-01, QUA-06, QUA-07 |
 | **1. Fondations** | `main` tourne sur le nouveau serveur, sauvegardé et surveillé ; la pile et D-01 sont confirmées ; le modèle du scolaire est conçu | EXP-02 à EXP-05, QUA-03, PLA-06, VSC-01, MOT-01, MOT-02 |
 | **2. Plusieurs écoles** | HESTIM et une école neuve au vocabulaire scolaire tournent sur la même installation, sans StudyLib ni ClassQuiz pour la seconde ; rien ne passe de l'une à l'autre | PLA-01 à PLA-05, PLA-07, VEN-01, UIX-01, MOT-05, MOT-08, MOB-03 |
-| **3. Une école scolaire se configure seule** | Une personne extérieure configure une école et génère **un vrai collège avec groupes de langue** ; chaque refus s'explique | MOT-03, MOT-04, MOT-06, MOT-07, ADM-02 à ADM-04, UIX-02, EDT-01, EDT-03, VEN-02 |
-| **4. Pack « École privée »** | Une école fictive de la maternelle au lycée tourne de bout en bout : familles, emploi du temps, absences prévenues, notes et bulletins, frais, espace parents en arabe et en français | VSC-02 à VSC-05, FIN-01, FIN-02, COU-02 à COU-05, MOB-05, MOB-06, UIX-04, MOT-09, EXP-08 |
-| **5. Durée de vie** | Formation professionnelle ; passage d'année sans aide ; export complet d'une école | ADM-01, ADM-06, ADM-07, PLA-08 à PLA-13, MOT-10, MOT-11, VSC-06, BIB-02, EDT-05 |
-| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01 à QJE-07, BIB-03, BIB-04, VIT-01 à VIT-04, COU-01, COU-06, COU-07, MOB-01, MOB-02, MOB-07, UIX-03, UIX-05, UIX-06, EDT-02, EDT-04, EXP-09, FIN-03, QUA-01, QUA-02, QUA-04, QUA-05, MKT-01 à MKT-07 |
+| **3. Une école scolaire se configure seule** | Une personne extérieure configure une école et génère **un vrai collège avec groupes de langue** ; chaque refus s'explique | MOT-03, MOT-04, MOT-06, MOT-07, VSC-07, ADM-02 à ADM-04, UIX-02, EDT-01, EDT-03, VEN-02 |
+| **4. Pack « École privée »** | Une école fictive de la maternelle au lycée tourne de bout en bout : familles, emploi du temps, absences prévenues, notes et bulletins, frais, espace parents en arabe et en français | VSC-02 à VSC-04, FIN-01, FIN-02, COM-01 à COM-03, ETA-01, ETA-02, PAI-01, PAI-02, COU-02 à COU-05, MOB-05, MOB-06, UIX-04, MOT-09, EXP-08 |
+| **5. Durée de vie** | Formation professionnelle et continue ; passage d'année sans aide ; export complet d'une école | ADM-01, ADM-06, ADM-07, PLA-08 à PLA-13, MOT-10, MOT-11, VSC-06, BIB-02, EDT-05, RHP-02, RHP-03, FOR-01 à FOR-04, DOC-01, DOC-02, INS-01 à INS-03 ; reportés : ETA-03, PAI-03, PIL-01, PIL-02, GRP-01, GRP-02, STA-02, SER-01, STK-01 |
+| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01 à QJE-07, BIB-03, BIB-04, VIT-01 à VIT-04, COU-01, COU-06, STA-01, MOB-01, MOB-02, MOB-07, UIX-03, UIX-05, UIX-06, EDT-02, EDT-04, EXP-09, RHP-01, QUA-01, QUA-02, QUA-04, QUA-05, QUA-08, QUA-09, MKT-01 à MKT-07 |
+
+FIN, COM et PAI ne se construisent qu'après les entretiens de VEN-02, qui confirment le module d'achat de chaque marché (décision du 13 novembre).
 
 Une fonction d'une étape peut commencer avant la fin de l'étape précédente si ses dépendances (colonne « dépend de ») sont faites.
 
-**Tailles** : S = une demi-journée, M = 2 jours, L = 5 jours, XL = plus de 10 jours, bruts. Ce sont des **estimations avant conception** (revue d'architecte du 5 novembre) : environ 240 jours bruts en tout, à multiplier par 1,5 à 2 pour du temps réel. Aucune date n'est promise tant que l'effectif n'est pas connu ([decisions.md](decisions.md), Q-01).
+**Tailles** : S = une demi-journée, M = 2 jours, L = 5 jours, XL = plus de 10 jours, bruts. Ce sont des **estimations avant conception** (revue d'architecte du 5 novembre) : environ 292 jours bruts en tout, dont environ 53 ajoutés le 13 novembre avec les nouveaux modules et 2 jours (VSC-07) le 18 novembre, à multiplier par 1,5 à 2 pour du temps réel. Aucune date n'est promise tant que l'effectif n'est pas connu ([decisions.md](decisions.md), Q-01).
 
 ## 3. La routine d'une session
 
@@ -74,14 +91,14 @@ cmd /c mklink /J "..\travaux-planner\$F\backend\node_modules" "backend\node_modu
 # 2. Travailler dans ..\travaux-planner\$F
 #    - questions au chef, puis plan de conception (docs/plan/modeles/conception.md) ;
 #    - AUCUN CODE avant que le chef ait validé le plan ;
-#    - premier commit : le plan seul, et suivi.md passé à « en cours » ;
+#    - premier commit : le plan seul (suivi.md est tenu par le coordinateur) ;
 #    - un test qui fige chaque correctif ;
 #    - git add <fichiers>, jamais git add .
 
 # 3. Vérifier en local (base MySQL rapide, voir DEPLOIEMENT.md) : tests du serveur, du site.
 #    Les parcours tournent dans la CI de la PR : ne pas les lancer en même temps que la suite.
 
-# 4. Fin de session (obligatoire) : suivi.md, fichier du module, fiche docs/sessions/…, prompt de reprise.
+# 4. Fin de session (obligatoire) : fichier du module, fiche docs/sessions/…, prompt de reprise.
 #    Puis le CHEF DE PROJET publie et ouvre la PR : le modèle de PR affiche la liste « terminé »
 git -C "..\travaux-planner\$F" push -u origin "$T/$F"
 gh pr create --base main --head "$T/$F" --title "MOT-03 : validation avant le calcul" --fill
@@ -90,7 +107,7 @@ gh pr create --base main --head "$T/$F" --title "MOT-03 : validation avant le ca
 gh pr checks "$T/$F" --watch
 gh pr merge "$T/$F" --merge --delete-branch
 
-# 6. Clore : ligne de suivi.md à « fait » (dans la PR) ; retirer la jonction puis le dossier
+# 6. Clore : le coordinateur passe la ligne de suivi.md à « fait » ; retirer la jonction puis le dossier
 cmd /c rmdir "..\travaux-planner\$F\backend\node_modules"
 git worktree remove "..\travaux-planner\$F"
 git switch main; git pull --ff-only
@@ -106,8 +123,8 @@ Une PR ne se fusionne que si **tout** ceci est vrai :
 2. **Le critère de « terminé »** de la fonction (dans son fichier de module) est atteint et vérifié.
 3. **Un test de régression** fige chaque correctif ; une faille connue non corrigée a son `test.failing`.
 4. **Les exigences produit** (§ 6) qui s'appliquent à la fonction sont tenues.
-5. **La migration**, s'il y en a une, a son numéro réservé dans [suivi.md](suivi.md).
-6. **La documentation** suit : fichier du module (état, ce qui existe), [suivi.md](suivi.md), et la conception si elle a changé.
+5. **La migration**, s'il y en a une, a son numéro réservé dans [suivi.md](suivi.md), par le coordinateur.
+6. **La documentation** suit : fichier du module (état, ce qui existe), fiche de session, et la conception si elle a changé. [suivi.md](suivi.md) est mis à jour par le coordinateur.
 7. **Rien de réel dans le dépôt** : ni donnée personnelle, ni secret, ni nom d'école en dur (`scripts/verifier-neutre.mjs`). **Le dépôt est public** (choix du 7 novembre, à cause de la limite de durée de GitHub Actions).
 
 ## 5. Règles communes
@@ -137,6 +154,7 @@ Tirées des reproches faits aux autres outils ([étude de marché](../etude-marc
 | EP-10 | Rapide à grande échelle | génération d'un collège de 600 élèves en moins de 10 min ; pages de gestion en moins de 1 s | 3 |
 | EP-11 | Accessible et bilingue | contraste AA ; français, arabe (droite à gauche) et anglais | 2 (droite à gauche), 4 (arabe complet) |
 | EP-12 | Les données restent à l'école | isolation testée sur chaque route ; export complet à tout moment | 2 et 5 |
+| EP-13 | Aucun envoi caché | liste publique des envois sortants (destinataire, données, raison), à jour (QUA-09) ; toute PR qui ajoute un envoi sortant la met à jour | 1 |
 
 **Condition légale** : aucune donnée réelle de mineur sur Planner avant le contrat de sous-traitance, le dossier CNDP de l'école et le test d'intrusion (EXP-08).
 

@@ -1,0 +1,115 @@
+---
+// Accueil, section 2 : la vidéo de présentation de Planner (VIT-08, plan :
+// docs/conception/vitrine/vit-08-video-presentation.md, § 6). Rien n'est chargé avant que la
+// section arrive à l'écran (video.js) ; l'image fixe la remplace au mouvement réduit, à l'économie de
+// données et sans JavaScript ; la transcription, dessous, dit tout ce que montre la vidéo (WCAG
+// 1.2.1), avec les textes mêmes de la vidéo (accueil.json, video.scenes). La vidéo n'a pas de son.
+// Sans fichiers rendus dans public/videos/ (le rendu final attend les SVG officiels), la section
+// n'est pas affichée.
+import fs from 'node:fs';
+import path from 'node:path';
+import { Pause, Play, RotateCcw } from 'lucide-react';
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Apparition from '../socle/Apparition.astro';
+import { fichiersVideo, langueVideo } from './empreinteVideo.js';
+
+interface Props {
+  t: (cle: string) => any;
+  langue: string;
+}
+
+const { t, langue } = Astro.props;
+const fichiers = fichiersVideo(langueVideo(langue));
+const present = Object.values(fichiers).every(({ nom }) => fs.existsSync(path.join(process.cwd(), 'public', 'videos', nom)));
+const adresse = (nom: string) => `/videos/${nom}`;
+const scenes: { titre: string; lignes: string[]; image: string }[] = t('video.scenes');
+---
+{present && (
+  <Section id="presentation" ton="sombre" large etiquette="presentation-titre">
+    <Apparition>
+      <Titre id="presentation-titre" surtitre={t('video.surtitre')}>{t('video.titre')}</Titre>
+    </Apparition>
+
+    <figure
+      class="video"
+      data-video
+      data-mp4={adresse(fichiers.mp4.nom)}
+      data-webm={adresse(fichiers.webm.nom)}
+      data-lire={t('video.commandes.lire')}
+      data-lire-mobile={t('video.commandes.lireMobile')}
+      data-pause={t('video.commandes.pause')}
+      data-revoir={t('video.commandes.revoir')}
+    >
+      <div class="lecteur">
+        <div class="ecran">
+          <img class="fixe" src={adresse(fichiers.image.nom)} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+          <video muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        </div>
+        <button type="button" class="commande" data-commande hidden>
+          <span class="icone" data-icone="lire"><Play aria-hidden="true" size={20} strokeWidth={2.2} /></span>
+          <span class="icone" data-icone="pause" hidden><Pause aria-hidden="true" size={20} strokeWidth={2.2} /></span>
+          <span class="icone" data-icone="revoir" hidden><RotateCcw aria-hidden="true" size={20} strokeWidth={2.2} /></span>
+          <span data-libelle>{t('video.commandes.lire')}</span>
+        </button>
+      </div>
+
+      <figcaption>
+        <details class="transcription">
+          <summary>{t('video.transcription.ouvrir')}</summary>
+          <ol>
+            {scenes.map((scene) => (
+              <li>
+                <strong>{scene.titre}</strong>
+                {scene.lignes.map((ligne) => <p>{ligne}</p>)}
+                <p class="image"><span>{t('video.transcription.image')}</span> {scene.image}</p>
+              </li>
+            ))}
+          </ol>
+        </details>
+      </figcaption>
+    </figure>
+  </Section>
+)}
+
+<script>
+  import './video.js';
+</script>
+
+<style>
+  .video { display: grid; gap: var(--espace-3); inline-size: 100%; margin: 0; }
+  .lecteur { position: relative; display: grid; gap: var(--espace-2); justify-items: center; }
+  .ecran { position: relative; inline-size: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--rayon-grand); background: var(--ecran); box-shadow: 0 40px 80px -30px rgb(0 0 0 / 55%); }
+  .fixe, video { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; }
+  video { opacity: 0; transition: opacity 400ms var(--courbe); }
+  .icone { display: inline-flex; }
+  .icone[hidden] { display: none; }
+  .video[data-etat='lecture'] video, .video[data-etat='pause'] video, .video[data-etat='fin'] video { opacity: 1; }
+
+  /* Sur un écran étroit, le bouton passe sous la vidéo ; au-delà, il se pose dans son coin */
+  .commande {
+    display: inline-flex; align-items: center; gap: 0.5rem; min-block-size: 2.75rem; padding: 0.5rem 1.125rem;
+    border: 0; border-radius: var(--rayon-pilule); background: rgb(255 255 255 / 94%); color: var(--bleu-nuit);
+    font: inherit; font-size: var(--texte-petit); font-weight: 600; cursor: pointer; box-shadow: var(--ombre-carte);
+  }
+  .commande:hover { background: var(--blanc); }
+  .commande:focus-visible { outline: 3px solid var(--bleu-clair); outline-offset: 3px; }
+  .commande[hidden] { display: none; }
+  @media (min-width: 48rem) {
+    .commande { position: absolute; inset-inline-end: var(--espace-2); inset-block-end: var(--espace-2); }
+  }
+
+  .transcription { justify-self: center; inline-size: min(100%, var(--largeur-lecture)); text-align: start; color: var(--bleu-pale); }
+  summary { justify-self: center; inline-size: fit-content; margin-inline: auto; padding: 0.5rem 1rem; border-radius: var(--rayon-pilule); color: var(--bleu-clair); font-weight: 600; cursor: pointer; }
+  summary:hover { text-decoration: underline; }
+  summary:focus-visible { outline: 3px solid var(--bleu-clair); outline-offset: 3px; }
+  ol { display: grid; gap: var(--espace-3); margin-block-start: var(--espace-3); padding-inline-start: 1.25rem; }
+  li strong { display: block; color: var(--blanc); font-weight: 650; }
+  li p { margin-block-start: 0.25rem; }
+  .image { font-size: var(--texte-petit); }
+  .image span { font-weight: 600; }
+
+  @media (prefers-reduced-motion: reduce) {
+    video { transition: none; }
+  }
+</style>

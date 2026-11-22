@@ -25,7 +25,8 @@ const repondreEtRendre = async (page) => {
 test("studio quiz : création, passation par QR code sur téléphone et par code sur ordinateur, résultats", async ({ page, browser }) => {
   const { enseignante, etudiants, motDePasse } = lireDonnees();
   await seConnecter(page, { email: enseignante.email, motDePasse, role: "enseignant" });
-  await page.getByRole("navigation", { name: "Menu" }).getByRole("button", { name: "Mes quiz" }).click();
+  await page.getByRole("link", { name: "Toutes les applications", exact: true }).last().click();
+  await page.getByRole("navigation", { name: "Applications disponibles" }).getByRole("heading", { name: "Quiz et jeux", exact: true }).getByRole("link").click();
   await expect(page).toHaveURL(/\/studio-quiz$/);
 
   await page.getByRole("button", { name: "Créer un quiz" }).first().click();

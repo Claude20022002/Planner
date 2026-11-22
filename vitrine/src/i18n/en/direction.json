@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "titre": "School leaders · Planner",
+    "description": "School leaders and the registrar's office find rooms, exams and timetable figures in one place."
+  },
+  "entete": {
+    "surtitre": "School leaders",
+    "titre": "The whole school, at a glance.",
+    "accroche": "School leaders and the registrar's office find rooms, exams and timetable figures in one place."
+  },
+  "aujourdhui": "Today",
+  "cartes": [
+    {
+      "page": "emploiDuTemps",
+      "titre": "Timetable",
+      "texte": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
+    },
+    {
+      "page": "enClasse",
+      "titre": "In class",
+      "texte": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
+    },
+    {
+      "page": "securite",
+      "titre": "Security and data",
+      "texte": "Two-factor authentication, role-based access, a security log, properly closed accounts, AI without student data."
+    }
+  ],
+  "passage": {
+    "titre": "Before, with Planner.",
+    "avant": "Before",
+    "avec": "With Planner",
+    "lignes": [
+      {
+        "avant": "Room use is tracked in a spreadsheet.",
+        "avec": "Planner shows how much each room is used and how many hours each teacher carries."
+      },
+      {
+        "avant": "Exam sessions and invigilation are kept on a separate list.",
+        "avec": "Exam sessions, their rooms and their invigilation."
+      },
+      {
+        "avant": "A session that does not fit shows up when the grid is read again.",
+        "avec": "When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher."
+      },
+      {
+        "avant": "A room requested outside class is noted in a message.",
+        "avec": "Rooms, their capacity, and bookings outside of classes."
+      },
+      {
+        "avant": "Going back to an earlier grid means finding the previous file.",
+        "avec": "Every calculation is kept. You go back to an earlier version whenever you want."
+      }
+    ]
+  },
+  "faq": {
+    "titre": "Common questions.",
+    "questions": [
+      {
+        "question": "Where is the data stored?",
+        "reponse": "Ask us where your institution's data will be hosted. We will tell you the terms of the offer."
+      },
+      {
+        "question": "In which languages can I read the site?",
+        "reponse": "The site is available in French and in English. Contact us to find out which languages are available in the applications you are interested in."
+      },
+      {
+        "question": "Can lists be imported?",
+        "reponse": "The administration can import lists of accounts, students and teachers from compatible CSV files."
+      },
+      {
+        "question": "How much does it cost?",
+        "reponse": "Contact us to talk about your institution's needs."
+      }
+    ]
+  }
+}

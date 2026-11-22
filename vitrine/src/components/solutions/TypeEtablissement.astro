@@ -1,0 +1,93 @@
+---
+// Section d'un type d'établissement de la page « Solutions » : surtitre, titre et texte, puis deux
+// colonnes. « Aujourd'hui » : ce qui existe, chaque point renvoie à la page de fonction qui le
+// détaille. « Bientôt » : ce que prévoit le plan de parité, sans date, chaque point marqué du badge ;
+// rien de cette colonne n'est présenté comme disponible.
+import { ArrowRight, Check } from 'lucide-react';
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Accroche from '../socle/Accroche.astro';
+import Apparition from '../socle/Apparition.astro';
+
+interface Point {
+  titre: string;
+  texte: string;
+}
+
+interface Props {
+  id: string;
+  ton?: 'clair' | 'gris';
+  surtitre: string;
+  titre: string;
+  texte: string;
+  libelleAujourdhui: string;
+  libelleBientot: string;
+  existants: (Point & { href: string })[];
+  prevus: Point[];
+}
+
+const { id, ton = 'clair', surtitre, titre, texte, libelleAujourdhui, libelleBientot, existants, prevus } = Astro.props;
+---
+<Section id={id} ton={ton} large etiquette={`${id}-titre`}>
+  <Apparition>
+    <div class="entete">
+      <Titre id={`${id}-titre`} surtitre={surtitre}>{titre}</Titre>
+      <Accroche>{texte}</Accroche>
+    </div>
+  </Apparition>
+  <div class="colonnes">
+    <Apparition>
+      <div class="colonne">
+        <h3 id={`${id}-aujourdhui`} class="libelle"><Check aria-hidden="true" size={20} strokeWidth={2} />{libelleAujourdhui}</h3>
+        <ul class="points" aria-labelledby={`${id}-aujourdhui`}>
+          {existants.map((point) => (
+            <li>
+              <a class="point existant" href={point.href}>
+                <span class="point-titre">{point.titre}<ArrowRight className="fleche" aria-hidden="true" size={18} strokeWidth={1.75} /></span>
+                <span class="point-texte">{point.texte}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Apparition>
+    <Apparition delai={0.1}>
+      <div class="colonne">
+        <h3 id={`${id}-bientot`} class="libelle">{libelleBientot}</h3>
+        <ul class="points" aria-labelledby={`${id}-bientot`}>
+          {prevus.map((point) => (
+            <li class="point prevu">
+              <span class="badge">{libelleBientot}</span>
+              <span class="point-titre">{point.titre}</span>
+              <span class="point-texte">{point.texte}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Apparition>
+  </div>
+</Section>
+
+<style>
+  .entete { display: grid; gap: var(--espace-2); justify-items: center; }
+  .colonnes { display: grid; gap: var(--espace-4); inline-size: 100%; text-align: start; }
+  .colonne { display: grid; align-content: start; gap: var(--espace-2); }
+  .libelle { display: flex; align-items: center; gap: 0.5rem; font-size: var(--texte-accroche); font-weight: 650; color: var(--bleu-nuit); }
+  .libelle :global(svg) { color: var(--bleu); }
+  .points { display: grid; gap: var(--espace-1); }
+  .point { display: grid; justify-items: start; gap: 0.35rem; padding: var(--espace-2) var(--espace-3); border-radius: var(--rayon); background: var(--fond-point, var(--gris-fond)); }
+  .existant { text-decoration: none; color: inherit; border: 1px solid transparent; }
+  .existant:hover { border-color: var(--bleu-clair); }
+  .existant:hover .point-titre { color: var(--bleu); }
+  .point-titre { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 1.125rem; font-weight: 650; line-height: 1.3; }
+  .point-texte { color: var(--gris-texte); }
+  .point-titre :global(.fleche) { flex: none; color: var(--bleu); }
+  :global([dir='rtl']) .point-titre :global(.fleche) { transform: scaleX(-1); }
+  .prevu { border: 1px dashed var(--gris-trait); background: transparent; }
+  .badge { padding: 0.15rem 0.65rem; border-radius: var(--rayon-pilule); background: var(--fond-badge, var(--gris-fond)); color: var(--bleu-nuit); font-size: 0.8125rem; font-weight: 600; }
+  :global(.gris) .point { --fond-point: var(--blanc); --fond-badge: var(--blanc); }
+
+  @media (min-width: 64rem) {
+    .colonnes { grid-template-columns: 3fr 2fr; gap: var(--espace-5); }
+  }
+</style>

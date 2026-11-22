@@ -1,0 +1,56 @@
+---
+// Illustration de l'accueil : une semaine calculée (cinq jours, quatre créneaux), dessinée en HTML
+// dans un cadre d'ordinateur, avec l'avis d'une séance non placée et sa raison. Textes dans
+// accueil.json (emploi.illustration) ; la position des séances est ici, sans texte.
+import { CircleAlert } from 'lucide-react';
+
+interface Props {
+  t: (cle: string) => any;
+}
+
+const { t } = Astro.props;
+const jours: string[] = t('emploi.illustration.jours');
+const heures: string[] = t('emploi.illustration.heures');
+const seances: { titre: string; lieu: string }[] = t('emploi.illustration.seances');
+
+// [indice de la séance, jour (0 à 4), créneau (0 à 3), ton]
+const PLACEMENT: [number, number, number, string][] = [
+  [0, 0, 0, 'fonce'], [1, 0, 1, 'moyen'], [2, 1, 1, 'clair'], [3, 1, 2, 'moyen'],
+  [4, 2, 0, 'fonce'], [5, 3, 2, 'moyen'], [6, 3, 0, 'clair'], [7, 4, 1, 'clair'],
+  [1, 4, 0, 'moyen'], [0, 2, 2, 'fonce'],
+];
+---
+<div class="semaine" aria-hidden="true">
+  <div class="grille">
+    <span class="coin"></span>
+    {jours.map((jour) => <span class="jour">{jour}</span>)}
+    {heures.map((heure, i) => <span class="heure" style={`grid-row: ${i + 2}`}>{heure}</span>)}
+    {PLACEMENT.map(([indice, jour, creneau, ton]) => (
+      <div class:list={['seance', ton]} style={`grid-column: ${jour + 2}; grid-row: ${creneau + 2}`}>
+        <strong>{seances[indice].titre}</strong>
+        <span>{seances[indice].lieu}</span>
+      </div>
+    ))}
+  </div>
+  <div class="alerte">
+    <CircleAlert size={20} strokeWidth={1.75} />
+    <p><strong>{t('emploi.illustration.alerte.titre')}</strong><span>{t('emploi.illustration.alerte.texte')}</span></p>
+  </div>
+</div>
+
+<style>
+  .semaine { position: relative; block-size: 100%; padding: clamp(0.5rem, 2vw, 1.5rem); background: var(--blanc); font-size: clamp(0.45rem, 0.3rem + 0.7vw, 0.8125rem); text-align: start; }
+  .grille { display: grid; grid-template-columns: 3.2em repeat(5, 1fr); grid-template-rows: 2em repeat(4, 1fr); gap: 0.4em; block-size: 100%; }
+  .jour { align-self: center; font-weight: 600; color: var(--gris-texte); }
+  .heure { grid-column: 1; padding-block-start: 0.3em; color: var(--gris-texte); font-variant-numeric: tabular-nums; }
+  .seance { display: grid; align-content: start; gap: 0.15em; padding: 0.5em 0.6em; border-radius: 0.6em; border-inline-start: 0.3em solid var(--bleu); overflow: hidden; }
+  .seance strong { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .seance span { opacity: 0.8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fonce { background: var(--bleu-nuit); color: var(--blanc); border-color: var(--bleu-clair); }
+  .moyen { background: var(--bleu-pale); color: var(--bleu-nuit); }
+  .clair { background: var(--gris-fond); color: var(--bleu-nuit); border-color: var(--bleu-clair); }
+  .alerte { position: absolute; inset-inline-end: 4%; inset-block-end: 6%; display: flex; gap: 0.6em; max-inline-size: 58%; padding: 0.9em 1.1em; border-radius: 1em; background: rgb(255 255 255 / 92%); backdrop-filter: blur(8px); box-shadow: var(--ombre-carte); color: var(--encre); font-size: 1.1em; }
+  .alerte :global(svg) { flex: none; color: var(--bleu); inline-size: 1.4em; block-size: 1.4em; }
+  .alerte p { display: grid; gap: 0.2em; }
+  .alerte span { color: var(--gris-texte); }
+</style>

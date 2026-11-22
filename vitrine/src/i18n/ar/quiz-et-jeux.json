@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "titre": "",
+    "description": ""
+  },
+  "entete": {
+    "surtitre": "",
+    "titre": "",
+    "accroche": ""
+  },
+  "studio": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "points": ["", "", "", ""]
+  },
+  "jeux": {
+    "surtitre": "",
+    "titre": "",
+    "texte": "",
+    "lien": "",
+    "cartes": [
+      {
+        "titre": "",
+        "texte": ""
+      },
+      {
+        "titre": "",
+        "texte": ""
+      }
+    ]
+  }
+}

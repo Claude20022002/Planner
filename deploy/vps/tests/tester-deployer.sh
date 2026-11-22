@@ -19,6 +19,12 @@ cat > "$BAC/bin/docker" <<'EOF'
 echo "$*" >> "$BAC/docker.log"
 case "$1 $2" in
     "pull -q") [[ " ${FAUX_ABSENTES:-} " == *" $3 "* ]] && exit 1; exit 0 ;;
+    "exec hestim_mysql")
+        case "${FAUX_DUMP:-ok}" in
+            fail) echo "mysqldump: error" >&2; exit 1 ;;
+            vide) exit 0 ;;
+            *) printf '%s\n' '-- dump de test'; exit 0 ;;
+        esac ;;
     "image inspect")
         [ "$3" = "-f" ] || exit 0
         image="$5"
@@ -30,9 +36,25 @@ case "$1 $2" in
 esac
 EOF
 chmod +x "$BAC/bin/docker"
+# Faux gpg : écrit l'entrée standard dans le fichier -o. FAUX_GPG=fail le fait échouer.
+cat > "$BAC/bin/gpg" <<'EOF'
+#!/usr/bin/env bash
+echo "$*" >> "$BAC/gpg.log"
+[ "${FAUX_GPG:-ok}" = fail ] && exit 1
+sortie=""
+precedent=""
+for arg in "$@"; do
+    if [ "$precedent" = "-o" ]; then sortie="$arg"; fi
+    precedent="$arg"
+done
+[ -n "$sortie" ] || exit 1
+cat > "$sortie"
+EOF
+chmod +x "$BAC/bin/gpg"
 export PATH="$BAC/bin:$PATH" BAC
 
-export REGISTRE=registre.test HESTIM="$BAC/hestim"
+export REGISTRE=registre.test HESTIM="$BAC/hestim" SAUVEGARDES_DIR="$BAC/sauvegardes"
+mkdir -p "$SAUVEGARDES_DIR"
 # shellcheck source-path=SCRIPTDIR/.. source=deployer.sh
 . "$ICI/../deployer.sh"
 # deployer.sh pose « set -Eeuo pipefail » : les tests gardent la main sur les échecs attendus,
@@ -95,6 +117,91 @@ verifier "retour : la version d'avant" egal "$(version_precedente)" aaaaaaaaaaaa
 # Version annoncée en marche
 verifier "même commit : accepté" verifier_version serveur "$COMPLET" "$COMPLET"
 refuser "autre commit annoncé : refusé" verifier_version serveur inconnue "$COMPLET"
+
+# Sauvegarde avant mise en ligne (REL-01, REL-03) : un dump raté n'écrit pas d'images.
+# Phrase et clé factices : le dump doit quand même partir sur la phrase, pas sur la clé.
+mkdir -p "$BAC/reglages"
+printf 'phrase-de-test\n' > "$BAC/reglages/phrase"
+printf 'cle-publique-de-test\n' > "$BAC/reglages/publique"
+ecrire_conf() { printf 'JOURS=%s\nPHRASE=%s\nCLE_PUBLIQUE=%s\n' "$1" "$2" "$3" > "$BAC/reglages/conf"; }
+ecrire_conf 14 "$BAC/reglages/phrase" "$BAC/reglages/publique"
+export CONF="$BAC/reglages/conf"
+aucun_dump() { shopt -s nullglob; set -- "$SAUVEGARDES_DIR"/*; [ $# -eq 0 ]; }
+pas_de_hestim() { shopt -s nullglob; set -- "$SAUVEGARDES_DIR"/hestim-*; [ $# -eq 0 ]; }
+: > "$BAC/docker.log"
+rm -f "$SAUVEGARDES_DIR"/*
+FAUX_DUMP=fail refuser "mysqldump échoué : déploiement arrêté" en_vrai "$COURT"
+verifier "mysqldump échoué : aucun dump laissé" aucun_dump
+refuser "mysqldump échoué : images pas mises en place" grep -qE "^tag " "$BAC/docker.log"
+: > "$BAC/docker.log"
+rm -f "$SAUVEGARDES_DIR"/*
+FAUX_DUMP=vide refuser "dump vide : déploiement arrêté" en_vrai "$COURT"
+verifier "dump vide : aucun dump laissé" aucun_dump
+unset FAUX_DUMP
+: > "$BAC/gpg.log"
+chemin="$(sauvegarder_base 20261115-120000)"
+verifier "dump réussi : chemin renvoyé" egal "$chemin" "$SAUVEGARDES_DIR/hestim-20261115-120000.sql.gz.gpg"
+verifier "dump réussi : gzip lisible à travers le faux gpg" gzip -t "$chemin"
+# Linux (la CI) stocke le mode. Git Bash sur Windows rend souvent 644 : le système de fichiers ne garde pas 600.
+mode_600() {
+    local droits
+    droits="$(stat -c %a "$1")"
+    [ "$droits" = 600 ] && return 0
+    case "$(uname -s)" in
+        MINGW*|MSYS*|CYGWIN*) return 0 ;;
+    esac
+    echo "droits obtenus : $droits" >&2
+    return 1
+}
+verifier "dump réussi : droits 600" mode_600 "$chemin"
+refuser "dump réussi : pas de clair à côté" test -e "$SAUVEGARDES_DIR/hestim-20261115-120000.sql.gz"
+verifier "clé publique présente : quand même la phrase" grep -q -- '--symmetric' "$BAC/gpg.log"
+refuser "clé publique présente : pas --recipient-file" grep -q -- '--recipient-file' "$BAC/gpg.log"
+
+# gpg en échec
+rm -f "$SAUVEGARDES_DIR"/*
+: > "$BAC/docker.log"
+FAUX_GPG=fail refuser "gpg échoué : déploiement arrêté" en_vrai "$COURT"
+verifier "gpg échoué : aucun dump laissé" aucun_dump
+unset FAUX_GPG
+
+# Sans phrase, même avec une clé publique : arrêt, et le banc continue (return, pas exit)
+unset PHRASE
+printf 'JOURS=14\nCLE_PUBLIQUE=%s\n' "$BAC/reglages/publique" > "$BAC/reglages/conf"
+rm -f "$SAUVEGARDES_DIR"/*
+refuser "sans PHRASE : déploiement arrêté" en_vrai "$COURT"
+verifier "sans PHRASE : aucun dump laissé" pas_de_hestim
+ecrire_conf 14 "$BAC/reglages/phrase" "$BAC/reglages/publique"
+
+# Purge : 15 jours partent, 1 jour reste, quotidien/ et studylib- ne sont pas touchés
+vieux_gpg="$SAUVEGARDES_DIR/hestim-ancien.sql.gz.gpg"
+vieux_clair="$SAUVEGARDES_DIR/hestim-ancien.sql.gz"
+recent="$SAUVEGARDES_DIR/hestim-recent.sql.gz.gpg"
+mkdir -p "$SAUVEGARDES_DIR/quotidien"
+quotidien="$SAUVEGARDES_DIR/quotidien/hestim-ancien.sql.gz.gpg"
+studylib="$SAUVEGARDES_DIR/studylib-ancien.sql.gz"
+printf x > "$vieux_gpg"
+printf x > "$vieux_clair"
+printf x > "$recent"
+printf x > "$quotidien"
+printf x > "$studylib"
+touch -d "15 days ago" "$vieux_gpg" "$vieux_clair" "$quotidien" "$studylib"
+touch -d "1 day ago" "$recent"
+sauvegarder_base 20261118-120000 >/dev/null
+verifier "purge : vieux chiffré effacé" test ! -e "$vieux_gpg"
+verifier "purge : vieux clair effacé" test ! -e "$vieux_clair"
+verifier "purge : récent gardé" test -e "$recent"
+verifier "purge : quotidien gardé" test -e "$quotidien"
+verifier "purge : studylib gardé" test -e "$studylib"
+
+# Retour arrière copiable : PHRASE n'est pas celle du shell (sous-commande), le texte relit le réglage.
+unset PHRASE
+retour="$(afficher_retour 20261118-120000 /root/sauvegardes/hestim-20261118-120000.sql.gz.gpg)"
+contient() { grep -F -q -- "$1" <<<"$2"; }
+refuser "retour : pas de phrase vide" contient '--passphrase-file ""' "$retour"
+verifier "retour : nomme le fichier de réglage" contient "hestim-sauvegarde.conf" "$retour"
+# shellcheck disable=SC2016 # on cherche le texte littéral "$PHRASE", qui ne doit pas être développé ici
+verifier "retour : la phrase est lue au lancement" contient '--passphrase-file "$PHRASE"' "$retour"
 
 echo
 if [ "$echecs" -eq 0 ]; then echo "deployer.sh : tous les tests passent"; else echo "deployer.sh : $echecs échec(s)"; exit 1; fi

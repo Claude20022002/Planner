@@ -7,6 +7,7 @@
 | Rôle | Qui | Ce qu'il fait | Ce qu'il ne fait jamais |
 |---|---|---|---|
 | **Chef de projet** | le compte GitHub **Claude20022002**, initiateur et maître du projet | ouvre et ferme les chantiers ; valide les plans de conception ; répond aux questions ; tranche les décisions ([decisions.md](decisions.md)) ; pousse, fusionne, lance les commandes du serveur | — |
+| **Coordinateur** | une session Claude désignée par le chef (depuis le 15 novembre) | répartit le travail entre les agents par des fiches de mission ; suit et relit chaque branche ; tient `suivi.md` et l'ordre de fusion ; tranche le réversible à l'intérieur d'un module ; valide les plans S et M sans migration ni enjeu de sécurité (§ 10) | `git push`, fusion, commande sur un serveur, décision réservée au chef (§ 10) |
 | **Agent d'IA ou membre de l'équipe** | toute session de travail | lit, pose ses questions, conçoit, code sur sa branche, commite **en local**, tient les fichiers d'état à jour, prépare les commandes du chef | `git push`, fusion, commande sur un serveur, décision de produit à la place du chef, travail hors d'un chantier ouvert |
 | **Agence marketing** | le directeur marketing (session principale de `../planner-marketing`) et ses agents spécialisés | voir le module [MKT](modules/MKT-marketing.md) | publier, dépenser, contacter quelqu'un sans accord du chef |
 
@@ -14,7 +15,7 @@
 
 | Fichier | Contenu | Mis à jour |
 |---|---|---|
-| [suivi.md](suivi.md) | **le seul tableau des fonctions et de leur état**, les chantiers ouverts, les numéros de migration | **à la fin de chaque session**, dans la branche de la tâche |
+| [suivi.md](suivi.md) | **le seul tableau des fonctions et de leur état**, les chantiers ouverts, les numéros de migration | par le **coordinateur**, sur sa branche, après chaque session et chaque fusion (décision du chef du 18 nov.) |
 | `docs/sessions/AAAA-MM-JJ-<branche>.md` | la **fiche de session** : ce qui est fait, ce qui reste, les questions, le prompt de reprise ([modèle](modeles/fiche-de-session.md)) | **à la fin de chaque session**, une fiche par session |
 | [modules/](modules/) | ce qui existe, les fonctions, leurs critères de « terminé » | quand une fonction change ce qui existe |
 | [decisions.md](decisions.md) | les décisions datées et les questions ouvertes | quand le chef tranche |
@@ -80,8 +81,8 @@ Les étapes, dans l'ordre :
 1. **Lire** : le module, sa conception, [decisions.md](decisions.md), le code concerné.
 2. **Questionner** (§ 6).
 3. **Écrire le plan** avec les réponses du chef.
-4. **Faire valider** : le chef dit « validé », l'agent l'écrit en tête du plan (`Validé par Claude20022002 le AAAA-MM-JJ`).
-5. **Commiter le plan seul**, comme premier commit de la branche (avec `suivi.md` passé à « en cours »).
+4. **Faire valider** : le chef dit « validé », l'agent l'écrit en tête du plan (`Validé par Claude20022002 le AAAA-MM-JJ`). Pour une fonction S ou M sans migration ni enjeu de sécurité, le coordinateur peut valider (`Validé par le coordinateur le AAAA-MM-JJ`, § 10).
+5. **Commiter le plan seul**, comme premier commit de la branche.
 6. **Coder**, en suivant le plan.
 
 Si le code montre que le plan est faux, l'agent **s'arrête**, corrige le plan et le refait valider avant de continuer.
@@ -99,7 +100,7 @@ Si le code montre que le plan est faux, l'agent **s'arrête**, corrige le plan e
 Avant de rendre la main, l'agent :
 
 1. **commite** son travail sur sa branche (localement) ;
-2. met à jour **[suivi.md](suivi.md)** : état de la fonction (« en cours », « PR ouverte », « fait »), et le tableau des chantiers si l'un s'ouvre ou se ferme ;
+2. écrit l'état de la fonction dans sa fiche de session (« en cours », « PR ouverte ») ; **[suivi.md](suivi.md)** est mis à jour par le coordinateur ;
 3. met à jour le **fichier du module** si ce qui existe a changé ;
 4. écrit la **fiche de session** `docs/sessions/AAAA-MM-JJ-<branche>.md` ([modèle](modeles/fiche-de-session.md)), avec le **prompt de reprise** ;
 5. commite ces fichiers ;
@@ -123,3 +124,43 @@ Le prompt de reprise se suffit à lui-même. Il dit quoi lire, où en est le tra
 ## 9. L'agence marketing
 
 Elle suit les mêmes règles : chantier ouvert, une tâche par branche, plan avant production, questions, fiche de fin de session. Ses livrables vivent dans `../planner-marketing`. **Son état vit ici**, dans les lignes MKT de [suivi.md](suivi.md). Le détail est dans [modules/MKT-marketing.md](modules/MKT-marketing.md).
+
+## 10. Le coordinateur et les fiches de mission
+
+Plusieurs agents travaillent en même temps, dans deux éditeurs : Claude et l'agent de Cursor dans Cursor, Claude et Codex dans VS Code. Le **coordinateur** est la session Claude que le chef désigne pour les tenir ensemble. Ses outils sont les skills `coordination`, `relecture-branche` et `fin-de-session` (`.claude/skills/`).
+
+### Ce qu'il décide, ce qu'il remonte
+
+| Le coordinateur tranche | Le chef tranche |
+|---|---|
+| structure du code, tests, noms, à l'intérieur d'un module | tout choix de produit (ce que l'utilisateur voit, un prix, un texte légal) |
+| découpage d'une fonction en étapes livrables | schéma de données partagé entre modules, toute migration |
+| ordre des fonctions dans un chantier ouvert, quand une dépendance l'impose | sécurité, légal, donnée de mineur |
+| verdict de relecture d'une branche (à corriger, prête pour la PR) | pile et dépendance majeure |
+| plan de conception d'une fonction **S ou M**, sans migration, sécurité, donnée de mineur ni choix de produit | plan d'une fonction **L ou XL**, et tout plan qui sort de la colonne de gauche |
+| ordre de fusion proposé, résolution annoncée des conflits de tableaux | pousser, fusionner, commande sur un serveur, ouvrir ou fermer un chantier, tout ce qui est irréversible |
+
+- **Dans le doute, la décision est au chef.** Le coordinateur la lui présente avec une recommandation.
+- Chaque décision du coordinateur s'écrit dans [decisions.md](decisions.md), datée, marquée « coordinateur ». Le chef peut la défaire.
+- Le coordinateur résume au chef chaque plan qu'il valide.
+
+### Comment il tient chaque agent
+
+| Agent | Comment il reçoit sa mission | Comment son travail est suivi |
+|---|---|---|
+| Claude (Cursor ou VS Code) | fiche de mission, et message direct entre sessions quand la session est ouverte | sa branche, sa fiche de session, ses réponses |
+| Codex, agent de Cursor | fiche de mission : le chef colle son prompt dans l'éditeur | sa branche et sa fiche de session, relues par le coordinateur |
+
+Le coordinateur ne pilote pas Codex ni l'agent de Cursor en direct : il les tient par ce qu'ils lisent ([AGENTS.md](../../AGENTS.md), la fiche de mission) et par ce qu'ils laissent (commits, fiche de session). Depuis le 15 novembre, ils ont chacun une **boîte aux lettres** en fichiers, hors du dépôt (`..\travaux-planner\boites\<agent>\`, avec `entree\` et `sortie\`) : le coordinateur y dépose missions et réponses, l'agent y dépose ses rapports. Le chef n'a plus qu'à leur dire « lis ta boîte ».
+
+### La fiche de mission
+
+Une fiche par mission, dans `docs/plan/missions/<identifiant>.md` ([modèle](modeles/mission.md)). Elle dit : l'agent, la fonction, la branche, le dossier de travail, **les fichiers que l'agent peut écrire**, ceux qu'il ne touche pas, qui valide le plan, et le prompt à coller. Le tableau « Missions en cours » de [suivi.md](suivi.md) en donne la vue d'ensemble, module par module.
+
+- **Deux missions ouvertes n'écrivent jamais le même fichier de code.** Le coordinateur le vérifie avant d'attribuer.
+- Un agent qui doit sortir de son périmètre s'arrête et le demande.
+- À la relecture, le coordinateur compare les fichiers modifiés par la branche au périmètre de la fiche.
+
+### `suivi.md` et `decisions.md` à plusieurs
+
+**`suivi.md` n'est modifié que par le coordinateur**, sur sa branche (décision du chef du 18 nov.). Avant, chaque branche écrivait sa ligne : chaque fusion mettait alors toutes les PR ouvertes en conflit, et leur CI ne tournait plus. Le coordinateur lit les fiches de session et les PR, met les lignes à jour, et vérifie après chaque fusion que `suivi.md` dit vrai. Pour `decisions.md`, quand deux branches touchent le même tableau, on garde toutes les lignes, et le coordinateur l'annonce dans l'ordre de fusion.

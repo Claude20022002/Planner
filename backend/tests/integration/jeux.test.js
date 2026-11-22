@@ -93,10 +93,13 @@ describe("Proposer un jeu dans un module", () => {
 
     test("un enseignant ne peut pas proposer de jeu dans un module qu'il n'enseigne pas", async () => {
         const client = await loginAs(autreEnseignant);
+        // Hors de ses classes : 404 comme un module inexistant, pour ne rien révéler de ce qui existe
         const res = await client.send("post", "/api/jeux/terminal-linux/modules", { id_cours: fixture.cours.id_cours });
-        expect(res.status).toBe(403);
+        expect(res.status).toBe(404);
         const res2 = await (await loginAs(enseignant)).send("post", "/api/jeux/terminal-linux/modules", { id_cours: autreModule.id_cours });
-        expect(res2.status).toBe(403);
+        expect(res2.status).toBe(404);
+        // Même réponse qu'un identifiant qui n'existe pas : les deux cas sont indiscernables
+        expect(res.body).toEqual((await client.send("post", "/api/jeux/terminal-linux/modules", { id_cours: 999999 })).body);
     });
 
     test("jeu ou module inconnu : 404", async () => {
@@ -216,7 +219,8 @@ describe("Suivi du module par l'enseignant", () => {
     test("réservé aux enseignants du module", async () => {
         const url = `/api/jeux/terminal-linux/modules/${fixture.cours.id_cours}/suivi`;
         expect((await (await loginAs(etudiant)).get(url)).status).toBe(403);
-        expect((await (await loginAs(autreEnseignant)).get(url)).status).toBe(403);
+        // Enseignant d'un autre module : 404, la règle « 404 hors de ses classes » s'applique au suivi
+        expect((await (await loginAs(autreEnseignant)).get(url)).status).toBe(404);
         expect((await (await loginAs(admin)).get(url)).status).toBe(403);
     });
 
@@ -234,7 +238,7 @@ describe("Suivi du module par l'enseignant", () => {
 
     test("retirer le jeu du module le fait disparaître pour les étudiants", async () => {
         const prof = await loginAs(enseignant);
-        expect((await (await loginAs(autreEnseignant)).send("delete", `/api/jeux/terminal-linux/modules/${fixture.cours.id_cours}`)).status).toBe(403);
+        expect((await (await loginAs(autreEnseignant)).send("delete", `/api/jeux/terminal-linux/modules/${fixture.cours.id_cours}`)).status).toBe(404);
         const res = await prof.send("delete", `/api/jeux/terminal-linux/modules/${fixture.cours.id_cours}`);
         expect(res.body).toEqual({ retires: 1 });
         expect((await (await loginAs(etudiant)).get("/api/jeux")).body.modules).toEqual([]);

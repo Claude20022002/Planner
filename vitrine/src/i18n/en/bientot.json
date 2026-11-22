@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "titre": "Coming soon · Planner",
+    "description": "Planner modules in preparation: grades and report cards, student life, families, admissions, fees and payments, and more. None is available yet."
+  },
+  "entete": {
+    "surtitre": "Coming soon",
+    "titre": "What comes next.",
+    "accroche": "These modules are in preparation. None is available yet, and no date is announced."
+  },
+  "badge": "Coming soon",
+  "ecole": {
+    "surtitre": "School life",
+    "titre": "From enrolment to graduation.",
+    "cartes": [
+      {
+        "titre": "Grades and report cards",
+        "texte": "Grade entry and report cards, with credits."
+      },
+      {
+        "titre": "Student life",
+        "texte": "Absences, discipline, elective choices and activities."
+      },
+      {
+        "titre": "Families",
+        "texte": "An account for parents, for one or several children, and meetings with teachers."
+      },
+      {
+        "titre": "Admissions",
+        "texte": "Applications through to enrolment, with nothing typed twice."
+      },
+      {
+        "titre": "Fees and payments",
+        "texte": "Instalments, receipts and online payment."
+      },
+      {
+        "titre": "Communication",
+        "texte": "Messages to families, WhatsApp included."
+      },
+      {
+        "titre": "Transport and boarding",
+        "texte": "School bus routes and boarding rooms."
+      },
+      {
+        "titre": "Internships and alumni",
+        "texte": "Student internships, and staying in touch with alumni."
+      }
+    ]
+  },
+  "aussi": {
+    "surtitre": "And also",
+    "titre": "Everywhere, and in your language.",
+    "cartes": [
+      {
+        "titre": "Verifiable documents",
+        "texte": "Certificates with a code anyone can check."
+      },
+      {
+        "titre": "Dashboards",
+        "texte": "The school's key figures, for its leaders."
+      },
+      {
+        "titre": "In Arabic",
+        "texte": "Planner in Arabic, alongside French and English."
+      },
+      {
+        "titre": "Offline",
+        "texte": "The mobile app, fully usable without a connection. The week already viewed can be read offline today."
+      },
+      {
+        "titre": "Export to the national platform",
+        "texte": "School data, exported to your country's national platform."
+      }
+    ]
+  }
+}

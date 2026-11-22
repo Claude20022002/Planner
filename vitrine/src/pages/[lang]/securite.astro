@@ -1,0 +1,27 @@
+---
+// Page « Sécurité et données », dans chaque langue : ce qui protège déjà les comptes et les données,
+// ce que fait ce site, et ce qui est en préparation (marqué « Bientôt »). Rien d'autre n'est affirmé :
+// ni certification, ni conformité juridique tant qu'elles ne sont pas établies. Assemble seulement.
+import { ShieldCheck, UserRoundCheck, ScrollText, LockKeyhole, UserRoundX, Bot, Cookie, EyeOff, Server, ListChecks } from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import EnTetePage from '../../components/fonctions/EnTetePage.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import { traductions } from '../../i18n/index.js';
+import { cheminsLangues } from '../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'securite');
+---
+<Gabarit langue={lang} page="securite" titre={t('meta.titre')} description={t('meta.description')}>
+  <EnTetePage ton="sombre" surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <GrilleCartes id="protections" surtitre={t('protections.surtitre')} titre={t('protections.titre')} cartes={t('protections.cartes')}
+    icones={[ShieldCheck, UserRoundCheck, ScrollText, LockKeyhole, UserRoundX, Bot]} />
+  <GrilleCartes id="site" ton="gris" surtitre={t('site.surtitre')} titre={t('site.titre')} cartes={t('site.cartes')}
+    icones={[Cookie, EyeOff, Server]} />
+  <GrilleCartes id="bientot" surtitre={t('bientot.surtitre')} titre={t('bientot.titre')} cartes={t('bientot.cartes')}
+    badge={t('bientot.badge')} icones={[ListChecks]} />
+  <FinDePage langue={lang} />
+</Gabarit>

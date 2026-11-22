@@ -1,3 +1,23 @@
+import gestionFr from './referentiel.fr.js';
+import filieresFr from './referentiel/filieres.fr.js';
+import groupesFr from './referentiel/groupes.fr.js';
+import modulesFr from './referentiel/modules.fr.js';
+import enseignementsFr from './referentiel/enseignements.fr.js';
+import sallesFr from './ressources/salles.fr.js';
+import campusFr from './ressources/campus.fr.js';
+import creneauxFr from './ressources/creneaux.fr.js';
+import calendrierFr from './ressources/calendrier.fr.js';
+import gestionEn from './referentiel.en.js';
+import filieresEn from './referentiel/filieres.en.js';
+import groupesEn from './referentiel/groupes.en.js';
+import modulesEn from './referentiel/modules.en.js';
+import enseignementsEn from './referentiel/enseignements.en.js';
+import sallesEn from './ressources/salles.en.js';
+import campusEn from './ressources/campus.en.js';
+import creneauxEn from './ressources/creneaux.en.js';
+import calendrierEn from './ressources/calendrier.en.js';
+import personnesFr from './personnes.fr.js';
+import personnesEn from './personnes.en.js';
 /**
  * Internationalisation FR / EN.
  * Le français est la langue par défaut (langue d'enseignement des écoles visées) ;
@@ -6,6 +26,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import fr from './fr.js';
+import applicationsFr from './applications.fr.js';
+import applicationsEn from './applications.en.js';
 import en from './en.js';
 import studioFr from './studio.fr.js';
 import studioEn from './studio.en.js';
@@ -15,6 +37,9 @@ import directFr from './direct.fr.js';
 import directEn from './direct.en.js';
 import etablissementFr from './etablissement.fr.js';
 import etablissementEn from './etablissement.en.js';
+import tableauDeBordFr from './tableauDeBord.fr.js';
+import tableauDeBordEn from './tableauDeBord.en.js';
+import { fr as simulationsFr, en as simulationsEn } from '../../../shared/simulations/i18n.js';
 
 export const LANGUAGES = [
   { code: 'fr', label: 'Français', short: 'FR' },
@@ -34,10 +59,56 @@ const readStoredLanguage = () => {
 };
 
 i18n.use(initReactI18next).init({
-  // Studio quiz, sessions de jeu, identité de l'école : textes dans leurs propres fichiers, sous leur clé
+  // Studio quiz, sessions de jeu, identité de l'école, simulations : textes dans leurs propres fichiers, sous leur clé
   resources: {
-    fr: { translation: { ...fr, studio: studioFr, sessionsJeu: sessionsJeuFr, direct: directFr, etablissement: etablissementFr } },
-    en: { translation: { ...en, studio: studioEn, sessionsJeu: sessionsJeuEn, direct: directEn, etablissement: etablissementEn } },
+    fr: {
+        translation: {
+            ...fr,
+            gestion: {
+                ...gestionFr,
+                filieres: filieresFr,
+                groupes: groupesFr,
+                modules: modulesFr,
+                enseignements: enseignementsFr,
+                salles: sallesFr,
+                campus: campusFr,
+                creneaux: creneauxFr,
+                calendrier: calendrierFr,
+            },
+            personnes: personnesFr,
+            applications: applicationsFr,
+            studio: studioFr,
+            sessionsJeu: sessionsJeuFr,
+            direct: directFr,
+            etablissement: etablissementFr,
+            tableauDeBord: tableauDeBordFr,
+            simulations: simulationsFr,
+        },
+    },
+    en: {
+        translation: {
+            ...en,
+            gestion: {
+                ...gestionEn,
+                filieres: filieresEn,
+                groupes: groupesEn,
+                modules: modulesEn,
+                enseignements: enseignementsEn,
+                salles: sallesEn,
+                campus: campusEn,
+                creneaux: creneauxEn,
+                calendrier: calendrierEn,
+            },
+            personnes: personnesEn,
+            applications: applicationsEn,
+            studio: studioEn,
+            sessionsJeu: sessionsJeuEn,
+            direct: directEn,
+            etablissement: etablissementEn,
+            tableauDeBord: tableauDeBordEn,
+            simulations: simulationsEn,
+        },
+    },
   },
   lng: readStoredLanguage(),
   fallbackLng: 'fr',
