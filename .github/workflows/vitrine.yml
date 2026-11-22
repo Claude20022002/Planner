@@ -59,6 +59,9 @@ jobs:
       - name: Construction
         run: npm run build
 
+      - name: EP-19 · poids transféré ≤ 200 Ko par page
+        run: node scripts/verifier-poids-ep19.mjs
+
       - name: Site construit, en artefact (non publié)
         uses: actions/upload-artifact@v4
         with:

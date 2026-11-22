@@ -36,11 +36,11 @@
 | VIT-06 | Vitrine statique en HTTPS sur un sous-domaine, avec retour arrière par digest | — | libre | M | Douze conditions du [plan](../../conception/exploitation/vit-06-mise-en-ligne.md) | implémentation locale, CI et déploiement à venir |
 | VIT-07 | Le site présente toutes les applications : quiz et jeux, bibliothèque, cours et annonces, application | — | libre | M | VIT-01 | en cours (`feat/vit-07-contenu-complet`) |
 | VIT-10 | Pages par rôle, menu « Solutions » ouvrant, pied de page en colonnes | — | libre | M | VIT-07 | en cours (`feat/vit-10-pages-par-role`) |
-| VIT-19 | Contrôle d'EP-19 dans la CI du site : une page pèse au plus 200 Ko transférés, hors média lancé à la demande ; la CI échoue au-delà (N1) | — (décision du chef du 21 nov.) | 3 | S | VIT-17 | à faire |
 | VIT-10b | Sur les pages par rôle, « avant → avec Planner » et une FAQ | — | libre | S | VIT-10 | en cours (`feat/vit-10b-avant-avec-faq`) |
 | VIT-17 | Correctifs techniques du site : menu mobile, vidéo sur demande, pages `/ar/`, Open Graph, grilles, `README.md` | — | libre | S | VIT-06 (sous-domaine) | **fait** (#237 et #246, fusionnées le 21 nov.) |
 | VIT-18 | Textes exacts du site : phrases P1 à P6 de l'expertise, l'IA « activée pour votre école » (D2), aucun pays (D3), le supérieur et la formation d'abord (D4), l'appel d'abord à la main (EP-18), test de garde | — | libre | S | VIT-14 (#224) | plan validé le 19 nov. ([vit-18-textes-exacts](../../conception/vitrine/vit-18-textes-exacts.md)) ; code fait (`fix/vit-18-textes-exacts`), PR à ouvrir |
 | VIT-18b | Le test de garde du site refuse aussi les superlatifs (« n° 1 », « #1 », « le seul », « le meilleur », « leader », en anglais « number one », « the only », « the best »), formes voisines comprises ; la phrase du calcul ne dit plus « la meilleure semaine possible » | — | libre | S | VIT-18 (#228) | plan validé le 21 nov. ([vit-18b-superlatifs](../../conception/vitrine/vit-18b-superlatifs.md)) ; code fait (`fix/vit-18b-superlatifs`), PR à ouvrir |
+| VIT-19 | Contrôle d'EP-19 dans la CI du site : une page pèse au plus 200 Ko transférés, hors média lancé à la demande ; la CI échoue au-delà (N1) | — | 3 | S | VIT-17 | **fait** (#250, fusionnée le 22 nov. ; accueil 134,7 Ko) ; plan validé le 21 nov. ([vit-19-ep19-poids](../../conception/vitrine/vit-19-ep19-poids.md)) |
 
 ## Critères de « terminé »
 
@@ -50,7 +50,7 @@
   - aucune promesse au-delà de ce qui existe.
   - une catégorie « faille de sécurité » est traitée **en privé** : elle n'est visible que du chef de projet, et l'accusé de réception rappelle les délais de `SECURITY.md` (7 jours, 90 jours au plus). Une fois en ligne, `SECURITY.md` renvoie à ce formulaire (décision du 16 nov.).
 - **VIT-04** : la page d'état lit la sonde de supervision. Elle ne lit aucune donnée d'école.
-- **VIT-19** : la CI du site échoue quand une page dépasse 200 Ko transférés (hors média lancé à la demande), et le montre sur une page gonflée exprès ; **VIT-04 passe avant VIT-03**, juste après la mise en ligne (N5).
+- **VIT-19** : la CI du site échoue quand une page dépasse 200 Ko transférés (hors média lancé à la demande : les fichiers vidéo sous `/videos/` ; leur image fixe compte), et un test unitaire le montre sur une page gonflée en temporaire ; **VIT-04 passe avant VIT-03**, juste après la mise en ligne (N5).
 
 ## À trancher avant VIT-02
 
