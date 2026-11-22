@@ -17,6 +17,7 @@
   - `services/cours/studylib.js` ;
   - l'onglet `bibliotheque` de l'application mobile.
 - **Pour les parcours** : une fausse Bibliothèque, `frontend/tests/parcours/fausseBibliotheque.mjs`.
+- **Bibliothèque reconstruite, socle (BIB-05, branche `feat/bib-05-modele-stockage`)** : migration 0087 (`DocumentsBibliotheque` avec `uid`, `NotesDocuments`, `TelechargementsDocuments` sans IP), modèles dans `models/bibliotheque.js` ; `services/bibliotheque/` : `fichiers.js` (PDF, DOC, DOCX, PPT, PPTX, 20 Mo, signature du contenu), `stockage.js` (MinIO par `@aws-sdk/client-s3`, seau `planner`, clé `ecoles/<école>/bibliotheque/<uid>`, liens signés de 5 minutes, toute clé hors de l'école refusée), `documents.js` (service interne, sans route). Variables `S3_*` facultatives ; sans clé, 503. [Conception](../../conception/bibliotheque/bib-05-modele-stockage.md).
 - **Isolation** : StudyLib n'existe aujourd'hui que pour HESTIM. Les canaux I-4 (jetons sans école) et I-5 (une seule base et un seul seau) restent ouverts. **Une seconde école n'a pas de Bibliothèque** jusqu'à BIB-02.
 
 ## Fonctions
