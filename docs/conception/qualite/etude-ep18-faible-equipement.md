@@ -8,7 +8,7 @@
 | Branche | `etude/ep18-faible-equipement`, depuis `origin/main` (`b57753e9`) |
 | Rédigé par | Claude Code (Opus 5.5, deuxième choix de la fiche), le 2026-11-22 |
 | Nature | étude : elle propose, et le chef tranche. Le code se lit, il ne se modifie pas |
-| État | § 1 à § 7 écrits : contextes, réponses, méthode, grille, poids, pays. § 8 (manques et questions au chef) et § 9 (ordre) à écrire |
+| État | complète : § 1 à § 10, réponses 1 à 11 du chef ; à relire par le coordinateur avant la PR |
 
 ## 1. La question
 
@@ -69,7 +69,7 @@ Deux niveaux (réponse 3) :
 
 ## 3. Questions et réponses
 
-Posées au chef par l'outil de questions le 22 nov. Les questions qui viendront de la grille (dépenses, papier, hors ligne) seront posées au § 8.
+Posées au chef par l'outil de questions le 22 nov. Les questions qui viendront de la grille (dépenses, papier, hors ligne) ont été posées après la grille : ce sont les questions 7 à 11.
 
 | N° | Question | Proposition | Réponse du chef |
 |---|---|---|---|
@@ -79,6 +79,11 @@ Posées au chef par l'outil de questions le 22 nov. Les questions qui viendront 
 | 4 | La Bibliothèque, alors que StudyLib ne tourne plus et n'est pas redéployée | la grille juge les plans BIB-05 à BIB-11, pas StudyLib : « absente aujourd'hui », puis ce que BIB-06, BIB-09 et BIB-10 doivent tenir (poids avant téléchargement, reprise après coupure, impression, accès sans compte élève). StudyLib se lit seulement pour ce que la reconstruction reprend | **oui** (22 nov.) |
 | 5 | L'enseignant qui n'a qu'un téléphone simple | pas noté : une limite écrite, qui relève d'un éventuel SMS (COM-03) | **oui** (22 nov.) |
 | 6 | Les familles | la grille juge les rôles qui existent ; pour les familles, une liste courte, sans note, de ce que COM, ADM-05 et MOB-05 devront tenir | **oui** (22 nov.) |
+| 7 | La feuille d'appel (C2) : aucune liste ne s'imprime, et une séance passée ne peut plus être marquée « réalisée » | un bouton « Imprimer la liste d'appel » (attendus, trois cases) ; la saisie après coup peut marquer la séance « réalisée » dans les 7 jours ; S, étape 3, sans migration | **oui** (22 nov., posée après la grille) |
+| 8 | Le quiz pour l'élève sans appareil (A, C2) | imprimer le quiz sans les réponses (S) ; l'enseignant crée la copie d'un élève et y saisit ses réponses ou sa note, marquée « saisie par l'enseignant » (M) ; étape 3 | **oui** (22 nov.) |
+| 9 | L'appel sans réseau (B2) : MOB-08 dépend de MOB-02, puisque l'application n'accepte que les étudiants | garder la décision du 21 nov. : MOB-02, puis MOB-08 ; d'ici là, la feuille imprimée et la saisie après coup (réponse 7) couvrent la coupure | **oui** (22 nov.) |
+| 10 | Dépense : les SMS | pas de SMS à l'étape 3 ; le coût et l'usage se posent aux entretiens de VEN-02 et avec COM-03, pour les familles (étape 6) ; aucune dépense maintenant | **oui** (22 nov.) |
+| 11 | La Bibliothèque sans compte élève | pas de lecture anonyme ; l'élève sans appareil y accède par l'enseignant, qui projette ou imprime depuis le site ; BIB-09 reçoit le critère « un document s'imprime depuis sa fiche » | **oui** (22 nov.) |
 
 ## 4. La méthode
 
@@ -247,20 +252,95 @@ Recherche dans `frontend/src`, `backend/` (services, contrôleurs, routes, confi
 | **Le fuseau par défaut du serveur est `Africa/Casablanca`** | 13 lectures de `APP_TIMEZONE`, avec ce défaut, dont `backend/services/presences/appel.js:27`, `backend/services/moteur/valeurs/lecture.js:11`, `backend/services/calendrier/ics.js:30`, `backend/services/planning/affectationRules.js:42` | sans la variable, une installation hors du Maroc prend l'heure du Maroc. Et le fuseau est réglé **par installation**, pas par école | PLA-13 ; à rapprocher de D-01 (une base par école) |
 | **Les fériés du Maroc**, seuls proposés | `backend/utils/feriesMaroc.js:2` et `:57`, `backend/controllers/calendrierController.js:121-131`, `frontend/src/i18n/fr.js:2066` et `:2069`, `frontend/src/i18n/ressources/calendrier.fr.js:4` | une autre école n'a aucun férié proposé, et le bouton nomme le Maroc | **fonction d'ADM après ADM-02** (décision du chef du 21 nov.) |
 | **Les jeux comptent en MAD** | `shared/simulations/catalogue/budget-erp.js:15`, `:28`, `:29`, `:41` ; `shared/simulations/catalogue/stock-pilot.js:7`, `:15`, `:23`, `:31` ; `shared/simulations/i18n.js:31`, `:34`, `:55`, `:62`, `:75` (et les mêmes en anglais, `:112` et suivantes) | la consigne parle d'une monnaie étrangère à l'élève | correctif court : une unité neutre (§ 8) |
-| **Le nom d'une école dans l'application** (EP-5 et règle du dépôt neutre, plutôt qu'un pays) | `mobile/app.json:3` (« HESTIM Planner ») ; `mobile/src/cache.js:7` (`hestim.cache.`) ; `backend/utils/campus.js:2` et `:6` (campus de l'école pilote, migration 0003, déjà traités par PLA-03) | l'application s'appelle du nom d'une autre école | MOB-03 (thème de l'école) et MOB-07 ; `scripts/verifier-neutre.mjs` ne les voit pas, à vérifier |
+| **Le nom d'une école dans l'application** (EP-5 et règle du dépôt neutre, plutôt qu'un pays) | `mobile/app.json:3` (« HESTIM Planner ») ; `mobile/src/cache.js:7` (`hestim.cache.`) ; `backend/utils/campus.js:2` et `:6` (campus de l'école pilote, migration 0003, déjà traités par PLA-03) | l'application s'appelle du nom d'une autre école | MOB-03 (thème de l'école) et MOB-07 ; `scripts/verifier-neutre.mjs` ne voit ni l’un ni l’autre : il ne lit pas `mobile/app.json` (`:22`), et il laisse passer les noms techniques en minuscules, exprès (`:8-11`) |
 | Les mots de passe interdits citent des noms du pays | `backend/utils/passwordHelper.js:44` (`marocmaroc12`, `casablanca12`…) | aucun effet nuisible : la liste est seulement incomplète ailleurs | rien à faire, sinon l'élargir |
 | **Absent, et c'est bien** | aucune mention de Massar dans l'application ; aucun format de téléphone d'un pays ; aucune devise hors des jeux (FIN n'est pas construit) | — | ETA-03 et FIN garderont cette neutralité |
 
-## 8. Les manques, rangés, et les questions au chef
+## 8. Les manques, rangés
 
-*À écrire.* Y entreront MOB-08 (l'appel à la main hors ligne, N2) et N3 (le poids affiché avant chaque téléchargement, avec reprise après coupure), décidés le 21 nov.
+Chaque manque vient d'une case de la grille. La colonne « Couvert par » dit la fonction du plan qui le prend déjà, ou propose une fonction nouvelle, que le coordinateur range dans son module. Les tailles sont des estimations avant conception, comme dans le plan.
+
+| N° | Manque | Contexte | Couvert par | Taille | Ce qu'il demande |
+|---|---|---|---|---|---|
+| M-1 | **Aucune liste d'appel ne s'imprime**, et une séance passée ne peut plus être marquée « réalisée » (§ 5.3) | C2, B2 | **nouvelle** (réponse 7) : « Imprimer la liste d'appel », et marquer la séance « réalisée » dans les 7 jours depuis la saisie après coup | S | rien : ni migration, ni dépense |
+| M-2 | **Un quiz ne s'imprime pas**, et l'élève sans appareil n'a pas de copie (§ 5.4) | A, C2 | **nouvelle** (réponse 8), en deux temps : impression sans les réponses (S) ; copie saisie par l'enseignant (M) | S + M | la copie saisie demande sans doute une colonne (« saisie par l'enseignant ») : migration à réserver, à confirmer par son plan |
+| M-3 | **Aucun appel sans réseau** ; l'application n'accepte pas l'enseignant (§ 5.2, § 5.3) | B2 | **MOB-02** (rôle enseignant, L), puis **MOB-08** (M), réponse 9 | L + M | MOB-02 devient une dépendance écrite de MOB-08 dans le module MOB |
+| M-4 | L'emploi du temps hors ligne existe **en partie** : seules les semaines déjà consultées se lisent (§ 5.8) | B2 | **MOB-06**, à redimensionner : il reste à précharger la semaine en cours et la suivante, même non consultées, et à montrer la date de la copie (qui existe déjà) | M → S | rien |
+| M-5 | **Les annonces ne se gardent pas** dans l'application (§ 5.6) | B2 | **nouvelle**, à joindre à MOB-06 : garder les dernières annonces lues, comme le tableau | S | rien |
+| M-6 | **Le poids avant le téléchargement et la reprise après coupure** (N3) : le poids est fait dans l'application, la reprise nulle part, et le site n'a pas encore de Bibliothèque (§ 5.7) | B1, B2 | **BIB-06** (poids rendu par l'API, plages `Range`), **BIB-09** (poids affiché sur le site), **BIB-10** (garder l'acquis de l'application, ajouter la reprise) | dans ces fonctions | rien de plus : ce sont des critères de « terminé » |
+| M-7 | **Un document ne s'imprime pas depuis Planner** (§ 5.6, § 5.7) | A, C1, C2 | **BIB-09** : « un document s'imprime depuis sa fiche » (réponse 11) | dans BIB-09 | rien |
+| M-8 | **Un élève sans adresse électronique n'a pas de compte** (§ 5.9) | A | **VSC-01** (Q-20, décision du 8 nov.) | dans VSC-01 | une migration (`Users.email` facultatif), déjà prévue par VSC-01 |
+| M-9 | **Le premier chargement pèse 338 Ko compressés**, et chaque écran de gestion de 92 à 100 Ko de plus (§ 6) | B1 | **nouvelle**, sous QUA ou UIX : (a) brotli au serveur web, soit 17 % de moins (S) ; (b) la bibliothèque d'animation hors du chargement commun, soit 36 Ko de moins par écran (S) ; (c) un plafond pour l'application, à proposer après (a) et (b), comme EP-19 l'a fait pour le site | S + S | rien ; (c) est un choix du chef, plus tard |
+| M-10 | **Le décalage horaire de l'école est figé à 0** dans le site et l'application, et le fuseau est réglé par installation (§ 7) | tous, hors du Maroc | **PLA-13**, ou un correctif court avant lui : le serveur, qui a sa propre base de fuseaux, rend le décalage de l'école, et `shared/dates.js` le lit au lieu de la constante | S à M | rien ; à faire **avant** toute école dans un autre fuseau |
+| M-11 | **Les jeux comptent en MAD** (§ 7) | tous, hors du Maroc | **nouvelle**, sous QJE : une unité neutre dans les consignes et les bilans (« crédits », par exemple) | S | un choix de mot, au coordinateur (réversible) |
+| M-12 | **L'application porte le nom d'une école** (`mobile/app.json:3`, `mobile/src/cache.js:7`) | tous | **MOB-03** (thème de l'école) et **MOB-07** ; et ajouter `mobile/app.json` aux fichiers que lit `scripts/verifier-neutre.mjs` (`:24`) | S | renommer le préfixe du cache vide les copies gardées une fois : à dire dans la note de version |
+| M-13 | **Les fériés du Maroc seuls** (§ 7) | tous, hors du Maroc | fonction d'**ADM** après ADM-02 (décision du chef du 21 nov.) | — | déjà décidé |
+| M-14 | **Un seul jeu se joue en collectif** (§ 5.5) | A, C1 | **QJE** : chaque jeu nouveau dit dans son plan s'il se joue en collectif, et pourquoi sinon (section EP-18 du modèle, § 9.2) | — | rien |
+| M-15 | **Rien ne prévient l'élève qui n'a ni téléphone intelligent ni e-mail** (§ 5.6, § 5.8) | A | **COM-03**, à l'étape 6, avec les familles (réponse 10) ; d'ici là, affichage et impression | — | **une dépense** (SMS), à trancher aux entretiens de VEN-02 |
+| M-16 | Les sondages et le quiz en direct demandent un appareil pour répondre (§ 5.4, § 5.6) | A | **limite acceptée** : un vote à main levée reste possible sans Planner. M-2 couvre le quiz à son rythme | — | rien |
+
+**Les familles**, sans note (réponse 6). Ce que COM, ADM-05 et MOB-05 devront tenir pour une famille sans téléphone intelligent :
+- un avis imprimable (absences, emploi du temps de l'enfant), remis par l'école ;
+- un compte de parent facultatif, jamais exigé pour être prévenu ;
+- le SMS, si le chef le décide à l'étape 6 (M-15), réservé aux alertes, comme COM-03 le prévoit déjà ;
+- aucune notification qui suppose l'application.
 
 ## 9. L'ordre proposé, et la section « EP-18 » du modèle de conception
 
-*À écrire.*
+### 9.1 L'ordre
+
+Selon la décision du 21 nov. : le supérieur d'abord. Rien de ce qui suit n'est décidé : le chef tranche, puis le coordinateur range chaque ligne dans son module.
+
+**Petit, à faire tout de suite** (étape 3, sans migration ni dépense) :
+
+| Rang | N° | Pourquoi d'abord |
+|---|---|---|
+| 1 | M-10, le décalage horaire | une erreur de date silencieuse, qui touche toute école hors d'UTC+0. À faire avant qu'une école d'un autre fuseau n'arrive |
+| 2 | M-1, la feuille d'appel | elle rend l'appel possible en C2 et couvre B2 jusqu'à MOB-08 (réponses 7 et 9) |
+| 3 | M-2, l'impression du quiz (la première moitié) | le quiz se fait alors sur papier en C2 |
+| 4 | M-9 (a) et (b), brotli et l'animation | de 36 à 93 Ko de moins sur chaque premier chargement, sans toucher aux écrans |
+| 5 | M-11 et M-12, les jeux en MAD et le nom de l'application | du texte et de la configuration |
+
+**Avec une fonction déjà au plan**, ou à son étape :
+
+| N° | Où | Quand |
+|---|---|---|
+| M-2, la copie saisie par l'enseignant | QJE (fonction nouvelle) | étape 3, après l'impression |
+| M-6, M-7 | critères de BIB-06, BIB-09 et BIB-10 | étape 3, avec la reconstruction de la Bibliothèque |
+| M-3 | MOB-02, puis MOB-08 | étape 3 (MOB-08 y est déjà), MOB-02 avant lui |
+| M-4, M-5 | MOB-06 redimensionnée | étape 4, selon le module MOB |
+| M-8 | VSC-01 | à son étape (le scolaire est conçu, pas codé) |
+| M-13 | ADM, après ADM-02 | décidé le 21 nov. |
+| M-15 | COM-03, avec les entretiens de VEN-02 | étape 6 |
+| M-9 (c), le plafond de l'application | décision du chef | après M-9 (a) et (b), sur une nouvelle mesure |
+
+### 9.2 La section « EP-18 » à ajouter au modèle de conception
+
+Texte proposé pour `docs/plan/modeles/conception.md`, après la section 7. Le chef le valide, puis le coordinateur l'inscrit (la fiche de mission ne permet pas à l'étude d'écrire dans les modèles) :
+
+```markdown
+## 7 bis. EP-18 : tous les contextes
+
+<!-- Une ligne par contexte (étude EP-18, § 2). « Sans objet » se justifie en une phrase.
+     Une fonction qui ne marche pas dans un contexte dit ce que fait l'utilisateur à la place. -->
+
+| Contexte | Ce que fait la fonction | Preuve ou test |
+|---|---|---|
+| **A. Au moins un élève sans téléphone ni ordinateur** | il est servi sans appareil (l'enseignant saisit pour lui, ou c'est imprimé, projeté) ; sinon, ce qu'il fait à la place | |
+| **B. Connexion lente (Slow 3G : 400 kbit/s, 400 ms) ou coupée** | le poids de l'écran, mesuré et écrit dans la PR (EP-19) ; ce qui se lit et ce qui s'écrit sans réseau, et ce qui arrive au retour du réseau ; pour un téléchargement : le poids affiché avant, et la reprise après coupure (N3) | |
+| **C. Ce qu'a l'école : ordinateur et projecteur (C1), ou rien dans la salle (C2)** | ce qui se projette ; ce qui s'imprime ; ce qui se saisit après coup | |
+
+Aucun pays supposé (EP-5) : aucune devise, aucun fuseau, aucun férié, aucun format de téléphone ni aucun
+outil de l'État écrit en dur. Ils viennent de la configuration de l'école.
+```
 
 ## 10. Limites
 
-- L'enseignant qui n'a qu'un téléphone simple n'est pas noté (réponse 5).
-- Les familles ne sont pas notées (réponse 6).
-- L'application mobile est jugée sur son code, sans essai sur un téléphone.
+- **L'enseignant qui n'a qu'un téléphone simple** n'est pas noté (réponse 5).
+- **Les familles** ne sont pas notées (réponse 6) : § 8 seulement.
+- **L'application mobile est jugée sur son code**, sans essai sur un téléphone (MOB-01 reste à faire).
+- **Les temps de B1 sont calculés**, pas mesurés : ce sont les tailles compressées divisées par 50 Ko/s, sans la latence. Une mesure avec le profil « Slow 3G » dans un navigateur, sur le site lancé, reste à faire (EP-19 la demande pour chaque PR qui change le premier chargement).
+- **Le poids a été mesuré sur une installation propre à l'étude** (`npm ci`), parce que les `node_modules` du dépôt principal sont en retard sur le fichier de verrouillage (`lucide-react` y manque). La mesure vaut pour `b57753e9`.
+- **Un affichage projeté des résultats des sondages** n'a pas été vérifié (§ 5.6).
+- **Go4School** n'a été jugé que sur ses annonces (étude 13).
+- **Un état peut changer vite** : MOB-08, BIB-06 à BIB-10 et ADM-02 sont en cours ou à faire. La grille vaut pour le commit `b57753e9`. Une PR qui change une case la met à jour.
