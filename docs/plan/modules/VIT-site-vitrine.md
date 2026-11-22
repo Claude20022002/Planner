@@ -13,6 +13,7 @@
 - **Logos des applications et icônes vivantes** (VIT-09a, branche `feat/vit-09a-logos-icones`, [plan validé le 18 nov.](../../conception/vitrine/vit-09a-logos-icones.md)) : `shared/icones/`, source unique pour le site et, avec UIX-10b, l'application. Sept logos illustrés (tuile en dégradé, objet en plans ; dessin détaillé et simplifié), aux teintes `app-<id>` de la charte v3, et douze icônes de commandes animées en CSS au survol et au focus, coupées en mouvement réduit. Aucune page ne les pose encore : c'est VIT-09b.
 - **Pages par rôle** (VIT-10 en cours, branche `feat/vit-10-pages-par-role`, [plan validé le 18 nov.](../../conception/vitrine/vit-10-pages-par-role.md)) : Direction, Scolarité, Enseignants, Étudiants. Le menu « Solutions » s'ouvre. Le pied de page est en colonnes. Pas de bande de chiffres, pas de bloc avant/après, pas de FAQ nouvelle. Aucune illustration.
 - **Avant → avec, et FAQ par rôle** (VIT-10b en cours, branche `feat/vit-10b-avant-avec-faq`, [plan validé le 18 nov.](../../conception/vitrine/vit-10b-avant-avec-faq.md)) : cinq lignes par rôle et une FAQ en accordéon. Les phrases « avec » sont recopiées. Aucune illustration.
+- **Catalogue, FAQ et menu « Fonctions »** (VIT-11, branche `feat/vit-11-catalogue-faq`, [plan et visa du chef](../../conception/vitrine/vit-11-catalogue-faq.md)) : le registre alimente le catalogue par application et le menu par catégorie. Le panneau se consulte au clavier ou au toucher sans JavaScript. Le lien de repli ouvre le catalogue. Les sept réponses de la FAQ sont aussi disponibles en données structurées.
 - **Ce que font les concurrents**, d'après l'[étude de marché](../../etude-marche/01-concurrents.md) :
   - une page par fonction et par type d'école ;
   - une démonstration ou un essai bien visible ;
@@ -37,9 +38,11 @@
 | VIT-07 | Le site présente toutes les applications : quiz et jeux, bibliothèque, cours et annonces, application | — | libre | M | VIT-01 | en cours (`feat/vit-07-contenu-complet`) |
 | VIT-10 | Pages par rôle, menu « Solutions » ouvrant, pied de page en colonnes | — | libre | M | VIT-07 | en cours (`feat/vit-10-pages-par-role`) |
 | VIT-10b | Sur les pages par rôle, « avant → avec Planner » et une FAQ | — | libre | S | VIT-10 | en cours (`feat/vit-10b-avant-avec-faq`) |
+| VIT-11 | Catalogue, FAQ et méga-menu par catégorie | — | libre | M | VIT-10 | VIT-17 et VIT-18 intégrées, [recette locale](../../sessions/2026-11-21-feat-vit-11-catalogue-faq-3.md) réussie ; PR #236 à actualiser |
 | VIT-17 | Correctifs techniques du site : menu mobile, vidéo sur demande, pages `/ar/`, Open Graph, grilles, `README.md` | — | libre | S | VIT-06 (sous-domaine) | PR ouverte (#237) |
 | VIT-18 | Textes exacts du site : phrases P1 à P6 de l'expertise, l'IA « activée pour votre école » (D2), aucun pays (D3), le supérieur et la formation d'abord (D4), l'appel d'abord à la main (EP-18), test de garde | — | libre | S | VIT-14 (#224) | plan validé le 19 nov. ([vit-18-textes-exacts](../../conception/vitrine/vit-18-textes-exacts.md)) ; code fait (`fix/vit-18-textes-exacts`), PR à ouvrir |
 | VIT-18b | Le test de garde du site refuse aussi les superlatifs (« n° 1 », « #1 », « le seul », « le meilleur », « leader », en anglais « number one », « the only », « the best »), formes voisines comprises ; la phrase du calcul ne dit plus « la meilleure semaine possible » | — | libre | S | VIT-18 (#228) | plan validé le 21 nov. ([vit-18b-superlatifs](../../conception/vitrine/vit-18b-superlatifs.md)) ; code fait (`fix/vit-18b-superlatifs`), PR à ouvrir |
+| VIT-19 | Contrôle d'EP-19 dans la CI du site : une page pèse au plus 200 Ko transférés, hors média lancé à la demande ; la CI échoue au-delà (N1) | — | 3 | S | VIT-17 | en cours (`feat/vit-19-ep19-poids`) ; plan validé le 21 nov. ([vit-19-ep19-poids](../../conception/vitrine/vit-19-ep19-poids.md)) |
 
 ## Critères de « terminé »
 
@@ -49,6 +52,7 @@
   - aucune promesse au-delà de ce qui existe.
   - une catégorie « faille de sécurité » est traitée **en privé** : elle n'est visible que du chef de projet, et l'accusé de réception rappelle les délais de `SECURITY.md` (7 jours, 90 jours au plus). Une fois en ligne, `SECURITY.md` renvoie à ce formulaire (décision du 16 nov.).
 - **VIT-04** : la page d'état lit la sonde de supervision. Elle ne lit aucune donnée d'école.
+- **VIT-19** : la CI du site échoue quand une page dépasse 200 Ko transférés (hors `/videos/*`), et un test unitaire le montre sur une page gonflée en temporaire.
 
 ## À trancher avant VIT-02
 

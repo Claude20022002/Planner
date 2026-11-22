@@ -1,5 +1,6 @@
 import { findSpotlight, groupByDay, phaseDeLaLigne, relativeTo, toBoardSession, formatHeure } from '../../shared/session.js';
 import { lineColor, tokens } from '../../shared/tokens.js';
+import { panneau } from '../../shared/charte/index.js';
 
 /** Logique partagée avec le web (shared/), exécutée ici comme sur le téléphone. */
 
@@ -65,7 +66,7 @@ describe('jetons partagés', () => {
   test('même couleur de ligne pour la même filière, jamais une couleur de statut', () => {
     expect(lineColor('IIIA')).toBe(lineColor('IIIA'));
     expect(tokens.lines).toContain(lineColor('IIIA'));
-    expect(tokens.lines).not.toContain(tokens.board.delayed);
+    expect(tokens.lines).not.toContain(panneau['lampe-retard']);
     expect(lineColor(null)).toBe(tokens.lineUnknown);
   });
 });

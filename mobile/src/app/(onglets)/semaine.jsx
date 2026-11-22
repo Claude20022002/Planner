@@ -51,6 +51,9 @@ const lirePeriode = async (du, au, cle) => {
   }
 };
 
+/** Première lettre en majuscule, le reste tel quel */
+const majuscule = (texte) => texte.charAt(0).toUpperCase() + texte.slice(1);
+
 /**
  * Semaine, à la manière d'un agenda d'étudiant : la liste des séances par jour, la grille horaire
  * de la semaine, ou le mois en calendrier. Toucher une séance ouvre son détail (report : date et
@@ -118,9 +121,10 @@ export default function Semaine() {
 
   const sections = useMemo(() => groupByDay(seances).map(({ date, items }) => ({ title: formatDayLabel(date, i18n.language), data: items })), [seances, i18n.language]);
   const langue = i18n.language === 'en' ? 'en-GB' : 'fr-FR';
-  const libelle = parMois
+  // Casse normale (UIX-10d) : seule la première lettre en majuscule (« Novembre 2026 », « Semaine du 16 novembre »)
+  const libelle = majuscule(parMois
     ? mois.toLocaleDateString(langue, { month: 'long', year: 'numeric' })
-    : t('board.weekTitle', { date: formatDayLabel(toLocalISODate(lundi), i18n.language, { weekday: undefined }) });
+    : t('board.weekTitle', { date: formatDayLabel(toLocalISODate(lundi), i18n.language, { weekday: undefined }) }));
   const actuel = parMois ? mois.getMonth() === new Date().getMonth() && mois.getFullYear() === new Date().getFullYear() : toLocalISODate(lundi) === toLocalISODate(lundiDe(new Date()));
 
   const avancer = (sens) => {
@@ -211,7 +215,7 @@ const useStyles = creerStyles((t) => ({
   vueTexteActif: { color: t.couleurs.surAccent },
   navigation: { flexDirection: 'row', alignItems: 'center', borderBottomWidth: 1, borderBottomColor: t.couleurs.filet },
   fleche: { width: CIBLE_TACTILE + 4, height: CIBLE_TACTILE + 4, alignItems: 'center', justifyContent: 'center' },
-  libelleTexte: { flex: 1, textAlign: 'center', color: t.couleurs.lettre, fontFamily: t.polices.panneau, fontSize: 17, textTransform: t.famille === 'planner' ? 'uppercase' : 'capitalize', letterSpacing: espace(t, 0.8) },
+  libelleTexte: { flex: 1, textAlign: 'center', color: t.couleurs.lettre, fontFamily: t.polices.panneau, fontSize: 17, letterSpacing: espace(t, 0.8) },
   retour: { minHeight: 32, paddingHorizontal: 10, justifyContent: 'center', borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.couleurs.filet },
   retourTexte: { color: t.couleurs.lettre, fontFamily: t.polices.panneau, fontSize: 13, textTransform: t.capitales },
   jour: { backgroundColor: t.couleurs.fond, color: t.couleurs.lettreAttenuee, fontFamily: t.polices.panneau, fontSize: 14, textTransform: t.capitales, letterSpacing: espace(t, 1.2), paddingHorizontal: 16, paddingTop: 16, paddingBottom: 6 },

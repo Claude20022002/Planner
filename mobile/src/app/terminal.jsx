@@ -228,21 +228,21 @@ function Bouton({ plein = false, onPress, children }) {
 }
 
 const useStyles = creerStyles((t) => {
-  // Le terminal garde les couleurs sombres de la famille, quel que soit le mode
-  const nuit = THEMES[`${t.famille}-sombre`].couleurs;
+  // Le terminal garde les couleurs du thème sombre, quel que soit le mode
+  const nuit = THEMES.sombre.couleurs;
   return {
     icone: { width: CIBLE_TACTILE, height: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center' },
     parcours: { flexGrow: 0, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: t.couleurs.filet },
     pastille: { minWidth: CIBLE_TACTILE, height: 40, borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.couleurs.filet, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingHorizontal: 8 },
-    pastilleActive: { borderColor: t.famille === 'planner' ? t.couleurs.lettre : t.couleurs.accent, backgroundColor: t.couleurs.cellule },
+    pastilleActive: { borderColor: t.couleurs.accent, backgroundColor: t.couleurs.cellule },
     pastilleTexte: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.panneauGras, fontSize: 15 },
     pastilleTexteActif: { color: t.couleurs.lettre },
     lampe: { width: 8, height: 8, borderRadius: 4, borderWidth: 1, borderColor: t.couleurs.filet },
     defi: { flex: 1 },
     niveau: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.panneauGras, fontSize: 12, letterSpacing: espace(t, 1.6), textTransform: t.capitales },
-    titre: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: t.famille === 'planner' ? 24 : 20, letterSpacing: espace(t, 0.6), textTransform: t.capitales, marginTop: 4 },
+    titre: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 20, letterSpacing: espace(t, 0.6), textTransform: t.capitales, marginTop: 4 },
     texte: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 15, lineHeight: 22, marginTop: 6 },
-    objectif: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 15, lineHeight: 22, marginTop: 10, paddingLeft: 10, borderLeftWidth: 3, borderLeftColor: t.famille === 'planner' ? t.couleurs.cadre : t.couleurs.accent },
+    objectif: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 15, lineHeight: 22, marginTop: 10, paddingLeft: 10, borderLeftWidth: 3, borderLeftColor: t.couleurs.accent },
     indice: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 14, marginTop: 6 },
     solution: { color: nuit.lettre, fontFamily: MONO, fontSize: 14, marginTop: 8, padding: 10, backgroundColor: nuit.cellule, borderRadius: t.rayons.sm },
     echec: { color: t.couleurs.lettre, fontFamily: t.polices.texte, fontSize: 14, marginTop: 10 },
@@ -262,7 +262,7 @@ const useStyles = creerStyles((t) => {
     pleinTexte: { color: t.couleurs.surAccent, fontFamily: t.polices.panneauGras, fontSize: 15, letterSpacing: espace(t, 1), textTransform: t.capitales },
     contour: { minHeight: CIBLE_TACTILE, paddingHorizontal: 12, justifyContent: 'center', borderRadius: t.rayons.sm, borderWidth: 1, borderColor: t.couleurs.filet },
     contourTexte: { color: t.couleurs.lettre, fontFamily: t.polices.panneau, fontSize: 14, letterSpacing: espace(t, 0.8), textTransform: t.capitales },
-    cadre: { backgroundColor: t.famille === 'planner' ? t.couleurs.cadre : nuit.cellule, padding: 6 },
+    cadre: { backgroundColor: nuit.cellule, padding: 6 },
     terminal: { height: 220, backgroundColor: nuit.fond, borderRadius: t.rayons.xs + 2, paddingHorizontal: 10, paddingVertical: 8 },
     mono: { color: nuit.lettre, fontFamily: MONO, fontSize: 13, lineHeight: 19 },
     monoInvite: { color: nuit.lettreAttenuee },

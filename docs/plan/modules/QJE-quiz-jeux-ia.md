@@ -44,6 +44,7 @@
 | QJE-11 | Correction de QCM papier par photo : feuille-réponse imprimable, photo prise par le téléphone de l'enseignant, note proposée puis validée | — | 5 | L | QJE-10 | à faire |
 | QJE-12 | Assistant IA de l'enseignant : séquence de cours, grille d'évaluation, commentaires de copie à relire ; aucune donnée d'élève envoyée | — | libre | M | QJE-07 | à faire |
 | QJE-13 | Tuteur IA pour l'élève, sur le contenu de ses cours | — | — | L | QJE-07, avis CNDP | conditionnel (règle « aucune donnée d'élève ») |
+| QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |
 
 ## Critères de « terminé »
 
