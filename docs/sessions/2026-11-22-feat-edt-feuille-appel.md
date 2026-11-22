@@ -29,7 +29,8 @@ Rendre la liste d'appel d'une séance imprimable, et permettre de terminer aprè
 | `02633e81` | **serveur** : `services/presences/apresCoup.js` (contrôles, délai de 7 jours à la date de l'école, appel créé déjà fermé, journal) ; la route `POST /api/presences/seances/:id/apres-coup` ; l'état de visa `appel_saisi_apres_coup` (`compte: true`) ; l'onglet de la classe (7 prochains jours, `saisie_apres_coup`, `saisie_possible_jusqu_au`) ; l'événement du journal |
 | `856cfb26` | **site** : la feuille (`components/appel/feuilleAppel.js`) et son test ; `BoutonImprimer`, `BandeauApresCoup` ; le mode « après coup » de `Appel.jsx` ; les états « À venir » et « À saisir » de l'onglet ; le ton du visa nouveau ; les textes en français et en anglais (ajouts seulement) |
 | `3308e6ca` | **parcours** : la séance d'hier dans `donnees.mjs`, et P-1 `appelApresCoup.spec.cjs` |
-| ce commit | fichier du module EDT (précision B), ligne du dossier `emploi-du-temps/` dans `docs/conception/README.md`, cette fiche |
+| `097e704c` | fichier du module EDT (précision B), ligne du dossier `emploi-du-temps/` dans `docs/conception/README.md`, cette fiche |
+| ce commit | **corrections de la relecture du coordinateur** : (1) une séance annulée est refusée (`Séance annulée`, 409), comme à l'ouverture ; (2) la page de l'appel reçoit du serveur l'état de la séance et la date limite (`GET /api/presences/seances/:id/apres-coup`, `etatPourLAppel`), et ne calcule plus de date ; hors délai, à venir ou annulée, elle reste en lecture (ni saisie ni « Terminer », `modeAppel.js`) |
 
 **Le repère de l'appel saisi après coup** : son secret commence par `apres-coup.`. Il ne signe jamais de QR, car l'appel naît fermé. Un secret ordinaire est en base64url, donc sans point. Les deux autres repères ont été écartés, comme le dit le plan, § 3.
 
@@ -39,7 +40,7 @@ Rendre la liste d'appel d'une séance imprimable, et permettre de terminer aprè
   - La feuille porte donc le nom de la personne connectée quand c'est l'enseignante, qui fait l'appel, ou un co-enseignant.
   - Quand l'administration imprime, la feuille porte une ligne à remplir à la main.
 - **`STATUTS_FERMABLES` est exporté** de `appel.js` (`const` devient `export const`, à nombre de lignes égal), pour que `apresCoup.js` passe la séance à « réalisée » comme le fait `fermerAppel`.
-- **Le délai de 7 jours est recalculé par l'écran** pour l'afficher dans le bandeau de la page de l'appel (`BandeauApresCoup.jsx`), avec la date de l'école (`shared/dates.js`). C'est le serveur qui décide, et il refuse au-delà ; l'onglet affiche la date limite rendue par le serveur.
+- ~~Le délai de 7 jours recalculé par l'écran~~ : **retiré à la relecture**. Le calcul ajoutait le décalage de l'école à midi UTC, et tombait un jour trop tard à UTC+13 ou +14. Toute date vient maintenant du serveur.
 - **Les délais des tests sont allongés en local**, parce que le poste était chargé :
   - les tests d'intégration ont tourné avec `--testTimeout=120000` ;
   - le délai du parcours P-1 est porté à 240 s dans le fichier.
@@ -48,10 +49,10 @@ Rendre la liste d'appel d'une séance imprimable, et permettre de terminer aprè
 
 | Suite | Résultat |
 |---|---|
-| Serveur, intégration (base `hestim_m1_test`, délai porté à 120 s) | **appelApresCoup 7/7** (T-1 à T-5), appelClasse 7/7, journalSecurite 6/6, suivi 9/9, presences 17/17 |
+| Serveur, intégration (base `hestim_m1_test`, délai porté à 120 s) | **appelApresCoup 8/8** (T-1 à T-6, dont la séance annulée et l'état pour la page), appelClasse 7/7, journalSecurite 6/6, suivi 9/9, presences 17/17 |
 | Serveur, unitaires | **517/517** |
-| Site, unitaires | **155/155**, dont 5 pour la feuille |
-| Parcours, en local (ports et base à part, solveur non lancé) | **appelApresCoup 1/1** ; appelClasse 2/2 avec la séance d'hier ajoutée |
+| Site, unitaires | **158/158**, dont 5 pour la feuille et 3 pour le mode de la page (hors délai en lecture) |
+| Parcours, en local (ports et base à part, solveur non lancé) | **appelApresCoup 1/1**, relancé après les corrections ; appelClasse 2/2 avec la séance d'hier ajoutée |
 | `verifier-neutre` | vert |
 | Lint | propre sur les fichiers touchés. Un avertissement reste, antérieur au correctif : `services/api.js` dépasse 300 lignes, et M-1 n'y ajoute que deux lignes |
 
@@ -72,7 +73,8 @@ Rendre la liste d'appel d'une séance imprimable, et permettre de terminer aprè
 
 ## État laissé
 
-- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : **M-1 → codée, à relire par le coordinateur** avant la PR.
+- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : **M-1 → codée, corrigée après relecture, à relire** avant la PR.
+- **À la fusion** : M-10 (#255) passe avant ; puis `git merge origin/main` sur cette branche (`donnees.mjs`, `fr.js`, `en.js`).
 - **Fichiers à surveiller à la fusion** :
   - `frontend/src/i18n/fr.js` et `en.js` (ajouts seulement) ;
   - `frontend/tests/parcours/donnees.mjs` (M-10 y touche la ligne du fuseau : une ligne de chaque côté).

@@ -441,6 +441,9 @@ const fr = {
     apresCoup: {
       titre: 'Séance du {{date}} : appel fait sur papier',
       aide: 'Cochez chaque étudiant d’après la feuille, puis terminez l’appel. C’est possible jusqu’au {{limite}}. L’heure de votre saisie est gardée.',
+      horsDelai: 'Le délai de saisie après coup (7 jours) est passé : l’appel de cette séance reste en lecture. L’administration peut confirmer la séance dans le suivi.',
+      aVenir: 'Cette séance n’a pas encore eu lieu : imprimez la liste d’appel à l’avance.',
+      annulee: 'Séance annulée : pas d’appel.',
     },
     retour: 'Mes classes',
     qrAlt: 'QR code de l’appel à scanner avec l’application Planner',

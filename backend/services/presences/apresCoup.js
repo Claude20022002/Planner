@@ -33,12 +33,34 @@ export const dansLeDelai = (dateSeance, jour) => {
 };
 
 /**
+ * État d'une séance pour la page de l'appel, calculé ici à la date de l'école (l'écran ne calcule
+ * aucune date) : « annulee », « a_venir », « jour » (appel ordinaire, QR), « ferme » ou « ouvert »
+ * (un appel existe), « apres_coup » (à saisir, jusqu'à `saisie_possible_jusqu_au`) ou « hors_delai »
+ * (en lecture seule).
+ */
+export const etatPourLAppel = async (user, id) => {
+    const seance = await seanceDeLEnseignant(user, id);
+    const date = String(seance.date_seance).slice(0, 10);
+    const jour = aujourdhui();
+    const appel = await AppelSeance.findByPk(seance.id_affectation, { attributes: ["ferme_le"] });
+    let mode;
+    if (seance.statut === "annule") mode = "annulee";
+    else if (appel) mode = appel.ferme_le ? "ferme" : "ouvert";
+    else if (date > jour) mode = "a_venir";
+    else if (date === jour) mode = "jour";
+    else mode = dansLeDelai(date, jour) ? "apres_coup" : "hors_delai";
+    return { mode, saisie_possible_jusqu_au: mode === "apres_coup" ? limiteApresCoup(date) : null };
+};
+
+/**
  * Termine après coup l'appel d'une séance passée sans appel : enseignant de la séance ou
  * administration, dans le délai, à la date de l'école. La séance passe à « réalisée » si elle ne
  * l'est pas encore ; l'action est journalisée avec son heure réelle.
  */
 export const terminerApresCoup = async (user, id, contexte = null, maintenant = new Date()) => {
     const seance = await seanceDeLEnseignant(user, id);
+    // Comme ouvrirAppel : une séance annulée ne reçoit pas d'appel, qui compterait dans les taux
+    if (seance.statut === "annule") throw new ErreurMetier("Séance annulée", 409);
     const date = String(seance.date_seance).slice(0, 10);
     const jour = aujourdhui();
     if (date >= jour) throw new ErreurMetier(date === jour ? "L'appel du jour se fait depuis la page de l'appel, puis se termine" : "Cette séance n'a pas encore eu lieu", 409);

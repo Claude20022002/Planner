@@ -18,7 +18,7 @@ import {
 } from "../services/presences/appel.js";
 import { deciderDemande, demanderChangement, demandesTelephone, maDemandeTelephone } from "../services/presences/changementTelephone.js";
 import { marquerPresence } from "../services/presences/statuts.js";
-import { terminerApresCoup } from "../services/presences/apresCoup.js";
+import { etatPourLAppel, terminerApresCoup } from "../services/presences/apresCoup.js";
 
 /**
  * Appel par QR code (phase I1) :
@@ -27,6 +27,7 @@ import { terminerApresCoup } from "../services/presences/apresCoup.js";
  *  - GET  /api/presences/seances/:id                         liste d'appel : attendus, présents
  *  - PUT  /api/presences/seances/:id/etudiants/:idUser       { statut: present|retard|absent, motif } (ou { present }) : à la main
  *  - POST /api/presences/seances/:id/fermer                  fermer l'appel ; la séance est marquée réalisée
+ *  - GET  /api/presences/seances/:id/apres-coup              état de la séance pour la page de l'appel (M-1)
  *  - POST /api/presences/seances/:id/apres-coup              terminer l'appel fait sur papier, dans les 7 jours (M-1)
  *  - POST /api/presences/seances/:id/verification            { nombre } : vérification surprise facultative (tirage)
  *  - PUT  /api/presences/seances/:id/verification/:idUser    { present } : vu dans la salle, ou absent (signalé)
@@ -82,6 +83,10 @@ router.put("/seances/:id/etudiants/:idUser", planification(async (req, res) => {
 
 router.post("/seances/:id/fermer", planification(async (req, res) => {
     res.json(await fermerAppel(req.user, req.params.id));
+}));
+
+router.get("/seances/:id/apres-coup", planification(async (req, res) => {
+    res.json(await etatPourLAppel(req.user, req.params.id));
 }));
 
 router.post("/seances/:id/apres-coup", planification(async (req, res) => {

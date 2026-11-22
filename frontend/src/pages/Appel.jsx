@@ -21,6 +21,7 @@ import VerificationSurprise from '../components/appel/VerificationSurprise';
 import LigneAppel from '../components/appel/LigneAppel';
 import BandeauApresCoup from '../components/appel/BandeauApresCoup';
 import BoutonImprimer from '../components/appel/BoutonImprimer';
+import { modeDeLaPage } from '../components/appel/modeAppel';
 import { aujourdhui } from '../../../shared/dates.js';
 import { presenceAPI } from '../services/api';
 import { useToast } from '../contexts/ToastContext';
@@ -32,7 +33,8 @@ const RAFRAICHIR_LISTE_MS = 5000;
  * Appel par QR code (I1), écran de l'enseignant : le QR à projeter, qui change toutes les 30 s
  * (un code photographié ne sert plus longtemps), les présents qui arrivent en direct, la liste
  * pour cocher à la main, et la fin de l'appel (la séance est marquée réalisée). Une séance passée
- * sans appel se saisit après coup, sans QR code, puis se termine dans les 7 jours (M-1).
+ * sans appel se saisit après coup, sans QR code, puis se termine dans les 7 jours ; hors délai, à venir
+ * ou annulée, elle reste en lecture. Le serveur dit lequel (M-1) : l'écran ne calcule aucune date.
  * Facultatif : une vérification surprise tire quelques présents au hasard, à appeler à voix haute ;
  * un absent perd sa présence et est signalé. Les signalements (téléphone partagé…) s'affichent
  * dans la liste.
@@ -50,7 +52,10 @@ export default function Appel() {
   const [terminer, setTerminer] = useState(false);
   const [ferme, setFerme] = useState(false);
   const [verification, setVerification] = useState(false);
-  const [apresCoup, setApresCoup] = useState(false);
+  // Séance sans appel hors du jour même : l'état rendu par le serveur ({ mode, saisie_possible_jusqu_au })
+  const [bandeau, setBandeau] = useState(null);
+  const apresCoup = bandeau?.mode === 'apres_coup';
+  const lecture = Boolean(bandeau) && !apresCoup;
   const minuterie = useRef(null);
 
   const dessiner = useCallback(async ({ url, expire_dans_ms }) => {
@@ -96,14 +101,16 @@ export default function Appel() {
     let actif = true;
     presenceAPI
       .liste(id)
-      .then((l) => {
+      .then(async (l) => {
         if (!actif) return;
         setListe(l);
         setSeance(l.seance);
-        if (l.appel && !l.appel.ouvert) setFerme(true);
-        // Séance passée sans appel : l'appel fait sur papier se saisit, sans QR (M-1)
-        else if (!l.appel && l.seance.date < aujourdhui()) setApresCoup(true);
-        else ouvrir();
+        const etat = l.appel ? null : await presenceAPI.etatApresCoup(id);
+        if (!actif) return;
+        const mode = modeDeLaPage(l, etat);
+        if (mode === 'ferme') setFerme(true);
+        else if (mode === 'ouvrir') ouvrir();
+        else setBandeau(etat);
       })
       .catch((e) => actif && setErreur(e?.message || t('appel.erreur')));
     const rafraichir = setInterval(chargerListe, RAFRAICHIR_LISTE_MS);
@@ -145,7 +152,7 @@ export default function Appel() {
       const r = await (apresCoup ? presenceAPI.apresCoup(id) : presenceAPI.fermer(id));
       clearTimeout(minuterie.current);
       setFerme(true);
-      setApresCoup(false);
+      setBandeau(null);
       setQr(null);
       toast.success(t('appel.termine', { count: r.presents }));
       chargerListe();
@@ -205,8 +212,8 @@ export default function Appel() {
                 </Button>
               )}
             </Box>
-          ) : apresCoup ? (
-            <BandeauApresCoup seance={seance} />
+          ) : bandeau ? (
+            <BandeauApresCoup seance={seance} etat={bandeau} />
           ) : qr ? (
             <>
               <Box component="img" src={qr.image} alt={t('appel.qrAlt')} sx={{ width: '100%', maxWidth: 520, aspectRatio: '1', borderRadius: 1, bgcolor: '#FFFFFF' }} />
@@ -245,12 +252,12 @@ export default function Appel() {
             <Typography variant="h6">{t('appel.liste')}</Typography>
             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
               <BoutonImprimer idAffectation={id} />
-              {!apresCoup && (
+              {!bandeau && (
                 <Button variant="outlined" onClick={() => setVerification(true)} disabled={!seance || presents === 0} title={t('appel.verifierAide')}>
                   {t('appel.verifier')}
                 </Button>
               )}
-              {!ferme && (
+              {!ferme && !lecture && (
                 <Button variant="contained" onClick={() => setTerminer(true)} disabled={!seance}>
                   {t('appel.terminer')}
                 </Button>
@@ -263,7 +270,7 @@ export default function Appel() {
           {groupes.map((groupe) => (
           <List key={groupe.cle} dense subheader={groupe.titre ? <ListSubheader disableSticky sx={{ px: 0, fontWeight: 700, color: 'text.primary' }}>{groupe.titre}</ListSubheader> : undefined}>
             {groupe.lignes.map((e) => (
-              <LigneAppel key={e.id_user} etudiant={e} onStatut={changerStatut} libelleSignalement={libelleSignalement} />
+              <LigneAppel key={e.id_user} etudiant={e} onStatut={changerStatut} libelleSignalement={libelleSignalement} lectureSeule={lecture} />
             ))}
           </List>
           ))}

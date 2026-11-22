@@ -1,26 +1,31 @@
 import { useTranslation } from 'react-i18next';
 import { Alert, AlertTitle } from '@mui/material';
 import { localeEcran } from '../../utils/dates';
-// Dates de l'école, sans le fuseau du navigateur
-import { dansJours } from '../../../../shared/dates.js';
 
-/** Délai de la saisie après coup, en jours ; le serveur le tient (services/presences/apresCoup.js). */
-const DELAI_JOURS = 7;
+/** Une date de calendrier (AAAA-MM-JJ) écrite en lettres, sans aucun décalage horaire. */
+const enLettres = (iso, locale) => new Date(`${iso}T12:00:00Z`).toLocaleDateString(locale, { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long' });
 
 /**
- * Page de l'appel d'une séance passée sans appel (M-1) : pas de QR code, l'enseignant saisit l'appel
- * fait sur papier, puis le termine. La date limite affichée suit le serveur, qui refuse au-delà.
+ * Page de l'appel d'une séance sans appel, hors du jour même (M-1) : pas de QR code. Dans le délai,
+ * l'enseignant saisit l'appel fait sur papier, puis le termine ; la date limite est celle que rend
+ * le serveur (etat.saisie_possible_jusqu_au). Hors délai, à venir ou annulée : un message, en lecture.
  */
-export default function BandeauApresCoup({ seance }) {
+export default function BandeauApresCoup({ seance, etat }) {
   const { t, i18n } = useTranslation();
-  if (!seance?.date) return null;
+  if (!seance?.date || !etat) return null;
   const locale = localeEcran(i18n.language);
-  const enLettres = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString(locale, { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long' });
-  const limite = dansJours(DELAI_JOURS, new Date(`${seance.date}T12:00:00Z`));
+  if (etat.mode === 'apres_coup') {
+    return (
+      <Alert severity="info" sx={{ textAlign: 'left' }}>
+        <AlertTitle>{t('appel.apresCoup.titre', { date: enLettres(seance.date, locale) })}</AlertTitle>
+        {t('appel.apresCoup.aide', { limite: enLettres(etat.saisie_possible_jusqu_au, locale) })}
+      </Alert>
+    );
+  }
+  const cle = { hors_delai: 'horsDelai', a_venir: 'aVenir', annulee: 'annulee' }[etat.mode] ?? 'horsDelai';
   return (
-    <Alert severity="info" sx={{ textAlign: 'left' }}>
-      <AlertTitle>{t('appel.apresCoup.titre', { date: enLettres(seance.date) })}</AlertTitle>
-      {t('appel.apresCoup.aide', { limite: enLettres(limite) })}
+    <Alert severity={etat.mode === 'a_venir' ? 'info' : 'warning'} sx={{ textAlign: 'left' }}>
+      {t(`appel.apresCoup.${cle}`)}
     </Alert>
   );
 }

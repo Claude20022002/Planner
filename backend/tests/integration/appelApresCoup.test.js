@@ -81,6 +81,26 @@ describe("Terminer l'appel après coup (M-1)", () => {
         expect(huit.body.message).toMatch(/délai de saisie après coup est passé/);
         expect((await terminer(enseignant, await seanceLe(aujourdhui(), "confirme"))).status).toBe(409);
         expect((await terminer(enseignant, await seanceLe(jourDecale(2), "confirme"))).status).toBe(409);
+        // Une séance annulée, même dans le délai, ne reçoit pas d'appel (relecture du coordinateur)
+        const annulee = await seanceLe(jourDecale(-1), "annule");
+        const refus = await terminer(enseignant, annulee);
+        expect(refus.status).toBe(409);
+        expect(refus.body.message).toMatch(/annulée/);
+        expect(await AppelSeance.findByPk(annulee.id_affectation)).toBeNull();
+    });
+
+    test("T-6 : la page de l'appel reçoit du serveur l'état de la séance et la date limite", async () => {
+        const prof = await loginAs(enseignant);
+        const etat = async (s) => (await prof.get(`/api/presences/seances/${s.id_affectation}/apres-coup`)).body;
+        expect(await etat(await seanceLe(jourDecale(-2)))).toEqual({ mode: "apres_coup", saisie_possible_jusqu_au: jourDecale(5) });
+        expect(await etat(await seanceLe(jourDecale(-9)))).toEqual({ mode: "hors_delai", saisie_possible_jusqu_au: null });
+        expect((await etat(await seanceLe(aujourdhui(), "confirme"))).mode).toBe("jour");
+        expect((await etat(await seanceLe(jourDecale(4), "confirme"))).mode).toBe("a_venir");
+        expect((await etat(await seanceLe(jourDecale(-1), "annule"))).mode).toBe("annulee");
+        const faite = await seanceLe(jourDecale(-3));
+        expect((await terminer(enseignant, faite)).status).toBe(200);
+        expect((await etat(faite)).mode).toBe("ferme");
+        expect((await (await loginAs(etudiant)).get(`/api/presences/seances/${faite.id_affectation}/apres-coup`)).status).toBe(403);
     });
 
     test("T-3 : ni un étudiant, ni un autre enseignant", async () => {

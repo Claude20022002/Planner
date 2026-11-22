@@ -441,6 +441,9 @@ const en = {
     apresCoup: {
       titre: 'Session of {{date}}: roll call taken on paper',
       aide: 'Mark each student from the sheet, then finish the roll call. You can do so until {{limite}}. The time of your entry is kept.',
+      horsDelai: 'The 7-day window to enter this roll call has passed: it stays read-only. The administration can confirm the session in the tracking page.',
+      aVenir: 'This session has not taken place yet: print the roll-call sheet in advance.',
+      annulee: 'Session cancelled: no roll call.',
     },
     retour: 'My classes',
     qrAlt: 'Roll call QR code, to scan with the Planner app',

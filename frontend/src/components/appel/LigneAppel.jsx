@@ -13,7 +13,7 @@ const STATUTS = [
   { valeur: 'absent', couleur: 'error' },
 ];
 
-export default function LigneAppel({ etudiant, onStatut, libelleSignalement }) {
+export default function LigneAppel({ etudiant, onStatut, libelleSignalement, lectureSeule = false }) {
   const { t } = useTranslation();
   const statut = etudiant.statut ?? (etudiant.present ? 'present' : 'absent');
   const details = statut !== 'absent'
@@ -38,6 +38,7 @@ export default function LigneAppel({ etudiant, onStatut, libelleSignalement }) {
         size="small"
         value={statut}
         onChange={(_, valeur) => valeur && valeur !== statut && onStatut(etudiant, valeur)}
+        disabled={lectureSeule}
         aria-label={t('appel.statutDe', { nom: `${etudiant.prenom} ${etudiant.nom}` })}
       >
         {STATUTS.map(({ valeur, couleur }) => (
