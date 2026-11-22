@@ -132,3 +132,16 @@ jamais de git push.
 - `main` fusionnée dans cette branche (conflit dans le module UIX : colonne « Étape » gardée, état réel écrit) ; modules UIX, QUA et VIT, `suivi.md` et fiches de VIT-17 et QUA-10 à l'état réel (missions closes).
 - Reste au chef : **compléter le `.env` du serveur avant de déployer QUA-10** ; pousser `fix/uix-11-volet` et ouvrir sa PR ; dire « lis ta boîte » à Codex (VIT-11) et à l'agent de Cursor (VIT-19, #244).
 - **#247** (correctif d'UIX-11, `fix/uix-11-volet`) fusionnée à 23 h 59, CI verte ; UIX-11 faite.
+
+## Ajout, 22 nov. vers 0 h 15 : les fiches de l'étude StudyLib (§ 8)
+
+Demande du chef : écrire les fiches de mission d'après le § 8 de l'étude StudyLib (#249, voie B validée le 21 nov.).
+
+- **Six fiches** : `exp-retirer-meilisearch` (agent de Cursor), `bib-reconstruction` (BIB-05 à BIB-08, session Claude neuve « BIB »), `bib-09-ecrans` et `bib-10-mobile` (Claude de VS Code), `sta-avis-idees` (STA-03) et `bib-11-import` (Alexis). Fiches `etude-studylib` (close) et `qje-14-studio-forms` (plan validé) mises à jour.
+- **Module BIB** : BIB-01 et BIB-02 absorbées ; BIB-05 à BIB-11 et leurs critères. **Module STA** : STA-03.
+- **Migrations** : 0084 à 0086 (QJE-14, A, B, C) et 0087 (BIB-05) réservées ; 0088 et plus libres.
+- **`decisions.md`** : les décisions de l'étude StudyLib, les 24 réponses de QJE-14 (les plus lourdes) ; les réponses 9, 10 et 13 étaient déjà inscrites.
+- **`suivi.md`** : sept lignes de « Missions en cours » (étude, Meilisearch, BIB-05 à 08, BIB-09, BIB-10, STA-03, BIB-11) ; QJE-14 (#248) ; fonctions BIB et STA.
+- **Décisions du coordinateur** : BIB-10 tient l'onglet mobile de la Bibliothèque et `donnees.js`, la part mobile de STA-03 vient après ; l'étape de la Bibliothèque est la 3 (Q8) ; conséquences à reporter dans leurs modules : UIX-10f sans objet, EXP-09 réduite à ClassQuiz, COU-02 sur le stockage de BIB-05.
+- **Boîtes** : `cursor\entree\2026-11-22-0010-exp-retirer-meilisearch.md` ; **boîte d'Alexis créée** (`boites\alexis\`, README mis à jour), avec `alexis\entree\2026-11-22-0011-sta-03-et-bib-11.md`. Alexis travaille sur son poste : le chef lui transmet le message.
+- Non fait, à reporter : l'étape de la Bibliothèque dans l'étude 15 (#242) ; les lignes UIX-10f, EXP-09 et COU-02 dans leurs modules.

@@ -72,8 +72,14 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | VIT | VIT-11 catalogue des fonctionnalités, FAQ et méga-menu « Fonctions » (conditions 9 et 10) | Codex | #236 | code conforme au plan et au visa du chef (§ 7) ; CI verte. **À reprendre après la fusion de #237**, comme le prévoit son plan (§ 7.4) : `git merge origin/main`, `cheminsLangues()` dans `faq.astro` et `fonctionnalites.astro`, budget de 4 Kio, recette et Lighthouse refaits | 21 nov. soir : à reprendre après #237 | [vit-11-catalogue-faq](missions/vit-11-catalogue-faq.md) |
 | VIT | VIT-12 mentions légales et page de confidentialité du site (condition 2) | session Claude de VIT-12 | #223 (`3cee3b47`) | plan et textes validés par le chef, codée ; **CI rouge exprès** : attend `NOM`, `HÉBERGEUR`, `N`, `DATE`, `E-MAIL` du chef ; ne pas fusionner avant. Après VIT-17 : `cheminsLangues()` sur ses deux pages | 21 nov. : en attente du chef | [vit-12-pages-legales](missions/vit-12-pages-legales.md) |
 | QJE | sortie de ClassQuiz : QJE-03 (joueur natif), puis QJE-06 (plus aucun conteneur ClassQuiz) | Codex | — | QJE-01 faite (#208, fusionnée le 18 nov.) ; QJE-03 au n° 5 de la file de Codex ; QJE-06 attend le transfert vérifié des quiz de l'école pilote | 18 nov. 17 h | [sortie-classquiz](missions/sortie-classquiz.md) |
-| QJE | QJE-14 : le Studio quiz « comme Google Forms » (sections et logique, tableau des réponses et export, questionnaires non notés, création simple) | Claude (VS Code), n° 4 de sa file | — | décision du chef le 18 nov. ; plan validé par le chef ; anonymat et données d'élèves au chef | 18 nov. 14 h | [qje-14-studio-forms](missions/qje-14-studio-forms.md) |
-| BIB | étude : garder StudyLib en Laravel ou la reconstruire dans la pile de Planner | Claude (VS Code), n° 5 de sa file | `etude/bib-studylib-pile` (à créer) | décision du chef le 18 nov. (« étude d'abord ») ; fiche corrigée le 18 nov. : aucun prêt de livres n'existe dans StudyLib | 18 nov. 17 h 30 | [etude-studylib](missions/etude-studylib.md) |
+| QJE | QJE-14 : le Studio quiz « comme Google Forms » (sections et logique, tableau des réponses et export, questionnaires non notés, création simple) | Claude (VS Code) | #248 (`doc/qje-14-studio-forms`, `732c1944`) | **plan validé par le chef le 21 nov.** (`dfefc613`, 24 réponses) ; découpage 14a à 14e ; migrations 0084 à 0086 réservées ; ensuite QJE-14a, plan court | 22 nov. : plan validé | [qje-14-studio-forms](missions/qje-14-studio-forms.md) |
+| BIB | étude StudyLib : **voie B validée par le chef le 21 nov.**, répartition des lots (§ 8) | Claude (VS Code) | #249 (`etude/bib-studylib-pile`) | faite, PR ouverte ; à relire et fusionner ; les volumes du § 3.2 attendent la commande de comptage du chef | 22 nov. : faite | [etude-studylib](missions/etude-studylib.md) |
+| EXP | correctif : retirer le Meilisearch de StudyLib (inutilisé) | agent de Cursor | `fix/exp-retirer-meilisearch` (à créer) | fiche écrite le 22 nov. ; plan court au chef (serveur) ; `quiz-meilisearch` n'est pas touché | 22 nov. : à commencer | [exp-retirer-meilisearch](missions/exp-retirer-meilisearch.md) |
+| BIB | BIB-05 à BIB-08 : modèle et stockage S3, API, espace de cours, reprise | **session Claude neuve « BIB »**, Fable 5.2 sinon Opus 5.5 | `feat/bib-05-modele-stockage` (à créer), puis une branche par lot | fiche écrite le 22 nov. ; migration 0087 réservée ; questions et plan de BIB-05 au chef | 22 nov. : session à ouvrir | [bib-reconstruction](missions/bib-reconstruction.md) |
+| BIB | BIB-09 écrans web de la Bibliothèque, à la charte | Claude (VS Code), après UIX-10d et BIB-10 | `feat/bib-09-ecrans` (à créer) | fiche écrite le 22 nov. ; attend le contrat d'API de BIB-06 ; plan au chef | 22 nov. : en attente | [bib-09-ecrans](missions/bib-09-ecrans.md) |
+| BIB | BIB-10 Bibliothèque du mobile sur l'API de Planner | Claude (VS Code), à la suite d'UIX-10d | `feat/bib-10-mobile` (à créer) | fiche écrite le 22 nov. ; tient `bibliotheque.jsx` et `donnees.js` ; plan au coordinateur | 22 nov. : en attente | [bib-10-mobile](missions/bib-10-mobile.md) |
+| STA | STA-03 avis de stage et idées de projet, venus de StudyLib | Alexis et son agent | `feat/sta-03-avis-idees` (proposée) | fiche écrite le 22 nov. ; après EDT-04 et #230 ; part mobile après BIB-10 ; plan au chef | 22 nov. : en attente | [sta-avis-idees](missions/sta-avis-idees.md) |
+| BIB | BIB-11 import générique d'un dossier de documents | Alexis et son agent | `feat/bib-11-import` (à créer) | fiche écrite le 22 nov. ; après BIB-06 ; plan au coordinateur | 22 nov. : en attente | [bib-11-import](missions/bib-11-import.md) |
 | QUA | étude « contextes à faible équipement » (EP-18) : chaque fonction sans téléphone de l'élève, avec peu de connexion, avec un écran projeté et du papier | session Claude neuve, **relancée par le chef le 21 nov. au soir** | `etude/ep18-faible-equipement` (à créer) | aucune branche, aucun dossier ni aucune session vus le 21 nov. ; le chef ouvre une session neuve avec le prompt de la fiche ; **commit dès le premier jet** (§ 1 et questions) pour que le coordinateur la voie | 21 nov. soir : à relancer | [etude-ep18-faible-equipement](missions/etude-ep18-faible-equipement.md) |
 | VIT | VIT-09b intégration des illustrations, avec C2, C3 et C10 de l'expertise ; en dernier sur le site (conditions 7 et 10) | Claude (VS Code) | #227 (brouillon, plan) | 09a fusionnée (#222, 21 nov.) ; 09b : plan court **validé par le chef** (`8f451998`), code en dernier | 21 nov. | [vit-09-illustrations](missions/vit-09-illustrations.md) |
 | VIT | VIT-09c un logo de tuile (SVG, style de VIT-09a) et une image générée par module vendable | Codex, **après VIT-11, avant VIT-15** (chef, 21 nov.) | `feat/vit-09c-logos-modules` (à créer après VIT-11) | demande du chef du 21 nov. au soir ; liste : étude 15 (17 modules ; 13 SVG et 17 images) ; plan court au coordinateur ; deux essais puis la planche au chef | 21 nov. soir : fiche écrite | [vit-09c-logos-modules](missions/vit-09c-logos-modules.md) |
@@ -104,7 +110,11 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0081 | MOT-13b reprise de la pause du vendredi et du samedi après-midi en contraintes déclarées | écrite (`feat/mot-13b-solveur`) |
 | 0082 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) ; réservée le 10 nov. sous le numéro 0080, renumérotée le 15 nov. (0080 et 0081 prises par MOT-13) | écrite le 18 nov. (`backend/migrations/0082-jeux-solutions.js`), non appliquée |
 | 0083 | STA-01 offres de stage (`OffresStage`), réservée par le coordinateur le 21 nov. ; la migration attend la validation du plan par le chef | écrite (#230), non validée |
-| 0084 et plus | libres | — |
+| 0084 | QJE-14a : migration A (nature, anonyme, sections, sauts, « obligatoire », copie figée, interrupteur `questionnaires_actifs`) ; réservée par le coordinateur le 22 nov. | réservée |
+| 0085 | QJE-14c : migration B (`ReponsesAnonymes`, `ParticipationsAnonymes`, sans horodatage) ; réservée le 22 nov. | réservée |
+| 0086 | QJE-14e : migration C (`SessionsQuizGroupes`, recopie de `id_groupe`) ; réservée le 22 nov. | réservée |
+| 0087 | BIB-05 : documents, notes, téléchargements de la Bibliothèque reconstruite, avec `uid` ; réservée le 22 nov. ; un deuxième numéro se demande au coordinateur | réservée |
+| 0088 et plus | libres | — |
 
 ## Fonctions
 
@@ -175,10 +185,17 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [COU-06](modules/COU-espace-de-cours.md) | Export des notes d'un devoir | 3 | S | à faire |  |
 | [COU-08](modules/COU-espace-de-cours.md) | Messagerie, si les règles de modération sont tranchées (Q-17) | 5 | L | conditionnel |  |
 | [COU-09](modules/COU-espace-de-cours.md) | LTI | — | L | reporté |  |
-| [BIB-01](modules/BIB-bibliotheque.md) | Identifiants stables (`uid`) des entités partagées, et envois par boîte d'envoi (D-14,… | 3 | M | à faire |  |
-| [BIB-02](modules/BIB-bibliotheque.md) | StudyLib par école | 2 | M | à faire |  |
+| [BIB-01](modules/BIB-bibliotheque.md) | Identifiants stables (`uid`) des entités partagées, et envois par boîte d'envoi (D-14, D-15) | 3 | M | **absorbée** par BIB-05 (voie B, 21 nov.) |  |
+| [BIB-02](modules/BIB-bibliotheque.md) | StudyLib par école | 2 | M | **absorbée** : rangement par école dans BIB-05, test de PLA-04 (voie B, 21 nov.) |  |
 | [BIB-03](modules/BIB-bibliotheque.md) | Médias du Studio quiz (images, sons, vidéos) hors de la base, dans le stockage de fichiers | 3 | M | à faire |  |
 | [BIB-04](modules/BIB-bibliotheque.md) | Quiz généré par l'IA à partir d'un document de la Bibliothèque | 3 | M | à faire |  |
+| [BIB-05](modules/BIB-bibliotheque.md) | Modèle et stockage S3 de la Bibliothèque reconstruite (B1, B2) | 3 | M + M | à faire : session « BIB » ; migration 0087 | |
+| [BIB-06](modules/BIB-bibliotheque.md) | API des documents (B3) | 3 | L | à faire : session « BIB » | |
+| [BIB-07](modules/BIB-bibliotheque.md) | Espace de cours sur le service interne (B5) | 3 | M | à faire : session « BIB » | |
+| [BIB-08](modules/BIB-bibliotheque.md) | Reprise des données de l'école pilote (B7) | 3 | M | à faire : session « BIB », lancée par le chef | |
+| [BIB-09](modules/BIB-bibliotheque.md) | Écrans web de la Bibliothèque (B4) | 3 | L | à faire : Claude (VS Code) | |
+| [BIB-10](modules/BIB-bibliotheque.md) | Bibliothèque du mobile sur l'API de Planner (B6) | 3 | M | à faire : Claude (VS Code), après UIX-10d | |
+| [BIB-11](modules/BIB-bibliotheque.md) | Import générique d'un dossier de documents (B8) | 3 | M | à faire : Alexis | |
 | [QJE-01](modules/QJE-quiz-jeux-ia.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | fait : #208 fusionnée le 18 nov. (exception hors chantier) | #208 |
 | [QJE-02](modules/QJE-quiz-jeux-ia.md) | Import des formats GIFT et Moodle XML dans le Studio | 3 | M | à faire |  |
 | [QJE-03](modules/QJE-quiz-jeux-ia.md) | Joueur natif dans l'application, sans passer par le site | 2 | M | à faire, exception hors chantier accordée le 18 nov. ([sortie-classquiz](missions/sortie-classquiz.md)) |  |
@@ -270,6 +287,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [GRP-02](modules/GRP-groupes-reseaux.md) | Paramètres communs avec dérogations, marque du réseau | 7 | M | reporté |  |
 | [STA-01](modules/STA-stages-alternance.md) | Offres de stage (espace Carrière) (ancienne COU-07) | 3 | M | PR ouverte : #230 (Alexis), **plan à valider par le chef** avant toute fusion (EP-5, migration 0083, route publique) | #230 |
 | [STA-02](modules/STA-stages-alternance.md) | Conventions de stage, tuteur, présence en entreprise, apprentissage | 7 | M | reporté |  |
+| [STA-03](modules/STA-stages-alternance.md) | Avis de stage et idées de projet, venus de StudyLib | 3 | M | à faire : Alexis, après EDT-04 et #230 | |
 | [SER-01](modules/SER-services-annexes.md) | Cantine, transport et internat liés au compte famille, sans refus d'accès automatique | 7 | L | reporté |  |
 | [STK-01](modules/STK-stocks-achats.md) | Inventaire, bons de commande validés, lien avec la vente | 7 | M | reporté |  |
 | [MKT-01](modules/MKT-marketing.md) | Sauvegarder l'agence (premier commit, dépôt privé, règles de l'équipe) | libre | S | à faire |  |

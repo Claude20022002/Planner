@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | close le 2026-11-22 : étude faite, **voie B validée par le chef le 21 nov.** ; les lots ont leurs fiches (bib-reconstruction, bib-09-ecrans, bib-10-mobile, bib-11-import, sta-avis-idees, exp-retirer-meilisearch) |
 | Agent | Claude (VS Code), après le plan d'UIX-10 : cette session lit déjà StudyLib pour la charte |
 | Modèle recommandé | le plus capable disponible (Claude Fable 5.2, sinon Opus 5.5) : l'étude engage la pile et des données réelles |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (« étude d'abord ») |
@@ -46,3 +46,4 @@ Pose tes questions au chef avant toute supposition. Ne modifie pas docs/plan/sui
 |---|---|---|
 | 2026-11-18 13 h 40 | fiche écrite, sur décision du chef | — |
 | 2026-11-18 17 h 30 | points 1 et 3 corrigés : aucun prêt de livres relevé dans StudyLib (plan court de VIT-07, `fafd3f15`) | — |
+| 2026-11-22 | étude rendue (`etude/bib-studylib-pile`, `c3619899`) : voie B validée par le chef, répartition des lots (§ 8) ; six fiches de mission écrites par le coordinateur ; mission close | close |
