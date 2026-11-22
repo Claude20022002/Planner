@@ -6,7 +6,7 @@
 | Branche | `fix/qua-decalage-ecole`, depuis `origin/main` (`b57753e9`) |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-22 |
 | Taille | M, sans migration ni dépense |
-| **Validé** | en attente (coordinateur ; les questions 1 à 3, qui relevaient du chef, sont tranchées) |
+| **Validé** | par le coordinateur, le 22 nov., avec les réponses 4 à 6 et les précisions 1 à 3 (§ 3) ; les réponses 1 à 3 sont celles du chef |
 
 ## 1. Objet et critère de « terminé »
 
@@ -41,9 +41,14 @@
 | 1 | D'où vient le fuseau de l'école ? | de l'installation (`APP_TIMEZONE`), lu en un seul endroit, sans défaut de pays ; le fuseau choisi par chaque école vient plus tard (PLA-13 ou le panneau d'ADM-02) | **chef, 22 nov. : oui** | tout |
 | 2 | Sans `APP_TIMEZONE` | en production, refuser de démarrer avec un message clair ; la CI et les tests la posent (UTC) ; le chef la pose sur le serveur avant le déploiement | **chef, 22 nov. : oui** | 1 |
 | 3 | Le transport, par une route publique | dans la réponse publique existante `GET /api/etablissement` : le nom du fuseau et la table de ses décalages sur environ 13 mois ; aucune route nouvelle | **chef, 22 nov. : oui** | 2, 3 |
-| 4 | Avant toute table (premier lancement sans réseau, sans copie) | le décalage du navigateur ou du téléphone, faute de mieux, plutôt que 0 ; la table remplace ce décalage dès qu'elle arrive. *(au coordinateur)* | | 3 |
-| 5 | Hors production, sans `APP_TIMEZONE` | UTC, avec un avertissement au démarrage, pour qu'un poste de développement démarre sans fichier d'environnement. *(au coordinateur)* | | 1 |
-| 6 | Un parcours de régression dans le navigateur | oui, court : l'horloge figée à 23 h 30 UTC (`page.clock.setFixedTime`, comme `appel.spec.cjs`) et la réponse de `GET /api/etablissement` réécrite à UTC+1 ; la page de l'enseignant affiche alors la date du lendemain. Il ne change pas le fuseau de la CI. *(au coordinateur)* | | 4 |
+| 4 | Avant toute table (premier lancement sans réseau, sans copie) | le décalage du navigateur ou du téléphone, faute de mieux, plutôt que 0 ; la table remplace ce décalage dès qu'elle arrive. *(au coordinateur)* | **coordinateur, 22 nov. : oui**, jamais 0 | 3 |
+| 5 | Hors production, sans `APP_TIMEZONE` | UTC, avec un avertissement au démarrage, pour qu'un poste de développement démarre sans fichier d'environnement. *(au coordinateur)* | **coordinateur, 22 nov. : oui** | 1 |
+| 6 | Un parcours de régression dans le navigateur | oui, court : l'horloge figée à 23 h 30 UTC (`page.clock.setFixedTime`, comme `appel.spec.cjs`) et la réponse de `GET /api/etablissement` réécrite à UTC+1 ; la page de l'enseignant affiche alors la date du lendemain. Il ne change pas le fuseau de la CI. *(au coordinateur)* | **coordinateur, 22 nov. : oui**, sans toucher au créneau de #210 | 4 |
+
+**Précisions du coordinateur (22 nov.)** :
+1. `deploy/vps/generer-env.sh` écrit `.env.docker` : il demande le fuseau (un quatrième argument obligatoire) et pose `APP_TIMEZONE`. Le correctif de Meilisearch touche aussi ce script : celui qui fusionne en second fait d'abord `git merge origin/main`.
+2. `DEPLOIEMENT.md` dit que `APP_TIMEZONE` fait partie de ce que le serveur doit avoir avant de déployer `main`, à côté des variables de QUA-10.
+3. Les bâtiments « Stendhal » et « Gandhi » de `shared/session.js:33-40` vont à M-12 : M-10 n'y touche pas. Le commentaire de `calendrier/ics.js:46` est corrigé, puisque la ligne voisine change.
 
 ## 4. Solution
 
@@ -118,6 +123,8 @@ sequenceDiagram
 | `frontend/tests/parcours/horlogeEcole.spec.cjs` | créé si la question 6 est acceptée | P-1 | 50 |
 | `docs/plan/modules/QUA-qualite-docs.md`, `PLA-plateforme.md` | modifiés | ligne de M-10 ; PLA-13 reprend le fuseau choisi par chaque école | +2 |
 | `DEPLOIEMENT.md` | modifié | `APP_TIMEZONE` obligatoire | +2 |
+| `deploy/vps/generer-env.sh`, `README.md:331` | modifiés | le fuseau en quatrième argument, obligatoire, écrit dans `.env.docker` ; l'usage mis à jour (précision 1) | +4, ±1 |
+| `backend/tests/integration/setupEnv.js` | modifié | `APP_TIMEZONE: "UTC"` dans les valeurs des tests d'intégration | +2 |
 
 Aucun fichier d'une mission ouverte n'est touché : ADM-02, QJE-14, BIB-06, UIX-10e, VIT-13, VIT-15. **Deux fichiers sont à surveiller au moment de la fusion**, parce que M-12 et ADM-02 pourraient les toucher : `mobile/src/ecole.js` et `services/etablissement/identite.js`.
 
@@ -182,6 +189,6 @@ Aucun pays supposé : le fuseau vient de la configuration de l'installation, pui
 ## 11. Hors périmètre
 
 - **Le fuseau choisi par chaque école**, quand une installation sert des écoles de fuseaux différents : PLA-13, ou le panneau d'ADM-02 (réponse 1).
-- **Les bâtiments de l'école pilote écrits en dur** dans le code partagé (`shared/session.js:33-40`, « Stendhal », « Gandhi ») : relevé ici et transmis au coordinateur, à rattacher à M-12 ou à PLA-13.
+- **Les bâtiments de l'école pilote écrits en dur** dans le code partagé (`shared/session.js:33-40`, « Stendhal », « Gandhi ») : relevé ici ; ils vont à M-12 (précision 3).
 - **Les fériés par pays** : fonction d'ADM après ADM-02.
 - **La forme des dates et des heures** (`fr-FR`, `en-GB`) : c'est une question de langue, pas de fuseau.
