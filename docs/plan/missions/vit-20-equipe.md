@@ -14,7 +14,7 @@
 | Lots | Agent | Modèle, et pourquoi | Branche | Livraison |
 |---|---|---|---|---|
 | **R0, B, A, C**, dans cet ordre | **agent externe** : l'agent Claude Code d'un proche du chef, avec accès collaborateur au dépôt | **Claude Fable 5.2**, sinon Opus 5.5, effort élevé : tout le site, seul, sans échange en cours de route | `feat/vit-20-structure-du-site` | il **pousse cette seule branche** et ouvre la PR (exception du chef au « jamais de `git push` » d'AGENTS.md, limitée à cette branche) |
-| **D** « Selon votre équipement » | **Codex**, après MKT-09 et VIT-09c | son modèle le plus fort, raisonnement élevé : phrases à prouver dans le code, étude EP-18 | `feat/vit-20d-equipement`, depuis `main` **après la fusion de VIT-20** | PR à part ; phrases visées par le chef avant le code |
+| **D** « Selon votre équipement » | **agent externe** (repris de Codex le 22 nov. : Codex a encore MKT-09 et VIT-09c devant lui) | idem | `feat/vit-20d-equipement`, depuis `main` **après la fusion de VIT-20** | PR à part ; phrases visées par le chef avant le code ; [prompt de la suite](vit-20-suite-agent-externe.md) |
 
 Pourquoi : l'agent externe ne reçoit pas de messages des autres sessions ; un seul agent sur les lots A, B et C évite toute synchronisation. Le lot D attend un visa de texte du chef : il passe en second, sur la place que VIT-20 lui réserve. L'agent de Cursor et la session Claude prévus pour A et C sont libérés.
 
@@ -49,7 +49,7 @@ Chemins relatifs à `vitrine/`, sauf mention.
 
 Dans [vit-20-agent-externe.md](vit-20-agent-externe.md), avec les préalables à régler par le chef avant de l'envoyer.
 
-## Prompt du lot D (boîte de Codex, après la fusion de VIT-20)
+## Prompt du lot D (ancien : boîte de Codex ; sans objet depuis que l'agent externe le reprend)
 
 ```text
 VIT-15 est fondue dans VIT-20 (décision du chef du 22 nov.) : ne commence pas VIT-15.
