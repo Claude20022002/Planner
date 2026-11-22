@@ -131,3 +131,4 @@ jamais de git push.
 - `fix/uix-11-volet` (session `plan-b-projet-pacte-88`, `7839621e`) relu : **prêt pour la PR**, à pousser par le chef.
 - `main` fusionnée dans cette branche (conflit dans le module UIX : colonne « Étape » gardée, état réel écrit) ; modules UIX, QUA et VIT, `suivi.md` et fiches de VIT-17 et QUA-10 à l'état réel (missions closes).
 - Reste au chef : **compléter le `.env` du serveur avant de déployer QUA-10** ; pousser `fix/uix-11-volet` et ouvrir sa PR ; dire « lis ta boîte » à Codex (VIT-11) et à l'agent de Cursor (VIT-19, #244).
+- **#247** (correctif d'UIX-11, `fix/uix-11-volet`) fusionnée à 23 h 59, CI verte ; UIX-11 faite.
