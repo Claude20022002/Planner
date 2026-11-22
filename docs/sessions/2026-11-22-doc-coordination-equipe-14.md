@@ -29,7 +29,7 @@ Relectures et validations (détail dans `decisions.md`, section « 22 nov., fin 
 | M-10 (#255) | relue, **prête** ; CI entièrement verte, intégration comprise |
 | M-12 (`fix/mob-nom-application`, `ea6c747d`) | plan validé, puis branche relue : **prête pour la PR** |
 | M-11 (`fix/qje-jeux-unite-neutre`, `5601f126`) | plan validé, « crédits » ; code chez l'agent de Cursor |
-| M-1 (`feat/edt-feuille-appel`, `30625a36`) | plan validé ; réponse du chef : l'appel après coup « compte, et se voit » ; code chez la session 20 |
+| M-1 (`feat/edt-feuille-appel`, `be800297`) | plan validé (réponse du chef : l'appel après coup « compte, et se voit ») ; relue, corrigée : **prête pour la PR**, après #255 |
 | VIT-09c (`feat/vit-09c-logos-modules`, `19ca17b4`) | plan validé (outil d'images inclus dans Codex, choix du chef) ; rendu validé par le chef ; **prête pour la PR** |
 | #252 (BIB-05) | intégration verte en CI : prête |
 | #193 | conflit QJE résolu par l'agent de Cursor (`6fa8a5b0`) : prête, en dernier des études |
@@ -80,7 +80,7 @@ Commence par le tour d'état (skill coordination, § 1), les boîtes de Codex, d
 gh pr list --state merged depuis le 22 nov. 16 h 45.
 
 Puis, dans l'ordre :
-1) relis les corrections de M-1 (session plan-b-projet-pacte-20, feat/edt-feuille-appel ; relue à corriger le 22 nov. à 17 h : séance annulée, date limite à l'écran) ;
+1) M-1 est prête (be800297) : après la fusion de #255, demande à la session plan-b-projet-pacte-20 le git merge origin/main sur feat/edt-feuille-appel, puis donne au chef le push et la PR ;
 2) relis M-11 (agent de Cursor, fix/qje-jeux-unite-neutre) à son rapport, puis valide le plan de M-9 (fichiers du serveur web : vérifie
    qu'aucune autre branche ne les tient) ;
 3) suis les fusions : #252, #255, #253, #254, #242, puis M-12 et VIT-09c une fois poussées, #193 en dernier ; après #253, range M-3 à M-16
