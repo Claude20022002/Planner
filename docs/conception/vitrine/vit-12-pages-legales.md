@@ -42,6 +42,19 @@ Deux pages du seul site vitrine (pas de l'application Planner) : « Mentions lé
 | 6 | Droit applicable et tribunal | **ne rien écrire** | aucune phrase |
 | 7 | Relecture par un juriste | **la validation du chef suffit pour cette mise en ligne non indexée** ; le juriste relit avant VIT-02 et avant l'indexation | — |
 
+**Valeurs données par le chef le 22 nov. 2026** (outil de questions, session du coordinateur ; les réponses 1 et 2 du 18 nov. changent) :
+
+| Champ | Valeur | Source |
+|---|---|---|
+| `[NOM]` éditeur | **FinAdmin Tech**, organisme de formation professionnelle, 8 rue Arthur Rimbaud, 93160 Noisy-le-Grand (plus une personne physique) | mentions légales de finadmintech.fr, lues le 22 nov. |
+| `[NOM]` directeur de la publication | **La direction de FinAdmin Tech** (choix du chef ; la loi attend plutôt un nom de personne : à revoir avec le juriste avant l'indexation) | idem |
+| `[HÉBERGEUR]` | **OVH SAS**, RCS Lille Métropole 424 761 419 00045, 2 rue Kellermann, 59100 Roubaix : le VPS du site (finadmintech.fr, lui, est chez Vercel) | mentions légales d'ovhcloud.com (`/fr/terms-and-conditions/`), lues le 22 nov. ; **aucun téléphone publié** sur cette page : à ajouter avec le juriste |
+| `[E-MAIL]` | **contact@finadmintech.fr** | page Contact de finadmintech.fr |
+| `[N]` | **30** jours | réponse du chef |
+| `[DATE]` | 22 novembre 2026 | date des valeurs |
+
+Sans pays (règle du § 7) : les adresses sont écrites sans « France ». Ni capital ni monnaie. Forme juridique et SIREN de FinAdmin Tech : absents de finadmintech.fr, à ajouter quand le chef les donne. Le réglage du serveur (journaux effacés en 30 jours au plus) reste à faire (VIT-06, condition 2).
+
 **Ce qui reste au chef avant le code** : `[NOM]`, `[E-MAIL]`, `[HÉBERGEUR]`, `[N]`. Et, pour `[N]` : la configuration du serveur doit
 effacer les journaux de la vitrine (Nginx et Traefik) en `[N]` jours au plus. Aujourd'hui la rotation se fait par taille, pas par durée :
 la phrase du § 5.2 n'est vraie qu'une fois ce réglage fait ou vérifié (hors de ce périmètre : `deploy/`, chef). **Accord du chef
