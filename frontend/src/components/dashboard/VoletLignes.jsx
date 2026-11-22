@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
@@ -40,20 +40,29 @@ export default function VoletLignes({ chiffre, titre, periode, periodeTexte, onF
 
   // La période comparée par sa valeur : un objet recréé par le bloc ne relance pas la lecture
   const clePeriode = JSON.stringify(periode ?? {});
+  // Seule la dernière demande écrit : la réponse en retard d'un volet fermé ne remplit pas celui
+  // d'un autre chiffre (fix/uix-11-volet), comme dans useBloc
+  const demande = useRef(0);
   const charger = useCallback(async () => {
+    const numero = ++demande.current;
     if (!volet) return;
     setLignes(null);
     setErreur(false);
     try {
       const [objet, fonction] = volet.api;
-      setLignes(volet.lignes(await api[objet][fonction](...volet.arguments(JSON.parse(clePeriode)))));
+      const reponse = await api[objet][fonction](...volet.arguments(JSON.parse(clePeriode)));
+      if (numero === demande.current) setLignes(volet.lignes(reponse));
     } catch {
-      setErreur(true);
+      if (numero === demande.current) setErreur(true);
     }
   }, [volet, clePeriode]);
 
   useEffect(() => {
     charger();
+    // Une demande encore en route quand le volet se ferme ou change de chiffre n'écrit plus rien
+    return () => {
+      demande.current += 1;
+    };
   }, [charger]);
 
   const toutVoir = () => {

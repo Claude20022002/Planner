@@ -35,8 +35,10 @@ export const semaineEnCours = (maintenant = new Date(), premierJour = PREMIER_JO
 export const moisEnCours = (maintenant = new Date()) => toLocalISODate(maintenant).slice(0, 7);
 
 /**
- * La période en cours, comme la page Suivi : une période d'une année active qui contient aujourd'hui,
- * sinon la première période d'une année active, sinon aucune (null). `annees` est la réponse de
+ * La période en cours : une période d'une année active qui contient aujourd'hui, sinon la première
+ * période d'une année active, sinon aucune (null ; réponse 10 du plan d'UIX-11). La page Suivi prend
+ * en dernier recours la première période de la liste, même d'une année inactive : pas le tableau de
+ * bord, où une année inactive ne doit compter aucun retard. `annees` est la réponse de
  * GET /calendrier/annees ; la période rendue porte le libellé de son année.
  */
 export const periodeEnCours = (annees = [], jour = toLocalISODate()) => {
