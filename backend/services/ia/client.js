@@ -7,10 +7,12 @@ import { ErreurMetier } from "../planning/enseignements.js";
  * Variables : IA_FOURNISSEUR, IA_URL, IA_CLE, IA_MODELE, IA_DELAI_MS. Sans IA_CLE, la fonction est
  * désactivée (estConfigure() faux, erreur 503). La clé ne quitte jamais le serveur et n'est jamais
  * journalisée ; le texte d'une erreur du fournisseur n'est pas renvoyé tel quel à l'utilisateur.
+ * Aucun envoi implicite (EP-13, QUA-10) : la famille « compatible OpenAI » regroupe plusieurs
+ * fournisseurs, elle exige donc IA_URL et IA_MODELE ; « anthropic » nomme déjà sa destination.
  */
 
 const FOURNISSEURS = {
-    "openai-compatible": { url: "https://api.deepseek.com/v1", modele: "deepseek-chat" },
+    "openai-compatible": { url: "", modele: null },
     // Pas de modèle par défaut : les noms changent souvent, IA_MODELE est exigé
     anthropic: { url: "https://api.anthropic.com/v1", modele: null },
 };
@@ -28,7 +30,7 @@ export const configuration = () => {
     };
 };
 
-/** La génération par IA est-elle disponible (fournisseur connu, clé et modèle renseignés) ? */
+/** La génération par IA est-elle disponible (fournisseur connu, clé, modèle et adresse renseignés) ? */
 export const estConfigure = () => {
     const c = configuration();
     return c.connu && Boolean(c.cle) && Boolean(c.modele) && Boolean(c.url);

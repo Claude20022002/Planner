@@ -1,74 +1,63 @@
-import {
-    Box,
-    Button,
-    IconButton,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
-    Typography,
-} from '@mui/material';
+/** Les semestres de l'année affichée : tableau sur ordinateur, une fiche par semestre sur téléphone. */
+import { Box, Button, IconButton, Typography, useMediaQuery } from '@mui/material';
 import { Add, Delete, Edit } from '@mui/icons-material';
-import { useTranslation } from 'react-i18next';
+import EtatsGestion from '../gestion/EtatsGestion';
+import ListeGestion from '../gestion/ListeGestion';
 
-/** Les semestres d'une année universitaire. */
-export default function SectionSemestres({ annee, plage, onAjouter, onModifier, onSupprimer }) {
-    const { t } = useTranslation();
-    return (
-        <Box sx={{ mt: 2.5 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
-                <Typography variant="h2" component="h2">
-                    {t('ref.calendar.semesters')}
-                </Typography>
-                <Button size="small" startIcon={<Add />} onClick={() => onAjouter()}>
-                    {t('ref.calendar.addSemester')}
-                </Button>
-            </Box>
-            {annee?.periodes?.length ? (
-                <Table size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sx={{ width: 90 }}>{t('ref.calendar.cols.code')}</TableCell>
-                            <TableCell>{t('ref.calendar.cols.dates')}</TableCell>
-                            <TableCell align="right">{t('ref.calendar.cols.weeks')}</TableCell>
-                            <TableCell align="right">{t('ref.rooms.cols.actions')}</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {annee.periodes.map((periode) => (
-                            <TableRow key={periode.id_periode}>
-                                <TableCell sx={{ fontWeight: 600 }}>{periode.code}</TableCell>
-                                <TableCell>
-                                    {plage(periode.date_debut, periode.date_fin)}
-                                    {periode.libelle && (
-                                        <Typography component="span" variant="body2" color="text.secondary">
-                                            {' '}· {periode.libelle}
-                                        </Typography>
-                                    )}
-                                </TableCell>
-                                <TableCell align="right">{periode.nb_semaines}</TableCell>
-                                <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>
-                                    <IconButton
-                                        size="small"
-                                        onClick={() => onModifier(periode)}
-                                        aria-label={t('ref.common.editItem', { name: periode.code })}
-                                    >
-                                        <Edit fontSize="small" />
-                                    </IconButton>
-                                    <IconButton size="small" color="error" onClick={() => onSupprimer(periode)} aria-label={t('ref.common.deleteItem', { name: periode.code })}>
-                                        <Delete fontSize="small" />
-                                    </IconButton>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            ) : (
-                <Typography variant="body2" color="text.secondary">
-                    {t('ref.calendar.noSemester')}
-                </Typography>
-            )}
-        </Box>
-    );
+export default function SectionSemestres({ modele: m }) {
+  const { t } = m;
+  const periodes = m.annee?.periodes || [];
+  // Sur téléphone, le code est déjà le titre de la fiche
+  const telephone = useMediaQuery('(max-width:699px)');
+  const colonnes = [
+    { cle: 'code', libelle: t('ref.calendar.cols.code'), afficher: (p) => <Box sx={{ fontWeight: 600 }}>{p.code}</Box> },
+    {
+      cle: 'dates',
+      libelle: t('ref.calendar.cols.dates'),
+      afficher: (p) => (
+        <>
+          {m.plage(p.date_debut, p.date_fin)}
+          {p.libelle && (
+            <Typography component="span" variant="body2" color="text.secondary">
+              {' '}
+              · {p.libelle}
+            </Typography>
+          )}
+        </>
+      ),
+    },
+    { cle: 'semaines', libelle: t('ref.calendar.cols.weeks'), afficher: (p) => p.nb_semaines },
+  ].filter((col) => !(telephone && col.cle === 'code'));
+  return (
+    <Box component="section" aria-labelledby="titre-semestres">
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 1, mb: 1.5 }}>
+        <Typography id="titre-semestres" variant="h2" component="h2">
+          {t('ref.calendar.semesters')}
+        </Typography>
+        <Button startIcon={<Add />} onClick={() => m.ouvrirPeriode()}>
+          {t('ref.calendar.addSemester')}
+        </Button>
+      </Box>
+      {periodes.length === 0 ? (
+        <EtatsGestion vide titreVide={t('ref.calendar.noSemester')} aideVide={t('gestion.calendrier.semestresAide')} />
+      ) : (
+        <ListeGestion
+          lignes={periodes}
+          colonnes={colonnes}
+          cleLigne={(p) => p.id_periode}
+          titre={(p) => p.code}
+          actions={(p) => (
+            <>
+              <IconButton onClick={() => m.ouvrirPeriode(p)} aria-label={t('ref.common.editItem', { name: p.code })}>
+                <Edit fontSize="small" />
+              </IconButton>
+              <IconButton color="error" onClick={() => m.setASupprimer({ type: 'periode', item: p })} aria-label={t('ref.common.deleteItem', { name: p.code })}>
+                <Delete fontSize="small" />
+              </IconButton>
+            </>
+          )}
+        />
+      )}
+    </Box>
+  );
 }
