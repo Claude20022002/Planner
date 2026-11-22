@@ -47,6 +47,7 @@
 | VIT-18b | Le test de garde du site refuse aussi les superlatifs (« n° 1 », « #1 », « le seul », « le meilleur », « leader », en anglais « number one », « the only », « the best »), formes voisines comprises ; la phrase du calcul ne dit plus « la meilleure semaine possible » | — | libre | S | VIT-18 (#228) | plan validé le 21 nov. ([vit-18b-superlatifs](../../conception/vitrine/vit-18b-superlatifs.md)) ; code fait (`fix/vit-18b-superlatifs`), PR à ouvrir |
 | VIT-19 | Contrôle d'EP-19 dans la CI du site : une page pèse au plus 200 Ko transférés, hors média lancé à la demande ; la CI échoue au-delà (N1) | — | 3 | S | VIT-17 | en cours (`feat/vit-19-ep19-poids`) ; plan validé le 21 nov. ([vit-19-ep19-poids](../../conception/vitrine/vit-19-ep19-poids.md)) |
 | VIT-20 | Structure du site sur le modèle d'Odoo : barre à trois méga-menus, 17 modules en quatre catégories (5 pages, 12 tuiles « Bientôt »), page « Inclus dans tout abonnement », accueil resserré avec « Pourquoi Planner » interactif, pied de page en quatre colonnes ; le bloc « Selon votre équipement » est le lot D | — | libre | L | VIT-18 | lots R0, B, A et C faits sur `feat/vit-20-structure-du-site` (PR #257, [fiche de session](../../sessions/2026-11-22-feat-vit-20-structure-du-site.md)) ; lot D à faire |
+| VIT-20e | `EnTete.astro` ramené à 150 lignes, contrôle à l'œil des pages en anglais et de l'accueil à 390 et 768 px | — | libre | S | VIT-20 | PR ouverte (`refactor/vit-20e-en-tete`, [fiche](../../sessions/2026-11-22-refactor-vit-20e-en-tete.md)) |
 
 ## Critères de « terminé »
 
