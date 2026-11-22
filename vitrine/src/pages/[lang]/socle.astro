@@ -1,0 +1,68 @@
+---
+// « Inclus dans tout abonnement » (plan VIT-20, § 4.4 et § 4.6) : Établissement, Personnes, Web et mobile, puis le lien vers
+// Sécurité et données. Les sections viennent des pages « Pour l'établissement » et « Application » et du registre (comptes).
+import { DoorOpen, ClipboardCheck, MapPinned, FileSpreadsheet, UsersRound, Palette, QrCode } from 'lucide-react';
+import Gabarit from '../../components/socle/Gabarit.astro';
+import Section from '../../components/socle/Section.astro';
+import Titre from '../../components/socle/Titre.astro';
+import BoutonPrincipal from '../../components/socle/BoutonPrincipal.astro';
+import CadreAppareil from '../../components/socle/CadreAppareil.astro';
+import Presentation from '../../components/fonctions/Presentation.astro';
+import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
+import FinDePage from '../../components/fonctions/FinDePage.astro';
+import IllustrationStatistiques from '../../components/fonctions/IllustrationStatistiques.astro';
+import { fonctionnalites } from '../../components/catalogue/registre.js';
+import { traductions } from '../../i18n/index.js';
+import { cheminsLangues, chemin } from '../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const commun = traductions(lang, 'commun');
+const etab = traductions(lang, 'etablissement');
+const appli = traductions(lang, 'application');
+const titre = commun('socle.titre');
+const comptes = fonctionnalites(lang).find((entree) => entree.id === 'comptes');
+const sommaire = [
+  { href: '#etablissement', texte: commun('socle.etablissement') },
+  { href: '#personnes', texte: commun('socle.personnes') },
+  { href: '#web-mobile', texte: commun('socle.webMobile') },
+  { href: chemin(lang, 'securite'), texte: commun('socle.securite') },
+];
+---
+<Gabarit langue={lang} page="socle" titre={`${titre} · Planner`} description={titre}>
+  <Section etiquette="socle-titre">
+    <Titre niveau={1} taille="geant" id="socle-titre" surtitre={commun('navigation.applications')}>{titre}</Titre>
+    <ul class="sommaire">
+      {sommaire.map((lien) => <li><a href={lien.href}>{lien.texte}</a></li>)}
+    </ul>
+  </Section>
+  <div id="etablissement">
+    <Presentation id="statistiques" ton="gris" surtitre={etab('statistiques.surtitre')} titre={etab('statistiques.titre')}
+      texte={etab('statistiques.texte')} points={etab('statistiques.points')}>
+      <CadreAppareil type="ordinateur" label={etab('statistiques.illustration.label')}>
+        <IllustrationStatistiques t={etab} />
+      </CadreAppareil>
+    </Presentation>
+    <GrilleCartes id="quotidien" surtitre={etab('quotidien.surtitre')} titre={etab('quotidien.titre')} cartes={etab('quotidien.cartes')}
+      icones={[DoorOpen, ClipboardCheck, MapPinned, FileSpreadsheet, UsersRound, Palette]} />
+  </div>
+  <div id="personnes">
+    <GrilleCartes id="comptes" ton="gris" titre={commun('socle.personnes')} cartes={[{ titre: comptes.titre, texte: comptes.description }]} icones={[UsersRound]} />
+  </div>
+  <div id="web-mobile">
+    <GrilleCartes id="onglets" surtitre={appli('onglets.surtitre')} titre={appli('onglets.titre')} texte={appli('onglets.texte')}
+      cartes={appli('onglets.cartes')} icones={[QrCode]} />
+  </div>
+  <Section id="securite" ton="gris" etiquette="securite-titre">
+    <Titre id="securite-titre" taille="moyen">{commun('socle.securite')}</Titre>
+    <BoutonPrincipal href={chemin(lang, 'securite')} variante="lien">{commun('navigation.securite')}</BoutonPrincipal>
+  </Section>
+  <FinDePage langue={lang} />
+</Gabarit>
+
+<style>
+  .sommaire { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-1); margin: 0; padding: 0; list-style: none; }
+  .sommaire a { display: inline-block; padding: 0.5rem 1.1rem; border-radius: var(--rayon-pilule); background: var(--gris-fond); color: var(--bleu-profond); font-weight: 500; text-decoration: none; }
+  .sommaire a:hover { background: var(--gris-trait); }
+</style>

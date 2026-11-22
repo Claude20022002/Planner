@@ -1,0 +1,35 @@
+---
+// « Un besoin, une application. » (plan VIT-20, § 4.4, point 7) : les autres modules de la même catégorie, grisés quand ils
+// sont « Bientôt », puis « Toutes les applications ».
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
+import TuileModule from './TuileModule.astro';
+import { traductions } from '../../i18n/index.js';
+import { chemin } from '../../i18n/langues.js';
+import { modulesDeCategorie } from '../../donnees/modules.js';
+
+interface Props {
+  langue: string;
+  cle: string;
+  categorie: string;
+}
+
+const { langue, cle, categorie } = Astro.props;
+const commun = traductions(langue, 'commun');
+const autres = modulesDeCategorie(categorie).filter((module) => module.cle !== cle);
+---
+<Section id="autres-applications" ton="gris" large etiquette="autres-titre">
+  <Titre id="autres-titre" taille="moyen">{commun('navigation.unBesoin')}</Titre>
+  {autres.length > 0 && (
+    <ul class="grille">
+      {autres.map((module) => <li><TuileModule module={module} langue={langue} variante="grille" /></li>)}
+    </ul>
+  )}
+  <BoutonPrincipal href={chemin(langue, 'applications')} variante="lien">{commun('navigation.toutesLesApplications')}</BoutonPrincipal>
+</Section>
+
+<style>
+  .grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: var(--espace-2); inline-size: 100%; margin: 0; padding: 0; list-style: none; }
+  .grille > li { display: grid; }
+</style>

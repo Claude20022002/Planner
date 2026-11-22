@@ -1,0 +1,38 @@
+---
+// Page du module « Quiz et jeux » : les quiz (section de « En classe »), le studio et les jeux (page de fonction d'avant).
+// L'onglet « Bibliothèque des jeux » mène à la page des dix simulations ; son nom est celui de cette page.
+import { Terminal, Gamepad2 } from 'lucide-react';
+import PageModule from '../../../components/applications/PageModule.astro';
+import CadreAppareil from '../../../components/socle/CadreAppareil.astro';
+import Section from '../../../components/socle/Section.astro';
+import BoutonPrincipal from '../../../components/socle/BoutonPrincipal.astro';
+import Presentation from '../../../components/fonctions/Presentation.astro';
+import GrilleCartes from '../../../components/fonctions/GrilleCartes.astro';
+import IllustrationQuiz from '../../../components/accueil/IllustrationQuiz.astro';
+import { traductions } from '../../../i18n/index.js';
+import { cheminsLangues, chemin } from '../../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'quiz-et-jeux');
+const tClasse = traductions(lang, 'en-classe');
+const tAccueil = traductions(lang, 'accueil');
+const nomBibliotheque = traductions(lang, 'bibliotheque-des-jeux')('meta.titre').split(' · ')[0];
+const onglet = { href: chemin(lang, 'bibliothequeJeux'), texte: nomBibliotheque };
+---
+<PageModule langue={lang} cle="quizEtJeux" titre={t('meta.titre')} description={t('meta.description')} accroche={t('entete.accroche')}
+  ongletsEnPlus={[onglet]}>
+  <Presentation id="quiz" ton="gris" surtitre={tClasse('quiz.surtitre')} titre={tClasse('quiz.titre')} texte={tClasse('quiz.texte')}
+    points={tClasse('quiz.points')}>
+    <CadreAppareil type="telephone" label={tAccueil('quiz.illustration.label')}>
+      <IllustrationQuiz t={tAccueil} />
+    </CadreAppareil>
+  </Presentation>
+  <Presentation id="studio" surtitre={t('studio.surtitre')} titre={t('studio.titre')} texte={t('studio.texte')} points={t('studio.points')} />
+  <GrilleCartes id="jeux" ton="gris" surtitre={t('jeux.surtitre')} titre={t('jeux.titre')} texte={t('jeux.texte')} cartes={t('jeux.cartes')}
+    icones={[Terminal, Gamepad2]} />
+  <Section id="vers-les-jeux">
+    <BoutonPrincipal href={chemin(lang, 'bibliothequeJeux')}>{t('jeux.lien')}</BoutonPrincipal>
+  </Section>
+</PageModule>

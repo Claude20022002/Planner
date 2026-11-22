@@ -1,0 +1,32 @@
+---
+// « Pour qui » (plan VIT-20, § 4.4, point 6) : types d'établissement et rôles concernés, en liens. Rien n'est rendu quand
+// aucune page de type ou de rôle ne mène au module.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import { pourQui } from './pourQui.js';
+import { traductions } from '../../i18n/index.js';
+
+interface Props {
+  langue: string;
+  cle: string;
+}
+
+const { langue, cle } = Astro.props;
+const commun = traductions(langue, 'commun');
+const { types, roles } = pourQui(langue, cle);
+const liens = [...types, ...roles];
+---
+{liens.length > 0 && (
+  <Section id="pour-qui" etiquette="pour-qui-titre">
+    <Titre id="pour-qui-titre" taille="moyen">{commun('pourQui.titre')}</Titre>
+    <ul class="liens">
+      {liens.map((lien) => <li><a href={lien.href}>{lien.texte}</a></li>)}
+    </ul>
+  </Section>
+)}
+
+<style>
+  .liens { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-1); margin: 0; padding: 0; list-style: none; }
+  a { display: inline-block; padding: 0.5rem 1.1rem; border-radius: var(--rayon-pilule); background: var(--gris-fond); color: var(--bleu-profond); font-weight: 500; text-decoration: none; }
+  a:hover { background: var(--gris-trait); }
+</style>
