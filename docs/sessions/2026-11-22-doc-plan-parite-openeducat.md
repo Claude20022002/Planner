@@ -19,11 +19,12 @@ Rendre #193 fusionnable après #234 et #169 (dernière de la file).
 | `decisions.md` | toutes les lignes (parité 17 nov. + lignes de `main`) |
 | `README.md` | EP-13 + EP-14 à EP-17 |
 | modules MOB / UIX / VSC | les deux ajouts ; **VSC-13** = discipline (VSC-07 de la parité : numéro déjà pris sur `main` par l'affectation des groupes de langue) |
+| renvois VSC-13 | critère terminé VSC, tableau et ordre dans `parite-openeducat.md` (consigne 1 h 05) |
 
 ## Vérifié
 
 - `verifier-neutre` : OK
-- Étude / `parite-openeducat.md` non réécrits
+- `git grep VSC-07 -- docs/` : plus aucun renvoi « discipline = VSC-07 » (seulement affectation + mentions historiques du renommage)
 
 ## Commandes
 
