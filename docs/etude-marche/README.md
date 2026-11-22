@@ -8,6 +8,7 @@ Dossier du groupe B, ouvert le 4 novembre 2026. Il sert à la conception de Plan
 | [02-arguments-marketing.md](02-arguments-marketing.md) | douleurs exprimées chez les concurrents, ce que Planner fait déjà, messages à tester, objections, ce qu'il ne faut pas dire |
 | [03-propositions.md](03-propositions.md) | registre de toutes les propositions du groupe B et des décisions du chef de projet, avec leur statut |
 | [04-rencontre-directeur.md](04-rencontre-directeur.md) | préparation de la rencontre avec le directeur d'une école privée (maternelle au lycée) : objectif, options de démonstration, calendrier, questions à poser |
+| [05-modele-economique.md](05-modele-economique.md) | 11 nov. 2026 : packs, modules et grille de prix en dollars (hypothèses à confirmer par VEN-02) |
 | [06-outils-structures-formation.md](06-outils-structures-formation.md) | inventaire du 11 nov. 2026, à la demande du chef de projet : outils des établissements (maternelle à formation continue, public et privé, Afrique et Europe), couverture de Planner, douze modules proposés, packs, garanties de liaison, décisions I-1 à I-5 |
 | [07-comparatif-odoo.md](07-comparatif-odoo.md) | 15 nov. 2026 : Planner et Odoo + OpenEduCat, fonction par fonction, avec niveaux de preuve |
 | [09-failles-erp-scolaires.md](09-failles-erp-scolaires.md) | 15 nov. 2026 : failles de cinq ERP scolaires (OpenEduCat, Frappe Education, Fedena, PERIS SCHOOL, Studirium), lues dans leur code, leurs dépôts et leurs avis ; besoins qu'aucun ne couvre ; conséquences pour Planner |
