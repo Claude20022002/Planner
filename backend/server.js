@@ -1,4 +1,6 @@
 import dotenv from "dotenv";
+// En premier : sans fuseau de l'école, le serveur de production refuse de démarrer (M-10)
+import { FUSEAU_ECOLE } from "./config/fuseau.js";
 import app from "./app.js";
 import { testConnection } from "./config/db.js";
 import { Users } from "./models/index.js";
@@ -55,7 +57,7 @@ const seedIfRequested = async () => {
         resumerEnvois();
 
         app.listen(PORT, () => {
-            console.log(`--> Serveur lancé sur http://localhost:${PORT}`);
+            console.log(`--> Serveur lancé sur http://localhost:${PORT} (fuseau de l'école : ${FUSEAU_ECOLE})`);
         });
 
         // Chaque tâche périodique passe par un verrou MySQL : avec deux instances, une seule la fait (lot A-7)

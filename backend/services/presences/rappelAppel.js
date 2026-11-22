@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import { Affectation, AppelSeance, Cours, Creneau, Enseignement, EnseignementEnseignant, Groupe, Notification } from "../../models/index.js";
 import { minutes } from "../planning/affectationRules.js";
 import { horairesSurPlage } from "../planning/ramadan.js";
@@ -9,7 +10,6 @@ import { passage } from "../taches/periodiques.js";
  * l'écran de l'appel. Un seul rappel par séance et par enseignant. RAPPEL_APPEL_MINUTES=0 le coupe.
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 const STATUTS_A_RAPPELER = ["planifie", "confirme", "reporte"];
 const TITRE_A_FAIRE = "Rappel : faites l'appel";
 const TITRE_A_TERMINER = "Rappel : terminez l'appel";

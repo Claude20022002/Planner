@@ -328,7 +328,7 @@ Sur un serveur **partagé** (cas de la production, où tourne aussi n8n) :
 - le proxy de l'hôte termine le TLS et lui transmet les requêtes.
 
 ```bash
-deploy/vps/generer-env.sh <site> <fichiers> <quiz>      # crée .env.docker (secrets générés)
+deploy/vps/generer-env.sh <site> <fichiers> <quiz> <fuseau>   # crée .env.docker (secrets générés ; fuseau obligatoire, M-10)
 docker compose -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml --env-file .env.docker up -d
 deploy/vps/deployer.sh --essai <commit>                  # mise en ligne d'une version publiée par la CI
 deploy/vps/deployer.sh <commit>                          #   (images ghcr.io, version vérifiée par /health)
