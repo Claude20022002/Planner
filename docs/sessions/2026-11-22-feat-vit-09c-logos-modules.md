@@ -19,6 +19,19 @@ Le plan complété est au commit `5d3783d5`, les essais au commit `3d9d56a3`. La
 
 L’illustration a été créée le 22 novembre 2026 avec ImageGen intégré à Codex. L’outil expose son nom mais ne renvoie aucun identifiant de modèle. Conversion en WebP avec Pillow. Pour les comptes individuels, les conditions attribuent à l’utilisateur les droits d’OpenAI sur les sorties dans la mesure permise par la loi. Les obligations de respecter les droits des tiers et de vérifier le résultat s’appliquent aussi aux supports commerciaux. Le résultat peut ressembler à d’autres sorties. [Conditions publiées, « Content »](https://openai.com/policies/terms-of-use/)
 
+## Série présentée pour relecture
+
+Le feu vert du chef pour lancer la série a été interprété comme l’accord sur les deux essais Présences. La série soumise est au commit `f9edd723`. Sur la planche locale, les vingt logos sont visibles ensemble. Le comparateur présente les versions 24, 32, 48 et 96 px sur blanc, gris et bleu nuit. Les dix-sept illustrations suivent dans l’ordre du catalogue.
+
+Les seize nouveaux visuels ont été générés le 22 novembre 2026 avec le même outil ImageGen intégré et l’essai Présences comme référence. Le service ne communique pas l’identifiant du modèle. Les conditions consultées sont celles citées dans la section précédente. Les SVG ont été dessinés en appliquant SVG Logo Designer et Visual Design Foundations à la charte du projet.
+
+### Contrôles
+
+- Charte et icônes, 18 tests réussis sur 18. Les 169 paires demandées présentent au minimum 14,57° d’écart de teinte. Le blanc sur les nouvelles tuiles atteint au minimum 5,04:1.
+- Dix-sept WebP décodés de 512 × 512 px, de 12 958 à 14 974 octets (médiane 14 214). Les dix-sept fichiers ont été relus ensemble.
+- Edge a chargé les vingt logos d’ensemble, les 240 rendus du comparateur et les dix-sept images. Le comparateur ouvert tient dans des fenêtres de 360 et 1 280 px.
+- Générateur de charte à jour. Ses deux sorties sont `shared/charte/README.md` et `vitrine/src/styles/jetons.css`.
+
 ## Prompt de reprise
 
-Reprends VIT-09c sur `feat/vit-09c-logos-modules`. Lis cette fiche, la mission et la boîte Codex. Recueille le verdict du chef sur le SVG et le WebP Présences. Si le rendu est validé, réalise les douze logos et seize illustrations restants, vérifie les poids, les contrastes et les teintes, puis soumets la planche complète au chef. S’il demande une retouche, présente à nouveau l’essai concerné.
+Reprends VIT-09c sur `feat/vit-09c-logos-modules`. Lis cette fiche et la boîte Codex, puis recueille le verdict du chef sur la planche complète. En cas de retouche, modifie les modules désignés et représente la planche. Après validation, le chef peut publier avec les commandes de cette fiche. Si UIX-10e a fusionné entre-temps, appliquer la règle de régénération décrite dans le plan avant la publication.
