@@ -6,7 +6,7 @@
 | Mission | `docs/plan/missions/ep18-correctifs.md` (branche `doc/coordination-equipe`) |
 | Branche | `fix/qje-jeux-unite-neutre`, depuis `origin/main` (`b57753e9`) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 22 novembre 2026 |
-| **Validé** | en attente du coordinateur (S, sans migration) |
+| **Validé** | par le coordinateur le 22 novembre 2026 (S, sans migration) |
 
 ## 1. Objet et critère de « terminé »
 
@@ -29,7 +29,7 @@ Le score du jeu s'appelle déjà « points » (`shared/simulations/i18n.js`, `pr
 
 | N° | Question | Proposition | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | Quel mot à la place de `MAD` ? | **crédits** en français, **credits** en anglais. Le score reste « points » et le stock reste « unités », donc les trois ne se confondent pas. Exemple : « 100 crédits d'achats », « Budget 200 crédits », « {{cout}} crédits ». | | oui |
+| 1 | Quel mot à la place de `MAD` ? | **crédits** en français, **credits** en anglais. Le score reste « points » et le stock reste « unités », donc les trois ne se confondent pas. Exemple : « 100 crédits d'achats », « Budget 200 crédits », « {{cout}} crédits ». | **crédits** / **credits** (coordinateur, 22 nov.) | oui |
 
 ## 4. Solution
 
@@ -48,7 +48,7 @@ Après l'accord : remplacer le mot, rien d'autre.
 | `shared/simulations/catalogue/stock-pilot.js` | modifié | le mot, dans le résumé et les consignes |
 | `shared/simulations/catalogue/budget-erp.js` | modifié | le mot, dans les consignes et l'indice |
 | `shared/simulations/i18n.js` | modifié | le mot, dans les bilans et les écarts, français et anglais |
-| `mobile/__tests__/unite-neutre.test.js` | créé | ces trois fichiers ne contiennent plus `MAD` ; les montants y sont encore |
+| `mobile/__tests__/unite-neutre.test.js` | créé | tout `shared/simulations/` refuse `MAD`, « dirham », « € », « $ » et « euro » ; les montants des trois fichiers y sont encore |
 | `docs/plan/modules/QJE-quiz-jeux-ia.md` | modifié | une ligne, à la fin du code |
 | fiche de session | créé | à la fin du code |
 
@@ -70,7 +70,7 @@ Aucun pays supposé : `MAD` sort des consignes et des bilans. Aucun fuseau, aucu
 
 ## 8. Tests
 
-- `mobile/__tests__/unite-neutre.test.js` lit les trois fichiers. Il échoue si `MAD` y reparaît. Il échoue si l'un des montants 100, 120, 108, 200, 150, 45, 165 a disparu de la phrase qui le citait.
+- `mobile/__tests__/unite-neutre.test.js` parcourt tout `shared/simulations/` (précision du coordinateur à la validation). Il échoue si `MAD`, « dirham », « € », « $ » ou « euro » y reparaît. Un `$` de gabarit `${…}` et l'ancre de fin d'une expression régulière `/…$/` ne comptent pas : ce ne sont pas des devises. Il échoue si l'un des montants 100, 120, 108, 200, 150, 45, 165 a disparu de la phrase qui le citait.
 - Les tests de jeu déjà là (`mobile/__tests__/simulations.test.js`, `backend/tests`) ne sont pas réécrits : ils ne cherchent pas `MAD`.
 
 ## 9. Étapes de livraison
