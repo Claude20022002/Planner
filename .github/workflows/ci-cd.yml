@@ -123,10 +123,13 @@ jobs:
         env:
           NODE_ENV: test
           JWT_SECRET: test-secret-ci-not-production
+          # Fuseau de l'école des tests (M-10) : pas de défaut de pays dans le serveur
+          APP_TIMEZONE: UTC
 
       - name: Tests d'intégration (API + MySQL)
         run: npm run test:integration
         env:
+          APP_TIMEZONE: UTC
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
           DB_NAME: hestim_test
@@ -278,6 +281,8 @@ jobs:
         run: npm run test:parcours
         env:
           CI: "true"
+          # L'école des parcours est à UTC+0 (créneau du jour de #210) ; P-1 essaie UTC+1 dans le navigateur
+          APP_TIMEZONE: UTC
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
           DB_USER: root
