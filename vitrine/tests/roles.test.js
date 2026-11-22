@@ -115,7 +115,7 @@ test('Direction recopie la phrase de l\'établissement, sans prix', () => {
   const page = charger('fr', 'direction');
   assert.equal(page.entete.titre, charger('fr', 'etablissement').entete.titre);
   assert.equal(page.entete.accroche, charger('fr', 'etablissement').entete.accroche);
-  assert.equal(page.cartes.some((carte) => carte.page === 'emploiDuTemps'), true);
+  assert.equal(page.cartes.some((carte) => carte.page === 'module.emploiDuTemps'), true);
   assert.equal(/MAD|prix|tarif/i.test(JSON.stringify(page)), false);
 });
 

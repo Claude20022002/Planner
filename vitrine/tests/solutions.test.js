@@ -28,7 +28,7 @@ test('les trois types, dans l’ordre de D4 (supérieur, formation, collège et 
 
 test('chaque point « Aujourd’hui » renvoie à une page qui existe', () => {
   for (const type of TYPES) {
-    for (const page of type.pages) assert.ok(page in PAGES && page !== 'solutions', `${type.cle} → ${page}`);
+    for (const page of type.pages) assert.doesNotThrow(() => chemin('fr', page), `${type.cle} → ${page}`);
   }
 });
 

@@ -11,17 +11,17 @@
   "aujourdhui": "Today",
   "cartes": [
     {
-      "page": "bibliotheque",
+      "page": "applications",
       "titre": "Library",
       "texte": "Documents are organised by programme and by module."
     },
     {
-      "page": "application",
+      "page": "socle",
       "titre": "App",
       "texte": "Five tabs: the board, the week, the scanner, the library, the account."
     },
     {
-      "page": "quizEtJeux",
+      "page": "module.quizEtJeux",
       "titre": "Quiz and games",
       "texte": "The teacher prepares the quiz. The link opens in a browser, on a school computer or elsewhere. A code or a QR code leads to the same link."
     }
