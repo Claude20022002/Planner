@@ -32,6 +32,10 @@ Les seize nouveaux visuels ont été générés le 22 novembre 2026 avec le mêm
 - Edge a chargé les vingt logos d’ensemble, les 240 rendus du comparateur et les dix-sept images. Le comparateur ouvert tient dans des fenêtres de 360 et 1 280 px.
 - Générateur de charte à jour. Ses deux sorties sont `shared/charte/README.md` et `vitrine/src/styles/jetons.css`.
 
+## Validation du rendu
+
+Le 22 novembre, en réponse à la présentation de la planche complète, le chef a écrit « J’aime bien ». Ce retour vaut accord sur le rendu des vingt logos et dix-sept illustrations du commit `f9edd723`.
+
 ## Prompt de reprise
 
-Reprends VIT-09c sur `feat/vit-09c-logos-modules`. Lis cette fiche et la boîte Codex, puis recueille le verdict du chef sur la planche complète. En cas de retouche, modifie les modules désignés et représente la planche. Après validation, le chef peut publier avec les commandes de cette fiche. Si UIX-10e a fusionné entre-temps, appliquer la règle de régénération décrite dans le plan avant la publication.
+VIT-09c est validée visuellement. Pour publier, reprendre la branche `feat/vit-09c-logos-modules` et les commandes de cette fiche. Si UIX-10e a fusionné entre-temps, suivre la règle de régénération du plan avant de publier.
