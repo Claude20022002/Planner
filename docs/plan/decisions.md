@@ -581,3 +581,14 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | *(coordinateur)* **#234 (études 13 et 14) : prête** (documents seuls, CI verte, sans conflit, rien de réel). Elle passe **avant #169**, en conflit, dans l'ordre de la fusion des études ; après elle, la coordination classe la synthèse 14 par public | coordinateur |
 | *(coordinateur)* **#244** n'a pas été relancée depuis le 429 de Maven Central de 21 h 09 : le chef la relance une fois ; si le 429 revient, l'agent de Cursor écrit le plan court de `setup-java` | coordinateur |
 | *(coordinateur)* Reports faits dans les modules : **UIX-10f sans objet** (UIX), **EXP-09 réduite à ClassQuiz** (EXP), **COU-02 sur le stockage de BIB-05** (COU) | coordinateur |
+
+### Coordinateur, 22 nov., 1 h (relais de la fiche -11, session `plan-b-projet-pacte-92`)
+
+| Décision | Par |
+|---|---|
+| **Relais de la coordination** : le chef a demandé à cette session de répartir le travail ; `plan-b-projet-pacte-02` (fiche -11) s'est retirée sans travail perdu, en attendant la confirmation du chef | chef |
+| *(coordinateur)* **VIT-19, correction relue : prête** (#250, `5aed5d62`) : seuls `.mp4`, `.webm` et `empreinte.json` sous `videos/` sont exclus ; l'image fixe compte ; test du cas inverse (3/3 refaits) ; accueil 134,7 Ko. Fusionne après VIT-11 | coordinateur |
+| *(coordinateur)* **#244 : plan `setup-java` validé** (S, CI seule), avec deux précisions : un seul `solver/Dockerfile`, avec une étape d'exécution commune, une cible `parcours` qui copie le JAR du contexte et la cible de production en dernier (par défaut) ; `target/` non exclu du contexte de construction | coordinateur |
+| *(coordinateur)* **#193 : la discipline prend le numéro VSC-13** (VSC-07 est l'affectation des groupes de langue sur `main`). #193 est **à corriger** : trois renvois disent encore VSC-07 pour la discipline (critère du module VSC, tableau et ordre de `parite-openeducat.md`) | coordinateur |
+| *(coordinateur)* **Plan du retrait de Meilisearch** : question 2 (vue d'ensemble) réglée comme l'agent le propose ; la question 1 et la procédure serveur vont au chef, avec un point : l'étape 5 (« redémarrer StudyLib ») suppose que StudyLib tourne encore, ce que la décision du 22 nov. dément | coordinateur |
+| *(coordinateur)* **VIT-09c : Codex écrit le plan dès maintenant**, sans attendre la fusion de #236 ; le code reste après elle (ordre du chef du 21 nov. inchangé) | coordinateur |
