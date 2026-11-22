@@ -1,0 +1,29 @@
+---
+ // FAQ publique et données structurées produites à partir des mêmes réponses validées.
+import Gabarit from '../../components/socle/Gabarit.astro';
+import FaqRole from '../../components/fonctions/FaqRole.astro';
+import { chemin, cheminsLangues } from '../../i18n/langues.js';
+import { traductions } from '../../i18n/index.js';
+
+export const getStaticPaths = cheminsLangues;
+const { lang } = Astro.params;
+const t = traductions(lang, 'faq');
+const commun = traductions(lang, 'commun');
+---
+<Gabarit langue={lang} page="faq" titre={t('titre') + ' · Planner'} description={t('description')}>
+  <header class="intro">
+    <h1>{t('titre')}</h1>
+    <nav aria-label={t('titre')}>
+      <a href={chemin(lang, 'securite')}>{commun('navigation.securite')}</a>
+      <a href={chemin(lang, 'application')}>{commun('navigation.application')}</a>
+      <a href={chemin(lang, 'accueil', 'contact')}>{commun('navigation.contact')}</a>
+    </nav>
+  </header>
+  <FaqRole titre={t('description')} questions={t('questions')} />
+</Gabarit>
+
+<style>
+  .intro { max-inline-size: var(--largeur-contenu); margin-inline: auto; padding: var(--espace-5) var(--gouttiere) var(--espace-4); }
+  h1 { color: var(--bleu-nuit); line-height: 1.1; font-size: clamp(2.25rem, 6vw, 4rem); }
+  nav { display: flex; flex-wrap: wrap; gap: var(--espace-3); margin-block-start: var(--espace-3); }
+</style>
