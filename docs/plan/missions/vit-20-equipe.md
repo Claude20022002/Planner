@@ -68,3 +68,4 @@ Rapports dans ta boîte sortie\. Fiche de session ; jamais de git push.
 |---|---|---|
 | 2026-11-22 | fiche écrite pour une équipe de quatre lots | — |
 | 2026-11-22 | le chef confie R0, B, A et C à un agent externe (accès collaborateur), D reste à Codex après la fusion ; fiche réécrite | — |
+| 2026-11-22 15 h | relecture de #257 (`d21f7b2a`) : périmètre tenu, plan suivi, tests relancés et verts ; CI « Construire le site vitrine » rouge (`nginx/verifier-image.cjs` suit les pages de redirection) ; îlot React (~65 Ko compressés) contraire au § 4.8 (< 15 Ko) ; examens à ranger sous Emploi du temps ; 22 lignes de plus de 160 caractères | **à corriger** |
