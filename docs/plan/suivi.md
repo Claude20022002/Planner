@@ -73,6 +73,8 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | UIX | UIX-06c Salles, Campus, Créneaux, Calendrier | à fixer | `feat/uix-06c-ressources-temps` (à créer) | plan validé par le chef le 18 nov. ; **attend la validation d'UIX-10** (chef, 18 nov.), pour ne pas refaire ces écrans deux fois | 18 nov. 13 h 40 | [plan](../conception/interface/uix-06c-ressources-temps.md) |
 | VIT | plus tard : vidéos de motion design sur les captures, et lien « Ressources » (VIT-03) avec elles | — | — | décisions du chef du 18 nov. ([plan du site](../conception/vitrine/vit-vitrine.md), § 3 bis) | 18 nov. | [vit-equipe](missions/vit-equipe.md) |
 | EXP | suite de l'audit (#198, fusionnée) : partie `vitrine/` le 27 nov. avec la montée d'Astro ; revue de l'exception picomatch avant le 18 déc. | à attribuer | — | dates fixées par le plan | 18 nov. | [plan](../conception/exploitation/fix-audit-dependances.md) |
+| UIX, EDT, QUA | lots libres d'Alexis : UIX-05 (#264), EDT-04 (#265), QUA-01 (#266), mise en forme (#267) | Alexis (Destroya2) | #264, #265, #266, #267 | #264, #266, #267 **prêtes** ; #265 : libellé « Format du supérieur » à corriger (décision du chef) | 25 nov. 23 h 40 | — |
+| MOB, VIT | M-12 nom de l'application (#258) ; VIT-09c logos des modules (#259) | agent de Cursor ; Codex | #258, #259 | **prêtes** ; « Update branch » avant la fusion (branches du 22 nov.) | 25 nov. 23 h 40 | [ep18-correctifs](missions/ep18-correctifs.md) |
 
 Hors chantier, PR ouvertes : #165 (relecture de QJE-04), #166 (diagramme d'architecture), #168 (kit vidéo MKT-05 et MKT-09), #169 (étude du modèle économique), #53 (vidéo promo, octobre).
 
