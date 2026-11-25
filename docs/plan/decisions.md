@@ -367,3 +367,14 @@ Inscrit en conséquence, à relire dans la PR : 31 fonctions (liste dans le READ
 | **Chantier VSC** : il s'ouvre dès que MOT se ferme. VSC-01 (conception du modèle du scolaire) commence avant, chez Codex | chef |
 | **Pendant la pause du coordinateur**, le chef valide tous les plans et ne fusionne qu'une PR entièrement verte, avec le rapport de l'agent. Chaque agent suit sa file de la feuille de route | chef |
 | **#205 (Alexis) validée** : quatre routes des jeux répondent 404 « Module introuvable » hors des classes de l'enseignant, comme pour un module qui n'existe pas. Le refus selon le rôle reste en 403. Plan validé après coup ; Alexis ajoutera la ligne « Validé » dans sa prochaine PR. Relu par le coordinateur : un seul point d'entrée (`coursDeSesClasses`), un message identique à celui d'un module inconnu, et une CI entièrement verte, intégration comprise | chef, 18 nov. 15 h 25 |
+
+**25 nov., au soir** (tour d'état du coordinateur) :
+
+| Décision | Par |
+|---|---|
+| **Chantier VSC ouvert par exception**, avant la fermeture de MOT (MOT-04 reste à faire) : quatre chantiers ouverts jusqu'à la fermeture de MOT. Le lot d'Alexis passe **dans l'ordre** : le chef choisit d'abord la VSC-01 de référence (#268 de l'agent Qoder ou #215) et signe ses 14 réponses, puis VSC-02 (#269, migrations 0062 et 0063), puis VSC-03 (#270, migration 0064) en dernier, après une relecture de sécurité (connexion, MFA, OIDC) | chef |
+| **M-9, question 1 : pas de brotli.** On ne compile pas `ngx_brotli` dans `frontend/Dockerfile` ; on garde gzip et on ajoute `gzip_vary on` | chef |
+| *(coordinateur)* **M-9, question 2 : oui.** L'apparition de l'état vide (0,18 s, opacité, échelle) passe en CSS ; la bibliothèque d'animation ne reste que sur le lanceur | coordinateur |
+| **Migration 0083 réservée à STA-01** (#230), après coup : elle avait été écrite sans réservation | chef |
+| Le commit `5b9f307d` (lucide-react passe de la version fixe à `^`), fait sur le `main` local du chef, **passe sur une branche** `chore/lucide-react-mineures` et suit le chemin d'une PR, après relecture | chef |
+| *(coordinateur)* VSC-01 a été écrite par un agent **Qoder**, absent de l'organisation (Claude, Codex, agent de Cursor). Leçon : un agent nouveau reçoit `AGENTS.md` et une fiche de mission avant de travailler ; sa fiche disait le chantier VSC « ouvert le 18 novembre », ce qui contredisait la décision de ce jour-là | coordinateur |

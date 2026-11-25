@@ -10,13 +10,14 @@ Une ligne par fonction. L'état passe à « en cours » (avec la branche) au pre
 
 Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend une fonction que dans un chantier ouvert. Un chantier ouvert se termine avant d'en ouvrir un autre à sa place ([organisation.md](organisation.md), § 3).
 
-### Ouverts (3 sur 3) · VSC s'ouvre dès que MOT se ferme (décision du chef du 18 nov.) ; VSC-01 (conception) commence avant
+### Ouverts (4, dont VSC par exception) · VSC ouvert par exception le 25 nov., avant la fermeture de MOT (décision du chef) ; on revient à 3 quand MOT se ferme
 
 | Module | Ouvert le | Fonctions du chantier, dans l'ordre | Reste | État |
 |---|---|---|---|---|
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
+| [VSC](modules/VSC-vie-scolaire.md) | 25 nov. 2026, par exception (décision du chef) | VSC-01, VSC-02, VSC-03 | 3 | ouvert ; VSC-01 de référence à choisir (#268 ou #215) et 14 réponses à signer par le chef ; puis #269, puis #270 après relecture de sécurité |
 
 ### Fermés
 
@@ -88,7 +89,8 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0080 | MOT-13 contraintes déclarées (`ContrainteDeclaree`) | réservée |
 | 0081 | MOT-13b reprise de la pause du vendredi et du samedi après-midi en contraintes déclarées | écrite (`feat/mot-13b-solveur`) |
 | 0082 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) ; réservée le 10 nov. sous le numéro 0080, renumérotée le 15 nov. (0080 et 0081 prises par MOT-13) | écrite le 18 nov. (`backend/migrations/0082-jeux-solutions.js`), non appliquée |
-| 0083 et plus | libres | — |
+| 0083 | STA-01 offres de stage (réservée après coup le 25 nov., décision du chef) | écrite (#230) |
+| 0084 et plus | libres | — |
 
 ## Fonctions
 
