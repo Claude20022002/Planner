@@ -124,7 +124,8 @@ sont dans deux écoles. EP-12 s’applique à chaque route des futurs lots.
 ## 6. Séquence de migrations
 
 La plage 0062 à 0079 est réservée dans le suivi. L’attribution précise par lot relève du coordinateur,
-avec le chef pour la validation de la migration et du schéma partagé.
+avec le chef pour la validation de la migration et du schéma partagé. Répartition indicative, cycle de
+l’inscription, fratrie et risques : [complément du 25 novembre](vsc-01-inscription-et-migrations.md).
 
 | Étape | Extension et vérification | Retour arrière |
 |---|---|---|
@@ -271,6 +272,10 @@ flowchart TD
 | Périmètre VSC-04 | Système d’évaluation affecté par classe et année (N7), coefficient par matière, niveau et filière, conseil de classe et décision de passage dans VSC-04. |
 | Vocabulaire et finance | Nom technique `AnneeUniversitaire` conservé, catégories communes dans le code, libellés locaux. Un règlement est ventilable sur plusieurs échéances d’une fratrie. |
 | Propriétaires | ADM possède les référentiels de filières, groupes, cours et composantes. VSC possède le dossier et l’appartenance. |
+
+Le 25 novembre, le chef a choisi ce document comme référence de VSC-01, plutôt que la PR #268 ; ses apports
+concrets sont repris dans le [complément](vsc-01-inscription-et-migrations.md) et dans
+[l’étude d’impact](vsc-01-impact-adresse-compte.md).
 
 Les choix ont été confirmés par le chef le 18 novembre. La relecture projet couvre l’étude d’impact, le découpage
 de migrations, la granularité des droits sur les notes et la compatibilité du supérieur. Les lots de mise en

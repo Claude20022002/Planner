@@ -79,3 +79,48 @@ selon le périmètre autorisé. Les consommateurs indirects sont à vérifier pa
 - Une adresse manquante se représente par une valeur absente dans les contrats lorsqu’ils la publient.
   L’absence de canal ne change ni les droits ni l’inscription.
 - La vérification sur deux écoles couvre la connexion, les consultations de dossier et la notification.
+
+## Compléments repris de #268 (25 novembre)
+
+Mesure de l'agent Qoder sur `origin/main` `561fad19`, reprise ici par le coordinateur quand #215 a été choisie
+comme référence (décision du chef du 25 nov.). Recherche de `.email` dans `backend`, `frontend/src` et
+`mobile/src` : **182 lectures dans 65 fichiers**, dont 44 de production et 21 de test. État daté, à refaire
+avant chaque lot qui touche `Users`.
+
+| Classe | Sens | Fichiers | Lectures |
+|---|---|---|---|
+| A · Lire l'identifiant | connexion, jeton, journal, limitation de débit, invitation : l'adresse ne peut pas y devenir facultative sans changer la lecture | 14 | 40 |
+| B · Tolérer l'absence | affichage, export, notification : l'identifiant prend la place, l'adresse s'ajoute si elle existe | 18 | 43 |
+| C · Inchangé | adresse professionnelle du personnel, amorce de démonstration, passerelle ClassQuiz des enseignants | 12 | 38 |
+| D · Tests à adapter | fixtures et assertions qui passent par l'adresse | 21 | 61 |
+
+Les quatre lectures qui **cassent** si l'adresse est nulle, à traiter en premier dans le lot Q-20 :
+
+| Fichier | Lecture | Effet sans adresse |
+|---|---|---|
+| `services/oidc/provider.js` | `preferred_username: user.email.split("@")[0]` | exception à la connexion OIDC |
+| `middleware/rateLimiterMiddleware.js` | clé `compte:${req.body.email}` | clé nulle commune, limitation par compte perdue |
+| `services/mfa.js` | compte TOTP nommé par `user.email` | deux élèves sans adresse partagent le même libellé de compte |
+| `controllers/etudiantController.js` | refus si `!etudiantData.email` | création d'élève impossible : blocage direct de Q-20 |
+
+Deux pièges de la classe C : `services/quiz/devoirs.js` et `services/studio/importClassQuiz.js` dérivent un nom
+de `email.split("@")[0]`. Sans effet tant qu'ils ne servent qu'au personnel ; à revoir le jour où un élève y entre.
+
+**Tests.** Aucun des 21 fichiers de test n'est supprimé : ceux qui passent par l'adresse passent par l'identifiant,
+et au moins un test garde la connexion par adresse pour prouver qu'elle marche encore. Les plus touchés :
+`auth.test.js` (10 lectures), `sso.test.js` (7), `importClassQuiz.test.js` (6), `quiz.test.js`,
+`journalSecurite.test.js`, `mesQuiz.test.js` (4 chacun), `helpers/testApp.js` (fabrique de comptes).
+
+**Migration du lot Q-20, en trois temps** (étendre, basculer, contracter) : `Users.identifiant` ajouté facultatif
+avec index unique, reprise des comptes existants avec **leur adresse réelle** comme identifiant (rien d'inventé) ;
+puis identifiant obligatoire, connexion par identifiant **ou** adresse, `email` facultatif ; le retrait des
+anciennes lectures n'arrive jamais dans ce lot. MySQL accepte plusieurs `NULL` dans un index unique.
+
+**Questions encore ouvertes**, à trancher avant la migration du lot Q-20 :
+
+| Question | Qui répond |
+|---|---|
+| L'identifiant est-il unique dans l'école ou sur toute la plateforme (D-01, D-05) ? Le § « Critères transversaux » le lit dans l'école courante | chef, avec PLA-01 |
+| Qui fabrique l'identifiant : l'école, ou le produit à partir du nom et de l'année ? | scolarité |
+| Le parent sans adresse reçoit-il ses accès sur papier remis par l'école, ou par SMS ? | chef |
+| L'adresse d'un élève mineur est-elle celle du responsable par défaut, ou jamais reprise ? | juriste, CNDP |
