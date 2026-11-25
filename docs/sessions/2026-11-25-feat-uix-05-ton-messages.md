@@ -5,7 +5,7 @@
 | Fait par | agent Qoder |
 | Chantier | UIX |
 | Dossier de travail | `.travaux/uix-05` (worktree dans le dépôt : l'outil d'écriture refuse un chemin hors du projet ; `.travaux/` est exclu localement par `.git/info/exclude`) |
-| Dernier commit | `d1018606` |
+| Dernier commit | `e62ab24e` |
 
 ## Objectif de la session
 
@@ -59,25 +59,24 @@ preuve est un script de ton sur tout `backend/`, pas un `git grep` littéral (15
 ## État laissé
 
 - État de la fonction, pour `suivi.md` (le coordinateur le reporte) : UIX-05 → codée le 25 novembre,
-  PR à ouvrir ; m-7 renvoyée à UIX-07.
+  **PR #264 ouverte** ; m-7 renvoyée à UIX-07.
 - Chantier UIX : UIX-01 conçue, UIX-02 et UIX-04 à faire ; les branches `b/textes-enseignant` et
   `b/textes-coherence` sont déjà dans `main` et vides de différence (QUA-05 pour les supprimer).
 
 ## Reste à faire, dans l'ordre
 
-1. Fusionner `origin/main` dans la branche avant la PR (ADM-02 et MOT-13b touchent des fichiers
-   proches : conflits attendus sur des lignes isolées).
-2. Le chef : `push` et PR ; la CI doit confirmer la suite d'intégration et les parcours.
+1. Fusionner `origin/main` dans la branche si elle avance avant la CI (ADM-02 et MOT-13b touchent des
+   fichiers proches : conflits attendus sur des lignes isolées).
+2. Le chef : relire et fusionner la PR #264 ; la CI doit confirmer la suite d'intégration et les parcours.
 3. Le chef valide la correction du plan (question 4).
 4. Ouvrir **QUA-02** (découper les contrôleurs trop longs, un contrôleur par branche) sur `refactor/qua-02-salle`, depuis `origin/main` : `salleController` (247 lignes) d'abord, extraction vers `backend/services/<domaine>/`, vérifiée par les unitaires et ESLint avant/après, puis la CI. Les huit autres suivent : `auth` 759, `statistiques` 513, `emploiDuTemps` 512, `etudiant` 444, `enseignant` 348, `affectation` 321, `user` 299, `demandeReport` 257 lignes (seuils ESLint `max-lines` : 200 pour un contrôleur). Plan court à écrire et à faire valider avant le code, puisqu'aucun n'existe.
 
 ## Commandes pour le chef de projet
 
 ```powershell
-git -C "C:\Users\USER\Desktop\CLAUDE LK\plan_B_projet_PACTE" fetch origin
-git -C "C:\Users\USER\Desktop\CLAUDE LK\plan_B_projet_PACTE\.travaux\uix-05" merge origin/main
-git -C "C:\Users\USER\Desktop\CLAUDE LK\plan_B_projet_PACTE\.travaux\uix-05" push -u origin feat/uix-05-ton-messages
-gh pr create --base main --head feat/uix-05-ton-messages --title "UIX-05 : ton des messages du serveur" --fill
+gh pr view 264 --web
+gh pr checks 264 --watch
+gh pr merge 264 --squash --delete-branch
 ```
 
 ## Prompt de reprise
