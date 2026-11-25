@@ -1,7 +1,7 @@
 /** Texts of the "Identity and brand" panel (English), merged under the "etablissement" key by i18n/index.js. */
 const etablissement = {
   intro: 'The school name, logo and colours appear on every page, in emails, PDFs and the app. After saving, the page reloads to apply them; other users see them on their next visit.',
-  sections: { identite: 'Identity', couleurs: 'Colours', logo: 'Logo', courriels: 'Emails' },
+  sections: { identite: 'Identity', couleurs: 'Colours', logo: 'Logo', documents: 'Documents', courriels: 'Emails' },
   champs: {
     nom: 'Full school name',
     nomAide: 'Page footers, PDFs, sign-in page, email sender name.',
@@ -15,6 +15,10 @@ const etablissement = {
     expediteurAide: 'Left empty: "{{produit}}".',
     reponse: 'Reply-to address',
     reponseAide: 'Replies to Planner emails arrive here (for instance the registrar). Left empty: no reply possible.',
+    modeleEdt: 'Monthly timetable template',
+    modeleEdtAide: 'The printed document and its print help. The original school format keeps its layout (“Academic year”, class code); the neutral format shows the group name only.',
+    modeleNeutre: 'Neutral format',
+    modeleOfficiel: 'Original school format',
   },
   contraste: 'Contrast {{valeur}}:1 (at least {{seuil}}:1)',
   apercu: 'Preview',

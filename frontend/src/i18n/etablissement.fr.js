@@ -1,7 +1,7 @@
 /** Textes du panneau « Identité et marque » (français), fusionnés sous la clé « etablissement » par i18n/index.js. */
 const etablissement = {
   intro: "Le nom, le logo et les couleurs de l'école apparaissent sur toutes les pages, dans les courriels, les PDF et l'application. Après un enregistrement, la page se recharge pour les appliquer ; les autres utilisateurs les voient à leur prochaine visite.",
-  sections: { identite: 'Identité', couleurs: 'Couleurs', logo: 'Logo', courriels: 'Courriels' },
+  sections: { identite: 'Identité', couleurs: 'Couleurs', logo: 'Logo', documents: 'Documents', courriels: 'Courriels' },
   champs: {
     nom: "Nom complet de l'école",
     nomAide: 'Pied des pages, PDF, page de connexion, nom de l’expéditeur des courriels.',
@@ -15,6 +15,10 @@ const etablissement = {
     expediteurAide: 'Laissé vide : « {{produit}} ».',
     reponse: 'Adresse de réponse',
     reponseAide: 'Les réponses aux courriels de Planner arrivent ici (par exemple la scolarité). Laissée vide : pas de réponse possible.',
+    modeleEdt: 'Modèle de l’emploi du temps du mois',
+    modeleEdtAide: 'Le document imprimé et son aide à l’impression. Le format de l’école d’origine garde sa mise en page (« Année Universitaire », code de la classe) ; le format neutre n’écrit que le nom du groupe.',
+    modeleNeutre: 'Format neutre',
+    modeleOfficiel: 'Format de l’école d’origine',
   },
   contraste: 'Contraste {{valeur}}:1 (au moins {{seuil}}:1)',
   apercu: 'Aperçu',

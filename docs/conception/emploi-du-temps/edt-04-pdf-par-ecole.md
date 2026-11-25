@@ -73,7 +73,7 @@ pas de document.
 | `frontend/src/components/edt/DocumentEdtMois.jsx` | lit `edt.entete.modele`, emploie les libellés du module pur, ne dessine la ligne de code que si `code_classe` existe |
 | `frontend/src/pages/EdtMensuel.jsx` | aide à l'impression selon le modèle |
 | `frontend/src/pages/gestion/IdentiteEcole.jsx` | `modele_edt` ajouté à `CHAMPS`, sélecteur « Modèle de l'EDT du mois » (deux options), commentaire de la ligne 13 retiré |
-| `frontend/src/i18n/fr.js` et `en.js` | `monthly.anneeScolaire`, `monthly.aideNeutre`, `monthly.aideOfficielle`, et les deux libellés du sélecteur |
+| `frontend/src/i18n/fr.js` et `en.js` | `monthly.anneeScolaire`, `monthly.aideNeutre`, et les quatre libellés du sélecteur (dans `etablissement.fr.js` et `.en.js`) |
 
 L'API n'a rien à apprendre : `PUT /etablissement` valide déjà `modele_edt` contre `MODELES_EDT`
 (`planner` ou `hestim`) et `GET /etablissement` le renvoie déjà. Le panneau se contente de l'offrir.
@@ -84,6 +84,9 @@ L'API n'a rien à apprendre : `PUT /etablissement` valide déjà `modele_edt` co
   doivent pas écrire la même couche.
 - **Le vocabulaire des écrans** : EDT-04 dépend de UIX-02, qui dépend de MOT-05 (nomenclature lue en
   base), non fait. Le lot ne touche que le document imprimé et son aide.
+- **L'aide de « Explorer les emplois du temps »** (après une génération) : elle garde `monthly.help`,
+  le texte du format officiel. Cet écran ne connaît pas le modèle de l'école avant d'avoir chargé un
+  document, et le lot ne lui en ajoute pas la lecture : à reprendre avec UIX-02.
 - **La publication « toute l'école »** (Q-33) : à rouvrir si le chef la veut pour un collège.
 - **L'arabe du PDF** : UIX-04, qui commence par prouver le rendu arabe de jsPDF.
 - **`monthly.group` = « Classe (groupe) »** et les messages du serveur qui disent « filière »

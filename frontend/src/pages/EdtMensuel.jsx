@@ -5,6 +5,7 @@ import { Autocomplete, Box, Button, Paper, Stack, TextField, Typography } from '
 import { Print } from '@mui/icons-material';
 import DashboardLayout from '../components/layouts/DashboardLayout';
 import DocumentEdtMois, { StyleImpressionEdt } from '../components/edt/DocumentEdtMois';
+import { libellesDocument } from '../components/edt/modeleDocument';
 import PublicationMois from '../components/edt/PublicationMois';
 import EmptyState from '../design-system/components/EmptyState';
 import { TableSkeleton } from '../design-system/components/PremiumSkeleton';
@@ -20,9 +21,9 @@ import OngletsEmploisDuTemps from '../components/gestion/OngletsEmploisDuTemps';
 const moisCourant = () => new Date().toISOString().slice(0, 7);
 
 /**
- * Emploi du temps du mois au format officiel HESTIM (phase P4) : copie de l'EDT d'octobre 2026
- * (docs/Planning). Le serveur calcule fusions, (P.S)/(D.S) et blocs ; la page ne fait que
- * dessiner (DocumentEdtMois), et s'imprime (ou s'enregistre en PDF) depuis le navigateur.
+ * Emploi du temps du mois, au modèle réglé par l'école (EDT-04) : document officiel de l'école
+ * d'origine ou document neutre. Le serveur calcule fusions, (P.S)/(D.S) et blocs ; la page ne fait
+ * que dessiner (DocumentEdtMois), et s'imprime (ou s'enregistre en PDF) depuis le navigateur.
  * L'administration et le responsable y publient le mois (PublicationMois) : les étudiants
  * voient la version publiée.
  */
@@ -43,6 +44,8 @@ export default function EdtMensuel() {
     // Les classes de l'année du mois affiché (lot ME-18), plus celle déjà choisie
     const annees = useAnnees(!etudiant);
     const classesDuMois = groupesDuJour(groupes, annees ?? [], `${mois}-01`, [idGroupe]);
+    // Aide à l'impression : celle du modèle du document affiché (l'ancien reste pendant le chargement)
+    const { cleAide } = libellesDocument(edt?.entete?.modele);
 
     useEffect(() => {
         if (etudiant) {
@@ -92,7 +95,7 @@ export default function EdtMensuel() {
                     </Button>
                 </Stack>
                 <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
-                    {t('monthly.help')}
+                    {t(cleAide)}
                 </Typography>
                 {peutPublier && groupe && <PublicationMois mois={mois} groupe={groupe} onChoisirClasse={setIdGroupe} />}
             </Paper>

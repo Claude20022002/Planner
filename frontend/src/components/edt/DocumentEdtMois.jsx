@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Box, GlobalStyles } from '@mui/material';
 import { ds } from '../../design-system/tokens';
 import LogoEcole from '../common/LogoEcole';
+import { libellesDocument } from './modeleDocument';
 
 // Couleurs du document officiel (EDT du mois de l'école) : hors du style « panneau », réservé à l'impression
 const DOC = ds.document;
@@ -36,12 +37,15 @@ export const StyleImpressionEdt = () => (
 );
 
 /**
- * Emploi du temps d'une classe pour un mois, au format officiel HESTIM (phase P4) : copie de l'EDT
- * d'octobre 2026 (docs/Planning). Le serveur calcule fusions, (P.S)/(D.S) et blocs
+ * Emploi du temps d'une classe pour un mois, au modèle réglé par l'école (EDT-04) : le document
+ * officiel de l'école d'origine (`hestim`, copie de l'EDT d'octobre 2026, docs/Planning) ou le
+ * document neutre. Le serveur calcule fusions, (P.S)/(D.S), blocs et intitulés
  * (GET /emplois-du-temps/groupe/:id/mensuel) ; ce composant ne fait que dessiner `edt`.
  */
 export default function DocumentEdtMois({ edt }) {
     const { t } = useTranslation();
+    // Le modèle vient du serveur : l'en-tête qu'il compose doit être lu avec ses libellés
+    const vue = libellesDocument(edt.entete.modele);
     const nbMatin = edt.grille.matin.length;
     const nbApres = edt.grille.apres_midi.length;
 
@@ -104,12 +108,17 @@ export default function DocumentEdtMois({ edt }) {
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
                 <LogoEcole hauteur={42} />
                 <span style={{ fontSize: 13, fontWeight: 700 }}>
-                    {t('monthly.year')} : {edt.entete.annee_universitaire ?? '-'}
+                    {t(vue.cleAnnee)} : {edt.entete.annee_universitaire ?? '-'}
                 </span>
             </Box>
             <div style={{ textAlign: 'center', fontSize: 20, fontWeight: 700 }}>{t('monthly.title')}</div>
-            <div style={{ textAlign: 'center', fontSize: 14, fontWeight: 700, color: DOC.rouge }}>{edt.entete.intitule_classe}</div>
-            <div style={{ textAlign: 'center', fontSize: 14, fontWeight: 700, color: DOC.marine, marginBottom: 8 }}>{edt.entete.code_classe}</div>
+            <Box sx={{ mb: 1 }}>
+                <div style={{ textAlign: 'center', fontSize: 14, fontWeight: 700, color: DOC.rouge }}>{edt.entete.intitule_classe}</div>
+                {/* Code de classe (« 4A | IIIA (S7) ») : format officiel seulement, jamais au format neutre */}
+                {vue.codeVisible && edt.entete.code_classe && (
+                    <div style={{ textAlign: 'center', fontSize: 14, fontWeight: 700, color: DOC.marine }}>{edt.entete.code_classe}</div>
+                )}
+            </Box>
 
             <table style={{ borderCollapse: 'collapse', width: '100%', tableLayout: 'fixed', minWidth: 760 }}>
                 <colgroup>
