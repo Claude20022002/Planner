@@ -5,7 +5,7 @@
 | Module | [VSC](../../plan/modules/VSC-vie-scolaire.md) · chantier ouvert le 2026-11-18 |
 | Branche | `doc/vsc-01-modele-donnees-scolaire` |
 | Rédigé par | Qoder (agent), le 2026-11-25 |
-| **Validé** | en attente — les 14 réponses de § 3 sont à signer dans [decisions.md](../../plan/decisions.md) |
+| **Validé** | **oui, le 2026-11-25** : les 14 réponses sont retenues par le porteur de projet, qui relaie le chef. Le coordinateur les recopie dans [decisions.md](../../plan/decisions.md) ; cette branche n'y touche pas |
 
 Ce document remplace le plan d'écriture [conception-c5](conception-c5-modele-donnees-scolaire.md) : il en garde l'ordre et les 14 questions, et le remplit. Il ne crée aucun code ; VSC-02 et les lots suivants l'appliquent.
 
@@ -80,24 +80,24 @@ C'est ce qui justifie les réponses de § 3 : on étend, on n'arrache pas.
 
 ## 3. Questions et réponses
 
-Colonne « Réponse du chef » : vide tant que `decisions.md` n'est pas signé. Une proposition acceptée y est recopiée telle quelle.
+Colonne « Réponse du chef » : les 14 réponses ont été validées **en bloc** le 25 novembre 2026 ; `decisions.md` les recopie avec leur date, par le coordinateur.
 
 | N° | Question | Proposition | Réponse du chef | Bloque |
 |---|---|---|---|---|
-| Q-1 | Doubler les tables ou réutiliser celles du supérieur ? | **Réutiliser** : une classe est un `Groupe`, un élève une `Personne` + `Etudiant`, une matière un `Cours`. Le sens reste dans le code, le vocabulaire dans la base (D-06) | | tout |
-| Q-2 | `Groupe.id_filiere` et `Cours.id_filiere` sont obligatoires ; que met-on sans filière ? | **Une filière implicite par cycle**, créée d'office (`FIL-PRIMAIRE`, `FIL-COLLEGE`, `FIL-LYCEE`) ; les colonnes restent obligatoires (413 lectures préservées) | | VSC-02 |
-| Q-3 | Groupes de langue ou d'option réunissant des élèves de plusieurs classes ? | **Nature de groupe « transversal »** : `type_groupe` gagne `langue` et `option`, sans parent, hors de l'emboîtement ; l'effectif plafonné est porté par `Groupe.effectif`. D-06 amendée sur ce point | | VSC-07 |
-| Q-4 | Un parent : un rôle dans `Users`, ou une table à part ? | **`ResponsableLegal` à part, compte facultatif** ; `Users.role` gagne `parent` seulement si le compte existe | | VSC-02 |
-| Q-5 | Un parent avec des enfants dans deux écoles | **Un seul compte plateforme**, une appartenance par école (D-05) ; chaque école ne voit que sa propre fiche | | VSC-02 |
-| Q-6 | Où vit l'inscription, `Appartenir` n'ayant ni année ni état ? | **Table `Inscription`** (personne, année, niveau, état, dates) ; `Appartenir` reste le seul lien aux groupes, l'année se lit par `Groupe.id_annee` (ME-18) | | VSC-02, FIN |
-| Q-7 | Numéro de CIN et données de santé | **Ni CIN obligatoire ni santé dans le socle** ; le code Massar (CNE) est facultatif. La santé est le module VSC-08, éteint par défaut | | VSC-02, VSC-08 |
-| Q-8 | Note absente, dispensé, à rattraper | **Un état à part de la valeur** (`non_notee`, `absente`, `dispensee`, `rattrapage`) : une absence n'est pas un zéro | | VSC-04 |
-| Q-9 | Une note ou un paiement peuvent-ils se modifier ? | **Note** : modifiable jusqu'au verrouillage de la période, ensuite avec motif et historique. **Paiement et reçu** : jamais modifiés, annulation par écriture inverse, reçus numérotés sans trou | | VSC-04, FIN |
-| Q-10 | Le supérieur reçoit-il aussi les notes et les frais ? | **Oui, mêmes tables, éteintes par le registre des modules** ; la maquette HESTIM ne voit rien changer | | VSC-04, FIN |
-| Q-11 | Sur quelle pile écrire ? | **MySQL et Sequelize**, comme aujourd'hui, sans fonction propre à MySQL hors des tables existantes ; l'étude QUA-03 ne bloque pas | | tout |
-| Q-12 | Numéros de migration | **Garder 0062 à 0079** : vérifiés libres sur `main` le 25 nov. ; `0060` libre aussi, `0083` pris par la PR #230 | | VSC-02 |
-| Q-13 | MP-1 est-il un prérequis ? | **Non plus** : MOT-01 est fusionné (#156, migration `0061`) depuis le 10 nov. ; seul l'écran ADM-02 reste | | — |
-| Q-14 | Un élève doit-il avoir un compte ? (voir Q-20) | **Séparer la personne du compte** : `Personne` porte l'état civil, `Users` le compte (identifiant, mot de passe facultatif) ; étude d'impact jointe | | VSC-02 |
+| Q-1 | Doubler les tables ou réutiliser celles du supérieur ? | **Réutiliser** : une classe est un `Groupe`, un élève une `Personne` + `Etudiant`, une matière un `Cours`. Le sens reste dans le code, le vocabulaire dans la base (D-06) | **retenue** | tout |
+| Q-2 | `Groupe.id_filiere` et `Cours.id_filiere` sont obligatoires ; que met-on sans filière ? | **Une filière implicite par cycle**, créée d'office (`FIL-PRIMAIRE`, `FIL-COLLEGE`, `FIL-LYCEE`) ; les colonnes restent obligatoires (413 lectures préservées) | **retenue** | VSC-02 |
+| Q-3 | Groupes de langue ou d'option réunissant des élèves de plusieurs classes ? | **Nature de groupe « transversal »** : `type_groupe` gagne `langue` et `option`, sans parent, hors de l'emboîtement ; l'effectif plafonné est porté par `Groupe.effectif`. D-06 amendée sur ce point | **retenue** | VSC-07 |
+| Q-4 | Un parent : un rôle dans `Users`, ou une table à part ? | **`ResponsableLegal` à part, compte facultatif** ; `Users.role` gagne `parent` seulement si le compte existe | **retenue** | VSC-02 |
+| Q-5 | Un parent avec des enfants dans deux écoles | **Un seul compte plateforme**, une appartenance par école (D-05) ; chaque école ne voit que sa propre fiche | **retenue** | VSC-02 |
+| Q-6 | Où vit l'inscription, `Appartenir` n'ayant ni année ni état ? | **Table `Inscription`** (personne, année, niveau, état, dates) ; `Appartenir` reste le seul lien aux groupes, l'année se lit par `Groupe.id_annee` (ME-18) | **retenue** | VSC-02, FIN |
+| Q-7 | Numéro de CIN et données de santé | **Ni CIN obligatoire ni santé dans le socle** ; le code Massar (CNE) est facultatif. La santé est le module VSC-08, éteint par défaut | **retenue** | VSC-02, VSC-08 |
+| Q-8 | Note absente, dispensé, à rattraper | **Un état à part de la valeur** (`non_notee`, `absente`, `dispensee`, `rattrapage`) : une absence n'est pas un zéro | **retenue** | VSC-04 |
+| Q-9 | Une note ou un paiement peuvent-ils se modifier ? | **Note** : modifiable jusqu'au verrouillage de la période, ensuite avec motif et historique. **Paiement et reçu** : jamais modifiés, annulation par écriture inverse, reçus numérotés sans trou | **retenue** | VSC-04, FIN |
+| Q-10 | Le supérieur reçoit-il aussi les notes et les frais ? | **Oui, mêmes tables, éteintes par le registre des modules** ; la maquette HESTIM ne voit rien changer | **retenue** | VSC-04, FIN |
+| Q-11 | Sur quelle pile écrire ? | **MySQL et Sequelize**, comme aujourd'hui, sans fonction propre à MySQL hors des tables existantes ; l'étude QUA-03 ne bloque pas | **retenue** | tout |
+| Q-12 | Numéros de migration | **Garder 0062 à 0079** : vérifiés libres sur `main` le 25 nov. ; `0060` libre aussi, `0083` pris par la PR #230 | **retenue** | VSC-02 |
+| Q-13 | MP-1 est-il un prérequis ? | **Non plus** : MOT-01 est fusionné (#156, migration `0061`) depuis le 10 nov. ; seul l'écran ADM-02 reste | **retenue** | — |
+| Q-14 | Un élève doit-il avoir un compte ? (voir Q-20) | **Séparer la personne du compte** : `Personne` porte l'état civil, `Users` le compte (identifiant, mot de passe facultatif) ; étude d'impact jointe | **retenue** | VSC-02 |
 
 ## 4. Solution
 

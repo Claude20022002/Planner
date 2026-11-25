@@ -5,7 +5,7 @@
 | Module | [VSC](../../plan/modules/VSC-vie-scolaire.md) · lot VSC-01 |
 | Branche | `doc/vsc-01-modele-donnees-scolaire` |
 | Rédigé par | Qoder (agent), le 2026-11-25 |
-| **Validé** | en attente (même signature que [la conception](vsc-01-modele-donnees-scolaire.md)) |
+| **Validé** | **oui, le 2026-11-25**, avec [la conception](vsc-01-modele-donnees-scolaire.md) (porteur de projet relayant le chef) |
 | Source mesurée | `origin/main` 561fad19, 25 novembre 2026 |
 
 ## 1. La décision, et ce qu'elle impose
