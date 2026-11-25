@@ -1,4 +1,6 @@
 import dotenv from "dotenv";
+// En premier : sans fuseau de l'école, le serveur de production refuse de démarrer (M-10)
+import { FUSEAU_ECOLE } from "./config/fuseau.js";
 import app from "./app.js";
 import { testConnection } from "./config/db.js";
 import { Users } from "./models/index.js";
@@ -12,6 +14,7 @@ import { demarrerRenvoiQuotidien } from "./services/calendrier/envoiEdt.js";
 import { demarrerRappelsAppel } from "./services/presences/rappelAppel.js";
 import { passage } from "./services/taches/periodiques.js";
 import { passerDesactivations } from "./services/desactivation/programmation.js";
+import { resumerEnvois } from "./services/envois/resumeEnvois.js";
 
 dotenv.config();
 
@@ -50,9 +53,11 @@ const seedIfRequested = async () => {
         console.log(applied.length ? `--> ${applied.length} migration(s) appliquée(s)` : "--> Schéma à jour");
 
         await seedIfRequested();
+        // Ce qui part chez des tiers, et les réglages incomplets (QUA-10, EP-13)
+        resumerEnvois();
 
         app.listen(PORT, () => {
-            console.log(`--> Serveur lancé sur http://localhost:${PORT}`);
+            console.log(`--> Serveur lancé sur http://localhost:${PORT} (fuseau de l'école : ${FUSEAU_ECOLE})`);
         });
 
         // Chaque tâche périodique passe par un verrou MySQL : avec deux instances, une seule la fait (lot A-7)

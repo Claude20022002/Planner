@@ -1,0 +1,284 @@
+[
+  {
+    "id": "generer",
+    "application": "planning",
+    "categorie": "organisation",
+    "module": "emploiDuTemps",
+    "etat": "existe",
+    "titre": { "fr": "Calculer l’emploi du temps", "en": "Generate a timetable" },
+    "description": { "fr": "Placez les séances selon les groupes, les salles et les disponibilités.", "en": "Schedule classes around groups, rooms and availability." },
+    "sources": {
+      "planner": ["backend/routes/generationAutomatiqueRoutes.js"]
+    }
+  },
+  {
+    "id": "reports",
+    "application": "planning",
+    "categorie": "organisation",
+    "module": "emploiDuTemps",
+    "etat": "existe",
+    "titre": { "fr": "Demander un report", "en": "Request a timetable change" },
+    "description": { "fr": "L’enseignant soumet une demande à la scolarité.", "en": "A teacher can submit a change request to the school office." },
+    "sources": {
+      "planner": ["backend/routes/demandeReportRoutes.js"]
+    }
+  },
+  {
+    "id": "agenda",
+    "application": "planning",
+    "categorie": "organisation",
+    "module": "emploiDuTemps",
+    "etat": "existe",
+    "titre": { "fr": "Abonner son agenda", "en": "Subscribe to a timetable" },
+    "description": { "fr": "Recevez les mises à jour de l’emploi du temps dans votre agenda.", "en": "Get timetable updates in your calendar." },
+    "sources": {
+      "planner": ["backend/routes/agendaRoutes.js"]
+    }
+  },
+  {
+    "id": "semaine",
+    "application": "planning",
+    "categorie": "organisation",
+    "module": "socle",
+    "etat": "existe",
+    "titre": { "fr": "Consulter sa semaine", "en": "View your week" },
+    "description": { "fr": "L’étudiant retrouve ses séances dans l’application mobile.", "en": "Students can view their classes in the mobile app." },
+    "alternative": { "fr": "Sur un ordinateur de l’école, ouvrez l’emploi du temps dans le navigateur.", "en": "On a school computer, open the timetable in a browser." },
+    "sources": {
+      "planner": ["mobile/src/app/(onglets)/semaine.jsx", "frontend/src/App.jsx"]
+    }
+  },
+  {
+    "id": "appel",
+    "application": "planning",
+    "categorie": "presence",
+    "module": "presences",
+    "etat": "existe",
+    "titre": { "fr": "Faire l’appel", "en": "Take attendance" },
+    "description": { "fr": "Le scan du QR code de la séance enregistre la présence.", "en": "Scanning the class QR code records attendance." },
+    "alternative": { "fr": "L’enseignant peut aussi noter chaque présence à la main.", "en": "Teachers can also record attendance manually." },
+    "sources": {
+      "planner": ["mobile/src/app/scanner.jsx", "frontend/src/pages/Appel.jsx", "backend/routes/presenceRoutes.js"]
+    }
+  },
+  {
+    "id": "supports",
+    "application": "pedagogie",
+    "categorie": "cours",
+    "module": "espaceDeCours",
+    "etat": "existe",
+    "titre": { "fr": "Partager les supports de cours", "en": "Share course materials" },
+    "description": { "fr": "L’enseignant publie un document ou un lien dans l’espace de cours.", "en": "Teachers publish a document or link in the course space." },
+    "sources": {
+      "planner": ["backend/routes/espaceCoursRoutes.js"]
+    }
+  },
+  {
+    "id": "sondages",
+    "application": "pedagogie",
+    "categorie": "cours",
+    "module": "espaceDeCours",
+    "etat": "existe",
+    "titre": { "fr": "Sonder sa classe", "en": "Poll a class" },
+    "description": { "fr": "Lorsque l’école active les sondages, les élèves répondent à une question de l’enseignant.", "en": "When the school enables polls, students can answer a teacher’s question." },
+    "sources": {
+      "planner": ["backend/routes/sondageRoutes.js"]
+    }
+  },
+  {
+    "id": "comptes",
+    "application": "personnes",
+    "categorie": "comptes",
+    "module": "socle",
+    "etat": "existe",
+    "titre": { "fr": "Importer les comptes", "en": "Import accounts" },
+    "description": { "fr": "Importez des listes d’étudiants et d’enseignants depuis des fichiers CSV compatibles.", "en": "Import student and teacher lists from compatible CSV files." },
+    "sources": {
+      "planner": ["backend/routes/userRoutes.js", "backend/routes/etudiantRoutes.js", "backend/routes/enseignantRoutes.js"]
+    }
+  },
+  {
+    "id": "salles",
+    "application": "etablissement",
+    "categorie": "configuration",
+    "module": "socle",
+    "etat": "existe",
+    "titre": { "fr": "Réserver une salle", "en": "Book a room" },
+    "description": { "fr": "Réservez une salle de l’établissement en dehors des cours.", "en": "Book a school room outside class times." },
+    "sources": {
+      "planner": ["backend/routes/reservationRoutes.js"]
+    }
+  },
+  {
+    "id": "examens",
+    "application": "etablissement",
+    "categorie": "configuration",
+    "module": "emploiDuTemps",
+    "etat": "existe",
+    "titre": { "fr": "Organiser les examens", "en": "Organise exams" },
+    "description": { "fr": "Préparez les salles et les surveillances des examens.", "en": "Plan exam rooms and invigilation." },
+    "sources": {
+      "planner": ["backend/routes/examenRoutes.js"]
+    }
+  },
+  {
+    "id": "occupation",
+    "application": "etablissement",
+    "categorie": "configuration",
+    "module": "socle",
+    "etat": "existe",
+    "titre": { "fr": "Consulter l’occupation des salles", "en": "View room occupancy" },
+    "description": { "fr": "La direction visualise l’occupation des salles et la charge des enseignants.", "en": "School leaders can see room occupancy and teaching loads." },
+    "sources": {
+      "planner": ["backend/routes/statistiquesRoutes.js"]
+    }
+  },
+  {
+    "id": "familles",
+    "application": "personnes",
+    "categorie": "comptes",
+    "module": "vieScolaire",
+    "etat": "bientot",
+    "titre": { "fr": "Espace familles", "en": "Family accounts" },
+    "description": { "fr": "Un compte pour suivre un ou plusieurs enfants est prévu.", "en": "An account for following one or more children is planned." },
+    "sources": {
+      "planner": ["docs/plan/modules/VSC-vie-scolaire.md"]
+    }
+  },
+  {
+    "id": "annonces",
+    "application": "annonces",
+    "categorie": "communication",
+    "module": "annoncesEtMessages",
+    "etat": "existe",
+    "titre": { "fr": "Adresser une annonce", "en": "Send an announcement" },
+    "description": { "fr": "Choisissez la classe, le groupe ou la filière qui doit recevoir votre annonce.", "en": "Choose the class, group or programme that should receive the announcement." },
+    "sources": {
+      "planner": ["backend/routes/annonceRoutes.js"]
+    }
+  },
+  {
+    "id": "quiz",
+    "application": "activites",
+    "categorie": "jeux",
+    "module": "quizEtJeux",
+    "etat": "existe",
+    "titre": { "fr": "Participer à un quiz", "en": "Take a quiz" },
+    "description": { "fr": "Les étudiants rejoignent le quiz par un lien ou un QR code, en direct ou à leur rythme.", "en": "Students join via a link or QR code, live or at their own pace." },
+    "alternative": { "fr": "Le lien du quiz s’ouvre aussi dans le navigateur d’un ordinateur.", "en": "The quiz link also opens in a computer browser." },
+    "sources": {
+      "planner": ["backend/routes/quizRoutes.js", "backend/routes/quizDirectRoutes.js", "frontend/src/App.jsx"]
+    }
+  },
+  {
+    "id": "quiz-ia",
+    "application": "activites",
+    "categorie": "jeux",
+    "module": "quizEtJeux",
+    "etat": "existe",
+    "titre": { "fr": "Préparer des questions avec l’IA", "en": "Draft questions with AI" },
+    "description": { "fr": "Quand l’IA est activée pour votre école, l’enseignant relit les questions proposées avant de les partager.", "en": "When AI is turned on for your school, teachers review suggested questions before sharing them." },
+    "sources": {
+      "planner": ["backend/routes/quizIaRoutes.js", "frontend/src/components/quiz/creation/RelireQuiz.jsx"]
+    }
+  },
+  {
+    "id": "jeux",
+    "application": "activites",
+    "categorie": "jeux",
+    "module": "quizEtJeux",
+    "etat": "existe",
+    "titre": { "fr": "Jouer en classe", "en": "Play in class" },
+    "description": { "fr": "L’enseignant propose des jeux pédagogiques à la classe.", "en": "Teachers can offer learning games to their class." },
+    "alternative": { "fr": "Le terminal collectif se projette au tableau et l’enseignant saisit les commandes.", "en": "The shared terminal can be projected and the teacher can enter commands." },
+    "sources": {
+      "planner": ["backend/routes/jeuxRoutes.js", "backend/routes/sessionJeuRoutes.js"]
+    }
+  },
+  {
+    "id": "documents",
+    "application": "bibliotheque",
+    "categorie": "ressources",
+    "module": "bibliotheque",
+    "etat": "existe",
+    "titre": { "fr": "Rechercher et télécharger un document", "en": "Find and download a document" },
+    "description": { "fr": "Cherchez un cours ou un examen en ligne par filière et matière.", "en": "Search online for a course document or exam by programme and subject." },
+    "alternative": { "fr": "Ouvrez la Bibliothèque dans le navigateur de l’école avec une connexion Internet.", "en": "Open the library in a school browser with an internet connection." },
+    "sources": {
+      "studylib": ["app/Livewire/Ui/SearchBar.php", "app/Http/Controllers/DocumentDownloadController.php"],
+      "planner": ["frontend/src/components/layouts/navigation.jsx"]
+    }
+  },
+  {
+    "id": "depots",
+    "application": "bibliotheque",
+    "categorie": "ressources",
+    "module": "bibliotheque",
+    "etat": "existe",
+    "titre": { "fr": "Déposer un document", "en": "Submit a document" },
+    "description": { "fr": "Les dépôts des étudiants passent par la modération.", "en": "Student submissions go through moderation." },
+    "sources": {
+      "studylib": ["app/Services/DocumentService.php"]
+    }
+  },
+  {
+    "id": "noter",
+    "application": "bibliotheque",
+    "categorie": "ressources",
+    "module": "bibliotheque",
+    "etat": "existe",
+    "titre": { "fr": "Noter une ressource", "en": "Rate a resource" },
+    "description": { "fr": "Les lecteurs peuvent noter les documents de la bibliothèque.", "en": "Readers can rate library documents." },
+    "sources": {
+      "studylib": ["app/Http/Controllers/DocumentRatingController.php"]
+    }
+  },
+  {
+    "id": "videos",
+    "application": "bibliotheque",
+    "categorie": "ressources",
+    "module": "bibliotheque",
+    "etat": "existe",
+    "titre": { "fr": "Voir les vidéos d’une matière", "en": "View subject videos" },
+    "description": { "fr": "Retrouvez les vidéos recommandées pour une matière.", "en": "Find videos recommended for a subject." },
+    "sources": {
+      "studylib": ["app/Http/Controllers/YoutubeRecommendationController.php"]
+    }
+  },
+  {
+    "id": "stages",
+    "application": "bibliotheque",
+    "categorie": "stages",
+    "module": "stages",
+    "etat": "existe",
+    "titre": { "fr": "Partager un avis de stage", "en": "Share an internship review" },
+    "description": { "fr": "Consultez et partagez les retours d’expérience de stage.", "en": "Read and share accounts of internship experiences." },
+    "sources": {
+      "studylib": ["app/Http/Controllers/InternshipReviewController.php"]
+    }
+  },
+  {
+    "id": "projets",
+    "application": "bibliotheque",
+    "categorie": "projets",
+    "module": "bibliotheque",
+    "etat": "existe",
+    "titre": { "fr": "Proposer une idée de projet", "en": "Suggest a project idea" },
+    "description": { "fr": "Parcourez les idées et proposez un sujet de projet.", "en": "Browse ideas and suggest a project topic." },
+    "sources": {
+      "studylib": ["app/Http/Controllers/ProjectIdeaController.php"]
+    }
+  },
+  {
+    "id": "evenements",
+    "application": "bibliotheque",
+    "categorie": "evenements",
+    "module": "bibliotheque",
+    "etat": "existe",
+    "titre": { "fr": "Consulter les événements", "en": "Browse events" },
+    "description": { "fr": "Retrouvez les événements publiés dans StudyLib.", "en": "Find events published in StudyLib." },
+    "sources": {
+      "studylib": ["app/Http/Controllers/EventController.php"]
+    }
+  }
+]

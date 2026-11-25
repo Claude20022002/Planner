@@ -2,9 +2,12 @@
 # Génère /opt/hestim/.env.docker sur le serveur : tous les secrets sont tirés au hasard ici,
 # ne transitent jamais ailleurs, et le fichier n'est lisible que par root.
 # Ne remplace jamais un fichier existant (les bases sont chiffrées avec ces valeurs).
-# Usage : sh deploy/vps/generer-env.sh planner.finadmintech.fr fichiers.finadmintech.fr quiz.finadmintech.fr
+# Usage : sh deploy/vps/generer-env.sh planner.finadmintech.fr fichiers.finadmintech.fr quiz.finadmintech.fr <fuseau>
+# <fuseau> : celui de l'école, nom de la base des fuseaux (Africa/Casablanca, Africa/Kinshasa…). Sans lui,
+# le serveur de Planner refuse de démarrer (M-10) : il n'y a pas de fuseau par défaut.
 set -eu
-SITE="$1"; FICHIERS="$2"; QUIZ="$3"
+SITE="$1"; FICHIERS="$2"; QUIZ="$3"; FUSEAU="${4:-}"
+[ -n "$FUSEAU" ] || { echo "Donnez le fuseau de l'école en quatrième argument (par exemple Africa/Casablanca)." >&2; exit 1; }
 CIBLE="$(dirname "$0")/../../.env.docker"
 [ -e "$CIBLE" ] && { echo "$CIBLE existe déjà : rien n'est modifié." >&2; exit 1; }
 
@@ -26,6 +29,7 @@ SOLVER_TOKEN=$(hex)
 SITE_ADDRESS=$SITE
 FICHIERS_ADDRESS=$FICHIERS
 QUIZ_ADDRESS=$QUIZ
+APP_TIMEZONE=$FUSEAU
 STUDYLIB_APP_KEY=base64:$(openssl rand -base64 32)
 STUDYLIB_DB_PASSWORD=$(hex 24)
 REDIS_PASSWORD=$(hex 24)

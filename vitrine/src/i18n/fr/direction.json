@@ -11,12 +11,12 @@
   "aujourdhui": "Aujourd'hui",
   "cartes": [
     {
-      "page": "emploiDuTemps",
+      "page": "module.emploiDuTemps",
       "titre": "Emploi du temps",
       "texte": "Vous décrivez vos salles, vos enseignants, vos groupes et vos règles. Planner place les séances, et vous dit pourquoi quand il ne le peut pas."
     },
     {
-      "page": "enClasse",
+      "page": "module.presences",
       "titre": "En classe",
       "texte": "L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte."
     },
@@ -41,7 +41,7 @@
       },
       {
         "avant": "Une séance qui ne tient pas se voit en relisant la grille.",
-        "avec": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque."
+        "avec": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant."
       },
       {
         "avant": "Une salle demandée en dehors des cours se note dans un message.",

@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { findSpotlight, formatDayLabel, groupByDay, toLocalISODate } from '../../../../shared/session.js';
+import { maintenantEcole } from '../../../../shared/dates.js';
 import Ecran, { Message } from '../../board/Ecran';
 import Spotlight from '../../board/Spotlight';
 import DepartureRow from '../../board/DepartureRow';
@@ -55,7 +56,7 @@ export default function Tableau() {
   const [alertes, setAlertes] = useState([]);
   const [supports, setSupports] = useState({});
   const [etat, setEtat] = useState({ chargement: true, erreur: false, horsLigne: false, le: null, rafraichit: false });
-  const [maintenant, setMaintenant] = useState(new Date());
+  const [maintenant, setMaintenant] = useState(() => maintenantEcole());
   const [fiche, setFiche] = useState(null);
 
   const charger = useCallback(
@@ -63,7 +64,8 @@ export default function Tableau() {
       lireTableau(utilisateur, silencieux).then((lu) => {
         if (lu.seances) setSeances(lu.seances);
         if (lu.alertes) setAlertes(lu.alertes);
-        setMaintenant(lu.le);
+        // Maintenant à l'heure de l'école, dans le modèle des séances (M-10)
+        setMaintenant(maintenantEcole(lu.le));
         setEtat(lu.etat);
       }),
     [utilisateur]

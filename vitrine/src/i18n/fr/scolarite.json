@@ -11,12 +11,12 @@
   "aujourdhui": "Aujourd'hui",
   "cartes": [
     {
-      "page": "etablissement",
+      "page": "socle",
       "titre": "Pour l'établissement",
       "texte": "La direction et la scolarité trouvent au même endroit les salles, les examens et les chiffres de l'emploi du temps."
     },
     {
-      "page": "enClasse",
+      "page": "module.presences",
       "titre": "En classe",
       "texte": "L'appel, les quiz, les jeux et les sondages se font dans le même outil, avec le même compte."
     },
@@ -62,7 +62,7 @@
       },
       {
         "question": "Comment une séance refusée s'explique-t-elle ?",
-        "reponse": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque."
+        "reponse": "Quand une séance ne trouve pas sa place, Planner nomme la règle qui la bloque, ou ce qui manque : un créneau, une salle, un enseignant."
       },
       {
         "question": "Qui prévient les étudiants d'un report ?",

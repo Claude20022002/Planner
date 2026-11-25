@@ -11,12 +11,12 @@
   "aujourdhui": "Today",
   "cartes": [
     {
-      "page": "etablissement",
+      "page": "socle",
       "titre": "For schools",
       "texte": "School leaders and the registrar's office find rooms, exams and timetable figures in one place."
     },
     {
-      "page": "enClasse",
+      "page": "module.presences",
       "titre": "In class",
       "texte": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
     },
@@ -62,7 +62,7 @@
       },
       {
         "question": "How is a refused session explained?",
-        "reponse": "When a session cannot be placed, Planner names the rule that blocks it."
+        "reponse": "When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher."
       },
       {
         "question": "Who tells students about a postponement?",

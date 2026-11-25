@@ -5,7 +5,7 @@
   },
   "ouverture": {
     "titre": "Planner",
-    "accroche": "Your school's timetable, built from your rules. And everything that happens next in class.",
+    "accroche": "For higher education and vocational training, Planner builds the timetable and supports every session. Lower and upper secondary schools are coming soon.",
     "decouvrir": "Discover",
     "contact": "Contact us"
   },
@@ -13,7 +13,7 @@
     "surtitre": "Timetable",
     "titre": "Your semester, worked out.",
     "texte": "Rooms, teachers, groups, availability, travel between campuses: Planner places every session while respecting your hard and soft rules. Lectures, tutorials and labs follow their groups.",
-    "refus": "When a session cannot be placed, Planner tells you which rule is in the way.",
+    "refus": "When a session cannot be placed, Planner says what is in the way, and where to fix it.",
     "lien": "Learn more about timetables",
     "illustration": {
       "label": "Example week built by Planner, with one unplaced session and its reason",
@@ -73,7 +73,7 @@
   "appel": {
     "surtitre": "In class",
     "titre": "Attendance in one gesture.",
-    "texte": "The teacher shows a QR code. Students scan it with their phone, and their attendance is recorded. The teacher can also mark each student by hand: present, late or absent.",
+    "texte": "The teacher marks each student: present, late or absent. If they wish, they display a QR code that students scan with the Planner app. The code changes every 30 seconds.",
     "lien": "Learn more about the classroom",
     "illustration": {
       "label": "QR code attendance screen on a phone",
@@ -85,8 +85,8 @@
   },
   "quiz": {
     "surtitre": "Quizzes and games",
-    "titre": "Live quizzes. Games for revision.",
-    "texte": "Ten question types, images and videos, quizzes run live or as homework. Teachers can also offer games to their classes.",
+    "titre": "Live quizzes. Games to practise.",
+    "texte": "Ten question types, with images, sounds and videos. Six can be played live, all ten at one's own pace. Teachers can also offer games to their classes.",
     "lien": "Learn more about quizzes and games",
     "illustration": {
       "label": "Live quiz question on a phone",
@@ -141,7 +141,7 @@
       },
       {
         "titre": "AI without student data",
-        "texte": "When the school turns AI on, it never receives student data, and teachers review what it suggests."
+        "texte": "When AI is turned on for your school, it never receives student data, and teachers review what it suggests."
       }
     ]
   },
@@ -175,6 +175,7 @@
     "titre": "All of Planner, in ninety seconds.",
     "commandes": {
       "lire": "Play the video",
+      "lireMobile": "Play the video",
       "pause": "Pause",
       "revoir": "Watch again"
     },

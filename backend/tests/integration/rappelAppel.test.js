@@ -8,7 +8,7 @@ import { aLHeureDeLEcole } from "./helpers/heureLocale.js";
 /**
  * Rappel de l'appel : 5 minutes avant la fin d'une séance, l'enseignant qui n'a pas terminé
  * l'appel est prévenu, une seule fois. La séance de la fixture a lieu le lundi 4 janvier 2027,
- * de 9 h à 10 h 45 (heure de Casablanca).
+ * de 9 h à 10 h 45 (heure de l'école).
  */
 
 let admin;

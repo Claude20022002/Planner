@@ -1,189 +1,112 @@
 import { createContext, createElement, useCallback, useContext, useMemo, useState } from 'react';
 import { StyleSheet, useColorScheme } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { tokens, lineColor } from '../../shared/tokens.js';
+import { couleurs as c, sombre as s, statuts as st, panneau as pn, rayons as r } from '../../shared/charte/index.js';
+import { lineColor } from '../../shared/tokens.js';
+import { contraste, melanger, nuancesMarque } from '../../shared/couleurs.js';
 
 /**
- * Thèmes de l'application : deux familles, chacune en clair et en sombre.
- *  - planner  : le panneau des départs de HESTIM Planner (Barlow condensée en capitales, marine
- *               HESTIM réservé à la barre de titre, couleurs de statut seulement pour les statuts).
- *               Le sombre est le panneau ; le clair reprend le sol « bureau » du site web.
- *  - studylib : la bibliothèque StudyLib (Inter, bleu #1d4ed8, gris ardoise, coins arrondis).
- * Le choix (famille + mode clair / sombre / automatique) est retenu sur l'appareil.
+ * Thèmes de l'application, tirés de la charte (shared/charte, UIX-10d) : un clair, un sombre.
+ * Les clés gardent leurs noms d'avant la charte, pour que les écrans ne changent pas :
+ *  - cadre, surCadre, bordCadre : la barre de titre, sur la surface du thème (réponse 2 d'UIX-10d) ;
+ *  - accent, surAccent : l'action, bleu de la charte ou couleur de l'école (marque.js) ;
+ *  - bord : bord des champs et des commandes (3:1) ; filet : séparateurs décoratifs ;
+ *  - volet : les volets de l'heure, sombres dans les deux modes (réponse 3) ;
+ *  - capitales : casse normale ; capitalesVolet : les capitales du Tableau (réponse 1).
+ * La préférence retenue sur l'appareil est le mode (automatique, clair, sombre).
  */
 
-const policesPlanner = {
-  panneau: 'BarlowCondensed_600SemiBold',
-  panneauGras: 'BarlowCondensed_700Bold',
-  panneauMoyen: 'BarlowCondensed_500Medium',
-  texte: 'Barlow_400Regular',
-  texteGras: 'Barlow_600SemiBold',
+const POLICES = {
+  panneau: 'Inter_600SemiBold', panneauGras: 'Inter_700Bold', panneauMoyen: 'Inter_500Medium',
+  texte: 'Inter_400Regular', texteGras: 'Inter_600SemiBold',
 };
 
-const policesStudylib = {
-  panneau: 'Inter_600SemiBold',
-  panneauGras: 'Inter_700Bold',
-  panneauMoyen: 'Inter_500Medium',
-  texte: 'Inter_400Regular',
-  texteGras: 'Inter_600SemiBold',
+const px = (rem) => Math.round(parseFloat(rem) * 16);
+// Proposition 5 : 8 px pour les commandes, 12 px pour les cartes, 20 px pour les feuilles
+const RAYONS = { xs: px(r['rayon-commande']), sm: px(r['rayon-commande']), md: px(r['rayon-petit']), lg: px(r.rayon) };
+
+const rgb = (hexa) => [1, 3, 5].map((i) => parseInt(hexa.slice(i, i + 2), 16)).join(', ');
+const filetSombre = melanger(s['surface-sombre'], s['texte-sombre'], 0.16);
+
+/** Texte le plus lisible sur une couleur d'action : blanc, ou le fond sombre de la charte */
+export const texteSurAction = (fond) => (contraste(fond, c.blanc) >= contraste(fond, c.ecran) ? c.blanc : c.ecran);
+
+/** Scène des jeux (décor Kenney teinté) : nuances de la couleur principale, bleu nuit par défaut */
+export const sceneDe = (principale) => {
+  const n = nuancesMarque({ couleur_principale: principale, couleur_accent: principale });
+  return {
+    ciel: n.navy, collines: n.navyDeep, nuages: melanger(n.navy, c.blanc, 0.15), arbres: n.navyDeep,
+    texte: c.blanc, texteAttenue: melanger(n.navy, c.blanc, 0.8),
+  };
 };
 
-const statutsPanneau = Object.fromEntries(Object.entries(tokens.status).map(([cle, s]) => [cle, s.board]));
-const statutsBureau = Object.fromEntries(Object.entries(tokens.status).map(([cle, s]) => [cle, s.bureau]));
-
-const planner = {
-  famille: 'planner',
-  polices: policesPlanner,
-  capitales: 'uppercase',
-  espacement: 1,
-  rayons: tokens.radius,
-};
-
-const studylib = {
-  famille: 'studylib',
-  polices: policesStudylib,
-  // StudyLib écrit en casse normale, sans lettres espacées
-  capitales: 'none',
-  espacement: 0,
-  rayons: { xs: 6, sm: 10, md: 14, lg: 18 },
-};
+// Fond « ecran » (plan, § 4.2) : plus sombre que la carte du sombre, les volets s'en détachent dans les deux modes
+const VOLET = { fond: c.ecran, lettre: s['texte-sombre'], charniere: pn['panneau-charniere'] };
+const commun = { polices: POLICES, capitales: 'none', capitalesVolet: 'uppercase', espacement: 0, rayons: RAYONS };
 
 export const THEMES = {
-  'planner-sombre': {
-    ...planner,
-    id: 'planner-sombre',
-    // Texte de la barre d'état, lisible sur la barre de titre
-    barreStatut: 'light',
-    sombre: true,
-    couleurs: {
-      fond: tokens.board.ground,
-      cellule: tokens.board.cell,
-      filet: tokens.board.seam,
-      lettre: tokens.board.letter,
-      lettreAttenuee: tokens.board.letterDim,
-      cadre: tokens.board.frame,
-      surCadre: '#FFFFFF',
-      bordCadre: tokens.board.frame,
-      accent: tokens.board.letter,
-      surAccent: tokens.board.ground,
-      enCours: tokens.board.live,
-      reporte: tokens.board.delayed,
-      annule: tokens.board.cancelled,
-    },
-    volet: { fond: tokens.board.cell, lettre: tokens.board.letter, charniere: tokens.board.cellHinge },
-    statuts: statutsPanneau,
-    // Scène des jeux : décor Kenney (silhouettes teintées) derrière le personnage du joueur
-    // Verre dépoli (barre d'onglets, feuilles) : teinte du flou, couleur du voile, liseré
-    verre: { teinte: 'dark', rgb: '11, 11, 13', bord: 'rgba(255, 255, 255, 0.10)' },
-    scene: { ciel: tokens.brand.navy, collines: tokens.brand.navyDeep, nuages: '#24397F', arbres: tokens.brand.navyDeep, texte: '#FFFFFF', texteAttenue: '#C9D1EC' },
-  },
-  'planner-clair': {
-    ...planner,
-    id: 'planner-clair',
-    // Texte de la barre d'état, lisible sur la barre de titre
-    barreStatut: 'light',
+  clair: {
+    ...commun,
+    id: 'clair',
     sombre: false,
+    barreStatut: 'dark', // texte de la barre d'état, lisible sur la barre de titre claire
     couleurs: {
-      fond: '#F3F4F7',
-      cellule: '#FFFFFF',
-      filet: '#DADDE5',
-      lettre: '#0D1326',
-      lettreAttenuee: '#5F6778',
-      cadre: tokens.brand.navy,
-      surCadre: '#FFFFFF',
-      bordCadre: tokens.brand.navy,
-      accent: tokens.brand.navy,
-      surAccent: '#FFFFFF',
-      enCours: tokens.brand.green,
-      reporte: tokens.status.reporte.bureau,
-      annule: tokens.status.annule.bureau,
+      fond: c['gris-fond'], cellule: c.blanc, filet: c['gris-trait'], bord: c['trait-fort'],
+      lettre: c.encre, lettreAttenuee: c['gris-texte'],
+      cadre: c.blanc, surCadre: c.encre, bordCadre: c['gris-trait'],
+      accent: c['bleu-nuit'], surAccent: texteSurAction(c['bleu-nuit']),
+      enCours: st['statut-confirme'], reporte: st['statut-reporte'], annule: st['statut-annule'],
     },
-    // L'heure de la prochaine séance reste sur de vrais volets noirs, comme dans le hall
-    volet: { fond: '#0D1326', lettre: tokens.board.letter, charniere: '#000000' },
-    statuts: statutsBureau,
-    // Scène des jeux : décor Kenney (silhouettes teintées) derrière le personnage du joueur
-    // Verre dépoli (barre d'onglets, feuilles) : teinte du flou, couleur du voile, liseré
-    verre: { teinte: 'light', rgb: '243, 244, 247', bord: 'rgba(13, 19, 38, 0.10)' },
-    scene: { ciel: tokens.brand.navy, collines: tokens.brand.navyDeep, nuages: '#24397F', arbres: tokens.brand.navyDeep, texte: '#FFFFFF', texteAttenue: '#C9D1EC' },
-  },
-  'studylib-clair': {
-    ...studylib,
-    id: 'studylib-clair',
-    // Texte de la barre d'état, lisible sur la barre de titre
-    barreStatut: 'dark',
-    sombre: false,
-    couleurs: {
-      fond: '#F8FAFC',
-      cellule: '#FFFFFF',
-      filet: '#E2E8F0',
-      lettre: '#0F172A',
-      lettreAttenuee: '#64748B',
-      cadre: '#FFFFFF',
-      surCadre: '#0F172A',
-      bordCadre: '#E2E8F0',
-      accent: '#1D4ED8',
-      surAccent: '#FFFFFF',
-      enCours: '#15803D',
-      reporte: '#B45309',
-      annule: '#DC2626',
+    volet: { ...VOLET },
+    statuts: {
+      planifie: st['statut-planifie'], confirme: st['statut-confirme'], reporte: st['statut-reporte'],
+      a_reprogrammer: st['statut-reporte'], annule: st['statut-annule'], realise: st['statut-realise'],
     },
-    volet: { fond: '#DBEAFE', lettre: '#1E3A8A', charniere: 'transparent' },
-    statuts: { planifie: '#334155', confirme: '#15803D', reporte: '#B45309', a_reprogrammer: '#B45309', annule: '#DC2626', realise: '#64748B' },
-    // Scène des jeux : décor Kenney (silhouettes teintées) derrière le personnage du joueur
     // Verre dépoli (barre d'onglets, feuilles) : teinte du flou, couleur du voile, liseré
-    verre: { teinte: 'light', rgb: '255, 255, 255', bord: 'rgba(15, 23, 42, 0.08)' },
-    scene: { ciel: '#EFF6FF', collines: '#DBEAFE', nuages: '#FFFFFF', arbres: '#BFDBFE', texte: '#0F172A', texteAttenue: '#334155' },
+    verre: { teinte: 'light', rgb: rgb(c.blanc), bord: `rgba(${rgb(c.encre)}, 0.10)` },
+    scene: sceneDe(c['bleu-nuit']),
   },
-  'studylib-sombre': {
-    ...studylib,
-    id: 'studylib-sombre',
-    // Texte de la barre d'état, lisible sur la barre de titre
-    barreStatut: 'light',
+  sombre: {
+    ...commun,
+    id: 'sombre',
     sombre: true,
+    barreStatut: 'light',
     couleurs: {
-      fond: '#0F172A',
-      cellule: '#1E293B',
-      filet: '#334155',
-      lettre: '#F1F5F9',
-      lettreAttenuee: '#94A3B8',
-      cadre: '#0F172A',
-      surCadre: '#F1F5F9',
-      bordCadre: '#1E293B',
-      accent: '#2563EB',
-      surAccent: '#FFFFFF',
-      enCours: '#4ADE80',
-      reporte: '#FB923C',
-      annule: '#F87171',
+      fond: c.ecran, cellule: s['surface-sombre'], filet: filetSombre, bord: c['trait-fort'],
+      lettre: s['texte-sombre'], lettreAttenuee: s['texte-sombre-second'],
+      cadre: s['surface-sombre'], surCadre: s['texte-sombre'], bordCadre: filetSombre,
+      accent: c['bleu-clair'], surAccent: texteSurAction(c['bleu-clair']),
+      enCours: pn['lampe-en-cours'], reporte: pn['lampe-retard'], annule: pn['lampe-annule'],
     },
-    volet: { fond: '#1E3A8A', lettre: '#DBEAFE', charniere: 'transparent' },
-    statuts: { planifie: '#E2E8F0', confirme: '#4ADE80', reporte: '#FB923C', a_reprogrammer: '#FB923C', annule: '#F87171', realise: '#94A3B8' },
-    // Scène des jeux : décor Kenney (silhouettes teintées) derrière le personnage du joueur
-    // Verre dépoli (barre d'onglets, feuilles) : teinte du flou, couleur du voile, liseré
-    verre: { teinte: 'dark', rgb: '15, 23, 42', bord: 'rgba(255, 255, 255, 0.08)' },
-    scene: { ciel: '#1E293B', collines: '#0F172A', nuages: '#334155', arbres: '#0F172A', texte: '#F1F5F9', texteAttenue: '#CBD5E1' },
+    volet: { ...VOLET },
+    statuts: {
+      planifie: s['texte-sombre'], confirme: pn['lampe-en-cours'], reporte: pn['lampe-retard'],
+      a_reprogrammer: pn['lampe-retard'], annule: pn['lampe-annule'], realise: s['texte-sombre-second'],
+    },
+    verre: { teinte: 'dark', rgb: rgb(c.ecran), bord: 'rgba(255, 255, 255, 0.10)' },
+    scene: sceneDe(c['bleu-nuit']),
   },
 };
 
-export const FAMILLES = ['planner', 'studylib'];
 export const MODES = ['automatique', 'clair', 'sombre'];
-const PREFERENCE_DEFAUT = { famille: 'planner', mode: 'automatique' };
+const PREFERENCE_DEFAUT = { mode: 'automatique' };
 const CLE_THEME = 'hestim.theme';
 
-/** Thème à appliquer pour une préférence et l'apparence du téléphone */
-export const themePour = ({ famille, mode }, schemaSysteme) => {
+/** Thème pour une préférence et l'apparence du téléphone ; apparence inconnue : le sombre (réponse 4) */
+export const themePour = ({ mode }, schemaSysteme) => {
   const sombre = mode === 'automatique' ? schemaSysteme !== 'light' : mode === 'sombre';
-  return THEMES[`${FAMILLES.includes(famille) ? famille : 'planner'}-${sombre ? 'sombre' : 'clair'}`];
+  return THEMES[sombre ? 'sombre' : 'clair'];
 };
 
-const valide = (p) => p && FAMILLES.includes(p.famille) && MODES.includes(p.mode);
+const valide = (p) => Boolean(p) && MODES.includes(p.mode);
 
-const ThemeContext = createContext({ theme: THEMES['planner-sombre'], preference: PREFERENCE_DEFAUT, changer: () => {} });
+const ThemeContext = createContext({ theme: THEMES.sombre, preference: PREFERENCE_DEFAUT, changer: () => {} });
 
-/** Reprend le thème choisi sur cet appareil avant d'afficher l'application */
+/** Reprend le mode choisi sur cet appareil ; la famille d'avant la charte est ignorée */
 export const restaurerTheme = async () => {
   try {
     const lu = JSON.parse((await AsyncStorage.getItem(CLE_THEME)) || 'null');
-    return valide(lu) ? lu : PREFERENCE_DEFAUT;
+    return valide(lu) ? { mode: lu.mode } : PREFERENCE_DEFAUT;
   } catch {
     return PREFERENCE_DEFAUT;
   }
@@ -195,7 +118,7 @@ export function ThemeProvider({ preferenceInitiale = PREFERENCE_DEFAUT, children
 
   const changer = useCallback((modif) => {
     setPreference((avant) => {
-      const suivante = { ...avant, ...modif };
+      const suivante = { mode: modif?.mode ?? avant.mode };
       if (!valide(suivante)) return avant;
       AsyncStorage.setItem(CLE_THEME, JSON.stringify(suivante)).catch(() => {});
       return suivante;
@@ -206,19 +129,13 @@ export function ThemeProvider({ preferenceInitiale = PREFERENCE_DEFAUT, children
   return createElement(ThemeContext.Provider, { value: valeur }, children);
 }
 
-/** Thème courant : { couleurs, polices, capitales, espacement, rayons, volet, statuts, scene, sombre, barreStatut } */
+/** Thème courant : { couleurs, polices, capitales, capitalesVolet, espacement, rayons, volet, statuts, scene, verre, sombre, barreStatut } */
 export const useTheme = () => useContext(ThemeContext).theme;
 
-/** Préférence de thème et de quoi la changer (écran Compte) */
-export const usePreferenceTheme = () => {
-  const { preference, changer } = useContext(ThemeContext);
-  return { preference, changer };
-};
+/** Préférence de mode et de quoi la changer (écran Compte) */
+export const usePreferenceTheme = () => { const { preference, changer } = useContext(ThemeContext); return { preference, changer }; };
 
-/**
- * Feuille de styles qui suit le thème : `const useStyles = creerStyles((t) => ({ … }))`, puis
- * `const styles = useStyles()` dans le composant. Une feuille par thème, créée une seule fois.
- */
+/** Feuille de styles qui suit le thème : `const useStyles = creerStyles((t) => ({ … }))` ; une par thème, créée une fois */
 export const creerStyles = (fabrique) => {
   const parTheme = new Map();
   return () => {
@@ -228,7 +145,7 @@ export const creerStyles = (fabrique) => {
   };
 };
 
-/** Espacement des lettres : celui du panneau, rien pour StudyLib */
+/** Espacement des lettres : nul avec Inter en casse normale */
 export const espace = (theme, valeur) => valeur * theme.espacement;
 
 /** Couleur d'un statut de séance dans le thème courant */
@@ -236,7 +153,7 @@ export const couleurStatut = (theme, statut) => theme.statuts[statut] ?? theme.c
 
 export { lineColor };
 
-export const DECALAGE_VOLET_MS = tokens.flapStepMs;
+export const DECALAGE_VOLET_MS = parseFloat(pn['pas-volet']);
 
 /** Zone tactile minimale (accessibilité) */
 export const CIBLE_TACTILE = 48;

@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { Appartenir, Cours, Devoir, DevoirRendu, Groupe, Users } from "../../models/index.js";
 import { butEtNotion } from "../activites/but.js";
@@ -237,7 +238,7 @@ export const creerDevoir = async (user, donnees = {}) => {
         await creerNotificationsMultiples({
             id_users: etudiants,
             titre: "Nouveau devoir",
-            message: `${devoir.titre} (${cours.nom_cours}). À rendre avant le ${limite.toLocaleString("fr-FR", { timeZone: process.env.APP_TIMEZONE || "Africa/Casablanca", dateStyle: "short", timeStyle: "short" })}.`,
+            message: `${devoir.titre} (${cours.nom_cours}). À rendre avant le ${limite.toLocaleString("fr-FR", { timeZone: FUSEAU_ECOLE, dateStyle: "short", timeStyle: "short" })}.`,
             type_notification: "info",
             lien: "/jeux",
         });

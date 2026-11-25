@@ -1,9 +1,12 @@
 ---
-// Pied de page du site vitrine : nom et phrase du produit, pages du site, langues, mention de droits.
+// Pied de page du site vitrine (plan VIT-20, § 4.5) : nom et phrase du produit, quatre colonnes (Applications, Établissements,
+// Ressources, Planner), puis les langues et les droits. Mentions légales et Confidentialité (VIT-12) et À propos (VIT-16)
+// s'ajouteront quand ces pages existeront.
 import Logo from './Logo.astro';
 import { traductions } from '../../i18n/index.js';
 import { TYPES } from '../solutions/types.js';
-import { LANGUES_PUBLIEES, FONCTIONS, ROLES, chemin } from '../../i18n/langues.js';
+import { modulesDisponibles } from '../../donnees/modules.js';
+import { LANGUES_PUBLIEES, RESSOURCES, ROLES, chemin, cheminContact, pageModule } from '../../i18n/langues.js';
 
 interface Props {
   langue: string;
@@ -12,17 +15,26 @@ interface Props {
 
 const { langue, page } = Astro.props;
 const t = traductions(langue, 'commun');
+const modules = traductions(langue, 'modules');
 const solutions = traductions(langue, 'solutions');
+const faq = traductions(langue, 'faq');
+const catalogue = traductions(langue, 'fonctionnalites');
+const libellesRessources = {
+  faq: faq('titre'), comparer: t('navigation.comparer'), securite: t('navigation.securite'), bientot: t('navigation.bientot'),
+  fonctionnalites: catalogue('titre'),
+};
 const colonnes = [
-  { titre: t('navigation.fonctions'), liens: FONCTIONS.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })) },
-  { titre: t('navigation.solutions'), liens: TYPES.map(({ cle, ancre }) => ({ href: chemin(langue, 'solutions', ancre), texte: solutions(`types.${cle}.surtitre`) })) },
-  { titre: t('navigation.parRole'), liens: ROLES.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })) },
-  { titre: t('navigation.ressources'), liens: [
-    { href: chemin(langue, 'comparer'), texte: t('navigation.comparer') },
-    { href: chemin(langue, 'securite'), texte: t('navigation.securite') },
-    { href: chemin(langue, 'bientot'), texte: t('navigation.bientot') },
-    { href: chemin(langue, 'accueil', 'contact'), texte: t('navigation.contact') },
+  { titre: t('navigation.applications'), liens: [
+    ...modulesDisponibles().map((module) => ({ href: chemin(langue, pageModule(module.cle)), texte: modules(`noms.${module.cle}`) })),
+    { href: chemin(langue, 'socle'), texte: t('socle.titre') },
+    { href: chemin(langue, 'applications'), texte: t('navigation.toutesLesApplications') },
   ] },
+  { titre: t('navigation.etablissements'), liens: [
+    ...TYPES.map(({ cle, ancre }) => ({ href: chemin(langue, 'solutions', ancre), texte: solutions(`types.${cle}.surtitre`) })),
+    ...ROLES.map((cle) => ({ href: chemin(langue, cle), texte: t(`navigation.${cle}`) })),
+  ] },
+  { titre: t('navigation.ressources'), liens: RESSOURCES.map((cle) => ({ href: chemin(langue, cle), texte: libellesRessources[cle] })) },
+  { titre: t('produit'), liens: [{ href: cheminContact(langue), texte: t('navigation.contactLien') }] },
 ];
 ---
 <footer class="pied">
@@ -43,6 +55,10 @@ const colonnes = [
     </nav>
     <div class="bas">
       <p>{t('pied.droits')}</p>
+      <ul class="legal">
+        <li><a href={chemin(langue, 'mentionsLegales')}>{t('navigation.mentionsLegales')}</a></li>
+        <li><a href={chemin(langue, 'confidentialite')}>{t('navigation.confidentialite')}</a></li>
+      </ul>
       <ul class="langues" aria-label={t('langues.label')}>
         {LANGUES_PUBLIEES.map((l) => (
           <li><a href={chemin(l, page)} hreflang={l} lang={l} aria-current={l === langue ? 'true' : undefined}>{t(`langues.${l}`)}</a></li>
@@ -54,7 +70,13 @@ const colonnes = [
 
 <style>
   .pied { background: var(--gris-fond); color: var(--gris-texte); font-size: var(--texte-petit); }
-  .contenu { display: grid; gap: var(--espace-4); max-inline-size: var(--largeur-contenu); margin-inline: auto; padding: var(--espace-5) var(--gouttiere) var(--espace-4); }
+  .contenu {
+    display: grid;
+    gap: var(--espace-4);
+    max-inline-size: var(--largeur-contenu);
+    margin-inline: auto;
+    padding: var(--espace-5) var(--gouttiere) var(--espace-4);
+  }
   .colonnes { display: grid; gap: var(--espace-4); }
   .colonnes h2 { margin: 0; font-size: var(--texte-petit); font-weight: 650; color: var(--encre); }
   .colonnes ul { display: grid; gap: 0.4rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
@@ -68,7 +90,16 @@ const colonnes = [
   .liens { display: flex; flex-wrap: wrap; gap: var(--espace-1) var(--espace-3); }
   a { text-decoration: none; }
   a:hover { color: var(--bleu); text-decoration: underline; }
-  .bas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--espace-2); padding-block-start: var(--espace-3); border-block-start: 1px solid var(--gris-trait); }
+  .bas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--espace-2);
+    padding-block-start: var(--espace-3);
+    border-block-start: 1px solid var(--gris-trait);
+  }
   .langues { display: flex; gap: var(--espace-3); }
+  /* VIT-12 : mentions légales et confidentialité, sous les colonnes (plan de VIT-20, § 4.5) */
+  .legal { display: flex; flex-wrap: wrap; gap: var(--espace-3); margin: 0; padding: 0; list-style: none; }
   .langues a[aria-current='true'] { color: var(--encre); font-weight: 600; }
 </style>

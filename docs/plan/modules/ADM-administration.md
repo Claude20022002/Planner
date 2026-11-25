@@ -45,6 +45,7 @@
 | ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 5 | M | PLA-11 | à faire |
 | ADM-08 | Annuaire de l'école | ME-8b | — | M | — | reporté |
 | ADM-09 | Échanges OneRoster | ME-9b | — | M | ADM-03 | reporté |
+| ADM-10 | Champs et listes propres à l'école, sans code : champs ajoutés aux fiches élève, enseignant et candidature, listes de valeurs ; repris par l'import, les exports et les modèles de documents | — | 5 | L | VSC-01, ADM-02 | à faire |
 
 ## Critères de « terminé »
 
@@ -53,6 +54,7 @@
 - **ADM-04** : la mesure EP-1 est faite par une personne extérieure et notée. Le modèle collège lui propose des groupes de langue vides, et l'import ADM-03 les remplit.
 - **ADM-05** : le lien parent-enfant ne se crée que par l'école ; deux parents séparés ont chacun leurs droits. Les règles sont validées avec le juriste (revue A-6).
 - **ADM-06** : une école de démonstration passe d'une année à l'autre en moins d'une demi-journée, et l'année close reste lisible.
+- **ADM-10** : un champ ajouté par une école n'existe pas pour une autre ; il passe dans l'import, l'export complet (PLA-12) et un modèle de document.
 
 ## Exigences produit
 

@@ -1,0 +1,82 @@
+---
+ // Catalogue bilingue rendu à la construction. La recherche améliore la liste complète.
+import { fonctionnalites, regrouper, lienEntree, entreeBientot, CLES_REGISTRE } from './registre.js';
+import { traductions } from '../../i18n/index.js';
+
+const { langue } = Astro.props;
+const t = traductions(langue, 'fonctionnalites');
+const commun = traductions(langue, 'commun');
+const noms = traductions(langue, 'modules');
+const parModule = regrouper(fonctionnalites(langue), 'module');
+const nomDe = (cle: string) => (cle === 'socle' ? commun('socle.titre') : noms('noms.' + cle));
+---
+<article class="catalogue">
+  <h1>{t('titre')}</h1>
+  <p>{t('description')}</p>
+  <div class="recherche" hidden>
+    <label for="filtre">{t('filtre')}</label>
+    <input type="search" id="filtre" autocomplete="off" />
+    <output for="filtre" aria-live="polite">{t('resultats')} · <span></span></output>
+  </div>
+  {CLES_REGISTRE.filter((cle) => parModule.has(cle)).map((cle) => [cle, parModule.get(cle)]).map(([cle, entrees]) => (
+    <section class="application" id={cle}>
+      <h2>{nomDe(cle)} <small>({entrees.length})</small></h2>
+      {Array.from(regrouper(entrees, 'categorie'), ([categorie, groupe]) => (
+        <section class="groupe">
+          <h3>{t('groupes.' + categorie)}</h3>
+          <ul>{groupe.map((entree) => (
+            <li id={entree.id}>
+              <a href={lienEntree(langue, entree)}>{entree.titre}</a>
+              {entreeBientot(entree) && <em>{commun('navigation.bientot')}</em>}
+              <p>{entree.description}</p>
+              {entree.alternative && <p>{entree.alternative}</p>}
+            </li>
+          ))}</ul>
+        </section>
+      ))}
+    </section>
+  ))}
+</article>
+
+<script>
+  const champ = document.querySelector<HTMLInputElement>('#filtre');
+  const recherche = champ?.closest<HTMLElement>('.recherche');
+  if (champ && recherche) {
+    const normaliser = (texte: string) => texte.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+    const lignes = Array.from(document.querySelectorAll<HTMLElement>('.groupe li'), (ligne) => ({
+      ligne, texte: normaliser(ligne.textContent ?? ''),
+    }));
+    const nombre = recherche.querySelector('output span')!;
+    function filtrer() {
+      const filtre = normaliser(champ!.value.trim());
+      let visibles = 0;
+      for (const { ligne, texte } of lignes) {
+        ligne.hidden = !texte.includes(filtre);
+        if (!ligne.hidden) visibles++;
+      }
+      for (const section of document.querySelectorAll<HTMLElement>('.catalogue section')) {
+        section.hidden = !section.querySelector('li:not([hidden])');
+      }
+      nombre.textContent = String(visibles);
+    }
+    filtrer();
+    recherche.hidden = false;
+    champ.addEventListener('input', filtrer);
+  }
+</script>
+
+<style>
+  .catalogue { max-inline-size: var(--largeur-contenu); margin-inline: auto; padding: var(--espace-5) var(--gouttiere); }
+  h1, h2 { line-height: 1.12; color: var(--bleu-nuit); }
+  h1 { font-size: clamp(2.25rem, 6vw, 4rem); margin-block-end: var(--espace-2); }
+  .recherche:not([hidden]) { display: grid; gap: .5rem; max-inline-size: 32rem; margin-block-start: var(--espace-4); }
+  label, li a { font-weight: 650; }
+  input { font: inherit; color: inherit; border: 1px solid var(--gris-texte); border-radius: var(--rayon-petit); padding: .65rem .85rem; }
+  .application { border-block-start: 1px solid var(--gris-trait); margin-block-start: var(--espace-5); padding-block-start: var(--espace-3); }
+  h2 { font-size: clamp(1.6rem, 4vw, 2.25rem); }
+  small, output, em { color: var(--gris-texte); font-size: var(--texte-petit); font-weight: 500; }
+  h3 { margin-block: var(--espace-3) var(--espace-1); }
+  li { padding-block: var(--espace-1); max-inline-size: 70ch; }
+  li a { color: var(--bleu-profond); }
+  em { margin-inline-start: .5rem; }
+</style>

@@ -9,6 +9,7 @@
 | [suivi.md](suivi.md) | **À ouvrir en début de session** : une ligne par fonction (état, branche, PR), chantiers ouverts, numéros de migration réservés. **Tenu par le coordinateur** seul, sur sa branche : une branche de fonction ne le modifie pas (décision du chef du 18 nov.) |
 | [decisions.md](decisions.md) | Décisions en vigueur et questions ouvertes, en un seul endroit |
 | [modules/](modules/) | Un fichier par module : ce qui existe, les fonctions à faire, leur critère de « terminé » |
+| [parite-openeducat.md](parite-openeducat.md) | Correspondance entre chaque domaine d'OpenEduCat et la fonction de Planner qui le couvre, et ce que Planner fait en plus (décision du 17 nov.) |
 | [missions/](missions/) | Une fiche par mission donnée à un agent par le coordinateur : agent, branche, fichiers qu'il peut écrire, prompt à coller |
 | [modeles/](modeles/) | Modèles du [plan de conception](modeles/conception.md), de la [fiche de session](modeles/fiche-de-session.md) et de la [fiche de mission](modeles/mission.md) |
 | [../sessions/](../sessions/) | Une fiche par session, avec son prompt de reprise ; les comptes rendus d'avant le 9 novembre |
@@ -66,9 +67,16 @@ Les douze derniers modules (COM à STK) viennent de l'inventaire du 11 novembre 
 | **3. Une école scolaire se configure seule** | Une personne extérieure configure une école et génère **un vrai collège avec groupes de langue** ; chaque refus s'explique | MOT-03, MOT-04, MOT-06, MOT-07, VSC-07, ADM-02 à ADM-04, UIX-02, EDT-01, EDT-03, VEN-02 |
 | **4. Pack « École privée »** | Une école fictive de la maternelle au lycée tourne de bout en bout : familles, emploi du temps, absences prévenues, notes et bulletins, frais, espace parents en arabe et en français | VSC-02 à VSC-04, FIN-01, FIN-02, COM-01 à COM-03, ETA-01, ETA-02, PAI-01, PAI-02, COU-02 à COU-05, MOB-05, MOB-06, UIX-04, MOT-09, EXP-08 |
 | **5. Durée de vie** | Formation professionnelle et continue ; passage d'année sans aide ; export complet d'une école | ADM-01, ADM-06, ADM-07, PLA-08 à PLA-13, MOT-10, MOT-11, VSC-06, BIB-02, EDT-05, RHP-02, RHP-03, FOR-01 à FOR-04, DOC-01, DOC-02, INS-01 à INS-03 ; reportés : ETA-03, PAI-03, PIL-01, PIL-02, GRP-01, GRP-02, STA-02, SER-01, STK-01 |
-| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01 à QJE-07, BIB-03, BIB-04, VIT-01 à VIT-04, COU-01, COU-06, STA-01, MOB-01, MOB-02, MOB-07, UIX-03, UIX-05, UIX-06, EDT-02, EDT-04, EXP-09, RHP-01, QUA-01, QUA-02, QUA-04, QUA-05, MKT-01 à MKT-07 |
+| **Libre** | Sans dépendance : à prendre à n'importe quelle session | QJE-01 à QJE-07, BIB-03, BIB-04, VIT-01 à VIT-04, COU-01, COU-06, STA-01, MOB-01, MOB-02, MOB-07, UIX-03, UIX-05, UIX-06, EDT-02, EDT-04, EXP-09, RHP-01, QUA-01, QUA-02, QUA-04, QUA-05, QUA-08, QUA-09, MKT-01 à MKT-07 |
 
 FIN, COM et PAI ne se construisent qu'après les entretiens de VEN-02, qui confirment le module d'achat de chaque marché (décision du 13 novembre).
+
+**Parité avec OpenEduCat (décision du 17 novembre)** : Planner doit avoir ce qu'a OpenEduCat, et plus, et le faire mieux ([parite-openeducat.md](parite-openeducat.md)). Les étapes 1 à 4 ne changent pas. Fonctions ajoutées :
+- **étape 5** : VSC-07 à VSC-12, COU-10, COU-11, QJE-10, QJE-11, SER-02, SER-03, EDT-06, INS-04, COM-04, COM-05, ADM-10, PIL-03, FIN-04, FIN-05, RHP-04, STA-03, MOB-09 ; VSC-08 (santé) et QJE-13 (tuteur IA) sont conditionnels ;
+- **libre** : UIX-07, UIX-08, BIB-05, EDT-07, COU-12, COU-13, QJE-12 ;
+- **reprises en étape 5** (elles étaient reportées) : SER-01, STK-01, PIL-01, PIL-02, STA-02.
+
+Elles ajoutent environ 87 jours bruts, plus 13 pour les reprises.
 
 Une fonction d'une étape peut commencer avant la fin de l'étape précédente si ses dépendances (colonne « dépend de ») sont faites.
 
@@ -152,8 +160,13 @@ Tirées des reproches faits aux autres outils ([étude de marché](../etude-marc
 | EP-8 | Passage d'année inclus | une école passe d'une année à l'autre en moins d'une demi-journée, sans perte | 5 |
 | EP-9 | Les mises à jour ne cassent rien | parcours verts avant chaque mise en ligne ; retour arrière de l'image en une commande ; migrations « étendre puis contracter » | 1 |
 | EP-10 | Rapide à grande échelle | génération d'un collège de 600 élèves en moins de 10 min ; pages de gestion en moins de 1 s | 3 |
-| EP-11 | Accessible et bilingue | contraste AA ; français, arabe (droite à gauche) et anglais | 2 (droite à gauche), 4 (arabe complet) |
+| EP-11 | Accessible et trilingue | contraste AA ; **français, anglais et arabe** (droite à gauche), tous trois complets ; aucune autre langue d'interface prévue (décision du 17 nov.) | 2 (droite à gauche), 4 (arabe complet), libre (anglais complet, UIX-07) |
 | EP-12 | Les données restent à l'école | isolation testée sur chaque route ; export complet à tout moment | 2 et 5 |
+| EP-13 | Aucun envoi caché | liste publique des envois sortants (destinataire, données, raison), à jour (QUA-09) ; toute PR qui ajoute un envoi sortant la met à jour | 1 |
+| EP-14 | Contrôles toujours actifs | aucune règle de conflit ou de sécurité livrée ne s'éteint par un réglage ; seul un forçage tracé et justifié la contourne | 1 |
+| EP-15 | Aucune route ouverte par erreur | la liste des routes sans connexion est écrite ; un test échoue si une route nouvelle n'exige pas de connexion sans y figurer (avec PLA-04) | 2 |
+| EP-16 | Trois langues, aucun texte en dur | tout texte montré (écran, erreur du serveur, PDF, notification) passe par la traduction ; vérifié dans la CI par UIX-08 | 2 |
+| EP-17 | Mieux qu'OpenEduCat, mesuré | une fonction qui a un équivalent chez OpenEduCat a un parcours chronométré (temps, clics) dans son critère de « terminé », comparé à OpenEduCat Community quand l'essai du plan 08 l'a mesuré ([parite-openeducat.md](parite-openeducat.md), § 3) | 4 |
 
 **Condition légale** : aucune donnée réelle de mineur sur Planner avant le contrat de sous-traitance, le dossier CNDP de l'école et le test d'intrusion (EXP-08).
 

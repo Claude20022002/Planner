@@ -2,9 +2,9 @@
 // Page « Direction » : phrases déjà publiées sur Pour l'établissement, et liens vers les pages qui existent.
 import { CalendarClock, KeyRound, ShieldCheck } from 'lucide-react';
 import PageRole from '../../components/fonctions/PageRole.astro';
-import { LANGUES } from '../../i18n/langues.js';
+import { cheminsLangues } from '../../i18n/langues.js';
 
-export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = cheminsLangues;
 const { lang } = Astro.params;
 ---
-<PageRole lang={lang} page="direction" fichier="direction" principal="etablissement" icones={[CalendarClock, KeyRound, ShieldCheck]} />
+<PageRole lang={lang} page="direction" fichier="direction" principal="socle" icones={[CalendarClock, KeyRound, ShieldCheck]} />

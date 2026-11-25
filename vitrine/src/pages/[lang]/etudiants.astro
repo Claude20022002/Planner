@@ -2,9 +2,9 @@
 // Page « Étudiants » : la phrase déjà publiée sur les supports, et liens vers les pages qui existent.
 import { BookOpen, QrCode, Gamepad2 } from 'lucide-react';
 import PageRole from '../../components/fonctions/PageRole.astro';
-import { LANGUES } from '../../i18n/langues.js';
+import { cheminsLangues } from '../../i18n/langues.js';
 
-export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = cheminsLangues;
 const { lang } = Astro.params;
 ---
-<PageRole lang={lang} page="etudiants" fichier="etudiants" principal="coursEtAnnonces" icones={[BookOpen, QrCode, Gamepad2]} />
+<PageRole lang={lang} page="etudiants" fichier="etudiants" principal="module.espaceDeCours" icones={[BookOpen, QrCode, Gamepad2]} />

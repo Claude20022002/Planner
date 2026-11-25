@@ -1,7 +1,7 @@
 {
   "meta": {
     "titre": "In class · Planner",
-    "description": "Attendance by QR code or by hand, live or self-paced quizzes, revision games and anonymous polls: Planner supports the classroom, with a single account."
+    "description": "Attendance by QR code or by hand, live or self-paced quizzes, computing and management games, and anonymous polls: Planner supports the classroom, with a single account."
   },
   "entete": {
     "surtitre": "In class",
@@ -11,11 +11,11 @@
   "appel": {
     "surtitre": "Attendance",
     "titre": "Attendance in one gesture.",
-    "texte": "The teacher projects a QR code at the start of the session. Students scan it with their phone, and their attendance is recorded. The teacher can also mark each student by hand: present, late or absent.",
+    "texte": "At the start of the session, the teacher marks each student: present, late or absent. If they wish, they display a QR code that students scan with the Planner app. The code changes every 30 seconds.",
     "points": [
-      "A scan marks the student present.",
-      "The teacher also marks by hand: present, late or absent. A student without a phone is marked that way.",
-      "Attendance is linked to the session in the timetable"
+      "By hand, on the session list: students need neither a phone nor a projected screen.",
+      "By QR code, with the app: one phone checks in one student only.",
+      "Attendance is linked to the timetabled session."
     ]
   },
   "quiz": {

@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { Op } from "sequelize";
 import sequelize from "../../config/db.js";
@@ -18,7 +19,6 @@ import { creerNotification, creerNotificationsMultiples } from "../../utils/noti
  * (classement par moyenne) et les réponses libres forment des nuages de mots.
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 const TOLERANCE_SIGNATURE_S = 300;
 // Une partie se rejoint dans les premières minutes ; au-delà, elle n'est plus proposée
 const DUREE_PROPOSEE_MIN = 120;

@@ -11,12 +11,12 @@
   "aujourdhui": "Today",
   "cartes": [
     {
-      "page": "emploiDuTemps",
+      "page": "module.emploiDuTemps",
       "titre": "Timetable",
       "texte": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
     },
     {
-      "page": "enClasse",
+      "page": "module.presences",
       "titre": "In class",
       "texte": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
     },
@@ -41,7 +41,7 @@
       },
       {
         "avant": "A session that does not fit shows up when the grid is read again.",
-        "avec": "When a session cannot be placed, Planner names the rule that blocks it."
+        "avec": "When a session cannot be placed, Planner names the rule that blocks it, or what is missing: a slot, a room, a teacher."
       },
       {
         "avant": "A room requested outside class is noted in a message.",

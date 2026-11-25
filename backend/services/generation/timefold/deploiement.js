@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE } from "../../../config/fuseau.js";
 import { Op } from "sequelize";
 import sequelize from "../../../config/db.js";
 import { Affectation, Creneau, Groupe, PlanningSnapshot, Salle, Users } from "../../../models/index.js";
@@ -18,7 +19,7 @@ const lundiDe = (iso) => {
     const d = new Date(`${iso}T12:00:00Z`);
     return ajouterJours(iso, -((d.getUTCDay() + 6) % 7));
 };
-const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: process.env.APP_TIMEZONE || "Africa/Casablanca" });
+const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: FUSEAU_ECOLE });
 
 /**
  * @param {object} options periode, placements [{ id, creneauId, salleId }], index (problème), user, session, libelle

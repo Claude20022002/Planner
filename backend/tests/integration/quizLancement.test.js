@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { resetDatabase, closeDatabase, createUser, createPlanningFixture, loginAs } from "./helpers/testApp.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
@@ -11,7 +12,7 @@ import { definirClientClassQuiz } from "../../services/quiz/clientClassQuiz.js";
  */
 
 const QUIZ = crypto.randomUUID();
-const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Casablanca" });
+const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: FUSEAU_ECOLE });
 
 let enseignant;
 let collegue;

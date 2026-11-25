@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "designation": "jeu supérieur simplifié",
+  "groupes": 400,
+  "etudiantsParGroupe": 50,
+  "seancesParGroupe": 12,
+  "enseignantsParGroupe": 2,
+  "jours": 5,
+  "debutsMinutes": [480, 540, 600, 660, 780, 840, 900, 960],
+  "maxMinutesJour": 480,
+  "dureeSecondes": 600
+}

@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { resetDatabase, closeDatabase, createUser, createPlanningFixture, loginAs, anonymous } from "./helpers/testApp.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
@@ -11,7 +12,7 @@ import { Appartenir, Groupe, Notification, QuizPartie, QuizResultat } from "../.
 
 const SECRET = crypto.randomBytes(24).toString("hex");
 const QUIZ = "https://quiz.hestim.test";
-const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Casablanca" });
+const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: FUSEAU_ECOLE });
 
 let admin;
 let enseignant;

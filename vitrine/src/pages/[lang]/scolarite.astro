@@ -2,9 +2,9 @@
 // Page « Scolarité » : phrases déjà publiées sur l'emploi du temps, et liens vers les pages qui existent.
 import { DoorOpen, KeyRound, ShieldCheck } from 'lucide-react';
 import PageRole from '../../components/fonctions/PageRole.astro';
-import { LANGUES } from '../../i18n/langues.js';
+import { cheminsLangues } from '../../i18n/langues.js';
 
-export const getStaticPaths = () => LANGUES.map((lang) => ({ params: { lang } }));
+export const getStaticPaths = cheminsLangues;
 const { lang } = Astro.params;
 ---
-<PageRole lang={lang} page="scolarite" fichier="scolarite" principal="emploiDuTemps" icones={[DoorOpen, KeyRound, ShieldCheck]} />
+<PageRole lang={lang} page="scolarite" fichier="scolarite" principal="module.emploiDuTemps" icones={[DoorOpen, KeyRound, ShieldCheck]} />

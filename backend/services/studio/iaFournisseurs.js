@@ -2,7 +2,7 @@ import { ErreurMetier } from "../planning/enseignements.js";
 
 /**
  * Fournisseurs d'IA pour les médias du Studio quiz (docs/archives/plans/quiz-ia.md, § 4 bis) : un par
- * nature, chacun configurable à part, car le fournisseur du texte (DeepSeek par défaut) ne fait ni
+ * nature, chacun configurable à part, car le fournisseur du texte (DeepSeek, par exemple) ne fait ni
  * images, ni voix, ni transcription. Les trois parlent l'API « compatible OpenAI », la plus répandue
  * (OpenAI, Groq et d'autres pour la transcription ; OpenAI, Mistral… pour l'image et la voix).
  *
@@ -10,14 +10,15 @@ import { ErreurMetier } from "../planning/enseignements.js";
  *   voix           IA_VOIX_URL, IA_VOIX_CLE, IA_VOIX_MODELE, IA_VOIX_VOIX         POST /audio/speech
  *   transcription  IA_TRANSCRIPTION_URL, IA_TRANSCRIPTION_CLE, IA_TRANSCRIPTION_MODELE   POST /audio/transcriptions
  *
- * Sans clé, la fonction est absente de l'écran et la route répond 503. Les clés ne quittent jamais
- * le serveur ; le texte d'erreur d'un fournisseur reste dans les journaux.
+ * Sans clé, modèle ou adresse, la fonction est absente de l'écran et la route répond 503 : aucune
+ * adresse par défaut, aucun envoi implicite (EP-13, QUA-10). Les clés ne quittent jamais le serveur ;
+ * le texte d'erreur d'un fournisseur reste dans les journaux.
  */
 
 const DEFAUTS = {
-    image: { url: "https://api.openai.com/v1", modele: "", extra: { taille: "1024x1024" } },
-    voix: { url: "https://api.openai.com/v1", modele: "", extra: { voix: "alloy" } },
-    transcription: { url: "https://api.openai.com/v1", modele: "" },
+    image: { url: "", modele: "", extra: { taille: "1024x1024" } },
+    voix: { url: "", modele: "", extra: { voix: "alloy" } },
+    transcription: { url: "", modele: "" },
 };
 
 export const configurationMedia = (nature) => {
@@ -33,6 +34,7 @@ export const configurationMedia = (nature) => {
     };
 };
 
+/** La nature (image, voix, transcription) est-elle réglée : clé, modèle et adresse ? */
 export const mediaConfigure = (nature) => {
     const c = configurationMedia(nature);
     return Boolean(c.cle && c.modele && c.url);

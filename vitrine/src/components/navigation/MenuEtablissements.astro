@@ -1,0 +1,42 @@
+---
+// Menu « Établissements » : par type d'établissement (les trois de types.js, dans l'ordre de VIT-13) et par rôle (les quatre de ROLES).
+import { Briefcase, Landmark, School } from 'lucide-react';
+import MenuDeroulant from './MenuDeroulant.astro';
+import { TYPES } from '../solutions/types.js';
+import { traductions } from '../../i18n/index.js';
+import { ROLES, chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+  page: string;
+}
+
+const { langue, page } = Astro.props;
+const t = traductions(langue, 'commun');
+const solutions = traductions(langue, 'solutions');
+const icones = { superieur: Landmark, formation: Briefcase, collegeLycee: School };
+const actif = page === 'solutions' || ROLES.includes(page);
+---
+<MenuDeroulant libelle={t('navigation.etablissements')} actif={actif}>
+  <div>
+    <p class="titre">{t('navigation.parEtablissement')}</p>
+    <ul>
+      {TYPES.map(({ cle, ancre }) => {
+        const Icone = icones[cle];
+        return (
+          <li>
+            <a href={chemin(langue, 'solutions', ancre)}><Icone aria-hidden="true" size={18} strokeWidth={1.75} />{solutions(`types.${cle}.surtitre`)}</a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+  <div>
+    <p class="titre">{t('navigation.parRole')}</p>
+    <ul>
+      {ROLES.map((cle) => (
+        <li><a href={chemin(langue, cle)} aria-current={cle === page ? 'page' : undefined}>{t(`navigation.${cle}`)}</a></li>
+      ))}
+    </ul>
+  </div>
+</MenuDeroulant>

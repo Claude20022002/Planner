@@ -53,7 +53,7 @@
 | PLA-10 | Choisir son école à la connexion ; l'application la trouve par adresse ou par code (canal I-12) | ME-8 réduit | 5, ou juste avant la 1re école extérieure | M | PLA-05, MOB-07 | reporté |
 | PLA-11 | Comptes communs : un compte, plusieurs écoles (parents, enseignants partagés) | ME-8 | 5 | L | PLA-10, VSC-01 | reporté |
 | PLA-12 | Export complet d'une école ; effacement sous 30 jours après son départ (EP-12) | ME-16 | 5 | M | PLA-07 | à faire |
-| PLA-13 | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) ; sites indépendants si une école en a besoin | ME-7, ME-25 | 5 | M (+ L, conditionnel) | PLA-02, FIN-01 | reporté |
+| PLA-13 | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) ; sites indépendants si une école en a besoin. Le fuseau **de l'installation** est fait (M-10, 22 nov. : `APP_TIMEZONE` obligatoire, horloge rendue au site et à l'application) ; reste le fuseau choisi **par chaque école** quand une installation en sert plusieurs (le paramètre du catalogue `ETA` « Fuseau horaire » existe déjà) | ME-7, ME-25 | 5 | M (+ L, conditionnel) | PLA-02, FIN-01 | reporté |
 
 ## Critères de « terminé »
 
@@ -63,7 +63,9 @@
   - I-16 : deux écoles ont `DEVOIRS_ACTIFS` différent, et le fuseau est lu dans la configuration de l'école ;
   - les canaux laissés ouverts sont écrits ici, avec le module qui les ferme : I-4 et I-5 → BIB-02 ; I-9 → la seconde école n'a pas ClassQuiz ; I-11 → PLA-07 ; I-12 → PLA-10 ; I-14 → EXP-05 ; I-15 → QJE-07.
 - **PLA-03** : une base neuve ne contient aucun nom, campus ni salle d'HESTIM ; une base qui a des comptes garde tout (même règle que la migration 0057).
-- **PLA-04** : une route nouvelle sans test d'isolation fait échouer la CI.
+- **PLA-04** :
+  - une route nouvelle sans test d'isolation fait échouer la CI ;
+  - un élève, ou un parent, qui demande la fiche d'un autre élève (de son école ou d'une autre) par l'API, une liste ou un export reçoit un refus (décision du 15 nov.).
 - **PLA-05** : `creer-ecole <code>` donne une école utilisable ; le temps est mesuré et noté ; la création est refaite deux fois sans erreur.
 - **PLA-06** : rapport chiffré ; D-01 confirmée ou rouverte dans [decisions.md](../decisions.md).
 - **PLA-07** : une école se restaure seule, sans toucher les autres ; l'essai est noté dans `docs/recette/essais-restauration.md`.
