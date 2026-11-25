@@ -172,3 +172,20 @@ describe("Préparer le semestre", () => {
         expect(avant).toBeLessThanOrEqual(15);
     });
 });
+
+describe("Modèle neutre du document (EDT-04)", () => {
+    // Critère du module : le PDF d'une école scolaire ne contient ni « filière » ni « semestre »
+    afterAll(async () => {
+        await ConfigurationEtablissement.update({ modele_edt: "hestim" }, { where: { id: 1 } });
+        oublierIdentite();
+    });
+
+    test("en-tête : le nom du groupe, aucun code de classe, aucun mot du supérieur", async () => {
+        await ConfigurationEtablissement.update({ modele_edt: "planner" }, { where: { id: 1 } });
+        oublierIdentite();
+        const response = await clients.admin.get(`/api/emplois-du-temps/groupe/${ref.promo.id_groupe}/mensuel?mois=2027-01`);
+        expect(response.status).toBe(200);
+        expect(response.body.entete).toMatchObject({ modele: "planner", intitule_classe: "4A PRP", code_classe: null });
+        expect(JSON.stringify(response.body)).not.toMatch(/filière|semestre/i);
+    });
+});
