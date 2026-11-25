@@ -12,7 +12,7 @@ import { aUnHistorique } from "../services/desactivation/regles.js";
 import { ErreurMetier } from "../services/planning/enseignements.js";
 
 // Champs dont un changement est une décision de sécurité (journalisée avec avant / après)
-const CHAMPS_SENSIBLES = ["role", "actif", "email"];
+const CHAMPS_SENSIBLES = ["role", "actif", "identifiant", "email"];
 
 /**
  * Contrôleur pour les utilisateurs
@@ -21,7 +21,7 @@ const CHAMPS_SENSIBLES = ["role", "actif", "email"];
 // Champs modifiables par l'utilisateur sur son propre profil
 const SELF_EDITABLE_FIELDS = ["nom", "prenom", "telephone", "avatar_url"];
 // Champs modifiables par un administrateur
-const ADMIN_EDITABLE_FIELDS = [...SELF_EDITABLE_FIELDS, "email", "role", "actif"];
+const ADMIN_EDITABLE_FIELDS = [...SELF_EDITABLE_FIELDS, "identifiant", "email", "role", "actif"];
 
 // 🔍 Récupérer tous les utilisateurs (avec pagination)
 export const getAllUsers = asyncHandler(async (req, res) => {
@@ -58,17 +58,38 @@ export const getUserById = asyncHandler(async (req, res) => {
 
 // ➕ Créer un utilisateur
 export const createUser = asyncHandler(async (req, res) => {
-    // Vérifier si l'email existe déjà
-    const existingUser = await Users.findOne({ where: { email: req.body.email } });
-    if (existingUser) {
-        return res.status(409).json({
-            message: "Email déjà utilisé",
-            error: "Un utilisateur avec cet email existe déjà",
+    // L'identifiant est obligatoire (VSC-03, Q-20) ; l'adresse est facultative. À défaut d'identifiant
+    // saisi, l'adresse en tient lieu : c'est une valeur réelle, comme la reprise de 0064, et les
+    // clients déjà installés continuent de créer des comptes.
+    const email = typeof req.body.email === "string" && req.body.email.trim() ? req.body.email.trim() : null;
+    const identifiant =
+        (typeof req.body.identifiant === "string" ? req.body.identifiant.trim() : "") || email || "";
+    if (!identifiant) {
+        return res.status(400).json({
+            message: "Identifiant requis",
+            error: "Un identifiant de connexion est requis (il peut reprendre l'adresse)",
         });
     }
 
     // Mot de passe provisoire facultatif : sans lui, le compte reçoit un lien d'invitation
     const motDePasse = typeof req.body.password === "string" && req.body.password ? req.body.password : null;
+    // Sans adresse, aucune invitation ne peut partir : le mot de passe initial est alors obligatoire.
+    if (!motDePasse && !email) {
+        return res.status(400).json({
+            message: "Mot de passe initial requis",
+            error: "Sans adresse, l'école doit remettre un mot de passe initial (aucune invitation possible)",
+        });
+    }
+
+    const parIdentifiant = await Users.findOne({ where: { identifiant } });
+    const parAdresse = parIdentifiant || !email ? null : await Users.findOne({ where: { email } });
+    if (parIdentifiant || parAdresse) {
+        const surIdentifiant = Boolean(parIdentifiant);
+        return res.status(409).json({
+            message: surIdentifiant ? "Identifiant déjà utilisé" : "Email déjà utilisé",
+            error: surIdentifiant ? "Un compte utilise déjà cet identifiant" : "Un utilisateur avec cet email existe déjà",
+        });
+    }
     if (motDePasse) {
         const verification = await verifierMotDePasse(motDePasse, { user: req.body });
         if (!verification.valid) {
@@ -80,7 +101,9 @@ export const createUser = asyncHandler(async (req, res) => {
     const { user, lien } = await sequelize.transaction(async (transaction) => {
         const compte = await Users.create(
             {
-                ...pick(req.body, ["nom", "prenom", "email", "role", "telephone", "actif"]),
+                ...pick(req.body, ["nom", "prenom", "identifiant", "email", "role", "telephone", "actif"]),
+                identifiant,
+                email,
                 password_hash: motDePasse ? await hashPassword(motDePasse) : await empreinteInutilisable(),
                 must_change_password: true,
             },
@@ -115,10 +138,35 @@ export const updateUser = asyncHandler(async (req, res) => {
         });
     }
 
-    // Liste blanche selon le rôle : un utilisateur ne peut jamais modifier
-    // son propre rôle, son statut actif ou son email (identifiant de connexion).
+    // Liste blanche selon le rôle : un utilisateur ne peut jamais modifier son propre rôle, ni
+    // son statut actif. L'identifiant (clé de connexion, VSC-03) et l'adresse sont réservés à
+    // l'administrateur ; seuls le nom, le prénom, le téléphone, la photo et le mot de passe
+    // restent au titulaire.
     const isAdmin = req.user.role === "admin";
     const updateData = pick(req.body, isAdmin ? ADMIN_EDITABLE_FIELDS : SELF_EDITABLE_FIELDS);
+
+    // Si l'identifiant est modifié, vérifier qu'il n'est pas déjà pris (c'est la clé de connexion)
+    if (updateData.identifiant !== undefined) {
+        updateData.identifiant = String(updateData.identifiant ?? "").trim();
+        if (!updateData.identifiant) {
+            return res.status(400).json({ message: "Identifiant requis", error: "L'identifiant ne peut pas être vide" });
+        }
+        if (updateData.identifiant !== user.identifiant) {
+            const existingUser = await Users.findOne({ where: { identifiant: updateData.identifiant } });
+            if (existingUser) {
+                return res.status(409).json({
+                    message: "Identifiant déjà utilisé",
+                    error: "Un compte utilise déjà cet identifiant",
+                });
+            }
+        }
+    }
+
+    // L'adresse est facultative (VSC-03) : une saisie vide vaut « pas d'adresse », jamais une
+    // chaîne vide, qui serait unique et enverrait des courriels dans le vide
+    if (updateData.email !== undefined) {
+        updateData.email = String(updateData.email ?? "").trim() || null;
+    }
 
     // Si l'email est modifié, vérifier qu'il n'existe pas déjà
     if (updateData.email && updateData.email !== user.email) {
@@ -235,13 +283,20 @@ export const importUsers = asyncHandler(async (req, res) => {
     };
 
     for (const userData of users) {
+        let identifiant = "";
         try {
-            // Vérifier si l'email existe déjà
-            const existingUser = await Users.findOne({ where: { email: userData.email } });
+            // L'identifiant vient du fichier ; à défaut, l'adresse en tient lieu (valeur réelle).
+            identifiant = String(userData.identifiant ?? userData.email ?? "").trim();
+            const email = String(userData.email ?? "").trim() || null;
+            if (!identifiant) {
+                results.errors.push({ identifiant: "N/A", error: "Identifiant requis" });
+                continue;
+            }
+            const existingUser = await Users.findOne({ where: { identifiant } });
             if (existingUser) {
                 results.errors.push({
-                    email: userData.email,
-                    error: "Email déjà utilisé",
+                    identifiant,
+                    error: "Identifiant déjà utilisé",
                 });
                 continue;
             }
@@ -250,7 +305,8 @@ export const importUsers = asyncHandler(async (req, res) => {
             const userCreateData = {
                 nom: userData.nom,
                 prenom: userData.prenom,
-                email: userData.email,
+                identifiant,
+                email,
                 role: userData.role || 'etudiant',
                 telephone: userData.telephone || null,
                 actif: userData.actif !== undefined ? userData.actif : true,
@@ -261,7 +317,7 @@ export const importUsers = asyncHandler(async (req, res) => {
             if (userData.password) {
                 const verification = await verifierMotDePasse(String(userData.password), { user: userData });
                 if (!verification.valid) {
-                    results.errors.push({ email: userData.email, error: verification.errors[0] });
+                    results.errors.push({ identifiant, error: verification.errors[0] });
                     continue;
                 }
             }
@@ -278,9 +334,9 @@ export const importUsers = asyncHandler(async (req, res) => {
             delete userResponse.password_hash;
             results.success.push(userResponse);
         } catch (error) {
-            console.error(`Erreur lors de la création de l'utilisateur ${userData.email}:`, error);
+            console.error(`Erreur lors de la création de l'utilisateur ${identifiant}:`, error);
             results.errors.push({
-                email: userData.email || "N/A",
+                identifiant: identifiant || "N/A",
                 error: error.message || "Erreur lors de la création",
             });
         }

@@ -133,7 +133,7 @@ export const demarrerInscription = async (user) => {
     if (user.mfa_active) throw new ErreurMetier("La double authentification est déjà active", 409);
     const secret = nouveauSecret();
     await Users.update({ mfa_secret: chiffrer(secret), mfa_dernier_pas: null }, { where: { id_user: user.id_user } });
-    return { secret, adresse: adresseOtpauth({ secret, compte: user.email, emetteur: await nomProduit() }) };
+    return { secret, adresse: adresseOtpauth({ secret, compte: user.identifiant ?? user.email, emetteur: await nomProduit() }) };
 };
 
 /** Étape 2 : premier code juste → active, codes de secours (montrés une seule fois). */

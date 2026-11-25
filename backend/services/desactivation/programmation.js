@@ -28,7 +28,8 @@ const texteDate = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-F
 /** Envoie les préavis dus ; rend le nombre de courriels envoyés. */
 export const envoyerPreavis = async (jour = aujourdhui()) => {
     const concernes = await Users.findAll({
-        where: { actif: true, desactivation_preavis: true, preavis_envoye_le: null, desactivation_prevue_le: { [Op.between]: [jour, dansJours(jour, JOURS_PREAVIS)] } },
+        // Un compte sans adresse (VSC-03) ne peut pas recevoir de préavis : il est ignoré, pas compté
+        where: { actif: true, email: { [Op.ne]: null }, desactivation_preavis: true, preavis_envoye_le: null, desactivation_prevue_le: { [Op.between]: [jour, dansJours(jour, JOURS_PREAVIS)] } },
     });
     let envoyes = 0;
     for (const user of concernes) {

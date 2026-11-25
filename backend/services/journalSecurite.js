@@ -51,15 +51,18 @@ export const contexteDe = (req) => ({ ip: req?.ip ?? null, user_agent: req?.get?
 
 /**
  * @param {{ ip?: string, user_agent?: string }|null} contexte origine (contexteDe(req))
- * @param {{ evenement: string, user?: object, id_user?: number, email?: string, acteur?: object, details?: object }} donnees
+ * @param {{ evenement: string, user?: object, id_user?: number, identifiant?: string, email?: string, acteur?: object, details?: object }} donnees
  */
-export const journaliser = async (contexte, { evenement, user = null, id_user = null, email = null, acteur = null, details = null }, { transaction } = {}) => {
+export const journaliser = async (contexte, { evenement, user = null, id_user = null, identifiant = null, email = null, acteur = null, details = null }, { transaction } = {}) => {
     try {
         if (!EVENEMENTS.includes(evenement)) throw new Error(`Événement inconnu : ${evenement}`);
         await JournalSecurite.create(
             {
                 evenement,
                 id_user: user?.id_user ?? id_user,
+                // L'identifiant est la clé de lecture (Q-6) ; l'adresse ne s'y ajoute que si le compte
+                // en a une. Un compte inconnu (échec de connexion) ne laisse que la valeur saisie.
+                identifiant: borne(user?.identifiant ?? identifiant, 255),
                 email: borne(user?.email ?? email, 255),
                 // L'acteur n'est noté que s'il agit sur le compte d'un autre
                 id_acteur: acteur && acteur.id_user !== (user?.id_user ?? id_user) ? acteur.id_user : null,
@@ -117,7 +120,7 @@ export const lireJournal = async ({ id_user, evenement, du, au, page = 1, par_pa
     });
     // Nom de l'administrateur qui a agi (une lecture pour la page ; compte supprimé : null)
     const idsActeurs = [...new Set(rows.map((r) => r.id_acteur).filter(Boolean))];
-    const acteurs = idsActeurs.length ? await Users.findAll({ where: { id_user: idsActeurs }, attributes: ["id_user", "nom", "prenom", "email"], raw: true }) : [];
+    const acteurs = idsActeurs.length ? await Users.findAll({ where: { id_user: idsActeurs }, attributes: ["id_user", "nom", "prenom", "identifiant", "email"], raw: true }) : [];
     const parId = new Map(acteurs.map((a) => [a.id_user, a]));
     return { total: count, page: numero, par_page: limite, evenements: rows.map((r) => ({ ...r, acteur: parId.get(r.id_acteur) ?? null })) };
 };

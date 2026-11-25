@@ -61,14 +61,15 @@ const trouverCompte = async (ctx, accountId) => {
     const user = idUser ? await Users.findByPk(idUser) : null;
     // Un compte désactivé ou devenu étudiant ne peut plus obtenir de jeton
     if (!user || !user.actif || !ROLES_AUTORISES.includes(user.role)) return undefined;
+    const identifiant = user.identifiant ?? user.email;
     return {
         accountId,
         claims: async () => ({
             sub: accountId,
-            email: user.email,
-            email_verified: true,
-            preferred_username: user.email.split("@")[0].slice(0, 100),
-            name: `${user.prenom ?? ""} ${user.nom ?? ""}`.trim() || user.email,
+            // L'adresse n'est transmise que si le compte en a une (Q-6) ; l'identifiant la remplace
+            ...(user.email ? { email: user.email, email_verified: true } : {}),
+            preferred_username: String(identifiant).slice(0, 100),
+            name: `${user.prenom ?? ""} ${user.nom ?? ""}`.trim() || identifiant,
         }),
     };
 };

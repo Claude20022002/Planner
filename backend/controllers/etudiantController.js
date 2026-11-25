@@ -298,19 +298,30 @@ export const importEtudiants = asyncHandler(async (req, res) => {
     };
 
     for (const etudiantData of etudiants) {
+        let identifiant = "";
         try {
+            // L'identifiant est la clé de connexion (VSC-03) ; l'adresse est facultative. À défaut
+            // d'identifiant, l'adresse en tient lieu (valeur réelle, comme la reprise de 0064).
+            identifiant = String(etudiantData.identifiant ?? etudiantData.email ?? "").trim();
+            const email = String(etudiantData.email ?? "").trim() || null;
             // Vérifier les champs requis
-            if (!etudiantData.email || !etudiantData.nom || !etudiantData.prenom || !etudiantData.numero_etudiant || !etudiantData.niveau) {
+            if (!identifiant || !etudiantData.nom || !etudiantData.prenom || !etudiantData.numero_etudiant || !etudiantData.niveau) {
                 results.errors.push({
-                    email: etudiantData.email || "N/A",
-                    error: "Champs requis manquants (email, nom, prenom, numero_etudiant, niveau)",
+                    identifiant: identifiant || "N/A",
+                    error: "Champs requis manquants (identifiant, nom, prenom, numero_etudiant, niveau)",
                 });
                 continue;
             }
 
-            // Vérifier si l'email existe déjà
-            let user = await Users.findOne({ where: { email: etudiantData.email } });
-            
+            // Un compte sans adresse et sans mot de passe serait inaccessible : la ligne est refusée.
+            if (!email && !etudiantData.password) {
+                results.errors.push({ identifiant, error: "Sans adresse, un mot de passe initial est requis" });
+                continue;
+            }
+
+            let user = await Users.findOne({ where: { identifiant } });
+            if (!user && email) user = await Users.findOne({ where: { email } });
+
             if (!user) {
                 // Créer l'utilisateur
                 // Mot de passe du fichier (provisoire) ou aléatoire + invitation ; à changer à la connexion.
@@ -318,7 +329,7 @@ export const importEtudiants = asyncHandler(async (req, res) => {
                 if (etudiantData.password) {
                     const verification = await verifierMotDePasse(String(etudiantData.password), { user: etudiantData });
                     if (!verification.valid) {
-                        results.errors.push({ email: etudiantData.email, error: verification.errors[0] });
+                        results.errors.push({ identifiant, error: verification.errors[0] });
                         continue;
                     }
                 }
@@ -327,7 +338,8 @@ export const importEtudiants = asyncHandler(async (req, res) => {
                 user = await Users.create({
                     nom: etudiantData.nom,
                     prenom: etudiantData.prenom,
-                    email: etudiantData.email,
+                    identifiant,
+                    email,
                     role: "etudiant",
                     telephone: etudiantData.telephone || null,
                     actif: etudiantData.actif !== undefined ? etudiantData.actif : true,
@@ -344,7 +356,7 @@ export const importEtudiants = asyncHandler(async (req, res) => {
             const existingEtudiant = await Etudiant.findByPk(user.id_user);
             if (existingEtudiant) {
                 results.errors.push({
-                    email: etudiantData.email,
+                    identifiant,
                     error: "Étudiant déjà existant",
                 });
                 continue;
@@ -356,7 +368,7 @@ export const importEtudiants = asyncHandler(async (req, res) => {
             });
             if (existingNumero) {
                 results.errors.push({
-                    email: etudiantData.email,
+                    identifiant,
                     error: `Numéro étudiant "${etudiantData.numero_etudiant}" déjà utilisé`,
                 });
                 continue;
@@ -384,9 +396,9 @@ export const importEtudiants = asyncHandler(async (req, res) => {
 
             results.success.push(etudiantAvecUser);
         } catch (error) {
-            console.error(`Erreur lors de la création de l'étudiant ${etudiantData.email}:`, error);
+            console.error(`Erreur lors de la création de l'étudiant ${identifiant}:`, error);
             results.errors.push({
-                email: etudiantData.email || "N/A",
+                identifiant: identifiant || "N/A",
                 error: error.message || "Erreur lors de la création",
             });
         }

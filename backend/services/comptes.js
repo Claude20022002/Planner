@@ -30,6 +30,8 @@ const echapper = (valeur = "") =>
 
 /** Envoie le lien d'invitation ; renvoie vrai si l'envoi a abouti (sans jamais lever). */
 export const envoyerInvitation = async (user, lien) => {
+    // Sans adresse (VSC-03), l'invitation ne part pas : le lien est remis par l'école
+    if (!user.email) return false;
     try {
         const resultat = await sendEmail({
             to: user.email,
