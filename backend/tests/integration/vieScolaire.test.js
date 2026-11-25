@@ -100,6 +100,30 @@ describe("Famille et fratrie", () => {
         expect(enfants.body.data.filter((e) => e.titulaire)).toHaveLength(1);
     });
 
+    test("le dossier se lit des deux côtés : les responsables d'un enfant, les enfants d'un responsable", async () => {
+        const famille = await admin.send("post", "/api/vie-scolaire/familles", {
+            id_annee: annee.id_annee,
+            responsable: { nom: "Idrissi", prenom: "Rachid" },
+            enfants: [
+                { personne: { nom: "Idrissi", prenom: "Nadia" }, lien: "pere", titulaire: true, niveau: "6A" },
+                { personne: { nom: "Idrissi", prenom: "Yassine" }, lien: "pere", niveau: "4A" },
+            ],
+        });
+        expect(famille.status).toBe(201);
+
+        const enfant = await admin.get(`/api/vie-scolaire/personnes/${famille.body.enfants[0].id_personne}`);
+        expect(enfant.status).toBe(200);
+        expect(enfant.body.responsables).toHaveLength(1);
+        expect(enfant.body.responsables[0].titulaire).toBe(true);
+        expect(enfant.body.responsables[0].nom_complet).toBe("Rachid IDRISSI");
+        expect(enfant.body.enfants).toEqual([]);
+
+        const parent = await admin.get(`/api/vie-scolaire/personnes/${famille.body.responsable.id_personne}`);
+        expect(parent.status).toBe(200);
+        expect(parent.body.responsable).not.toBeNull();
+        expect(parent.body.enfants.map((e) => e.nom_complet).sort()).toEqual(["Nadia IDRISSI", "Yassine IDRISSI"]);
+    });
+
     test("un enfant incomplet annule tout : rien n'est écrit", async () => {
         const avant = await compter();
         const reponse = await admin.send("post", "/api/vie-scolaire/familles", {

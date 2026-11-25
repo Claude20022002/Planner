@@ -806,3 +806,34 @@ export const journalSecuriteAPI = {
     },
     evenements: () => request('/journal-securite/evenements'),
 };
+
+// ==================== DOSSIERS ÉLÈVES ET FAMILLES (VSC-02) ====================
+// La personne, ses responsables légaux et ses inscriptions ; les règles d'état vivent dans shared/vieScolaire.js
+const avecRecherche = (chemin, recherche) => `${chemin}${recherche ? `?recherche=${encodeURIComponent(recherche)}` : ''}`;
+
+export const vieScolaireAPI = {
+    // { data: [{ id_personne, nom, prenom, nom_complet, cne, a_un_compte }] }
+    personnes: (recherche = '') => request(avecRecherche('/vie-scolaire/personnes', recherche)),
+    // { personne, responsables, inscriptions }
+    dossier: (id) => request(`/vie-scolaire/personnes/${encodeURIComponent(id)}`),
+    creerPersonne: (personne) => request('/vie-scolaire/personnes', { method: 'POST', body: personne }),
+    modifierPersonne: (id, personne) => request(`/vie-scolaire/personnes/${encodeURIComponent(id)}`, { method: 'PUT', body: personne }),
+    supprimerPersonne: (id) => request(`/vie-scolaire/personnes/${encodeURIComponent(id)}`, { method: 'DELETE' }),
+    lierResponsable: (id, lien) => request(`/vie-scolaire/personnes/${encodeURIComponent(id)}/responsables`, { method: 'POST', body: lien }),
+    delierResponsable: (id, idResponsable) => request(`/vie-scolaire/personnes/${encodeURIComponent(id)}/responsables/${encodeURIComponent(idResponsable)}`, { method: 'DELETE' }),
+    // { data: [{ id_responsable, id_personne, personne, enfants }] }
+    responsables: (recherche = '') => request(avecRecherche('/vie-scolaire/responsables', recherche)),
+    creerResponsable: (donnees) => request('/vie-scolaire/responsables', { method: 'POST', body: donnees }),
+    enfantsDuResponsable: (id) => request(`/vie-scolaire/responsables/${encodeURIComponent(id)}/enfants`),
+    // { responsable, enfants } : répondre à charge d'une famille entière
+    inscrireFamille: (donnees) => request('/vie-scolaire/familles', { method: 'POST', body: donnees }),
+    inscriptions: (filtres = {}) => {
+        const params = Object.fromEntries(Object.entries(filtres).filter(([, v]) => v !== '' && v !== null && v !== undefined));
+        return request(`/vie-scolaire/inscriptions?${new URLSearchParams(params).toString()}`);
+    },
+    creerInscription: (id, donnees) => request(`/vie-scolaire/personnes/${encodeURIComponent(id)}/inscriptions`, { method: 'POST', body: donnees }),
+    changerEtat: (id, etat) => request(`/vie-scolaire/inscriptions/${encodeURIComponent(id)}/etat`, { method: 'PUT', body: { etat } }),
+    reinscrire: (id, donnees) => request(`/vie-scolaire/inscriptions/${encodeURIComponent(id)}/reinscription`, { method: 'POST', body: donnees }),
+    // { data: [{ id_annee, libelle, active }] }
+    annees: () => request('/vie-scolaire/annees'),
+};

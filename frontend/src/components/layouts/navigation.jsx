@@ -6,6 +6,7 @@ import {
   AssignmentInd,
   BookOnline,
   FactCheck,
+  FolderShared,
   Healing,
   Print,
   Timeline,
@@ -88,6 +89,8 @@ export const navigationFor = (user) => {
           { key: 'nav.securityLog', icon: <Policy />, path: '/gestion/journal-securite' },
           { key: 'nav.teachers', icon: <School />, path: '/gestion/enseignants' },
           { key: 'nav.students', icon: <People />, path: '/gestion/etudiants' },
+          // Dossiers élèves et familles (VSC-02) : l'état civil et l'inscription, le compte reste dans Comptes
+          { key: 'nav.dossiers', icon: <FolderShared />, path: '/gestion/dossiers' },
         ],
       },
       {
@@ -182,6 +185,7 @@ const TITLE_KEYS = {
   '/gestion/utilisateurs': 'nav.users',
   '/gestion/enseignants': 'nav.teachers',
   '/gestion/etudiants': 'nav.students',
+  '/gestion/dossiers': 'nav.dossiers',
   '/gestion/filieres': 'nav.programs',
   '/gestion/groupes': 'nav.groups',
   '/gestion/salles': 'nav.rooms',

@@ -86,12 +86,22 @@ export const dossier = async (user, id) => {
         include: [{ model: ResponsableLegal, as: "responsable", include: [{ model: Personne, as: "personne" }] }],
     });
     const inscriptions = await Inscription.findAll({ where: { id_personne: personne.id_personne }, order: [["id_annee", "DESC"]] });
+    // Le mauvais sens du lien compte aussi : un responsable voit ses enfants dans son dossier (question 2)
+    const enfants = role
+        ? await LienFamille.findAll({ where: { id_responsable: role.id_responsable }, include: [{ model: Personne, as: "eleve" }] })
+        : [];
     return {
         ...serialiserPersonne(personne),
         responsable: role ? { id_responsable: role.id_responsable, profession: role.profession, a_un_compte: Boolean(role.id_user) } : null,
-        responsable_de: liens.map((lien) => ({
+        responsables: liens.map((lien) => ({
             id_responsable: lien.id_responsable,
             nom_complet: nomComplet(lien.responsable?.personne ?? {}),
+            lien: lien.lien,
+            titulaire: Boolean(lien.titulaire),
+        })),
+        enfants: enfants.map((lien) => ({
+            id_personne: lien.id_personne,
+            nom_complet: nomComplet(lien.eleve ?? {}),
             lien: lien.lien,
             titulaire: Boolean(lien.titulaire),
         })),
