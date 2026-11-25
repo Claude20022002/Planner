@@ -5,7 +5,7 @@
 | Module | [VSC](../../plan/modules/VSC-vie-scolaire.md) · lot VSC-03, qui reprend les migrations `0064` et `0065` réservées par [VSC-01](vsc-01-modele-donnees-scolaire.md) |
 | Branche | `feat/vsc-03-comptes-eleves`, coupée de `origin/main` `561fad19` |
 | Rédigé par | Qoder (agent), le 2026-11-25 |
-| **Validé** | à valider par le chef : les neuf questions du § 3 |
+| **Validé** | le 2026-11-25 : les neuf réponses du § 3, retenues telles quelles |
 | Source mesurée | `origin/main` `561fad19`, plus [l'étude d'impact de Q-20](vsc-01-etude-impact-q20.md) (branche de VSC-01, PR #268) : 182 lectures de `.email` dans 65 fichiers |
 | Précédent | [VSC-02 : élèves et familles](vsc-02-eleves-familles.md) (PR #269) |
 
@@ -49,15 +49,15 @@ amorce de démonstration), 21 fichiers de test s'adaptent.
 
 | N° | Question | Proposition | Réponse du chef |
 |---|---|---|---|
-| Q-1 | `0064` et `0065` dans la même PR ? | **Non** : cette PR ne fait que `0064`. `0065` suit, après fusion de #269, parce qu'elle joint `Personne` et touche 100 usages de `id_user_etudiant` dans 54 fichiers | à valider |
-| Q-2 | Format et unicité de l'identifiant | **Saisi par l'école**, coupé de ses espaces, 1 à 190 caractères sans espace, unique sur toute la base de l'école (collation insensible à la casse). 190 pour absorber la reprise (une adresse peut servir d'identifiant). **Aucune fabrication automatique** | à valider |
-| Q-3 | Connexion : identifiant seul, ou aussi l'adresse ? | **Les deux** : on cherche d'abord par identifiant, puis par adresse si aucune correspondance. Ceux qui se connectent aujourd'hui par adresse continuent sans rien faire | à valider |
-| Q-4 | Reprise des comptes existants | `identifiant = email` existant : valeur réelle, unique, aucune ligne perdue. Aucune adresse inventée, aucune adresse effacée | à valider |
-| Q-5 | Compte sans adresse : mot de passe et réinitialisation | Mot de passe initial **remis par l'école** (aucun courriel) ; réinitialisation demandée par identifiant, et si le compte n'a pas d'adresse, réponse neutre « demandez à l'école ». La réponse ne révèle jamais l'existence d'un compte | à valider |
-| Q-6 | Double authentification, journal, OIDC | Compte TOTP = identifiant ; journal = identifiant, adresse en plus si elle existe ; OIDC `preferred_username` = identifiant, claim `email` **omis** quand l'adresse est nulle, `email_verified` absent alors | à valider |
-| Q-7 | Mot de passe contenant l'identifiant | Refusé, comme aujourd'hui avec la partie locale de l'adresse : `passwordHelper.js` refuse identifiant et nom | à valider |
-| Q-8 | Création et import d'un élève | `identifiant` obligatoire, `email` facultative ; le CSV gagne une colonne `identifiant` obligatoire et garde `email` facultative ; l'appariement des erreurs d'import se fait par identifiant. **Une ligne sans adresse et sans mot de passe est refusée** : le compte serait inaccessible, faute d'invitation | à valider |
-| Q-9 | Ce qui est retiré | **Rien.** Connexion par adresse conservée, `Etudiant.id_user` intact, `password_hash` toujours exclu des réponses. La contraction viendra quand aucun écran ne lira l'ancien champ | à valider |
+| Q-1 | `0064` et `0065` dans la même PR ? | **Non** : cette PR ne fait que `0064`. `0065` suit, après fusion de #269, parce qu'elle joint `Personne` et touche 100 usages de `id_user_etudiant` dans 54 fichiers | retenue |
+| Q-2 | Format et unicité de l'identifiant | **Saisi par l'école**, coupé de ses espaces, 1 à 255 caractères sans espace, unique sur toute la base de l'école (collation insensible à la casse). 255 pour absorber la reprise sans troncature (une adresse peut servir d'identifiant, et `email` est déjà `STRING` 255). **Aucune fabrication automatique** | retenue |
+| Q-3 | Connexion : identifiant seul, ou aussi l'adresse ? | **Les deux** : on cherche d'abord par identifiant, puis par adresse si aucune correspondance. Ceux qui se connectent aujourd'hui par adresse continuent sans rien faire | retenue |
+| Q-4 | Reprise des comptes existants | `identifiant = email` existant : valeur réelle, unique, aucune ligne perdue. Aucune adresse inventée, aucune adresse effacée | retenue |
+| Q-5 | Compte sans adresse : mot de passe et réinitialisation | Mot de passe initial **remis par l'école** (aucun courriel) ; réinitialisation demandée par identifiant, et si le compte n'a pas d'adresse, réponse neutre « demandez à l'école ». La réponse ne révèle jamais l'existence d'un compte | retenue |
+| Q-6 | Double authentification, journal, OIDC | Compte TOTP = identifiant ; journal = identifiant, adresse en plus si elle existe ; OIDC `preferred_username` = identifiant, claim `email` **omis** quand l'adresse est nulle, `email_verified` absent alors | retenue |
+| Q-7 | Mot de passe contenant l'identifiant | Refusé, comme aujourd'hui avec la partie locale de l'adresse : `passwordHelper.js` refuse identifiant et nom | retenue |
+| Q-8 | Création et import d'un élève | `identifiant` obligatoire, `email` facultative ; le CSV gagne une colonne `identifiant` obligatoire et garde `email` facultative ; l'appariement des erreurs d'import se fait par identifiant. **Une ligne sans adresse et sans mot de passe est refusée** : le compte serait inaccessible, faute d'invitation | retenue |
+| Q-9 | Ce qui est retiré | **Rien.** Connexion par adresse conservée, `Etudiant.id_user` intact, `password_hash` toujours exclu des réponses. La contraction viendra quand aucun écran ne lira l'ancien champ | retenue |
 
 ## 4. Solution
 
@@ -68,8 +68,8 @@ amorce de démonstration), 21 fichiers de test s'adaptent.
 ```text
 Users
   id_user      int, clé
-  identifiant  varchar(190), unique, obligatoire   ← nouveau
-  email        varchar(190), unique, facultatif    ← était obligatoire
+  identifiant  varchar(255), unique, obligatoire   ← nouveau
+  email        varchar(255), unique, facultatif    ← était obligatoire
   password_hash, role, actif, must_change_password, mfa_*, anonymise_le  (inchangés)
 ```
 
@@ -88,7 +88,7 @@ sequenceDiagram
     end
     U-->>A: compte ou rien
     A->>A: bcrypt.compare (hachage factice si compte inconnu)
-    A-->>E: 200 { role, identifiant, email?, nom, prenom } ou 401 « Email ou mot de passe incorrect »
+    A-->>E: 200 { role, identifiant, email?, nom, prenom } ou 401 « Identifiant ou mot de passe incorrect »
 ```
 
 Le corps de requête garde le nom `email` : c'est le contrat de l'API existante et des applications
