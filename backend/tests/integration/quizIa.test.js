@@ -319,7 +319,8 @@ describe("Création dans ClassQuiz (IA-4)", () => {
         expect(ecritures).toHaveLength(1);
         const { chemin, corps } = ecritures[0];
         expect(chemin).toBe("/api/v1/hestim/quiz");
-        expect(corps).toMatchObject({ email: prof.email, sub: idCompte(prof.id_user), username: prof.email.split("@")[0], titre: "Routage : révision" });
+        // Le nom de compte ClassQuiz suit l'identifiant (Q-6) ; à la reprise, il reprend l'adresse
+        expect(corps).toMatchObject({ email: prof.email, sub: idCompte(prof.id_user), username: prof.identifiant, titre: "Routage : révision" });
         expect(corps.questions).toHaveLength(3);
         expect(corps.questions[0]).toEqual({
             question: "Question A",

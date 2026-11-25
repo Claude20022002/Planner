@@ -13,7 +13,8 @@ import SequelizeAdapter from "./adapter.js";
  *  - il lit l'identité dans l'ID token, sans appeler userinfo → revendications dans l'ID token ;
  *  - `sub` doit être un UUID → identifiant de compte UUID réversible (voir idCompte) ;
  *  - il exige un refresh token → émis pour tout client qui a le droit refresh_token ;
- *  - `preferred_username` doit être unique → partie locale de l'adresse (unique à HESTIM).
+ *  - `preferred_username` doit être unique → l'identifiant de connexion (unique à HESTIM, VSC-03) ;
+ *  - l'adresse est facultative (Q-20) → `email` et `email_verified` omis quand le compte n'en a pas.
  */
 
 export const MONTAGE = "/api/oidc";
