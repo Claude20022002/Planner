@@ -37,6 +37,9 @@ const Connexion      = lazy(() => import('./pages/Connexion'));
 // Mot de passe oublié, réinitialisation, changement : routes/motDePasse.jsx
 const Accueil        = lazy(() => import('./pages/Accueil'));
 const Annonces       = lazy(() => import('./pages/Annonces'));
+// Offres de stage (STA-01) : la liste et le formulaire, puis la fiche partagée sans compte
+const OffresStage        = lazy(() => import('./pages/OffresStage'));
+const OffreStagePublique = lazy(() => import('./pages/OffreStagePublique'));
 const Appel          = lazy(() => import('./pages/Appel'));
 const Presence       = lazy(() => import('./pages/Presence'));
 
@@ -148,6 +151,11 @@ export default function App() {
             <PublicPage><Connexion /></PublicPage>
           } />
           {routesMotDePasse()}
+
+          {/* Fiche partagée d'une offre de stage : sans compte, par son jeton (STA-01) */}
+          <Route path="/offres-stage/p/:jeton" element={
+            <PublicPage><OffreStagePublique /></PublicPage>
+          } />
 
           {routesApplications()}
 
@@ -281,6 +289,11 @@ export default function App() {
           <Route path="/annonces/:id" element={
             <PrivateRoute>
               <AppPage><Annonces /></AppPage>
+            </PrivateRoute>
+          } />
+          <Route path="/offres-stage" element={
+            <PrivateRoute>
+              <AppPage><OffresStage /></AppPage>
             </PrivateRoute>
           } />
           <Route path="/parametres" element={

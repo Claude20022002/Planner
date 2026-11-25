@@ -5,6 +5,7 @@ import {
   Apartment,
   AssignmentInd,
   BookOnline,
+  BusinessCenter,
   FactCheck,
   Healing,
   Print,
@@ -52,6 +53,7 @@ export const navigationFor = (user) => {
         items: [
           { key: 'nav.dashboard', icon: <BoardIcon />, path: '/dashboard/admin' },
           { key: 'nav.announcements', icon: <Campaign />, path: '/annonces' },
+          { key: 'nav.offerStages', icon: <BusinessCenter />, path: '/offres-stage' },
         ],
       },
       {
@@ -111,6 +113,8 @@ export const navigationFor = (user) => {
           // Annonces aux classes : pas d'entrée tant que l'envoi est fermé (lot EC-5), sauf pour le
           // responsable de filière, qui écrit à sa filière même envoi fermé (relecture de A)
           ...(ANNONCES_ENSEIGNANTS_ACTIVES || estResponsable(user) ? [{ key: 'nav.announcements', icon: <Campaign />, path: '/annonces' }] : []),
+          // Offres de stage : les responsables de filière publient pour la leur (STA-01)
+          ...(estResponsable(user) ? [{ key: 'nav.offerStages', icon: <BusinessCenter />, path: '/offres-stage' }] : []),
           { key: 'nav.timetable', icon: <ViewWeek />, path: '/emploi-du-temps/enseignant' },
           { key: 'nav.myClasses', icon: <Groups />, path: '/mes-classes' },
           { key: 'nav.myQuizzes', icon: <QuizIcon />, path: '/studio-quiz' },
@@ -145,6 +149,7 @@ export const navigationFor = (user) => {
         { key: 'nav.announcements', icon: <Campaign />, path: '/annonces' },
         { key: 'nav.timetable', icon: <ViewWeek />, path: '/emploi-du-temps/etudiant' },
         { key: 'nav.myExams', icon: <FactCheck />, path: '/mes-examens' },
+        { key: 'nav.offerStages', icon: <BusinessCenter />, path: '/offres-stage' },
         // Supports de ses classes (Planner), puis documents de toute l'école (Bibliothèque)
         { key: 'nav.myCourses', icon: <MenuBook />, path: '/mes-cours' },
         { key: 'nav.takeQuiz', icon: <QuizIcon />, path: '/quiz' },
@@ -201,6 +206,7 @@ const TITLE_KEYS = {
   '/notifications': 'nav.notifications',
   '/presence': 'nav.presence',
   '/annonces': 'nav.announcements',
+  '/offres-stage': 'nav.offerStages',
   '/parametres': 'nav.settings',
   '/mes-affectations': 'nav.mySessions',
   '/mes-classes': 'nav.myClasses',

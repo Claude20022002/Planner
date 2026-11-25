@@ -92,6 +92,7 @@ export const PasserelleWeb = resolveur("PasserelleWeb");
 export const Annonce = resolveur("Annonce");
 export const AnnonceDestinataire = resolveur("AnnonceDestinataire");
 export const AnnoncePieceJointe = resolveur("AnnoncePieceJointe");
+export const OffreStage = resolveur("OffreStage");
 export const Questionnaire = resolveur("Questionnaire");
 export const QuestionQuiz = resolveur("QuestionQuiz");
 export const MediaQuiz = resolveur("MediaQuiz");

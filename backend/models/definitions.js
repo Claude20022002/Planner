@@ -58,6 +58,7 @@ import PasserelleWeb from "./PasserelleWeb.js";
 import Annonce from "./Annonce.js";
 import AnnonceDestinataire from "./AnnonceDestinataire.js";
 import AnnoncePieceJointe from "./AnnoncePieceJointe.js";
+import OffreStage from "./OffreStage.js";
 // Cycle volontaire : services/push.js n'utilise les modèles qu'à l'appel, jamais au chargement
 import { planifierPush } from "../services/push.js";
 import AuthSession from "./AuthSession.js";
@@ -609,6 +610,10 @@ Annonce.hasOne(AnnoncePieceJointe, { foreignKey: "id_annonce", as: "pieceJointe"
 AnnonceDestinataire.belongsTo(Annonce, { foreignKey: "id_annonce", as: "annonce" });
 AnnonceDestinataire.belongsTo(Users, { foreignKey: "id_user", as: "user", targetKey: "id_user" });
 
+// Offres de stage (STA-01) : une filière facultative, un auteur obligatoire
+OffreStage.belongsTo(Filiere, { foreignKey: "id_filiere", as: "filiere", targetKey: "id_filiere" });
+OffreStage.belongsTo(Users, { foreignKey: "id_user_auteur", as: "auteur", targetKey: "id_user" });
+
 // Réglages du moteur de planification : une version et ses valeurs (lot MP-1)
 VersionParametres.hasMany(ValeurParametre, { foreignKey: "id_version", as: "valeurs", onDelete: "CASCADE" });
 ValeurParametre.belongsTo(VersionParametres, { foreignKey: "id_version", as: "version" });
@@ -715,6 +720,7 @@ export {
     Annonce,
     AnnonceDestinataire,
     AnnoncePieceJointe,
+    OffreStage,
     Questionnaire,
     QuestionQuiz,
     MediaQuiz,

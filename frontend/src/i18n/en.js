@@ -1157,6 +1157,7 @@ const en = {
     myExams: 'My exams',
     library: 'Library',
     announcements: 'Announcements',
+    offerStages: 'Internship offers',
     games: 'Activities',
   },
   mesQuiz: {

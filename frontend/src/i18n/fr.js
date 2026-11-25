@@ -1157,6 +1157,7 @@ const fr = {
     myExams: 'Mes examens',
     library: 'Bibliothèque',
     announcements: 'Annonces',
+    offerStages: 'Offres de stage',
     games: 'Activités',
   },
   mesQuiz: {

@@ -39,6 +39,8 @@ import etablissementFr from './etablissement.fr.js';
 import etablissementEn from './etablissement.en.js';
 import tableauDeBordFr from './tableauDeBord.fr.js';
 import tableauDeBordEn from './tableauDeBord.en.js';
+import offresStageFr from './offresStage.fr.js';
+import offresStageEn from './offresStage.en.js';
 import { fr as simulationsFr, en as simulationsEn } from '../../../shared/simulations/i18n.js';
 
 export const LANGUAGES = [
@@ -62,52 +64,54 @@ i18n.use(initReactI18next).init({
   // Studio quiz, sessions de jeu, identité de l'école, simulations : textes dans leurs propres fichiers, sous leur clé
   resources: {
     fr: {
-        translation: {
-            ...fr,
-            gestion: {
-                ...gestionFr,
-                filieres: filieresFr,
-                groupes: groupesFr,
-                modules: modulesFr,
-                enseignements: enseignementsFr,
-                salles: sallesFr,
-                campus: campusFr,
-                creneaux: creneauxFr,
-                calendrier: calendrierFr,
-            },
-            personnes: personnesFr,
-            applications: applicationsFr,
-            studio: studioFr,
-            sessionsJeu: sessionsJeuFr,
-            direct: directFr,
-            etablissement: etablissementFr,
-            tableauDeBord: tableauDeBordFr,
-            simulations: simulationsFr,
+      translation: {
+        ...fr,
+        gestion: {
+          ...gestionFr,
+          filieres: filieresFr,
+          groupes: groupesFr,
+          modules: modulesFr,
+          enseignements: enseignementsFr,
+          salles: sallesFr,
+          campus: campusFr,
+          creneaux: creneauxFr,
+          calendrier: calendrierFr,
         },
+        personnes: personnesFr,
+        applications: applicationsFr,
+        studio: studioFr,
+        sessionsJeu: sessionsJeuFr,
+        direct: directFr,
+        etablissement: etablissementFr,
+        tableauDeBord: tableauDeBordFr,
+        offresStage: offresStageFr,
+        simulations: simulationsFr,
+      },
     },
     en: {
-        translation: {
-            ...en,
-            gestion: {
-                ...gestionEn,
-                filieres: filieresEn,
-                groupes: groupesEn,
-                modules: modulesEn,
-                enseignements: enseignementsEn,
-                salles: sallesEn,
-                campus: campusEn,
-                creneaux: creneauxEn,
-                calendrier: calendrierEn,
-            },
-            personnes: personnesEn,
-            applications: applicationsEn,
-            studio: studioEn,
-            sessionsJeu: sessionsJeuEn,
-            direct: directEn,
-            etablissement: etablissementEn,
-            tableauDeBord: tableauDeBordEn,
-            simulations: simulationsEn,
+      translation: {
+        ...en,
+        gestion: {
+          ...gestionEn,
+          filieres: filieresEn,
+          groupes: groupesEn,
+          modules: modulesEn,
+          enseignements: enseignementsEn,
+          salles: sallesEn,
+          campus: campusEn,
+          creneaux: creneauxEn,
+          calendrier: calendrierEn,
         },
+        personnes: personnesEn,
+        applications: applicationsEn,
+        studio: studioEn,
+        sessionsJeu: sessionsJeuEn,
+        direct: directEn,
+        etablissement: etablissementEn,
+        tableauDeBord: tableauDeBordEn,
+        offresStage: offresStageEn,
+        simulations: simulationsEn,
+      },
     },
   },
   lng: readStoredLanguage(),

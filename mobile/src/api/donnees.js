@@ -59,6 +59,14 @@ export const chargerAnnonce = async (id) => planner(`/annonces/${encodeURICompon
 /** Accusé de lecture ; la notification de l'annonce passe aussi en lue */
 export const marquerAnnonceLue = async (id) => planner(`/annonces/${encodeURIComponent(id)}/lue`, { method: 'POST' });
 
+// ── Offres de stage (STA-01, espace Carrière) ─────────────────────────────
+
+/** Offres publiées de l'école (l'étudiant ne reçoit que celles-là) */
+export const chargerOffresStage = async () => (await planner('/offres-stage'))?.data ?? [];
+
+/** Une offre : { titre, entreprise, ville, description, filiere, niveau, debut, fin, gratification, devise, lien_candidature, contact_email } */
+export const chargerOffreStage = (id) => planner(`/offres-stage/${encodeURIComponent(id)}`);
+
 // ── Bibliothèque (StudyLib) ──────────────────────────────────────────────
 
 /** { CODE: { module_id, documents, url } } pour les codes de modules demandés (50 au plus) */

@@ -234,6 +234,24 @@ export default function Bibliotheque() {
             ) : null}
           </View>
         ) : null}
+        {/* Offres de stage publiées par l'école (STA-01) : lues depuis Planner, la publication reste sur le site */}
+        {!enRecherche ? (
+          <Pressable
+            onPress={() => router.push('/stage/offres')}
+            style={({ pressed }) => [styles.offres, pressed && { opacity: 0.7 }]}
+            accessibilityRole="button"
+            accessibilityLabel={t('app.stages.titre')}
+          >
+            <MaterialCommunityIcons name="briefcase-outline" size={22} color={couleurs.accent} />
+            <View style={styles.offresTexte}>
+              <Text style={styles.offresTitre}>{t('app.stages.titre')}</Text>
+              <Text style={styles.offresResume} numberOfLines={2}>
+                {t('app.stages.resume')}
+              </Text>
+            </View>
+            <MaterialCommunityIcons name="chevron-right" size={22} color={couleurs.lettreAttenuee} />
+          </Pressable>
+        ) : null}
         {!enRecherche && !etat.chargement && !etat.indisponible && stages.length === 0 ? <Message discret>{t('app.bibliotheque.aucunStage')}</Message> : null}
         {stagesAffiches.map((a) => (
           <CarteStage key={a.id} avis={a} />
@@ -264,4 +282,20 @@ const useStyles = creerStyles((t) => ({
   action: { minHeight: CIBLE_TACTILE, justifyContent: 'flex-end', paddingHorizontal: 16, paddingBottom: 6 },
   actionTexte: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 14, textDecorationLine: 'underline' },
   plus: { minHeight: CIBLE_TACTILE, alignItems: 'center', justifyContent: 'center', marginTop: 2 },
+  offres: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    marginHorizontal: 16,
+    marginBottom: 10,
+    padding: 14,
+    minHeight: CIBLE_TACTILE,
+    borderRadius: t.rayons.sm,
+    backgroundColor: t.couleurs.cellule,
+    borderWidth: t.sombre ? 0 : 1,
+    borderColor: t.couleurs.filet,
+  },
+  offresTexte: { flex: 1 },
+  offresTitre: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 16 },
+  offresResume: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 13, marginTop: 2, lineHeight: 18 },
 }));
