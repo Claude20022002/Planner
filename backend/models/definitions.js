@@ -58,6 +58,10 @@ import PasserelleWeb from "./PasserelleWeb.js";
 import Annonce from "./Annonce.js";
 import AnnonceDestinataire from "./AnnonceDestinataire.js";
 import AnnoncePieceJointe from "./AnnoncePieceJointe.js";
+import Personne from "./Personne.js";
+import ResponsableLegal from "./ResponsableLegal.js";
+import LienFamille from "./LienFamille.js";
+import Inscription from "./Inscription.js";
 // Cycle volontaire : services/push.js n'utilise les modèles qu'à l'appel, jamais au chargement
 import { planifierPush } from "../services/push.js";
 import AuthSession from "./AuthSession.js";
@@ -635,6 +639,22 @@ relierSessionsJeu({ Users, Cours });
 relierQuizDirect({ Users, SessionQuiz });
 relierBibliotheque({ Users, Cours }); // Bibliothèque reconstruite (migration 0087, BIB-05)
 
+// Vie scolaire (VSC-02, migrations 0062 et 0063) : la personne, sa famille, son inscription
+Personne.belongsTo(Users, { foreignKey: "id_user", as: "compte", targetKey: "id_user" });
+Users.hasOne(Personne, { foreignKey: "id_user", as: "personne" });
+ResponsableLegal.belongsTo(Personne, { foreignKey: "id_personne", as: "personne" });
+Personne.hasOne(ResponsableLegal, { foreignKey: "id_personne", as: "responsable" });
+ResponsableLegal.belongsTo(Users, { foreignKey: "id_user", as: "compte", targetKey: "id_user" });
+Personne.hasMany(LienFamille, { foreignKey: "id_personne", as: "liensFamille" });
+LienFamille.belongsTo(Personne, { foreignKey: "id_personne", as: "eleve" });
+ResponsableLegal.hasMany(LienFamille, { foreignKey: "id_responsable", as: "enfants" });
+LienFamille.belongsTo(ResponsableLegal, { foreignKey: "id_responsable", as: "responsable" });
+Personne.hasMany(Inscription, { foreignKey: "id_personne", as: "inscriptions" });
+Inscription.belongsTo(Personne, { foreignKey: "id_personne", as: "personne" });
+AnneeUniversitaire.hasMany(Inscription, { foreignKey: "id_annee", as: "inscriptions" });
+Inscription.belongsTo(AnneeUniversitaire, { foreignKey: "id_annee", as: "annee" });
+Inscription.belongsTo(Inscription, { foreignKey: "id_inscription_precedente", as: "precedente" });
+
 // Export de tous les modèles
 export {
     Users,
@@ -715,6 +735,10 @@ export {
     Annonce,
     AnnonceDestinataire,
     AnnoncePieceJointe,
+    Personne,
+    ResponsableLegal,
+    LienFamille,
+    Inscription,
     Questionnaire,
     QuestionQuiz,
     MediaQuiz,
