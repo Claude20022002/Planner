@@ -6,7 +6,7 @@
 | Mission | `docs/plan/missions/ep18-correctifs.md` (branche `doc/coordination-equipe`) |
 | Branche | `fix/qua-poids-application`, depuis `origin/main` (`561fad19`) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 22 novembre 2026 |
-| **Validé** | en attente du coordinateur (S, sans migration) |
+| **Validé** | 25 nov. 2026, réponses dans la session : question 1 oui ; question 2, l'état vide garde la bibliothèque |
 
 ## 1. Objet et critère de « terminé »
 
@@ -37,16 +37,16 @@ Parmi les dossiers de travail ouverts, seul `b/offres-stage` touche `DashboardLa
 
 | N° | Question | Proposition | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | L'image nginx n'a pas brotli. Compiler le module `ngx_brotli` dans `frontend/Dockerfile` est une dépendance du serveur. Est-ce accepté ? | Oui : le module est compilé dans cette image, pour la même version nginx. `frontend/nginx.conf` active brotli pour les mêmes types que gzip, garde gzip, et ajoute `gzip_vary on` (absent aujourd'hui) pour que le cache ne mélange pas les deux. Les fichiers à empreinte sont précompressés à la construction ; `index.html` l'est à la volée. La qualité reste le défaut du module : l'étude ne l'écrit pas, et les 17 % seront remesurés, pas repris comme cible. Si compiler un module doit remonter au chef, je n'écris pas le Dockerfile avant son accord. | | oui |
-| 2 | L'état vide garde-t-il la bibliothèque ? | Non. L'apparition déjà écrite (0,18 s, opacité, échelle) passe en CSS. La bibliothèque ne reste que sur le lanceur. Un écran qui n'a qu'un état vide ne la télécharge plus. L'aspect ne change pas. | | oui |
+| 1 | L'image nginx n'a pas brotli. Compiler le module `ngx_brotli` dans `frontend/Dockerfile` est une dépendance du serveur. Est-ce accepté ? | Oui : le module est compilé dans cette image, pour la même version nginx. `frontend/nginx.conf` active brotli pour les mêmes types que gzip, garde gzip, et ajoute `gzip_vary on` (absent aujourd'hui) pour que le cache ne mélange pas les deux. Les fichiers à empreinte sont précompressés à la construction ; `index.html` l'est à la volée. La qualité reste le défaut du module : l'étude ne l'écrit pas, et les 17 % seront remesurés, pas repris comme cible. Si compiler un module doit remonter au chef, je n'écris pas le Dockerfile avant son accord. | oui, le 25 nov. | non |
+| 2 | L'état vide garde-t-il la bibliothèque ? | Non. L'apparition déjà écrite (0,18 s, opacité, échelle) passe en CSS. La bibliothèque ne reste que sur le lanceur. Un écran qui n'a qu'un état vide ne la télécharge plus. L'aspect ne change pas. | oui, il la garde (`motion/react` reste dans `EmptyState.jsx`) | non |
 
 ## 4. Solution
 
 Après l'accord.
 
-**(a)** Brotli au serveur du site de l'application, gzip conservé. Un client qui envoie `br` reçoit du brotli. Les autres reçoivent gzip, comme aujourd'hui. Rien ne change pour le site vitrine ni pour le relais du VPS.
+**(a)** Brotli au serveur du site de l'application, gzip conservé. Un client qui envoie `br` reçoit du brotli. Les autres reçoivent gzip, comme aujourd'hui. Rien ne change pour le site vitrine ni pour le relais du VPS. Le module compilé est `ngx_brotli` au commit `53e0fb55` (22 oct. 2026, brotli 1.2.1), dans l'image `nginx:1.27-alpine`, pour la version nginx de cette image. La qualité précompressée est 6, le défaut du module (`ngx_conf_merge_value` de `brotli_comp_level`). `index.html` est du `text/html` : nginx le gzippe toujours, brotli le compresse aussi.
 
-**(b)** `IconeApplication.jsx` ne charge plus que les icônes Lucide. `TuileApplication.jsx` charge les icônes animées, et seulement elle (avec `GrilleApplications.jsx`, qui a déjà `motion`). Le menu ne les importe plus. Si la question 2 est oui selon la proposition, `EmptyState.jsx` n'importe plus `motion/react`. `vite.config.js` ne change pas : le morceau `animation` existe encore, il n'est simplement plus tiré par la coquille.
+**(b)** `IconeApplication.jsx` ne charge plus que les icônes Lucide. `TuileApplication.jsx` charge les icônes animées, et seulement elle (avec `GrilleApplications.jsx`, qui a déjà `motion`). Le menu ne les importe plus. Question 2 : `EmptyState.jsx` garde `motion/react`. Un écran qui n'importe que la coquille ne télécharge plus la bibliothèque. Un écran qui importe l'état vide la télécharge encore. `vite.config.js` ne change pas : le morceau `animation` existe encore, il n'est simplement plus tiré par la coquille.
 
 Aucun texte, aucun parcours, aucune durée déjà écrite ne change. `mouvementReduit` reste celui du lanceur.
 
@@ -59,7 +59,7 @@ Aucun texte, aucun parcours, aucune durée déjà écrite ne change. `mouvementR
 | `frontend/nginx.conf` | modifié | brotli, gzip conservé, `gzip_vary on` |
 | `frontend/src/components/applications/IconeApplication.jsx` | modifié | Lucide seul, plus d'import animé |
 | `frontend/src/components/applications/TuileApplication.jsx` | modifié | les icônes animées, pour le lanceur |
-| `frontend/src/design-system/components/EmptyState.jsx` | modifié | CSS à la place de `motion`, si la question 2 suit la proposition |
+| `frontend/src/design-system/components/EmptyState.jsx` | non modifié | la question 2 le laisse sur `motion/react` |
 | `frontend/src/components/applications/animation-hors-coquille.test.js` | créé | la coquille n'importe plus `motion/react` |
 | `docs/plan/modules/QUA-qualite-docs.md` | modifié | une ligne, à la fin du code |
 | fiche de session | créé | à la fin du code |
@@ -82,14 +82,14 @@ Aucun pays supposé. Aucun fuseau, aucun férié, aucun format de téléphone.
 
 ## 8. Tests
 
-- `animation-hors-coquille.test.js` lit `DashboardLayout.jsx`, `MenuApplication.jsx` et `IconeApplication.jsx`. Il échoue si l'un importe `motion/react` ou un fichier de `icones/`. Si la question 2 suit la proposition, il lit aussi `EmptyState.jsx` et refuse `motion/react`.
+- `animation-hors-coquille.test.js` lit `DashboardLayout.jsx`, `MenuApplication.jsx` et `IconeApplication.jsx`. Il échoue si l'un importe `motion/react` ou un fichier de `icones/`. Il ne lit pas `EmptyState.jsx` : la question 2 le laisse sur `motion/react`.
 - Avant le code, puis après : la même mesure que l'étude (construction du site, poids gzip et brotli du premier chargement, et le morceau `animation` sur l'écran d'appel). Les deux nombres vont dans la PR. Le script de mesure reste hors du dépôt, comme pour l'étude.
 - Un essai local du conteneur : un client qui accepte `br` reçoit `Content-Encoding: br` ; un client qui n'accepte que gzip reçoit gzip. Pas de nouvel écran.
 
 ## 9. Étapes de livraison
 
-1. Ce plan, commité seul. Attente des questions 1 et 2.
-2. Le serveur, la coupure de l'import, le test, la ligne du module, la fiche, et la mesure pour la PR. Rien n'est poussé.
+1. Ce plan, commité seul. Fait (`8124c4cf`). Réponses du 25 nov. : question 1 oui ; question 2, l'état vide garde la bibliothèque.
+2. Le serveur, la coupure de l'import dans la coquille, le test, la ligne du module, la fiche, et la mesure pour la PR. `EmptyState.jsx` ne change pas. Rien n'est poussé.
 
 ## 10. Risques et retour arrière
 
