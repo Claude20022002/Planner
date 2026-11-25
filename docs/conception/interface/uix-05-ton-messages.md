@@ -123,7 +123,7 @@ sequenceDiagram
 | `backend/controllers/` (11 fichiers) | modifiés | messages accordés | 1 à 4 lignes par fichier |
 | `backend/services/` (8 fichiers) | modifiés | messages et courriels accordés | 1 à 6 lignes par fichier |
 | `backend/server.js`, `backend/migrations/cli.js`, `backend/seed.js` | modifiés | journaux accordés | 1 à 5 lignes par fichier |
-| `backend/tests/integration/push.test.js`, `quiz.test.js`, `frontend/tests/parcours/desactivation.spec.cjs` | modifiés | assertions réalignées | 1 ligne chacun |
+| `backend/tests/integration/push.test.js`, `quiz.test.js` | modifiés | assertions réalignées | 1 ligne chacun |
 | `docs/plan/modules/UIX-interface.md` | modifié | critère d'UIX-05, état, m-7 renvoyé à UIX-07 | tableau et critères |
 | `docs/sessions/2026-11-25-feat-uix-05-ton-messages.md` | créé | fiche de session | modèle |
 
@@ -144,8 +144,8 @@ gardent leur texte français (m-7 relève d'UIX-07). Aucun numéro de migration 
 
 - **Nouveau** : `backend/tests/utils/tonMessages.test.js` — liste vide pour `backend/` hors tests ;
   un second cas prouve que `lireChaines` voit une chaîne fautive et ignore un commentaire.
-- **Mis à jour** : `push.test.js:106` (« 2 séances à traiter »), `quiz.test.js:202`
-  (« 2400 points »), `desactivation.spec.cjs:151` (« 1 désactivé, 0 programmé, 1 refusé. »).
+- **Mis à jour** : `push.test.js:106` (« 2 séances à traiter »), `quiz.test.js:202` (« 2400 points »).
+- **Non touché** : `frontend/tests/parcours/desactivation.spec.cjs:151` cite « 1 désactivé(s), 0 programmé(s), 1 refusé. », texte composé par `frontend/src/i18n/fr.js` (`lotBilan`), hors périmètre (§ 11 : UIX-06 et UIX-07) : il reste juste, le serveur n'ayant rien changé de ce côté.
 - **Lancement local** : `npm test` dans `backend/` (unitaires, sans base), `npm test` dans
   `frontend/` ; la suite d'intégration et les parcours sont attendus en CI.
 
@@ -157,15 +157,14 @@ gardent leur texte français (m-7 relève d'UIX-07). Aucun numéro de migration 
 3. Contrôleurs (11 fichiers).
 4. Services (8 fichiers), courriels compris.
 5. Journaux : `server.js`, `migrations/cli.js`, `seed.js`.
-6. Assertions des trois tests réalignées ; suite unitaire verte.
+6. Assertions des deux tests du serveur réalignées ; suite unitaire verte.
 7. Module UIX et fiche de session ; commandes au chef.
 
 ## 10. Risques et retour arrière
 
 - **Branches ouvertes qui touchent les mêmes fichiers** (ADM-02, MOT-13b) : les conflits resteront des
   lignes isolées ; fusion de `origin/main` avant la PR.
-- **Messages cités par des parcours** : `desactivation.spec.cjs` est réaligné ; si un autre parcours
-  cite un texte changé, il échouera en CI et sera corrigé dans la même PR.
+- **Messages cités par des parcours** : aucun parcours ne cite un texte du serveur modifié ; les textes « (s) » du parcours de désactivation viennent du site (`frontend/src/i18n/fr.js`), laissés à UIX-06.
 - **Faux positif du script** (expression régulière prise pour une chaîne) : le test échoue bruyamment
   et se corrige dans `verifier-ton.mjs`, jamais en tolérant une exception de complaisance.
 - **Retour arrière** : la PR ne touche ni données ni routes ; la réverter rend l'état antérieur.
