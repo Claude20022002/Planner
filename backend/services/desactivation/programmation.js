@@ -8,6 +8,7 @@ import { journaliser } from "../journalSecurite.js";
 import { appliquerEffets } from "./desactivation.js";
 import { seancesFutures, verifierCible } from "./regles.js";
 import { ErreurMetier } from "../planning/enseignements.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Désactivations programmées (lot ME-17), passées chaque heure par une tâche périodique :
@@ -74,7 +75,7 @@ const empechement = async (user, jour) => {
         throw erreur;
     }
     const futures = user.role === "enseignant" ? await seancesFutures(user.id_user, jour) : [];
-    if (futures.length) return { raison: `${futures.length} séance(s) à venir à confier à un remplaçant ou à annuler`, details: { seances: futures.length } };
+    if (futures.length) return { raison: `${accorder(futures.length, "séance à venir", "séances à venir")} à confier à un remplaçant ou à annuler`, details: { seances: futures.length } };
     return null;
 };
 

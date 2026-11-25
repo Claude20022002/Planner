@@ -2,6 +2,7 @@ import { Campus, Salle, TrajetCampus } from "../models/index.js";
 import { asyncHandler } from "../middleware/asyncHandler.js";
 import { pick } from "../utils/validationHelper.js";
 import { paireCampus, lireParametre } from "../services/planning/referentiel.js";
+import { accorder } from "../../shared/accords.js";
 
 const CAMPUS_FIELDS = ["code", "nom", "adresse", "actif"];
 
@@ -53,7 +54,7 @@ export const deleteCampus = asyncHandler(async (req, res) => {
     if (nbSalles > 0) {
         return res.status(409).json({
             message: "Campus non vide",
-            error: `${nbSalles} salle(s) sont rattachées à ce campus : déplacez-les ou supprimez-les d'abord`,
+            error: `${accorder(nbSalles, "salle est rattachée", "salles sont rattachées")} à ce campus : déplacez-les ou supprimez-les d'abord`,
         });
     }
     await campus.destroy();

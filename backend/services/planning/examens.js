@@ -19,6 +19,7 @@ import { lireParametre } from "./referentiel.js";
 import { occupationsDuJour } from "./occupations.js";
 import { ViolationsBloquantes, notifierChangementSeance } from "./seances.js";
 import { creerNotificationsMultiples } from "../../utils/notificationHelper.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Examens (phase P5) : une épreuve d'un module pour des groupes, répartie sur des salles en
@@ -115,7 +116,7 @@ export const validerExamen = async (examen, { transaction } = {}) => {
     const minimum = await lireParametre("surveillants_par_salle");
     for (const salle of salles) {
         const nombre = surveillances.filter((s) => s.id_salle === salle.id_salle).length;
-        if (nombre < minimum) signaler("surveillants_manquants", `${salle.nom_salle} : ${nombre} surveillant(s) sur ${minimum}`, { id_salle: salle.id_salle }, false);
+        if (nombre < minimum) signaler("surveillants_manquants", `${salle.nom_salle} : ${accorder(nombre, "surveillant", "surveillants")} sur ${minimum}`, { id_salle: salle.id_salle }, false);
     }
     return { violations, bloquant: violations.some((v) => v.bloquant) };
 };
