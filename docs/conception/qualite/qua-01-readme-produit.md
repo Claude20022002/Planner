@@ -37,9 +37,9 @@ Deux manques dans le README, pour le critère d'installation :
   Windows PowerShell, avec `start.bat` mentionné sans exemple.
 
 Et un chiffre faux dans les deux sens : « ≈ 330 tests » unitaires et « ≈ 550 tests, 58 fichiers »
-d'intégration, alors que la suite complète du serveur compte 36 suites et 555 tests, le site 155
-tests unitaires, l'application 19 suites et 87 tests. Un chiffre non mesuré se retire, il ne
-s'invente pas.
+d'intégration, alors que, mesurés le 25 novembre 2026, le serveur compte 39 fichiers et 566 tests
+unitaires, l'intégration 64 fichiers, le site 157 tests unitaires, les parcours 37 fichiers et
+l'application 19 fichiers de tests. Un chiffre non mesuré se retire, il ne s'invente pas.
 
 ## 2. Décisions à confirmer
 
@@ -84,9 +84,13 @@ sécurité, « Pour les agents IA ». Le README n'est pas réécrit, il est comp
 1. **Les commandes existent.** Chaque commande citée est comparée au `package.json` concerné
    (`install:all`, `migrate`, `seed`, `dev`, `build`, `verifier:neutre`, `test:unit`, `test:parcours`)
    et à `start.bat` / `start.sh` : aucune commande inventée, aucune commande morte.
-2. **Le parcours s'exécute.** Selon Q-35 : job CI `demarrage-readme`, ou liste de contrôle jouée par
-   le chef. Sur ce poste, l'installation complète ne peut pas être rejouée : le démon Docker est
-   arrêté et MySQL n'écoute pas — c'est écrit dans la fiche de session plutôt que masqué.
+2. **Le parcours s'exécute.** Réponse Q-35 retenue : le job CI `demarrage-readme` rejoue le bloc
+   « Installation et lancement » sur une base neuve (MySQL jetable, `install:all`, `.env` renseigné
+   comme le dit le tableau, `migrate`, `seed`, `build`), puis vérifie que la base contient l'école
+   pilote, les comptes, les groupes et les salles, et que le site est construit. Il est écrit et
+   relu ici ; c'est la CI de la PR qui l'exécute la première fois. Sur ce poste, l'installation
+   complète ne peut pas être rejouée : le démon Docker est arrêté et MySQL n'écoute pas — c'est
+   écrit dans la fiche de session plutôt que masqué.
 3. **La neutralité tient.** `node scripts/verifier-neutre.mjs` reste vert : `PRODUCT.md` et
    `README.md` parlent de l'école pilote comme d'un exemple, jamais comme d'une règle du produit.
 
