@@ -17,7 +17,7 @@ Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend un
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 5 | ouvert ; EXP-02a écrite le 15 nov., en attente de relecture |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [MOT](modules/MOT-moteur.md) | 15 nov. 2026 (décidé le 13 nov., à la place de QUA) | MOT-13, MOT-12, MOT-02, MOT-03, MOT-04 | 5 | ouvert ; MOT-13 en tête (décision du 15 nov.), son étape 13b après MOT-12 |
-| [VSC](modules/VSC-vie-scolaire.md) | 25 nov. 2026, par exception (décision du chef) | VSC-01, VSC-02, VSC-03 | 3 | ouvert ; VSC-01 de référence à choisir (#268 ou #215) et 14 réponses à signer par le chef ; puis #269, puis #270 après relecture de sécurité |
+| [VSC](modules/VSC-vie-scolaire.md) | 25 nov. 2026, par exception (décision du chef) | VSC-01, VSC-02, VSC-03 | 3 | ouvert ; VSC-01 : référence #215 (décision du chef du 25 nov.), enrichie de #268, qui sera fermée ; #269 (VSC-02) à corriger (élève sans compte dans sa classe, dépendance PLA-01) ; #270 (lot Q-20, pas VSC-03) à renommer, en dernier, après relecture de sécurité |
 
 ### Fermés
 
