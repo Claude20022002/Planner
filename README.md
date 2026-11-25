@@ -139,7 +139,7 @@ flowchart LR
 |---|---|---|
 | API Planner | [`backend/`](backend) | Node.js 22, Express 4, Sequelize 6, MySQL 8.4, migrations Umzug, Jest 30 |
 | Site | [`frontend/`](frontend) | React 19, MUI 7, Vite 7, i18next (français, anglais), Playwright |
-| Solveur | [`solver/`](solver) | Java 21, Spring Boot 3.3, Timefold Solver 1.15 |
+| Solveur | [`solver/`](solver) | Java 21, Spring Boot 4.1, Timefold Solver 1.35 |
 | Application mobile | [`mobile/`](mobile) | Expo SDK 57, Expo Router, React Native 0.86 |
 | Code partagé | [`shared/`](shared) | Logique des séances, quiz, jeux, couleurs, interrupteurs de fonctions |
 | Déploiement | [`deploy/`](deploy), [`docker-compose.yml`](docker-compose.yml) | Docker Compose, Caddy, nginx, scripts de mise en ligne et de sauvegarde |
@@ -266,7 +266,7 @@ Remarques :
 
 ```bash
 cd solver && mvn package
-SOLVER_TOKEN=<32 caractères au moins> java -jar target/hestim-solver.jar --server.port=8090
+SOLVER_TOKEN=un-jeton-aleatoire-de-32-caracteres-au-moins java -jar target/hestim-solver.jar --server.port=8090
 ```
 
 Dans `backend/.env`, mettre `SOLVER_URL=http://localhost:8090` et le même `SOLVER_TOKEN`. Sans jeton, le solveur refuse tout calcul.
