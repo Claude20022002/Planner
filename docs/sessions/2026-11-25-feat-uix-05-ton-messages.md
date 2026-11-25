@@ -51,6 +51,10 @@ preuve est un script de ton sur tout `backend/`, pas un `git grep` littéral (15
 | 2 | Quelle preuve de « plus de (s) » ? | Script de ton, portée serveur entier | répondu |
 | 3 | Profondeur de la réécriture ? | Ciblée : seules les 34 chaînes fautives | répondu |
 | 4 | L'assertion `desactivation.spec.cjs:151` du plan § 8 : elle exige de changer un texte du site, hors périmètre § 11. Laissée intacte ; plan corrigé (`b9b8b295`). | à confirmer par le chef | **en attente** |
+| 5 | QUA-02 : exception hors chantier, les 3 chantiers (EXP, PLA, ADM) restant pleins ? | Oui, exception hors chantier, comme QUA-04 | répondu |
+| 6 | Par quel contrôleur commencer ? | `salleController` (247 lignes) : il fixe le patron à faible risque | répondu |
+| 7 | Comment vérifier sans MySQL local ? | Unitaires et ESLint ici, avant et après ; intégration en CI | répondu |
+| 8 | Où placer le code sorti du contrôleur ? | `backend/services/<domaine>/` ; le contrôleur garde requête, validation, réponse | répondu |
 
 ## État laissé
 
@@ -65,9 +69,7 @@ preuve est un script de ton sur tout `backend/`, pas un `git grep` littéral (15
    proches : conflits attendus sur des lignes isolées).
 2. Le chef : `push` et PR ; la CI doit confirmer la suite d'intégration et les parcours.
 3. Le chef valide la correction du plan (question 4).
-4. Ouvrir **QUA-02** (découper les contrôleurs trop longs, un contrôleur par branche) : `auth` 672,
-   `emploiDuTemps` 465, `statistiques` 464, `etudiant` 388, `enseignant` 304, `affectation` 290,
-   `user` 260, `demandeReport` 231, `salle` 210 lignes.
+4. Ouvrir **QUA-02** (découper les contrôleurs trop longs, un contrôleur par branche) sur `refactor/qua-02-salle`, depuis `origin/main` : `salleController` (247 lignes) d'abord, extraction vers `backend/services/<domaine>/`, vérifiée par les unitaires et ESLint avant/après, puis la CI. Les huit autres suivent : `auth` 759, `statistiques` 513, `emploiDuTemps` 512, `etudiant` 444, `enseignant` 348, `affectation` 321, `user` 299, `demandeReport` 257 lignes (seuils ESLint `max-lines` : 200 pour un contrôleur). Plan court à écrire et à faire valider avant le code, puisqu'aucun n'existe.
 
 ## Commandes pour le chef de projet
 
