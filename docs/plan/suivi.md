@@ -74,6 +74,7 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | VIT | plus tard : vidéos de motion design sur les captures, et lien « Ressources » (VIT-03) avec elles | — | — | décisions du chef du 18 nov. ([plan du site](../conception/vitrine/vit-vitrine.md), § 3 bis) | 18 nov. | [vit-equipe](missions/vit-equipe.md) |
 | EXP | suite de l'audit (#198, fusionnée) : partie `vitrine/` le 27 nov. avec la montée d'Astro ; revue de l'exception picomatch avant le 18 déc. | à attribuer | — | dates fixées par le plan | 18 nov. | [plan](../conception/exploitation/fix-audit-dependances.md) |
 | UIX, EDT, QUA | lots libres d'Alexis : UIX-05 (#264), EDT-04 (#265), QUA-01 (#266), mise en forme (#267) | Alexis (Destroya2) | #264, #265, #266, #267 | #264, #266, #267 **prêtes** ; #265 : libellé « Format du supérieur » à corriger (décision du chef) | 25 nov. 23 h 40 | — |
+| STA | STA-01 offres de stage, fiche publique comprise | Alexis (Destroya2) | #230 | plan validé par le chef le 26 nov. ; à corriger : découpage d'`OffresStage.jsx`, conflit `App.jsx`, `i18n/index.js`, `publiee_le`, devise sans défaut | 26 nov. | — |
 | QUA | QUA-02 découper les fichiers trop longs, un fichier par branche : `salleController` (247 lignes) d'abord, puis, signalés par le lint de la CI le 26 nov., `frontend/src/App.jsx` (436), `frontend/src/pages/Annonces.jsx` (435), `frontend/src/design-system/board/DepartureBoard.jsx` (403) | à attribuer (proposition : Alexis, après UIX-05) | — | à faire ; avertissements anciens, aucun ne bloque la CI | 26 nov. | — |
 | QUA | correctif : `frontend/src/pages/MesAffectations.jsx:28`, `useEffect` sans la dépendance `loadAffectations` (avertissement du lint), plan court et test de régression | à attribuer | — | à faire ; aucun bug signalé | 26 nov. | — |
 | MOB, VIT | M-12 nom de l'application (#258) ; VIT-09c logos des modules (#259) | agent de Cursor ; Codex | #258, #259 | **prêtes** ; « Update branch » avant la fusion (branches du 22 nov.) | 25 nov. 23 h 40 | [ep18-correctifs](missions/ep18-correctifs.md) |
@@ -233,7 +234,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PIL-02](modules/PIL-pilotage.md) | Présence des enseignants, avancement des notes, somme due aux vacataires | 5 | M | reporté |  |
 | [GRP-01](modules/GRP-groupes-reseaux.md) | Vue consolidée sur plusieurs écoles | 5 | L | reporté |  |
 | [GRP-02](modules/GRP-groupes-reseaux.md) | Paramètres communs avec dérogations, marque du réseau | 5 | M | reporté |  |
-| [STA-01](modules/STA-stages-alternance.md) | Offres de stage (espace Carrière) (ancienne COU-07) | libre | M | à décider |  |
+| [STA-01](modules/STA-stages-alternance.md) | Offres de stage (espace Carrière) (ancienne COU-07) | libre | M | PR ouverte ; plan validé par le chef le 26 nov. (fiche publique acceptée, pas de devise par défaut) ; relue : à corriger | #230 |
 | [STA-02](modules/STA-stages-alternance.md) | Conventions de stage, tuteur, présence en entreprise, apprentissage | 5 | M | reporté |  |
 | [SER-01](modules/SER-services-annexes.md) | Cantine, transport et internat liés au compte famille, sans refus d'accès automatique | 5 | L | reporté |  |
 | [STK-01](modules/STK-stocks-achats.md) | Inventaire, bons de commande validés, lien avec la vente | 5 | M | reporté |  |
