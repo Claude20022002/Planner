@@ -10,13 +10,14 @@ Une ligne par fonction. L'état passe à « en cours » (avec la branche) au pre
 
 Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend une fonction que dans un chantier ouvert. Un chantier ouvert se termine avant d'en ouvrir un autre à sa place ([organisation.md](organisation.md), § 3).
 
-### Ouverts (3 sur 3) · **ADM s'est ouvert le 21 nov. à la place de MOT**, à la fusion de #239 (décision du chef) ; VSC-01 se termine comme conception, sans code
+### Ouverts (4, dont VSC par exception) · **ADM s'est ouvert le 21 nov. à la place de MOT**, à la fusion de #239 (décision du chef) ; **VSC ouvert par exception le 25 nov.**, décision maintenue le 26 nov. en connaissance de cause (quatre chantiers, sans date de retour à trois)
 
 | Module | Ouvert le | Fonctions du chantier, dans l'ordre | Reste | État |
 |---|---|---|---|---|
 | [EXP](modules/EXP-exploitation.md) | avant le 9 nov. (EXP-01 en cours) | EXP-01, EXP-02, EXP-03, EXP-04, EXP-05 | 4 | ouvert ; EXP-01 faite (#172) ; EXP-02a fusionnée (#179, 15 nov.) |
 | [PLA](modules/PLA-plateforme.md) | 9 nov. 2026 | PLA-06, PLA-03, PLA-05, PLA-01, PLA-02, PLA-04, PLA-07 | 7 | ouvert ; ordre validé le 10 nov. PLA-01 attend EXP-02 (QUA-03 levée le 13 nov. : pile confirmée), PLA-07 attend EXP-04 |
 | [ADM](modules/ADM-administration.md) | 21 nov. 2026 (fusion de #239, à la place de MOT ; décision du chef) | ADM-02 et MOT-13c, ADM-01, ADM-03, ADM-04 (modèle du supérieur) | 5 | ouvert ; **ADM-02** : fiche écrite, une session Claude neuve à ouvrir par le chef (choix du chef, 21 nov.), plan au chef (L ; Q-04, R-1 à R-4 de la relecture de MP-1, à trancher dans le plan) ; ADM-01 et ADM-03 lisent la conception de VSC-01 (#215) ; ADM-03 attend aussi VSC-07 |
+| [VSC](modules/VSC-vie-scolaire.md) | 25 nov. 2026, par exception (décision du chef) | VSC-01, VSC-02, VSC-03 | 3 | ouvert ; VSC-01 : référence #215 (décision du chef du 25 nov.), enrichie de #268 (fermée le 26 nov.) ; #269 (VSC-02) à corriger (élève sans compte dans sa classe, dépendance PLA-01) ; #270 (lot Q-20, pas VSC-03) à renommer, en dernier, après relecture de sécurité |
 
 ### Fermés
 
@@ -92,6 +93,10 @@ Qui travaille sur quoi, module par module. Tenu par le **coordinateur** ([organi
 | VIT | plus tard : vidéos de motion design sur les captures, et lien « Ressources » (VIT-03) avec elles | — | — | décisions du chef du 18 nov. ([plan du site](../conception/vitrine/vit-vitrine.md), § 3 bis) | 18 nov. | [vit-equipe](missions/vit-equipe.md) |
 | VIT | suite de VIT-20 : VIT-22 (#263), VIT-20d (#261), VIT-21 (#262), puis VIT-20f (logos de VIT-09c sur les 17 modules) | **Codex** (repris de l'agent externe, indisponible depuis le 22 nov. 18 h), son modèle le plus fort | branches de l'agent externe, reprises en local ; le chef pousse | consigne déposée le 22 nov. à 18 h 10 ; visas du chef dans les PR ; lignes de l'Espace de cours (20d) et ajouts de 21 à viser | 22 nov. 18 h 10 | [vit-20-equipe](missions/vit-20-equipe.md) |
 | EXP | suite de l'audit (#198, fusionnée) : partie `vitrine/` le 27 nov. avec la montée d'Astro (n° 3 de la file de l'agent de Cursor) ; revue de l'exception picomatch avant le 18 déc. | agent de Cursor pour `vitrine/` | `fix/audit-vitrine` (à créer le 27 nov.) | dates fixées par le plan | 18 nov. | [plan](../conception/exploitation/fix-audit-dependances.md) |
+| STA | STA-01 offres de stage, fiche publique comprise | Alexis (Destroya2) | #230 | plan validé par le chef le 26 nov. ; à corriger : découpage d'`OffresStage.jsx`, conflit `App.jsx`, `i18n/index.js`, `publiee_le`, devise sans défaut | 26 nov. | — |
+| QUA | QUA-02 découper les fichiers trop longs, un fichier par branche : `salleController` (247 lignes) d'abord, puis, signalés par le lint de la CI le 26 nov., `frontend/src/App.jsx` (436), `frontend/src/pages/Annonces.jsx` (435), `frontend/src/design-system/board/DepartureBoard.jsx` (403) | à attribuer (proposition : Alexis, après UIX-05) | — | à faire ; avertissements anciens, aucun ne bloque la CI | 26 nov. | — |
+| QUA | correctif : `frontend/src/pages/MesAffectations.jsx:28`, `useEffect` sans la dépendance `loadAffectations` (avertissement du lint), plan court et test de régression | à attribuer | — | à faire ; aucun bug signalé | 26 nov. | — |
+| EDT | EDT-04 (#265) : libellé « Format du supérieur » à corriger (décision du chef du 25 nov.) ; #264, #266 et #267 fusionnées le 26 nov. | Alexis (Destroya2) | #265 | à corriger | 25 nov. 23 h 40 | — |
 
 Hors chantier, PR ouvertes : #194 (essai PostgreSQL, brouillon), #193 (plan de parité avec OpenEduCat, fusion automatique), #242 (étude 15, modules vendables et packs), #231 (question d'Alexis, répondue), #168 (kit vidéo MKT-05 et MKT-09), #53 (vidéo promo, octobre). Fusionnées le 21 nov. : #222, #226, #232, #233, #191, #192, #221, #189 et #186 (8 h 33), puis #235, #228, #238, #239 (18 h 42 à 18 h 48), **#237 (20 h 21), #243 (VIT-18b, 20 h 58), #190 (22 h 46), #240 (UIX-11, 22 h 49), #246 (correction de `/ar/`, 23 h 27), #241 (QUA-10, 23 h 55), #245 (UIX-06c, 23 h 56), #247 (correctif d'UIX-11, 23 h 59)** ; le 22 nov. : **#169 (modèle économique, 0 h 58), #234 (études 13 et 14, 1 h 06), #250 (VIT-19, 8 h 52), #236 (VIT-11), #248 (plan de QJE-14), #249 (étude StudyLib), #244 (cache Maven), 9 h 28, #251 (UIX-10d, 9 h 38)** ; #188 fermée. La CI du site est de nouveau verte sur `main` depuis #246. La PR de coordination est #211.
 
@@ -108,7 +113,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | 0080 | MOT-13 contraintes déclarées (`ContrainteDeclaree`) | réservée |
 | 0081 | MOT-13b reprise de la pause du vendredi et du samedi après-midi en contraintes déclarées | écrite (`feat/mot-13b-solveur`) |
 | 0082 | QJE-04 : solution vue d'un défi de jeu (contrat des jeux, § 1.0) ; réservée le 10 nov. sous le numéro 0080, renumérotée le 15 nov. (0080 et 0081 prises par MOT-13) | écrite le 18 nov. (`backend/migrations/0082-jeux-solutions.js`), non appliquée |
-| 0083 | STA-01 offres de stage (`OffresStage`), réservée par le coordinateur le 21 nov. ; la migration attend la validation du plan par le chef | écrite (#230), non validée |
+| 0083 | STA-01 offres de stage (`OffresStage`), réservée par le coordinateur le 21 nov. ; plan validé par le chef le 26 nov. (devise sans défaut) | écrite (#230), à corriger |
 | 0084 | QJE-14a : migration A (nature, anonyme, sections, sauts, « obligatoire », copie figée, interrupteur `questionnaires_actifs`) ; réservée par le coordinateur le 22 nov. | réservée |
 | 0085 | QJE-14c : migration B (`ReponsesAnonymes`, `ParticipationsAnonymes`, sans horodatage) ; réservée le 22 nov. | réservée |
 | 0086 | QJE-14e : migration C (`SessionsQuizGroupes`, recopie de `id_groupe`) ; réservée le 22 nov. | réservée |
@@ -285,7 +290,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [PIL-02](modules/PIL-pilotage.md) | Présence des enseignants, avancement des notes, somme due aux vacataires | 7 | M | reporté |  |
 | [GRP-01](modules/GRP-groupes-reseaux.md) | Vue consolidée sur plusieurs écoles | 7 | L | reporté |  |
 | [GRP-02](modules/GRP-groupes-reseaux.md) | Paramètres communs avec dérogations, marque du réseau | 7 | M | reporté |  |
-| [STA-01](modules/STA-stages-alternance.md) | Offres de stage (espace Carrière) (ancienne COU-07) | 3 | M | PR ouverte : #230 (Alexis), **plan à valider par le chef** avant toute fusion (EP-5, migration 0083, route publique) | #230 |
+| [STA-01](modules/STA-stages-alternance.md) | Offres de stage (espace Carrière) (ancienne COU-07) | 3 | M | PR ouverte ; plan validé par le chef le 26 nov. (fiche publique acceptée, pas de devise par défaut) ; relue : à corriger | #230 |
 | [STA-02](modules/STA-stages-alternance.md) | Conventions de stage, tuteur, présence en entreprise, apprentissage | 7 | M | reporté |  |
 | [STA-03](modules/STA-stages-alternance.md) | Avis de stage et idées de projet, venus de StudyLib | 3 | M | à faire : Alexis, après EDT-04 et #230 | |
 | [SER-01](modules/SER-services-annexes.md) | Cantine, transport et internat liés au compte famille, sans refus d'accès automatique | 7 | L | reporté |  |
