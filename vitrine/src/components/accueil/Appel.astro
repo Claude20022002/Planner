@@ -8,7 +8,7 @@ import Apparition from '../socle/Apparition.astro';
 import CadreAppareil from '../socle/CadreAppareil.astro';
 import Duo from '../socle/Duo.astro';
 import IllustrationAppel from './IllustrationAppel.astro';
-import { chemin } from '../../i18n/langues.js';
+import { chemin, pageModule } from '../../i18n/langues.js';
 
 interface Props {
   t: (cle: string) => any;
@@ -23,7 +23,7 @@ const { t, langue } = Astro.props;
       <div class="texte">
         <Titre id="appel-titre" surtitre={t('appel.surtitre')}>{t('appel.titre')}</Titre>
         <Accroche>{t('appel.texte')}</Accroche>
-        <BoutonPrincipal href={chemin(langue, 'enClasse')} variante="lien">{t('appel.lien')}</BoutonPrincipal>
+        <BoutonPrincipal href={chemin(langue, pageModule('presences'))} variante="lien">{t('appel.lien')}</BoutonPrincipal>
       </div>
     </Apparition>
     <Apparition delai={0.15}>

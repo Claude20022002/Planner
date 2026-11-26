@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { Op } from "sequelize";
 import {
@@ -27,7 +28,6 @@ import { identite } from "../etablissement/identite.js";
  * d'épreuves (les enseignants ne surveillent pas). Fenêtre : de 4 semaines en arrière à 5 mois en avant.
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 const JOURS_AVANT = 28;
 const JOURS_APRES = 150;
 const FENETRE_ETUDIANT = 60; // monEmploiDuTemps refuse plus de 62 jours d'un coup
@@ -43,23 +43,23 @@ const decaler = (iso, jours) => {
     return d.toISOString().slice(0, 10);
 };
 
-/** Décalage du fuseau de l'école à un instant donné, en millisecondes (heure légale du Maroc, Ramadan compris). */
-const decalage = (instant) => {
+/** Décalage du fuseau de l'école à un instant donné, en millisecondes (heure légale du pays, changements compris). */
+const decalage = (instant, fuseau = FUSEAU) => {
     const parts = Object.fromEntries(
-        new Intl.DateTimeFormat("en-US", { timeZone: FUSEAU, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" })
+        new Intl.DateTimeFormat("en-US", { timeZone: fuseau, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" })
             .formatToParts(instant)
             .map((p) => [p.type, p.value])
     );
     return Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute, +parts.second) - instant.getTime();
 };
 
-/** Date et heure locales de l'école → instant UTC. */
-export const instantLocal = (date, heure) => {
+/** Date et heure locales de l'école → instant UTC (le fuseau se donne pour les tests seulement). */
+export const instantLocal = (date, heure, fuseau = FUSEAU) => {
     const [a, m, j] = String(date).slice(0, 10).split("-").map(Number);
     const [h, mi] = String(heure).split(":").map(Number);
     const naif = Date.UTC(a, m - 1, j, h, mi);
-    const premier = naif - decalage(new Date(naif));
-    return new Date(naif - decalage(new Date(premier)));
+    const premier = naif - decalage(new Date(naif), fuseau);
+    return new Date(naif - decalage(new Date(premier), fuseau));
 };
 
 const utc = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");

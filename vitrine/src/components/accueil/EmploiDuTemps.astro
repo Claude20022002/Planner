@@ -8,7 +8,7 @@ import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Apparition from '../socle/Apparition.astro';
 import CadreAppareil from '../socle/CadreAppareil.astro';
 import IllustrationSemaine from './IllustrationSemaine.astro';
-import { chemin } from '../../i18n/langues.js';
+import { chemin, pageModule } from '../../i18n/langues.js';
 
 interface Props {
   t: (cle: string) => any;
@@ -32,7 +32,7 @@ const { t, langue } = Astro.props;
   <Apparition>
     <div class="pied">
       <Accroche forte>{t('emploi.refus')}</Accroche>
-      <BoutonPrincipal href={chemin(langue, 'emploiDuTemps')} variante="lien">{t('emploi.lien')}</BoutonPrincipal>
+      <BoutonPrincipal href={chemin(langue, pageModule('emploiDuTemps'))} variante="lien">{t('emploi.lien')}</BoutonPrincipal>
     </div>
   </Apparition>
 </Section>

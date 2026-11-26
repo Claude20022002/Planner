@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { Op } from "sequelize";
 import sequelize from "../../config/db.js";
@@ -5,6 +6,7 @@ import { Affectation, Appartenir, Creneau, Cours, Groupe, QuizPartie, QuizResult
 import { groupesANotifier } from "../planning/seances.js";
 import { descendants } from "../planning/groupes.js";
 import { creerNotification, creerNotificationsMultiples } from "../../utils/notificationHelper.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Parties ClassQuiz (phase Q). Le fork de ClassQuiz signale chaque partie lancée par un
@@ -18,7 +20,6 @@ import { creerNotification, creerNotificationsMultiples } from "../../utils/noti
  * (classement par moyenne) et les réponses libres forment des nuages de mots.
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 const TOLERANCE_SIGNATURE_S = 300;
 // Une partie se rejoint dans les premières minutes ; au-delà, elle n'est plus proposée
 const DUREE_PROPOSEE_MIN = 120;
@@ -287,7 +288,7 @@ export const enregistrerFinPartie = async (evenement) => {
         await creerNotification({
             id_user: j.id_user,
             titre: "Résultats du quiz",
-            message: `${partie.titre} : ${j.score} pts, ${j.rang}${j.rang === 1 ? "er" : "e"} sur ${classes.length}.`,
+            message: `${partie.titre} : ${accorder(j.score, "point", "points")}, ${j.rang}${j.rang === 1 ? "er" : "e"} sur ${classes.length}.`,
             type_notification: "info",
             lien: `/jeux?resultats=${partie.id_quiz_partie}`,
         }).catch(() => {});

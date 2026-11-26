@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "playwright test --config=playwright.parcours.config.cjs",
-    "test:unit": "node --import ./scripts/import-json-tests.mjs --test \"src/**/*.test.js\"",
+    "test:unit": "node --import ./scripts/import-json-tests.mjs --import ./scripts/horloge-tests.mjs --test \"src/**/*.test.js\"",
     "test:parcours": "playwright test --config=playwright.parcours.config.cjs",
     "test:report": "playwright show-report playwright-report-parcours",
     "demo": "node scripts/demo-locale.mjs"

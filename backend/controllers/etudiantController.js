@@ -4,6 +4,7 @@ import { getPaginationParams, createPaginationResponse } from "../utils/paginati
 import { hashPassword, verifierMotDePasse } from "../utils/passwordHelper.js";
 import { pick } from "../utils/validationHelper.js";
 import { creerLienInvitation, empreinteInutilisable, envoyerInvitation } from "../services/comptes.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * Contrôleur pour les étudiants
@@ -393,7 +394,7 @@ export const importEtudiants = asyncHandler(async (req, res) => {
     }
 
     res.status(201).json({
-        message: `${results.success.length} étudiant(s) créé(s) avec succès`,
+        message: `${accorder(results.success.length, "étudiant créé", "étudiants créés")} avec succès`,
         success: results.success,
         errors: results.errors,
         total: etudiants.length,
@@ -436,7 +437,7 @@ export const syncGroupesEtudiants = asyncHandler(async (req, res) => {
     }
 
     res.json({
-        message: `Synchronisation terminée : ${created} lien(s) créé(s), ${skipped} ignoré(s)`,
+        message: `Synchronisation terminée : ${accorder(created, "lien créé", "liens créés")}, ${accorder(skipped, "ignoré", "ignorés")}`,
         created,
         skipped,
     });

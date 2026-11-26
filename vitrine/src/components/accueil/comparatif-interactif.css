@@ -1,0 +1,30 @@
+/* Comparatif « Pourquoi Planner » : onglets, tableau à deux colonnes, cartes d'un critère. Jetons de la charte, rien de propre à l'îlot. */
+.comparatif-bloc { inline-size: 100%; }
+.comparatif-bloc [hidden] { display: none !important; }
+.comparatif-interactif { display: grid; gap: var(--espace-3); inline-size: 100%; text-align: start; }
+.comparatif-interactif .onglets { display: flex; flex-wrap: wrap; gap: var(--espace-1); }
+.comparatif-interactif [role='tab'] { min-block-size: 2.75rem; padding: 0.5rem 1.1rem; border: 1px solid var(--gris-trait);
+  border-radius: var(--rayon-pilule); background: var(--blanc); color: var(--encre); font: inherit; font-size: var(--texte-petit);
+  font-weight: 500; cursor: pointer; }
+.comparatif-interactif [role='tab'][aria-selected='true'] { border-color: var(--bleu); background: var(--bleu); color: var(--blanc); }
+.comparatif-interactif [role='tab']:hover:not([aria-selected='true']) { background: var(--gris-fond); }
+.comparatif-interactif h3 { margin: 0; font-size: 1.125rem; color: var(--bleu-nuit); }
+.comparatif-interactif table { inline-size: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+.comparatif-interactif th, .comparatif-interactif td { padding: 0.875rem 0.75rem; border-block-end: 1px solid var(--gris-trait);
+  text-align: start; vertical-align: top; }
+.comparatif-interactif thead th { font-size: var(--texte-petit); color: var(--bleu-nuit); }
+.comparatif-interactif tbody th { font-weight: 650; }
+.comparatif-interactif td { font-weight: 600; }
+.comparatif-interactif .planner { background: color-mix(in srgb, var(--bleu-clair) 28%, var(--blanc)); }
+.comparatif-interactif .critere-choix { display: grid; gap: 0.25rem; max-inline-size: 28rem; margin-block-end: var(--espace-2);
+  font-size: var(--texte-petit); font-weight: 600; }
+.comparatif-interactif select { min-block-size: 2.75rem; padding: 0.5rem 0.75rem; border: 1px solid var(--gris-texte);
+  border-radius: var(--rayon-petit); font: inherit; background: var(--blanc); color: var(--encre); }
+.comparatif-interactif .cases { display: grid; gap: var(--espace-1); margin: 0; }
+.comparatif-interactif .case { padding: var(--espace-2); border-radius: var(--rayon-petit); background: var(--blanc); border: 1px solid var(--gris-trait); }
+.comparatif-interactif .case.planner { border-color: var(--bleu-clair); }
+.comparatif-interactif dt { font-size: var(--texte-petit); font-weight: 650; color: var(--bleu-nuit); }
+.comparatif-interactif dd { margin: 0.25rem 0 0; }
+.comparatif-interactif .mot { display: block; font-weight: 600; }
+.comparatif-interactif .texte { display: block; margin-block-start: 0.25rem; color: var(--gris-texte); }
+@media (min-width: 64rem) { .comparatif-interactif .cases { grid-template-columns: repeat(5, 1fr); } }

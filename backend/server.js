@@ -1,4 +1,6 @@
 import dotenv from "dotenv";
+// En premier : sans fuseau de l'école, le serveur de production refuse de démarrer (M-10)
+import { FUSEAU_ECOLE } from "./config/fuseau.js";
 import app from "./app.js";
 import { testConnection } from "./config/db.js";
 import { Users } from "./models/index.js";
@@ -13,6 +15,7 @@ import { demarrerRappelsAppel } from "./services/presences/rappelAppel.js";
 import { passage } from "./services/taches/periodiques.js";
 import { passerDesactivations } from "./services/desactivation/programmation.js";
 import { resumerEnvois } from "./services/envois/resumeEnvois.js";
+import { accorder } from "../shared/accords.js";
 
 dotenv.config();
 
@@ -48,33 +51,33 @@ const seedIfRequested = async () => {
         // Le schéma ne change que par migrations versionnées (backend/migrations/) :
         // aucune table n'est créée, modifiée ou supprimée implicitement au démarrage.
         const applied = await runMigrations();
-        console.log(applied.length ? `--> ${applied.length} migration(s) appliquée(s)` : "--> Schéma à jour");
+        console.log(applied.length ? `--> ${accorder(applied.length, "migration appliquée", "migrations appliquées")}` : "--> Schéma à jour");
 
         await seedIfRequested();
         // Ce qui part chez des tiers, et les réglages incomplets (QUA-10, EP-13)
         resumerEnvois();
 
         app.listen(PORT, () => {
-            console.log(`--> Serveur lancé sur http://localhost:${PORT}`);
+            console.log(`--> Serveur lancé sur http://localhost:${PORT} (fuseau de l'école : ${FUSEAU_ECOLE})`);
         });
 
         // Chaque tâche périodique passe par un verrou MySQL : avec deux instances, une seule la fait (lot A-7)
 
         // Séances planifiées ou confirmées, une fois passées → réalisées (suivi du réalisé, phase P7) : au démarrage puis chaque heure
-        const actualiserRealise = () => passage("suivi-realise", marquerRealisees, (n) => n && `${n} séance(s) marquée(s) réalisée(s)`);
+        const actualiserRealise = () => passage("suivi-realise", marquerRealisees, (n) => n && accorder(n, "séance marquée réalisée", "séances marquées réalisées"));
         actualiserRealise();
         setInterval(actualiserRealise, 60 * 60 * 1000).unref();
 
         // Désactivations programmées (lot ME-17) : préavis 5 jours avant, puis désactivation le jour venu ; chaque heure
         const desactivations = () =>
-            passage("desactivations", passerDesactivations, ({ preavis, desactives }) => (preavis || desactives) && `${preavis} préavis envoyé(s), ${desactives} compte(s) désactivé(s)`);
+            passage("desactivations", passerDesactivations, ({ preavis, desactives }) => (preavis || desactives) && `${accorder(preavis, "préavis envoyé", "préavis envoyés")}, ${accorder(desactives, "compte désactivé", "comptes désactivés")}`);
         desactivations();
         setInterval(desactivations, 60 * 60 * 1000).unref();
 
         // Journal de sécurité (au-delà de la durée de conservation) et compteurs des limiteurs de
         // connexion (fenêtres terminées) : au démarrage puis chaque jour
         const purgerSecurite = () => {
-            passage("purge-journal", purgerJournal, (n) => n && `${n} événement(s) ancien(s) supprimé(s) du journal de sécurité`);
+            passage("purge-journal", purgerJournal, (n) => n && `${accorder(n, "événement ancien supprimé", "événements anciens supprimés")} du journal de sécurité`);
             passage("purge-limiteurs", purgerCompteursDebit);
             // Quiz par IA : générations interrompues, brouillons et supports de plus de 30 jours
             passage("purge-quiz-ia", purgerGenerations);

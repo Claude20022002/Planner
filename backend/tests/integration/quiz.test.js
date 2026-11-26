@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { resetDatabase, closeDatabase, createUser, createPlanningFixture, loginAs, anonymous } from "./helpers/testApp.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
@@ -11,7 +12,7 @@ import { Appartenir, Groupe, Notification, QuizPartie, QuizResultat } from "../.
 
 const SECRET = crypto.randomBytes(24).toString("hex");
 const QUIZ = "https://quiz.hestim.test";
-const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Casablanca" });
+const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: FUSEAU_ECOLE });
 
 let admin;
 let enseignant;
@@ -198,7 +199,7 @@ describe("Fin de partie : scores, équipes et nuages de mots", () => {
         // Chaque étudiant reconnu est prévenu de son score
         const notes = await Notification.findAll({ where: { titre: "Résultats du quiz" } });
         expect(notes.map((n) => n.id_user).sort()).toEqual([etudiant.id_user, yanis.id_user, sara.id_user].sort());
-        expect(notes.find((n) => n.id_user === etudiant.id_user).message).toBe("Spark : 2400 pts, 2e sur 6.");
+        expect(notes.find((n) => n.id_user === etudiant.id_user).message).toBe("Spark : 2400 points, 2e sur 6.");
         const partie = await QuizPartie.findOne({ where: { game_id: gameId } });
         expect(notes.every((n) => n.lien === `/jeux?resultats=${partie.id_quiz_partie}`)).toBe(true);
 

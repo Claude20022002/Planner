@@ -88,6 +88,13 @@ services:
       QUIZ_API_INTERNE: http://quiz-api
       # Espace de cours : la Bibliothèque garde les fichiers des classes (réseau interne)
       STUDYLIB_API_URL: http://studylib:8080/api
+      # Bibliothèque reconstruite (BIB-05) : fichiers dans MinIO, seau unique, un préfixe par école.
+      # Clé propre à Planner, limitée au seau (pas la clé root) ; sans elle, la Bibliothèque répond 503
+      S3_ENDPOINT: http://minio:9000
+      S3_ADRESSE_PUBLIQUE: https://${FICHIERS_ADDRESS}
+      S3_SEAU: ${S3_SEAU:-planner}
+      S3_CLE_ACCES: ${S3_CLE_ACCES:-}
+      S3_CLE_SECRETE: ${S3_CLE_SECRETE:-}
     ports:
       - "127.0.0.1:${BACKEND_PORT:-5000}:5000"   # le public passe par le frontend (nginx /api)
     depends_on:

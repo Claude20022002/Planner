@@ -7,6 +7,7 @@
  * l'école, sans attendre le serveur ; la copie se met à jour en arrière-plan.
  */
 import { request } from './api';
+import { configurerHorloge } from '../../../shared/dates.js';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 const CLE = 'planner.ecole';
@@ -57,6 +58,8 @@ export const chargerIdentite = async () => {
   const copie = lireCopie();
   const relecture = lireServeur().then((lue) => {
     if (lue) memoriserIdentite(lue);
+    // La copie a servi au premier affichage : l'horloge fraîche du serveur la remplace aussitôt (M-10)
+    if (lue) configurerHorloge(lue.horloge);
     return lue;
   });
   courante = copie ?? (await relecture) ?? IDENTITE_PLANNER;

@@ -6,8 +6,9 @@ import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import entrees from '../src/donnees/fonctionnalites.json' with { type: 'json' };
-import { fonctionnalites, regrouper } from '../src/components/catalogue/registre.js';
-import { FONCTIONS, PAGES, LANGUES } from '../src/i18n/langues.js';
+import { fonctionnalites, regrouper, CLES_REGISTRE } from '../src/components/catalogue/registre.js';
+import { modulesDisponibles } from '../src/donnees/modules.js';
+import { LANGUES } from '../src/i18n/langues.js';
 import applications from '../../frontend/src/i18n/applications.fr.js';
 
 const racine = fileURLToPath(new URL('../../', import.meta.url));
@@ -15,13 +16,14 @@ const revision = 'a8349801f351e884cc9e2877a649b51825f7ff50';
 const lire = (chemin) => readFileSync(resolve(racine, chemin), 'utf8');
 const textes = (langue) => JSON.parse(lire(`vitrine/src/i18n/${langue}/fonctionnalites.json`));
 
-test('chaque fonctionnalité possède une clé unique, ses traductions, sa page et ses preuves', () => {
+test('chaque fonctionnalité possède une clé unique, ses traductions, son module et ses preuves', () => {
   assert.equal(new Set(entrees.map((f) => f.id)).size, entrees.length);
   for (const f of entrees) {
     assert.match(f.id, /^[a-z][a-z0-9-]*$/);
     assert.ok(applications[f.application]?.titre, f.application);
     assert.ok(['existe', 'bientot'].includes(f.etat), f.id);
-    assert.ok(existsSync(resolve(racine, 'vitrine/src/pages/[lang]', PAGES[f.page] + '.astro')), f.page);
+    assert.ok(CLES_REGISTRE.includes(f.module), `${f.id} : module ${f.module}`);
+    assert.equal(f.page, undefined, f.id);
     for (const langue of ['fr', 'en']) {
       for (const champ of [f.titre, f.description, ...(f.alternative ? [f.alternative] : [])]) {
         assert.ok(champ[langue]?.trim(), f.id + ' ' + langue);
@@ -42,8 +44,8 @@ test('les preuves StudyLib existent dans la révision épinglée', { skip: !proc
   }
 });
 
-test('le menu couvre toutes les pages de VIT-07, chaque entrée une fois et le repli arabe', () => {
-  for (const page of FONCTIONS) assert.ok(entrees.some((f) => f.page === page), page);
+test('chaque module disponible a des entrées, chaque entrée est rangée une fois, et le repli arabe', () => {
+  for (const module of modulesDisponibles()) assert.ok(entrees.some((f) => f.module === module.cle), module.cle);
   for (const langue of LANGUES) {
     const liste = fonctionnalites(langue);
     const groupes = regrouper(liste, 'categorie');

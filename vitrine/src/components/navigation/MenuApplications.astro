@@ -1,0 +1,52 @@
+---
+// Menu « Applications » : les 17 modules en quatre catégories, tuiles grisées « Bientôt » sans lien, puis la ligne « Inclus dans
+// tout abonnement » (socle) et « Toutes les applications » (plan VIT-20, § 4.2).
+import MenuDeroulant from './MenuDeroulant.astro';
+import TuileModule from '../applications/TuileModule.astro';
+import { traductions } from '../../i18n/index.js';
+import { chemin } from '../../i18n/langues.js';
+import { CATEGORIES, modulesDeCategorie } from '../../donnees/modules.js';
+
+interface Props {
+  langue: string;
+  actif: boolean;
+}
+
+const { langue, actif } = Astro.props;
+const t = traductions(langue, 'commun');
+const socle = [
+  { href: chemin(langue, 'socle', 'etablissement'), texte: t('socle.etablissement') },
+  { href: chemin(langue, 'socle', 'personnes'), texte: t('socle.personnes') },
+  { href: chemin(langue, 'socle', 'web-mobile'), texte: t('socle.webMobile') },
+  { href: chemin(langue, 'securite'), texte: t('socle.securite') },
+];
+---
+<MenuDeroulant libelle={t('navigation.applications')} actif={actif} large>
+  <div class="categories">
+    {CATEGORIES.map((categorie) => (
+      <div>
+        <h2>{t(`categories.${categorie}`)}</h2>
+        <ul>
+          {modulesDeCategorie(categorie).map((module) => <li><TuileModule module={module} langue={langue} variante="menu" /></li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="bas">
+    <p class="titre"><a href={chemin(langue, 'socle')}>{t('socle.titre')}</a></p>
+    <ul class="socle">{socle.map((lien) => <li><a href={lien.href}>{lien.texte}</a></li>)}</ul>
+    <a class="toutes" href={chemin(langue, 'applications')}>{t('navigation.toutesLesApplications')} →</a>
+  </div>
+</MenuDeroulant>
+
+<style>
+  .categories { display: grid; gap: var(--espace-2); }
+  .bas { display: grid; gap: var(--espace-1); padding-block-start: var(--espace-2); border-block-start: 1px solid var(--gris-trait); }
+  .bas :global(p.titre) { margin: 0; }
+  .toutes { font-weight: 600; color: var(--bleu-profond); }
+  @media (min-width: 64rem) {
+    .categories { grid-template-columns: repeat(4, minmax(11rem, 1fr)); gap: var(--espace-4); }
+    .bas { grid-template-columns: auto 1fr auto; align-items: center; gap: var(--espace-3); }
+    .bas ul.socle { display: flex; flex-wrap: wrap; gap: var(--espace-3); margin: 0; }
+  }
+</style>

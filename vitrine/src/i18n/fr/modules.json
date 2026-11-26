@@ -1,0 +1,21 @@
+{
+  "noms": {
+    "emploiDuTemps": "Emploi du temps",
+    "presences": "Présences",
+    "espaceDeCours": "Espace de cours",
+    "quizEtJeux": "Quiz et jeux",
+    "annoncesEtMessages": "Annonces et messages",
+    "bibliotheque": "Bibliothèque",
+    "vacatairesEtHeures": "Vacataires et heures",
+    "evaluations": "Évaluations, crédits et jurys",
+    "inscriptions": "Inscriptions",
+    "documentsVerifiables": "Documents vérifiables",
+    "stages": "Stages",
+    "fraisEtCaisse": "Frais et caisse",
+    "formationEtFinanceurs": "Formation et financeurs",
+    "vieScolaire": "Vie scolaire et familles",
+    "echangesAvecEtat": "Échanges avec l'État",
+    "paiementsEnLigne": "Paiements en ligne",
+    "pilotage": "Pilotage"
+  }
+}
