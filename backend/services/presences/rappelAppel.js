@@ -3,6 +3,7 @@ import { Affectation, AppelSeance, Cours, Creneau, Enseignement, EnseignementEns
 import { minutes } from "../planning/affectationRules.js";
 import { horairesSurPlage } from "../planning/ramadan.js";
 import { passage } from "../taches/periodiques.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Rappel de l'appel : quelques minutes avant la fin d'une séance (5 par défaut), l'enseignant qui
@@ -111,7 +112,7 @@ export const demarrerRappelsAppel = () => {
     const verifier = async () => {
         if (enCours) return;
         enCours = true;
-        await passage("rappel-appel", () => rappelerAppels(), (n) => n && `${n} rappel(s) envoyé(s)`);
+        await passage("rappel-appel", () => rappelerAppels(), (n) => n && accorder(n, "rappel envoyé", "rappels envoyés"));
         enCours = false;
     };
     const minuterie = setInterval(verifier, 60 * 1000);

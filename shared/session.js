@@ -29,15 +29,8 @@ const combine = (isoDate, heure) => {
   return new Date(y, mo - 1, d, h, mi || 0);
 };
 
-/** Bâtiment lisible à partir du champ batiment ou du préfixe du code salle (G-, ST-) */
-export const buildingOf = (salle) => {
-  if (!salle) return '';
-  if (salle.batiment) return salle.batiment;
-  const code = String(salle.nom_salle || '');
-  if (code.startsWith('ST-')) return 'Stendhal';
-  if (code.startsWith('G-')) return 'Gandhi';
-  return '';
-};
+/** Bâtiment saisi sur la salle. Sans ce champ, rien : le code de salle ne nomme pas un lieu. */
+export const buildingOf = (salle) => (salle && salle.batiment ? salle.batiment : '');
 
 const personName = (user) => (user ? [user.prenom, user.nom].filter(Boolean).join(' ') : '');
 

@@ -22,9 +22,9 @@ import { routesMotDePasse } from './routes/motDePasse';
 import { routesJeux } from './routes/jeux';
 
 // ── Composants de layout critique (jamais lazy — trop fréquents) ──────────
-import PageSkeleton    from './components/common/PageSkeleton';
-import AuthSkeleton    from './components/common/AuthSkeleton';
-import ErrorBoundary   from './components/common/ErrorBoundary';
+import PageSkeleton from './components/common/PageSkeleton';
+import AuthSkeleton from './components/common/AuthSkeleton';
+import ErrorBoundary from './components/common/ErrorBoundary';
 import { SURVEILLANCES_ACTIVES } from '../../shared/fonctions.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,12 +33,12 @@ import { SURVEILLANCES_ACTIVES } from '../../shared/fonctions.js';
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ── Auth (chunk léger — affiché non authentifié) ──────────────────────────
-const Connexion      = lazy(() => import('./pages/Connexion'));
+const Connexion = lazy(() => import('./pages/Connexion'));
 // Mot de passe oublié, réinitialisation, changement : routes/motDePasse.jsx
-const Accueil        = lazy(() => import('./pages/Accueil'));
-const Annonces       = lazy(() => import('./pages/Annonces'));
-const Appel          = lazy(() => import('./pages/Appel'));
-const Presence       = lazy(() => import('./pages/Presence'));
+const Accueil = lazy(() => import('./pages/Accueil'));
+const Annonces = lazy(() => import('./pages/Annonces'));
+const Appel = lazy(() => import('./pages/Appel'));
+const Presence = lazy(() => import('./pages/Presence'));
 
 // ── Dashboards (chunk par rôle) ───────────────────────────────────────────
 
@@ -59,8 +59,8 @@ const GenerationAuto = lazy(() => import('./pages/gestion/GenerationAutomatique'
 const Campus = lazy(() => import('./pages/gestion/Campus'));
 const Calendrier = lazy(() => import('./pages/gestion/Calendrier'));
 const ParametresPlanning = lazy(() => import('./pages/gestion/ParametresPlanning'));
-const IdentiteEcole      = lazy(() => import('./pages/gestion/IdentiteEcole'));
-const Enseignements      = lazy(() => import('./pages/gestion/Enseignements'));
+const IdentiteEcole = lazy(() => import('./pages/gestion/IdentiteEcole'));
+const Enseignements = lazy(() => import('./pages/gestion/Enseignements'));
 
 // ── Emplois du temps (chunk "calendar" — FullCalendar isolé) ─────────────
 const EmploiDuTempsAdmin = lazy(() => import('./pages/emploi-du-temps/EmploiDuTempsAdmin'));
@@ -90,14 +90,14 @@ const Preparation = lazy(() => import('./pages/gestion/Preparation'));
 const SignalementsPresence = lazy(() => import('./pages/gestion/SignalementsPresence'));
 const JournalSecurite = lazy(() => import('./pages/gestion/JournalSecurite'));
 // Studio quiz : banque, éditeur et résultats (enseignant) ; rejoindre et passer un quiz (étudiant)
-const MesQuiz        = lazy(() => import('./pages/studio/MesQuiz'));
-const EditeurQuiz    = lazy(() => import('./pages/studio/EditeurQuiz'));
-const ResultatsQuiz  = lazy(() => import('./pages/studio/Resultats'));
-const QuizEtudiant   = lazy(() => import('./pages/studio/Quiz'));
-const Epreuve        = lazy(() => import('./pages/studio/Epreuve'));
+const MesQuiz = lazy(() => import('./pages/studio/MesQuiz'));
+const EditeurQuiz = lazy(() => import('./pages/studio/EditeurQuiz'));
+const ResultatsQuiz = lazy(() => import('./pages/studio/Resultats'));
+const QuizEtudiant = lazy(() => import('./pages/studio/Quiz'));
+const Epreuve = lazy(() => import('./pages/studio/Epreuve'));
 const DirectProjection = lazy(() => import('./pages/studio/DirectProjection'));
-const DirectJoueur   = lazy(() => import('./pages/studio/DirectJoueur'));
-const NotFound       = lazy(() => import('./pages/NotFound'));
+const DirectJoueur = lazy(() => import('./pages/studio/DirectJoueur'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HELPERS — Suspense boundaries avec fallback adapté

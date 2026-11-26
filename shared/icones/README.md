@@ -4,7 +4,7 @@ Bibliothèque unique des **logos des applications** et des **icônes vivantes** 
 
 ## Logos des applications
 
-`modules/<id>.svg` (dessin détaillé, 40 à 96 px) et `modules/<id>-petit.svg` (dessin simplifié, 24 à 32 px), pour les sept applications de la grille :
+`modules/<id>.svg` (dessin détaillé, 40 à 96 px) et `modules/<id>-petit.svg` (dessin simplifié, 24 à 32 px), pour les sept applications de la grille et les treize nouveaux logos du catalogue :
 
 | id | Application | Objet |
 |---|---|---|
@@ -15,12 +15,29 @@ Bibliothèque unique des **logos des applications** et des **icônes vivantes** 
 | `annonces` | Annonces | mégaphone et ondes |
 | `activites` | Quiz et jeux | manette, bulle de question |
 | `bibliotheque` | Bibliothèque | livres sur une étagère |
+| `presences` | Présences | feuille d’appel cochée |
+| `cours` | Espace de cours | cahier ouvert à onglet |
+| `vacataires` | Vacataires et heures | feuille d’heures et horloge |
+| `evaluations` | Évaluations, crédits et jurys | copie avec sceau |
+| `inscriptions` | Inscriptions | dossier et signe plus |
+| `documents` | Documents vérifiables | attestation à coin plié |
+| `stages` | Stages | mallette à poignée |
+| `frais` | Frais et caisse | tiroir de caisse |
+| `formation` | Formation et financeurs | chevalet et jalons |
+| `familles` | Vie scolaire et familles | maison et deux silhouettes |
+| `etat` | Échanges avec l’État | fronton sur colonnes |
+| `paiements` | Paiements en ligne | carte et flèche |
+| `pilotage` | Pilotage | cadran à aiguille |
 
 - **Couleurs** : seulement la charte. La tuile va de `app-<id>` à `app-<id>-fonce` (famille `applications` de `shared/charte/jetons.json`). Les détails sont en blanc, `bleu-clair`, `bleu-nuit` et `jeu`.
 - **Clair et sombre** : la tuile porte sa couleur et un léger contour clair. Le même fichier sert sur les deux fonds.
 - **Poser un logo** : en `<img>`, avec le fichier qui convient à la taille (`fichierLogo(id, taille)` de `index.js`). Le texte de remplacement est vide si le nom de l'application est écrit à côté.
   - L'`<img>` évite les identifiants en double et se met en cache.
   - Les identifiants des dégradés sont tout de même préfixés (`vit-<id>-…`) et uniques, si un logo doit être inséré dans la page.
+
+## Illustrations du catalogue
+
+Les dix-sept identifiants de `MODULES_ILLUSTRES` ont une illustration carrée dans `images/<id>.webp` (512 × 512 px, cible de 15 Ko, plafond de 20 Ko). Le catalogue utilise les SVG. Les pages détaillées peuvent charger leur illustration dans le budget de la page.
 
 ## Icônes vivantes
 

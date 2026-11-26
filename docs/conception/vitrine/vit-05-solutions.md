@@ -23,7 +23,7 @@ Une page « Solutions » qui présente Planner par type d'établissement, et son
 - Site Astro `vitrine/` (#195) : composants du socle (`Section`, `Titre`, `Accroche`, `Apparition`, `Gabarit`…) et des pages de fonctions (`EnTetePage`, `GrilleCartes`, `FinDePage`), textes dans `src/i18n/{fr,en,ar}/<page>.json`.
 - L'en-tête et le pied de page lisent la liste `NAVIGATION` de `src/i18n/langues.js` ; l'adresse d'une page vient de `PAGES` dans le même fichier.
 - Ce qui tourne aujourd'hui sert surtout le **supérieur** : le calcul d'un collège ou d'un lycée (MOT-06, MOT-07), l'affectation aux groupes de langue (VSC-07) et le vocabulaire « classe, matière » (UIX-02) sont à faire. La page le dit sans détour : pour le collège et le lycée, le calcul de l'emploi du temps est « Bientôt ».
-- Le LMD n'existe pas encore : il n'apparaît que dans « Bientôt » (VSC-10).
+- Le LMD n'existe pas encore : il n'apparaît que dans « Bientôt » (VSC-08, crédits et jurys du supérieur).
 
 ## 3. Questions et réponses (chef, 18 nov.)
 

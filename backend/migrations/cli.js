@@ -1,5 +1,6 @@
 import sequelize from "../config/db.js";
 import { migrator } from "./migrator.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * npm run migrate            -> applique les migrations en attente
@@ -11,7 +12,7 @@ const command = process.argv[2] || "up";
 try {
     if (command === "up") {
         const applied = await migrator.up();
-        console.log(applied.length ? `${applied.length} migration(s) appliquée(s)` : "Base déjà à jour");
+        console.log(applied.length ? accorder(applied.length, "migration appliquée", "migrations appliquées") : "Base déjà à jour");
     } else if (command === "pending" || command === "executed") {
         const list = await migrator[command]();
         console.log(list.map((m) => m.name).join("\n") || "(aucune)");

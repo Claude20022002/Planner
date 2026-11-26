@@ -32,16 +32,16 @@
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | QJE-01 | L'entrée « Quiz » du sélecteur d'espaces ouvre Planner, plus ClassQuiz (`shared/espaces.js`) : enseignant sur `/jeux`, étudiant sur `/quiz` | SQ-5 | libre | S | — | en cours (`feat/qje-01-entree-studio`) |
-| QJE-02 | Import des formats GIFT et Moodle XML dans le Studio | SQ-3 | libre | M | — | à faire |
-| QJE-03 | Joueur natif dans l'application, sans passer par le site | SQ-1 | libre | M | — | à faire |
+| QJE-02 | Import des formats GIFT et Moodle XML dans le Studio | SQ-3 | 3 | M | — | à faire |
+| QJE-03 | Joueur natif dans l'application, sans passer par le site | SQ-1 | 2 | M | — | à faire |
 | QJE-04 | Fusion de `jeux-pedagogique` et ses quatre corrections ; entrée des jeux par scan ou depuis le module (contrat [jeux-pedagogiques](../../conception/jeux/jeux-pedagogiques.md)) | JC-0 | libre | M | — | en cours : corrections faites, tests locaux verts, PR à ouvrir |
 | QJE-05 | Service des jeux à part, avec des gabarits ; jeux maison ; bibliothèque des jeux plus belle | JC-1, JC-2, JC-5 | libre | L + M + M | QJE-04 | à faire |
-| QJE-06 | Sortie complète de ClassQuiz : plus aucun conteneur ClassQuiz pour une école qui ne l'a pas | — | libre | M | QJE-01 | à faire |
-| QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | libre | M | — | à faire |
+| QJE-06 | Sortie complète de ClassQuiz : plus aucun conteneur ClassQuiz pour une école qui ne l'a pas | — | 2 | M | QJE-01 | à faire |
+| QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | 3 | M | — | à faire |
 | QJE-08 | Créateurs de jeux et leur rémunération | JC-3, JC-4, JC-6, RC-1 à RC-4 | — | — | vente | gelé |
 | QJE-09 | Défis Linux dans un quiz | J-1 | — | M | QJE-04 | reporté |
-| QJE-10 | Évaluation en ligne notée : quiz du Studio passé comme évaluation (minuté, ordre aléatoire, une tentative), note versée au carnet de VSC-04 | — | 5 | M | VSC-04 | à faire |
-| QJE-11 | Correction de QCM papier par photo : feuille-réponse imprimable, photo prise par le téléphone de l'enseignant, note proposée puis validée | — | 5 | L | QJE-10 | à faire |
+| QJE-10 | Évaluation en ligne notée : quiz du Studio passé comme évaluation (minuté, ordre aléatoire, une tentative), note versée au carnet de VSC-04 | — | à placer | M | VSC-04 | à faire |
+| QJE-11 | Correction de QCM papier par photo : feuille-réponse imprimable, photo prise par le téléphone de l'enseignant, note proposée puis validée | — | à placer | L | QJE-10 | à faire |
 | QJE-12 | Assistant IA de l'enseignant : séquence de cours, grille d'évaluation, commentaires de copie à relire ; aucune donnée d'élève envoyée | — | libre | M | QJE-07 | à faire |
 | QJE-13 | Tuteur IA pour l'élève, sur le contenu de ses cours | — | — | L | QJE-07, avis CNDP | conditionnel (règle « aucune donnée d'élève ») |
 | QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |

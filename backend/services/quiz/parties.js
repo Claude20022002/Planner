@@ -6,6 +6,7 @@ import { Affectation, Appartenir, Creneau, Cours, Groupe, QuizPartie, QuizResult
 import { groupesANotifier } from "../planning/seances.js";
 import { descendants } from "../planning/groupes.js";
 import { creerNotification, creerNotificationsMultiples } from "../../utils/notificationHelper.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Parties ClassQuiz (phase Q). Le fork de ClassQuiz signale chaque partie lancée par un
@@ -287,7 +288,7 @@ export const enregistrerFinPartie = async (evenement) => {
         await creerNotification({
             id_user: j.id_user,
             titre: "Résultats du quiz",
-            message: `${partie.titre} : ${j.score} pts, ${j.rang}${j.rang === 1 ? "er" : "e"} sur ${classes.length}.`,
+            message: `${partie.titre} : ${accorder(j.score, "point", "points")}, ${j.rang}${j.rang === 1 ? "er" : "e"} sur ${classes.length}.`,
             type_notification: "info",
             lien: `/jeux?resultats=${partie.id_quiz_partie}`,
         }).catch(() => {});
