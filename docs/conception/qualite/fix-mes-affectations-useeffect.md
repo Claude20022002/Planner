@@ -5,7 +5,7 @@
 | Branche | `fix/mes-affectations-useeffect` |
 | Mission | [Fiche du correctif](../../plan/missions/fix-mes-affectations-useeffect.md) |
 | Taille | S |
-| Validation | Coordinateur, en attente sur cette version |
+| Validation | Validé par le coordinateur le 26 novembre à 09 h 53 sur `8df4e90d` |
 
 ## Cause et comportement
 
