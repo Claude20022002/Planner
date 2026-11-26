@@ -14,5 +14,15 @@ export const IMAGE_DU_MODULE = Object.freeze({
   annoncesEtMessages: 'annonces',
 });
 
+/** Page sans module propre → image reprise d'un module (plan § 4.3, retenu par le coordinateur le 26 nov.) ; les autres pages n'en ont pas */
+export const IMAGE_DE_PAGE = Object.freeze({
+  direction: 'presences',
+  scolarite: 'planning',
+  enseignants: 'activites',
+  etudiants: 'cours',
+  solutions: 'planning',
+  'bibliotheque-des-jeux': 'activites',
+});
+
 /** Chemin de l'image dans le dépôt, relatif à ce dossier (clé de import.meta.glob) */
 export const cheminIllustration = (id) => `../../../../shared/icones/images/${id}.webp`;

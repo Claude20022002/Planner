@@ -1,6 +1,7 @@
 ---
 // Première section commune des pages (VIT-23, plan § 4.1) : onglets en tête, marque, surtitre, h1 (un passage en relief
-// possible), accroche, boutons, ligne d'après, et un visuel à côté (≥ 960 px) ou dessous. Marges resserrées par rapport à Section.
+// possible), accroche, boutons, ligne d'après, et un visuel : à côté dès 960 px, dessous en deçà (choix du chef, 26 nov.).
+// Marges resserrées par rapport à Section. Sans visuel, la colonne reste centrée.
 // L'image vient de shared/icones/images/ (VIT-09c), copiée par Vite dans dist/_astro/ ; décorative (alt vide), dimensions écrites.
 import Titre from './Titre.astro';
 import Accroche from './Accroche.astro';
@@ -15,11 +16,10 @@ interface Props {
   accroche: string;
   accrocheForte?: boolean;
   image?: string;
-  disposition?: 'cote' | 'dessous';
   ton?: 'clair' | 'gris' | 'sombre';
 }
 
-const { id, surtitre, titre, relief, accroche, accrocheForte = false, image, disposition = 'cote', ton = 'clair' } = Astro.props;
+const { id, surtitre, titre, relief, accroche, accrocheForte = false, image, ton = 'clair' } = Astro.props;
 const fichiers = import.meta.glob('../../../../shared/icones/images/*.webp', { query: '?url', import: 'default', eager: true });
 const url = image ? fichiers[cheminIllustration(image)] : undefined;
 if (image && !url) throw new Error(`Illustration absente : shared/icones/images/${image}.webp`);
@@ -28,7 +28,7 @@ const place = relief ? titre.indexOf(relief) : -1;
 const morceaux = place < 0 ? null : [titre.slice(0, place), relief, titre.slice(place + relief.length)];
 const avecVisuel = Boolean(url) || Astro.slots.has('visuel');
 ---
-<section class:list={['ouverture', ton, disposition, { 'avec-visuel': avecVisuel }]} aria-labelledby={id}>
+<section class:list={['ouverture', ton, { 'avec-visuel': avecVisuel }]} aria-labelledby={id}>
   <div class="interieur">
     {Astro.slots.has('haut') && <div class="haut"><slot name="haut" /></div>}
     <Apparition>
@@ -69,11 +69,10 @@ const avecVisuel = Boolean(url) || Astro.slots.has('visuel');
 
   @media (min-width: 60rem) {
     .haut { justify-content: start; }
-    .cote.avec-visuel .corps { grid-template-columns: 1.15fr 0.85fr; align-items: center; justify-items: start; text-align: start; }
-    .cote.avec-visuel .texte { justify-items: start; }
-    .cote.avec-visuel .texte :global(h1) { font-size: clamp(2.5rem, 1rem + 3.6vw, 4.5rem); }
-    .cote.avec-visuel .actions { justify-content: start; }
-    .cote .visuel { inline-size: min(100%, 26rem); justify-self: center; }
-    .dessous .visuel { inline-size: min(100%, 22rem); }
+    .avec-visuel .corps { grid-template-columns: 1.15fr 0.85fr; align-items: center; justify-items: start; text-align: start; }
+    .avec-visuel .texte { justify-items: start; }
+    .avec-visuel .texte :global(h1) { font-size: clamp(2.5rem, 1rem + 3.6vw, 4.5rem); }
+    .avec-visuel .actions { justify-content: start; }
+    .visuel { inline-size: min(100%, 26rem); justify-self: center; }
   }
 </style>

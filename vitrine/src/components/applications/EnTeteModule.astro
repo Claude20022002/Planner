@@ -15,12 +15,11 @@ interface Props {
   accroche: string;
   demonstration: string;
   onglets: { href: string; texte: string; actif?: boolean }[];
-  disposition?: 'cote' | 'dessous';
 }
 
-const { langue, module, surtitre, titre, accroche, demonstration, onglets, disposition } = Astro.props;
+const { langue, module, surtitre, titre, accroche, demonstration, onglets } = Astro.props;
 ---
-<OuverturePage id="page-titre" surtitre={surtitre} titre={titre} accroche={accroche} image={IMAGE_DU_MODULE[module.cle]} disposition={disposition}>
+<OuverturePage id="page-titre" surtitre={surtitre} titre={titre} accroche={accroche} image={IMAGE_DU_MODULE[module.cle]}>
   <ul class="onglets" slot="haut">
     {onglets.map((onglet) => (
       <li><a href={onglet.href} aria-current={onglet.actif ? 'page' : undefined}>{onglet.texte}</a></li>

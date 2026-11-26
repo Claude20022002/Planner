@@ -1,7 +1,7 @@
 ---
 // Accueil, section 1 : ouverture (C2 de l'expertise, textes visés le 19 nov. ; mise en page de VIT-23). Le logo à l'horloge (ses
 // aiguilles tournent au chargement et au survol), « Planner » en surtitre, la promesse en h1, l'accroche, « Demander une démonstration »
-// et « Voir les applications », la ligne des rôles, et le visuel (question 6 du plan : illustration de l'emploi du temps, ou le logo).
+// et « Voir les applications », la ligne des rôles, et l'illustration de l'emploi du temps à côté (choix A du chef, 26 nov.).
 import OuverturePage from '../socle/OuverturePage.astro';
 import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Logo from '../socle/Logo.astro';
@@ -15,13 +15,11 @@ interface Props {
 
 const { t, langue } = Astro.props;
 const commun = traductions(langue, 'commun');
-/** Essai de VIT-23 : « image » (A, planning.webp) ou « logo » (B, le logo animé en grand) ; le chef choisit sur captures */
-const VISUEL: 'image' | 'logo' = 'image';
 const roles = ['direction', 'scolarite', 'enseignants', 'etudiants'];
 ---
 <OuverturePage id="ouverture-titre" surtitre={t('ouverture.surtitre')} titre={t('ouverture.titre')} relief={t('ouverture.relief')}
-  accroche={t('ouverture.accroche')} accrocheForte image={VISUEL === 'image' ? 'planning' : undefined}>
-  {VISUEL === 'image' && <Logo anime class="ouverture-logo" slot="marque" />}
+  accroche={t('ouverture.accroche')} accrocheForte image="planning">
+  <Logo anime class="ouverture-logo" slot="marque" />
   <BoutonPrincipal slot="actions" href={cheminContact(langue)}>{commun('navigation.demonstration')}</BoutonPrincipal>
   <BoutonPrincipal slot="actions" href="#applications" variante="contour">{commun('navigation.voirLesApplications')}</BoutonPrincipal>
   <nav class="roles" slot="apres" aria-label={t('ouverture.roles.intro')}>
@@ -30,12 +28,10 @@ const roles = ['direction', 'scolarite', 'enseignants', 'etudiants'];
       {roles.map((role) => <li><a href={chemin(langue, role)}>{t(`ouverture.roles.${role}`)}</a></li>)}
     </ul>
   </nav>
-  {VISUEL === 'logo' && <Logo anime class="ouverture-logo-grand" slot="visuel" />}
 </OuverturePage>
 
 <style>
   :global(.ouverture-logo) { inline-size: clamp(5rem, 4rem + 4vw, 7rem); }
-  :global(.ouverture-logo-grand) { inline-size: 100%; }
   /* Une phrase qui coule : chaque rôle garde son point à sa suite, aucune ligne ne commence par « · » */
   .roles { color: var(--gris-texte); line-height: 1.8; }
   .roles ul { display: inline; margin: 0; padding: 0; }
