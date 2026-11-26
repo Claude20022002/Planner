@@ -43,33 +43,50 @@
   - **Suite complète après la 0088, délai de 120 s** : **66 fichiers, 664 tests sur 664** (lots de 197, 144, 179 et 144).
 - La CI dira si le délai de 30 s tient sur sa machine (il tenait jusqu'ici).
 
+## Correction après relecture
+
+Relecture du coordinateur (26 nov., à `32fbc10d`) : **un point**, la 0088 hors transaction. Corrigé, puis relu par le coordinateur : **prête** (26 nov., 14 h).
+
+| Commit | Contenu |
+|---|---|
+| `9cc69b4d` | `up` et `down` de la 0088 dans `sequelize.transaction`, chaque requête avec `{ transaction }` ; l'identifiant de la version insérée lu dans la même transaction, filtré sur le libellé et l'absence d'auteur (plus de `MAX(id_version)` sans filtre) ; test « tout ou rien » : si l'insertion des valeurs échoue, aucune version n'est créée, et une nouvelle tentative réussit |
+| `1d1b821a` | `origin/main` fusionnée de nouveau (sans conflit ; côté serveur, seul `.env.example` change, aucune migration nouvelle) |
+
+Relancé après la correction et la fusion :
+
+- `repriseParametres.test.js` : **7 sur 7** ; le test « tout ou rien » **échoue sur la 0088 d'avant** (vérifié, puis fichier remis).
+- `repriseParametres`, `valeursMoteur`, `baseNeuve` : 38 sur 38.
+- Tests unitaires du serveur : **615 sur 615** ; lint : 0 erreur (16 avertissements de longueur, fichiers non touchés) ; `verifier-neutre` : propre.
+- Suite d'intégration complète, base privée (port 3315), délai de 120 s : **66 fichiers, 665 tests sur 665** (197, 144, 179, 145).
+
 ## Questions
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
 | — | numéro de la migration de reprise | **0088**, réservé par le coordinateur le 22 nov. (`suivi.md` de la branche du coordinateur, ligne des migrations) | tranchée |
-| — | la fiche de mission (point 2) demande d'ajouter au test « ce qui est montré est tenu », après la bascule, les réglages que `lireParametres()` lit dans MP-1 | couvert par le test « problème identique » et par `lireParametres()` comparée avant et après ; aucun test de plus | à confirmer à la relecture |
+| — | la fiche de mission (point 2) demande d'ajouter au test « ce qui est montré est tenu », après la bascule, les réglages que `lireParametres()` lit dans MP-1 | couvert par le test « problème identique » et par `lireParametres()` comparée avant et après ; aucun test de plus | confirmé par le coordinateur : suffisant |
 
 ## État laissé
 
-- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : **ADM-02 → en cours** (`feat/adm-02-configuration`) : **ADM-02a finie, prête à relire** (migration 0088 comprise) ; MOT-13 → 13c en cours avec ADM-02.
+- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : **ADM-02 → en cours** (`feat/adm-02-configuration`) : **ADM-02a finie et relue** (migration 0088 comprise, dans une transaction) : à pousser, PR, fusion après la CI verte (décision du chef) ; MOT-13 → 13c en cours avec ADM-02.
 - Pour `decisions.md` (coordinateur) : rien de nouveau ; 0088 utilisée comme réservée.
 - **ADM-02a ne se fusionne qu'avec la 0088** : c'est fait sur cette branche.
-- Le coordinateur n'a pas été prévenu par message : deux sessions Claude tournent sur le poste, et aucun nom ne dit laquelle coordonne. Le chef transmet, ou désigne la session.
+- Le coordinateur a relu par message entre sessions (26 nov.) ; ADM-02b ne commence qu'après la fusion d'ADM-02a.
 - Chantier ADM : reste ADM-02 (02b, 02c), ADM-01, ADM-03, ADM-04, ADM-10, ADM-11.
 
 ## Reste à faire, dans l'ordre
 
-1. Relecture d'ADM-02a par le coordinateur ; PR par le chef.
-2. ADM-02b (page, Réglages, Historique), depuis `main` à jour, avec sa PR.
+1. Le chef pousse, ouvre la PR d'ADM-02a, et la fusionne après la CI verte.
+2. **Après cette fusion seulement** : ADM-02b (page, Réglages, Historique), depuis `main` à jour, avec sa PR.
 3. ADM-02c (Règles de génération, MOT-13c), avec sa PR.
 
 ## Commandes pour le chef de projet
 
 ```powershell
 git -C "..\travaux-planner\adm-02-configuration" push -u origin feat/adm-02-configuration
-# après la relecture du coordinateur :
 gh pr create --base main --head feat/adm-02-configuration --title "ADM-02a : réglages de l'école servis par MP-1, bascule et reprise (0088)" --fill
+# après la CI verte (décision du chef) :
+gh pr merge feat/adm-02-configuration --merge
 ```
 
 Base de test privée de cette session, à supprimer quand ADM-02 sera finie : `docker rm -f hestim_mysql_test_adm`.
@@ -82,9 +99,9 @@ chantier ADM, sur la branche feat/adm-02-configuration, dans le dossier ..\trava
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md (sur main, ou sur la branche du coordinateur),
 la conception docs/conception/administration/adm-02-configuration.md (validée le 22 nov., amendée : réponses 16 à 18)
 et ta fiche docs/sessions/2026-11-26-feat-adm-02-configuration.md.
-Fait : ADM-02a entière, migration 0088 comprise (reprise des écarts, test « problème du solveur identique »),
-main fusionnée le 26 nov. ; ADM-02a attend la relecture du coordinateur, puis la PR du chef.
-Ensuite, après la relecture : ADM-02b (page, Réglages, Historique), depuis main à jour, puis ADM-02c
+Fait : ADM-02a entière et relue par le coordinateur, migration 0088 comprise (reprise des écarts dans une
+transaction, test « problème du solveur identique »), main fusionnée le 26 nov. ; PR et fusion par le chef.
+Ensuite, après la fusion d'ADM-02a seulement : ADM-02b (page, Réglages, Historique), depuis main à jour, puis ADM-02c
 (Règles de génération), une PR chacune.
 Tests d'intégration sur une base à toi (DB_PORT=3315, conteneur hestim_mysql_test_adm) ; sur ce poste chargé,
 resetDatabase() prend ~19 s : un dépassement des 30 s dans un beforeAll n'est pas un échec du code
