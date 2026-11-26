@@ -5,7 +5,7 @@ import DashboardLayout from '../components/layouts/DashboardLayout';
 import DemandeReportDialog from '../components/reports/DemandeReportDialog';
 import ListeMesSeances from '../components/mesSeances/ListeMesSeances';
 import { affectationAPI } from '../services/api';
-import { fetchAll } from '../utils/fetchAll';
+import { chargerSeances } from '../components/mesSeances/chargerSeances';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { aujourdhui as dateDeLEcole } from '../../../shared/dates.js';
@@ -17,6 +17,7 @@ export default function MesAffectations() {
     // Appel par QR (I1) : seulement le jour de la séance, à la date de l'école (shared/dates.js)
     const aujourdhui = dateDeLEcole();
     const { user } = useAuth();
+    const idEnseignant = user?.id_user;
     const [affectations, setAffectations]     = useState([]);
     const [loading, setLoading]               = useState(true);
     const [error, setError]                   = useState('');
@@ -24,19 +25,20 @@ export default function MesAffectations() {
     const [aReporter, setAReporter]           = useState(null);
 
     useEffect(() => {
-        if (user?.id_user) loadAffectations();
-    }, [user]);
-
-    const loadAffectations = async () => {
-        try {
-            // Toutes les pages : le serveur en rend au plus 100 séances à la fois
-            setAffectations(await fetchAll((p) => affectationAPI.getByEnseignant(user.id_user, p)));
-        } catch {
-            setError(t('mesSeances.erreurChargement'));
-        } finally {
-            setLoading(false);
-        }
-    };
+        setAffectations([]);
+        setError('');
+        setLoading(true);
+        return chargerSeances(idEnseignant, affectationAPI, {
+            surSucces: (seances) => {
+                setAffectations(seances);
+                setLoading(false);
+            },
+            surErreur: () => {
+                setError('mesSeances.erreurChargement');
+                setLoading(false);
+            },
+        });
+    }, [idEnseignant]);
 
     // Séance passée : plus de report possible (elle devient réalisée d'office)
     const estPassee = (aff) => {
@@ -59,7 +61,7 @@ export default function MesAffectations() {
 
                 <Snackbar open={!!error}   autoHideDuration={6000} onClose={() => setError('')}
                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-                    <Alert severity="error"   onClose={() => setError('')}   sx={{ width: '100%' }}>{error}</Alert>
+                    <Alert severity="error"   onClose={() => setError('')}   sx={{ width: '100%' }}>{error && t(error)}</Alert>
                 </Snackbar>
                 <Snackbar open={!!success} autoHideDuration={4000} onClose={() => setSuccess('')}
                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
