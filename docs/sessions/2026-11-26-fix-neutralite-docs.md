@@ -19,6 +19,7 @@
 
 - Branche `fix/neutralite-docs` créée depuis `origin/main` (`9a428a7c`). Elle ne suit pas `origin/main` : un `git push` sans argument ne viserait pas `main`.
 - `a7227205` — Neutralité des guides : le plan retire le nom d'école des exemples.
+- Le chef garde l'histoire du README (question 1). Le plan et cette fiche le notent. Les questions 2 à 4 restent ouvertes.
 
 Aucun guide modifié. Aucun script modifié. `docs/plan/suivi.md` non modifié. Le fichier du module ne change qu'à la fin du code.
 
@@ -36,7 +37,7 @@ Aucun : le plan n'est pas encore validé, et aucun guide n'a été modifié.
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
-| 1 | Garder l'histoire du produit dans le README (l. 12, 62, 64) ? | proposition : oui | en attente du chef |
+| 1 | Garder l'histoire du produit dans le README (l. 12, 62, 64) ? | garder | tranchée par le chef, 26 nov. 2026 |
 | 2 | Garder la branche `hestim` du fork (l. 147 et 452) ? | proposition : oui | en attente du coordinateur |
 | 3 | Exemples Railway, Vercel, `ETABLISSEMENT_NOM` ? | proposition de la fiche, plus `planner.votre-ecole.example` et `api.votre-ecole.example` | en attente du coordinateur |
 | 4 | Le script lit-il le README ? | proposition : non, seulement `DEPLOIEMENT.md` | en attente du coordinateur |
@@ -51,10 +52,9 @@ Le modèle de cette session est Grok 4.7.
 
 ## Reste à faire, dans l'ordre
 
-1. Le chef répond à la question 1. Le coordinateur valide les questions 2 à 4, ou corrige le plan.
-2. Si la question 1 est refusée : reprendre le plan avant de toucher au README.
-3. Une fois le plan validé et Q-37 sur `origin/main` : `git merge origin/main`, puis les lignes de `DEPLOIEMENT.md`, la lecture du fichier, montrer l'échec du script avec l'ancien texte.
-4. Pas de push. Le coordinateur relit la branche avant la PR.
+1. Le chef a gardé l'histoire du README (26 nov. 2026). Le coordinateur valide les questions 2 à 4, ou corrige le plan.
+2. Une fois le plan validé et Q-37 sur `origin/main` : `git merge origin/main`, puis les lignes de `DEPLOIEMENT.md`, la lecture du fichier, montrer l'échec du script avec l'ancien texte.
+3. Pas de push. Le coordinateur relit la branche avant la PR.
 
 ## Commandes pour le chef de projet
 
@@ -79,7 +79,8 @@ ETABLISSEMENT_NOM=<nom-court-de-l-ecole>,
 domaines planner.votre-ecole.example et api.votre-ecole.example,
 EMAIL_FROM aligné sur Q-37.
 verifier-neutre lit DEPLOIEMENT.md en entier, pas le README, après la fusion de Q-37.
-Questions : 1 au chef, 2 à 4 au coordinateur. Pas de modification avant le « validé ».
+Question 1 tranchée par le chef : garder l'histoire du README.
+Questions 2 à 4 en attente du coordinateur. Pas de modification avant le « validé ».
 Les noms techniques et docker-compose.yml restent.
 Reste : validation, fusion de Q-37, puis les lignes et le contrôle.
 Règles : pas de code hors du plan validé ; questions avant toute supposition ;

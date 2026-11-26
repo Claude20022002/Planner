@@ -63,16 +63,16 @@ Exemples en minuscules, hors motif (le script ne les voit pas) :
 
 ## 3. Questions
 
-Les quatre propositions de la fiche sont retenues. La question 1 attend le chef. Les trois autres attendent le coordinateur.
+Les quatre propositions de la fiche sont retenues. Le chef a gardé l'histoire du README le 26 nov. 2026. Les questions 2 à 4 attendent le coordinateur.
 
 | N° | Question | Proposition retenue | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | Garder l'histoire du produit dans `README.md` (l. 12, 62, 64) ? | Oui. C'est l'histoire écrite par QUA-01, pas un exemple à copier. | en attente du chef | le README seulement |
+| 1 | Garder l'histoire du produit dans `README.md` (l. 12, 62, 64) ? | Oui. C'est l'histoire écrite par QUA-01, pas un exemple à copier. | garder, chef, 26 nov. 2026 | non |
 | 2 | Garder la branche `hestim` du fork (l. 147 et 452) ? | Oui. C'est le nom réel, jusqu'à QJE-06. | en attente du coordinateur | non, si la proposition tient |
 | 3 | Exemples Railway, Vercel, et `ETABLISSEMENT_NOM` ? | `https://planner-backend.up.railway.app`, `https://planner.vercel.app`, `ETABLISSEMENT_NOM=<nom-court-de-l-ecole>` | en attente du coordinateur | les cinq lignes |
 | 4 | `verifier-neutre` lit-il `README.md` ? | Non. L'histoire et les comptes de démonstration y restent. Seul `DEPLOIEMENT.md` est ajouté. | en attente du coordinateur | le script |
 
-Si le chef refuse la question 1, ce plan est repris avant toute ligne de `README.md`. Les remplacements de `DEPLOIEMENT.md` n'en dépendent pas.
+Le chef a confirmé la question 1 : `README.md` n'est pas modifié pour l'histoire du produit. Les remplacements de `DEPLOIEMENT.md` n'en dépendaient pas.
 
 Les domaines d'exemple suivent Q-37 : `planner.votre-ecole.example` et `api.votre-ecole.example`. `example` est réservé aux exemples. Aucun domaine réel de l'école pilote.
 
