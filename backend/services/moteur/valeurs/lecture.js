@@ -36,9 +36,13 @@ const versLigne = (v) => ({
     id_version: v.id_version,
 });
 
-/** Toutes les lignes des versions appliquées, quelle que soit leur date : resolution.js choisit. */
-export const lireLignes = async ({ transaction } = {}) => {
+/**
+ * Les lignes des versions appliquées, quelle que soit leur date : resolution.js choisit.
+ * `cles` limite la lecture à quelques paramètres (ADM-02 : réglages lus dans une boucle).
+ */
+export const lireLignes = async ({ transaction, cles } = {}) => {
     const lignes = await ValeurParametre.findAll({
+        ...(cles ? { where: { cle: cles } } : {}),
         include: [{ model: VersionParametres, as: "version", where: { statut: "appliquee" }, attributes: ["statut", "date_effet"] }],
         transaction,
     });

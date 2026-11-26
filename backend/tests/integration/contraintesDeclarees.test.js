@@ -199,6 +199,8 @@ describe("Déjà pris en compte", () => {
             const unCampus = (await regles()).find((r) => r.id === "HOR.REGLE.UN_CAMPUS_PAR_JOUR");
             expect(unCampus).toMatchObject({ etat: "sans_effet" });
             expect(unCampus.raison).toMatch(/il faut au moins 2/);
+            // ADM-02, réponse 17 : la même raison, en données, pour la traduction
+            expect(unCampus).toMatchObject({ raison_code: "condition_non_remplie", conditions: [{ parametre: "ETA.TAILLE.CAMPUS", op: ">=", attendu: 2, actuelle: 1 }] });
         } finally {
             await Campus.update({ actif: true }, { where: { id_campus: actifs.map((x) => x.id_campus) } });
         }

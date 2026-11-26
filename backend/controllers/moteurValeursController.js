@@ -1,6 +1,11 @@
 import { asyncHandler } from "../middleware/asyncHandler.js";
 import { valeursEnVigueur } from "../services/moteur/valeurs/lecture.js";
-import { abandonnerVersion, annulerVersion, appliquerVersion, creerVersion, ErreurReglages, listerVersions } from "../services/moteur/valeurs/versions.js";
+import { decrireReglages } from "../services/moteur/valeurs/valeursDeLEcole.js";
+import { apercuVersion } from "../services/moteur/valeurs/apercu.js";
+import { detailVersion, listerVersionsAllegees, resumeVersion } from "../services/moteur/valeurs/historique.js";
+import { contexteDe, journaliser } from "../services/journalSecurite.js";
+import { annulerVersion } from "../services/moteur/valeurs/annulation.js";
+import { abandonnerVersion, appliquerVersion, creerVersion, ErreurReglages } from "../services/moteur/valeurs/versions.js";
 import { corpsErreur } from "../utils/erreurs.js";
 
 /**
@@ -12,6 +17,10 @@ import { corpsErreur } from "../utils/erreurs.js";
 
 const AUTEUR = "etablissement";
 const PORTEES_DE_CIBLE = ["cycle", "niveau", "filiere", "groupe", "matiere", "enseignant", "salle"];
+
+// Journal de sécurité (R-6) : qui a appliqué, abandonné ou annulé quelle version ; les clés, jamais les valeurs
+const noter = async (req, evenement, id_version, plus = {}) =>
+    journaliser(contexteDe(req), { evenement, acteur: req.user, id_user: req.user.id_user, details: { ...(await resumeVersion(id_version)), ...plus } });
 
 // Les refus détaillés suivent le format commun de l'API : { message, code, violations }
 const avecRefus = (travail) =>
@@ -41,29 +50,56 @@ export const getValeursMoteur = asyncHandler(async (req, res) => {
     });
 });
 
-// 🔍 Historique des versions
-export const getVersionsMoteur = asyncHandler(async (req, res) => {
-    res.json(await listerVersions());
+// 🔍 Ce que le panneau de configuration laisse régler à l'école (ADM-02, R-1) : cinq réglages et les règles réglables
+export const getReglagesMoteur = asyncHandler(async (req, res) => {
+    const { date } = req.query;
+    if (date !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        return res.status(400).json(corpsErreur(400, "La date s'écrit AAAA-MM-JJ", { code: "DATE_INVALIDE" }));
+    }
+    res.json(await decrireReglages({ date }));
 });
 
-// ➕ Préparer un brouillon : aucun effet tant qu'il n'est pas appliqué
+// 🔍 Historique des versions, sans leurs lignes (R-3)
+export const getVersionsMoteur = asyncHandler(async (req, res) => {
+    res.json(await listerVersionsAllegees());
+});
+
+// 🔍 Détail d'une version : réglages, contraintes ajoutées et retirées (R-3)
+export const getVersionMoteur = asyncHandler(async (req, res) => {
+    res.json(await detailVersion(req.params.id));
+});
+
+// ➕ Préparer un brouillon, sans effet tant qu'il n'est pas appliqué ; ou, avec `appliquer` et `base`, créer et appliquer (ADM-02, R-4)
 export const postVersionMoteur = avecRefus(async (req, res) => {
-    const { libelle, date_effet, lignes, contraintes, retirer } = req.body;
-    const version = await creerVersion({ libelle, date_effet, lignes, contraintes, retirer, id_auteur: req.user.id_user, auteur: AUTEUR });
+    const { libelle, date_effet, lignes, regles, contraintes, retirer, base } = req.body;
+    const appliquer = req.body.appliquer === true;
+    const version = await creerVersion({ libelle, date_effet, lignes, regles, contraintes, retirer, appliquer, base, id_auteur: req.user.id_user, auteur: AUTEUR });
+    if (appliquer) await noter(req, "parametres_version_appliquee", version.id_version);
     res.status(201).json(version);
+});
+
+// 👁️ Aperçu à blanc de ce que changerait une version : rien n'est écrit (ADM-02)
+export const postApercuVersionMoteur = avecRefus(async (req, res) => {
+    res.json(await apercuVersion(req.body ?? {}, AUTEUR));
 });
 
 // ✅ Appliquer un brouillon
 export const appliquerVersionMoteur = avecRefus(async (req, res) => {
-    res.json(await appliquerVersion(req.params.id, { auteur: AUTEUR }));
+    const version = await appliquerVersion(req.params.id, { auteur: AUTEUR });
+    await noter(req, "parametres_version_appliquee", version.id_version);
+    res.json(version);
 });
 
 // 🗑️ Abandonner un brouillon
 export const abandonnerVersionMoteur = asyncHandler(async (req, res) => {
-    res.json(await abandonnerVersion(req.params.id));
+    const version = await abandonnerVersion(req.params.id);
+    await noter(req, "parametres_version_abandonnee", version.id_version);
+    res.json(version);
 });
 
 // ↩️ Annuler une version appliquée : crée sa version inverse
 export const annulerVersionMoteur = asyncHandler(async (req, res) => {
-    res.status(201).json(await annulerVersion(req.params.id, { id_auteur: req.user.id_user, auteur: AUTEUR }));
+    const inverse = await annulerVersion(req.params.id, { id_auteur: req.user.id_user, auteur: AUTEUR });
+    await noter(req, "parametres_version_annulee", inverse.annule_version, { version_inverse: inverse.id_version });
+    res.status(201).json(inverse);
 });

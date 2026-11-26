@@ -1,32 +1,19 @@
 ---
-// Ouverture d'une page de fonction : surtitre, titre géant (le h1 de la page) et accroche, centrés.
-// Une idée par page, dite en une phrase ; le reste de la page la détaille section par section.
-import Section from '../socle/Section.astro';
-import Titre from '../socle/Titre.astro';
-import Accroche from '../socle/Accroche.astro';
-import Apparition from '../socle/Apparition.astro';
+// Ouverture d'une page de fonction, de rôle ou de texte : surtitre, titre géant (le h1 de la page), accroche, boutons facultatifs.
+// Mise en page de VIT-23 (socle/OuverturePage) : une illustration à côté si la page en donne une, un passage du titre en relief.
+import OuverturePage from '../socle/OuverturePage.astro';
 
 interface Props {
   surtitre: string;
   titre: string;
   accroche: string;
+  relief?: string;
+  image?: string;
   ton?: 'clair' | 'gris' | 'sombre';
 }
 
-const { surtitre, titre, accroche, ton = 'clair' } = Astro.props;
+const { surtitre, titre, accroche, relief, image, ton = 'clair' } = Astro.props;
 ---
-<Section ton={ton} etiquette="page-titre">
-  <Apparition>
-    <div class="ouverture">
-      <Titre niveau={1} taille="geant" id="page-titre" surtitre={surtitre}>{titre}</Titre>
-      <Accroche>{accroche}</Accroche>
-      <div class="actions"><slot name="actions" /></div>
-    </div>
-  </Apparition>
-</Section>
-
-<style>
-  .ouverture { display: grid; gap: var(--espace-3); justify-items: center; padding-block-start: var(--espace-3); }
-  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-2); width: 100%; }
-  .actions:empty { display: none; }
-</style>
+<OuverturePage id="page-titre" ton={ton} surtitre={surtitre} titre={titre} relief={relief} accroche={accroche} image={image}>
+  {Astro.slots.has('actions') && <Fragment slot="actions"><slot name="actions" /></Fragment>}
+</OuverturePage>
