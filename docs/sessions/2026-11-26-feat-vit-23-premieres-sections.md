@@ -112,19 +112,19 @@ Reste à la CI : le contrôle VIT-19, les parcours et l'image Docker.
 
 | N° | Question | Réponse | État |
 |---|---|---|---|
-| 1 | Le transfert de la « première section » de VIT-09b à VIT-23 | à confirmer par le chef (coordinateur, 26 nov.) ; le code n'en dépend pas | ouverte |
+| 1 | Le transfert de la « première section » de VIT-09b à VIT-23 | **confirmé par le chef** (26 nov., 14 h 30, transmis par le coordinateur) : la première section sort de VIT-09b | close |
+| 2 | Le rendu de toutes les pages, sur les captures `apres\` | **validé par le chef** (26 nov., 14 h 30, transmis par le coordinateur) | close |
 
 ## État laissé
 
-- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-23 → code fait, à relire par le coordinateur, puis PR.
+- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-23 → code fait, **relue par le coordinateur (14 h 20) : prête pour la PR** ; rendu validé par le chef (14 h 30).
 - #277 (VIT-09d, logos série B) n'était pas encore sur `main` : refaire `git merge origin/main` après sa fusion. Seuls des fichiers de `shared/icones/modules/` changent ; aucun conflit n'est attendu.
 - VIT-20f (Codex) : la tuile de Présences reste vide et Espace de cours porte le logo `pedagogie`. Ce n'est pas à VIT-23.
 
 ## Reste à faire, dans l'ordre
 
-1. Relecture du coordinateur.
-2. `git merge origin/main` après #277, puis `npm run build`, `test:unit` et `*.rendu.cjs`.
-3. Le chef pousse et ouvre la PR.
+1. `git merge origin/main` après #277, puis `npm run build`, `test:unit` et `*.rendu.cjs`.
+2. Le chef pousse et ouvre la PR.
 
 ## Commandes pour le chef de projet
 
