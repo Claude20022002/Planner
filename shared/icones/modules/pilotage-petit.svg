@@ -1,14 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Pilotage, dessin simplifié pour 24 à 32 px. -->
-<defs>
-  <linearGradient id="vit-pilotage-petit-tuile" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#672F75"/><stop offset="1" stop-color="#431F4D"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-pilotage-petit-tuile)"/>
-<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity=".2"/>
-<path d="M15 62a33 33 0 1 1 66 0l-7 9H22z" fill="#FFFFFF"/>
-<path d="M23 58a25 25 0 1 1 50 0H23z" fill="#A6CAEE"/>
-<path d="M30 58a18 18 0 1 1 36 0z" fill="#17395C"/>
-<path d="m43 56 23-19-14 26z" fill="#FFC83D"/>
-<circle cx="48" cy="59" r="5.5" fill="#FFFFFF"/>
-<circle cx="48" cy="59" r="2.5" fill="#17395C"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Pilotage (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : cadran en demi-cercle et aiguille. Charte : app-pilotage (tuile en aplat), app-pilotage-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#672F75"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M11 68a37 37 0 0 1 74 0z" fill="#FFFFFF"/>
+<path d="M48 68l15-20" fill="none" stroke="#431F4D" stroke-width="7" stroke-linecap="round"/>
+<circle cx="48" cy="68" r="7" fill="#431F4D"/>
+<rect x="9" y="68" width="78" height="11" rx="4.5" fill="#A6CAEE"/>
+<path d="M9 68h78v4H9z" fill="#431F4D"/>
 </svg>

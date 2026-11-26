@@ -1,13 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Inscriptions, dessin simplifié pour 24 à 32 px. -->
-<defs>
-  <linearGradient id="vit-inscriptions-petit-tuile" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#2F7533"/><stop offset="1" stop-color="#1F4D22"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-inscriptions-petit-tuile)"/>
-<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity=".2"/>
-<path d="M16 32q0-5 5-5h16l7 7h29q5 0 5 5v32H16z" fill="#A6CAEE"/>
-<rect x="24" y="25" width="43" height="36" rx="3" fill="#FFFFFF"/>
-<path d="M18 39h60q4 0 3 5l-6 25q-1 5-6 5H22q-5 0-5-5l-3-25q0-5 4-5z" fill="#FFFFFF"/>
-<circle cx="49" cy="56" r="13" fill="#17395C"/>
-<path d="M49 49v14m-7-7h14" fill="none" stroke="#FFC83D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Inscriptions (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : chemise et grand signe plus. Charte : app-inscriptions (tuile en aplat), app-inscriptions-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#2F7533"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M16 27a4 4 0 0 1 4-4h17l5 7h34a4 4 0 0 1 4 4v8H16z" fill="#A6CAEE"/>
+<path d="M13 40h70l-4 38a4 4 0 0 1-4 4H21a4 4 0 0 1-4-4z" fill="#FFFFFF"/>
+<circle cx="48" cy="61" r="15" fill="#2F7533"/>
+<path d="M48 53v16M40 61h16" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
 </svg>

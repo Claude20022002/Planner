@@ -1,11 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Logo de l'application Quiz et jeux (VIT-09a), dessin simplifié pour 24 à 32 px : la tuile et l'objet, sans reflet ni ombre. -->
-<defs>
-<linearGradient id="vit-activites-petit-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#A94088"/><stop offset="1" stop-color="#5E256D"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-activites-petit-tuile)"/>
-<path d="M50 12h22a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8H60l-9 7 2-7a8 8 0 0 1-11-8V20a8 8 0 0 1 8-8z" fill="#A6CAEE"/>
-<rect x="13" y="50" width="62" height="32" rx="16" fill="#FFFFFF"/>
-<rect x="23" y="63" width="16" height="6" rx="2" fill="#17395C"/>
-<circle cx="59" cy="66" r="6" fill="#FFC83D"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Quiz et jeux (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : manette générique et point d’interrogation. Charte : app-activites (tuile en aplat), app-activites-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#A94088"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M30 27h36a16 16 0 0 1 15.4 11.7l5.4 21.6a9 9 0 0 1-15.2 8.4L63 62H33l-8.6 6.7a9 9 0 0 1-15.2-8.4l5.4-21.6A16 16 0 0 1 30 27z" fill="#FFFFFF"/>
+<path d="M41 37.5a7 7 0 1 1 10.4 6.1c-2.2 1.3-3.4 2.6-3.4 5" fill="none" stroke="#5E256D" stroke-width="7.2" stroke-linecap="round"/>
+<circle cx="48" cy="57" r="4.2" fill="#5E256D"/>
 </svg>

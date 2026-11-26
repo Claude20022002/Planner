@@ -1,11 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Logo de l'application Annonces (VIT-09a), dessin simplifié pour 24 à 32 px : la tuile et l'objet, sans reflet ni ombre. -->
-<defs>
-<linearGradient id="vit-annonces-petit-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#AE532D"/><stop offset="1" stop-color="#75201C"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-annonces-petit-tuile)"/>
-<rect x="12" y="38" width="16" height="22" rx="5" fill="#A6CAEE"/>
-<path d="M24 38l32-16v54L24 60z" fill="#FFFFFF"/>
-<rect x="53" y="19" width="11" height="60" rx="5.5" fill="#A6CAEE"/>
-<path d="M71 36a16 16 0 0 1 0 26" fill="none" stroke="#FFC83D" stroke-width="6" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Annonces (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : mégaphone et deux ondes. Charte : app-annonces (tuile en aplat), app-annonces-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#AE532D"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<rect x="13" y="38" width="15" height="22" rx="5" fill="#A6CAEE"/>
+<path d="M25 38l30-13a3 3 0 0 1 4 2.8v42.4a3 3 0 0 1-4 2.8L25 60z" fill="#FFFFFF"/>
+<path d="M67 40a11 11 0 0 1 0 18M75 32a21 21 0 0 1 0 34" fill="none" stroke="#A6CAEE" stroke-width="6" stroke-linecap="round"/>
 </svg>

@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Logo de l'application Personnes (VIT-09a), dessin simplifié pour 24 à 32 px : la tuile et l'objet, sans reflet ni ombre. -->
-<defs>
-<linearGradient id="vit-personnes-petit-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#775EBA"/><stop offset="1" stop-color="#3F3687"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-personnes-petit-tuile)"/>
-<g fill="#A6CAEE"><circle cx="35" cy="34" r="11"/><path d="M15 68v-3a20 18 0 0 1 40 0v3z"/></g>
-<g fill="#FFFFFF"><circle cx="59" cy="44" r="13"/><path d="M36 82v-5a23 19 0 0 1 46 0v5z"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Personnes (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : badge à cordon et silhouette. Charte : app-personnes (tuile en aplat), app-personnes-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#775EBA"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M33 9l15 19 15-19" fill="none" stroke="#A6CAEE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="27" width="48" height="56" rx="8" fill="#FFFFFF"/>
+<circle cx="48" cy="50" r="9" fill="#3F3687"/>
+<path d="M31 77a17 14 0 0 1 34 0z" fill="#3F3687"/>
 </svg>
