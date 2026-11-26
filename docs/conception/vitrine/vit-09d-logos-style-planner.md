@@ -6,7 +6,7 @@
 | Mission | `docs/plan/missions/vit-09d-logos-style-planner.md` (branche `doc/coordination-2026-11-26-suite`) |
 | Branche | `feat/vit-09d-logos-style-planner`, depuis `origin/main` (`ebbe1548`), dossier `..\travaux-planner\vit-09d-logos-style-planner` |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-26 |
-| **Validé** | en attente (coordinateur : fonction M, sans migration ni sécurité ; le choix du rendu revient au chef, sur la planche) |
+| **Validé** | **par le coordinateur le 2026-11-26** (fonction M, sans migration, sans sécurité ni donnée de mineur) ; le choix du rendu reste au chef, sur la planche. Points d'attention : la manette d'`activites` reste générique (ni croix directionnelle ni disposition de boutons d'une console connue, le point d'interrogation porte le sens) ; en série A, vérifier à 24 px que `planning`, `pilotage` et `vacataires` (trois signes ronds) se distinguent |
 
 ## 1. Objet et critère de « terminé »
 
@@ -39,9 +39,9 @@ Les versions `-petit` et le remplacement des logos viennent à l'étape 2, aprè
 
 | N° | Question | Proposition | Réponse | Qui |
 |---|---|---|---|---|
-| 1 | Série A : la tuile garde-t-elle la forme et le rayon de l'icône Planner ? | oui : `viewBox` 96, tuile de 88 à 4 px du bord, rayon 19,5 (rapport 0,22 de l'icône) ; même tuile en série B | | coordinateur |
-| 2 | Série B : tuile en aplat de `app-<id>`, ou en dégradé ? | aplat ; `app-<id>-fonce` sert aux ombres en aplat | | coordinateur |
-| 3 | Un motif peut-il changer d'objet ? | oui, si le plan dit pourquoi (§ 4, tableau) ; la planche montre l'actuel à côté | | chef, sur la planche |
+| 1 | Série A : la tuile garde-t-elle la forme et le rayon de l'icône Planner ? | oui : `viewBox` 96, tuile de 88 à 4 px du bord, rayon 19,5 (rapport 0,22 de l'icône) ; même tuile en série B | **oui**, coordinateur, 26 nov. | coordinateur |
+| 2 | Série B : tuile en aplat de `app-<id>`, ou en dégradé ? | aplat ; `app-<id>-fonce` sert aux ombres en aplat | **oui**, coordinateur, 26 nov. (aussi pour les traits fins sur le blanc) | coordinateur |
+| 3 | Un motif peut-il changer d'objet ? | oui, si le plan dit pourquoi (§ 4, tableau) ; la planche montre l'actuel à côté | au chef, sur la planche ; les changements motivés se dessinent tels quels (coordinateur, 26 nov.) | chef, sur la planche |
 | 4 | Le même dessin dans les deux séries ? | oui, seules les couleurs changent | **oui** (chef, 26 nov.) | chef |
 | 5 | Le jaune `jeu` des logos actuels ? | exclu, comme dans le logo Planner | **exclu partout** (chef, 26 nov.) | chef |
 | 6 | Un filet clair autour des tuiles, pour le fond sombre ? | oui, blanc à 15 % d'opacité, dans les deux séries | **oui** (chef, 26 nov.) | chef |
