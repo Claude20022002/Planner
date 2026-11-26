@@ -101,3 +101,4 @@ Quand tu as fini, donne au chef le chemin complet des captures.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-26 | fiche écrite sur la demande du chef (capture de « Course space ») ; #262 (VIT-21) ne touche aucun composant ; VIT-20f garde le logo de l'en-tête | — |
+| 2026-11-26 12 h 20 | plan `90b9963f` relu : composant d'ouverture commun, illustrations par `import.meta.glob` sans copie, poids et accessibilité tenus ; Q3 au chef (non), Q7 accordée | **plan validé** (coordinateur) ; essai ensuite |

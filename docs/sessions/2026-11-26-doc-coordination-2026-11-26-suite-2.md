@@ -73,6 +73,13 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 
 - Étape 1 faite par la session `f2` (`666b295f`, `6d9758b0`, #277 ouverte par le chef) ; relue ; **le chef retient la série B pour les 20 logos**. Consigne d'étape 2 envoyée par message direct (plan court au coordinateur, remplacement, `-petit`, trois signes faibles renforcés, `essais/` retiré).
 
+## Relevé de 12 h 20
+
+- Codex : **VIT-21 prête** (`5122f4ca`) ; **#278 prête** (correctif `useEffect`). Suite : QJE-03.
+- Agent de Cursor : `DEPLOIEMENT.md` fait ; #276 fusionnée, feu vert pour le script.
+- Sessions Claude : **VIT-23** (`6a`) plan validé ; **ADM-02a** (`44`) relue, à corriger (transaction dans la 0088) ; le chef accepte la fusion après correction. VIT-09d (`f2`) finie, #277 poussée.
+- Chef : pas de second bouton sur les pages d'application.
+
 ## Reste à faire, dans l'ordre
 
 1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.
