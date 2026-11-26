@@ -167,6 +167,21 @@ describe("Migration 0088", () => {
         await expect(down({ queryInterface: queryInterface() })).rejects.toThrow(/change les mêmes réglages après elle\. Annulez-la d'abord/);
         expect(await reprises()).toHaveLength(1);
     });
+
+    test("tout ou rien : si l'insertion des valeurs échoue, aucune version n'est créée, et une nouvelle tentative réussit", async () => {
+        await etatDeMiseEnLigne();
+        const qi = queryInterface();
+        const enPanne = {
+            sequelize: qi.sequelize,
+            bulkInsert: (table, lignes, options) => (table === "ValeursParametres" ? Promise.reject(new Error("panne simulée")) : qi.bulkInsert(table, lignes, options)),
+        };
+        await expect(up({ queryInterface: enPanne })).rejects.toThrow("panne simulée");
+        expect(await reprises()).toEqual([]);
+        await up({ queryInterface: qi });
+        const [version, ...autres] = await reprises();
+        expect(autres).toEqual([]);
+        expect(await lignesDe(version.id_version)).toEqual({ [GROUPE]: 360, [ENSEIGNANT]: 420, [TRAJET]: 45 });
+    });
 });
 
 describe("Problème envoyé au solveur (critère 2)", () => {

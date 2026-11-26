@@ -11,7 +11,7 @@ import { FUSEAU_ECOLE } from "../config/fuseau.js";
  * à la portée de l'école, à la date du jour à l'école. Les écarts vont dans une seule version
  * appliquée, datée de ce jour, sans auteur. Aucun écart, ou base neuve : aucune version. L'ancienne
  * table reste (étendre puis contracter). Le down retire cette version, sauf si une version plus
- * récente touche les mêmes réglages.
+ * récente touche les mêmes réglages. L'un et l'autre se font dans une transaction.
  */
 
 export const LIBELLE = "Reprise des paramètres de planification";
@@ -55,12 +55,12 @@ const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: FUSE
  * plus récente gagne (à date égale, le plus grand numéro) ; une ligne retirée rend la main au profil.
  * @returns {Map<string, unknown>} clé → valeur
  */
-const enVigueur = async (sequelize, cles, jour) => {
+const enVigueur = async (sequelize, cles, jour, transaction) => {
     const [lignes] = await sequelize.query(
         `SELECT v.cle, CAST(v.valeur AS CHAR) AS valeur, v.retiree FROM ValeursParametres v JOIN VersionsParametres s ON s.id_version = v.id_version
          WHERE s.statut = 'appliquee' AND s.date_effet <= :jour AND v.portee = 'etablissement' AND v.id_portee = '' AND v.cle IN (:cles)
          ORDER BY s.date_effet DESC, s.id_version DESC`,
-        { replacements: { jour, cles } }
+        { replacements: { jour, cles }, transaction }
     );
     const retenues = new Map();
     for (const l of lignes) if (!retenues.has(l.cle)) retenues.set(l.cle, l);
@@ -81,40 +81,48 @@ export const ecarts = ({ anciens, ecole, profil }) =>
             return valeur !== tenue;
         });
 
+// Tout ou rien (relecture du coordinateur, 26 nov.) : une version appliquée sans ses valeurs ne doit
+// jamais rester en base, ni une seconde être créée par une nouvelle tentative
 export const up = async ({ queryInterface }) => {
     const sequelize = queryInterface.sequelize;
-    const [anciens] = await sequelize.query("SELECT cle, CAST(valeur AS CHAR) AS valeur FROM ParametresPlanning WHERE cle IN (:cles)", { replacements: { cles: Object.keys(CONVERSIONS) } });
-    if (!anciens.length) return;
+    await sequelize.transaction(async (transaction) => {
+        const [anciens] = await sequelize.query("SELECT cle, CAST(valeur AS CHAR) AS valeur FROM ParametresPlanning WHERE cle IN (:cles)", { replacements: { cles: Object.keys(CONVERSIONS) }, transaction });
+        if (!anciens.length) return;
 
-    const jour = aujourdhui();
-    const ecole = await enVigueur(sequelize, [PROFIL, ...Object.values(CONVERSIONS).map(([id]) => id)], jour);
-    const aReprendre = ecarts({ anciens, ecole, profil: ecole.get(PROFIL) ?? null });
-    if (!aReprendre.length) return;
+        const jour = aujourdhui();
+        const ecole = await enVigueur(sequelize, [PROFIL, ...Object.values(CONVERSIONS).map(([id]) => id)], jour, transaction);
+        const aReprendre = ecarts({ anciens, ecole, profil: ecole.get(PROFIL) ?? null });
+        if (!aReprendre.length) return;
 
-    const maintenant = new Date();
-    await queryInterface.bulkInsert("VersionsParametres", [{ libelle: LIBELLE, date_effet: jour, statut: "appliquee", id_auteur: null, appliquee_le: maintenant, createdAt: maintenant, updatedAt: maintenant }]);
-    const [[{ id }]] = await sequelize.query("SELECT MAX(id_version) AS id FROM VersionsParametres");
-    await queryInterface.bulkInsert(
-        "ValeursParametres",
-        aReprendre.map(([cle, valeur]) => ({ id_version: id, cle, portee: "etablissement", id_portee: "", valeur: JSON.stringify(valeur), retiree: false }))
-    );
+        const maintenant = new Date();
+        await queryInterface.bulkInsert("VersionsParametres", [{ libelle: LIBELLE, date_effet: jour, statut: "appliquee", id_auteur: null, appliquee_le: maintenant, createdAt: maintenant, updatedAt: maintenant }], { transaction });
+        // La version que cette transaction vient d'insérer : la plus récente des reprises sans auteur
+        const [[{ id }]] = await sequelize.query("SELECT MAX(id_version) AS id FROM VersionsParametres WHERE libelle = :libelle AND id_auteur IS NULL", { replacements: { libelle: LIBELLE }, transaction });
+        await queryInterface.bulkInsert(
+            "ValeursParametres",
+            aReprendre.map(([cle, valeur]) => ({ id_version: id, cle, portee: "etablissement", id_portee: "", valeur: JSON.stringify(valeur), retiree: false })),
+            { transaction }
+        );
+    });
 };
 
 export const down = async ({ queryInterface }) => {
     const sequelize = queryInterface.sequelize;
-    const [versions] = await sequelize.query("SELECT id_version FROM VersionsParametres WHERE libelle = :libelle AND id_auteur IS NULL", { replacements: { libelle: LIBELLE } });
-    for (const { id_version } of versions) {
-        const [plusRecentes] = await sequelize.query(
-            `SELECT DISTINCT s.id_version FROM VersionsParametres s JOIN ValeursParametres v ON v.id_version = s.id_version
-             WHERE s.id_version > :id AND s.statut = 'appliquee' AND v.cle IN (SELECT cle FROM ValeursParametres WHERE id_version = :id)`,
-            { replacements: { id: id_version } }
-        );
-        if (plusRecentes.length) {
-            throw new Error(
-                `Migration 0088 : la version ${id_version} (« ${LIBELLE} ») n'est pas retirée, car la version ${plusRecentes.map((v) => v.id_version).join(", ")} change les mêmes réglages après elle. Annulez-la d'abord.`
+    await sequelize.transaction(async (transaction) => {
+        const [versions] = await sequelize.query("SELECT id_version FROM VersionsParametres WHERE libelle = :libelle AND id_auteur IS NULL", { replacements: { libelle: LIBELLE }, transaction });
+        for (const { id_version } of versions) {
+            const [plusRecentes] = await sequelize.query(
+                `SELECT DISTINCT s.id_version FROM VersionsParametres s JOIN ValeursParametres v ON v.id_version = s.id_version
+                 WHERE s.id_version > :id AND s.statut = 'appliquee' AND v.cle IN (SELECT cle FROM ValeursParametres WHERE id_version = :id)`,
+                { replacements: { id: id_version }, transaction }
             );
+            if (plusRecentes.length) {
+                throw new Error(
+                    `Migration 0088 : la version ${id_version} (« ${LIBELLE} ») n'est pas retirée, car la version ${plusRecentes.map((v) => v.id_version).join(", ")} change les mêmes réglages après elle. Annulez-la d'abord.`
+                );
+            }
+            await sequelize.query("DELETE FROM ValeursParametres WHERE id_version = :id", { replacements: { id: id_version }, transaction });
+            await sequelize.query("DELETE FROM VersionsParametres WHERE id_version = :id", { replacements: { id: id_version }, transaction });
         }
-        await sequelize.query("DELETE FROM ValeursParametres WHERE id_version = :id", { replacements: { id: id_version } });
-        await sequelize.query("DELETE FROM VersionsParametres WHERE id_version = :id", { replacements: { id: id_version } });
-    }
+    });
 };
