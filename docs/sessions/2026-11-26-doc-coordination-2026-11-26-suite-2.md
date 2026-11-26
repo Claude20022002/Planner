@@ -45,6 +45,12 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 - #263 fusionnée ; #261 (VIT-20d) poussée, encore en brouillon ; #274 et #275 ouvertes. Codex et l'agent de Cursor n'ont pas encore lu les messages de 9 h 12.
 - **VIT-09d** (demande du chef) : les 20 logos redessinés dans le style du logo Planner, deux séries (A tuile bleu nuit commune, B teinte de l'application), tout de suite, par une session Claude neuve. Fiche `missions/vit-09d-logos-style-planner.md` ; ligne de suivi ; décision du chef et ligne du coordinateur. VIT-20f attend le choix ; consigne à Codex (`codex/entree/2026-11-26-0924-vit-20f-attend-logos.md`).
 
+## Relevé de 9 h 30
+
+- Codex : VIT-21 (`85ac5354`, poussée), phrases D1 à D7 **visées par le chef** ; plan de VIT-20f (`72c94adf`) déposé avant la consigne de 9 h 24, **mis de côté** ; plan du correctif `useEffect` (`09009354`) **à corriger** (raisons dans `decisions.md`).
+- Agent de Cursor : Q-37 codée (`ac77190f`, fiche `ecd9d20c`), **relue : prête pour la PR**. Nouvelle mission du chef : `fix-neutralite-docs` (fiche écrite).
+- Boîtes : quatre rapports rangés ; `codex/entree/2026-11-26-0932-reponses-vit-21-vit-20f-useeffect.md`, `cursor/entree/2026-11-26-0932-q-37-prete-mission-docs.md`.
+
 ## Reste à faire, dans l'ordre
 
 1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.

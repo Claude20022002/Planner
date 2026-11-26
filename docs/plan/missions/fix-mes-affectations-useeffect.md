@@ -57,3 +57,4 @@ fiche de session à jour en fin de session, suivi.md non modifié ; tout est com
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-26 | mission remise à Codex (boîte), n° 2 de sa file | — |
+| 2026-11-26 9 h 30 | plan `09009354` relu : cause et test ciblé bons ; report à la microtâche et outillage de rendu écartés ; chargement à sortir dans `components/mesSeances/chargerSeances.js` (périmètre étendu) | **à corriger** |
