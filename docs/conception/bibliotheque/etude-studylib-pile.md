@@ -7,7 +7,7 @@
 | Fiche | [etude-studylib](../../plan/missions/etude-studylib.md) (version du 18 nov., 17 h 30, branche `doc/coordination-equipe`) |
 | Branche | `etude/bib-studylib-pile`, depuis `origin/main` (`686ebaf9`) |
 | Source lue | `..\StudyLib`, branche `main` (`bb3313b`), sans modification ; Planner sur `origin/main` |
-| État | **voie B validée par le chef le 21 nov.** ; les points 2 à 7 du § 5 restent à trancher ; § 3.2 (volumes) attend les chiffres de la commande de comptage |
+| État | **voie B validée par le chef le 21 nov.** ; points 2 (exception hors chantier, module BIB) et 3 (`@aws-sdk/client-s3`) du § 5 tranchés le 21 nov. ; points 4 à 7 tranchés le 22 nov. dans le plan de BIB-05 (un seau, un préfixe par école ; StudyLib non redéployée ; vidéos YouTube non reprises ; image StudyLib publiée jusqu'à BIB-08 vérifiée, plus un mois) : `docs/plan/decisions.md` fait foi (ligne corrigée par le coordinateur après la fusion de #249) ; § 3.2 (volumes) attend toujours les chiffres de la commande de comptage |
 
 ## En bref
 

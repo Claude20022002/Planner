@@ -1,0 +1,23 @@
+---
+// Accueil, section 6 : trois cartes, une par type d'établissement, vers la page Solutions (plan VIT-20, § 4.3). Les textes sont ceux
+// de solutions.json (surtitre et titre de chaque type) ; le titre de section est le libellé « Par établissement ».
+import { Briefcase, Landmark, School } from 'lucide-react';
+import GrilleCartes from '../fonctions/GrilleCartes.astro';
+import { TYPES } from '../solutions/types.js';
+import { traductions } from '../../i18n/index.js';
+import { chemin } from '../../i18n/langues.js';
+
+interface Props {
+  langue: string;
+}
+
+const { langue } = Astro.props;
+const commun = traductions(langue, 'commun');
+const solutions = traductions(langue, 'solutions');
+const cartes = TYPES.map(({ cle, ancre }) => ({
+  titre: solutions(`types.${cle}.surtitre`),
+  texte: solutions(`types.${cle}.titre`),
+  href: chemin(langue, 'solutions', ancre),
+}));
+---
+<GrilleCartes id="types" titre={commun('navigation.parEtablissement')} cartes={cartes} icones={[Landmark, Briefcase, School]} />

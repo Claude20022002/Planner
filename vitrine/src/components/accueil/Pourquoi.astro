@@ -1,14 +1,12 @@
 ---
-// Accueil, section « Pourquoi Planner » (VIT-14) : le comparatif court, un mot par case, sur les lignes
-// choisies par le chef (LIGNES_ACCUEIL), puis le lien vers la page Comparer. Placée avant « Bientôt ».
+// Accueil, section « Pourquoi Planner » (VIT-14, rendue interactive par VIT-20 § 4.8) : le tableau court de repli (sans JavaScript),
+// remplacé par les onglets de ComparatifInteractif (script du navigateur, sans React), puis le lien vers la page Comparer.
 import Section from '../socle/Section.astro';
 import Titre from '../socle/Titre.astro';
 import Accroche from '../socle/Accroche.astro';
 import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Apparition from '../socle/Apparition.astro';
-import TableauComparatif from '../comparer/TableauComparatif.astro';
-import CartesComparatif from '../comparer/CartesComparatif.astro';
-import { LIGNES_ACCUEIL } from '../comparer/comparatif.js';
+import ComparatifInteractif from './ComparatifInteractif.astro';
 import { traductions } from '../../i18n/index.js';
 import { chemin } from '../../i18n/langues.js';
 
@@ -27,8 +25,7 @@ const t = traductions(langue, 'comparer');
     </div>
   </Apparition>
   <div class="comparatif">
-    <TableauComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
-    <CartesComparatif langue={langue} lignes={LIGNES_ACCUEIL} court />
+    <ComparatifInteractif langue={langue} />
   </div>
   <BoutonPrincipal href={chemin(langue, 'comparer')} variante="lien">{t('accueil.lien')}</BoutonPrincipal>
 </Section>

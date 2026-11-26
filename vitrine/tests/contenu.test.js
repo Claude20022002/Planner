@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PAGES, FONCTIONS, BARRE, NAVIGATION, chemin } from '../src/i18n/langues.js';
+import { PAGES, RESSOURCES, chemin, pageModule } from '../src/i18n/langues.js';
 
 const DOSSIER = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'i18n');
 const charger = (langue, page) => JSON.parse(fs.readFileSync(path.join(DOSSIER, langue, `${page}.json`), 'utf8'));
@@ -46,20 +46,14 @@ const PHRASES = [
   'Le scanner enregistre la présence et rejoint un quiz ou un jeu.',
 ];
 
-test('les quatre pages ont une adresse, et le menu Fonctions suit le plan', () => {
-  assert.equal(chemin('fr', 'quizEtJeux'), '/fr/quiz-et-jeux/');
-  assert.equal(chemin('en', 'bibliotheque'), '/en/bibliotheque/');
-  assert.equal(chemin('ar', 'coursEtAnnonces'), '/ar/cours-et-annonces/');
-  assert.equal(chemin('fr', 'application'), '/fr/application/');
+test('les pages de module ont une adresse, et la barre suit le plan de VIT-20', () => {
+  assert.equal(chemin('fr', pageModule('quizEtJeux')), '/fr/applications/quiz-et-jeux/');
+  assert.equal(chemin('ar', pageModule('espaceDeCours')), '/ar/applications/espace-de-cours/');
+  assert.equal(chemin('fr', 'socle'), '/fr/socle/');
   assert.equal(chemin('fr', 'bibliothequeJeux'), '/fr/bibliotheque-des-jeux/');
-  assert.equal(FONCTIONS.includes('bibliothequeJeux'), false);
-  assert.equal(NAVIGATION.includes('bibliothequeJeux'), false);
-  assert.deepEqual(FONCTIONS, ['emploiDuTemps', 'enClasse', 'quizEtJeux', 'coursEtAnnonces', 'bibliotheque', 'application', 'etablissement']);
-  assert.deepEqual(BARRE, ['solutions', 'securite', 'bientot']);
-  assert.equal(NAVIGATION[0], 'solutions');
-  assert.deepEqual(NAVIGATION, ['solutions', ...FONCTIONS, 'securite', 'bientot']);
-  for (const cle of [...FONCTIONS, ...BARRE, 'fonctions']) assert.ok(cle === 'fonctions' || cle in PAGES, cle);
-  assert.equal(charger('fr', 'commun').navigation.fonctions, 'Fonctions');
+  assert.deepEqual(RESSOURCES, ['faq', 'comparer', 'securite', 'bientot', 'fonctionnalites']);
+  for (const cle of RESSOURCES) assert.ok(cle in PAGES, cle);
+  assert.equal(charger('fr', 'commun').navigation.applications, 'Applications');
 });
 
 test('Bientôt garde le même nombre de cartes, sans le prêt de livres', () => {

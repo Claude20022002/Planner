@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { configurerHorloge } from '../../shared/dates.js';
 import { API_PLANNER } from './config';
 
 /**
@@ -44,9 +45,14 @@ export const chargerIdentite = async (lire = fetch) => {
   const copie = await lireCopie();
   const relecture = lireServeur(lire).then(async (lue) => {
     if (lue) await AsyncStorage.setItem(CLE, JSON.stringify(lue)).catch(() => {});
+    // L'horloge fraîche du serveur remplace celle de la copie dès qu'elle arrive (M-10)
+    if (lue) configurerHorloge(lue.horloge);
     return lue;
   });
   courante = copie ?? (await relecture) ?? IDENTITE_PLANNER;
+  // L'heure de l'école, rendue par le serveur avec l'identité : jamais le fuseau du téléphone (M-10).
+  // Sans réseau, celle de la copie ; sans copie non plus, le décalage du téléphone (shared/dates.js)
+  if (copie) configurerHorloge(copie.horloge);
   return courante;
 };
 

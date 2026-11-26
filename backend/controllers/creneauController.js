@@ -4,6 +4,7 @@ import { asyncHandler } from "../middleware/asyncHandler.js";
 import { getPaginationParams, createPaginationResponse } from "../utils/paginationHelper.js";
 import { pick } from "../utils/validationHelper.js";
 import { recalculerRangs } from "../services/planning/referentiel.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * Contrôleur pour les créneaux : une grille horaire par régime (initiale, continue,
@@ -167,7 +168,7 @@ export const deleteCreneau = asyncHandler(async (req, res) => {
     if (seances > 0) {
         return res.status(409).json({
             message: "Créneau utilisé",
-            error: `${seances} séance(s) utilisent ce créneau : déplacez-les avant de le supprimer`,
+            error: `${accorder(seances, "séance utilise ce créneau", "séances utilisent ce créneau")} : déplacez-les avant de le supprimer`,
         });
     }
 

@@ -34,10 +34,12 @@ C'est le cœur du produit d'aujourd'hui, et il est mûr.
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | EDT-01 | Changement structurel refusé une fois les séances générées (groupes, volumes), avec un message qui dit quoi faire | ME-2b réduit | 3 | S | MOT-01 | à faire |
-| EDT-02 | Horaires saisonniers (ramadan, hiver, été) appliqués sans tout regénérer | F-11 | libre | M | MOT-01 | à faire |
+| EDT-02 | Horaires saisonniers (ramadan, hiver, été) appliqués sans tout regénérer | F-11 | 3 | M | MOT-01 | à faire |
 | EDT-03 | Écran d'explication des conflits et des refus : la règle, le groupe, la solution proposée (EP-4) | — | 3 | M | MOT-03 | à faire |
-| EDT-04 | Publication, PDF et courriels selon l'école : marque, langue, vocabulaire du profil, sans mot propre au supérieur pour une école scolaire | — | libre | M | UIX-02 | à faire |
-| EDT-05 | Paramètres datés complets : un réglage change à une date, sans toucher le passé | ME-2b complet | 5 | L | MOT-01 | reporté |
+| EDT-04 | Publication, PDF et courriels selon l'école : marque, langue, vocabulaire du profil, sans mot propre au supérieur pour une école scolaire | — | 3 | M | UIX-02 | à faire |
+| EDT-05 | Paramètres datés complets : un réglage change à une date, sans toucher le passé | ME-2b complet | 7 | L | MOT-01 | reporté |
+| EDT-06 | Convocations aux examens : salle, place et heure par élève, liste d'émargement, PDF en français, anglais et arabe | — | à placer | S | VSC-02 | à faire |
+| EDT-07 | Équipements et matériel : équipements de chaque salle, matériel réservable (ordinateurs, projecteur mobile) ; le besoin d'une séance passe au moteur par MOT-11 | — | libre | M | — | à faire |
 
 ## Critères de « terminé »
 
@@ -45,6 +47,7 @@ C'est le cœur du produit d'aujourd'hui, et il est mûr.
 - **EDT-02** : passer à l'horaire de ramadan sur une période donnée ne déplace que les séances de cette période. Un parcours le prouve.
 - **EDT-03** : chaque refus du solveur, et chaque conflit, s'affiche avec ses trois éléments. Un parcours le prouve.
 - **EDT-04** : le PDF d'une école fictive de collège ne contient ni « filière » ni « semestre ».
+- **EDT-07** : un même projecteur ne peut pas être réservé deux fois sur le même créneau, et le refus nomme la réservation qui le bloque.
 
 ## Exigences produit
 

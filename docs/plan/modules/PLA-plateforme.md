@@ -48,12 +48,12 @@
 | PLA-05 | Registre des écoles et création d'une école **par une commande** (base, migrations, premier administrateur), temps mesuré | ME-4 réduit | 2 | L | PLA-03 | à faire |
 | PLA-06 | Mesure de D-01 : 200 bases sur un serveur (mémoire des pools, temps de migration, démarrage) | A-1 de la revue | 1 | M | — | à faire |
 | PLA-07 | Sauvegarde et restauration **par école** (canal I-11) | I-11 | 2 | M | EXP-04 | à faire |
-| PLA-08 | Console de l'équipe Planner (créer, suspendre, voir l'état des écoles) | ME-4 (console) | 5, ou juste avant la 1re école extérieure | M | PLA-05 | reporté |
-| PLA-09 | Migrations par vagues, hors du démarrage du serveur | ME-5 | 5, ou juste avant la 1re école extérieure | M | PLA-05 | reporté |
-| PLA-10 | Choisir son école à la connexion ; l'application la trouve par adresse ou par code (canal I-12) | ME-8 réduit | 5, ou juste avant la 1re école extérieure | M | PLA-05, MOB-07 | reporté |
-| PLA-11 | Comptes communs : un compte, plusieurs écoles (parents, enseignants partagés) | ME-8 | 5 | L | PLA-10, VSC-01 | reporté |
-| PLA-12 | Export complet d'une école ; effacement sous 30 jours après son départ (EP-12) | ME-16 | 5 | M | PLA-07 | à faire |
-| PLA-13 | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) ; sites indépendants si une école en a besoin | ME-7, ME-25 | 5 | M (+ L, conditionnel) | PLA-02, FIN-01 | reporté |
+| PLA-08 | Console de l'équipe Planner (créer, suspendre, voir l'état des écoles) | ME-4 (console) | 7 | M | PLA-05 | reporté |
+| PLA-09 | Migrations par vagues, hors du démarrage du serveur | ME-5 | 7 | M | PLA-05 | reporté |
+| PLA-10 | Choisir son école à la connexion ; l'application la trouve par adresse ou par code (canal I-12) | ME-8 réduit | 7 | M | PLA-05, MOB-07 | reporté |
+| PLA-11 | Comptes communs : un compte, plusieurs écoles (parents, enseignants partagés) | ME-8 | 7 | L | PLA-10, VSC-01 | reporté |
+| PLA-12 | Export complet d'une école ; effacement sous 30 jours après son départ (EP-12) | ME-16 | 7 | M | PLA-07 | à faire |
+| PLA-13 | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) ; sites indépendants si une école en a besoin. Le fuseau **de l'installation** est fait (M-10, 22 nov. : `APP_TIMEZONE` obligatoire, horloge rendue au site et à l'application) ; reste le fuseau choisi **par chaque école** quand une installation en sert plusieurs (le paramètre du catalogue `ETA` « Fuseau horaire » existe déjà) | ME-7, ME-25 | 7 | M (+ L, conditionnel) | PLA-02, FIN-01 | reporté |
 
 ## Critères de « terminé »
 

@@ -11,17 +11,17 @@
   "aujourdhui": "Today",
   "cartes": [
     {
-      "page": "quizEtJeux",
+      "page": "module.quizEtJeux",
       "titre": "Quiz and games",
       "texte": "The teacher prepares the quiz. The link opens in a browser, on a school computer or elsewhere. A code or a QR code leads to the same link."
     },
     {
-      "page": "coursEtAnnonces",
+      "page": "module.espaceDeCours",
       "titre": "Courses and announcements",
       "texte": "The teacher adds a document or a link in a section."
     },
     {
-      "page": "emploiDuTemps",
+      "page": "module.emploiDuTemps",
       "titre": "Timetable",
       "texte": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
     }

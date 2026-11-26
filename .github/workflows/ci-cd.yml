@@ -123,10 +123,13 @@ jobs:
         env:
           NODE_ENV: test
           JWT_SECRET: test-secret-ci-not-production
+          # Fuseau de l'école des tests (M-10) : pas de défaut de pays dans le serveur
+          APP_TIMEZONE: UTC
 
       - name: Tests d'intégration (API + MySQL)
         run: npm run test:integration
         env:
+          APP_TIMEZONE: UTC
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
           DB_NAME: hestim_test
@@ -278,6 +281,8 @@ jobs:
         run: npm run test:parcours
         env:
           CI: "true"
+          # L'école des parcours est à UTC+0 (créneau du jour de #210) ; P-1 essaie UTC+1 dans le navigateur
+          APP_TIMEZONE: UTC
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
           DB_USER: root
@@ -309,7 +314,81 @@ jobs:
       - name: Tests de deployer.sh
         run: bash deploy/vps/tests/tester-deployer.sh
 
-  # ── 7. Publication des images (lot ME-0b) ────────────────────────────────
+  # ── 7. Le README suffit-il ? (lot QUA-01, réponse Q-35) ───────────────────
+  # Rejoue le bloc « Installation et lancement » du README sur une base neuve : install:all, .env
+  # renseigné comme le dit le tableau des variables, migrate, seed, build. Le README est la seule
+  # notice d'installation d'un nouveau venu ; si une commande y manque ou y ment, ce job le dit.
+  demarrage-readme:
+    name: Démarrage du README
+    runs-on: ubuntu-24.04
+
+    services:
+      mysql:
+        image: mysql:8.4.13
+        env:
+          MYSQL_ROOT_PASSWORD: motdepasse
+          MYSQL_DATABASE: hestim_planner
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -u root -pmotdepasse"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+
+      - name: Installation (install:all)
+        run: npm run install:all
+
+      # Le modèle est copié tel quel, puis seules les variables du tableau sont renseignées :
+      # la base du conteneur, le fuseau, et deux secrets tirés comme le montre le README
+      - name: Fichier .env
+        run: |
+          cp backend/.env.example backend/.env
+          sed -i 's/^DB_PASSWORD=$/DB_PASSWORD=motdepasse/' backend/.env
+          sed -i 's/^APP_TIMEZONE=$/APP_TIMEZONE=UTC/' backend/.env
+          sed -i "s/^JWT_SECRET=.*/JWT_SECRET=$(node -e 'console.log(require("crypto").randomBytes(64).toString("hex"))')/" backend/.env
+          sed -i "s/^CSRF_SECRET=.*/CSRF_SECRET=$(node -e 'console.log(require("crypto").randomBytes(64).toString("hex"))')/" backend/.env
+          grep -E '^(DB_NAME|DB_PASSWORD|APP_TIMEZONE|JWT_SECRET|CSRF_SECRET)=' backend/.env | sed 's/=.*/=<renseigné>/'
+
+      - name: Migrations
+        run: npm run migrate
+
+      - name: Données de démonstration
+        run: npm run seed
+
+      - name: Construction du site
+        run: npm run build
+
+      # Ce que le README promet : une base garnie (école pilote, comptes, groupes, salles) et un
+      # site construit. Les noms de tables sont ceux des modèles (Groupes, Salles au pluriel).
+      - name: Vérification
+        working-directory: backend
+        run: |
+          node --input-type=module -e "
+          import sequelize from './config/db.js';
+          for (const table of ['ConfigurationEtablissement', 'Users', 'Groupes', 'Salles']) {
+            const [lignes] = await sequelize.query('SELECT COUNT(*) AS n FROM ' + table);
+            const n = Number(lignes[0].n);
+            console.log(table + ' : ' + n + ' ligne(s)');
+            if (n < 1) { console.error(table + ' est vide : le seed a échoué'); process.exit(1); }
+          }
+          await sequelize.close();
+          "
+          test -f ../frontend/dist/index.html
+
+  # ── 8. Publication des images (lot ME-0b) ────────────────────────────────
   # Seulement après une fusion sur main et tous les contrôles verts : une image publiée a passé la
   # suite complète et les parcours. Étiquetées par le commit (complet et court) et « main » ; le
   # serveur les tire par « deployer.sh <commit> », qui vérifie l'étiquette revision.
@@ -317,7 +396,7 @@ jobs:
   publier-images:
     name: Publier ${{ matrix.image }}
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [build-frontend, test-backend, test-mobile, test-solver, test-parcours, test-scripts]
+    needs: [build-frontend, test-backend, test-mobile, test-solver, test-parcours, test-scripts, demarrage-readme]
     runs-on: ubuntu-24.04
     permissions:
       contents: read

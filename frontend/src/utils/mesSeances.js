@@ -23,9 +23,7 @@ export const chargerMesSeances = async (du, au) => {
   const reponses = await Promise.all(tranches);
   return {
     groupes: reponses[0]?.groupes || [],
-    // La salle porte son campus ; le panneau affiche son nom sous la salle
-    seances: reponses
-      .flatMap((r) => r?.seances || [])
-      .map((a) => ({ ...a, salle: a.salle ? { ...a.salle, batiment: a.salle.batiment || a.salle.campus?.nom || null } : null })),
+    // Le panneau affiche salle.batiment, fourni par l'API (nom du campus). Sans ce champ, rien.
+    seances: reponses.flatMap((r) => r?.seances || []),
   };
 };

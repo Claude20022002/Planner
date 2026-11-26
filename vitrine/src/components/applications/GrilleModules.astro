@@ -1,0 +1,50 @@
+---
+// Grille des modules : les disponibles d'abord (logo, nom, lien), puis les tuiles grisées « Bientôt ». Sur « Toutes les
+// applications », `parCategorie` range les 17 sous leurs quatre catégories. Posée sur l'accueil et sur /applications/.
+import TuileModule from './TuileModule.astro';
+import { traductions } from '../../i18n/index.js';
+import { CATEGORIES, MODULES, estDisponible, modulesDeCategorie } from '../../donnees/modules.js';
+
+interface Props {
+  langue: string;
+  parCategorie?: boolean;
+  niveauTitre?: 2 | 3;
+}
+
+const { langue, parCategorie = false, niveauTitre = 2 } = Astro.props;
+const commun = traductions(langue, 'commun');
+const Titre = `h${niveauTitre}`;
+const disponibles = MODULES.filter(estDisponible);
+const bientot = MODULES.filter((module) => !estDisponible(module));
+---
+{parCategorie ? (
+  <div class="categories">
+    {CATEGORIES.map((categorie) => (
+      <section aria-labelledby={`categorie-${categorie}`}>
+        <Titre id={`categorie-${categorie}`}>{commun(`categories.${categorie}`)}</Titre>
+        <ul class="grille">
+          {modulesDeCategorie(categorie).map((module) => <li><TuileModule module={module} langue={langue} /></li>)}
+        </ul>
+      </section>
+    ))}
+  </div>
+) : (
+  <ul class="grille">
+    {[...disponibles, ...bientot].map((module) => <li><TuileModule module={module} langue={langue} /></li>)}
+  </ul>
+)}
+
+<style>
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: var(--espace-2);
+    inline-size: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .grille > li { display: grid; }
+  .categories { display: grid; gap: var(--espace-4); inline-size: 100%; text-align: start; }
+  .categories :global(h2), .categories :global(h3) { margin: 0 0 var(--espace-2); font-size: var(--texte-accroche); color: var(--bleu-nuit); }
+</style>

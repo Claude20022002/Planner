@@ -37,15 +37,17 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| ADM-01 | Habilitations à portée : un droit vaut pour une filière, un niveau, un cycle ou toute l'école | ME-12 | 5 | M | VSC-01 | à faire |
-| ADM-02 | Panneau de configuration de l'école : réglages du moteur montrés à l'école (le reste reste au profil), aperçu puis appliquer ; avec MOT-13c, l'écran « Règles de génération ». Trois étapes : 02a serveur, 02b page Réglages et Historique, 02c Règles de génération ([conception](../../conception/administration/adm-02-configuration.md)) | ME-2c | 3 | L + M | MOT-01, Q-04 (tranchée par le plan) | en cours : plan validé le 22 nov. ; 02a codée sur `feat/adm-02-configuration`, sauf la migration de reprise (numéro à réserver) |
+| ADM-01 | Habilitations à portée : un droit vaut pour une filière, un niveau, un cycle ou toute l'école | ME-12 | 3 | M | VSC-01 | à faire |
+| ADM-02 | Panneau de configuration de l'école : réglages du moteur montrés à l'école (le reste reste au profil), aperçu puis appliquer ; avec MOT-13c, l'écran « Règles de génération ». Trois étapes : 02a serveur, 02b page Réglages et Historique, 02c Règles de génération ([conception](../../conception/administration/adm-02-configuration.md)) | ME-2c | 3 | L + M | MOT-01, Q-04 (tranchée par le plan) | à faire |
 | ADM-03 | Import : zone de préparation, contrôles, tout ou rien, classeur unique, clés naturelles ; le classeur porte la classe et le groupe de langue | ME-9 | 3 | L | VSC-01, VSC-07 | à faire |
-| ADM-04 | Assistant de démarrage avec un modèle par type d'école (EP-1) ; le modèle collège crée les groupes de langue, prêts pour l'import | ME-10 | 3 | L | ADM-02, ADM-03, UIX-01 | à faire |
-| ADM-05 | Rôle parent : compte facultatif, lien prouvé avec l'enfant, droits par enfant | — | 4 | M | VSC-02, PLA-11 | à faire |
-| ADM-06 | Clôture d'une année (lecture seule) et préparation de la suivante : passage des élèves, groupes reconduits (EP-8) | ME-19, ME-20 | 5 | L + M | VSC-02 | à faire |
-| ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 5 | M | PLA-11 | à faire |
+| ADM-04 | Assistant de démarrage avec un modèle par type d'école (EP-1) ; le modèle collège crée les groupes de langue, prêts pour l'import | ME-10 | 3 et 5 | L | ADM-02, ADM-03, UIX-01 | à faire |
+| ADM-05 | Rôle parent : compte facultatif, lien prouvé avec l'enfant, droits par enfant | — | 6 | M | VSC-02, PLA-11 | à faire |
+| ADM-06 | Clôture d'une année (lecture seule) et préparation de la suivante : passage des élèves, groupes reconduits (EP-8) | ME-19, ME-20 | 7 | L + M | VSC-02 | à faire |
+| ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 7 | M | PLA-11 | à faire |
 | ADM-08 | Annuaire de l'école | ME-8b | — | M | — | reporté |
 | ADM-09 | Échanges OneRoster | ME-9b | — | M | ADM-03 | reporté |
+| ADM-10 | Champs et listes propres à l'école, sans code : champs ajoutés aux fiches élève, enseignant et candidature, listes de valeurs ; repris par l'import, les exports et les modèles de documents | — | à placer | L | VSC-01, ADM-02 | à faire |
+| ADM-11 | Fériés selon le pays : l'école choisit son pays, ou aucun, et le Calendrier propose les fériés de ce pays ; aujourd'hui le bouton et le générateur du serveur ne connaissent que le Maroc (EP-5, décision du chef du 21 nov.) | — | 3 | M | ADM-02 | à faire |
 
 ## Critères de « terminé »
 
@@ -61,6 +63,8 @@
 - **ADM-04** : la mesure EP-1 est faite par une personne extérieure et notée. Le modèle collège lui propose des groupes de langue vides, et l'import ADM-03 les remplit.
 - **ADM-05** : le lien parent-enfant ne se crée que par l'école ; deux parents séparés ont chacun leurs droits. Les règles sont validées avec le juriste (revue A-6).
 - **ADM-06** : une école de démonstration passe d'une année à l'autre en moins d'une demi-journée, et l'année close reste lisible.
+- **ADM-10** : un champ ajouté par une école n'existe pas pour une autre ; il passe dans l'import, l'export complet (PLA-12) et un modèle de document.
+- **ADM-11** : une école sans pays choisi ne voit aucun bouton de fériés nommant un pays ; une école qui choisit un pays reçoit ses fériés, les fêtes à date mobile restant « à confirmer ». Aucun texte de l'interface ne nomme un pays par défaut.
 
 ## Exigences produit
 

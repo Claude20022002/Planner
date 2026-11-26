@@ -17,8 +17,9 @@ import { creerGrille } from "./grille.mjs";
 import { preparerGeneration } from "./donneesGeneration.mjs";
 import { preparerIiia } from "./donneesIiia.mjs";
 
-// Le Maroc est à UTC+0 toute l'année ; la séance doit tomber « aujourd'hui » pour le serveur
-const FUSEAU = "Africa/Casablanca";
+// La séance doit tomber « aujourd'hui » pour le serveur : le même fuseau que lui (M-10), lu à l'appel,
+// après setupEnv.js (APP_TIMEZONE=UTC si la CI ne l'a pas posé)
+const fuseau = () => process.env.APP_TIMEZONE || "UTC";
 const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
 // Identifiants d'installation de l'application (R-10) : l'ancien téléphone est lié à la préparation
 const TELEPHONES = { ancien: "parcours-ancien-telephone-r10", nouveau: "parcours-nouveau-telephone-r10" };
@@ -46,7 +47,7 @@ export const preparerDonnees = async (racine) => {
   for (const e of etudiants.slice(1)) await Appartenir.create({ id_user_etudiant: e.id_user, id_groupe: fixture.groupe.id_groupe });
 
   const maintenant = new Date();
-  const aujourdhui = maintenant.toLocaleDateString("en-CA", { timeZone: FUSEAU });
+  const aujourdhui = maintenant.toLocaleDateString("en-CA", { timeZone: fuseau() });
   const jourDe = (date) => JOURS[new Date(`${date}T12:00:00Z`).getUTCDay()];
   const plusTard = (date, jours) => {
     const d = new Date(`${date}T12:00:00Z`);

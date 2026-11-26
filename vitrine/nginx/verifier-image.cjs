@@ -106,11 +106,13 @@ async function verifierNavigateur() {
       .map((chemin) => chemin.replace(/index\.html$/, ''));
     let videos = 0;
     for (const chemin of pages) {
+      // Une page de renvoi d'Astro (meta refresh) quitte la page : statut et noindex, puis on attend sa cible.
+      const renvoi = (await (await fetch(origine + chemin)).text()).match(/http-equiv="refresh" content="\d+;url=([^"]+)"/);
       const reponse = await page.goto(origine + chemin, { waitUntil: 'load' });
       assert.equal(reponse.status(), 200, chemin);
       assert.equal(reponse.headers()['x-robots-tag'], 'noindex', chemin);
-      if (chemin === '/') {
-        await page.waitForURL(origine + '/fr/');
+      if (chemin === '/' || renvoi) {
+        await page.waitForURL(origine + (renvoi ? renvoi[1] : '/fr/'));
         continue;
       }
       await page.evaluate(() => Promise.all([...document.images].map((image) => {
