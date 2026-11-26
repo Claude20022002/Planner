@@ -184,7 +184,7 @@ Public : tous. Les logos ne disent rien d'un pays ni d'un niveau d'enseignement.
 |---|---|
 | Décision | le chef retient **la série B pour les 20 logos** (26 nov., vers 10 h 10, relayé par le coordinateur). Les teintes `app-<id>` de la charte ne changent pas ; `#8FB4DE` n'entre pas dans la charte (vérifié : aucun des 20 SVG de la série B ne l'emploie) |
 | Branche | la même, `feat/vit-09d-logos-style-planner` (PR #277, ouverte par le chef) |
-| **Validé** | en attente (coordinateur) |
+| **Validé** | **par le coordinateur le 2026-11-26** : retenu tel quel. Le rayon de 22 de la place réservée de `logos.js` passe à VIT-20f (Codex) ; après `git merge origin/main`, un conflit hors du périmètre garde la version de `main` et se dit dans la fiche |
 
 ### 12.1 Qui lit les logos aujourd'hui (relevé par grep sur la branche)
 
