@@ -10,7 +10,7 @@
 
 ## 1. Objet et recette attendue
 
-Le lot SC-1c relie un étudiant au direct du Studio dans l’application. La recette propose une partie complète déclenchée depuis le site de l’enseignant. L’étudiant rejoint, attend, répond aux six types du direct, puis voit la correction, ses points, son rang et le podium. Une perte de connexion, un changement de groupe ou une diffusion close ont chacun une issue testée. Les choix à valider sont au § 3.
+Le lot SC-1c relie un étudiant au direct du Studio dans l’application. La recette propose une partie complète déclenchée depuis le site de l’enseignant. L’étudiant rejoint, attend, répond aux six types du direct, puis voit la correction, ses points, son rang et le podium. Une perte de connexion, un accès depuis un autre groupe ou une diffusion close ont chacun une issue testée. Les choix à valider sont au § 3.
 
 ## 2. Ce qui existe
 
@@ -32,7 +32,7 @@ Le lot SC-1c relie un étudiant au direct du Studio dans l’application. La rec
 
 Réutiliser le joueur, le protocole d’état versionné et les six types déjà pris en charge (choix unique, choix multiple, vrai ou faux, nombre, réponse courte, ordre). Le scanner soumet le code via la route actuelle. Un mode direct confirmé ouvre l’écran natif. Un mode à son rythme confirmé prend la route web actuelle. Un échec de résolution reste dans le scanner. Afficher une erreur récupérable quand le réseau revient et un message d’issue quand le serveur refuse ou ferme l’accès. Vérifier qu’un nouvel essai est possible après une erreur. La saisie manuelle proposée ne change ni le format du code ni le rôle autorisé.
 
-En cas de coupure pendant une question, afficher l’état de connexion et n’indiquer « envoyée » qu’après confirmation du serveur. Au retour au premier plan ou du réseau, reprendre la lecture existante en conservant au plus une requête de lecture en vol. Après un envoi dont l’issue est inconnue, relire l’état avant de proposer un nouvel envoi. L’étudiant répond seulement si le serveur montre la question encore ouverte et sans réponse enregistrée. Reprendre le rang et la correction à partir de la nouvelle vue.
+En cas de coupure pendant une question, afficher l’état de connexion et n’indiquer « envoyée » qu’après confirmation du serveur. Au retour au premier plan ou du réseau, reprendre la lecture existante en conservant au plus une requête de lecture en vol. Après un envoi dont l’issue est inconnue, relire la vue complète sans le paramètre `depuis`. Le serveur peut répondre `inchange` à une lecture versionnée tant que l’étape est la même, même si la réponse a été enregistrée. La vue complète permet de vérifier `repondu` avant de proposer un nouvel envoi. L’étudiant répond seulement si le serveur montre la question encore ouverte et sans réponse enregistrée. Reprendre le rang et la correction à partir de la nouvelle vue.
 
 ```mermaid
 sequenceDiagram
@@ -86,9 +86,9 @@ EP-12 et EP-15 : utiliser les routes authentifiées de l’école connectée. Un
 | Contexte | Fonctionnement | Preuve |
 |---|---|---|
 | A. Étudiant sans appareil | Le web fonctionne sur un poste prêté par l’école. Sans poste, l’étudiant peut suivre la projection ou participer oralement hors du classement. Le papier pour l’épreuve relève de M-2. | Une participation web depuis un ordinateur ; revue des limites. |
-| B. Réseau lent ou coupé | Mesurer en Slow 3G (400 kbit/s, 400 ms) le poids à l’ouverture et le trafic des relectures. Une coupure ne valide aucune nouvelle réponse. Après reprise, la vue serveur indique si elle avait été reçue et si la question est toujours ouverte. | Couper et rétablir le réseau avant et après un envoi. Vérifier l’absence de doublon et de stock d’envois hors ligne. |
+| B. Réseau lent ou coupé | Mesurer en Slow 3G (400 kbit/s, 400 ms) le poids à l’ouverture et le trafic des relectures. Une coupure ne valide aucune nouvelle réponse. Après reprise, la vue serveur indique si elle avait été reçue et si la question est toujours ouverte. | Couper et rétablir le réseau avant et après un envoi. Simuler un accusé perdu alors que la version reste la même, avec et sans réponse reçue. Vérifier l’absence de doublon et de stock d’envois hors ligne. |
 | C1. Avec projecteur | L’enseignant pilote et projette depuis le site. Les étudiants rejoignent avec le QR ou le code proposé. | Partie avec écran projeté, mobile et navigateur. |
-| C2. Sans projecteur | L’enseignant lance depuis un poste connecté et communique le code. L’étudiant joue sur son appareil si l’énoncé est autonome. Sans son ou image disponible dans la salle, le choix du questionnaire respecte la réponse à la question 3. | Partie avec code communiqué sans projection et un quiz texte ou image. |
+| C2. Sans projecteur | L’enseignant lance depuis un poste connecté et communique le code. L’étudiant joue sur son appareil si l’énoncé est autonome. Le choix d’un questionnaire avec son ou vidéo dépend de la réponse à la question 3. | Partie avec code communiqué sans projection et un quiz texte ou image. |
 
 ## 8. Vérifications et livraison
 
