@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Formation et financeurs (VIT-09d, série A, tuile bleu nuit commune), dans le style du logo Planner : escalier de trois marches et drapeau au sommet. -->
+<rect id="vit09d-a-formation-tuile" x="4" y="4" width="88" height="88" rx="19.5" fill="#17395C"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<g id="vit09d-a-formation-objet">
+<path d="M62 40V15" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M63 14h14l-4 5 4 5H63z" fill="#8FB4DE"/>
+<path d="M20 78V63a2 2 0 0 1 2-2h14V50a2 2 0 0 1 2-2h14V39a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v39z" fill="#FFFFFF"/>
+<path d="M20 64.5h16V68H20zM36 51.5h16V55H36zM52 40.5h20V44H52z" fill="#17395C"/>
+</g>
+</svg>

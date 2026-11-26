@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Documents vérifiables (VIT-09d, série A, tuile bleu nuit commune), dans le style du logo Planner : feuille à coin plié et bouclier coché. -->
+<rect id="vit09d-a-documents-tuile" x="4" y="4" width="88" height="88" rx="19.5" fill="#17395C"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<g id="vit09d-a-documents-objet">
+<path d="M27 16h27l14 14v46a4 4 0 0 1-4 4H27a4 4 0 0 1-4-4V20a4 4 0 0 1 4-4z" fill="#FFFFFF"/>
+<path d="M54 16v10a4 4 0 0 0 4 4h10z" fill="#8FB4DE"/>
+<path d="M31 32h17M31 41h25" fill="none" stroke="#8FB4DE" stroke-width="4" stroke-linecap="round"/>
+<path d="M50 49l14 5.5v9c0 9-6.5 13.5-14 17-7.5-3.5-14-8-14-17v-9z" fill="#2A679F"/>
+<path d="M44 64l4.5 4.5 8-8.5" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

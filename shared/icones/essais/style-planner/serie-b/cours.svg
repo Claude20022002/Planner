@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Espace de cours (VIT-09d, série B, teinte app-cours), dans le style du logo Planner : cahier à spirale, étiquette et marque-page. -->
+<rect id="vit09d-b-cours-tuile" x="4" y="4" width="88" height="88" rx="19.5" fill="#2F3475"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<g id="vit09d-b-cours-objet">
+<path d="M57 70v14l5-4 5 4V70z" fill="#A6CAEE"/>
+<rect x="29" y="17" width="43" height="60" rx="6" fill="#FFFFFF"/>
+<path d="M34 17h3.5v60H34z" fill="#1F224D"/>
+<rect x="43" y="29" width="22" height="10" rx="2.5" fill="#A6CAEE"/>
+<g fill="#A6CAEE"><rect x="23" y="24" width="12" height="5" rx="2.5"/><rect x="23" y="36" width="12" height="5" rx="2.5"/><rect x="23" y="48" width="12" height="5" rx="2.5"/><rect x="23" y="60" width="12" height="5" rx="2.5"/></g>
+</g>
+</svg>
