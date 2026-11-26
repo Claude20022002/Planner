@@ -73,6 +73,8 @@ test('Comptes : une lecture réseau échouée propose de réessayer', async ({ p
   const tableau = page.getByRole('table');
   await expect(tableau.getByRole('row')).toHaveCount(comptes.length + 1);
   for (const compte of comptes) {
-    await expect(tableau.getByRole('cell', { name: compte.email, exact: true })).toBeVisible();
+    // La table montre l'identifiant et l'adresse (VSC-03, Q-20) : pour un compte de reprise, les
+    // deux cellules portent le même texte, d'où `first()`.
+    await expect(tableau.getByRole('cell', { name: compte.email, exact: true }).first()).toBeVisible();
   }
 });
