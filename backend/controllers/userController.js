@@ -4,8 +4,7 @@ import { asyncHandler } from "../middleware/asyncHandler.js";
 import { getPaginationParams, createPaginationResponse } from "../utils/paginationHelper.js";
 import { hashPassword, comparePassword, verifierMotDePasse } from "../utils/passwordHelper.js";
 import { pick } from "../utils/validationHelper.js";
-import sequelize from "../config/db.js";
-import { creerLienInvitation, creerProfil, empreinteInutilisable, envoyerInvitation } from "../services/comptes.js";
+import { collisionCleConnexion, creerCompte, importerComptes } from "../services/comptes.js";
 import { contexteDe, journaliser } from "../services/journalSecurite.js";
 import { changerActif } from "../services/desactivation/desactivation.js";
 import { aUnHistorique } from "../services/desactivation/regles.js";
@@ -59,61 +58,11 @@ export const getUserById = asyncHandler(async (req, res) => {
 
 // ➕ Créer un utilisateur
 export const createUser = asyncHandler(async (req, res) => {
-    // L'identifiant est obligatoire (VSC-03, Q-20) ; l'adresse est facultative. À défaut d'identifiant
-    // saisi, l'adresse en tient lieu : c'est une valeur réelle, comme la reprise de 0064, et les
-    // clients déjà installés continuent de créer des comptes.
-    const email = typeof req.body.email === "string" && req.body.email.trim() ? req.body.email.trim() : null;
-    const identifiant =
-        (typeof req.body.identifiant === "string" ? req.body.identifiant.trim() : "") || email || "";
-    if (!identifiant) {
-        return res.status(400).json({
-            message: "Identifiant requis",
-            error: "Un identifiant de connexion est requis (il peut reprendre l'adresse)",
-        });
-    }
+    // Les règles de la création (identifiant ou adresse, Q-2, Q-8, unicité, collision entre les deux
+    // clés de connexion) vivent dans services/comptes.js, partagées avec l'import.
+    const { refus, user, lien, envoyee } = await creerCompte(req.body);
+    if (refus) return res.status(refus.statut).json(refus.corps);
 
-    // Mot de passe provisoire facultatif : sans lui, le compte reçoit un lien d'invitation
-    const motDePasse = typeof req.body.password === "string" && req.body.password ? req.body.password : null;
-    // Sans adresse, aucune invitation ne peut partir : le mot de passe initial est alors obligatoire.
-    if (!motDePasse && !email) {
-        return res.status(400).json({
-            message: "Mot de passe initial requis",
-            error: "Sans adresse, l'école doit remettre un mot de passe initial (aucune invitation possible)",
-        });
-    }
-
-    const parIdentifiant = await Users.findOne({ where: { identifiant } });
-    const parAdresse = parIdentifiant || !email ? null : await Users.findOne({ where: { email } });
-    if (parIdentifiant || parAdresse) {
-        const surIdentifiant = Boolean(parIdentifiant);
-        return res.status(409).json({
-            message: surIdentifiant ? "Identifiant déjà utilisé" : "Email déjà utilisé",
-            error: surIdentifiant ? "Un compte utilise déjà cet identifiant" : "Un utilisateur avec cet email existe déjà",
-        });
-    }
-    if (motDePasse) {
-        const verification = await verifierMotDePasse(motDePasse, { user: req.body });
-        if (!verification.valid) {
-            return res.status(400).json({ message: verification.errors[0], error: verification.errors[0], errors: verification.errors });
-        }
-    }
-
-    // Compte et fiche (enseignant, étudiant) dans la même transaction : jamais de compte sans fiche
-    const { user, lien } = await sequelize.transaction(async (transaction) => {
-        const compte = await Users.create(
-            {
-                ...pick(req.body, ["nom", "prenom", "identifiant", "email", "role", "telephone", "actif"]),
-                identifiant,
-                email,
-                password_hash: motDePasse ? await hashPassword(motDePasse) : await empreinteInutilisable(),
-                must_change_password: true,
-            },
-            { transaction }
-        );
-        await creerProfil(compte, req.body.profil, transaction);
-        return { user: compte, lien: motDePasse ? null : await creerLienInvitation(compte, transaction) };
-    });
-    const envoyee = lien ? await envoyerInvitation(user, lien) : false;
     await journaliser(contexteDe(req), { evenement: "compte_cree", user, acteur: req.user, details: { role: user.role } });
 
     // Retourner l'utilisateur sans le mot de passe
@@ -179,6 +128,15 @@ export const updateUser = asyncHandler(async (req, res) => {
             });
         }
     }
+
+    // Ni l'identifiant ni l'adresse ne peuvent reprendre l'autre clé de connexion d'un autre compte
+    // (condition du chef du 26 nov.) : la connexion trouverait le mauvais compte
+    const collision = await collisionCleConnexion({
+        identifiant: updateData.identifiant ?? user.identifiant,
+        email: updateData.email !== undefined ? updateData.email : user.email,
+        idExclu: user.id_user,
+    });
+    if (collision) return res.status(409).json(collision);
 
     if (req.body.password) {
         const verification = await verifierMotDePasse(String(req.body.password), { user: { ...user.get({ plain: true }), ...updateData } });
@@ -278,71 +236,9 @@ export const importUsers = asyncHandler(async (req, res) => {
         });
     }
 
-    const results = {
-        success: [],
-        errors: [],
-    };
-
-    for (const userData of users) {
-        let identifiant = "";
-        try {
-            // L'identifiant vient du fichier ; à défaut, l'adresse en tient lieu (valeur réelle).
-            identifiant = String(userData.identifiant ?? userData.email ?? "").trim();
-            const email = String(userData.email ?? "").trim() || null;
-            if (!identifiant) {
-                results.errors.push({ identifiant: "N/A", error: "Identifiant requis" });
-                continue;
-            }
-            const existingUser = await Users.findOne({ where: { identifiant } });
-            if (existingUser) {
-                results.errors.push({
-                    identifiant,
-                    error: "Identifiant déjà utilisé",
-                });
-                continue;
-            }
-
-            // Préparer les données pour la création
-            const userCreateData = {
-                nom: userData.nom,
-                prenom: userData.prenom,
-                identifiant,
-                email,
-                role: userData.role || 'etudiant',
-                telephone: userData.telephone || null,
-                actif: userData.actif !== undefined ? userData.actif : true,
-            };
-
-            // Mot de passe du fichier (provisoire) ou aléatoire + invitation ; à changer à la connexion.
-            // Provisoire, il suit quand même la politique : il reste valable jusqu'à la première connexion
-            if (userData.password) {
-                const verification = await verifierMotDePasse(String(userData.password), { user: userData });
-                if (!verification.valid) {
-                    results.errors.push({ identifiant, error: verification.errors[0] });
-                    continue;
-                }
-            }
-            userCreateData.password_hash = userData.password ? await hashPassword(String(userData.password)) : await empreinteInutilisable();
-            userCreateData.must_change_password = true;
-
-            const user = await sequelize.transaction(async (transaction) => {
-                const compte = await Users.create(userCreateData, { transaction });
-                await creerProfil(compte, userData, transaction);
-                return compte;
-            });
-            if (!userData.password) await envoyerInvitation(user, await creerLienInvitation(user));
-            const userResponse = user.toJSON();
-            delete userResponse.password_hash;
-            results.success.push(userResponse);
-        } catch (error) {
-            console.error(`Erreur lors de la création de l'utilisateur ${identifiant}:`, error);
-            results.errors.push({
-                identifiant: identifiant || "N/A",
-                error: error.message || "Erreur lors de la création",
-            });
-        }
-    }
-
+    // Chaque ligne suit les règles de la création unitaire (Q-2, Q-8, unicité, collisions) :
+    // voir services/comptes.js
+    const results = await importerComptes(users);
     await journaliser(contexteDe(req), { evenement: "comptes_importes", acteur: req.user, id_user: req.user.id_user, details: { crees: results.success.length, erreurs: results.errors.length } });
     res.status(201).json({
         message: `${accorder(results.success.length, "utilisateur créé", "utilisateurs créés")} avec succès`,

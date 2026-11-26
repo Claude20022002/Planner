@@ -3,7 +3,7 @@ import { asyncHandler } from "../middleware/asyncHandler.js";
 import { getPaginationParams, createPaginationResponse } from "../utils/paginationHelper.js";
 import { hashPassword, verifierMotDePasse } from "../utils/passwordHelper.js";
 import { pick } from "../utils/validationHelper.js";
-import { creerLienInvitation, empreinteInutilisable, envoyerInvitation } from "../services/comptes.js";
+import { collisionCleConnexion, creerLienInvitation, empreinteInutilisable, envoyerInvitation, verifierIdentifiant } from "../services/comptes.js";
 import { accorder } from "../../shared/accords.js";
 
 /**
@@ -320,8 +320,22 @@ export const importEtudiants = asyncHandler(async (req, res) => {
                 continue;
             }
 
+            // Q-2 : l'identifiant n'a pas d'espace et tient dans la colonne
+            const format = verifierIdentifiant(identifiant);
+            if (format) {
+                results.errors.push({ identifiant, error: format });
+                continue;
+            }
+
             let user = await Users.findOne({ where: { identifiant } });
             if (!user && email) user = await Users.findOne({ where: { email } });
+
+            // Ni l'identifiant ni l'adresse ne reprennent l'autre clé de connexion d'un autre compte
+            const collision = await collisionCleConnexion({ identifiant, email, idExclu: user?.id_user ?? null });
+            if (collision) {
+                results.errors.push({ identifiant, error: collision.error });
+                continue;
+            }
 
             if (!user) {
                 // Créer l'utilisateur
