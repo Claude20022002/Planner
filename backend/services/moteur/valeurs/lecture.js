@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../../config/fuseau.js";
 import { Campus, Cours, Enseignant, Groupe, Salle, ValeurParametre, VersionParametres } from "../../../models/index.js";
 import { chargerDependances, chargerParametres, chargerProfils } from "../catalogue/charger.js";
 import { resoudreTout } from "./resolution.js";
@@ -8,7 +9,6 @@ import { resoudreTout } from "./resolution.js";
  * figée à la livraison : il ne se relit pas à chaque requête.
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 
 /** La date du jour à l'école, pas celle du fuseau du serveur (AAAA-MM-JJ). */
 export const aujourdhui = () => new Date().toLocaleDateString("en-CA", { timeZone: FUSEAU });

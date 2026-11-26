@@ -2,6 +2,7 @@ import { Pressable, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { estChangee, toLocalISODate } from '../../../shared/session.js';
+import { maintenantEcole } from '../../../shared/dates.js';
 import { couleurStatut, creerStyles, lineColor, useTheme } from '../theme';
 import CarteSeance from './CarteSeance';
 
@@ -50,7 +51,7 @@ export default function VueMois({ mois, chargement = false, seances, evenements 
   const langue = i18n.language === 'en' ? 'en-GB' : 'fr-FR';
   const debut = debutGrilleMois(mois);
   const jours = Array.from({ length: 42 }, (_, i) => decaler(debut, i));
-  const aujourdhui = toLocalISODate(new Date());
+  const aujourdhui = toLocalISODate(maintenantEcole());
 
   const parJour = new Map();
   for (const s of seances) {

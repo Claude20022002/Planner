@@ -8,7 +8,7 @@ import { aLHeureDeLEcole } from "./helpers/heureLocale.js";
 /**
  * Tâches périodiques (lot A-7) : deux instances de l'API lancent les mêmes minuteries ; le verrou
  * MySQL fait qu'une seule fait le travail. La séance de la fixture finit le lundi 4 janvier 2027
- * à 10 h 45 (heure de Casablanca) : à 10 h 40, un rappel de l'appel est dû.
+ * à 10 h 45 (heure de l'école) : à 10 h 40, un rappel de l'appel est dû.
  */
 
 let enseignant;

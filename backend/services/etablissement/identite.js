@@ -1,6 +1,7 @@
 import { ConfigurationEtablissement } from "../../models/index.js";
 import { ErreurMetier } from "../planning/enseignements.js";
 import { verifierCouleur } from "../../../shared/couleurs.js";
+import { horlogeDeLEcole } from "./horloge.js";
 
 /**
  * Identité et marque de l'école (plan multi-établissements, D-21, lots ME-1 et ME-11) : nom, nom
@@ -49,6 +50,9 @@ export const identitePublique = async () => {
         modele_edt: i.modele_edt,
         // La version change avec le logo : les navigateurs et l'application rechargent l'image
         logo: i.logo_type ? { version: new Date(i.logo_maj_le ?? 0).getTime() } : null,
+        // L'heure de l'école, changements d'heure compris (M-10) : le site et l'application ne
+        // demandent jamais le fuseau au navigateur ni au téléphone
+        horloge: horlogeDeLEcole(),
     };
 };
 

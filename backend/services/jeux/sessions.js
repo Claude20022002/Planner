@@ -127,10 +127,10 @@ export const suiviSession = async (user, id) => {
         ids.length ? JeuProfil.findAll({ where: { id_user: ids } }) : [],
         session.mode === "collectif"
             ? PropositionJeu.findAll({
-                  where: { id_session_jeu: session.id_session_jeu, id_defi: session.id_defi, statut: "attente" },
-                  include: [{ model: Users, as: "etudiant", attributes: ["id_user", "nom", "prenom"] }],
-                  order: [["updatedAt", "ASC"]],
-              })
+                where: { id_session_jeu: session.id_session_jeu, id_defi: session.id_defi, statut: "attente" },
+                include: [{ model: Users, as: "etudiant", attributes: ["id_user", "nom", "prenom"] }],
+                order: [["updatedAt", "ASC"]],
+            })
             : [],
     ]);
     const avatars = new Map(profils.map((p) => [p.id_user, p.avatar]));

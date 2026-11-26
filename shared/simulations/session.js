@@ -20,8 +20,10 @@ export function creerSession(jeu, api) {
             try {
                 const p = await api.progression(jeu.code);
                 if (requete !== version) return;
-                publier({ statut: 'pret', reussis: p.defis.map((d) => d.id), aides: p.defis.filter((d) => d.avec_solution).map((d) => d.id), points: p.points,
-                                    etats: Object.fromEntries((p.etats ?? []).map((d) => [d.id, d])), solution: null });
+                publier({
+                    statut: 'pret', reussis: p.defis.map((d) => d.id), aides: p.defis.filter((d) => d.avec_solution).map((d) => d.id), points: p.points,
+                    etats: Object.fromEntries((p.etats ?? []).map((d) => [d.id, d])), solution: null
+                });
             } catch (erreur) {
                 if (requete === version) publier({ statut: [401, 403].includes(erreur.status ?? erreur.statut) ? 'interdit' : 'erreur' });
             }
@@ -50,8 +52,10 @@ export function creerSession(jeu, api) {
                 publier({
                     resultat, occupe: false,
                     etats: { ...etat.etats, [defi.id]: { echecs: resultat.echecs ?? 0, solution_vue: Boolean(resultat.solution_vue), sans_points: Boolean(resultat.sans_points) } },
-                    ...(resultat.enregistre ? { reussis: [...new Set([...etat.reussis, defi.id])], points: resultat.progression.points,
-                        aides: resultat.avec_solution ? [...new Set([...etat.aides, defi.id])] : etat.aides } : {}),
+                    ...(resultat.enregistre ? {
+                        reussis: [...new Set([...etat.reussis, defi.id])], points: resultat.progression.points,
+                        aides: resultat.avec_solution ? [...new Set([...etat.aides, defi.id])] : etat.aides
+                    } : {}),
                 });
             } catch (erreur) {
                 if (requete !== version) return;
@@ -67,8 +71,10 @@ export function creerSession(jeu, api) {
             try {
                 const solution = await api.solution(jeu.code, id);
                 if (requete !== version) return;
-                publier({ solution: solution.reponse, occupe: false,
-                    etats: { ...etat.etats, [id]: { echecs: solution.echecs, solution_vue: solution.solution_vue, sans_points: solution.sans_points } } });
+                publier({
+                    solution: solution.reponse, occupe: false,
+                    etats: { ...etat.etats, [id]: { echecs: solution.echecs, solution_vue: solution.solution_vue, sans_points: solution.sans_points } }
+                });
             } catch (erreur) {
                 if (requete !== version) return;
                 publier({ occupe: false, solution: null, erreur: [401, 403, 404].includes(erreur.status ?? erreur.statut) ? 'acces' : 'solutionErreur' });

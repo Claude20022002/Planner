@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import { Op } from "sequelize";
 import { Affectation, AppelSeance, Appartenir, Cours, CoursComposante, Creneau, Enseignement, EnseignementEnseignant, Groupe, Salle } from "../../models/index.js";
 import { STATUTS_ACTIFS, aujourdhui, minutes } from "./affectationRules.js";
@@ -15,7 +16,6 @@ import { horairesSurPlage } from "./ramadan.js";
  * chacun de ses sous-groupes (TD, TP).
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 const heureCourante = () => new Date().toLocaleTimeString("en-GB", { timeZone: FUSEAU, hour: "2-digit", minute: "2-digit" });
 // Séances prises en compte : celles du semestre passé récent et à venir
 const JOURS_AVANT = 120;

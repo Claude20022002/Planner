@@ -20,7 +20,7 @@
 - **Textes** : `frontend/src/i18n/fr.js` compte 2 575 lignes ; il existe un `en.js` ; il n'y a pas d'arabe. 133 styles dépendent du sens de lecture, dans 81 fichiers.
 - **Identité de l'école** : migration 0055 et `shared/couleurs.js`. Aucun nom d'école n'est écrit en dur (contrôle CI `scripts/verifier-neutre.mjs`).
 - **Socle neutre** : la conception est fusionnée ([conception-socle-neutre](../../conception/interface/conception-socle-neutre.md)), **aucun code n'est écrit**. La migration 0060 est réservée.
-- **Ton** : celui des écrans de l'administration est fait (#96). Les **messages du serveur** gardent encore environ 149 « (s) » dans `controllers` et `services`. Un commit pour les enseignants n'est pas fusionné (`b/textes-enseignant`).
+- **Ton** : celui des écrans de l'administration est fait (#96). Les **messages du serveur** sont accordés le 25 novembre par `shared/accords.js` ; `scripts/verifier-ton.mjs` et son test le tiennent ([plan](../../conception/interface/uix-05-ton-messages.md)). Les branches `b/textes-enseignant` et `b/textes-coherence` sont déjà dans `main`, vides de différence : rien à reprendre (QUA-05).
 
 ## Fonctions
 
@@ -31,7 +31,7 @@
 | UIX-02 | Vocabulaire des écrans selon le profil de l'école (classe et non groupe, matière et non cours, trimestre et non semestre…) | F-04 (écrans) | 3 | M | MOT-05 | à faire |
 | UIX-03 | Accessibilité AA : axe-core sans violation dans les parcours | M-13 | libre | M | — | en partie |
 | UIX-04 | Arabe complet : site, application et documents PDF, de droite à gauche ; **prouver d'abord le rendu arabe des PDF** (jsPDF) | F-16 | 4 | XL | UIX-01 | à faire |
-| UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | libre | M | — | à faire |
+| UIX-05 | Ton des messages du serveur ; notifications en anglais (m-7) ; reprendre `b/textes-enseignant` et `b/textes-coherence` | ton des textes | libre | M | — | **codée le 25 novembre** (`feat/uix-05-ton-messages`) : 34 messages accordés par `shared/accords.js` (11 contrôleurs, 8 services, journaux), contrôle `scripts/verifier-ton.mjs` et son test verts ; les deux branches étaient déjà fusionnées. m-7 renvoyé à UIX-07. PR #264 ouverte le 25 novembre |
 | UIX-06 | Style unifié entre les pages anciennes et récentes | P-5 | libre | M | UIX-01 (pilote visuel découplé) | en partie : UIX-06a et UIX-06b fusionnées, UIX-06c codée |
 | UIX-06a | Pilote web : marque, connexion, navigation et Personnes | — | exception du 15 nov. | — | sans migration UIX-01 | fait : #185 fusionnée le 16 novembre, 49 parcours réussis |
 | UIX-06b | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | — | exception validée | L | UIX-06a faite | fait : #199 fusionnée |
@@ -49,7 +49,7 @@
   - le passage en `dir="rtl"` ne casse aucune page des parcours.
 - **UIX-02** : une école fictive de collège parcourt toutes ses pages sans voir un mot propre au supérieur. Un parcours le prouve.
 - **UIX-04** : un bulletin et un emploi du temps en PDF s'impriment en arabe, avec les lettres liées.
-- **UIX-05** : `git grep "(s)"` ne trouve plus rien dans les messages renvoyés par le serveur.
+- **UIX-05** : `node scripts/verifier-ton.mjs` ne trouve aucune forme « (s) », « (e) », « (es) », « (x) » ni « pts » dans une chaîne de `backend/` hors tests, et le test unitaire le prouve : le `git grep "(s)"` littéral trouvait 153 paramètres de flèche `(s) => …`, qui ne sont pas des messages.
 - **UIX-07** : aucun texte français ne reste visible en anglais, dans les parcours de la CI.
 - **UIX-08** : un message d'erreur du serveur écrit en dur fait échouer la CI.
 

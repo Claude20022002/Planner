@@ -1,13 +1,14 @@
 ---
  // Catalogue bilingue rendu à la construction. La recherche améliore la liste complète.
-import { fonctionnalites, regrouper } from './registre.js';
+import { fonctionnalites, regrouper, lienEntree, entreeBientot, CLES_REGISTRE } from './registre.js';
 import { traductions } from '../../i18n/index.js';
-import { chemin } from '../../i18n/langues.js';
 
 const { langue } = Astro.props;
 const t = traductions(langue, 'fonctionnalites');
 const commun = traductions(langue, 'commun');
-const applications = regrouper(fonctionnalites(langue), 'application');
+const noms = traductions(langue, 'modules');
+const parModule = regrouper(fonctionnalites(langue), 'module');
+const nomDe = (cle: string) => (cle === 'socle' ? commun('socle.titre') : noms('noms.' + cle));
 ---
 <article class="catalogue">
   <h1>{t('titre')}</h1>
@@ -17,16 +18,16 @@ const applications = regrouper(fonctionnalites(langue), 'application');
     <input type="search" id="filtre" autocomplete="off" />
     <output for="filtre" aria-live="polite">{t('resultats')} · <span></span></output>
   </div>
-  {Array.from(applications, ([application, entrees]) => (
-    <section class="application">
-      <h2>{t('applications.' + application)} <small>({entrees.length})</small></h2>
+  {CLES_REGISTRE.filter((cle) => parModule.has(cle)).map((cle) => [cle, parModule.get(cle)]).map(([cle, entrees]) => (
+    <section class="application" id={cle}>
+      <h2>{nomDe(cle)} <small>({entrees.length})</small></h2>
       {Array.from(regrouper(entrees, 'categorie'), ([categorie, groupe]) => (
         <section class="groupe">
           <h3>{t('groupes.' + categorie)}</h3>
           <ul>{groupe.map((entree) => (
             <li id={entree.id}>
-              <a href={chemin(langue, entree.page)}>{entree.titre}</a>
-              {entree.etat === 'bientot' && <em>{commun('navigation.bientot')}</em>}
+              <a href={lienEntree(langue, entree)}>{entree.titre}</a>
+              {entreeBientot(entree) && <em>{commun('navigation.bientot')}</em>}
               <p>{entree.description}</p>
               {entree.alternative && <p>{entree.alternative}</p>}
             </li>
