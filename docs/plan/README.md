@@ -9,6 +9,7 @@
 | [suivi.md](suivi.md) | **À ouvrir en début de session** : une ligne par fonction (état, branche, PR), chantiers ouverts, numéros de migration réservés. **Tenu par le coordinateur** seul, sur sa branche : une branche de fonction ne le modifie pas (décision du chef du 18 nov.) |
 | [decisions.md](decisions.md) | Décisions en vigueur et questions ouvertes, en un seul endroit |
 | [modules/](modules/) | Un fichier par module : ce qui existe, les fonctions à faire, leur critère de « terminé » |
+| [parite-openeducat.md](parite-openeducat.md) | Correspondance entre chaque domaine d'OpenEduCat et la fonction de Planner qui le couvre, et ce que Planner fait en plus (décision du 17 nov.) |
 | [missions/](missions/) | Une fiche par mission donnée à un agent par le coordinateur : agent, branche, fichiers qu'il peut écrire, prompt à coller |
 | [modeles/](modeles/) | Modèles du [plan de conception](modeles/conception.md), de la [fiche de session](modeles/fiche-de-session.md) et de la [fiche de mission](modeles/mission.md) |
 | [../sessions/](../sessions/) | Une fiche par session, avec son prompt de reprise ; les comptes rendus d'avant le 9 novembre |
@@ -73,6 +74,16 @@ Les douze derniers modules (COM à STK) viennent de l'inventaire du 11 novembre 
 FIN, COM et PAI ne se construisent qu'après les entretiens de VEN-02, qui confirment le module d'achat de chaque marché (décision du 13 novembre) ; pour l'étape 3, ces entretiens se mènent auprès d'écoles du supérieur.
 
 La colonne « Étape » des fichiers de module et de [suivi.md](suivi.md) a été reprise le 21 novembre selon ce tableau ; en cas d'écart, **ce tableau fait foi**.
+
+**Parité avec OpenEduCat (décision du 17 novembre)** : Planner doit avoir ce qu'a OpenEduCat, et plus, et le faire mieux ([parite-openeducat.md](parite-openeducat.md)). Elle a été écrite avant la feuille de route du 21 novembre (tableau ci-dessus), dont l'échelle d'étapes est différente. Fonctions ajoutées :
+- **à placer** dans les étapes du 21 novembre (proposition du coordinateur au chef, décision du 26 nov.) : VSC-09, VSC-11 à VSC-13, COU-10, COU-11, QJE-10, QJE-11, SER-02, SER-03, EDT-06, INS-04, COM-04, COM-05, ADM-10, PIL-03, FIN-04, FIN-05, RHP-04, STA-04, MOB-10 ; VSC-14 (santé) et QJE-13 (tuteur IA) sont conditionnels ;
+- **libre** : UIX-07, UIX-08, BIB-13, EDT-07, COU-12, COU-13, QJE-12 ;
+- **reprises** (elles étaient reportées) : SER-01, STK-01, PIL-01, PIL-02, STA-02 ; la feuille de route du 21 novembre les laisse reportées à l'étape 7.
+- Les notes du supérieur (VSC-10 de la parité) sont **fondues dans VSC-08** (évaluations, crédits et jurys, décision du chef du 21 nov.).
+
+Numéros repris le 26 novembre pour éviter les doublons avec la feuille de route : ADM-11 (fériés selon le pays), BIB-13 (bibliothèque physique), MOB-10 (scolarité et direction sur le téléphone), STA-04 (anciens élèves), VSC-14 (infirmerie).
+
+Elles ajoutent environ 87 jours bruts, plus 13 pour les reprises.
 
 Une fonction d'une étape peut commencer avant la fin de l'étape précédente si ses dépendances (colonne « dépend de ») sont faites.
 
@@ -156,9 +167,13 @@ Tirées des reproches faits aux autres outils ([étude de marché](../etude-marc
 | EP-8 | Passage d'année inclus | une école passe d'une année à l'autre en moins d'une demi-journée, sans perte | 5 |
 | EP-9 | Les mises à jour ne cassent rien | parcours verts avant chaque mise en ligne ; retour arrière de l'image en une commande ; migrations « étendre puis contracter » | 1 |
 | EP-10 | Rapide à grande échelle | génération d'un collège de 600 élèves en moins de 10 min ; pages de gestion en moins de 1 s | 3 |
-| EP-11 | Accessible et bilingue | contraste AA ; français, arabe (droite à gauche) et anglais | 2 (droite à gauche), 4 (arabe complet) |
+| EP-11 | Accessible et trilingue | contraste AA ; **français, anglais et arabe** (droite à gauche), tous trois complets ; aucune autre langue d'interface prévue (décision du 17 nov.) | 2 (droite à gauche), 4 (arabe complet), libre (anglais complet, UIX-07) |
 | EP-12 | Les données restent à l'école | isolation testée sur chaque route ; export complet à tout moment | 2 et 5 |
 | EP-13 | Aucun envoi caché | liste publique des envois sortants (destinataire, données, raison), à jour (QUA-09) ; toute PR qui ajoute un envoi sortant la met à jour | 1 |
+| EP-14 | Contrôles toujours actifs | aucune règle de conflit ou de sécurité livrée ne s'éteint par un réglage ; seul un forçage tracé et justifié la contourne | 1 |
+| EP-15 | Aucune route ouverte par erreur | la liste des routes sans connexion est écrite ; un test échoue si une route nouvelle n'exige pas de connexion sans y figurer (avec PLA-04) | 2 |
+| EP-16 | Trois langues, aucun texte en dur | tout texte montré (écran, erreur du serveur, PDF, notification) passe par la traduction ; vérifié dans la CI par UIX-08 | 2 |
+| EP-17 | Mieux qu'OpenEduCat, mesuré | une fonction qui a un équivalent chez OpenEduCat a un parcours chronométré (temps, clics) dans son critère de « terminé », comparé à OpenEduCat Community quand l'essai du plan 08 l'a mesuré ([parite-openeducat.md](parite-openeducat.md), § 3) | 4 |
 | EP-18 | S'adapter à tous les contextes | chaque fonction marche **sans téléphone de l'élève** (le QR code et les jeux sur téléphone sont des options, jamais le seul chemin), avec **peu ou pas de connexion**, et avec ce qu'a l'école (un seul écran projeté, du papier imprimé). Aucun écran ni aucun texte ne suppose un pays : les outils de l'État sont ceux du pays de l'école (décision du chef du 18 nov., contexte de la RDC) | toutes |
 | EP-19 | Sobre et mesuré | une page du site pèse **au plus 200 Ko transférés**, hors média lancé à la demande, vérifié en CI ; le **premier chargement de l'application web est mesuré** et écrit dans chaque PR qui le change (décision du chef du 21 nov., N1 de la [synthèse des concurrents](../etude-marche/14-reprendre-et-depasser.md)) | toutes |
 

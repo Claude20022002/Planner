@@ -60,8 +60,10 @@ async function preparer(page, { langue = 'en', refuse = false, modules = [], sui
             etat.reussi = true;
             etat.avec_solution = etat.solution_vue;
             if (cree) etat.points = etat.solution_vue ? 0 : defi.xp;
-            return json({ ...r, enregistre: true, cree, points: etat.points, avec_solution: etat.avec_solution, echecs: etat.echecs,
-                solution_vue: etat.solution_vue, sans_points: etat.sans_points, progression: { points: totalPoints(etats) } });
+            return json({
+                ...r, enregistre: true, cree, points: etat.points, avec_solution: etat.avec_solution, echecs: etat.echecs,
+                solution_vue: etat.solution_vue, sans_points: etat.sans_points, progression: { points: totalPoints(etats) }
+            });
         }
         return json({ data: [], notifications: [], count: 0 });
     });
@@ -197,8 +199,10 @@ test('teacher tracking shows assisted challenges and their zero points', async (
         modules: [{ id_cours: 7, code: 'M-01', nom: 'Algorithmique', jeux: ['big-o-lab'], details: [{ code: 'big-o-lab', but: 'entrainer' }] }],
         suivi: {
             module: { id_cours: 7, code: 'M-01', nom: 'Algorithmique' },
-            etudiants: [{ id_user: 3, prenom: 'Ada', nom: 'Lovelace', reussis: 1, total: 3, points: 0, avec_solution: 1,
-                defis: [{ id: 'complexite-01', titre: { fr: 'Motifs de base', en: 'Core patterns' }, avec_solution: true }] }],
+            etudiants: [{
+                id_user: 3, prenom: 'Ada', nom: 'Lovelace', reussis: 1, total: 3, points: 0, avec_solution: 1,
+                defis: [{ id: 'complexite-01', titre: { fr: 'Motifs de base', en: 'Core patterns' }, avec_solution: true }]
+            }],
         },
     });
     await page.goto('/jeux');

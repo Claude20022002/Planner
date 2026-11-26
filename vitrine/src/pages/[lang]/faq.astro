@@ -2,7 +2,7 @@
  // FAQ publique et données structurées produites à partir des mêmes réponses validées.
 import Gabarit from '../../components/socle/Gabarit.astro';
 import FaqRole from '../../components/fonctions/FaqRole.astro';
-import { chemin, cheminsLangues } from '../../i18n/langues.js';
+import { chemin, cheminContact, cheminsLangues } from '../../i18n/langues.js';
 import { traductions } from '../../i18n/index.js';
 
 export const getStaticPaths = cheminsLangues;
@@ -15,8 +15,8 @@ const commun = traductions(lang, 'commun');
     <h1>{t('titre')}</h1>
     <nav aria-label={t('titre')}>
       <a href={chemin(lang, 'securite')}>{commun('navigation.securite')}</a>
-      <a href={chemin(lang, 'application')}>{commun('navigation.application')}</a>
-      <a href={chemin(lang, 'accueil', 'contact')}>{commun('navigation.contact')}</a>
+      <a href={chemin(lang, 'socle')}>{commun('navigation.application')}</a>
+      <a href={cheminContact(lang)}>{commun('navigation.contact')}</a>
     </nav>
   </header>
   <FaqRole titre={t('description')} questions={t('questions')} />

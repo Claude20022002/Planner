@@ -15,6 +15,7 @@ import { recalculerRangs } from './services/planning/referentiel.js';
 import { genererEnseignements, fusionnerEnseignements } from './services/planning/enseignements.js';
 import { evenementsCalendrierMaroc } from './utils/feriesMaroc.js';
 import { creerNotification } from './utils/notificationHelper.js';
+import { accorder } from '../shared/accords.js';
 
 dotenv.config();
 
@@ -805,7 +806,7 @@ async function seed() {
                 nbMutualisations++;
             }
         }
-        console.log(`✅ Enseignements S1 : ${rapport.crees} créés, ${nbMutualisations} mutualisation(s)`);
+        console.log(`✅ Enseignements S1 : ${accorder(rapport.crees, 'créé', 'créés')}, ${accorder(nbMutualisations, 'mutualisation', 'mutualisations')}`);
 
         // ── 11. Services : un principal par enseignement, co-enseignement des projets ──
         // Celui qui assure déjà une autre composante du module (CM et TD par le même enseignant), sinon

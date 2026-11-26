@@ -76,6 +76,19 @@ Vérifier la version restaurée ou la disparition de la route, puis l'accès aux
 
 Les scripts de cette section sont écrits pour `root`. Sur le nouveau serveur, le compte `debian` les lance avec `sudo`. Le chef de projet les lance lui-même. Les scripts sont dans `deploy/vps/` ; chacun explique son rôle dans son en-tête.
 
+### Avant de déployer `main` : ce que `.env.docker` doit contenir
+
+À vérifier sur le serveur **avant** la mise en ligne qui apporte ces variables :
+
+- **`APP_TIMEZONE`**, le fuseau de l'école (M-10), est **obligatoire**. C'est un nom de la base des fuseaux, par exemple `Africa/Casablanca` ou `Africa/Kinshasa`. Sans lui, le serveur de Planner refuse de démarrer : il n'y a plus de fuseau par défaut. Le site et l'application reçoivent l'heure de l'école du serveur, changements d'heure compris. Sur un serveur déjà en service :
+  ```bash
+  grep -q '^APP_TIMEZONE=' /opt/hestim/.env.docker || echo "APP_TIMEZONE=Africa/Casablanca" >> /opt/hestim/.env.docker
+  cd /opt/hestim && docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml up -d --no-deps --force-recreate backend
+  docker logs hestim_backend 2>&1 | grep "fuseau de l'école"
+  ```
+  Un serveur neuf la reçoit de `deploy/vps/generer-env.sh`, qui la demande en quatrième argument.
+- **Les envois chez un tiers** (QUA-10) : le courriel (`SMTP_*` ou `EMAIL_*`) et l'IA (`IA_URL`, `IA_MODELE`, `IA_CLE`) n'ont plus d'adresse ni de modèle par défaut. Ce qui n'est pas réglé ne part pas. Au démarrage, le résumé des envois dit ce qui part et vers qui (`docs/envois-sortants.md`).
+
 ### Mettre en ligne par la commande (lot ME-0b)
 
 Conception et diagrammes : `docs/conception/exploitation/conception-me0b-deploiement.md`. Après chaque fusion sur `main`, la CI publie, une fois tous les contrôles verts, les images du serveur, du site, du solveur et des scripts d'exploitation sur `ghcr.io/claude20022002`, au nom du commit. Il n'y a rien à construire sur le PC.

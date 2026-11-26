@@ -7,7 +7,7 @@ import Accroche from '../socle/Accroche.astro';
 import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Apparition from '../socle/Apparition.astro';
 import { traductions } from '../../i18n/index.js';
-import { chemin } from '../../i18n/langues.js';
+import { chemin, cheminContact } from '../../i18n/langues.js';
 
 interface Props {
   langue: string;
@@ -22,7 +22,7 @@ const t = traductions(langue, 'commun');
       <Titre id="fin-titre" taille="moyen">{t('finDePage.titre')}</Titre>
       <Accroche>{t('finDePage.texte')}</Accroche>
       <div class="actions">
-        <BoutonPrincipal href={chemin(langue, 'accueil', 'contact')}>{t('navigation.contact')}</BoutonPrincipal>
+        <BoutonPrincipal href={cheminContact(langue)}>{t('navigation.contact')}</BoutonPrincipal>
         <BoutonPrincipal href={chemin(langue)} variante="lien">{t('finDePage.accueil')}</BoutonPrincipal>
       </div>
     </div>

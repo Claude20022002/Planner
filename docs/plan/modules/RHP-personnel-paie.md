@@ -35,6 +35,7 @@ L'inventaire montre que cette chaîne casse partout : vacataires payés de 6 à 
 | RHP-01 | Relevé mensuel des heures des vacataires, à partir des séances visées ; export pour la paie | FIN-03, remarques § 8, F-21 | 3 | M | — | à faire |
 | RHP-02 | Dossier de l'intervenant : contrat, statut, autorisation de cumul et plafond d'heures (public et privé, formation professionnelle), déclaration mensuelle à l'AREF | VSC-06 (plafond de cumul), F-22 | 4 | M | RHP-01 | à faire |
 | RHP-03 | Chaîne « prévu, fait, visé, payé » : état mensuel signé, historique des sommes dues qu'on ne peut pas effacer, double validation de la création d'un intervenant et de tout changement de compte bancaire, export vers le logiciel de paie | — | 4 | L | RHP-01, RHP-02 | à faire |
+| RHP-04 | Congés et absences du personnel : demande, validation, effet sur les séances (remplaçant proposé par MOT-09), solde par personne, export vers la paie ; pas de paie dans Planner (décision du 17 nov.) | — | à placer | M | RHP-01, MOT-09 | à faire |
 
 ## Critères de « terminé »
 

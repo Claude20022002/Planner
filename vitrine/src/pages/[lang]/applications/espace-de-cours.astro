@@ -1,0 +1,20 @@
+---
+// Page du module « Espace de cours » : les supports publiés et les sondages (section de la page « Cours et annonces »).
+// L'accroche et la description viennent de cette page ; la carte « Des sondages » de « En classe » dit la même chose que
+// la carte « Sondages » déjà présente, elle n'est pas répétée (voir la fiche de session).
+import { MessageCircleQuestion } from 'lucide-react';
+import PageModule from '../../../components/applications/PageModule.astro';
+import GrilleCartes from '../../../components/fonctions/GrilleCartes.astro';
+import { traductions } from '../../../i18n/index.js';
+import { cheminsLangues } from '../../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'cours-et-annonces');
+const nom = traductions(lang, 'modules')('noms.espaceDeCours');
+---
+<PageModule langue={lang} cle="espaceDeCours" titre={`${nom} · Planner`} description={t('entete.accroche')} accroche={t('entete.accroche')}>
+  <GrilleCartes id="supports" ton="gris" surtitre={t('supports.surtitre')} titre={t('supports.titre')} texte={t('supports.texte')}
+    cartes={t('supports.cartes')} icones={[MessageCircleQuestion]} />
+</PageModule>

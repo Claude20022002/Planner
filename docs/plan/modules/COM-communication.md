@@ -37,6 +37,8 @@ Un module qui prévient quelqu'un (report, absence, frais, annonce) **passe par 
 | COM-01 | Service commun d'envoi (application, push, courriel, SMS) : modèles, journal, plages de silence par défaut réglables par l'école (20 h-7 h en semaine et le week-end), envoi différé, canal d'urgence, résumé quotidien ; les envois existants y passent | EP-7 | 6 | L | PLA-01, VEN-02 | à faire |
 | COM-02 | Compte famille : plusieurs enfants, et plusieurs écoles plus tard ; canal préféré par personne ; accusé de lecture ; numéro de l'école à la place des numéros personnels | — | 6 | M | COM-01, ADM-05 | à faire |
 | COM-03 | WhatsApp et crédits de messages : quota inclus, puis crédits prépayés au prix unitaire publié, alerte avant épuisement ; SMS réservé aux alertes et aux familles sans smartphone | — | 6 | M | COM-01, VEN-02 | à faire |
+| COM-04 | Guichet des demandes : une famille ou un enseignant fait une demande (certificat, rendez-vous, panne de salle), suivie par état et délai, réponse tracée | — | à placer | M | COM-01, ADM-05 | à faire |
+| COM-05 | Réunions parents-enseignants : créneaux proposés par l'enseignant, rendez-vous pris par la famille, rappel, sans conflit avec l'emploi du temps | — | à placer | M | COM-02, ADM-05 | à faire |
 
 ## Critères de « terminé »
 
@@ -47,6 +49,7 @@ Un module qui prévient quelqu'un (report, absence, frais, annonce) **passe par 
   - chaque envoi est journalisé (canal, heure, résultat).
 - **COM-02** : un parent de deux enfants, dans deux classes, reçoit un seul fil, classé par enfant ; l'accusé de lecture est visible par l'expéditeur.
 - **COM-03** : quand les crédits sont épuisés, aucun envoi n'est perdu en silence (il est refusé avec un message, ou reporté) ; l'alerte part avant l'épuisement.
+- **COM-05** : un enseignant ne peut pas proposer un créneau où il a cours ; un parent de deux enfants prend ses rendez-vous en une seule fois.
 
 ## Exigences produit
 

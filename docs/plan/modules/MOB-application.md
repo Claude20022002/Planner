@@ -13,6 +13,7 @@
 - **Fonctions** : notifications par Expo (`services/push.js` côté serveur) ; marque de l'école (`marque.js`, `ecole.js`).
 - **Rôles** : l'application **refuse tout rôle autre qu'étudiant** (`AuthContext.jsx`). La branche `b/v4-application` (enseignants) n'est pas fusionnée.
 - **Adresse de l'API** : `EXPO_PUBLIC_API_URL` est **figée à la construction** (`mobile/eas.json`). L'application ne sert donc qu'une installation (canal I-12).
+- **Nom affiché** (M-12, branche `fix/mob-nom-application`, [plan validé le 22 nov.](../../conception/application/fix-mob-nom-application.md)) : l'application s'appelle Planner. Le cache local est préfixé `planner.cache.` : les copies sous l'ancien préfixe ne sont plus lues, une fois. Le bâtiment affiché vient du campus de la salle, pas du code de la salle.
 - **Pas encore fait** : l'essai sur un vrai téléphone (ME-11).
 
 ## Fonctions
@@ -28,6 +29,7 @@
 | MOB-07 | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes les installations) | I-12 | 3 | M | — | à faire |
 | MOB-08 | Appel à la main sans réseau, sur le téléphone de l'enseignant : envoyé au retour du réseau avec l'heure réelle de la saisie ; le QR code reste en ligne (N2, synthèse des concurrents) | — (décision du chef du 21 nov.) | 3 | M (provisoire) | MOB-02 ; plan conçu avec l'étude EP-18 | à faire |
 | MOB-09 | pdf.js servi par l'application, et non plus chargé depuis cdnjs à l'ouverture d'un PDF sur Android (`mobile/src/documents/Lecteur.jsx:15`) : plus aucun envoi vers un tiers à la lecture d'un document (EP-13, décision du 16 nov. ; numérotée MOB-08 le 16 nov., renumérotée le 21 nov.) | — | libre | S | — | à faire |
+| MOB-10 | Rôle de la scolarité et de la direction sur le téléphone : valider un report, voir les absences du jour, prévenir une classe | — | à placer | M | MOB-02, COM-01 | à faire |
 
 ## Critères de « terminé »
 

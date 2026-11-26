@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import { Op } from "sequelize";
 import { JeuModule, JeuProgression, Cours } from "../../models/index.js";
 import { ErreurMetier } from "../planning/enseignements.js";
@@ -13,7 +14,6 @@ import { jeuParCode } from "../../../shared/jeux/catalogue.js";
  * modules où il a proposé un jeu. Ni noms ni scores individuels : le détail reste dans le suivi.
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 const FENETRE_DEFIS_JOURS = 30;
 const EVENEMENTS_MAX = 15;
 

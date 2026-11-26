@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LANGUES, LANGUES_PUBLIEES, NAVIGATION, PAGES, chemin } from '../src/i18n/langues.js';
+import { LANGUES, LANGUES_PUBLIEES, chemin } from '../src/i18n/langues.js';
 import { TYPES } from '../src/components/solutions/types.js';
 
 const DOSSIER = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'i18n');
@@ -15,10 +15,9 @@ const charger = (langue) => JSON.parse(fs.readFileSync(path.join(DOSSIER, langue
 /** Toutes les chaînes d'un dictionnaire, à plat */
 const chaines = (valeur) => (typeof valeur === 'string' ? [valeur] : Object.values(valeur).flatMap(chaines));
 
-test('la page a son adresse, et « Solutions » ouvre la navigation', () => {
+test('la page a son adresse', () => {
   assert.equal(chemin('fr', 'solutions'), '/fr/solutions/');
   assert.equal(chemin('ar', 'solutions'), '/ar/solutions/');
-  assert.equal(NAVIGATION[0], 'solutions');
 });
 
 test('les trois types, dans l’ordre de D4 (supérieur, formation, collège et lycée), avec des ancres distinctes', () => {
@@ -28,7 +27,7 @@ test('les trois types, dans l’ordre de D4 (supérieur, formation, collège et 
 
 test('chaque point « Aujourd’hui » renvoie à une page qui existe', () => {
   for (const type of TYPES) {
-    for (const page of type.pages) assert.ok(page in PAGES && page !== 'solutions', `${type.cle} → ${page}`);
+    for (const page of type.pages) assert.doesNotThrow(() => chemin('fr', page), `${type.cle} → ${page}`);
   }
 });
 

@@ -23,7 +23,7 @@ L'inventaire voit dans les stocks un point d'entrée de la fraude.
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| STK-01 | Inventaire (manuels, uniformes, matériel prêté), bons de commande validés par une seconde personne, lien entre la vente et le reçu de FIN-01 | — | 7 | M | FIN-01 | reporté |
+| STK-01 | Inventaire (manuels, uniformes, matériel prêté), bons de commande validés par une seconde personne, lien entre la vente et le reçu de FIN-01 | — | 7 | M | FIN-01 | reporté (étape 7, feuille de route du 21 nov. ; la parité du 17 nov. la reprenait) |
 
 ## Critères de « terminé »
 

@@ -5,6 +5,7 @@ import { useLocalSearchParams } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { formatDayLabel, groupByDay, toLocalISODate } from '../../../../shared/session.js';
+import { maintenantEcole } from '../../../../shared/dates.js';
 import Ecran, { Message } from '../../board/Ecran';
 import { chargerSeances } from '../../api/donnees';
 import { ecrireCache, lireCache } from '../../cache';
@@ -67,9 +68,9 @@ export default function Semaine() {
   const { date: dateDuLien } = useLocalSearchParams();
   const dateDemandee = /^\d{4}-\d{2}-\d{2}$/.test(String(dateDuLien ?? '')) ? new Date(`${dateDuLien}T12:00:00`) : null;
   const [vue, setVue] = useState('liste');
-  const [lundi, setLundi] = useState(() => lundiDe(dateDemandee ?? new Date()));
-  const [mois, setMois] = useState(() => new Date((dateDemandee ?? new Date()).getFullYear(), (dateDemandee ?? new Date()).getMonth(), 1));
-  const [jourChoisi, setJourChoisi] = useState(() => toLocalISODate(dateDemandee ?? new Date()));
+  const [lundi, setLundi] = useState(() => lundiDe(dateDemandee ?? maintenantEcole()));
+  const [mois, setMois] = useState(() => new Date((dateDemandee ?? maintenantEcole()).getFullYear(), (dateDemandee ?? maintenantEcole()).getMonth(), 1));
+  const [jourChoisi, setJourChoisi] = useState(() => toLocalISODate(dateDemandee ?? maintenantEcole()));
 
   // Une alerte de report touchée alors que l'écran est déjà ouvert : on va à la semaine de la nouvelle date
   const [dateTraitee, setDateTraitee] = useState(dateDuLien);
@@ -125,7 +126,7 @@ export default function Semaine() {
   const libelle = majuscule(parMois
     ? mois.toLocaleDateString(langue, { month: 'long', year: 'numeric' })
     : t('board.weekTitle', { date: formatDayLabel(toLocalISODate(lundi), i18n.language, { weekday: undefined }) }));
-  const actuel = parMois ? mois.getMonth() === new Date().getMonth() && mois.getFullYear() === new Date().getFullYear() : toLocalISODate(lundi) === toLocalISODate(lundiDe(new Date()));
+  const actuel = parMois ? mois.getMonth() === maintenantEcole().getMonth() && mois.getFullYear() === maintenantEcole().getFullYear() : toLocalISODate(lundi) === toLocalISODate(lundiDe(maintenantEcole()));
 
   const avancer = (sens) => {
     if (parMois) {
@@ -135,9 +136,9 @@ export default function Semaine() {
     } else setLundi((l) => decaler(l, 7 * sens));
   };
   const revenir = () => {
-    setLundi(lundiDe(new Date()));
-    setMois(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
-    setJourChoisi(toLocalISODate(new Date()));
+    setLundi(lundiDe(maintenantEcole()));
+    setMois(new Date(maintenantEcole().getFullYear(), maintenantEcole().getMonth(), 1));
+    setJourChoisi(toLocalISODate(maintenantEcole()));
   };
 
   const rafraichissement = <RefreshControl refreshing={rafraichit} onRefresh={() => { setRafraichit(true); charger(); }} tintColor={couleurs.lettre} colors={[couleurs.cadre]} />;

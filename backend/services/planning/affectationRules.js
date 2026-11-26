@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import { Op } from "sequelize";
 import {
     Affectation,
@@ -39,7 +40,6 @@ import { appliquerRamadan, creneauEffectif } from "./ramadan.js";
 export const STATUTS_ACTIFS = ["planifie", "confirme", "reporte", "realise"];
 
 const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 
 export const minutes = (heure) => {
     const [h, m] = String(heure).split(":").map(Number);

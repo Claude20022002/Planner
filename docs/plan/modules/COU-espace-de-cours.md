@@ -43,6 +43,10 @@ Ce n'est pas un second Moodle. Le quotidien visé est celui d'une classe : suppo
 | COU-06 | Export des notes d'un devoir | R-13 | 3 | S | COU-02 | à faire |
 | COU-08 | Messagerie, si les règles de modération sont tranchées (Q-17) | EC-10 | 5 | L | Q-17 | conditionnel |
 | COU-09 | LTI : ouvrir un outil extérieur dans l'espace de cours | EC-12 | — | L | — | reporté |
+| COU-10 | Cours en ligne : modules, leçons (texte, vidéo, document), conditions d'accès, progression et achèvement par élève, attestation d'achèvement par DOC-01 | — | à placer | XL | COU-02, BIB-01 | à faire |
+| COU-11 | Classe virtuelle : salle de visio créée avec la séance (outil libre hébergé, ou lien Meet, Zoom ou Teams), présence relevée, enregistrement seulement si l'école l'autorise | — | à placer | M | — | à faire |
+| COU-12 | Annonces de l'école et de la classe : rallumer les annonces éteintes après revue, ciblage par classe, niveau ou rôle, accusé de lecture avec COU-05 | — | libre | M | — | à faire |
+| COU-13 | Cahier de textes et progression : contenu de chaque séance, travail à faire, progression prévue et réalisée par matière, rempli depuis la séance de l'emploi du temps | — | libre | M | — | à faire |
 
 ## Critères de « terminé »
 
@@ -53,6 +57,8 @@ Ce n'est pas un second Moodle. Le quotidien visé est celui d'une classe : suppo
   - un parcours complet le prouve.
 - **COU-05** : le « vu » ne s'affiche qu'à l'enseignant de la classe, jamais aux autres élèves.
 - **Toute fonction qui fait télécharger un support ou un document** : le poids est affiché avant le téléchargement, et le téléchargement reprend après une coupure (N3, décision du chef du 21 nov. ; R10 de la [synthèse des concurrents](../../etude-marche/14-reprendre-et-depasser.md)).
+- **COU-10** : un élève reprend un cours là où il l'a laissé, sur le téléphone comme sur le site ; l'enseignant voit l'avancement de sa classe.
+- **COU-13** : une séance reportée garde son contenu au cahier de textes ; l'élève absent voit le travail à faire.
 
 ## Exigences produit
 

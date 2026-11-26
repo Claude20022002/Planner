@@ -1,12 +1,12 @@
 {
   "meta": {
     "titre": "Solutions · Planner",
-    "description": "Planner pour le collège et le lycée, l'enseignement supérieur et la formation professionnelle : ce qui existe aujourd'hui, et ce qui arrive."
+    "description": "Planner pour l'enseignement supérieur, la formation professionnelle, le collège et le lycée : ce qui existe aujourd'hui, et ce qui arrive."
   },
   "entete": {
     "surtitre": "Solutions",
     "titre": "Une école, ses règles.",
-    "accroche": "Collège et lycée, enseignement supérieur, formation professionnelle : voici ce que Planner fait déjà pour chacun, et ce qui arrive."
+    "accroche": "Enseignement supérieur, formation professionnelle, collège et lycée : voici ce que Planner fait déjà pour chacun, et ce qui arrive."
   },
   "sommaire": "Types d'établissement",
   "aujourdhui": "Aujourd'hui",
@@ -40,8 +40,8 @@
           "texte": "La saisie des notes et les bulletins, avec les crédits."
         },
         {
-          "titre": "Stages et anciens",
-          "texte": "Les stages des étudiants, et le lien avec les anciens élèves."
+          "titre": "Stages",
+          "texte": "Les stages des étudiants."
         }
       ]
     },
@@ -85,11 +85,11 @@
       "aujourdhui": [
         {
           "titre": "L'appel",
-          "texte": "Les élèves scannent le code projeté, ou l'enseignant note chacun à la main : présent, en retard ou absent. La présence est rattachée à la séance."
+          "texte": "L'enseignant note chacun à la main : présent, en retard ou absent. Il peut aussi projeter un QR code."
         },
         {
           "titre": "Des quiz et des jeux",
-          "texte": "En direct en classe, ou à faire à son rythme."
+          "texte": "Des quiz en direct ou à son rythme. Les jeux portent sur l'informatique et la gestion."
         },
         {
           "titre": "Salles, examens et statistiques",
@@ -111,7 +111,7 @@
         },
         {
           "titre": "Absences, notes et bulletins",
-          "texte": "Les absences, la saisie des notes et les bulletins."
+          "texte": "Le suivi des absences au-delà de l'appel de la séance : le justificatif et les familles. La saisie des notes et les bulletins."
         },
         {
           "titre": "Export vers la plateforme nationale",

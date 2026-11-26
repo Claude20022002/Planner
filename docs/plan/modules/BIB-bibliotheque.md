@@ -19,6 +19,7 @@
   - `services/cours/studylib.js` ;
   - l'onglet `bibliotheque` de l'application mobile.
 - **Pour les parcours** : une fausse Bibliothèque, `frontend/tests/parcours/fausseBibliotheque.mjs`.
+- **Bibliothèque reconstruite, socle (BIB-05, branche `feat/bib-05-modele-stockage`)** : migration 0087 (`DocumentsBibliotheque` avec `uid`, `NotesDocuments`, `TelechargementsDocuments` sans IP), modèles dans `models/bibliotheque.js` ; `services/bibliotheque/` : `fichiers.js` (PDF, DOC, DOCX, PPT, PPTX, 20 Mo, signature du contenu), `stockage.js` (MinIO par `@aws-sdk/client-s3`, seau `planner`, clé `ecoles/<école>/bibliotheque/<uid>`, liens signés de 5 minutes, toute clé hors de l'école refusée), `documents.js` (service interne, sans route). Variables `S3_*` facultatives ; sans clé, 503. [Conception](../../conception/bibliotheque/bib-05-modele-stockage.md).
 - **Isolation** : StudyLib n'existe aujourd'hui que pour HESTIM. Les canaux I-4 (jetons sans école) et I-5 (une seule base et un seul seau) restent ouverts. **Une seconde école n'a pas de Bibliothèque** jusqu'à BIB-02.
 
 ## Fonctions
@@ -36,6 +37,7 @@
 | BIB-09 | Écrans web de la Bibliothèque, à la charte (lot B4) | — | 3 | L | contrat d'API de BIB-06 | à faire : Claude de VS Code ([fiche](../missions/bib-09-ecrans.md)) ; plan au chef |
 | BIB-10 | Bibliothèque de l'application mobile sur l'API de Planner (lot B6) | — | 3 | M | BIB-06, UIX-10d | à faire : Claude de VS Code, après UIX-10d ([fiche](../missions/bib-10-mobile.md)) ; plan au coordinateur |
 | BIB-11 | Import générique d'un dossier de documents par l'administration (lot B8), à la place de l'import Google Drive | — | 3 | M | BIB-06 | à faire : Alexis ([fiche](../missions/bib-11-import.md)) ; plan au coordinateur |
+| BIB-13 | Bibliothèque physique : catalogue (import par ISBN), exemplaires, prêts et retours par code-barres ou QR code depuis le téléphone, retards, réservations ; pénalités décidées par l'école, jamais automatiques pour un enfant | — | libre | M | — | à faire |
 
 ## Critères de « terminé »
 
@@ -48,6 +50,7 @@
 - **BIB-11** : un import avec des erreurs volontaires est rendu avec la liste lisible de ses refus ; rejoué, il ne crée aucun doublon ; aucun appel à un service extérieur.
 - **BIB-03** : la base ne contient plus de média ; un quiz exporté puis réimporté garde ses médias.
 - **Toute fonction qui fait télécharger un support ou un document** (BIB-06, BIB-09, BIB-10 compris) : le poids est affiché avant le téléchargement, et le téléchargement reprend après une coupure (N3, décision du chef du 21 nov. ; R10 de la [synthèse des concurrents](../../etude-marche/14-reprendre-et-depasser.md)).
+- **BIB-13** : un prêt se fait en deux scans (l'élève, puis le livre) ; un retard prévient l'élève et, au primaire, sa famille.
 
 ## Exigences produit
 

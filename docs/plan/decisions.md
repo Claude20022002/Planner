@@ -188,6 +188,22 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 - 18 novembre : le chef valide la correction du § 2 de Groupes sur l’effectif et la somme des sous-groupes (`f9fa7477`).
 - 18 novembre : le chef autorise axe-core comme dépendance de test pour les parcours en CI (`d941a896`).
 
+## Décision du chef du 17 novembre : parité avec OpenEduCat
+
+Demande du chef : « Il faut que l'on ait ce qu'ils ont et bien plus, et que ça fonctionne beaucoup mieux », avec le français, l'anglais et l'arabe. Source : [11-etude-openeducat.md](../etude-marche/11-etude-openeducat.md). Correspondance complète : [parite-openeducat.md](parite-openeducat.md).
+
+| Sujet | Décision |
+|---|---|
+| Langues | Français, anglais et arabe, tous trois complets (EP-11). Aucune autre langue d'interface prévue |
+| Comptabilité et paie | Export et échange relus (FIN-05, RHP-04, RHP-03), avec Odoo et les logiciels marocains courants. Planner ne construit ni comptabilité générale ni paie |
+| Santé, biométrie | Santé en module facultatif, éteint par défaut, ouvert après le dossier CNDP de l'école (VSC-08). Présence biométrique écartée |
+| Ordre | Étapes 1 à 4 inchangées ; fonctions nouvelles en étape 5 ou « libre » |
+| Tuteur IA pour l'élève | Conditionnel (QJE-13), à trancher avec QJE-07 et l'avis CNDP ; la règle « l'IA ne reçoit jamais de données d'élève » reste en vigueur |
+| Reprises | SER-01, STK-01, PIL-01, PIL-02, STA-02 passent de « reporté » à « à faire », en étape 5 |
+| Restent reportées | PAI-03 (après PLA-13), GRP-01 et GRP-02 (après PLA-11), COU-09 |
+
+Inscrit en conséquence, à relire dans la PR : 31 fonctions (liste dans le README, § 2) et les exigences EP-14 à EP-17 (§ 6). EP-13 reste à la liste des envois sortants (PR #186 et #189).
+
 ## Décisions du 17 et du 18 novembre : travail en équipe, UIX-06b puis UIX-06c
 
 **Chef, 17 nov. au soir** : tous les agents (Claude dans VS Code, agent de Cursor, Codex) travaillent ensemble sur la même tâche, synchronisés, sans conflit, chacun avec le modèle le plus adapté, en développement par composants. Tâche : **UIX-06b, puis UIX-06c** si son plan est validé. Les sessions Claude en cours (QUA-10, essai PostgreSQL) finissent leur étape ; celle de QUA-10 rejoint l'équipe.
@@ -648,3 +664,10 @@ Source : conversation Codex, « J’autorise » au plan et aux trois proposition
 | *(coordinateur)* **MKT-09 relue** (`planner-marketing` `33ec18b`, fiche Planner `15e5dfde`) : conforme aux arbitrages du chef ; rien n'est annoncé « Disponible » au-delà du code ; les vues de composants portent « École fictive ». **Avant l'envoi** : la revue `creative-quality-review` (critère de la mission, pas faite) ; les trois questions de la session d9 (dépôt distant privé, accord de l'équipe sur ses photos, notes du présentateur). Point au chef : les captures de la v15 montrent des écrans réels de l'école d'origine (salles, groupes, emploi du temps), sous le nom d'ORION ; la diapositive le dit (« le nom de l'école est remplacé »), elle ne les dit pas fictives : à garder ainsi. La ligne MKT-09 du module dit encore « présentation illustrée… diffusion gelée » : à remplacer à la fusion par « présentation à envoyer livrée en local (`33ec18b`) ; envoi décidé par le chef, après la revue `creative-quality-review` » | coordinateur |
 | *(coordinateur)* **M-1 relue : à corriger** (`097e704c`). Repère de l'appel saisi après coup accepté : son secret commence par `apres-coup.` (jamais un QR), sans migration ; état de visa `appel_saisi_apres_coup`, compté et visible. Deux corrections : (1) refuser une séance annulée, comme `ouvrirAppel` ; (2) la date limite affichée vient du serveur, ou d'un calcul de calendrier pur, et non de `dansJours` sur midi UTC (faux d'un jour à UTC+13 et +14) ; hors délai, la page de l'appel reste en lecture | coordinateur |
 | *(coordinateur)* **M-1 : corrections relues, prête pour la PR** (`be800297`) : séance annulée refusée (T-2) ; l'état de la séance pour la page vient du serveur (`GET /api/presences/seances/:id/apres-coup`, modes jour, apres_coup, hors_delai, a_venir, annulee, ferme, ouvert), l'écran ne calcule plus de date ; hors délai, à venir ou annulée, la page reste en lecture. Relancé : 8/8 au site, `verifier-neutre`. **Ordre : après #255** (M-10), puis `git merge origin/main` sur la branche avant la PR | coordinateur |
+
+**26 nov., fusion de `main` dans #211 (coordinateur)** :
+
+| Décision | Par |
+|---|---|
+| *(coordinateur)* **Identifiants en double** entre la feuille de route du 21 nov. et le plan de parité (#193) : le sens le plus cité garde le numéro. ADM-10 = champs propres à l'école, les fériés passent à **ADM-11** ; BIB-05 = modèle et stockage (codé, #252), la bibliothèque physique passe à **BIB-13** ; MOB-08 = appel sans réseau et MOB-09 = pdf.js, la scolarité sur le téléphone passe à **MOB-10** ; STA-03 = avis de stage et idées, les anciens élèves passent à **STA-04** ; VSC-08 = évaluations, crédits et jurys du supérieur (chef, 21 nov.), l'infirmerie passe à **VSC-14** et VSC-10 (notes du supérieur, LMD) est fondue dans VSC-08 | coordinateur |
+| Les fonctions ajoutées par la parité portent l'étape **« à placer »** : leur « 5 » suivait l'ancienne échelle. Le coordinateur proposera une étape pour chacune ; les reprises (SER-01, STK-01, PIL-01, PIL-02, STA-02) restent reportées à l'étape 7 | chef, 26 nov. |

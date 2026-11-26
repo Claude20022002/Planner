@@ -11,17 +11,17 @@
   "aujourdhui": "Aujourd'hui",
   "cartes": [
     {
-      "page": "bibliotheque",
+      "page": "applications",
       "titre": "Bibliothèque",
       "texte": "Les documents sont rangés par filière et par module."
     },
     {
-      "page": "application",
+      "page": "socle",
       "titre": "Application",
       "texte": "Cinq onglets : le tableau, la semaine, le scanner, la bibliothèque, le compte."
     },
     {
-      "page": "quizEtJeux",
+      "page": "module.quizEtJeux",
       "titre": "Quiz et jeux",
       "texte": "L'enseignant prépare le quiz. Le lien s'ouvre dans un navigateur, sur un ordinateur de l'école ou ailleurs. Un code ou un QR code mène au même lien."
     }

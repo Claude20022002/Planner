@@ -168,7 +168,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [ADM-07](modules/ADM-administration.md) | Enseignants partagés entre écoles | 7 | M | à faire |  |
 | [ADM-08](modules/ADM-administration.md) | Annuaire de l'école | — | M | reporté |  |
 | [ADM-09](modules/ADM-administration.md) | Échanges OneRoster | — | M | reporté |  |
-| [ADM-10](modules/ADM-administration.md) | Fériés selon le pays choisi par l'école, ou aucun (EP-5) | 3 | M | à faire : créée le 21 nov. (chef), après ADM-02 |  |
+| [ADM-11](modules/ADM-administration.md) | Fériés selon le pays choisi par l'école, ou aucun (EP-5) | 3 | M | à faire : créée le 21 nov. (chef), après ADM-02 |  |
 | [VSC-01](modules/VSC-vie-scolaire.md) | Modèle de données du scolaire (conception seule, avec diagrammes) | 1 | L | en cours : plan validé (chef, 18 nov.), conception écrite et corrigée, N7 ajouté (#215, poussée le 21 nov.) ; à relire par les groupes A et B, puis gelée sans code | #215 |
 | [VSC-02](modules/VSC-vie-scolaire.md) | Élèves et familles | 6 | L | à faire |  |
 | [VSC-03](modules/VSC-vie-scolaire.md) | Absences prévenues aux parents, justificatifs, saisie déléguée (EP-6) | 6 | M | à faire |  |
@@ -224,7 +224,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-06](modules/UIX-interface.md) | Style unifié entre les pages anciennes et récentes | 3 | M | en partie : UIX-06a (#185) et UIX-06b (#199) fusionnées ; UIX-06c à faire, sur la charte d'UIX-10b | #185, #199 |
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | fait : #185 fusionnée le 16 nov. | #185 |
 | [UIX-06b](modules/UIX-interface.md) | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | libre | L | fait : #199 fusionnée le 18 nov. | #199 |
-| [UIX-06c](modules/UIX-interface.md) | Salles, Campus, Créneaux et Calendrier | libre | M | **fait** (#245, fusionnée le 21 nov.) ; l'écart EP-5 des fériés passe à ADM-10 | #245 |
+| [UIX-06c](modules/UIX-interface.md) | Salles, Campus, Créneaux et Calendrier | libre | M | **fait** (#245, fusionnée le 21 nov.) ; l'écart EP-5 des fériés passe à ADM-11 | #245 |
 | [UIX-09](modules/UIX-interface.md) | Grille d'applications façon iCloud | libre | M | PR ouverte : #213, CI verte ; mention ISC à ajouter avant la fusion | #213 |
 | [UIX-10](modules/UIX-interface.md) | Charte commune à toutes les plateformes, en cinq fonctions (10a à 10e ; 10g retirée, 10f sans objet le 22 nov.) | 3 | L | en cours : plan validé (#206) ; **UIX-10a** (#207) et **UIX-10b** (#235, 21 nov.) **faites** ; **10d en cours** (`feat/uix-10d-mobile-charte`) ; ensuite 10c, 10e | #206, #207, #235 |
 | [UIX-11](modules/UIX-interface.md) | Tableau de bord de l'administration : refait à la charte, complété des données qui existent déjà, chaque chiffre menant à ses lignes | 3 | M | **fait** (#240, puis le correctif #247, fusionnées le 21 nov.) | #240, #247 |

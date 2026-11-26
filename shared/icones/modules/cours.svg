@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Espace de cours, dessin détaillé pour 40 à 96 px. -->
+<defs>
+  <linearGradient id="vit-cours-tuile" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#2F3475"/><stop offset="1" stop-color="#1F224D"/></linearGradient>
+</defs>
+<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-cours-tuile)"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity=".2"/>
+<path d="M17 27q17-6 31 4 14-10 31-4v44q-18-5-31 4-14-9-31-4z" fill="#A6CAEE"/>
+<path d="M19 23q16-4 27 5v38q-12-8-27-5z" fill="#FFFFFF"/>
+<path d="M50 28q13-9 26-5v38q-14-3-26 5z" fill="#FFFFFF"/>
+<path d="M60 23q5-2 10-2v24l-5-4-5 6z" fill="#FFC83D"/>
+<path d="M25 36q7-1 14 3m-14 7q7-1 14 3" fill="none" stroke="#A6CAEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

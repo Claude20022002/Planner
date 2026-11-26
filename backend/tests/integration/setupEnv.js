@@ -15,6 +15,8 @@ const defaults = {
     DB_USER: "root",
     DB_PASSWORD: "test_root",
     DB_DIALECT: "mysql",
+    // Fuseau de l'école des tests (M-10) : UTC, comme la CI et les parcours
+    APP_TIMEZONE: "UTC",
     JWT_SECRET: "jwt_secret_tests_integration",
     JWT_ACCESS_SECRET: "jwt_secret_tests_integration",
     CSRF_SECRET: "csrf_secret_tests_integration",
