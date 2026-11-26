@@ -1,5 +1,7 @@
 # Session du 2026-11-25 · M-9 · `fix/qua-poids-application`
 
+Dépassée le 26 nov. Les réponses officielles sont dans le message du coordinateur du 25 nov. à 23 h 01, appliquées dans [la fiche du 26](2026-11-26-fix-qua-poids-application.md). Le code `94413605` ne les suit pas.
+
 | | |
 |---|---|
 | Fait par | agent de Cursor (Grok 4.7) |
