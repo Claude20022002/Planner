@@ -27,7 +27,16 @@ for (const langue of ['fr', 'en']) {
       assert.ok(html.includes(`href="/${langue}/applications/"`), 'Toutes les applications');
       const attendu = registre.filter((entree) => entree.module === cle).length;
       assert.equal(compter(html.slice(html.indexOf('id="fonctionnalites"')), /<li[ >]/g) >= attendu, true);
-      assert.equal(html.includes('id="equipement"'), false, 'le lot D n\'est pas dans cette PR');
+      const equipement = html.match(/<section id="equipement"[^>]*>([\s\S]*?)<\/section>/g) || [];
+      assert.equal(equipement.length, 1, 'un seul bloc d’équipement par page de module');
+      assert.match(equipement[0], /aria-labelledby="equipement-titre"/);
+      assert.equal(compter(equipement[0], /<li[ >]/g), 3, 'trois contextes d’équipement');
+      const textes = require(`../src/i18n/${langue}/equipement.json`);
+      const echapper = (texte) => texte.replaceAll('&', '&amp;').replaceAll("'", '&#39;');
+      for (const [contexte, phrase] of Object.entries(textes.modules[cle])) {
+        assert.ok(equipement[0].includes(echapper(textes.contextes[contexte])), contexte);
+        assert.ok(equipement[0].includes(echapper(phrase)), contexte);
+      }
     });
   }
 
