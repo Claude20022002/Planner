@@ -28,23 +28,5 @@
       "Le lien s'ouvre dans un navigateur. Un code ou un QR code mène au même lien.",
       "En direct en classe, ou à faire à son rythme"
     ]
-  },
-  "aussi": {
-    "surtitre": "Et aussi",
-    "titre": "Réviser, et donner son avis.",
-    "cartes": [
-      {
-        "titre": "Des jeux",
-        "texte": "L'enseignant propose des jeux à ses classes, dont un terminal Linux simulé pour s'exercer aux commandes."
-      },
-      {
-        "titre": "Des sondages",
-        "texte": "L'enseignant pose une question à sa classe, et les réponses sont anonymes. L'école choisit d'activer ou non les sondages."
-      },
-      {
-        "titre": "Un seul compte",
-        "texte": "Le même compte ouvre Planner, la bibliothèque de cours et les jeux."
-      }
-    ]
   }
 }

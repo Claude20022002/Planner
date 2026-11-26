@@ -1,16 +1,16 @@
 /**
- * Écran de l'application web dans le cadre d'ordinateur : à gauche, le rail des sept applications
+ * Écran de l'application web dans le cadre d'ordinateur : à gauche, le rail des six applications
  * de Planner (frontend/src/i18n/applications.fr.js), l'application ouverte en bleu ; en haut, le
  * titre de l'écran. Le contenu vient dessous. Dessiné, jamais capturé.
  */
 import React from "react";
 import { AbsoluteFill, Img } from "remotion";
-import { BookOpen, Building2, CalendarDays, Gamepad2, LibraryBig, Megaphone, Users } from "lucide-react";
+import { BookOpen, Building2, CalendarDays, Gamepad2, Megaphone, Users } from "lucide-react";
 import adresseIcone from "../../../../../../vitrine/public/logo/planner-icone.svg";
 import { C, POLICE } from "../charte";
 
 /** Une icône par application, dans l'ordre de accueil.json (video.illustrations.applications) */
-export const ICONES_APPLICATIONS = [CalendarDays, BookOpen, Users, Building2, Megaphone, Gamepad2, LibraryBig];
+export const ICONES_APPLICATIONS = [CalendarDays, BookOpen, Users, Building2, Megaphone, Gamepad2];
 
 type Props = {
   titre: string;

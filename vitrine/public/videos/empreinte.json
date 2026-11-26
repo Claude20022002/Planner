@@ -1,16 +1,16 @@
 {
-  "empreinte": "7cf2b58be18e0146",
-  "charte": 2,
+  "empreinte": "ab6e6308741bf006",
+  "charte": 6,
   "langues": [
     "en",
     "fr"
   ],
   "poids": {
-    "planner-en-1080.webm": 3421751,
-    "planner-en-720.mp4": 1536413,
-    "planner-en.webp": 39418,
-    "planner-fr-1080.webm": 3552306,
-    "planner-fr-720.mp4": 1581594,
-    "planner-fr.webp": 41240
+    "planner-en-1080.webm": 3308958,
+    "planner-en-720.mp4": 1456607,
+    "planner-en.webp": 39304,
+    "planner-fr-1080.webm": 3424754,
+    "planner-fr-720.mp4": 1513840,
+    "planner-fr.webp": 41146
   }
 }
