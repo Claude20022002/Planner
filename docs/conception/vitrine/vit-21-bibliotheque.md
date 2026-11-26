@@ -6,7 +6,7 @@
 | Branche | `fix/vit-21-bibliotheque`, depuis `origin/main` |
 | Rédigé par | Claude Code (Sonnet 5.5), le 2026-11-22 |
 | Taille | M (le rendu de la vidéo de l'accueil est refait) |
-| **Visa** | **en attente du chef** : « Visé » ou « Visé sauf : … » dans un commentaire de la PR. Aucun code avant. |
+| **Visa** | [Lignes d’origine et questions 1 à 6, 22 nov.](https://github.com/Claude20022002/Planner/pull/262#issuecomment-7083231672) et [D1 à D7, 26 nov. (85ac5354)](https://github.com/Claude20022002/Planner/pull/262#issuecomment-7188208121), par Claude20022002. |
 
 ## 1. Objet
 
