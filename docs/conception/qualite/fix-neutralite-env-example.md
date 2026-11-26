@@ -6,7 +6,7 @@
 | Mission | `docs/plan/missions/fix-neutralite-env-example.md` (branche `doc/coordination-2026-11-26-suite`, jusqu'à sa fusion) |
 | Branche | `fix/neutralite-env-example`, depuis `origin/main` (`0ecc0b06`) |
 | Rédigé par | agent de Cursor (Grok 4.7), le 26 novembre 2026 |
-| **Validé** | en attente du coordinateur |
+| **Validé** | validé par le coordinateur le 26 nov. 2026 (questions 1 à 3 acceptées) |
 
 ## 1. Objet et critère de « terminé »
 
@@ -39,13 +39,13 @@ Le commentaire des lignes 63 à 65 et la ligne 73 expliquent le mot de passe d'a
 
 ## 3. Questions
 
-Les deux propositions de la fiche sont retenues dans ce plan. Le coordinateur valide ou corrige.
+Les deux propositions de la fiche sont retenues dans ce plan. Le coordinateur les a acceptées le 26 nov. 2026, ainsi que la lecture des lignes `#`.
 
 | N° | Question | Proposition retenue | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | Quelle adresse dans l'exemple ? | `EMAIL_FROM="Planner <votre-email@example.com>"`. Le commentaire du mot de passe d'application Gmail (l. 65 et l. 73) et `SMTP_USER` ne changent pas. | en attente du coordinateur | oui |
-| 2 | Le commentaire de la l. 18 ? | `(ex: https://planner.votre-ecole.example)` | en attente du coordinateur | oui |
-| 3 | Les lignes `#` de ce fichier sont-elles cherchées ? | Oui. Le fichier est copié tel quel. Le contrôle ne les ignore pas. | en attente du coordinateur | oui |
+| 1 | Quelle adresse dans l'exemple ? | `EMAIL_FROM="Planner <votre-email@example.com>"`. Le commentaire du mot de passe d'application Gmail (l. 65 et l. 73) et `SMTP_USER` ne changent pas. | acceptée, coordinateur, 26 nov. 2026 | non |
+| 2 | Le commentaire de la l. 18 ? | `(ex: https://planner.votre-ecole.example)` | acceptée, coordinateur, 26 nov. 2026 | non |
+| 3 | Les lignes `#` de ce fichier sont-elles cherchées ? | Oui. Le fichier est copié tel quel. Le contrôle ne les ignore pas. | acceptée, coordinateur, 26 nov. 2026 | non |
 
 `example` et `example.com` sont les noms réservés aux exemples. Aucun domaine réel.
 
