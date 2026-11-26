@@ -54,7 +54,7 @@
 | VIT-21 | Le site ne présente plus la Bibliothèque comme disponible (étape 3) ; nouveau rendu de la vidéo de l'accueil | — | 1 | M | VIT-20 | Codex (repris de l'agent externe) : #262, visée, ajout de l'Espace de cours à viser |
 | VIT-22 | La page « Bientôt » suit les 12 modules « Bientôt » de `donnees/modules.js` | — | 1 | S | VIT-20 | code et contrôles locaux terminés sur la branche de la PR #263 ([fiche de session](../../sessions/2026-11-26-feat-vit-22-bientot-modules.md)) |
 | VIT-20f | Chaque module du site prend son logo de VIT-09c (`shared/icones/modules/`) ; Présences d'abord | — | 1 | S | VIT-09c | à faire : Codex, après la fusion de VIT-09c (#259) |
-| VIT-09d | Les 20 logos redessinés dans le style du logo Planner, en deux séries (A : tuile bleu nuit commune ; B : teinte de l'application), à comparer aux logos actuels ; le chef choisit, puis le choix remplace les logos (étape 2) | — | libre | M | VIT-09c | en cours (`feat/vit-09d-logos-style-planner`) : [plan validé par le coordinateur le 26 nov.](../../conception/vitrine/vit-09d-logos-style-planner.md) ; essai sur trois logos fait, direction à valider par le chef ; VIT-20f attend le choix |
+| VIT-09d | Les 20 logos redessinés dans le style du logo Planner, en deux séries (A : tuile bleu nuit commune ; B : teinte de l'application), à comparer aux logos actuels ; le chef choisit, puis le choix remplace les logos (étape 2) | — | libre | M | VIT-09c | en cours (`feat/vit-09d-logos-style-planner`) : [plan validé par le coordinateur le 26 nov.](../../conception/vitrine/vit-09d-logos-style-planner.md) ; direction validée par le chef ; les 40 logos (20 × 2 séries) et la planche faits, **choix du chef attendu**, logo par logo ; VIT-20f attend le choix |
 
 ## Critères de « terminé »
 
