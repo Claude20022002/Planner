@@ -1,1 +1,34 @@
-{}
+{
+  "contextes": {
+    "s1": "Without Wi-Fi or with a limited connection",
+    "s2": "Without a projector",
+    "s3": "Without a student phone"
+  },
+  "modules": {
+    "emploiDuTemps": {
+      "s1": "In the app, the last week you viewed stays readable offline, with the time it was saved. The app fully usable offline: coming soon.",
+      "s2": "The timetable can be printed or saved as a PDF: it can be read without a projector, class by class.",
+      "s3": "Without a phone, students read their timetable on screen or on paper. Changes are announced by notification and by email, nothing else."
+    },
+    "presences": {
+      "s1": "Attendance is taken on the website: it needs a connection. There is no offline attendance.",
+      "s2": "Attendance by hand is taken on the session's list, with no projector. The QR code, on the other hand, is projected.",
+      "s3": "By hand, the teacher marks each student present, late or absent: no phone needed. The QR code requires the student's app."
+    },
+    "espaceDeCours": {
+      "s1": "You need an internet connection to open course links and answer polls. Document uploads: coming soon.",
+      "s2": "Students can open course links and answer polls on their own devices, with no projector needed.",
+      "s3": "Students can use an internet-connected computer to open course links and answer polls using their own accounts."
+    },
+    "quizEtJeux": {
+      "s1": "In a self-paced quiz, each answer is saved immediately: a dropped connection loses nothing. The live quiz and the games need a connection.",
+      "s2": "A self-paced quiz opens with a link, a code or a QR code, with no projector. The live quiz is shown on a projected screen.",
+      "s3": "A quiz is played in any browser, but each student answers from a device. The Linux terminal is played at the board: the teacher types the command."
+    },
+    "annoncesEtMessages": {
+      "s1": "An attachment's size is shown before you open it. The app only keeps the last dashboard and weeks viewed: offline, an announcement cannot be read. The app fully usable offline: coming soon.",
+      "s2": "An announcement is read on each person's screen; it cannot be printed from Planner.",
+      "s3": "An announcement arrives as a notification in the app and, optionally, by email. Without a phone or email, the student does not receive it."
+    }
+  }
+}
