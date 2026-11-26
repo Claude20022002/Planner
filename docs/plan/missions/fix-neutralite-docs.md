@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | close le 2026-11-26 (PR fusionnée) |
 | Agent | agent de Cursor |
 | Modèle recommandé | un modèle moyen : documentation, remplacements bornés, une ligne de plus au script de contrôle |
 | Attribuée le | 2026-11-26, par le coordinateur ; accord du chef : oui, le 2026-11-26 (« docs seulement ») |

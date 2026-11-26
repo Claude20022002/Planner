@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | close le 2026-11-26 (PR fusionnée) |
 | Agent | Codex (VS Code) |
 | Modèle recommandé | un modèle moyen suffit (correctif court, un fichier) ; Codex garde son réglage habituel s'il n'en change pas entre deux missions |
 | Attribuée le | 2026-11-26, par le coordinateur ; accord du chef : oui, le 2026-11-26 |
