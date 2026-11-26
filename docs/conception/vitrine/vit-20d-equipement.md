@@ -6,7 +6,7 @@
 | Branche | `feat/vit-20d-equipement`, depuis `origin/main` |
 | Rédigé par | Claude Code (Sonnet 5.5), le 2026-11-22 |
 | Taille | S |
-| **Visa** | **en attente du chef** : une réponse « Visé » ou « Visé sauf : … » dans un commentaire de la PR. Aucun code avant. |
+| **Visa** | [22 novembre](https://github.com/Claude20022002/Planner/pull/261#issuecomment-7083231168) : tableau visé avec réserve sur le § 5.3, propositions 1 à 5 acceptées. [26 novembre](https://github.com/Claude20022002/Planner/pull/261#issuecomment-7186482401) : S1, S2 et S3 du § 5.3 visées dans `cafbf767`. |
 
 ## 1. Objet
 
