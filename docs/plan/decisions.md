@@ -714,3 +714,11 @@ Inscrit en conséquence, à relire dans la PR : 31 fonctions (liste dans le READ
 | *(coordinateur)* Relecture de #230 (26 nov.) : à corriger avant la fusion. `OffresStage.jsx` (476 lignes) à découper ; conflit `App.jsx` avec `main` (après #267) ; remise en forme de `i18n/index.js` à retirer ; `publiee_le` à aligner entre le plan et la migration ; ligne « Validé » à poser | coordinateur |
 | *(coordinateur)* VSC-01 a été écrite par un agent **Qoder**, absent de l'organisation (Claude, Codex, agent de Cursor). Leçon : un agent nouveau reçoit `AGENTS.md` et une fiche de mission avant de travailler ; sa fiche disait le chantier VSC « ouvert le 18 novembre », ce qui contredisait la décision de ce jour-là | coordinateur |
 | *(coordinateur)* **Correction du 26 nov.** : le 25 nov., le coordinateur a présenté l'ouverture de VSC comme une exception « avant la fermeture de MOT ». MOT était fermé depuis le 21 nov., ADM ouvert à sa place, et le chef avait décidé que VSC-01 se termine comme conception, sans code. Informé, **le chef maintient l'exception** : quatre chantiers ouverts (EXP, PLA, ADM, VSC). Leçon : relire les branches de coordination non fusionnées avant le tour d'état, car `suivi.md` sur `main` peut être en retard d'une semaine | chef, 26 nov. |
+
+**26 nov., file de Codex** :
+
+| Décision | Par |
+|---|---|
+| **Missions de Codex, dans cet ordre** : (1) la suite de VIT-20 (VIT-22, VIT-20d, VIT-21, puis VIT-20f) ; (2) le correctif `useEffect` de `MesAffectations.jsx` ; (3) QJE-03, le joueur natif (sortie de ClassQuiz) ; (4) une étude des parcours de chaque rôle : ce qui manque, ce qui casse, ce qui est masqué, avec la preuve dans le code ([fiche](missions/etude-parcours-par-role.md)) | chef |
+| *(coordinateur)* Le correctif « minuit » des parcours (`entreRoles`, `appel`, `appelClasse`), proposé au chef, était **déjà fusionné** (#210, 18 nov.) : il n'est pas confié | coordinateur |
+| *(coordinateur)* La publication des images de `main` après #259 (`7f99c899`) a échoué sur l'image du solveur : Maven n'a pas pu lire le POM parent de Spring Boot pendant la construction Docker (réseau). Tests et parcours verts. Relance des tâches échouées par le chef | coordinateur |
