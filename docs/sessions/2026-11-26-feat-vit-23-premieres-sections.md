@@ -108,6 +108,18 @@ Captures, hors du dépôt : `C:\Users\clusa\Desktop\Github Project\travaux-plann
 
 Reste à la CI : le contrôle VIT-19, les parcours et l'image Docker.
 
+**Après la fusion de #277** (`0c568ecb`, logos de VIT-09d), `git merge origin/main` → `ac624976`. Conflit dans `docs/plan/modules/VIT-site-vitrine.md` seulement ; les deux lignes (VIT-23, VIT-09d) sont gardées. Contrôles refaits :
+
+| Contrôle | Résultat |
+|---|---|
+| `npm run build` | 43 pages |
+| `npm run test:unit` | 168 tests : 167 réussis, 1 sauté, 0 échec |
+| `node --test tests/*.rendu.cjs` | 71 réussis, 0 échec |
+| `shared/icones/icones.test.js` | 8 réussis, 0 échec |
+| `tests/axe.parcours.cjs` | 77 réussis, aucune violation |
+| `verifier-neutre` | vert |
+| `npm run test:poids` | page la plus lourde : `fr/index.html`, 132,0 Ko ; Emploi du temps 82,5, Quiz et jeux 80,6, Présences 79,7 |
+
 ## Questions
 
 | N° | Question | Réponse | État |
@@ -118,13 +130,12 @@ Reste à la CI : le contrôle VIT-19, les parcours et l'image Docker.
 ## État laissé
 
 - État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-23 → code fait, **relue par le coordinateur (14 h 20) : prête pour la PR** ; rendu validé par le chef (14 h 30).
-- #277 (VIT-09d, logos série B) n'était pas encore sur `main` : refaire `git merge origin/main` après sa fusion. Seuls des fichiers de `shared/icones/modules/` changent ; aucun conflit n'est attendu.
+- #277 (VIT-09d) est fusionnée dans la branche (`ac624976`) ; tout reste vert.
 - VIT-20f (Codex) : la tuile de Présences reste vide et Espace de cours porte le logo `pedagogie`. Ce n'est pas à VIT-23.
 
 ## Reste à faire, dans l'ordre
 
-1. `git merge origin/main` après #277, puis `npm run build`, `test:unit` et `*.rendu.cjs`.
-2. Le chef pousse et ouvre la PR.
+1. Le chef pousse et ouvre la PR.
 
 ## Commandes pour le chef de projet
 
@@ -142,7 +153,7 @@ Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md,
 la conception docs/conception/vitrine/vit-23-premieres-sections.md et cette fiche (docs/sessions/2026-11-26-feat-vit-23-premieres-sections.md).
 Fait : composant commun socle/OuverturePage.astro sur toutes les pages, illustrations de VIT-09c, reliefs, textes C2 de l'accueil, tests ;
 main fusionnée après #262 ; tests, axe-core, neutralité et poids verts ; captures dans ..\travaux-planner\captures-vit-23\.
-Reste : relecture du coordinateur ; git merge origin/main après #277 et refaire les tests ; le chef pousse.
+Reste : le chef pousse et ouvre la PR (relue par le coordinateur, rendu validé par le chef, main et #277 fusionnées).
 Ne touche ni logos.js ni logoModule() (VIT-20f).
 Règles : pas de code hors du plan validé ; questions avant toute supposition ;
 fiche de session à jour en fin de session, suivi.md non modifié ; jamais de git push.
