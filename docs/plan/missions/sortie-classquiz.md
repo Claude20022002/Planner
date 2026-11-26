@@ -48,3 +48,4 @@ Ne modifie pas docs/plan/suivi.md. Jamais de git push.
 |---|---|---|
 | 2026-11-18 13 h 40 | fiche écrite, sur décision du chef | — |
 | 2026-11-18 17 h | QJE-01 fusionnée (#208, 15 h 37), CI verte rapportée par l'agent de Cursor. Restent QJE-03 et QJE-06, chez Codex (n° 5 de sa file) | QJE-01 close |
+| 2026-11-26 13 h 45 | plan de QJE-03 (`b10f9566`) : quatre propositions **visées par le chef** ; visa à écrire sur la PR brouillon | code ensuite |

@@ -38,7 +38,7 @@ C'est le cœur du produit d'aujourd'hui, et il est mûr.
 | EDT-03 | Écran d'explication des conflits et des refus : la règle, le groupe, la solution proposée (EP-4) | — | 3 | M | MOT-03 | à faire |
 | EDT-04 | Publication, PDF et courriels selon l'école : marque, langue, vocabulaire du profil, sans mot propre au supérieur pour une école scolaire | — | 3 | M | UIX-02 | à faire |
 | EDT-05 | Paramètres datés complets : un réglage change à une date, sans toucher le passé | ME-2b complet | 7 | L | MOT-01 | reporté |
-| EDT-06 | Convocations aux examens : salle, place et heure par élève, liste d'émargement, PDF en français, anglais et arabe | — | à placer | S | VSC-02 | à faire |
+| EDT-06 | Convocations aux examens : salle, place et heure par élève, liste d'émargement, PDF en français, anglais et arabe | — | 3 | S | les étudiants du modèle actuel (VSC-02 retirée le 26 nov., décision du chef) | à faire |
 | EDT-07 | Équipements et matériel : équipements de chaque salle, matériel réservable (ordinateurs, projecteur mobile) ; le besoin d'une séance passe au moteur par MOT-11 | — | libre | M | — | à faire |
 
 ## Critères de « terminé »

@@ -45,7 +45,7 @@
 | ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 7 | M | PLA-11 | à faire |
 | ADM-08 | Annuaire de l'école | ME-8b | — | M | — | reporté |
 | ADM-09 | Échanges OneRoster | ME-9b | — | M | ADM-03 | reporté |
-| ADM-10 | Champs et listes propres à l'école, sans code : champs ajoutés aux fiches élève, enseignant et candidature, listes de valeurs ; repris par l'import, les exports et les modèles de documents | — | à placer | L | VSC-01, ADM-02 | à faire |
+| ADM-10 | Champs et listes propres à l'école, sans code : champs ajoutés aux fiches élève, enseignant et candidature, listes de valeurs ; repris par l'import, les exports et les modèles de documents | — | 5 | L | VSC-01, ADM-02 | à faire |
 | ADM-11 | Fériés selon le pays : l'école choisit son pays, ou aucun, et le Calendrier propose les fériés de ce pays ; aujourd'hui le bouton et le générateur du serveur ne connaissent que le Maroc (EP-5, décision du chef du 21 nov.) | — | 3 | M | ADM-02 | à faire |
 
 ## Critères de « terminé »

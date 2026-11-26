@@ -31,7 +31,7 @@ L'inventaire n'a trouvé aucun outil qui suive les prospects dans les écoles ma
 | INS-01 | Formulaire public de candidature, pièces jointes, suivi des candidats, liste d'attente ; un candidat accepté devient un élève de VSC-02, sans ressaisie | — | 3 | L | VSC-02 | à faire |
 | INS-02 | Acompte, contrat annuel école-famille généré et signé, réinscription en un clic | — | 3 | M | INS-01, FIN-01 | à faire |
 | INS-03 | État d'accréditation de chaque filière, affiché au candidat | — | 3 | S | INS-01 | à faire |
-| INS-04 | Prospects et campagnes : source de chaque contact, portes ouvertes, relances planifiées, taux de transformation par source ; formulaire public relié au site | — | à placer | M | INS-01, COM-01 | à faire |
+| INS-04 | Prospects et campagnes : source de chaque contact, portes ouvertes, relances planifiées, taux de transformation par source ; formulaire public relié au site | — | 6 | M | INS-01, COM-01 | à faire |
 
 ## Critères de « terminé »
 
