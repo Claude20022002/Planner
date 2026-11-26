@@ -111,3 +111,4 @@ Le chef a retenu le plan de 9 h 37 ; la session `plan-b-projet-pacte-20`, arrêt
 4. `ParametresPlanning.jsx` montre 5 des 6 anciennes valeurs : il oublie `surveillants_par_salle`.
 5. Les rythmes (cibles des contraintes) sont les `regime` distincts de `Creneau` (`contraintes/cibles.js`, l. 52) ; `VersionParametres` a déjà `updatedAt`, `appliquee_le` et une colonne `impact` (JSON) inutilisée.
 6. Les fichiers d'i18n partagés (`fr.js`, `en.js`, `frontend/src/i18n/index.js`) ne reçoivent que des **ajouts** de clés (UIX-10e et QJE-14a y viendront).
+| 2026-11-26 12 h 20 | ADM-02a (`32fbc10d`) relue : plan suivi, routes sous `requireAdmin`, fusion sans conflit, test « problème identique » qui mord | **à corriger** : transaction dans la 0088 ; puis au chef (accord de fusion donné) |

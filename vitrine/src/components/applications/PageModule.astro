@@ -6,6 +6,7 @@ import Gabarit from '../socle/Gabarit.astro';
 import FinDePage from '../fonctions/FinDePage.astro';
 import EnTeteModule from './EnTeteModule.astro';
 import FonctionnalitesModule from './FonctionnalitesModule.astro';
+import Equipement from './equipement/Equipement.astro';
 import PourQui from './PourQui.astro';
 import AutresModules from './AutresModules.astro';
 import { traductions } from '../../i18n/index.js';
@@ -36,7 +37,7 @@ const onglets = [
     demonstration={commun('navigation.demonstration')} onglets={onglets} />
   <slot />
   <FonctionnalitesModule langue={langue} cle={cle} nom={nom} />
-  {/* LOT D (Codex, PR à part) : le bloc « Selon votre équipement » (plan § 4.9) se pose ici, sur une seule ligne. Vide dans VIT-20. */}
+  <Equipement langue={langue} cle={cle} />
   <PourQui langue={langue} cle={cle} />
   <AutresModules langue={langue} cle={cle} categorie={module.categorie} />
   <FinDePage langue={langue} />

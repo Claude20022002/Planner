@@ -3,7 +3,6 @@
   "entete": { "surtitre": "", "titre": "", "accroche": "" },
   "aujourdhui": "",
   "cartes": [
-    { "page": "bibliotheque", "titre": "", "texte": "" },
     { "page": "application", "titre": "", "texte": "" },
     { "page": "quizEtJeux", "titre": "", "texte": "" }
   ],
@@ -13,14 +12,12 @@
       { "avant": "", "avec": "" },
       { "avant": "", "avec": "" },
       { "avant": "", "avec": "" },
-      { "avant": "", "avec": "" },
       { "avant": "", "avec": "" }
     ]
   },
   "faq": {
     "titre": "",
     "questions": [
-      { "question": "", "reponse": "" },
       { "question": "", "reponse": "" },
       { "question": "", "reponse": "" }
     ]

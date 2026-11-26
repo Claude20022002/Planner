@@ -1,6 +1,7 @@
 /**
- * Index de la bibliothèque d'icônes partagée (VIT-09a) : les logos de la grille et du catalogue, et les
- * icônes vivantes des commandes. Source unique pour le site (VIT-09b) et l'application (UIX-10b).
+ * Index de la bibliothèque d'icônes partagée (VIT-09a) : les logos de la grille et du catalogue, dans le
+ * style du logo Planner depuis VIT-09d, et les icônes vivantes des commandes. Source unique pour le site
+ * (VIT-09b) et l'application (UIX-10b).
  * Les fichiers sont dans modules/ et vivantes/ ; ce module ne donne que leurs chemins, relatifs à
  * shared/icones/, et les jetons de couleur de chaque logo (shared/charte/jetons.json, famille
  * « applications »). Les noms affichés restent ceux des traductions de chaque site.

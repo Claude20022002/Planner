@@ -1,16 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
-<!-- Logo de l'application Annonces (VIT-09a), dessin détaillé pour 40 à 96 px. Charte v3 : app-annonces, app-annonces-fonce, blanc, bleu-clair, bleu-nuit, jeu. Un mégaphone et ses ondes. -->
-<defs>
-<linearGradient id="vit-annonces-tuile" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#AE532D"/><stop offset="1" stop-color="#75201C"/></linearGradient>
-<linearGradient id="vit-annonces-reflet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.22"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-annonces-tuile)"/>
-<path d="M26 4h44a22 22 0 0 1 22 22v8C70 44 26 44 4 34v-8A22 22 0 0 1 26 4z" fill="url(#vit-annonces-reflet)"/>
-<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.14"/>
-<g fill="none" stroke="#FFC83D" stroke-width="4" stroke-linecap="round"><path d="M67 41a11 11 0 0 1 0 18"/><path d="M73 34a20 20 0 0 1 0 32"/></g>
-<rect x="31" y="54" width="9" height="20" rx="4" fill="#17395C" transform="rotate(-14 35 56)"/>
-<path transform="translate(2 4)" opacity="0.45" d="M24 42l30-14v44L24 58z" fill="#75201C"/>
-<rect x="15" y="41" width="12" height="18" rx="4" fill="#A6CAEE"/>
-<path d="M24 42l30-14v44L24 58z" fill="#FFFFFF"/>
-<rect x="51" y="25" width="9" height="50" rx="4.5" fill="#A6CAEE"/>
+<!-- Logo de l'application Annonces (VIT-09d), dessin détaillé pour 40 à 96 px, dans le style du logo Planner : mégaphone et trois ondes. Charte : app-annonces (tuile en aplat), app-annonces-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#AE532D"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M32 57l3 13h8l-2.5-11z" fill="#A6CAEE"/>
+<rect x="17" y="39" width="13" height="18" rx="4" fill="#A6CAEE"/>
+<path d="M27 39l26-11a3 3 0 0 1 4 2.8v34.4a3 3 0 0 1-4 2.8L27 57z" fill="#FFFFFF"/>
+<path d="M30 38v20" fill="none" stroke="#75201C" stroke-width="3.5"/>
+<path d="M64 42a8 8 0 0 1 0 12M69.5 36a16 16 0 0 1 0 24M75 30a24 24 0 0 1 0 36" fill="none" stroke="#A6CAEE" stroke-width="4" stroke-linecap="round"/>
 </svg>

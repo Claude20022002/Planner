@@ -232,10 +232,9 @@
       {
         "titre": "Chaque classe a son espace.",
         "lignes": [
-          "Supports par section, sondages, annonces de l'école.",
-          "La bibliothèque s'ouvre avec le même compte."
+          "Liens par section, sondages, annonces de l'école."
         ],
-        "image": "L'espace d'une classe : ses sections et leurs supports, un sondage dont les barres montent, une annonce. Puis la bibliothèque s'ouvre."
+        "image": "L'espace d'une classe : ses sections et leurs liens, un sondage dont les barres montent, une annonce."
       },
       {
         "titre": "Toute l'école, d'un seul regard.",
@@ -248,10 +247,10 @@
       {
         "titre": "Aussi sur le téléphone.",
         "lignes": [
-          "La semaine, le scanner de l'appel, la bibliothèque.",
+          "La semaine, le scanner de l'appel.",
           "Parlons de votre établissement."
         ],
-        "image": "Sur un téléphone, la barre du bas montre les onglets Tableau, Semaine, Scanner, Bibliothèque et Compte ; la semaine, le scanner puis la bibliothèque défilent. Puis le logo et le nom de Planner."
+        "image": "Sur un téléphone, la barre du bas montre les onglets Tableau, Semaine, Scanner et Compte ; la semaine puis le scanner défilent. Puis le logo et le nom de Planner."
       }
     ],
     "illustrations": {
@@ -261,8 +260,7 @@
         "Personnes",
         "Établissement",
         "Annonces",
-        "Quiz et jeux",
-        "Bibliothèque"
+        "Quiz et jeux"
       ],
       "semaine": "Semaine 12",
       "calcul": "Calcul de l'emploi du temps",
@@ -355,15 +353,6 @@
         "annonce": {
           "titre": "Annonce de l'école",
           "texte": "Les inscriptions aux examens ouvrent lundi."
-        },
-        "bibliotheque": {
-          "titre": "Bibliothèque",
-          "documents": [
-            "Mécanique du point",
-            "Analyse 1",
-            "Chimie organique",
-            "Algorithmique"
-          ]
         }
       },
       "etablissement": {
@@ -398,7 +387,6 @@
           "Tableau",
           "Semaine",
           "Scanner",
-          "Bibliothèque",
           "Compte"
         ]
       }

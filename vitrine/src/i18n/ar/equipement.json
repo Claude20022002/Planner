@@ -1,1 +1,34 @@
-{}
+{
+  "contextes": {
+    "s1": "",
+    "s2": "",
+    "s3": ""
+  },
+  "modules": {
+    "emploiDuTemps": {
+      "s1": "",
+      "s2": "",
+      "s3": ""
+    },
+    "presences": {
+      "s1": "",
+      "s2": "",
+      "s3": ""
+    },
+    "espaceDeCours": {
+      "s1": "",
+      "s2": "",
+      "s3": ""
+    },
+    "quizEtJeux": {
+      "s1": "",
+      "s2": "",
+      "s3": ""
+    },
+    "annoncesEtMessages": {
+      "s1": "",
+      "s2": "",
+      "s3": ""
+    }
+  }
+}

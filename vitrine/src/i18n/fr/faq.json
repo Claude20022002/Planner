@@ -16,15 +16,11 @@
     },
     {
       "question": "Que propose l’application mobile ?",
-      "reponse": "L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
+      "reponse": "L'application des étudiants montre leur semaine et scanne le QR code de l'appel. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
     },
     {
       "question": "Comment l’IA intervient-elle ?",
       "reponse": "Quand l’IA est activée pour votre école dans le Studio quiz, elle peut proposer des questions que l’enseignant relit avant de les partager."
-    },
-    {
-      "question": "Peut-on choisir StudyLib séparément ?",
-      "reponse": "Contactez-nous pour discuter de StudyLib et des fonctionnalités qui répondent aux besoins de votre établissement."
     },
     {
       "question": "Combien cela coûte-t-il ?",
