@@ -1,4 +1,4 @@
-# Guide de déploiement — HESTIM Planner
+# Guide de déploiement — Planner
 
 Deux parties. La première décrit le **serveur de production** (le VPS de `planner.finadmintech.fr`) : mise à jour, changement de dépendances, retour arrière. La seconde, à partir de « Comparatif des plateformes », décrit l'hébergement gratuit d'origine (Railway et Vercel). Le nouveau serveur Debian, partagé avec n8n, est la section qui suit.
 
@@ -137,7 +137,7 @@ Les campus et l'identité de l'école d'origine ne sont donnés qu'à une base q
 
 ### Allumer ou éteindre ClassQuiz pour l'école (lot ME-0c)
 
-ClassQuiz est une fonctionnalité de l'établissement (`ConfigurationEtablissement.classquiz_actif`, migration 0057). Une installation neuve part éteinte ; la base de HESTIM, qui avait déjà des comptes, est restée allumée. Éteint, Planner ne lance plus de partie, refuse le webhook et la connexion par OpenID Connect, et `/api/quiz/config` répond `actif: false` (l'espace « Quiz » disparaît du sélecteur). Les conteneurs du quiz, eux, tournent toujours : les arrêter est une autre décision.
+ClassQuiz est une fonctionnalité de l'établissement (`ConfigurationEtablissement.classquiz_actif`, migration 0057). Une installation neuve part éteinte ; la base de l'école pilote, qui avait déjà des comptes, est restée allumée. Éteint, Planner ne lance plus de partie, refuse le webhook et la connexion par OpenID Connect, et `/api/quiz/config` répond `actif: false` (l'espace « Quiz » disparaît du sélecteur). Les conteneurs du quiz, eux, tournent toujours : les arrêter est une autre décision.
 
 Sur le serveur (`1` pour allumer, `0` pour éteindre), puis redémarrer le serveur de Planner, qui garde la ligne de l'école en mémoire :
 
@@ -400,7 +400,7 @@ Conception et diagrammes : `docs/conception/exploitation/conception-me21-supervi
 1. **Sur le serveur, une fois** : ajouter à `/opt/hestim/.env.docker` le jeton des mesures et le nom de l'école dans les journaux, puis recréer le conteneur du serveur de Planner (un simple redémarrage ne relit pas `.env.docker`) :
    ```bash
    echo "SUPERVISION_TOKEN=$(openssl rand -hex 32)" >> /opt/hestim/.env.docker
-   echo "ETABLISSEMENT_NOM=hestim" >> /opt/hestim/.env.docker
+   echo "ETABLISSEMENT_NOM=<nom-court-de-l-ecole>" >> /opt/hestim/.env.docker
    cd /opt/hestim && docker compose --env-file .env.docker -f docker-compose.yml -f deploy/vps/docker-compose.vps.yml up -d --no-deps --force-recreate backend
    ```
 2. **Dans le service de sonde** : créer les moniteurs du tableau du § 3 de la conception (site, `/api/supervision/sante` en code 200, les mots-clés `"solveur":"ok"` et `"erreurs":"ok"`, la bibliothèque), à l'intervalle le plus court de l'offre ; les alertes vont au courriel et à l'application du service sur le téléphone d'astreinte (notifications autorisées la nuit).
@@ -508,7 +508,7 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=votre-email@gmail.com
 SMTP_PASSWORD=VOTRE_APP_PASSWORD_GMAIL
-EMAIL_FROM="HESTIM Planner <votre-email@gmail.com>"
+EMAIL_FROM="Planner <votre-email@example.com>"
 ```
 
 ### 1.6 Premier déploiement et seed
@@ -526,7 +526,7 @@ railway login
 railway run --service backend node seed.js
 ```
 
-**URL du backend Railway** : copiez l'URL publique (ex: `https://hestim-backend.up.railway.app`)
+**URL du backend Railway** : copiez l'URL publique (ex: `https://planner-backend.up.railway.app`)
 
 ---
 
@@ -552,7 +552,7 @@ railway run --service backend node seed.js
 Dans **Environment Variables** du projet Vercel :
 
 ```env
-VITE_API_URL=https://hestim-backend.up.railway.app/api
+VITE_API_URL=https://planner-backend.up.railway.app/api
 ```
 
 > Remplacer par l'URL réelle de votre service Railway.
@@ -561,14 +561,14 @@ VITE_API_URL=https://hestim-backend.up.railway.app/api
 
 Cliquer **Deploy**. Vercel construit et publie en ~2 minutes.
 
-**URL frontend** (ex: `https://hestim-planner.vercel.app`)
+**URL frontend** (ex: `https://planner.vercel.app`)
 
 ### 2.5 Mettre à jour CORS sur Railway
 
 Retournez dans Railway → Variables du backend, mettez à jour :
 
 ```env
-ALLOWED_ORIGINS=https://hestim-planner.vercel.app
+ALLOWED_ORIGINS=https://planner.vercel.app
 ```
 
 Railway redéploie automatiquement.
@@ -617,7 +617,7 @@ Push sur main
 
 ### Vercel (frontend)
 1. Vercel Project → Settings → Domains
-2. Ajouter `planner.hestim.ma`
+2. Ajouter `planner.votre-ecole.example`
 3. Configurer le CNAME chez votre registrar :
    ```
    planner  CNAME  cname.vercel-dns.com
@@ -625,7 +625,7 @@ Push sur main
 
 ### Railway (backend)
 1. Railway Service → Settings → Networking → Custom Domain
-2. Ajouter `api.hestim.ma`
+2. Ajouter `api.votre-ecole.example`
 3. CNAME :
    ```
    api  CNAME  <votre-service>.up.railway.app
@@ -684,4 +684,4 @@ cd frontend && vercel --prod
 
 ---
 
-*Guide rédigé pour HESTIM Planner — Mai 2026*
+*Guide rédigé pour Planner — Mai 2026*
