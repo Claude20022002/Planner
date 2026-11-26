@@ -5,18 +5,16 @@
  */
 import React from "react";
 import { AbsoluteFill, Img } from "remotion";
-import { BatteryFull, CalendarDays, CircleUser, LayoutDashboard, LibraryBig, ScanQrCode, SignalHigh, Wifi } from "lucide-react";
+import { BatteryFull, CalendarDays, CircleUser, LayoutDashboard, ScanQrCode, SignalHigh, Wifi } from "lucide-react";
 import adresseIcone from "../../../../../../vitrine/public/logo/planner-icone.svg";
 import { C, POLICE } from "../charte";
 
 /**
- * Les cinq onglets visibles de l'application, dans l'ordre de accueil.json
- * (video.illustrations.mobile.onglets) et de mobile/src/app/(onglets)/_layout.jsx : Tableau, Semaine,
- * Scanner, Bibliothèque, Compte. « jeux » n'y est pas : son onglet est masqué (href: null).
+ * Les onglets montrés dans accueil.json (video.illustrations.mobile.onglets) : Tableau, Semaine, Scanner, Compte.
  */
-export const ICONES_ONGLETS = [LayoutDashboard, CalendarDays, ScanQrCode, LibraryBig, CircleUser];
+export const ICONES_ONGLETS = [LayoutDashboard, CalendarDays, ScanQrCode, CircleUser];
 /** Indices des onglets dans cette liste */
-export const ONGLET = { tableau: 0, semaine: 1, scanner: 2, bibliotheque: 3, compte: 4 } as const;
+export const ONGLET = { tableau: 0, semaine: 1, scanner: 2, compte: 3 } as const;
 
 type Props = {
   titre?: string;

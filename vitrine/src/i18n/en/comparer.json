@@ -155,11 +155,11 @@
       ]
     },
     "compte": {
-      "critere": "Attendance, quizzes, games and the Library, with one account",
+      "critere": "Attendance, quizzes and games, with one account",
       "cases": [
         {
           "mot": "Yes",
-          "texte": "Attendance, quizzes, games, the course space and the Library open with the same account."
+          "texte": "Attendance, quizzes, games and the course space open with the same account."
         },
         {
           "mot": "One tool per task",
@@ -184,7 +184,7 @@
       "cases": [
         {
           "mot": "Mostly",
-          "texte": "Attendance is taken by hand. The Linux terminal is played on the board: the teacher types the command the class suggests. The timetable prints as a PDF or opens in a browser, like the Library. Quizzes and simulations need one device per student: a phone or a school computer."
+          "texte": "Attendance is taken by hand. The Linux terminal is played on the board: the teacher types the command the class suggests. The timetable prints as a PDF or opens in a browser. Quizzes and simulations need one device per student: a phone or a school computer."
         },
         {
           "mot": "Yes",

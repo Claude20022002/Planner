@@ -67,8 +67,8 @@
     "categorie": "cours",
     "module": "espaceDeCours",
     "etat": "existe",
-    "titre": { "fr": "Partager les supports de cours", "en": "Share course materials" },
-    "description": { "fr": "L’enseignant publie un document ou un lien dans l’espace de cours.", "en": "Teachers publish a document or link in the course space." },
+    "titre": { "fr": "Partager les liens de cours", "en": "Share course links" },
+    "description": { "fr": "L’enseignant publie un lien dans l’espace de cours. Dépôt de documents : Bientôt.", "en": "Teachers publish a link in the course space. Document uploads: coming soon." },
     "sources": {
       "planner": ["backend/routes/espaceCoursRoutes.js"]
     }
@@ -203,7 +203,6 @@
     "etat": "existe",
     "titre": { "fr": "Rechercher et télécharger un document", "en": "Find and download a document" },
     "description": { "fr": "Cherchez un cours ou un examen en ligne par filière et matière.", "en": "Search online for a course document or exam by programme and subject." },
-    "alternative": { "fr": "Ouvrez la Bibliothèque dans le navigateur de l’école avec une connexion Internet.", "en": "Open the library in a school browser with an internet connection." },
     "sources": {
       "studylib": ["app/Livewire/Ui/SearchBar.php", "app/Http/Controllers/DocumentDownloadController.php"],
       "planner": ["frontend/src/components/layouts/navigation.jsx"]
@@ -228,7 +227,7 @@
     "module": "bibliotheque",
     "etat": "existe",
     "titre": { "fr": "Noter une ressource", "en": "Rate a resource" },
-    "description": { "fr": "Les lecteurs peuvent noter les documents de la bibliothèque.", "en": "Readers can rate library documents." },
+    "description": { "fr": "Les lecteurs peuvent noter les documents.", "en": "Readers can rate documents." },
     "sources": {
       "studylib": ["app/Http/Controllers/DocumentRatingController.php"]
     }
@@ -276,7 +275,7 @@
     "module": "bibliotheque",
     "etat": "existe",
     "titre": { "fr": "Consulter les événements", "en": "Browse events" },
-    "description": { "fr": "Retrouvez les événements publiés dans StudyLib.", "en": "Find events published in StudyLib." },
+    "description": { "fr": "Retrouvez les événements publiés.", "en": "Find published events." },
     "sources": {
       "studylib": ["app/Http/Controllers/EventController.php"]
     }

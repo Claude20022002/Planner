@@ -48,7 +48,6 @@ export const SOURCES = {
   ],
   compte: [
     'frontend/src/i18n/applications.fr.js',
-    'backend/services/cours/studylib.js',
     'frontend/src/pages/jeux/SessionJeu.jsx',
     'shared/quiz/studio/direct.js',
   ],

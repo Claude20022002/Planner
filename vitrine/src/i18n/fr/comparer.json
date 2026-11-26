@@ -155,11 +155,11 @@
       ]
     },
     "compte": {
-      "critere": "L'appel, les quiz, les jeux et la Bibliothèque, avec un seul compte",
+      "critere": "L'appel, les quiz et les jeux, avec un seul compte",
       "cases": [
         {
           "mot": "Oui",
-          "texte": "L'appel, les quiz, les jeux, l'espace de cours et la Bibliothèque s'ouvrent avec le même compte."
+          "texte": "L'appel, les quiz, les jeux et l'espace de cours s'ouvrent avec le même compte."
         },
         {
           "mot": "Un outil par usage",
@@ -184,7 +184,7 @@
       "cases": [
         {
           "mot": "En grande partie",
-          "texte": "L'appel se fait à la main. Le terminal Linux se joue au tableau : l'enseignant tape la commande que la classe propose. L'emploi du temps s'imprime en PDF ou s'ouvre dans un navigateur, comme la Bibliothèque. Le quiz et les simulations demandent un appareil par élève : un téléphone ou un poste de l'école."
+          "texte": "L'appel se fait à la main. Le terminal Linux se joue au tableau : l'enseignant tape la commande que la classe propose. L'emploi du temps s'imprime en PDF ou s'ouvre dans un navigateur. Le quiz et les simulations demandent un appareil par élève : un téléphone ou un poste de l'école."
         },
         {
           "mot": "Oui",

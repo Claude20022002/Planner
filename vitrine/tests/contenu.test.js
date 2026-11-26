@@ -13,7 +13,7 @@ const charger = (langue, page) => JSON.parse(fs.readFileSync(path.join(DOSSIER, 
 const chaines = (valeur) => (typeof valeur === 'string' ? [valeur] : Object.values(valeur).flatMap(chaines));
 const tout = (langue, page) => chaines(charger(langue, page)).join('\n');
 
-const PAGES_NOUVELLES = ['quiz-et-jeux', 'bibliotheque', 'cours-et-annonces', 'application'];
+const PAGES_NOUVELLES = ['quiz-et-jeux', 'cours-et-annonces', 'application'];
 
 const PHRASES = [
   'Créer, projeter, jouer.',
@@ -28,21 +28,12 @@ const PHRASES = [
   'Tri Cyber, Nœuds Réseaux, Labo des seuils, Pilote des stocks, Sprint Agile, Robot Route, Requête Parfaite, Ordonnanceur CPU, Budget ERP, Labo Big-O. Chaque simulation a trois défis.',
   'Un terminal Linux sert à s\'exercer aux commandes.',
   'En collectif, le terminal Linux est projeté au tableau : l\'enseignant y tape une commande, ou choisit celle qu\'un étudiant envoie. En individuel, chacun joue sur son téléphone ou sur un ordinateur.',
-  'La bibliothèque des documents de l\'école.',
-  'Les documents sont rangés par filière et par module.',
-  'Un document est un cours, un examen, un TD, un TP, un exercice ou un article.',
-  'Un dépôt attend une relecture avant d\'être visible.',
-  'On le télécharge et on le note.',
-  'Les étudiants y laissent un avis de stage, une idée de projet, et consultent les événements.',
-  'Un module peut proposer des vidéos.',
-  'Des suggestions sont proposées quand l\'IA est activée pour votre école.',
   'Les supports de la classe, et les nouvelles de l\'école.',
-  'L\'enseignant dépose un document ou un lien dans une section.',
-  'L\'étudiant voit les supports publiés de ses cours.',
+  'L\'enseignant publie un lien dans une section. Dépôt de documents : Bientôt.',
+  'L\'étudiant voit les liens publiés de ses cours.',
   'Les sondages de la classe s\'ouvrent quand l\'établissement les active. Une question, de deux à six choix.',
   'Une annonce s\'adresse à une classe, un groupe ou une filière. L\'e-mail est facultatif.',
-  'L\'emploi du temps, l\'appel, les jeux et la bibliothèque, sur le téléphone.',
-  'Cinq onglets : le tableau, la semaine, le scanner, la bibliothèque, le compte.',
+  'Les onglets.',
   'Le scanner enregistre la présence et rejoint un quiz ou un jeu.',
 ];
 
