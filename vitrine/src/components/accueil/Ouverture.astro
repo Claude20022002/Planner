@@ -1,13 +1,12 @@
 ---
-// Accueil, section 1 : ouverture. Le logo à l'horloge (ses aiguilles tournent au chargement et au
-// survol), le nom du produit, une phrase sur ce que fait Planner, puis « Demander une démonstration » et « Voir les applications ».
-import Section from '../socle/Section.astro';
-import Titre from '../socle/Titre.astro';
-import Accroche from '../socle/Accroche.astro';
+// Accueil, section 1 : ouverture (C2 de l'expertise, textes visés le 19 nov. ; mise en page de VIT-23). Le logo à l'horloge (ses
+// aiguilles tournent au chargement et au survol), « Planner » en surtitre, la promesse en h1, l'accroche, « Demander une démonstration »
+// et « Voir les applications », la ligne des rôles, et le visuel (question 6 du plan : illustration de l'emploi du temps, ou le logo).
+import OuverturePage from '../socle/OuverturePage.astro';
 import BoutonPrincipal from '../socle/BoutonPrincipal.astro';
 import Logo from '../socle/Logo.astro';
 import { traductions } from '../../i18n/index.js';
-import { cheminContact } from '../../i18n/langues.js';
+import { chemin, cheminContact } from '../../i18n/langues.js';
 
 interface Props {
   t: (cle: string) => any;
@@ -16,18 +15,33 @@ interface Props {
 
 const { t, langue } = Astro.props;
 const commun = traductions(langue, 'commun');
+/** Essai de VIT-23 : « image » (A, planning.webp) ou « logo » (B, le logo animé en grand) ; le chef choisit sur captures */
+const VISUEL: 'image' | 'logo' = 'image';
+const roles = ['direction', 'scolarite', 'enseignants', 'etudiants'];
 ---
-<Section ton="clair" plein etiquette="ouverture-titre">
-  <Logo anime class="ouverture-logo" />
-  <Titre niveau={1} taille="geant" id="ouverture-titre">{t('ouverture.titre')}</Titre>
-  <Accroche forte>{t('ouverture.accroche')}</Accroche>
-  <div class="actions">
-    <BoutonPrincipal href={cheminContact(langue)}>{commun('navigation.demonstration')}</BoutonPrincipal>
-    <BoutonPrincipal href="#applications" variante="contour">{commun('navigation.voirLesApplications')}</BoutonPrincipal>
-  </div>
-</Section>
+<OuverturePage id="ouverture-titre" surtitre={t('ouverture.surtitre')} titre={t('ouverture.titre')} relief={t('ouverture.relief')}
+  accroche={t('ouverture.accroche')} accrocheForte image={VISUEL === 'image' ? 'planning' : undefined}>
+  {VISUEL === 'image' && <Logo anime class="ouverture-logo" slot="marque" />}
+  <BoutonPrincipal slot="actions" href={cheminContact(langue)}>{commun('navigation.demonstration')}</BoutonPrincipal>
+  <BoutonPrincipal slot="actions" href="#applications" variante="contour">{commun('navigation.voirLesApplications')}</BoutonPrincipal>
+  <nav class="roles" slot="apres" aria-label={t('ouverture.roles.intro')}>
+    <span>{t('ouverture.roles.intro')}</span>
+    <ul>
+      {roles.map((role) => <li><a href={chemin(langue, role)}>{t(`ouverture.roles.${role}`)}</a></li>)}
+    </ul>
+  </nav>
+  {VISUEL === 'logo' && <Logo anime class="ouverture-logo-grand" slot="visuel" />}
+</OuverturePage>
 
 <style>
-  :global(.ouverture-logo) { inline-size: clamp(9rem, 6rem + 12vw, 15rem); }
-  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-2); }
+  :global(.ouverture-logo) { inline-size: clamp(5rem, 4rem + 4vw, 7rem); }
+  :global(.ouverture-logo-grand) { inline-size: 100%; }
+  /* Une phrase qui coule : chaque rôle garde son point à sa suite, aucune ligne ne commence par « · » */
+  .roles { color: var(--gris-texte); line-height: 1.8; }
+  .roles ul { display: inline; margin: 0; padding: 0; }
+  .roles span { margin-inline-end: 0.4rem; white-space: nowrap; }
+  /* inline-block : la ligne peut se couper entre deux rôles (les <li> se suivent sans espace) */
+  .roles li { display: inline-block; white-space: nowrap; }
+  .roles li:not(:last-child)::after { content: '·' / ''; padding-inline: 0.5rem; }
+  .roles a { color: var(--bleu); font-weight: 500; }
 </style>

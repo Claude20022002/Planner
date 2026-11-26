@@ -1,0 +1,79 @@
+---
+// Première section commune des pages (VIT-23, plan § 4.1) : onglets en tête, marque, surtitre, h1 (un passage en relief
+// possible), accroche, boutons, ligne d'après, et un visuel à côté (≥ 960 px) ou dessous. Marges resserrées par rapport à Section.
+// L'image vient de shared/icones/images/ (VIT-09c), copiée par Vite dans dist/_astro/ ; décorative (alt vide), dimensions écrites.
+import Titre from './Titre.astro';
+import Accroche from './Accroche.astro';
+import Apparition from './Apparition.astro';
+import { TAILLE_ILLUSTRATION, cheminIllustration } from './illustrations.js';
+
+interface Props {
+  id: string;
+  surtitre?: string;
+  titre: string;
+  relief?: string;
+  accroche: string;
+  accrocheForte?: boolean;
+  image?: string;
+  disposition?: 'cote' | 'dessous';
+  ton?: 'clair' | 'gris' | 'sombre';
+}
+
+const { id, surtitre, titre, relief, accroche, accrocheForte = false, image, disposition = 'cote', ton = 'clair' } = Astro.props;
+const fichiers = import.meta.glob('../../../../shared/icones/images/*.webp', { query: '?url', import: 'default', eager: true });
+const url = image ? fichiers[cheminIllustration(image)] : undefined;
+if (image && !url) throw new Error(`Illustration absente : shared/icones/images/${image}.webp`);
+// Le passage en relief n'est coloré que s'il est un morceau exact du titre ; sinon le titre reste tel quel
+const place = relief ? titre.indexOf(relief) : -1;
+const morceaux = place < 0 ? null : [titre.slice(0, place), relief, titre.slice(place + relief.length)];
+const avecVisuel = Boolean(url) || Astro.slots.has('visuel');
+---
+<section class:list={['ouverture', ton, disposition, { 'avec-visuel': avecVisuel }]} aria-labelledby={id}>
+  <div class="interieur">
+    {Astro.slots.has('haut') && <div class="haut"><slot name="haut" /></div>}
+    <Apparition>
+      <div class="corps">
+        <div class="texte">
+          <slot name="marque" />
+          <Titre niveau={1} taille="geant" id={id} surtitre={surtitre}>
+            {morceaux ? <Fragment>{morceaux[0]}<span class="relief">{morceaux[1]}</span>{morceaux[2]}</Fragment> : titre}
+          </Titre>
+          <Accroche forte={accrocheForte}>{accroche}</Accroche>
+          {Astro.slots.has('actions') && <div class="actions"><slot name="actions" /></div>}
+          <slot name="apres" />
+        </div>
+        {avecVisuel && (
+          <div class="visuel">
+            {url ? <img src={url} width={TAILLE_ILLUSTRATION} height={TAILLE_ILLUSTRATION} alt="" decoding="async" fetchpriority="high" /> : <slot name="visuel" />}
+          </div>
+        )}
+      </div>
+    </Apparition>
+  </div>
+</section>
+
+<style>
+  .ouverture { padding-block: clamp(2rem, 1rem + 3vw, 4rem); padding-inline: var(--gouttiere); overflow: clip; }
+  .clair { background: var(--blanc); color: var(--encre); }
+  .gris { background: var(--gris-fond); color: var(--encre); }
+  .sombre { background: var(--bleu-nuit); color: var(--blanc); --couleur-surtitre: var(--bleu-clair); --couleur-secondaire: var(--bleu-pale); --couleur-relief: var(--bleu-clair); }
+  .interieur { display: grid; gap: var(--espace-4); max-inline-size: var(--largeur-contenu); margin-inline: auto; }
+  .haut { display: flex; justify-content: center; }
+  .corps { display: grid; gap: var(--espace-4); justify-items: center; text-align: center; }
+  .texte { display: grid; gap: var(--espace-3); justify-items: center; max-inline-size: var(--largeur-lecture); }
+  .texte :global(h1) { font-size: clamp(2.25rem, 1rem + 6vw, var(--titre-geant)); overflow-wrap: break-word; }
+  .relief { color: var(--couleur-relief, var(--bleu)); }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espace-2); }
+  .visuel { inline-size: min(100%, 18rem); line-height: 0; }
+  .visuel img { inline-size: 100%; block-size: auto; border-radius: var(--rayon-grand); }
+
+  @media (min-width: 60rem) {
+    .haut { justify-content: start; }
+    .cote.avec-visuel .corps { grid-template-columns: 1.15fr 0.85fr; align-items: center; justify-items: start; text-align: start; }
+    .cote.avec-visuel .texte { justify-items: start; }
+    .cote.avec-visuel .texte :global(h1) { font-size: clamp(2.5rem, 1rem + 3.6vw, 4.5rem); }
+    .cote.avec-visuel .actions { justify-content: start; }
+    .cote .visuel { inline-size: min(100%, 26rem); justify-self: center; }
+    .dessous .visuel { inline-size: min(100%, 22rem); }
+  }
+</style>
