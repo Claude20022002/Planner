@@ -73,3 +73,4 @@ Ni le serveur, ni les moteurs des jeux, ni suivi.md. Jamais de git push.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 19 h 25 | fiche écrite par le coordinateur, sur les choix du chef | — |
+| 2026-11-26 14 h 25 | plan court demandé à l'agent de Cursor (VIT-10 fusionnée ; question 3 réglée par M-11) ; pas de code avant le visa du chef et la fusion de M-11, #282 et #229 | — |
