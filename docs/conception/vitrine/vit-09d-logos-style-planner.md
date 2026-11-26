@@ -177,3 +177,105 @@ Public : tous. Les logos ne disent rien d'un pays ni d'un niveau d'enseignement.
 - Les versions `-petit`, le remplacement des logos, `index.js`, le test, le guide, l'aperçu : étape 2, nouveau plan.
 - Les jetons de la charte (`#8FB4DE`, sort des teintes `app-<id>` si la série A est choisie) : décision du chef, étape 2.
 - La pose sur les pages (VIT-09b, VIT-20f) et les illustrations WebP de VIT-09c.
+
+## 12. Étape 2 : la série B remplace les logos (plan court)
+
+| | |
+|---|---|
+| Décision | le chef retient **la série B pour les 20 logos** (26 nov., vers 10 h 10, relayé par le coordinateur). Les teintes `app-<id>` de la charte ne changent pas ; `#8FB4DE` n'entre pas dans la charte (vérifié : aucun des 20 SVG de la série B ne l'emploie) |
+| Branche | la même, `feat/vit-09d-logos-style-planner` (PR #277, ouverte par le chef) |
+| **Validé** | en attente (coordinateur) |
+
+### 12.1 Qui lit les logos aujourd'hui (relevé par grep sur la branche)
+
+| Lecteur | Ce qu'il lit | Ce que je vérifie | Touché ? |
+|---|---|---|---|
+| `vitrine/src/components/applications/logos.js` | `shared/icones/modules/<id>.svg` (dessin détaillé seulement), **incorporé dans la page** à la construction ; utilisé par `TuileModule.astro` (catalogue) et `EnTeteModule.astro` | construction du site (`npm run build`), tests unitaires (`npm run test:unit`), poids des pages (`npm run test:poids`), capture d'une page du catalogue avant et après | **non** (VIT-20f, VIT-23) |
+| `vitrine/tests/modules.test.js` | l'existence de `modules/<logo>.svg` | dans `test:unit` | non |
+| `shared/charte/charte.test.js` | `LOGOS` (`teinte`, `fonce`) de `index.js` | `node --test shared/charte/charte.test.js` | non |
+| `shared/icones/icones.test.js`, `generer-apercu.mjs`, `README.md`, `index.js` | tout `modules/` | voir 12.3 | oui |
+| `frontend/`, `mobile/` | **rien** : la grille d'UIX-09 a ses propres icônes animées (`frontend/src/components/applications/icones/`) | aucun build nécessaire ; le grep le prouve dans la fiche | non |
+
+Les logos sont incorporés dans la page : deux fois le même logo dans une page donnerait des identifiants en double. Les nouveaux dessins **n'ont plus aucun identifiant interne** (aucun dégradé, aucun `url(#…)`). Le test le vérifie (12.3).
+
+### 12.2 Les fichiers de `shared/icones/modules/`
+
+- **`<id>.svg`** (20) : le dessin de la série B, aux mêmes noms. Les pages qui les lisent suivent sans changement.
+  - Pas d'identifiant interne.
+  - Le commentaire de rôle en tête est repris : application, style du logo Planner, objet, jetons employés.
+- **`<id>-petit.svg`** (20), pour 24 à 32 px : un dessin à part, sur la même tuile et dans les mêmes couleurs.
+  - L'objet est agrandi d'environ 10 %.
+  - Les traits font au moins 6 unités (1,5 px à 24 px).
+  - Les détails de moins de 6 unités disparaissent.
+  - 1,5 Ko au plus, comme aujourd'hui.
+
+| id | Le dessin `-petit` garde | Il retire ou renforce |
+|---|---|---|
+| `planning` | calendrier, anneaux, grand cadran | bande d'ombre retirée |
+| `pedagogie` | tableau, deux pieds, courbe épaissie | point d'arrivée et pied du milieu retirés |
+| `personnes` | badge, cordon, silhouette | fente retirée |
+| `etablissement` | toit, mur, porte, drapeau agrandi | fenêtres et bande d'ombre retirées |
+| `annonces` | mégaphone, **deux** ondes épaisses | troisième onde et bande d'ombre retirées |
+| `activites` | manette, point d'interrogation | point d'interrogation un peu plus épais |
+| `bibliotheque` | trois livres debout et un penché, planche | bandes d'ombre retirées |
+| `presences` | planchette, pince, coche | trou de la pince retiré |
+| `cours` | cahier, trois anneaux, marque-page | étiquette et ombre retirées |
+| `vacataires` | chronomètre agrandi, coin de la feuille | lignes de la feuille retirées |
+| `evaluations` | **renforcé** : rosette agrandie (rayon 16) devant une copie à deux lignes | troisième ligne retirée |
+| `inscriptions` | **renforcé** : chemise, signe plus agrandi en médaillon (rayon 15, trait de 6) | ombre du pli retirée |
+| `documents` | feuille à coin plié, bouclier agrandi | lignes retirées |
+| `stages` | mallette, poignée, rabat | fermoir agrandi |
+| `frais` | caisse, reçu | touches, lignes du reçu et du tiroir retirées |
+| `formation` | trois marches, drapeau | bandes d'ombre retirées |
+| `familles` | toit, adulte, enfant | rien |
+| `etat` | **renforcé** : fronton, socle, deux colonnes ; deux flèches d'échange de trait 6, plus courtes et plus écartées | entablement réduit |
+| `paiements` | carte, bande, pastille à flèche agrandie | puce retirée |
+| `pilotage` | cadran, aiguille épaissie, socle | arc bleu clair retiré |
+
+Je regarde chaque dessin `-petit` à 24 et 32 px, au pixel près, avant de le montrer. S'il faut changer un objet, je m'arrête et je le demande.
+
+### 12.3 Ce qui suit les dessins
+
+- **`icones.test.js`** :
+  - le test des couleurs ne cherche plus de dégradé (`stop-color`). Il vérifie :
+    - une tuile **en aplat** `app-<id>` au gabarit commun (`x="4" y="4" width="88" height="88" rx="19.5"`) ;
+    - le ton `app-<id>-fonce` présent ;
+    - **ni dégradé, ni jaune `jeu`** ;
+    - **seulement les couleurs de son application**, plus le blanc et `bleu-clair` (pas la teinte d'une autre application) ;
+  - le test des identifiants reste (préfixe `vit-<id>-` et unicité s'il y en a un). Il vérifie en plus qu'aucun logo ne renvoie à un `url(#…)`, ce qui rend le double sans danger ;
+  - les autres tests restent : poids, `viewBox`, pas de script ni de texte.
+- **`README.md`** :
+  - le style est décrit (logo Planner, tuile en aplat, blanc, bleu clair et ton foncé, sans jaune) ;
+  - le tableau des objets est mis à jour ; six objets changent ou s'enrichissent : `personnes`, `cours`, `documents`, `frais`, `formation`, `etat` ;
+  - la phrase sur les identifiants des dégradés est retirée.
+- **`index.js`** : aucun changement de code ; le commentaire d'en-tête cite VIT-09d.
+- **`generer-apercu.mjs`** : aucun changement de code (il ne lit ni dégradé ni couleur de logo) ; le commentaire d'en-tête cite VIT-09d.
+- **`shared/icones/essais/style-planner/`** : **retiré** à la fin. La PR ne garde que le remplacement, le plan et la fiche.
+- **Avant tout code**, `git merge origin/main` dans la branche (12 commits de retard, dont des fichiers du site), pour construire le site d'aujourd'hui.
+
+### 12.4 Vérifications et planche finale
+
+- `node --test shared/icones/icones.test.js` et `node --test shared/charte/charte.test.js`.
+- Dans `vitrine/` : `npm run test:unit`, `npm run build`, `npm run test:poids`. Le poids d'une page du catalogue est relevé avant et après (EP-19).
+- `node scripts/verifier-neutre.mjs`.
+- Le frontend n'est pas construit : il ne lit pas ces fichiers (12.1).
+- **Planche finale**, hors du dépôt, dans `..\travaux-planner\captures-vit-09d\final\` :
+  - pour chaque application, avant et après, à 24 et 32 px (dessins `-petit`) puis 48 et 96 px (dessins détaillés), sur fond clair et sur fond sombre ;
+  - une capture d'une page du catalogue du site construit, avant et après.
+
+### 12.5 Fichiers
+
+| Fichier | Action |
+|---|---|
+| `shared/icones/modules/<id>.svg` et `<id>-petit.svg` (40) | remplacés |
+| `shared/icones/icones.test.js`, `README.md`, `index.js` (commentaire), `generer-apercu.mjs` (commentaire) | modifiés |
+| `shared/icones/essais/style-planner/` | retiré |
+| ce plan, le fichier du module VIT, la fiche de session | modifiés |
+
+Rien dans `vitrine/`, `frontend/`, `mobile/`, `shared/charte/`, ni `docs/plan/suivi.md`.
+
+### 12.6 Risque et retour arrière
+
+- **Un logo se lit moins bien dans la page qu'en planche** : la capture du catalogue le montre avant la relecture.
+- **La place réservée** de `logos.js` garde un rayon de 22, contre 19,5 pour les logos. Elle ne sert qu'aux modules sans logo, et VIT-20f les remplit. Je ne la modifie pas : c'est signalé au coordinateur.
+- **Retour arrière** : `git revert` du commit de remplacement. Les anciens logos reviennent tels quels.
