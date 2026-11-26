@@ -269,7 +269,8 @@ flowchart LR
 | `backend/tests/utils/profilRaisons.test.js` | créé (réponse 17) | `raison_code` et `conditions` : un seul campus, modalité à distance, aucune valeur, règle active sans raison | 80 |
 | `backend/tests/integration/configurationEcole.test.js` | créé | routes nouvelles, 409, journal, 410, bascule | 250 |
 | `backend/tests/integration/repriseParametres.test.js` | créé (*précisé au code* : sorti de `configurationEcole.test.js`, qui aurait dépassé 300 lignes) | migration 0088 (écart repris, aucune version sans écart, base neuve, `down`) ; problème envoyé au solveur identique avant et après la bascule | 200 |
-| `backend/tests/integration/helpers/referentielAvantBascule.js` | créé (*précisé au code*) | l'ancienne lecture de `ParametresPlanning`, figée (commit `a6681a1f^`), pour construire le problème « avant » dans un registre de modules isolé | 50 |
+| `backend/tests/integration/helpers/referentielAvantBascule.js` | créé (*précisé au code*) | l'ancienne lecture de `ParametresPlanning`, figée (commit `a6681a1f^`), pour construire le problème « avant » | 50 |
+| `backend/tests/integration/helpers/problemeAvantBascule.mjs` | créé (*précisé au code*) | construit ce problème dans un processus à part, où un crochet de chargement remplace `referentiel.js` par l'ancienne lecture (le registre isolé de Jest charge deux fois certains modules) | 30 |
 | `backend/tests/integration/valeursMoteur.test.js` | modifié | forme allégée de `GET /versions` ; rejoue 0088 | +20 |
 
 **ADM-02b, page, Réglages et Historique**
