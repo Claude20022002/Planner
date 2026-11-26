@@ -1,14 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Vie scolaire et familles, dessin simplifié pour 24 à 32 px. -->
-<defs>
-  <linearGradient id="vit-familles-petit-tuile" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#752F3B"/><stop offset="1" stop-color="#4D1F27"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-familles-petit-tuile)"/>
-<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity=".2"/>
-<path d="M21 43 48 21l27 22v29q0 4-4 4H25q-4 0-4-4z" fill="#FFFFFF"/>
-<path d="m15 45 33-28 33 28" fill="none" stroke="#FFC83D" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="40" cy="47" r="7.2" fill="#17395C"/>
-<path d="M27 69q0-14 13-14t13 14z" fill="#17395C"/>
-<circle cx="58" cy="54" r="5.8" fill="#752F3B"/>
-<path d="M48 71q0-11 10-11t10 11z" fill="#752F3B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Vie scolaire et familles (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : toit, adulte et enfant. Charte : app-familles (tuile en aplat), app-familles-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#752F3B"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M13 46l35-28 35 28" fill="none" stroke="#A6CAEE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="39" cy="47" r="9" fill="#FFFFFF"/>
+<path d="M22 83v-7a17 15 0 0 1 34 0v7z" fill="#FFFFFF"/>
+<circle cx="66" cy="57" r="7" fill="#A6CAEE"/>
+<path d="M55 83v-5a11 11 0 0 1 22 0v5z" fill="#A6CAEE"/>
 </svg>

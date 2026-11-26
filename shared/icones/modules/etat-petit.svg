@@ -1,14 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Échanges avec l’État, dessin simplifié pour 24 à 32 px. -->
-<defs>
-  <linearGradient id="vit-etat-petit-tuile" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#752F4D"/><stop offset="1" stop-color="#4D1F32"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-etat-petit-tuile)"/>
-<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity=".2"/>
-<path d="M14 36 48 16l34 20v6H14z" fill="#FFFFFF"/>
-<rect x="22" y="43" width="9" height="24" rx="1" fill="#FFFFFF"/>
-<rect x="44" y="43" width="9" height="24" rx="1" fill="#FFFFFF"/>
-<rect x="65" y="43" width="9" height="24" rx="1" fill="#FFFFFF"/>
-<rect x="19" y="66" width="58" height="6" rx="2" fill="#A6CAEE"/>
-<rect x="14" y="73" width="68" height="6" rx="2" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Échanges avec l’État (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : fronton sur colonnes et deux flèches d’échange. Charte : app-etat (tuile en aplat), app-etat-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#752F4D"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M48 14l35 19H13z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+<rect x="13" y="33" width="70" height="6" fill="#FFFFFF"/>
+<rect x="16" y="42" width="10" height="28" rx="2" fill="#A6CAEE"/><rect x="70" y="42" width="10" height="28" rx="2" fill="#A6CAEE"/>
+<path d="M34 50h27m-6-6 6 6-6 6M62 64H35m6-6-6 6 6 6" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="11" y="70" width="74" height="9" rx="2" fill="#FFFFFF"/>
 </svg>

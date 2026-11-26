@@ -239,7 +239,7 @@ Je regarde chaque dessin `-petit` à 24 et 32 px, au pixel près, avant de le mo
 - **`icones.test.js`** :
   - le test des couleurs ne cherche plus de dégradé (`stop-color`). Il vérifie :
     - une tuile **en aplat** `app-<id>` au gabarit commun (`x="4" y="4" width="88" height="88" rx="19.5"`) ;
-    - le ton `app-<id>-fonce` présent ;
+    - le ton `app-<id>-fonce` **permis, pas exigé** (correction du 26 nov., pendant le code : onze dessins n'ont pas d'ombre, dont `documents` et `familles` validés par le chef ; à valider par le coordinateur à la relecture) ;
     - **ni dégradé, ni jaune `jeu`** ;
     - **seulement les couleurs de son application**, plus le blanc et `bleu-clair` (pas la teinte d'une autre application) ;
   - le test des identifiants reste (préfixe `vit-<id>-` et unicité s'il y en a un). Il vérifie en plus qu'aucun logo ne renvoie à un `url(#…)`, ce qui rend le double sans danger ;
