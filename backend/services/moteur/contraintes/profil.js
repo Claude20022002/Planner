@@ -1,13 +1,15 @@
+import { peutModifier } from "../valeurs/ecriture.js";
+
 /**
  * Liste « Déjà pris en compte » (MOT-13, § 4.3) : les règles du profil résolu que le calcul tient
  * vraiment, chacune avec son état pour l'école. Une règle que le solveur n'applique pas n'est pas
  * montrée (question 14 : ce qui est montré est tenu) ; une règle souple ne l'est que si le solveur
  * lit son poids (`regle_solveur`, MOT-13b). « Sans effet » se lit sur les conditions
  * active_si (réponse 16) : un seul campus, et la règle de trajet ne fait rien. Fonction pure.
+ * La raison existe aussi en données (ADM-02, réponse 17), pour que le site la dise dans la langue de
+ * la personne : `raison_code` (aucune_valeur, condition_non_remplie) et `conditions`
+ * ({ parametre, op, attendu, actuelle }). `raison` reste la phrase en français.
  */
-
-// Ce que l'école peut changer : ce qui est modifiable à son niveau ou en dessous (MP-1, ecriture.js)
-const MODIFIABLES_PAR_L_ECOLE = ["etablissement", "responsable", "personne"];
 
 const QUANTITE = { ">=": "au moins", "<=": "au plus", "=": "exactement", "!=": "autre chose que" };
 
@@ -44,9 +46,14 @@ export const listeDuProfil = ({ parametres, dependances, resultats, valeurs }) =
             const manquees = dependances.filter((d) => d.type === "active_si" && d.de === p.id && !remplie(d, valeurs));
             let etat = "active";
             let raison = null;
+            let raison_code = null;
+            let conditions = [];
             if (r.valeur === false) etat = "coupee";
-            else if (r.valeur === null || r.valeur === undefined) [etat, raison] = ["sans_effet", "Aucune valeur n'est renseignée."];
-            else if (manquees.length) [etat, raison] = ["sans_effet", manquees.map((d) => conditionManquee(d, valeurs, nomDe)).join(" ")];
+            else if (r.valeur === null || r.valeur === undefined) [etat, raison, raison_code] = ["sans_effet", "Aucune valeur n'est renseignée.", "aucune_valeur"];
+            else if (manquees.length) {
+                [etat, raison, raison_code] = ["sans_effet", manquees.map((d) => conditionManquee(d, valeurs, nomDe)).join(" "), "condition_non_remplie"];
+                conditions = manquees.map((d) => ({ parametre: d.vers, op: d.op, attendu: d.val, actuelle: valeurs.get(d.vers) ?? null }));
+            }
             return {
                 id: p.id,
                 nom: p.nom,
@@ -56,9 +63,12 @@ export const listeDuProfil = ({ parametres, dependances, resultats, valeurs }) =
                 poids: r.poids,
                 poids_de_depart: p.force === "souple" ? p.poids : null,
                 origine: r.origine,
-                verrouillee: !MODIFIABLES_PAR_L_ECOLE.includes(p.modifiable),
+                // Ce que l'école peut changer : ce qui est modifiable à son niveau ou en dessous (ecriture.js)
+                verrouillee: !peutModifier(p, "etablissement"),
                 etat,
                 raison,
+                raison_code,
+                conditions,
             };
         });
 };

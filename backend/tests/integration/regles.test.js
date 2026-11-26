@@ -1,4 +1,5 @@
 import { resetDatabase, closeDatabase, createUser, loginAs } from "./helpers/testApp.js";
+import { poserReglages, retirerReglages } from "./helpers/reglagesMoteur.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
 import {
     Affectation,
@@ -17,7 +18,6 @@ import {
     Groupe,
     HistoriqueAffectation,
     Notification,
-    ParametrePlanning,
     Salle,
 } from "../../models/index.js";
 
@@ -156,15 +156,16 @@ describe("Règles bloquantes : 409 et liste des violations", () => {
     });
 
     test("maximum d'heures par jour pour un groupe", async () => {
-        await ParametrePlanning.upsert({ cle: "max_heures_jour_groupe", valeur: 3 });
+        // Depuis ADM-02, le plafond se règle dans MP-1 (en minutes)
+        const reglage = await poserReglages([{ cle: "HOR.REGLE.MAX_H_JOUR_GROUPE", valeur: 180 }]);
         // TD2 a déjà 1 h 45 lundi ; 1 h 45 de plus dépasse 3 h
         const response = await creer({ id_user_enseignant: profB.id_user, id_salle: ref.salles.g2.id_salle, id_creneau: ref.creneaux.lun4.id_creneau });
         expect(codes(response)).toEqual(["max_heures_groupe"]);
-        await ParametrePlanning.destroy({ where: { cle: "max_heures_jour_groupe" } });
+        await retirerReglages(reglage);
     });
 
     test("heures par jour vues par les étudiants : deux TD frères en parallèle ne s'additionnent pas", async () => {
-        await ParametrePlanning.upsert({ cle: "max_heures_jour_groupe", valeur: 4 });
+        const reglage = await poserReglages([{ cle: "HOR.REGLE.MAX_H_JOUR_GROUPE", valeur: 240 }]);
         // Lundi 3 mai : TD2 le matin, TD1 en début d'après-midi (1 h 45 chacun) ; un CM de promotion
         // en fin d'après-midi donne 3 h 30 à chaque étudiant, et non 5 h 15 en cumulant les deux TD
         const date_seance = "2027-05-03";
@@ -179,7 +180,7 @@ describe("Règles bloquantes : 409 et liste des violations", () => {
             creees.push(response.body.affectation.id_affectation);
         }
         await Affectation.destroy({ where: { id_affectation: creees } });
-        await ParametrePlanning.destroy({ where: { cle: "max_heures_jour_groupe" } });
+        await retirerReglages(reglage);
     });
 
     test("la vérification renvoie les violations sans rien créer", async () => {

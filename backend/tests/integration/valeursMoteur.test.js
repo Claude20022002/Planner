@@ -6,15 +6,18 @@ import { lireParametres } from "../../services/planning/referentiel.js";
 import { aujourdhui, valeursEnVigueur } from "../../services/moteur/valeurs/lecture.js";
 import { down as down0061, up as up0061 } from "../../migrations/0061-valeurs-parametres.js";
 import { down as down0080, up as up0080 } from "../../migrations/0080-contraintes-declarees.js";
+import { up as up0088 } from "../../migrations/0088-reprise-parametres-planning.js";
 
 // La table des contraintes déclarées (0080) renvoie aux versions : elle tombe avant, et revient après
 const down = async (o) => {
     await down0080(o);
     await down0061(o);
 };
+// La 0088 (ADM-02) passe après : juste après la copie de la 0061, elle ne trouve aucun écart
 const up = async (o) => {
     await up0061(o);
     await up0080(o);
+    await up0088(o);
 };
 
 /**
@@ -180,7 +183,7 @@ describe("Refus", () => {
 
     test("une version vide ou un réglage en double sont refusés", async () => {
         expect((await creer({ lignes: [] })).body.code).toBe("VERSION_VIDE");
-        expect(await refus([{ cle: MAX_JOUR, valeur: 300 }, { cle: MAX_JOUR, valeur: 310 }])).toEqual(["doublon"]);
+        expect(await refus([{ cle: MAX_JOUR, valeur: 300 }, { cle: MAX_JOUR, valeur: 360 }])).toEqual(["doublon"]);
         expect(await refus([{ cle: MAX_JOUR }])).toEqual(["ligne_vide"]);
     });
 
@@ -248,10 +251,13 @@ describe("Annulation", () => {
 });
 
 describe("Rien ne change ailleurs", () => {
-    test("les anciens réglages, que la génération lit encore, ne bougent pas", async () => {
+    // Depuis ADM-02 (bascule) : la génération, la saisie et les examens lisent ces réglages dans MP-1
+    test("les anciens réglages se lisent dans MP-1, dans leur ancienne unité", async () => {
         const avant = await lireParametres();
         await regler([{ cle: "HOR.REGLE.MAX_H_JOUR_GROUPE", valeur: 240 }, { cle: "LOG.TRAJET.CAMPUS_DEFAUT", valeur: 90 }]);
-        expect(await lireParametres()).toEqual(avant);
+        const apres = await lireParametres();
+        expect([apres.max_heures_jour_groupe.valeur, apres.trajet_inter_campus_defaut_minutes.valeur]).toEqual([4, 90]);
+        expect(apres.surveillants_par_salle).toEqual(avant.surveillants_par_salle);
     });
 
     test("le nombre de campus actifs commande la règle de trajet", async () => {

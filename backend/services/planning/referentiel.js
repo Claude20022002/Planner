@@ -1,5 +1,7 @@
-import { Creneau, ParametrePlanning, TrajetCampus } from "../../models/index.js";
+import { Creneau, TrajetCampus } from "../../models/index.js";
 import { PARAMETRES_PLANNING } from "../../config/parametresPlanning.js";
+import { ANCIENS_PARAMETRES } from "../moteur/valeurs/anciensParametres.js";
+import { lireALEcole } from "../moteur/valeurs/valeursDeLEcole.js";
 
 /**
  * Recalcule le rang (position dans la journée) des créneaux d'une grille :
@@ -18,22 +20,30 @@ export const recalculerRangs = async ({ jour_semaine, regime, variante }, transa
     }
 };
 
-/** Paramètres de planification : valeurs modifiées en base, sinon valeurs par défaut. */
-export const lireParametres = async () => {
-    const lignes = await ParametrePlanning.findAll();
-    const enBase = new Map(lignes.map((ligne) => [ligne.cle, ligne.valeur]));
+/**
+ * Paramètres de planification. Depuis ADM-02 (bascule), ils se lisent dans les réglages du moteur (MP-1),
+ * à la portée de l'école et à la date du jour à l'école : une seule source, que le panneau de
+ * configuration écrit. La forme et les unités ne changent pas pour les appelants (génération, saisie
+ * manuelle, examens, salles, campus). La table ParametresPlanning n'est plus lue.
+ */
+const lireAnciens = async (cles) => {
+    const { resultats } = await lireALEcole(cles.map((cle) => ANCIENS_PARAMETRES[cle].id));
     return Object.fromEntries(
-        Object.entries(PARAMETRES_PLANNING).map(([cle, { defaut, description }]) => [
-            cle,
-            { valeur: enBase.has(cle) ? enBase.get(cle) : defaut, defaut, description, modifie: enBase.has(cle) },
-        ])
+        cles.map((cle) => {
+            const { id, revenir } = ANCIENS_PARAMETRES[cle];
+            const { defaut: ancienDefaut, description } = PARAMETRES_PLANNING[cle];
+            const r = resultats.get(id);
+            const lire = (v) => (v === null || v === undefined ? ancienDefaut : revenir(v));
+            return [cle, { valeur: lire(r.valeur), defaut: lire(r.valeur_du_profil), description, modifie: r.origine === "etablissement" }];
+        })
     );
 };
 
-export const lireParametre = async (cle) => {
-    const ligne = await ParametrePlanning.findByPk(cle);
-    return ligne ? ligne.valeur : PARAMETRES_PLANNING[cle]?.defaut;
-};
+/** Paramètres de planification : valeur en vigueur à l'école, valeur de départ, description. */
+export const lireParametres = () => lireAnciens(Object.keys(PARAMETRES_PLANNING));
+
+/** Un paramètre de planification, dans son ancienne unité ; undefined s'il n'existe pas. */
+export const lireParametre = async (cle) => (PARAMETRES_PLANNING[cle] ? (await lireAnciens([cle]))[cle].valeur : undefined);
 
 /** Paire de campus rangée (a < b) : une seule ligne de trajet par paire. */
 export const paireCampus = (idA, idB) => {
