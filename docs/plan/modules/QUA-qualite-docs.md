@@ -31,6 +31,7 @@
 - **Envois sortants** (code lu le 15 nov.) : IA (`backend/services/ia/client.js`), notifications par Expo (`backend/services/push.js`), courriel (`backend/utils/sendEmail.js`), sauvegardes vers B2 (`deploy/vps/sauvegarder.sh`). Aucune télémétrie ; Sentry n'est qu'un commentaire. Liste publique : [docs/envois-sortants.md](../../envois-sortants.md) (QUA-09, 16 nov.), mise à jour par QUA-10 avec le push générique par défaut, les destinations explicites de l’IA et du courriel et le résumé au démarrage.
 - **Signalement des failles** : pas de `SECURITY.md`.
 - **Poids du premier chargement** (M-9, correctif hors chantier, 26 nov., [plan](../../conception/qualite/fix-qua-poids-application.md)) : gzip reste, avec `gzip_vary`. Pas de brotli. La bibliothèque d'animation ne part qu'avec le lanceur. L'état vide apparaît en CSS.
+- **Exemple de configuration** (Q-37, correctif hors chantier, 26 nov., [plan](../../conception/qualite/fix-neutralite-env-example.md)) : `backend/.env.example` ne nomme plus l'école pilote. `verifier-neutre` lit ce fichier, commentaires compris. Les identifiants techniques en minuscules restent.
 
 ## Fonctions
 
