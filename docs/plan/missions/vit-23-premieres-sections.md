@@ -102,3 +102,4 @@ Quand tu as fini, donne au chef le chemin complet des captures.
 |---|---|---|
 | 2026-11-26 | fiche écrite sur la demande du chef (capture de « Course space ») ; #262 (VIT-21) ne touche aucun composant ; VIT-20f garde le logo de l'en-tête | — |
 | 2026-11-26 12 h 20 | plan `90b9963f` relu : composant d'ouverture commun, illustrations par `import.meta.glob` sans copie, poids et accessibilité tenus ; Q3 au chef (non), Q7 accordée | **plan validé** (coordinateur) ; essai ensuite |
+| 2026-11-26 12 h 40 | essai (`108ce86c`) vu sur captures : axe-core 77/77, accueil 132,8 Ko, Espace de cours 78,4 Ko | **rendu choisi par le chef** : à côté, accueil A, relief, onglets en haut ; étape 4 |
