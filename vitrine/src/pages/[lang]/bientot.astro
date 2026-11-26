@@ -1,14 +1,12 @@
 ---
-// Page « Bientôt », dans chaque langue : les modules en préparation du plan de parité, sans date,
-// chacun marqué « Bientôt ». Rien n'y est présenté comme disponible. Assemble seulement.
-import {
-  GraduationCap, ClipboardList, Users, UserPlus, Wallet, MessagesSquare, Bus, Briefcase,
-  BadgeCheck, LayoutDashboard, Languages, WifiOff, FileOutput,
-} from 'lucide-react';
+// Page « Bientôt » : les modules en préparation du catalogue, groupés par catégorie, puis « Et aussi ».
+import { Languages, WifiOff } from 'lucide-react';
 import Gabarit from '../../components/socle/Gabarit.astro';
 import EnTetePage from '../../components/fonctions/EnTetePage.astro';
 import GrilleCartes from '../../components/fonctions/GrilleCartes.astro';
 import FinDePage from '../../components/fonctions/FinDePage.astro';
+import { ICONES } from '../../components/applications/iconesModules.js';
+import { CATEGORIES, modulesDeCategorie } from '../../donnees/modules.js';
 import { traductions } from '../../i18n/index.js';
 import { cheminsLangues } from '../../i18n/langues.js';
 
@@ -16,12 +14,22 @@ export const getStaticPaths = cheminsLangues;
 
 const { lang } = Astro.params;
 const t = traductions(lang, 'bientot');
+const commun = traductions(lang, 'commun');
+const modules = traductions(lang, 'modules');
+
+const sections = CATEGORIES.map((categorie) => ({
+  categorie,
+  modules: modulesDeCategorie(categorie).filter(({ etat }) => etat === 'bientot'),
+})).filter((section) => section.modules.length > 0);
 ---
 <Gabarit langue={lang} page="bientot" titre={t('meta.titre')} description={t('meta.description')}>
   <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
-  <GrilleCartes id="ecole" ton="gris" surtitre={t('ecole.surtitre')} titre={t('ecole.titre')} cartes={t('ecole.cartes')} badge={t('badge')}
-    icones={[GraduationCap, ClipboardList, Users, UserPlus, Wallet, MessagesSquare, Bus, Briefcase]} />
-  <GrilleCartes id="aussi" surtitre={t('aussi.surtitre')} titre={t('aussi.titre')} cartes={t('aussi.cartes')} badge={t('badge')}
-    icones={[BadgeCheck, LayoutDashboard, Languages, WifiOff, FileOutput]} />
+  {sections.map(({ categorie, modules: modulesBientot }, i) => (
+    <GrilleCartes id={categorie} ton={i % 2 === 0 ? 'gris' : 'clair'} titre={commun('categories.' + categorie)}
+      cartes={modulesBientot.map(({ cle }) => ({ titre: modules('noms.' + cle), texte: t('modules.' + cle) }))}
+      icones={modulesBientot.map(({ cle }) => ICONES[cle])} badge={t('badge')} />
+  ))}
+  <GrilleCartes id="aussi" ton={sections.length % 2 === 0 ? 'gris' : 'clair'} surtitre={t('aussi.surtitre')}
+    titre={t('aussi.titre')} cartes={t('aussi.cartes')} badge={t('badge')} icones={[Languages, WifiOff]} />
   <FinDePage langue={lang} />
 </Gabarit>
