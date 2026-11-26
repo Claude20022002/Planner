@@ -80,32 +80,61 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 - Sessions Claude : **VIT-23** (`6a`) plan validé ; **ADM-02a** (`44`) relue, à corriger (transaction dans la 0088) ; le chef accepte la fusion après correction. VIT-09d (`f2`) finie, #277 poussée.
 - Chef : pas de second bouton sur les pages d'application.
 
+## Relevé de 13 h 50 (fin de session)
+
+- **Fusionnées le 26 nov.** : #261 (VIT-20d), #263 (VIT-22), #262 (VIT-21), #274 (lucide-react), #276 (Q-37), #278 (correctif `useEffect`), #279 (neutralité de `DEPLOIEMENT.md`). `main` = `2a014665`.
+- **#277 (VIT-09d, série B)** : relue prête ; la CI a échoué sur une panne d'installation des navigateurs (apt 404, `libasound2`), relancée (passage 45811880736, essai 2) ; « Test Backend » vert ; les parcours étaient encore « en attente » à 13 h 50 ; **fusion automatique programmée par le chef** (`--auto`).
+- **#280 (plan de QJE-03, brouillon)** : visa du chef écrit sur la PR ; Codex code ensuite (VIT-20f d'abord si #277 est fusionnée).
+- **VIT-23** (session `plan-b-projet-pacte-6a`) : plan validé, essai fait (`108ce86c`), **rendu choisi par le chef** (visuel à côté, accueil A, relief, onglets en haut) ; étape 4 (toutes les pages) en cours, après un `git merge origin/main` (#262 fusionnée).
+- **ADM-02a** (session `plan-b-projet-pacte-44`, `32fbc10d`) : relue, **à corriger** (0088 sans transaction) ; le chef fusionnera après la correction et la CI verte ; ADM-02b après la fusion.
+- **VIT-09d** (session `plan-b-projet-pacte-f2`) : finie ; son dossier de travail est retiré (il reste un dossier `vitrine` vide dans `..\travaux-planner\vit-09d-logos-style-planner`, à supprimer à la main).
+- **Agent de Cursor** : libre jusqu'au 27 nov. ; ensuite `fix-audit-vitrine` (§ 7 « Exécution » d'abord).
+- **Alexis** : six messages non transmis dans `alexis/entree/` (22 au 26 nov.) ; #270 a la CI verte mais pas les trois conditions du chef ; #269, #265, #230, #229 sans changement.
+- Rien de non commité ; boîtes de Codex et de l'agent de Cursor relevées (le rapport de Cursor de 13 h 49 est un accusé de réception).
+
+## Vérifié
+
+Relancé par le coordinateur pendant la session : `equipement.test.js` 3/3 et `verifier-neutre` (VIT-20d) ; `verifier-neutre` (Q-37) ; script de planche de VIT-09d (6, puis 40 logos vérifiés), test des icônes et de la charte 18/18 ; grep des lecteurs de `shared/icones/` sur `main` ; `git merge-tree` de VIT-21 et d'ADM-02a avec `main` (sans conflit). Le reste des chiffres vient des rapports des agents, cité comme tel dans `decisions.md`.
+
 ## Reste à faire, dans l'ordre
 
-1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.
-2. Codex : VIT-21, le correctif `useEffect`, QJE-03, l'étude des parcours ; VIT-20f après le choix des logos (VIT-09d).
-   Session Claude de VIT-09d : plan court au coordinateur, essai sur trois logos, puis la série et la planche.
-3. Agent de Cursor : plan court de Q-37 (au coordinateur), puis, le 27 nov., le § 7 de `fix-audit-vitrine`.
-4. Coordinateur : valider le plan de Q-37 et le § 7 ; relire ADM-02a quand la migration 0088 sera écrite ; relire #265, #230, #229, #269, #270 quand Alexis les aura corrigées.
+1. **Le chef** : fusionner #275 (cette branche) quand sa CI est verte ; laisser #277 se fusionner seule (sinon lire l'échec : `gh pr checks 277`) ; transmettre à Alexis les six messages de `alexis/entree/` ; supprimer le dossier vide `..\travaux-planner\vit-09d-logos-style-planner`.
+2. **Codex** : VIT-20f dès que #277 est fusionnée (trois points : tuile Présences vide, logo d'Espace de cours, rayon de la place réservée) ; QJE-03 (#280, visé) ; puis l'étude des parcours par rôle.
+3. **Session VIT-23** : toutes les pages, tests et captures finales, puis relecture du coordinateur.
+4. **Session ADM-02** : transaction dans la 0088 et son test, puis relecture, PR et fusion par le chef ; ensuite ADM-02b.
+5. **Agent de Cursor** : le 27 nov., § 7 de `fix-audit-vitrine`, validé par le coordinateur avant le code.
+6. **Coordinateur** : relire VIT-20f, VIT-23, la correction d'ADM-02a, le § 7 de l'audit ; relire #265, #230, #229, #269, #270 quand Alexis les aura corrigées ; QUA-02 suit chez Alexis ; fermer les missions dont la PR est fusionnée (VIT-09d, Q-37, `fix-neutralite-docs`, `fix-mes-affectations-useeffect`, VIT-21, VIT-22).
 
 ## Commandes pour le chef de projet
 
-Celles de la fiche de 8 h (`2026-11-26-doc-coordination-2026-11-26-suite.md`), sans la première ligne (le visa est fait). Le push de la branche emporte aussi les commits de cette session.
+```powershell
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+git -C "..\travaux-planner\coordination-2026-11-26-suite" push origin doc/coordination-2026-11-26-suite
+gh pr checks 275
+gh pr merge 275 --merge
+git pull --ff-only
+```
 
 ## Prompt de reprise
 
 ```text
 Tu es le coordinateur de Planner (désigné par le chef). Lis AGENTS.md, le skill coordination,
-docs/plan/README.md, docs/plan/suivi.md et docs/plan/decisions.md sur main (après la fusion de
-doc/coordination-2026-11-26-suite, sinon sur cette branche), puis les deux fiches du 26 nov. de cette branche
-(docs/sessions/2026-11-26-doc-coordination-2026-11-26-suite.md et …-suite-2.md).
+docs/plan/README.md, docs/plan/suivi.md et docs/plan/decisions.md sur main (après la fusion de #275,
+sinon sur la branche doc/coordination-2026-11-26-suite), puis la fiche
+docs/sessions/2026-11-26-doc-coordination-2026-11-26-suite-2.md (« Relevé de 13 h 50 » et « Reste à faire »).
+Crée ta branche de coordination depuis origin/main (doc/coordination-2026-11-27), dans ..\travaux-planner\.
 Chantiers : EXP, PLA, ADM, et VSC par exception.
-Avant tout tour d'état : PR ouvertes, branches de coordination non fusionnées, boîtes
-(..\travaux-planner\boites\codex, cursor, alexis : entree et sortie).
-Reste : suivre Codex (VIT-20d phase b, visa écrit sur #261 le 26 nov. ; puis VIT-21, VIT-20f, useEffect, QJE-03,
-étude des parcours) ; valider le plan court de Q-37 puis le § 7 de fix-audit-vitrine (agent de Cursor, le 27 nov.) ;
-relire ADM-02a quand la migration 0088 sera écrite ; relire #265, #230, #229, #269 et #270 quand Alexis
-les aura corrigées ; QUA-02 suit chez Alexis.
-Rappels : recharger le PATH pour gh ; ne jamais relancer un ancien passage de CI de main pendant qu'un plus
-récent tourne ; jamais de git push ; fiche de session en fin de session.
+Avant tout tour d'état : PR ouvertes (dont #277 en fusion automatique, #280 plan de QJE-03 visé),
+branches de coordination non fusionnées, boîtes (..\travaux-planner\boites\codex, cursor, alexis :
+entree et sortie), et les sessions Claude ouvertes (ListAgents) : VIT-23 (toutes les pages, à relire),
+ADM-02 (transaction dans la 0088, à relire, puis fusion par le chef).
+Reste : Codex fait VIT-20f après la fusion de #277 (tuile Présences vide, logo d'Espace de cours,
+rayon de la place réservée), puis QJE-03 ; l'agent de Cursor écrit le 27 nov. le § 7 de fix-audit-vitrine
+(à valider avant le code) ; relire #265, #230, #229, #269 et #270 quand Alexis les aura corrigées
+(conditions de #270 dans decisions.md, 26 nov.) ; QUA-02 suit chez Alexis ; fermer les missions fusionnées.
+Rappels : recharger le PATH pour gh ; une PR brouillon se passe en « prête » (gh pr ready) avant la fusion ;
+une CI rouge en une minute sur les parcours peut être une panne d'installation (lire le journal, relancer
+avec gh run rerun <id> --failed) ; ne jamais relancer un ancien passage de CI de main pendant qu'un plus
+récent tourne ; un plan de choix de produit se vise par le chef en commentaire de la PR ; jamais de
+git push ; fiche de session en fin de session.
 ```
