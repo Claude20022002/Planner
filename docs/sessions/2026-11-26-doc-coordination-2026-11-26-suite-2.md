@@ -40,10 +40,16 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 - **Agent de Cursor** : plan court de Q-37 (`481f5ae3`, fiche `d7c5850b`). **Validé par le coordinateur** (questions 1 à 3). Consigne déposée : inscrire la validation, coder, montrer l'échec du script avec l'ancien texte. Signalé hors mission, porté au chef : `README.md`, `docker-compose.yml`, `DEPLOIEMENT.md` nomment encore l'école pilote.
 - Boîtes : deux rapports rangés dans `sortie/traites/` ; `codex/entree/2026-11-26-0912-vit-20d-relue.md`, `cursor/entree/2026-11-26-0912-q-37-plan-valide.md`.
 
+## Relevé de 9 h 20 et VIT-09d
+
+- #263 fusionnée ; #261 (VIT-20d) poussée, encore en brouillon ; #274 et #275 ouvertes. Codex et l'agent de Cursor n'ont pas encore lu les messages de 9 h 12.
+- **VIT-09d** (demande du chef) : les 20 logos redessinés dans le style du logo Planner, deux séries (A tuile bleu nuit commune, B teinte de l'application), tout de suite, par une session Claude neuve. Fiche `missions/vit-09d-logos-style-planner.md` ; ligne de suivi ; décision du chef et ligne du coordinateur. VIT-20f attend le choix ; consigne à Codex (`codex/entree/2026-11-26-0925-vit-20f-attend-logos.md` ou l'heure du dépôt).
+
 ## Reste à faire, dans l'ordre
 
 1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.
-2. Codex : VIT-20d phase (b), puis VIT-21, VIT-20f, le correctif `useEffect`, QJE-03, l'étude des parcours.
+2. Codex : VIT-21, le correctif `useEffect`, QJE-03, l'étude des parcours ; VIT-20f après le choix des logos (VIT-09d).
+   Session Claude de VIT-09d : plan court au coordinateur, essai sur trois logos, puis la série et la planche.
 3. Agent de Cursor : plan court de Q-37 (au coordinateur), puis, le 27 nov., le § 7 de `fix-audit-vitrine`.
 4. Coordinateur : valider le plan de Q-37 et le § 7 ; relire ADM-02a quand la migration 0088 sera écrite ; relire #265, #230, #229, #269, #270 quand Alexis les aura corrigées.
 
