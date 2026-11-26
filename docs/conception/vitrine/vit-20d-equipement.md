@@ -75,9 +75,9 @@ Légende : S1 = sans wifi ou avec peu de connexion ; S2 = sans écran projeté ;
 
 | Ligne | État | Français | English | Source |
 |---|---|---|---|---|
-| S1 | en partie | Le poids d'un support s'affiche avant de l'ouvrir, sur le site et dans l'application. | A resource's size is shown before you open it, on the website and in the app. | `frontend/src/components/espaceCours/LigneSupport.jsx`, `mobile/src/app/cours/[classe].jsx` |
-| S2 | en partie | Un support se lit sur l'appareil de chacun, sans écran projeté ; l'imprimer depuis Planner n'est pas possible. | A resource is read on each person's device, with no projector; printing it from Planner is not possible. | `frontend/src/components/espaceCours/LigneSupport.jsx` |
-| S3 | non | Un support se lit dans un navigateur. Les sondages demandent un compte et un appareil par étudiant. | A resource is read in a browser. Polls need an account and a device for each student. | `backend/services/cours/supports.js`, `backend/services/cours/sondages.js` |
+| S1 | non | Il faut une connexion pour ouvrir les liens de cours et répondre aux sondages. Dépôt de documents : Bientôt. | You need an internet connection to open course links and answer polls. Document uploads: coming soon. | `backend/services/cours/supports.js`, `frontend/src/components/espaceCours/SondagesOuverts.jsx`, `backend/services/cours/studylib.js`, `docs/plan/modules/BIB-bibliotheque.md` |
+| S2 | marche | Les étudiants ouvrent les liens de cours et répondent aux sondages sur leur appareil, sans écran projeté. | Students can open course links and answer polls on their own devices, with no projector needed. | `frontend/src/pages/EspaceClasse.jsx`, `frontend/src/components/espaceCours/LigneSupport.jsx`, `frontend/src/components/espaceCours/SondagesOuverts.jsx` |
+| S3 | marche | Depuis un ordinateur connecté, les étudiants peuvent ouvrir les liens de cours et répondre aux sondages avec leur compte. | Students can use an internet-connected computer to open course links and answer polls using their own accounts. | `frontend/src/pages/EspaceClasse.jsx`, `backend/routes/espaceCoursRoutes.js`, `backend/services/cours/sondages.js` |
 
 ### 5.4 Quiz et jeux
 
