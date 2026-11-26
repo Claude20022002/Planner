@@ -54,6 +54,7 @@
 | VIT-21 | Le site ne présente plus la Bibliothèque comme disponible (étape 3) ; nouveau rendu de la vidéo de l'accueil | — | 1 | M | VIT-20 | Phase (b) livrée localement : liens de cours, dépôt « Bientôt », vidéo FR/EN régénérée et contrôles verts ([fiche](../../sessions/2026-11-26-fix-vit-21-bibliotheque-2.md)). PR #262 à actualiser par le chef. |
 | VIT-22 | La page « Bientôt » suit les 12 modules « Bientôt » de `donnees/modules.js` | — | 1 | S | VIT-20 | code et contrôles locaux terminés sur la branche de la PR #263 ([fiche de session](../../sessions/2026-11-26-feat-vit-22-bientot-modules.md)) |
 | VIT-20f | Chaque module du site prend son logo de VIT-09c (`shared/icones/modules/`) ; Présences d'abord | — | 1 | S | VIT-09c | à faire : Codex, après la fusion de VIT-09c (#259) |
+| VIT-23 | La première section de chaque page ne paraît plus vide : ouverture commune (`socle/OuverturePage.astro`), marges resserrées, illustration WebP de VIT-09c à côté du texte (dessous sur téléphone), onglets des modules en tête, un passage du titre en relief, textes C2 de l'accueil | — | 1 | M | VIT-09c | code fait sur `feat/vit-23-premieres-sections` ([plan validé](../../conception/vitrine/vit-23-premieres-sections.md), rendu choisi par le chef le 26 nov. ; [fiche de session](../../sessions/2026-11-26-feat-vit-23-premieres-sections.md)) ; PR à ouvrir |
 
 ## Critères de « terminé »
 

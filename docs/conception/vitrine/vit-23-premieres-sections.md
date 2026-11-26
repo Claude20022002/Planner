@@ -175,7 +175,7 @@ Public : le supérieur d'abord (accroche C2) ; rien n'est propre à un type d'é
 
 ## 8. Tests
 
-`vitrine/tests/ouverture.test.js`, sur `dist/` :
+Réalisé en deux fichiers (26 nov.) : `vitrine/tests/ouverture.test.js` (sources : images, reliefs, textes C2, lancé par `test:unit`) et `vitrine/tests/ouverture.rendu.cjs` (site construit, lancé avec les autres `*.rendu.cjs` de la CI), sur `dist/` :
 - chaque page de module et chaque page du § 4.3 avec visuel a, dans sa première section, un `<img>` avec `width`, `height` et `alt=""`, dont le fichier existe dans `dist/` ;
 - les pages sans visuel n'en ont pas ;
 - l'accueil : `h1` = la promesse C2 (fr, en), surtitre « Planner », quatre liens de rôle ;
