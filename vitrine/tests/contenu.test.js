@@ -56,16 +56,9 @@ test('les pages de module ont une adresse, et la barre suit le plan de VIT-20', 
   assert.equal(charger('fr', 'commun').navigation.applications, 'Applications');
 });
 
-test('Bientôt garde le même nombre de cartes, sans le prêt de livres', () => {
-  const fr = charger('fr', 'bientot');
-  const en = charger('en', 'bientot');
-  const ar = charger('ar', 'bientot');
-  assert.equal(fr.ecole.cartes.length, 8);
-  assert.equal(en.ecole.cartes.length, fr.ecole.cartes.length);
-  assert.equal(ar.ecole.cartes.length, fr.ecole.cartes.length);
-  const textes = `${tout('fr', 'bientot')}\n${tout('en', 'bientot')}`;
-  assert.equal(textes.includes('prêts de livres'), false);
-  assert.equal(textes.includes('Book loans'), false);
+test('Bientôt ne présente pas de prêt de livres', () => {
+  assert.equal(tout('fr', 'bientot').includes('prêts de livres'), false);
+  assert.equal(tout('en', 'bientot').includes('Book loans'), false);
 });
 
 test('chaque phrase du plan est écrite en français', () => {

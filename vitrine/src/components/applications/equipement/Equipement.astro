@@ -1,0 +1,61 @@
+---
+// Affiche les trois contextes d'équipement d'un module disponible.
+import { Projector, Smartphone, WifiOff } from 'lucide-react';
+import Section from '../../socle/Section.astro';
+import Titre from '../../socle/Titre.astro';
+import { EQUIPEMENT } from '../../../donnees/equipement.js';
+import { traductions } from '../../../i18n/index.js';
+
+interface Props {
+  langue: string;
+  cle: string;
+}
+
+const { langue, cle } = Astro.props;
+const commun = traductions(langue, 'commun');
+const textes = traductions(langue, 'equipement');
+const lignes = Object.hasOwn(EQUIPEMENT, cle) ? EQUIPEMENT[cle as keyof typeof EQUIPEMENT] : [];
+const icones = { s1: WifiOff, s2: Projector, s3: Smartphone } as const;
+---
+
+{lignes.length === 3 && (
+  <Section id="equipement" etiquette="equipement-titre">
+    <Titre id="equipement-titre" taille="moyen">{commun('equipement.titre')}</Titre>
+    <ul class="lignes" role="list">
+      {lignes.map(({ contexte, texte }) => {
+        const Icone = icones[contexte as keyof typeof icones];
+        return (
+          <li>
+            <Icone size={24} aria-hidden="true" focusable="false" />
+            <div>
+              <h3>{textes(`contextes.${contexte}`)}</h3>
+              <p>{textes(texte)}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </Section>
+)}
+
+<style>
+  .lignes {
+    inline-size: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: start;
+  }
+  li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--espace-2);
+    padding-block: var(--espace-3);
+    border-block-start: 1px solid var(--gris-trait);
+  }
+  li:last-child { border-block-end: 1px solid var(--gris-trait); }
+  li > :global(svg) { color: var(--bleu); }
+  h3 { margin: 0 0 var(--espace-1); font-size: 1.125rem; color: var(--bleu-nuit); }
+  p { margin: 0; color: var(--gris-texte); }
+</style>

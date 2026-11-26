@@ -11,6 +11,7 @@
  * techniques en minuscules (« hestim-planner », colonne annees_a_hestim…) sont figés et ne
  * s'affichent pas : ils ne sont pas cherchés. Les exceptions sont listées ci-dessous, avec leur
  * raison ; toute autre occurrence fait échouer la vérification (CI : job du site).
+ * backend/.env.example est lu aussi, commentaires « # » compris : chaque école copie ce fichier tel quel.
  *
  * Lancement : node scripts/verifier-neutre.mjs
  */
@@ -22,6 +23,8 @@ const RACINE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOSSIERS = ['backend', 'frontend/src', 'mobile/src', 'shared'];
 // Page d'entrée du site : titre et description avant le chargement de l'identité
 const PAGES = ['frontend/index.html', 'mobile/app.json'];
+// Exemple copié tel quel (Q-37) : les lignes « # » sont cherchées, contrairement au code
+const EXEMPLE_ENV = 'backend/.env.example';
 const IGNORES = new Set(['node_modules', 'tests', '__tests__', 'dist', 'coverage', 'uploads']);
 const EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.cjs']);
 // Site vitrine (VIT-01) : ses textes sont dans des .json, ses pages en .astro, ses logos en .svg
@@ -54,20 +57,22 @@ const fichiers = (dossier, extensions = EXTENSIONS) =>
 const relatif = (chemin) => path.relative(RACINE, chemin).split(path.sep).join('/');
 const permis = (chemin) => EXCEPTIONS.some((e) => chemin.startsWith(e.chemin));
 
+const lignesMotif = (chemin, chercherCommentaires) =>
+  fs
+    .readFileSync(path.join(RACINE, chemin), 'utf8')
+    .split(/\r?\n/)
+    .map((ligne, i) => ({ chemin, numero: i + 1, ligne }))
+    .filter(({ ligne }) => MOTIF.test(ligne) && (chercherCommentaires || !estCommentaire(ligne)));
+
 const vitrine = DOSSIERS_VITRINE.filter((d) => fs.existsSync(path.join(RACINE, d))).flatMap((d) => fichiers(path.join(RACINE, d), EXTENSIONS_VITRINE));
 const trouves = [...DOSSIERS.flatMap((dossier) => fichiers(path.join(RACINE, dossier))), ...vitrine].map(relatif).concat(PAGES)
   .filter((chemin) => !permis(chemin))
-  .flatMap((chemin) =>
-    fs
-      .readFileSync(path.join(RACINE, chemin), 'utf8')
-      .split(/\r?\n/)
-      .map((ligne, i) => ({ chemin, numero: i + 1, ligne }))
-      .filter(({ ligne }) => MOTIF.test(ligne) && !estCommentaire(ligne))
-  );
+  .flatMap((chemin) => lignesMotif(chemin, false))
+  .concat(lignesMotif(EXEMPLE_ENV, true));
 
 if (trouves.length) {
   console.error(`Nom de l'école pilote écrit en dur (${trouves.length}) : passer par l'identité de l'école ({{ecole}}, {{produit}}, identiteEcole()).`);
   for (const { chemin, numero, ligne } of trouves) console.error(`  ${chemin}:${numero}  ${ligne.trim().slice(0, 140)}`);
   process.exit(1);
 }
-console.log(`Aucun nom d'école écrit en dur (${[...DOSSIERS, ...DOSSIERS_VITRINE].join(', ')} ; ${EXCEPTIONS.length} exceptions justifiées).`);
+console.log(`Aucun nom d'école écrit en dur (${[...DOSSIERS, ...DOSSIERS_VITRINE, EXEMPLE_ENV].join(', ')} ; ${EXCEPTIONS.length} exceptions justifiées).`);

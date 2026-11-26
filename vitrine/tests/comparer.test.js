@@ -75,7 +75,8 @@ test('l’accueil montre les critères 1, 2, 4 et 6, puis la ligne « Bientôt �
   assert.deepEqual(LIGNES_ACCUEIL, ['calcul', 'refus', 'appel', 'sansTelephone', 'bientot']);
   for (const cle of LIGNES_ACCUEIL) assert.ok(LIGNES.includes(cle), cle);
   assert.equal(charger('fr').lignes.sansTelephone.cases[0].mot, 'En grande partie');
-  assert.equal(charger('fr').lignes.bientot.cases[0].mot, 'Bientôt');
+  const pageBientot = JSON.parse(fs.readFileSync(path.join(RACINE, SOURCES.bientot[0]), 'utf8'));
+  assert.equal(charger('fr').lignes.bientot.cases[0].mot, pageBientot.badge);
 });
 
 test('chaque case Planner a des sources, et chaque source existe dans le dépôt', () => {
