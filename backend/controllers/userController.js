@@ -10,6 +10,7 @@ import { contexteDe, journaliser } from "../services/journalSecurite.js";
 import { changerActif } from "../services/desactivation/desactivation.js";
 import { aUnHistorique } from "../services/desactivation/regles.js";
 import { ErreurMetier } from "../services/planning/enseignements.js";
+import { accorder } from "../../shared/accords.js";
 
 // Champs dont un changement est une décision de sécurité (journalisée avec avant / après)
 const CHAMPS_SENSIBLES = ["role", "actif", "identifiant", "email"];
@@ -344,7 +345,7 @@ export const importUsers = asyncHandler(async (req, res) => {
 
     await journaliser(contexteDe(req), { evenement: "comptes_importes", acteur: req.user, id_user: req.user.id_user, details: { crees: results.success.length, erreurs: results.errors.length } });
     res.status(201).json({
-        message: `${results.success.length} utilisateur(s) créé(s) avec succès`,
+        message: `${accorder(results.success.length, "utilisateur créé", "utilisateurs créés")} avec succès`,
         success: results.success,
         errors: results.errors,
         total: users.length,

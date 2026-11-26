@@ -5,7 +5,7 @@
  * passe par l'identité de l'école (backend/services/etablissement/identite.js, {{ecole}} et
  * {{produit}} dans les textes traduits).
  *
- * Cherche « HESTIM » (en capitales) et le domaine « hestim.ma » dans le code du serveur, du site,
+ * Cherche « HESTIM » (en capitales), le domaine « hestim.ma », « Stendhal » et « Gandhi » dans le code du serveur, du site,
  * de l'application, du dossier partagé et du site vitrine (textes, pages, logos), hors commentaires
  * et hors tests. Les identifiants
  * techniques en minuscules (« hestim-planner », colonne annees_a_hestim…) sont figés et ne
@@ -21,13 +21,13 @@ import { fileURLToPath } from 'node:url';
 const RACINE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOSSIERS = ['backend', 'frontend/src', 'mobile/src', 'shared'];
 // Page d'entrée du site : titre et description avant le chargement de l'identité
-const PAGES = ['frontend/index.html'];
+const PAGES = ['frontend/index.html', 'mobile/app.json'];
 const IGNORES = new Set(['node_modules', 'tests', '__tests__', 'dist', 'coverage', 'uploads']);
 const EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.cjs']);
 // Site vitrine (VIT-01) : ses textes sont dans des .json, ses pages en .astro, ses logos en .svg
 const DOSSIERS_VITRINE = ['vitrine/src', 'vitrine/public'];
 const EXTENSIONS_VITRINE = new Set([...EXTENSIONS, '.astro', '.json', '.svg', '.css', '.html']);
-const MOTIF = /HESTIM|hestim\.ma/;
+const MOTIF = /HESTIM|hestim\.ma|Stendhal|Gandhi/;
 
 // Exceptions permises : chemin (préfixe) et raison
 const EXCEPTIONS = [

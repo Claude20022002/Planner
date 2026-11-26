@@ -7,6 +7,7 @@ import { pick } from "../utils/validationHelper.js";
 import { chargesEnseignants, disponibiliteEnseignant } from "../services/planning/enseignants.js";
 import { STATUTS_ENSEIGNANT } from "../config/referentiel.js";
 import { creerLienInvitation, empreinteInutilisable, envoyerInvitation } from "../services/comptes.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * Contrôleur pour les enseignants : permanents et vacataires, service dû, compétences.
@@ -337,7 +338,7 @@ export const importEnseignants = asyncHandler(async (req, res) => {
     }
 
     res.status(201).json({
-        message: `${results.success.length} enseignant(s) créé(s) avec succès`,
+        message: `${accorder(results.success.length, "enseignant créé", "enseignants créés")} avec succès`,
         success: results.success,
         errors: results.errors,
         total: enseignants.length,

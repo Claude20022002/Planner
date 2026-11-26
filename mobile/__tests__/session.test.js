@@ -1,4 +1,4 @@
-import { findSpotlight, groupByDay, phaseDeLaLigne, relativeTo, toBoardSession, formatHeure } from '../../shared/session.js';
+import { buildingOf, findSpotlight, groupByDay, phaseDeLaLigne, relativeTo, toBoardSession, formatHeure } from '../../shared/session.js';
 import { lineColor, tokens } from '../../shared/tokens.js';
 import { panneau } from '../../shared/charte/index.js';
 
@@ -37,9 +37,18 @@ describe('séance en vedette', () => {
     ]);
   });
 
-  test('heure sans secondes, salle et bâtiment déduits du code', () => {
+  test('heure sans secondes ; sans bâtiment saisi, le code de salle ne nomme rien', () => {
     expect(formatHeure('09:05:00')).toBe('09:05');
-    expect(s1).toMatchObject({ startLabel: '09:00', endLabel: '10:45', room: 'G-101', building: 'Gandhi', durationMin: 105 });
+    expect(s1).toMatchObject({ startLabel: '09:00', endLabel: '10:45', room: 'G-101', building: '', durationMin: 105 });
+  });
+});
+
+describe('bâtiment', () => {
+  test('seul le champ saisi compte ; un code de salle ne nomme rien', () => {
+    expect(buildingOf(null)).toBe('');
+    expect(buildingOf({ nom_salle: 'ST-204' })).toBe('');
+    expect(buildingOf({ nom_salle: 'G-12' })).toBe('');
+    expect(buildingOf({ nom_salle: 'ST-204', batiment: 'Nord' })).toBe('Nord');
   });
 });
 

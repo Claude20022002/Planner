@@ -13,12 +13,9 @@ const ajouterJours = (date, n) => {
   return d;
 };
 
-/** Séance API → ligne de panneau, avec le campus, le type CM/TD/TP et le distanciel */
+/** Séance API → ligne de panneau, avec le type CM/TD/TP et le distanciel */
 export const versSeance = (a) => {
-  const seance = toBoardSession({
-    ...a,
-    salle: a.salle ? { ...a.salle, batiment: a.salle.batiment || a.salle.campus?.nom || null } : null,
-  });
+  const seance = toBoardSession(a);
   const composante = a.enseignement?.composante;
   return {
     ...seance,

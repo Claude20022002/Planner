@@ -16,11 +16,11 @@ Légende : ✅ existe · 🟡 partiel · 📋 prévu · ⏸ reporté · ❌ éca
 | Présences | Community manuel ; Enterprise biométrie, kiosque | ✅ appel par QR code ; 📋 VSC-03 | appel en un geste, anti-fraude, sans donnée biométrique ; ❌ biométrie (CNDP, décision du 17 nov.) |
 | Dossier élève, parents | Community ; portail parents en Enterprise | 🟡 ; 📋 VSC-02, ADM-05, COM-02, MOB-05 | compte famille, plusieurs enfants, canal préféré |
 | Admission | Community ; en ligne en Enterprise | 📋 INS-01 à INS-03, **INS-04** | candidat accepté sans ressaisie, suivi des sources de prospects |
-| Notes, bulletins | Community « basic » ; carnet et GPA en Enterprise | 📋 VSC-04, **VSC-10** | note absente distincte de zéro, verrouillage, avancement de la saisie, crédits et LMD |
+| Notes, bulletins | Community « basic » ; carnet et GPA en Enterprise | 📋 VSC-04, **VSC-08** | note absente distincte de zéro, verrouillage, avancement de la saisie, crédits et LMD |
 | Passage d'année | Enterprise | 📋 ADM-06 | en moins d'une demi-journée (EP-8) |
 | Choix des options | Enterprise (inscription aux matières) | 📋 **VSC-12** | les choix forment les groupes du moteur |
 | Discipline | Enterprise | 📋 **VSC-13** | famille prévenue par COM, durée de conservation fixée |
-| Santé | Enterprise | 📋 **VSC-08**, facultatif | éteint par défaut, ouvert après le dossier CNDP de l'école |
+| Santé | Enterprise | 📋 **VSC-14**, facultatif | éteint par défaut, ouvert après le dossier CNDP de l'école |
 | Activités, clubs | Community | 📋 **VSC-09** | créneaux placés sans conflit avec les cours |
 | Mémoires, thèses | Enterprise | 📋 **VSC-11** | soutenance placée sans conflit |
 | Devoirs | Community | 🟡 code éteint ; 📋 COU-02, COU-03, COU-06 | revue de sécurité des fichiers avant ouverture |
@@ -31,7 +31,7 @@ Légende : ✅ existe · 🟡 partiel · 📋 prévu · ⏸ reporté · ❌ éca
 | Quiz en ligne | Enterprise | ✅ Studio quiz, quiz en direct, jeux ; 📋 **QJE-10** | quiz en direct et jeux, qu'ils n'ont pas |
 | Correction par scan (OMR) | Enterprise | 📋 **QJE-11** | avec le téléphone, sans scanner |
 | IA | annoncée, édition non dite | 🟡 ; 📋 QJE-07, BIB-04, **QJE-12** ; tuteur **QJE-13** conditionnel | aucune donnée d'élève envoyée (§ 5 du README) |
-| Bibliothèque physique | Community | 📋 **BIB-05** | prêts par QR code depuis le téléphone |
+| Bibliothèque physique | Community | 📋 **BIB-13** | prêts par QR code depuis le téléphone |
 | Bibliothèque numérique | Enterprise | ✅ StudyLib ; 📋 BIB-02 | |
 | Frais, facturation | Community ; échéanciers et bourses en Enterprise | 📋 FIN-01, FIN-02, **FIN-04** | reçus bilingues sans trou, paiement par famille |
 | Comptabilité, paie | par Odoo | 📋 **FIN-05**, RHP-01 à RHP-03, **RHP-04** | ❌ comptabilité générale et paie construites par nous (décision du 17 nov.) : export et échange relus, avec Odoo et les logiciels marocains |
@@ -45,13 +45,13 @@ Légende : ✅ existe · 🟡 partiel · 📋 prévu · ⏸ reporté · ❌ éca
 | Cantine | non décrite | 📋 SER-01 | aucun refus d'accès pour impayé |
 | Stocks, achats | Odoo | 📋 STK-01 | |
 | Stages, placement | Enterprise | 📋 STA-01, STA-02 | |
-| Anciens élèves | Enterprise | 📋 **STA-03** | |
+| Anciens élèves | Enterprise | 📋 **STA-04** | |
 | Certificats, documents | Community, Enterprise | 📋 DOC-01, DOC-02 | code de vérification public |
 | Rapports | Community (tableaux d'Odoo), rapports dynamiques | ✅ statistiques de planning ; 📋 **PIL-03** | |
 | Tableaux de bord | Enterprise | 📋 PIL-01, PIL-02 | |
 | Plusieurs campus, plusieurs écoles | Enterprise, multi-société d'Odoo | 🟡 campus ; 📋 PLA-01 à PLA-07 ; ⏸ GRP-01, GRP-02 | rien ne passe d'une école à l'autre (EP-12) |
 | Personnalisation | code ouvert, Odoo Studio | 📋 ADM-02, **ADM-10** | champs propres à l'école, sans code |
-| Application mobile | Android et iOS payants | 🟡 étudiants ; 📋 MOB-02, MOB-05, MOB-06, **MOB-09** | hors ligne, ouverture en moins de 2 s (EP-3) |
+| Application mobile | Android et iOS payants | 🟡 étudiants ; 📋 MOB-02, MOB-05, MOB-06, **MOB-10** | hors ligne, ouverture en moins de 2 s (EP-3) |
 | Langues | annoncées, messages en anglais dans le code | 🟡 français, 🟡 anglais ; 📋 UIX-04, **UIX-07**, **UIX-08** | trois langues complètes, aucun texte en dur (EP-16) |
 | Massar | « export compatible », sans format | 📋 ETA-01, ETA-02 | export au format accepté (EP-5) |
 | Données envoyées à l'éditeur | envoi quotidien caché | 📋 QUA-09 | aucun envoi caché (EP-13, PR #189) |
@@ -65,7 +65,7 @@ En **gras** : les fonctions ajoutées le 17 novembre.
 - **Restent reportées** : PAI-03 (argent mobile, pour l'Afrique subsaharienne, après PLA-13), GRP-01 et GRP-02 (après PLA-11), COU-09 (LTI).
 - **Langues** : français, anglais et arabe, toutes trois complètes. Aucune autre langue d'interface n'est prévue.
 - **Écartés** : la présence biométrique, la comptabilité générale et la paie construites par Planner.
-- **Conditionnels** : le tuteur IA pour l'élève (QJE-13), la santé tant que l'école n'a pas son dossier CNDP (VSC-08).
+- **Conditionnels** : le tuteur IA pour l'élève (QJE-13), la santé tant que l'école n'a pas son dossier CNDP (VSC-14).
 - **Environ 87 jours bruts de plus**, plus 13 pour les fonctions qui reprennent. Ce sont des estimations avant conception, à multiplier par 1,5 à 2 comme les autres.
 
 ## 3. « Beaucoup mieux » : quatre exigences nouvelles
@@ -85,7 +85,7 @@ Il suit les dépendances et ce qu'une école privée demande d'abord. Il n'engag
 
 1. Après VSC-02 et VSC-04 : VSC-12, VSC-13, EDT-06, FIN-04.
 2. Après COM-01 et COM-02 : COM-04, COM-05, SER-01, SER-02.
-3. Ensuite : COU-10, QJE-10, QJE-11, VSC-10, PIL-03, ADM-10.
+3. Ensuite : COU-10, QJE-10, QJE-11, VSC-08, PIL-03, ADM-10.
 4. Le reste selon la demande des écoles (entretiens de VEN-02).
 
-En **« libre »**, à prendre à tout moment : UIX-07, UIX-08, BIB-05, EDT-07, COU-12, COU-13, QJE-12.
+En **« libre »**, à prendre à tout moment : UIX-07, UIX-08, BIB-13, EDT-07, COU-12, COU-13, QJE-12.

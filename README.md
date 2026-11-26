@@ -139,7 +139,7 @@ flowchart LR
 |---|---|---|
 | API Planner | [`backend/`](backend) | Node.js 22, Express 4, Sequelize 6, MySQL 8.4, migrations Umzug, Jest 30 |
 | Site | [`frontend/`](frontend) | React 19, MUI 7, Vite 7, i18next (français, anglais), Playwright |
-| Solveur | [`solver/`](solver) | Java 21, Spring Boot 3.3, Timefold Solver 1.15 |
+| Solveur | [`solver/`](solver) | Java 21, Spring Boot 4.1, Timefold Solver 1.35 |
 | Application mobile | [`mobile/`](mobile) | Expo SDK 57, Expo Router, React Native 0.86 |
 | Code partagé | [`shared/`](shared) | Logique des séances, quiz, jeux, couleurs, interrupteurs de fonctions |
 | Déploiement | [`deploy/`](deploy), [`docker-compose.yml`](docker-compose.yml) | Docker Compose, Caddy, nginx, scripts de mise en ligne et de sauvegarde |
@@ -160,7 +160,7 @@ flowchart LR
 backend/          API Express : routes → controllers → services (règles métier) → models (Sequelize)
   migrations/     migrations numérotées 0001…, appliquées au démarrage (Umzug)
   services/       règles métier par domaine (planning, generation, moteur, presences, cours, studio, ia…)
-  tests/          unit/ et integration/ (MySQL réel)
+  tests/          utils/ (règles métier), middleware/, architecture/, integration/ (MySQL réel)
 frontend/         site React : pages/, components/, hooks/, services/ (appels API), i18n/
   tests/parcours/ parcours Playwright de bout en bout
 mobile/           application Expo (src/app : écrans, src : client API, quiz, marque)
@@ -185,28 +185,69 @@ docs/
 ### Prérequis
 
 - **Node.js 22** et npm.
-- **MySQL 8.4**. Le plus simple :
-  ```bash
-  docker run -d --name planner_mysql -e MYSQL_ROOT_PASSWORD=<mot_de_passe> -p 3306:3306 mysql:8.4.13
+- **MySQL 8.4**. Le plus simple, dans un conteneur qui crée la base au premier démarrage :
+  ```powershell
+  docker run -d --name planner_mysql -e MYSQL_ROOT_PASSWORD=motdepasse -e MYSQL_DATABASE=hestim_planner -p 3306:3306 mysql:8.4.13
+  ```
+  Sur un MySQL déjà installé, créer la base à la main :
+  ```sql
+  CREATE DATABASE hestim_planner CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
   ```
 - Facultatif : Java 21 et Maven, pour le solveur.
-- Facultatif : Docker Desktop, pour les tests d'intégration et la pile complète.
+- Facultatif : Docker Desktop, pour les tests d'intégration et les parcours (voir [Tests](#tests)).
+- Facultatif sous Windows : Git Bash, pour `npm run dev` (voir plus bas).
 
 ### Installation et lancement
 
-```bash
-npm run install:all                     # dépendances du serveur et du site
-cp backend/.env.example backend/.env    # puis renseigner DB_* (base hestim_planner)
-npm run migrate                         # schéma (aussi appliqué au démarrage du serveur)
-npm run seed                            # données de démonstration (école fictive, comptes de test)
-npm run dev                             # serveur (nodemon, port 5000) + site (Vite, port 5173)
+Sous Windows, en PowerShell :
+
+```powershell
+Copy-Item backend\.env.example backend\.env   # puis renseigner les variables obligatoires (tableau ci-dessous)
+npm run install:all                           # dépendances du serveur et du site
+npm run migrate                               # schéma (aussi appliqué au démarrage du serveur)
+npm run seed                                  # données de démonstration (école fictive, comptes de test)
+npm run dev                                   # serveur (nodemon, port 5000) et site (Vite, port 5173)
 ```
 
-Ouvrir <http://localhost:5173>. Sous Windows, `start.bat` fait la même chose.
+Sous Unix (bash, zsh, Git Bash), les mêmes commandes ; seule la copie change :
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+Ouvrir <http://localhost:5173>. `npm run dev` et `npm start` passent par [`start.sh`](start.sh) : il crée
+le `.env` s'il manque, installe les dépendances absentes, lance le serveur, attend `/health`, joue le
+seed, ouvre le site, et journalise dans `backend.log` et `frontend.log`. Sous Windows, `start.bat`
+cherche Git Bash et l'exécute ; sans bash, remplacer `npm run dev` par `npm run backend:dev` et
+`npm run frontend`, dans deux terminaux.
+
+### Variables obligatoires de `backend/.env`
+
+| Variable | Ce qu'elle règle | Sans elle, en local | Sans elle, en production |
+|---|---|---|---|
+| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | la base créée ci-dessus ; `DB_PASSWORD` est celui donné à MySQL (`motdepasse` dans la commande) | le serveur ne joint pas la base | idem |
+| `JWT_SECRET` | secret qui signe les jetons CSRF quand `CSRF_SECRET` est absent | secret temporaire, avec un avertissement | **arrêt du serveur** |
+| `CSRF_SECRET` | secret des jetons CSRF, distinct de `JWT_SECRET` | repli sur `JWT_SECRET` | idem |
+| `APP_TIMEZONE` | le fuseau de l'école (`Africa/Kinshasa` par exemple), d'où viennent « aujourd'hui » et les heures de séance | UTC, avec un avertissement | **arrêt du serveur** |
+| `ALLOWED_ORIGINS` | les origines autorisées (CORS et vérification CSRF) | `http://localhost:5173,http://localhost:3000` | à donner, sinon le site est refusé |
+| `FRONTEND_URL` | les liens envoyés par courriel (mot de passe oublié, emploi du temps) | `http://localhost:5173` | à donner, sinon les liens sont faux |
+
+Une valeur aléatoire se fabrique avec :
+
+```powershell
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+```
+
+Les autres variables sont facultatives : `JWT_PRIVATE_KEY` (clé éphémère sans elle), `SOLVER_URL` et
+`SOLVER_TOKEN` (sans elles, pas de génération automatique), `SMTP_*` (sans compte, les courriels sont
+écrits dans le journal), `IA_*` (sans clé, la génération de quiz est masquée), `S3_*` (sans clé, la
+Bibliothèque répond « pas encore configurée »), `STUDYLIB_API_URL` (par défaut le réseau Docker) et
+`EXPO_ACCESS_TOKEN` (notifications push). [`backend/.env.example`](backend/.env.example) dit ce que
+fait chacune.
 
 Remarques :
 - Sans `JWT_PRIVATE_KEY`, le serveur crée une clé éphémère, et les sessions tombent à chaque redémarrage. C'est normal.
-- Les comptes de démonstration (administration : `admin@hestim.ma`, les autres sont affichés à la fin du seed) existent **seulement en local**. Le seed est refusé en production.
+- Les comptes de démonstration existent **seulement en local** (`admin@hestim.ma`, puis les autres) et partagent le mot de passe `password123` affiché par le seed. Le seed est refusé en production.
 
 ### Commandes utiles
 
@@ -225,14 +266,30 @@ Remarques :
 
 ```bash
 cd solver && mvn package
-SOLVER_TOKEN=<32 caractères au moins> java -jar target/hestim-solver.jar --server.port=8090
+SOLVER_TOKEN=un-jeton-aleatoire-de-32-caracteres-au-moins java -jar target/hestim-solver.jar --server.port=8090
 ```
 
 Dans `backend/.env`, mettre `SOLVER_URL=http://localhost:8090` et le même `SOLVER_TOKEN`. Sans jeton, le solveur refuse tout calcul.
 
 ### Application mobile
 
-Voir [`mobile/README.md`](mobile/README.md) : Expo, `EXPO_PUBLIC_API_URL`, constructions EAS.
+```powershell
+cd mobile
+npm install
+$env:EXPO_PUBLIC_API_URL="http://192.168.1.10"; npx expo start   # l'adresse du PC, vue du téléphone
+```
+
+`EXPO_PUBLIC_API_URL` est l'adresse de la plateforme **vue depuis le téléphone** : `localhost` ne
+convient pas. Les écrans, la sécurité et les constructions EAS sont dans
+[`mobile/README.md`](mobile/README.md).
+
+### Une installation est bonne quand
+
+1. `http://localhost:5000/health` répond `"healthy"`.
+2. <http://localhost:5173> affiche la connexion ; `admin@hestim.ma` et `password123` ouvrent le tableau de bord.
+3. `npm run seed` s'est terminé par « Seed terminé avec succès ! » et a affiché les comptes de test.
+4. `npm run verifier:neutre` est vert.
+5. `npm run build` construit le site sans erreur.
 
 ---
 
@@ -240,12 +297,14 @@ Voir [`mobile/README.md`](mobile/README.md) : Expo, `EXPO_PUBLIC_API_URL`, const
 
 | Partie | Commande | Contenu |
 |---|---|---|
-| Serveur, unitaires | `cd backend && npm test` | ≈ 330 tests (règles métier, catalogue du moteur, utilitaires) |
-| Serveur, intégration | `cd backend && npm run test:integration` | ≈ 550 tests, 58 fichiers, sur un vrai MySQL de test reconstruit par les migrations |
-| Site, unitaires | `cd frontend && npm run test:unit` | tests `node --test` de la logique du site |
-| Parcours | `cd frontend && npm run test:parcours` | 25 parcours Playwright de bout en bout (site, serveur et base réels) |
-| Application mobile | `cd mobile && npm test` | jest-expo |
-| Solveur | `cd solver && mvn test` | 33 tests : une vérification par contrainte, résolution complète, sécurité |
+| Serveur, unitaires | `cd backend && npm test` | 566 tests, 39 fichiers : règles métier, catalogue du moteur, utilitaires, horloge de l'école |
+| Serveur, intégration | `cd backend && npm run test:integration` | 64 fichiers sur un vrai MySQL de test reconstruit par les migrations |
+| Site, unitaires | `cd frontend && npm run test:unit` | 157 tests `node --test` de la logique du site |
+| Parcours | `cd frontend && npm run test:parcours` | 37 fichiers Playwright de bout en bout (site, serveur et base réels) |
+| Application mobile | `cd mobile && npm test` | 19 fichiers, jest-expo : logique partagée, client HTTP, normalisation |
+| Solveur | `cd solver && mvn test` | 58 tests : une vérification par contrainte, résolution complète, sécurité |
+
+**Comptes du 25 novembre 2026**, donnés par la sortie de ces commandes : un chiffre non mesuré n'est pas écrit. Docker n'est nécessaire que pour l'intégration et les parcours ; les autres tournent sans base.
 
 **Base de test rapide** pour l'intégration. Elle est en mémoire, et il faut la jeter ensuite :
 
@@ -261,7 +320,8 @@ Les valeurs par défaut sont dans [`backend/tests/integration/setupEnv.js`](back
 - l'audit des dépendances ;
 - le lint ;
 - le contrôle « école neutre » ;
-- le budget de requêtes SQL par route.
+- le budget de requêtes SQL par route ;
+- le démarrage du README sur une base neuve (job `demarrage-readme`).
 
 Ne lancez pas les parcours en même temps que la suite d'intégration sur un poste chargé : la CI tranche.
 
@@ -377,7 +437,7 @@ Le pas à pas, les secrets à préparer et le retour arrière sont dans [`DEPLOI
 | [docs/README.md](docs/README.md) | Index complet de la documentation |
 | [DEPLOIEMENT.md](DEPLOIEMENT.md) | Production : installation, mise à jour, sauvegardes, supervision, retour arrière |
 | [DESIGN.md](DESIGN.md) | Système visuel « panneau à volets » |
-| [PRODUCT.md](PRODUCT.md) | Utilisateurs et principes du produit (à mettre à jour, QUA-01) |
+| [PRODUCT.md](PRODUCT.md) | Utilisateurs, contexte, fonctions et principes du produit |
 | [docs/etude-marche/](docs/etude-marche/README.md) | Concurrents, problèmes des écoles, arguments |
 | [docs/recette/](docs/recette/scenarios-de-test.md) | Scénarios de recette, essais de restauration et de supervision |
 | [mobile/README.md](mobile/README.md) | Application mobile |
