@@ -18,7 +18,7 @@ test.describe("Connexion", () => {
   test("mauvais mot de passe : refusé, on reste sur la connexion", async ({ page }) => {
     const donnees = lireDonnees();
     await page.goto("/connexion");
-    await page.getByRole("textbox", { name: "Adresse email" }).fill(donnees.enseignante.email);
+    await page.getByRole("textbox", { name: "Identifiant" }).fill(donnees.enseignante.email);
     await page.getByRole("textbox", { name: "Mot de passe", exact: true }).fill(`${donnees.motDePasse}-faux`);
     await page.getByRole("button", { name: "Connexion", exact: true }).click();
     await expect(page.getByRole("alert")).toBeVisible();

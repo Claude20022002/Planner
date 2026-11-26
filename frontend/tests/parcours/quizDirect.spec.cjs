@@ -66,7 +66,7 @@ test("quiz en direct : lancé par l'enseignante, joué sur un téléphone et un 
   const mobile = await telephone.newPage();
   await mobile.goto(`/quiz/code/${code}`);
   await expect(mobile).toHaveURL(/\/connexion\?next=/);
-  await mobile.getByRole("textbox", { name: "Adresse email" }).fill(etudiants[1].email);
+  await mobile.getByRole("textbox", { name: "Identifiant" }).fill(etudiants[1].email);
   await mobile.getByRole("textbox", { name: "Mot de passe", exact: true }).fill(motDePasse);
   await mobile.getByRole("button", { name: "Connexion", exact: true }).click();
   await expect(mobile).toHaveURL(/\/quiz\/direct\/\d+$/, ETAPE);

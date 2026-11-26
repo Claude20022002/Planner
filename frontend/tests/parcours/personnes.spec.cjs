@@ -41,8 +41,8 @@ test('connexion : anglais, thème et clavier restent disponibles', async ({ page
   await page.goto('/connexion');
   await page.getByRole('button', { name: 'English', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Sign in', exact: true })).toBeVisible();
-  expect(await page.getByRole('textbox', { name: 'Email address', exact: true }).evaluate((e) => getComputedStyle(e).fontFamily)).toContain('Inter');
-  await page.getByRole('textbox', { name: 'Email address', exact: true }).focus();
+  expect(await page.getByRole('textbox', { name: 'Username', exact: true }).evaluate((e) => getComputedStyle(e).fontFamily)).toContain('Inter');
+  await page.getByRole('textbox', { name: 'Username', exact: true }).focus();
   await page.keyboard.press('Tab');
   await expect(page.getByRole('textbox', { name: 'Password', exact: true })).toBeFocused();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
