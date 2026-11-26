@@ -32,6 +32,8 @@
 - **Signalement des failles** : pas de `SECURITY.md`.
 - **Poids du premier chargement** (M-9, correctif hors chantier, 26 nov., [plan](../../conception/qualite/fix-qua-poids-application.md)) : gzip reste, avec `gzip_vary`. Pas de brotli. La bibliothèque d'animation ne part qu'avec le lanceur. L'état vide apparaît en CSS.
 
+- **Mes affectations** (correctif hors chantier, 26 nov., [plan](../../conception/qualite/fix-mes-affectations-useeffect.md)) : la page charge les séances par identifiant enseignant, conserve la pagination et ignore les réponses des chargements annulés. Le nombre de requêtes est couvert par le test unitaire.
+
 ## Fonctions
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
