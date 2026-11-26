@@ -33,9 +33,16 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 - Commentaire du chef sur #261 lu par `gh pr view 261`. `git diff --name-only` des six branches VIT ouvertes : aucune ne touche `vitrine/package*.json`, les flux ou le fichier d'exceptions. `scripts/audit.mjs` lu : il lance déjà `npm audit --omit=dev --json` et choisit les exceptions par dossier.
 - Aucun code touché, donc aucune suite lancée.
 
+## Relevé de 9 h 10
+
+- Le chef a lancé les commandes : #274 (`lucide-react`) et #275 (cette branche, `c921517d`) ouvertes, CI de #275 verte ; #231 fermée. **#263 n'est pas fusionnée** : c'est un brouillon (CI verte, sans conflit), il faut `gh pr ready 263` avant `gh pr merge`.
+- **Codex** : VIT-20d phase (b) faite (`089cf51a` fusion de `main`, `d394d217` visa, `be94ac41` code, `0a709965` fiche). **Relue : prête** (décision du coordinateur dans `decisions.md`). Consigne déposée : VIT-21 ensuite, plan de VIT-20f pendant l'attente du visa.
+- **Agent de Cursor** : plan court de Q-37 (`481f5ae3`, fiche `d7c5850b`). **Validé par le coordinateur** (questions 1 à 3). Consigne déposée : inscrire la validation, coder, montrer l'échec du script avec l'ancien texte. Signalé hors mission, porté au chef : `README.md`, `docker-compose.yml`, `DEPLOIEMENT.md` nomment encore l'école pilote.
+- Boîtes : deux rapports rangés dans `sortie/traites/` ; `codex/entree/2026-11-26-0912-vit-20d-relue.md`, `cursor/entree/2026-11-26-0912-q-37-plan-valide.md`.
+
 ## Reste à faire, dans l'ordre
 
-1. Le chef : les commandes de la fiche de 8 h, **sauf le visa de #261, déjà écrit** ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages.
+1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.
 2. Codex : VIT-20d phase (b), puis VIT-21, VIT-20f, le correctif `useEffect`, QJE-03, l'étude des parcours.
 3. Agent de Cursor : plan court de Q-37 (au coordinateur), puis, le 27 nov., le § 7 de `fix-audit-vitrine`.
 4. Coordinateur : valider le plan de Q-37 et le § 7 ; relire ADM-02a quand la migration 0088 sera écrite ; relire #265, #230, #229, #269, #270 quand Alexis les aura corrigées.

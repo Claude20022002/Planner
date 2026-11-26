@@ -67,3 +67,4 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-26 | fiche écrite, prompt déposé dans la boîte de l'agent de Cursor | — |
+| 2026-11-26 9 h 10 | plan court (`481f5ae3`) relu : propositions de la fiche, périmètre tenu, aucun code | **plan validé** (coordinateur) |
