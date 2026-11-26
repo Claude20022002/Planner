@@ -51,6 +51,12 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 - Agent de Cursor : Q-37 codée (`ac77190f`, fiche `ecd9d20c`), **relue : prête pour la PR**. Nouvelle mission du chef : `fix-neutralite-docs` (fiche écrite).
 - Boîtes : quatre rapports rangés ; `codex/entree/2026-11-26-0932-reponses-vit-21-vit-20f-useeffect.md`, `cursor/entree/2026-11-26-0932-q-37-prete-mission-docs.md`.
 
+## Relevé de 9 h 40
+
+- Codex et l'agent de Cursor n'ont pas encore lu les messages de 9 h 32 ; rien de nouveau dans leurs `sortie/`.
+- **VIT-09d** : plan `5ac275f9` **validé** ; validation envoyée par message direct à la session `plan-b-projet-pacte-f2` (le chef avait transmis ses réponses aux questions 1 et 2 et le tableau des signes).
+- **Alexis** : seule #270 a bougé (`7178ff70`, CI verte, parcours réparés) ; les conditions 1, 2 et 4 du chef restent à faire. Six messages attendent dans `alexis/entree/`, dont le relevé de 9 h 40 ; #269, #265, #230 et #229 sans changement depuis le 25 nov. (et le 22 nov. pour les deux dernières).
+
 ## Reste à faire, dans l'ordre
 
 1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.
