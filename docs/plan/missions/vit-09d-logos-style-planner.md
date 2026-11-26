@@ -107,3 +107,4 @@ Quand tu as fini, donne au chef le chemin complet des captures de la planche.
 | 2026-11-26 | fiche écrite sur la demande du chef ; Codex garde sa file, VIT-20f attend le choix | — |
 | 2026-11-26 9 h 40 | plan `5ac275f9` relu : questions 1 et 2 comme la fiche, 20 signes motivés, périmètre tenu, planche hors du dépôt ; validation envoyée à la session `plan-b-projet-pacte-f2` | **plan validé** (coordinateur) ; essai sur trois logos ensuite |
 | 2026-11-26 9 h 50 | essai relu (`74e5637f`, fiche `a6ea00ab`) : planche relancée (3 + 3 logos vérifiés), test des icônes 8/8, logos de 820 à 980 octets, captures vues | **direction validée par le chef**, deux retouches ; série complète |
+| 2026-11-26 10 h 10 | étape 1 relue (`666b295f`, `6d9758b0`) : 44 fichiers, tous dans `essais/` ou `docs/`, planche relancée (20 + 20 vérifiés), quatre planches et deux agrandissements vus | **série B choisie par le chef** ; étape 2, plan court au coordinateur |
