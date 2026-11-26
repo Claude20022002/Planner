@@ -1,4 +1,4 @@
-/** Régression : la coquille n'importe plus la bibliothèque d'animation. */
+/** Régression : la coquille et l'état vide n'importent plus la bibliothèque d'animation. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -10,6 +10,7 @@ const fichiers = [
   join(dossier, '../layouts/DashboardLayout.jsx'),
   join(dossier, 'MenuApplication.jsx'),
   join(dossier, 'IconeApplication.jsx'),
+  join(dossier, '../../design-system/components/EmptyState.jsx'),
 ];
 const interdit = /motion\/react|icones\//;
 
