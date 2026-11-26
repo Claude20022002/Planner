@@ -7,7 +7,7 @@
 | Branche | `feat/vit-23-premieres-sections`, depuis `origin/main` (`fa9df596`), dossier `..\travaux-planner\vit-23-premieres-sections` |
 | Rédigé par | Claude Code (Opus 5.5), le 2026-11-26 |
 | Taille | M |
-| **Validé** | en attente du coordinateur (plan) ; **le rendu est validé par le chef sur captures** ; aucune phrase nouvelle n'est proposée (§ 4.5) |
+| **Validé** | **par le coordinateur le 2026-11-26** (`90b9963f`, taille M, sans migration ni sécurité) ; **le rendu est validé par le chef sur captures** ; aucune phrase nouvelle n'est proposée (§ 4.5) |
 
 ## 1. Objet et critère de « terminé »
 
@@ -41,12 +41,14 @@ Terminé quand (critère de la fiche, précisé) :
 | N° | Question | Proposition | À qui | Bloque |
 |---|---|---|---|---|
 | 1 | Visuel à côté du texte ou dessous ? | **à côté** sur ordinateur (≥ 960 px) pour les trois ouvertures : les illustrations sont carrées, dessous elles pousseraient la page vers le bas ; **dessous** sur tablette et téléphone. L'essai montre aussi la variante « dessous, centré » sur Espace de cours | chef, sur captures | étape 3 |
-| 2 | Un mot du titre en relief ? | oui, **couleur seule** (`--bleu` sur fond clair, `--bleu-clair` sur fond sombre), sans dessin. Le mot n'est pas marqué dans la phrase : une clé `entete.relief` (ou `ouverture.relief`) donne le passage à colorer ; absent ou introuvable, rien n'est coloré. Le texte visé ne change pas. Pas de relief sur les pages de module (le titre est le nom). Passages proposés : § 4.4 | chef (choix des passages) | étape 3 |
-| 3 | Un second bouton sur les pages de module ? | **non** : les onglets mènent déjà à « Fonctionnalités », et tout autre bouton demanderait une phrase nouvelle. L'accueil et les pages de rôle ont déjà deux boutons | chef | non |
-| 4 | Visuel des pages sans illustration | § 4.3 : un visuel existant partout ; **aucun dessin nouveau** ; Sécurité, Comparer, Bientôt et les pages légales sans visuel, seulement resserrées | coordinateur | étape 4 |
+| 2 | Un mot du titre en relief ? | oui, **couleur seule** (`--bleu` sur fond clair, `--bleu-clair` sur fond sombre), sans dessin. Le mot n'est pas marqué dans la phrase : une clé `entete.relief` (ou `ouverture.relief`) donne le passage à colorer ; absent ou introuvable, rien n'est coloré. Le texte visé ne change pas. Pas de relief sur les pages de module (le titre est le nom). Passages proposés : § 4.4 | chef (choix des passages) | étape 3 · **le chef choisit sur captures ; l'essai montre aussi une capture sans relief** |
+| 3 | Un second bouton sur les pages de module ? | **non** : les onglets mènent déjà à « Fonctionnalités », et tout autre bouton demanderait une phrase nouvelle. L'accueil et les pages de rôle ont déjà deux boutons | chef | non · **non (chef, 26 nov.)** |
+| 4 | Visuel des pages sans illustration | § 4.3 : un visuel existant partout ; **aucun dessin nouveau** ; Sécurité, Comparer, Bientôt et les pages légales sans visuel, seulement resserrées | coordinateur | **retenu tel quel (coordinateur, 26 nov.)** |
 | 5 | Onglets des pages de module en tête de la section, comme Odoo ? | oui : la rangée « Aperçu · Fonctionnalités » passe au-dessus du logo, alignée au début de la ligne ; le reste ne bouge pas | chef, sur captures | étape 3 |
 | 6 | Visuel de l'accueil | **A** : `planning.webp` à côté du texte (+14 Ko, sous les 20 Ko permis), le logo animé reste au-dessus de « Planner » (C2) ; **B** : le logo animé seul, agrandi, à la place du visuel (0 Ko). L'essai montre les deux | chef, sur captures | étape 3 |
-| 7 | **Sortie du périmètre** : `components/fonctions/PageRole.astro` doit passer le visuel à `EnTetePage` pour les quatre pages de rôle (une propriété, deux lignes) | l'ajouter au périmètre ; sinon, les pages de rôle sont seulement resserrées | coordinateur | étape 4 |
+| 7 | **Sortie du périmètre** : `components/fonctions/PageRole.astro` doit passer le visuel à `EnTetePage` pour les quatre pages de rôle (une propriété, deux lignes) | l'ajouter au périmètre ; sinon, les pages de rôle sont seulement resserrées | coordinateur | **ajouté au périmètre, pour `image` et `relief` seulement (coordinateur, 26 nov.)** |
+
+Q1, Q5 et Q6 : le chef choisit sur les captures de l'essai (coordinateur, 26 nov.). Avant l'étape 4 : `git merge origin/main` après la fusion de VIT-21 (#262), puis le relief d'Étudiants pris dans le titre à jour.
 
 ## 4. Solution
 
