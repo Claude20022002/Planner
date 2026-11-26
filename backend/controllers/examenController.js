@@ -13,6 +13,7 @@ import {
     publierExamen,
     validerExamen,
 } from "../services/planning/examens.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * Examens et surveillances (phase P5) : planifiés par l'administration, dont le personnel voit
@@ -109,7 +110,7 @@ export const deleteExamen = asyncHandler(async (req, res) => {
 export const autoSurveillants = asyncHandler(async (req, res) => {
     try {
         const resultat = await affecterSurveillants(Number(req.params.id));
-        res.json({ message: resultat.manquants ? `${resultat.manquants} surveillant(s) manquant(s) : pas assez d'enseignants libres` : "Surveillants affectés", ...resultat });
+        res.json({ message: resultat.manquants ? `${accorder(resultat.manquants, "surveillant manquant", "surveillants manquants")} : pas assez d'enseignants libres` : "Surveillants affectés", ...resultat });
     } catch (error) {
         return repondreErreur(res, error);
     }

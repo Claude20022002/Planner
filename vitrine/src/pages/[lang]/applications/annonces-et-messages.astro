@@ -1,0 +1,19 @@
+---
+// Page du module « Annonces et messages » : les annonces (section de la page « Cours et annonces »).
+// L'accroche est le titre de la section ; aucune phrase nouvelle.
+import { Mail } from 'lucide-react';
+import PageModule from '../../../components/applications/PageModule.astro';
+import GrilleCartes from '../../../components/fonctions/GrilleCartes.astro';
+import { traductions } from '../../../i18n/index.js';
+import { cheminsLangues } from '../../../i18n/langues.js';
+
+export const getStaticPaths = cheminsLangues;
+
+const { lang } = Astro.params;
+const t = traductions(lang, 'cours-et-annonces');
+const nom = traductions(lang, 'modules')('noms.annoncesEtMessages');
+---
+<PageModule langue={lang} cle="annoncesEtMessages" titre={`${nom} · Planner`} description={t('annonces.titre')} accroche={t('annonces.titre')}>
+  <GrilleCartes id="annonces" ton="gris" surtitre={t('annonces.surtitre')} titre={t('annonces.titre')} cartes={t('annonces.cartes')}
+    icones={[Mail]} />
+</PageModule>

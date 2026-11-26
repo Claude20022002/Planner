@@ -53,7 +53,7 @@
 | PLA-10 | Choisir son école à la connexion ; l'application la trouve par adresse ou par code (canal I-12) | ME-8 réduit | 5, ou juste avant la 1re école extérieure | M | PLA-05, MOB-07 | reporté |
 | PLA-11 | Comptes communs : un compte, plusieurs écoles (parents, enseignants partagés) | ME-8 | 5 | L | PLA-10, VSC-01 | reporté |
 | PLA-12 | Export complet d'une école ; effacement sous 30 jours après son départ (EP-12) | ME-16 | 5 | M | PLA-07 | à faire |
-| PLA-13 | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) ; sites indépendants si une école en a besoin | ME-7, ME-25 | 5 | M (+ L, conditionnel) | PLA-02, FIN-01 | reporté |
+| PLA-13 | Une école hors du Maroc configurée sans changer le code (fuseau, langue, devise) ; sites indépendants si une école en a besoin. Le fuseau **de l'installation** est fait (M-10, 22 nov. : `APP_TIMEZONE` obligatoire, horloge rendue au site et à l'application) ; reste le fuseau choisi **par chaque école** quand une installation en sert plusieurs (le paramètre du catalogue `ETA` « Fuseau horaire » existe déjà) | ME-7, ME-25 | 5 | M (+ L, conditionnel) | PLA-02, FIN-01 | reporté |
 
 ## Critères de « terminé »
 

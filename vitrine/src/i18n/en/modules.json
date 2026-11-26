@@ -1,0 +1,21 @@
+{
+  "noms": {
+    "emploiDuTemps": "Timetable",
+    "presences": "Attendance",
+    "espaceDeCours": "Course space",
+    "quizEtJeux": "Quizzes and games",
+    "annoncesEtMessages": "Announcements and messages",
+    "bibliotheque": "Library",
+    "vacatairesEtHeures": "Part-time staff and hours",
+    "evaluations": "Grades, credits and juries",
+    "inscriptions": "Admissions",
+    "documentsVerifiables": "Verifiable documents",
+    "stages": "Internships",
+    "fraisEtCaisse": "Fees and cash desk",
+    "formationEtFinanceurs": "Training and funders",
+    "vieScolaire": "School life and families",
+    "echangesAvecEtat": "Government exchanges",
+    "paiementsEnLigne": "Online payments",
+    "pilotage": "Analytics"
+  }
+}

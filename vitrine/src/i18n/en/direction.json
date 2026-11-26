@@ -11,12 +11,12 @@
   "aujourdhui": "Today",
   "cartes": [
     {
-      "page": "emploiDuTemps",
+      "page": "module.emploiDuTemps",
       "titre": "Timetable",
       "texte": "You describe your rooms, teachers, groups and rules. Planner places the sessions, and tells you why when it cannot."
     },
     {
-      "page": "enClasse",
+      "page": "module.presences",
       "titre": "In class",
       "texte": "Attendance, quizzes, games and polls all happen in the same tool, with the same account."
     },

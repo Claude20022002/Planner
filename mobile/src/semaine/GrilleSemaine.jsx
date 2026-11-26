@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { estChangee, toLocalISODate } from '../../../shared/session.js';
+import { maintenantEcole } from '../../../shared/dates.js';
 import { couleurStatut, creerStyles, lineColor, useTheme } from '../theme';
 import { useMargeOnglets } from '../verre/Verre';
 import { abregerCours } from './abreger';
@@ -54,9 +55,9 @@ export default function GrilleSemaine({ lundi, seances, onSeance }) {
   const theme = useTheme();
   const styles = useStyles();
   const margeBas = useMargeOnglets();
-  const [maintenant, setMaintenant] = useState(() => new Date());
+  const [maintenant, setMaintenant] = useState(() => maintenantEcole());
   useEffect(() => {
-    const id = setInterval(() => setMaintenant(new Date()), 60_000);
+    const id = setInterval(() => setMaintenant(maintenantEcole()), 60_000);
     return () => clearInterval(id);
   }, []);
 

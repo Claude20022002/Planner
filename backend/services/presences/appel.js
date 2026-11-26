@@ -1,3 +1,4 @@
+import { FUSEAU_ECOLE as FUSEAU } from "../../config/fuseau.js";
 import crypto from "crypto";
 import { UniqueConstraintError } from "sequelize";
 import { Affectation, AppareilEtudiant, AppelSeance, Appartenir, Cours, Creneau, Enseignement, EnseignementEnseignant, Groupe, Presence, Salle, SignalementPresence, Users } from "../../models/index.js";
@@ -24,7 +25,6 @@ import { APPAREIL, empreinteAppareil } from "./appareil.js";
  * hasard : il les appelle, un absent perd sa présence et est signalé.
  */
 
-const FUSEAU = process.env.APP_TIMEZONE || "Africa/Casablanca";
 export const FENETRE_MS = 30 * 1000;
 const CODE = /^(\d{1,10})\.(\d{1,12})\.([A-Za-z0-9_-]{22})$/;
 const STATUTS_FERMABLES = ["planifie", "confirme", "reporte"];

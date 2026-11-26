@@ -103,3 +103,6 @@ export const ParticipationJeu = resolveur("ParticipationJeu");
 export const PropositionJeu = resolveur("PropositionJeu");
 export const JoueurDirect = resolveur("JoueurDirect");
 export const ReponseDirect = resolveur("ReponseDirect");
+export const DocumentBibliotheque = resolveur("DocumentBibliotheque");
+export const NoteDocument = resolveur("NoteDocument");
+export const TelechargementDocument = resolveur("TelechargementDocument");

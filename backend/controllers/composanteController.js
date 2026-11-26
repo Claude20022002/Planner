@@ -1,6 +1,7 @@
 import { Affectation, Cours, CoursComposante, Enseignement } from "../models/index.js";
 import { asyncHandler } from "../middleware/asyncHandler.js";
 import { pick } from "../utils/validationHelper.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * Composantes d'un module (CM, TD, TP, Projet) : volume, groupe visé, salle requise,
@@ -104,7 +105,7 @@ export const deleteComposante = asyncHandler(async (req, res) => {
     if (seances > 0) {
         return res.status(409).json({
             message: "Composante utilisée",
-            error: `${seances} séance(s) sont déjà planifiées sur cette composante`,
+            error: `${accorder(seances, "séance est déjà planifiée", "séances sont déjà planifiées")} sur cette composante`,
         });
     }
 

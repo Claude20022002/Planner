@@ -4,6 +4,7 @@ import { getPaginationParams, createPaginationResponse } from "../utils/paginati
 import { pick } from "../utils/validationHelper.js";
 import { anneeDepuisNiveau } from "../config/referentiel.js";
 import { construireArbre, verifierParent } from "../services/planning/groupes.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * Contrôleur pour les groupes, emboîtés : promotion ⊃ groupes de TD ⊃ demi-groupes de TP.
@@ -126,9 +127,9 @@ export const deleteGroupe = asyncHandler(async (req, res) => {
         Appartenir.count({ where: { id_groupe: groupe.id_groupe } }),
     ]);
     const raisons = [
-        sousGroupes && `${sousGroupes} sous-groupe(s)`,
-        seances && `${seances} séance(s)`,
-        etudiants && `${etudiants} étudiant(s)`,
+        sousGroupes && accorder(sousGroupes, "sous-groupe", "sous-groupes"),
+        seances && accorder(seances, "séance", "séances"),
+        etudiants && accorder(etudiants, "étudiant", "étudiants"),
     ].filter(Boolean);
     if (raisons.length) {
         return res.status(409).json({
