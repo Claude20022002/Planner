@@ -33,7 +33,6 @@ for (const langue of ['fr', 'en']) {
     assert.ok(accueil.relief && accueil.titre.includes(accueil.relief), `accueil : ${accueil.relief}`);
     for (const page of PAGES_AVEC_RELIEF) {
       const { titre, relief } = charger(langue, page).entete;
-      if (relief === undefined) continue; // Étudiants : ajouté après la fusion de VIT-21 (#262)
       assert.ok(relief && titre.includes(relief), `${page} : « ${relief} » absent de « ${titre} »`);
     }
   });
