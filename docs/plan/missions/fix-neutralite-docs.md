@@ -80,3 +80,4 @@ Quand tu as fini, dis-le : le coordinateur relit ta branche avant la PR.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-26 | fiche écrite ; aucune branche ouverte ne touche `README.md` ni `DEPLOIEMENT.md` ; Q-37 touche `verifier-neutre.mjs` : le code de celle-ci attend sa fusion | — |
+| 2026-11-26 9 h 55 | plan `a7227205` (et `b0c0508a`) relu : questions 2 à 4 retenues, ligne 140 ajoutée par l'agent, périmètre tenu | **plan validé** (coordinateur) |

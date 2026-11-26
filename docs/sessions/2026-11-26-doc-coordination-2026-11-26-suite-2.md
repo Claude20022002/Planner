@@ -57,6 +57,13 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 - **VIT-09d** : plan `5ac275f9` **validé** ; validation envoyée par message direct à la session `plan-b-projet-pacte-f2` (le chef avait transmis ses réponses aux questions 1 et 2 et le tableau des signes).
 - **Alexis** : seule #270 a bougé (`7178ff70`, CI verte, parcours réparés) ; les conditions 1, 2 et 4 du chef restent à faire. Six messages attendent dans `alexis/entree/`, dont le relevé de 9 h 40 ; #269, #265, #230 et #229 sans changement depuis le 25 nov. (et le 22 nov. pour les deux dernières).
 
+## Relevé de 9 h 50
+
+- VIT-09d : essai sur trois logos (`74e5637f`), **direction validée par le chef** avec deux retouches ; série complète lancée par message direct.
+- Codex : plan révisé du correctif `useEffect` (`8df4e90d`) **validé** ; VIT-21 phase (b) en cours après le visa de #262.
+- Agent de Cursor : plan de `fix-neutralite-docs` (`a7227205`) **validé** ; Q1 tranchée par le chef (README inchangé) ; `DEPLOIEMENT.md` d'abord, le script après la fusion de #276.
+- `main` = `9a428a7c` (#261 fusionnée) ; #274, #275, #276 ouvertes.
+
 ## Reste à faire, dans l'ordre
 
 1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.
