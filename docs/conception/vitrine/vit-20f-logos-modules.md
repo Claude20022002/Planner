@@ -4,7 +4,7 @@
 |---|---|
 | Branche | `feat/vit-20f-logos-modules` |
 | Taille | S |
-| Visa | Validation du coordinateur attendue sur ce plan révisé |
+| Visa | Plan révisé (`734e6ee7`) validé le 26 novembre 2026 à 14 h 21 par le coordinateur, par délégation du chef |
 | Base | VIT-20 et [VIT-09d](vit-09d-logos-style-planner.md), série B fusionnée par la PR #277 (`0c568ecb`) |
 
 Les 20 logos de la série B remplacent les SVG précédents sous les mêmes noms dans `shared/icones/modules/`. Sur la base fusionnée, Présences a encore `logo: null`, Espace de cours pointe vers `pedagogie` et la place réservée utilise un rayon de 22 sur un cadre de 96, contre 19,5 pour la série B.
