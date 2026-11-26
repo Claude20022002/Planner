@@ -52,7 +52,7 @@
 | VIT-20d | Bloc « Selon votre équipement » sur chaque page de module (sans wifi, sans écran projeté, sans téléphone de l'élève), chaque ligne prouvée dans le code (VIT-15 fondue) | — | 1 | M | VIT-20 | Codex (repris de l'agent externe) : #261, visée sauf l'Espace de cours |
 | VIT-20e | `EnTete.astro` ramené à 150 lignes, contrôle à l'œil des pages en anglais et de l'accueil à 390 et 768 px | — | 1 | S | VIT-20 | fait : #260 fusionnée le 22 nov. ([fiche](../../sessions/2026-11-22-refactor-vit-20e-en-tete.md)) |
 | VIT-21 | Le site ne présente plus la Bibliothèque comme disponible (étape 3) ; nouveau rendu de la vidéo de l'accueil | — | 1 | M | VIT-20 | Codex (repris de l'agent externe) : #262, visée, ajout de l'Espace de cours à viser |
-| VIT-22 | La page « Bientôt » suit les 12 modules « Bientôt » de `donnees/modules.js` | — | 1 | S | VIT-20 | Codex (repris de l'agent externe) : #263, visée |
+| VIT-22 | La page « Bientôt » suit les 12 modules « Bientôt » de `donnees/modules.js` | — | 1 | S | VIT-20 | code et contrôles locaux terminés sur la branche de la PR #263 ([fiche de session](../../sessions/2026-11-26-feat-vit-22-bientot-modules.md)) |
 | VIT-20f | Chaque module du site prend son logo de VIT-09c (`shared/icones/modules/`) ; Présences d'abord | — | 1 | S | VIT-09c | à faire : Codex, après la fusion de VIT-09c (#259) |
 
 ## Critères de « terminé »
