@@ -30,6 +30,7 @@
 - **Données personnelles** : `docs/users.xlsx` (noms, adresses, mots de passe) a été retiré de l'arbre le 7 novembre, mais **il reste dans l'historique d'un dépôt public**.
 - **Envois sortants** (code lu le 15 nov.) : IA (`backend/services/ia/client.js`), notifications par Expo (`backend/services/push.js`), courriel (`backend/utils/sendEmail.js`), sauvegardes vers B2 (`deploy/vps/sauvegarder.sh`). Aucune télémétrie ; Sentry n'est qu'un commentaire. Liste publique : [docs/envois-sortants.md](../../envois-sortants.md) (QUA-09, 16 nov.), mise à jour par QUA-10 avec le push générique par défaut, les destinations explicites de l’IA et du courriel et le résumé au démarrage.
 - **Signalement des failles** : pas de `SECURITY.md`.
+- **Poids du premier chargement** (M-9, correctif hors chantier, 25 nov., [plan](../../conception/qualite/fix-qua-poids-application.md)) : le site de l'application compresse en brotli et garde gzip. La coquille n'importe plus la bibliothèque d'animation ; elle reste sur le lanceur et sur l'état vide.
 
 ## Fonctions
 
