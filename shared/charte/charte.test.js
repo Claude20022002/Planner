@@ -1,5 +1,6 @@
 // Tests de la charte (UIX-10a, plan court § 8) : contrastes de la source, sorties générées à jour,
 // en-tête (version, empreinte), variables du site. Lancement : node --test shared/charte/charte.test.js
+import { LOGOS } from '../icones/index.js';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -99,11 +100,11 @@ test('7. le CSS du site porte exactement les noms de variables d\'aujourd\'hui',
 });
 
 test('8. chaque application a ses deux tons, et le blanc tient 4,5:1 sur chacun (VIT-09a)', () => {
-    const APPS = ['planning', 'pedagogie', 'personnes', 'etablissement', 'annonces', 'activites', 'bibliotheque'];
+    const attendues = Object.values(LOGOS).flatMap(({ teinte, fonce }) => [teinte, fonce]).sort();
     const teintes = source.familles.applications;
-    assert.deepEqual(Object.keys(teintes), APPS.flatMap((id) => [`app-${id}`, `app-${id}-fonce`]));
+    assert.deepEqual(Object.keys(teintes).sort(), attendues);
     const paires = pairesCalculees(source).filter((p) => p.fond.startsWith('app-'));
-    assert.equal(paires.length, APPS.length * 2);
+    assert.deepEqual(paires.map((paire) => paire.fond).sort(), attendues);
     for (const p of paires) assert.ok(p.texte === 'blanc' && p.seuil === 4.5 && p.rapport >= 4.5, `${p.texte} sur ${p.fond}`);
 });
 
