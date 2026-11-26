@@ -56,9 +56,47 @@ test('les libellés du § 4.7 sont dans commun.json, dans les langues publiées'
   }
 });
 
-test('chaque logo nommé existe dans shared/icones/modules', () => {
-  for (const module of MODULES.filter((m) => m.logo)) {
-    assert.ok(fs.existsSync(path.join(RACINE, 'shared/icones/modules', `${module.logo}.svg`)), module.cle);
+test('les 17 modules utilisent les SVG officiels de la série B', () => {
+  const logos = {
+    emploiDuTemps: 'planning',
+    presences: 'presences',
+    espaceDeCours: 'cours',
+    quizEtJeux: 'activites',
+    bibliotheque: 'bibliotheque',
+    annoncesEtMessages: 'annonces',
+    vacatairesEtHeures: 'vacataires',
+    evaluations: 'evaluations',
+    inscriptions: 'inscriptions',
+    documentsVerifiables: 'documents',
+    stages: 'stages',
+    fraisEtCaisse: 'frais',
+    formationEtFinanceurs: 'formation',
+    vieScolaire: 'familles',
+    paiementsEnLigne: 'paiements',
+    echangesAvecEtat: 'etat',
+    pilotage: 'pilotage',
+  };
+  assert.deepEqual(Object.fromEntries(MODULES.map(({ cle, logo }) => [cle, logo])), logos);
+  for (const [cle, logo] of Object.entries(logos)) {
+    assert.ok(fs.existsSync(path.join(RACINE, 'shared/icones/modules', `${logo}.svg`)), cle);
+  }
+});
+
+test('le helper garde une place réservée au cadre et au rayon de la série B', async () => {
+  const { createServer } = await import('vite');
+  const serveur = await createServer({
+    root: path.join(RACINE, 'vitrine'),
+    configFile: false,
+    server: { middlewareMode: true, watch: null },
+    appType: 'custom',
+  });
+  try {
+    const { logoModule } = await serveur.ssrLoadModule('/src/components/applications/logos.js');
+    const svg = logoModule({ logo: null });
+    assert.match(svg, /viewBox="0 0 96 96"/);
+    assert.match(svg, /<rect x="4" y="4" width="88" height="88" rx="19\.5"/);
+  } finally {
+    await serveur.close();
   }
 });
 
