@@ -59,7 +59,7 @@ L'agent ne touche pas :
 - Charte v3 (`shared/charte/jetons.json`), logos officiels (VIT-06).
 - Textes C2 de l'ouverture de l'accueil, visés le 19 nov. (plan de VIT-09b, question 7).
 - EP-19 : 200 Ko par page au plus (VIT-19).
-- **La retouche de la première section sort de VIT-09b** (#227) et passe à VIT-23 ; VIT-09b garde les captures, les icônes vivantes et la page Application (coordinateur, 26 nov. ; à confirmer par le chef, dont le plan de VIT-09b portait cette partie).
+- **La retouche de la première section sort de VIT-09b** (#227) et passe à VIT-23 ; VIT-09b garde les captures, les icônes vivantes et la page Application (coordinateur, 26 nov. ; **confirmé par le chef le 26 nov. à 14 h 30**).
 
 ## Questions en attente
 
@@ -104,3 +104,4 @@ Quand tu as fini, donne au chef le chemin complet des captures.
 | 2026-11-26 12 h 20 | plan `90b9963f` relu : composant d'ouverture commun, illustrations par `import.meta.glob` sans copie, poids et accessibilité tenus ; Q3 au chef (non), Q7 accordée | **plan validé** (coordinateur) ; essai ensuite |
 | 2026-11-26 12 h 40 | essai (`108ce86c`) vu sur captures : axe-core 77/77, accueil 132,8 Ko, Espace de cours 78,4 Ko | **rendu choisi par le chef** : à côté, accueil A, relief, onglets en haut ; étape 4 |
 | 2026-11-26 14 h 20 | étape 4 (`2c940807` à `16aef769`) relue : périmètre tenu (aucun fichier hors fiche, `logos.js` et `shared/icones/` non touchés), clés i18n limitées à `relief`, `surtitre` et `roles`, textes C2 conformes au plan de VIT-09b (q. 7), tests 167/168 (1 sauté) et `verifier-neutre` refaits par le coordinateur ; build, rendus, axe-core et poids crus sur parole | **prête pour la PR**, après la fusion de #277 et un `git merge origin/main` |
+| 2026-11-26 14 h 30 | le chef valide le rendu de toutes les pages sur captures et confirme que la première section sort de VIT-09b | PR après la fusion de #277 |
