@@ -43,7 +43,7 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 ## Relevé de 9 h 20 et VIT-09d
 
 - #263 fusionnée ; #261 (VIT-20d) poussée, encore en brouillon ; #274 et #275 ouvertes. Codex et l'agent de Cursor n'ont pas encore lu les messages de 9 h 12.
-- **VIT-09d** (demande du chef) : les 20 logos redessinés dans le style du logo Planner, deux séries (A tuile bleu nuit commune, B teinte de l'application), tout de suite, par une session Claude neuve. Fiche `missions/vit-09d-logos-style-planner.md` ; ligne de suivi ; décision du chef et ligne du coordinateur. VIT-20f attend le choix ; consigne à Codex (`codex/entree/2026-11-26-0925-vit-20f-attend-logos.md` ou l'heure du dépôt).
+- **VIT-09d** (demande du chef) : les 20 logos redessinés dans le style du logo Planner, deux séries (A tuile bleu nuit commune, B teinte de l'application), tout de suite, par une session Claude neuve. Fiche `missions/vit-09d-logos-style-planner.md` ; ligne de suivi ; décision du chef et ligne du coordinateur. VIT-20f attend le choix ; consigne à Codex (`codex/entree/2026-11-26-0924-vit-20f-attend-logos.md`).
 
 ## Reste à faire, dans l'ordre
 
