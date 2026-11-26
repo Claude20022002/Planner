@@ -37,3 +37,4 @@ Chaque plan court dit ses fichiers ; le coordinateur vérifie qu'ils ne croisent
 | 22 nov. 16 h 40 | M-12 relue (`ea6c747d`) : **prête pour la PR** ; M-11 : plan validé (« crédits ») ; M-10 : #255 verte | prête / validé |
 | 22 nov. 17 h | M-1 relue (`097e704c`) : **à corriger** (séance annulée ; date limite et lecture hors délai à l'écran) | à corriger |
 | 22 nov. 17 h 15 | M-1 corrigée (`be800297`) : **prête pour la PR**, après #255 | prête |
+| 26 nov. | M-9 : #272 fusionnée (CI 45735238707 verte, sept contrôles) ; fiche de la dernière étape (`53c80187`) restée en local sur la branche, sans effet | fusionnée |

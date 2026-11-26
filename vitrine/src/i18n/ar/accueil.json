@@ -241,7 +241,6 @@
       {
         "titre": "",
         "lignes": [
-          "",
           ""
         ],
         "image": ""
@@ -265,7 +264,6 @@
     ],
     "illustrations": {
       "applications": [
-        "",
         "",
         "",
         "",
@@ -364,15 +362,6 @@
         "annonce": {
           "titre": "",
           "texte": ""
-        },
-        "bibliotheque": {
-          "titre": "",
-          "documents": [
-            "",
-            "",
-            "",
-            ""
-          ]
         }
       },
       "etablissement": {
@@ -404,7 +393,6 @@
       },
       "mobile": {
         "onglets": [
-          "",
           "",
           "",
           "",

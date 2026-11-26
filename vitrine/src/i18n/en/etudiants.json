@@ -1,24 +1,19 @@
 {
   "meta": {
     "titre": "Students · Planner",
-    "description": "The student sees the published materials of their courses."
+    "description": "Students see the links published in their courses."
   },
   "entete": {
     "surtitre": "Students",
     "titre": "Class materials, and news from the school.",
-    "accroche": "The student sees the published materials of their courses."
+    "accroche": "Students see the links published in their courses."
   },
   "aujourdhui": "Today",
   "cartes": [
     {
-      "page": "applications",
-      "titre": "Library",
-      "texte": "Documents are organised by programme and by module."
-    },
-    {
       "page": "socle",
       "titre": "App",
-      "texte": "Five tabs: the board, the week, the scanner, the library, the account."
+      "texte": "The tabs: the board, the week, the scanner, the account."
     },
     {
       "page": "module.quizEtJeux",
@@ -33,15 +28,11 @@
     "lignes": [
       {
         "avant": "Course materials arrive by message or on paper.",
-        "avec": "The student sees the published materials of their courses."
-      },
-      {
-        "avant": "The school's documents sit in shared folders.",
-        "avec": "Documents are organised by programme and by module."
+        "avec": "Students see the links published in their courses."
       },
       {
         "avant": "The week is read from a posted sheet.",
-        "avec": "The students' application shows their week, scans the attendance QR code and opens the Library. Without a phone, the timetable and the resources open in a browser, and the teacher takes attendance by hand."
+        "avec": "The students' application shows their week and scans the attendance QR code. Without a phone, the timetable and the resources open in a browser, and the teacher takes attendance by hand."
       },
       {
         "avant": "Taking the quiz means installing an application.",
@@ -58,15 +49,11 @@
     "questions": [
       {
         "question": "What does the mobile application offer?",
-        "reponse": "The students' application shows their week, scans the attendance QR code and opens the Library. Without a phone, the timetable and the resources open in a browser, and the teacher takes attendance by hand."
+        "reponse": "The students' application shows their week and scans the attendance QR code. Without a phone, the timetable and the resources open in a browser, and the teacher takes attendance by hand."
       },
       {
-        "question": "Where are my course materials?",
-        "reponse": "The student sees the published materials of their courses."
-      },
-      {
-        "question": "Where are the school's documents?",
-        "reponse": "Documents are organised by programme and by module."
+        "question": "Where are my course links?",
+        "reponse": "Students see the links published in their courses."
       }
     ]
   }

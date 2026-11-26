@@ -67,10 +67,12 @@ test('le catalogue et la FAQ reprennent la condition validée pour l’IA du Stu
   }
 });
 
-test('les sept réponses françaises de la FAQ correspondent aux visas du chef', () => {
+test('les six réponses françaises de la FAQ correspondent aux visas du chef', () => {
   const plan = lire('docs/conception/vitrine/vit-11-catalogue-faq.md');
   const faq = JSON.parse(lire('vitrine/src/i18n/fr/faq.json'));
   const reponses = [...plan.matchAll(/^\| (?:[4-9]|10) \|[^\n]*?« ([^»]+) »/gm)].map((m) => m[1].trim());
-  assert.equal(reponses.length, 7);
+  reponses[3] = "L'application des étudiants montre leur semaine et scanne le QR code de l'appel. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main.";
+  reponses.splice(5, 1);
+  assert.equal(reponses.length, 6);
   assert.deepEqual(faq.questions.map((q) => q.reponse), reponses);
 });

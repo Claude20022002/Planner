@@ -19,7 +19,7 @@
     {
       "page": "module.espaceDeCours",
       "titre": "Cours et annonces",
-      "texte": "L'enseignant dépose un document ou un lien dans une section."
+      "texte": "L'enseignant publie un lien dans une section. Dépôt de documents : Bientôt."
     },
     {
       "page": "module.emploiDuTemps",
@@ -42,7 +42,7 @@
       },
       {
         "avant": "Un document de cours s'envoie aux étudiants.",
-        "avec": "L'enseignant dépose un document ou un lien dans une section."
+        "avec": "L'enseignant publie un lien dans une section. Dépôt de documents : Bientôt."
       },
       {
         "avant": "Un sondage se fait à main levée ou sur un papier.",

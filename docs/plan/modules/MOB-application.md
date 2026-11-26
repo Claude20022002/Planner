@@ -29,7 +29,7 @@
 | MOB-07 | Adresse de l'API qui n'est plus figée à la construction (une application pour toutes les installations) | I-12 | 3 | M | — | à faire |
 | MOB-08 | Appel à la main sans réseau, sur le téléphone de l'enseignant : envoyé au retour du réseau avec l'heure réelle de la saisie ; le QR code reste en ligne (N2, synthèse des concurrents) | — (décision du chef du 21 nov.) | 3 | M (provisoire) | MOB-02 ; plan conçu avec l'étude EP-18 | à faire |
 | MOB-09 | pdf.js servi par l'application, et non plus chargé depuis cdnjs à l'ouverture d'un PDF sur Android (`mobile/src/documents/Lecteur.jsx:15`) : plus aucun envoi vers un tiers à la lecture d'un document (EP-13, décision du 16 nov. ; numérotée MOB-08 le 16 nov., renumérotée le 21 nov.) | — | libre | S | — | à faire |
-| MOB-10 | Rôle de la scolarité et de la direction sur le téléphone : valider un report, voir les absences du jour, prévenir une classe | — | à placer | M | MOB-02, COM-01 | à faire |
+| MOB-10 | Rôle de la scolarité et de la direction sur le téléphone : valider un report, voir les absences du jour, prévenir une classe | — | 6 | M | MOB-02, COM-01 | à faire |
 
 ## Critères de « terminé »
 

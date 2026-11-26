@@ -241,10 +241,9 @@
       {
         "titre": "Every class has its own space.",
         "lignes": [
-          "Materials by section, polls, school announcements.",
-          "The library opens with the same account."
+          "Links by section, polls, school announcements."
         ],
-        "image": "A class space: its sections and their materials, a poll whose bars rise, an announcement. Then the library opens."
+        "image": "A class space: its sections and their links, a poll whose bars rise, an announcement."
       },
       {
         "titre": "The whole school at a glance.",
@@ -257,10 +256,10 @@
       {
         "titre": "On the phone, too.",
         "lignes": [
-          "The week, the attendance scanner, the library.",
+          "The week, the attendance scanner.",
           "Let's talk about your school."
         ],
-        "image": "On a phone, the bottom bar shows the Board, Week, Scan, Library and Account tabs; the week, the scanner, then the library go by. Then the Planner logo and name."
+        "image": "On a phone, the bottom bar shows the Board, Week, Scan and Account tabs; the week, then the scanner go by. Then the Planner logo and name."
       }
     ],
     "illustrations": {
@@ -270,8 +269,7 @@
         "People",
         "School",
         "Announcements",
-        "Quizzes and games",
-        "Library"
+        "Quizzes and games"
       ],
       "semaine": "Week 12",
       "calcul": "Building the timetable",
@@ -364,15 +362,6 @@
         "annonce": {
           "titre": "School announcement",
           "texte": "Exam registration opens on Monday."
-        },
-        "bibliotheque": {
-          "titre": "Library",
-          "documents": [
-            "Point mechanics",
-            "Calculus 1",
-            "Organic chemistry",
-            "Algorithms"
-          ]
         }
       },
       "etablissement": {
@@ -407,7 +396,6 @@
           "Board",
           "Week",
           "Scan",
-          "Library",
           "Account"
         ]
       }

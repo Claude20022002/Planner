@@ -1,24 +1,19 @@
 {
   "meta": {
     "titre": "Étudiants · Planner",
-    "description": "L'étudiant voit les supports publiés de ses cours."
+    "description": "L'étudiant voit les liens publiés de ses cours."
   },
   "entete": {
     "surtitre": "Étudiants",
     "titre": "Les supports de la classe, et les nouvelles de l'école.",
-    "accroche": "L'étudiant voit les supports publiés de ses cours."
+    "accroche": "L'étudiant voit les liens publiés de ses cours."
   },
   "aujourdhui": "Aujourd'hui",
   "cartes": [
     {
-      "page": "applications",
-      "titre": "Bibliothèque",
-      "texte": "Les documents sont rangés par filière et par module."
-    },
-    {
       "page": "socle",
       "titre": "Application",
-      "texte": "Cinq onglets : le tableau, la semaine, le scanner, la bibliothèque, le compte."
+      "texte": "Les onglets : le tableau, la semaine, le scanner, le compte."
     },
     {
       "page": "module.quizEtJeux",
@@ -33,15 +28,11 @@
     "lignes": [
       {
         "avant": "Les supports du cours arrivent par message ou sur papier.",
-        "avec": "L'étudiant voit les supports publiés de ses cours."
-      },
-      {
-        "avant": "Les documents de l'école sont dans des dossiers partagés.",
-        "avec": "Les documents sont rangés par filière et par module."
+        "avec": "L'étudiant voit les liens publiés de ses cours."
       },
       {
         "avant": "La semaine se consulte sur une feuille affichée.",
-        "avec": "L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
+        "avec": "L'application des étudiants montre leur semaine et scanne le QR code de l'appel. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
       },
       {
         "avant": "Participer au quiz demande d'installer une application.",
@@ -58,15 +49,11 @@
     "questions": [
       {
         "question": "Que propose l'application mobile ?",
-        "reponse": "L'application des étudiants montre leur semaine, scanne le QR code de l'appel et ouvre la Bibliothèque. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
+        "reponse": "L'application des étudiants montre leur semaine et scanne le QR code de l'appel. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main."
       },
       {
-        "question": "Où sont les supports de mes cours ?",
-        "reponse": "L'étudiant voit les supports publiés de ses cours."
-      },
-      {
-        "question": "Où sont les documents de l'école ?",
-        "reponse": "Les documents sont rangés par filière et par module."
+        "question": "Où sont les liens de mes cours ?",
+        "reponse": "L'étudiant voit les liens publiés de ses cours."
       }
     ]
   }

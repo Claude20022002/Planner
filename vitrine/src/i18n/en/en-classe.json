@@ -28,23 +28,5 @@
       "The link opens in a browser. A code or a QR code leads to the same link.",
       "Live in class, or at your own pace"
     ]
-  },
-  "aussi": {
-    "surtitre": "And also",
-    "titre": "Revise, and have your say.",
-    "cartes": [
-      {
-        "titre": "Games",
-        "texte": "Teachers offer games to their classes, including a simulated Linux terminal to practise commands."
-      },
-      {
-        "titre": "Polls",
-        "texte": "Teachers ask their class a question, and answers are anonymous. The school chooses whether to turn polls on."
-      },
-      {
-        "titre": "One account",
-        "texte": "The same account opens Planner, the course library and the games."
-      }
-    ]
   }
 }

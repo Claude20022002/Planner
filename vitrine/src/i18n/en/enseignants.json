@@ -19,7 +19,7 @@
     {
       "page": "module.espaceDeCours",
       "titre": "Courses and announcements",
-      "texte": "The teacher adds a document or a link in a section."
+      "texte": "The teacher publishes a link in a section. Document uploads: coming soon."
     },
     {
       "page": "module.emploiDuTemps",
@@ -42,7 +42,7 @@
       },
       {
         "avant": "A course document is sent to the students.",
-        "avec": "The teacher adds a document or a link in a section."
+        "avec": "The teacher publishes a link in a section. Document uploads: coming soon."
       },
       {
         "avant": "A poll is done by a show of hands or on paper.",
