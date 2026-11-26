@@ -18,6 +18,7 @@ import { occupationsDuJour } from "./occupations.js";
 import { disponibiliteEnseignant } from "./enseignants.js";
 import { enregistrerSeance, notifierChangementSeance } from "./seances.js";
 import { notifierAdministrateurs } from "../../utils/notificationHelper.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Imprévus du semestre (phase P6) : absence d'un enseignant (remplaçant ou rattrapage), salle
@@ -88,7 +89,7 @@ export const declarerAbsence = async ({ id_user, date_debut, date_fin, motif, us
     if (user.role !== "admin" && touchees.length) {
         await notifierAdministrateurs({
             titre: "Absence d'enseignant",
-            message: `${nomComplet(enseignant.user)} sera absent du ${date_debut} au ${date_fin} (${motif}) : ${touchees.length} séance(s) à traiter.`,
+            message: `${nomComplet(enseignant.user)} sera absent du ${date_debut} au ${date_fin} (${motif}) : ${accorder(touchees.length, "séance à traiter", "séances à traiter")}.`,
             type_notification: "warning",
             lien: "/gestion/imprevus",
         }).catch(() => {});

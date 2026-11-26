@@ -21,6 +21,7 @@ import {
     scinderEnseignement,
 } from "../services/planning/enseignements.js";
 import { contientParentEtEnfant } from "../services/planning/groupes.js";
+import { accorder } from "../../shared/accords.js";
 
 /**
  * Enseignements : ce qui sera réellement planifié (composante × groupes, sur une période).
@@ -93,7 +94,7 @@ export const getEnseignements = asyncHandler(async (req, res) => {
 export const genererDepuisMaquette = asyncHandler(async (req, res) => {
     try {
         const rapport = await genererEnseignements({ id_periode: req.body.id_periode, id_filiere: req.body.id_filiere || null });
-        res.status(rapport.crees ? 201 : 200).json({ message: `${rapport.crees} enseignement(s) créé(s)`, ...rapport });
+        res.status(rapport.crees ? 201 : 200).json({ message: accorder(rapport.crees, "enseignement créé", "enseignements créés"), ...rapport });
     } catch (error) {
         repondreErreur(res, error);
     }
@@ -172,7 +173,7 @@ export const deleteEnseignement = asyncHandler(async (req, res) => {
     }
     const seances = await Affectation.count({ where: { id_enseignement: enseignement.id_enseignement } });
     if (seances > 0) {
-        return res.status(409).json({ message: "Enseignement planifié", error: `${seances} séance(s) sont déjà planifiées` });
+        return res.status(409).json({ message: "Enseignement planifié", error: accorder(seances, "séance est déjà planifiée", "séances sont déjà planifiées") });
     }
     await enseignement.destroy();
     res.json({ message: "Enseignement supprimé" });

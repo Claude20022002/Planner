@@ -26,9 +26,9 @@ L'inventaire le dit : le vrai problème est d'**imputer chaque paiement au bon �
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| PAI-01 | Rapprochement : référence unique par élève, import des relevés (banque, CMI), rapprochement automatique avec les reçus de FIN-01, alerte de paiement non imputé, double validation d'un rapprochement manuel | — | 4 | L | FIN-01, VEN-02 | à faire |
-| PAI-02 | Paiement en ligne par carte et CMI : la commission et qui la paie sont affichées sur le reçu | — | 4 | M | PAI-01 | à faire |
-| PAI-03 | Argent mobile par des agrégateurs (Wave, Orange Money, MTN, M-Pesa…), plusieurs devises, quand l'Afrique subsaharienne est visée | — | 5 | L | PAI-01, PLA-13 | reporté |
+| PAI-01 | Rapprochement : référence unique par élève, import des relevés (banque, CMI), rapprochement automatique avec les reçus de FIN-01, alerte de paiement non imputé, double validation d'un rapprochement manuel | — | 6 | L | FIN-01, VEN-02 | à faire |
+| PAI-02 | Paiement en ligne par carte et CMI : la commission et qui la paie sont affichées sur le reçu | — | 6 | M | PAI-01 | à faire |
+| PAI-03 | Argent mobile par des agrégateurs (Wave, Orange Money, MTN, M-Pesa…), plusieurs devises, quand l'Afrique subsaharienne est visée | — | 7 | L | PAI-01, PLA-13 | reporté |
 
 ## Critères de « terminé »
 

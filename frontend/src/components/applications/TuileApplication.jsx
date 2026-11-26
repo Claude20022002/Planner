@@ -1,10 +1,32 @@
-/** Rend la tuile et son lien clavier, ou une tuile inactive sans lien. */
+/** Rend la tuile et son lien clavier, ou une tuile inactive sans lien. Charge les icônes animées. */
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import IconeApplication from './IconeApplication';
+import ClocheAnimee from './icones/ClocheAnimee';
+import LivreAnime from './icones/LivreAnime';
+import CalendrierAnime from './icones/CalendrierAnime';
+import DiplomeAnime from './icones/DiplomeAnime';
+import ReglagesAnimes from './icones/ReglagesAnimes';
+import EtincellesAnimees from './icones/EtincellesAnimees';
+import PersonnesAnimees from './icones/PersonnesAnimees';
 import { DEGRADES_APPLICATIONS } from './teintes';
+
+const ICONES_ANIMEES = {
+  calendar: CalendrierAnime,
+  school: DiplomeAnime,
+  people: PersonnesAnimees,
+  settings: ReglagesAnimes,
+  campaign: ClocheAnimee,
+  quiz: EtincellesAnimees,
+  library: LivreAnime,
+};
+
+function IconeAnimee({ nom }) {
+  const Icone = ICONES_ANIMEES[nom] ?? ICONES_ANIMEES.calendar;
+  return <Icone aria-hidden focusable="false" size={22} strokeWidth={1.8} />;
+}
 
 const LienAnime = motion.create(RouterLink);
 const REPOS = { scale: 1 };
@@ -61,7 +83,7 @@ export default function TuileApplication({ application, chemin, mouvementReduit,
             '& svg': { inlineSize: { xs: 36, md: 44 }, blockSize: { xs: 36, md: 44 } },
           }}
         >
-          <IconeApplication nom={icone} animee={animee} />
+          {animee ? <IconeAnimee nom={icone} /> : <IconeApplication nom={icone} />}
         </Box>
         <Box component="span" className="nom-application">
           {t('applications.' + id + '.titre')}

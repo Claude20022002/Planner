@@ -4,6 +4,7 @@ import { AnneeUniversitaire, Periode, Evenement } from "../models/index.js";
 import { asyncHandler } from "../middleware/asyncHandler.js";
 import { pick } from "../utils/validationHelper.js";
 import { evenementsCalendrierMaroc } from "../utils/feriesMaroc.js";
+import { accorder } from "../../shared/accords.js";
 
 const ANNEE_FIELDS = ["libelle", "date_debut", "date_fin", "active"];
 const PERIODE_FIELDS = ["code", "libelle", "date_debut", "date_fin", "nb_semaines"];
@@ -143,7 +144,7 @@ export const genererFeries = asyncHandler(async (req, res) => {
     });
 
     res.status(201).json({
-        message: `${crees.length} événement(s) ajouté(s) au calendrier ${annee.libelle}`,
+        message: `${accorder(crees.length, "événement ajouté", "événements ajoutés")} au calendrier ${annee.libelle}`,
         crees: crees.length,
         a_confirmer: crees.filter((e) => !e.date_confirmee).length,
         evenements: crees,

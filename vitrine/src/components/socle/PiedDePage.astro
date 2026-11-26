@@ -55,6 +55,10 @@ const colonnes = [
     </nav>
     <div class="bas">
       <p>{t('pied.droits')}</p>
+      <ul class="legal">
+        <li><a href={chemin(langue, 'mentionsLegales')}>{t('navigation.mentionsLegales')}</a></li>
+        <li><a href={chemin(langue, 'confidentialite')}>{t('navigation.confidentialite')}</a></li>
+      </ul>
       <ul class="langues" aria-label={t('langues.label')}>
         {LANGUES_PUBLIEES.map((l) => (
           <li><a href={chemin(l, page)} hreflang={l} lang={l} aria-current={l === langue ? 'true' : undefined}>{t(`langues.${l}`)}</a></li>
@@ -95,5 +99,7 @@ const colonnes = [
     border-block-start: 1px solid var(--gris-trait);
   }
   .langues { display: flex; gap: var(--espace-3); }
+  /* VIT-12 : mentions légales et confidentialité, sous les colonnes (plan de VIT-20, § 4.5) */
+  .legal { display: flex; flex-wrap: wrap; gap: var(--espace-3); margin: 0; padding: 0; list-style: none; }
   .langues a[aria-current='true'] { color: var(--encre); font-weight: 600; }
 </style>

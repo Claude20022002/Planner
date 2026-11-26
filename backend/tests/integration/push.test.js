@@ -103,7 +103,7 @@ describe("Envoi", () => {
         await creerNotificationsMultiples({
             id_users: [autre.id_user],
             titre: "Absence d'enseignant",
-            message: "Prénom Essai sera absent du 2026-11-20 au 2026-11-21 (motif-essai) : 2 séance(s) à traiter.",
+            message: "Prénom Essai sera absent du 2026-11-20 au 2026-11-21 (motif-essai) : 2 séances à traiter.",
             lien: "/gestion/imprevus",
         });
         await attendreFilePush();

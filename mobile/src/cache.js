@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * Dernier tableau et dernières semaines consultés, pour l'étudiant dans le tram sans réseau :
  * affichés avec « mis à jour à HH:MM ». Effacés à la déconnexion (téléphone prêté ou partagé).
  */
-const PREFIXE = 'hestim.cache.';
+export const PREFIXE = 'planner.cache.';
 
 export const lireCache = async (cle) => {
   try {

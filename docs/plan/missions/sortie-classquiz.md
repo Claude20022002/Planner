@@ -47,3 +47,4 @@ Ne modifie pas docs/plan/suivi.md. Jamais de git push.
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 13 h 40 | fiche écrite, sur décision du chef | — |
+| 2026-11-18 17 h | QJE-01 fusionnée (#208, 15 h 37), CI verte rapportée par l'agent de Cursor. Restent QJE-03 et QJE-06, chez Codex (n° 5 de sa file) | QJE-01 close |

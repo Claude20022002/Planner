@@ -5,6 +5,7 @@ import { aujourdhui } from "../planning/affectationRules.js";
 import { enregistrerSeance, notifierChangementSeance } from "../planning/seances.js";
 import { journaliser } from "../journalSecurite.js";
 import { compteOuErreur, dateEffet, motifValide, seancesFutures, verifierCible } from "./regles.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Désactivation des comptes par l'administration (plan multi-établissements, fichier 11, § 11.2,
@@ -57,7 +58,7 @@ export const desactiver = async (acteur, idUser, { motif, date, preavis = true, 
 
     const futures = user.role === "enseignant" ? await seancesFutures(user.id_user, effet) : [];
     if (futures.length && seances !== "annuler") {
-        throw new ErreurMetier(`${futures.length} séance(s) à venir de cet enseignant : confiez-les à un remplaçant ou choisissez de les annuler`, 409, "SEANCES_A_TRAITER");
+        throw new ErreurMetier(`${accorder(futures.length, "séance à venir", "séances à venir")} de cet enseignant : confiez-les à un remplaçant ou choisissez de les annuler`, 409, "SEANCES_A_TRAITER");
     }
     const annulees = futures.length ? await annulerSeances(futures, acteur) : 0;
 

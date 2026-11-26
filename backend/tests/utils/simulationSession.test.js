@@ -71,11 +71,17 @@ describe('Shared web/native simulation session', () => {
         await session.essayer(); expect(session.lire()).toMatchObject({ points: 0, reussis: [] });
     });
     test('progression restores attempts and assisted challenges without fetching the solution', async () => {
-        const api = { progression: jest.fn().mockResolvedValue({ points: 0, defis: [{ id: 'robot-01', avec_solution: true }],
-            etats: [{ id: 'robot-01', echecs: 3, solution_vue: true, sans_points: true }, { id: 'robot-02', echecs: 2, solution_vue: false, sans_points: false }] }) };
+        const api = {
+            progression: jest.fn().mockResolvedValue({
+                points: 0, defis: [{ id: 'robot-01', avec_solution: true }],
+                etats: [{ id: 'robot-01', echecs: 3, solution_vue: true, sans_points: true }, { id: 'robot-02', echecs: 2, solution_vue: false, sans_points: false }]
+            })
+        };
         const session = creerSession(jeu, api); await session.charger();
-        expect(session.lire()).toMatchObject({ reussis: ['robot-01'], aides: ['robot-01'], points: 0, solution: null,
-            etats: { 'robot-01': { echecs: 3, solution_vue: true, sans_points: true }, 'robot-02': { echecs: 2, solution_vue: false, sans_points: false } } });
+        expect(session.lire()).toMatchObject({
+            reussis: ['robot-01'], aides: ['robot-01'], points: 0, solution: null,
+            etats: { 'robot-01': { echecs: 3, solution_vue: true, sans_points: true }, 'robot-02': { echecs: 2, solution_vue: false, sans_points: false } }
+        });
     });
     test('the solution is requested once, revealed read-only, and never changes points', async () => {
         const solution = jest.fn().mockResolvedValue({ reponse: { programme: 'EEESSS' }, echecs: 3, solution_vue: true, sans_points: true });
@@ -83,8 +89,10 @@ describe('Shared web/native simulation session', () => {
         await session.voirSolution(); await session.voirSolution();
         expect(api.solution).toHaveBeenCalledTimes(1);
         expect(api.solution).toHaveBeenCalledWith('robot-route', 'robot-01');
-        expect(session.lire()).toMatchObject({ solution: { programme: 'EEESSS' }, points: 0, reussis: [], occupe: false,
-            etats: { 'robot-01': { echecs: 3, solution_vue: true, sans_points: true } } });
+        expect(session.lire()).toMatchObject({
+            solution: { programme: 'EEESSS' }, points: 0, reussis: [], occupe: false,
+            etats: { 'robot-01': { echecs: 3, solution_vue: true, sans_points: true } }
+        });
     });
     test('changing challenge ignores a late solution response', async () => {
         const d = differe(); const { session } = await preparer(jest.fn(), { solution: jest.fn(() => d.promise) });
@@ -103,11 +111,15 @@ describe('Shared web/native simulation session', () => {
         expect(session.lire()).toMatchObject({ erreur: 'solutionErreur', solution: null, occupe: false });
     });
     test('assisted success counts as completed, keeps zero points, and is listed separately', async () => {
-        const assiste = { ok: true, problemes: [], enregistre: true, cree: true, points: 0, avec_solution: true,
-            echecs: 3, solution_vue: true, sans_points: true, progression: { points: 0 } };
+        const assiste = {
+            ok: true, problemes: [], enregistre: true, cree: true, points: 0, avec_solution: true,
+            echecs: 3, solution_vue: true, sans_points: true, progression: { points: 0 }
+        };
         const { session } = await preparer(jest.fn().mockResolvedValue(assiste));
         await session.essayer();
-        expect(session.lire()).toMatchObject({ points: 0, reussis: ['robot-01'], aides: ['robot-01'],
-            etats: { 'robot-01': { echecs: 3, solution_vue: true, sans_points: true } } });
+        expect(session.lire()).toMatchObject({
+            points: 0, reussis: ['robot-01'], aides: ['robot-01'],
+            etats: { 'robot-01': { echecs: 3, solution_vue: true, sans_points: true } }
+        });
     });
 });

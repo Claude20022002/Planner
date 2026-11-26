@@ -30,10 +30,10 @@ Dans ces structures, **la preuve conditionne le paiement** : une feuille de pré
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| FOR-01 | Sessions et cohortes (une session n'est pas une année), conventions, convocations | — | 5 | L | MOT-05 | à faire |
-| FOR-02 | Émargement signé par demi-journée, avec contrôle de complétude ; attestations et certificats de réalisation | — | 5 | M | FOR-01 | à faire |
-| FOR-03 | Dossiers par financeur (CSF et GIAC, FDFP, 3FPT, OPCO, CPF…) et facturation à plusieurs payeurs (entreprise, financeur, apprenant) | — | 5 | L | FOR-02, FIN-01 | à faire |
-| FOR-04 | Preuves qualité rangées par indicateur (Qualiopi ou référentiel du pays) | — | 5 | M | FOR-02 | à faire |
+| FOR-01 | Sessions et cohortes (une session n'est pas une année), conventions, convocations | — | 4 | L | MOT-05 | à faire |
+| FOR-02 | Émargement signé par demi-journée, avec contrôle de complétude ; attestations et certificats de réalisation | — | 4 | M | FOR-01 | à faire |
+| FOR-03 | Dossiers par financeur (CSF et GIAC, FDFP, 3FPT, OPCO, CPF…) et facturation à plusieurs payeurs (entreprise, financeur, apprenant) | — | 4 | L | FOR-02, FIN-01 | à faire |
+| FOR-04 | Preuves qualité rangées par indicateur (Qualiopi ou référentiel du pays) | — | 4 | M | FOR-02 | à faire |
 
 ## Critères de « terminé »
 

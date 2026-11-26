@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HESTIM Planner",
+    "name": "Planner",
     "slug": "hestim-planner",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -40,7 +40,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "HESTIM Planner accède à vos photos seulement pour celle que vous choisissez d'ajouter à un retour de stage.",
+          "photosPermission": "Planner accède à vos photos seulement pour celle que vous choisissez d'ajouter à un retour de stage.",
           "cameraPermission": false,
           "microphonePermission": false
         }
@@ -48,7 +48,7 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "HESTIM Planner utilise l'appareil photo pour scanner le QR code de l'appel en classe.",
+          "cameraPermission": "Planner utilise l'appareil photo pour scanner le QR code de l'appel en classe.",
           "microphonePermission": false,
           "recordAudioAndroid": false
         }

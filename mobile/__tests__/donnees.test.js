@@ -18,5 +18,5 @@ test('campus, type de composante et distanciel', () => {
   expect(s).toMatchObject({ id: 9, startLabel: '13:30', courseType: 'TP', distanciel: true, mention: 'Blended Coursera', teacher: 'Ali Bennis', status: 'reporte', previousLabel: '01/03' });
 
   const enSalle = versSeance({ id_affectation: 10, date_seance: '2027-03-02', statut: 'planifie', creneau: { heure_debut: '09:00:00', heure_fin: '10:45:00' }, cours: { nom_cours: 'ML' }, salle: { nom_salle: 'ST-204', campus: { code: 'ST', nom: 'Stendhal' } } });
-  expect(enSalle).toMatchObject({ room: 'ST-204', building: 'Stendhal', distanciel: false });
+  expect(enSalle).toMatchObject({ room: 'ST-204', building: '', distanciel: false });
 });

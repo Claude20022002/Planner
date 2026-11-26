@@ -26,6 +26,8 @@
     "enseignants": "Enseignants",
     "etudiants": "Étudiants",
     "ressources": "Ressources",
+    "mentionsLegales": "Mentions légales",
+    "confidentialite": "Confidentialité",
     "applications": "Applications",
     "etablissements": "Établissements",
     "contactLien": "Contact",
@@ -57,6 +59,9 @@
   "redirection": {
     "titre": "Planner",
     "lien": "Aller à la page d'accueil"
+  },
+  "contact": {
+    "email": "contact@finadmintech.fr"
   },
   "categories": {
     "organiser": "Organiser",
