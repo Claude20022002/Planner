@@ -64,6 +64,11 @@ Demande du chef : donner une tâche nouvelle à Codex et à l'agent de Cursor, v
 - Agent de Cursor : plan de `fix-neutralite-docs` (`a7227205`) **validé** ; Q1 tranchée par le chef (README inchangé) ; `DEPLOIEMENT.md` d'abord, le script après la fusion de #276.
 - `main` = `9a428a7c` (#261 fusionnée) ; #274, #275, #276 ouvertes.
 
+## Relevé de 9 h 55 et VIT-23
+
+- Boîtes : rien de nouveau (messages de 9 h 53 pas encore lus). #274 fusionnée ; #277 (VIT-09d) ouverte par le chef.
+- **VIT-23** (demande du chef, capture de « Course space ») : première section remplie, texte et illustration, à la manière d'Odoo, toutes les pages, session Claude neuve. Fiche `missions/vit-23-premieres-sections.md`, ligne de suivi, décisions.
+
 ## Reste à faire, dans l'ordre
 
 1. Le chef : `gh pr ready 263` puis la fusion ; push de VIT-20d (#261) et de cette branche (#275) ; dire à Codex et à l'agent de Cursor « lis ta boîte » ; ouvrir la session d'ADM-02 ; transmettre à Alexis ses cinq messages ; dire s'il ouvre un correctif pour les noms de l'école pilote dans `README.md`, `docker-compose.yml` et `DEPLOIEMENT.md`.
