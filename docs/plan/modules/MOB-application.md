@@ -13,6 +13,7 @@
 - **Fonctions** : notifications par Expo (`services/push.js` côté serveur) ; marque de l'école (`marque.js`, `ecole.js`).
 - **Rôles** : l'application **refuse tout rôle autre qu'étudiant** (`AuthContext.jsx`). La branche `b/v4-application` (enseignants) n'est pas fusionnée.
 - **Adresse de l'API** : `EXPO_PUBLIC_API_URL` est **figée à la construction** (`mobile/eas.json`). L'application ne sert donc qu'une installation (canal I-12).
+- **Nom affiché** (M-12, branche `fix/mob-nom-application`, [plan validé le 22 nov.](../../conception/application/fix-mob-nom-application.md)) : l'application s'appelle Planner. Le cache local est préfixé `planner.cache.` : les copies sous l'ancien préfixe ne sont plus lues, une fois. Le bâtiment affiché vient du campus de la salle, pas du code de la salle.
 - **Pas encore fait** : l'essai sur un vrai téléphone (ME-11).
 
 ## Fonctions
