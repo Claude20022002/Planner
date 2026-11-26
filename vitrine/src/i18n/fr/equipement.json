@@ -1,1 +1,34 @@
-{}
+{
+  "contextes": {
+    "s1": "Sans wifi ou avec peu de connexion",
+    "s2": "Sans écran projeté",
+    "s3": "Sans téléphone de l'élève"
+  },
+  "modules": {
+    "emploiDuTemps": {
+      "s1": "Dans l'application, la dernière semaine consultée reste lisible sans réseau, avec l'heure de sa copie. L'application entièrement utilisable sans connexion : Bientôt.",
+      "s2": "L'emploi du temps s'imprime ou s'enregistre en PDF : il se lit sans écran projeté, pour chaque classe.",
+      "s3": "Sans téléphone, l'étudiant lit son emploi du temps affiché ou imprimé. Les changements sont prévenus par notification et par e-mail, pas autrement."
+    },
+    "presences": {
+      "s1": "L'appel se fait sur le site : il demande une connexion. Il n'existe pas d'appel sans réseau.",
+      "s2": "L'appel à la main se fait sur la liste de la séance, sans écran projeté. Le QR code, lui, se projette.",
+      "s3": "À la main, l'enseignant coche présent, en retard ou absent pour chaque étudiant : aucun téléphone n'est nécessaire. Le QR code exige l'application de l'étudiant."
+    },
+    "espaceDeCours": {
+      "s1": "Il faut une connexion pour ouvrir les liens de cours et répondre aux sondages. Dépôt de documents : Bientôt.",
+      "s2": "Les étudiants ouvrent les liens de cours et répondent aux sondages sur leur appareil, sans écran projeté.",
+      "s3": "Depuis un ordinateur connecté, les étudiants peuvent ouvrir les liens de cours et répondre aux sondages avec leur compte."
+    },
+    "quizEtJeux": {
+      "s1": "Dans un quiz à son rythme, chaque réponse est enregistrée aussitôt : une coupure ne perd rien. Le quiz en direct et les jeux demandent une connexion.",
+      "s2": "Le quiz à son rythme s'ouvre par un lien, un code ou un QR code, sans écran projeté. Le quiz en direct se montre sur un écran projeté.",
+      "s3": "Un quiz se joue dans n'importe quel navigateur, mais chaque étudiant répond depuis un appareil. Le terminal Linux se joue au tableau : l'enseignant tape lui-même la commande."
+    },
+    "annoncesEtMessages": {
+      "s1": "Le poids d'une pièce jointe s'affiche avant de l'ouvrir. L'application ne garde que le tableau et les semaines consultés : sans réseau, une annonce ne se lit pas. L'application entièrement utilisable sans connexion : Bientôt.",
+      "s2": "Une annonce se lit sur l'écran de chacun ; elle ne s'imprime pas depuis Planner.",
+      "s3": "Une annonce arrive par notification dans l'application et, en option, par e-mail. Sans téléphone ni e-mail, l'étudiant ne la reçoit pas."
+    }
+  }
+}
