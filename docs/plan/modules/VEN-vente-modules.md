@@ -36,6 +36,7 @@
 - **VEN-02** :
   - cinq comptes rendus d'entretien sont rangés dans `docs/etude-marche/entretiens/`, anonymisés ;
   - les conséquences pour VSC-04 et FIN-01 sont écrites dans leurs modules.
+- **VEN-02** (21 nov.) : pour l'étape 3, les entretiens se mènent auprès d'écoles **du supérieur** (le supérieur d'abord). Deux questions de plus : l'argent mobile pour payer les frais, là où il sert (N6 : PAI-03 reste reporté) ; et une **tutelle comme client**, réseau d'écoles, diocèse ou ONG (N8 : GRP reste reporté).
 
 ## Décisions
 

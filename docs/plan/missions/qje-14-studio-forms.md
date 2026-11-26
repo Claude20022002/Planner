@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : plan à écrire |
+| État | plan validé par le chef le 21 nov. (`dfefc613`, branche `doc/qje-14-studio-forms`) ; ensuite QJE-14a, plan court (migration A : au chef) |
 | Agent | à attribuer. Proposition : Claude (VS Code), après le plan court d'UIX-10a |
 | Modèle recommandé | le plus capable disponible : c'est un choix de produit, avec des réponses d'élèves et de l'anonymat |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. (« notre propre espace pour les quiz des profs, comme Google Forms ») |
@@ -41,3 +41,4 @@ Le plan, `docs/plan/modules/QJE-quiz-jeux-ia.md` (la ligne QJE-14) et sa fiche d
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-18 14 h 00 | fiche écrite, sur décision du chef | — |
+| 2026-11-22 | plan validé par le chef le 21 nov. (24 réponses, découpage 14a à 14e) ; migrations 0084 (A), 0085 (B), 0086 (C) réservées par le coordinateur ; QJE-14a ensuite | — |

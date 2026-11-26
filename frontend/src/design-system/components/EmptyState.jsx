@@ -1,21 +1,22 @@
+/** État vide d'une liste. L'apparition est en CSS : la bibliothèque d'animation reste sur le lanceur. */
 import { Box, Button, Paper, Typography } from '@mui/material';
 import { InboxOutlined } from '@mui/icons-material';
-import { motion } from 'motion/react';
-
-const MotionPaper = motion(Paper);
 
 export default function EmptyState({ title, description, actionLabel, onAction, icon }) {
   return (
-    <MotionPaper
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+    <Paper
       sx={{
         p: { xs: 3, sm: 4 },
         textAlign: 'center',
         border: '1px dashed',
         borderColor: 'divider',
         bgcolor: 'background.paper',
+        '@keyframes apparitionEtatVide': {
+          from: { opacity: 0, transform: 'scale(0.98)' },
+          to: { opacity: 1, transform: 'scale(1)' },
+        },
+        animation: 'apparitionEtatVide 0.18s cubic-bezier(0.16, 1, 0.3, 1)',
+        '@media (prefers-reduced-motion: reduce)': { animation: 'none' },
       }}
     >
       <Box
@@ -44,7 +45,6 @@ export default function EmptyState({ title, description, actionLabel, onAction, 
           {actionLabel}
         </Button>
       )}
-    </MotionPaper>
+    </Paper>
   );
 }
-

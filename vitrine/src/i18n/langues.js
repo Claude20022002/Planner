@@ -26,6 +26,8 @@ export const PAGES = {
   scolarite: 'scolarite',
   enseignants: 'enseignants',
   etudiants: 'etudiants',
+  mentionsLegales: 'mentions-legales',
+  confidentialite: 'confidentialite',
   applications: 'applications',
   socle: 'socle',
 };

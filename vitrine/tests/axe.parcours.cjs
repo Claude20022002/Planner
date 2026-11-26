@@ -15,8 +15,10 @@ const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
 };
-const PAGES = ['/fr/', '/en/', '/fr/applications/', '/fr/socle/', '/fr/applications/emploi-du-temps/', '/fr/applications/presences/',
-  '/fr/applications/espace-de-cours/', '/fr/applications/quiz-et-jeux/', '/en/applications/annonces-et-messages/'];
+const MODULES = ['emploi-du-temps', 'presences', 'espace-de-cours', 'quiz-et-jeux', 'annonces-et-messages'];
+const AUTRES = ['', 'applications/', 'socle/', 'faq/', 'solutions/', 'comparer/', 'securite/', 'bientot/', 'fonctionnalites/', 'direction/',
+  'scolarite/', 'enseignants/', 'etudiants/', 'bibliotheque-des-jeux/'];
+const PAGES = ['fr', 'en'].flatMap((l) => [...AUTRES, ...MODULES.map((m) => `applications/${m}/`)].map((p) => `/${l}/${p}`));
 
 async function servir(route) {
   const url = new URL(route.request().url());
@@ -41,7 +43,7 @@ test('axe-core ne relève aucune violation', async (t) => {
         try {
           await page.route('**/*', servir);
           await page.goto(origine + adresse);
-          if (adresse.length === 4) {
+          if (/^\/(fr|en)\/$/.test(adresse)) {
             await page.locator('#pourquoi').scrollIntoViewIfNeeded();
             await page.getByRole('tab').first().waitFor();
           }

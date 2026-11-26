@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "titre": "Confidentialité · Planner",
+    "description": "Ce que ce site recueille quand vous le consultez, et pourquoi."
+  },
+  "entete": {
+    "surtitre": "Confidentialité",
+    "titre": "Ce site recueille le moins possible.",
+    "accroche": "Cette page dit exactement ce que ce site garde de votre visite."
+  },
+  "sections": [
+    {
+      "titre": "Ce que ce site ne fait pas",
+      "paragraphes": [
+        "Ce site n'a pas de formulaire : il ne vous demande ni nom, ni adresse, ni message.",
+        "Il ne dépose aucun cookie et n'enregistre rien sur votre appareil.",
+        "Il ne mesure pas l'audience : aucun outil ne compte vos visites.",
+        "Il ne charge rien depuis un autre site : polices, images, vidéos et scripts viennent de ce site."
+      ]
+    },
+    {
+      "titre": "Le journal technique du serveur",
+      "paragraphes": [
+        "Comme tout serveur web, celui de ce site note chaque demande dans un journal technique : l'adresse IP, la date et l'heure, la page demandée, la page d'où vous venez et le type de navigateur.",
+        "Ce journal sert seulement à la sécurité et au bon fonctionnement du site : repérer une attaque, corriger une erreur.",
+        "Il n'est ni vendu, ni utilisé pour suivre vos visites. Il reste sur le serveur du site.",
+        "Il est effacé automatiquement au plus tard après 30 jours."
+      ]
+    },
+    {
+      "titre": "Qui en est responsable, et vos demandes",
+      "paragraphes": [
+        "Le responsable de ce journal est l'éditeur du site (voir les {mentionsLegales}).",
+        "Vous pouvez demander à consulter ou à effacer ce qui vous concerne en écrivant à {email}. Pour retrouver votre visite, nous aurons besoin de votre adresse IP et de l'heure approximative."
+      ]
+    },
+    {
+      "titre": "Ce que cette page ne couvre pas, et ses changements",
+      "paragraphes": [
+        "Cette page ne concerne que ce site. Elle ne décrit pas l'application Planner, ni les données que les écoles y gèrent.",
+        "Si ce site recueille un jour autre chose, par exemple avec un formulaire de contact, cette page sera mise à jour avant.",
+        "Dernière mise à jour : 22 novembre 2026."
+      ]
+    }
+  ],
+  "liens": {
+    "mentionsLegales": "mentions légales"
+  }
+}

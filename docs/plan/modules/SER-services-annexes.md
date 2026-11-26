@@ -25,9 +25,9 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| SER-01 | Abonnements à la cantine, au transport et à l'internat liés au compte famille ; pointage des repas réels ; tarification progressive ; correction et remboursement par l'école ; aucun refus d'accès automatique | — | 5 | L | FIN-01, PAI-01 | à faire (décision du 17 nov., parité OpenEduCat) |
-| SER-02 | Transport : itinéraires, arrêts, véhicules, chauffeurs, affectation des élèves, liste de montée, famille prévenue d'un retard par COM | — | 5 | M | SER-01, COM-01 | à faire |
-| SER-03 | Internat : chambres et lits, affectation, appel du soir, sorties autorisées par la famille | — | 5 | M | SER-01 | à faire |
+| SER-01 | Abonnements à la cantine, au transport et à l'internat liés au compte famille ; pointage des repas réels ; tarification progressive ; correction et remboursement par l'école ; aucun refus d'accès automatique | — | 7 | L | FIN-01, PAI-01 | reporté (étape 7, feuille de route du 21 nov. ; la parité du 17 nov. la reprenait) |
+| SER-02 | Transport : itinéraires, arrêts, véhicules, chauffeurs, affectation des élèves, liste de montée, famille prévenue d'un retard par COM | — | à placer | M | SER-01, COM-01 | à faire |
+| SER-03 | Internat : chambres et lits, affectation, appel du soir, sorties autorisées par la famille | — | à placer | M | SER-01 | à faire |
 
 ## Critères de « terminé »
 

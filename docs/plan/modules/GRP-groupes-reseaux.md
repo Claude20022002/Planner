@@ -24,8 +24,8 @@
 
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
-| GRP-01 | Vue consolidée en lecture sur plusieurs écoles (effectifs, encaissements, présence), chaque école restant dans sa base | — | 5 | L | PLA-05, PLA-11 | reporté |
-| GRP-02 | Paramètres communs au groupe avec dérogations locales ; marque du réseau | — | 5 | M | GRP-01, ADM-02 | reporté |
+| GRP-01 | Vue consolidée en lecture sur plusieurs écoles (effectifs, encaissements, présence), chaque école restant dans sa base | — | 7 | L | PLA-05, PLA-11 | reporté |
+| GRP-02 | Paramètres communs au groupe avec dérogations locales ; marque du réseau | — | 7 | M | GRP-01, ADM-02 | reporté |
 
 ## Critères de « terminé »
 
