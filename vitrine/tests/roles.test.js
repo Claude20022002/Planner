@@ -58,7 +58,6 @@ test('les lignes « avec » et la FAQ recopient des phrases déjà visées', () 
   const enClasse = charger('fr', 'en-classe');
   const cours = charger('fr', 'cours-et-annonces');
   const quiz = charger('fr', 'quiz-et-jeux');
-  const biblio = charger('fr', 'bibliotheque');
   const premiere = (texte) => texte.slice(0, texte.indexOf('. ') + 1);
   const lien = quiz.entete.accroche.split('. ').slice(1).join('. ');
   const plan = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs', 'conception', 'vitrine', 'vit-11-catalogue-faq.md'), 'utf8');
@@ -87,8 +86,7 @@ test('les lignes « avec » et la FAQ recopient des phrases déjà visées', () 
   ]);
   assert.deepEqual(avec('etudiants'), [
     cours.supports.texte,
-    biblio.entete.accroche,
-    vise(7),
+    "L'application des étudiants montre leur semaine et scanne le QR code de l'appel. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main.",
     lien,
     cours.annonces.cartes[0].texte,
   ]);
@@ -98,9 +96,9 @@ test('les lignes « avec » et la FAQ recopient des phrases déjà visées', () 
   assert.equal(reponses('scolarite')[1], premiere(emploi.refus.texte));
   assert.equal(reponses('enseignants')[0], vise(8));
   assert.equal(reponses('enseignants')[2], lien);
-  assert.equal(reponses('etudiants')[0], vise(7));
+  assert.deepEqual(reponses('etudiants'), ["L'application des étudiants montre leur semaine et scanne le QR code de l'appel. Sans téléphone, l'emploi du temps et les ressources s'ouvrent dans un navigateur, et l'enseignant fait l'appel à la main.", cours.supports.texte]);
   for (const page of ['direction', 'scolarite', 'enseignants', 'etudiants']) {
-    assert.equal(charger('fr', page).passage.lignes.length, 5, page);
+    assert.equal(charger('fr', page).passage.lignes.length, page === 'etudiants' ? 4 : 5, page);
     assert.equal(/MAD|prix|tarif/i.test(JSON.stringify(charger('fr', page))), false, page);
   }
   const faq = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'components', 'fonctions', 'FaqRole.astro'), 'utf8');

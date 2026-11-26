@@ -1,16 +1,13 @@
 {
   "meta": {
-    "titre": "Application · Planner",
-    "description": "L'emploi du temps, l'appel, les jeux et la bibliothèque, sur le téléphone."
+    "titre": "Application · Planner"
   },
   "entete": {
-    "surtitre": "Application",
-    "titre": "L'emploi du temps, l'appel, les jeux et la bibliothèque, sur le téléphone.",
-    "accroche": "Cinq onglets : le tableau, la semaine, le scanner, la bibliothèque, le compte."
+    "surtitre": "Application"
   },
   "onglets": {
     "surtitre": "Téléphone",
-    "titre": "Cinq onglets.",
+    "titre": "Les onglets.",
     "texte": "",
     "cartes": [
       {

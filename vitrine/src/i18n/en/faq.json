@@ -16,15 +16,11 @@
     },
     {
       "question": "What does the mobile app offer?",
-      "reponse": "The student app shows the week’s classes, scans the attendance QR code and opens the library. Without a phone, students can open their timetable and resources in a browser, and the teacher can record attendance manually."
+      "reponse": "The student app shows the week’s classes and scans the attendance QR code. Without a phone, students can open their timetable and resources in a browser, and the teacher can record attendance manually."
     },
     {
       "question": "How is AI used?",
       "reponse": "When AI is turned on for your school in the quiz Studio, it can suggest questions that the teacher reviews before sharing them."
-    },
-    {
-      "question": "Can we choose StudyLib separately?",
-      "reponse": "Contact us to discuss StudyLib and the features that meet your school’s needs."
     },
     {
       "question": "How much does it cost?",

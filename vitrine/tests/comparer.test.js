@@ -14,6 +14,7 @@ const charger = (langue) => JSON.parse(fs.readFileSync(path.join(ICI, '..', 'src
 const chaines = (valeur) => (typeof valeur === 'string' ? [valeur] : Object.values(valeur).flatMap(chaines));
 const plan = (nom) => fs.readFileSync(path.join(RACINE, 'docs', 'conception', 'vitrine', nom), 'utf8');
 const PLANS = ['vit-14-comparatif.md', 'vit-14b-criteres.md'].map(plan);
+const PLAN_VIT_21 = plan('vit-21-bibliotheque.md');
 
 /** Cases Planner qui parlent du QR code : seules à porter un nombre (« 30 secondes ») */
 const AVEC_TRENTE = ['appel', 'appelProtege'];
@@ -58,7 +59,8 @@ for (const langue of ['fr', 'en']) {
 
 test('le français reprend mot pour mot les textes des plans validés', () => {
   const textes = chaines(charger('fr')).map((s) => s.replace('{date}', '[date]'));
-  for (const s of textes) assert.ok(PLANS.some((p) => p.includes(s)), `absent des plans : ${s}`);
+  const corrections = [13, 14, 15].map((n) => PLAN_VIT_21.split('\n').find((ligne) => ligne.startsWith('| ' + n + ' |')).split(' | ')[4]);
+  for (const s of textes) assert.ok(corrections.includes(s) || PLANS.some((p) => p.includes(s)), `absent des plans : ${s}`);
   for (const p of PLANS) assert.match(p, /\| Validé \| \*\*Validé par Claude20022002/);
 });
 

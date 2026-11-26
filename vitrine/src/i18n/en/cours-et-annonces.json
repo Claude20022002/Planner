@@ -6,12 +6,12 @@
   "entete": {
     "surtitre": "Courses and announcements",
     "titre": "Class materials, and news from the school.",
-    "accroche": "The teacher adds a document or a link in a section."
+    "accroche": "The teacher publishes a link in a section. Document uploads: coming soon."
   },
   "supports": {
     "surtitre": "Courses",
-    "titre": "Published materials.",
-    "texte": "The student sees the published materials of their courses.",
+    "titre": "Published links.",
+    "texte": "Students see the links published in their courses.",
     "cartes": [
       {
         "titre": "Polls",
