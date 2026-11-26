@@ -73,6 +73,24 @@ Code des scènes (même PR, phase b) : `src/accueil/scenes/A7Cours.tsx` (le reco
 
 Note : la vidéo montre l'application mobile, dont la barre du bas contient réellement un onglet Bibliothèque (`mobile/src/app/(onglets)/_layout.jsx`). Proposition : ne plus le montrer, par cohérence avec le site. Le chef peut aussi le garder (« Visé sauf : V7 »).
 
+## 4 bis. Dépôt de documents dans l’Espace de cours · complément du 26 novembre à viser
+
+Les liens et les sondages sont disponibles. « Dépôt de documents : Bientôt. » et « Document uploads: coming soon. » reprennent la ligne S1 visée de VIT-20d (#261, `cafbf767`). Sources : [publication des liens](../../../backend/services/cours/supports.js), [sondages ouverts](../../../frontend/src/components/espaceCours/SondagesOuverts.jsx), [dépôt via StudyLib](../../../backend/services/cours/studylib.js) et [reconstruction de la Bibliothèque](../../plan/modules/BIB-bibliotheque.md).
+
+| N° | Fichier · clé | Texte actuel (fr) | Texte actuel (en) | Proposition (fr) | Proposition (en) |
+|---|---|---|---|---|---|
+| D1 | `cours-et-annonces.json` · `entete.accroche` (accroche et description de la page Espace de cours) | L'enseignant dépose un document ou un lien dans une section. | The teacher adds a document or a link in a section. | L'enseignant publie un lien dans une section. Dépôt de documents : Bientôt. | The teacher publishes a link in a section. Document uploads: coming soon. |
+| D2 | `cours-et-annonces.json` · `supports.titre` et `supports.texte` | Les supports publiés. / L'étudiant voit les supports publiés de ses cours. | Published materials. / The student sees the published materials of their courses. | Les liens publiés. / L'étudiant voit les liens publiés de ses cours. | Published links. / Students see the links published in their courses. |
+| D3 | `fonctionnalites.json` (registre) · entrée `supports`, `titre` et `description` | Partager les supports de cours / L’enseignant publie un document ou un lien dans l’espace de cours. | Share course materials / Teachers publish a document or link in the course space. | Partager les liens de cours / L’enseignant publie un lien dans l’espace de cours. Dépôt de documents : Bientôt. | Share course links / Teachers publish a link in the course space. Document uploads: coming soon. |
+| D4 | `enseignants.json` · `cartes.1.texte` et `passage.lignes.1.avec` | L'enseignant dépose un document ou un lien dans une section. | The teacher adds a document or a link in a section. | L'enseignant publie un lien dans une section. Dépôt de documents : Bientôt. | The teacher publishes a link in a section. Document uploads: coming soon. |
+| D5 | `etudiants.json` · `meta.description`, `entete.accroche`, `passage.lignes.0.avec`, `faq.questions.1` | L'étudiant voit les supports publiés de ses cours. / Où sont les supports de mes cours ? | The student sees the published materials of their courses. / Where are my course materials? | L'étudiant voit les liens publiés de ses cours. / Où sont les liens de mes cours ? | Students see the links published in their courses. / Where are my course links? |
+| D6 | `accueil.json` · `video.scenes.6.lignes.0` | Supports par section, sondages, annonces de l'école. | Materials by section, polls, school announcements. | Liens par section, sondages, annonces de l'école. | Links by section, polls, school announcements. |
+| D7 | `accueil.json` · `video.scenes.6.image` (remplace la proposition V2) | L'espace d'une classe : ses sections et leurs supports, un sondage dont les barres montent, une annonce. Puis la bibliothèque s'ouvre. | A class space: its sections and their materials, a poll whose bars rise, an announcement. Then the library opens. | L'espace d'une classe : ses sections et leurs liens, un sondage dont les barres montent, une annonce. | A class space: its sections and their links, a poll whose bars rise, an announcement. |
+
+D7 affine la proposition V2. Dans [la scène 7](../../presentation/video/src/accueil/scenes/A7Cours.tsx), représenter les titres existants comme des liens en remplaçant le pictogramme de feuille par celui d’un lien.
+
+Le comparatif indique que l’Espace de cours s’ouvre avec le même compte. Le retrait de la Bibliothèque dans cette phrase est déjà couvert par la ligne 14.
+
 ## 5. Phase (b), après visa
 
 1. Appliquer **exactement** les phrases visées (fr, en ; clés retirées aussi dans `ar`).
