@@ -77,4 +77,4 @@ Rapports dans ta boîte sortie\. Fiche de session ; jamais de git push.
 | 2026-11-26 9 h 10 | VIT-20d (`0a709965`) relue : visa vérifié, phrases et sources prises au tableau visé (test ligne à ligne), `equipement.test.js` 3/3 et `verifier-neutre` relancés | **prête**, à pousser (#261) |
 | 2026-11-26 9 h 25 | VIT-09d ouverte (logos dans le style du logo Planner, session Claude) : **VIT-20f attend le choix du chef** ; Codex fait VIT-21 puis le correctif `useEffect` | — |
 | 2026-11-26 9 h 30 | VIT-21 : D1 à D7 (`85ac5354`) visées par le chef, phase (b) après son commentaire sur #262 ; plan de VIT-20f (`72c94adf`) mis de côté jusqu'au choix des logos | — |
-| 2026-11-26 10 h 40 | logos choisis (VIT-09d, série B, #277 prête) : VIT-20f reprend après la fusion, avec trois points (Présences vide, logo d'Espace de cours, rayon de la place réservée) | — |
+| 2026-11-26 10 h 20 | logos choisis (VIT-09d, série B, #277 prête) : VIT-20f reprend après la fusion, avec trois points (Présences vide, logo d'Espace de cours, rayon de la place réservée) | — |

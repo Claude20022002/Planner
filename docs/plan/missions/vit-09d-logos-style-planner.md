@@ -109,4 +109,4 @@ Quand tu as fini, donne au chef le chemin complet des captures de la planche.
 | 2026-11-26 9 h 50 | essai relu (`74e5637f`, fiche `a6ea00ab`) : planche relancée (3 + 3 logos vérifiés), test des icônes 8/8, logos de 820 à 980 octets, captures vues | **direction validée par le chef**, deux retouches ; série complète |
 | 2026-11-26 10 h 10 | étape 1 relue (`666b295f`, `6d9758b0`) : 44 fichiers, tous dans `essais/` ou `docs/`, planche relancée (20 + 20 vérifiés), quatre planches et deux agrandissements vus | **série B choisie par le chef** ; étape 2, plan court au coordinateur |
 | 2026-11-26 10 h 20 | plan de l'étape 2 (`721b774c`) relu, grep des lecteurs refait sur `main` | **plan validé** (coordinateur) |
-| 2026-11-26 10 h 40 | étape 2 (`ef8a0ae1`) relue : périmètre tenu, 18/18 relancés, captures finales vues ; trois écarts acceptés | **prête** ; mission close à la fusion de #277 |
+| 2026-11-26 10 h 20 | étape 2 (`ef8a0ae1`) relue : périmètre tenu, 18/18 relancés, captures finales vues ; trois écarts acceptés | **prête** ; mission close à la fusion de #277 |
