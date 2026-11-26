@@ -107,11 +107,11 @@ Les captures des étapes précédentes sont dans `captures-vit-09d\` et `capture
 |---|---|---|---|
 | 1 à 8 | Plan, couleurs, direction de l'essai | voir les étapes ci-dessus | réglées |
 | 9 | Le choix, logo par logo | **la série B pour les 20** (chef, 26 nov.) | réglée |
-| 10 | Les trois écarts au plan (ci-dessus) | | **au coordinateur**, à la relecture |
+| 10 | Les trois écarts au plan (ci-dessus) | **acceptés** par le coordinateur à la relecture (26 nov.) | réglée |
 
 ## État laissé
 
-- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-09d → **prête à relire** (étape 2 faite).
+- État de la fonction, pour `suivi.md` (le coordinateur le reporte) : VIT-09d → **relue, prête pour le push du chef** (#277 ; relecture du coordinateur du 26 nov. sur `ef8a0ae1`).
 - VIT-20f (Codex) peut poser les logos après la fusion.
 - Notes pour VIT-20f, sans y avoir touché :
   - la place réservée de `vitrine/src/components/applications/logos.js` garde un rayon de 22, contre 19,5 pour les logos ;
@@ -120,7 +120,7 @@ Les captures des étapes précédentes sont dans `captures-vit-09d\` et `capture
 
 ## Reste à faire, dans l'ordre
 
-1. Relecture du coordinateur (`relecture-branche`), avec les trois écarts.
+1. Relecture du coordinateur : faite le 26 nov., prête ; les trois écarts sont acceptés.
 2. Le chef pousse la branche ; la CI de #277 tourne.
 3. Fusion par le chef, puis VIT-20f.
 
