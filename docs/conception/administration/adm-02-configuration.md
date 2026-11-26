@@ -263,11 +263,13 @@ flowchart LR
 | `backend/services/planning/referentiel.js` | modifié (accord, réponse 8) | `lireParametres`, `lireParametre` lisent MP-1 | 49 → 55 |
 | `backend/controllers/parametrePlanningController.js`, `routes/parametrePlanningRoutes.js` | modifiés (accord) | PUT et DELETE : 410 `REGLAGE_DEPLACE` | −10 |
 | `backend/services/journalSecurite.js` | modifié (accord) | trois événements | +3 |
-| `backend/migrations/0088-reprise-parametres-planning.js` | créé (accord ; **numéro à réserver**) | reprise des écarts (§ 7) | 60 |
+| `backend/migrations/0088-reprise-parametres-planning.js` | créé (accord ; numéro réservé par le coordinateur le 22 nov.) | reprise des écarts (§ 7) | 120 |
 | `backend/tests/utils/reglagesEcole.test.js` | créé | choix des règles, bornes, conversions, concurrence (fonctions pures) | 150 |
 | `backend/tests/utils/reglablesEtSolveur.test.js` | créé (réponse 16) | concordance, profil par profil, entre règles réglables et `poidsDesRegles` | 70 |
 | `backend/tests/utils/profilRaisons.test.js` | créé (réponse 17) | `raison_code` et `conditions` : un seul campus, modalité à distance, aucune valeur, règle active sans raison | 80 |
-| `backend/tests/integration/configurationEcole.test.js` | créé | routes nouvelles, 409, journal, 410, bascule, migration | 250 |
+| `backend/tests/integration/configurationEcole.test.js` | créé | routes nouvelles, 409, journal, 410, bascule | 250 |
+| `backend/tests/integration/repriseParametres.test.js` | créé (*précisé au code* : sorti de `configurationEcole.test.js`, qui aurait dépassé 300 lignes) | migration 0088 (écart repris, aucune version sans écart, base neuve, `down`) ; problème envoyé au solveur identique avant et après la bascule | 200 |
+| `backend/tests/integration/helpers/referentielAvantBascule.js` | créé (*précisé au code*) | l'ancienne lecture de `ParametresPlanning`, figée (commit `a6681a1f^`), pour construire le problème « avant » dans un registre de modules isolé | 50 |
 | `backend/tests/integration/valeursMoteur.test.js` | modifié | forme allégée de `GET /versions` ; rejoue 0088 | +20 |
 
 **ADM-02b, page, Réglages et Historique**
@@ -312,11 +314,11 @@ flowchart LR
 
 - **Aucune table nouvelle, aucune colonne nouvelle.** Le brouillon vit dans l'écran (réponse 3) ; la base de comparaison passe dans la requête.
 - **Tables touchées** : `VersionsParametres`, `ValeursParametres` (MOT), lues et écrites par leurs services ; `ParametresPlanning` (MOT) n'est plus lue ni écrite ; `JournalSecurite` (ADM), par `journaliser`.
-- **Migration de reprise**, numéro **0088 proposé, à réserver par le coordinateur** avant d'écrire le fichier (réponse 15) :
+- **Migration de reprise**, numéro **0088, réservé par le coordinateur le 22 nov.** (réponse 15) :
   - pour chaque ligne de `ParametresPlanning` des cinq clés et de `duree_seance_defaut_minutes`, la valeur convertie est comparée à la valeur MP-1 en vigueur à la portée de l'école ;
   - les écarts vont dans **une** version appliquée « Reprise des paramètres de planification », datée du jour à l'école, sans auteur ;
   - aucun écart, ou base neuve (PLA-03) : aucune version ;
-  - conversions **figées dans la migration**, comme la 0061 ;
+  - conversions **figées dans la migration**, comme la 0061 ; de même, *précisé au code*, la valeur que tient MP-1 quand l'école n'a pas de ligne (profil, sinon catalogue, au 26 nov.) ;
   - `down` : supprime cette version et ses lignes, si aucune version plus récente ne touche les mêmes clés ; sinon elle s'arrête avec un message.
 - **« Étendre puis contracter »** : la table `ParametresPlanning`, son modèle et `config/parametresPlanning.js` restent. Leur retrait est une fonction à part, après une mise en ligne sans retour arrière.
 
