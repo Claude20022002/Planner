@@ -8,6 +8,7 @@ import { construireProbleme, pourLeSolveur } from "./probleme.js";
 import { arreterCalcul, attendreSolution, lancerCalcul } from "./solveurClient.js";
 import { deployerSemaineType } from "./deploiement.js";
 import { aCorriger, dureeAutomatique, resume } from "./rapport.js";
+import { accorder } from "../../../../shared/accords.js";
 
 /**
  * Génération automatique par Timefold (phase E), en tâche de fond : construction du problème,
@@ -44,7 +45,7 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         probleme.poidsDesRegles = await lirePoidsDuSolveur({ date: dateDesContraintes(periode) });
 
         if (!dureeSecondes) probleme.dureeSecondes = dureeAutomatique(aPlacer);
-        await etape(session, "calcul", { progress: 10, last_message: `Calcul de la semaine type : ${aPlacer} séance(s) à placer, ${probleme.dureeSecondes} s au plus` });
+        await etape(session, "calcul", { progress: 10, last_message: `Calcul de la semaine type : ${accorder(aPlacer, "séance à placer", "séances à placer")}, ${probleme.dureeSecondes} s au plus` });
         const { id, dureeSecondes: duree } = await lancerCalcul(pourLeSolveur(probleme));
         enCours.get(session.id_generation_session).calcul = id;
         const etat = await attendreSolution(id, {
@@ -95,7 +96,7 @@ const executer = async (session, { id_periode, id_filieres, dureeSecondes, user 
         await session.update({
             status: "completed",
             progress: 100,
-            last_message: `${deploiement.creees} séance(s) créée(s), ${nonPlaces.length} enseignement(s) incomplet(s)`,
+            last_message: `${accorder(deploiement.creees, "séance créée", "séances créées")}, ${accorder(nonPlaces.length, "enseignement incomplet", "enseignements incomplets")}`,
             score_total: etat.dur ?? null,
             score_detail: { score: etat.score, violations: rapport.violations },
             nb_assignees: deploiement.creees,

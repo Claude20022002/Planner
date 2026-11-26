@@ -10,6 +10,7 @@ import { filieresDuResponsable } from "../planning/droits.js";
 import { sendEmail } from "../../utils/sendEmail.js";
 import { notifierAdministrateurs } from "../../utils/notificationHelper.js";
 import { INCLUDES_LIGNE, ligneDe } from "./versionPubliee.js";
+import { accorder } from "../../../shared/accords.js";
 
 /**
  * Envoi de l'emploi du temps du mois (phase R4, remplace l'e-mail avec le PDF). L'administration
@@ -134,8 +135,8 @@ const envoyerClasse = async (groupe, mois, { idUser = null }) => {
     if (!precedent) {
         await prevenir(etudiants, {
             titre: `Emploi du temps de ${nomMois}`,
-            message: `${groupe.nom_groupe} : ${nombre} séance(s). Consultez-le ou imprimez-le en PDF depuis l'application.`,
-            texteEmail: `Bonjour,\n\nL'emploi du temps de ${nomMois} (${groupe.nom_groupe}) est publié : ${nombre} séance(s).\nIl se consulte et s'imprime en PDF ici : ${adresse}\n\nVous serez prévenu de chaque changement.\n\n{{produit}}`,
+            message: `${groupe.nom_groupe} : ${accorder(nombre, "séance", "séances")}. Consultez-le ou imprimez-le en PDF depuis l'application.`,
+            texteEmail: `Bonjour,\n\nL'emploi du temps de ${nomMois} (${groupe.nom_groupe}) est publié : ${accorder(nombre, "séance", "séances")}.\nIl se consulte et s'imprime en PDF ici : ${adresse}\n\nVous serez prévenu de chaque changement.\n\n{{produit}}`,
             lien,
         });
         await EnvoiEdt.create({ id_groupe: groupe.id_groupe, mois, seances: lignes, envoye_le: new Date(), nb_destinataires: etudiants.length, id_user_publication: idUser });
@@ -145,10 +146,10 @@ const envoyerClasse = async (groupe, mois, { idUser = null }) => {
     const changements = changementsEntre(precedent.seances ?? [], lignes);
     if (!changements.length) return "inchange";
     const liste = changements.slice(0, CHANGEMENTS_MAX_MESSAGE);
-    const suite = changements.length > liste.length ? `\n… et ${changements.length - liste.length} autre(s).` : "";
+    const suite = changements.length > liste.length ? `\n… et ${accorder(changements.length - liste.length, "autre", "autres")}.` : "";
     await prevenir(etudiants, {
         titre: `Emploi du temps de ${nomMois} modifié`,
-        message: `${groupe.nom_groupe} : ${changements.length} changement(s). ${liste[0]}${changements.length > 1 ? " …" : ""}`.slice(0, 480),
+        message: `${groupe.nom_groupe} : ${accorder(changements.length, "changement", "changements")}. ${liste[0]}${changements.length > 1 ? " …" : ""}`.slice(0, 480),
         texteEmail: `Bonjour,\n\nL'emploi du temps de ${nomMois} (${groupe.nom_groupe}) a changé :\n\n${liste.map((c) => `• ${c}`).join("\n")}${suite}\n\nEmploi du temps à jour (imprimable en PDF) : ${adresse}\n\n{{produit}}`,
         lien,
     });
@@ -219,7 +220,7 @@ export const rappelerChangementsNonPublies = async (maintenant = new Date()) => 
         const apercu = liste.slice(0, 5).map((c) => `${c.groupe.nom_groupe} (${libelleMois(c.mois)}, ${c.nombre})`).join(", ");
         await notifierAdministrateurs({
             titre: "Changements à publier",
-            message: `${liste.length} classe(s) ont des changements que les étudiants ne voient pas encore : ${apercu}${liste.length > 5 ? "…" : ""}. Publiez le mois concerné depuis « EDT du mois ».`,
+            message: `${accorder(liste.length, "classe a des changements", "classes ont des changements")} que les étudiants ne voient pas encore : ${apercu}${liste.length > 5 ? "…" : ""}. Publiez le mois concerné depuis « EDT du mois ».`,
             type_notification: "warning",
             lien: lienEdt(liste[0].groupe.id_groupe, liste[0].mois),
         });
@@ -242,7 +243,7 @@ export const demarrerRenvoiQuotidien = () => {
         if (Number(partie("hour")) !== heure || dernierJour === jourLocal) return;
         dernierJour = jourLocal;
         // Une seule instance à la fois (lot A-7)
-        await passage("rappel-edt", () => rappelerChangementsNonPublies(maintenant), (bilan) => `${bilan.a_republier} classe(s) à republier sur ${bilan.classes}`);
+        await passage("rappel-edt", () => rappelerChangementsNonPublies(maintenant), (bilan) => `${accorder(bilan.a_republier, "classe à republier", "classes à republier")} sur ${bilan.classes}`);
     };
     const minuterie = setInterval(verifier, 10 * 60 * 1000);
     minuterie.unref();

@@ -199,7 +199,7 @@ describe("Fin de partie : scores, équipes et nuages de mots", () => {
         // Chaque étudiant reconnu est prévenu de son score
         const notes = await Notification.findAll({ where: { titre: "Résultats du quiz" } });
         expect(notes.map((n) => n.id_user).sort()).toEqual([etudiant.id_user, yanis.id_user, sara.id_user].sort());
-        expect(notes.find((n) => n.id_user === etudiant.id_user).message).toBe("Spark : 2400 pts, 2e sur 6.");
+        expect(notes.find((n) => n.id_user === etudiant.id_user).message).toBe("Spark : 2400 points, 2e sur 6.");
         const partie = await QuizPartie.findOne({ where: { game_id: gameId } });
         expect(notes.every((n) => n.lien === `/jeux?resultats=${partie.id_quiz_partie}`)).toBe(true);
 
