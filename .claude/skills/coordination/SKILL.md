@@ -73,7 +73,8 @@ Vous êtes tenu par les mêmes règles que les autres : une branche par tâche, 
 5. Écrire la fiche `docs/plan/missions/<identifiant>.md` à partir de `docs/plan/modeles/mission.md`, et ajouter la ligne au tableau « Missions en cours » de `suivi.md`. Ces deux fichiers se commitent sur votre branche de coordination (`doc/coordination-<date>`), pas sur la branche de la mission.
 6. Remettre la mission :
    - **session Claude ouverte** : lui envoyer le prompt de la fiche par message direct (lister les sessions, puis écrire à celle du projet) ;
-   - **Codex ou agent de Cursor** : déposer le prompt dans sa boîte, `..\travaux-planner\boites\<codex ou cursor>\entree\AAAA-MM-JJ-HHMM-<sujet>.md` (format dans `boites\README.md`), puis dire au chef de lui écrire « lis ta boîte » ;
+   - **Codex** : par le canal direct (depuis le 27 nov.), `..\travaux-planner\boites\envoyer.ps1 -Agent codex -Sujet <sujet> -Message "…" [-Dossier <dossier de travail>]`. Le message est déposé dans sa boîte, puis Codex est lancé sans l'éditeur et sans réseau (ni push ni `gh`) ; son rapport arrive dans `sortie\` (détail dans `boites\README.md`). Ne pas le lancer pendant que Codex travaille dans VS Code sur la même branche ;
+   - **agent de Cursor** : déposer le prompt dans sa boîte (`envoyer.ps1 -Agent cursor`, ou à la main dans `..\travaux-planner\boites\cursor\entree\AAAA-MM-JJ-HHMM-<sujet>.md`), puis dire au chef de lui écrire « lis ta boîte » ;
    - **session Claude à ouvrir** : donner au chef le prompt de la fiche, à coller dans l'éditeur.
 
 ## 4. Quel agent pour quelle mission
