@@ -40,7 +40,7 @@
 - `frontend/src/pages/jeux/Jeux.jsx`, un composant nouveau dans `frontend/src/components/jeux/`, et leurs traductions ;
 - `mobile/src/app/(onglets)/jeux.jsx` et un composant nouveau dans `mobile/src/` ;
 - `vitrine/src/pages/[lang]/bibliotheque-des-jeux.astro`, ses textes et `vitrine/tests/contenu.test.js` ;
-- **les images des jeux** (ajout du chef du 27 nov.) : un dossier d'images par jeu que le plan amendé propose (par exemple `shared/jeux/images/`), et leur copie servie par le site si le plan le prévoit (`vitrine/public/`) ;
+- **les images des jeux** (ajout du chef du 27 nov. ; une image peut venir d'une banque d'images libre, aux règles de licence et de crédits de la fiche de QJE-18) : un dossier d'images par jeu que le plan amendé propose (par exemple `shared/jeux/images/`), et leur copie servie par le site si le plan le prévoit (`vitrine/public/`) ;
 - le plan court, `docs/plan/modules/QJE-quiz-jeux-ia.md` et la fiche de session.
 
 L'agent ne touche pas :

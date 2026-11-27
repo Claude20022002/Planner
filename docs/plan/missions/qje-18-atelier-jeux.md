@@ -17,8 +17,8 @@
 
 - Ajouter au plan **la conception des jeux**.
 - Commencer par des jeux **inspirés de ceux qu'on trouve sur les plateformes de jeux pédagogiques les plus jouées**, selon les matières.
-- Les matières : celles des emplois du temps d'exemple (`docs/exemple_emploi_du_temp - 3A IIIA (Du 30 Mars Au 26 Avril 2026).pdf`, `docs/Planning/EDT 4A IIIA  (Octobre 2026).pdf`) ; le contenu : des supports de cours du chef (liste hors dépôt, voir plus bas).
-- **Une image par jeu**, générée par l'agent le plus à même de le faire (Codex).
+- Les matières : celles des emplois du temps d'exemple (leurs données sans nom : `docs/exemple_emploi_du_temps_donnee.yaml` ; les PDF d'origine sont hors dépôt depuis le 27 nov., chez le chef) ; le contenu : des supports de cours du chef (liste hors dépôt, voir plus bas).
+- **Une image par jeu**, générée par l'agent le plus à même de le faire (Codex), **ou prise dans une banque d'images libre** (ajout du chef, 27 nov.).
 - **Les jeux sont conçus un à un.**
 - La présentation doit donner envie : ce sont des jeux pour apprendre en s'amusant (exigence du 27 nov., aussi dans QJE-15).
 
@@ -33,6 +33,16 @@ Les **quiz** (questions, réponses, course aux points en classe) relèvent du mo
 - Onze jeux : le terminal (`shared/jeux/`) et dix simulations (`shared/simulations/` : `catalogue/<code>.js`, `moteurs/<moteur>.js`, `presentations/<moteur>.js`), selon le contrat [jeux-pedagogiques.md](../../conception/jeux/jeux-pedagogiques.md) (solution vue, notée par le serveur, QJE-04).
 - Domaines couverts : algorithmique et complexité, SQL, systèmes (CPU), robotique, réseaux, cybersécurité, IA (seuils), gestion de projet, budget, logistique.
 - QJE-15 (agent de Cursor) ajoute à chaque jeu ses `cycles` et son `domaine`, et une image par jeu : chaque jeu nouveau les porte dès sa création.
+
+## Les images : générées ou prises dans une banque d'images libre (chef, 27 nov.)
+
+Pour chaque jeu, l'image vient **soit** de Codex (génération), **soit** d'une **banque d'images libre** quand une vraie photo ou une illustration existante sert mieux le jeu. Dans le second cas :
+
+- **licence** qui permet l'usage commercial et la modification : Unsplash, Pexels, Pixabay (leurs licences propres), ou une image du **domaine public** ou sous **CC0** (par exemple par Openverse ou Wikimedia Commons). Une image **CC BY** est permise si son auteur est crédité. **Refusées** : « usage éditorial seulement », CC BY-NC, CC BY-ND, et toute image sans licence lisible ;
+- **pas** de personne reconnaissable, de marque, de logo ni d'œuvre protégée visible (affiche, écran d'un logiciel, personnage) ;
+- **un fichier de crédits**, à côté des images : pour chacune, l'adresse de la page source, l'auteur, la licence et la date du téléchargement ; il se relit à chaque PR ;
+- l'image est recadrée et réduite au même format que les autres (WebP de 512 px, 15 Ko au plus) ; la retouche ne change pas la licence ;
+- la consigne d'image dit laquelle des deux voies elle propose ; le chef choisit sur la planche.
 
 ## Les matières relevées (emplois du temps d'exemple et supports du chef)
 
@@ -60,14 +70,14 @@ Pistes, à trier dans l'étude ; les jeux existants en couvrent déjà une part 
    - le chef valide la liste et l'ordre.
 2. **Un jeu à la fois**, dans l'ordre validé, chacun sur sa branche :
    - fiche de conception du jeu, validée par le chef (nom, univers, défis, textes) ;
-   - **l'image** : la session écrit la consigne d'image (sujet, cadrage, palette de la charte, format WebP de 512 px, 15 Ko au plus), le coordinateur la dépose dans la boîte de Codex, Codex la génère et la livre ; le chef la valide sur une planche ;
+   - **l'image** : la session écrit la consigne d'image (sujet, cadrage, palette de la charte, format WebP de 512 px, 15 Ko au plus ; génération ou banque libre), le coordinateur la dépose dans la boîte de Codex, Codex la génère ou la trouve, la livre avec ses crédits ; le chef la valide sur une planche ;
    - le code : catalogue, moteur, présentation, traductions (FR, EN), tests du moteur (chaque défi a une solution, une mauvaise réponse échoue), parcours de jeu ;
    - relecture du coordinateur, PR, fusion ; puis le jeu suivant.
 
 ## Critère de « terminé » (par jeu)
 
 - Le jeu suit le contrat des jeux : défis vérifiés par le moteur, solution vue notée par le serveur, progression et expérience.
-- Il porte ses `cycles`, son `domaine` (QJE-15) et son image.
+- Il porte ses `cycles`, son `domaine` (QJE-15) et son image ; une image de banque a sa ligne de crédits (source, auteur, licence, date).
 - Ses textes ne disent que ce que fait le jeu ; aucun nom d'école, de personne ni de marque ; aucune phrase copiée d'un support de cours.
 - Tests du moteur et du catalogue, `verifier-neutre`, axe-core sur l'écran du jeu, parcours `sessionsJeu` intact.
 - Il se joue sur le téléphone, et au tableau s'il déclare le mode `collectif`.
