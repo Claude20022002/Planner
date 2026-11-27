@@ -21,7 +21,7 @@ Par où commencer, selon ce que vous venez faire. Tout ce qui est listé ici est
 | [DESIGN.md](../DESIGN.md) | Système visuel « panneau à volets » : couleurs, typographie, composants |
 | [Étude de marché](etude-marche/README.md) | Concurrents, problèmes des établissements, arguments ; registre des propositions P-01 à P-83 (figé le 7 novembre) |
 | [Cahier des charges PACTE](ecole/Descriptif%20du%20projet%20PACTE%20-%203A-IIIA.pdf) | Le sujet d'origine ; aussi le [livrable 2](ecole/Livrable%202%20projet%20pacte.pdf) et les [remarques reçues](ecole/Remarques.pdf) |
-| [Emploi du temps officiel](Planning/) | Le rendu HESTIM ; un [exemple de mois](exemple_emploi_du_temp%20-%203A%20IIIA%20%28Du%2030%20Mars%20Au%2026%20Avril%202026%29.pdf) et [ses données](exemple_emploi_du_temps_donnee.yaml) |
+| Emploi du temps d'exemple | Les [données d'un mois réel](exemple_emploi_du_temps_donnee.yaml), sans nom de personne ; les PDF d'origine sont gardés hors du dépôt, qui est public (27 nov. 2026) |
 
 ## Conception
 
