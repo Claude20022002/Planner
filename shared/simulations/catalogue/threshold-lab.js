@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'threshold-lab', type: 'simulation', discipline: 'intelligence-artificielle', moteur: 'seuil',
+    cycles: ['superieur'], domaine: 'intelligence-artificielle',
     titre: texte('Labo des seuils', 'Threshold Lab'),
     resume: texte('Régler un seuil de détection et comparer les faux positifs, les défauts manqués et le coût des erreurs.', 'Tune a detection threshold and compare false positives, missed defects, and error costs.'),
     objectif: texte('Interpréter précision, rappel et matrice de confusion sans confondre score et certitude.', 'Interpret precision, recall, and a confusion matrix without treating a score as certainty.'),

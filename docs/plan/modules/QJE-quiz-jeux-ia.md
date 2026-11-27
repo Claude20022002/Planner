@@ -46,6 +46,7 @@
 | QJE-12 | Assistant IA de l'enseignant : séquence de cours, grille d'évaluation, commentaires de copie à relire ; aucune donnée d'élève envoyée | — | libre | M | QJE-07 | à faire |
 | QJE-13 | Tuteur IA pour l'élève, sur le contenu de ses cours | — | — | L | QJE-07, avis CNDP | conditionnel (règle « aucune donnée d'élève ») |
 | QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |
+| QJE-15 | Chaque jeu du catalogue (le terminal et les dix simulations) a un ou plusieurs cycles et un domaine ; le web, le mobile et le site les rangent dans le même ordre, avec une image et une accroche. Les quiz du Studio n'y entrent pas. Le nom du module des jeux est fixé par QJE-17 ([conception](../../conception/jeux/qje-15-jeux-par-niveau.md)) | — | libre (exception hors chantier, 18 nov.) | M | VIT-10 | plan visé le 27 nov. (cycles et tableau) ; présentation à viser sur la planche ; catalogue `shared/` autorisé ; écrans après #229 |
 
 ## Critères de « terminé »
 
@@ -55,6 +56,7 @@
 - **QJE-07** : aucune donnée d'élève n'est envoyée au fournisseur ; la sortie de l'IA est relue par l'enseignant avant publication.
 - **QJE-11** : une feuille photographiée de travers ou mal éclairée est lue ou refusée avec une raison ; aucune note n'entre au carnet sans la validation de l'enseignant.
 - **QJE-12** : un test prouve qu'aucun nom, identifiant ou réponse d'élève ne part vers le fournisseur d'IA.
+- **QJE-15** : les onze jeux portent le cycle et la filière validés par le chef ; un cycle ou une filière sans jeu ne s'affiche pas ; `Jeux.jsx` repasse sous 300 lignes.
 
 ## Références
 

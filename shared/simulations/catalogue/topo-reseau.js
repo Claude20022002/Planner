@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'topo-reseau', type: 'simulation', discipline: 'reseaux', moteur: 'reseau',
+    cycles: ['superieur'], domaine: 'reseaux-cybersecurite',
     titre: texte('Nœuds Réseaux', 'Network Nodes'),
     resume: texte('Connecter 4 équipements sur 3 switchs en respectant capacité, segmentation et isolation.', 'Connect 4 devices to 3 switches while respecting capacity, subnet, and isolation constraints.'),
     objectif: texte('Concevoir une topologie simple conforme aux exigences de sécurité et de bande passante.', 'Design a simple topology meeting security and bandwidth requirements.'),

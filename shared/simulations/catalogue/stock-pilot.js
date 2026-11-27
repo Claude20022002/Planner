@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'stock-pilot', type: 'simulation', discipline: 'logistique', moteur: 'stock',
+    cycles: ['superieur'], domaine: 'gestion-logistique',
     titre: texte('Pilote des stocks', 'Stock Pilot'),
     resume: texte('Planifier trois jours de réapprovisionnement sans rupture, en respectant capacité et budget en crédits.', 'Plan three days of replenishment without stockouts, respecting capacity and a credit budget.'),
     objectif: texte('Anticiper la demande et les délais, puis arbitrer stock, capacité et coût.', 'Anticipate demand and lead times, then balance inventory, capacity, and cost.'),

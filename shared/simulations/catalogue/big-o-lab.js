@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'big-o-lab', type: 'simulation', discipline: 'algorithmique', moteur: 'complexite',
+    cycles: ['superieur'], domaine: 'informatique',
     titre: texte('Labo Big-O', 'Big-O Lab'),
     resume: texte('Reconnaître la classe de complexité (O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)) de vrais motifs de boucles et de récursions.', 'Identify the complexity class (O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)) of common loop and recursion patterns.'),
     objectif: texte('Relier la structure d’un algorithme à son ordre de grandeur, sans exécuter de code.', 'Connect an algorithm’s structure to its order of growth without running any code.'),

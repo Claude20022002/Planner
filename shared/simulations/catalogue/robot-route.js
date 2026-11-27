@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'robot-route', type: 'simulation', discipline: 'robotique', moteur: 'robot',
+    cycles: ['superieur'], domaine: 'informatique',
     titre: texte('Robot Route', 'Robot Route'),
     resume: texte('Programmer un trajet, éviter les obstacles et vérifier chaque déplacement dans une grille simulée.', 'Program a route, avoid obstacles, and inspect every move in a simulated grid.'),
     objectif: texte('Décomposer un trajet en instructions et tester des contraintes de sécurité.', 'Decompose a route into instructions and test safety constraints.'),
