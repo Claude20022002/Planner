@@ -1,5 +1,6 @@
-// Tests de la bibliothèque d'icônes partagée (VIT-09a) : chaque logo n'emploie que des couleurs de la
-// charte, a des identifiants préfixés et uniques, reste léger et sans script ; chaque icône vivante
+// Tests de la bibliothèque d'icônes partagée (VIT-09a, style du logo Planner depuis VIT-09d) : chaque logo
+// pose sa tuile en aplat au gabarit commun, n'emploie que les couleurs de son application, le blanc et le
+// bleu clair, sans dégradé ni renvoi interne, reste léger et sans script ; chaque icône vivante
 // suit la grille de Lucide, prend la couleur du texte et a son animation, coupée en mouvement réduit.
 //   node --test shared/icones/icones.test.js
 import { test } from 'node:test';
@@ -12,10 +13,11 @@ import { APPLICATIONS, MODULES_ILLUSTRES, ICONES_VIVANTES, LOGOS, fichierLogo } 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
 const lire = (relatif) => fs.readFileSync(path.join(ICI, relatif), 'utf8');
 const jetons = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'charte', 'jetons.json'), 'utf8'));
-const COULEURS_CHARTE = new Set(Object.values(jetons.familles)
-  .flatMap((famille) => Object.values(famille).map((j) => j.valeur))
-  .filter((v) => typeof v === 'string' && /^#[0-9A-F]{6}$/i.test(v))
-  .map((v) => v.toUpperCase()));
+const ton = (famille, nom) => jetons.familles[famille][nom].valeur.toUpperCase();
+// Couleurs permises d'un logo (VIT-09d) : sa teinte, son ton foncé, le blanc et le bleu clair de la charte.
+const couleursDuLogo = (id) => new Set([
+  ton('applications', LOGOS[id].teinte), ton('applications', LOGOS[id].fonce), ton('couleurs', 'blanc'), ton('couleurs', 'bleu-clair'),
+]);
 const DESSINS = Object.keys(LOGOS).flatMap((id) => [[id, LOGOS[id].detaille, 3 * 1024], [id, LOGOS[id].petit, 1.5 * 1024]]);
 
 test('la grille garde ses sept applications et chaque logo a ses deux jetons', () => {
@@ -70,24 +72,27 @@ test('les nouvelles tuiles gardent au moins 14 degrés avec chaque autre ton de 
   }
 });
 
-test('chaque logo : couleurs de la charte seulement', () => {
+test('chaque logo : tuile en aplat au gabarit commun, couleurs de son application seulement (ton foncé permis), sans dégradé ni jaune', () => {
   for (const [id, fichier] of DESSINS) {
     const svg = lire(fichier);
-    for (const nom of [LOGOS[id].teinte, LOGOS[id].fonce]) {
-      const ton = jetons.familles.applications[nom].valeur;
-      assert.ok(svg.includes(`stop-color="${ton}"`), `${fichier} : dégradé sans ${nom}`);
+    const teinte = ton('applications', LOGOS[id].teinte);
+    assert.match(svg, new RegExp(`<rect x="4" y="4" width="88" height="88" rx="19.5" fill="${teinte}"/>`), `${fichier} : tuile`);
+    assert.doesNotMatch(svg, /Gradient|stop-color/, `${fichier} : dégradé`);
+    assert.ok(!svg.toUpperCase().includes(ton('couleurs', 'jeu')), `${fichier} : jaune jeu`);
+    const permises = couleursDuLogo(id);
+    for (const couleur of svg.match(/#[0-9A-F]{3,8}\b/gi) ?? []) {
+      assert.ok(permises.has(couleur.toUpperCase()), `${fichier} : ${couleur} hors de ses couleurs`);
     }
-    const couleurs = svg.match(/#[0-9A-F]{6}\b/gi) ?? [];
-    assert.ok(couleurs.length > 0, fichier);
-    for (const couleur of couleurs) assert.ok(COULEURS_CHARTE.has(couleur.toUpperCase()), `${fichier} : ${couleur} hors de la charte`);
-    assert.doesNotMatch(lire(fichier), /\b(rgb|hsl|oklch)\(/, `${fichier} : couleur hors des jetons`);
+    assert.doesNotMatch(svg, /\b(rgb|hsl|oklch)\(/, `${fichier} : couleur hors des jetons`);
   }
 });
 
-test('chaque logo : identifiants préfixés par son application, uniques sur toute la bibliothèque', () => {
+test('chaque logo : aucun renvoi interne, identifiants éventuels préfixés et uniques (le site les incorpore)', () => {
   const vus = new Set();
   for (const [id, fichier] of DESSINS) {
-    for (const [, ident] of lire(fichier).matchAll(/\bid="([^"]+)"/g)) {
+    const svg = lire(fichier);
+    assert.doesNotMatch(svg, /url\(#|href="#/, `${fichier} : renvoi interne`);
+    for (const [, ident] of svg.matchAll(/\bid="([^"]+)"/g)) {
       assert.ok(ident.startsWith(`vit-${id}-`), `${fichier} : ${ident}`);
       assert.ok(!vus.has(ident), `${ident} en double`);
       vus.add(ident);

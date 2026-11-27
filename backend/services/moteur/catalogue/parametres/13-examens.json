@@ -18,8 +18,8 @@
       "defauts": { "role": "donnee", "niveaux": "PI", "cible": "epreuve", "priorite": 2, "validite": "periode", "etat": "absent" },
       "parametres": [
         { "code": "DUREE", "nom": "Durée des épreuves", "desc": "Durée propre à l'épreuve.", "type": "duree_min", "etat": "base", "ref": "SessionExamen.heure_debut, heure_fin", "src": "10.7" },
-        { "code": "SURVEILLANTS_PAR_SALLE", "nom": "Surveillants nécessaires", "desc": "Nombre minimal par salle.", "type": "entier", "defaut": 2, "etat": "parametre", "ref": "surveillants_par_salle", "src": "10.10" },
-        { "code": "RATIO_CAPACITE", "nom": "Part de la capacité en examen", "desc": "Quand la capacité d'examen de la salle n'est pas renseignée.", "type": "pourcentage", "defaut": 50, "etat": "parametre", "ref": "ratio_capacite_examen" },
+        { "code": "SURVEILLANTS_PAR_SALLE", "nom": "Surveillants nécessaires", "desc": "Nombre minimal par salle.", "type": "entier", "defaut": 2, "niveaux": "GPI", "etat": "parametre", "ref": "surveillants_par_salle", "src": "10.10" },
+        { "code": "RATIO_CAPACITE", "nom": "Part de la capacité en examen", "desc": "Quand la capacité d'examen de la salle n'est pas renseignée.", "type": "pourcentage", "defaut": 50, "niveaux": "GPI", "etat": "parametre", "ref": "ratio_capacite_examen" },
         { "code": "REPARTITION", "nom": "Répartition des candidats", "desc": "Un groupe peut occuper plusieurs salles.", "type": "structure", "etat": "base", "ref": "SessionExamenSalle", "src": "10.13" },
         { "code": "MATERIEL", "nom": "Matériel spécialisé", "desc": "Matériel exigé par l'épreuve.", "type": "liste_references", "src": "10.19" },
         { "code": "CORRECTION", "nom": "Temps de correction", "desc": "Temps qui rend un enseignant moins disponible après l'épreuve.", "type": "duree_min", "priorite": 4, "src": "10.20" },

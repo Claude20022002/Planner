@@ -1,4 +1,5 @@
 import { resetDatabase, closeDatabase, createUser, loginAs, createPlanningFixture } from "./helpers/testApp.js";
+import { poserReglages, retirerReglages } from "./helpers/reglagesMoteur.js";
 import { resetRateLimiters } from "../../middleware/rateLimiterMiddleware.js";
 import { Campus, Salle, Evenement } from "../../models/index.js";
 
@@ -319,25 +320,10 @@ describe("Paramètres de planification", () => {
         expect([response.body.max_heures_jour_groupe?.valeur, "pause_vendredi" in response.body, "samedi_apres_midi_initiale" in response.body]).toEqual([8, false, false]);
     });
 
-    test("valeur invalide refusée, valeur valide enregistrée puis réinitialisée", async () => {
-        const invalide = await clients.admin.send("put", "/api/parametres-planning/max_heures_jour_groupe", { valeur: 40 });
-        expect(invalide.status).toBe(400);
-
-        const inconnu = await clients.admin.send("put", "/api/parametres-planning/couleur_prefere", { valeur: 1 });
-        expect(inconnu.status).toBe(404);
-
-        const ok = await clients.admin.send("put", "/api/parametres-planning/max_heures_jour_groupe", { valeur: 7 });
-        expect(ok.status).toBe(200);
-        const lecture = await clients.admin.get("/api/parametres-planning");
-        expect(lecture.body.max_heures_jour_groupe).toMatchObject({ valeur: 7, modifie: true });
-
-        await clients.admin.send("delete", "/api/parametres-planning/max_heures_jour_groupe");
-        const apres = await clients.admin.get("/api/parametres-planning");
-        expect(apres.body.max_heures_jour_groupe).toMatchObject({ valeur: 8, modifie: false });
-    });
+    // L'écriture par l'ancienne route et la lecture depuis MP-1 (ADM-02) : configurationEcole.test.js
 
     test("le ratio de capacité d'examen modifié s'applique aux nouvelles salles", async () => {
-        await clients.admin.send("put", "/api/parametres-planning/ratio_capacite_examen", { valeur: 0.25 });
+        const reglage = await poserReglages([{ cle: "EXA.EPREUVE.RATIO_CAPACITE", valeur: 25 }]);
         const response = await clients.admin.send("post", "/api/salles", {
             nom_salle: "N-RATIO",
             type_salle: "Salle de cours",
@@ -345,6 +331,6 @@ describe("Paramètres de planification", () => {
             id_campus: nord.id_campus,
         });
         expect(response.body.salle.capacite_examen).toBe(10);
-        await clients.admin.send("delete", "/api/parametres-planning/ratio_capacite_examen");
+        await retirerReglages(reglage);
     });
 });

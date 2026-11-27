@@ -10,6 +10,7 @@ import TypeEtablissement from '../../components/solutions/TypeEtablissement.astr
 import { TYPES } from '../../components/solutions/types.js';
 import { traductions } from '../../i18n/index.js';
 import { cheminsLangues, chemin } from '../../i18n/langues.js';
+import { IMAGE_DE_PAGE } from '../../components/socle/illustrations.js';
 
 export const getStaticPaths = cheminsLangues;
 
@@ -17,7 +18,7 @@ const { lang } = Astro.params;
 const t = traductions(lang, 'solutions');
 ---
 <Gabarit langue={lang} page="solutions" titre={t('meta.titre')} description={t('meta.description')}>
-  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <EnTetePage surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} relief={t('entete').relief} image={IMAGE_DE_PAGE['solutions']} />
   <Sommaire label={t('sommaire')} liens={TYPES.map(({ cle, ancre }) => ({ ancre, texte: t(`types.${cle}.surtitre`) }))} />
   {TYPES.map(({ cle, ancre, ton, pages }) => (
     <TypeEtablissement id={ancre} ton={ton} surtitre={t(`types.${cle}.surtitre`)} titre={t(`types.${cle}.titre`)}
