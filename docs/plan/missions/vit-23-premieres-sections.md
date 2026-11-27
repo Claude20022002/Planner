@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | close le 2026-11-26 (#282 fusionnée à 14 h 34) |
 | Agent | session Claude Code neuve (VS Code), ouverte par le chef |
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Mise en page de trois en-têtes, rendu à juger sur captures, budget de poids à tenir |
 | Attribuée le | 2026-11-26, par le coordinateur ; accord du chef : oui, le 2026-11-26 (texte et illustration, inspiré des pages d'Odoo, toutes les pages, session Claude neuve) |
