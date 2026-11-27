@@ -8,6 +8,8 @@ const JournalSecurite = sequelize.define(
         id_evenement: { type: DataTypes.BIGINT, autoIncrement: true, primaryKey: true },
         evenement: { type: DataTypes.STRING(40), allowNull: false },
         id_user: { type: DataTypes.INTEGER, allowNull: true },
+        // Identifiant au moment de l'événement (VSC-03) ; l'adresse ne suit que si elle existe
+        identifiant: { type: DataTypes.STRING(255), allowNull: true },
         email: { type: DataTypes.STRING(255), allowNull: true },
         id_acteur: { type: DataTypes.INTEGER, allowNull: true },
         ip: { type: DataTypes.STRING(45), allowNull: true },

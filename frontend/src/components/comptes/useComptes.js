@@ -46,7 +46,7 @@ export default function useComptes() {
     const actions = useActionsComptes({ comptes: utilisateurs, recharger: loadUtilisateurs, onSucces: setSuccess, onErreur: setError });
     const visibles = sortedUsers.filter((u) => {
         const q = search.toLowerCase();
-        return u.nom?.toLowerCase().includes(q) || u.prenom?.toLowerCase().includes(q) || u.email?.toLowerCase().includes(q);
+        return u.nom?.toLowerCase().includes(q) || u.prenom?.toLowerCase().includes(q) || u.identifiant?.toLowerCase().includes(q) || u.email?.toLowerCase().includes(q);
     });
     // Un compte déjà désactivé, ou le sien, n'entre pas dans une sélection
     const cochables = visibles.filter((u) => u.actif && u.id_user !== moi?.id_user).map((u) => u.id_user);
@@ -62,7 +62,7 @@ export default function useComptes() {
         if (editing) {
             setSuccess(t('utilisateurs.modifie'));
         } else {
-            if (reponse.invitation) setInvitation({ email: valeurs.email, ...reponse.invitation });
+            if (reponse.invitation) setInvitation({ email: valeurs.identifiant || valeurs.email, ...reponse.invitation });
             setSuccess(t(reponse.invitation ? 'utilisateurs.creeInvitation' : 'utilisateurs.creeProvisoire'));
         }
         setOpen(false);

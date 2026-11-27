@@ -44,7 +44,7 @@ export default function ForgotPassword() {
                 {error}
               </Alert>
             )}
-            <TextField fullWidth required autoFocus label={t('login.email')} type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} />
+            <TextField fullWidth required autoFocus label={t('login.identifiant')} type="text" autoComplete="username" helperText={t('login.identifiantAide')} value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} />
             <Button type="submit" fullWidth variant="contained" size="large" disabled={loading} sx={{ mt: 3, minHeight: 48, fontSize: '1rem' }}>
               {loading ? <CircularProgress size={22} color="inherit" /> : t('forgot.envoyer')}
             </Button>

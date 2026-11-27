@@ -133,7 +133,7 @@ export default function useEtudiants() {
     };
 
     // Groupe désigné par son nom (casse et espaces ignorés) ; l'import serveur traite le reste du
-    // fichier et ses erreurs (par email) sont ramenées aux lignes
+    // fichier et ses erreurs (par identifiant, VSC-03) sont ramenées aux lignes
     const importer = async (lignes) => {
         const parNom = groupesParNom(groupes);
         const erreurs = [];
@@ -143,15 +143,21 @@ export default function useEtudiants() {
             const nomGroupe = String(propre.groupe ?? '').toLowerCase();
             const trouves = parNom.get(nomGroupe) ?? [];
             if (nomGroupe && trouves.length !== 1) {
-                erreurs.push({ ligne: index + 2, libelle: propre.email, message: erreurGroupe(propre.groupe, trouves) });
+                erreurs.push({ ligne: index + 2, libelle: propre.identifiant || propre.email, message: erreurGroupe(propre.groupe, trouves) });
                 return;
             }
-            valides.push({ ...propre, email: String(propre.email ?? '').toLowerCase(), id_groupe: nomGroupe ? trouves[0].id_groupe : null });
+            // L'identifiant est la clé de connexion (VSC-03) ; à défaut, l'adresse en tient lieu
+            valides.push({
+                ...propre,
+                identifiant: String(propre.identifiant ?? propre.email ?? '').trim(),
+                email: String(propre.email ?? '').toLowerCase() || null,
+                id_groupe: nomGroupe ? trouves[0].id_groupe : null,
+            });
         });
         if (valides.length) {
             const reponse = await etudiantAPI.importEtudiants(valides);
-            const ligneDe = (email) => lignes.findIndex((l) => String(l.email || '').trim().toLowerCase() === String(email || '').toLowerCase()) + 2;
-            erreurs.push(...(reponse.errors || []).map((e) => ({ ligne: ligneDe(e.email), libelle: e.email, message: e.error || e.message })));
+            const ligneDe = (identifiant) => lignes.findIndex((l) => String(l.identifiant ?? l.email ?? '').trim().toLowerCase() === String(identifiant || '').toLowerCase()) + 2;
+            erreurs.push(...(reponse.errors || []).map((e) => ({ ligne: ligneDe(e.identifiant), libelle: e.identifiant, message: e.error || e.message })));
             loadEtudiants();
             loadUsers();
             return { reussies: reponse.successCount ?? reponse.success?.length ?? 0, erreurs };
