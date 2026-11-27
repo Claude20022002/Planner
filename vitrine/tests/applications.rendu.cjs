@@ -12,6 +12,13 @@ const page = (adresse) => readFileSync(resolve(DIST, '.' + adresse, 'index.html'
 const MODULES = { 'emploi-du-temps': 'emploiDuTemps', presences: 'presences', 'espace-de-cours': 'espaceDeCours', 'quiz-et-jeux': 'quizEtJeux',
   'annonces-et-messages': 'annoncesEtMessages' };
 const compter = (html, motif) => (html.match(motif) || []).length;
+const logoAffiche = (html) => html.match(/<span class="logo"[^>]*>\s*(<svg\b[\s\S]*?<\/svg>)/)?.[1].replaceAll('\r\n', '\n');
+const logoOfficiel = (nom) => {
+  assert.ok(nom, 'le module doit référencer un logo officiel');
+  return readFileSync(resolve(__dirname, '../../shared/icones/modules', `${nom}.svg`), 'utf8')
+    .trim().replaceAll('\r\n', '\n').replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
+};
+const echapper = (texte) => texte.replaceAll('&', '&amp;').replaceAll("'", '&#39;');
 
 test('le site est construit', () => assert.ok(existsSync(DIST), 'lancer npm run build'));
 
@@ -32,13 +39,20 @@ for (const langue of ['fr', 'en']) {
       assert.match(equipement[0], /aria-labelledby="equipement-titre"/);
       assert.equal(compter(equipement[0], /<li[ >]/g), 3, 'trois contextes d’équipement');
       const textes = require(`../src/i18n/${langue}/equipement.json`);
-      const echapper = (texte) => texte.replaceAll('&', '&amp;').replaceAll("'", '&#39;');
       for (const [contexte, phrase] of Object.entries(textes.modules[cle])) {
         assert.ok(equipement[0].includes(echapper(textes.contextes[contexte])), contexte);
         assert.ok(equipement[0].includes(echapper(phrase)), contexte);
       }
     });
   }
+
+  test(`${langue} · les cinq bandeaux affichent leur logo officiel`, async () => {
+    const { moduleDe } = await import('../src/donnees/modules.js');
+    for (const [segment, cle] of Object.entries(MODULES)) {
+      const html = page(`/${langue}/applications/${segment}/`);
+      assert.equal(logoAffiche(html), logoOfficiel(moduleDe(cle).logo), segment);
+    }
+  });
 
   test(`${langue} · /applications/ : 17 tuiles, 5 liens vers les modules, 12 tuiles grisées sans lien`, () => {
     const complet = page(`/${langue}/applications/`);
@@ -51,6 +65,20 @@ for (const langue of ['fr', 'en']) {
     assert.equal(compter(html, /<div[^>]*grisee[^>]*(href|role)=/g), 0);
     assert.equal(compter(html, /(Bientôt|Coming soon)<\/span>/g), 12);
     for (const categorie of ['organiser', 'enseigner', 'gerer', 'communiquer']) assert.ok(html.includes(`id="categorie-${categorie}"`), categorie);
+  });
+
+  test(`${langue} · les 17 tuiles affichent chacune leur logo officiel`, async () => {
+    const { MODULES: modules } = await import('../src/donnees/modules.js');
+    const { noms } = require(`../src/i18n/${langue}/modules.json`);
+    const html = page(`/${langue}/applications/`);
+    const tuiles = html.match(/<(a|div)\b[^>]*\bclass="tuile grille[^"]*"[^>]*>[\s\S]*?<\/\1>/g) || [];
+    assert.equal(tuiles.length, modules.length);
+    for (const { cle, logo } of modules) {
+      const nom = echapper(noms[cle]);
+      const tuile = tuiles.find((contenu) => contenu.includes(`>${nom}</span>`));
+      assert.ok(tuile, cle);
+      assert.equal(logoAffiche(tuile), logoOfficiel(logo), cle);
+    }
   });
 
   test(`${langue} · /socle/ : établissement, personnes, web et mobile, lien Sécurité`, () => {
