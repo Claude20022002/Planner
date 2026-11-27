@@ -45,8 +45,8 @@ QJE-16 s'en sert. QJE-15 range les lignes de jeux et laisse les blocs de quiz o�
 |---|---|---|---|---|
 | 1 | Quels niveaux, et dans quel ordre ? | Quatre cycles, dans cet ordre : `college` (Collège), `lycee` (Lycée), `superieur` (Supérieur), `formation-professionnelle` (Formation professionnelle). Ce sont les types de VIT-05, avec le collège et le lycée séparés comme dans les profils de la conception C-5. Ni primaire ni maternelle. Aujourd'hui les onze jeux portent seulement `superieur` : les trois autres cycles existent dans la liste et ne s'affichent pas. | | oui |
 | 2 | Le classement de chacun des onze jeux | Le tableau du § 4. Quatre filières, dans cet ordre : Informatique, Réseaux et cybersécurité, Intelligence artificielle, Gestion et logistique. Tous les jeux au supérieur seulement. | | oui |
-| 3 | La monnaie de « Pilote des stocks » et « Budget ERP » | Réglée par M-11 (`fix/qje-jeux-unite-neutre`, `4475a053`) : le mot est « crédits ». QJE-15 ne réécrit pas ces consignes et ne change pas les montants. Le code de QJE-15 part de `main` une fois M-11 fusionnée, et ne remet pas « MAD ». | M-11, en attente de la PR du chef | non |
-| 4 | Le numéro donné pour la séparation et pour le nom du module | Le plan écrit (nom fixé par QJE-16), comme demandé le 26 nov. Sur cette branche, QJE-16 est déjà l'interrupteur de l'IA par école (décision D2, 18 nov.). Proposition : le coordinateur dit si la séparation garde ce numéro, et ce que devient l'interrupteur. | | non, pour le rangement |
+| 3 | La monnaie de « Pilote des stocks » et « Budget ERP » | Réglée par M-11 (`fix/qje-jeux-unite-neutre`, `4475a053`) : le mot est « crédits ». QJE-15 ne réécrit pas ces consignes et ne change pas les montants. Le code de QJE-15 part de `main`, qui a déjà M-11, et ne remet pas « MAD ». | M-11 fusionnée (#283, 26 nov.) | non |
+| 4 | Le numéro donné pour la séparation et pour le nom du module | Le plan écrit (nom fixé par QJE-16), comme demandé le 26 nov. Sur cette branche, QJE-16 est déjà l'interrupteur de l'IA par école (décision D2, 18 nov.). Proposition : le coordinateur dit si la séparation garde ce numéro, et ce que devient l'interrupteur. Relevé du 27 nov. : la PR de coordination #287, non fusionnée, inscrit la séparation sous QJE-16 et laisse l'interrupteur sous le même numéro. Le plan ne choisit pas. | | non, pour le rangement |
 
 Variantes que le tableau ne retient pas, au cas où le chef les préférerait : ajouter `lycee` à Robot Route (le défi 1 est une livraison sur une grille) ; ajouter `formation-professionnelle` à Budget ERP, Sprint Agile et Pilote des stocks (budget, backlog, réapprovisionnement). La feuille de route du 21 nov. construit le supérieur d'abord : la proposition les laisse au supérieur seul.
 
@@ -120,7 +120,7 @@ La page du site ajoute un `code` stable sur chaque carte (fr, en, ar), puis rend
 
 ## 5. Fichiers créés ou modifiés
 
-Au moment du code, après le visa et après la fusion de M-11, de #282 (VIT-23, `bibliotheque-des-jeux.astro`) et de #229 (catalogue des jeux, Alexis). Pas dans le commit de ce plan.
+Au moment du code, après le visa. M-11 (#283) et #282 (VIT-23, `bibliotheque-des-jeux.astro`) sont sur `main`. #229 (catalogue des jeux, Alexis) est encore ouverte. Pas dans le commit de ce plan.
 
 | Fichier | Créé / modifié | Rôle | Taille visée |
 |---|---|---|---|
@@ -185,10 +185,10 @@ La fonction sert d'abord le supérieur (étape 3). Les noms des autres cycles so
 ## 9. Étapes de livraison
 
 1. Ce plan, commité seul. Le chef le valide. Aucun code avant cette ligne « Validé ».
-2. Le code, après le visa et après la présence sur `main` de M-11, de #282 et de #229. D'abord le catalogue et `rangerJeux` avec le test, puis les trois écrans.
+2. Le code, après le visa et après la présence de #229 sur `main`. M-11 et #282 y sont déjà. D'abord le catalogue et `rangerJeux` avec le test, puis les trois écrans.
 3. Fiche de session, module QJE, rapport. Le coordinateur relit la branche avant la PR. Le chef pousse.
 
-Le 27 novembre, `fix-audit-vitrine` passe devant ce code si le visa n'est pas là.
+Le 27 novembre, le visa n'est pas sur la PR #285. `fix-audit-vitrine` passe devant ce code.
 
 ## 10. Risques et retour arrière
 
