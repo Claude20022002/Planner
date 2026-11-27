@@ -6,21 +6,26 @@ import { RELECTURE_MS, ordreDeDepart, secondesRestantes } from './direct';
 /**
  * Partie de quiz en direct vue par le joueur (lot SC-1c) : la rejoindre, relire son état chaque
  * seconde tant que l'application est au premier plan, compter le temps d'après l'heure du serveur
- * et envoyer la réponse. Rend { vue, restant, valeur, changer, envoyer, envoi, erreur, termine }.
- * `messageErreur` : texte d'une erreur sans message.
+ * et envoyer la réponse. Les messages génériques viennent de l'écran traduit.
  */
-export default function useDirect(id, messageErreur) {
+export default function useDirect(id, messageErreur, messageReseau) {
   const [vue, setVue] = useState(null);
   const [erreur, setErreur] = useState(null);
   const [termine, setTermine] = useState(false);
   const [valeur, setValeur] = useState(null);
   const [envoi, setEnvoi] = useState(false);
+  const [verification, setVerification] = useState(false);
+  const [lectureEnEchec, setLectureEnEchec] = useState(false);
   const [maintenant, setMaintenant] = useState(() => Date.now());
   const version = useRef(undefined);
   const index = useRef(null);
   // Écart entre l'heure du serveur et celle du téléphone ; mis à jour seulement s'il bouge vraiment
   const [decalage, setDecalage] = useState(0);
   const enCours = useRef(false);
+  const envoiEnCours = useRef(false);
+  const relireComplet = useRef(false);
+  const refus = useRef(false);
+  const numeroEnvoi = useRef(0);
   const actif = useRef(true);
 
   const recevoir = (v) => {
@@ -38,32 +43,46 @@ export default function useDirect(id, messageErreur) {
 
   const lire = useCallback(async () => {
     // Une lecture lente ne s'empile pas sur la suivante
-    if (enCours.current) return;
+    if (enCours.current || envoiEnCours.current || refus.current) return;
     enCours.current = true;
+    const numero = numeroEnvoi.current;
     try {
-      const v = version.current === undefined ? await rejoindreDirect(id) : await lireDirect(id, version.current);
-      if (!actif.current) return;
+      const depuis = relireComplet.current ? undefined : version.current;
+      const v = version.current === undefined ? await rejoindreDirect(id) : await lireDirect(id, depuis);
+      if (!actif.current || numero !== numeroEnvoi.current) return;
       recevoir(v);
+      if (!v.inchange) {
+        relireComplet.current = false;
+        setVerification(false);
+      }
+      setLectureEnEchec(false);
       setErreur(null);
     } catch (e) {
-      if (!actif.current) return;
+      if (!actif.current || numero !== numeroEnvoi.current) return;
       const code = e?.code;
+      setLectureEnEchec(true);
       if (code === 'PAS_REJOINT') version.current = undefined;
       else if (code === 'DIRECT_TERMINE') setTermine(true);
-      else setErreur(e?.message || messageErreur);
+      else {
+        refus.current = e?.statut === 403 || e?.statut === 404;
+        setErreur(code === 'RESEAU' ? messageReseau : e?.message || messageErreur);
+      }
     } finally {
       enCours.current = false;
     }
-  }, [id, messageErreur]);
+  }, [id, messageErreur, messageReseau]);
 
   const fini = termine || vue?.etape === 'termine';
   useEffect(() => {
     actif.current = true;
     if (fini) return undefined;
-    lire();
-    const minuterie = setInterval(() => AppState.currentState === 'active' && lire(), RELECTURE_MS);
+    if (AppState.currentState !== 'background' && AppState.currentState !== 'inactive') lire();
+    const reprendre = (etat) => { if (etat === 'active') lire(); };
+    const abonnement = AppState.addEventListener('change', reprendre);
+    const minuterie = setInterval(() => reprendre(AppState.currentState), RELECTURE_MS);
     return () => {
       actif.current = false;
+      abonnement.remove();
       clearInterval(minuterie);
     };
   }, [lire, fini]);
@@ -76,17 +95,31 @@ export default function useDirect(id, messageErreur) {
     return () => clearInterval(minuterie);
   }, [enQuestion]);
 
+  const restant = secondesRestantes(vue, decalage, maintenant);
   const envoyer = async (reponse) => {
+    if (!enQuestion || vue.repondu || restant === 0 || envoiEnCours.current || relireComplet.current || lectureEnEchec) return;
+    envoiEnCours.current = true;
+    numeroEnvoi.current += 1;
     setEnvoi(true);
     try {
-      await repondreDirect(id, vue.index, reponse);
+      const accuse = await repondreDirect(id, vue.index, reponse);
+      if (!actif.current) return;
+      if (!accuse?.envoyee) throw new Error(messageErreur);
       setVue((v) => ({ ...v, repondu: true }));
     } catch (e) {
-      setErreur(e?.message || messageErreur);
+      if (!actif.current) return;
+      // La version du serveur peut rester identique après l'enregistrement de la réponse.
+      relireComplet.current = true;
+      setVerification(true);
+      setErreur(e?.code === 'RESEAU' ? messageReseau : e?.message || messageErreur);
     } finally {
-      setEnvoi(false);
+      envoiEnCours.current = false;
+      if (actif.current) {
+        setEnvoi(false);
+        if (relireComplet.current && AppState.currentState === 'active') lire();
+      }
     }
   };
 
-  return { vue, restant: secondesRestantes(vue, decalage, maintenant), valeur, changer: setValeur, envoyer, envoi, erreur, termine };
+  return { vue, restant, valeur, changer: setValeur, envoyer, envoi, verification, lectureEnEchec, erreur, termine };
 }

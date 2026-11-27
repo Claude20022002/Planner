@@ -343,6 +343,10 @@ const fr = {
       restant_one: 'Temps restant : {{count}} seconde',
       restant_other: 'Temps restant : {{count}} secondes',
       valider: 'Valider',
+      code: 'Code du quiz',
+      rejoindre: 'Rejoindre le quiz',
+      reseau: 'Connexion interrompue. Réessayez quand le réseau revient.',
+      verification: 'Vérification de votre réponse…',
       envoyee: 'Réponse envoyée. Regardez l’écran de la classe.',
       resultat: {
         juste: 'Bonne réponse !',
@@ -756,6 +760,10 @@ const en = {
       restant_one: 'Time left: {{count}} second',
       restant_other: 'Time left: {{count}} seconds',
       valider: 'Submit',
+      code: 'Quiz code',
+      rejoindre: 'Join quiz',
+      reseau: 'Connection lost. Try again when you are back online.',
+      verification: 'Checking your answer…',
       envoyee: 'Answer sent. Look at the class screen.',
       resultat: {
         juste: 'Correct!',
