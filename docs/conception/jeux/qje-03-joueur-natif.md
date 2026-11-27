@@ -6,7 +6,7 @@
 | Mission | [Sortie de ClassQuiz](../../plan/missions/sortie-classquiz.md), après QJE-01 |
 | Branche | `feat/qje-03-joueur-natif` |
 | Rédigé par | Codex, le 26 novembre 2026 |
-| **Validé** | En attente de Claude20022002 |
+| **Validé** | Claude20022002, le 26 novembre 2026, sur `b10f9566` (voir `docs/plan/decisions.md`) : joueur natif limité au direct, mode à son rythme dans le navigateur ; saisie du code dans le scanner ; images sur le téléphone, son et vidéo sur le poste de la classe ; recette sur Android et sur iOS si disponible. |
 
 ## 1. Objet et recette attendue
 
