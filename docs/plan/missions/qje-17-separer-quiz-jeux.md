@@ -1,4 +1,4 @@
-# Mission · QJE-16 · séparer les quiz et les jeux (site, application, offre, plan)
+# Mission · QJE-17 · séparer les quiz et les jeux (site, application, offre, plan)
 
 | | |
 |---|---|
@@ -7,10 +7,10 @@
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Tâche large, qui touche le site, l'application web et mobile, l'offre et le plan, avec des collisions à ordonner |
 | Attribuée le | 2026-11-26, par le coordinateur ; accord du chef : oui, le 2026-11-26 vers 14 h 35 (dissocier partout ; le module des jeux ne porte pas le nom « quiz ») |
 | Module et chantier | [QJE](../modules/QJE-quiz-jeux-ia.md) · **hors chantier**, sur la décision du chef du 26 nov. |
-| Fonction | QJE-16 : les quiz et les jeux deviennent deux modules distincts, partout où ils sont aujourd'hui réunis · taille L, découpée en étapes dans le plan |
-| Branche | `etude/qje-16-separer-quiz-jeux` pour le plan, depuis `origin/main` ; une branche par étape de code ensuite |
-| Dossier de travail | `..\travaux-planner\qje-16-separer-quiz-jeux` |
-| Plan de conception | à écrire : `docs/conception/jeux/qje-16-separer-quiz-jeux.md` · **validé par le chef** (noms, offre, plan : choix de produit) |
+| Fonction | QJE-17 : les quiz et les jeux deviennent deux modules distincts, partout où ils sont aujourd'hui réunis · taille L, découpée en étapes dans le plan |
+| Branche | `etude/qje-17-separer-quiz-jeux` pour le plan, depuis `origin/main` ; une branche par étape de code ensuite |
+| Dossier de travail | `..\travaux-planner\qje-17-separer-quiz-jeux` |
+| Plan de conception | à écrire : `docs/conception/jeux/qje-17-separer-quiz-jeux.md` · **validé par le chef** (noms, offre, plan : choix de produit) |
 
 ## Ce que le chef a dit (26 nov., vers 14 h 35)
 
@@ -49,7 +49,7 @@
 
 **Pour l'étape du plan, l'agent écrit seulement :**
 
-- `docs/conception/jeux/qje-16-separer-quiz-jeux.md` (le plan) ;
+- `docs/conception/jeux/qje-17-separer-quiz-jeux.md` (le plan) ;
 - sa fiche de session.
 
 Le périmètre de chaque étape de code sera fixé par le coordinateur après le visa du plan.
@@ -85,16 +85,16 @@ L'agent ne touche pas (missions ouvertes) :
 ## Prompt à donner à l'agent
 
 ```text
-Tu travailles sur Planner. Ta mission : QJE-16, séparer les quiz et les jeux partout où ils sont réunis
+Tu travailles sur Planner. Ta mission : QJE-17, séparer les quiz et les jeux partout où ils sont réunis
 (site, application web et mobile, offre, plan), sur la décision du chef du 26 nov. Le module des jeux
 ne doit pas porter le nom « quiz ».
 Lis d'abord AGENTS.md, docs/plan/README.md, docs/plan/suivi.md (sur main, ou sur la branche
 doc/coordination-2026-11-27 si elle n'est pas fusionnée), puis ta fiche de mission
-docs/plan/missions/qje-16-separer-quiz-jeux.md (même endroit).
-Branche : etude/qje-16-separer-quiz-jeux, depuis origin/main, dans le dossier
-..\travaux-planner\qje-16-separer-quiz-jeux.
+docs/plan/missions/qje-17-separer-quiz-jeux.md (même endroit).
+Branche : etude/qje-17-separer-quiz-jeux, depuis origin/main, dans le dossier
+..\travaux-planner\qje-17-separer-quiz-jeux.
 Étape 1, le plan seul : complète le relevé « où ils sont réunis » (site, web, mobile, serveur, offre, plan),
-pose les questions de la fiche avec tes propositions, puis écris docs/conception/jeux/qje-16-separer-quiz-jeux.md
+pose les questions de la fiche avec tes propositions, puis écris docs/conception/jeux/qje-17-separer-quiz-jeux.md
 (modèle docs/plan/modeles/conception.md) : les deux noms, ce qui change dans chaque partie, les étapes,
 leur ordre par rapport aux missions ouvertes (VIT-20f, VIT-23, QJE-15, QJE-03, QJE-14, #229), et les tests.
 Commite le plan seul ; le chef le valide. Aucun code dans cette étape.

@@ -46,7 +46,7 @@ L'agent peut modifier :
 
 L'agent ne touche pas :
 
-- `vitrine/src/donnees/modules.js` au-delà de ce que le plan dit (`fonctionnalites.json` mis à part, ci-dessus) (pas de module ajouté ni retiré : **QJE-16** séparera « Quiz et jeux » en deux modules après cette mission, dans sa propre étape) ;
+- `vitrine/src/donnees/modules.js` au-delà de ce que le plan dit (`fonctionnalites.json` mis à part, ci-dessus) (pas de module ajouté ni retiré : **QJE-17** séparera « Quiz et jeux » en deux modules après cette mission, dans sa propre étape) ;
 - `vitrine/package.json` et son verrou : **fix-audit-vitrine** (agent de Cursor) monte Astro le 27 nov. ;
 - `vitrine/src/components/socle/` et les en-têtes du site : VIT-23 (fusionnée) et VIT-09b (#227) ;
 - `shared/icones/` : les logos de la série B sont fixés (VIT-09d) ;
@@ -59,7 +59,7 @@ L'agent ne touche pas :
 - Charte v3 : teintes `app-<id>` par application ; bleu nuit `#1A2A6C` par défaut.
 - Le site ne dit que ce qui existe ; ce qui est prévu est « Bientôt » (VIT-01, VIT-21).
 - Le comparatif animé et le site restent sans îlot React nouveau (§ 4.8 du plan de VIT-20 : moins de 15 Ko).
-- Quiz et jeux seront séparés partout (décision du chef du 26 nov., QJE-16) : VIT-24 ne préjuge pas des deux noms.
+- Quiz et jeux seront séparés partout (décision du chef du 26 nov., QJE-17) : VIT-24 ne préjuge pas des deux noms.
 
 ## Questions en attente
 
