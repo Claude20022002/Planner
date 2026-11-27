@@ -2,14 +2,16 @@
 
 | | |
 |---|---|
-| Module | [QJE](../../plan/modules/QJE-quiz-jeux-ia.md) · exception hors chantier (chef, 18 nov.) |
+| Module | (nom fixé par QJE-16) · exception hors chantier (chef, 18 nov.) |
 | Branche | `feat/qje-15-jeux-par-niveau` |
-| Rédigé par | agent de Cursor (Grok 4.7), le 2026-11-26 |
+| Rédigé par | agent de Cursor (Grok 4.7), le 2026-11-26 ; revu le 2026-11-27 |
 | **Validé** | en attente du chef : le classement de chaque jeu est un choix de produit |
 
 ## 1. Objet et critère de « terminé »
 
 Chaque jeu du catalogue porte un ou plusieurs cycles scolaires et une filière. Le web, le mobile et la page des jeux du site montrent les jeux dans le même ordre : le cycle, puis la filière, puis le rang du tableau ci-dessous. Un cycle ou une filière sans jeu dans la liste affichée n'a pas de titre.
+
+Ce plan ne range que les jeux : le terminal et les dix simulations. Les quiz du Studio n'y entrent pas. Là où il faut le nom du module des jeux, le plan écrit (nom fixé par QJE-16). Le chef a décidé le 26 nov. que les quiz et les jeux sont séparés partout : sur le site, dans l'application, dans l'offre et dans le plan. QJE-15 ne fait pas cette séparation. Les écrans qui montrent encore les deux sont au § 2 bis.
 
 On le vérifie par un test du catalogue (les onze lignes du tableau), un test du rangement (l'ordre ne dépend pas de la langue ni de l'ordre d'arrivée), les tests du site sur l'ordre des cartes, et axe-core sur la bibliothèque des jeux. Les deux façons de jouer restent celles d'aujourd'hui.
 
@@ -22,10 +24,20 @@ Lu sur `origin/main` (`7469bb70`).
 - `shared/simulations/catalogue.js` : l'ordre du tableau `SIMULATIONS` est lu par position dans `backend/tests/utils/simulations.test.js`. Cet ordre-là reste.
 - Le web, `frontend/src/pages/jeux/Jeux.jsx` (367 lignes). Le panneau « Tous les jeux » (vers les lignes 241-305) affiche `accueil.jeux` à plat. L'enseignant voit les onze jeux ; l'étudiant voit ceux proposés dans ses modules (`backend/services/jeux/jeux.js`, `accueilJeux`). La progression, le bouton Jouer et le bouton Lancer en classe sont dans ce panneau.
 - Le mobile, `mobile/src/app/(onglets)/jeux.jsx` (257 lignes). Les jeux sont sous chaque module, avec la progression. Il n'y a pas de second catalogue « tous les jeux ».
-- Le site, `vitrine/src/pages/[lang]/bibliotheque-des-jeux.astro`. Une seule `GrilleCartes`, dix cartes, titres et résumés dans `vitrine/src/i18n/{fr,en,ar}/bibliotheque-des-jeux.json`. Le test `vitrine/tests/contenu.test.js` fige l'ordre français actuel (Tri Cyber en premier, Labo Big-O en dernier). Le terminal n'est pas sur cette page. La phrase « Dix jeux d'informatique et de gestion : Tri Cyber » est sur la page Quiz et jeux (VIT-18) : elle reste.
+- Le site, `vitrine/src/pages/[lang]/bibliotheque-des-jeux.astro`. Une seule `GrilleCartes`, dix cartes, titres et résumés dans `vitrine/src/i18n/{fr,en,ar}/bibliotheque-des-jeux.json`. Le test `vitrine/tests/contenu.test.js` fige l'ordre français actuel (Tri Cyber en premier, Labo Big-O en dernier). Le terminal n'est pas sur cette page. La phrase « Dix jeux d'informatique et de gestion : Tri Cyber » est sur la page du module du site (VIT-18), qui montre aussi les quiz. QJE-15 ne la modifie pas. Cette page est au § 2 bis.
 - `accueilJeux` recopie une liste fermée de champs (`code`, `type`, `modes`, `discipline`, `titre`, `resume`, `source`, `curriculum`, `progression`). Un champ ajouté au catalogue n'arrive pas tout seul dans cette réponse.
 
 `curriculum.niveaux` et `defis[].niveau` du terminal (niveaux 1 à n des commandes) restent des difficultés de défi. Le cycle scolaire est un champ nouveau, `cycles`, pour que les deux sens ne se mélangent pas. À l'écran, le titre dit quand même « Supérieur », « Lycée », etc.
+
+## 2 bis. Écrans où la page des jeux montre aussi des quiz
+
+QJE-16 s'en sert. QJE-15 range les lignes de jeux et laisse les blocs de quiz où ils sont. Aucun de ces trois écrans ne change de nom dans ce plan.
+
+| Écran | Ce qui est mêlé | Ce que QJE-15 touche |
+|---|---|---|
+| Web, route `/jeux`, titre « Activités » (`frontend/src/pages/jeux/Jeux.jsx`) | La zone des quiz de l'enseignant, l'historique des quiz terminés, et les jeux. Le sous-titre parle des quiz, des devoirs et des jeux. | Le panneau des jeux seulement. |
+| Mobile, onglet « Activités » (`mobile/src/app/(onglets)/jeux.jsx`) | Sous chaque module : quiz en cours, devoirs, puis jeux. Plus bas, les derniers quiz. | Les jeux du module seulement. |
+| Site, page du module (VIT-18), dans `vitrine/src/pages/[lang]/applications/` | Les quiz, le studio et les jeux sur la même page, dont la phrase « Dix jeux d'informatique et de gestion : Tri Cyber ». Le nom affiché et le segment réunissent encore les deux familles. | Rien. La bibliothèque (`bibliotheque-des-jeux.astro`) ne montre que les dix simulations : c'est elle que QJE-15 range. |
 
 ## 3. Questions et réponses
 
@@ -34,6 +46,7 @@ Lu sur `origin/main` (`7469bb70`).
 | 1 | Quels niveaux, et dans quel ordre ? | Quatre cycles, dans cet ordre : `college` (Collège), `lycee` (Lycée), `superieur` (Supérieur), `formation-professionnelle` (Formation professionnelle). Ce sont les types de VIT-05, avec le collège et le lycée séparés comme dans les profils de la conception C-5. Ni primaire ni maternelle. Aujourd'hui les onze jeux portent seulement `superieur` : les trois autres cycles existent dans la liste et ne s'affichent pas. | | oui |
 | 2 | Le classement de chacun des onze jeux | Le tableau du § 4. Quatre filières, dans cet ordre : Informatique, Réseaux et cybersécurité, Intelligence artificielle, Gestion et logistique. Tous les jeux au supérieur seulement. | | oui |
 | 3 | La monnaie de « Pilote des stocks » et « Budget ERP » | Réglée par M-11 (`fix/qje-jeux-unite-neutre`, `4475a053`) : le mot est « crédits ». QJE-15 ne réécrit pas ces consignes et ne change pas les montants. Le code de QJE-15 part de `main` une fois M-11 fusionnée, et ne remet pas « MAD ». | M-11, en attente de la PR du chef | non |
+| 4 | Le numéro donné pour la séparation et pour le nom du module | Le plan écrit (nom fixé par QJE-16), comme demandé le 26 nov. Sur cette branche, QJE-16 est déjà l'interrupteur de l'IA par école (décision D2, 18 nov.). Proposition : le coordinateur dit si la séparation garde ce numéro, et ce que devient l'interrupteur. | | non, pour le rangement |
 
 Variantes que le tableau ne retient pas, au cas où le chef les préférerait : ajouter `lycee` à Robot Route (le défi 1 est une livraison sur une grille) ; ajouter `formation-professionnelle` à Budget ERP, Sprint Agile et Pilote des stocks (budget, backlog, réapprovisionnement). La feuille de route du 21 nov. construit le supérieur d'abord : la proposition les laisse au supérieur seul.
 
@@ -103,7 +116,7 @@ Le panneau du catalogue sort dans `frontend/src/components/jeux/BibliothequeJeux
 
 Le mobile appelle `mobile/src/jeux/GroupeJeux.jsx` à la place de la boucle des jeux d'un module. Les lignes nouvelles sont dans ce composant. `jeux.jsx` reste à 257 lignes ou en dessous.
 
-La page du site ajoute un `code` stable sur chaque carte (fr, en, ar), puis rend une `GrilleCartes` par groupe : le surtitre est le cycle, le titre est la filière. `GrilleCartes` ne change pas. La phrase de la page Quiz et jeux ne change pas.
+La page du site ajoute un `code` stable sur chaque carte (fr, en, ar), puis rend une `GrilleCartes` par groupe : le surtitre est le cycle, le titre est la filière. `GrilleCartes` ne change pas. La phrase de la page du module du site ne change pas.
 
 ## 5. Fichiers créés ou modifiés
 
@@ -123,7 +136,7 @@ Au moment du code, après le visa et après la fusion de M-11, de #282 (VIT-23, 
 | `vitrine/src/pages/[lang]/bibliotheque-des-jeux.astro` | modifié | une grille par groupe | sous 80 lignes |
 | `vitrine/src/i18n/{fr,en,ar}/bibliotheque-des-jeux.json` | modifié | `code` sur chaque carte, titres de section | |
 | `vitrine/tests/contenu.test.js` | modifié | l'ordre français du § 4, sans le terminal | |
-| `docs/plan/modules/QJE-quiz-jeux-ia.md` | modifié | la ligne QJE-15 | |
+| `docs/plan/modules/` (fichier du module, nom fixé par QJE-16) | modifié | la ligne QJE-15 | |
 | `docs/sessions/` | créé | la fiche | |
 
 ## 6. Données et migration
@@ -146,7 +159,7 @@ La fonction sert d'abord le supérieur (étape 3). Les noms des autres cycles so
 |---|---|---|---|
 | M18 | Le supérieur est le cœur du produit aujourd'hui | appliquée | Les onze jeux sont au supérieur. |
 | M17 | Aucun pays ni aucune devise écrite en dur | appliquée | QJE-15 n'écrit pas de monnaie. M-11 pose « crédits ». |
-| Pack 4, étude 15 | Quiz et jeux, à trouver dans le produit | appliquée | La bibliothèque range les jeux par cycle et par domaine. |
+| Pack 4, étude 15 | Les jeux, à trouver dans le produit | appliquée | La bibliothèque range les jeux par cycle et par domaine. Le libellé de l'étude réunit encore les deux familles ; QJE-16 le sépare. |
 | C5, expertise du site | Raconter les contextes d'EP-18 | appliquée | La page du site reste une lecture. On y joue dans l'application, sur le téléphone ou au tableau, selon les `modes` déjà déclarés. |
 | M14 | axe-core sans violation | appliquée | axe-core sur la bibliothèque des jeux, web et site. |
 | R10, N3 | Poids affiché avant un téléchargement | écartée | Aucun fichier à télécharger. Le rangement se calcule sur la liste déjà là. |
@@ -186,7 +199,8 @@ Le 27 novembre, `fix-audit-vitrine` passe devant ce code si le visa n'est pas l�
 
 ## 11. Hors périmètre
 
-- `backend/`, les tables, les moteurs, la validation des défis, le Studio quiz.
+- `backend/`, les tables, les moteurs, la validation des défis, les quiz du Studio.
+- Séparer les quiz et les jeux sur les écrans du § 2 bis, et fixer le nom du module des jeux : c'est QJE-16.
 - La charte des jeux (UIX-10e).
 - `docs/plan/suivi.md`.
 - Réécrire `curriculum.discipline`, les résumés, ou les consignes en crédits (M-11 et #229).
