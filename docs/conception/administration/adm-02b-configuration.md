@@ -7,7 +7,7 @@
 | Mission | `docs/plan/missions/adm-02.md` |
 | Branche | `feat/adm-02b-configuration`, depuis `origin/main` (`fb821d24`, ADM-02a fusionnée par #281) |
 | Rédigé par | Claude Code (Opus 5.5), sous-agent du coordinateur, le 27 nov. 2026 |
-| **Validé** | à faire : par le coordinateur (étape sans migration ni route nouvelle), questions du § 7 comprises |
+| **Validé** | par le coordinateur le 27 nov., réponses 1 à 9 selon les propositions ; écarts 1 à 4 du plan parent acceptés (le code fait foi) |
 
 ## 1. Ce que l'étape livre
 
