@@ -5,7 +5,7 @@
 | Module | [QJE](../../plan/modules/QJE-quiz-jeux-ia.md) · hors chantier, décision du chef du 26 nov. |
 | Branche | `etude/qje-17-separer-quiz-jeux` (ce plan) ; une branche par étape de code (§ 9) |
 | Rédigé par | Claude (Opus 5.5), session VS Code, le 2026-11-27, sur la mission du coordinateur ([fiche](../../plan/missions/qje-17-separer-quiz-jeux.md)) |
-| **Validé** | en attente |
+| **Validé** | par Claude20022002 le 2026-11-27, avec un changement : `jeux-pedagogiques.json` · `meta.description` sans nombre (§ 4.2). Questions 12 à 15 tranchées par le coordinateur le 27 nov. (`decisions.md`, 9fe05bb4) : les quatre propositions |
 
 ## 1. Objet et critère de « terminé »
 
@@ -155,7 +155,7 @@ Les sources de chaque phrase sont citées. Le test de garde de VIT-18 les vérif
 | `quiz.json` · `meta.description` | Dix façons de poser une question, en direct ou à son rythme. | Ten ways to ask a question, live or at one's own pace. |
 | `quiz.json` · `entete.titre` | Créer, projeter, répondre. | Create, project, answer. |
 | `jeux-pedagogiques.json` · `meta.titre` | Jeux pédagogiques · Planner | Learning games · Planner |
-| `jeux-pedagogiques.json` · `meta.description` | Dix simulations à défis et un terminal Linux, pour s'exercer en jouant. | Ten challenge simulations and a Linux terminal, to practise by playing. |
+| `jeux-pedagogiques.json` · `meta.description` | Des simulations à défis et un terminal Linux, pour s'exercer en jouant. | Challenge simulations and a Linux terminal, to practise by playing. |
 | `jeux-pedagogiques.json` · `entete.titre` | S'exercer en jouant. | Practise by playing. |
 | `jeux-pedagogiques.json` · `entete.accroche` | L'enseignant propose un jeu dans son module, ou le lance en classe. Chacun joue sur son téléphone, ou tous ensemble au tableau. | The teacher offers a game in a course module, or launches it in class. Everyone plays on their phone, or together at the board. |
 | `jeux-pedagogiques.json` · `jeux.lien` (était « Voir les dix jeux ») | Voir tous les jeux | See all the games |
