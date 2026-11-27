@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'tri-cyber', type: 'simulation', discipline: 'cybersecurite', moteur: 'triage',
+    cycles: ['superieur'], domaine: 'reseaux-cybersecurite',
     titre: texte('Tri Cyber', 'Cyber Triage'),
     resume: texte('Classer quatre incidents de sécurité par criticité selon portée, sensibilité des données et statut de confinement.', 'Classify four security incidents by severity using scope, data sensitivity, and containment status.'),
     objectif: texte('Appliquer une grille de criticité pour prioriser les réponses d\u2019un SOC.', 'Apply a severity matrix to prioritise SOC incident response.'),

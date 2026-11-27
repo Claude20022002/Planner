@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'sprint-agile', type: 'simulation', discipline: 'gestion-de-projet', moteur: 'sprint',
+    cycles: ['superieur'], domaine: 'gestion-logistique',
     titre: texte('Sprint Agile', 'Agile Sprint'),
     resume: texte('Sélectionner des éléments du backlog en respectant capacité, dépendances, obligations et valeur minimale.', 'Select backlog items respecting capacity, dependencies, mandatory flags, and minimum value.'),
     objectif: texte('Planifier un sprint réaliste en arbitrant charge, valeur et contraintes inter-items.', 'Plan a realistic sprint by balancing load, value, and cross-item constraints.'),

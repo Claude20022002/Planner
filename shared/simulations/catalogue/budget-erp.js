@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'budget-erp', type: 'simulation', discipline: 'gestion', moteur: 'budget',
+    cycles: ['superieur'], domaine: 'gestion-logistique',
     titre: texte('Budget ERP', 'ERP Budget'),
     resume: texte('Allouer des quantités sur 4 postes de coût pour rester dans le budget tout en couvrant un minimum et un coût unitaire.', 'Allocate quantities across 4 cost lines to stay within budget while meeting coverage and unit-cost targets.'),
     objectif: texte('Appliquer un modèle de coût linéaire (fixe + unité × qté) et arbitrer couverture vs. dépense.', 'Apply a linear cost model (fixed + unit × qty) and balance coverage versus spending.'),

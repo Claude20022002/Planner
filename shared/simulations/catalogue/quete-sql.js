@@ -3,6 +3,7 @@ import { texte, curriculum } from './_aide.js';
 
 export default {
     code: 'quete-sql', type: 'simulation', discipline: 'bases-de-donnees', moteur: 'sql',
+    cycles: ['superieur'], domaine: 'informatique',
     titre: texte('Requête Parfaite', 'Perfect Query'),
     resume: texte('Remettre dans le bon ordre les clauses d\u2019une requête SQL à partir de fragments mélangés.', 'Reorder shuffled SQL clause fragments into the correct execution order.'),
     objectif: texte('Mémoriser l\u2019ordre canonique SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY sans exécuter de vrai SQL.', 'Learn the canonical clause order without executing any real SQL.'),
