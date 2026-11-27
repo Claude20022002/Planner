@@ -181,8 +181,12 @@ export const loginCompteRateLimiter = createRateLimiter({
     windowMs: 15 * 60 * 1000,
     max: 10,
     skipSuccessfulRequests: true,
-    // Email non textuel : refusé par la connexion (400), rien à compter par compte
-    keyGenerator: (req) => (typeof req.body?.email === "string" ? `compte:${req.body.email.trim().toLowerCase()}` : null),
+    // Identifiant (nouveaux clients) ou adresse (applications installées) ; non textuel : refusé par
+    // la connexion (400), rien à compter par compte
+    keyGenerator: (req) => {
+        const saisie = req.body?.identifiant ?? req.body?.email;
+        return typeof saisie === "string" ? `compte:${saisie.trim().toLowerCase()}` : null;
+    },
     message: "Trop de tentatives de connexion sur ce compte, veuillez réessayer dans 15 minutes.",
 });
 

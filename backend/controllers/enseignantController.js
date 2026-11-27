@@ -6,7 +6,7 @@ import { hashPassword, verifierMotDePasse } from "../utils/passwordHelper.js";
 import { pick } from "../utils/validationHelper.js";
 import { chargesEnseignants, disponibiliteEnseignant } from "../services/planning/enseignants.js";
 import { STATUTS_ENSEIGNANT } from "../config/referentiel.js";
-import { creerLienInvitation, empreinteInutilisable, envoyerInvitation } from "../services/comptes.js";
+import { collisionCleConnexion, creerLienInvitation, empreinteInutilisable, envoyerInvitation } from "../services/comptes.js";
 import { accorder } from "../../shared/accords.js";
 
 /**
@@ -267,7 +267,19 @@ export const importEnseignants = asyncHandler(async (req, res) => {
 
             // Vérifier si l'email existe déjà
             let user = await Users.findOne({ where: { email: enseignantData.email } });
-            
+
+            // Le compte prend son adresse comme identifiant (reprise de 0064) : il ne peut pas
+            // reprendre l'identifiant d'un autre compte (condition du chef du 26 nov.)
+            const collision = await collisionCleConnexion({
+                identifiant: String(enseignantData.email).trim(),
+                email: String(enseignantData.email).trim(),
+                idExclu: user?.id_user ?? null,
+            });
+            if (collision) {
+                results.errors.push({ email: enseignantData.email, error: collision.error });
+                continue;
+            }
+
             if (!user) {
                 // Créer l'utilisateur
                 // Mot de passe du fichier (provisoire) ou aléatoire + invitation ; à changer à la connexion.

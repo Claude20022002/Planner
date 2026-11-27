@@ -1,6 +1,7 @@
 /**
- * Planche d'aperçu des logos et des icônes de shared/icones/ (VIT-09a) : écrit apercu.html, à ouvrir
- * en local pour la relecture du chef. Ni publiée, ni commitée (.gitignore).
+ * Planche d'aperçu des logos (style du logo Planner depuis VIT-09d) et des icônes de shared/icones/
+ * (VIT-09a) : écrit apercu.html, à ouvrir en local pour la relecture du chef. Ni publiée, ni commitée
+ * (.gitignore).
  *   node shared/icones/generer-apercu.mjs
  * Chaque logo à 24, 32 (dessin simplifié), 48 et 96 px (dessin détaillé), sur les fonds blanc,
  * gris-fond et ecran de la charte. Puis chaque icône vivante dans un bouton « icone-vivante », à

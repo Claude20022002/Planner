@@ -4,10 +4,19 @@
     "description": ""
   },
   "ouverture": {
+    "surtitre": "",
     "titre": "",
+    "relief": "",
     "accroche": "",
     "decouvrir": "",
-    "contact": ""
+    "contact": "",
+    "roles": {
+      "intro": "",
+      "direction": "",
+      "scolarite": "",
+      "enseignants": "",
+      "etudiants": ""
+    }
   },
   "emploi": {
     "surtitre": "",

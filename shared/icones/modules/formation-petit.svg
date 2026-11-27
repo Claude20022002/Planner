@@ -1,16 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Formation et financeurs, dessin simplifié pour 24 à 32 px. -->
-<defs>
-  <linearGradient id="vit-formation-petit-tuile" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#752F70"/><stop offset="1" stop-color="#4D1F4A"/></linearGradient>
-</defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-formation-petit-tuile)"/>
-<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity=".2"/>
-<path d="M46 58 30 78m20-20 16 20m-18-20v12" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="17" y="21" width="62" height="42" rx="4" fill="#FFFFFF"/>
-<rect x="15" y="18" width="66" height="7" rx="3" fill="#A6CAEE"/>
-<path d="m28 50 17-12 19 5" fill="none" stroke="#17395C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="28" cy="50" r="4.5" fill="#17395C"/>
-<circle cx="45" cy="38" r="5" fill="#FFC83D"/>
-<circle cx="64" cy="43" r="4.5" fill="#17395C"/>
-<rect x="16" y="60" width="64" height="6" rx="2" fill="#FFC83D"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Formation et financeurs (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : escalier de trois marches et drapeau. Charte : app-formation (tuile en aplat), app-formation-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#752F70"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<path d="M64 38V11" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+<path d="M66 9h15l-4.5 5.5L81 20H66z" fill="#A6CAEE"/>
+<path d="M14 82V65a2 2 0 0 1 2-2h17V50a2 2 0 0 1 2-2h17V37a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v45z" fill="#FFFFFF"/>
 </svg>

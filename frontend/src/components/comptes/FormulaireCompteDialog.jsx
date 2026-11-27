@@ -11,7 +11,9 @@ const validationSchema = yup.object({
     // Messages : des clés de traduction, traduites à l'affichage
     nom: yup.string().required('utilisateurs.erreurs.nom'),
     prenom: yup.string().required('utilisateurs.erreurs.prenom'),
-    email: yup.string().email('utilisateurs.erreurs.emailInvalide').required('utilisateurs.erreurs.email'),
+    // L'identifiant est la clé de connexion (VSC-03) ; l'adresse est facultative.
+    identifiant: yup.string().trim().required('utilisateurs.erreurs.identifiant'),
+    email: yup.string().trim().email('utilisateurs.erreurs.emailInvalide').transform((valeur) => valeur || undefined),
     role: yup.string().oneOf(['admin', 'enseignant', 'etudiant']).required('utilisateurs.erreurs.role'),
     telephone: yup.string(),
     // Longueur comme le serveur (utils/passwordHelper.js) ; mots de passe courants, personnels ou
@@ -24,12 +26,13 @@ const validationSchema = yup.object({
         .max(64, 'utilisateurs.erreurs.motDePasseLong'),
 });
 
-const VIDE = { nom: '', prenom: '', email: '', role: 'admin', telephone: '', password: '', actif: true, niveau: '' };
+const VIDE = { nom: '', prenom: '', identifiant: '', email: '', role: 'admin', telephone: '', password: '', actif: true, niveau: '' };
 
 const valeursDe = (user) => ({
     nom: user.nom,
     prenom: user.prenom,
-    email: user.email,
+    identifiant: user.identifiant || '',
+    email: user.email || '',
     role: user.role,
     telephone: user.telephone || '',
     password: '',
@@ -92,7 +95,15 @@ export default function FormulaireCompteDialog({ open, editing, onClose, onSaved
                     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2, mt: 1, '& > :not(.MuiTextField-root)': { gridColumn: '1 / -1' } }}>
                         <TextField fullWidth label={t('utilisateurs.colonnes.nom')} {...champ('nom')} />
                         <TextField fullWidth label={t('utilisateurs.colonnes.prenom')} {...champ('prenom')} />
-                        <TextField fullWidth label={t('utilisateurs.colonnes.email')} type="email" onBlur={formik.handleBlur} {...champ('email')} />
+                        <TextField fullWidth label={t('utilisateurs.colonnes.identifiant')} autoComplete="off" onBlur={formik.handleBlur} {...champ('identifiant')} />
+                        <TextField
+                            fullWidth
+                            label={t('utilisateurs.colonnes.email')}
+                            type="email"
+                            onBlur={formik.handleBlur}
+                            {...champ('email')}
+                            helperText={(formik.touched.email && formik.errors.email && t(formik.errors.email)) || t('utilisateurs.emailFacultative')}
+                        />
                         {!editing && (
                             <Alert severity="info">
                                 {t('utilisateurs.infoAdmin')}{' '}

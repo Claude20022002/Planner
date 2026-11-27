@@ -16,7 +16,7 @@ const { lang } = Astro.params;
 const t = traductions(lang, 'securite');
 ---
 <Gabarit langue={lang} page="securite" titre={t('meta.titre')} description={t('meta.description')}>
-  <EnTetePage ton="sombre" surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} />
+  <EnTetePage ton="sombre" surtitre={t('entete.surtitre')} titre={t('entete.titre')} accroche={t('entete.accroche')} relief={t('entete').relief} />
   <GrilleCartes id="protections" surtitre={t('protections.surtitre')} titre={t('protections.titre')} cartes={t('protections.cartes')}
     icones={[ShieldCheck, UserRoundCheck, ScrollText, LockKeyhole, UserRoundX, Bot]} />
   <GrilleCartes id="site" ton="gris" surtitre={t('site.surtitre')} titre={t('site.titre')} cartes={t('site.cartes')}

@@ -4,10 +4,19 @@
     "description": "Planner calcule l'emploi du temps de votre établissement en respectant vos règles, et accompagne la classe : appel par QR code ou à la main, quiz en direct, jeux, reports de séance suivis."
   },
   "ouverture": {
-    "titre": "Planner",
+    "surtitre": "Planner",
+    "titre": "L'emploi du temps calculé selon vos règles. Puis toute la classe.",
+    "relief": "selon vos règles",
     "accroche": "Pour l'enseignement supérieur et la formation professionnelle, Planner calcule l'emploi du temps et accompagne chaque séance. Le collège et le lycée arrivent bientôt.",
     "decouvrir": "Découvrir",
-    "contact": "Nous contacter"
+    "contact": "Nous contacter",
+    "roles": {
+      "intro": "Vous êtes :",
+      "direction": "Direction",
+      "scolarite": "Scolarité",
+      "enseignants": "Enseignant",
+      "etudiants": "Étudiant"
+    }
   },
   "emploi": {
     "surtitre": "Emploi du temps",

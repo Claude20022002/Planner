@@ -4,7 +4,7 @@ import { authenticateToken, requireAdmin, asyncHandler } from "../middleware/ind
 
 const router = express.Router();
 
-// Paramètres de planification : réservés à l'administration
+// Paramètres de planification : lecture par l'administration ; l'écriture est passée au panneau de configuration (ADM-02)
 router.use(authenticateToken, requireAdmin);
 
 router.get("/", asyncHandler(getParametresPlanning));

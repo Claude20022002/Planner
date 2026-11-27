@@ -12,6 +12,7 @@
  * s'affichent pas : ils ne sont pas cherchés. Les exceptions sont listées ci-dessous, avec leur
  * raison ; toute autre occurrence fait échouer la vérification (CI : job du site).
  * backend/.env.example est lu aussi, commentaires « # » compris : chaque école copie ce fichier tel quel.
+ * DEPLOIEMENT.md est lu en entier : une ligne qui commence par « * » ne doit pas passer pour un commentaire.
  *
  * Lancement : node scripts/verifier-neutre.mjs
  */
@@ -25,6 +26,8 @@ const DOSSIERS = ['backend', 'frontend/src', 'mobile/src', 'shared'];
 const PAGES = ['frontend/index.html', 'mobile/app.json'];
 // Exemple copié tel quel (Q-37) : les lignes « # » sont cherchées, contrairement au code
 const EXEMPLE_ENV = 'backend/.env.example';
+// Guide qu'une autre école suit : lu en entier, sans le filtre des commentaires du code
+const GUIDE = 'DEPLOIEMENT.md';
 const IGNORES = new Set(['node_modules', 'tests', '__tests__', 'dist', 'coverage', 'uploads']);
 const EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.cjs']);
 // Site vitrine (VIT-01) : ses textes sont dans des .json, ses pages en .astro, ses logos en .svg
@@ -68,11 +71,11 @@ const vitrine = DOSSIERS_VITRINE.filter((d) => fs.existsSync(path.join(RACINE, d
 const trouves = [...DOSSIERS.flatMap((dossier) => fichiers(path.join(RACINE, dossier))), ...vitrine].map(relatif).concat(PAGES)
   .filter((chemin) => !permis(chemin))
   .flatMap((chemin) => lignesMotif(chemin, false))
-  .concat(lignesMotif(EXEMPLE_ENV, true));
+  .concat(lignesMotif(EXEMPLE_ENV, true), lignesMotif(GUIDE, true));
 
 if (trouves.length) {
   console.error(`Nom de l'école pilote écrit en dur (${trouves.length}) : passer par l'identité de l'école ({{ecole}}, {{produit}}, identiteEcole()).`);
   for (const { chemin, numero, ligne } of trouves) console.error(`  ${chemin}:${numero}  ${ligne.trim().slice(0, 140)}`);
   process.exit(1);
 }
-console.log(`Aucun nom d'école écrit en dur (${[...DOSSIERS, ...DOSSIERS_VITRINE, EXEMPLE_ENV].join(', ')} ; ${EXCEPTIONS.length} exceptions justifiées).`);
+console.log(`Aucun nom d'école écrit en dur (${[...DOSSIERS, ...DOSSIERS_VITRINE, EXEMPLE_ENV, GUIDE].join(', ')} ; ${EXCEPTIONS.length} exceptions justifiées).`);

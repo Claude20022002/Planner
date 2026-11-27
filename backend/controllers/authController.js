@@ -27,7 +27,7 @@ import {
  * son niveau et son groupe le plus fin.
  */
 const identiteSso = async (user) => {
-    const identite = { role: user.role, email: user.email, nom: user.nom, prenom: user.prenom };
+    const identite = { role: user.role, identifiant: user.identifiant, email: user.email, nom: user.nom, prenom: user.prenom };
     if (user.role !== "etudiant") return identite;
     const [etudiant, appartenances] = await Promise.all([
         Etudiant.findByPk(user.id_user, { attributes: ["niveau"] }),
@@ -156,7 +156,7 @@ const getDummyHash = () => {
 
 const INVALID_CREDENTIALS = {
     message: "Identifiants invalides",
-    error: "Email ou mot de passe incorrect",
+    error: "Identifiant ou mot de passe incorrect",
 };
 
 /**
@@ -165,22 +165,30 @@ const INVALID_CREDENTIALS = {
  */
 export const login = asyncHandler(async (req, res) => {
     if (refuserMobileDepuisNavigateur(req, res)) return;
-    const { email, password } = req.body;
+    // Le champ vient de l'écran : « identifiant » pour les nouveaux clients, « email » pour les
+    // applications déjà installées (contrat conservé).
+    const saisie = req.body.identifiant ?? req.body.email;
+    const { password } = req.body;
 
     // Validation des champs (types stricts : un tableau deviendrait une clause IN)
-    if (typeof email !== "string" || typeof password !== "string" || !email.trim() || !password) {
+    if (typeof saisie !== "string" || typeof password !== "string" || !saisie.trim() || !password) {
         return res.status(400).json({
             message: "Champs manquants",
-            error: "L'email et le mot de passe sont requis",
+            error: "L'identifiant et le mot de passe sont requis",
         });
     }
 
-    const user = await Users.scope("withPassword").findOne({ where: { email: email.trim() } });
+    // Identifiant d'abord (décision Q-20), adresse ensuite : ceux qui se connectaient par adresse
+    // continuent sans rien changer.
+    const valeur = saisie.trim();
+    const user =
+        (await Users.scope("withPassword").findOne({ where: { identifiant: valeur } })) ??
+        (await Users.scope("withPassword").findOne({ where: { email: valeur } }));
 
     // Toujours exécuter bcrypt, même si l'utilisateur n'existe pas
     const isPasswordValid = await comparePassword(password, user?.password_hash || (await getDummyHash()));
     if (!user || !isPasswordValid) {
-        await journaliser(contexteDe(req), { evenement: "connexion_echec", user, email: email.trim() });
+        await journaliser(contexteDe(req), { evenement: "connexion_echec", user, identifiant: valeur });
         return res.status(401).json(INVALID_CREDENTIALS);
     }
 
@@ -577,23 +585,27 @@ export const revokeSession = asyncHandler(async (req, res) => {
  * Demande de réinitialisation de mot de passe
  */
 export const forgotPassword = asyncHandler(async (req, res) => {
-    const { email } = req.body;
+    // Identifiant ou adresse : même réponse neutre dans les deux cas (Q-5).
+    const saisie = req.body.identifiant ?? req.body.email;
 
-    if (typeof email !== "string" || !email.trim()) {
+    if (typeof saisie !== "string" || !saisie.trim()) {
         return res.status(400).json({
-            message: "Email requis",
-            error: "Veuillez fournir votre adresse email",
+            message: "Identifiant requis",
+            error: "Veuillez fournir votre identifiant ou votre adresse email",
         });
     }
 
+    const valeur = saisie.trim();
     const genericResponse = {
-        message: "Si cet email existe, un lien de réinitialisation a été envoyé",
+        message: "Si ce compte existe, un lien de réinitialisation a été envoyé",
     };
 
-    // Même réponse pour un email inconnu ou un compte désactivé :
-    // on ne révèle ni l'existence ni le statut d'un compte.
-    const user = await Users.findOne({ where: { email: email.trim() } });
-    if (!user || !user.actif) {
+    // Même réponse pour un compte inconnu, désactivé ou sans adresse : on ne révèle ni l'existence
+    // ni le statut d'un compte, et un compte sans adresse ne peut pas recevoir de lien.
+    const user =
+        (await Users.findOne({ where: { identifiant: valeur } })) ??
+        (await Users.findOne({ where: { email: valeur } }));
+    if (!user || !user.actif || !user.email) {
         return res.json(genericResponse);
     }
 
@@ -672,7 +684,7 @@ L'équipe {{produit}}
     }
 
     res.json({
-        message: "Si cet email existe, un lien de réinitialisation a été envoyé",
+        message: "Si ce compte existe, un lien de réinitialisation a été envoyé",
     });
 });
 

@@ -29,7 +29,7 @@ C'est un besoin réel des lycées professionnels, des CFA et de la formation pro
 | STA-01 | Offres de stage (espace Carrière) : reprendre ou fermer `b/offres-stage` | COU-07, S-1 | 3 | M | — | à décider |
 | STA-02 | Conventions de stage, tuteur, présence en entreprise, jalons de l'apprentissage | — | 7 | M | STA-01, FOR-01 | reporté (étape 7, feuille de route du 21 nov. ; la parité du 17 nov. la reprenait) |
 | STA-03 | Avis de stage (entreprise, poste, note, photo, consentement) et idées de projet (dont trois proposées par le service d'IA de Planner), venus de StudyLib | — | 3 | M | STA-01, EDT-04 | à faire : Alexis ([fiche](../missions/sta-avis-idees.md)) ; plan au chef (données, consentement, IA) ; décision du chef du 21 nov. (Q5, Q6 de l'étude StudyLib) |
-| STA-04 | Anciens élèves : annuaire des diplômés qui l'acceptent, nouvelles, offres d'emploi (avec STA-01), événements | — | à placer | M | STA-01, DOC-02 | à faire |
+| STA-04 | Anciens élèves : annuaire des diplômés qui l'acceptent, nouvelles, offres d'emploi (avec STA-01), événements | — | 7 | M | STA-01, DOC-02 | à faire |
 
 ## Critères de « terminé »
 

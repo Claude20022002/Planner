@@ -13,7 +13,8 @@ import SequelizeAdapter from "./adapter.js";
  *  - il lit l'identité dans l'ID token, sans appeler userinfo → revendications dans l'ID token ;
  *  - `sub` doit être un UUID → identifiant de compte UUID réversible (voir idCompte) ;
  *  - il exige un refresh token → émis pour tout client qui a le droit refresh_token ;
- *  - `preferred_username` doit être unique → partie locale de l'adresse (unique à HESTIM).
+ *  - `preferred_username` doit être unique → l'identifiant de connexion (unique à HESTIM, VSC-03) ;
+ *  - l'adresse est facultative (Q-20) → `email` et `email_verified` omis quand le compte n'en a pas.
  */
 
 export const MONTAGE = "/api/oidc";
@@ -61,14 +62,15 @@ const trouverCompte = async (ctx, accountId) => {
     const user = idUser ? await Users.findByPk(idUser) : null;
     // Un compte désactivé ou devenu étudiant ne peut plus obtenir de jeton
     if (!user || !user.actif || !ROLES_AUTORISES.includes(user.role)) return undefined;
+    const identifiant = user.identifiant ?? user.email;
     return {
         accountId,
         claims: async () => ({
             sub: accountId,
-            email: user.email,
-            email_verified: true,
-            preferred_username: user.email.split("@")[0].slice(0, 100),
-            name: `${user.prenom ?? ""} ${user.nom ?? ""}`.trim() || user.email,
+            // L'adresse n'est transmise que si le compte en a une (Q-6) ; l'identifiant la remplace
+            ...(user.email ? { email: user.email, email_verified: true } : {}),
+            preferred_username: String(identifiant).slice(0, 100),
+            name: `${user.prenom ?? ""} ${user.nom ?? ""}`.trim() || identifiant,
         }),
     };
 };

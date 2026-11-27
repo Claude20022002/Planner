@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32">
-<!-- Présences, feuille d’appel simplifiée pour 24 à 32 px. -->
-<defs><linearGradient id="vit-presences-petit-tuile" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#2F7548"/><stop offset="1" stop-color="#1F4D2F"/></linearGradient></defs>
-<rect x="4" y="4" width="88" height="88" rx="22" fill="url(#vit-presences-petit-tuile)"/>
-<rect x="4.5" y="4.5" width="87" height="87" rx="21.5" fill="none" stroke="#FFFFFF" stroke-opacity=".2"/>
-<rect x="24" y="21" width="48" height="57" rx="7" fill="#FFFFFF"/>
-<rect x="36" y="16" width="24" height="12" rx="4" fill="#FFC83D"/>
-<path d="m34 52 10 10 20-22" fill="none" stroke="#1F4D2F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+<!-- Logo de l'application Présences (VIT-09d), dessin simplifié pour 24 à 32 px, dans le style du logo Planner : planchette à pince et coche. Charte : app-presences (tuile en aplat), app-presences-fonce (ombres et traits), blanc, bleu-clair. -->
+<rect x="4" y="4" width="88" height="88" rx="19.5" fill="#2F7548"/>
+<rect x="4.5" y="4.5" width="87" height="87" rx="19" fill="none" stroke="#FFFFFF" stroke-opacity=".15"/>
+<rect x="23" y="22" width="50" height="60" rx="8" fill="#FFFFFF"/>
+<path d="M34 30h28v4H34z" fill="#1F4D2F"/>
+<rect x="34" y="13" width="28" height="17" rx="5" fill="#A6CAEE"/>
+<path d="M33 56l10 10 20-21" fill="none" stroke="#1F4D2F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

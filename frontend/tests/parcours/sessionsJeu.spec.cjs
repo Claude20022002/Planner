@@ -53,7 +53,7 @@ test("sessions de jeu : au tableau avec la classe par QR code, puis chacun sur s
   const mobile = await telephone.newPage();
   await mobile.goto(`/jeux/session/${code}`);
   await expect(mobile).toHaveURL(/\/connexion\?next=/);
-  await mobile.getByRole("textbox", { name: "Adresse email" }).fill(etudiants[1].email);
+  await mobile.getByRole("textbox", { name: "Identifiant" }).fill(etudiants[1].email);
   await mobile.getByRole("textbox", { name: "Mot de passe", exact: true }).fill(motDePasse);
   await mobile.getByRole("button", { name: "Connexion", exact: true }).click();
   await expect(mobile).toHaveURL(/\/jeux\/direct\/\d+$/, { timeout: 20_000 });

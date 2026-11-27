@@ -1,16 +1,17 @@
 /**
  * Correspondance entre les anciens réglages (table ParametresPlanning, config/parametresPlanning.js)
- * et le catalogue du moteur. Les anciens réglages restent lus tels quels tant que la génération ne
- * lit pas les valeurs résolues ; cette table sert à la migration et au test de non-régression.
+ * et le catalogue du moteur. Depuis ADM-02, ces réglages se lisent dans les versions de MP-1
+ * (services/planning/referentiel.js) : `convertir` va de l'ancienne unité à celle du catalogue,
+ * `revenir` fait le chemin inverse pour les appelants qui lisent encore l'ancienne forme.
  * Les unités changent : le catalogue compte en minutes et en pourcentage.
  */
 export const ANCIENS_PARAMETRES = {
-    max_heures_jour_groupe: { id: "HOR.REGLE.MAX_H_JOUR_GROUPE", convertir: (v) => v * 60 },
-    max_heures_jour_enseignant: { id: "ENS.CHARGE.MAX_H_JOUR", convertir: (v) => v * 60 },
-    duree_seance_defaut_minutes: { id: "MAT.VOL.DUREE_REC", convertir: (v) => v },
-    ratio_capacite_examen: { id: "EXA.EPREUVE.RATIO_CAPACITE", convertir: (v) => Math.round(v * 100) },
-    surveillants_par_salle: { id: "EXA.EPREUVE.SURVEILLANTS_PAR_SALLE", convertir: (v) => v },
-    trajet_inter_campus_defaut_minutes: { id: "LOG.TRAJET.CAMPUS_DEFAUT", convertir: (v) => v },
+    max_heures_jour_groupe: { id: "HOR.REGLE.MAX_H_JOUR_GROUPE", convertir: (v) => v * 60, revenir: (v) => v / 60 },
+    max_heures_jour_enseignant: { id: "ENS.CHARGE.MAX_H_JOUR", convertir: (v) => v * 60, revenir: (v) => v / 60 },
+    duree_seance_defaut_minutes: { id: "MAT.VOL.DUREE_REC", convertir: (v) => v, revenir: (v) => v },
+    ratio_capacite_examen: { id: "EXA.EPREUVE.RATIO_CAPACITE", convertir: (v) => Math.round(v * 100), revenir: (v) => v / 100 },
+    surveillants_par_salle: { id: "EXA.EPREUVE.SURVEILLANTS_PAR_SALLE", convertir: (v) => v, revenir: (v) => v },
+    trajet_inter_campus_defaut_minutes: { id: "LOG.TRAJET.CAMPUS_DEFAUT", convertir: (v) => v, revenir: (v) => v },
 };
 
 /**

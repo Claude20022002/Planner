@@ -35,9 +35,10 @@ export { definirClientClassQuiz, signatureClassQuiz };
 export const creerQuizClassQuiz = async (user, quiz) => {
     if (user.role !== "enseignant") throw new ErreurMetier("Réservé aux enseignants", 403);
     const cree = await appelerClassQuiz("/api/v1/hestim/quiz", {
-        email: user.email,
+        // L'identifiant suit le compte (VSC-03) ; l'adresse n'est transmise que si elle existe
+        ...(user.email ? { email: user.email } : {}),
         sub: idCompte(user.id_user),
-        username: user.email.split("@")[0].slice(0, 100),
+        username: String(user.identifiant ?? user.email).slice(0, 100),
         titre: quiz.titre,
         description: quiz.description ?? "",
         questions: quiz.questions,

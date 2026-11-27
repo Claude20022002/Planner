@@ -29,6 +29,7 @@
 
 - **Serveur** : `authRoutes`, `userRoutes`, `services/comptes.js`, `services/mfa.js`, `services/desactivation/*` (ME-17), `services/annees` (ME-18), `journalSecuriteRoutes`, `statistiquesRoutes`, `etablissementRoutes`.
 - **Fournisseur d'identité** : Planner fournit l'identité à ClassQuiz (OIDC) et à StudyLib (JWKS).
+- **Configuration de l'école (ADM-02a)** : `GET /api/moteur/reglages` (cinq réglages et règles réglables avec leur choix), `POST /api/moteur/versions/apercu` (à blanc), `POST /api/moteur/versions` avec `regles`, `appliquer` et `base` (409 `VERSION_DEPASSEE`), `GET /api/moteur/versions` allégée et `GET /api/moteur/versions/:id` ; événements `parametres_version_appliquee`, `_abandonnee`, `_annulee` au journal de sécurité ; services `backend/services/moteur/valeurs/` (`reglagesEcole`, `valeursDeLEcole`, `apercu`, `concurrence`, `historique`, `annulation`). Migration **0088** : reprise, dans une version appliquée du jour, des écarts entre l'ancienne table `ParametresPlanning` et MP-1 (une version seulement s'il y a un écart).
 - **Site** : `gestion/Utilisateurs`, `gestion/JournalSecurite`, `gestion/IdentiteEcole`, `Statistiques`, et l'import CSV (`components/common/ImportCsvDialog.jsx`) sur cinq pages.
 - **Modèles d'import fictifs** : `docs/modeles/`.
 
@@ -37,7 +38,7 @@
 | ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
 |---|---|---|---|---|---|---|
 | ADM-01 | Habilitations à portée : un droit vaut pour une filière, un niveau, un cycle ou toute l'école | ME-12 | 3 | M | VSC-01 | à faire |
-| ADM-02 | Panneau de configuration de l'école : réglages du moteur montrés à l'école (le reste reste au profil), aperçu puis appliquer | ME-2c | 3 | L | MOT-01, Q-04 | à faire |
+| ADM-02 | Panneau de configuration de l'école : réglages du moteur montrés à l'école (le reste reste au profil), aperçu puis appliquer ; avec MOT-13c, l'écran « Règles de génération ». Trois étapes : 02a serveur, 02b page Réglages et Historique, 02c Règles de génération ([conception](../../conception/administration/adm-02-configuration.md)) | ME-2c | 3 | L + M | MOT-01, Q-04 (tranchée par le plan) | à faire |
 | ADM-03 | Import : zone de préparation, contrôles, tout ou rien, classeur unique, clés naturelles ; le classeur porte la classe et le groupe de langue | ME-9 | 3 | L | VSC-01, VSC-07 | à faire |
 | ADM-04 | Assistant de démarrage avec un modèle par type d'école (EP-1) ; le modèle collège crée les groupes de langue, prêts pour l'import | ME-10 | 3 et 5 | L | ADM-02, ADM-03, UIX-01 | à faire |
 | ADM-05 | Rôle parent : compte facultatif, lien prouvé avec l'enfant, droits par enfant | — | 6 | M | VSC-02, PLA-11 | à faire |
@@ -45,11 +46,18 @@
 | ADM-07 | Enseignants partagés entre écoles : heures « occupé » fédérées | ME-13 | 7 | M | PLA-11 | à faire |
 | ADM-08 | Annuaire de l'école | ME-8b | — | M | — | reporté |
 | ADM-09 | Échanges OneRoster | ME-9b | — | M | ADM-03 | reporté |
-| ADM-10 | Champs et listes propres à l'école, sans code : champs ajoutés aux fiches élève, enseignant et candidature, listes de valeurs ; repris par l'import, les exports et les modèles de documents | — | à placer | L | VSC-01, ADM-02 | à faire |
+| ADM-10 | Champs et listes propres à l'école, sans code : champs ajoutés aux fiches élève, enseignant et candidature, listes de valeurs ; repris par l'import, les exports et les modèles de documents | — | 5 | L | VSC-01, ADM-02 | à faire |
 | ADM-11 | Fériés selon le pays : l'école choisit son pays, ou aucun, et le Calendrier propose les fériés de ce pays ; aujourd'hui le bouton et le générateur du serveur ne connaissent que le Maroc (EP-5, décision du chef du 21 nov.) | — | 3 | M | ADM-02 | à faire |
 
 ## Critères de « terminé »
 
+- **ADM-02** (proposé par le plan, validé le 22 nov.) :
+  - une personne de l'administration d'une école du supérieur règle seule, depuis le panneau, chaque réglage que le calcul ou les contrôles lisent et que l'école peut changer (cinq réglages, six règles souples du profil, ses contraintes déclarées), sans copie du catalogue dans le site ;
+  - une seule source : la génération, la saisie manuelle et les examens lisent ces réglages dans MP-1 ; l'ancienne route d'écriture refuse ; le problème envoyé au solveur est identique avant et après la bascule ;
+  - chaque refus sous son champ, traduit par son code ; l'aperçu dit ce qui change et quand cela vaut ; deux applications simultanées : la seconde reçoit 409 et recharge ;
+  - l'historique se lit, une version s'annule, une version future s'annule avant sa date ; appliquer, abandonner et annuler vont au journal de sécurité, sans valeur ;
+  - l'onglet « Règles de génération » crée une contrainte à partir des six modèles, montre sa phrase dans la langue de la personne, le contrôle de place et la liste « Déjà pris en compte » avec l'état de chaque règle ;
+  - trois clics au plus, axe-core sans violation, parcours verts en français et en anglais, charte d'UIX-10b ; premier chargement mesuré dans les PR de 02b et 02c.
 - **ADM-01** : un responsable de niveau ne voit ni ne modifie rien hors de son niveau. Un test par route touchée.
 - **ADM-03** : un fichier de 300 élèves avec dix erreurs volontaires est refusé avec dix messages lisibles ; corrigé, il passe en entier ou pas du tout. Une langue en double pour le même élève est l'une de ces erreurs, et le message nomme l'élève.
 - **ADM-04** : la mesure EP-1 est faite par une personne extérieure et notée. Le modèle collège lui propose des groupes de langue vides, et l'import ADM-03 les remplit.

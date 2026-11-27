@@ -21,7 +21,8 @@
 - **ClassQuiz** : fork dans un dépôt séparé, derrière l'interrupteur `classquiz_actif` de chaque école (migration 0057). Il est éteint pour une installation neuve et allumé pour HESTIM. Ses conteneurs restent dans le compose.
 - **Jeux** :
   - fichiers : `jeuxRoutes`, `sessionJeuRoutes`, `activiteRoutes`, `shared/jeux`, `shared/simulations`, `shared/terminal` (jeu du terminal Linux) ; écrans `pages/jeux/*` ; dans l'application, les écrans `jeux`, `terminal` et `partie` ;
-  - la branche `jeux-pedagogique` (dix simulations, trente défis) n'est **pas fusionnée** : ses corrections B-1 (catalogue neutre), B-2 (référence Big-O `complexite-01`) et I-1 (solution vue, coût en points, migration 0082) sont faites et testées en local le 18 nov. (`docs/sessions/2026-11-18-jeux-pedagogique.md`).
+  - la branche `jeux-pedagogique` (dix simulations, trente défis) n'est **pas fusionnée** : ses corrections B-1 (catalogue neutre), B-2 (référence Big-O `complexite-01`) et I-1 (solution vue, coût en points, migration 0082) sont faites et testées en local le 18 nov. (`docs/sessions/2026-11-18-jeux-pedagogique.md`) ;
+  - **unité des défis** (M-11, branche `fix/qje-jeux-unite-neutre`, [plan validé le 22 nov.](../../conception/jeux/fix-qje-jeux-unite-neutre.md)) : les consignes et les bilans comptent en crédits. Les montants ne changent pas.
 - **IA** :
   - fichiers : `services/ia/*` (client générique réglé par `IA_*`, quota), `quizIaRoutes`, `services/studio/iaGeneration.js` ;
   - **le fournisseur n'est pas choisi en production** (loi 09-08). Q-16 et Q-24 visaient Haiku 5.5, sous enveloppe.
@@ -40,8 +41,8 @@
 | QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | 3 | M | — | à faire |
 | QJE-08 | Créateurs de jeux et leur rémunération | JC-3, JC-4, JC-6, RC-1 à RC-4 | — | — | vente | gelé |
 | QJE-09 | Défis Linux dans un quiz | J-1 | — | M | QJE-04 | reporté |
-| QJE-10 | Évaluation en ligne notée : quiz du Studio passé comme évaluation (minuté, ordre aléatoire, une tentative), note versée au carnet de VSC-04 | — | à placer | M | VSC-04 | à faire |
-| QJE-11 | Correction de QCM papier par photo : feuille-réponse imprimable, photo prise par le téléphone de l'enseignant, note proposée puis validée | — | à placer | L | QJE-10 | à faire |
+| QJE-10 | Évaluation en ligne notée : quiz du Studio passé comme évaluation (minuté, ordre aléatoire, une tentative), note versée au carnet de VSC-04 | — | 3 | M | VSC-08 (VSC-04 remplacée le 26 nov., décision du chef : barème et résultat communs, N7) | à faire |
+| QJE-11 | Correction de QCM papier par photo : feuille-réponse imprimable, photo prise par le téléphone de l'enseignant, note proposée puis validée | — | 6 | L | QJE-10 | à faire |
 | QJE-12 | Assistant IA de l'enseignant : séquence de cours, grille d'évaluation, commentaires de copie à relire ; aucune donnée d'élève envoyée | — | libre | M | QJE-07 | à faire |
 | QJE-13 | Tuteur IA pour l'élève, sur le contenu de ses cours | — | — | L | QJE-07, avis CNDP | conditionnel (règle « aucune donnée d'élève ») |
 | QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |
