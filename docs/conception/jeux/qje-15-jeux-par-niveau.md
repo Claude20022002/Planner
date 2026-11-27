@@ -257,7 +257,7 @@ La fonction sert d'abord le supérieur (étape 3). Les noms des autres cycles so
 4. Les trois écrans, après cette planche et après #229 sur `main`.
 5. Fiche de session, module QJE, rapport. Le coordinateur relit la branche avant la PR. Le chef pousse.
 
-`fix-audit-vitrine` a son § 7 écrit (`48c1922a`), en attente du coordinateur. Son code attend ce visa. Il ne bloque pas le catalogue.
+`fix-audit-vitrine` a son § 7 validé par le coordinateur le 27 nov. (`95f66923`). Son code attend 19 h 02 UTC. Il ne bloque pas le catalogue.
 
 ## 10. Risques et retour arrière
 
