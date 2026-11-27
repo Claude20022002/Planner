@@ -21,7 +21,9 @@ export default function QuizDirect() {
   const { t } = useTranslation();
   const router = useRouter();
   const { id } = useLocalSearchParams();
-  const { vue, restant, valeur, changer, envoyer, envoi, erreur, termine } = useDirect(id, t('app.direct.erreur'));
+  const { vue, restant, valeur, changer, envoyer, envoi, verification, lectureEnEchec, erreur, termine } = useDirect(
+    id, t('app.direct.erreur'), t('app.direct.reseau'),
+  );
 
   const quitter = () => (router.canGoBack() ? router.back() : router.replace('/'));
   const fermer = (
@@ -32,7 +34,7 @@ export default function QuizDirect() {
 
   const enQuestion = vue?.etape === 'question';
   const question = vue?.question;
-  const figee = !enQuestion || vue.repondu || envoi || restant === 0;
+  const figee = !enQuestion || vue.repondu || envoi || verification || lectureEnEchec || restant === 0;
   const choisir = (r) => {
     changer(r);
     if (ENVOI_IMMEDIAT.includes(question.type) && !figee) envoyer(r);
@@ -109,13 +111,14 @@ export default function QuizDirect() {
         ) : null}
         {enQuestion && vue.repondu ? <Text style={styles.bandeau} accessibilityLiveRegion="polite">{t('app.direct.envoyee')}</Text> : null}
         {vue.etape === 'classement' ? <Text style={styles.texte}>{t('app.direct.attenteSuite')}</Text> : null}
-        {erreur ? <Text style={styles.texte} accessibilityLiveRegion="polite">{erreur}</Text> : null}
       </ScrollView>
     );
   } else contenu = <Message>{t('app.direct.pret')}</Message>;
 
   return (
     <Ecran titre={vue?.titre ?? t('app.direct.titre')} droite={fermer} espaces={false}>
+      {vue && !termine && erreur ? <Text style={styles.connexion} accessibilityLiveRegion="polite">{erreur}</Text> : null}
+      {vue && !termine && verification ? <Text style={styles.connexion} accessibilityLiveRegion="polite">{t('app.direct.verification')}</Text> : null}
       {contenu}
     </Ecran>
   );
@@ -131,6 +134,7 @@ const useStyles = creerStyles((t) => ({
   titre: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 26, textAlign: 'center', letterSpacing: espace(t, 0.6), textTransform: t.capitales },
   enonce: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 19, lineHeight: 26 },
   texte: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 15, lineHeight: 22 },
+  connexion: { color: t.couleurs.lettre, fontFamily: t.polices.texte, fontSize: 15, padding: 12 },
   texteGrand: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 18, textAlign: 'center' },
   resultat: { borderWidth: 2, borderRadius: t.rayons.md, padding: 14, gap: 4, backgroundColor: t.couleurs.cellule },
   image: { width: '100%', height: 200, borderRadius: t.rayons.sm },

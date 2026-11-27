@@ -8,10 +8,10 @@ import Ecran, { Message } from '../board/Ecran';
 import { planner } from '../api/client';
 import { chargerPartiesQuiz, rejoindreQuizStudio, rejoindreSessionJeu } from '../api/donnees';
 import { sourceClassQuiz } from '../quiz/classQuiz';
-import { ecranDuQuiz } from '../quiz/direct';
 import { origineDe, partieDuPin, pinScanne } from '../quiz/scan';
 import { codeSessionScanne, ecranDeSession } from '../jeux/session';
-import { cheminQuiz, codeQuizScanne } from '../quiz/studio';
+import { codeQuizScanne, destinationQuiz } from '../quiz/studio';
+import SaisieCodeStudio from '../quiz/SaisieCodeStudio';
 import { ouvrirSurLeWeb } from '../espaces/ouvrir';
 import { ouvrirPartie as ouvrirLaPartie } from '../quiz/ouvrir';
 import { proposerChangement } from '../telephone/etat';
@@ -35,6 +35,7 @@ export default function Scanner() {
   const [permission, demanderPermission] = useCameraPermissions();
   const [resultat, setResultat] = useState(null); // { ok, texte, detail }
   const enCours = useRef(false);
+  const [resolution, setResolution] = useState(false);
   // Partie trouvée : la caméra ne doit plus rien lire pendant l'ouverture de l'écran du quiz
   const partieOuverte = useRef(false);
   // Origine du service de quiz (promesse), pour reconnaître un QR de partie ; null sans quiz installé
@@ -60,31 +61,40 @@ export default function Scanner() {
     fermerDerriere();
   };
 
+  const rejoindreStudio = async (code) => {
+    if (enCours.current || resultat || partieOuverte.current) return;
+    enCours.current = true;
+    setResolution(true);
+    try {
+      const destination = destinationQuiz(await rejoindreQuizStudio(code), code);
+      if (!destination) throw new Error(t('app.direct.erreur'));
+      if (destination.ecran) router.replace(destination.ecran);
+      else {
+        await ouvrirSurLeWeb(destination.web, couleurs);
+        fermerDerriere();
+      }
+      partieOuverte.current = true;
+    } catch (e) {
+      setResultat({ ok: false, texte: e?.code === 'RESEAU' ? t('app.direct.reseau') : e?.message || t('app.direct.erreur') });
+    } finally {
+      enCours.current = false;
+      setResolution(false);
+    }
+  };
+
   const lu = async ({ data }) => {
     if (enCours.current || resultat || partieOuverte.current) return;
+    const codeSession = codeSessionScanne(data);
+    const codeQuiz = codeQuizScanne(data);
+    if (!codeSession && codeQuiz) return rejoindreStudio(codeQuiz);
     enCours.current = true;
     try {
       // Session de jeu lancée par l'enseignant : rejoindre, puis le jeu ou le tableau de la classe
-      const codeSession = codeSessionScanne(data);
       if (codeSession) {
         const ecranJeu = ecranDeSession(await rejoindreSessionJeu(codeSession));
         if (!ecranJeu) throw new Error(t('app.sessionJeu.erreur'));
         partieOuverte.current = true;
         router.replace(ecranJeu);
-        return;
-      }
-      // Quiz du Studio : en direct, l'écran de l'application (SC-1c) ; sinon le site l'ouvre (code
-      // inconnu ou expiré, il le dit lui-même)
-      const codeQuiz = codeQuizScanne(data);
-      if (codeQuiz) {
-        partieOuverte.current = true;
-        const ecranDirect = ecranDuQuiz(await rejoindreQuizStudio(codeQuiz).catch(() => null));
-        if (ecranDirect) {
-          router.replace(ecranDirect);
-          return;
-        }
-        await ouvrirSurLeWeb(cheminQuiz(codeQuiz), couleurs);
-        fermerDerriere();
         return;
       }
       const origine = await origineQuiz.current;
@@ -115,9 +125,9 @@ export default function Scanner() {
   );
 
   let contenu;
-  if (!permission) {
+  if (!permission && !resultat) {
     contenu = <Message discret>{t('app.commun.chargement')}</Message>;
-  } else if (!permission.granted) {
+  } else if (!resultat && !permission?.granted) {
     contenu = (
       <View style={styles.centre}>
         <Text style={styles.texte}>{t('app.appel.permission')}</Text>
@@ -163,6 +173,7 @@ export default function Scanner() {
 
   return (
     <Ecran titre={t('app.appel.titre')} droite={fermer} espaces={false}>
+      {!resultat?.ok ? <SaisieCodeStudio rejoindre={rejoindreStudio} occupe={resolution || Boolean(resultat)} /> : null}
       {contenu}
     </Ecran>
   );
