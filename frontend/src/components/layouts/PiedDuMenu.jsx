@@ -41,7 +41,7 @@ export default function PiedDuMenu({ aller, onLogout }) {
             {user?.prenom} {user?.nom}
           </Typography>
           <Typography variant="caption" noWrap sx={{ color: ds.nav.letterDim, display: 'block' }}>
-            {user?.email}
+            {user?.identifiant || user?.email}
           </Typography>
         </Box>
       </Box>

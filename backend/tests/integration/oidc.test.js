@@ -94,7 +94,8 @@ describe("Fournisseur OpenID Connect pour ClassQuiz", () => {
             nonce: "nonce-1",
             email: "amina.lahlou@hestim.test",
             email_verified: true,
-            preferred_username: "amina.lahlou",
+            // Q-6 : preferred_username porte l'identifiant ; ici il reprend l'adresse (reprise)
+            preferred_username: "amina.lahlou@hestim.test",
             name: "Amina Lahlou",
         });
         expect(identite.sub).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-8[0-9a-f]{3}-[0-9a-f]{12}$/);

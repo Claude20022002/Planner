@@ -8,7 +8,8 @@ export default function ListeEtudiants({ modele: m }) {
   const { t } = m;
   const champs = [
     ['numero', (e) => e.numero_etudiant], ['nom', (e) => e.user?.nom || '-'],
-    ['prenom', (e) => e.user?.prenom || '-'], ['email', (e) => e.user?.email || '-'],
+    ['prenom', (e) => e.user?.prenom || '-'], ['identifiant', (e) => e.user?.identifiant || '-'],
+    ['email', (e) => e.user?.email || '-'],
     ['niveau', (e) => e.niveau], ['groupe', (e) => e.groupe?.nom_groupe || '-'],
   ];
   return <>

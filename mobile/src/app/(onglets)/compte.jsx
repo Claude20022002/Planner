@@ -48,7 +48,7 @@ export default function Compte() {
         <Text style={styles.section}>{t('app.compte.profil')}</Text>
         <View style={styles.bloc}>
           <Text style={styles.nom}>{[utilisateur?.prenom, utilisateur?.nom].filter(Boolean).join(' ')}</Text>
-          <Text style={styles.detail}>{utilisateur?.email}</Text>
+          <Text style={styles.detail}>{utilisateur?.identifiant || utilisateur?.email}</Text>
           {utilisateur?.niveau ? <Text style={styles.detail}>{utilisateur.niveau}</Text> : null}
         </View>
 

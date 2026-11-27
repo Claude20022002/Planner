@@ -76,7 +76,7 @@ test("studio quiz : création, passation par QR code sur téléphone et par code
   const mobile = await telephone.newPage();
   await mobile.goto(`/quiz/code/${code}`);
   await expect(mobile).toHaveURL(/\/connexion\?next=/);
-  await mobile.getByRole("textbox", { name: "Adresse email" }).fill(etudiants[1].email);
+  await mobile.getByRole("textbox", { name: "Identifiant" }).fill(etudiants[1].email);
   await mobile.getByRole("textbox", { name: "Mot de passe", exact: true }).fill(motDePasse);
   await mobile.getByRole("button", { name: "Connexion", exact: true }).click();
   await expect(mobile).toHaveURL(new RegExp(`/quiz/code/${code}$`), { timeout: 20_000 });
