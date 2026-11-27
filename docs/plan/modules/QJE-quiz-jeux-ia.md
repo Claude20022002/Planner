@@ -46,6 +46,8 @@
 | QJE-12 | Assistant IA de l'enseignant : séquence de cours, grille d'évaluation, commentaires de copie à relire ; aucune donnée d'élève envoyée | — | libre | M | QJE-07 | à faire |
 | QJE-13 | Tuteur IA pour l'élève, sur le contenu de ses cours | — | — | L | QJE-07, avis CNDP | conditionnel (règle « aucune donnée d'élève ») |
 | QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |
+| QJE-17 | Séparer les quiz et les jeux partout : site, application (web et mobile), offre, plan ; le module des jeux ne porte pas le nom « quiz » (décision du chef du 26 nov. ; numéro corrigé le 27 nov., QJE-16 étant l'interrupteur de l'IA) | — | libre | L | — | à faire : plan d'abord, session Claude à ouvrir ([fiche](../missions/qje-17-separer-quiz-jeux.md)) |
+| QJE-18 | L'atelier des jeux : de nouveaux jeux par matière, sur des mécaniques éprouvées par les plateformes de jeux pédagogiques les plus jouées (jamais la copie d'un jeu), conçus un à un, chacun avec son image (Codex) ; étude et catalogue d'abord (demande du chef du 27 nov.) | — | libre | M, puis S ou M par jeu | QJE-15 (champs `cycles`, `domaine`, image) | à faire : étude au chef, session Claude à ouvrir ([fiche](../missions/qje-18-atelier-jeux.md)) |
 
 ## Critères de « terminé »
 
