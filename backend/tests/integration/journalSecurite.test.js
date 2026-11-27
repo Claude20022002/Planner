@@ -54,11 +54,14 @@ describe("Journal de sécurité", () => {
         await loginAs(etudiant);
 
         const [echec] = await evenements({ evenement: "connexion_echec", id_user: etudiant.id_user });
-        expect(echec).toMatchObject({ email: etudiant.email, user_agent: "Navigateur-essai" });
+        // Q-6 : l'identifiant est la clé du journal ; l'adresse ne suit que si le compte en a une
+        expect(echec).toMatchObject({ identifiant: etudiant.email, email: etudiant.email, user_agent: "Navigateur-essai" });
         expect(echec.ip).toBeTruthy();
         expect(JSON.stringify(echec.toJSON())).not.toContain("MauvaisMotDePasse1!");
-        // Compte inexistant : l'email tenté est gardé, sans compte
-        expect(await evenements({ evenement: "connexion_echec", email: "inconnu@hestim.test" })).toEqual([expect.objectContaining({ id_user: null })]);
+        // Compte inexistant : la valeur tentée est gardée comme identifiant, sans compte ni adresse
+        expect(await evenements({ evenement: "connexion_echec", identifiant: "inconnu@hestim.test", id_user: null })).toEqual([
+            expect.objectContaining({ email: null }),
+        ]);
         expect(await evenements({ evenement: "connexion_reussie", id_user: etudiant.id_user })).toHaveLength(1);
     });
 

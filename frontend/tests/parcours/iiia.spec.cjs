@@ -79,20 +79,30 @@ test("IIIA : 3A et 4A placées ensemble sans conflit, chaque étudiant voit sa p
     expect(s.salle.capacite, `${code} du ${s.date_seance} : salle assez grande`).toBeGreaterThanOrEqual(effectif);
   }
 
-  // Les étudiants ne voient rien avant la publication du mois par l'administration
-  await publierMois(page, { mois: semaine[0].slice(0, 7), idFiliere: iiia.filiere });
+  // Les étudiants ne voient rien avant la publication du mois par l'administration. La semaine peut
+  // chevaucher deux mois (du lundi 30 novembre au samedi 5 décembre) : chacun est publié
+  const moisDeLaSemaine = [...new Set(semaine.map((jour) => jour.slice(0, 7)))];
+  for (const mois of moisDeLaSemaine) await publierMois(page, { mois, idFiliere: iiia.filiere });
+
+  // Le mois de la première séance du module attendu : le solveur la place n'importe quel jour de la
+  // semaine (le parcours échouait le 27 novembre 2026 quand elle tombait en décembre)
+  const moisDe = (seances, nomCours) => {
+    const jour = seances.filter((s) => s.cours?.nom_cours === nomCours).map((s) => s.date_seance).sort()[0];
+    expect(jour, `une séance de ${nomCours} dans la semaine`).toBeTruthy();
+    return jour.slice(0, 7);
+  };
 
   // Chaque profil d'étudiant ne voit que sa promotion (emploi du temps du mois)
   const profils = [
-    ["3A", iiia.etudiants.troisieme, "Analyse numérique", "Théorie des langages et compilation"],
-    ["4A", iiia.etudiants.quatrieme, "Théorie des langages et compilation", "Analyse numérique"],
+    ["3A", iiia.etudiants.troisieme, "Analyse numérique", "Théorie des langages et compilation", seances3a],
+    ["4A", iiia.etudiants.quatrieme, "Théorie des langages et compilation", "Analyse numérique", seances4a],
   ];
-  for (const [nom, compte, attendu, absent] of profils) {
+  for (const [nom, compte, attendu, absent, seances] of profils) {
     const vue = await (await browser.newContext({ locale: "fr-FR" })).newPage();
     await seConnecter(vue, { email: compte.email, motDePasse, role: "etudiant" });
     // Le mois publié, pas le mois courant : le semestre d'essai commence le premier lundi après demain,
     // qui tombe dans le mois suivant dès la fin du mois (le parcours échouait le 26 octobre 2026)
-    await vue.goto(`/emploi-du-temps/mensuel?mois=${semaine[0].slice(0, 7)}`);
+    await vue.goto(`/emploi-du-temps/mensuel?mois=${moisDe(seances, attendu)}`);
     await expect(vue.getByText(attendu).first(), `${nom} voit ${attendu}`).toBeVisible({ timeout: 20_000 });
     await expect(vue.getByText(absent), `${nom} ne voit pas ${absent}`).toHaveCount(0);
     await testInfo.attach(`emploi du temps ${nom}`, { body: await vue.screenshot({ fullPage: true }), contentType: "image/png" });

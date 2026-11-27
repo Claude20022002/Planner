@@ -12,10 +12,13 @@ const API = `http://127.0.0.1:${process.env.PARCOURS_PORT_API || "5001"}/api`;
 /** Comptes et séance créés pour ce passage des tests : { motDePasse, admin, enseignante, etudiants, seance } */
 const lireDonnees = () => JSON.parse(fs.readFileSync(path.join(__dirname, ".donnees.json"), "utf8"));
 
-/** Se connecte par le formulaire du site et attend le tableau de bord du rôle. */
+/**
+ * Se connecte par le formulaire du site et attend le tableau de bord du rôle. Le champ
+ * « Identifiant » depuis VSC-03 (Q-3) : il accepte aussi l'adresse, que ces comptes ont.
+ */
 const seConnecter = async (page, { email, motDePasse, role }) => {
   await page.goto("/connexion");
-  await page.getByRole("textbox", { name: "Adresse email" }).fill(email);
+  await page.getByRole("textbox", { name: "Identifiant" }).fill(email);
   await page.getByRole("textbox", { name: "Mot de passe", exact: true }).fill(motDePasse);
   await page.getByRole("button", { name: "Connexion", exact: true }).click();
   await expect(page).toHaveURL(/\/applications$/, { timeout: 20_000 });

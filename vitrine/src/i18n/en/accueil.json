@@ -4,10 +4,19 @@
     "description": "Planner builds your school's timetable from your own rules, then supports the classroom: attendance by QR code or by hand, live quizzes, games and tracked session changes."
   },
   "ouverture": {
-    "titre": "Planner",
+    "surtitre": "Planner",
+    "titre": "A timetable built from your rules. Then the whole classroom.",
+    "relief": "from your rules",
     "accroche": "For higher education and vocational training, Planner builds the timetable and supports every session. Lower and upper secondary schools are coming soon.",
     "decouvrir": "Discover",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "roles": {
+      "intro": "You are:",
+      "direction": "Leadership",
+      "scolarite": "Registrar",
+      "enseignants": "Teacher",
+      "etudiants": "Student"
+    }
   },
   "emploi": {
     "surtitre": "Timetable",

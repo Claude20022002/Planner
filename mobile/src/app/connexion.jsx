@@ -56,18 +56,17 @@ export default function Connexion() {
       </View>
 
       <View style={styles.formulaire}>
-        <Text style={styles.libelle}>{t('app.connexion.email')}</Text>
+        <Text style={styles.libelle}>{t('app.connexion.identifiant')}</Text>
         <TextInput
           style={styles.champ}
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
-          autoComplete="email"
-          keyboardType="email-address"
+          autoComplete="username"
           textContentType="username"
           placeholderTextColor={couleurs.lettreAttenuee}
-          placeholder={t('app.connexion.exempleEmail')}
-          accessibilityLabel={t('app.connexion.email')}
+          placeholder={t('app.connexion.identifiantAide')}
+          accessibilityLabel={t('app.connexion.identifiant')}
           returnKeyType="next"
         />
         <Text style={styles.libelle}>{t('app.connexion.motDePasse')}</Text>

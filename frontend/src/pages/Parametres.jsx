@@ -25,7 +25,13 @@ import * as yup from 'yup';
 const validationSchema = yup.object({
     nom: yup.string().required('Le nom est requis'),
     prenom: yup.string().required('Le prénom est requis'),
-    email: yup.string().email('Email invalide').required('L\'email est requis'),
+    // L'adresse est facultative (VSC-03, Q-20) : un compte peut n'avoir qu'un identifiant. Une
+    // saisie vide vaut « pas d'adresse » et laisse le profil se mettre à jour.
+    email: yup
+        .string()
+        .trim()
+        .transform((valeur) => valeur || undefined)
+        .email('Email invalide'),
     telephone: yup.string(),
     // Longueur comme le serveur (utils/passwordHelper.js) ; mots de passe courants, personnels ou
     // divulgués : refusés par le serveur
@@ -72,7 +78,8 @@ export default function Parametres() {
             try {
                 setError('');
                 setSuccess('');
-                // L'email est l'identifiant de connexion : seul un administrateur peut le changer
+                // L'email est modifié par un administrateur seulement ; l'identifiant (clé de connexion)
+                // se change dans la fiche du compte
                 const dataToSend = {
                     nom: values.nom,
                     prenom: values.prenom,
