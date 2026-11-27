@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte : plan court à écrire **après VIT-10** |
+| État | ouverte : plan **visé par le chef le 27 nov.** (cycles et classement), à amender pour la présentation des jeux (images) ; code ensuite |
 | Agent | agent de Cursor (Grok 4.7 high) : il a écrit la page des dix jeux du site ; tâche bornée au plan validé |
 | Modèle recommandé | Grok 4.7 high ; si le plan touche plus que le catalogue et les écrans de la bibliothèque des jeux, le coordinateur propose au chef un modèle plus fort |
 | Attribuée le | 2026-11-18, par le coordinateur ; accord du chef : oui, le 18 nov. vers 19 h 20 (« site et application », « seulement ce qui existe », agents répartis) |
@@ -40,6 +40,7 @@
 - `frontend/src/pages/jeux/Jeux.jsx`, un composant nouveau dans `frontend/src/components/jeux/`, et leurs traductions ;
 - `mobile/src/app/(onglets)/jeux.jsx` et un composant nouveau dans `mobile/src/` ;
 - `vitrine/src/pages/[lang]/bibliotheque-des-jeux.astro`, ses textes et `vitrine/tests/contenu.test.js` ;
+- **les images des jeux** (ajout du chef du 27 nov.) : un dossier d'images par jeu que le plan amendé propose (par exemple `shared/jeux/images/`), et leur copie servie par le site si le plan le prévoit (`vitrine/public/`) ;
 - le plan court, `docs/plan/modules/QJE-quiz-jeux-ia.md` et la fiche de session.
 
 L'agent ne touche pas :
@@ -74,3 +75,4 @@ Ni le serveur, ni les moteurs des jeux, ni suivi.md. Jamais de git push.
 |---|---|---|
 | 2026-11-18 19 h 25 | fiche écrite par le coordinateur, sur les choix du chef | — |
 | 2026-11-26 14 h 25 | plan court demandé à l'agent de Cursor (VIT-10 fusionnée ; question 3 réglée par M-11) ; pas de code avant le visa du chef et la fusion de M-11, #282 et #229 | — |
+| 2026-11-27 | plan révisé (`5cb58101`) relu par le coordinateur : conforme à la décision « quiz et jeux séparés ». **Visa du chef** : les quatre cycles (collège, lycée, supérieur, formation professionnelle) et le tableau des onze jeux tel quel, **avec une exigence nouvelle** : une présentation attirante, avec des images des jeux, car ce sont des jeux pour apprendre en s'amusant. Plan à amender (§ présentation), planche de rendus au chef avant le code des écrans ; le catalogue et `rangerJeux` peuvent se coder dès l'amendement commité ; le champ s'appelle `domaine` | visé, à amender |
