@@ -6,6 +6,8 @@
 
 ## Ce qui existe
 
+- **Grilles d’applications** (suite de VIT-20f) : le catalogue et l’accueil affichent les logos officiels dans des carrés clairs, avec le libellé centré dessous. Les modules « Bientôt » gardent un logo grisé et leur statut. [Plan validé](../../conception/vitrine/vit-20f-tuiles-catalogue.md)
+
 - **VIT-09c · Rendu des logos et illustrations validé** sur `feat/vit-09c-logos-modules`. Le catalogue dispose de vingt logos SVG en deux tailles et de dix-sept illustrations WebP de 512 px. Le chef a approuvé le rendu de la planche le 22 novembre 2026. [Conception](../../conception/vitrine/vit-09c-logos-modules.md)
 
 - **Socle du site vitrine** (branche `feat/vit-01-vitrine`, non fusionnée) : `vitrine/`, site statique Astro en français, anglais et arabe (l'arabe construit, non indexé), jetons des couleurs du logo, logos officiels du chef (18 nov. ; originaux dans `shared/charte/logos-officiels/`, versions web dans `vitrine/public/logo/`, charte en version 2 à leurs couleurs : branche `chore/vit-06-logos-officiels`, condition 3 de VIT-06), composants du socle, accueil en huit sections, et cinq pages de fonctions (Emploi du temps, En classe, Pour l'établissement, Sécurité et données, Bientôt), chacune ne disant que ce qui existe ; ce qui est prévu est marqué « Bientôt ». La CI (`vitrine.yml`) conserve le site statique compilé comme artefact.

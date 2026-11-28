@@ -150,11 +150,12 @@ export default function Connexion() {
               required
               fullWidth
               size="medium"
-              label={t('login.email')}
+              label={t('login.identifiant')}
               name="email"
-              type="email"
+              type="text"
               autoComplete="username"
-              inputMode="email"
+              inputMode="text"
+              helperText={t('login.identifiantAide')}
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);

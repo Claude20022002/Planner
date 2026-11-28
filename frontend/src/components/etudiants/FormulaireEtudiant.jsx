@@ -19,7 +19,7 @@ export default function FormulaireEtudiant({ modele }) {
                                     >
                                         {users.map((user) => (
                                             <MenuItem key={user.id_user} value={user.id_user}>
-                                                {user.prenom} {user.nom} ({user.email})
+                                                {user.prenom} {user.nom} ({user.identifiant || user.email})
                                             </MenuItem>
                                         ))}
                                     </Select>

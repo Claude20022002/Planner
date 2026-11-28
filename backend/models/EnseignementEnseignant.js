@@ -4,7 +4,7 @@ import { ROLES_SERVICE, STATUTS_SERVICE } from "../config/referentiel.js";
 
 /**
  * Service d'enseignement : qui assure un enseignement. Plusieurs lignes = co-enseignement
- * (« Mme HAIDRAR / Mme BOUBEKRAOUI ») : tous les enseignants sont bloqués pendant la séance.
+ * (« Mme A / Mme B ») : tous les enseignants sont bloqués pendant la séance.
  * Le responsable de filière propose, l'enseignant accepte ou refuse.
  */
 const EnseignementEnseignant = sequelize.define(

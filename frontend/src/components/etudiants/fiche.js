@@ -1,8 +1,8 @@
 /** Modèle et validation existants de la fiche étudiant. */
 import * as yup from 'yup';
 export const MODELE_CSV = [
-    'nom;prenom;email;telephone;numero_etudiant;niveau;groupe',
-    'EXEMPLE;Amine;amine.exemple@exemple.hestim.test;;E2026001;3A;IIIA-3A-TD1',
+    'identifiant;nom;prenom;email;telephone;numero_etudiant;niveau;groupe',
+    'amine.exemple;EXEMPLE;Amine;amine.exemple@exemple.hestim.test;;E2026001;3A;IIIA-3A-TD1',
 ].join('\n');
 
 export const validationSchema = yup.object({

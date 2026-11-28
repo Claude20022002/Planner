@@ -51,10 +51,31 @@ const telephoneOptionnel = () =>
         .matches(/^[\d\s\-+()]{6,20}$/)
         .withMessage("Numéro de téléphone invalide");
 
+// Identifiant de connexion (VSC-03) : facultatif dans cette API — l'adresse en tient lieu pour les
+// clients existants — mais s'il est envoyé, il ne peut être vide ni contenir d'espace
+const identifiantOptionnel = () =>
+    body("identifiant")
+        .optional({ values: "falsy" })
+        .isString()
+        .withMessage("Identifiant invalide")
+        .trim()
+        .notEmpty()
+        .withMessage("L'identifiant ne peut pas être vide")
+        .isLength({ max: 255 })
+        .withMessage("L'identifiant dépasse 255 caractères")
+        .matches(/^\S+$/)
+        .withMessage("L'identifiant ne peut pas contenir d'espace");
+
 export const validateUserCreation = [
     body("nom").trim().notEmpty().withMessage("Le nom est requis"),
     body("prenom").trim().notEmpty().withMessage("Le prénom est requis"),
-    body("email").isEmail().withMessage("L'email doit être valide"),
+    // Adresse facultative (VSC-03, Q-20) : l'identifiant suffit ; le contrôleur refuse un compte
+    // qui n'aurait ni l'un ni l'autre
+    body("email")
+        .optional({ values: "falsy" })
+        .isEmail()
+        .withMessage("L'email doit être valide"),
+    identifiantOptionnel(),
     // Facultatif : sans mot de passe, le compte reçoit un lien d'invitation
     body("password")
         .optional({ checkFalsy: true })
@@ -83,7 +104,8 @@ export const validateUserUpdate = [
         .trim()
         .notEmpty()
         .withMessage("Le prénom ne peut pas être vide"),
-    body("email").optional().isEmail().withMessage("L'email doit être valide"),
+    body("email").optional({ values: "falsy" }).isEmail().withMessage("L'email doit être valide"),
+    identifiantOptionnel(),
     body("role")
         .optional()
         .isIn(["admin", "enseignant", "etudiant"])

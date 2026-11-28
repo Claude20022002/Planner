@@ -16,6 +16,7 @@
  *
  * Lancement : node scripts/verifier-neutre.mjs
  */
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -76,6 +77,23 @@ const trouves = [...DOSSIERS.flatMap((dossier) => fichiers(path.join(RACINE, dos
 if (trouves.length) {
   console.error(`Nom de l'école pilote écrit en dur (${trouves.length}) : passer par l'identité de l'école ({{ecole}}, {{produit}}, identiteEcole()).`);
   for (const { chemin, numero, ligne } of trouves) console.error(`  ${chemin}:${numero}  ${ligne.trim().slice(0, 140)}`);
+  process.exit(1);
+}
+// Documents bureautiques (27 nov. 2026) : un PDF ou un document Office peut porter des noms réels que la
+// recherche ci-dessus ne lit pas (les emplois du temps d'origine portaient ceux des enseignants). Tout
+// document suivi par git est refusé, sauf ceux de cette liste, chacun avec sa raison.
+const EXTENSIONS_DOCUMENTS = /\.(pdf|docx?|xlsx?|pptx?|odt|ods|odp)$/i;
+const DOCUMENTS_PERMIS = [
+  { chemin: 'docs/modeles/', raison: "modèles d'import, avec des personnes fictives seulement" },
+  { chemin: 'docs/ecole/', raison: 'cahier des charges du projet PACTE : relecture demandée au chef le 27 nov. 2026' },
+  { chemin: 'docs/presentation/', raison: 'présentations du projet : relecture demandée au chef le 27 nov. 2026' },
+];
+const documents = execFileSync('git', ['ls-files', '-z'], { cwd: RACINE, encoding: 'utf8' })
+  .split('\0')
+  .filter((chemin) => EXTENSIONS_DOCUMENTS.test(chemin) && !DOCUMENTS_PERMIS.some((d) => chemin.startsWith(d.chemin)));
+if (documents.length) {
+  console.error(`Document bureautique dans le dépôt public (${documents.length}) : le garder hors du dépôt, ou l'ajouter à DOCUMENTS_PERMIS avec sa raison.`);
+  for (const chemin of documents) console.error(`  ${chemin}`);
   process.exit(1);
 }
 console.log(`Aucun nom d'école écrit en dur (${[...DOSSIERS, ...DOSSIERS_VITRINE, EXEMPLE_ENV, GUIDE].join(', ')} ; ${EXCEPTIONS.length} exceptions justifiées).`);

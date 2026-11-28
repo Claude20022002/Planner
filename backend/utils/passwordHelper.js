@@ -47,7 +47,7 @@ const COURANTS = new Set([
 
 const sansAccents = (texte) => String(texte ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
-/** Règles locales (sans réseau) ; `user` : { nom, prenom, email } du compte s'il est connu. */
+/** Règles locales (sans réseau) ; `user` : { nom, prenom, identifiant, email } du compte s'il est connu. */
 export const reglesMotDePasse = (password, user = null) => {
     const erreurs = [];
     if (typeof password !== "string" || password.length < LONGUEUR_MIN) {
@@ -61,9 +61,9 @@ export const reglesMotDePasse = (password, user = null) => {
     if (COURANTS.has(normalise) || /^(.)\1+$/.test(password) || normalise.includes("hestim")) {
         erreurs.push("Ce mot de passe est trop courant : choisissez-en un moins prévisible");
     }
-    const personnels = [user?.nom, user?.prenom, String(user?.email ?? "").split("@")[0]].map(sansAccents).filter((m) => m.length >= 4);
+    const personnels = [user?.nom, user?.prenom, user?.identifiant, String(user?.email ?? "").split("@")[0]].map(sansAccents).filter((m) => m.length >= 4);
     if (personnels.some((mot) => normalise.includes(mot))) {
-        erreurs.push("Le mot de passe ne doit contenir ni votre nom, ni votre prénom, ni votre email");
+        erreurs.push("Le mot de passe ne doit contenir ni votre nom, ni votre prénom, ni votre identifiant");
     }
     return erreurs;
 };
