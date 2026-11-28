@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| État | ouverte |
+| État | close le 2026-11-26 (#277 fusionnée à 14 h 05) |
 | Agent | session Claude Code neuve (VS Code), ouverte par le chef |
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Il faut 40 dessins SVG nets à 24 px et cohérents entre eux, et un œil critique sur les rendus |
 | Attribuée le | 2026-11-26, par le coordinateur ; accord du chef : oui, le 2026-11-26 (demande du chef ; 20 logos, deux séries, tout de suite, à Claude) |
