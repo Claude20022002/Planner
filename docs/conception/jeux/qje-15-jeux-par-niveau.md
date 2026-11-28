@@ -4,8 +4,8 @@
 |---|---|
 | Module | (nom fixé par QJE-17) · exception hors chantier (chef, 18 nov.) |
 | Branche | `feat/qje-15-jeux-par-niveau` |
-| Rédigé par | agent de Cursor (Grok 4.7), le 2026-11-26 ; revu le 2026-11-27 ; amendé le 2026-11-27 |
-| **Validé** | chef, 27 nov. : questions 1 et 2 (quatre cycles, tableau tel quel, variantes écartées). Le champ s'appelle `domaine`. La séparation est QJE-17. La présentation (§ 4 bis) attend le chef : accroches et voie d'image, sur la planche. |
+| Rédigé par | agent de Cursor (Grok 4.7), le 2026-11-26 ; revu le 2026-11-27 ; amendé le 2026-11-27 ; accroches réécrites le 2026-11-28 |
+| **Validé** | chef, 27 nov. : questions 1 et 2 (quatre cycles, tableau tel quel, variantes écartées). Le champ s'appelle `domaine`. La séparation est QJE-17. Question 6, voie d'image : chef, 28 nov., validée telle que proposée (neuf vues du jeu ; une image générée par Codex pour Labo Big-O et Requête Parfaite ; une ligne de `credits.md` par image). Question 5, accroches : réécrites le 28 nov., en attente du chef. |
 
 ## 1. Objet et critère de « terminé »
 
@@ -47,8 +47,8 @@ QJE-17 s'en sert. QJE-15 range les lignes de jeux et laisse les blocs de quiz o�
 | 2 | Le classement de chacun des onze jeux | Le tableau du § 4. Quatre domaines, dans cet ordre : Informatique, Réseaux et cybersécurité, Intelligence artificielle, Gestion et logistique. Tous les jeux au supérieur seulement. | chef, 27 nov. : le tableau tel quel | non |
 | 3 | La monnaie de « Pilote des stocks » et « Budget ERP » | Réglée par M-11 (`fix/qje-jeux-unite-neutre`, `4475a053`) : le mot est « crédits ». QJE-15 ne réécrit pas ces consignes et ne change pas les montants. Le code de QJE-15 part de `main`, qui a déjà M-11, et ne remet pas « MAD ». | M-11 fusionnée (#283, 26 nov.) | non |
 | 4 | Le numéro donné pour la séparation et pour le nom du module | Le plan écrivait (nom fixé par QJE-16). QJE-16 est l'interrupteur de l'IA par école (décision D2, 18 nov.). | coordinateur, 27 nov. : la séparation prend QJE-17. QJE-16 reste l'interrupteur de l'IA. | non |
-| 5 | Les accroches de la carte | Les onze phrases du § 4 bis, en français et en anglais. | | oui, pour les écrans |
-| 6 | La voie d'image de chaque jeu | Le tableau du § 4 bis : vue du jeu, ou image générée par Codex. La banque libre reste ouverte, aux règles écrites là. Le chef choisit sur la planche. | | oui, pour les écrans |
+| 5 | Les accroches de la carte | Les onze phrases du § 4 bis, en français et en anglais, 60 caractères au plus. | réécrites le 28 nov., en attente du chef | oui, pour les écrans |
+| 6 | La voie d'image de chaque jeu | Le tableau du § 4 bis : vue du jeu, ou image générée par Codex. La banque libre reste ouverte, aux règles écrites là. | chef, 28 nov. : validée telle que proposée | non |
 
 Le chef écarte les variantes (27 nov.) : Robot Route reste au supérieur seul, et Budget ERP, Sprint Agile et Pilote des stocks aussi. Les variantes étaient : ajouter `lycee` à Robot Route ; ajouter `formation-professionnelle` aux trois jeux de gestion.
 
@@ -122,7 +122,7 @@ La page du site rend une grille par groupe, dans `vitrine/src/components/jeux/Ca
 
 ## 4 bis. Présentation
 
-Le chef demande (27 nov.) une présentation attirante, avec une image de chaque jeu : ce sont des jeux pour apprendre en s'amusant. L'écran le montre sur le web, sur le mobile et sur la page des jeux du site. Les accroches et la voie d'image se visent sur la planche, avant le code des écrans. Le catalogue (`cycles`, `domaine`, `rangerJeux`) n'attend pas cette planche.
+Le chef demande (27 nov.) une présentation attirante, avec une image de chaque jeu : ce sont des jeux pour apprendre en s'amusant. L'écran le montre sur le web, sur le mobile et sur la page des jeux du site. La voie d'image est visée le 28 nov. Les accroches réécrites attendent le chef sur la planche, avant le code des écrans. Le catalogue (`cycles`, `domaine`, `rangerJeux`) n'attend pas cette planche.
 
 ### 1. L'image de chaque jeu
 
@@ -132,11 +132,11 @@ Deux voies pour cette première série. La banque libre reste permise si le chef
 - **Image générée par Codex.** Pour un écran qui est surtout du texte : à 512 px, les lignes ne se lisent plus. La consigne décrit les éléments du jeu, sans personne, sans marque, sans logo. Le coordinateur la transmet à Codex. On la refait en redonnant la même consigne. La ligne dit « générée » et la date.
 - **Banque libre**, si le chef la retient pour un jeu. Licence qui permet l'usage commercial et la modification : Unsplash, Pexels, Pixabay, domaine public, CC0. CC BY seulement avec le nom de l'auteur dans `credits.md`. Refusées : « usage éditorial seulement », CC BY-NC, CC BY-ND, licence illisible. Aucune personne reconnaissable, aucune marque, aucun logo, aucune œuvre protégée visible. `credits.md`, à côté des images, porte pour chaque image l'adresse de la page source, l'auteur, la licence et la date du téléchargement. On le relit à chaque PR.
 
-| Code | Voie proposée | Pourquoi |
+| Code | Voie visée | Pourquoi |
 |---|---|---|
 | `terminal-linux` | vue | L'écran est le terminal. Le cadre et l'invite se reconnaissent à 512 px. |
-| `big-o-lab` | Codex | L'écran est du code. Consigne : cinq courbes, les classes du jeu (constant, logarithmique, linéaire, quadratique, exponentiel), sans texte de code. |
-| `quete-sql` | Codex | L'écran est des fragments de requête. Consigne : cinq cartes de clauses dans le désordre, les mots du jeu (`SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`), sans marque d'éditeur. |
+| `big-o-lab` | Codex | L'écran est du code. Consigne : cinq courbes, les classes du jeu (constant, logarithmique, linéaire, quadratique, exponentiel), sans texte de code, sans personne, sans marque et sans logo. |
+| `quete-sql` | Codex | L'écran est des fragments de requête. Consigne : cinq cartes de clauses dans le désordre, les mots du jeu (`SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`), sans personne, sans marque et sans logo. |
 | `cpu-process` | vue | Quatre blocs à ordonner : ils restent visibles à 512 px. |
 | `robot-route` | vue | La grille et le trajet sont le jeu. |
 | `topo-reseau` | vue | Trois commutateurs et quatre équipements. |
@@ -158,19 +158,21 @@ Le poids s'écrit dans la PR, à côté des chiffres de M-9 : premier chargement
 
 Image, titre, domaine, accroche, et dans l'application la progression. Le résumé long du catalogue reste au catalogue. L'arabe de l'accroche est la traduction de la phrase française, écrite dans le fichier arabe au moment des écrans et visible dans la PR.
 
+Chaque accroche dit seulement ce que fait le jeu. Le ton est celui d'un défi : tutoiement, verbe d'action. 60 caractères au plus, en français et en anglais. Ni marque, ni personnage.
+
 | Code | Accroche française | Accroche anglaise |
 |---|---|---|
-| `terminal-linux` | De vraies commandes, dans un terminal. | Real commands, in a terminal. |
-| `big-o-lab` | Reconnaître à quelle vitesse un programme grandit. | See how fast a program grows. |
-| `quete-sql` | Remettre une requête dans le bon ordre. | Put a query back in order. |
-| `cpu-process` | Choisir quel processus passe en premier. | Choose which process runs first. |
-| `robot-route` | Tracer un chemin sans heurter un obstacle. | Plot a path that misses every obstacle. |
-| `topo-reseau` | Relier des machines sans les mélanger. | Connect machines without mixing them. |
-| `tri-cyber` | Classer les incidents, du plus urgent au plus calme. | Rank the incidents, from urgent to calm. |
-| `threshold-lab` | Régler le seuil, et voir le coût d'une erreur. | Set the threshold, and see what an error costs. |
-| `budget-erp` | Répartir un budget sur quatre postes. | Spread a budget across four lines. |
-| `sprint-agile` | Choisir le sprint sans casser les dépendances. | Pick the sprint without breaking the dependencies. |
-| `stock-pilot` | Tenir trois jours sans rupture. | Last three days without a stockout. |
+| `terminal-linux` | Tu es l'admin : prouve-le en vraies commandes. | You're the admin: prove it with real commands. |
+| `big-o-lab` | Devine : à quelle vitesse ce programme grandit ? | Guess it: how fast does this program grow? |
+| `quete-sql` | En vrac : remets cette requête dans l'ordre. | Scrambled: put this query back in order. |
+| `cpu-process` | À toi de choisir quel processus passe en premier. | You pick which process runs first. |
+| `robot-route` | Trace le chemin sans heurter d'obstacle. | Plot the path: don't hit an obstacle. |
+| `topo-reseau` | Relie ces machines sans jamais les mélanger. | Connect these machines without mixing them. |
+| `tri-cyber` | Classe les incidents : l'urgent avant le calme. | Rank the incidents: urgent first, then calm. |
+| `threshold-lab` | Règle le seuil, et vois le coût d'une erreur. | Set the threshold, and see what an error costs. |
+| `budget-erp` | Quatre postes, un budget : répartis-le. | Four lines, one budget: you split it. |
+| `sprint-agile` | Choisis le sprint sans casser les dépendances. | Pick the sprint: don't break the dependencies. |
+| `stock-pilot` | Tiens trois jours sans une seule rupture. | Last three days without a single stockout. |
 
 ### 4. EP-19 et EP-18
 
@@ -184,7 +186,7 @@ Avant le code des écrans, une planche hors dépôt : `..\travaux-planner\qje-15
 
 ## 5. Fichiers créés ou modifiés
 
-Au moment du code. Le catalogue (`shared/`) peut partir sans attendre #229 : cette PR ne touche pas `shared/`. Les écrans web attendent #229, qui touche `Jeux.jsx`, et la planche du § 4 bis. M-11 (#283) et #282 sont sur `main`. Les images arrivent quand le chef a choisi la voie. Pas dans le commit de cet amendement.
+Au moment du code. Le catalogue (`shared/`) peut partir sans attendre #229 : cette PR ne touche pas `shared/`. Les écrans web attendent #229, qui touche `Jeux.jsx`, et la planche du § 4 bis. M-11 (#283) et #282 sont sur `main`. Les images suivent la voie visée le 28 nov. : neuf vues, et Codex pour Labo Big-O et Requête Parfaite. Pas dans le commit de cette réécriture.
 
 | Fichier | Créé / modifié | Rôle | Taille visée |
 |---|---|---|---|
@@ -253,7 +255,7 @@ La fonction sert d'abord le supérieur (étape 3). Les noms des autres cycles so
 
 1. L'amendement du 27 nov. (ce texte), commité seul. Les questions 1 et 2 sont visées. Les questions 5 et 6 attendent la planche.
 2. Le catalogue dans `shared/` : `cycles`, `domaine`, `rangerJeux` et son test. Sans attendre #229.
-3. La planche hors dépôt. Le chef y vise les accroches et la voie d'image.
+3. La planche hors dépôt. La voie d'image est visée le 28 nov. Les accroches réécrites attendent le chef.
 4. Les trois écrans, après cette planche et après #229 sur `main`.
 5. Fiche de session, module QJE, rapport. Le coordinateur relit la branche avant la PR. Le chef pousse.
 
