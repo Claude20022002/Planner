@@ -6,7 +6,7 @@
 | Branche | `feat/vit-24-finitions-modules` |
 | Base examinée | `3daf2771` · #284 et #286 fusionnées |
 | Rédigé par | Codex, le 28 novembre 2026 |
-| **Validé** | En attente du chef de projet |
+| **Validé** | Chef de projet, le 28 novembre 2026 (« Pour le site vitrine, je valide »), puis demande de poursuivre les travaux. |
 
 ## 1. Objet et critère de « terminé »
 
@@ -25,11 +25,11 @@ La direction et la scolarité peuvent repérer les 17 applications, distinguer l
 
 | N° | Question | Proposition | Réponse | Bloque |
 |---|---|---|---|---|
-| 1 | Quels nom et sous-titre anglais retenir, et sur quelles surfaces afficher le sous-titre ? | Viser les lignes N1 à N3 du § 4.5. Nom commun partout. Sous-titre sur « Bientôt » et dans la variante texte du méga-menu si le sous-titre tient sous le titre, sans débordement ni texte rogné en FR et EN aux deux largeurs. Si ce contrôle échoue, garder le nom et le badge dans le menu. | En attente | Textes et tests |
-| 2 | Quel contraste visuel entre les applications disponibles et « Bientôt », et quel gabarit pour les pages ? | Choisir B, 50 % de la teinte de base sur blanc pour le fond interne du logo. Retenir aussi le gabarit proposé au § 4.1. Les essais A (35 %) et C (65 %) figurent sur la planche. | En attente | Rendu |
-| 3 | Quelles phrases pour les nouvelles cartes ? | Viser les lignes P1 à P3, C1 et A1 à A2 du § 4.5. Pour la troisième carte de Présences, retenir la correction d'un statut après clôture. Si M-1 est intégrée avant le code et qu'on préfère la présenter, soumettre le texte de remplacement au chef. | En attente | Registre |
-| 4 | Quels liens proposer dans « Pour qui » et dans « Un besoin, une application » ? | Afficher les types déjà associés à l'application et pointer vers leurs sections locales dans Solutions. Masquer « Pour qui » en l'absence de type attesté. Afficher les quatre autres applications disponibles dans l'ordre du registre. | En attente | Liens et rendu |
-| 5 | Que signifie « arabe construit et non indexé » pour cette mission ? | Conserver le repli des clés existantes. Construire les routes AR pour la recette dans une copie hors dépôt, en gardant `LANGUES_PUBLIEES` limitée à FR/EN, puis contrôler `lang="ar"`, `dir="rtl"` et `noindex`. Si ces routes doivent aussi figurer dans l'artefact normal, autoriser une modification de `vitrine/src/i18n/langues.js` et vérifier les règles de l'image Nginx avant de coder. | En attente | Recette AR et périmètre |
+| 1 | Quels nom et sous-titre anglais retenir, et sur quelles surfaces afficher le sous-titre ? | Viser les lignes N1 à N3 du § 4.5. Nom commun partout. Sous-titre sur « Bientôt » et dans la variante texte du méga-menu si le sous-titre tient sous le titre, sans débordement ni texte rogné en FR et EN aux deux largeurs. Si ce contrôle échoue, garder le nom et le badge dans le menu. | Proposition visée : N1 à N3, sous-titre du menu soumis à la recette | Textes et tests |
+| 2 | Quel contraste visuel entre les applications disponibles et « Bientôt », et quel gabarit pour les pages ? | Choisir B, 50 % de la teinte de base sur blanc pour le fond interne du logo. Retenir aussi le gabarit proposé au § 4.1. Les essais A (35 %) et C (65 %) figurent sur la planche. | Proposition visée : B (50 %) et gabarit du § 4.1 | Rendu |
+| 3 | Quelles phrases pour les nouvelles cartes ? | Viser les lignes P1 à P3, C1 et A1 à A2 du § 4.5. Pour la troisième carte de Présences, retenir la correction d'un statut après clôture. Si M-1 est intégrée avant le code et qu'on préfère la présenter, soumettre le texte de remplacement au chef. | Proposition visée : P1 à P3, C1 et A1 à A2 | Registre |
+| 4 | Quels liens proposer dans « Pour qui » et dans « Un besoin, une application » ? | Afficher les types déjà associés à l'application et pointer vers leurs sections locales dans Solutions. Masquer « Pour qui » en l'absence de type attesté. Afficher les quatre autres applications disponibles dans l'ordre du registre. | Proposition visée : types de Solutions et quatre autres applications disponibles | Liens et rendu |
+| 5 | Que signifie « arabe construit et non indexé » pour cette mission ? | Conserver le repli des clés existantes. Construire les routes AR pour la recette dans une copie hors dépôt, en gardant `LANGUES_PUBLIEES` limitée à FR/EN, puis contrôler `lang="ar"`, `dir="rtl"` et `noindex`. Si ces routes doivent aussi figurer dans l'artefact normal, autoriser une modification de `vitrine/src/i18n/langues.js` et vérifier les règles de l'image Nginx avant de coder. | Recette AR hors dépôt, retenue par le coordinateur le 28 novembre | Recette AR et périmètre |
 
 ## 4. Solution proposée
 
