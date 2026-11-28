@@ -59,6 +59,16 @@ Ouvrir `..\travaux-planner\captures-vit-24\index.html` depuis le dépôt princip
 - Pour Présences, remplacer la carte générale `appel` par les trois cartes P1 à P3 en réutilisant son identifiant pour P1. Garder pour P2 son contexte d'usage avec réseau et téléphone, expliqué dans le bloc équipement existant. P3 décrit la rectification d'une présence sur un appel clôturé. La feuille d'appel et le marquage après coup du lot M-1 sont absents de `3daf2771`.
 - Pour Espace de cours et Annonces et messages, compléter par C1 et A1–A2. Garder les quatre cartes d'Emploi du temps et les trois de Quiz et jeux. Les nouveaux titres et descriptions proviennent du registre, de façon à être identiques sur la page module et dans « Fonctionnalités ».
 
+VIT-25 (plan `0a5ce400`) intervient après VIT-24. VIT-24 ajoute dans `PageModule.astro` les emplacements nommés
+`actions`, `guide` et `faq`, dans cet ordre après l’ouverture. Le bloc `actions` s’insère à la place du
+contenu par défaut quand il est fourni, et `guide` vient juste après. La FAQ suit les autres applications
+avant la fin de page. Les pages actuelles gardent leur contenu et leurs espacements avec les emplacements
+vides. `EnTeteModule.astro` reçoit `guide?: string`, le libellé traduit que VIT-25 lui fournira. Il affiche
+alors le second bouton « Voir le guide » vers `#guide`. Le lot VIT-24 prévoit une quinzaine de lignes de
+composants et un cas de rendu des emplacements vides. Le test vérifie l’ordre et le contenu actuels, sans
+bloc vide ni bouton `#guide`. VIT-25 remplit ces emplacements depuis ses pages, hors de
+`vitrine/src/components/applications/`, et fournit ses libellés au moment de son visa.
+
 ### 4.4 Liens de fin de page et nom du module à venir
 
 Le bloc « Un besoin, une application » filtre `MODULES` par disponibilité, puis retire l'application courante. Les quatre liens sont rendus dans le même gabarit compact en couleur, sur deux colonnes à 390 px et quatre à 1 440 px. Le lien « Toutes les applications » mène au catalogue.
