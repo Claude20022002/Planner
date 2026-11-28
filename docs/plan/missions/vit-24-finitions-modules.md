@@ -24,6 +24,10 @@ Le chef retient les quatre finitions et le renommage :
 4. **« Un besoin, une application » utile** : en bas d'une page de module, les autres modules **disponibles** (en couleur) plutôt que les voisins de la catégorie ; les pastilles « Pour qui » mènent aux pages des établissements.
 5. **La gestion des notes** : la tuile « Évaluations, crédits et jurys » devient **« Notes et évaluations »**, avec « bulletins, crédits et jurys » en sous-titre là où le site en montre un (page Bientôt, méga-menu si la place le permet). Le plan ne change pas : VSC-08 (étape 3) et VSC-04 (étape 6) restent où ils sont, et la tuile reste « Bientôt ».
 
+## Ajout du 28 nov. : les points d'accroche de VIT-25
+
+VIT-25 (pages de présentation par module, plan `0a5ce400`) passe **après** VIT-24 et ne touche jamais `components/applications/`. VIT-24 pose donc, dans son lot, les points d'accroche que VIT-25 remplira : trois emplacements nommés `actions`, `guide` et `faq` dans `PageModule.astro` (dans cet ordre, après l'ouverture), et une propriété facultative `guide` dans `EnTeteModule.astro` (le second bouton « Voir le guide », vers `#guide`, affiché seulement si la page a un guide). Une quinzaine de lignes, sans texte nouveau, avec un test de rendu qui vérifie que les emplacements vides ne changent rien à la page (décision du coordinateur, 28 nov.).
+
 ## Critère de « terminé »
 
 - Les cinq points ci-dessus, en français et en anglais (l'arabe suit les clés existantes, construit et non indexé).

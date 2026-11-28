@@ -88,3 +88,4 @@ Quand tu as fini une étape, dis-le : le coordinateur relit ta branche avant la 
 |---|---|---|
 | 2026-11-27 | fiche écrite sur la demande du chef ; VIT-09b rattachée à la même session | session à ouvrir par le chef |
 | 2026-11-28 | le chef étend la mission : une page de présentation par module, avec guide d'utilisation et boucles animées (structure inspirée d'un site de quiz connu, jamais copiée) | plan à écrire |
+| 2026-11-28 | plan commité (`0a5ce400`, fiche `a836b42b`, agent Claude du coordinateur) ; boucle d'essai de Présences (MP4 42 Ko, GIF 273 Ko) dans `travaux-planner\captures-vit-25\` ; questions 5, 7, 8 et 9 tranchées par le coordinateur (VIT-24 pose les points d'accroche) ; 1 à 4, 6 et 10 à 16 au chef | plan au chef |

@@ -18,7 +18,7 @@ Ce que contient ce tableau, en une vue. Le détail est dans « Missions en cours
 - #280 (QJE-03) : recette Android ;
 - #285 (QJE-15) : catalogue fait, écrans en cours.
 
-**Plans qui attendent le visa du chef** : VIT-24 (finitions du site, planche `travaux-planner\captures-vit-24`), étude de QJE-18 (onze jeux), VIT-25 (pages de présentation par module, en cours d'écriture).
+**Plans qui attendent le visa du chef** : VIT-24 (finitions du site, planche `travaux-planner\captures-vit-24`), étude de QJE-18 (onze jeux), VIT-25 (pages de présentation par module : plan `0a5ce400`, boucle d'essai dans `travaux-planner\captures-vit-25`).
 
 **En cours chez les agents** :
 - Codex : l'étude des parcours par rôle (ce qui manque pour chaque utilisateur), puis deux images de QJE-15 ;
