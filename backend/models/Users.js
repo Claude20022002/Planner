@@ -17,10 +17,17 @@ const Users = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // Identifiant de connexion, donné par l'école (VSC-03, décision Q-20) : c'est lui qui sert à
+        // se connecter. L'adresse devient facultative ; aucune n'est inventée.
+        identifiant: {
+            type: DataTypes.STRING(255),
+            unique: true,
+            allowNull: false,
+        },
         email: {
             type: DataTypes.STRING,
             unique: true,
-            allowNull: false,
+            allowNull: true,
         },
         role: {
             type: DataTypes.ENUM("admin", "enseignant", "etudiant"),
@@ -56,6 +63,14 @@ const Users = sequelize.define(
     {
         tableName: "Users",
         freezeTableName: true,
+        hooks: {
+            // Un compte créé sans identifiant prend son adresse (valeur réelle), comme la reprise de
+            // la migration 0064 ; sans identifiant ni adresse, l'écriture est refusée.
+            beforeValidate: (user) => {
+                const identifiant = String(user.identifiant ?? "").trim();
+                user.identifiant = identifiant || String(user.email ?? "").trim() || null;
+            },
+        },
         // Le hash et le secret de double authentification ne sortent jamais par défaut, y compris
         // via les `include` d'autres modèles. Le login charge le hash (« withPassword »), la
         // vérification d'un code le secret (« withMfa »).

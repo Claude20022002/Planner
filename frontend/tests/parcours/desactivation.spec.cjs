@@ -19,6 +19,8 @@ test("désactivation : motif, réactivation, programmation, et séances d'un ens
   const formulaire = page.getByRole("dialog", { name: "Nouvel utilisateur" });
   await formulaire.getByLabel("Nom", { exact: true }).fill("Essai");
   await formulaire.getByLabel("Prénom").fill("Départ");
+  // L'identifiant est la clé de connexion (VSC-03) ; l'adresse reste facultative
+  await formulaire.getByLabel("Identifiant").fill("depart.essai");
   await formulaire.getByLabel("Email").fill("depart.essai@exemple.hestim.test");
   await formulaire.getByRole("button", { name: "Créer" }).click();
   await expect(formulaire).toBeHidden({ timeout: 40_000 });

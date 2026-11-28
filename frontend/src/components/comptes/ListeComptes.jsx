@@ -8,9 +8,9 @@ import PaginationPersonnes from '../personnes/PaginationPersonnes';
 
 export default function ListeComptes({ modele: m }) {
   const { t, actions, cochables } = m;
-  const colonnes = ['nom', 'prenom', 'email', 'role', 'telephone', 'statut'].map((cle) => ({
+  const colonnes = ['nom', 'prenom', 'identifiant', 'email', 'role', 'telephone', 'statut'].map((cle) => ({
     cle, libelle: t('utilisateurs.colonnes.' + cle),
-    entete: ['nom', 'prenom', 'email'].includes(cle) ? <TableSortLabel active={m.getSortDir(cle) !== undefined} direction={m.getSortDir(cle) || 'asc'} onClick={() => m.requestSort(cle)}>{t('utilisateurs.colonnes.' + cle)}</TableSortLabel> : null,
+    entete: ['nom', 'prenom', 'identifiant', 'email'].includes(cle) ? <TableSortLabel active={m.getSortDir(cle) !== undefined} direction={m.getSortDir(cle) || 'asc'} onClick={() => m.requestSort(cle)}>{t('utilisateurs.colonnes.' + cle)}</TableSortLabel> : null,
     afficher: (u) => cle === 'statut' ? <StatutCompte compte={u} /> : cle === 'role'
       ? <Chip label={t('roles.' + u.role, { defaultValue: u.role })} size="small" variant="outlined" />
       : u[cle] || '-',

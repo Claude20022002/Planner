@@ -1,10 +1,10 @@
 /**
  * Scénario IIIA (lot B-8) : deux promotions de la même filière générées ensemble par le vrai solveur.
  *  - 3A IIIA : les modules de l'emploi du temps 3A IIIA (S6) de l'an dernier, comme si cette classe
- *    existait cette année (docs/exemple_emploi_du_temp - 3A IIIA …pdf) ; au Campus Sud ;
- *  - 4A IIIA : les modules de l'emploi du temps 4A IIIA (S7) d'octobre 2026 (docs/Planning/…pdf) ;
+ *    existait cette année (docs/exemple_emploi_du_temps_donnee.yaml) ; au Campus Sud ;
+ *  - 4A IIIA : les modules de l'emploi du temps 4A IIIA (S7) d'octobre 2026 (PDF gardé hors du dépôt) ;
  *    au Campus Nord.
- * Rythme hebdomadaire et salles repris des PDF ; une séance occupe une demi-journée (deux créneaux).
+ * Rythme hebdomadaire et salles repris des emplois du temps d'origine ; une séance occupe une demi-journée (deux créneaux).
  * Les enseignants portent des noms fictifs, mais le partage est gardé : la même enseignante encadre
  * le projet des 3A et enseigne deux modules aux 4A (projet PACTE, NoSQL, projet PIC). Pas de
  * co-enseignant : chaque enseignement a un seul enseignant.

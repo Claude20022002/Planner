@@ -5,7 +5,7 @@ format: weekly_blocks
 meta:
     annee_universitaire: "2025/2026"
     filiere: "3A IIIA (S6)"
-    etablissement: "HESTIM-STENDHAL"
+    etablissement: "École d'exemple"
 
 structure:
     slot_count_per_day: 4
@@ -48,17 +48,17 @@ matieres:
     - Journée culturelle
 
 enseignants:
-    Analyse numérique: "M.D.BENNIS"
-    Business English: "M.MOUSTAKIM"
-    Recherche Opérationnelle: "Mme AYAD"
-    Algorithmes efficaces de graphes avec Python: "Mme BOUBEKRAOUI"
-    Développement Web Full-stack: "Mme HAIDRAR / Mme HANBALI"
-    Réseaux informatiques: "M.KHIAT"
-    La finance pour l’ingénieur: "Mme EL KARI"
-    Développer sa résilience et son mindset positif: "Mme EL KARI"
-    Projet PACTE: "Mme HAIDRAR / Mme HANBALI"
-    Entrepreneuriat 2 - Business Model: "Mme ELOTMANI"
-    Atelier N8N: "M.BENIRZIK"
+    Analyse numérique: "Enseignant A"
+    Business English: "Enseignant B"
+    Recherche Opérationnelle: "Enseignante C"
+    Algorithmes efficaces de graphes avec Python: "Enseignante D"
+    Développement Web Full-stack: "Enseignante E / Enseignante F"
+    Réseaux informatiques: "Enseignant G"
+    La finance pour l’ingénieur: "Enseignante H"
+    Développer sa résilience et son mindset positif: "Enseignante H"
+    Projet PACTE: "Enseignante E / Enseignante F"
+    Entrepreneuriat 2 - Business Model: "Enseignante I"
+    Atelier N8N: "Enseignant J"
     Journée culturelle: "N/A"
 
 salles:
@@ -96,26 +96,26 @@ planning:
             S1:
                 {
                     subject: "Analyse numérique",
-                    teacher: "M.D.BENNIS",
+                    teacher: "Enseignant A",
                     room: "Etage 1 - Salle Info",
                 }
             S2:
                 {
                     subject: "Analyse numérique",
-                    teacher: "M.D.BENNIS",
+                    teacher: "Enseignant A",
                     room: "Etage 1 - Salle Info",
                 }
             S3:
                 {
                     subject: "Développer sa résilience et son mindset positif",
-                    teacher: "Mme EL KARI",
+                    teacher: "Enseignante H",
                     room: "Etage 3 - Amphi C",
                     flags: [DS, Evaluation],
                 }
             S4:
                 {
                     subject: "Développer sa résilience et son mindset positif",
-                    teacher: "Mme EL KARI",
+                    teacher: "Enseignante H",
                     room: "Etage 3 - Amphi C",
                     flags: [DS, Evaluation],
                 }
@@ -125,14 +125,14 @@ planning:
             S1:
                 {
                     subject: "Réseaux informatiques",
-                    teacher: "M.KHIAT",
+                    teacher: "Enseignant G",
                     room: "Distanciel",
                     flags: [Blended],
                 }
             S2:
                 {
                     subject: "Réseaux informatiques",
-                    teacher: "M.KHIAT",
+                    teacher: "Enseignant G",
                     room: "Distanciel",
                     flags: [Blended],
                 }
@@ -142,13 +142,13 @@ planning:
             S1:
                 {
                     subject: "Analyse numérique",
-                    teacher: "M.D.BENNIS",
+                    teacher: "Enseignant A",
                     room: "Etage 1 - Salle Info",
                 }
             S2:
                 {
                     subject: "Analyse numérique",
-                    teacher: "M.D.BENNIS",
+                    teacher: "Enseignant A",
                     room: "Etage 1 - Salle Info",
                 }
             S3: { subject: "", teacher: "", room: "" }
@@ -159,28 +159,28 @@ planning:
             S1:
                 {
                     subject: "Analyse numérique",
-                    teacher: "M.D.BENNIS",
+                    teacher: "Enseignant A",
                     room: "Distanciel",
                     flags: [Blended],
                 }
             S2:
                 {
                     subject: "Analyse numérique",
-                    teacher: "M.D.BENNIS",
+                    teacher: "Enseignant A",
                     room: "Distanciel",
                     flags: [Blended],
                 }
             S3:
                 {
                     subject: "La finance pour l’ingénieur",
-                    teacher: "Mme EL KARI",
+                    teacher: "Enseignante H",
                     room: "Etage 3 - Amphi C",
                     flags: [DS, Evaluation],
                 }
             S4:
                 {
                     subject: "La finance pour l’ingénieur",
-                    teacher: "Mme EL KARI",
+                    teacher: "Enseignante H",
                     room: "Etage 3 - Amphi C",
                     flags: [DS, Evaluation],
                 }

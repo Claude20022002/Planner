@@ -41,8 +41,8 @@ test('connexion : anglais, thème et clavier restent disponibles', async ({ page
   await page.goto('/connexion');
   await page.getByRole('button', { name: 'English', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Sign in', exact: true })).toBeVisible();
-  expect(await page.getByRole('textbox', { name: 'Email address', exact: true }).evaluate((e) => getComputedStyle(e).fontFamily)).toContain('Inter');
-  await page.getByRole('textbox', { name: 'Email address', exact: true }).focus();
+  expect(await page.getByRole('textbox', { name: 'Username', exact: true }).evaluate((e) => getComputedStyle(e).fontFamily)).toContain('Inter');
+  await page.getByRole('textbox', { name: 'Username', exact: true }).focus();
   await page.keyboard.press('Tab');
   await expect(page.getByRole('textbox', { name: 'Password', exact: true })).toBeFocused();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
@@ -73,6 +73,8 @@ test('Comptes : une lecture réseau échouée propose de réessayer', async ({ p
   const tableau = page.getByRole('table');
   await expect(tableau.getByRole('row')).toHaveCount(comptes.length + 1);
   for (const compte of comptes) {
-    await expect(tableau.getByRole('cell', { name: compte.email, exact: true })).toBeVisible();
+    // La table montre l'identifiant et l'adresse (VSC-03, Q-20) : pour un compte de reprise, les
+    // deux cellules portent le même texte, d'où `first()`.
+    await expect(tableau.getByRole('cell', { name: compte.email, exact: true }).first()).toBeVisible();
   }
 });

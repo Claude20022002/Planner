@@ -42,6 +42,8 @@ const expediteur = (adresseServeur, nom) => {
 };
 
 export const sendEmail = async (message) => {
+    // Un compte sans adresse (VSC-03) ne reçoit rien : ce n'est pas une panne, rien n'est compté.
+    if (!message?.to) return { success: false, message: "Destinataire sans adresse : aucun envoi" };
     // Chargé à l'appel : l'identité lit la base, que ce module ne doit pas importer à son chargement
     const { identite, nomProduit } = await import("../services/etablissement/identite.js");
     const ecole = await identite();

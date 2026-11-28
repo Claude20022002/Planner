@@ -20,6 +20,7 @@ export const COLS_ENSEIGNANTS = [
 export const COLS_ETUDIANTS = [
     { header: 'Nom',              accessor: r => r.user?.nom || '',              width: 20 },
     { header: 'Prénom',           accessor: r => r.user?.prenom || '',           width: 20 },
+    { header: 'Identifiant',      accessor: r => r.user?.identifiant || '',      width: 22 },
     { header: 'Email',            accessor: r => r.user?.email || '',            width: 30 },
     { header: 'Téléphone',        accessor: r => r.user?.telephone || '',        width: 18 },
     { header: 'Numéro étudiant',  accessor: r => r.numero_etudiant || '',        width: 18 },
