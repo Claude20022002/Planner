@@ -42,7 +42,11 @@ test("sessions de jeu : au tableau avec la classe par QR code, puis chacun sur s
 
   // L'enseignante ne « joue » plus pour elle : pas de bouton Continuer, mais Lancer en classe
   await page.goto("/jeux");
-  await expect(page.getByRole("region", { name: "Tous les jeux" }).getByRole("button", { name: /Continuer|Jouer/ })).toHaveCount(0);
+  const catalogue = page.getByRole("region", { name: "Tous les jeux" });
+  await expect(catalogue.getByRole("button", { name: /Continuer|Jouer/ })).toHaveCount(0);
+  // Un bouton par jeu : chacun porte le nom de son jeu, aucun ne s'appelle juste « Lancer en classe »
+  await expect(catalogue.getByRole("button", { name: "Lancer en classe", exact: true })).toHaveCount(0);
+  expect(await catalogue.getByRole("button", { name: /^Lancer « .+ » en classe$/ }).count()).toBeGreaterThan(1);
 
   // ── Ensemble, au tableau ──
   const code = await lancer(page, "Ensemble, au tableau");

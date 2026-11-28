@@ -1272,6 +1272,9 @@ const fr = {
     catalogue: 'Tous les jeux',
     jouer: 'Jouer',
     continuer: 'Continuer',
+    // Nom accessible du bouton : le catalogue a un bouton par jeu, « Jouer » seul ne les distingue pas
+    jouerNom: 'Jouer à « {{jeu}} »',
+    continuerNom: 'Continuer « {{jeu}} »',
     tous: 'Tous les jeux',
     points_one: '{{count}} point',
     points_other: '{{count}} points',

@@ -223,7 +223,13 @@ export default function Jeux() {
                     premier={i === 0 && j === 0}
                     lampe={ds.board.live}
                     action={
-                      <Button size="small" variant="contained" sx={boutonPanneauPlein} onClick={() => jouer(code)}>
+                      <Button
+                        size="small"
+                        variant="contained"
+                        sx={boutonPanneauPlein}
+                        aria-label={t('jeux.jouerNom', { jeu: titreJeu(code) })}
+                        onClick={() => jouer(code)}
+                      >
                         {t('jeux.jouer')}
                       </Button>
                     }
@@ -259,7 +265,12 @@ export default function Jeux() {
                       {t('sessionsJeu.lancer.bouton')}
                     </Button>
                   ) : (
-                    <Button variant="contained" sx={boutonPanneauPlein} onClick={() => jouer(jeu.code)}>
+                    <Button
+                      variant="contained"
+                      sx={boutonPanneauPlein}
+                      aria-label={t(p.reussis > 0 ? 'jeux.continuerNom' : 'jeux.jouerNom', { jeu: libelle(jeu.titre, i18n.language) })}
+                      onClick={() => jouer(jeu.code)}
+                    >
                       {p.reussis > 0 ? t('jeux.continuer') : t('jeux.jouer')}
                     </Button>
                   )

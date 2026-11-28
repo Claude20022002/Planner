@@ -1272,6 +1272,9 @@ const en = {
     catalogue: 'All games',
     jouer: 'Play',
     continuer: 'Continue',
+    // Accessible name: the catalogue has one button per game, "Play" alone does not tell them apart
+    jouerNom: 'Play “{{jeu}}”',
+    continuerNom: 'Continue “{{jeu}}”',
     tous: 'All games',
     points_one: '{{count}} point',
     points_other: '{{count}} points',
