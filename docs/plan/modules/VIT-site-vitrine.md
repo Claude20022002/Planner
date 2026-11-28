@@ -6,7 +6,7 @@
 
 ## Ce qui existe
 
-- **Grilles d’applications** (suite de VIT-20f) : le catalogue et l’accueil affichent les logos officiels dans des carrés clairs, avec le libellé centré dessous. Les modules « Bientôt » gardent un logo grisé et leur statut. [Plan validé](../../conception/vitrine/vit-20f-tuiles-catalogue.md)
+- **VIT-24 · Finitions du catalogue et des modules** (branche locale `feat/vit-24-finitions-modules`) : tuiles « Bientôt » teintées et statiques, badges alignés, rubrique « Notes et évaluations », cinq pages aux couleurs de leurs modules avec au moins trois fonctions existantes chacune. Le bloc « Pour qui » mène aux types d’établissement dans Solutions et la fin de page propose les quatre autres applications disponibles. Les emplacements `actions`, `guide` et `faq` et le bouton facultatif du guide préparent VIT-25. [Conception validée](../../conception/vitrine/vit-24-finitions-modules.md)
 
 - **VIT-09c · Rendu des logos et illustrations validé** sur `feat/vit-09c-logos-modules`. Le catalogue dispose de vingt logos SVG en deux tailles et de dix-sept illustrations WebP de 512 px. Le chef a approuvé le rendu de la planche le 22 novembre 2026. [Conception](../../conception/vitrine/vit-09c-logos-modules.md)
 
