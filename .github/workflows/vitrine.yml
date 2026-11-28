@@ -48,7 +48,7 @@ jobs:
       # Ce qui part dans le navigateur (Motion, Lucide, Inter) : une vulnérabilité haute bloque.
       # Astro et React ne servent qu'à la construction (devDependencies).
       - name: Audit des dépendances livrées
-        run: npm audit --omit=dev --audit-level=high
+        run: node ../scripts/audit.mjs vitrine
 
       - name: Aucun nom d'école écrit en dur
         run: node ../scripts/verifier-neutre.mjs
