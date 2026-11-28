@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Alert, Box, Button, Chip, CircularProgress, LinearProgress, Stack, Tab, Tabs, Typography, useMediaQuery } from '@mui/material';
-import { ArrowBack, PlayCircleOutline, Send } from '@mui/icons-material';
+import { ArrowBack, PlayCircleOutline, Print, Send } from '@mui/icons-material';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
 import ListeQuestions from '../../components/studio/editeur/ListeQuestions';
 import EditeurQuestion from '../../components/studio/editeur/EditeurQuestion';
@@ -12,6 +12,7 @@ import { OngletPassations, OngletReglages } from '../../components/studio/editeu
 import { questionVide } from '../../../../shared/quiz/studio/types.js';
 import { passationAPI, studioAPI } from '../../services/studioApi';
 import { useToast } from '../../contexts/ToastContext';
+import { ouvrirFeuille } from './feuilleQuiz';
 
 /**
  * Éditeur d'un quiz du Studio : trois onglets (Questions, Réglages, Passations), l'onglet est
@@ -20,7 +21,7 @@ import { useToast } from '../../contexts/ToastContext';
  */
 export default function EditeurQuiz() {
   const { id } = useParams();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const toast = useToast();
   const toastRef = useRef(toast);
@@ -83,6 +84,21 @@ export default function EditeurQuiz() {
       toastRef.current.error(e.message);
     }
   };
+  const imprimer = () => {
+    const ok = ouvrirFeuille(quiz, {
+      langue: (i18n.language || 'fr').slice(0, 2),
+      nom: t('studio.editeur.feuille.nom'),
+      vrai: t('studio.editeur.feuille.vrai'),
+      faux: t('studio.editeur.feuille.faux'),
+      nombre: (count) => t('studio.editeur.feuille.nombre', { count }),
+      ligne: t('studio.editeur.feuille.ligne'),
+      ordre: t('studio.editeur.feuille.ordre'),
+      associer: t('studio.editeur.feuille.associer'),
+      image: t('studio.editeur.feuille.image'),
+      points: (points) => t('studio.editeur.feuille.points', { points }),
+    });
+    if (!ok) toastRef.current.warning(t('studio.editeur.feuille.bloque'));
+  };
   const apercu = async () => {
     try {
       const session = await studioAPI.ouvrir(id, { essai: true });
@@ -132,6 +148,9 @@ export default function EditeurQuiz() {
           </Stack>
         </Box>
         <Stack direction="row" spacing={1}>
+          <Button variant="outlined" startIcon={<Print />} onClick={imprimer} disabled={!quiz.questions.length || enGeneration} title={t('studio.editeur.feuille.aide')}>
+            {t('studio.editeur.feuille.imprimer')}
+          </Button>
           <Button variant="outlined" startIcon={<PlayCircleOutline />} onClick={apercu} disabled={!quiz.questions.length || enGeneration} title={t('studio.editeur.apercuAide')}>
             {t('studio.editeur.apercu')}
           </Button>
