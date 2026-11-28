@@ -1,0 +1,14 @@
+{
+  "lire": "Play the animation",
+  "pause": "Pause",
+  "presences": {
+    "titre": "Take attendance manually",
+    "description": "The cursor selects “Present” and the row shows it was marked by hand.",
+    "image": "Roll call after the click. The selected student’s “Present” button is green."
+  },
+  "emploiDuTemps": {
+    "titre": "Open a session’s details",
+    "description": "Click a session in the timetable to see its room, time and group.",
+    "image": "Details of a systems architecture session in room B204, from 10:15 to 11:45, for Group A."
+  }
+}

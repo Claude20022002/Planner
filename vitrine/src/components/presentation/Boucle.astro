@@ -1,0 +1,68 @@
+---
+// Lecteur d’une courte capture Planner, avec image d’attente et commande au clavier.
+import { Pause, Play } from 'lucide-react';
+
+interface Props {
+  id: string;
+  video: string;
+  image: string;
+  alt: string;
+  lire: string;
+  pause: string;
+}
+
+const { id, video, image, alt, lire, pause } = Astro.props;
+---
+<figure class="boucle" data-boucle data-fichier={video} data-lire={lire} data-pause={pause}>
+  <div class="ecran" data-ecran>
+    <img src={image} alt={alt} width="800" height="500" loading="lazy" decoding="async" />
+    <video id={id} muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+  </div>
+  <button class="commande" type="button" aria-controls={id} data-commande hidden>
+    <span class="icone" data-icone-lire><Play size={18} aria-hidden="true" /></span>
+    <span class="icone" data-icone-pause hidden><Pause size={18} aria-hidden="true" /></span>
+    <span data-libelle>{lire}</span>
+  </button>
+</figure>
+
+<script>
+  import './boucle.js';
+</script>
+
+<style>
+  .boucle { display: grid; justify-items: start; gap: var(--espace-2); inline-size: 100%; min-inline-size: 0; margin: 0; }
+  .ecran {
+    position: relative;
+    inline-size: 100%;
+    aspect-ratio: 8 / 5;
+    overflow: hidden;
+    border-radius: var(--rayon);
+    background: var(--gris-fond);
+    box-shadow: var(--ombre-carte);
+  }
+  img, video { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: contain; }
+  video { visibility: hidden; }
+  .boucle[data-image-video] video { visibility: visible; }
+  .commande {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espace-1);
+    min-block-size: 2.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: var(--rayon-pilule);
+    background: var(--blanc);
+    color: var(--module-fonce, var(--bleu-profond));
+    font: inherit;
+    font-size: var(--texte-petit);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .commande:hover { background: var(--gris-fond); }
+  .icone { display: inline-flex; }
+  [hidden] { display: none; }
+
+  @media print {
+    .boucle[data-image-video] video, .commande { display: none; }
+  }
+</style>

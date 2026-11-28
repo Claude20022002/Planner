@@ -1,0 +1,36 @@
+---
+// Une action de Planner illustrée par une boucle servie localement sous le titre du module.
+import Boucle from './Boucle.astro';
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import { traductions } from '../../i18n/index.js';
+
+interface Props {
+  cle: 'presences' | 'emploiDuTemps';
+  langue: string;
+}
+
+const { cle, langue } = Astro.props;
+const chemins = { presences: 'presences/appel-manuel', emploiDuTemps: 'emploi-du-temps/fiche-seance' };
+const media = '/videos/boucles/' + chemins[cle] + '-' + (langue === 'en' ? 'en' : 'fr');
+const t = traductions(langue, 'presentation-boucles');
+---
+<Section id="demonstration-module" large etiquette="demonstration-module-titre">
+  <div class="demonstration">
+    <div class="texte">
+      <Titre id="demonstration-module-titre" taille="moyen">{t(cle + '.titre')}</Titre>
+      <p>{t(cle + '.description')}</p>
+    </div>
+    <Boucle id="video-module" video={media + '.mp4'} image={media + '.webp'}
+      alt={t(cle + '.image')} lire={t('lire')} pause={t('pause')} />
+  </div>
+</Section>
+
+<style>
+  .demonstration { display: grid; align-items: center; gap: var(--espace-4); inline-size: 100%; text-align: start; }
+  .texte { display: grid; gap: var(--espace-2); min-inline-size: 0; }
+  p { max-inline-size: 36ch; margin: 0; color: var(--gris-texte); }
+  @media (min-width: 56rem) {
+    .demonstration { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr); gap: var(--espace-5); }
+  }
+</style>
