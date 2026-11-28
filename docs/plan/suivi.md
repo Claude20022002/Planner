@@ -27,6 +27,13 @@ Ce que contient ce tableau, en une vue. Le détail est dans « Missions en cours
 - session `plan-b-projet-pacte-0a` : en pause (17c, le site de QJE-17, après VIT-24) ;
 - Alexis : #229, #265, #230, #269 à corriger (messages en attente de transmission).
 
+**Ce qu'on construit d'abord (chef, 28 nov., d'après l'étude des parcours par rôle)** :
+1. premier administrateur d'une base neuve (PLA) : plan en cours, agent Claude, au chef ;
+2. appel hors ligne, web et mobile (MOB-08) : plan en cours, Codex, au chef ;
+3. parcours sans appareil de l'élève (M-2a, sondage papier, jeu collectif) : plan par l'agent de Cursor, après QJE-15 ;
+4. Bibliothèque et dépôt de documents (BIB-06 à BIB-10) : à lancer ;
+5. décisions rouvertes : annonces des enseignants, devoirs, relevé du vacataire, mot de passe depuis le téléphone : un plan de produit chacune.
+
 **La suite décidée par le chef (28 nov.)** : construire ce que l'étude des parcours trouve manquant, puis des **profils de recette automatiques** qui jouent chaque parcours complet, de la création du compte administrateur à l'usage de chaque entité, avec un rapport et des captures (mission [QUA-13](missions/qua-13-recette-automatique.md), plan à écrire après l'étude).
 
 
