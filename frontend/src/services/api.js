@@ -350,9 +350,8 @@ export const evenementAPI = {
 
 // ==================== PARAMÈTRES DE PLANIFICATION ====================
 export const parametrePlanningAPI = {
+    // Lecture seule : ces réglages s'écrivent dans « Configuration » (/api/moteur, ADM-02)
     getAll: () => request('/parametres-planning'),
-    update: (cle, valeur) => request(`/parametres-planning/${cle}`, { method: 'PUT', body: { valeur } }),
-    reset: (cle) => request(`/parametres-planning/${cle}`, { method: 'DELETE' }),
 };
 
 // ==================== COURS ====================

@@ -227,11 +227,13 @@ export default function App() {
               <AppPage><Enseignements /></AppPage>
             </PrivateRoute>
           } />
-          <Route path="/gestion/parametres-planning" element={
+          <Route path="/gestion/configuration" element={
             <PrivateRoute requiredRole="admin">
               <AppPage><ParametresPlanning /></AppPage>
             </PrivateRoute>
           } />
+          {/* Ancienne adresse de la page « Configuration » (ADM-02b) */}
+          <Route path="/gestion/parametres-planning" element={<Navigate to="/gestion/configuration" replace />} />
           <Route path="/gestion/identite" element={
             <PrivateRoute requiredRole="admin">
               <AppPage><IdentiteEcole /></AppPage>

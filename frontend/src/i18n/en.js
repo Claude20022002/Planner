@@ -1140,7 +1140,7 @@ const en = {
     establishment: 'School',
     calendar: 'Calendar',
     campus: 'Campuses',
-    planningSettings: 'Planning settings',
+    planningSettings: 'Configuration',
     identity: 'Identity and brand',
     rooms: 'Rooms',
     settings: 'Settings',
