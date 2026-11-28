@@ -82,7 +82,7 @@ describe('QJE-15 : rangerJeux', () => {
     test("deux jeux du même domaine n'ont qu'un titre, un domaine vide n'en a pas", () => {
         const deux = rangerJeux([jeuParCode('quete-sql'), jeuParCode('big-o-lab')]);
         expect(deux).toHaveLength(1);
-        expect(deux[0].titre).toEqual({ fr: 'Supérieur' });
+        expect(deux[0].titre).toEqual({ fr: 'Supérieur', en: 'Higher education' });
         expect(deux[0].domaines).toHaveLength(1);
         expect(deux[0].domaines[0].titre).toEqual({ fr: 'Informatique', en: 'Computer science' });
         expect(deux[0].domaines[0].jeux.map((jeu) => jeu.code)).toEqual(['big-o-lab', 'quete-sql']);

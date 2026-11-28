@@ -10,12 +10,12 @@ import { SIMULATIONS } from '../simulations/catalogue.js';
  * écran sur le web et le mobile. `cycles` et `domaine` restent dans les deux listes fermées.
  */
 
-/** Ordre des cycles visé le 27 nov. Le titre français est celui du plan ; l'anglais vient avec les écrans. */
+/** Ordre des cycles visé le 27 nov. Titres français du plan ; anglais des écrans du site (28 nov.). */
 export const CYCLES = [
-  { code: 'college', titre: { fr: 'Collège' } },
-  { code: 'lycee', titre: { fr: 'Lycée' } },
-  { code: 'superieur', titre: { fr: 'Supérieur' } },
-  { code: 'formation-professionnelle', titre: { fr: 'Formation professionnelle' } },
+  { code: 'college', titre: { fr: 'Collège', en: 'Middle school' } },
+  { code: 'lycee', titre: { fr: 'Lycée', en: 'High school' } },
+  { code: 'superieur', titre: { fr: 'Supérieur', en: 'Higher education' } },
+  { code: 'formation-professionnelle', titre: { fr: 'Formation professionnelle', en: 'Vocational training' } },
 ];
 
 /** Ordre des domaines visé le 27 nov. Les titres d'écran sont ceux du tableau. */

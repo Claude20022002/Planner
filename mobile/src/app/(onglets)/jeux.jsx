@@ -11,8 +11,8 @@ import Personnage from '../../jeux/Personnage';
 import Scene from '../../jeux/Scene';
 import { ouvrirPartie } from '../../quiz/ouvrir';
 import useClassQuiz from '../../hooks/useClassQuiz';
-import { libelle } from '../../../../shared/jeux/catalogue.js';
 import { SIMULATIONS } from '../../../../shared/simulations/catalogue.js';
+import GroupeJeux from '../../jeux/GroupeJeux';
 import { DEVOIRS_ACTIFS } from '../../../../shared/fonctions.js';
 import { CIBLE_TACTILE, creerStyles, espace, useTheme } from '../../theme';
 import { useMargeOnglets } from '../../verre/Verre';
@@ -154,31 +154,7 @@ export default function Jeux() {
                   </Pressable>
                 );
               })}
-              {m.jeux.map((jeu) => {
-                const p = jeu.progression;
-                return (
-                  <Pressable
-                    key={`jeu-${jeu.code}`}
-                    onPress={() => ECRAN_JEU[jeu.code] && router.push(ECRAN_JEU[jeu.code])}
-                    style={styles.ligne}
-                    accessibilityRole="button"
-                    accessibilityLabel={`${libelle(jeu.titre, i18n.language)}, ${t('app.jeux.progression', { reussis: p.reussis, total: p.total, points: p.points })}`}
-                  >
-                    <View style={styles.icone}>
-                      <MaterialCommunityIcons name={jeu.type === 'terminal' ? 'console' : 'puzzle-outline'} size={20} color={couleurs.accent} />
-                    </View>
-                    <View style={styles.contenu}>
-                      <Text style={styles.etiquette}>{[t(`app.activites.buts.${jeu.but ?? 'entrainer'}`), jeu.notion].filter(Boolean).join(' · ')}</Text>
-                      <Text style={styles.titreCapitales}>{libelle(jeu.titre, i18n.language)}</Text>
-                      <View style={styles.barre}>
-                        <View style={[styles.barrePleine, { width: `${p.total ? Math.round((100 * p.reussis) / p.total) : 0}%` }]} />
-                      </View>
-                      <Text style={styles.code}>{t('app.jeux.progression', { reussis: p.reussis, total: p.total, points: p.points })}</Text>
-                    </View>
-                    <MaterialCommunityIcons name="chevron-right" size={22} color={couleurs.lettreAttenuee} />
-                  </Pressable>
-                );
-              })}
+              <GroupeJeux jeux={m.jeux} langue={i18n.language} ouvrir={(code) => ECRAN_JEU[code] && router.push(ECRAN_JEU[code])} />
             </View>
           );
         })}
@@ -235,7 +211,6 @@ const useStyles = creerStyles((t) => ({
   contenu: { flex: 1 },
   statut: { color: t.couleurs.enCours, fontFamily: t.polices.panneauGras, fontSize: 13, letterSpacing: espace(t, 1.5), textTransform: t.capitales },
   titre: { color: t.couleurs.lettre, fontFamily: t.polices.texteGras, fontSize: 16, marginTop: 2 },
-  titreCapitales: { color: t.couleurs.lettre, fontFamily: t.polices.panneauGras, fontSize: 16, letterSpacing: espace(t, 1), textTransform: t.capitales },
   detail: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 14, marginTop: 2, lineHeight: 20 },
   code: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.panneauMoyen, fontSize: 14, marginTop: 4, letterSpacing: espace(t, 1) },
   source: { color: t.couleurs.lettreAttenuee, fontFamily: t.polices.texte, fontSize: 12, marginTop: 4 },
@@ -249,9 +224,6 @@ const useStyles = creerStyles((t) => ({
     borderColor: t.couleurs.filet,
   },
   carteEntete: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 6 },
-  icone: { width: 36, height: 36, borderRadius: t.rayons.sm, alignItems: 'center', justifyContent: 'center', backgroundColor: t.couleurs.fond },
-  barre: { height: 6, borderRadius: 3, backgroundColor: t.couleurs.filet, marginTop: 10, overflow: 'hidden' },
-  barrePleine: { height: 6, borderRadius: 3, backgroundColor: t.couleurs.enCours },
   plein: { minHeight: CIBLE_TACTILE, paddingHorizontal: 18, justifyContent: 'center', borderRadius: t.rayons.md, backgroundColor: t.couleurs.accent },
   pleinTexte: { color: t.couleurs.surAccent, fontFamily: t.polices.panneauGras, fontSize: 16, letterSpacing: espace(t, 1), textTransform: t.capitales },
 }));
