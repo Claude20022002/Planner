@@ -38,3 +38,4 @@ Chaque plan court dit ses fichiers ; le coordinateur vérifie qu'ils ne croisent
 | 22 nov. 17 h | M-1 relue (`097e704c`) : **à corriger** (séance annulée ; date limite et lecture hors délai à l'écran) | à corriger |
 | 22 nov. 17 h 15 | M-1 corrigée (`be800297`) : **prête pour la PR**, après #255 | prête |
 | 26 nov. | M-9 : #272 fusionnée (CI 45735238707 verte, sept contrôles) ; fiche de la dernière étape (`53c80187`) restée en local sur la branche, sans effet | fusionnée |
+| 26 nov. 14 h 25 | M-11 (`4475a053`) relue : test 2/2 refait et qui mord, montants inchangés, fusion sans conflit | **prête pour la PR** |
