@@ -14,10 +14,11 @@ interface Props {
   titre: string;
   accroche: string;
   demonstration: string;
+  guide?: string;
   onglets: { href: string; texte: string; actif?: boolean }[];
 }
 
-const { langue, module, surtitre, titre, accroche, demonstration, onglets } = Astro.props;
+const { langue, module, surtitre, titre, accroche, demonstration, onglets, guide } = Astro.props;
 ---
 <OuverturePage id="page-titre" surtitre={surtitre} titre={titre} accroche={accroche} image={IMAGE_DU_MODULE[module.cle]}>
   <ul class="onglets" slot="haut">
@@ -26,11 +27,14 @@ const { langue, module, surtitre, titre, accroche, demonstration, onglets } = As
     ))}
   </ul>
   <span class="logo" slot="marque" set:html={logoModule(module)} />
-  <BoutonPrincipal slot="actions" href={cheminContact(langue)}>{demonstration}</BoutonPrincipal>
+  <Fragment slot="actions">
+    <BoutonPrincipal href={cheminContact(langue)}>{demonstration}</BoutonPrincipal>
+    {guide && <BoutonPrincipal href="#guide" variante="contour">{guide}</BoutonPrincipal>}
+  </Fragment>
 </OuverturePage>
 
 <style>
-  .logo { display: block; inline-size: 4.5rem; }
+  .logo { display: block; inline-size: 88px; }
   .logo :global(svg) { display: block; inline-size: 100%; block-size: auto; }
   .onglets { display: flex; flex-wrap: wrap; gap: var(--espace-1); margin: 0; padding: 0; list-style: none; }
   .onglets a {
@@ -42,5 +46,6 @@ const { langue, module, surtitre, titre, accroche, demonstration, onglets } = As
     text-decoration: none;
   }
   .onglets a:hover { background: var(--gris-fond); }
-  .onglets a[aria-current='page'] { background: var(--bleu); color: var(--blanc); }
+  .onglets a[aria-current='page'] { background: var(--module-fonce); color: var(--blanc); }
+  @media (min-width: 48rem) { .logo { inline-size: 112px; } }
 </style>

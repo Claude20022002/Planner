@@ -1,0 +1,14 @@
+{
+  "lire": "Lire l’animation",
+  "pause": "Mettre en pause",
+  "presences": {
+    "titre": "Faire l’appel à la main",
+    "description": "Le curseur sélectionne « Présent » et la ligne affiche « noté à la main ».",
+    "image": "Liste d’appel après le clic. Le bouton « Présent » de l’étudiant sélectionné est vert."
+  },
+  "emploiDuTemps": {
+    "titre": "Ouvrir une fiche de séance",
+    "description": "Un clic dans l’emploi du temps révèle la salle, l’horaire et le groupe.",
+    "image": "Fiche d’une séance d’architecture des systèmes en salle B204, de 10 h 15 à 11 h 45, avec le groupe A."
+  }
+}

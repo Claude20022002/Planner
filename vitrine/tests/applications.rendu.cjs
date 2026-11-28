@@ -1,5 +1,5 @@
 // Tests du lot B de VIT-20 sur le site construit (dist/) : pages de module, socle, onglets, fonctionnalités, « Pour qui »,
-// « Un besoin, une application. », tuiles grisées sans lien, pages de renvoi. Lancer après `npm run build`, depuis vitrine/ :
+// « Un besoin, une application. », tuiles « Bientôt » sans lien, pages de renvoi. Lancer après `npm run build`, depuis vitrine/ :
 // node --test tests/*.rendu.cjs
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
@@ -33,7 +33,18 @@ for (const langue of ['fr', 'en']) {
       assert.ok(html.includes('id="autres-applications"'));
       assert.ok(html.includes(`href="/${langue}/applications/"`), 'Toutes les applications');
       const attendu = registre.filter((entree) => entree.module === cle).length;
-      assert.equal(compter(html.slice(html.indexOf('id="fonctionnalites"')), /<li[ >]/g) >= attendu, true);
+      const cartes = html.match(/<section id="fonctionnalites"[^>]*>[\s\S]*?<\/section>/)?.[0];
+      assert.equal(compter(cartes, /<li[ >]/g), attendu);
+      assert.equal(attendu, segment === 'emploi-du-temps' ? 4 : 3);
+      const autres = html.match(/<section id="autres-applications"[^>]*>[\s\S]*?<\/section>/)?.[0];
+      const liens = [...autres.matchAll(/<a [^>]*href="([^"]+)"/g)].map((m) => m[1]);
+      assert.deepEqual(liens, [
+        ...Object.keys(MODULES).filter((nom) => nom !== segment).map((nom) => '/' + langue + '/applications/' + nom + '/'),
+        '/' + langue + '/applications/',
+      ]);
+      assert.doesNotMatch(html, /href="#guide"|id="guide"/);
+      assert.ok(html.indexOf('id="page-titre"') < html.indexOf('id="fonctionnalites"'));
+      assert.ok(html.indexOf('id="equipement"') < html.indexOf('id="autres-applications"'));
       const equipement = html.match(/<section id="equipement"[^>]*>([\s\S]*?)<\/section>/g) || [];
       assert.equal(equipement.length, 1, 'un seul bloc d’équipement par page de module');
       assert.match(equipement[0], /aria-labelledby="equipement-titre"/);
@@ -54,7 +65,7 @@ for (const langue of ['fr', 'en']) {
     }
   });
 
-  test(`${langue} · /applications/ : 17 tuiles, 5 liens vers les modules, 12 tuiles grisées sans lien`, () => {
+  test(`${langue} · /applications/ : 17 tuiles, 5 liens vers les modules, 12 tuiles « Bientôt » sans lien`, () => {
     const complet = page(`/${langue}/applications/`);
     const html = complet.slice(complet.indexOf('</header>'), complet.indexOf('<footer')); // hors barre et pied de page
     assert.equal(compter(html, /class="tuile[^"]*"/g), 17);
@@ -81,7 +92,7 @@ for (const langue of ['fr', 'en']) {
     }
   });
 
-  test(`${langue} · la disposition compacte est réservée aux 17 tuiles de l'accueil et du catalogue`, () => {
+  test(`${langue} · les grilles principales et les autres applications réutilisent les tuiles compactes`, () => {
     const tuiles = (html) => html.match(/<(a|div)\b[^>]*class="tuile grille(?: [^"]*)?"[^>]*>[\s\S]*?<\/\1>/g) || [];
     for (const adresse of [`/${langue}/`, `/${langue}/applications/`]) {
       const grille = tuiles(page(adresse));
@@ -94,8 +105,19 @@ for (const langue of ['fr', 'en']) {
       }
     }
     const autres = tuiles(page(`/${langue}/applications/presences/`));
-    assert.ok(autres.length > 0);
-    assert.ok(autres.every((tuile) => !tuile.match(/class="tuile grille [^"]*\bcompacte\b/)));
+    assert.equal(autres.length, 4);
+    assert.ok(autres.every((tuile) => tuile.startsWith('<a ') && /\bcompacte\b/.test(tuile)));
+  });
+
+  test(langue + ' · types d’établissement de Présences et absence de bloc sans type', () => {
+    const html = page('/' + langue + '/applications/presences/');
+    const bloc = html.match(/<section id="pour-qui"[^>]*>[\s\S]*?<\/section>/)?.[0];
+    assert.deepEqual([...bloc.matchAll(/href="([^"]+)"/g)].map((m) => m[1]), [
+      '/' + langue + '/solutions/#superieur', '/' + langue + '/solutions/#college-lycee',
+    ]);
+    for (const segment of ['espace-de-cours', 'annonces-et-messages']) {
+      assert.doesNotMatch(page('/' + langue + '/applications/' + segment + '/'), /id="pour-qui"/);
+    }
   });
 
   test(`${langue} · /socle/ : établissement, personnes, web et mobile, lien Sécurité`, () => {

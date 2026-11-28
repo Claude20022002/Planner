@@ -34,7 +34,7 @@ const titre = commun('navigation.toutesLesFonctionnalites').replace('{module}', 
 <style>
   .liste {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
     gap: var(--espace-2);
     inline-size: 100%;
     margin: 0;
@@ -42,7 +42,7 @@ const titre = commun('navigation.toutesLesFonctionnalites').replace('{module}', 
     list-style: none;
   }
   li { padding: var(--espace-3); border-radius: var(--rayon); background: var(--blanc); box-shadow: var(--ombre-carte); text-align: start; }
-  h3 { margin: 0 0 var(--espace-1); font-size: 1.125rem; color: var(--bleu-nuit); }
+  h3 { margin: 0 0 var(--espace-1); font-size: 1.125rem; color: var(--module-fonce); }
   p { margin: 0; color: var(--gris-texte); }
   .badge {
     margin-inline-start: 0.4rem;

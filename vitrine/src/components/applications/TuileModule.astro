@@ -1,10 +1,10 @@
 ---
-// Tuile d'un module : logo, nom, lien vers sa page s'il est disponible. Un module « Bientôt » est une tuile grisée
-// avec le badge « Bientôt », sans lien ni rôle de contrôle (plan VIT-20, § 4.2). « menu » : texte seul, pour le méga-menu.
+// Tuile de module disponible ou en préparation, dans les grilles et le menu.
 import { traductions } from '../../i18n/index.js';
 import { chemin, pageModule } from '../../i18n/langues.js';
 import { estDisponible } from '../../donnees/modules.js';
 import { logoModule } from './logos.js';
+import { teintesModule } from './teintes.js';
 
 interface Props {
   module: { cle: string; etat: string; logo: string | null; segment: string | null };
@@ -17,64 +17,53 @@ const { module, langue, variante = 'grille', compacte = false } = Astro.props;
 const nom = traductions(langue, 'modules')(`noms.${module.cle}`);
 const bientot = traductions(langue, 'commun')('navigation.bientot');
 const disponible = estDisponible(module);
+const sousTitre = variante === 'menu' && module.cle === 'evaluations'
+  ? traductions(langue, 'bientot')('modules.evaluations')
+  : undefined;
 const Balise = disponible ? 'a' : 'div';
 const href = disponible ? chemin(langue, pageModule(module.cle)) : undefined;
 ---
-<Balise class:list={['tuile', variante, { grisee: !disponible, compacte: variante === 'grille' && compacte }]} href={href}>
+<Balise class:list={['tuile', variante, { grisee: !disponible, compacte: variante === 'grille' && compacte }]} href={href} style={disponible ? undefined : teintesModule(module)}>
   {variante === 'grille' && <span class="logo" set:html={logoModule(module)} />}
   <span class="nom">{nom}</span>
   {!disponible && <span class="badge">{bientot}</span>}
+  {sousTitre && <small class="sous-titre">{sousTitre}</small>}
 </Balise>
 
 <style>
-  .tuile { display: flex; align-items: center; gap: var(--espace-2); color: var(--encre); text-decoration: none; text-align: start; }
-  .grille { flex-direction: column; justify-content: center; gap: var(--espace-1); padding: var(--espace-3) var(--espace-2); border-radius: var(--rayon);
-    background: var(--blanc); box-shadow: var(--ombre-carte); text-align: center; min-block-size: 9rem; }
-  a.grille { transition: transform var(--duree) var(--courbe); }
-  a.grille:hover { transform: translateY(-2px); }
-  .logo { display: block; inline-size: 3.5rem; }
+  .tuile { display: flex; align-items: center; color: var(--encre); text-decoration: none; text-align: start; }
+  .grille {
+    flex-direction: column;
+    gap: var(--espace-1);
+    padding: var(--espace-3) var(--espace-2);
+    border-radius: var(--rayon);
+    background: var(--blanc);
+    box-shadow: var(--ombre-carte);
+    text-align: center;
+    min-block-size: 9rem;
+  }
+  a.grille:hover .nom, a.menu:hover .nom { color: var(--bleu-profond); text-decoration: underline; }
+  .logo { display: block; inline-size: min(100%, 58px); flex: none; }
   .logo :global(svg) { display: block; inline-size: 100%; block-size: auto; }
   .nom { font-weight: 600; }
-  .menu { padding-block: 0.3rem; }
-  a.menu:hover .nom { color: var(--bleu); text-decoration: underline; }
-  .grisee { color: var(--gris-texte); }
+  .grille .nom { min-block-size: 2.7em; line-height: 1.35; overflow-wrap: anywhere; }
   .grille.grisee { background: var(--gris-fond); box-shadow: none; }
-  .grisee .logo { filter: grayscale(1); opacity: 0.55; }
+  .grisee .logo :global(svg > rect:first-of-type) {
+    fill: color-mix(in srgb, var(--module-base) 50%, var(--blanc));
+  }
   .badge {
     padding: 0.1rem 0.6rem;
     border-radius: var(--rayon-pilule);
-    background: var(--gris-trait);
-    color: var(--encre);
+    background: color-mix(in srgb, var(--module-base) 14%, var(--blanc));
+    color: var(--module-fonce);
     font-size: 0.75rem;
     font-weight: 600;
   }
+  .menu { flex-wrap: wrap; gap: 0.2rem var(--espace-1); padding-block: 0.3rem; min-inline-size: 0; }
+  .menu .nom { min-inline-size: 0; overflow-wrap: anywhere; }
   .menu .badge { padding: 0 0.5rem; }
-  .grille.compacte {
-    justify-content: flex-start;
-    gap: var(--espace-1);
-    min-block-size: 0;
-    padding: var(--espace-1);
-    background: transparent;
-    box-shadow: none;
-  }
-  a.compacte:hover .nom { color: var(--bleu-profond); text-decoration: underline; }
-  .compacte .logo {
-    display: grid;
-    place-items: center;
-    inline-size: 64px;
-    aspect-ratio: 1;
-    flex: none;
-    box-sizing: border-box;
-    border: 1px solid var(--gris-trait);
-    border-radius: var(--rayon-petit);
-    background: var(--blanc);
-  }
-  .compacte .logo :global(svg) { inline-size: 48px; }
-  .compacte.grisee .logo { filter: none; opacity: 1; }
-  .compacte.grisee .logo :global(svg) { filter: grayscale(1); opacity: 0.65; }
-  .compacte .nom { font-size: var(--texte-petit); line-height: 1.35; overflow-wrap: anywhere; }
-  @media (min-width: 48rem) {
-    .compacte .logo { inline-size: 76px; }
-    .compacte .logo :global(svg) { inline-size: 60px; }
-  }
+  .menu .sous-titre { flex-basis: 100%; color: var(--gris-texte); font-size: var(--texte-petit); }
+  .grille.compacte { min-block-size: 0; padding: var(--espace-1); background: transparent; box-shadow: none; }
+  .compacte .nom { font-size: var(--texte-petit); }
+  @media (min-width: 48rem) { .logo { inline-size: min(100%, 72px); } }
 </style>

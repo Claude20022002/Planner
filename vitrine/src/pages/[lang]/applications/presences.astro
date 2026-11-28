@@ -2,6 +2,7 @@
 // Page du module « Présences » : l'appel par QR code ou à la main, section déplacée de la page « En classe ».
 // L'accroche est le titre de la section (aucune phrase nouvelle).
 import PageModule from '../../../components/applications/PageModule.astro';
+import DemonstrationModule from '../../../components/presentation/DemonstrationModule.astro';
 import CadreAppareil from '../../../components/socle/CadreAppareil.astro';
 import Presentation from '../../../components/fonctions/Presentation.astro';
 import IllustrationAppel from '../../../components/accueil/IllustrationAppel.astro';
@@ -16,9 +17,12 @@ const tAccueil = traductions(lang, 'accueil');
 const nom = traductions(lang, 'modules')('noms.presences');
 ---
 <PageModule langue={lang} cle="presences" titre={`${nom} · Planner`} description={t('appel.texte')} accroche={t('appel.titre')}>
-  <Presentation id="appel" ton="gris" surtitre={t('appel.surtitre')} titre={t('appel.titre')} texte={t('appel.texte')} points={t('appel.points')}>
-    <CadreAppareil type="telephone" label={tAccueil('appel.illustration.label')}>
-      <IllustrationAppel t={tAccueil} />
-    </CadreAppareil>
-  </Presentation>
+  <Fragment slot="actions">
+    <DemonstrationModule cle="presences" langue={lang} />
+    <Presentation id="appel" ton="gris" surtitre={t('appel.surtitre')} titre={t('appel.titre')} texte={t('appel.texte')} points={t('appel.points')}>
+      <CadreAppareil type="telephone" label={tAccueil('appel.illustration.label')}>
+        <IllustrationAppel t={tAccueil} />
+      </CadreAppareil>
+    </Presentation>
+  </Fragment>
 </PageModule>

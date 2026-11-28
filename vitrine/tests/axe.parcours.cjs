@@ -57,10 +57,22 @@ test('axe-core ne relève aucune violation', async (t) => {
               assert.equal(colonnes, largeur === 390 ? 2 : 6, 'colonnes de la grille');
             }
           }
+          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), largeur, 'largeur de page');
           assert.deepEqual(await violations(page), [], 'menus fermés');
           if (largeur < 1024) await page.locator('.menu-bouton').click();
           await page.locator('.entete summary', { hasText: /^(Applications|Apps)$/ }).click();
           assert.deepEqual(await violations(page), [], 'menu Applications ouvert');
+          const sousTitre = page.locator('.entete .tuile.menu .sous-titre');
+          assert.equal(await sousTitre.count(), 1, 'un seul sous-titre dans le menu');
+          assert.equal(await sousTitre.isVisible(), true);
+          assert.equal(await sousTitre.evaluate((el) => {
+            const texte = document.createRange();
+            texte.selectNodeContents(el);
+            const cadre = el.getBoundingClientRect();
+            return [...texte.getClientRects()].every((l) => l.left >= Math.max(0, cadre.left)
+              && l.right <= Math.min(window.innerWidth, cadre.right));
+          }), true, 'sous-titre entièrement visible');
+          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), largeur, 'largeur avec menu');
         } finally {
           await page.close();
         }
