@@ -54,11 +54,35 @@
     "categorie": "presence",
     "module": "presences",
     "etat": "existe",
-    "titre": { "fr": "Faire l’appel", "en": "Take attendance" },
-    "description": { "fr": "Le scan du QR code de la séance enregistre la présence.", "en": "Scanning the class QR code records attendance." },
-    "alternative": { "fr": "L’enseignant peut aussi noter chaque présence à la main.", "en": "Teachers can also record attendance manually." },
+    "titre": {"fr": "Faire l’appel à la main", "en": "Take attendance manually"},
+    "description": {"fr": "L’enseignant indique qui est présent, en retard ou absent.", "en": "The teacher marks students as present, late or absent."},
     "sources": {
-      "planner": ["mobile/src/app/scanner.jsx", "frontend/src/pages/Appel.jsx", "backend/routes/presenceRoutes.js"]
+      "planner": ["frontend/src/components/appel/LigneAppel.jsx", "frontend/src/pages/Appel.jsx"]
+    }
+  },
+  {
+    "id": "appel-qr",
+    "application": "planning",
+    "categorie": "presence",
+    "module": "presences",
+    "etat": "existe",
+    "titre": {"fr": "Faire l’appel par QR code", "en": "Take attendance with a QR code"},
+    "description": {"fr": "L’enseignant projette le code et les étudiants le scannent depuis leur téléphone.", "en": "The teacher projects the code and students scan it with their phones."},
+    "alternative": {"fr": "L’enseignant peut aussi noter chaque présence à la main.", "en": "Teachers can also record attendance manually."},
+    "sources": {
+      "planner": ["frontend/src/pages/AppelProjection.jsx", "frontend/tests/parcours/appel.spec.cjs", "mobile/src/app/scanner.jsx"]
+    }
+  },
+  {
+    "id": "corriger-presence",
+    "application": "planning",
+    "categorie": "presence",
+    "module": "presences",
+    "etat": "existe",
+    "titre": {"fr": "Corriger une présence", "en": "Correct an attendance record"},
+    "description": {"fr": "Après la clôture de l’appel, l’enseignant peut rectifier un statut et la correction est journalisée.", "en": "After closing attendance, the teacher can correct a status. The change is logged."},
+    "sources": {
+      "planner": ["backend/services/presences/statuts.js", "backend/tests/integration/appelClasse.test.js"]
     }
   },
   {
@@ -83,6 +107,18 @@
     "description": { "fr": "Lorsque l’école active les sondages, les élèves répondent à une question de l’enseignant.", "en": "When the school enables polls, students can answer a teacher’s question." },
     "sources": {
       "planner": ["backend/routes/sondageRoutes.js"]
+    }
+  },
+  {
+    "id": "ouverture-supports",
+    "application": "pedagogie",
+    "categorie": "cours",
+    "module": "espaceDeCours",
+    "etat": "existe",
+    "titre": {"fr": "Programmer la visibilité d’un support", "en": "Schedule access to a course resource"},
+    "description": {"fr": "L’enseignant choisit les dates auxquelles un support devient visible ou cesse de l’être.", "en": "The teacher chooses when a resource becomes visible and when access ends."},
+    "sources": {
+      "planner": ["frontend/src/components/espaceCours/LigneSupport.jsx", "backend/services/cours/ouverture.js", "backend/services/cours/supports.js"]
     }
   },
   {
@@ -155,6 +191,30 @@
     "description": { "fr": "Choisissez la classe, le groupe ou la filière qui doit recevoir votre annonce.", "en": "Choose the class, group or programme that should receive the announcement." },
     "sources": {
       "planner": ["backend/routes/annonceRoutes.js"]
+    }
+  },
+  {
+    "id": "lectures-annonces",
+    "application": "annonces",
+    "categorie": "communication",
+    "module": "annoncesEtMessages",
+    "etat": "existe",
+    "titre": {"fr": "Suivre la lecture d’une annonce", "en": "See who read an announcement"},
+    "description": {"fr": "L’auteur voit quels destinataires ont lu l’annonce.", "en": "The sender can see which recipients have read the announcement."},
+    "sources": {
+      "planner": ["backend/routes/annonceRoutes.js", "frontend/src/pages/Annonces.jsx"]
+    }
+  },
+  {
+    "id": "relancer-annonces",
+    "application": "annonces",
+    "categorie": "communication",
+    "module": "annoncesEtMessages",
+    "etat": "existe",
+    "titre": {"fr": "Relancer les destinataires", "en": "Remind recipients"},
+    "description": {"fr": "L’auteur peut envoyer un rappel aux personnes qui n’ont pas encore lu son annonce.", "en": "The sender can remind people who have not read the announcement yet."},
+    "sources": {
+      "planner": ["frontend/src/pages/Annonces.jsx", "backend/services/annonces/annonces.js"]
     }
   },
   {

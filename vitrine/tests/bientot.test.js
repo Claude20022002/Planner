@@ -10,6 +10,12 @@ const plan = readFileSync(new URL('../../docs/conception/vitrine/vit-22-bientot-
 const phrasesVisees = new Map([...plan.matchAll(/^\| (\d+|M) \| [^|\n]+ \| [^|\n]+ \| ([^|\n]+) \| ([^|\n]+) \|/gm)]
   .map(([, numero, fr, en]) => [numero, { fr: fr.trim(), en: en.trim() }]));
 
+const planFinitions = readFileSync(new URL('../../docs/conception/vitrine/vit-24-finitions-modules.md', import.meta.url), 'utf8');
+const numeroEvaluations = MODULES.find(({ cle }) => cle === 'evaluations').numero;
+for (const [, ref, fr, en] of planFinitions.matchAll(/^\| (N[23]) \| [^|\n]+ \| ([^|\n]+) \| ([^|\n]+) \|/gm)) {
+  phrasesVisees.set(ref === 'N2' ? String(numeroEvaluations) : 'M', { fr: fr.trim(), en: en.trim() });
+}
+
 for (const langue of ['fr', 'en']) {
   test(langue + ' · une phrase visée par module en préparation', () => {
     const textes = charger(langue);
