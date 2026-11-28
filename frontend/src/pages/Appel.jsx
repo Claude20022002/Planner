@@ -22,6 +22,7 @@ import LigneAppel from '../components/appel/LigneAppel';
 import { presenceAPI } from '../services/api';
 import { useToast } from '../contexts/ToastContext';
 import { ds } from '../design-system/tokens';
+import { texteBilanAppel } from './bilanAppel';
 
 const RAFRAICHIR_LISTE_MS = 5000;
 
@@ -188,7 +189,7 @@ export default function Appel() {
             <Box sx={{ py: 6 }}>
               <Typography sx={{ fontFamily: ds.font.board, fontSize: '1.5rem', letterSpacing: '0.08em' }}>{t('appel.ferme')}</Typography>
               <Typography sx={{ mt: 1, color: ds.board.letterDim }}>
-                {t(retards ? 'appel.bilanRetards' : 'appel.bilan', { presents, retards, absents: Math.max(0, attendus - presents) })}
+                {texteBilanAppel(t, { presents, absents: Math.max(0, attendus - presents), retards })}
               </Typography>
               <Button variant="outlined" onClick={ouvrir} sx={{ mt: 2, color: ds.board.letter, borderColor: ds.board.seam }}>
                 {t('appel.rouvrir')}

@@ -11,6 +11,7 @@ import { presenceAPI } from '../services/api';
 import { useToast } from '../contexts/ToastContext';
 import { ds } from '../design-system/tokens';
 import useTitreOnglet from '../hooks/useTitreOnglet';
+import { texteBilanAppel } from './bilanAppel';
 
 const RAFRAICHIR_LISTE_MS = 3000;
 // Un étudiant qui vient de scanner reste mis en avant quelques secondes
@@ -187,7 +188,7 @@ export default function AppelProjection() {
             <Box role="status" sx={{ py: 6 }}>
               <Typography sx={{ fontFamily: ds.font.board, fontSize: 'clamp(1.75rem, 5vh, 3rem)', letterSpacing: '0.08em' }}>{t('appel.ferme')}</Typography>
               <Typography sx={{ mt: 1, fontSize: 'clamp(1rem, 2.6vh, 1.5rem)', color: ds.board.letterDim }}>
-                {t('appel.bilan', { presents: presents.length, absents: Math.max(0, attendus - presents.length) })}
+                {texteBilanAppel(t, { presents: presents.length, absents: Math.max(0, attendus - presents.length) })}
               </Typography>
               <Button variant="outlined" onClick={() => navigate(`/appel/${id}`)} sx={{ mt: 2.5, ...boutonSombre }}>
                 {t('appel.projection.listeComplete')}
