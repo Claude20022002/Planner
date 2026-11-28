@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, MenuItem, Paper, Stack, TextField, Typography } from '@mui/material';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
 import { TableSkeleton } from '../../design-system/components/PremiumSkeleton';
 import ChampCouleur from '../../components/etablissement/ChampCouleur';
@@ -10,8 +10,8 @@ import { adresseLogo, etablissementAPI, memoriserIdentite } from '../../services
 import { verifierCouleur } from '../../../../shared/couleurs.js';
 import { useToast } from '../../contexts/ToastContext';
 
-// Le modèle de l'EDT du mois (modele_edt) n'est pas proposé : aucun écran ne s'en sert encore
-const CHAMPS = ['nom', 'nom_court', 'couleur_principale', 'couleur_accent', 'expediteur_nom', 'adresse_reponse'];
+// Modèle de l'EDT du mois (EDT-04) : « planner » neutre ou « hestim » au format de l'école d'origine
+const CHAMPS = ['nom', 'nom_court', 'couleur_principale', 'couleur_accent', 'expediteur_nom', 'adresse_reponse', 'modele_edt'];
 const saisieDe = (config) => Object.fromEntries(CHAMPS.map((champ) => [champ, config[champ] ?? '']));
 const produitDe = (nomCourt) => (nomCourt === 'Planner' || !nomCourt ? 'Planner' : `${nomCourt} Planner`);
 
@@ -35,7 +35,8 @@ function Rubrique({ titre, children }) {
 
 /**
  * Panneau de configuration, « Identité et marque » (D-21, lots ME-1 et ME-11) : nom, nom court,
- * couleurs, logo, expéditeur et adresse de réponse des courriels. Réservé à l'administration.
+ * couleurs, logo, modèle de l'emploi du temps du mois, expéditeur et adresse de réponse des
+ * courriels. Réservé à l'administration.
  */
 export default function IdentiteEcole() {
   const { t } = useTranslation();
@@ -125,6 +126,20 @@ export default function IdentiteEcole() {
             onEnvoyer={(fichier) => agir(() => etablissementAPI.envoyerLogo(fichier))}
             onRetirer={() => agir(() => etablissementAPI.retirerLogo())}
           />
+        </Rubrique>
+
+        <Rubrique titre={t('etablissement.sections.documents')}>
+          <TextField
+            select
+            label={t('etablissement.champs.modeleEdt')}
+            value={saisie.modele_edt}
+            onChange={texte('modele_edt')}
+            helperText={t('etablissement.champs.modeleEdtAide')}
+            sx={{ maxWidth: 480 }}
+          >
+            <MenuItem value="planner">{t('etablissement.champs.modeleNeutre')}</MenuItem>
+            <MenuItem value="hestim">{t('etablissement.champs.modeleOfficiel')}</MenuItem>
+          </TextField>
         </Rubrique>
 
         <Rubrique titre={t('etablissement.sections.courriels')}>

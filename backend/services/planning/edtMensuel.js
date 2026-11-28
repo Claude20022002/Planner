@@ -21,6 +21,7 @@ import { ancetres } from "./groupes.js";
 import { appliquerVersionPubliee } from "../calendrier/versionPubliee.js";
 import { appliquerRamadan } from "./ramadan.js";
 import { identite } from "../etablissement/identite.js";
+import { intitules, modeleDuDocument } from "./documentEdt.js";
 
 /**
  * Emploi du temps mensuel au format HESTIM (phase P4), calqué sur l'EDT officiel d'octobre 2026
@@ -35,7 +36,6 @@ const JOURS_COURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"
 const APRES_MIDI = 12 * 60 + 30;
 const hhmm = (h) => String(h).slice(0, 5);
 const heureLisible = (h) => hhmm(h).replace(":", "h");
-const ordinal = (n) => (n === 1 ? "1ère" : `${n}ème`);
 
 const ajouterJour = (date, n) => {
     const d = new Date(`${date}T12:00:00Z`);
@@ -55,18 +55,6 @@ const libelleSemaine = (debut, fin) => {
 };
 const nomEnseignant = (u) => (u ? `${u.prenom ? `${u.prenom[0]}. ` : ""}${u.nom}` : "");
 const demiDe = (creneau) => (minutes(creneau.heure_debut) < APRES_MIDI ? "matin" : "apres_midi");
-
-/** Intitulé de la classe : « 2ème année du cycle Ingénieur d'Etat en … » et « 4A | IIIA (S7) ». */
-const intitules = (groupe, periode) => {
-    const filiere = groupe.filiere;
-    const annee = groupe.annee ?? (Number(String(groupe.niveau).match(/\d/)?.[0]) || null);
-    const anneeCycle = annee && filiere?.premiere_annee_cycle ? annee - filiere.premiere_annee_cycle + 1 : annee;
-    const semestre = annee && periode ? (periode.code === "S1" ? 2 * annee - 1 : 2 * annee) : null;
-    return {
-        intitule_classe: filiere?.intitule_cycle && anneeCycle ? `${ordinal(anneeCycle)} année du ${filiere.intitule_cycle} en ${filiere.nom_filiere}` : filiere?.nom_filiere ?? groupe.nom_groupe,
-        code_classe: `${annee ? `${annee}A` : groupe.nom_groupe} | ${filiere?.code_filiere ?? ""}${semestre ? ` (S${semestre})` : ""}`,
-    };
-};
 
 /** Un événement bloquant concerne-t-il la classe (et quelles heures) ? */
 const evenementDeLaClasse = (e, { groupe, idsGroupes, campusDuMois }) => {
@@ -88,8 +76,11 @@ const evenementDeLaClasse = (e, { groupe, idsGroupes, campusDuMois }) => {
 };
 
 export const edtMensuel = async ({ id_groupe, mois, publication = null }) => {
-    // Préfixe des salles du format officiel (« HESTIM-GANDHI ») : le nom court de l'école
-    const prefixeCampus = (await identite()).nom_court.toUpperCase();
+    // Identité de l'école : préfixe des salles du format officiel (« ALPHA-CAMPUS NORD ») et modèle
+    // du document (EDT-04). Une seule lecture, déjà faite ici pour le préfixe.
+    const etablissement = await identite();
+    const prefixeCampus = etablissement.nom_court.toUpperCase();
+    const modele = modeleDuDocument(etablissement);
     if (!/^\d{4}-\d{2}$/.test(String(mois || ""))) throw new ErreurMetier("Mois attendu au format AAAA-MM", 400);
     const groupe = await Groupe.findByPk(id_groupe, { include: [{ model: Filiere, as: "filiere" }] });
     if (!groupe) throw new ErreurMetier("Groupe introuvable", 404);
@@ -244,7 +235,8 @@ export const edtMensuel = async ({ id_groupe, mois, publication = null }) => {
     return {
         entete: {
             annee_universitaire: annee ? annee.libelle.replace("-", "/") : null,
-            ...intitules(groupe, periode),
+            ...intitules(groupe, periode, modele),
+            modele,
             mois: `${MOIS[moisNum - 1]} ${anneeNum}`,
             groupe: { id_groupe: groupe.id_groupe, nom_groupe: groupe.nom_groupe },
         },
