@@ -28,6 +28,7 @@ Module né le 27 nov. de la séparation des quiz et des jeux (QJE-17, [conceptio
   - 10 types de questions et des médias ;
   - passation par QR code ou par code ;
   - quiz en direct (migration 0046) ;
+  - feuille imprimable sans les réponses (`shared/quiz/studio/feuille.js`, bouton « Imprimer » de l'éditeur) ;
   - import des quiz de ClassQuiz (`deploy/vps/importer-classquiz.mjs`).
 - **Préparation par l'IA** : `quizIaRoutes`, `services/studio/iaGeneration.js` ; écran « Mes quiz » (`GenererIaDialog`). Le client d'IA lui-même est dans IAG.
 - **ClassQuiz** : fork dans un dépôt séparé, derrière l'interrupteur `classquiz_actif` de chaque école (migration 0057). Il est éteint pour une installation neuve et allumé pour l'école pilote. Ses conteneurs restent dans le compose.
