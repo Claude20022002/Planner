@@ -1140,7 +1140,7 @@ const fr = {
     establishment: 'Établissement',
     calendar: 'Calendrier',
     campus: 'Campus',
-    planningSettings: 'Paramètres de planification',
+    planningSettings: 'Configuration',
     identity: 'Identité et marque',
     rooms: 'Salles',
     settings: 'Paramètres',
