@@ -2,7 +2,7 @@
 const GROUPES = [
   ['planning', 'calendar', ['nav.planning']],
   ['pedagogie', 'school', ['nav.programs', 'nav.groups', 'nav.courses', 'nav.teaching', 'nav.myClasses', 'nav.myCourses']],
-  ['personnes', 'people', ['nav.users', 'nav.securityLog', 'nav.teachers', 'nav.students']],
+  ['personnes', 'people', ['nav.users', 'nav.securityLog', 'nav.teachers', 'nav.students', 'nav.dossiers']],
   ['etablissement', 'settings', ['nav.calendar', 'nav.campus', 'nav.rooms', 'nav.slots', 'nav.planningSettings', 'nav.identity']],
   ['annonces', 'campaign', ['nav.announcements']],
   ['activites', 'quiz', ['nav.myQuizzes', 'nav.takeQuiz', 'nav.games']],

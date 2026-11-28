@@ -47,6 +47,7 @@ const Presence = lazy(() => import('./pages/Presence'));
 const Utilisateurs = lazy(() => import('./pages/gestion/Utilisateurs'));
 const Enseignants = lazy(() => import('./pages/gestion/Enseignants'));
 const Etudiants = lazy(() => import('./pages/gestion/Etudiants'));
+const Dossiers = lazy(() => import('./pages/gestion/Dossiers'));
 const Filieres = lazy(() => import('./pages/gestion/Filieres'));
 const Groupes = lazy(() => import('./pages/gestion/Groupes'));
 const Salles = lazy(() => import('./pages/gestion/Salles'));
@@ -165,6 +166,11 @@ export default function App() {
           <Route path="/gestion/etudiants" element={
             <PrivateRoute requiredRole="admin">
               <AppPage><Etudiants /></AppPage>
+            </PrivateRoute>
+          } />
+          <Route path="/gestion/dossiers" element={
+            <PrivateRoute requiredRole="admin">
+              <AppPage><Dossiers /></AppPage>
             </PrivateRoute>
           } />
           <Route path="/gestion/filieres" element={
