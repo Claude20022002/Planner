@@ -6,6 +6,30 @@ Une ligne par fonction. L'état passe à « en cours » (avec la branche) au pre
 
 États : à faire · en cours · PR ouverte · fait · reporté (plus tard, sans date) · gelé (attend la reprise de la vente) · conditionnel (attend une décision).
 
+## État au 28 novembre 2026, midi (coordinateur)
+
+Ce que contient ce tableau, en une vue. Le détail est dans « Missions en cours » et dans le tableau des fonctions.
+
+**Fait depuis le 26 nov.** (fusionné dans `main`) : ADM-02a (#281), VIT-23 (#282), M-11 (#283), VIT-20f (logos #284, grilles #286), Q-20 l'identifiant de connexion (#270), correctif du parcours IIIA (#289), neutralité : emplois du temps réels hors du dépôt (#290).
+
+**Prêt, attend le chef (push, fusion ou recette)** :
+- #291 (plan de QJE-17), puis #292 (QJE-17a), puis #288 (coordination, emporte #287) ;
+- #293 (montée d'Astro et audit du site) ; #294 (ADM-02b, page « Configuration ») ;
+- #280 (QJE-03) : recette Android ;
+- #285 (QJE-15) : catalogue fait, écrans en cours.
+
+**Plans qui attendent le visa du chef** : VIT-24 (finitions du site, planche `travaux-planner\captures-vit-24`), étude de QJE-18 (onze jeux), VIT-25 (pages de présentation par module, en cours d'écriture).
+
+**En cours chez les agents** :
+- Codex : l'étude des parcours par rôle (ce qui manque pour chaque utilisateur), puis deux images de QJE-15 ;
+- agent de Cursor : les écrans mobile et site de QJE-15 ;
+- agents Claude du coordinateur : le plan court d'ADM-02c, le plan de VIT-25 ;
+- session `plan-b-projet-pacte-0a` : en pause (17c, le site de QJE-17, après VIT-24) ;
+- Alexis : #229, #265, #230, #269 à corriger (messages en attente de transmission).
+
+**La suite décidée par le chef (28 nov.)** : construire ce que l'étude des parcours trouve manquant, puis des **profils de recette automatiques** qui jouent chaque parcours complet, de la création du compte administrateur à l'usage de chaque entité, avec un rapport et des captures (mission [QUA-13](missions/qua-13-recette-automatique.md), plan à écrire après l'étude).
+
+
 ## Chantiers
 
 Au plus **3 chantiers ouverts** en même temps, bloqués compris. On ne prend une fonction que dans un chantier ouvert. Un chantier ouvert se termine avant d'en ouvrir un autre à sa place ([organisation.md](organisation.md), § 3).
@@ -161,7 +185,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [EDT-04](modules/EDT-emploi-du-temps.md) | Publication, PDF et courriels selon l'école | 3 | M | à faire : Alexis, après ses corrections de #229 et #230 (exception hors chantier du chef, 21 nov.) | |
 | [EDT-05](modules/EDT-emploi-du-temps.md) | Paramètres datés complets | 7 | L | reporté |  |
 | [ADM-01](modules/ADM-administration.md) | Habilitations à portée | 3 | M | à faire |  |
-| [ADM-02](modules/ADM-administration.md) | Panneau de configuration de l'école | 3 | L | à faire : en tête d'ADM (ouvert le 21 nov.), avec MOT-13c ; fiche [adm-02](missions/adm-02.md) ; session Claude neuve ; plan au chef |  |
+| [ADM-02](modules/ADM-administration.md) | Panneau de configuration de l'école | 3 | L | en cours : plan validé par le chef ; 02a fusionnée (#281) ; **02b prête** (#294) ; 02c : plan court en cours | #281, #294 |
 | [ADM-03](modules/ADM-administration.md) | Import | 3 | L | à faire |  |
 | [ADM-04](modules/ADM-administration.md) | Assistant de démarrage avec un modèle par type d'école (EP-1) | 3 et 5 | L | à faire |  |
 | [ADM-05](modules/ADM-administration.md) | Rôle parent | 6 | M | à faire |  |
@@ -189,7 +213,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [BIB-02](modules/BIB-bibliotheque.md) | StudyLib par école | 2 | M | **absorbée** : rangement par école dans BIB-05, test de PLA-04 (voie B, 21 nov.) |  |
 | [BIB-03](modules/BIB-bibliotheque.md) | Médias du Studio quiz (images, sons, vidéos) hors de la base, dans le stockage de fichiers | 3 | M | à faire |  |
 | [BIB-04](modules/BIB-bibliotheque.md) | Quiz généré par l'IA à partir d'un document de la Bibliothèque | 3 | M | à faire |  |
-| [BIB-05](modules/BIB-bibliotheque.md) | Modèle et stockage S3 de la Bibliothèque reconstruite (B1, B2) | 3 | M + M | à faire : session « BIB » ; migration 0087 | |
+| [BIB-05](modules/BIB-bibliotheque.md) | Modèle et stockage S3 de la Bibliothèque reconstruite (B1, B2) | 3 | M + M | fait (#252, 22 nov.) | #252 |
 | [BIB-06](modules/BIB-bibliotheque.md) | API des documents (B3) | 3 | L | à faire : session « BIB » | |
 | [BIB-07](modules/BIB-bibliotheque.md) | Espace de cours sur le service interne (B5) | 3 | M | à faire : session « BIB » | |
 | [BIB-08](modules/BIB-bibliotheque.md) | Reprise des données de l'école pilote (B7) | 3 | M | à faire : session « BIB », lancée par le chef | |
@@ -198,17 +222,17 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [BIB-11](modules/BIB-bibliotheque.md) | Import générique d'un dossier de documents (B8) | 3 | M | à faire : Alexis | |
 | [QJE-01](modules/QUI-quiz.md) | L'entrée « Quiz » du sélecteur d'espaces ouvre le Studio, plus ClassQuiz… | libre | S | fait : #208 fusionnée le 18 nov. (exception hors chantier) | #208 |
 | [QJE-02](modules/QUI-quiz.md) | Import des formats GIFT et Moodle XML dans le Studio | 3 | M | à faire |  |
-| [QJE-03](modules/QUI-quiz.md) | Joueur natif dans l'application, sans passer par le site | 2 | M | à faire, exception hors chantier accordée le 18 nov. ([sortie-classquiz](missions/sortie-classquiz.md)) |  |
+| [QJE-03](modules/QUI-quiz.md) | Joueur natif dans l'application, sans passer par le site | 2 | M | PR ouverte : #280 ; code de Codex (`92582bf1`, 95 tests mobiles), visa du chef inscrit ; **recette Android au chef** | #280 |
 | [QJE-04](modules/JEU-jeux-pedagogiques.md) | Fusion de `jeux-pedagogique` et ses quatre corrections | libre | M | fait : #196 fusionnée le 18 nov. ; migration 0082 écrite, à appliquer au prochain déploiement | `jeux-pedagogique` (Alexis) |
 | [QJE-05](modules/JEU-jeux-pedagogiques.md) | Service des jeux à part, avec des gabarits | libre | L + M + M | à faire |  |
 | [QJE-06](modules/QUI-quiz.md) | Sortie complète de ClassQuiz | 2 | M | à faire, exception hors chantier accordée le 18 nov. ([sortie-classquiz](missions/sortie-classquiz.md)) |  |
 | [QJE-07](modules/IAG-ia.md) | Fournisseur d'IA en production | 3 | M | à faire |  |
 | [QJE-08](modules/JEU-jeux-pedagogiques.md) | Créateurs de jeux et leur rémunération | — | — | gelé |  |
 | [QJE-09](modules/QUI-quiz.md) | Défis Linux dans un quiz | — | M | reporté |  |
-| [QJE-15](modules/JEU-jeux-pedagogiques.md) | Jeux rangés par niveau, puis par filière (site, web, mobile) | libre, exception du 18 nov. | M | à faire : fiche écrite le 18 nov. ; après VIT-10 | |
-| [QJE-17](modules/JEU-jeux-pedagogiques.md) | Séparer les quiz et les jeux : site, application (web et mobile), offre, plan ; le module des jeux ne porte pas le nom « quiz » | libre, décision du chef du 26 nov. | L | à faire : fiche écrite le 26 nov., plan au chef | |
+| [QJE-15](modules/JEU-jeux-pedagogiques.md) | Jeux rangés par niveau, puis par filière (site, web, mobile) | libre, exception du 18 nov. | M | en cours : plan visé (cycles, tableau, images, accroches ludiques, 27-28 nov.) ; catalogue `shared/` fait (`6cea20bf`) ; écrans mobile et site en cours ; web après #229 | #285 |
+| [QJE-17](modules/JEU-jeux-pedagogiques.md) | Séparer les quiz et les jeux : site, application (web et mobile), offre, plan ; le module des jeux ne porte pas le nom « quiz » | libre, décision du chef du 26 nov. | L | en cours : plan validé par le chef le 27 nov. (#291) ; 17a faite (#292, modules QUI, JEU, IAG) ; 17b (logos, Codex) et 17c (site) après VIT-24 | #291, #292 |
 | [QJE-16](modules/IAG-ia.md) | Interrupteur de l'IA par école (aujourd'hui, la clé du serveur l'allume pour toutes) | 3 | à estimer | à faire, sans date : décision D2 du chef (18 nov.) ; une migration est probable, donc au chef | |
-| [QJE-18](modules/JEU-jeux-pedagogiques.md) | L'atelier des jeux : nouveaux jeux par matière, conçus un à un, chacun avec son image | libre, demande du chef du 27 nov. | M, puis un S ou M par jeu | à faire : étude au chef ; session Claude à ouvrir ; images par Codex | |
+| [QJE-18](modules/JEU-jeux-pedagogiques.md) | L'atelier des jeux : nouveaux jeux par matière, conçus un à un, chacun avec son image | libre, demande du chef du 27 nov. | M, puis un S ou M par jeu | en cours : étude commitée (`bc44598e`, onze jeux, trois pour commencer), **au chef** (neuf questions) | `etude/qje-18-atelier-jeux` |
 | [MOB-01](modules/MOB-application.md) | Essai sur un vrai téléphone (Android d'entrée de gamme), noté dans la recette | 3 | S | à faire |  |
 | [MOB-02](modules/MOB-application.md) | Rôle enseignant | 3 | L | à faire |  |
 | [MOB-03](modules/MOB-application.md) | Thème neutre et thème de l'école | 2 | M | à faire |  |
@@ -228,7 +252,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [UIX-06a](modules/UIX-interface.md) | Pilote web : marque mosaïque, connexion/navigation et Personnes | libre | — | fait : #185 fusionnée le 16 nov. | #185 |
 | [UIX-06b](modules/UIX-interface.md) | Référentiel pédagogique : Filières, Groupes, Modules et Enseignements | libre | L | fait : #199 fusionnée le 18 nov. | #199 |
 | [UIX-06c](modules/UIX-interface.md) | Salles, Campus, Créneaux et Calendrier | libre | M | **fait** (#245, fusionnée le 21 nov.) ; l'écart EP-5 des fériés passe à ADM-11 | #245 |
-| [UIX-09](modules/UIX-interface.md) | Grille d'applications façon iCloud | libre | M | PR ouverte : #213, CI verte ; mention ISC à ajouter avant la fusion | #213 |
+| [UIX-09](modules/UIX-interface.md) | Grille d'applications façon iCloud | libre | M | fait (#213) | #213 |
 | [UIX-10](modules/UIX-interface.md) | Charte commune à toutes les plateformes, en cinq fonctions (10a à 10e ; 10g retirée, 10f sans objet le 22 nov.) | 3 | L | en cours : plan validé (#206) ; **UIX-10a** (#207) et **UIX-10b** (#235, 21 nov.) **faites** ; **10d en cours** (`feat/uix-10d-mobile-charte`) ; ensuite 10c, 10e | #206, #207, #235 |
 | [UIX-11](modules/UIX-interface.md) | Tableau de bord de l'administration : refait à la charte, complété des données qui existent déjà, chaque chiffre menant à ses lignes | 3 | M | **fait** (#240, puis le correctif #247, fusionnées le 21 nov.) | #240, #247 |
 | [VIT-01](modules/VIT-site-vitrine.md) | Conception | libre | M | fait : socle, accueil et cinq pages de fonctions (VIT-05 en préparation), #195 fusionnée le 18 nov. ; rien n'est en ligne | #195 |
@@ -242,9 +266,9 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [VIT-09](modules/VIT-site-vitrine.md) | Illustrations de toutes les pages : dessins en code, quelques captures neutres, première section améliorée (condition 7) ; 09a logos et icônes, 09b intégration, 09c logos et images des modules vendables | libre | M | 09a : fait (#222, 21 nov.) ; 09b : plan validé (#227, brouillon), code en dernier ; **09c : fiche écrite (21 nov.), Codex après VIT-11** | #222, #227 |
 | [VIT-10](modules/VIT-site-vitrine.md) | Pages par rôle, menu « Solutions » ouvrant, pied de page complet (condition 8) | libre | M | fait : #219 fusionnée le 18 nov. | #219 |
 | [VIT-11](modules/VIT-site-vitrine.md) | Catalogue de toutes les fonctionnalités, avec leur source dans le code, page FAQ et méga-menu « Fonctions » (conditions 9 et 10) | libre | M | PR ouverte : #236, reprise après #237 faite, **prête** si ses parcours sont verts (22 nov.) | #236 |
-| [VIT-12](modules/VIT-site-vitrine.md) | Mentions légales et page de confidentialité du site (condition 2) | libre | S | PR ouverte : #223, attend les valeurs du chef | #223 |
+| [VIT-12](modules/VIT-site-vitrine.md) | Mentions légales et page de confidentialité du site (condition 2) | libre | S | fait (#223) | #223 |
 | [VIT-10b](modules/VIT-site-vitrine.md) | Avant → avec et FAQ des pages par rôle (condition 10) | libre | S | fait : #226 fusionnée le 21 nov. | #226 |
-| [VIT-13](modules/VIT-site-vitrine.md) | Fonctionnalités par type d'établissement (condition 10) | libre | M | à faire : fiche écrite le 18 nov. | |
+| [VIT-13](modules/VIT-site-vitrine.md) | Fonctionnalités par type d'établissement (condition 10) | libre | M | fait (#254) | #254 |
 | [VIT-14](modules/VIT-site-vitrine.md) | « Pourquoi Planner » : comparatif par approche, accueil et `/comparer/` (condition 10) ; VIT-14b, deux critères de plus | libre | M | fait : #224 (19 nov.) et #233 (21 nov.) | #224, #233 |
 | [VIT-15](modules/VIT-site-vitrine.md) | Une page par module, avec le bloc « selon votre équipement » (condition 10) | libre | M | à faire : fiche écrite le 18 nov. ; **n'attend pas VIT-09c** : une place pour le logo et l'image (chef, 21 nov.) | |
 | [VIT-16](modules/VIT-site-vitrine.md) | Page Contact complète et page À propos (conditions 10 et 11) | libre | S | plan écrit, attend les corrections du chef | `feat/vit-16-contact-a-propos` |
@@ -309,6 +333,7 @@ Réserver ici **avant** d'écrire une migration. Le moteur de migrations (Umzug)
 | [QUA-05](modules/QUA-qualite-docs.md) | Supprimer les branches et les dossiers de travail morts, après vérification de leur… | libre | S | à faire |  |
 | [QUA-06](modules/QUA-qualite-docs.md) | `docs/users.xlsx` | 0 | S | fait (personnes fictives, rien à réécrire) |  |
 | [QUA-07](modules/QUA-qualite-docs.md) | Protéger `main` | 0 | S | fait : les 6 contrôles de la CI sont exigés (contournable seulement par `gh pr merge --admin`) |  |
+| [QUA-13](modules/QUA-qualite-docs.md) | Profils de recette automatiques : chaque rôle joue son parcours complet sur une base neuve (du premier compte administrateur à l'usage de chaque entité), rapport avec captures | libre, demande du chef du 28 nov. | L | à faire : après l'étude des parcours par rôle et la construction de ses manques bloquants ; plan au chef | |
 | [VSC-09](modules/VSC-vie-scolaire.md) | Activités et clubs | 6 | M | à faire ; parité, placée le 26 nov. |  |
 | [VSC-11](modules/VSC-vie-scolaire.md) | Mémoires et projets de fin d'études (sans VSC-02 depuis le 26 nov.) | 3 | M | à faire ; parité, placée le 26 nov. |  |
 | [VSC-12](modules/VSC-vie-scolaire.md) | Choix des options et matières facultatives | 5 | M | à faire ; parité, placée le 26 nov. |  |
