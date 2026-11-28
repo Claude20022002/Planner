@@ -12,6 +12,7 @@ import AutresModules from './AutresModules.astro';
 import { traductions } from '../../i18n/index.js';
 import { chemin, pageModule } from '../../i18n/langues.js';
 import { moduleDe } from '../../donnees/modules.js';
+import { teintesModule } from './teintes.js';
 
 interface Props {
   langue: string;
@@ -19,10 +20,11 @@ interface Props {
   titre: string;
   description: string;
   accroche: string;
+  guide?: string;
   ongletsEnPlus?: { href: string; texte: string }[];
 }
 
-const { langue, cle, titre, description, accroche, ongletsEnPlus = [] } = Astro.props;
+const { langue, cle, titre, description, accroche, guide, ongletsEnPlus = [] } = Astro.props;
 const commun = traductions(langue, 'commun');
 const module = moduleDe(cle);
 const nom = traductions(langue, 'modules')(`noms.${cle}`);
@@ -33,12 +35,28 @@ const onglets = [
 ];
 ---
 <Gabarit langue={langue} page={pageModule(cle)} titre={titre} description={description}>
-  <EnTeteModule langue={langue} module={module} surtitre={commun(`categories.${module.categorie}`)} titre={nom} accroche={accroche}
-    demonstration={commun('navigation.demonstration')} onglets={onglets} />
-  <slot />
-  <FonctionnalitesModule langue={langue} cle={cle} nom={nom} />
-  <Equipement langue={langue} cle={cle} />
-  <PourQui langue={langue} cle={cle} />
-  <AutresModules langue={langue} cle={cle} categorie={module.categorie} />
+  <div class="module" style={teintesModule(module)}>
+    <EnTeteModule langue={langue} module={module} surtitre={commun(`categories.${module.categorie}`)} titre={nom} accroche={accroche}
+      demonstration={commun('navigation.demonstration')} onglets={onglets} guide={Astro.slots.has('guide') ? guide : undefined} />
+    <div class="apercu"><slot name="actions"><slot /></slot></div>
+    <slot name="guide" />
+    <FonctionnalitesModule langue={langue} cle={cle} nom={nom} />
+    <Equipement langue={langue} cle={cle} />
+    <PourQui langue={langue} cle={cle} />
+    <AutresModules langue={langue} cle={cle} />
+    <slot name="faq" />
+  </div>
   <FinDePage langue={langue} />
 </Gabarit>
+
+<style>
+  .module {
+    --espace-section: clamp(2rem, 1.5rem + 3vw, 4rem);
+    --module-pale: color-mix(in srgb, var(--module-base) 7%, var(--blanc));
+    --couleur-surtitre: var(--module-fonce);
+    --couleur-lien: var(--module-fonce);
+  }
+  .module :global(.ouverture.clair),
+  .apercu :global(section.gris) { background: var(--module-pale); }
+  .module :global(h1) { color: var(--module-fonce); }
+</style>

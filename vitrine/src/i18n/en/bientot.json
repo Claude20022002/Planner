@@ -1,7 +1,7 @@
 {
   "meta": {
     "titre": "Coming soon · Planner",
-    "description": "Planner modules in preparation: grades, credits and juries, school life and families, admissions, fees and cash desk, and more. None is available yet."
+    "description": "Planner modules in preparation: grades and assessments, school life and families, admissions, fees and cash desk, and more. None is available yet."
   },
   "entete": {
     "surtitre": "Coming soon",
@@ -12,7 +12,7 @@
   "modules": {
     "bibliotheque": "The school's documents, organised by programme and by module.",
     "vacatairesEtHeures": "Sessions planned, held, approved, then paid: the monthly statement for part-time teachers.",
-    "evaluations": "Grade entry and report cards, with credits.",
+    "evaluations": "Report cards, credits and exam boards",
     "inscriptions": "Applications through to enrolment, with nothing typed twice.",
     "documentsVerifiables": "Certificates with a code anyone can check.",
     "stages": "Student internships.",

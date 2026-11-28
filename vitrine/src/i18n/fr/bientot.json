@@ -1,7 +1,7 @@
 {
   "meta": {
     "titre": "Bientôt · Planner",
-    "description": "Les modules de Planner en préparation : évaluations, crédits et jurys, vie scolaire et familles, inscriptions, frais et caisse, et plus encore. Aucun n'est encore disponible."
+    "description": "Les modules de Planner en préparation : notes et évaluations, vie scolaire et familles, inscriptions, frais et caisse, et plus encore. Aucun n'est encore disponible."
   },
   "entete": {
     "surtitre": "Bientôt",
@@ -12,7 +12,7 @@
   "modules": {
     "bibliotheque": "Les documents de l'école, rangés par filière et par module.",
     "vacatairesEtHeures": "La séance prévue, faite, visée, puis payée : l'état mensuel des vacataires.",
-    "evaluations": "La saisie des notes et les bulletins, avec les crédits.",
+    "evaluations": "Bulletins, crédits et jurys",
     "inscriptions": "Les candidatures, jusqu'à l'inscription, sans rien ressaisir.",
     "documentsVerifiables": "Attestations et certificats, avec un code que chacun peut vérifier.",
     "stages": "Les stages des étudiants.",

@@ -76,3 +76,26 @@ test('les six réponses françaises de la FAQ correspondent aux visas du chef', 
   assert.equal(reponses.length, 6);
   assert.deepEqual(faq.questions.map((q) => q.reponse), reponses);
 });
+
+
+test('VIT-24 applique les phrases visées du registre et de la page Bientôt', () => {
+  const plan = lire('docs/conception/vitrine/vit-24-finitions-modules.md');
+  const lignes = plan.split(/\r?\n/).filter((ligne) => /^\| (?:N[1-3]|P[1-3]|C1|A[12]) \|/.test(ligne));
+  assert.equal(lignes.length, 9);
+  for (const ligne of lignes) {
+    const [, ref, cible, fr, en] = ligne.split('|').map((champ) => champ.trim());
+    for (const [langue, texte] of Object.entries({ fr, en })) {
+      if (ref.startsWith('N')) {
+        const modules = JSON.parse(lire('vitrine/src/i18n/' + langue + '/modules.json'));
+        const bientot = JSON.parse(lire('vitrine/src/i18n/' + langue + '/bientot.json'));
+        assert.equal({ N1: modules.noms.evaluations, N2: bientot.modules.evaluations, N3: bientot.meta.description }[ref], texte);
+      } else {
+        const id = cible.match(/\x60([a-z-]+)\x60/)[1];
+        const entree = entrees.find((f) => f.id === id);
+        const [titre, description] = texte.split('<br>');
+        assert.equal(entree.titre[langue], titre.slice(2, -2), id);
+        assert.equal(entree.description[langue], description, id);
+      }
+    }
+  }
+});
