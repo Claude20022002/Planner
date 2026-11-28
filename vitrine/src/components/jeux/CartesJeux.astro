@@ -1,0 +1,66 @@
+---
+// Grille d'un cycle et d'un domaine : image, titre, domaine, accroche.
+// Sans fichier, la carte reste lisible. GrilleCartes n'est pas modifié.
+import Section from '../socle/Section.astro';
+import Titre from '../socle/Titre.astro';
+import Apparition from '../socle/Apparition.astro';
+
+interface Carte {
+  code: string;
+  titre: string;
+  domaine: string;
+  accroche: string;
+  image: string;
+}
+
+interface Props {
+  id: string;
+  surtitre: string;
+  titre: string;
+  cartes: Carte[];
+  ton?: 'clair' | 'gris' | 'sombre';
+}
+
+const { id, surtitre, titre, cartes, ton = 'gris' } = Astro.props;
+---
+<Section id={id} ton={ton} large etiquette={`${id}-titre`}>
+  <Apparition>
+    <Titre id={`${id}-titre`} taille="moyen" surtitre={surtitre}>{titre}</Titre>
+  </Apparition>
+  <ul class="cartes">
+    {cartes.map((carte, i) => (
+      <li>
+        <Apparition delai={(i % 3) * 0.1} class="carte-enveloppe">
+          <article class="carte">
+            {carte.image && (
+              <img src={carte.image} alt={carte.titre} width="512" height="512" loading="lazy" />
+            )}
+            <h3>{carte.titre}</h3>
+            <p class="domaine">{carte.domaine}</p>
+            <p>{carte.accroche}</p>
+          </article>
+        </Apparition>
+      </li>
+    ))}
+  </ul>
+</Section>
+
+<style>
+  .cartes { display: grid; gap: var(--espace-2); inline-size: 100%; margin: 0; padding: 0; list-style: none; }
+  .cartes > li, .cartes :global(.carte-enveloppe) { display: grid; }
+  .carte { display: grid; align-content: start; justify-items: start; gap: var(--espace-1); padding: var(--espace-3); border-radius: var(--rayon-grand); background: var(--blanc); text-align: start; }
+  img { inline-size: 100%; block-size: auto; aspect-ratio: 1; object-fit: cover; border-radius: var(--rayon); }
+  h3 { font-size: 1.25rem; font-weight: 650; line-height: 1.25; }
+  .domaine { color: var(--bleu); font-weight: 600; }
+  p { color: var(--gris-texte); }
+  :global(.sombre) .carte { background: rgb(255 255 255 / 7%); }
+  :global(.sombre) p { color: var(--bleu-pale); }
+
+  @media (min-width: 40rem) {
+    .cartes { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 64rem) {
+    .cartes { grid-template-columns: repeat(3, 1fr); }
+  }
+  .cartes:has(> li:only-child) { grid-template-columns: minmax(0, 24rem); justify-content: center; }
+</style>

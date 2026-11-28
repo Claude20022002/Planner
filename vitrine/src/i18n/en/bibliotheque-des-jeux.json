@@ -9,49 +9,93 @@
     "relief": "thirty challenges",
     "accroche": "Each simulation has three challenges."
   },
+  "cycles": {
+    "college": "Middle school",
+    "lycee": "High school",
+    "superieur": "Higher education",
+    "formation-professionnelle": "Vocational training"
+  },
+  "domaines": {
+    "informatique": "Computer science",
+    "reseaux-cybersecurite": "Networks and cybersecurity",
+    "intelligence-artificielle": "Artificial intelligence",
+    "gestion-logistique": "Business and logistics"
+  },
   "jeux": {
-    "surtitre": "",
-    "titre": "The ten games.",
-    "cartes": [
+    "groupes": [
       {
-        "titre": "Cyber Triage",
-        "texte": "Classify four security incidents by severity using scope, data sensitivity, and containment status."
+        "cycle": "superieur",
+        "domaine": "informatique",
+        "cartes": [
+          {
+            "code": "big-o-lab",
+            "titre": "Big-O Lab",
+            "accroche": "Guess it: how fast does this program grow?"
+          },
+          {
+            "code": "quete-sql",
+            "titre": "Perfect Query",
+            "accroche": "Scrambled: put this query back in order."
+          },
+          {
+            "code": "cpu-process",
+            "titre": "CPU Scheduler",
+            "accroche": "You pick which process runs first."
+          },
+          {
+            "code": "robot-route",
+            "titre": "Robot Route",
+            "accroche": "Plot the path: don't hit an obstacle."
+          }
+        ]
       },
       {
-        "titre": "Network Nodes",
-        "texte": "Connect 4 devices to 3 switches while respecting capacity, subnet, and isolation constraints."
+        "cycle": "superieur",
+        "domaine": "reseaux-cybersecurite",
+        "cartes": [
+          {
+            "code": "topo-reseau",
+            "titre": "Network Nodes",
+            "accroche": "Connect these machines without mixing them."
+          },
+          {
+            "code": "tri-cyber",
+            "titre": "Cyber Triage",
+            "accroche": "Rank the incidents: urgent first, then calm."
+          }
+        ]
       },
       {
-        "titre": "Threshold Lab",
-        "texte": "Tune a detection threshold and compare false positives, missed defects, and error costs."
+        "cycle": "superieur",
+        "domaine": "intelligence-artificielle",
+        "cartes": [
+          {
+            "code": "threshold-lab",
+            "titre": "Threshold Lab",
+            "accroche": "Set the threshold, and see what an error costs."
+          }
+        ]
       },
       {
-        "titre": "Stock Pilot",
-        "texte": "Plan three days of replenishment without stockouts, respecting capacity and budget."
-      },
-      {
-        "titre": "Agile Sprint",
-        "texte": "Select backlog items respecting capacity, dependencies, mandatory flags, and minimum value."
-      },
-      {
-        "titre": "Robot Route",
-        "texte": "Program a route, avoid obstacles, and inspect every move in a simulated grid."
-      },
-      {
-        "titre": "Perfect Query",
-        "texte": "Reorder shuffled SQL clause fragments into the correct execution order."
-      },
-      {
-        "titre": "CPU Scheduler",
-        "texte": "Choose the execution order of 4 processes to meet deadlines and minimise average turnaround time."
-      },
-      {
-        "titre": "ERP Budget",
-        "texte": "Allocate quantities across 4 cost lines to stay within budget while meeting coverage and unit-cost targets."
-      },
-      {
-        "titre": "Big-O Lab",
-        "texte": "Identify the complexity class (O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)) of common loop and recursion patterns."
+        "cycle": "superieur",
+        "domaine": "gestion-logistique",
+        "cartes": [
+          {
+            "code": "budget-erp",
+            "titre": "ERP Budget",
+            "accroche": "Four lines, one budget: you split it."
+          },
+          {
+            "code": "sprint-agile",
+            "titre": "Agile Sprint",
+            "accroche": "Pick the sprint: don't break the dependencies."
+          },
+          {
+            "code": "stock-pilot",
+            "titre": "Stock Pilot",
+            "accroche": "Last three days without a single stockout."
+          }
+        ]
       }
     ]
   }

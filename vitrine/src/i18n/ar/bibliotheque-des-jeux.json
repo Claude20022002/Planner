@@ -1,28 +1,102 @@
 {
   "meta": {
-    "titre": "",
-    "description": ""
+    "titre": "مكتبة الألعاب · Planner",
+    "description": "عشر محاكاة، ثلاثون تحدياً. لكل محاكاة ثلاثة تحديات."
   },
   "entete": {
-    "surtitre": "",
-    "titre": "",
-    "relief": "",
-    "accroche": ""
+    "surtitre": "ألعاب",
+    "titre": "عشر محاكاة، ثلاثون تحدياً.",
+    "relief": "ثلاثون تحدياً",
+    "accroche": "لكل محاكاة ثلاثة تحديات."
+  },
+  "cycles": {
+    "college": "المرحلة الإعدادية",
+    "lycee": "المرحلة الثانوية",
+    "superieur": "التعليم العالي",
+    "formation-professionnelle": "التكوين المهني"
+  },
+  "domaines": {
+    "informatique": "علوم الحاسوب",
+    "reseaux-cybersecurite": "الشبكات والأمن السيبراني",
+    "intelligence-artificielle": "الذكاء الاصطناعي",
+    "gestion-logistique": "التسيير واللوجستيك"
   },
   "jeux": {
-    "surtitre": "",
-    "titre": "",
-    "cartes": [
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" },
-      { "titre": "", "texte": "" }
+    "groupes": [
+      {
+        "cycle": "superieur",
+        "domaine": "informatique",
+        "cartes": [
+          {
+            "code": "big-o-lab",
+            "titre": "مختبر Big-O",
+            "accroche": "خمّن: بأي سرعة يكبر هذا البرنامج؟"
+          },
+          {
+            "code": "quete-sql",
+            "titre": "الاستعلام المثالي",
+            "accroche": "مبعثر: أعد هذا الاستعلام إلى ترتيبه."
+          },
+          {
+            "code": "cpu-process",
+            "titre": "مجدول المعالج",
+            "accroche": "أنت تختار أي عملية تمر أولاً."
+          },
+          {
+            "code": "robot-route",
+            "titre": "مسار الروبوت",
+            "accroche": "ارسم المسار دون الاصطدام بعائق."
+          }
+        ]
+      },
+      {
+        "cycle": "superieur",
+        "domaine": "reseaux-cybersecurite",
+        "cartes": [
+          {
+            "code": "topo-reseau",
+            "titre": "عُقد الشبكات",
+            "accroche": "اربط هذه الأجهزة دون أن تخلطها."
+          },
+          {
+            "code": "tri-cyber",
+            "titre": "فرز الحوادث",
+            "accroche": "رتّب الحوادث: العاجل قبل الهادئ."
+          }
+        ]
+      },
+      {
+        "cycle": "superieur",
+        "domaine": "intelligence-artificielle",
+        "cartes": [
+          {
+            "code": "threshold-lab",
+            "titre": "مختبر العتبات",
+            "accroche": "اضبط العتبة، وانظر كلفة الخطأ."
+          }
+        ]
+      },
+      {
+        "cycle": "superieur",
+        "domaine": "gestion-logistique",
+        "cartes": [
+          {
+            "code": "budget-erp",
+            "titre": "ميزانية التخطيط",
+            "accroche": "أربعة بنود، ميزانية واحدة: وزّعها."
+          },
+          {
+            "code": "sprint-agile",
+            "titre": "سباق رشيق",
+            "accroche": "اختر السباق دون كسر التبعيات."
+          },
+          {
+            "code": "stock-pilot",
+            "titre": "تسيير المخزون",
+            "accroche": "اصمد ثلاثة أيام دون أي نفاد."
+          }
+        ]
+      }
     ]
   }
 }

@@ -9,49 +9,93 @@
     "relief": "trente défis",
     "accroche": "Chaque simulation a trois défis."
   },
+  "cycles": {
+    "college": "Collège",
+    "lycee": "Lycée",
+    "superieur": "Supérieur",
+    "formation-professionnelle": "Formation professionnelle"
+  },
+  "domaines": {
+    "informatique": "Informatique",
+    "reseaux-cybersecurite": "Réseaux et cybersécurité",
+    "intelligence-artificielle": "Intelligence artificielle",
+    "gestion-logistique": "Gestion et logistique"
+  },
   "jeux": {
-    "surtitre": "",
-    "titre": "Les dix jeux.",
-    "cartes": [
+    "groupes": [
       {
-        "titre": "Tri Cyber",
-        "texte": "Classer quatre incidents de sécurité par criticité selon portée, sensibilité des données et statut de confinement."
+        "cycle": "superieur",
+        "domaine": "informatique",
+        "cartes": [
+          {
+            "code": "big-o-lab",
+            "titre": "Labo Big-O",
+            "accroche": "Devine : à quelle vitesse ce programme grandit ?"
+          },
+          {
+            "code": "quete-sql",
+            "titre": "Requête Parfaite",
+            "accroche": "En vrac : remets cette requête dans l'ordre."
+          },
+          {
+            "code": "cpu-process",
+            "titre": "Ordonnanceur CPU",
+            "accroche": "À toi de choisir quel processus passe en premier."
+          },
+          {
+            "code": "robot-route",
+            "titre": "Robot Route",
+            "accroche": "Trace le chemin sans heurter d'obstacle."
+          }
+        ]
       },
       {
-        "titre": "Nœuds Réseaux",
-        "texte": "Connecter 4 équipements sur 3 switchs en respectant capacité, segmentation et isolation."
+        "cycle": "superieur",
+        "domaine": "reseaux-cybersecurite",
+        "cartes": [
+          {
+            "code": "topo-reseau",
+            "titre": "Nœuds Réseaux",
+            "accroche": "Relie ces machines sans jamais les mélanger."
+          },
+          {
+            "code": "tri-cyber",
+            "titre": "Tri Cyber",
+            "accroche": "Classe les incidents : l'urgent avant le calme."
+          }
+        ]
       },
       {
-        "titre": "Labo des seuils",
-        "texte": "Régler un seuil de détection et comparer les faux positifs, les défauts manqués et le coût des erreurs."
+        "cycle": "superieur",
+        "domaine": "intelligence-artificielle",
+        "cartes": [
+          {
+            "code": "threshold-lab",
+            "titre": "Labo des seuils",
+            "accroche": "Règle le seuil, et vois le coût d'une erreur."
+          }
+        ]
       },
       {
-        "titre": "Pilote des stocks",
-        "texte": "Planifier trois jours de réapprovisionnement sans rupture, en respectant capacité et budget."
-      },
-      {
-        "titre": "Sprint Agile",
-        "texte": "Sélectionner des éléments du backlog en respectant capacité, dépendances, obligations et valeur minimale."
-      },
-      {
-        "titre": "Robot Route",
-        "texte": "Programmer un trajet, éviter les obstacles et vérifier chaque déplacement dans une grille simulée."
-      },
-      {
-        "titre": "Requête Parfaite",
-        "texte": "Remettre dans le bon ordre les clauses d\u2019une requête SQL à partir de fragments mélangés."
-      },
-      {
-        "titre": "Ordonnanceur CPU",
-        "texte": "Choisir l\u2019ordre d\u2019exécution de 4 processus pour respecter les échéances et minimiser le temps de rotation moyen."
-      },
-      {
-        "titre": "Budget ERP",
-        "texte": "Allouer des quantités sur 4 postes de coût pour rester dans le budget tout en couvrant un minimum et un coût unitaire."
-      },
-      {
-        "titre": "Labo Big-O",
-        "texte": "Reconnaître la classe de complexité (O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)) de vrais motifs de boucles et de récursions."
+        "cycle": "superieur",
+        "domaine": "gestion-logistique",
+        "cartes": [
+          {
+            "code": "budget-erp",
+            "titre": "Budget ERP",
+            "accroche": "Quatre postes, un budget : répartis-le."
+          },
+          {
+            "code": "sprint-agile",
+            "titre": "Sprint Agile",
+            "accroche": "Choisis le sprint sans casser les dépendances."
+          },
+          {
+            "code": "stock-pilot",
+            "titre": "Pilote des stocks",
+            "accroche": "Tiens trois jours sans une seule rupture."
+          }
+        ]
       }
     ]
   }

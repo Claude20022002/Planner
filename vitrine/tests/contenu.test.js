@@ -79,26 +79,42 @@ test('les pages nouvelles n\'écrivent pas le nom de l\'école pilote', () => {
   }
 });
 
-const RESUMES = [
-  ['Tri Cyber', 'Classer quatre incidents de sécurité par criticité selon portée, sensibilité des données et statut de confinement.'],
-  ['Nœuds Réseaux', 'Connecter 4 équipements sur 3 switchs en respectant capacité, segmentation et isolation.'],
-  ['Labo des seuils', 'Régler un seuil de détection et comparer les faux positifs, les défauts manqués et le coût des erreurs.'],
-  ['Pilote des stocks', 'Planifier trois jours de réapprovisionnement sans rupture, en respectant capacité et budget.'],
-  ['Sprint Agile', 'Sélectionner des éléments du backlog en respectant capacité, dépendances, obligations et valeur minimale.'],
-  ['Robot Route', 'Programmer un trajet, éviter les obstacles et vérifier chaque déplacement dans une grille simulée.'],
-  ['Requête Parfaite', 'Remettre dans le bon ordre les clauses d\u2019une requête SQL à partir de fragments mélangés.'],
-  ['Ordonnanceur CPU', 'Choisir l\u2019ordre d\u2019exécution de 4 processus pour respecter les échéances et minimiser le temps de rotation moyen.'],
-  ['Budget ERP', 'Allouer des quantités sur 4 postes de coût pour rester dans le budget tout en couvrant un minimum et un coût unitaire.'],
-  ['Labo Big-O', 'Reconnaître la classe de complexité (O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)) de vrais motifs de boucles et de récursions.'],
+const ORDRE_SITE = [
+  'big-o-lab', 'quete-sql', 'cpu-process', 'robot-route',
+  'topo-reseau', 'tri-cyber', 'threshold-lab',
+  'budget-erp', 'sprint-agile', 'stock-pilot',
 ];
 
-test('Quiz et jeux mène aux dix résumés du catalogue, hors du menu', () => {
+const codesJeux = (langue) => charger(langue, 'bibliotheque-des-jeux').jeux.groupes
+  .flatMap((groupe) => groupe.cartes.map((carte) => carte.code));
+
+test('Quiz et jeux mène à la bibliothèque, hors du menu', () => {
   assert.equal(charger('fr', 'quiz-et-jeux').jeux.lien, 'Voir les dix jeux');
   assert.equal(charger('en', 'quiz-et-jeux').jeux.lien, 'See the ten games');
-  const jeux = charger('fr', 'bibliotheque-des-jeux');
-  assert.deepEqual(jeux.jeux.cartes.map((c) => [c.titre, c.texte]), RESUMES);
-  assert.equal(charger('en', 'bibliotheque-des-jeux').jeux.cartes.length, 10);
-  assert.equal(charger('ar', 'bibliotheque-des-jeux').jeux.cartes.length, 10);
+});
+
+test('QJE-15 : l\'ordre français du tableau, sans le terminal, les trois langues ont les mêmes codes', () => {
+  const fr = charger('fr', 'bibliotheque-des-jeux');
+  assert.deepEqual(codesJeux('fr'), ORDRE_SITE);
+  assert.deepEqual(codesJeux('en'), ORDRE_SITE);
+  assert.deepEqual(codesJeux('ar'), ORDRE_SITE);
+  assert.equal(codesJeux('fr').includes('terminal-linux'), false);
+  assert.deepEqual(fr.jeux.groupes.map((groupe) => groupe.domaine), [
+    'informatique', 'reseaux-cybersecurite', 'intelligence-artificielle', 'gestion-logistique',
+  ]);
+  assert.ok(fr.jeux.groupes.every((groupe) => groupe.cycle === 'superieur'));
+  const accroches = Object.fromEntries(fr.jeux.groupes.flatMap((groupe) => groupe.cartes.map((carte) => [carte.code, carte.accroche])));
+  assert.equal(accroches['big-o-lab'], 'Devine : à quelle vitesse ce programme grandit ?');
+  assert.equal(accroches['stock-pilot'], 'Tiens trois jours sans une seule rupture.');
+  for (const accroche of Object.values(accroches)) assert.ok(accroche.length <= 60, accroche);
+  const anglais = charger('en', 'bibliotheque-des-jeux');
+  for (const carte of anglais.jeux.groupes.flatMap((groupe) => groupe.cartes)) assert.ok(carte.accroche.length <= 60);
+  assert.equal(anglais.cycles.superieur, 'Higher education');
+  assert.equal(anglais.domaines.informatique, 'Computer science');
+  const arabe = charger('ar', 'bibliotheque-des-jeux');
+  assert.notEqual(arabe.cycles.superieur, fr.cycles.superieur);
+  assert.notEqual(arabe.domaines.informatique, fr.domaines.informatique);
+  assert.notEqual(arabe.jeux.groupes[0].cartes[0].accroche, accroches['big-o-lab']);
 });
 
 // VIT-18 : les phrases validées par le chef le 19 nov. (plan docs/conception/vitrine/vit-18-textes-exacts.md, § 3)
