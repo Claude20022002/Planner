@@ -1,62 +1,9 @@
-# QJE · Quiz, jeux pédagogiques et IA
+# QJE · Quiz, jeux pédagogiques et IA : module partagé le 27 nov.
 
-**Objet** : ce qui fait jouer et s'entraîner les élèves :
-- le **Studio quiz**, moteur natif de Planner (dans les écrans, on dit « Quiz ») ;
-- la sortie de ClassQuiz ;
-- les jeux pédagogiques ;
-- la génération par l'IA.
+Ce module est **remplacé par trois modules** depuis la séparation des quiz et des jeux (QJE-17, décision du chef du 26 nov., [conception](../../conception/jeux/qje-17-separer-quiz-jeux.md)) :
 
-**Hors module** : le stockage des médias (BIB-03).
+- [QUI · Quiz](QUI-quiz.md) : QJE-01, 02, 03, 06, 09, 10, 11, 14 ;
+- [JEU · Jeux pédagogiques](JEU-jeux-pedagogiques.md) : QJE-04, 05, 08, 15, 17, 18 ;
+- [IAG · IA](IAG-ia.md) : QJE-07, 12, 13, 16.
 
-**Tables possédées** : les tables du Studio (`models/studio.js`), `quizDirect`, `QuizPartie`, `QuizResultat`, `GenerationQuiz`, `JeuModule`, `JeuProfil`, `JeuProgression`, `JeuEtatDefi` (`JeuxEtatsDefis`, migration 0082 : échecs et solution vue par défi).
-
-## Ce qui existe
-
-- **Studio quiz** :
-  - fichiers : `studioQuizRoutes`, `passationRoutes`, `quizDirectRoutes`, `services/studio/*`, `shared/quiz/studio/*` ; écrans `pages/studio/*` ;
-  - 10 types de questions et des médias ;
-  - passation par QR code ou par code ;
-  - quiz en direct (migration 0046) ;
-  - import des quiz de ClassQuiz (`deploy/vps/importer-classquiz.mjs`).
-- **ClassQuiz** : fork dans un dépôt séparé, derrière l'interrupteur `classquiz_actif` de chaque école (migration 0057). Il est éteint pour une installation neuve et allumé pour HESTIM. Ses conteneurs restent dans le compose.
-- **Jeux** :
-  - fichiers : `jeuxRoutes`, `sessionJeuRoutes`, `activiteRoutes`, `shared/jeux`, `shared/simulations`, `shared/terminal` (jeu du terminal Linux) ; écrans `pages/jeux/*` ; dans l'application, les écrans `jeux`, `terminal` et `partie` ;
-  - la branche `jeux-pedagogique` (dix simulations, trente défis) n'est **pas fusionnée** : ses corrections B-1 (catalogue neutre), B-2 (référence Big-O `complexite-01`) et I-1 (solution vue, coût en points, migration 0082) sont faites et testées en local le 18 nov. (`docs/sessions/2026-11-18-jeux-pedagogique.md`) ;
-  - **unité des défis** (M-11, branche `fix/qje-jeux-unite-neutre`, [plan validé le 22 nov.](../../conception/jeux/fix-qje-jeux-unite-neutre.md)) : les consignes et les bilans comptent en crédits. Les montants ne changent pas.
-- **IA** :
-  - fichiers : `services/ia/*` (client générique réglé par `IA_*`, quota), `quizIaRoutes`, `services/studio/iaGeneration.js` ;
-  - **le fournisseur n'est pas choisi en production** (loi 09-08). Q-16 et Q-24 visaient Haiku 5.5, sous enveloppe.
-- **Application mobile** : le scanner ouvre `/quiz/code`. Le joueur natif est coupé (`QUIZ_DANS_L_APPLICATION = false`).
-
-## Fonctions
-
-| ID | Fonction | Ancien nom | Étape | Taille | Dépend de | État |
-|---|---|---|---|---|---|---|
-| QJE-01 | L'entrée « Quiz » du sélecteur d'espaces ouvre Planner, plus ClassQuiz (`shared/espaces.js`) : enseignant sur `/jeux`, étudiant sur `/quiz` | SQ-5 | libre | S | — | en cours (`feat/qje-01-entree-studio`) |
-| QJE-02 | Import des formats GIFT et Moodle XML dans le Studio | SQ-3 | 3 | M | — | à faire |
-| QJE-03 | Joueur natif dans l'application, sans passer par le site | SQ-1 | 2 | M | — | à faire |
-| QJE-04 | Fusion de `jeux-pedagogique` et ses quatre corrections ; entrée des jeux par scan ou depuis le module (contrat [jeux-pedagogiques](../../conception/jeux/jeux-pedagogiques.md)) | JC-0 | libre | M | — | en cours : corrections faites, tests locaux verts, PR à ouvrir |
-| QJE-05 | Service des jeux à part, avec des gabarits ; jeux maison ; bibliothèque des jeux plus belle | JC-1, JC-2, JC-5 | libre | L + M + M | QJE-04 | à faire |
-| QJE-06 | Sortie complète de ClassQuiz : plus aucun conteneur ClassQuiz pour une école qui ne l'a pas | — | 2 | M | QJE-01 | à faire |
-| QJE-07 | Fournisseur d'IA en production : choix conforme à la loi 09-08, clé par école ou coûts séparés (canal I-15), quotas | IA-7, I-15 | 3 | M | — | à faire |
-| QJE-08 | Créateurs de jeux et leur rémunération | JC-3, JC-4, JC-6, RC-1 à RC-4 | — | — | vente | gelé |
-| QJE-09 | Défis Linux dans un quiz | J-1 | — | M | QJE-04 | reporté |
-| QJE-10 | Évaluation en ligne notée : quiz du Studio passé comme évaluation (minuté, ordre aléatoire, une tentative), note versée au carnet de VSC-04 | — | 3 | M | VSC-08 (VSC-04 remplacée le 26 nov., décision du chef : barème et résultat communs, N7) | à faire |
-| QJE-11 | Correction de QCM papier par photo : feuille-réponse imprimable, photo prise par le téléphone de l'enseignant, note proposée puis validée | — | 6 | L | QJE-10 | à faire |
-| QJE-12 | Assistant IA de l'enseignant : séquence de cours, grille d'évaluation, commentaires de copie à relire ; aucune donnée d'élève envoyée | — | libre | M | QJE-07 | à faire |
-| QJE-13 | Tuteur IA pour l'élève, sur le contenu de ses cours | — | — | L | QJE-07, avis CNDP | conditionnel (règle « aucune donnée d'élève ») |
-| QJE-14 | Le Studio quiz « comme Google Forms » : sections et sauts, questionnaires non notés (anonymes possibles), tableau des réponses et export CSV et Excel, éditeur sur une page, questionnaires de l'administration ; découpée en QJE-14a à 14e ([conception](../../conception/jeux/qje-14-studio-forms.md)) | — | libre (exception de la sortie de ClassQuiz) | M + L + L + M + M | — | plan validé par le chef le 21 nov. (`doc/qje-14-studio-forms`) ; 14a à faire |
-
-## Critères de « terminé »
-
-- **QJE-01** : une école sans ClassQuiz ne voit aucun lien vers lui.
-- **QJE-04** : un jeu envoie une réponse, jamais un score : le score est calculé par le serveur. Un test le prouve.
-- **QJE-06** : une installation neuve démarre sans les cinq conteneurs de ClassQuiz.
-- **QJE-07** : aucune donnée d'élève n'est envoyée au fournisseur ; la sortie de l'IA est relue par l'enseignant avant publication.
-- **QJE-11** : une feuille photographiée de travers ou mal éclairée est lue ou refusée avec une raison ; aucune note n'entre au carnet sans la validation de l'enseignant.
-- **QJE-12** : un test prouve qu'aucun nom, identifiant ou réponse d'élève ne part vers le fournisseur d'IA.
-
-## Références
-
-- [Contrat des jeux](../../conception/jeux/jeux-pedagogiques.md)
-- Archives : [Studio quiz](../../archives/plans/studio-quiz.md), [sortie de ClassQuiz](../../archives/plans/sortie-classquiz.md), [quiz par l'IA](../../archives/plans/quiz-ia.md), [jeux et créateurs](../../archives/plans/planner-multi-etablissements/07-jeux-createurs.md)
+Les identifiants QJE-xx gardent leur numéro. La table de correspondance est dans le [README du plan](../README.md), § 1.

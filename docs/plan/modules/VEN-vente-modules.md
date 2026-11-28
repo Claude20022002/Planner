@@ -32,7 +32,8 @@
 - **VEN-01** :
   - éteindre un module retire son menu et ses routes (404) ;
   - allumer un module dont un autre dépend allume aussi celui-ci ;
-  - HESTIM ne voit rien changer.
+  - HESTIM ne voit rien changer ;
+  - Quiz (`quiz`) et Jeux pédagogiques (`jeux`) sont deux modules du registre, chacun allumé ou éteint seul (QJE-17, décision du chef du 26 nov. ; n° 4 et n° 18 de l'étude 15).
 - **VEN-02** :
   - cinq comptes rendus d'entretien sont rangés dans `docs/etude-marche/entretiens/`, anonymisés ;
   - les conséquences pour VSC-04 et FIN-01 sont écrites dans leurs modules.

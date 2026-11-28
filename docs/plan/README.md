@@ -32,7 +32,9 @@ Un module se travaille par **chantier** : le chef l'ouvre, au plus 3 sont ouvert
 | VSC | Vie scolaire (élèves, familles, absences, notes, bulletins) | [VSC-vie-scolaire.md](modules/VSC-vie-scolaire.md) | `VSC-01`… |
 | COU | Espace de cours (supports, devoirs, sondages, échanges) | [COU-espace-de-cours.md](modules/COU-espace-de-cours.md) | `COU-01`… |
 | BIB | Bibliothèque (StudyLib, fichiers) | [BIB-bibliotheque.md](modules/BIB-bibliotheque.md) | `BIB-01`… |
-| QJE | Quiz, jeux pédagogiques et IA | [QJE-quiz-jeux-ia.md](modules/QJE-quiz-jeux-ia.md) | `QJE-01`… |
+| QUI | Quiz (Studio quiz, quiz en direct, questionnaires, évaluation notée, sortie de ClassQuiz) | [QUI-quiz.md](modules/QUI-quiz.md) | `QUI-01`… ; garde ses `QJE-xx` (voir plus bas) |
+| JEU | Jeux pédagogiques (terminal, simulations à défis, atelier des jeux) | [JEU-jeux-pedagogiques.md](modules/JEU-jeux-pedagogiques.md) | `JEU-01`… ; garde ses `QJE-xx` |
+| IAG | IA (fournisseur, interrupteur par école, assistant de l'enseignant, tuteur) | [IAG-ia.md](modules/IAG-ia.md) | `IAG-01`… ; garde ses `QJE-xx` |
 | MOB | Application mobile | [MOB-application.md](modules/MOB-application.md) | `MOB-01`… |
 | UIX | Interface du site (socle neutre, accessibilité, langues, textes) | [UIX-interface.md](modules/UIX-interface.md) | `UIX-01`… |
 | VIT | Site vitrine public et contact | [VIT-site-vitrine.md](modules/VIT-site-vitrine.md) | `VIT-01`… |
@@ -54,6 +56,20 @@ Un module se travaille par **chantier** : le chef l'ouvre, au plus 3 sont ouvert
 | STK | Stocks et achats | [STK-stocks-achats.md](modules/STK-stocks-achats.md) | `STK-01`… |
 
 Les douze derniers modules (COM à STK) viennent de l'inventaire du 11 novembre ([06-outils-structures-formation.md](../etude-marche/06-outils-structures-formation.md)), ajoutés au plan le 13 novembre.
+
+**QUI, JEU et IAG remplacent QJE depuis le 27 novembre** (QJE-17, décision du chef du 26 nov. : les quiz et les jeux sont séparés partout ; [conception](../conception/jeux/qje-17-separer-quiz-jeux.md)). Des branches, des missions et des commits citent les fonctions QJE-xx : elles **gardent leur numéro**, et aucun numéro QJE n'est plus attribué. Une fonction nouvelle prend le code de son module. L'ancien fichier [QJE-quiz-jeux-ia.md](modules/QJE-quiz-jeux-ia.md) ne garde qu'un renvoi.
+
+| Identifiant | Module | Identifiant | Module |
+|---|---|---|---|
+| QJE-01 | QUI | QJE-10 | QUI |
+| QJE-02 | QUI | QJE-11 | QUI |
+| QJE-03 | QUI | QJE-12 | IAG |
+| QJE-04 | JEU | QJE-13 | IAG |
+| QJE-05 | JEU | QJE-14 (14a à 14e) | QUI |
+| QJE-06 | QUI | QJE-15 | JEU |
+| QJE-07 | IAG | QJE-16 | IAG |
+| QJE-08 | JEU | QJE-17 (17a à 17g) | JEU |
+| QJE-09 | QUI | QJE-18 | JEU |
 
 ## 2. L'ordre : des étapes, pas des dates
 

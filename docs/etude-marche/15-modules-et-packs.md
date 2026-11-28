@@ -6,12 +6,12 @@
 | Rédigé par | Claude Code (Opus 5.5), coordinateur, le 21 novembre 2026 |
 | Pour qui | le chef, qui valide la liste et les packs (§ 8) ; ensuite Codex, qui dessine l'icône de tuile de chaque module (§ 7), et les missions du site (VIT-15) |
 | Nature | proposition sans code et **sans aucun prix**. Les prix viennent après les entretiens de VEN-02 (décision du 13 nov.) |
-| État | **validé par le chef le 21 nov. au soir** (outil de questions) : la liste, un pack par public avec une part gratuite et des fonctions verrouillées visibles (§ 5.4), le connecteur d'État inclus, les six règles. Les questions 3 et 4 du § 8 suivent la liste validée ; 6 et 8 sont tranchées par le coordinateur. **Corrigé le 22 nov. (chef)** : la Bibliothèque passe à l'étape 3 (§ 4.2) ; cinq modules se vendent aujourd'hui, sept arrivent avec l'étape 3 |
+| État | **validé par le chef le 21 nov. au soir** (outil de questions) : la liste, un pack par public avec une part gratuite et des fonctions verrouillées visibles (§ 5.4), le connecteur d'État inclus, les six règles. Les questions 3 et 4 du § 8 suivent la liste validée ; 6 et 8 sont tranchées par le coordinateur. **Corrigé le 22 nov. (chef)** : la Bibliothèque passe à l'étape 3 (§ 4.2) ; cinq modules se vendent aujourd'hui, sept arrivent avec l'étape 3. **Corrigé le 27 nov. (chef, QJE-17)** : « Quiz et jeux » devient deux modules, **Quiz** (n° 4) et **Jeux pédagogiques** (n° 18), dans les packs Classe, Supérieur et École ; six modules se vendent aujourd'hui |
 
 ## 0. En bref
 
 - **Un socle inclus**, jamais vendu : les comptes, l'établissement, le référentiel, la configuration, l'import, l'export complet, l'application web et mobile.
-- **Dix-sept modules vendables** : cinq se vendent aujourd'hui, en tout ou en partie ; sept arrivent avec l'étape 3 (le supérieur jusqu'au bout), dont la Bibliothèque, reconstruite dans Planner ; cinq viennent plus tard, avec la formation professionnelle puis le scolaire.
+- **Dix-huit modules vendables** : six se vendent aujourd'hui, en tout ou en partie (Quiz et Jeux pédagogiques sont séparés depuis le 27 nov.) ; sept arrivent avec l'étape 3 (le supérieur jusqu'au bout), dont la Bibliothèque, reconstruite dans Planner ; cinq viennent plus tard, avec la formation professionnelle puis le scolaire.
 - **Cinq packs, un par public**, bâtis chacun autour du module qui fait acheter ce public : *Emploi du temps*, *Classe*, *Supérieur*, *Formation professionnelle*, *École*. Un sixième, *Réseau*, reste reporté.
 - **Une part gratuite et des fonctions verrouillées visibles** (décision du chef) : les fonctions courantes sont gratuites, sans limite de durée ; ce qui distingue Planner se montre avec un cadenas, dans la page et dans la grille, jamais dans le menu.
 - **Six règles de l'offre**, tirées des échecs des concurrents : socle inclus, liaison entre nos modules gratuite, familles jamais facturées, export complet gratuit, consommables à prix public, pack moins cher que ses modules.
@@ -52,7 +52,7 @@ Le module vendable se reconnaît à trois critères : il répond à un besoin qu
 | application web et application mobile | UIX, MOB | le marché les tient pour acquises [01, § 3] ; l'application suit les modules allumés |
 | sécurité : isolation testée, aucun envoi caché | PLA-04, EP-12, EP-13 | ce sont deux des quatre choses qu'aucun concurrent ne fait [09, § 4 ; 14, § 4] : un argument, pas une option payante |
 
-## 4. Les dix-sept modules vendables
+## 4. Les dix-huit modules vendables
 
 **État** au 21 nov. : *disponible* (dans `main`), *en partie*, *étape N* (du [plan](../plan/README.md), § 2). **Public** : supérieur, formation (professionnelle et continue), scolaire, tous.
 
@@ -63,7 +63,8 @@ Le module vendable se reconnaît à trois critères : il répond à un besoin qu
 | 1 | **Emploi du temps** | génère l'emploi du temps sous règles strictes et souples, explique chaque refus ; CM, TD, TP, vacataires, plusieurs campus ; reports, imprévus, publication, PDF ; examens et surveillances | MOT, EDT | disponible ; EDT-03 et EDT-04 en étape 3 | tous, le supérieur d'abord | **c'est ce qu'aucun ne fait** : « calculer l'emploi du temps et expliquer chaque refus » [14, § 4, n° 1] ; l'emploi du temps n'est pas généré chez OpenEduCat, Frappe, Fedena hors Ultimate [09, faille 1] ; seul aSc le fait vraiment, sans le supérieur ni les campus [01, § 4] ; « les spécialistes se vendent seuls » (aSc, Untis, EDT d'Index) [06, rapport] |
 | 2 | **Présences** | l'appel en un geste par QR code ; le rappel d'appel ; les signalements ; plus tard l'appel à la main sans réseau (MOB-08) | EDT, MOB | disponible ; MOB-08 en étape 3 | tous | l'appel « en un geste en classe » n'existe qu'en partie chez les cinq [09, § 4, D] ; l'assiduité est un besoin de tous les publics, et la **preuve d'émargement** est ce qui fait acheter la formation continue [06, § 1, n° 3] ; l'appel hors ligne est une bonne pratique reprise de Go4School [14, R9, N2] |
 | 3 | **Espace de cours** | supports par classe, dates d'ouverture, lien de visio, sondages, annonces des enseignants ; devoirs à rendre plus tard | COU | en partie (devoirs éteints) ; COU-02 à COU-06 en étape 3 | tous | les ERP internationaux vendent un LMS ; Classter le vend à part, par élève [06, rapport, « Par module et par élève »] ; les produits marocains n'ont qu'un cahier de textes [01, § 4] |
-| 4 | **Quiz et jeux** | Studio quiz (dix types de questions, médias), quiz en direct, jeux pédagogiques, préparation par l'IA quand elle est activée | QJE | disponible | tous | Classter vend le quiz à part [06, rapport] ; ni les produits marocains, ni les ERP internationaux, ni aSc n'annoncent de jeux en classe [01, § 4] ; l'IA activée école par école est une bonne pratique reprise [14, R16] |
+| 4 | **Quiz** | Studio quiz (dix types de questions, médias), quiz en direct ou à son rythme, préparation par l'IA quand elle est activée ; plus tard questionnaires non notés (QJE-14) et évaluation notée (QJE-10) | QUI | disponible | tous | Classter vend le quiz à part [06, rapport] ; l'IA activée école par école est une bonne pratique reprise [14, R16] |
+| 18 | **Jeux pédagogiques** | le terminal Linux et dix simulations à défis vérifiés par un moteur, sur le téléphone ou tous ensemble au tableau ; plus tard les jeux de l'atelier (QJE-18) | JEU | disponible | tous, le supérieur d'abord (informatique et gestion) | ni les produits marocains, ni les ERP internationaux, ni aSc n'annoncent de jeux en classe [01, § 4] ; séparé des quiz le 27 nov. : ce ne sont pas les mêmes objets, et le nom « quiz » prêtait à confusion [D, 26 nov.] |
 | 6 | **Annonces et messages** | annonces ciblées avec pièces jointes, notifications sur le téléphone, courriel ; plus tard SMS, WhatsApp, accusé de lecture, plages de silence | COM | en partie ; COM-01 à COM-03 en étape 6 | tous | notifications et WhatsApp sont tenus pour acquis par le marché [01, § 3, n° 3] ; COM est « indispensable pour vendre » [06, § 3] ; le canal officiel avec accusé de lecture et le SMS pour ceux qui n'ont pas l'application sont repris de Go4School [14, R11, R12] |
 
 **La Bibliothèque (n° 5) est passée au § 4.2 le 22 nov.** (chef) : StudyLib ne tourne plus nulle part et ne sera pas redéployé. La Bibliothèque est reconstruite dans Planner (voie B de l'[étude StudyLib](../conception/bibliotheque/etude-studylib-pile.md), BIB-05 à BIB-11), pour chaque école, à l'étape 3. Les numéros des modules ne changent pas.
@@ -110,10 +111,10 @@ Chaque pack s'achète aussi module par module ; le pack coûte moins que la somm
 | Pack | Pour qui | Modules (n° du § 4) | Le module qui fait acheter | Pourquoi ce pack |
 |---|---|---|---|---|
 | **Emploi du temps** | toute école qui garde son logiciel de gestion ; le supérieur qui découvre Planner | 1, 2, et l'export vers le logiciel en place | Emploi du temps | les spécialistes de l'emploi du temps se vendent seuls [06, rapport] ; Planner « s'intègre aux logiciels de frais existants au lieu de les remplacer » [01, § 6, n° 1] ; si l'Afrique de l'Ouest vient, « y aller par l'emploi du temps et l'intégration », pas par la largeur [09, § 5] ; **vendable aujourd'hui** |
-| **Classe** | l'école qui a déjà sa gestion et veut la pédagogie numérique | 3, 4, 5 ; s'ajoute à n'importe quel autre pack | Quiz et jeux | Classter vend LMS et quiz à part, par élève [06, rapport] ; c'est ce que les produits marocains n'ont pas [01, § 4] ; **vendable aujourd'hui avec 3 et 4** ; la Bibliothèque (5) s'y ajoute à l'étape 3 |
-| **Supérieur** | écoles d'ingénieurs et de commerce, universités privées, groupes à plusieurs campus | 1 à 12 | Emploi du temps, puis Vacataires et heures | **le segment où Planner a été conçu et où le prix se défend** [01, § 5] ; les produits du scolaire n'y vont pas [14, M18] ; « le supérieur porte la marge » [05, § 4] ; c'est la ligne d'arrivée de l'étape 3 [D, 21 nov.] ; reprend le pack « Supérieur privé » du rapport (MOT, EDT, RHP, INS, DOC, évaluations, pilotage) [06, rapport]. **Vendable aujourd'hui avec 1 à 4 et 6** ; 5 et 7 à 12 arrivent pendant l'étape 3 |
+| **Classe** | l'école qui a déjà sa gestion et veut la pédagogie numérique | 3, 4, 5, 18 ; s'ajoute à n'importe quel autre pack | Quiz ; Jeux pédagogiques | Classter vend LMS et quiz à part, par élève [06, rapport] ; c'est ce que les produits marocains n'ont pas [01, § 4] ; **vendable aujourd'hui avec 3, 4 et 18** ; la Bibliothèque (5) s'y ajoute à l'étape 3 |
+| **Supérieur** | écoles d'ingénieurs et de commerce, universités privées, groupes à plusieurs campus | 1 à 12, et 18 | Emploi du temps, puis Vacataires et heures | **le segment où Planner a été conçu et où le prix se défend** [01, § 5] ; les produits du scolaire n'y vont pas [14, M18] ; « le supérieur porte la marge » [05, § 4] ; c'est la ligne d'arrivée de l'étape 3 [D, 21 nov.] ; reprend le pack « Supérieur privé » du rapport (MOT, EDT, RHP, INS, DOC, évaluations, pilotage) [06, rapport]. **Vendable aujourd'hui avec 1 à 4, 6 et 18** ; 5 et 7 à 12 arrivent pendant l'étape 3 |
 | **Formation professionnelle** | centres de formation, organismes de formation continue | 1, 2 (émargement), 7, 9, 10, 11, 12 (plusieurs payeurs), 13 | Formation et financeurs, avec l'émargement | la preuve de présence pour les financeurs fait acheter ce public [06, § 1, n° 3] ; reprend le pack « Formation professionnelle et continue » du rapport (FOR, RHP, FIN multi-payeurs, STA, INS, appel) [06, rapport] ; **étape 4** |
-| **École** | du primaire au lycée, le lycée et le collège d'abord | 1 (avec les groupes de langue), 2, 3, 4, 5, 6, 12, 14, 15, 16 | Frais et caisse, Vie scolaire et familles | frais, familles et échanges avec l'État sont le cœur du marché scolaire [01, § 3 ; 06, § 1, n° 3] ; **un seul pack**, réglé par configuration (argent mobile, SMS, connecteur d'État), au lieu des packs « École privée (Maghreb) » et « École Afrique » du rapport : aucun pays n'est supposé (EP-5) [14, M17] ; **étapes 5 et 6** |
+| **École** | du primaire au lycée, le lycée et le collège d'abord | 1 (avec les groupes de langue), 2, 3, 4, 5, 6, 12, 14, 15, 16, 18 | Frais et caisse, Vie scolaire et familles | frais, familles et échanges avec l'État sont le cœur du marché scolaire [01, § 3 ; 06, § 1, n° 3] ; **un seul pack**, réglé par configuration (argent mobile, SMS, connecteur d'État), au lieu des packs « École privée (Maghreb) » et « École Afrique » du rapport : aucun pays n'est supposé (EP-5) [14, M17] ; **étapes 5 et 6** |
 
 **Reporté : le pack Réseau** (réseau d'écoles, diocèse, ONG, groupe privé : vue consolidée, chaque école dans sa base ; GRP, PIL). Les remises d'échelle des grands éditeurs le justifient [06, rapport, pack « Groupe »] et Go4School vise les tutelles [14, R15] ; il attend PLA-11, et la question est posée à un réseau dans les entretiens de VEN-02 (N8) [D, 21 nov.].
 
@@ -121,7 +122,7 @@ Chaque pack s'achète aussi module par module ; le pack coûte moins que la somm
 
 | Public | Aujourd'hui | À la fin de l'étape 3 |
 |---|---|---|
-| supérieur | Emploi du temps ; Classe ; Supérieur (modules 1 à 4 et 6) | Supérieur complet (1 à 12) |
+| supérieur | Emploi du temps ; Classe ; Supérieur (modules 1 à 4, 6 et 18) | Supérieur complet (1 à 12, et 18) |
 | formation | Emploi du temps ; Classe | les mêmes, plus 7, 9, 10, 11, 12 ; le pack Formation à l'étape 4 |
 | scolaire | Emploi du temps pour le supérieur seulement : le collège et le lycée sont générés à l'étape 5 (D4 : le site le dit) ; Classe | Classe ; le pack École aux étapes 5 et 6 |
 
@@ -131,7 +132,7 @@ Chaque pack s'achète aussi module par module ; le pack coûte moins que la somm
 |---|---|---|
 | trois packs emboîtés : *Emploi du temps* ⊂ *Vie de l'établissement* ⊂ *Gestion complète* [05, § 2] | gardé pour *Emploi du temps* ; *Vie de l'établissement* devient *Classe* (sans l'emploi du temps) et le début du pack *Supérieur* ; *Gestion complète* devient le pack *École* | un palier unique mêle des publics qui n'achètent pas pour la même raison [06, § 1, n° 3] ; le supérieur passe d'abord [D, 21 nov.] |
 | six packs à tester [06, rapport] | *École privée* et *École Afrique* fusionnés en *École* ; *Groupe* devient *Réseau*, reporté ; *Classe* ajouté | aucun pays supposé (EP-5) ; GRP est reporté ; la pédagogie se vend seule chez Classter |
-| « Planification », « Vie de classe », « Annonces et alertes », « Heures des vacataires » comme modules seuls [05, § 3] | repris en 1, 2 à 5, 6, 7 ; *Vie de classe* est séparée en Présences, Espace de cours, Quiz et jeux, Bibliothèque | chacun s'allume et s'éteint seul dans VEN-01, et l'appel sert aussi le pack Emploi du temps |
+| « Planification », « Vie de classe », « Annonces et alertes », « Heures des vacataires » comme modules seuls [05, § 3] | repris en 1, 2 à 5, 6, 7 ; *Vie de classe* est séparée en Présences, Espace de cours, Quiz, Jeux pédagogiques, Bibliothèque (Quiz et Jeux pédagogiques séparés le 27 nov.) | chacun s'allume et s'éteint seul dans VEN-01, et l'appel sert aussi le pack Emploi du temps |
 
 ### 5.4 La part gratuite et les fonctions verrouillées
 
@@ -139,7 +140,7 @@ Chaque pack s'achète aussi module par module ; le pack coûte moins que la somm
 
 | Choix du chef | Ce qu'il veut dire | Pourquoi |
 |---|---|---|
-| **Gratuit, sans limite de durée : les fonctions courantes** | l'emploi du temps saisi à la main avec le contrôle des conflits ; l'appel par QR code ; les annonces ; le Studio quiz de base | ce sont des fonctions que le marché offre déjà : Schoolz détecte les conflits avant publication, les produits marocains ont l'appel et les annonces [01, § 2 et § 4]. Elles ne distinguent pas Planner : les donner fait entrer l'école sans rien céder |
+| **Gratuit, sans limite de durée : les fonctions courantes** | l'emploi du temps saisi à la main avec le contrôle des conflits ; l'appel par QR code ; les annonces ; le Studio quiz de base. Les jeux pédagogiques sont payants (chef, 27 nov.) | ce sont des fonctions que le marché offre déjà : Schoolz détecte les conflits avant publication, les produits marocains ont l'appel et les annonces [01, § 2 et § 4]. Elles ne distinguent pas Planner : les donner fait entrer l'école sans rien céder |
 | **Verrouillé et visible : ce qui distingue Planner** | la génération automatique et l'explication des refus ; le remplaçant proposé ; la préparation par l'IA ; l'export vers un autre logiciel ; les statistiques détaillées. Le bouton est là, il dit ce qu'il fait et dans quel pack il s'ouvre | ce sont les choses qu'aucun concurrent ne fait [14, § 4 ; 09, § 4] : c'est pour elles qu'une école paie. aSc laisse déjà essayer tout son générateur, et ne fait payer qu'à la sortie (sans export, impressions filigranées) [01, § 2] |
 | **Le cadenas se montre dans la page et dans la grille, pas dans le menu** | sur le bouton de la fonction, dans la page où elle sert ; une tuile inactive dans la grille d'applications (l'état « inactif » prévu par UIX-09) ; le menu ne montre que ce qui est ouvert | « un menu limité aux modules actifs » contre les menus qui submergent [01, § 7 ; 14, M10 ; EP-2] |
 | **Mise en route en libre-service seulement** | l'assistant de démarrage et les modèles d'import, sans accompagnement ; la mise en route accompagnée reste dans les packs payants (règle 1) | le support décide de la marge [05, § 4] ; « gratuit jusqu'à un seuil » coûte du support sans revenu [06, rapport, « Les éditeurs vendent des paliers »] |
@@ -172,19 +173,20 @@ Le chef veut une icône par module vendable : **en SVG, du même style que les s
 | 1 | Emploi du temps | `planning` | — (image générée seulement) |
 | 2 | Présences | — | oui |
 | 3 | Espace de cours | `pedagogie` (aujourd'hui « Enseignements ») | oui : `cours`, nouveau (question 6) |
-| 4 | Quiz et jeux | `activites` | — |
+| 4 | Quiz | — (l'ancien `activites` part aux jeux) | oui : `quiz`, nouveau (QJE-17, étape 17b) |
+| 18 | Jeux pédagogiques | `activites` | oui : `jeux`, refait depuis `activites` en manette seule (QJE-17, étape 17b) |
 | 5 | Bibliothèque | `bibliotheque` | — |
 | 6 | Annonces et messages | `annonces` | — |
 | 7 à 17 | Vacataires et heures, Évaluations, Inscriptions, Documents vérifiables, Stages, Frais et caisse, Formation et financeurs, Vie scolaire et familles, Échanges avec l'État, Paiements en ligne, Pilotage | — | oui, onze logos |
 | socle | Personnes, Établissement | `personnes`, `etablissement` | — |
 
-Soit **treize SVG** à dessiner, et **dix-sept images générées**. Les images générées suivent la charte (`shared/charte/`) et EP-19 (une page du site pèse au plus 200 Ko).
+Soit **treize SVG** à dessiner, et **dix-sept images générées** (21 nov.). Le 27 nov., QJE-17 ajoute **deux dessins** (`quiz`, nouveau ; `jeux`, refait depuis `activites`) : quinze SVG en tout, et **dix-huit images générées**, une par module vendable. Les images générées suivent la charte (`shared/charte/`) et EP-19 (une page du site pèse au plus 200 Ko).
 
 ## 8. Questions au chef
 
 | N° | Question | Proposition |
 |---|---|---|
-| 1 | La liste des dix-sept modules vendables (§ 4) et leurs noms | **validée** (chef, 21 nov.) |
+| 1 | La liste des dix-sept modules vendables (§ 4) et leurs noms | **validée** (chef, 21 nov.) ; **dix-huit** depuis le 27 nov. : Quiz (n° 4) et Jeux pédagogiques (n° 18) séparés (chef, QJE-17) |
 | 2 | Un pack par public (§ 5), au lieu des trois paliers emboîtés de l'étude 05 | **validé, avec une part gratuite et des fonctions verrouillées visibles** (chef, 21 nov. ; § 5.4) |
 | 3 | Les Présences : module à part, inclus dans le pack Emploi du temps | **oui**, avec la liste et les packs validés (Présences est le n° 2 du pack Emploi du temps) |
 | 4 | Le tableau de bord de l'administration (UIX-11) dans le socle, le Pilotage vendu plus tard | **oui**, avec la liste validée (§ 3) |
