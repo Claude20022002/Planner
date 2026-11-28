@@ -81,6 +81,23 @@ for (const langue of ['fr', 'en']) {
     }
   });
 
+  test(`${langue} · la disposition compacte est réservée aux 17 tuiles de l'accueil et du catalogue`, () => {
+    const tuiles = (html) => html.match(/<(a|div)\b[^>]*class="tuile grille(?: [^"]*)?"[^>]*>[\s\S]*?<\/\1>/g) || [];
+    for (const adresse of [`/${langue}/`, `/${langue}/applications/`]) {
+      const grille = tuiles(page(adresse));
+      assert.equal(grille.length, 17, adresse);
+      assert.equal(grille.filter((tuile) => tuile.startsWith('<a ')).length, 5, adresse);
+      assert.equal(grille.filter((tuile) => tuile.includes('class="badge"')).length, 12, adresse);
+      for (const tuile of grille) {
+        assert.match(tuile, /class="tuile grille [^"]*\bcompacte\b/);
+        assert.match(tuile, /<span class="logo"[^>]*>\s*<svg\b[\s\S]*?<\/svg>\s*<\/span>\s*<span class="nom"/);
+      }
+    }
+    const autres = tuiles(page(`/${langue}/applications/presences/`));
+    assert.ok(autres.length > 0);
+    assert.ok(autres.every((tuile) => !tuile.match(/class="tuile grille [^"]*\bcompacte\b/)));
+  });
+
   test(`${langue} · /socle/ : établissement, personnes, web et mobile, lien Sécurité`, () => {
     const html = page(`/${langue}/socle/`);
     for (const ancre of ['etablissement', 'personnes', 'web-mobile']) assert.ok(html.includes(`id="${ancre}"`), ancre);

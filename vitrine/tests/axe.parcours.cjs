@@ -47,6 +47,16 @@ test('axe-core ne relève aucune violation', async (t) => {
             await page.locator('#pourquoi').scrollIntoViewIfNeeded();
             await page.getByRole('tab').first().waitFor();
           }
+          if (/^\/(fr|en)\/(applications\/)?$/.test(adresse)) {
+            const grilles = page.locator('main ul.grille:has(.tuile.compacte)');
+            assert.ok(await grilles.count(), 'grille des applications');
+            for (const grille of await grilles.all()) {
+              const rect = await grille.boundingBox();
+              assert.ok(rect && rect.x >= 0 && rect.x + rect.width <= largeur, 'grille entière dans la fenêtre');
+              const colonnes = await grille.evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(' ').length);
+              assert.equal(colonnes, largeur === 390 ? 2 : 6, 'colonnes de la grille');
+            }
+          }
           assert.deepEqual(await violations(page), [], 'menus fermés');
           if (largeur < 1024) await page.locator('.menu-bouton').click();
           await page.locator('.entete summary', { hasText: /^(Applications|Apps)$/ }).click();
