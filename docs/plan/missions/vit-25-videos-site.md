@@ -7,7 +7,7 @@
 | Modèle recommandé | le plus capable : Claude Fable 5.2, sinon Opus 5.5. Mise en scène, Remotion, poids et accessibilité à tenir ensemble |
 | Attribuée le | 2026-11-27, par le coordinateur ; accord du chef : oui, le 2026-11-27 (« des vidéos illustrant vraiment nos éléments : captures, motion design de quelques secondes, voire des GIF ») |
 | Module et chantier | [VIT](../modules/VIT-site-vitrine.md) · **hors chantier**, sur la demande du chef ; active la ligne « plus tard » du 18 nov. (plan du site, § 3 bis) |
-| Fonction | VIT-25 : chaque page de module et l'accueil montrent Planner en vrai : captures, boucles de quelques secondes en motion design, animations légères · taille M, en lots |
+| Fonction | VIT-25 : chaque module disponible a une page de présentation complète (blocs action et boucle animée, guide d'utilisation pas à pas, FAQ), et l'accueil montre Planner en vrai · taille L, en lots (un module par lot) |
 | Branche | `feat/vit-25-videos-site` pour le plan, depuis `origin/main` ; puis une branche par lot |
 | Dossier de travail | `..\travaux-planner\vit-25-videos-site` |
 | Plan de conception | à écrire : `docs/conception/vitrine/vit-25-videos-site.md` · **validé par le chef** (rendu, durée, phrases) |
@@ -15,6 +15,17 @@
 ## Ce que le chef a demandé (27 nov.)
 
 Le site doit avoir **des vidéos qui illustrent vraiment nos éléments** : des captures (images), des vidéos en **motion design de quelques secondes**, voire des **GIF**.
+
+## Ce que le chef a ajouté (28 nov.) : une vraie page de présentation par module
+
+Le chef aime la présentation du site d'une plateforme de quiz connue : des animations courtes qui montrent chaque action, et « comment faire ». **Chaque module disponible a donc une page de présentation complète**, avec :
+
+1. un titre court, une promesse d'une ligne et deux appels à l'action (démonstration ; voir le guide) ;
+2. des blocs « une action, un visuel animé » : une boucle de quelques secondes montre le geste dans Planner (créer, lancer, scanner, publier…), à côté d'un titre et d'une ou deux phrases ;
+3. un **guide d'utilisation** pas à pas (étapes numérotées « Comment faire »), chaque étape avec sa capture ou sa boucle ;
+4. une FAQ courte, puis un appel à l'action final.
+
+On reprend **la structure, jamais l'apparence ni les textes** de ce site : charte de Planner, nos captures, nos phrases. Un module « Bientôt » n'a pas de page animée : le site ne montre que ce qui existe. Les pages concernées aujourd'hui : Emploi du temps, Présences, Espace de cours, Annonces et messages, puis Quiz et Jeux pédagogiques après l'étape du site de QJE-17. Le gabarit des pages de modules de **VIT-24** doit laisser la place à ces sections (le plan de VIT-25 dit comment les deux se rejoignent).
 
 ## Ce qui est déjà décidé (18 nov., plan du site § 3 bis)
 
@@ -76,3 +87,4 @@ Quand tu as fini une étape, dis-le : le coordinateur relit ta branche avant la 
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-27 | fiche écrite sur la demande du chef ; VIT-09b rattachée à la même session | session à ouvrir par le chef |
+| 2026-11-28 | le chef étend la mission : une page de présentation par module, avec guide d'utilisation et boucles animées (structure inspirée d'un site de quiz connu, jamais copiée) | plan à écrire |
