@@ -5,7 +5,7 @@
 | Module | (nom fixé par QJE-17) · exception hors chantier (chef, 18 nov.) |
 | Branche | `feat/qje-15-jeux-par-niveau` |
 | Rédigé par | agent de Cursor (Grok 4.7), le 2026-11-26 ; revu le 2026-11-27 ; amendé le 2026-11-27 ; accroches réécrites le 2026-11-28 |
-| **Validé** | chef, 27 nov. : questions 1 et 2 (quatre cycles, tableau tel quel, variantes écartées). Le champ s'appelle `domaine`. La séparation est QJE-17. Question 6, voie d'image : chef, 28 nov., validée telle que proposée (neuf vues du jeu ; une image générée par Codex pour Labo Big-O et Requête Parfaite ; une ligne de `credits.md` par image). Question 5, accroches : réécrites le 28 nov., en attente du chef. |
+| **Validé** | chef, 27 nov. : questions 1 et 2 (quatre cycles, tableau tel quel, variantes écartées). Le champ s'appelle `domaine`. La séparation est QJE-17. Questions 5 et 6 validées le 28 nov. (`e9a0c5a3`) : les onze accroches du § 4 bis ; la voie d'image telle que proposée (neuf vues ; Codex pour Labo Big-O et Requête Parfaite ; une ligne de `credits.md` par image). |
 
 ## 1. Objet et critère de « terminé »
 
@@ -47,7 +47,7 @@ QJE-17 s'en sert. QJE-15 range les lignes de jeux et laisse les blocs de quiz o�
 | 2 | Le classement de chacun des onze jeux | Le tableau du § 4. Quatre domaines, dans cet ordre : Informatique, Réseaux et cybersécurité, Intelligence artificielle, Gestion et logistique. Tous les jeux au supérieur seulement. | chef, 27 nov. : le tableau tel quel | non |
 | 3 | La monnaie de « Pilote des stocks » et « Budget ERP » | Réglée par M-11 (`fix/qje-jeux-unite-neutre`, `4475a053`) : le mot est « crédits ». QJE-15 ne réécrit pas ces consignes et ne change pas les montants. Le code de QJE-15 part de `main`, qui a déjà M-11, et ne remet pas « MAD ». | M-11 fusionnée (#283, 26 nov.) | non |
 | 4 | Le numéro donné pour la séparation et pour le nom du module | Le plan écrivait (nom fixé par QJE-16). QJE-16 est l'interrupteur de l'IA par école (décision D2, 18 nov.). | coordinateur, 27 nov. : la séparation prend QJE-17. QJE-16 reste l'interrupteur de l'IA. | non |
-| 5 | Les accroches de la carte | Les onze phrases du § 4 bis, en français et en anglais, 60 caractères au plus. | réécrites le 28 nov., en attente du chef | oui, pour les écrans |
+| 5 | Les accroches de la carte | Les onze phrases du § 4 bis, en français et en anglais, 60 caractères au plus. | chef, 28 nov. : les onze phrases | non |
 | 6 | La voie d'image de chaque jeu | Le tableau du § 4 bis : vue du jeu, ou image générée par Codex. La banque libre reste ouverte, aux règles écrites là. | chef, 28 nov. : validée telle que proposée | non |
 
 Le chef écarte les variantes (27 nov.) : Robot Route reste au supérieur seul, et Budget ERP, Sprint Agile et Pilote des stocks aussi. Les variantes étaient : ajouter `lycee` à Robot Route ; ajouter `formation-professionnelle` aux trois jeux de gestion.
@@ -122,7 +122,7 @@ La page du site rend une grille par groupe, dans `vitrine/src/components/jeux/Ca
 
 ## 4 bis. Présentation
 
-Le chef demande (27 nov.) une présentation attirante, avec une image de chaque jeu : ce sont des jeux pour apprendre en s'amusant. L'écran le montre sur le web, sur le mobile et sur la page des jeux du site. La voie d'image est visée le 28 nov. Les accroches réécrites attendent le chef sur la planche, avant le code des écrans. Le catalogue (`cycles`, `domaine`, `rangerJeux`) n'attend pas cette planche.
+Le chef demande (27 nov.) une présentation attirante, avec une image de chaque jeu : ce sont des jeux pour apprendre en s'amusant. L'écran le montre sur le web, sur le mobile et sur la page des jeux du site. La voie d'image et les onze accroches sont visées le 28 nov. (`e9a0c5a3`). Le mobile et le site suivent. Le web attend #229. Le catalogue (`cycles`, `domaine`, `rangerJeux`) n'attend pas cette planche.
 
 ### 1. L'image de chaque jeu
 
@@ -255,8 +255,8 @@ La fonction sert d'abord le supérieur (étape 3). Les noms des autres cycles so
 
 1. L'amendement du 27 nov. (ce texte), commité seul. Les questions 1 et 2 sont visées. Les questions 5 et 6 attendent la planche.
 2. Le catalogue dans `shared/` : `cycles`, `domaine`, `rangerJeux` et son test. Sans attendre #229.
-3. La planche hors dépôt. La voie d'image est visée le 28 nov. Les accroches réécrites attendent le chef.
-4. Les trois écrans, après cette planche et après #229 sur `main`.
+3. La planche hors dépôt. Questions 5 et 6 visées le 28 nov.
+4. Le mobile et le site. Le web attend #229 sur `main`.
 5. Fiche de session, module QJE, rapport. Le coordinateur relit la branche avant la PR. Le chef pousse.
 
 `fix-audit-vitrine` a son § 7 validé par le coordinateur le 27 nov. (`95f66923`). Son code attend 19 h 02 UTC. Il ne bloque pas le catalogue.
