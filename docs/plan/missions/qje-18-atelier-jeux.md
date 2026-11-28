@@ -87,6 +87,7 @@ Pistes, à trier dans l'étude ; les jeux existants en couvrent déjà une part 
 Pour l'étude : `docs/conception/jeux/qje-18-atelier-jeux.md` et la fiche de session.
 
 Pour chaque jeu (fixé par le coordinateur après le visa de sa fiche) : `shared/simulations/catalogue/<code>.js`, un moteur et une présentation nouveaux ou réutilisés dans `shared/simulations/`, leurs tests, les traductions du jeu, son image dans le dossier choisi par QJE-15, la fiche du jeu, le fichier du module et la fiche de session.
+S'y ajoutent (relevé de l'étude, question 7, coordinateur le 28 nov.) : les deux registres `shared/simulations/moteur.js` et `shared/simulations/presentation.js` (une ligne par moteur), `shared/simulations/catalogue.js` (ajout en fin de tableau seulement), `backend/services/jeux/solutionsReference.js`, les tests du serveur du jeu, `mobile/__tests__/simulations.test.js` (cas `premier`), `backend/seed.js` (`MODULE_JEU_PAR_DISCIPLINE`), et un fichier de textes par moteur nouveau (question 8).
 
 L'agent ne touche pas :
 
@@ -136,3 +137,4 @@ Quand tu as fini une étape, dis-le : le coordinateur relit ta branche avant la 
 | Date | Relecture ou événement | Verdict |
 |---|---|---|
 | 2026-11-27 | fiche écrite sur la demande du chef ; matières relevées sur les deux emplois du temps d'exemple et la liste des supports du chef ; images confiées à Codex | session à ouvrir par le chef |
+| 2026-11-28 | étude commitée (`bc44598e`, fiche `491fb554`, agent Claude du coordinateur) : onze jeux (J1 à J11), trois pour commencer (J1 Le Courrier du port, J2 L'Archipel, J3 L'Atelier des vérins) ; questions 6 à 8 tranchées par le coordinateur ; questions 1 à 5 et 9 à 12 au chef | étude au chef |
