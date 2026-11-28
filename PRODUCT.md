@@ -66,7 +66,7 @@ Face aux suites génériques (Pronote, Hyperplanning, WebUntis, Celcat), Planner
 
 ## Evidence on Hand
 
-- **Origine** : cahier des charges PACTE (`docs/ecole/`) et emploi du temps réel d'une école d'ingénieurs (`docs/Planning/`, `docs/exemple_emploi_du_temp - 3A IIIA (Du 30 Mars Au 26 Avril 2026).pdf`) ; le jury PACTE évaluait ce projet.
+- **Origine** : cahier des charges PACTE (`docs/ecole/`) et emploi du temps réel d'une école d'ingénieurs (les PDF d'origine sont gardés hors du dépôt, qui est public ; leurs données, sans nom de personne : `docs/exemple_emploi_du_temps_donnee.yaml`) ; le jury PACTE évaluait ce projet.
 - **Démonstration** : `backend/seed.js` et `backend/demo/ecolePilote.js` créent une école fictive complète (campus, salles, filières, groupes, cours, enseignants, étudiants) et des comptes de test, refusés en production.
 - **Présentation** : vidéo de 1 min 30, diaporamas, discours et captures (`docs/presentation/`), maquettes (`docs/maquettes/`).
 - **Marché** : concurrents, problèmes des écoles et arguments (`docs/etude-marche/`).
